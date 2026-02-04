@@ -6498,8 +6498,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsNotesOccurrencesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContainerAnalysisApi(mock).projects.locations.notes.occurrences;
+      final res = api.ContainerAnalysisApi(
+        mock,
+      ).projects.locations.notes.occurrences;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

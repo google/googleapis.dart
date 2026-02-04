@@ -91,10 +91,11 @@ class WrapRequest {
   WrapRequest.fromJson(core.Map json_)
     : this(age: json_['age'] as core.int?, name: json_['name'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (age != null) 'age': age!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final age = this.age;
+    final name = this.name;
+    return {'age': ?age, 'name': ?name};
+  }
 }
 
 class WrapResponse {
@@ -105,7 +106,8 @@ class WrapResponse {
   WrapResponse.fromJson(core.Map json_)
     : this(result: json_['result'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (result != null) 'result': result!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final result = this.result;
+    return {'result': ?result};
+  }
 }

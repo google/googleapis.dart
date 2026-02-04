@@ -1034,10 +1034,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogLineageConfigmanagementV1Config();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageConfigmanagementV1Config(od);
       });
     },
@@ -1050,10 +1050,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion(od);
       });
     },
@@ -1066,10 +1066,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule(
           od,
         );
@@ -1084,10 +1084,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector(
           od,
         );
@@ -1102,10 +1102,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement(
           od,
         );
@@ -1120,10 +1120,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest(od);
       });
     },
@@ -1136,10 +1136,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse(
           od,
         );
@@ -1201,10 +1201,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogLineageV1ListLineageEventsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageV1ListLineageEventsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageV1ListLineageEventsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageV1ListLineageEventsResponse(od);
       });
     },
@@ -1216,10 +1216,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogLineageV1ListProcessesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageV1ListProcessesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageV1ListProcessesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageV1ListProcessesResponse(od);
       });
     },
@@ -1293,10 +1293,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse(
           od,
         );
@@ -1321,10 +1321,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogLineageV1SearchLinksRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageV1SearchLinksRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageV1SearchLinksRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageV1SearchLinksRequest(od);
       });
     },
@@ -1336,10 +1336,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogLineageV1SearchLinksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogLineageV1SearchLinksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogLineageV1SearchLinksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogLineageV1SearchLinksResponse(od);
       });
     },
@@ -1467,10 +1467,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogLineageConfigmanagementV1Config(obj);
 
           final path = req.url.path;
@@ -1595,10 +1595,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogLineageConfigmanagementV1Config(obj);
 
           final path = req.url.path;
@@ -1666,10 +1666,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest(
             obj,
           );
@@ -1805,10 +1805,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogLineageV1SearchLinksRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogLineageV1SearchLinksRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogLineageV1SearchLinksRequest(obj);
 
           final path = req.url.path;
@@ -1933,10 +1933,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogLineageConfigmanagementV1Config(obj);
 
           final path = req.url.path;
@@ -2954,10 +2954,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProcessesRunsLineageEventsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatalineageApi(
-            mock,
-          ).projects.locations.processes.runs.lineageEvents;
+      final res = api.DatalineageApi(
+        mock,
+      ).projects.locations.processes.runs.lineageEvents;
       final arg_request = buildGoogleCloudDatacatalogLineageV1LineageEvent();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -3030,10 +3029,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatalineageApi(
-            mock,
-          ).projects.locations.processes.runs.lineageEvents;
+      final res = api.DatalineageApi(
+        mock,
+      ).projects.locations.processes.runs.lineageEvents;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_$fields = 'foo';
@@ -3095,10 +3093,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatalineageApi(
-            mock,
-          ).projects.locations.processes.runs.lineageEvents;
+      final res = api.DatalineageApi(
+        mock,
+      ).projects.locations.processes.runs.lineageEvents;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3155,10 +3152,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatalineageApi(
-            mock,
-          ).projects.locations.processes.runs.lineageEvents;
+      final res = api.DatalineageApi(
+        mock,
+      ).projects.locations.processes.runs.lineageEvents;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

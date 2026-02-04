@@ -106,7 +106,7 @@ class ProvidersAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
@@ -155,8 +155,8 @@ class ProvidersAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -198,9 +198,9 @@ class ProvidersAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/accounts';
@@ -241,7 +241,7 @@ class ProvidersAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reject';
@@ -283,7 +283,7 @@ class ProvidersAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reset';
@@ -335,7 +335,7 @@ class ProvidersEntitlementsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
@@ -379,7 +379,7 @@ class ProvidersEntitlementsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approvePlanChange';
@@ -415,7 +415,7 @@ class ProvidersEntitlementsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -489,10 +489,10 @@ class ProvidersEntitlementsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/entitlements';
@@ -538,8 +538,8 @@ class ProvidersEntitlementsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -585,7 +585,7 @@ class ProvidersEntitlementsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reject';
@@ -629,7 +629,7 @@ class ProvidersEntitlementsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rejectPlanChange';
@@ -671,7 +671,7 @@ class ProvidersEntitlementsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':suspend';
@@ -780,20 +780,17 @@ class Account {
 
   Account.fromJson(core.Map json_)
     : this(
-        approvals:
-            (json_['approvals'] as core.List?)
-                ?.map(
-                  (value) => Approval.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        approvals: (json_['approvals'] as core.List?)
+            ?.map(
+              (value) => Approval.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
-        inputProperties:
-            json_.containsKey('inputProperties')
-                ? json_['inputProperties']
-                    as core.Map<core.String, core.dynamic>
-                : null,
+        inputProperties: json_.containsKey('inputProperties')
+            ? json_['inputProperties'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
         provider: json_['provider'] as core.String?,
         resellerParentBillingAccount:
@@ -802,17 +799,26 @@ class Account {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (approvals != null) 'approvals': approvals!,
-    if (createTime != null) 'createTime': createTime!,
-    if (inputProperties != null) 'inputProperties': inputProperties!,
-    if (name != null) 'name': name!,
-    if (provider != null) 'provider': provider!,
-    if (resellerParentBillingAccount != null)
-      'resellerParentBillingAccount': resellerParentBillingAccount!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final approvals = this.approvals;
+    final createTime = this.createTime;
+    final inputProperties = this.inputProperties;
+    final name = this.name;
+    final provider = this.provider;
+    final resellerParentBillingAccount = this.resellerParentBillingAccount;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'approvals': ?approvals,
+      'createTime': ?createTime,
+      'inputProperties': ?inputProperties,
+      'name': ?name,
+      'provider': ?provider,
+      'resellerParentBillingAccount': ?resellerParentBillingAccount,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// An approval for some action on an account.
@@ -856,12 +862,18 @@ class Approval {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (reason != null) 'reason': reason!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final reason = this.reason;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'name': ?name,
+      'reason': ?reason,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Request message for PartnerProcurementService.ApproveAccount.
@@ -888,17 +900,23 @@ class ApproveAccountRequest {
   ApproveAccountRequest.fromJson(core.Map json_)
     : this(
         approvalName: json_['approvalName'] as core.String?,
-        properties: (json_['properties']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        properties:
+            (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         reason: json_['reason'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (approvalName != null) 'approvalName': approvalName!,
-    if (properties != null) 'properties': properties!,
-    if (reason != null) 'reason': reason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final approvalName = this.approvalName;
+    final properties = this.properties;
+    final reason = this.reason;
+    return {
+      'approvalName': ?approvalName,
+      'properties': ?properties,
+      'reason': ?reason,
+    };
+  }
 }
 
 /// Request message for
@@ -914,9 +932,10 @@ class ApproveEntitlementPlanChangeRequest {
   ApproveEntitlementPlanChangeRequest.fromJson(core.Map json_)
     : this(pendingPlanName: json_['pendingPlanName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pendingPlanName != null) 'pendingPlanName': pendingPlanName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pendingPlanName = this.pendingPlanName;
+    return {'pendingPlanName': ?pendingPlanName};
+  }
 }
 
 /// Request message for \[PartnerProcurementService.ApproveEntitlement\[\].
@@ -943,16 +962,20 @@ class ApproveEntitlementRequest {
   ApproveEntitlementRequest.fromJson(core.Map json_)
     : this(
         entitlementMigrated: json_['entitlementMigrated'] as core.String?,
-        properties: (json_['properties']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        properties:
+            (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entitlementMigrated != null)
-      'entitlementMigrated': entitlementMigrated!,
-    if (properties != null) 'properties': properties!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entitlementMigrated = this.entitlementMigrated;
+    final properties = this.properties;
+    return {
+      'entitlementMigrated': ?entitlementMigrated,
+      'properties': ?properties,
+    };
+  }
 }
 
 /// A resource using (consuming) this entitlement.
@@ -965,9 +988,10 @@ class Consumer {
   Consumer.fromJson(core.Map json_)
     : this(project: json_['project'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (project != null) 'project': project!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final project = this.project;
+    return {'project': ?project};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1365,24 +1389,20 @@ class Entitlement {
     : this(
         account: json_['account'] as core.String?,
         cancellationReason: json_['cancellationReason'] as core.String?,
-        consumers:
-            (json_['consumers'] as core.List?)
-                ?.map(
-                  (value) => Consumer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        consumers: (json_['consumers'] as core.List?)
+            ?.map(
+              (value) => Consumer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
-        entitlementBenefitIds:
-            (json_['entitlementBenefitIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        inputProperties:
-            json_.containsKey('inputProperties')
-                ? json_['inputProperties']
-                    as core.Map<core.String, core.dynamic>
-                : null,
+        entitlementBenefitIds: (json_['entitlementBenefitIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        inputProperties: json_.containsKey('inputProperties')
+            ? json_['inputProperties'] as core.Map<core.String, core.dynamic>
+            : null,
         messageToUser: json_['messageToUser'] as core.String?,
         name: json_['name'] as core.String?,
         newOfferEndTime: json_['newOfferEndTime'] as core.String?,
@@ -1406,38 +1426,62 @@ class Entitlement {
         usageReportingId: json_['usageReportingId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (account != null) 'account': account!,
-    if (cancellationReason != null) 'cancellationReason': cancellationReason!,
-    if (consumers != null) 'consumers': consumers!,
-    if (createTime != null) 'createTime': createTime!,
-    if (entitlementBenefitIds != null)
-      'entitlementBenefitIds': entitlementBenefitIds!,
-    if (inputProperties != null) 'inputProperties': inputProperties!,
-    if (messageToUser != null) 'messageToUser': messageToUser!,
-    if (name != null) 'name': name!,
-    if (newOfferEndTime != null) 'newOfferEndTime': newOfferEndTime!,
-    if (newOfferStartTime != null) 'newOfferStartTime': newOfferStartTime!,
-    if (newPendingOffer != null) 'newPendingOffer': newPendingOffer!,
-    if (newPendingOfferDuration != null)
-      'newPendingOfferDuration': newPendingOfferDuration!,
-    if (newPendingPlan != null) 'newPendingPlan': newPendingPlan!,
-    if (offer != null) 'offer': offer!,
-    if (offerDuration != null) 'offerDuration': offerDuration!,
-    if (offerEndTime != null) 'offerEndTime': offerEndTime!,
-    if (orderId != null) 'orderId': orderId!,
-    if (plan != null) 'plan': plan!,
-    if (product != null) 'product': product!,
-    if (productExternalName != null)
-      'productExternalName': productExternalName!,
-    if (provider != null) 'provider': provider!,
-    if (quoteExternalName != null) 'quoteExternalName': quoteExternalName!,
-    if (state != null) 'state': state!,
-    if (subscriptionEndTime != null)
-      'subscriptionEndTime': subscriptionEndTime!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (usageReportingId != null) 'usageReportingId': usageReportingId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final account = this.account;
+    final cancellationReason = this.cancellationReason;
+    final consumers = this.consumers;
+    final createTime = this.createTime;
+    final entitlementBenefitIds = this.entitlementBenefitIds;
+    final inputProperties = this.inputProperties;
+    final messageToUser = this.messageToUser;
+    final name = this.name;
+    final newOfferEndTime = this.newOfferEndTime;
+    final newOfferStartTime = this.newOfferStartTime;
+    final newPendingOffer = this.newPendingOffer;
+    final newPendingOfferDuration = this.newPendingOfferDuration;
+    final newPendingPlan = this.newPendingPlan;
+    final offer = this.offer;
+    final offerDuration = this.offerDuration;
+    final offerEndTime = this.offerEndTime;
+    final orderId = this.orderId;
+    final plan = this.plan;
+    final product = this.product;
+    final productExternalName = this.productExternalName;
+    final provider = this.provider;
+    final quoteExternalName = this.quoteExternalName;
+    final state = this.state;
+    final subscriptionEndTime = this.subscriptionEndTime;
+    final updateTime = this.updateTime;
+    final usageReportingId = this.usageReportingId;
+    return {
+      'account': ?account,
+      'cancellationReason': ?cancellationReason,
+      'consumers': ?consumers,
+      'createTime': ?createTime,
+      'entitlementBenefitIds': ?entitlementBenefitIds,
+      'inputProperties': ?inputProperties,
+      'messageToUser': ?messageToUser,
+      'name': ?name,
+      'newOfferEndTime': ?newOfferEndTime,
+      'newOfferStartTime': ?newOfferStartTime,
+      'newPendingOffer': ?newPendingOffer,
+      'newPendingOfferDuration': ?newPendingOfferDuration,
+      'newPendingPlan': ?newPendingPlan,
+      'offer': ?offer,
+      'offerDuration': ?offerDuration,
+      'offerEndTime': ?offerEndTime,
+      'orderId': ?orderId,
+      'plan': ?plan,
+      'product': ?product,
+      'productExternalName': ?productExternalName,
+      'provider': ?provider,
+      'quoteExternalName': ?quoteExternalName,
+      'state': ?state,
+      'subscriptionEndTime': ?subscriptionEndTime,
+      'updateTime': ?updateTime,
+      'usageReportingId': ?usageReportingId,
+    };
+  }
 }
 
 /// Response message for \[PartnerProcurementService.ListAccounts\[\].
@@ -1452,21 +1496,21 @@ class ListAccountsResponse {
 
   ListAccountsResponse.fromJson(core.Map json_)
     : this(
-        accounts:
-            (json_['accounts'] as core.List?)
-                ?.map(
-                  (value) => Account.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        accounts: (json_['accounts'] as core.List?)
+            ?.map(
+              (value) => Account.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accounts != null) 'accounts': accounts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accounts = this.accounts;
+    final nextPageToken = this.nextPageToken;
+    return {'accounts': ?accounts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for PartnerProcurementService.ListEntitlements.
@@ -1481,21 +1525,21 @@ class ListEntitlementsResponse {
 
   ListEntitlementsResponse.fromJson(core.Map json_)
     : this(
-        entitlements:
-            (json_['entitlements'] as core.List?)
-                ?.map(
-                  (value) => Entitlement.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entitlements: (json_['entitlements'] as core.List?)
+            ?.map(
+              (value) => Entitlement.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entitlements != null) 'entitlements': entitlements!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entitlements = this.entitlements;
+    final nextPageToken = this.nextPageToken;
+    return {'entitlements': ?entitlements, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Request message for PartnerProcurementService.RejectAccount.
@@ -1520,10 +1564,11 @@ class RejectAccountRequest {
         reason: json_['reason'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (approvalName != null) 'approvalName': approvalName!,
-    if (reason != null) 'reason': reason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final approvalName = this.approvalName;
+    final reason = this.reason;
+    return {'approvalName': ?approvalName, 'reason': ?reason};
+  }
 }
 
 /// Request message for PartnerProcurementService.RejectEntitlementPlanChange.
@@ -1546,10 +1591,11 @@ class RejectEntitlementPlanChangeRequest {
         reason: json_['reason'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pendingPlanName != null) 'pendingPlanName': pendingPlanName!,
-    if (reason != null) 'reason': reason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pendingPlanName = this.pendingPlanName;
+    final reason = this.reason;
+    return {'pendingPlanName': ?pendingPlanName, 'reason': ?reason};
+  }
 }
 
 /// Request message for PartnerProcurementService.RejectEntitlement.
@@ -1564,9 +1610,10 @@ class RejectEntitlementRequest {
   RejectEntitlementRequest.fromJson(core.Map json_)
     : this(reason: json_['reason'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reason != null) 'reason': reason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    return {'reason': ?reason};
+  }
 }
 
 /// Request message for PartnerProcurementService.ResetAccount.
@@ -1584,7 +1631,8 @@ class SuspendEntitlementRequest {
   SuspendEntitlementRequest.fromJson(core.Map json_)
     : this(reason: json_['reason'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reason != null) 'reason': reason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    return {'reason': ?reason};
+  }
 }

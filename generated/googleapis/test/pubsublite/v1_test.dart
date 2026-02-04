@@ -1847,8 +1847,9 @@ void main() {
   unittest.group('resource-AdminProjectsLocationsReservationsTopicsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PubsubLiteApi(mock).admin.projects.locations.reservations.topics;
+      final res = api.PubsubLiteApi(
+        mock,
+      ).admin.projects.locations.reservations.topics;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1922,8 +1923,9 @@ void main() {
   unittest.group('resource-AdminProjectsLocationsSubscriptionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
+      final res = api.PubsubLiteApi(
+        mock,
+      ).admin.projects.locations.subscriptions;
       final arg_request = buildSubscription();
       final arg_parent = 'foo';
       final arg_skipBacklog = true;
@@ -1998,8 +2000,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
+      final res = api.PubsubLiteApi(
+        mock,
+      ).admin.projects.locations.subscriptions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2052,8 +2055,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
+      final res = api.PubsubLiteApi(
+        mock,
+      ).admin.projects.locations.subscriptions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2106,8 +2110,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
+      final res = api.PubsubLiteApi(
+        mock,
+      ).admin.projects.locations.subscriptions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2175,8 +2180,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
+      final res = api.PubsubLiteApi(
+        mock,
+      ).admin.projects.locations.subscriptions;
       final arg_request = buildSubscription();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2245,8 +2251,9 @@ void main() {
 
     unittest.test('method--seek', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
+      final res = api.PubsubLiteApi(
+        mock,
+      ).admin.projects.locations.subscriptions;
       final arg_request = buildSeekSubscriptionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2680,10 +2687,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PubsubLiteApi(
-              mock,
-            ).admin.projects.locations.topics.subscriptions;
+        final res = api.PubsubLiteApi(
+          mock,
+        ).admin.projects.locations.topics.subscriptions;
         final arg_name = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -2758,8 +2764,9 @@ void main() {
   unittest.group('resource-CursorProjectsLocationsSubscriptionsResource', () {
     unittest.test('method--commitCursor', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PubsubLiteApi(mock).cursor.projects.locations.subscriptions;
+      final res = api.PubsubLiteApi(
+        mock,
+      ).cursor.projects.locations.subscriptions;
       final arg_request = buildCommitCursorRequest();
       final arg_subscription = 'foo';
       final arg_$fields = 'foo';
@@ -2826,10 +2833,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PubsubLiteApi(
-              mock,
-            ).cursor.projects.locations.subscriptions.cursors;
+        final res = api.PubsubLiteApi(
+          mock,
+        ).cursor.projects.locations.subscriptions.cursors;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';

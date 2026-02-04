@@ -7631,10 +7631,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildTransitObjectUploadRotatingBarcodeValuesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .TransitObjectUploadRotatingBarcodeValuesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.TransitObjectUploadRotatingBarcodeValuesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkTransitObjectUploadRotatingBarcodeValuesResponse(od);
       });
     },
@@ -12172,10 +12172,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .TransitObjectUploadRotatingBarcodeValuesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.TransitObjectUploadRotatingBarcodeValuesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkTransitObjectUploadRotatingBarcodeValuesRequest(obj);
 
           final path = req.url.path;

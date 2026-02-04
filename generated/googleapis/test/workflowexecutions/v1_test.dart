@@ -992,10 +992,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsWorkflowsExecutionsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkflowExecutionsApi(
-            mock,
-          ).projects.locations.workflows.executions;
+      final res = api.WorkflowExecutionsApi(
+        mock,
+      ).projects.locations.workflows.executions;
       final arg_request = buildCancelExecutionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1058,10 +1057,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkflowExecutionsApi(
-            mock,
-          ).projects.locations.workflows.executions;
+      final res = api.WorkflowExecutionsApi(
+        mock,
+      ).projects.locations.workflows.executions;
       final arg_request = buildExecution();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -1124,10 +1122,9 @@ void main() {
 
     unittest.test('method--deleteExecutionHistory', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkflowExecutionsApi(
-            mock,
-          ).projects.locations.workflows.executions;
+      final res = api.WorkflowExecutionsApi(
+        mock,
+      ).projects.locations.workflows.executions;
       final arg_request = buildDeleteExecutionHistoryRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1190,10 +1187,9 @@ void main() {
 
     unittest.test('method--exportData', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkflowExecutionsApi(
-            mock,
-          ).projects.locations.workflows.executions;
+      final res = api.WorkflowExecutionsApi(
+        mock,
+      ).projects.locations.workflows.executions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1246,10 +1242,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkflowExecutionsApi(
-            mock,
-          ).projects.locations.workflows.executions;
+      final res = api.WorkflowExecutionsApi(
+        mock,
+      ).projects.locations.workflows.executions;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -1308,10 +1303,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkflowExecutionsApi(
-            mock,
-          ).projects.locations.workflows.executions;
+      final res = api.WorkflowExecutionsApi(
+        mock,
+      ).projects.locations.workflows.executions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -1398,10 +1392,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.WorkflowExecutionsApi(
-              mock,
-            ).projects.locations.workflows.executions.callbacks;
+        final res = api.WorkflowExecutionsApi(
+          mock,
+        ).projects.locations.workflows.executions.callbacks;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -1474,10 +1467,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.WorkflowExecutionsApi(
-              mock,
-            ).projects.locations.workflows.executions.stepEntries;
+        final res = api.WorkflowExecutionsApi(
+          mock,
+        ).projects.locations.workflows.executions.stepEntries;
         final arg_name = 'foo';
         final arg_view = 'foo';
         final arg_$fields = 'foo';
@@ -1536,10 +1528,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.WorkflowExecutionsApi(
-              mock,
-            ).projects.locations.workflows.executions.stepEntries;
+        final res = api.WorkflowExecutionsApi(
+          mock,
+        ).projects.locations.workflows.executions.stepEntries;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';

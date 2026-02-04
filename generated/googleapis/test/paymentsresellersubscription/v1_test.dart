@@ -1520,10 +1520,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEntitleSubscriptionRequestLineItemEntitlementDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EntitleSubscriptionRequestLineItemEntitlementDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EntitleSubscriptionRequestLineItemEntitlementDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEntitleSubscriptionRequestLineItemEntitlementDetails(od);
       });
     },
@@ -1800,10 +1800,10 @@ void main() {
         final o =
             buildPromotionIntroductoryPricingDetailsIntroductoryPricingSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkPromotionIntroductoryPricingDetailsIntroductoryPricingSpec(od);
       });
     },
@@ -1892,10 +1892,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSubscriptionLineItemBundleDetailsBundleElementDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SubscriptionLineItemBundleDetailsBundleElementDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SubscriptionLineItemBundleDetailsBundleElementDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSubscriptionLineItemBundleDetailsBundleElementDetails(od);
       });
     },
@@ -2233,8 +2233,9 @@ void main() {
   unittest.group('resource-PartnersSubscriptionsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions;
       final arg_request = buildCancelSubscriptionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2299,8 +2300,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions;
       final arg_request = buildSubscription();
       final arg_parent = 'foo';
       final arg_subscriptionId = 'foo';
@@ -2369,8 +2371,9 @@ void main() {
 
     unittest.test('method--entitle', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions;
       final arg_request = buildEntitleSubscriptionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2435,8 +2438,9 @@ void main() {
 
     unittest.test('method--extend', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions;
       final arg_request = buildExtendSubscriptionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2501,8 +2505,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2555,8 +2560,9 @@ void main() {
 
     unittest.test('method--provision', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions;
       final arg_request = buildSubscription();
       final arg_parent = 'foo';
       final arg_cycleOptions_initialCycleDuration_count = 42;
@@ -2641,8 +2647,9 @@ void main() {
 
     unittest.test('method--resume', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions;
       final arg_request = buildResumeSubscriptionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2707,8 +2714,9 @@ void main() {
 
     unittest.test('method--suspend', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions;
       final arg_request = buildSuspendSubscriptionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2773,8 +2781,9 @@ void main() {
 
     unittest.test('method--undoCancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.subscriptions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions;
       final arg_request = buildUndoCancelSubscriptionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2843,10 +2852,9 @@ void main() {
   unittest.group('resource-PartnersSubscriptionsLineItemsResource', () {
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(
-            mock,
-          ).partners.subscriptions.lineItems;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.subscriptions.lineItems;
       final arg_request = buildSubscriptionLineItem();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2917,8 +2925,9 @@ void main() {
   unittest.group('resource-PartnersUserSessionsResource', () {
     unittest.test('method--generate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PaymentsResellerSubscriptionApi(mock).partners.userSessions;
+      final res = api.PaymentsResellerSubscriptionApi(
+        mock,
+      ).partners.userSessions;
       final arg_request = buildGenerateUserSessionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';

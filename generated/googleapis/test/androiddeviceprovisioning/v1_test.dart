@@ -1723,8 +1723,9 @@ void main() {
   unittest.group('resource-CustomersConfigurationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
+      final res = api.AndroidProvisioningPartnerApi(
+        mock,
+      ).customers.configurations;
       final arg_request = buildConfiguration();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -1787,8 +1788,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
+      final res = api.AndroidProvisioningPartnerApi(
+        mock,
+      ).customers.configurations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1841,8 +1843,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
+      final res = api.AndroidProvisioningPartnerApi(
+        mock,
+      ).customers.configurations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1895,8 +1898,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
+      final res = api.AndroidProvisioningPartnerApi(
+        mock,
+      ).customers.configurations;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1953,8 +1957,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
+      final res = api.AndroidProvisioningPartnerApi(
+        mock,
+      ).customers.configurations;
       final arg_request = buildConfiguration();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3286,8 +3291,9 @@ void main() {
   unittest.group('resource-PartnersVendorsCustomersResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidProvisioningPartnerApi(mock).partners.vendors.customers;
+      final res = api.AndroidProvisioningPartnerApi(
+        mock,
+      ).partners.vendors.customers;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

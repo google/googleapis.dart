@@ -4843,8 +4843,9 @@ void main() {
   unittest.group('resource-BillingAccountsLocationsBucketsViewsLogsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.LoggingApi(mock).billingAccounts.locations.buckets.views.logs;
+      final res = api.LoggingApi(
+        mock,
+      ).billingAccounts.locations.buckets.views.logs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -13718,8 +13719,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsBucketsViewsLogsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.LoggingApi(mock).organizations.locations.buckets.views.logs;
+      final res = api.LoggingApi(
+        mock,
+      ).organizations.locations.buckets.views.logs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

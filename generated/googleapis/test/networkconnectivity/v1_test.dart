@@ -4138,10 +4138,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildListMulticloudDataTransferSupportedServicesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ListMulticloudDataTransferSupportedServicesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ListMulticloudDataTransferSupportedServicesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkListMulticloudDataTransferSupportedServicesResponse(od);
       });
     },
@@ -4900,10 +4900,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAutomatedDnsRecordsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.automatedDnsRecords;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.automatedDnsRecords;
       final arg_request = buildAutomatedDnsRecord();
       final arg_parent = 'foo';
       final arg_automatedDnsRecordId = 'foo';
@@ -4986,10 +4985,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.automatedDnsRecords;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.automatedDnsRecords;
       final arg_name = 'foo';
       final arg_deleteMode = 'foo';
       final arg_etag = 'foo';
@@ -5062,10 +5060,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.automatedDnsRecords;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.automatedDnsRecords;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5118,10 +5115,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.automatedDnsRecords;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.automatedDnsRecords;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5207,8 +5203,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalHubsResource', () {
     unittest.test('method--acceptSpoke', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_request = buildAcceptHubSpokeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5273,8 +5270,9 @@ void main() {
 
     unittest.test('method--acceptSpokeUpdate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_request = buildAcceptSpokeUpdateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5339,8 +5337,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_request = buildHub();
       final arg_parent = 'foo';
       final arg_hubId = 'foo';
@@ -5414,8 +5413,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -5479,8 +5479,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5533,8 +5534,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -5596,8 +5598,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5677,8 +5680,9 @@ void main() {
 
     unittest.test('method--listSpokes', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5767,8 +5771,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_request = buildHub();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -5845,8 +5850,9 @@ void main() {
 
     unittest.test('method--queryStatus', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_groupBy = 'foo';
@@ -5932,8 +5938,9 @@ void main() {
 
     unittest.test('method--rejectSpoke', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_request = buildRejectHubSpokeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5998,8 +6005,9 @@ void main() {
 
     unittest.test('method--rejectSpokeUpdate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_request = buildRejectSpokeUpdateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -6064,8 +6072,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6128,8 +6137,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.global.hubs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6196,10 +6206,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalHubsGroupsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.hubs.groups;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs.groups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6252,10 +6261,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.hubs.groups;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs.groups;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -6317,10 +6325,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.hubs.groups;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs.groups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6400,10 +6407,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.hubs.groups;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs.groups;
       final arg_request = buildGroup();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -6480,10 +6486,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.hubs.groups;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs.groups;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6546,10 +6551,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.hubs.groups;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs.groups;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6616,10 +6620,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalHubsRouteTablesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.hubs.routeTables;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs.routeTables;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6672,10 +6675,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.hubs.routeTables;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.hubs.routeTables;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6759,10 +6761,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkconnectivityApi(
-              mock,
-            ).projects.locations.global.hubs.routeTables.routes;
+        final res = api.NetworkconnectivityApi(
+          mock,
+        ).projects.locations.global.hubs.routeTables.routes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6815,10 +6816,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkconnectivityApi(
-              mock,
-            ).projects.locations.global.hubs.routeTables.routes;
+        final res = api.NetworkconnectivityApi(
+          mock,
+        ).projects.locations.global.hubs.routeTables.routes;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -6901,10 +6901,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalPolicyBasedRoutesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.policyBasedRoutes;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.policyBasedRoutes;
       final arg_request = buildPolicyBasedRoute();
       final arg_parent = 'foo';
       final arg_policyBasedRouteId = 'foo';
@@ -6981,10 +6980,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.policyBasedRoutes;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.policyBasedRoutes;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -7048,10 +7046,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.policyBasedRoutes;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.policyBasedRoutes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7104,10 +7101,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.policyBasedRoutes;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.policyBasedRoutes;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -7169,10 +7165,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.policyBasedRoutes;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.policyBasedRoutes;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7256,10 +7251,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.policyBasedRoutes;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.policyBasedRoutes;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7322,10 +7316,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.global.policyBasedRoutes;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.global.policyBasedRoutes;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7392,8 +7385,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInternalRangesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.internalRanges;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.internalRanges;
       final arg_request = buildInternalRange();
       final arg_parent = 'foo';
       final arg_internalRangeId = 'foo';
@@ -7470,8 +7464,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.internalRanges;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.internalRanges;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -7535,8 +7530,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.internalRanges;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.internalRanges;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7589,8 +7585,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.internalRanges;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.internalRanges;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -7652,8 +7649,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.internalRanges;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.internalRanges;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7735,8 +7733,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.internalRanges;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.internalRanges;
       final arg_request = buildInternalRange();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -7813,8 +7812,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.internalRanges;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.internalRanges;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7877,8 +7877,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.internalRanges;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.internalRanges;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7945,10 +7946,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsMulticloudDataTransferConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.multicloudDataTransferConfigs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.multicloudDataTransferConfigs;
       final arg_request = buildMulticloudDataTransferConfig();
       final arg_parent = 'foo';
       final arg_multicloudDataTransferConfigId = 'foo';
@@ -8025,10 +8025,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.multicloudDataTransferConfigs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.multicloudDataTransferConfigs;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -8095,10 +8094,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.multicloudDataTransferConfigs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.multicloudDataTransferConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8153,10 +8151,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.multicloudDataTransferConfigs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.multicloudDataTransferConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8246,10 +8243,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.multicloudDataTransferConfigs;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.multicloudDataTransferConfigs;
       final arg_request = buildMulticloudDataTransferConfig();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -8330,10 +8326,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkconnectivityApi(
-              mock,
-            ).projects.locations.multicloudDataTransferConfigs.destinations;
+        final res = api.NetworkconnectivityApi(
+          mock,
+        ).projects.locations.multicloudDataTransferConfigs.destinations;
         final arg_request = buildDestination();
         final arg_parent = 'foo';
         final arg_destinationId = 'foo';
@@ -8410,10 +8405,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkconnectivityApi(
-              mock,
-            ).projects.locations.multicloudDataTransferConfigs.destinations;
+        final res = api.NetworkconnectivityApi(
+          mock,
+        ).projects.locations.multicloudDataTransferConfigs.destinations;
         final arg_name = 'foo';
         final arg_etag = 'foo';
         final arg_requestId = 'foo';
@@ -8480,10 +8474,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkconnectivityApi(
-              mock,
-            ).projects.locations.multicloudDataTransferConfigs.destinations;
+        final res = api.NetworkconnectivityApi(
+          mock,
+        ).projects.locations.multicloudDataTransferConfigs.destinations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -8536,10 +8529,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkconnectivityApi(
-              mock,
-            ).projects.locations.multicloudDataTransferConfigs.destinations;
+        final res = api.NetworkconnectivityApi(
+          mock,
+        ).projects.locations.multicloudDataTransferConfigs.destinations;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -8625,10 +8617,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkconnectivityApi(
-              mock,
-            ).projects.locations.multicloudDataTransferConfigs.destinations;
+        final res = api.NetworkconnectivityApi(
+          mock,
+        ).projects.locations.multicloudDataTransferConfigs.destinations;
         final arg_request = buildDestination();
         final arg_name = 'foo';
         final arg_requestId = 'foo';
@@ -8710,10 +8701,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkconnectivityApi(
-              mock,
-            ).projects.locations.multicloudDataTransferSupportedServices;
+        final res = api.NetworkconnectivityApi(
+          mock,
+        ).projects.locations.multicloudDataTransferSupportedServices;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -8770,10 +8760,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.NetworkconnectivityApi(
-              mock,
-            ).projects.locations.multicloudDataTransferSupportedServices;
+        final res = api.NetworkconnectivityApi(
+          mock,
+        ).projects.locations.multicloudDataTransferSupportedServices;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -8848,8 +8837,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.operations;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.operations;
       final arg_request = buildGoogleLongrunningCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8912,8 +8902,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.operations;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8966,8 +8957,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.operations;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9022,8 +9014,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.operations;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -9109,8 +9102,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRegionalEndpointsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.regionalEndpoints;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.regionalEndpoints;
       final arg_request = buildRegionalEndpoint();
       final arg_parent = 'foo';
       final arg_regionalEndpointId = 'foo';
@@ -9187,8 +9181,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.regionalEndpoints;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.regionalEndpoints;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -9252,8 +9247,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.regionalEndpoints;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.regionalEndpoints;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9306,8 +9302,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.regionalEndpoints;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.regionalEndpoints;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -9393,8 +9390,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServiceClassesResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.serviceClasses;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceClasses;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -9461,8 +9459,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.serviceClasses;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceClasses;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9515,8 +9514,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.serviceClasses;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceClasses;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -9578,8 +9578,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.serviceClasses;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceClasses;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -9661,8 +9662,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.serviceClasses;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceClasses;
       final arg_request = buildServiceClass();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -9739,8 +9741,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.serviceClasses;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceClasses;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -9803,8 +9806,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(mock).projects.locations.serviceClasses;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceClasses;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -9871,10 +9875,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServiceConnectionMapsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionMaps;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionMaps;
       final arg_request = buildServiceConnectionMap();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -9951,10 +9954,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionMaps;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionMaps;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -10021,10 +10023,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionMaps;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionMaps;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10077,10 +10078,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionMaps;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionMaps;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -10142,10 +10142,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionMaps;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionMaps;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -10229,10 +10228,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionMaps;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionMaps;
       final arg_request = buildServiceConnectionMap();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -10309,10 +10307,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionMaps;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionMaps;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10375,10 +10372,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionMaps;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionMaps;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10445,10 +10441,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServiceConnectionPoliciesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionPolicies;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionPolicies;
       final arg_request = buildServiceConnectionPolicy();
       final arg_parent = 'foo';
       final arg_autoSubnetworkConfig_allocRangeSpace = buildUnnamed114();
@@ -10553,10 +10548,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionPolicies;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionPolicies;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -10623,10 +10617,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionPolicies;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10679,10 +10672,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionPolicies;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionPolicies;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -10744,10 +10736,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionPolicies;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionPolicies;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -10831,10 +10822,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionPolicies;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionPolicies;
       final arg_request = buildServiceConnectionPolicy();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -10911,10 +10901,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionPolicies;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionPolicies;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -10977,10 +10966,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionPolicies;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionPolicies;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -11047,10 +11035,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServiceConnectionTokensResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionTokens;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionTokens;
       final arg_request = buildServiceConnectionToken();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -11127,10 +11114,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionTokens;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionTokens;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -11197,10 +11183,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionTokens;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionTokens;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11253,10 +11238,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.NetworkconnectivityApi(
-            mock,
-          ).projects.locations.serviceConnectionTokens;
+      final res = api.NetworkconnectivityApi(
+        mock,
+      ).projects.locations.serviceConnectionTokens;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';

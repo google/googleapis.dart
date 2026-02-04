@@ -89,7 +89,7 @@ class ShelvesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -135,9 +135,9 @@ class ShelvesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/shelves';
@@ -184,7 +184,7 @@ class ShelvesBooksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':borrow';
@@ -223,7 +223,7 @@ class ShelvesBooksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -273,9 +273,9 @@ class ShelvesBooksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/books';
@@ -316,7 +316,7 @@ class ShelvesBooksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':return';
@@ -364,12 +364,13 @@ class GoogleExampleLibraryagentV1Book {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (author != null) 'author': author!,
-    if (name != null) 'name': name!,
-    if (read != null) 'read': read!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final name = this.name;
+    final read = this.read;
+    final title = this.title;
+    return {'author': ?author, 'name': ?name, 'read': ?read, 'title': ?title};
+  }
 }
 
 /// Response message for LibraryAgent.ListBooks.
@@ -390,21 +391,21 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
 
   GoogleExampleLibraryagentV1ListBooksResponse.fromJson(core.Map json_)
     : this(
-        books:
-            (json_['books'] as core.List?)
-                ?.map(
-                  (value) => GoogleExampleLibraryagentV1Book.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        books: (json_['books'] as core.List?)
+            ?.map(
+              (value) => GoogleExampleLibraryagentV1Book.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (books != null) 'books': books!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final books = this.books;
+    final nextPageToken = this.nextPageToken;
+    return {'books': ?books, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for LibraryAgent.ListShelves.
@@ -427,20 +428,20 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
   GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        shelves:
-            (json_['shelves'] as core.List?)
-                ?.map(
-                  (value) => GoogleExampleLibraryagentV1Shelf.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        shelves: (json_['shelves'] as core.List?)
+            ?.map(
+              (value) => GoogleExampleLibraryagentV1Shelf.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (shelves != null) 'shelves': shelves!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final shelves = this.shelves;
+    return {'nextPageToken': ?nextPageToken, 'shelves': ?shelves};
+  }
 }
 
 /// A Shelf contains a collection of books with a theme.
@@ -464,8 +465,9 @@ class GoogleExampleLibraryagentV1Shelf {
         theme: json_['theme'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (theme != null) 'theme': theme!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final theme = this.theme;
+    return {'name': ?name, 'theme': ?theme};
+  }
 }

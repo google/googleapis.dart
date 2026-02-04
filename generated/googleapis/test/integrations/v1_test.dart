@@ -10399,10 +10399,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList(od);
       });
     },
@@ -10415,10 +10415,10 @@ void main() {
         final o =
             buildEnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue(od);
       });
     },
@@ -10519,10 +10519,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmEventbusProtoConditionalFailurePolicies();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoConditionalFailurePolicies.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoConditionalFailurePolicies.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoConditionalFailurePolicies(od);
       });
     },
@@ -10545,10 +10545,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmEventbusProtoCustomSuspensionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoCustomSuspensionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoCustomSuspensionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoCustomSuspensionRequest(od);
       });
     },
@@ -10622,10 +10622,10 @@ void main() {
         final o =
             buildEnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats(
           od,
         );
@@ -10639,10 +10639,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmEventbusProtoEventExecutionSnapshot();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoEventExecutionSnapshot.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoEventExecutionSnapshot.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoEventExecutionSnapshot(od);
       });
     },
@@ -10655,10 +10655,10 @@ void main() {
         final o =
             buildEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata(
           od,
         );
@@ -10797,10 +10797,10 @@ void main() {
         final o =
             buildEnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition(od);
       });
     },
@@ -10812,10 +10812,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmEventbusProtoParamSpecEntryValidationRule();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoParamSpecEntryValidationRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoParamSpecEntryValidationRule.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoParamSpecEntryValidationRule(od);
       });
     },
@@ -10828,10 +10828,10 @@ void main() {
         final o =
             buildEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange(
           od,
         );
@@ -10846,10 +10846,10 @@ void main() {
         final o =
             buildEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange(od);
       });
     },
@@ -10862,10 +10862,10 @@ void main() {
         final o =
             buildEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex(
           od,
         );
@@ -10926,10 +10926,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmEventbusProtoSerializedObjectParameter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoSerializedObjectParameter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoSerializedObjectParameter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoSerializedObjectParameter(od);
       });
     },
@@ -10977,10 +10977,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmEventbusProtoSuspensionAuthPermissions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoSuspensionAuthPermissions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoSuspensionAuthPermissions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoSuspensionAuthPermissions(od);
       });
     },
@@ -10993,10 +10993,10 @@ void main() {
         final o =
             buildEnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity(
           od,
         );
@@ -11061,10 +11061,10 @@ void main() {
         final o =
             buildEnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats(od);
       });
     },
@@ -11212,10 +11212,10 @@ void main() {
         final o =
             buildEnterpriseCrmFrontendsEventbusProtoBooleanParameterArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoBooleanParameterArray(od);
       });
     },
@@ -11228,10 +11228,10 @@ void main() {
         final o =
             buildEnterpriseCrmFrontendsEventbusProtoDoubleParameterArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoDoubleParameterArray(od);
       });
     },
@@ -11244,10 +11244,10 @@ void main() {
         final o =
             buildEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoEventExecutionDetails(od);
       });
     },
@@ -11259,10 +11259,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoEventExecutionInfo(od);
       });
     },
@@ -11275,10 +11275,10 @@ void main() {
         final o =
             buildEnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo(
           od,
         );
@@ -11293,10 +11293,10 @@ void main() {
         final o =
             buildEnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot(od);
       });
     },
@@ -11308,10 +11308,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoEventParameters();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoEventParameters.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoEventParameters.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoEventParameters(od);
       });
     },
@@ -11323,10 +11323,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoIntParameterArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoIntParameterArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoIntParameterArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoIntParameterArray(od);
       });
     },
@@ -11338,10 +11338,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoParamSpecEntry();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoParamSpecEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoParamSpecEntry.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoParamSpecEntry(od);
       });
     },
@@ -11353,10 +11353,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoParamSpecsMessage();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoParamSpecsMessage(od);
       });
     },
@@ -11368,10 +11368,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoParameterEntry();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoParameterEntry(od);
       });
     },
@@ -11383,10 +11383,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoParameterValueType();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoParameterValueType.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoParameterValueType.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoParameterValueType(od);
       });
     },
@@ -11398,10 +11398,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoProtoParameterArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoProtoParameterArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoProtoParameterArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoProtoParameterArray(od);
       });
     },
@@ -11413,10 +11413,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoRollbackStrategy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoRollbackStrategy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoRollbackStrategy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoRollbackStrategy(od);
       });
     },
@@ -11429,10 +11429,10 @@ void main() {
         final o =
             buildEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter(od);
       });
     },
@@ -11445,10 +11445,10 @@ void main() {
         final o =
             buildEnterpriseCrmFrontendsEventbusProtoStringParameterArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoStringParameterArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoStringParameterArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoStringParameterArray(od);
       });
     },
@@ -11488,10 +11488,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoTriggerConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoTriggerConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoTriggerConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoTriggerConfig(od);
       });
     },
@@ -11504,10 +11504,10 @@ void main() {
         final o =
             buildEnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables(od);
       });
     },
@@ -11520,10 +11520,10 @@ void main() {
         final o =
             buildEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry(od);
       });
     },
@@ -11535,10 +11535,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEnterpriseCrmFrontendsEventbusProtoWorkflowParameters();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EnterpriseCrmFrontendsEventbusProtoWorkflowParameters.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EnterpriseCrmFrontendsEventbusProtoWorkflowParameters.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEnterpriseCrmFrontendsEventbusProtoWorkflowParameters(od);
       });
     },
@@ -11561,10 +11561,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow(od);
       });
     },
@@ -11577,10 +11577,10 @@ void main() {
         final o =
             buildGoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged(
           od,
         );
@@ -11595,10 +11595,10 @@ void main() {
         final o =
             buildGoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials(od);
       });
     },
@@ -11610,10 +11610,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudConnectorsV1AuthConfigOauth2JwtBearer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudConnectorsV1AuthConfigOauth2JwtBearer(od);
       });
     },
@@ -11626,10 +11626,10 @@ void main() {
         final o =
             buildGoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims(od);
       });
     },
@@ -11713,10 +11713,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudConnectorsV1ConnectorVersionInfraConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudConnectorsV1ConnectorVersionInfraConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudConnectorsV1ConnectorVersionInfraConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudConnectorsV1ConnectorVersionInfraConfig(od);
       });
     },
@@ -11783,10 +11783,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudConnectorsV1EventingConfigDeadLetterConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudConnectorsV1EventingConfigDeadLetterConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudConnectorsV1EventingConfigDeadLetterConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudConnectorsV1EventingConfigDeadLetterConfig(od);
       });
     },
@@ -11809,10 +11809,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudConnectorsV1EventingRuntimeDataWebhookData();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudConnectorsV1EventingRuntimeDataWebhookData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudConnectorsV1EventingRuntimeDataWebhookData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudConnectorsV1EventingRuntimeDataWebhookData(od);
       });
     },
@@ -11825,10 +11825,10 @@ void main() {
         final o =
             buildGoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions(od);
       });
     },
@@ -11961,10 +11961,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaApiTriggerResource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaApiTriggerResource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaApiTriggerResource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaApiTriggerResource(od);
       });
     },
@@ -12034,10 +12034,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaBooleanParameterArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaBooleanParameterArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaBooleanParameterArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaBooleanParameterArray(od);
       });
     },
@@ -12049,10 +12049,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaCancelExecutionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaCancelExecutionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaCancelExecutionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaCancelExecutionRequest(od);
       });
     },
@@ -12064,10 +12064,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaCancelExecutionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaCancelExecutionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaCancelExecutionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaCancelExecutionResponse(od);
       });
     },
@@ -12091,10 +12091,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest(od);
       });
     },
@@ -12107,10 +12107,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse(od);
       });
     },
@@ -12158,10 +12158,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaCloudLoggingDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaCloudLoggingDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaCloudLoggingDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaCloudLoggingDetails(od);
       });
     },
@@ -12173,10 +12173,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaCloudSchedulerConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaCloudSchedulerConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaCloudSchedulerConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaCloudSchedulerConfig(od);
       });
     },
@@ -12189,10 +12189,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaConditionalFailurePolicies();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaConditionalFailurePolicies.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaConditionalFailurePolicies.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaConditionalFailurePolicies(od);
       });
     },
@@ -12204,10 +12204,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaConnectionSchemaMetadata(od);
       });
     },
@@ -12231,10 +12231,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest(od);
       });
     },
@@ -12247,10 +12247,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse(od);
       });
     },
@@ -12263,10 +12263,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest(od);
       });
     },
@@ -12279,10 +12279,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse(od);
       });
     },
@@ -12316,10 +12316,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaDeprovisionClientRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaDeprovisionClientRequest(od);
       });
     },
@@ -12331,10 +12331,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaDoubleParameterArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaDoubleParameterArray(od);
       });
     },
@@ -12347,10 +12347,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaDownloadExecutionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaDownloadExecutionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaDownloadExecutionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaDownloadExecutionResponse(od);
       });
     },
@@ -12363,10 +12363,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse(
           od,
         );
@@ -12381,10 +12381,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse(od);
       });
     },
@@ -12396,10 +12396,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaDownloadTemplateResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaDownloadTemplateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaDownloadTemplateResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaDownloadTemplateResponse(od);
       });
     },
@@ -12411,10 +12411,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaDownloadTestCaseResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaDownloadTestCaseResponse(od);
       });
     },
@@ -12427,10 +12427,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse(
           od,
         );
@@ -12444,10 +12444,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaErrorCatcherConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaErrorCatcherConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaErrorCatcherConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaErrorCatcherConfig(od);
       });
     },
@@ -12470,10 +12470,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaExecuteEventResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaExecuteEventResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaExecuteEventResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaExecuteEventResponse(od);
       });
     },
@@ -12486,10 +12486,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest(od);
       });
     },
@@ -12502,10 +12502,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse(od);
       });
     },
@@ -12517,10 +12517,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaExecuteTestCaseRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaExecuteTestCaseRequest(od);
       });
     },
@@ -12532,10 +12532,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaExecuteTestCaseResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaExecuteTestCaseResponse(od);
       });
     },
@@ -12547,10 +12547,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaExecuteTestCasesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaExecuteTestCasesRequest(od);
       });
     },
@@ -12562,10 +12562,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaExecuteTestCasesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaExecuteTestCasesResponse(od);
       });
     },
@@ -12602,10 +12602,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaExecutionReplayInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaExecutionReplayInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaExecutionReplayInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaExecutionReplayInfo(od);
       });
     },
@@ -12632,10 +12632,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata(
           od,
         );
@@ -12672,10 +12672,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest(od);
       });
     },
@@ -12688,10 +12688,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse(od);
       });
     },
@@ -12703,10 +12703,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaGenerateTokenResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaGenerateTokenResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaGenerateTokenResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaGenerateTokenResponse(od);
       });
     },
@@ -12719,10 +12719,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaGetClientMetadataResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaGetClientMetadataResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaGetClientMetadataResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaGetClientMetadataResponse(od);
       });
     },
@@ -12748,10 +12748,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaImportTemplateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaImportTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaImportTemplateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaImportTemplateRequest(od);
       });
     },
@@ -12763,10 +12763,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaImportTemplateResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaImportTemplateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaImportTemplateResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaImportTemplateResponse(od);
       });
     },
@@ -12803,10 +12803,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaIntegrationAlertConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaIntegrationAlertConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaIntegrationAlertConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaIntegrationAlertConfig(od);
       });
     },
@@ -12819,10 +12819,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue(
           od,
         );
@@ -12837,10 +12837,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaIntegrationConfigParameter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaIntegrationConfigParameter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaIntegrationConfigParameter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaIntegrationConfigParameter(od);
       });
     },
@@ -12852,10 +12852,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaIntegrationParameter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaIntegrationParameter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaIntegrationParameter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaIntegrationParameter(od);
       });
     },
@@ -12867,10 +12867,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaIntegrationVersion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaIntegrationVersion(od);
       });
     },
@@ -12883,10 +12883,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaIntegrationVersionTemplate();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaIntegrationVersionTemplate(od);
       });
     },
@@ -12909,10 +12909,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaLiftSuspensionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaLiftSuspensionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaLiftSuspensionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaLiftSuspensionRequest(od);
       });
     },
@@ -12924,10 +12924,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaLiftSuspensionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaLiftSuspensionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaLiftSuspensionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaLiftSuspensionResponse(od);
       });
     },
@@ -12940,10 +12940,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest(od);
       });
     },
@@ -12956,10 +12956,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse(od);
       });
     },
@@ -12971,10 +12971,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaListAuthConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListAuthConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListAuthConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListAuthConfigsResponse(od);
       });
     },
@@ -12986,10 +12986,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaListCertificatesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListCertificatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListCertificatesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListCertificatesResponse(od);
       });
     },
@@ -13001,10 +13001,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaListConnectionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListConnectionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListConnectionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListConnectionsResponse(od);
       });
     },
@@ -13016,10 +13016,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaListExecutionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListExecutionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListExecutionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListExecutionsResponse(od);
       });
     },
@@ -13032,10 +13032,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse(od);
       });
     },
@@ -13047,10 +13047,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaListIntegrationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListIntegrationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListIntegrationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListIntegrationsResponse(od);
       });
     },
@@ -13063,10 +13063,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse(od);
       });
     },
@@ -13079,10 +13079,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse(od);
       });
     },
@@ -13094,10 +13094,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaListSfdcChannelsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListSfdcChannelsResponse(od);
       });
     },
@@ -13110,10 +13110,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaListSfdcInstancesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListSfdcInstancesResponse(od);
       });
     },
@@ -13125,10 +13125,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaListSuspensionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListSuspensionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListSuspensionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListSuspensionsResponse(od);
       });
     },
@@ -13140,10 +13140,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaListTemplatesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListTemplatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListTemplatesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListTemplatesResponse(od);
       });
     },
@@ -13155,10 +13155,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaListTestCasesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaListTestCasesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaListTestCasesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaListTestCasesResponse(od);
       });
     },
@@ -13192,10 +13192,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode(od);
       });
     },
@@ -13207,10 +13207,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaOAuth2ClientCredentials();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaOAuth2ClientCredentials(od);
       });
     },
@@ -13223,10 +13223,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials(od);
       });
     },
@@ -13303,10 +13303,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest(
           od,
         );
@@ -13321,10 +13321,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse(
           od,
         );
@@ -13338,10 +13338,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaProvisionClientRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaProvisionClientRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaProvisionClientRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaProvisionClientRequest(od);
       });
     },
@@ -13354,10 +13354,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest(od);
       });
     },
@@ -13370,10 +13370,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse(
           od,
         );
@@ -13388,10 +13388,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest(od);
       });
     },
@@ -13403,10 +13403,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaReplayExecutionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaReplayExecutionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaReplayExecutionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaReplayExecutionRequest(od);
       });
     },
@@ -13418,10 +13418,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaReplayExecutionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaReplayExecutionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaReplayExecutionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaReplayExecutionResponse(od);
       });
     },
@@ -13433,10 +13433,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaResolveSuspensionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaResolveSuspensionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaResolveSuspensionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaResolveSuspensionRequest(od);
       });
     },
@@ -13449,10 +13449,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaResolveSuspensionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaResolveSuspensionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaResolveSuspensionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaResolveSuspensionResponse(od);
       });
     },
@@ -13464,10 +13464,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaRuntimeActionSchema();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaRuntimeActionSchema.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaRuntimeActionSchema.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaRuntimeActionSchema(od);
       });
     },
@@ -13479,10 +13479,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaRuntimeEntitySchema();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaRuntimeEntitySchema.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaRuntimeEntitySchema.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaRuntimeEntitySchema(od);
       });
     },
@@ -13495,10 +13495,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest(od);
       });
     },
@@ -13511,10 +13511,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse(od);
       });
     },
@@ -13527,10 +13527,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaSearchIntegrationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaSearchIntegrationsResponse(od);
       });
     },
@@ -13543,10 +13543,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult(
           od,
         );
@@ -13560,10 +13560,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaSearchTemplatesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaSearchTemplatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaSearchTemplatesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaSearchTemplatesResponse(od);
       });
     },
@@ -13587,10 +13587,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaServiceAccountCredentials();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaServiceAccountCredentials.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaServiceAccountCredentials.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaServiceAccountCredentials(od);
       });
     },
@@ -13624,10 +13624,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaShareTemplateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaShareTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaShareTemplateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaShareTemplateRequest(od);
       });
     },
@@ -13639,10 +13639,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaStringParameterArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaStringParameterArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaStringParameterArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaStringParameterArray(od);
       });
     },
@@ -13676,10 +13676,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaSuspensionApprovalConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaSuspensionApprovalConfig(od);
       });
     },
@@ -13692,10 +13692,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration(od);
       });
     },
@@ -13721,10 +13721,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaSwitchEncryptionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaSwitchEncryptionRequest(od);
       });
     },
@@ -13737,10 +13737,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest(od);
       });
     },
@@ -13752,10 +13752,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaTakeoverEditLockRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaTakeoverEditLockRequest(od);
       });
     },
@@ -13767,10 +13767,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaTakeoverEditLockResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaTakeoverEditLockResponse(od);
       });
     },
@@ -13783,10 +13783,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest(od);
       });
     },
@@ -13809,10 +13809,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaTaskExecutionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaTaskExecutionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaTaskExecutionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaTaskExecutionDetails(od);
       });
     },
@@ -13871,10 +13871,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaTestIntegrationsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaTestIntegrationsRequest(od);
       });
     },
@@ -13886,10 +13886,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaTestIntegrationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaTestIntegrationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaTestIntegrationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaTestIntegrationsResponse(od);
       });
     },
@@ -13937,10 +13937,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaTriggerConfigVariables();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaTriggerConfigVariables.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaTriggerConfigVariables.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaTriggerConfigVariables(od);
       });
     },
@@ -13953,10 +13953,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest(
           od,
         );
@@ -13970,10 +13970,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaUnshareTemplateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUnshareTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUnshareTemplateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUnshareTemplateRequest(od);
       });
     },
@@ -13986,10 +13986,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest(od);
       });
     },
@@ -14002,10 +14002,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse(od);
       });
     },
@@ -14017,10 +14017,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaUploadTemplateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUploadTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUploadTemplateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUploadTemplateRequest(od);
       });
     },
@@ -14032,10 +14032,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaUploadTemplateResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUploadTemplateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUploadTemplateResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUploadTemplateResponse(od);
       });
     },
@@ -14047,10 +14047,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaUploadTestCaseRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUploadTestCaseRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUploadTestCaseRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUploadTestCaseRequest(od);
       });
     },
@@ -14062,10 +14062,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaUploadTestCaseResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUploadTestCaseResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUploadTestCaseResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUploadTestCaseResponse(od);
       });
     },
@@ -14077,10 +14077,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaUseTemplateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUseTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUseTemplateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUseTemplateRequest(od);
       });
     },
@@ -14093,10 +14093,10 @@ void main() {
         final o =
             buildGoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails(
           od,
         );
@@ -14110,10 +14110,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaUseTemplateResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUseTemplateResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUseTemplateResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUseTemplateResponse(od);
       });
     },
@@ -14125,10 +14125,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIntegrationsV1alphaUsernameAndPassword();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIntegrationsV1alphaUsernameAndPassword.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIntegrationsV1alphaUsernameAndPassword.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIntegrationsV1alphaUsernameAndPassword(od);
       });
     },
@@ -14152,10 +14152,10 @@ void main() {
         final o =
             buildGoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest(
           od,
         );
@@ -14387,10 +14387,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest(obj);
 
           final path = req.url.path;
@@ -14509,18 +14509,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsAppsScriptProjectsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.appsScriptProjects;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.appsScriptProjects;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest(
             obj,
           );
@@ -14582,18 +14583,19 @@ void main() {
 
     unittest.test('method--link', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.appsScriptProjects;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.appsScriptProjects;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest(obj);
 
           final path = req.url.path;
@@ -15372,10 +15374,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest(obj);
 
           final path = req.url.path;
@@ -15442,10 +15444,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaDeprovisionClientRequest(obj);
 
           final path = req.url.path;
@@ -15507,10 +15509,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaProvisionClientRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaProvisionClientRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaProvisionClientRequest(obj);
 
           final path = req.url.path;
@@ -15572,10 +15574,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest(
             obj,
           );
@@ -15644,10 +15646,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest(obj);
 
           final path = req.url.path;
@@ -15709,10 +15711,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaSwitchEncryptionRequest(obj);
 
           final path = req.url.path;
@@ -15774,10 +15776,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest(obj);
 
           final path = req.url.path;
@@ -15839,10 +15841,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaToggleHttpRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaToggleHttpRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaToggleHttpRequest(obj);
 
           final path = req.url.path;
@@ -15906,10 +15908,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest(obj);
 
           final path = req.url.path;
@@ -16119,10 +16121,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.connections.runtimeActionSchemas;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.connections.runtimeActionSchemas;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -16206,10 +16207,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.connections.runtimeEntitySchemas;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.connections.runtimeEntitySchemas;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -16351,10 +16351,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest(obj);
 
           final path = req.url.path;
@@ -16571,10 +16571,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest(obj);
 
           final path = req.url.path;
@@ -16730,10 +16730,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaTestIntegrationsRequest(obj);
 
           final path = req.url.path;
@@ -16794,18 +16794,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsIntegrationsExecutionsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.executions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.executions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaCancelExecutionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaCancelExecutionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaCancelExecutionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaCancelExecutionRequest(obj);
 
           final path = req.url.path;
@@ -16864,8 +16865,9 @@ void main() {
 
     unittest.test('method--download', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.executions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.executions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16922,8 +16924,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.executions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.executions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16980,8 +16983,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.executions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.executions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_filterParams_customFilter = 'foo';
@@ -17161,18 +17165,19 @@ void main() {
 
     unittest.test('method--replay', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.executions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.executions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaReplayExecutionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaReplayExecutionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaReplayExecutionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaReplayExecutionRequest(obj);
 
           final path = req.url.path;
@@ -17235,20 +17240,19 @@ void main() {
     () {
       unittest.test('method--lift', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.integrations.executions.suspensions;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.integrations.executions.suspensions;
         final arg_request =
             buildGoogleCloudIntegrationsV1alphaLiftSuspensionRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudIntegrationsV1alphaLiftSuspensionRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudIntegrationsV1alphaLiftSuspensionRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudIntegrationsV1alphaLiftSuspensionRequest(obj);
 
             final path = req.url.path;
@@ -17307,10 +17311,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.integrations.executions.suspensions;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.integrations.executions.suspensions;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -17394,20 +17397,19 @@ void main() {
 
       unittest.test('method--resolve', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.integrations.executions.suspensions;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.integrations.executions.suspensions;
         final arg_request =
             buildGoogleCloudIntegrationsV1alphaResolveSuspensionRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudIntegrationsV1alphaResolveSuspensionRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudIntegrationsV1alphaResolveSuspensionRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudIntegrationsV1alphaResolveSuspensionRequest(obj);
 
             final path = req.url.path;
@@ -17470,8 +17472,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsIntegrationsVersionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaIntegrationVersion();
       final arg_parent = 'foo';
@@ -17480,10 +17483,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaIntegrationVersion(obj);
 
           final path = req.url.path;
@@ -17552,8 +17555,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17606,8 +17610,9 @@ void main() {
 
     unittest.test('method--download', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_name = 'foo';
       final arg_fileFormat = 'foo';
       final arg_files = buildUnnamed169();
@@ -17677,8 +17682,9 @@ void main() {
 
     unittest.test('method--downloadJsonPackage', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_name = 'foo';
       final arg_files = buildUnnamed170();
       final arg_$fields = 'foo';
@@ -17742,8 +17748,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17800,8 +17807,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_parent = 'foo';
       final arg_fieldMask = 'foo';
       final arg_filter = 'foo';
@@ -17892,8 +17900,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaIntegrationVersion();
       final arg_name = 'foo';
@@ -17901,10 +17910,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaIntegrationVersion(obj);
 
           final path = req.url.path;
@@ -17968,18 +17977,19 @@ void main() {
 
     unittest.test('method--publish', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest(
             obj,
           );
@@ -18041,18 +18051,19 @@ void main() {
 
     unittest.test('method--test', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaTestIntegrationsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaTestIntegrationsRequest(obj);
 
           final path = req.url.path;
@@ -18111,18 +18122,19 @@ void main() {
 
     unittest.test('method--unpublish', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest(
             obj,
           );
@@ -18179,18 +18191,19 @@ void main() {
 
     unittest.test('method--upload', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest(
             obj,
           );
@@ -18254,10 +18267,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsIntegrationsVersionsTestCasesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_request = buildGoogleCloudIntegrationsV1alphaTestCase();
       final arg_parent = 'foo';
       final arg_testCaseId = 'foo';
@@ -18330,10 +18342,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18386,10 +18397,9 @@ void main() {
 
     unittest.test('method--download', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_name = 'foo';
       final arg_fileFormat = 'foo';
       final arg_$fields = 'foo';
@@ -18455,20 +18465,19 @@ void main() {
 
     unittest.test('method--execute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaExecuteTestCasesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaExecuteTestCasesRequest(obj);
 
           final path = req.url.path;
@@ -18527,20 +18536,19 @@ void main() {
 
     unittest.test('method--executeTest', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaExecuteTestCaseRequest();
       final arg_testCaseName = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaExecuteTestCaseRequest(obj);
 
           final path = req.url.path;
@@ -18599,10 +18607,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18659,10 +18666,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -18752,10 +18758,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_request = buildGoogleCloudIntegrationsV1alphaTestCase();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -18828,20 +18833,19 @@ void main() {
 
     unittest.test('method--takeoverEditLock', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest(
             obj,
           );
@@ -18902,20 +18906,19 @@ void main() {
 
     unittest.test('method--upload', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.integrations.versions.testCases;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.integrations.versions.testCases;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaUploadTestCaseRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaUploadTestCaseRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaUploadTestCaseRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaUploadTestCaseRequest(obj);
 
           final path = req.url.path;
@@ -18976,8 +18979,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProductsAuthConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.authConfigs;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.authConfigs;
       final arg_request = buildGoogleCloudIntegrationsV1alphaAuthConfig();
       final arg_parent = 'foo';
       final arg_clientCertificate_encryptedPrivateKey = 'foo';
@@ -19063,8 +19067,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.authConfigs;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.authConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19117,8 +19122,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.authConfigs;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.authConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19175,8 +19181,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.authConfigs;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.authConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -19260,8 +19267,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.authConfigs;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.authConfigs;
       final arg_request = buildGoogleCloudIntegrationsV1alphaAuthConfig();
       final arg_name = 'foo';
       final arg_clientCertificate_encryptedPrivateKey = 'foo';
@@ -19355,8 +19363,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProductsCertificatesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.certificates;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.certificates;
       final arg_request = buildGoogleCloudIntegrationsV1alphaCertificate();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -19423,8 +19432,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.certificates;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.certificates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19477,8 +19487,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.certificates;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.certificates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19535,8 +19546,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.certificates;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.certificates;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -19620,8 +19632,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.certificates;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.certificates;
       final arg_request = buildGoogleCloudIntegrationsV1alphaCertificate();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -19696,18 +19709,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsProductsCloudFunctionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.cloudFunctions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.cloudFunctions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest(obj);
 
           final path = req.url.path;
@@ -19769,18 +19783,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsProductsIntegrationsResource', () {
     unittest.test('method--execute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.integrations;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest(obj);
 
           final path = req.url.path;
@@ -19840,8 +19855,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.integrations;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -19925,18 +19941,19 @@ void main() {
 
     unittest.test('method--schedule', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.integrations;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest(obj);
 
           final path = req.url.path;
@@ -19996,18 +20013,19 @@ void main() {
 
     unittest.test('method--test', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.integrations;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaTestIntegrationsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaTestIntegrationsRequest(obj);
 
           final path = req.url.path;
@@ -20070,10 +20088,9 @@ void main() {
     () {
       unittest.test('method--download', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.integrations.executions;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.integrations.executions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -20131,10 +20148,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.integrations.executions;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.integrations.executions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -20191,10 +20207,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.integrations.executions;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.integrations.executions;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_filterParams_customFilter = 'foo';
@@ -20379,20 +20394,19 @@ void main() {
     () {
       unittest.test('method--lift', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.integrations.executions.suspensions;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.integrations.executions.suspensions;
         final arg_request =
             buildGoogleCloudIntegrationsV1alphaLiftSuspensionRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudIntegrationsV1alphaLiftSuspensionRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudIntegrationsV1alphaLiftSuspensionRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudIntegrationsV1alphaLiftSuspensionRequest(obj);
 
             final path = req.url.path;
@@ -20451,10 +20465,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.integrations.executions.suspensions;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.integrations.executions.suspensions;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -20538,20 +20551,19 @@ void main() {
 
       unittest.test('method--resolve', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.integrations.executions.suspensions;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.integrations.executions.suspensions;
         final arg_request =
             buildGoogleCloudIntegrationsV1alphaResolveSuspensionRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudIntegrationsV1alphaResolveSuspensionRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudIntegrationsV1alphaResolveSuspensionRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudIntegrationsV1alphaResolveSuspensionRequest(obj);
 
             final path = req.url.path;
@@ -20614,10 +20626,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProductsIntegrationsVersionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaIntegrationVersion();
       final arg_parent = 'foo';
@@ -20626,10 +20637,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaIntegrationVersion(obj);
 
           final path = req.url.path;
@@ -20698,10 +20709,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -20754,10 +20764,9 @@ void main() {
 
     unittest.test('method--download', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_name = 'foo';
       final arg_fileFormat = 'foo';
       final arg_files = buildUnnamed173();
@@ -20827,10 +20836,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -20887,10 +20895,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_parent = 'foo';
       final arg_fieldMask = 'foo';
       final arg_filter = 'foo';
@@ -20981,10 +20988,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaIntegrationVersion();
       final arg_name = 'foo';
@@ -20992,10 +20998,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaIntegrationVersion.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaIntegrationVersion(obj);
 
           final path = req.url.path;
@@ -21059,20 +21065,19 @@ void main() {
 
     unittest.test('method--publish', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest(
             obj,
           );
@@ -21134,20 +21139,19 @@ void main() {
 
     unittest.test('method--takeoverEditLock', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaTakeoverEditLockRequest();
       final arg_integrationVersion = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaTakeoverEditLockRequest(obj);
 
           final path = req.url.path;
@@ -21206,20 +21210,19 @@ void main() {
 
     unittest.test('method--unpublish', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest(
             obj,
           );
@@ -21276,20 +21279,19 @@ void main() {
 
     unittest.test('method--upload', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.products.integrations.versions;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.integrations.versions;
       final arg_request =
           buildGoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest(
             obj,
           );
@@ -21353,8 +21355,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProductsSfdcInstancesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.sfdcInstances;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.sfdcInstances;
       final arg_request = buildGoogleCloudIntegrationsV1alphaSfdcInstance();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -21421,8 +21424,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.sfdcInstances;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.sfdcInstances;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21475,8 +21479,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.sfdcInstances;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.sfdcInstances;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21533,8 +21538,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.sfdcInstances;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.sfdcInstances;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -21618,8 +21624,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(mock).projects.locations.products.sfdcInstances;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.products.sfdcInstances;
       final arg_request = buildGoogleCloudIntegrationsV1alphaSfdcInstance();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -21696,10 +21703,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.sfdcInstances.sfdcChannels;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.sfdcInstances.sfdcChannels;
         final arg_request = buildGoogleCloudIntegrationsV1alphaSfdcChannel();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -21766,10 +21772,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.sfdcInstances.sfdcChannels;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.sfdcInstances.sfdcChannels;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -21822,10 +21827,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.sfdcInstances.sfdcChannels;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.sfdcInstances.sfdcChannels;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -21882,10 +21886,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.sfdcInstances.sfdcChannels;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.sfdcInstances.sfdcChannels;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -21970,10 +21973,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.IntegrationsApi(
-              mock,
-            ).projects.locations.products.sfdcInstances.sfdcChannels;
+        final res = api.IntegrationsApi(
+          mock,
+        ).projects.locations.products.sfdcInstances.sfdcChannels;
         final arg_request = buildGoogleCloudIntegrationsV1alphaSfdcChannel();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -22385,10 +22387,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSfdcInstancesSfdcChannelsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.sfdcInstances.sfdcChannels;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.sfdcInstances.sfdcChannels;
       final arg_request = buildGoogleCloudIntegrationsV1alphaSfdcChannel();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -22455,10 +22456,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.sfdcInstances.sfdcChannels;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.sfdcInstances.sfdcChannels;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -22511,10 +22511,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.sfdcInstances.sfdcChannels;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.sfdcInstances.sfdcChannels;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -22571,10 +22570,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.sfdcInstances.sfdcChannels;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.sfdcInstances.sfdcChannels;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -22658,10 +22656,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IntegrationsApi(
-            mock,
-          ).projects.locations.sfdcInstances.sfdcChannels;
+      final res = api.IntegrationsApi(
+        mock,
+      ).projects.locations.sfdcInstances.sfdcChannels;
       final arg_request = buildGoogleCloudIntegrationsV1alphaSfdcChannel();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -22986,10 +22983,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaImportTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaImportTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaImportTemplateRequest(obj);
 
           final path = req.url.path;
@@ -23318,10 +23315,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaShareTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaShareTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaShareTemplateRequest(obj);
 
           final path = req.url.path;
@@ -23383,10 +23380,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaUnshareTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaUnshareTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaUnshareTemplateRequest(obj);
 
           final path = req.url.path;
@@ -23448,10 +23445,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaUploadTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaUploadTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaUploadTemplateRequest(obj);
 
           final path = req.url.path;
@@ -23517,10 +23514,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIntegrationsV1alphaUseTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIntegrationsV1alphaUseTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIntegrationsV1alphaUseTemplateRequest(obj);
 
           final path = req.url.path;

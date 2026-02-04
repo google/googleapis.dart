@@ -675,10 +675,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDataPoliciesResource', () {
     unittest.test('method--addGrantees', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_request = buildAddGranteesRequest();
       final arg_dataPolicy = 'foo';
       final arg_$fields = 'foo';
@@ -741,10 +740,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_request = buildCreateDataPolicyRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -807,10 +805,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -863,10 +860,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -919,10 +915,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -985,10 +980,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -1062,10 +1056,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_request = buildDataPolicy();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -1140,10 +1133,9 @@ void main() {
 
     unittest.test('method--removeGrantees', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_request = buildRemoveGranteesRequest();
       final arg_dataPolicy = 'foo';
       final arg_$fields = 'foo';
@@ -1206,10 +1198,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -1272,10 +1263,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigQueryDataPolicyServiceApi(
-            mock,
-          ).projects.locations.dataPolicies;
+      final res = api.BigQueryDataPolicyServiceApi(
+        mock,
+      ).projects.locations.dataPolicies;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';

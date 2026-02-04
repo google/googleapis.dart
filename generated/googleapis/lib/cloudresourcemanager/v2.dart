@@ -117,8 +117,8 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (parent != null) 'parent': [parent],
-      if ($fields != null) 'fields': [$fields],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/folders';
@@ -158,7 +158,7 @@ class FoldersResource {
   /// this method will complete with the same error.
   async.Future<Folder> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -195,7 +195,7 @@ class FoldersResource {
   /// this method will complete with the same error.
   async.Future<Folder> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -243,7 +243,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -299,11 +299,11 @@ class FoldersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/folders';
@@ -359,7 +359,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':move';
@@ -415,8 +415,8 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -457,7 +457,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/folders:search';
@@ -507,7 +507,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -554,7 +554,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -605,7 +605,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
@@ -647,7 +647,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -692,21 +692,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -801,24 +801,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -927,10 +926,9 @@ class Folder {
 
   Folder.fromJson(core.Map json_)
     : this(
-        configuredCapabilities:
-            (json_['configuredCapabilities'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        configuredCapabilities: (json_['configuredCapabilities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         lifecycleState: json_['lifecycleState'] as core.String?,
@@ -942,17 +940,26 @@ class Folder {
         ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configuredCapabilities != null)
-      'configuredCapabilities': configuredCapabilities!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (lifecycleState != null) 'lifecycleState': lifecycleState!,
-    if (managementProject != null) 'managementProject': managementProject!,
-    if (name != null) 'name': name!,
-    if (parent != null) 'parent': parent!,
-    if (tags != null) 'tags': tags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configuredCapabilities = this.configuredCapabilities;
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final lifecycleState = this.lifecycleState;
+    final managementProject = this.managementProject;
+    final name = this.name;
+    final parent = this.parent;
+    final tags = this.tags;
+    return {
+      'configuredCapabilities': ?configuredCapabilities,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'lifecycleState': ?lifecycleState,
+      'managementProject': ?managementProject,
+      'name': ?name,
+      'parent': ?parent,
+      'tags': ?tags,
+    };
+  }
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -965,17 +972,17 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        options:
-            json_.containsKey('options')
-                ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        options: json_.containsKey('options')
+            ? GetPolicyOptions.fromJson(
+                json_['options'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (options != null) 'options': options!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    return {'options': ?options};
+  }
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -995,21 +1002,20 @@ class ListFoldersResponse {
 
   ListFoldersResponse.fromJson(core.Map json_)
     : this(
-        folders:
-            (json_['folders'] as core.List?)
-                ?.map(
-                  (value) => Folder.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        folders: (json_['folders'] as core.List?)
+            ?.map(
+              (value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (folders != null) 'folders': folders!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final folders = this.folders;
+    final nextPageToken = this.nextPageToken;
+    return {'folders': ?folders, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The MoveFolder request message.
@@ -1027,9 +1033,10 @@ class MoveFolderRequest {
   MoveFolderRequest.fromJson(core.Map json_)
     : this(destinationParent: json_['destinationParent'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinationParent != null) 'destinationParent': destinationParent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationParent = this.destinationParent;
+    return {'destinationParent': ?destinationParent};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1080,30 +1087,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1198,32 +1209,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// The request message for searching folders.
@@ -1269,11 +1284,12 @@ class SearchFoldersRequest {
         query: json_['query'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pageSize != null) 'pageSize': pageSize!,
-    if (pageToken != null) 'pageToken': pageToken!,
-    if (query != null) 'query': query!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pageSize = this.pageSize;
+    final pageToken = this.pageToken;
+    final query = this.query;
+    return {'pageSize': ?pageSize, 'pageToken': ?pageToken, 'query': ?query};
+  }
 }
 
 /// The response message for searching folders.
@@ -1291,21 +1307,20 @@ class SearchFoldersResponse {
 
   SearchFoldersResponse.fromJson(core.Map json_)
     : this(
-        folders:
-            (json_['folders'] as core.List?)
-                ?.map(
-                  (value) => Folder.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        folders: (json_['folders'] as core.List?)
+            ?.map(
+              (value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (folders != null) 'folders': folders!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final folders = this.folders;
+    final nextPageToken = this.nextPageToken;
+    return {'folders': ?folders, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -1327,19 +1342,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

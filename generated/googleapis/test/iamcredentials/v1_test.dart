@@ -515,8 +515,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsWorkloadIdentityPoolsResource', () {
     unittest.test('method--getAllowedLocations', () async {
       final mock = HttpServerMock();
-      final res =
-          api.IAMCredentialsApi(mock).projects.locations.workloadIdentityPools;
+      final res = api.IAMCredentialsApi(
+        mock,
+      ).projects.locations.workloadIdentityPools;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(

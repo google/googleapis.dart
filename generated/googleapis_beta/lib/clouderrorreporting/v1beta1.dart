@@ -112,7 +112,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
@@ -206,17 +206,20 @@ class ProjectsEventsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (groupId != null) 'groupId': [groupId],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (serviceFilter_resourceType != null)
-        'serviceFilter.resourceType': [serviceFilter_resourceType],
-      if (serviceFilter_service != null)
-        'serviceFilter.service': [serviceFilter_service],
-      if (serviceFilter_version != null)
-        'serviceFilter.version': [serviceFilter_version],
-      if (timeRange_period != null) 'timeRange.period': [timeRange_period],
-      if ($fields != null) 'fields': [$fields],
+      'groupId': ?groupId == null ? null : [groupId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'serviceFilter.resourceType': ?serviceFilter_resourceType == null
+          ? null
+          : [serviceFilter_resourceType],
+      'serviceFilter.service': ?serviceFilter_service == null
+          ? null
+          : [serviceFilter_service],
+      'serviceFilter.version': ?serviceFilter_version == null
+          ? null
+          : [serviceFilter_version],
+      'timeRange.period': ?timeRange_period == null ? null : [timeRange_period],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
@@ -273,7 +276,7 @@ class ProjectsEventsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -412,22 +415,26 @@ class ProjectsGroupStatsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (alignment != null) 'alignment': [alignment],
-      if (alignmentTime != null) 'alignmentTime': [alignmentTime],
-      if (groupId != null) 'groupId': groupId,
-      if (order != null) 'order': [order],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (serviceFilter_resourceType != null)
-        'serviceFilter.resourceType': [serviceFilter_resourceType],
-      if (serviceFilter_service != null)
-        'serviceFilter.service': [serviceFilter_service],
-      if (serviceFilter_version != null)
-        'serviceFilter.version': [serviceFilter_version],
-      if (timeRange_period != null) 'timeRange.period': [timeRange_period],
-      if (timedCountDuration != null)
-        'timedCountDuration': [timedCountDuration],
-      if ($fields != null) 'fields': [$fields],
+      'alignment': ?alignment == null ? null : [alignment],
+      'alignmentTime': ?alignmentTime == null ? null : [alignmentTime],
+      'groupId': ?groupId,
+      'order': ?order == null ? null : [order],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'serviceFilter.resourceType': ?serviceFilter_resourceType == null
+          ? null
+          : [serviceFilter_resourceType],
+      'serviceFilter.service': ?serviceFilter_service == null
+          ? null
+          : [serviceFilter_service],
+      'serviceFilter.version': ?serviceFilter_version == null
+          ? null
+          : [serviceFilter_version],
+      'timeRange.period': ?timeRange_period == null ? null : [timeRange_period],
+      'timedCountDuration': ?timedCountDuration == null
+          ? null
+          : [timedCountDuration],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -484,7 +491,7 @@ class ProjectsGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$groupName');
@@ -539,7 +546,7 @@ class ProjectsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -598,7 +605,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
@@ -693,17 +700,20 @@ class ProjectsLocationsEventsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (groupId != null) 'groupId': [groupId],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (serviceFilter_resourceType != null)
-        'serviceFilter.resourceType': [serviceFilter_resourceType],
-      if (serviceFilter_service != null)
-        'serviceFilter.service': [serviceFilter_service],
-      if (serviceFilter_version != null)
-        'serviceFilter.version': [serviceFilter_version],
-      if (timeRange_period != null) 'timeRange.period': [timeRange_period],
-      if ($fields != null) 'fields': [$fields],
+      'groupId': ?groupId == null ? null : [groupId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'serviceFilter.resourceType': ?serviceFilter_resourceType == null
+          ? null
+          : [serviceFilter_resourceType],
+      'serviceFilter.service': ?serviceFilter_service == null
+          ? null
+          : [serviceFilter_service],
+      'serviceFilter.version': ?serviceFilter_version == null
+          ? null
+          : [serviceFilter_version],
+      'timeRange.period': ?timeRange_period == null ? null : [timeRange_period],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
@@ -841,22 +851,26 @@ class ProjectsLocationsGroupStatsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (alignment != null) 'alignment': [alignment],
-      if (alignmentTime != null) 'alignmentTime': [alignmentTime],
-      if (groupId != null) 'groupId': groupId,
-      if (order != null) 'order': [order],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (serviceFilter_resourceType != null)
-        'serviceFilter.resourceType': [serviceFilter_resourceType],
-      if (serviceFilter_service != null)
-        'serviceFilter.service': [serviceFilter_service],
-      if (serviceFilter_version != null)
-        'serviceFilter.version': [serviceFilter_version],
-      if (timeRange_period != null) 'timeRange.period': [timeRange_period],
-      if (timedCountDuration != null)
-        'timedCountDuration': [timedCountDuration],
-      if ($fields != null) 'fields': [$fields],
+      'alignment': ?alignment == null ? null : [alignment],
+      'alignmentTime': ?alignmentTime == null ? null : [alignmentTime],
+      'groupId': ?groupId,
+      'order': ?order == null ? null : [order],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'serviceFilter.resourceType': ?serviceFilter_resourceType == null
+          ? null
+          : [serviceFilter_resourceType],
+      'serviceFilter.service': ?serviceFilter_service == null
+          ? null
+          : [serviceFilter_service],
+      'serviceFilter.version': ?serviceFilter_version == null
+          ? null
+          : [serviceFilter_version],
+      'timeRange.period': ?timeRange_period == null ? null : [timeRange_period],
+      'timedCountDuration': ?timedCountDuration == null
+          ? null
+          : [timedCountDuration],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -915,7 +929,7 @@ class ProjectsLocationsGroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$groupName');
@@ -971,7 +985,7 @@ class ProjectsLocationsGroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -1030,36 +1044,38 @@ class ErrorContext {
 
   ErrorContext.fromJson(core.Map json_)
     : this(
-        httpRequest:
-            json_.containsKey('httpRequest')
-                ? HttpRequestContext.fromJson(
-                  json_['httpRequest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        reportLocation:
-            json_.containsKey('reportLocation')
-                ? SourceLocation.fromJson(
-                  json_['reportLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sourceReferences:
-            (json_['sourceReferences'] as core.List?)
-                ?.map(
-                  (value) => SourceReference.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        httpRequest: json_.containsKey('httpRequest')
+            ? HttpRequestContext.fromJson(
+                json_['httpRequest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        reportLocation: json_.containsKey('reportLocation')
+            ? SourceLocation.fromJson(
+                json_['reportLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sourceReferences: (json_['sourceReferences'] as core.List?)
+            ?.map(
+              (value) => SourceReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         user: json_['user'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (httpRequest != null) 'httpRequest': httpRequest!,
-    if (reportLocation != null) 'reportLocation': reportLocation!,
-    if (sourceReferences != null) 'sourceReferences': sourceReferences!,
-    if (user != null) 'user': user!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final httpRequest = this.httpRequest;
+    final reportLocation = this.reportLocation;
+    final sourceReferences = this.sourceReferences;
+    final user = this.user;
+    return {
+      'httpRequest': ?httpRequest,
+      'reportLocation': ?reportLocation,
+      'sourceReferences': ?sourceReferences,
+      'user': ?user,
+    };
+  }
 }
 
 /// An error event which is returned by the Error Reporting system.
@@ -1083,29 +1099,32 @@ class ErrorEvent {
 
   ErrorEvent.fromJson(core.Map json_)
     : this(
-        context:
-            json_.containsKey('context')
-                ? ErrorContext.fromJson(
-                  json_['context'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        context: json_.containsKey('context')
+            ? ErrorContext.fromJson(
+                json_['context'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         eventTime: json_['eventTime'] as core.String?,
         message: json_['message'] as core.String?,
-        serviceContext:
-            json_.containsKey('serviceContext')
-                ? ServiceContext.fromJson(
-                  json_['serviceContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serviceContext: json_.containsKey('serviceContext')
+            ? ServiceContext.fromJson(
+                json_['serviceContext'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (context != null) 'context': context!,
-    if (eventTime != null) 'eventTime': eventTime!,
-    if (message != null) 'message': message!,
-    if (serviceContext != null) 'serviceContext': serviceContext!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final context = this.context;
+    final eventTime = this.eventTime;
+    final message = this.message;
+    final serviceContext = this.serviceContext;
+    return {
+      'context': ?context,
+      'eventTime': ?eventTime,
+      'message': ?message,
+      'serviceContext': ?serviceContext,
+    };
+  }
 }
 
 /// Description of a group of similar error events.
@@ -1167,22 +1186,27 @@ class ErrorGroup {
         groupId: json_['groupId'] as core.String?,
         name: json_['name'] as core.String?,
         resolutionStatus: json_['resolutionStatus'] as core.String?,
-        trackingIssues:
-            (json_['trackingIssues'] as core.List?)
-                ?.map(
-                  (value) => TrackingIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        trackingIssues: (json_['trackingIssues'] as core.List?)
+            ?.map(
+              (value) => TrackingIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (groupId != null) 'groupId': groupId!,
-    if (name != null) 'name': name!,
-    if (resolutionStatus != null) 'resolutionStatus': resolutionStatus!,
-    if (trackingIssues != null) 'trackingIssues': trackingIssues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupId = this.groupId;
+    final name = this.name;
+    final resolutionStatus = this.resolutionStatus;
+    final trackingIssues = this.trackingIssues;
+    return {
+      'groupId': ?groupId,
+      'name': ?name,
+      'resolutionStatus': ?resolutionStatus,
+      'trackingIssues': ?trackingIssues,
+    };
+  }
 }
 
 /// Data extracted for a specific group based on certain filter criteria, such
@@ -1258,54 +1282,59 @@ class ErrorGroupStats {
 
   ErrorGroupStats.fromJson(core.Map json_)
     : this(
-        affectedServices:
-            (json_['affectedServices'] as core.List?)
-                ?.map(
-                  (value) => ServiceContext.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        affectedServices: (json_['affectedServices'] as core.List?)
+            ?.map(
+              (value) => ServiceContext.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         affectedUsersCount: json_['affectedUsersCount'] as core.String?,
         count: json_['count'] as core.String?,
         firstSeenTime: json_['firstSeenTime'] as core.String?,
-        group:
-            json_.containsKey('group')
-                ? ErrorGroup.fromJson(
-                  json_['group'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        group: json_.containsKey('group')
+            ? ErrorGroup.fromJson(
+                json_['group'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lastSeenTime: json_['lastSeenTime'] as core.String?,
         numAffectedServices: json_['numAffectedServices'] as core.int?,
-        representative:
-            json_.containsKey('representative')
-                ? ErrorEvent.fromJson(
-                  json_['representative']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        timedCounts:
-            (json_['timedCounts'] as core.List?)
-                ?.map(
-                  (value) => TimedCount.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        representative: json_.containsKey('representative')
+            ? ErrorEvent.fromJson(
+                json_['representative'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timedCounts: (json_['timedCounts'] as core.List?)
+            ?.map(
+              (value) => TimedCount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (affectedServices != null) 'affectedServices': affectedServices!,
-    if (affectedUsersCount != null) 'affectedUsersCount': affectedUsersCount!,
-    if (count != null) 'count': count!,
-    if (firstSeenTime != null) 'firstSeenTime': firstSeenTime!,
-    if (group != null) 'group': group!,
-    if (lastSeenTime != null) 'lastSeenTime': lastSeenTime!,
-    if (numAffectedServices != null)
-      'numAffectedServices': numAffectedServices!,
-    if (representative != null) 'representative': representative!,
-    if (timedCounts != null) 'timedCounts': timedCounts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final affectedServices = this.affectedServices;
+    final affectedUsersCount = this.affectedUsersCount;
+    final count = this.count;
+    final firstSeenTime = this.firstSeenTime;
+    final group = this.group;
+    final lastSeenTime = this.lastSeenTime;
+    final numAffectedServices = this.numAffectedServices;
+    final representative = this.representative;
+    final timedCounts = this.timedCounts;
+    return {
+      'affectedServices': ?affectedServices,
+      'affectedUsersCount': ?affectedUsersCount,
+      'count': ?count,
+      'firstSeenTime': ?firstSeenTime,
+      'group': ?group,
+      'lastSeenTime': ?lastSeenTime,
+      'numAffectedServices': ?numAffectedServices,
+      'representative': ?representative,
+      'timedCounts': ?timedCounts,
+    };
+  }
 }
 
 /// HTTP request data that is related to a reported error.
@@ -1354,14 +1383,22 @@ class HttpRequestContext {
         userAgent: json_['userAgent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (method != null) 'method': method!,
-    if (referrer != null) 'referrer': referrer!,
-    if (remoteIp != null) 'remoteIp': remoteIp!,
-    if (responseStatusCode != null) 'responseStatusCode': responseStatusCode!,
-    if (url != null) 'url': url!,
-    if (userAgent != null) 'userAgent': userAgent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final method = this.method;
+    final referrer = this.referrer;
+    final remoteIp = this.remoteIp;
+    final responseStatusCode = this.responseStatusCode;
+    final url = this.url;
+    final userAgent = this.userAgent;
+    return {
+      'method': ?method,
+      'referrer': ?referrer,
+      'remoteIp': ?remoteIp,
+      'responseStatusCode': ?responseStatusCode,
+      'url': ?url,
+      'userAgent': ?userAgent,
+    };
+  }
 }
 
 /// Contains a set of requested error events.
@@ -1387,23 +1424,27 @@ class ListEventsResponse {
 
   ListEventsResponse.fromJson(core.Map json_)
     : this(
-        errorEvents:
-            (json_['errorEvents'] as core.List?)
-                ?.map(
-                  (value) => ErrorEvent.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        errorEvents: (json_['errorEvents'] as core.List?)
+            ?.map(
+              (value) => ErrorEvent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         timeRangeBegin: json_['timeRangeBegin'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorEvents != null) 'errorEvents': errorEvents!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorEvents = this.errorEvents;
+    final nextPageToken = this.nextPageToken;
+    final timeRangeBegin = this.timeRangeBegin;
+    return {
+      'errorEvents': ?errorEvents,
+      'nextPageToken': ?nextPageToken,
+      'timeRangeBegin': ?timeRangeBegin,
+    };
+  }
 }
 
 /// Contains a set of requested error group stats.
@@ -1433,23 +1474,27 @@ class ListGroupStatsResponse {
 
   ListGroupStatsResponse.fromJson(core.Map json_)
     : this(
-        errorGroupStats:
-            (json_['errorGroupStats'] as core.List?)
-                ?.map(
-                  (value) => ErrorGroupStats.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        errorGroupStats: (json_['errorGroupStats'] as core.List?)
+            ?.map(
+              (value) => ErrorGroupStats.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         timeRangeBegin: json_['timeRangeBegin'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorGroupStats != null) 'errorGroupStats': errorGroupStats!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorGroupStats = this.errorGroupStats;
+    final nextPageToken = this.nextPageToken;
+    final timeRangeBegin = this.timeRangeBegin;
+    return {
+      'errorGroupStats': ?errorGroupStats,
+      'nextPageToken': ?nextPageToken,
+      'timeRangeBegin': ?timeRangeBegin,
+    };
+  }
 }
 
 /// Response for reporting an individual error event.
@@ -1515,29 +1560,32 @@ class ReportedErrorEvent {
 
   ReportedErrorEvent.fromJson(core.Map json_)
     : this(
-        context:
-            json_.containsKey('context')
-                ? ErrorContext.fromJson(
-                  json_['context'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        context: json_.containsKey('context')
+            ? ErrorContext.fromJson(
+                json_['context'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         eventTime: json_['eventTime'] as core.String?,
         message: json_['message'] as core.String?,
-        serviceContext:
-            json_.containsKey('serviceContext')
-                ? ServiceContext.fromJson(
-                  json_['serviceContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serviceContext: json_.containsKey('serviceContext')
+            ? ServiceContext.fromJson(
+                json_['serviceContext'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (context != null) 'context': context!,
-    if (eventTime != null) 'eventTime': eventTime!,
-    if (message != null) 'message': message!,
-    if (serviceContext != null) 'serviceContext': serviceContext!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final context = this.context;
+    final eventTime = this.eventTime;
+    final message = this.message;
+    final serviceContext = this.serviceContext;
+    return {
+      'context': ?context,
+      'eventTime': ?eventTime,
+      'message': ?message,
+      'serviceContext': ?serviceContext,
+    };
+  }
 }
 
 /// Describes a running service that sends errors.
@@ -1577,11 +1625,16 @@ class ServiceContext {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourceType != null) 'resourceType': resourceType!,
-    if (service != null) 'service': service!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceType = this.resourceType;
+    final service = this.service;
+    final version = this.version;
+    return {
+      'resourceType': ?resourceType,
+      'service': ?service,
+      'version': ?version,
+    };
+  }
 }
 
 /// Indicates a location in the source code of the service for which errors are
@@ -1615,11 +1668,16 @@ class SourceLocation {
         lineNumber: json_['lineNumber'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filePath != null) 'filePath': filePath!,
-    if (functionName != null) 'functionName': functionName!,
-    if (lineNumber != null) 'lineNumber': lineNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filePath = this.filePath;
+    final functionName = this.functionName;
+    final lineNumber = this.lineNumber;
+    return {
+      'filePath': ?filePath,
+      'functionName': ?functionName,
+      'lineNumber': ?lineNumber,
+    };
+  }
 }
 
 /// A reference to a particular snapshot of the source tree used to build and
@@ -1645,10 +1703,11 @@ class SourceReference {
         revisionId: json_['revisionId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (repository != null) 'repository': repository!,
-    if (revisionId != null) 'revisionId': revisionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final repository = this.repository;
+    final revisionId = this.revisionId;
+    return {'repository': ?repository, 'revisionId': ?revisionId};
+  }
 }
 
 /// The number of errors in a given time period.
@@ -1674,11 +1733,12 @@ class TimedCount {
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final endTime = this.endTime;
+    final startTime = this.startTime;
+    return {'count': ?count, 'endTime': ?endTime, 'startTime': ?startTime};
+  }
 }
 
 /// Information related to tracking the progress on resolving the error.
@@ -1693,7 +1753,8 @@ class TrackingIssue {
   TrackingIssue.fromJson(core.Map json_)
     : this(url: json_['url'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final url = this.url;
+    return {'url': ?url};
+  }
 }

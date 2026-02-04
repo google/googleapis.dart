@@ -106,7 +106,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':fetchAcl';
@@ -155,7 +155,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setAcl';
@@ -211,7 +211,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$location') + ':getStatus';
@@ -255,7 +255,7 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$location') + ':initialize';
@@ -298,7 +298,7 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':runPipeline';
@@ -347,7 +347,7 @@ class ProjectsLocationsDocumentSchemasResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/documentSchemas';
@@ -389,7 +389,7 @@ class ProjectsLocationsDocumentSchemasResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -429,7 +429,7 @@ class ProjectsLocationsDocumentSchemasResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -480,9 +480,9 @@ class ProjectsLocationsDocumentSchemasResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/documentSchemas';
@@ -531,7 +531,7 @@ class ProjectsLocationsDocumentSchemasResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -586,7 +586,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/documents';
@@ -633,7 +633,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':delete';
@@ -684,7 +684,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':fetchAcl';
@@ -731,7 +731,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':get';
@@ -777,7 +777,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/linkedSources';
@@ -823,7 +823,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/linkedTargets';
@@ -867,7 +867,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':lock';
@@ -915,7 +915,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -961,7 +961,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/documents:search';
@@ -1011,7 +1011,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setAcl';
@@ -1063,7 +1063,7 @@ class ProjectsLocationsDocumentsDocumentLinksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/documentLinks';
@@ -1107,7 +1107,7 @@ class ProjectsLocationsDocumentsDocumentLinksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':delete';
@@ -1161,7 +1161,7 @@ class ProjectsLocationsDocumentsReferenceIdResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':delete';
@@ -1208,7 +1208,7 @@ class ProjectsLocationsDocumentsReferenceIdResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':get';
@@ -1256,7 +1256,7 @@ class ProjectsLocationsDocumentsReferenceIdResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1305,7 +1305,7 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1354,7 +1354,7 @@ class ProjectsLocationsRuleSetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/ruleSets';
@@ -1396,7 +1396,7 @@ class ProjectsLocationsRuleSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1437,7 +1437,7 @@ class ProjectsLocationsRuleSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1487,9 +1487,9 @@ class ProjectsLocationsRuleSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/ruleSets';
@@ -1535,7 +1535,7 @@ class ProjectsLocationsRuleSetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1588,7 +1588,7 @@ class ProjectsLocationsSynonymSetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/synonymSets';
@@ -1630,7 +1630,7 @@ class ProjectsLocationsSynonymSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1671,7 +1671,7 @@ class ProjectsLocationsSynonymSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1721,9 +1721,9 @@ class ProjectsLocationsSynonymSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/synonymSets';
@@ -1769,7 +1769,7 @@ class ProjectsLocationsSynonymSetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1814,18 +1814,18 @@ class GoogleCloudContentwarehouseV1AccessControlAction {
   GoogleCloudContentwarehouseV1AccessControlAction.fromJson(core.Map json_)
     : this(
         operationType: json_['operationType'] as core.String?,
-        policy:
-            json_.containsKey('policy')
-                ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? GoogleIamV1Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (operationType != null) 'operationType': operationType!,
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final operationType = this.operationType;
+    final policy = this.policy;
+    return {'operationType': ?operationType, 'policy': ?policy};
+  }
 }
 
 /// Represents the action triggered by Rule Engine when the rule is true.
@@ -1869,67 +1869,66 @@ class GoogleCloudContentwarehouseV1Action {
 
   GoogleCloudContentwarehouseV1Action.fromJson(core.Map json_)
     : this(
-        accessControl:
-            json_.containsKey('accessControl')
-                ? GoogleCloudContentwarehouseV1AccessControlAction.fromJson(
-                  json_['accessControl'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accessControl: json_.containsKey('accessControl')
+            ? GoogleCloudContentwarehouseV1AccessControlAction.fromJson(
+                json_['accessControl'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         actionId: json_['actionId'] as core.String?,
-        addToFolder:
-            json_.containsKey('addToFolder')
-                ? GoogleCloudContentwarehouseV1AddToFolderAction.fromJson(
-                  json_['addToFolder'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dataUpdate:
-            json_.containsKey('dataUpdate')
-                ? GoogleCloudContentwarehouseV1DataUpdateAction.fromJson(
-                  json_['dataUpdate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dataValidation:
-            json_.containsKey('dataValidation')
-                ? GoogleCloudContentwarehouseV1DataValidationAction.fromJson(
-                  json_['dataValidation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        deleteDocumentAction:
-            json_.containsKey('deleteDocumentAction')
-                ? GoogleCloudContentwarehouseV1DeleteDocumentAction.fromJson(
-                  json_['deleteDocumentAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        publishToPubSub:
-            json_.containsKey('publishToPubSub')
-                ? GoogleCloudContentwarehouseV1PublishAction.fromJson(
-                  json_['publishToPubSub']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        removeFromFolderAction:
-            json_.containsKey('removeFromFolderAction')
-                ? GoogleCloudContentwarehouseV1RemoveFromFolderAction.fromJson(
-                  json_['removeFromFolderAction']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        addToFolder: json_.containsKey('addToFolder')
+            ? GoogleCloudContentwarehouseV1AddToFolderAction.fromJson(
+                json_['addToFolder'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dataUpdate: json_.containsKey('dataUpdate')
+            ? GoogleCloudContentwarehouseV1DataUpdateAction.fromJson(
+                json_['dataUpdate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dataValidation: json_.containsKey('dataValidation')
+            ? GoogleCloudContentwarehouseV1DataValidationAction.fromJson(
+                json_['dataValidation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteDocumentAction: json_.containsKey('deleteDocumentAction')
+            ? GoogleCloudContentwarehouseV1DeleteDocumentAction.fromJson(
+                json_['deleteDocumentAction']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        publishToPubSub: json_.containsKey('publishToPubSub')
+            ? GoogleCloudContentwarehouseV1PublishAction.fromJson(
+                json_['publishToPubSub'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        removeFromFolderAction: json_.containsKey('removeFromFolderAction')
+            ? GoogleCloudContentwarehouseV1RemoveFromFolderAction.fromJson(
+                json_['removeFromFolderAction']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessControl != null) 'accessControl': accessControl!,
-    if (actionId != null) 'actionId': actionId!,
-    if (addToFolder != null) 'addToFolder': addToFolder!,
-    if (dataUpdate != null) 'dataUpdate': dataUpdate!,
-    if (dataValidation != null) 'dataValidation': dataValidation!,
-    if (deleteDocumentAction != null)
-      'deleteDocumentAction': deleteDocumentAction!,
-    if (publishToPubSub != null) 'publishToPubSub': publishToPubSub!,
-    if (removeFromFolderAction != null)
-      'removeFromFolderAction': removeFromFolderAction!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessControl = this.accessControl;
+    final actionId = this.actionId;
+    final addToFolder = this.addToFolder;
+    final dataUpdate = this.dataUpdate;
+    final dataValidation = this.dataValidation;
+    final deleteDocumentAction = this.deleteDocumentAction;
+    final publishToPubSub = this.publishToPubSub;
+    final removeFromFolderAction = this.removeFromFolderAction;
+    return {
+      'accessControl': ?accessControl,
+      'actionId': ?actionId,
+      'addToFolder': ?addToFolder,
+      'dataUpdate': ?dataUpdate,
+      'dataValidation': ?dataValidation,
+      'deleteDocumentAction': ?deleteDocumentAction,
+      'publishToPubSub': ?publishToPubSub,
+      'removeFromFolderAction': ?removeFromFolderAction,
+    };
+  }
 }
 
 /// Represents the output of the Action Executor.
@@ -1941,20 +1940,19 @@ class GoogleCloudContentwarehouseV1ActionExecutorOutput {
 
   GoogleCloudContentwarehouseV1ActionExecutorOutput.fromJson(core.Map json_)
     : this(
-        ruleActionsPairs:
-            (json_['ruleActionsPairs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1RuleActionsPair.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        ruleActionsPairs: (json_['ruleActionsPairs'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1RuleActionsPair.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ruleActionsPairs != null) 'ruleActionsPairs': ruleActionsPairs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ruleActionsPairs = this.ruleActionsPairs;
+    return {'ruleActionsPairs': ?ruleActionsPairs};
+  }
 }
 
 /// Represents the result of executing an action.
@@ -1987,11 +1985,16 @@ class GoogleCloudContentwarehouseV1ActionOutput {
         outputMessage: json_['outputMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actionId != null) 'actionId': actionId!,
-    if (actionState != null) 'actionState': actionState!,
-    if (outputMessage != null) 'outputMessage': outputMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionId = this.actionId;
+    final actionState = this.actionState;
+    final outputMessage = this.outputMessage;
+    return {
+      'actionId': ?actionId,
+      'actionState': ?actionState,
+      'outputMessage': ?outputMessage,
+    };
+  }
 }
 
 /// Represents the action responsible for adding document under a folder.
@@ -2006,15 +2009,15 @@ class GoogleCloudContentwarehouseV1AddToFolderAction {
 
   GoogleCloudContentwarehouseV1AddToFolderAction.fromJson(core.Map json_)
     : this(
-        folders:
-            (json_['folders'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        folders: (json_['folders'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (folders != null) 'folders': folders!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final folders = this.folders;
+    return {'folders': ?folders};
+  }
 }
 
 /// Request Option for processing Cloud AI Document in CW Document.
@@ -2040,13 +2043,16 @@ class GoogleCloudContentwarehouseV1CloudAIDocumentOption {
             json_['enableEntitiesConversions'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customizedEntitiesPropertiesConversions != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final customizedEntitiesPropertiesConversions =
+        this.customizedEntitiesPropertiesConversions;
+    final enableEntitiesConversions = this.enableEntitiesConversions;
+    return {
       'customizedEntitiesPropertiesConversions':
-          customizedEntitiesPropertiesConversions!,
-    if (enableEntitiesConversions != null)
-      'enableEntitiesConversions': enableEntitiesConversions!,
-  };
+          ?customizedEntitiesPropertiesConversions,
+      'enableEntitiesConversions': ?enableEntitiesConversions,
+    };
+  }
 }
 
 /// Request message for DocumentLinkService.CreateDocumentLink.
@@ -2068,25 +2074,23 @@ class GoogleCloudContentwarehouseV1CreateDocumentLinkRequest {
   GoogleCloudContentwarehouseV1CreateDocumentLinkRequest.fromJson(
     core.Map json_,
   ) : this(
-        documentLink:
-            json_.containsKey('documentLink')
-                ? GoogleCloudContentwarehouseV1DocumentLink.fromJson(
-                  json_['documentLink'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        documentLink: json_.containsKey('documentLink')
+            ? GoogleCloudContentwarehouseV1DocumentLink.fromJson(
+                json_['documentLink'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentLink != null) 'documentLink': documentLink!,
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentLink = this.documentLink;
+    final requestMetadata = this.requestMetadata;
+    return {'documentLink': ?documentLink, 'requestMetadata': ?requestMetadata};
+  }
 }
 
 /// Request message for DocumentService.CreateDocument.
@@ -2131,43 +2135,44 @@ class GoogleCloudContentwarehouseV1CreateDocumentRequest {
 
   GoogleCloudContentwarehouseV1CreateDocumentRequest.fromJson(core.Map json_)
     : this(
-        cloudAiDocumentOption:
-            json_.containsKey('cloudAiDocumentOption')
-                ? GoogleCloudContentwarehouseV1CloudAIDocumentOption.fromJson(
-                  json_['cloudAiDocumentOption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cloudAiDocumentOption: json_.containsKey('cloudAiDocumentOption')
+            ? GoogleCloudContentwarehouseV1CloudAIDocumentOption.fromJson(
+                json_['cloudAiDocumentOption']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createMask: json_['createMask'] as core.String?,
-        document:
-            json_.containsKey('document')
-                ? GoogleCloudContentwarehouseV1Document.fromJson(
-                  json_['document'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        policy:
-            json_.containsKey('policy')
-                ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        document: json_.containsKey('document')
+            ? GoogleCloudContentwarehouseV1Document.fromJson(
+                json_['document'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        policy: json_.containsKey('policy')
+            ? GoogleIamV1Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudAiDocumentOption != null)
-      'cloudAiDocumentOption': cloudAiDocumentOption!,
-    if (createMask != null) 'createMask': createMask!,
-    if (document != null) 'document': document!,
-    if (policy != null) 'policy': policy!,
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudAiDocumentOption = this.cloudAiDocumentOption;
+    final createMask = this.createMask;
+    final document = this.document;
+    final policy = this.policy;
+    final requestMetadata = this.requestMetadata;
+    return {
+      'cloudAiDocumentOption': ?cloudAiDocumentOption,
+      'createMask': ?createMask,
+      'document': ?document,
+      'policy': ?policy,
+      'requestMetadata': ?requestMetadata,
+    };
+  }
 }
 
 /// Response message for DocumentService.CreateDocument.
@@ -2197,42 +2202,43 @@ class GoogleCloudContentwarehouseV1CreateDocumentResponse {
 
   GoogleCloudContentwarehouseV1CreateDocumentResponse.fromJson(core.Map json_)
     : this(
-        document:
-            json_.containsKey('document')
-                ? GoogleCloudContentwarehouseV1Document.fromJson(
-                  json_['document'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        longRunningOperations:
-            (json_['longRunningOperations'] as core.List?)
-                ?.map(
-                  (value) => GoogleLongrunningOperation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        metadata:
-            json_.containsKey('metadata')
-                ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        ruleEngineOutput:
-            json_.containsKey('ruleEngineOutput')
-                ? GoogleCloudContentwarehouseV1RuleEngineOutput.fromJson(
-                  json_['ruleEngineOutput']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        document: json_.containsKey('document')
+            ? GoogleCloudContentwarehouseV1Document.fromJson(
+                json_['document'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        longRunningOperations: (json_['longRunningOperations'] as core.List?)
+            ?.map(
+              (value) => GoogleLongrunningOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metadata: json_.containsKey('metadata')
+            ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ruleEngineOutput: json_.containsKey('ruleEngineOutput')
+            ? GoogleCloudContentwarehouseV1RuleEngineOutput.fromJson(
+                json_['ruleEngineOutput']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (document != null) 'document': document!,
-    if (longRunningOperations != null)
-      'longRunningOperations': longRunningOperations!,
-    if (metadata != null) 'metadata': metadata!,
-    if (ruleEngineOutput != null) 'ruleEngineOutput': ruleEngineOutput!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final document = this.document;
+    final longRunningOperations = this.longRunningOperations;
+    final metadata = this.metadata;
+    final ruleEngineOutput = this.ruleEngineOutput;
+    return {
+      'document': ?document,
+      'longRunningOperations': ?longRunningOperations,
+      'metadata': ?metadata,
+      'ruleEngineOutput': ?ruleEngineOutput,
+    };
+  }
 }
 
 /// To support the custom weighting across document schemas.
@@ -2249,21 +2255,20 @@ class GoogleCloudContentwarehouseV1CustomWeightsMetadata {
 
   GoogleCloudContentwarehouseV1CustomWeightsMetadata.fromJson(core.Map json_)
     : this(
-        weightedSchemaProperties:
-            (json_['weightedSchemaProperties'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1WeightedSchemaProperty.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        weightedSchemaProperties: (json_['weightedSchemaProperties'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContentwarehouseV1WeightedSchemaProperty.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (weightedSchemaProperties != null)
-      'weightedSchemaProperties': weightedSchemaProperties!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final weightedSchemaProperties = this.weightedSchemaProperties;
+    return {'weightedSchemaProperties': ?weightedSchemaProperties};
+  }
 }
 
 /// Represents the action responsible for properties update operations.
@@ -2283,9 +2288,10 @@ class GoogleCloudContentwarehouseV1DataUpdateAction {
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Represents the action responsible for data validation operations.
@@ -2301,14 +2307,16 @@ class GoogleCloudContentwarehouseV1DataValidationAction {
 
   GoogleCloudContentwarehouseV1DataValidationAction.fromJson(core.Map json_)
     : this(
-        conditions: (json_['conditions']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        conditions:
+            (json_['conditions'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conditions != null) 'conditions': conditions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conditions = this.conditions;
+    return {'conditions': ?conditions};
+  }
 }
 
 /// DateTime values.
@@ -2322,19 +2330,19 @@ class GoogleCloudContentwarehouseV1DateTimeArray {
 
   GoogleCloudContentwarehouseV1DateTimeArray.fromJson(core.Map json_)
     : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map(
-                  (value) => GoogleTypeDateTime.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map(
+              (value) => GoogleTypeDateTime.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
 }
 
 /// Configurations for a date time property.
@@ -2352,9 +2360,10 @@ class GoogleCloudContentwarehouseV1DeleteDocumentAction {
   GoogleCloudContentwarehouseV1DeleteDocumentAction.fromJson(core.Map json_)
     : this(enableHardDelete: json_['enableHardDelete'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableHardDelete != null) 'enableHardDelete': enableHardDelete!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableHardDelete = this.enableHardDelete;
+    return {'enableHardDelete': ?enableHardDelete};
+  }
 }
 
 /// Request message for DocumentLinkService.DeleteDocumentLink.
@@ -2370,18 +2379,17 @@ class GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest {
   GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest.fromJson(
     core.Map json_,
   ) : this(
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestMetadata = this.requestMetadata;
+    return {'requestMetadata': ?requestMetadata};
+  }
 }
 
 /// Request message for DocumentService.DeleteDocument.
@@ -2394,18 +2402,17 @@ class GoogleCloudContentwarehouseV1DeleteDocumentRequest {
 
   GoogleCloudContentwarehouseV1DeleteDocumentRequest.fromJson(core.Map json_)
     : this(
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestMetadata = this.requestMetadata;
+    return {'requestMetadata': ?requestMetadata};
+  }
 }
 
 /// Defines the structure for content warehouse document proto.
@@ -2555,13 +2562,11 @@ class GoogleCloudContentwarehouseV1Document {
 
   GoogleCloudContentwarehouseV1Document.fromJson(core.Map json_)
     : this(
-        cloudAiDocument:
-            json_.containsKey('cloudAiDocument')
-                ? GoogleCloudDocumentaiV1Document.fromJson(
-                  json_['cloudAiDocument']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cloudAiDocument: json_.containsKey('cloudAiDocument')
+            ? GoogleCloudDocumentaiV1Document.fromJson(
+                json_['cloudAiDocument'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         contentCategory: json_['contentCategory'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         creator: json_['creator'] as core.String?,
@@ -2573,14 +2578,13 @@ class GoogleCloudContentwarehouseV1Document {
         legalHold: json_['legalHold'] as core.bool?,
         name: json_['name'] as core.String?,
         plainText: json_['plainText'] as core.String?,
-        properties:
-            (json_['properties'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1Property.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1Property.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         rawDocumentFileType: json_['rawDocumentFileType'] as core.String?,
         rawDocumentPath: json_['rawDocumentPath'] as core.String?,
         referenceId: json_['referenceId'] as core.String?,
@@ -2591,32 +2595,52 @@ class GoogleCloudContentwarehouseV1Document {
         updater: json_['updater'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudAiDocument != null) 'cloudAiDocument': cloudAiDocument!,
-    if (contentCategory != null) 'contentCategory': contentCategory!,
-    if (createTime != null) 'createTime': createTime!,
-    if (creator != null) 'creator': creator!,
-    if (displayName != null) 'displayName': displayName!,
-    if (displayUri != null) 'displayUri': displayUri!,
-    if (dispositionTime != null) 'dispositionTime': dispositionTime!,
-    if (documentSchemaName != null) 'documentSchemaName': documentSchemaName!,
-    if (inlineRawDocument != null) 'inlineRawDocument': inlineRawDocument!,
-    if (legalHold != null) 'legalHold': legalHold!,
-    if (name != null) 'name': name!,
-    if (plainText != null) 'plainText': plainText!,
-    if (properties != null) 'properties': properties!,
-    if (rawDocumentFileType != null)
-      'rawDocumentFileType': rawDocumentFileType!,
-    if (rawDocumentPath != null) 'rawDocumentPath': rawDocumentPath!,
-    if (referenceId != null) 'referenceId': referenceId!,
-    if (textExtractionDisabled != null)
-      'textExtractionDisabled': textExtractionDisabled!,
-    if (textExtractionEnabled != null)
-      'textExtractionEnabled': textExtractionEnabled!,
-    if (title != null) 'title': title!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (updater != null) 'updater': updater!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudAiDocument = this.cloudAiDocument;
+    final contentCategory = this.contentCategory;
+    final createTime = this.createTime;
+    final creator = this.creator;
+    final displayName = this.displayName;
+    final displayUri = this.displayUri;
+    final dispositionTime = this.dispositionTime;
+    final documentSchemaName = this.documentSchemaName;
+    final inlineRawDocument = this.inlineRawDocument;
+    final legalHold = this.legalHold;
+    final name = this.name;
+    final plainText = this.plainText;
+    final properties = this.properties;
+    final rawDocumentFileType = this.rawDocumentFileType;
+    final rawDocumentPath = this.rawDocumentPath;
+    final referenceId = this.referenceId;
+    final textExtractionDisabled = this.textExtractionDisabled;
+    final textExtractionEnabled = this.textExtractionEnabled;
+    final title = this.title;
+    final updateTime = this.updateTime;
+    final updater = this.updater;
+    return {
+      'cloudAiDocument': ?cloudAiDocument,
+      'contentCategory': ?contentCategory,
+      'createTime': ?createTime,
+      'creator': ?creator,
+      'displayName': ?displayName,
+      'displayUri': ?displayUri,
+      'dispositionTime': ?dispositionTime,
+      'documentSchemaName': ?documentSchemaName,
+      'inlineRawDocument': ?inlineRawDocument,
+      'legalHold': ?legalHold,
+      'name': ?name,
+      'plainText': ?plainText,
+      'properties': ?properties,
+      'rawDocumentFileType': ?rawDocumentFileType,
+      'rawDocumentPath': ?rawDocumentPath,
+      'referenceId': ?referenceId,
+      'textExtractionDisabled': ?textExtractionDisabled,
+      'textExtractionEnabled': ?textExtractionEnabled,
+      'title': ?title,
+      'updateTime': ?updateTime,
+      'updater': ?updater,
+    };
+  }
 }
 
 /// A document-link between source and target document.
@@ -2675,35 +2699,40 @@ class GoogleCloudContentwarehouseV1DocumentLink {
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         name: json_['name'] as core.String?,
-        sourceDocumentReference:
-            json_.containsKey('sourceDocumentReference')
-                ? GoogleCloudContentwarehouseV1DocumentReference.fromJson(
-                  json_['sourceDocumentReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        sourceDocumentReference: json_.containsKey('sourceDocumentReference')
+            ? GoogleCloudContentwarehouseV1DocumentReference.fromJson(
+                json_['sourceDocumentReference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
-        targetDocumentReference:
-            json_.containsKey('targetDocumentReference')
-                ? GoogleCloudContentwarehouseV1DocumentReference.fromJson(
-                  json_['targetDocumentReference']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        targetDocumentReference: json_.containsKey('targetDocumentReference')
+            ? GoogleCloudContentwarehouseV1DocumentReference.fromJson(
+                json_['targetDocumentReference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (name != null) 'name': name!,
-    if (sourceDocumentReference != null)
-      'sourceDocumentReference': sourceDocumentReference!,
-    if (state != null) 'state': state!,
-    if (targetDocumentReference != null)
-      'targetDocumentReference': targetDocumentReference!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final name = this.name;
+    final sourceDocumentReference = this.sourceDocumentReference;
+    final state = this.state;
+    final targetDocumentReference = this.targetDocumentReference;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'name': ?name,
+      'sourceDocumentReference': ?sourceDocumentReference,
+      'state': ?state,
+      'targetDocumentReference': ?targetDocumentReference,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 class GoogleCloudContentwarehouseV1DocumentQuery {
@@ -2850,76 +2879,76 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
   GoogleCloudContentwarehouseV1DocumentQuery.fromJson(core.Map json_)
     : this(
         customPropertyFilter: json_['customPropertyFilter'] as core.String?,
-        customWeightsMetadata:
-            json_.containsKey('customWeightsMetadata')
-                ? GoogleCloudContentwarehouseV1CustomWeightsMetadata.fromJson(
-                  json_['customWeightsMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        documentCreatorFilter:
-            (json_['documentCreatorFilter'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        documentNameFilter:
-            (json_['documentNameFilter'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        documentSchemaNames:
-            (json_['documentSchemaNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        fileTypeFilter:
-            json_.containsKey('fileTypeFilter')
-                ? GoogleCloudContentwarehouseV1FileTypeFilter.fromJson(
-                  json_['fileTypeFilter']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customWeightsMetadata: json_.containsKey('customWeightsMetadata')
+            ? GoogleCloudContentwarehouseV1CustomWeightsMetadata.fromJson(
+                json_['customWeightsMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        documentCreatorFilter: (json_['documentCreatorFilter'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        documentNameFilter: (json_['documentNameFilter'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        documentSchemaNames: (json_['documentSchemaNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        fileTypeFilter: json_.containsKey('fileTypeFilter')
+            ? GoogleCloudContentwarehouseV1FileTypeFilter.fromJson(
+                json_['fileTypeFilter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         folderNameFilter: json_['folderNameFilter'] as core.String?,
         isNlQuery: json_['isNlQuery'] as core.bool?,
-        propertyFilter:
-            (json_['propertyFilter'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1PropertyFilter.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        propertyFilter: (json_['propertyFilter'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1PropertyFilter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         query: json_['query'] as core.String?,
-        queryContext:
-            (json_['queryContext'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        timeFilters:
-            (json_['timeFilters'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1TimeFilter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        queryContext: (json_['queryContext'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        timeFilters: (json_['timeFilters'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1TimeFilter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customPropertyFilter != null)
-      'customPropertyFilter': customPropertyFilter!,
-    if (customWeightsMetadata != null)
-      'customWeightsMetadata': customWeightsMetadata!,
-    if (documentCreatorFilter != null)
-      'documentCreatorFilter': documentCreatorFilter!,
-    if (documentNameFilter != null) 'documentNameFilter': documentNameFilter!,
-    if (documentSchemaNames != null)
-      'documentSchemaNames': documentSchemaNames!,
-    if (fileTypeFilter != null) 'fileTypeFilter': fileTypeFilter!,
-    if (folderNameFilter != null) 'folderNameFilter': folderNameFilter!,
-    if (isNlQuery != null) 'isNlQuery': isNlQuery!,
-    if (propertyFilter != null) 'propertyFilter': propertyFilter!,
-    if (query != null) 'query': query!,
-    if (queryContext != null) 'queryContext': queryContext!,
-    if (timeFilters != null) 'timeFilters': timeFilters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customPropertyFilter = this.customPropertyFilter;
+    final customWeightsMetadata = this.customWeightsMetadata;
+    final documentCreatorFilter = this.documentCreatorFilter;
+    final documentNameFilter = this.documentNameFilter;
+    final documentSchemaNames = this.documentSchemaNames;
+    final fileTypeFilter = this.fileTypeFilter;
+    final folderNameFilter = this.folderNameFilter;
+    final isNlQuery = this.isNlQuery;
+    final propertyFilter = this.propertyFilter;
+    final query = this.query;
+    final queryContext = this.queryContext;
+    final timeFilters = this.timeFilters;
+    return {
+      'customPropertyFilter': ?customPropertyFilter,
+      'customWeightsMetadata': ?customWeightsMetadata,
+      'documentCreatorFilter': ?documentCreatorFilter,
+      'documentNameFilter': ?documentNameFilter,
+      'documentSchemaNames': ?documentSchemaNames,
+      'fileTypeFilter': ?fileTypeFilter,
+      'folderNameFilter': ?folderNameFilter,
+      'isNlQuery': ?isNlQuery,
+      'propertyFilter': ?propertyFilter,
+      'query': ?query,
+      'queryContext': ?queryContext,
+      'timeFilters': ?timeFilters,
+    };
+  }
 }
 
 /// References to the documents.
@@ -2991,19 +3020,28 @@ class GoogleCloudContentwarehouseV1DocumentReference {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (documentIsFolder != null) 'documentIsFolder': documentIsFolder!,
-    if (documentIsLegalHoldFolder != null)
-      'documentIsLegalHoldFolder': documentIsLegalHoldFolder!,
-    if (documentIsRetentionFolder != null)
-      'documentIsRetentionFolder': documentIsRetentionFolder!,
-    if (documentName != null) 'documentName': documentName!,
-    if (snippet != null) 'snippet': snippet!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final documentIsFolder = this.documentIsFolder;
+    final documentIsLegalHoldFolder = this.documentIsLegalHoldFolder;
+    final documentIsRetentionFolder = this.documentIsRetentionFolder;
+    final documentName = this.documentName;
+    final snippet = this.snippet;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'documentIsFolder': ?documentIsFolder,
+      'documentIsLegalHoldFolder': ?documentIsLegalHoldFolder,
+      'documentIsRetentionFolder': ?documentIsRetentionFolder,
+      'documentName': ?documentName,
+      'snippet': ?snippet,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A document schema used to define document structure.
@@ -3060,28 +3098,35 @@ class GoogleCloudContentwarehouseV1DocumentSchema {
         displayName: json_['displayName'] as core.String?,
         documentIsFolder: json_['documentIsFolder'] as core.bool?,
         name: json_['name'] as core.String?,
-        propertyDefinitions:
-            (json_['propertyDefinitions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1PropertyDefinition.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        propertyDefinitions: (json_['propertyDefinitions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContentwarehouseV1PropertyDefinition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (documentIsFolder != null) 'documentIsFolder': documentIsFolder!,
-    if (name != null) 'name': name!,
-    if (propertyDefinitions != null)
-      'propertyDefinitions': propertyDefinitions!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final documentIsFolder = this.documentIsFolder;
+    final name = this.name;
+    final propertyDefinitions = this.propertyDefinitions;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'documentIsFolder': ?documentIsFolder,
+      'name': ?name,
+      'propertyDefinitions': ?propertyDefinitions,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Enum values.
@@ -3093,15 +3138,15 @@ class GoogleCloudContentwarehouseV1EnumArray {
 
   GoogleCloudContentwarehouseV1EnumArray.fromJson(core.Map json_)
     : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
 }
 
 /// Configurations for an enum/categorical property.
@@ -3124,18 +3169,20 @@ class GoogleCloudContentwarehouseV1EnumTypeOptions {
 
   GoogleCloudContentwarehouseV1EnumTypeOptions.fromJson(core.Map json_)
     : this(
-        possibleValues:
-            (json_['possibleValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        possibleValues: (json_['possibleValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         validationCheckDisabled: json_['validationCheckDisabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (possibleValues != null) 'possibleValues': possibleValues!,
-    if (validationCheckDisabled != null)
-      'validationCheckDisabled': validationCheckDisabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final possibleValues = this.possibleValues;
+    final validationCheckDisabled = this.validationCheckDisabled;
+    return {
+      'possibleValues': ?possibleValues,
+      'validationCheckDisabled': ?validationCheckDisabled,
+    };
+  }
 }
 
 /// Represents the string value of the enum field.
@@ -3151,9 +3198,10 @@ class GoogleCloudContentwarehouseV1EnumValue {
   GoogleCloudContentwarehouseV1EnumValue.fromJson(core.Map json_)
     : this(value: json_['value'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
 }
 
 /// The configuration of exporting documents from the Document Warehouse to CDW
@@ -3197,21 +3245,26 @@ class GoogleCloudContentwarehouseV1ExportToCdwPipeline {
   GoogleCloudContentwarehouseV1ExportToCdwPipeline.fromJson(core.Map json_)
     : this(
         docAiDataset: json_['docAiDataset'] as core.String?,
-        documents:
-            (json_['documents'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        documents: (json_['documents'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         exportFolderPath: json_['exportFolderPath'] as core.String?,
-        trainingSplitRatio:
-            (json_['trainingSplitRatio'] as core.num?)?.toDouble(),
+        trainingSplitRatio: (json_['trainingSplitRatio'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (docAiDataset != null) 'docAiDataset': docAiDataset!,
-    if (documents != null) 'documents': documents!,
-    if (exportFolderPath != null) 'exportFolderPath': exportFolderPath!,
-    if (trainingSplitRatio != null) 'trainingSplitRatio': trainingSplitRatio!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final docAiDataset = this.docAiDataset;
+    final documents = this.documents;
+    final exportFolderPath = this.exportFolderPath;
+    final trainingSplitRatio = this.trainingSplitRatio;
+    return {
+      'docAiDataset': ?docAiDataset,
+      'documents': ?documents,
+      'exportFolderPath': ?exportFolderPath,
+      'trainingSplitRatio': ?trainingSplitRatio,
+    };
+  }
 }
 
 /// Request message for DocumentService.FetchAcl
@@ -3233,19 +3286,18 @@ class GoogleCloudContentwarehouseV1FetchAclRequest {
   GoogleCloudContentwarehouseV1FetchAclRequest.fromJson(core.Map json_)
     : this(
         projectOwner: json_['projectOwner'] as core.bool?,
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (projectOwner != null) 'projectOwner': projectOwner!,
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final projectOwner = this.projectOwner;
+    final requestMetadata = this.requestMetadata;
+    return {'projectOwner': ?projectOwner, 'requestMetadata': ?requestMetadata};
+  }
 }
 
 /// Response message for DocumentService.FetchAcl.
@@ -3261,24 +3313,23 @@ class GoogleCloudContentwarehouseV1FetchAclResponse {
 
   GoogleCloudContentwarehouseV1FetchAclResponse.fromJson(core.Map json_)
     : this(
-        metadata:
-            json_.containsKey('metadata')
-                ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        policy:
-            json_.containsKey('policy')
-                ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        policy: json_.containsKey('policy')
+            ? GoogleIamV1Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final policy = this.policy;
+    return {'metadata': ?metadata, 'policy': ?policy};
+  }
 }
 
 /// Filter for the specific types of documents returned.
@@ -3298,9 +3349,10 @@ class GoogleCloudContentwarehouseV1FileTypeFilter {
   GoogleCloudContentwarehouseV1FileTypeFilter.fromJson(core.Map json_)
     : this(fileType: json_['fileType'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fileType != null) 'fileType': fileType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileType = this.fileType;
+    return {'fileType': ?fileType};
+  }
 }
 
 /// Float values.
@@ -3312,15 +3364,15 @@ class GoogleCloudContentwarehouseV1FloatArray {
 
   GoogleCloudContentwarehouseV1FloatArray.fromJson(core.Map json_)
     : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => (value as core.num).toDouble())
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map((value) => (value as core.num).toDouble())
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
 }
 
 /// Configurations for a float property.
@@ -3371,26 +3423,30 @@ class GoogleCloudContentwarehouseV1GcsIngestPipeline {
   GoogleCloudContentwarehouseV1GcsIngestPipeline.fromJson(core.Map json_)
     : this(
         inputPath: json_['inputPath'] as core.String?,
-        pipelineConfig:
-            json_.containsKey('pipelineConfig')
-                ? GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(
-                  json_['pipelineConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pipelineConfig: json_.containsKey('pipelineConfig')
+            ? GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(
+                json_['pipelineConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         processorType: json_['processorType'] as core.String?,
         schemaName: json_['schemaName'] as core.String?,
         skipIngestedDocuments: json_['skipIngestedDocuments'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inputPath != null) 'inputPath': inputPath!,
-    if (pipelineConfig != null) 'pipelineConfig': pipelineConfig!,
-    if (processorType != null) 'processorType': processorType!,
-    if (schemaName != null) 'schemaName': schemaName!,
-    if (skipIngestedDocuments != null)
-      'skipIngestedDocuments': skipIngestedDocuments!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inputPath = this.inputPath;
+    final pipelineConfig = this.pipelineConfig;
+    final processorType = this.processorType;
+    final schemaName = this.schemaName;
+    final skipIngestedDocuments = this.skipIngestedDocuments;
+    return {
+      'inputPath': ?inputPath,
+      'pipelineConfig': ?pipelineConfig,
+      'processorType': ?processorType,
+      'schemaName': ?schemaName,
+      'skipIngestedDocuments': ?skipIngestedDocuments,
+    };
+  }
 }
 
 /// The configuration of the Cloud Storage Ingestion with DocAI Processors
@@ -3447,47 +3503,47 @@ class GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline {
   GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline.fromJson(
     core.Map json_,
   ) : this(
-        extractProcessorInfos:
-            (json_['extractProcessorInfos'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        extractProcessorInfos: (json_['extractProcessorInfos'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         inputPath: json_['inputPath'] as core.String?,
-        pipelineConfig:
-            json_.containsKey('pipelineConfig')
-                ? GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(
-                  json_['pipelineConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pipelineConfig: json_.containsKey('pipelineConfig')
+            ? GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(
+                json_['pipelineConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         processorResultsFolderPath:
             json_['processorResultsFolderPath'] as core.String?,
         skipIngestedDocuments: json_['skipIngestedDocuments'] as core.bool?,
         splitClassifyProcessorInfo:
             json_.containsKey('splitClassifyProcessorInfo')
-                ? GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(
-                  json_['splitClassifyProcessorInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(
+                json_['splitClassifyProcessorInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (extractProcessorInfos != null)
-      'extractProcessorInfos': extractProcessorInfos!,
-    if (inputPath != null) 'inputPath': inputPath!,
-    if (pipelineConfig != null) 'pipelineConfig': pipelineConfig!,
-    if (processorResultsFolderPath != null)
-      'processorResultsFolderPath': processorResultsFolderPath!,
-    if (skipIngestedDocuments != null)
-      'skipIngestedDocuments': skipIngestedDocuments!,
-    if (splitClassifyProcessorInfo != null)
-      'splitClassifyProcessorInfo': splitClassifyProcessorInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final extractProcessorInfos = this.extractProcessorInfos;
+    final inputPath = this.inputPath;
+    final pipelineConfig = this.pipelineConfig;
+    final processorResultsFolderPath = this.processorResultsFolderPath;
+    final skipIngestedDocuments = this.skipIngestedDocuments;
+    final splitClassifyProcessorInfo = this.splitClassifyProcessorInfo;
+    return {
+      'extractProcessorInfos': ?extractProcessorInfos,
+      'inputPath': ?inputPath,
+      'pipelineConfig': ?pipelineConfig,
+      'processorResultsFolderPath': ?processorResultsFolderPath,
+      'skipIngestedDocuments': ?skipIngestedDocuments,
+      'splitClassifyProcessorInfo': ?splitClassifyProcessorInfo,
+    };
+  }
 }
 
 /// Request message for DocumentService.GetDocument.
@@ -3500,18 +3556,17 @@ class GoogleCloudContentwarehouseV1GetDocumentRequest {
 
   GoogleCloudContentwarehouseV1GetDocumentRequest.fromJson(core.Map json_)
     : this(
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestMetadata = this.requestMetadata;
+    return {'requestMetadata': ?requestMetadata};
+  }
 }
 
 /// The histogram request.
@@ -3544,23 +3599,26 @@ class GoogleCloudContentwarehouseV1HistogramQuery {
 
   GoogleCloudContentwarehouseV1HistogramQuery.fromJson(core.Map json_)
     : this(
-        filters:
-            json_.containsKey('filters')
-                ? GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter.fromJson(
-                  json_['filters'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        filters: json_.containsKey('filters')
+            ? GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter.fromJson(
+                json_['filters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         histogramQuery: json_['histogramQuery'] as core.String?,
         requirePreciseResultSize:
             json_['requirePreciseResultSize'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filters != null) 'filters': filters!,
-    if (histogramQuery != null) 'histogramQuery': histogramQuery!,
-    if (requirePreciseResultSize != null)
-      'requirePreciseResultSize': requirePreciseResultSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final filters = this.filters;
+    final histogramQuery = this.histogramQuery;
+    final requirePreciseResultSize = this.requirePreciseResultSize;
+    return {
+      'filters': ?filters,
+      'histogramQuery': ?histogramQuery,
+      'requirePreciseResultSize': ?requirePreciseResultSize,
+    };
+  }
 }
 
 class GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter {
@@ -3599,22 +3657,25 @@ class GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter {
   GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter.fromJson(
     core.Map json_,
   ) : this(
-        documentSchemas:
-            (json_['documentSchemas'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        propertyNames:
-            (json_['propertyNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        documentSchemas: (json_['documentSchemas'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        propertyNames: (json_['propertyNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         yAxis: json_['yAxis'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentSchemas != null) 'documentSchemas': documentSchemas!,
-    if (propertyNames != null) 'propertyNames': propertyNames!,
-    if (yAxis != null) 'yAxis': yAxis!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentSchemas = this.documentSchemas;
+    final propertyNames = this.propertyNames;
+    final yAxis = this.yAxis;
+    return {
+      'documentSchemas': ?documentSchemas,
+      'propertyNames': ?propertyNames,
+      'yAxis': ?yAxis,
+    };
+  }
 }
 
 /// Histogram result that matches HistogramQuery specified in searches.
@@ -3641,10 +3702,11 @@ class GoogleCloudContentwarehouseV1HistogramQueryResult {
         histogramQuery: json_['histogramQuery'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (histogram != null) 'histogram': histogram!,
-    if (histogramQuery != null) 'histogramQuery': histogramQuery!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final histogram = this.histogram;
+    final histogramQuery = this.histogramQuery;
+    return {'histogram': ?histogram, 'histogramQuery': ?histogramQuery};
+  }
 }
 
 /// The ingestion pipeline config.
@@ -3703,25 +3765,29 @@ class GoogleCloudContentwarehouseV1IngestPipelineConfig {
   GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(core.Map json_)
     : this(
         cloudFunction: json_['cloudFunction'] as core.String?,
-        documentAclPolicy:
-            json_.containsKey('documentAclPolicy')
-                ? GoogleIamV1Policy.fromJson(
-                  json_['documentAclPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        documentAclPolicy: json_.containsKey('documentAclPolicy')
+            ? GoogleIamV1Policy.fromJson(
+                json_['documentAclPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableDocumentTextExtraction:
             json_['enableDocumentTextExtraction'] as core.bool?,
         folder: json_['folder'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudFunction != null) 'cloudFunction': cloudFunction!,
-    if (documentAclPolicy != null) 'documentAclPolicy': documentAclPolicy!,
-    if (enableDocumentTextExtraction != null)
-      'enableDocumentTextExtraction': enableDocumentTextExtraction!,
-    if (folder != null) 'folder': folder!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudFunction = this.cloudFunction;
+    final documentAclPolicy = this.documentAclPolicy;
+    final enableDocumentTextExtraction = this.enableDocumentTextExtraction;
+    final folder = this.folder;
+    return {
+      'cloudFunction': ?cloudFunction,
+      'documentAclPolicy': ?documentAclPolicy,
+      'enableDocumentTextExtraction': ?enableDocumentTextExtraction,
+      'folder': ?folder,
+    };
+  }
 }
 
 /// Request message for projectService.InitializeProject
@@ -3795,15 +3861,20 @@ class GoogleCloudContentwarehouseV1InitializeProjectRequest {
         kmsKey: json_['kmsKey'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessControlMode != null) 'accessControlMode': accessControlMode!,
-    if (databaseType != null) 'databaseType': databaseType!,
-    if (documentCreatorDefaultRole != null)
-      'documentCreatorDefaultRole': documentCreatorDefaultRole!,
-    if (enableCalUserEmailLogging != null)
-      'enableCalUserEmailLogging': enableCalUserEmailLogging!,
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessControlMode = this.accessControlMode;
+    final databaseType = this.databaseType;
+    final documentCreatorDefaultRole = this.documentCreatorDefaultRole;
+    final enableCalUserEmailLogging = this.enableCalUserEmailLogging;
+    final kmsKey = this.kmsKey;
+    return {
+      'accessControlMode': ?accessControlMode,
+      'databaseType': ?databaseType,
+      'documentCreatorDefaultRole': ?documentCreatorDefaultRole,
+      'enableCalUserEmailLogging': ?enableCalUserEmailLogging,
+      'kmsKey': ?kmsKey,
+    };
+  }
 }
 
 /// Integer values.
@@ -3815,15 +3886,15 @@ class GoogleCloudContentwarehouseV1IntegerArray {
 
   GoogleCloudContentwarehouseV1IntegerArray.fromJson(core.Map json_)
     : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.int)
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
 }
 
 /// Configurations for an integer property.
@@ -3842,18 +3913,18 @@ class GoogleCloudContentwarehouseV1InvalidRule {
   GoogleCloudContentwarehouseV1InvalidRule.fromJson(core.Map json_)
     : this(
         error: json_['error'] as core.String?,
-        rule:
-            json_.containsKey('rule')
-                ? GoogleCloudContentwarehouseV1Rule.fromJson(
-                  json_['rule'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rule: json_.containsKey('rule')
+            ? GoogleCloudContentwarehouseV1Rule.fromJson(
+                json_['rule'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (rule != null) 'rule': rule!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final rule = this.rule;
+    return {'error': ?error, 'rule': ?rule};
+  }
 }
 
 /// Response message for DocumentSchemaService.ListDocumentSchemas.
@@ -3874,22 +3945,24 @@ class GoogleCloudContentwarehouseV1ListDocumentSchemasResponse {
   GoogleCloudContentwarehouseV1ListDocumentSchemasResponse.fromJson(
     core.Map json_,
   ) : this(
-        documentSchemas:
-            (json_['documentSchemas'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1DocumentSchema.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        documentSchemas: (json_['documentSchemas'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1DocumentSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentSchemas != null) 'documentSchemas': documentSchemas!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentSchemas = this.documentSchemas;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'documentSchemas': ?documentSchemas,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response message for DocumentLinkService.ListLinkedSources.
@@ -3922,20 +3995,23 @@ class GoogleCloudContentwarehouseV1ListLinkedSourcesRequest {
     : this(
         pageSize: json_['pageSize'] as core.int?,
         pageToken: json_['pageToken'] as core.String?,
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pageSize != null) 'pageSize': pageSize!,
-    if (pageToken != null) 'pageToken': pageToken!,
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pageSize = this.pageSize;
+    final pageToken = this.pageToken;
+    final requestMetadata = this.requestMetadata;
+    return {
+      'pageSize': ?pageSize,
+      'pageToken': ?pageToken,
+      'requestMetadata': ?requestMetadata,
+    };
+  }
 }
 
 /// Response message for DocumentLinkService.ListLinkedSources.
@@ -3956,21 +4032,21 @@ class GoogleCloudContentwarehouseV1ListLinkedSourcesResponse {
   GoogleCloudContentwarehouseV1ListLinkedSourcesResponse.fromJson(
     core.Map json_,
   ) : this(
-        documentLinks:
-            (json_['documentLinks'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1DocumentLink.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        documentLinks: (json_['documentLinks'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1DocumentLink.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentLinks != null) 'documentLinks': documentLinks!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentLinks = this.documentLinks;
+    final nextPageToken = this.nextPageToken;
+    return {'documentLinks': ?documentLinks, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Request message for DocumentLinkService.ListLinkedTargets.
@@ -3983,18 +4059,17 @@ class GoogleCloudContentwarehouseV1ListLinkedTargetsRequest {
 
   GoogleCloudContentwarehouseV1ListLinkedTargetsRequest.fromJson(core.Map json_)
     : this(
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestMetadata = this.requestMetadata;
+    return {'requestMetadata': ?requestMetadata};
+  }
 }
 
 /// Response message for DocumentLinkService.ListLinkedTargets.
@@ -4015,21 +4090,21 @@ class GoogleCloudContentwarehouseV1ListLinkedTargetsResponse {
   GoogleCloudContentwarehouseV1ListLinkedTargetsResponse.fromJson(
     core.Map json_,
   ) : this(
-        documentLinks:
-            (json_['documentLinks'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1DocumentLink.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        documentLinks: (json_['documentLinks'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1DocumentLink.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentLinks != null) 'documentLinks': documentLinks!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentLinks = this.documentLinks;
+    final nextPageToken = this.nextPageToken;
+    return {'documentLinks': ?documentLinks, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for RuleSetService.ListRuleSets.
@@ -4050,20 +4125,20 @@ class GoogleCloudContentwarehouseV1ListRuleSetsResponse {
   GoogleCloudContentwarehouseV1ListRuleSetsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        ruleSets:
-            (json_['ruleSets'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1RuleSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ruleSets: (json_['ruleSets'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1RuleSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (ruleSets != null) 'ruleSets': ruleSets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final ruleSets = this.ruleSets;
+    return {'nextPageToken': ?nextPageToken, 'ruleSets': ?ruleSets};
+  }
 }
 
 /// Response message for SynonymSetService.ListSynonymSets.
@@ -4084,20 +4159,20 @@ class GoogleCloudContentwarehouseV1ListSynonymSetsResponse {
   GoogleCloudContentwarehouseV1ListSynonymSetsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        synonymSets:
-            (json_['synonymSets'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1SynonymSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        synonymSets: (json_['synonymSets'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1SynonymSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (synonymSets != null) 'synonymSets': synonymSets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final synonymSets = this.synonymSets;
+    return {'nextPageToken': ?nextPageToken, 'synonymSets': ?synonymSets};
+  }
 }
 
 /// Request message for DocumentService.LockDocument.
@@ -4116,18 +4191,18 @@ class GoogleCloudContentwarehouseV1LockDocumentRequest {
   GoogleCloudContentwarehouseV1LockDocumentRequest.fromJson(core.Map json_)
     : this(
         collectionId: json_['collectionId'] as core.String?,
-        lockingUser:
-            json_.containsKey('lockingUser')
-                ? GoogleCloudContentwarehouseV1UserInfo.fromJson(
-                  json_['lockingUser'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lockingUser: json_.containsKey('lockingUser')
+            ? GoogleCloudContentwarehouseV1UserInfo.fromJson(
+                json_['lockingUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (collectionId != null) 'collectionId': collectionId!,
-    if (lockingUser != null) 'lockingUser': lockingUser!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final collectionId = this.collectionId;
+    final lockingUser = this.lockingUser;
+    return {'collectionId': ?collectionId, 'lockingUser': ?lockingUser};
+  }
 }
 
 /// Map property value.
@@ -4152,9 +4227,10 @@ class GoogleCloudContentwarehouseV1MapProperty {
         ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fields != null) 'fields': fields!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fields = this.fields;
+    return {'fields': ?fields};
+  }
 }
 
 /// Configurations for a Map property.
@@ -4192,12 +4268,14 @@ class GoogleCloudContentwarehouseV1MergeFieldsOptions {
         replaceRepeatedFields: json_['replaceRepeatedFields'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (replaceMessageFields != null)
-      'replaceMessageFields': replaceMessageFields!,
-    if (replaceRepeatedFields != null)
-      'replaceRepeatedFields': replaceRepeatedFields!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final replaceMessageFields = this.replaceMessageFields;
+    final replaceRepeatedFields = this.replaceRepeatedFields;
+    return {
+      'replaceMessageFields': ?replaceMessageFields,
+      'replaceRepeatedFields': ?replaceRepeatedFields,
+    };
+  }
 }
 
 /// The configuration of processing documents in Document Warehouse with DocAi
@@ -4233,28 +4311,31 @@ class GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline {
 
   GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline.fromJson(core.Map json_)
     : this(
-        documents:
-            (json_['documents'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        documents: (json_['documents'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         exportFolderPath: json_['exportFolderPath'] as core.String?,
-        processorInfo:
-            json_.containsKey('processorInfo')
-                ? GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(
-                  json_['processorInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        processorInfo: json_.containsKey('processorInfo')
+            ? GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(
+                json_['processorInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         processorResultsFolderPath:
             json_['processorResultsFolderPath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documents != null) 'documents': documents!,
-    if (exportFolderPath != null) 'exportFolderPath': exportFolderPath!,
-    if (processorInfo != null) 'processorInfo': processorInfo!,
-    if (processorResultsFolderPath != null)
-      'processorResultsFolderPath': processorResultsFolderPath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documents = this.documents;
+    final exportFolderPath = this.exportFolderPath;
+    final processorInfo = this.processorInfo;
+    final processorResultsFolderPath = this.processorResultsFolderPath;
+    return {
+      'documents': ?documents,
+      'exportFolderPath': ?exportFolderPath,
+      'processorInfo': ?processorInfo,
+      'processorResultsFolderPath': ?processorResultsFolderPath,
+    };
+  }
 }
 
 /// The DocAI processor information.
@@ -4288,11 +4369,16 @@ class GoogleCloudContentwarehouseV1ProcessorInfo {
         schemaName: json_['schemaName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentType != null) 'documentType': documentType!,
-    if (processorName != null) 'processorName': processorName!,
-    if (schemaName != null) 'schemaName': schemaName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentType = this.documentType;
+    final processorName = this.processorName;
+    final schemaName = this.schemaName;
+    return {
+      'documentType': ?documentType,
+      'processorName': ?processorName,
+      'schemaName': ?schemaName,
+    };
+  }
 }
 
 /// Status of a project, including the project state, dbType, aclMode and etc.
@@ -4361,15 +4447,22 @@ class GoogleCloudContentwarehouseV1ProjectStatus {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessControlMode != null) 'accessControlMode': accessControlMode!,
-    if (databaseType != null) 'databaseType': databaseType!,
-    if (documentCreatorDefaultRole != null)
-      'documentCreatorDefaultRole': documentCreatorDefaultRole!,
-    if (location != null) 'location': location!,
-    if (qaEnabled != null) 'qaEnabled': qaEnabled!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessControlMode = this.accessControlMode;
+    final databaseType = this.databaseType;
+    final documentCreatorDefaultRole = this.documentCreatorDefaultRole;
+    final location = this.location;
+    final qaEnabled = this.qaEnabled;
+    final state = this.state;
+    return {
+      'accessControlMode': ?accessControlMode,
+      'databaseType': ?databaseType,
+      'documentCreatorDefaultRole': ?documentCreatorDefaultRole,
+      'location': ?location,
+      'qaEnabled': ?qaEnabled,
+      'state': ?state,
+    };
+  }
 }
 
 /// Property of a document.
@@ -4421,71 +4514,71 @@ class GoogleCloudContentwarehouseV1Property {
 
   GoogleCloudContentwarehouseV1Property.fromJson(core.Map json_)
     : this(
-        dateTimeValues:
-            json_.containsKey('dateTimeValues')
-                ? GoogleCloudContentwarehouseV1DateTimeArray.fromJson(
-                  json_['dateTimeValues']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        enumValues:
-            json_.containsKey('enumValues')
-                ? GoogleCloudContentwarehouseV1EnumArray.fromJson(
-                  json_['enumValues'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        floatValues:
-            json_.containsKey('floatValues')
-                ? GoogleCloudContentwarehouseV1FloatArray.fromJson(
-                  json_['floatValues'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        integerValues:
-            json_.containsKey('integerValues')
-                ? GoogleCloudContentwarehouseV1IntegerArray.fromJson(
-                  json_['integerValues'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        mapProperty:
-            json_.containsKey('mapProperty')
-                ? GoogleCloudContentwarehouseV1MapProperty.fromJson(
-                  json_['mapProperty'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dateTimeValues: json_.containsKey('dateTimeValues')
+            ? GoogleCloudContentwarehouseV1DateTimeArray.fromJson(
+                json_['dateTimeValues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        enumValues: json_.containsKey('enumValues')
+            ? GoogleCloudContentwarehouseV1EnumArray.fromJson(
+                json_['enumValues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        floatValues: json_.containsKey('floatValues')
+            ? GoogleCloudContentwarehouseV1FloatArray.fromJson(
+                json_['floatValues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        integerValues: json_.containsKey('integerValues')
+            ? GoogleCloudContentwarehouseV1IntegerArray.fromJson(
+                json_['integerValues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mapProperty: json_.containsKey('mapProperty')
+            ? GoogleCloudContentwarehouseV1MapProperty.fromJson(
+                json_['mapProperty'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        propertyValues:
-            json_.containsKey('propertyValues')
-                ? GoogleCloudContentwarehouseV1PropertyArray.fromJson(
-                  json_['propertyValues']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textValues:
-            json_.containsKey('textValues')
-                ? GoogleCloudContentwarehouseV1TextArray.fromJson(
-                  json_['textValues'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        timestampValues:
-            json_.containsKey('timestampValues')
-                ? GoogleCloudContentwarehouseV1TimestampArray.fromJson(
-                  json_['timestampValues']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        propertyValues: json_.containsKey('propertyValues')
+            ? GoogleCloudContentwarehouseV1PropertyArray.fromJson(
+                json_['propertyValues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textValues: json_.containsKey('textValues')
+            ? GoogleCloudContentwarehouseV1TextArray.fromJson(
+                json_['textValues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timestampValues: json_.containsKey('timestampValues')
+            ? GoogleCloudContentwarehouseV1TimestampArray.fromJson(
+                json_['timestampValues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dateTimeValues != null) 'dateTimeValues': dateTimeValues!,
-    if (enumValues != null) 'enumValues': enumValues!,
-    if (floatValues != null) 'floatValues': floatValues!,
-    if (integerValues != null) 'integerValues': integerValues!,
-    if (mapProperty != null) 'mapProperty': mapProperty!,
-    if (name != null) 'name': name!,
-    if (propertyValues != null) 'propertyValues': propertyValues!,
-    if (textValues != null) 'textValues': textValues!,
-    if (timestampValues != null) 'timestampValues': timestampValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dateTimeValues = this.dateTimeValues;
+    final enumValues = this.enumValues;
+    final floatValues = this.floatValues;
+    final integerValues = this.integerValues;
+    final mapProperty = this.mapProperty;
+    final name = this.name;
+    final propertyValues = this.propertyValues;
+    final textValues = this.textValues;
+    final timestampValues = this.timestampValues;
+    return {
+      'dateTimeValues': ?dateTimeValues,
+      'enumValues': ?enumValues,
+      'floatValues': ?floatValues,
+      'integerValues': ?integerValues,
+      'mapProperty': ?mapProperty,
+      'name': ?name,
+      'propertyValues': ?propertyValues,
+      'textValues': ?textValues,
+      'timestampValues': ?timestampValues,
+    };
+  }
 }
 
 /// Property values.
@@ -4497,19 +4590,19 @@ class GoogleCloudContentwarehouseV1PropertyArray {
 
   GoogleCloudContentwarehouseV1PropertyArray.fromJson(core.Map json_)
     : this(
-        properties:
-            (json_['properties'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1Property.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1Property.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (properties != null) 'properties': properties!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final properties = this.properties;
+    return {'properties': ?properties};
+  }
 }
 
 /// Defines the metadata for a schema property.
@@ -4617,104 +4710,107 @@ class GoogleCloudContentwarehouseV1PropertyDefinition {
 
   GoogleCloudContentwarehouseV1PropertyDefinition.fromJson(core.Map json_)
     : this(
-        dateTimeTypeOptions:
-            json_.containsKey('dateTimeTypeOptions')
-                ? GoogleCloudContentwarehouseV1DateTimeTypeOptions.fromJson(
-                  json_['dateTimeTypeOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dateTimeTypeOptions: json_.containsKey('dateTimeTypeOptions')
+            ? GoogleCloudContentwarehouseV1DateTimeTypeOptions.fromJson(
+                json_['dateTimeTypeOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
-        enumTypeOptions:
-            json_.containsKey('enumTypeOptions')
-                ? GoogleCloudContentwarehouseV1EnumTypeOptions.fromJson(
-                  json_['enumTypeOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        floatTypeOptions:
-            json_.containsKey('floatTypeOptions')
-                ? GoogleCloudContentwarehouseV1FloatTypeOptions.fromJson(
-                  json_['floatTypeOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        integerTypeOptions:
-            json_.containsKey('integerTypeOptions')
-                ? GoogleCloudContentwarehouseV1IntegerTypeOptions.fromJson(
-                  json_['integerTypeOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        enumTypeOptions: json_.containsKey('enumTypeOptions')
+            ? GoogleCloudContentwarehouseV1EnumTypeOptions.fromJson(
+                json_['enumTypeOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        floatTypeOptions: json_.containsKey('floatTypeOptions')
+            ? GoogleCloudContentwarehouseV1FloatTypeOptions.fromJson(
+                json_['floatTypeOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        integerTypeOptions: json_.containsKey('integerTypeOptions')
+            ? GoogleCloudContentwarehouseV1IntegerTypeOptions.fromJson(
+                json_['integerTypeOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         isFilterable: json_['isFilterable'] as core.bool?,
         isMetadata: json_['isMetadata'] as core.bool?,
         isRepeatable: json_['isRepeatable'] as core.bool?,
         isRequired: json_['isRequired'] as core.bool?,
         isSearchable: json_['isSearchable'] as core.bool?,
-        mapTypeOptions:
-            json_.containsKey('mapTypeOptions')
-                ? GoogleCloudContentwarehouseV1MapTypeOptions.fromJson(
-                  json_['mapTypeOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mapTypeOptions: json_.containsKey('mapTypeOptions')
+            ? GoogleCloudContentwarehouseV1MapTypeOptions.fromJson(
+                json_['mapTypeOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        propertyTypeOptions:
-            json_.containsKey('propertyTypeOptions')
-                ? GoogleCloudContentwarehouseV1PropertyTypeOptions.fromJson(
-                  json_['propertyTypeOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        propertyTypeOptions: json_.containsKey('propertyTypeOptions')
+            ? GoogleCloudContentwarehouseV1PropertyTypeOptions.fromJson(
+                json_['propertyTypeOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         retrievalImportance: json_['retrievalImportance'] as core.String?,
-        schemaSources:
-            (json_['schemaSources'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        textTypeOptions:
-            json_.containsKey('textTypeOptions')
-                ? GoogleCloudContentwarehouseV1TextTypeOptions.fromJson(
-                  json_['textTypeOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        timestampTypeOptions:
-            json_.containsKey('timestampTypeOptions')
-                ? GoogleCloudContentwarehouseV1TimestampTypeOptions.fromJson(
-                  json_['timestampTypeOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        schemaSources: (json_['schemaSources'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        textTypeOptions: json_.containsKey('textTypeOptions')
+            ? GoogleCloudContentwarehouseV1TextTypeOptions.fromJson(
+                json_['textTypeOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timestampTypeOptions: json_.containsKey('timestampTypeOptions')
+            ? GoogleCloudContentwarehouseV1TimestampTypeOptions.fromJson(
+                json_['timestampTypeOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dateTimeTypeOptions != null)
-      'dateTimeTypeOptions': dateTimeTypeOptions!,
-    if (displayName != null) 'displayName': displayName!,
-    if (enumTypeOptions != null) 'enumTypeOptions': enumTypeOptions!,
-    if (floatTypeOptions != null) 'floatTypeOptions': floatTypeOptions!,
-    if (integerTypeOptions != null) 'integerTypeOptions': integerTypeOptions!,
-    if (isFilterable != null) 'isFilterable': isFilterable!,
-    if (isMetadata != null) 'isMetadata': isMetadata!,
-    if (isRepeatable != null) 'isRepeatable': isRepeatable!,
-    if (isRequired != null) 'isRequired': isRequired!,
-    if (isSearchable != null) 'isSearchable': isSearchable!,
-    if (mapTypeOptions != null) 'mapTypeOptions': mapTypeOptions!,
-    if (name != null) 'name': name!,
-    if (propertyTypeOptions != null)
-      'propertyTypeOptions': propertyTypeOptions!,
-    if (retrievalImportance != null)
-      'retrievalImportance': retrievalImportance!,
-    if (schemaSources != null) 'schemaSources': schemaSources!,
-    if (textTypeOptions != null) 'textTypeOptions': textTypeOptions!,
-    if (timestampTypeOptions != null)
-      'timestampTypeOptions': timestampTypeOptions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dateTimeTypeOptions = this.dateTimeTypeOptions;
+    final displayName = this.displayName;
+    final enumTypeOptions = this.enumTypeOptions;
+    final floatTypeOptions = this.floatTypeOptions;
+    final integerTypeOptions = this.integerTypeOptions;
+    final isFilterable = this.isFilterable;
+    final isMetadata = this.isMetadata;
+    final isRepeatable = this.isRepeatable;
+    final isRequired = this.isRequired;
+    final isSearchable = this.isSearchable;
+    final mapTypeOptions = this.mapTypeOptions;
+    final name = this.name;
+    final propertyTypeOptions = this.propertyTypeOptions;
+    final retrievalImportance = this.retrievalImportance;
+    final schemaSources = this.schemaSources;
+    final textTypeOptions = this.textTypeOptions;
+    final timestampTypeOptions = this.timestampTypeOptions;
+    return {
+      'dateTimeTypeOptions': ?dateTimeTypeOptions,
+      'displayName': ?displayName,
+      'enumTypeOptions': ?enumTypeOptions,
+      'floatTypeOptions': ?floatTypeOptions,
+      'integerTypeOptions': ?integerTypeOptions,
+      'isFilterable': ?isFilterable,
+      'isMetadata': ?isMetadata,
+      'isRepeatable': ?isRepeatable,
+      'isRequired': ?isRequired,
+      'isSearchable': ?isSearchable,
+      'mapTypeOptions': ?mapTypeOptions,
+      'name': ?name,
+      'propertyTypeOptions': ?propertyTypeOptions,
+      'retrievalImportance': ?retrievalImportance,
+      'schemaSources': ?schemaSources,
+      'textTypeOptions': ?textTypeOptions,
+      'timestampTypeOptions': ?timestampTypeOptions,
+    };
+  }
 }
 
 /// The schema source information.
@@ -4737,10 +4833,11 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
         processorType: json_['processorType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (processorType != null) 'processorType': processorType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final processorType = this.processorType;
+    return {'name': ?name, 'processorType': ?processorType};
+  }
 }
 
 class GoogleCloudContentwarehouseV1PropertyFilter {
@@ -4790,10 +4887,11 @@ class GoogleCloudContentwarehouseV1PropertyFilter {
         documentSchemaName: json_['documentSchemaName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (documentSchemaName != null) 'documentSchemaName': documentSchemaName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final documentSchemaName = this.documentSchemaName;
+    return {'condition': ?condition, 'documentSchemaName': ?documentSchemaName};
+  }
 }
 
 /// Configurations for a nested structured data property.
@@ -4808,21 +4906,20 @@ class GoogleCloudContentwarehouseV1PropertyTypeOptions {
 
   GoogleCloudContentwarehouseV1PropertyTypeOptions.fromJson(core.Map json_)
     : this(
-        propertyDefinitions:
-            (json_['propertyDefinitions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1PropertyDefinition.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        propertyDefinitions: (json_['propertyDefinitions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContentwarehouseV1PropertyDefinition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (propertyDefinitions != null)
-      'propertyDefinitions': propertyDefinitions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final propertyDefinitions = this.propertyDefinitions;
+    return {'propertyDefinitions': ?propertyDefinitions};
+  }
 }
 
 /// Represents the action responsible for publishing messages to a Pub/Sub
@@ -4839,17 +4936,17 @@ class GoogleCloudContentwarehouseV1PublishAction {
 
   GoogleCloudContentwarehouseV1PublishAction.fromJson(core.Map json_)
     : this(
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         topicId: json_['topicId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (messages != null) 'messages': messages!,
-    if (topicId != null) 'topicId': topicId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final messages = this.messages;
+    final topicId = this.topicId;
+    return {'messages': ?messages, 'topicId': ?topicId};
+  }
 }
 
 /// Additional result info for the question-answering feature.
@@ -4872,21 +4969,21 @@ class GoogleCloudContentwarehouseV1QAResult {
   GoogleCloudContentwarehouseV1QAResult.fromJson(core.Map json_)
     : this(
         confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
-        highlights:
-            (json_['highlights'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1QAResultHighlight.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        highlights: (json_['highlights'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContentwarehouseV1QAResultHighlight.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidenceScore != null) 'confidenceScore': confidenceScore!,
-    if (highlights != null) 'highlights': highlights!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidenceScore = this.confidenceScore;
+    final highlights = this.highlights;
+    return {'confidenceScore': ?confidenceScore, 'highlights': ?highlights};
+  }
 }
 
 /// A text span in the search text snippet that represents a highlighted section
@@ -4909,10 +5006,11 @@ class GoogleCloudContentwarehouseV1QAResultHighlight {
         startIndex: json_['startIndex'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endIndex != null) 'endIndex': endIndex!,
-    if (startIndex != null) 'startIndex': startIndex!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endIndex = this.endIndex;
+    final startIndex = this.startIndex;
+    return {'endIndex': ?endIndex, 'startIndex': ?startIndex};
+  }
 }
 
 /// Represents the action responsible for remove a document from a specific
@@ -4938,10 +5036,11 @@ class GoogleCloudContentwarehouseV1RemoveFromFolderAction {
         folder: json_['folder'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (folder != null) 'folder': folder!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final folder = this.folder;
+    return {'condition': ?condition, 'folder': ?folder};
+  }
 }
 
 /// Meta information is used to improve the performance of the service.
@@ -4953,17 +5052,17 @@ class GoogleCloudContentwarehouseV1RequestMetadata {
 
   GoogleCloudContentwarehouseV1RequestMetadata.fromJson(core.Map json_)
     : this(
-        userInfo:
-            json_.containsKey('userInfo')
-                ? GoogleCloudContentwarehouseV1UserInfo.fromJson(
-                  json_['userInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        userInfo: json_.containsKey('userInfo')
+            ? GoogleCloudContentwarehouseV1UserInfo.fromJson(
+                json_['userInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (userInfo != null) 'userInfo': userInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final userInfo = this.userInfo;
+    return {'userInfo': ?userInfo};
+  }
 }
 
 /// Additional information returned to client, such as debugging information.
@@ -4978,9 +5077,10 @@ class GoogleCloudContentwarehouseV1ResponseMetadata {
   GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(core.Map json_)
     : this(requestId: json_['requestId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    return {'requestId': ?requestId};
+  }
 }
 
 /// Represents the rule for a content warehouse trigger.
@@ -5022,27 +5122,33 @@ class GoogleCloudContentwarehouseV1Rule {
 
   GoogleCloudContentwarehouseV1Rule.fromJson(core.Map json_)
     : this(
-        actions:
-            (json_['actions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1Action.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        actions: (json_['actions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1Action.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         condition: json_['condition'] as core.String?,
         description: json_['description'] as core.String?,
         ruleId: json_['ruleId'] as core.String?,
         triggerType: json_['triggerType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actions != null) 'actions': actions!,
-    if (condition != null) 'condition': condition!,
-    if (description != null) 'description': description!,
-    if (ruleId != null) 'ruleId': ruleId!,
-    if (triggerType != null) 'triggerType': triggerType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actions = this.actions;
+    final condition = this.condition;
+    final description = this.description;
+    final ruleId = this.ruleId;
+    final triggerType = this.triggerType;
+    return {
+      'actions': ?actions,
+      'condition': ?condition,
+      'description': ?description,
+      'ruleId': ?ruleId,
+      'triggerType': ?triggerType,
+    };
+  }
 }
 
 /// Represents a rule and outputs of associated actions.
@@ -5057,26 +5163,25 @@ class GoogleCloudContentwarehouseV1RuleActionsPair {
 
   GoogleCloudContentwarehouseV1RuleActionsPair.fromJson(core.Map json_)
     : this(
-        actionOutputs:
-            (json_['actionOutputs'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1ActionOutput.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        rule:
-            json_.containsKey('rule')
-                ? GoogleCloudContentwarehouseV1Rule.fromJson(
-                  json_['rule'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        actionOutputs: (json_['actionOutputs'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1ActionOutput.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        rule: json_.containsKey('rule')
+            ? GoogleCloudContentwarehouseV1Rule.fromJson(
+                json_['rule'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actionOutputs != null) 'actionOutputs': actionOutputs!,
-    if (rule != null) 'rule': rule!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionOutputs = this.actionOutputs;
+    final rule = this.rule;
+    return {'actionOutputs': ?actionOutputs, 'rule': ?rule};
+  }
 }
 
 /// Records the output of Rule Engine including rule evaluation and actions
@@ -5101,30 +5206,31 @@ class GoogleCloudContentwarehouseV1RuleEngineOutput {
 
   GoogleCloudContentwarehouseV1RuleEngineOutput.fromJson(core.Map json_)
     : this(
-        actionExecutorOutput:
-            json_.containsKey('actionExecutorOutput')
-                ? GoogleCloudContentwarehouseV1ActionExecutorOutput.fromJson(
-                  json_['actionExecutorOutput']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        actionExecutorOutput: json_.containsKey('actionExecutorOutput')
+            ? GoogleCloudContentwarehouseV1ActionExecutorOutput.fromJson(
+                json_['actionExecutorOutput']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         documentName: json_['documentName'] as core.String?,
-        ruleEvaluatorOutput:
-            json_.containsKey('ruleEvaluatorOutput')
-                ? GoogleCloudContentwarehouseV1RuleEvaluatorOutput.fromJson(
-                  json_['ruleEvaluatorOutput']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ruleEvaluatorOutput: json_.containsKey('ruleEvaluatorOutput')
+            ? GoogleCloudContentwarehouseV1RuleEvaluatorOutput.fromJson(
+                json_['ruleEvaluatorOutput']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actionExecutorOutput != null)
-      'actionExecutorOutput': actionExecutorOutput!,
-    if (documentName != null) 'documentName': documentName!,
-    if (ruleEvaluatorOutput != null)
-      'ruleEvaluatorOutput': ruleEvaluatorOutput!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionExecutorOutput = this.actionExecutorOutput;
+    final documentName = this.documentName;
+    final ruleEvaluatorOutput = this.ruleEvaluatorOutput;
+    return {
+      'actionExecutorOutput': ?actionExecutorOutput,
+      'documentName': ?documentName,
+      'ruleEvaluatorOutput': ?ruleEvaluatorOutput,
+    };
+  }
 }
 
 /// Represents the output of the Rule Evaluator.
@@ -5147,37 +5253,39 @@ class GoogleCloudContentwarehouseV1RuleEvaluatorOutput {
 
   GoogleCloudContentwarehouseV1RuleEvaluatorOutput.fromJson(core.Map json_)
     : this(
-        invalidRules:
-            (json_['invalidRules'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1InvalidRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        matchedRules:
-            (json_['matchedRules'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1Rule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        triggeredRules:
-            (json_['triggeredRules'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1Rule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        invalidRules: (json_['invalidRules'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1InvalidRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        matchedRules: (json_['matchedRules'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1Rule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        triggeredRules: (json_['triggeredRules'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1Rule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (invalidRules != null) 'invalidRules': invalidRules!,
-    if (matchedRules != null) 'matchedRules': matchedRules!,
-    if (triggeredRules != null) 'triggeredRules': triggeredRules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final invalidRules = this.invalidRules;
+    final matchedRules = this.matchedRules;
+    final triggeredRules = this.triggeredRules;
+    return {
+      'invalidRules': ?invalidRules,
+      'matchedRules': ?matchedRules,
+      'triggeredRules': ?triggeredRules,
+    };
+  }
 }
 
 /// Represents a set of rules from a single customer.
@@ -5209,23 +5317,28 @@ class GoogleCloudContentwarehouseV1RuleSet {
     : this(
         description: json_['description'] as core.String?,
         name: json_['name'] as core.String?,
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudContentwarehouseV1Rule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1Rule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         source: json_['source'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (name != null) 'name': name!,
-    if (rules != null) 'rules': rules!,
-    if (source != null) 'source': source!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final name = this.name;
+    final rules = this.rules;
+    final source = this.source;
+    return {
+      'description': ?description,
+      'name': ?name,
+      'rules': ?rules,
+      'source': ?source,
+    };
+  }
 }
 
 /// Request message for DocumentService.RunPipeline.
@@ -5260,53 +5373,54 @@ class GoogleCloudContentwarehouseV1RunPipelineRequest {
 
   GoogleCloudContentwarehouseV1RunPipelineRequest.fromJson(core.Map json_)
     : this(
-        exportCdwPipeline:
-            json_.containsKey('exportCdwPipeline')
-                ? GoogleCloudContentwarehouseV1ExportToCdwPipeline.fromJson(
-                  json_['exportCdwPipeline']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        gcsIngestPipeline:
-            json_.containsKey('gcsIngestPipeline')
-                ? GoogleCloudContentwarehouseV1GcsIngestPipeline.fromJson(
-                  json_['gcsIngestPipeline']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        exportCdwPipeline: json_.containsKey('exportCdwPipeline')
+            ? GoogleCloudContentwarehouseV1ExportToCdwPipeline.fromJson(
+                json_['exportCdwPipeline']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gcsIngestPipeline: json_.containsKey('gcsIngestPipeline')
+            ? GoogleCloudContentwarehouseV1GcsIngestPipeline.fromJson(
+                json_['gcsIngestPipeline']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gcsIngestWithDocAiProcessorsPipeline:
             json_.containsKey('gcsIngestWithDocAiProcessorsPipeline')
-                ? GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline.fromJson(
-                  json_['gcsIngestWithDocAiProcessorsPipeline']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        processWithDocAiPipeline:
-            json_.containsKey('processWithDocAiPipeline')
-                ? GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline.fromJson(
-                  json_['processWithDocAiPipeline']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline.fromJson(
+                json_['gcsIngestWithDocAiProcessorsPipeline']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        processWithDocAiPipeline: json_.containsKey('processWithDocAiPipeline')
+            ? GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline.fromJson(
+                json_['processWithDocAiPipeline']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exportCdwPipeline != null) 'exportCdwPipeline': exportCdwPipeline!,
-    if (gcsIngestPipeline != null) 'gcsIngestPipeline': gcsIngestPipeline!,
-    if (gcsIngestWithDocAiProcessorsPipeline != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final exportCdwPipeline = this.exportCdwPipeline;
+    final gcsIngestPipeline = this.gcsIngestPipeline;
+    final gcsIngestWithDocAiProcessorsPipeline =
+        this.gcsIngestWithDocAiProcessorsPipeline;
+    final processWithDocAiPipeline = this.processWithDocAiPipeline;
+    final requestMetadata = this.requestMetadata;
+    return {
+      'exportCdwPipeline': ?exportCdwPipeline,
+      'gcsIngestPipeline': ?gcsIngestPipeline,
       'gcsIngestWithDocAiProcessorsPipeline':
-          gcsIngestWithDocAiProcessorsPipeline!,
-    if (processWithDocAiPipeline != null)
-      'processWithDocAiPipeline': processWithDocAiPipeline!,
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+          ?gcsIngestWithDocAiProcessorsPipeline,
+      'processWithDocAiPipeline': ?processWithDocAiPipeline,
+      'requestMetadata': ?requestMetadata,
+    };
+  }
 }
 
 /// Request message for DocumentService.SearchDocuments.
@@ -5420,49 +5534,56 @@ class GoogleCloudContentwarehouseV1SearchDocumentsRequest {
 
   GoogleCloudContentwarehouseV1SearchDocumentsRequest.fromJson(core.Map json_)
     : this(
-        documentQuery:
-            json_.containsKey('documentQuery')
-                ? GoogleCloudContentwarehouseV1DocumentQuery.fromJson(
-                  json_['documentQuery'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        histogramQueries:
-            (json_['histogramQueries'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1HistogramQuery.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        documentQuery: json_.containsKey('documentQuery')
+            ? GoogleCloudContentwarehouseV1DocumentQuery.fromJson(
+                json_['documentQuery'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        histogramQueries: (json_['histogramQueries'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1HistogramQuery.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         offset: json_['offset'] as core.int?,
         orderBy: json_['orderBy'] as core.String?,
         pageSize: json_['pageSize'] as core.int?,
         pageToken: json_['pageToken'] as core.String?,
         qaSizeLimit: json_['qaSizeLimit'] as core.int?,
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requireTotalSize: json_['requireTotalSize'] as core.bool?,
         totalResultSize: json_['totalResultSize'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentQuery != null) 'documentQuery': documentQuery!,
-    if (histogramQueries != null) 'histogramQueries': histogramQueries!,
-    if (offset != null) 'offset': offset!,
-    if (orderBy != null) 'orderBy': orderBy!,
-    if (pageSize != null) 'pageSize': pageSize!,
-    if (pageToken != null) 'pageToken': pageToken!,
-    if (qaSizeLimit != null) 'qaSizeLimit': qaSizeLimit!,
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-    if (requireTotalSize != null) 'requireTotalSize': requireTotalSize!,
-    if (totalResultSize != null) 'totalResultSize': totalResultSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentQuery = this.documentQuery;
+    final histogramQueries = this.histogramQueries;
+    final offset = this.offset;
+    final orderBy = this.orderBy;
+    final pageSize = this.pageSize;
+    final pageToken = this.pageToken;
+    final qaSizeLimit = this.qaSizeLimit;
+    final requestMetadata = this.requestMetadata;
+    final requireTotalSize = this.requireTotalSize;
+    final totalResultSize = this.totalResultSize;
+    return {
+      'documentQuery': ?documentQuery,
+      'histogramQueries': ?histogramQueries,
+      'offset': ?offset,
+      'orderBy': ?orderBy,
+      'pageSize': ?pageSize,
+      'pageToken': ?pageToken,
+      'qaSizeLimit': ?qaSizeLimit,
+      'requestMetadata': ?requestMetadata,
+      'requireTotalSize': ?requireTotalSize,
+      'totalResultSize': ?totalResultSize,
+    };
+  }
 }
 
 /// Response message for DocumentService.SearchDocuments.
@@ -5513,44 +5634,48 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponse {
 
   GoogleCloudContentwarehouseV1SearchDocumentsResponse.fromJson(core.Map json_)
     : this(
-        histogramQueryResults:
-            (json_['histogramQueryResults'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1HistogramQueryResult.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        matchingDocuments:
-            (json_['matchingDocuments'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        metadata:
-            json_.containsKey('metadata')
-                ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        histogramQueryResults: (json_['histogramQueryResults'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContentwarehouseV1HistogramQueryResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        matchingDocuments: (json_['matchingDocuments'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        metadata: json_.containsKey('metadata')
+            ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nextPageToken: json_['nextPageToken'] as core.String?,
         questionAnswer: json_['questionAnswer'] as core.String?,
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (histogramQueryResults != null)
-      'histogramQueryResults': histogramQueryResults!,
-    if (matchingDocuments != null) 'matchingDocuments': matchingDocuments!,
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (questionAnswer != null) 'questionAnswer': questionAnswer!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final histogramQueryResults = this.histogramQueryResults;
+    final matchingDocuments = this.matchingDocuments;
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    final questionAnswer = this.questionAnswer;
+    final totalSize = this.totalSize;
+    return {
+      'histogramQueryResults': ?histogramQueryResults,
+      'matchingDocuments': ?matchingDocuments,
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+      'questionAnswer': ?questionAnswer,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Document entry with metadata inside SearchDocumentsResponse
@@ -5590,32 +5715,35 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument {
   GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument.fromJson(
     core.Map json_,
   ) : this(
-        document:
-            json_.containsKey('document')
-                ? GoogleCloudContentwarehouseV1Document.fromJson(
-                  json_['document'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        document: json_.containsKey('document')
+            ? GoogleCloudContentwarehouseV1Document.fromJson(
+                json_['document'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         matchedTokenPageIndices:
             (json_['matchedTokenPageIndices'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        qaResult:
-            json_.containsKey('qaResult')
-                ? GoogleCloudContentwarehouseV1QAResult.fromJson(
-                  json_['qaResult'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        qaResult: json_.containsKey('qaResult')
+            ? GoogleCloudContentwarehouseV1QAResult.fromJson(
+                json_['qaResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         searchTextSnippet: json_['searchTextSnippet'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (document != null) 'document': document!,
-    if (matchedTokenPageIndices != null)
-      'matchedTokenPageIndices': matchedTokenPageIndices!,
-    if (qaResult != null) 'qaResult': qaResult!,
-    if (searchTextSnippet != null) 'searchTextSnippet': searchTextSnippet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final document = this.document;
+    final matchedTokenPageIndices = this.matchedTokenPageIndices;
+    final qaResult = this.qaResult;
+    final searchTextSnippet = this.searchTextSnippet;
+    return {
+      'document': ?document,
+      'matchedTokenPageIndices': ?matchedTokenPageIndices,
+      'qaResult': ?qaResult,
+      'searchTextSnippet': ?searchTextSnippet,
+    };
+  }
 }
 
 /// Request message for DocumentService.SetAcl.
@@ -5654,27 +5782,29 @@ class GoogleCloudContentwarehouseV1SetAclRequest {
 
   GoogleCloudContentwarehouseV1SetAclRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? GoogleIamV1Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         projectOwner: json_['projectOwner'] as core.bool?,
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (projectOwner != null) 'projectOwner': projectOwner!,
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final projectOwner = this.projectOwner;
+    final requestMetadata = this.requestMetadata;
+    return {
+      'policy': ?policy,
+      'projectOwner': ?projectOwner,
+      'requestMetadata': ?requestMetadata,
+    };
+  }
 }
 
 /// Response message for DocumentService.SetAcl.
@@ -5690,24 +5820,23 @@ class GoogleCloudContentwarehouseV1SetAclResponse {
 
   GoogleCloudContentwarehouseV1SetAclResponse.fromJson(core.Map json_)
     : this(
-        metadata:
-            json_.containsKey('metadata')
-                ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        policy:
-            json_.containsKey('policy')
-                ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        policy: json_.containsKey('policy')
+            ? GoogleIamV1Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final policy = this.policy;
+    return {'metadata': ?metadata, 'policy': ?policy};
+  }
 }
 
 /// Represents a list of synonyms for a given context.
@@ -5742,22 +5871,22 @@ class GoogleCloudContentwarehouseV1SynonymSet {
     : this(
         context: json_['context'] as core.String?,
         name: json_['name'] as core.String?,
-        synonyms:
-            (json_['synonyms'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1SynonymSetSynonym.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        synonyms: (json_['synonyms'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContentwarehouseV1SynonymSetSynonym.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (context != null) 'context': context!,
-    if (name != null) 'name': name!,
-    if (synonyms != null) 'synonyms': synonyms!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final context = this.context;
+    final name = this.name;
+    final synonyms = this.synonyms;
+    return {'context': ?context, 'name': ?name, 'synonyms': ?synonyms};
+  }
 }
 
 /// Represents a list of words given by the customer All these words are
@@ -5770,15 +5899,15 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 
   GoogleCloudContentwarehouseV1SynonymSetSynonym.fromJson(core.Map json_)
     : this(
-        words:
-            (json_['words'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        words: (json_['words'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (words != null) 'words': words!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final words = this.words;
+    return {'words': ?words};
+  }
 }
 
 /// String/text values.
@@ -5805,18 +5934,18 @@ class GoogleCloudContentwarehouseV1TimeFilter {
   GoogleCloudContentwarehouseV1TimeFilter.fromJson(core.Map json_)
     : this(
         timeField: json_['timeField'] as core.String?,
-        timeRange:
-            json_.containsKey('timeRange')
-                ? GoogleTypeInterval.fromJson(
-                  json_['timeRange'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeRange: json_.containsKey('timeRange')
+            ? GoogleTypeInterval.fromJson(
+                json_['timeRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (timeField != null) 'timeField': timeField!,
-    if (timeRange != null) 'timeRange': timeRange!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final timeField = this.timeField;
+    final timeRange = this.timeRange;
+    return {'timeField': ?timeField, 'timeRange': ?timeRange};
+  }
 }
 
 /// Timestamp values.
@@ -5828,20 +5957,19 @@ class GoogleCloudContentwarehouseV1TimestampArray {
 
   GoogleCloudContentwarehouseV1TimestampArray.fromJson(core.Map json_)
     : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudContentwarehouseV1TimestampValue.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContentwarehouseV1TimestampValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
 }
 
 /// Configurations for a timestamp property.
@@ -5869,10 +5997,11 @@ class GoogleCloudContentwarehouseV1TimestampValue {
         timestampValue: json_['timestampValue'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (textValue != null) 'textValue': textValue!,
-    if (timestampValue != null) 'timestampValue': timestampValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final textValue = this.textValue;
+    final timestampValue = this.timestampValue;
+    return {'textValue': ?textValue, 'timestampValue': ?timestampValue};
+  }
 }
 
 /// Request message for DocumentService.UpdateDocument.
@@ -5905,41 +6034,41 @@ class GoogleCloudContentwarehouseV1UpdateDocumentRequest {
 
   GoogleCloudContentwarehouseV1UpdateDocumentRequest.fromJson(core.Map json_)
     : this(
-        cloudAiDocumentOption:
-            json_.containsKey('cloudAiDocumentOption')
-                ? GoogleCloudContentwarehouseV1CloudAIDocumentOption.fromJson(
-                  json_['cloudAiDocumentOption']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        document:
-            json_.containsKey('document')
-                ? GoogleCloudContentwarehouseV1Document.fromJson(
-                  json_['document'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        requestMetadata:
-            json_.containsKey('requestMetadata')
-                ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
-                  json_['requestMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        updateOptions:
-            json_.containsKey('updateOptions')
-                ? GoogleCloudContentwarehouseV1UpdateOptions.fromJson(
-                  json_['updateOptions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cloudAiDocumentOption: json_.containsKey('cloudAiDocumentOption')
+            ? GoogleCloudContentwarehouseV1CloudAIDocumentOption.fromJson(
+                json_['cloudAiDocumentOption']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        document: json_.containsKey('document')
+            ? GoogleCloudContentwarehouseV1Document.fromJson(
+                json_['document'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        requestMetadata: json_.containsKey('requestMetadata')
+            ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                json_['requestMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateOptions: json_.containsKey('updateOptions')
+            ? GoogleCloudContentwarehouseV1UpdateOptions.fromJson(
+                json_['updateOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudAiDocumentOption != null)
-      'cloudAiDocumentOption': cloudAiDocumentOption!,
-    if (document != null) 'document': document!,
-    if (requestMetadata != null) 'requestMetadata': requestMetadata!,
-    if (updateOptions != null) 'updateOptions': updateOptions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudAiDocumentOption = this.cloudAiDocumentOption;
+    final document = this.document;
+    final requestMetadata = this.requestMetadata;
+    final updateOptions = this.updateOptions;
+    return {
+      'cloudAiDocumentOption': ?cloudAiDocumentOption,
+      'document': ?document,
+      'requestMetadata': ?requestMetadata,
+      'updateOptions': ?updateOptions,
+    };
+  }
 }
 
 /// Response message for DocumentService.UpdateDocument.
@@ -5965,32 +6094,34 @@ class GoogleCloudContentwarehouseV1UpdateDocumentResponse {
 
   GoogleCloudContentwarehouseV1UpdateDocumentResponse.fromJson(core.Map json_)
     : this(
-        document:
-            json_.containsKey('document')
-                ? GoogleCloudContentwarehouseV1Document.fromJson(
-                  json_['document'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        ruleEngineOutput:
-            json_.containsKey('ruleEngineOutput')
-                ? GoogleCloudContentwarehouseV1RuleEngineOutput.fromJson(
-                  json_['ruleEngineOutput']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        document: json_.containsKey('document')
+            ? GoogleCloudContentwarehouseV1Document.fromJson(
+                json_['document'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? GoogleCloudContentwarehouseV1ResponseMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ruleEngineOutput: json_.containsKey('ruleEngineOutput')
+            ? GoogleCloudContentwarehouseV1RuleEngineOutput.fromJson(
+                json_['ruleEngineOutput']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (document != null) 'document': document!,
-    if (metadata != null) 'metadata': metadata!,
-    if (ruleEngineOutput != null) 'ruleEngineOutput': ruleEngineOutput!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final document = this.document;
+    final metadata = this.metadata;
+    final ruleEngineOutput = this.ruleEngineOutput;
+    return {
+      'document': ?document,
+      'metadata': ?metadata,
+      'ruleEngineOutput': ?ruleEngineOutput,
+    };
+  }
 }
 
 /// Request message for DocumentSchemaService.UpdateDocumentSchema.
@@ -6007,18 +6138,17 @@ class GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest {
   GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest.fromJson(
     core.Map json_,
   ) : this(
-        documentSchema:
-            json_.containsKey('documentSchema')
-                ? GoogleCloudContentwarehouseV1DocumentSchema.fromJson(
-                  json_['documentSchema']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        documentSchema: json_.containsKey('documentSchema')
+            ? GoogleCloudContentwarehouseV1DocumentSchema.fromJson(
+                json_['documentSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentSchema != null) 'documentSchema': documentSchema!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentSchema = this.documentSchema;
+    return {'documentSchema': ?documentSchema};
+  }
 }
 
 /// Options for Update operations.
@@ -6059,22 +6189,26 @@ class GoogleCloudContentwarehouseV1UpdateOptions {
 
   GoogleCloudContentwarehouseV1UpdateOptions.fromJson(core.Map json_)
     : this(
-        mergeFieldsOptions:
-            json_.containsKey('mergeFieldsOptions')
-                ? GoogleCloudContentwarehouseV1MergeFieldsOptions.fromJson(
-                  json_['mergeFieldsOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mergeFieldsOptions: json_.containsKey('mergeFieldsOptions')
+            ? GoogleCloudContentwarehouseV1MergeFieldsOptions.fromJson(
+                json_['mergeFieldsOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
         updateType: json_['updateType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mergeFieldsOptions != null) 'mergeFieldsOptions': mergeFieldsOptions!,
-    if (updateMask != null) 'updateMask': updateMask!,
-    if (updateType != null) 'updateType': updateType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mergeFieldsOptions = this.mergeFieldsOptions;
+    final updateMask = this.updateMask;
+    final updateType = this.updateType;
+    return {
+      'mergeFieldsOptions': ?mergeFieldsOptions,
+      'updateMask': ?updateMask,
+      'updateType': ?updateType,
+    };
+  }
 }
 
 /// Request message for RuleSetService.UpdateRuleSet.
@@ -6088,17 +6222,17 @@ class GoogleCloudContentwarehouseV1UpdateRuleSetRequest {
 
   GoogleCloudContentwarehouseV1UpdateRuleSetRequest.fromJson(core.Map json_)
     : this(
-        ruleSet:
-            json_.containsKey('ruleSet')
-                ? GoogleCloudContentwarehouseV1RuleSet.fromJson(
-                  json_['ruleSet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ruleSet: json_.containsKey('ruleSet')
+            ? GoogleCloudContentwarehouseV1RuleSet.fromJson(
+                json_['ruleSet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ruleSet != null) 'ruleSet': ruleSet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ruleSet = this.ruleSet;
+    return {'ruleSet': ?ruleSet};
+  }
 }
 
 /// The user information.
@@ -6119,17 +6253,17 @@ class GoogleCloudContentwarehouseV1UserInfo {
 
   GoogleCloudContentwarehouseV1UserInfo.fromJson(core.Map json_)
     : this(
-        groupIds:
-            (json_['groupIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        groupIds: (json_['groupIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         id: json_['id'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (groupIds != null) 'groupIds': groupIds!,
-    if (id != null) 'id': id!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupIds = this.groupIds;
+    final id = this.id;
+    return {'groupIds': ?groupIds, 'id': ?id};
+  }
 }
 
 /// `Value` represents a dynamically typed value which can be either be a float,
@@ -6172,39 +6306,44 @@ class GoogleCloudContentwarehouseV1Value {
   GoogleCloudContentwarehouseV1Value.fromJson(core.Map json_)
     : this(
         booleanValue: json_['booleanValue'] as core.bool?,
-        datetimeValue:
-            json_.containsKey('datetimeValue')
-                ? GoogleTypeDateTime.fromJson(
-                  json_['datetimeValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        enumValue:
-            json_.containsKey('enumValue')
-                ? GoogleCloudContentwarehouseV1EnumValue.fromJson(
-                  json_['enumValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        datetimeValue: json_.containsKey('datetimeValue')
+            ? GoogleTypeDateTime.fromJson(
+                json_['datetimeValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        enumValue: json_.containsKey('enumValue')
+            ? GoogleCloudContentwarehouseV1EnumValue.fromJson(
+                json_['enumValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
         intValue: json_['intValue'] as core.int?,
         stringValue: json_['stringValue'] as core.String?,
-        timestampValue:
-            json_.containsKey('timestampValue')
-                ? GoogleCloudContentwarehouseV1TimestampValue.fromJson(
-                  json_['timestampValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timestampValue: json_.containsKey('timestampValue')
+            ? GoogleCloudContentwarehouseV1TimestampValue.fromJson(
+                json_['timestampValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (booleanValue != null) 'booleanValue': booleanValue!,
-    if (datetimeValue != null) 'datetimeValue': datetimeValue!,
-    if (enumValue != null) 'enumValue': enumValue!,
-    if (floatValue != null) 'floatValue': floatValue!,
-    if (intValue != null) 'intValue': intValue!,
-    if (stringValue != null) 'stringValue': stringValue!,
-    if (timestampValue != null) 'timestampValue': timestampValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final booleanValue = this.booleanValue;
+    final datetimeValue = this.datetimeValue;
+    final enumValue = this.enumValue;
+    final floatValue = this.floatValue;
+    final intValue = this.intValue;
+    final stringValue = this.stringValue;
+    final timestampValue = this.timestampValue;
+    return {
+      'booleanValue': ?booleanValue,
+      'datetimeValue': ?datetimeValue,
+      'enumValue': ?enumValue,
+      'floatValue': ?floatValue,
+      'intValue': ?intValue,
+      'stringValue': ?stringValue,
+      'timestampValue': ?timestampValue,
+    };
+  }
 }
 
 /// Specifies the schema property name.
@@ -6223,16 +6362,19 @@ class GoogleCloudContentwarehouseV1WeightedSchemaProperty {
   GoogleCloudContentwarehouseV1WeightedSchemaProperty.fromJson(core.Map json_)
     : this(
         documentSchemaName: json_['documentSchemaName'] as core.String?,
-        propertyNames:
-            (json_['propertyNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        propertyNames: (json_['propertyNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentSchemaName != null) 'documentSchemaName': documentSchemaName!,
-    if (propertyNames != null) 'propertyNames': propertyNames!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentSchemaName = this.documentSchemaName;
+    final propertyNames = this.propertyNames;
+    return {
+      'documentSchemaName': ?documentSchemaName,
+      'propertyNames': ?propertyNames,
+    };
+  }
 }
 
 /// Encodes the detailed information of a barcode.
@@ -6250,28 +6392,27 @@ class GoogleCloudDocumentaiV1BoundingPoly {
 
   GoogleCloudDocumentaiV1BoundingPoly.fromJson(core.Map json_)
     : this(
-        normalizedVertices:
-            (json_['normalizedVertices'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1NormalizedVertex.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        vertices:
-            (json_['vertices'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1Vertex.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        normalizedVertices: (json_['normalizedVertices'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1NormalizedVertex.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vertices: (json_['vertices'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1Vertex.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (normalizedVertices != null) 'normalizedVertices': normalizedVertices!,
-    if (vertices != null) 'vertices': vertices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final normalizedVertices = this.normalizedVertices;
+    final vertices = this.vertices;
+    return {'normalizedVertices': ?normalizedVertices, 'vertices': ?vertices};
+  }
 }
 
 /// Document represents the canonical document resource in Document AI.
@@ -6379,103 +6520,106 @@ class GoogleCloudDocumentaiV1Document {
 
   GoogleCloudDocumentaiV1Document.fromJson(core.Map json_)
     : this(
-        chunkedDocument:
-            json_.containsKey('chunkedDocument')
-                ? GoogleCloudDocumentaiV1DocumentChunkedDocument.fromJson(
-                  json_['chunkedDocument']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        chunkedDocument: json_.containsKey('chunkedDocument')
+            ? GoogleCloudDocumentaiV1DocumentChunkedDocument.fromJson(
+                json_['chunkedDocument'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         content: json_['content'] as core.String?,
-        documentLayout:
-            json_.containsKey('documentLayout')
-                ? GoogleCloudDocumentaiV1DocumentDocumentLayout.fromJson(
-                  json_['documentLayout']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        entities:
-            (json_['entities'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        entityRelations:
-            (json_['entityRelations'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentEntityRelation.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        error:
-            json_.containsKey('error')
-                ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        documentLayout: json_.containsKey('documentLayout')
+            ? GoogleCloudDocumentaiV1DocumentDocumentLayout.fromJson(
+                json_['documentLayout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        entities: (json_['entities'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        entityRelations: (json_['entityRelations'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentEntityRelation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         mimeType: json_['mimeType'] as core.String?,
-        pages:
-            (json_['pages'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentPage.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        revisions:
-            (json_['revisions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentRevision.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        shardInfo:
-            json_.containsKey('shardInfo')
-                ? GoogleCloudDocumentaiV1DocumentShardInfo.fromJson(
-                  json_['shardInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pages: (json_['pages'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentPage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        revisions: (json_['revisions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentRevision.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        shardInfo: json_.containsKey('shardInfo')
+            ? GoogleCloudDocumentaiV1DocumentShardInfo.fromJson(
+                json_['shardInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         text: json_['text'] as core.String?,
-        textChanges:
-            (json_['textChanges'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentTextChange.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        textStyles:
-            (json_['textStyles'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentStyle.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        textChanges: (json_['textChanges'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentTextChange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        textStyles: (json_['textStyles'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentStyle.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (chunkedDocument != null) 'chunkedDocument': chunkedDocument!,
-    if (content != null) 'content': content!,
-    if (documentLayout != null) 'documentLayout': documentLayout!,
-    if (entities != null) 'entities': entities!,
-    if (entityRelations != null) 'entityRelations': entityRelations!,
-    if (error != null) 'error': error!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (pages != null) 'pages': pages!,
-    if (revisions != null) 'revisions': revisions!,
-    if (shardInfo != null) 'shardInfo': shardInfo!,
-    if (text != null) 'text': text!,
-    if (textChanges != null) 'textChanges': textChanges!,
-    if (textStyles != null) 'textStyles': textStyles!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final chunkedDocument = this.chunkedDocument;
+    final content = this.content;
+    final documentLayout = this.documentLayout;
+    final entities = this.entities;
+    final entityRelations = this.entityRelations;
+    final error = this.error;
+    final mimeType = this.mimeType;
+    final pages = this.pages;
+    final revisions = this.revisions;
+    final shardInfo = this.shardInfo;
+    final text = this.text;
+    final textChanges = this.textChanges;
+    final textStyles = this.textStyles;
+    final uri = this.uri;
+    return {
+      'chunkedDocument': ?chunkedDocument,
+      'content': ?content,
+      'documentLayout': ?documentLayout,
+      'entities': ?entities,
+      'entityRelations': ?entityRelations,
+      'error': ?error,
+      'mimeType': ?mimeType,
+      'pages': ?pages,
+      'revisions': ?revisions,
+      'shardInfo': ?shardInfo,
+      'text': ?text,
+      'textChanges': ?textChanges,
+      'textStyles': ?textStyles,
+      'uri': ?uri,
+    };
+  }
 }
 
 /// Represents the chunks that the document is divided into.
@@ -6487,20 +6631,20 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocument {
 
   GoogleCloudDocumentaiV1DocumentChunkedDocument.fromJson(core.Map json_)
     : this(
-        chunks:
-            (json_['chunks'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        chunks: (json_['chunks'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (chunks != null) 'chunks': chunks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final chunks = this.chunks;
+    return {'chunks': ?chunks};
+  }
 }
 
 /// Represents a chunk.
@@ -6538,44 +6682,48 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
     : this(
         chunkId: json_['chunkId'] as core.String?,
         content: json_['content'] as core.String?,
-        pageFooters:
-            (json_['pageFooters'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        pageHeaders:
-            (json_['pageHeaders'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        pageSpan:
-            json_.containsKey('pageSpan')
-                ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
-                  json_['pageSpan'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sourceBlockIds:
-            (json_['sourceBlockIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        pageFooters: (json_['pageFooters'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        pageHeaders: (json_['pageHeaders'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        pageSpan: json_.containsKey('pageSpan')
+            ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
+                json_['pageSpan'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sourceBlockIds: (json_['sourceBlockIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (chunkId != null) 'chunkId': chunkId!,
-    if (content != null) 'content': content!,
-    if (pageFooters != null) 'pageFooters': pageFooters!,
-    if (pageHeaders != null) 'pageHeaders': pageHeaders!,
-    if (pageSpan != null) 'pageSpan': pageSpan!,
-    if (sourceBlockIds != null) 'sourceBlockIds': sourceBlockIds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final chunkId = this.chunkId;
+    final content = this.content;
+    final pageFooters = this.pageFooters;
+    final pageHeaders = this.pageHeaders;
+    final pageSpan = this.pageSpan;
+    final sourceBlockIds = this.sourceBlockIds;
+    return {
+      'chunkId': ?chunkId,
+      'content': ?content,
+      'pageFooters': ?pageFooters,
+      'pageHeaders': ?pageHeaders,
+      'pageSpan': ?pageSpan,
+      'sourceBlockIds': ?sourceBlockIds,
+    };
+  }
 }
 
 /// Represents the page footer associated with the chunk.
@@ -6594,19 +6742,19 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter {
   GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter.fromJson(
     core.Map json_,
   ) : this(
-        pageSpan:
-            json_.containsKey('pageSpan')
-                ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
-                  json_['pageSpan'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pageSpan: json_.containsKey('pageSpan')
+            ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
+                json_['pageSpan'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pageSpan != null) 'pageSpan': pageSpan!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pageSpan = this.pageSpan;
+    final text = this.text;
+    return {'pageSpan': ?pageSpan, 'text': ?text};
+  }
 }
 
 /// Represents the page header associated with the chunk.
@@ -6625,19 +6773,19 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
   GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader.fromJson(
     core.Map json_,
   ) : this(
-        pageSpan:
-            json_.containsKey('pageSpan')
-                ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
-                  json_['pageSpan'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pageSpan: json_.containsKey('pageSpan')
+            ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
+                json_['pageSpan'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pageSpan != null) 'pageSpan': pageSpan!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pageSpan = this.pageSpan;
+    final text = this.text;
+    return {'pageSpan': ?pageSpan, 'text': ?text};
+  }
 }
 
 /// Represents where the chunk starts and ends in the document.
@@ -6655,20 +6803,20 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayout {
 
   GoogleCloudDocumentaiV1DocumentDocumentLayout.fromJson(core.Map json_)
     : this(
-        blocks:
-            (json_['blocks'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        blocks: (json_['blocks'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blocks != null) 'blocks': blocks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blocks = this.blocks;
+    return {'blocks': ?blocks};
+  }
 }
 
 /// Represents a block.
@@ -6706,39 +6854,42 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
     core.Map json_,
   ) : this(
         blockId: json_['blockId'] as core.String?,
-        listBlock:
-            json_.containsKey('listBlock')
-                ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock.fromJson(
-                  json_['listBlock'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pageSpan:
-            json_.containsKey('pageSpan')
-                ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
-                  json_['pageSpan'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        tableBlock:
-            json_.containsKey('tableBlock')
-                ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
-                  json_['tableBlock'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        textBlock:
-            json_.containsKey('textBlock')
-                ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
-                  json_['textBlock'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        listBlock: json_.containsKey('listBlock')
+            ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock.fromJson(
+                json_['listBlock'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pageSpan: json_.containsKey('pageSpan')
+            ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
+                json_['pageSpan'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tableBlock: json_.containsKey('tableBlock')
+            ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
+                json_['tableBlock'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textBlock: json_.containsKey('textBlock')
+            ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
+                json_['textBlock'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blockId != null) 'blockId': blockId!,
-    if (listBlock != null) 'listBlock': listBlock!,
-    if (pageSpan != null) 'pageSpan': pageSpan!,
-    if (tableBlock != null) 'tableBlock': tableBlock!,
-    if (textBlock != null) 'textBlock': textBlock!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blockId = this.blockId;
+    final listBlock = this.listBlock;
+    final pageSpan = this.pageSpan;
+    final tableBlock = this.tableBlock;
+    final textBlock = this.textBlock;
+    return {
+      'blockId': ?blockId,
+      'listBlock': ?listBlock,
+      'pageSpan': ?pageSpan,
+      'tableBlock': ?tableBlock,
+      'textBlock': ?textBlock,
+    };
+  }
 }
 
 /// Represents a list type block.
@@ -6762,22 +6913,22 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutList
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock.fromJson(
     core.Map json_,
   ) : this(
-        listEntries:
-            (json_['listEntries'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        listEntries: (json_['listEntries'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (listEntries != null) 'listEntries': listEntries!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final listEntries = this.listEntries;
+    final type = this.type;
+    return {'listEntries': ?listEntries, 'type': ?type};
+  }
 }
 
 /// Represents an entry in the list.
@@ -6795,20 +6946,20 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutList
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry.fromJson(
     core.Map json_,
   ) : this(
-        blocks:
-            (json_['blocks'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        blocks: (json_['blocks'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blocks != null) 'blocks': blocks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blocks = this.blocks;
+    return {'blocks': ?blocks};
+  }
 }
 
 /// Represents where the block starts and ends in the document.
@@ -6841,32 +6992,35 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
     core.Map json_,
   ) : this(
-        bodyRows:
-            (json_['bodyRows'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        bodyRows: (json_['bodyRows'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         caption: json_['caption'] as core.String?,
-        headerRows:
-            (json_['headerRows'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        headerRows: (json_['headerRows'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bodyRows != null) 'bodyRows': bodyRows!,
-    if (caption != null) 'caption': caption!,
-    if (headerRows != null) 'headerRows': headerRows!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bodyRows = this.bodyRows;
+    final caption = this.caption;
+    final headerRows = this.headerRows;
+    return {
+      'bodyRows': ?bodyRows,
+      'caption': ?caption,
+      'headerRows': ?headerRows,
+    };
+  }
 }
 
 /// Represents a cell in a table row.
@@ -6892,24 +7046,24 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell.fromJson(
     core.Map json_,
   ) : this(
-        blocks:
-            (json_['blocks'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        blocks: (json_['blocks'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         colSpan: json_['colSpan'] as core.int?,
         rowSpan: json_['rowSpan'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blocks != null) 'blocks': blocks!,
-    if (colSpan != null) 'colSpan': colSpan!,
-    if (rowSpan != null) 'rowSpan': rowSpan!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blocks = this.blocks;
+    final colSpan = this.colSpan;
+    final rowSpan = this.rowSpan;
+    return {'blocks': ?blocks, 'colSpan': ?colSpan, 'rowSpan': ?rowSpan};
+  }
 }
 
 /// Represents a row in a table.
@@ -6927,20 +7081,20 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
     core.Map json_,
   ) : this(
-        cells:
-            (json_['cells'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        cells: (json_['cells'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cells != null) 'cells': cells!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cells = this.cells;
+    return {'cells': ?cells};
+  }
 }
 
 /// Represents a text type block.
@@ -6969,24 +7123,24 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutText
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
     core.Map json_,
   ) : this(
-        blocks:
-            (json_['blocks'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        blocks: (json_['blocks'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         text: json_['text'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blocks != null) 'blocks': blocks!,
-    if (text != null) 'text': text!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blocks = this.blocks;
+    final text = this.text;
+    final type = this.type;
+    return {'blocks': ?blocks, 'text': ?text, 'type': ?type};
+  }
 }
 
 /// An entity that could be a phrase in the text or a property that belongs to
@@ -7082,56 +7236,63 @@ class GoogleCloudDocumentaiV1DocumentEntity {
         id: json_['id'] as core.String?,
         mentionId: json_['mentionId'] as core.String?,
         mentionText: json_['mentionText'] as core.String?,
-        normalizedValue:
-            json_.containsKey('normalizedValue')
-                ? GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
-                  json_['normalizedValue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pageAnchor:
-            json_.containsKey('pageAnchor')
-                ? GoogleCloudDocumentaiV1DocumentPageAnchor.fromJson(
-                  json_['pageAnchor'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        properties:
-            (json_['properties'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        provenance:
-            json_.containsKey('provenance')
-                ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        normalizedValue: json_.containsKey('normalizedValue')
+            ? GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
+                json_['normalizedValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pageAnchor: json_.containsKey('pageAnchor')
+            ? GoogleCloudDocumentaiV1DocumentPageAnchor.fromJson(
+                json_['pageAnchor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentEntity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        provenance: json_.containsKey('provenance')
+            ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                json_['provenance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         redacted: json_['redacted'] as core.bool?,
-        textAnchor:
-            json_.containsKey('textAnchor')
-                ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
-                  json_['textAnchor'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        textAnchor: json_.containsKey('textAnchor')
+            ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
+                json_['textAnchor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidence != null) 'confidence': confidence!,
-    if (id != null) 'id': id!,
-    if (mentionId != null) 'mentionId': mentionId!,
-    if (mentionText != null) 'mentionText': mentionText!,
-    if (normalizedValue != null) 'normalizedValue': normalizedValue!,
-    if (pageAnchor != null) 'pageAnchor': pageAnchor!,
-    if (properties != null) 'properties': properties!,
-    if (provenance != null) 'provenance': provenance!,
-    if (redacted != null) 'redacted': redacted!,
-    if (textAnchor != null) 'textAnchor': textAnchor!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidence = this.confidence;
+    final id = this.id;
+    final mentionId = this.mentionId;
+    final mentionText = this.mentionText;
+    final normalizedValue = this.normalizedValue;
+    final pageAnchor = this.pageAnchor;
+    final properties = this.properties;
+    final provenance = this.provenance;
+    final redacted = this.redacted;
+    final textAnchor = this.textAnchor;
+    final type = this.type;
+    return {
+      'confidence': ?confidence,
+      'id': ?id,
+      'mentionId': ?mentionId,
+      'mentionText': ?mentionText,
+      'normalizedValue': ?normalizedValue,
+      'pageAnchor': ?pageAnchor,
+      'properties': ?properties,
+      'provenance': ?provenance,
+      'redacted': ?redacted,
+      'textAnchor': ?textAnchor,
+      'type': ?type,
+    };
+  }
 }
 
 /// Parsed and normalized entity value.
@@ -7197,46 +7358,52 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
 
   GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(core.Map json_)
     : this(
-        addressValue:
-            json_.containsKey('addressValue')
-                ? GoogleTypePostalAddress.fromJson(
-                  json_['addressValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        addressValue: json_.containsKey('addressValue')
+            ? GoogleTypePostalAddress.fromJson(
+                json_['addressValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         booleanValue: json_['booleanValue'] as core.bool?,
-        dateValue:
-            json_.containsKey('dateValue')
-                ? GoogleTypeDate.fromJson(
-                  json_['dateValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        datetimeValue:
-            json_.containsKey('datetimeValue')
-                ? GoogleTypeDateTime.fromJson(
-                  json_['datetimeValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dateValue: json_.containsKey('dateValue')
+            ? GoogleTypeDate.fromJson(
+                json_['dateValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        datetimeValue: json_.containsKey('datetimeValue')
+            ? GoogleTypeDateTime.fromJson(
+                json_['datetimeValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
         integerValue: json_['integerValue'] as core.int?,
-        moneyValue:
-            json_.containsKey('moneyValue')
-                ? GoogleTypeMoney.fromJson(
-                  json_['moneyValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        moneyValue: json_.containsKey('moneyValue')
+            ? GoogleTypeMoney.fromJson(
+                json_['moneyValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressValue != null) 'addressValue': addressValue!,
-    if (booleanValue != null) 'booleanValue': booleanValue!,
-    if (dateValue != null) 'dateValue': dateValue!,
-    if (datetimeValue != null) 'datetimeValue': datetimeValue!,
-    if (floatValue != null) 'floatValue': floatValue!,
-    if (integerValue != null) 'integerValue': integerValue!,
-    if (moneyValue != null) 'moneyValue': moneyValue!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressValue = this.addressValue;
+    final booleanValue = this.booleanValue;
+    final dateValue = this.dateValue;
+    final datetimeValue = this.datetimeValue;
+    final floatValue = this.floatValue;
+    final integerValue = this.integerValue;
+    final moneyValue = this.moneyValue;
+    final text = this.text;
+    return {
+      'addressValue': ?addressValue,
+      'booleanValue': ?booleanValue,
+      'dateValue': ?dateValue,
+      'datetimeValue': ?datetimeValue,
+      'floatValue': ?floatValue,
+      'integerValue': ?integerValue,
+      'moneyValue': ?moneyValue,
+      'text': ?text,
+    };
+  }
 }
 
 /// Relationship between Entities.
@@ -7338,152 +7505,153 @@ class GoogleCloudDocumentaiV1DocumentPage {
 
   GoogleCloudDocumentaiV1DocumentPage.fromJson(core.Map json_)
     : this(
-        blocks:
-            (json_['blocks'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentPageBlock.fromJson(
+        blocks: (json_['blocks'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentPageBlock.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        detectedBarcodes: (json_['detectedBarcodes'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
-                )
-                .toList(),
-        detectedBarcodes:
-            (json_['detectedBarcodes'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        detectedLanguages:
-            (json_['detectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        dimension:
-            json_.containsKey('dimension')
-                ? GoogleCloudDocumentaiV1DocumentPageDimension.fromJson(
-                  json_['dimension'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        formFields:
-            (json_['formFields'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageFormField.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        image:
-            json_.containsKey('image')
-                ? GoogleCloudDocumentaiV1DocumentPageImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        imageQualityScores:
-            json_.containsKey('imageQualityScores')
-                ? GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromJson(
-                  json_['imageQualityScores']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lines:
-            (json_['lines'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentPageLine.fromJson(
+            )
+            .toList(),
+        detectedLanguages: (json_['detectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
-                )
-                .toList(),
+            )
+            .toList(),
+        dimension: json_.containsKey('dimension')
+            ? GoogleCloudDocumentaiV1DocumentPageDimension.fromJson(
+                json_['dimension'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        formFields: (json_['formFields'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentPageFormField.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        image: json_.containsKey('image')
+            ? GoogleCloudDocumentaiV1DocumentPageImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageQualityScores: json_.containsKey('imageQualityScores')
+            ? GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromJson(
+                json_['imageQualityScores']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lines: (json_['lines'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentPageLine.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         pageNumber: json_['pageNumber'] as core.int?,
-        paragraphs:
-            (json_['paragraphs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageParagraph.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        provenance:
-            json_.containsKey('provenance')
-                ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        symbols:
-            (json_['symbols'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentPageSymbol.fromJson(
+        paragraphs: (json_['paragraphs'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentPageParagraph.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        provenance: json_.containsKey('provenance')
+            ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                json_['provenance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        symbols: (json_['symbols'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentPageSymbol.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        tables: (json_['tables'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentPageTable.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        tokens: (json_['tokens'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentPageToken.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        transforms: (json_['transforms'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentPageMatrix.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        visualElements: (json_['visualElements'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
-                )
-                .toList(),
-        tables:
-            (json_['tables'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentPageTable.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        tokens:
-            (json_['tokens'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentPageToken.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        transforms:
-            (json_['transforms'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentPageMatrix.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        visualElements:
-            (json_['visualElements'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blocks != null) 'blocks': blocks!,
-    if (detectedBarcodes != null) 'detectedBarcodes': detectedBarcodes!,
-    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-    if (dimension != null) 'dimension': dimension!,
-    if (formFields != null) 'formFields': formFields!,
-    if (image != null) 'image': image!,
-    if (imageQualityScores != null) 'imageQualityScores': imageQualityScores!,
-    if (layout != null) 'layout': layout!,
-    if (lines != null) 'lines': lines!,
-    if (pageNumber != null) 'pageNumber': pageNumber!,
-    if (paragraphs != null) 'paragraphs': paragraphs!,
-    if (provenance != null) 'provenance': provenance!,
-    if (symbols != null) 'symbols': symbols!,
-    if (tables != null) 'tables': tables!,
-    if (tokens != null) 'tokens': tokens!,
-    if (transforms != null) 'transforms': transforms!,
-    if (visualElements != null) 'visualElements': visualElements!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blocks = this.blocks;
+    final detectedBarcodes = this.detectedBarcodes;
+    final detectedLanguages = this.detectedLanguages;
+    final dimension = this.dimension;
+    final formFields = this.formFields;
+    final image = this.image;
+    final imageQualityScores = this.imageQualityScores;
+    final layout = this.layout;
+    final lines = this.lines;
+    final pageNumber = this.pageNumber;
+    final paragraphs = this.paragraphs;
+    final provenance = this.provenance;
+    final symbols = this.symbols;
+    final tables = this.tables;
+    final tokens = this.tokens;
+    final transforms = this.transforms;
+    final visualElements = this.visualElements;
+    return {
+      'blocks': ?blocks,
+      'detectedBarcodes': ?detectedBarcodes,
+      'detectedLanguages': ?detectedLanguages,
+      'dimension': ?dimension,
+      'formFields': ?formFields,
+      'image': ?image,
+      'imageQualityScores': ?imageQualityScores,
+      'layout': ?layout,
+      'lines': ?lines,
+      'pageNumber': ?pageNumber,
+      'paragraphs': ?paragraphs,
+      'provenance': ?provenance,
+      'symbols': ?symbols,
+      'tables': ?tables,
+      'tokens': ?tokens,
+      'transforms': ?transforms,
+      'visualElements': ?visualElements,
+    };
+  }
 }
 
 /// Referencing the visual context of the entity in the Document.pages.
@@ -7498,20 +7666,20 @@ class GoogleCloudDocumentaiV1DocumentPageAnchor {
 
   GoogleCloudDocumentaiV1DocumentPageAnchor.fromJson(core.Map json_)
     : this(
-        pageRefs:
-            (json_['pageRefs'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        pageRefs: (json_['pageRefs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pageRefs != null) 'pageRefs': pageRefs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pageRefs = this.pageRefs;
+    return {'pageRefs': ?pageRefs};
+  }
 }
 
 /// Represents a weak reference to a page element within a document.
@@ -7572,25 +7740,31 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
 
   GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromJson(core.Map json_)
     : this(
-        boundingPoly:
-            json_.containsKey('boundingPoly')
-                ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
-                  json_['boundingPoly'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        boundingPoly: json_.containsKey('boundingPoly')
+            ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
+                json_['boundingPoly'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         confidence: (json_['confidence'] as core.num?)?.toDouble(),
         layoutId: json_['layoutId'] as core.String?,
         layoutType: json_['layoutType'] as core.String?,
         page: json_['page'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boundingPoly != null) 'boundingPoly': boundingPoly!,
-    if (confidence != null) 'confidence': confidence!,
-    if (layoutId != null) 'layoutId': layoutId!,
-    if (layoutType != null) 'layoutType': layoutType!,
-    if (page != null) 'page': page!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boundingPoly = this.boundingPoly;
+    final confidence = this.confidence;
+    final layoutId = this.layoutId;
+    final layoutType = this.layoutType;
+    final page = this.page;
+    return {
+      'boundingPoly': ?boundingPoly,
+      'confidence': ?confidence,
+      'layoutId': ?layoutId,
+      'layoutType': ?layoutType,
+      'page': ?page,
+    };
+  }
 }
 
 /// A block has a set of lines (collected into paragraphs) that have a common
@@ -7617,34 +7791,36 @@ class GoogleCloudDocumentaiV1DocumentPageBlock {
 
   GoogleCloudDocumentaiV1DocumentPageBlock.fromJson(core.Map json_)
     : this(
-        detectedLanguages:
-            (json_['detectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        provenance:
-            json_.containsKey('provenance')
-                ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        detectedLanguages: (json_['detectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        provenance: json_.containsKey('provenance')
+            ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                json_['provenance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-    if (layout != null) 'layout': layout!,
-    if (provenance != null) 'provenance': provenance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectedLanguages = this.detectedLanguages;
+    final layout = this.layout;
+    final provenance = this.provenance;
+    return {
+      'detectedLanguages': ?detectedLanguages,
+      'layout': ?layout,
+      'provenance': ?provenance,
+    };
+  }
 }
 
 /// A detected barcode.
@@ -7662,24 +7838,23 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
 
   GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromJson(core.Map json_)
     : this(
-        barcode:
-            json_.containsKey('barcode')
-                ? GoogleCloudDocumentaiV1Barcode.fromJson(
-                  json_['barcode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        barcode: json_.containsKey('barcode')
+            ? GoogleCloudDocumentaiV1Barcode.fromJson(
+                json_['barcode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (barcode != null) 'barcode': barcode!,
-    if (layout != null) 'layout': layout!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final barcode = this.barcode;
+    final layout = this.layout;
+    return {'barcode': ?barcode, 'layout': ?layout};
+  }
 }
 
 /// Detected language for a structural component.
@@ -7744,57 +7919,60 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
     : this(
         correctedKeyText: json_['correctedKeyText'] as core.String?,
         correctedValueText: json_['correctedValueText'] as core.String?,
-        fieldName:
-            json_.containsKey('fieldName')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['fieldName'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        fieldValue:
-            json_.containsKey('fieldValue')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['fieldValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        nameDetectedLanguages:
-            (json_['nameDetectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        provenance:
-            json_.containsKey('provenance')
-                ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueDetectedLanguages:
-            (json_['valueDetectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        fieldName: json_.containsKey('fieldName')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['fieldName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fieldValue: json_.containsKey('fieldValue')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['fieldValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nameDetectedLanguages: (json_['nameDetectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        provenance: json_.containsKey('provenance')
+            ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                json_['provenance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueDetectedLanguages: (json_['valueDetectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         valueType: json_['valueType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (correctedKeyText != null) 'correctedKeyText': correctedKeyText!,
-    if (correctedValueText != null) 'correctedValueText': correctedValueText!,
-    if (fieldName != null) 'fieldName': fieldName!,
-    if (fieldValue != null) 'fieldValue': fieldValue!,
-    if (nameDetectedLanguages != null)
-      'nameDetectedLanguages': nameDetectedLanguages!,
-    if (provenance != null) 'provenance': provenance!,
-    if (valueDetectedLanguages != null)
-      'valueDetectedLanguages': valueDetectedLanguages!,
-    if (valueType != null) 'valueType': valueType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final correctedKeyText = this.correctedKeyText;
+    final correctedValueText = this.correctedValueText;
+    final fieldName = this.fieldName;
+    final fieldValue = this.fieldValue;
+    final nameDetectedLanguages = this.nameDetectedLanguages;
+    final provenance = this.provenance;
+    final valueDetectedLanguages = this.valueDetectedLanguages;
+    final valueType = this.valueType;
+    return {
+      'correctedKeyText': ?correctedKeyText,
+      'correctedValueText': ?correctedValueText,
+      'fieldName': ?fieldName,
+      'fieldValue': ?fieldValue,
+      'nameDetectedLanguages': ?nameDetectedLanguages,
+      'provenance': ?provenance,
+      'valueDetectedLanguages': ?valueDetectedLanguages,
+      'valueType': ?valueType,
+    };
+  }
 }
 
 /// Rendered image contents for this page.
@@ -7821,22 +7999,22 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
 
   GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromJson(core.Map json_)
     : this(
-        detectedDefects:
-            (json_['detectedDefects'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        detectedDefects: (json_['detectedDefects'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         qualityScore: (json_['qualityScore'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detectedDefects != null) 'detectedDefects': detectedDefects!,
-    if (qualityScore != null) 'qualityScore': qualityScore!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectedDefects = this.detectedDefects;
+    final qualityScore = this.qualityScore;
+    return {'detectedDefects': ?detectedDefects, 'qualityScore': ?qualityScore};
+  }
 }
 
 /// Image Quality Defects
@@ -7879,28 +8057,32 @@ class GoogleCloudDocumentaiV1DocumentPageLayout {
 
   GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(core.Map json_)
     : this(
-        boundingPoly:
-            json_.containsKey('boundingPoly')
-                ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
-                  json_['boundingPoly'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        boundingPoly: json_.containsKey('boundingPoly')
+            ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
+                json_['boundingPoly'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         confidence: (json_['confidence'] as core.num?)?.toDouble(),
         orientation: json_['orientation'] as core.String?,
-        textAnchor:
-            json_.containsKey('textAnchor')
-                ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
-                  json_['textAnchor'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        textAnchor: json_.containsKey('textAnchor')
+            ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
+                json_['textAnchor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boundingPoly != null) 'boundingPoly': boundingPoly!,
-    if (confidence != null) 'confidence': confidence!,
-    if (orientation != null) 'orientation': orientation!,
-    if (textAnchor != null) 'textAnchor': textAnchor!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final boundingPoly = this.boundingPoly;
+    final confidence = this.confidence;
+    final orientation = this.orientation;
+    final textAnchor = this.textAnchor;
+    return {
+      'boundingPoly': ?boundingPoly,
+      'confidence': ?confidence,
+      'orientation': ?orientation,
+      'textAnchor': ?textAnchor,
+    };
+  }
 }
 
 /// A collection of tokens that a human would perceive as a line.
@@ -7928,34 +8110,36 @@ class GoogleCloudDocumentaiV1DocumentPageLine {
 
   GoogleCloudDocumentaiV1DocumentPageLine.fromJson(core.Map json_)
     : this(
-        detectedLanguages:
-            (json_['detectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        provenance:
-            json_.containsKey('provenance')
-                ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        detectedLanguages: (json_['detectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        provenance: json_.containsKey('provenance')
+            ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                json_['provenance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-    if (layout != null) 'layout': layout!,
-    if (provenance != null) 'provenance': provenance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectedLanguages = this.detectedLanguages;
+    final layout = this.layout;
+    final provenance = this.provenance;
+    return {
+      'detectedLanguages': ?detectedLanguages,
+      'layout': ?layout,
+      'provenance': ?provenance,
+    };
+  }
 }
 
 /// Representation for transformation matrix, intended to be compatible and used
@@ -7986,34 +8170,36 @@ class GoogleCloudDocumentaiV1DocumentPageParagraph {
 
   GoogleCloudDocumentaiV1DocumentPageParagraph.fromJson(core.Map json_)
     : this(
-        detectedLanguages:
-            (json_['detectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        provenance:
-            json_.containsKey('provenance')
-                ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        detectedLanguages: (json_['detectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        provenance: json_.containsKey('provenance')
+            ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                json_['provenance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-    if (layout != null) 'layout': layout!,
-    if (provenance != null) 'provenance': provenance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectedLanguages = this.detectedLanguages;
+    final layout = this.layout;
+    final provenance = this.provenance;
+    return {
+      'detectedLanguages': ?detectedLanguages,
+      'layout': ?layout,
+      'provenance': ?provenance,
+    };
+  }
 }
 
 /// A detected symbol.
@@ -8032,27 +8218,26 @@ class GoogleCloudDocumentaiV1DocumentPageSymbol {
 
   GoogleCloudDocumentaiV1DocumentPageSymbol.fromJson(core.Map json_)
     : this(
-        detectedLanguages:
-            (json_['detectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        detectedLanguages: (json_['detectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-    if (layout != null) 'layout': layout!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectedLanguages = this.detectedLanguages;
+    final layout = this.layout;
+    return {'detectedLanguages': ?detectedLanguages, 'layout': ?layout};
+  }
 }
 
 /// A table representation similar to HTML table structure.
@@ -8086,54 +8271,56 @@ class GoogleCloudDocumentaiV1DocumentPageTable {
 
   GoogleCloudDocumentaiV1DocumentPageTable.fromJson(core.Map json_)
     : this(
-        bodyRows:
-            (json_['bodyRows'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        detectedLanguages:
-            (json_['detectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        headerRows:
-            (json_['headerRows'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        provenance:
-            json_.containsKey('provenance')
-                ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bodyRows: (json_['bodyRows'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        detectedLanguages: (json_['detectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        headerRows: (json_['headerRows'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        provenance: json_.containsKey('provenance')
+            ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                json_['provenance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bodyRows != null) 'bodyRows': bodyRows!,
-    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-    if (headerRows != null) 'headerRows': headerRows!,
-    if (layout != null) 'layout': layout!,
-    if (provenance != null) 'provenance': provenance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bodyRows = this.bodyRows;
+    final detectedLanguages = this.detectedLanguages;
+    final headerRows = this.headerRows;
+    final layout = this.layout;
+    final provenance = this.provenance;
+    return {
+      'bodyRows': ?bodyRows,
+      'detectedLanguages': ?detectedLanguages,
+      'headerRows': ?headerRows,
+      'layout': ?layout,
+      'provenance': ?provenance,
+    };
+  }
 }
 
 /// A cell representation inside the table.
@@ -8161,30 +8348,34 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableCell {
   GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromJson(core.Map json_)
     : this(
         colSpan: json_['colSpan'] as core.int?,
-        detectedLanguages:
-            (json_['detectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        detectedLanguages: (json_['detectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         rowSpan: json_['rowSpan'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (colSpan != null) 'colSpan': colSpan!,
-    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-    if (layout != null) 'layout': layout!,
-    if (rowSpan != null) 'rowSpan': rowSpan!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final colSpan = this.colSpan;
+    final detectedLanguages = this.detectedLanguages;
+    final layout = this.layout;
+    final rowSpan = this.rowSpan;
+    return {
+      'colSpan': ?colSpan,
+      'detectedLanguages': ?detectedLanguages,
+      'layout': ?layout,
+      'rowSpan': ?rowSpan,
+    };
+  }
 }
 
 /// A row of table cells.
@@ -8196,20 +8387,20 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableRow {
 
   GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(core.Map json_)
     : this(
-        cells:
-            (json_['cells'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        cells: (json_['cells'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cells != null) 'cells': cells!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cells = this.cells;
+    return {'cells': ?cells};
+  }
 }
 
 /// A detected token.
@@ -8243,48 +8434,50 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
 
   GoogleCloudDocumentaiV1DocumentPageToken.fromJson(core.Map json_)
     : this(
-        detectedBreak:
-            json_.containsKey('detectedBreak')
-                ? GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
-                  json_['detectedBreak'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        detectedLanguages:
-            (json_['detectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        provenance:
-            json_.containsKey('provenance')
-                ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                  json_['provenance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        styleInfo:
-            json_.containsKey('styleInfo')
-                ? GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
-                  json_['styleInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        detectedBreak: json_.containsKey('detectedBreak')
+            ? GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
+                json_['detectedBreak'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        detectedLanguages: (json_['detectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        provenance: json_.containsKey('provenance')
+            ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                json_['provenance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        styleInfo: json_.containsKey('styleInfo')
+            ? GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
+                json_['styleInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detectedBreak != null) 'detectedBreak': detectedBreak!,
-    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-    if (layout != null) 'layout': layout!,
-    if (provenance != null) 'provenance': provenance!,
-    if (styleInfo != null) 'styleInfo': styleInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectedBreak = this.detectedBreak;
+    final detectedLanguages = this.detectedLanguages;
+    final layout = this.layout;
+    final provenance = this.provenance;
+    final styleInfo = this.styleInfo;
+    return {
+      'detectedBreak': ?detectedBreak,
+      'detectedLanguages': ?detectedLanguages,
+      'layout': ?layout,
+      'provenance': ?provenance,
+      'styleInfo': ?styleInfo,
+    };
+  }
 }
 
 /// Detected break at the end of a Token.
@@ -8369,13 +8562,11 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
 
   GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(core.Map json_)
     : this(
-        backgroundColor:
-            json_.containsKey('backgroundColor')
-                ? GoogleTypeColor.fromJson(
-                  json_['backgroundColor']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        backgroundColor: json_.containsKey('backgroundColor')
+            ? GoogleTypeColor.fromJson(
+                json_['backgroundColor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bold: json_['bold'] as core.bool?,
         fontSize: json_['fontSize'] as core.int?,
         fontType: json_['fontType'] as core.String?,
@@ -8388,32 +8579,48 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
         strikeout: json_['strikeout'] as core.bool?,
         subscript: json_['subscript'] as core.bool?,
         superscript: json_['superscript'] as core.bool?,
-        textColor:
-            json_.containsKey('textColor')
-                ? GoogleTypeColor.fromJson(
-                  json_['textColor'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        textColor: json_.containsKey('textColor')
+            ? GoogleTypeColor.fromJson(
+                json_['textColor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         underlined: json_['underlined'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-    if (bold != null) 'bold': bold!,
-    if (fontSize != null) 'fontSize': fontSize!,
-    if (fontType != null) 'fontType': fontType!,
-    if (fontWeight != null) 'fontWeight': fontWeight!,
-    if (handwritten != null) 'handwritten': handwritten!,
-    if (italic != null) 'italic': italic!,
-    if (letterSpacing != null) 'letterSpacing': letterSpacing!,
-    if (pixelFontSize != null) 'pixelFontSize': pixelFontSize!,
-    if (smallcaps != null) 'smallcaps': smallcaps!,
-    if (strikeout != null) 'strikeout': strikeout!,
-    if (subscript != null) 'subscript': subscript!,
-    if (superscript != null) 'superscript': superscript!,
-    if (textColor != null) 'textColor': textColor!,
-    if (underlined != null) 'underlined': underlined!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backgroundColor = this.backgroundColor;
+    final bold = this.bold;
+    final fontSize = this.fontSize;
+    final fontType = this.fontType;
+    final fontWeight = this.fontWeight;
+    final handwritten = this.handwritten;
+    final italic = this.italic;
+    final letterSpacing = this.letterSpacing;
+    final pixelFontSize = this.pixelFontSize;
+    final smallcaps = this.smallcaps;
+    final strikeout = this.strikeout;
+    final subscript = this.subscript;
+    final superscript = this.superscript;
+    final textColor = this.textColor;
+    final underlined = this.underlined;
+    return {
+      'backgroundColor': ?backgroundColor,
+      'bold': ?bold,
+      'fontSize': ?fontSize,
+      'fontType': ?fontType,
+      'fontWeight': ?fontWeight,
+      'handwritten': ?handwritten,
+      'italic': ?italic,
+      'letterSpacing': ?letterSpacing,
+      'pixelFontSize': ?pixelFontSize,
+      'smallcaps': ?smallcaps,
+      'strikeout': ?strikeout,
+      'subscript': ?subscript,
+      'superscript': ?superscript,
+      'textColor': ?textColor,
+      'underlined': ?underlined,
+    };
+  }
 }
 
 /// Detected non-text visual elements e.g. checkbox, signature etc.
@@ -8438,29 +8645,32 @@ class GoogleCloudDocumentaiV1DocumentPageVisualElement {
 
   GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(core.Map json_)
     : this(
-        detectedLanguages:
-            (json_['detectedLanguages'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        layout:
-            json_.containsKey('layout')
-                ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
-                  json_['layout'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        detectedLanguages: (json_['detectedLanguages'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        layout: json_.containsKey('layout')
+            ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                json_['layout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-    if (layout != null) 'layout': layout!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectedLanguages = this.detectedLanguages;
+    final layout = this.layout;
+    final type = this.type;
+    return {
+      'detectedLanguages': ?detectedLanguages,
+      'layout': ?layout,
+      'type': ?type,
+    };
+  }
 }
 
 /// Structure to identify provenance relationships between annotations in
@@ -8513,25 +8723,30 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
   GoogleCloudDocumentaiV1DocumentProvenance.fromJson(core.Map json_)
     : this(
         id: json_['id'] as core.int?,
-        parents:
-            (json_['parents'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentProvenanceParent.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        parents: (json_['parents'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentProvenanceParent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         revision: json_['revision'] as core.int?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (parents != null) 'parents': parents!,
-    if (revision != null) 'revision': revision!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final parents = this.parents;
+    final revision = this.revision;
+    final type = this.type;
+    return {
+      'id': ?id,
+      'parents': ?parents,
+      'revision': ?revision,
+      'type': ?type,
+    };
+  }
 }
 
 /// The parent element the current element is based on.
@@ -8590,33 +8805,39 @@ class GoogleCloudDocumentaiV1DocumentRevision {
     : this(
         agent: json_['agent'] as core.String?,
         createTime: json_['createTime'] as core.String?,
-        humanReview:
-            json_.containsKey('humanReview')
-                ? GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(
-                  json_['humanReview'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        humanReview: json_.containsKey('humanReview')
+            ? GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(
+                json_['humanReview'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        parent:
-            (json_['parent'] as core.List?)
-                ?.map((value) => value as core.int)
-                .toList(),
-        parentIds:
-            (json_['parentIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        parent: (json_['parent'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
+        parentIds: (json_['parentIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         processor: json_['processor'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agent != null) 'agent': agent!,
-    if (createTime != null) 'createTime': createTime!,
-    if (humanReview != null) 'humanReview': humanReview!,
-    if (id != null) 'id': id!,
-    if (parent != null) 'parent': parent!,
-    if (parentIds != null) 'parentIds': parentIds!,
-    if (processor != null) 'processor': processor!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agent = this.agent;
+    final createTime = this.createTime;
+    final humanReview = this.humanReview;
+    final id = this.id;
+    final parent = this.parent;
+    final parentIds = this.parentIds;
+    final processor = this.processor;
+    return {
+      'agent': ?agent,
+      'createTime': ?createTime,
+      'humanReview': ?humanReview,
+      'id': ?id,
+      'parent': ?parent,
+      'parentIds': ?parentIds,
+      'processor': ?processor,
+    };
+  }
 }
 
 /// Human Review information of the document.
@@ -8679,47 +8900,52 @@ class GoogleCloudDocumentaiV1DocumentStyle {
 
   GoogleCloudDocumentaiV1DocumentStyle.fromJson(core.Map json_)
     : this(
-        backgroundColor:
-            json_.containsKey('backgroundColor')
-                ? GoogleTypeColor.fromJson(
-                  json_['backgroundColor']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        color:
-            json_.containsKey('color')
-                ? GoogleTypeColor.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        backgroundColor: json_.containsKey('backgroundColor')
+            ? GoogleTypeColor.fromJson(
+                json_['backgroundColor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        color: json_.containsKey('color')
+            ? GoogleTypeColor.fromJson(
+                json_['color'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fontFamily: json_['fontFamily'] as core.String?,
-        fontSize:
-            json_.containsKey('fontSize')
-                ? GoogleCloudDocumentaiV1DocumentStyleFontSize.fromJson(
-                  json_['fontSize'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fontSize: json_.containsKey('fontSize')
+            ? GoogleCloudDocumentaiV1DocumentStyleFontSize.fromJson(
+                json_['fontSize'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fontWeight: json_['fontWeight'] as core.String?,
-        textAnchor:
-            json_.containsKey('textAnchor')
-                ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
-                  json_['textAnchor'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        textAnchor: json_.containsKey('textAnchor')
+            ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
+                json_['textAnchor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         textDecoration: json_['textDecoration'] as core.String?,
         textStyle: json_['textStyle'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-    if (color != null) 'color': color!,
-    if (fontFamily != null) 'fontFamily': fontFamily!,
-    if (fontSize != null) 'fontSize': fontSize!,
-    if (fontWeight != null) 'fontWeight': fontWeight!,
-    if (textAnchor != null) 'textAnchor': textAnchor!,
-    if (textDecoration != null) 'textDecoration': textDecoration!,
-    if (textStyle != null) 'textStyle': textStyle!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backgroundColor = this.backgroundColor;
+    final color = this.color;
+    final fontFamily = this.fontFamily;
+    final fontSize = this.fontSize;
+    final fontWeight = this.fontWeight;
+    final textAnchor = this.textAnchor;
+    final textDecoration = this.textDecoration;
+    final textStyle = this.textStyle;
+    return {
+      'backgroundColor': ?backgroundColor,
+      'color': ?color,
+      'fontFamily': ?fontFamily,
+      'fontSize': ?fontSize,
+      'fontWeight': ?fontWeight,
+      'textAnchor': ?textAnchor,
+      'textDecoration': ?textDecoration,
+      'textStyle': ?textStyle,
+    };
+  }
 }
 
 /// Font size with unit.
@@ -8742,21 +8968,21 @@ class GoogleCloudDocumentaiV1DocumentTextAnchor {
   GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(core.Map json_)
     : this(
         content: json_['content'] as core.String?,
-        textSegments:
-            (json_['textSegments'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        textSegments: (json_['textSegments'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (textSegments != null) 'textSegments': textSegments!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final textSegments = this.textSegments;
+    return {'content': ?content, 'textSegments': ?textSegments};
+  }
 }
 
 /// A text segment in the Document.text.
@@ -8796,27 +9022,30 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
   GoogleCloudDocumentaiV1DocumentTextChange.fromJson(core.Map json_)
     : this(
         changedText: json_['changedText'] as core.String?,
-        provenance:
-            (json_['provenance'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        textAnchor:
-            json_.containsKey('textAnchor')
-                ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
-                  json_['textAnchor'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        provenance: (json_['provenance'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        textAnchor: json_.containsKey('textAnchor')
+            ? GoogleCloudDocumentaiV1DocumentTextAnchor.fromJson(
+                json_['textAnchor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (changedText != null) 'changedText': changedText!,
-    if (provenance != null) 'provenance': provenance!,
-    if (textAnchor != null) 'textAnchor': textAnchor!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final changedText = this.changedText;
+    final provenance = this.provenance;
+    final textAnchor = this.textAnchor;
+    return {
+      'changedText': ?changedText,
+      'provenance': ?provenance,
+      'textAnchor': ?textAnchor,
+    };
+  }
 }
 
 /// A vertex represents a 2D point in the image.
@@ -8862,21 +9091,21 @@ class GoogleIamV1AuditConfig {
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -8971,24 +9200,23 @@ class GoogleIamV1Binding {
 
   GoogleIamV1Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? GoogleTypeExpr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -9088,32 +9316,36 @@ class GoogleIamV1Policy {
 
   GoogleIamV1Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -9170,30 +9402,34 @@ class GoogleLongrunningOperation {
   GoogleLongrunningOperation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -9374,27 +9610,37 @@ class GoogleTypeDateTime {
         month: json_['month'] as core.int?,
         nanos: json_['nanos'] as core.int?,
         seconds: json_['seconds'] as core.int?,
-        timeZone:
-            json_.containsKey('timeZone')
-                ? GoogleTypeTimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        timeZone: json_.containsKey('timeZone')
+            ? GoogleTypeTimeZone.fromJson(
+                json_['timeZone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         utcOffset: json_['utcOffset'] as core.String?,
         year: json_['year'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (day != null) 'day': day!,
-    if (hours != null) 'hours': hours!,
-    if (minutes != null) 'minutes': minutes!,
-    if (month != null) 'month': month!,
-    if (nanos != null) 'nanos': nanos!,
-    if (seconds != null) 'seconds': seconds!,
-    if (timeZone != null) 'timeZone': timeZone!,
-    if (utcOffset != null) 'utcOffset': utcOffset!,
-    if (year != null) 'year': year!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final day = this.day;
+    final hours = this.hours;
+    final minutes = this.minutes;
+    final month = this.month;
+    final nanos = this.nanos;
+    final seconds = this.seconds;
+    final timeZone = this.timeZone;
+    final utcOffset = this.utcOffset;
+    final year = this.year;
+    return {
+      'day': ?day,
+      'hours': ?hours,
+      'minutes': ?minutes,
+      'month': ?month,
+      'nanos': ?nanos,
+      'seconds': ?seconds,
+      'timeZone': ?timeZone,
+      'utcOffset': ?utcOffset,
+      'year': ?year,
+    };
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -9567,38 +9813,49 @@ class GoogleTypePostalAddress {
 
   GoogleTypePostalAddress.fromJson(core.Map json_)
     : this(
-        addressLines:
-            (json_['addressLines'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        addressLines: (json_['addressLines'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         administrativeArea: json_['administrativeArea'] as core.String?,
         languageCode: json_['languageCode'] as core.String?,
         locality: json_['locality'] as core.String?,
         organization: json_['organization'] as core.String?,
         postalCode: json_['postalCode'] as core.String?,
-        recipients:
-            (json_['recipients'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        recipients: (json_['recipients'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         regionCode: json_['regionCode'] as core.String?,
         revision: json_['revision'] as core.int?,
         sortingCode: json_['sortingCode'] as core.String?,
         sublocality: json_['sublocality'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressLines != null) 'addressLines': addressLines!,
-    if (administrativeArea != null) 'administrativeArea': administrativeArea!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (locality != null) 'locality': locality!,
-    if (organization != null) 'organization': organization!,
-    if (postalCode != null) 'postalCode': postalCode!,
-    if (recipients != null) 'recipients': recipients!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (revision != null) 'revision': revision!,
-    if (sortingCode != null) 'sortingCode': sortingCode!,
-    if (sublocality != null) 'sublocality': sublocality!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressLines = this.addressLines;
+    final administrativeArea = this.administrativeArea;
+    final languageCode = this.languageCode;
+    final locality = this.locality;
+    final organization = this.organization;
+    final postalCode = this.postalCode;
+    final recipients = this.recipients;
+    final regionCode = this.regionCode;
+    final revision = this.revision;
+    final sortingCode = this.sortingCode;
+    final sublocality = this.sublocality;
+    return {
+      'addressLines': ?addressLines,
+      'administrativeArea': ?administrativeArea,
+      'languageCode': ?languageCode,
+      'locality': ?locality,
+      'organization': ?organization,
+      'postalCode': ?postalCode,
+      'recipients': ?recipients,
+      'regionCode': ?regionCode,
+      'revision': ?revision,
+      'sortingCode': ?sortingCode,
+      'sublocality': ?sublocality,
+    };
+  }
 }
 
 /// Represents a time zone from the

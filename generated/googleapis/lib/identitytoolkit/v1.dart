@@ -106,7 +106,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:createAuthUri';
@@ -144,7 +144,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:delete';
@@ -183,7 +183,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:issueSamlResponse';
@@ -225,7 +225,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:lookup';
@@ -267,7 +267,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:resetPassword';
@@ -308,7 +308,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:sendOobCode';
@@ -354,7 +354,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:sendVerificationCode';
@@ -399,7 +399,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:signInWithCustomToken';
@@ -445,7 +445,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:signInWithEmailLink';
@@ -501,7 +501,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:signInWithGameCenter';
@@ -552,7 +552,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:signInWithIdp';
@@ -596,7 +596,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:signInWithPassword';
@@ -645,7 +645,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:signInWithPhoneNumber';
@@ -690,7 +690,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:signUp';
@@ -731,7 +731,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:update';
@@ -779,7 +779,7 @@ class AccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts:verifyIosClient';
@@ -843,7 +843,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -891,7 +891,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -937,7 +937,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -994,7 +994,7 @@ class ProjectsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1049,7 +1049,7 @@ class ProjectsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1115,12 +1115,13 @@ class ProjectsAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (delegatedProjectNumber != null)
-        'delegatedProjectNumber': [delegatedProjectNumber],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (nextPageToken != null) 'nextPageToken': [nextPageToken],
-      if (tenantId != null) 'tenantId': [tenantId],
-      if ($fields != null) 'fields': [$fields],
+      'delegatedProjectNumber': ?delegatedProjectNumber == null
+          ? null
+          : [delegatedProjectNumber],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'nextPageToken': ?nextPageToken == null ? null : [nextPageToken],
+      'tenantId': ?tenantId == null ? null : [tenantId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1166,7 +1167,7 @@ class ProjectsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1219,7 +1220,7 @@ class ProjectsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1265,7 +1266,7 @@ class ProjectsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1316,7 +1317,7 @@ class ProjectsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1368,7 +1369,7 @@ class ProjectsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1440,7 +1441,7 @@ class ProjectsTenantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1497,7 +1498,7 @@ class ProjectsTenantsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1562,7 +1563,7 @@ class ProjectsTenantsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1625,7 +1626,7 @@ class ProjectsTenantsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1694,11 +1695,12 @@ class ProjectsTenantsAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (delegatedProjectNumber != null)
-        'delegatedProjectNumber': [delegatedProjectNumber],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (nextPageToken != null) 'nextPageToken': [nextPageToken],
-      if ($fields != null) 'fields': [$fields],
+      'delegatedProjectNumber': ?delegatedProjectNumber == null
+          ? null
+          : [delegatedProjectNumber],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'nextPageToken': ?nextPageToken == null ? null : [nextPageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1753,7 +1755,7 @@ class ProjectsTenantsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1813,7 +1815,7 @@ class ProjectsTenantsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1865,7 +1867,7 @@ class ProjectsTenantsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1923,7 +1925,7 @@ class ProjectsTenantsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1983,7 +1985,7 @@ class ProjectsTenantsAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2072,18 +2074,21 @@ class V1Resource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (androidPackageName != null)
-        'androidPackageName': [androidPackageName],
-      if (clientId != null) 'clientId': [clientId],
-      if (delegatedProjectNumber != null)
-        'delegatedProjectNumber': [delegatedProjectNumber],
-      if (firebaseAppId != null) 'firebaseAppId': [firebaseAppId],
-      if (iosBundleId != null) 'iosBundleId': [iosBundleId],
-      if (projectNumber != null) 'projectNumber': [projectNumber],
-      if (returnDynamicLink != null)
-        'returnDynamicLink': ['${returnDynamicLink}'],
-      if (sha1Cert != null) 'sha1Cert': [sha1Cert],
-      if ($fields != null) 'fields': [$fields],
+      'androidPackageName': ?androidPackageName == null
+          ? null
+          : [androidPackageName],
+      'clientId': ?clientId == null ? null : [clientId],
+      'delegatedProjectNumber': ?delegatedProjectNumber == null
+          ? null
+          : [delegatedProjectNumber],
+      'firebaseAppId': ?firebaseAppId == null ? null : [firebaseAppId],
+      'iosBundleId': ?iosBundleId == null ? null : [iosBundleId],
+      'projectNumber': ?projectNumber == null ? null : [projectNumber],
+      'returnDynamicLink': ?returnDynamicLink == null
+          ? null
+          : ['${returnDynamicLink}'],
+      'sha1Cert': ?sha1Cert == null ? null : [sha1Cert],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/projects';
@@ -2115,7 +2120,7 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<void> getPublicKeys({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/publicKeys';
@@ -2145,7 +2150,7 @@ class V1Resource {
   async.Future<GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse>
   getRecaptchaParams({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/recaptchaParams';
@@ -2180,7 +2185,7 @@ class V1Resource {
   async.Future<GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse>
   getSessionCookiePublicKeys({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/sessionCookiePublicKeys';
@@ -2281,15 +2286,24 @@ class GoogleCloudIdentitytoolkitV1Argon2Parameters {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (associatedData != null) 'associatedData': associatedData!,
-    if (hashLengthBytes != null) 'hashLengthBytes': hashLengthBytes!,
-    if (hashType != null) 'hashType': hashType!,
-    if (iterations != null) 'iterations': iterations!,
-    if (memoryCostKib != null) 'memoryCostKib': memoryCostKib!,
-    if (parallelism != null) 'parallelism': parallelism!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final associatedData = this.associatedData;
+    final hashLengthBytes = this.hashLengthBytes;
+    final hashType = this.hashType;
+    final iterations = this.iterations;
+    final memoryCostKib = this.memoryCostKib;
+    final parallelism = this.parallelism;
+    final version = this.version;
+    return {
+      'associatedData': ?associatedData,
+      'hashLengthBytes': ?hashLengthBytes,
+      'hashType': ?hashType,
+      'iterations': ?iterations,
+      'memoryCostKib': ?memoryCostKib,
+      'parallelism': ?parallelism,
+      'version': ?version,
+    };
+  }
 }
 
 /// The information required to auto-retrieve an SMS.
@@ -2325,18 +2339,18 @@ class GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest {
     core.Map json_,
   ) : this(
         force: json_['force'] as core.bool?,
-        localIds:
-            (json_['localIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        localIds: (json_['localIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (force != null) 'force': force!,
-    if (localIds != null) 'localIds': localIds!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final force = this.force;
+    final localIds = this.localIds;
+    final tenantId = this.tenantId;
+    return {'force': ?force, 'localIds': ?localIds, 'tenantId': ?tenantId};
+  }
 }
 
 /// Response message to BatchDeleteAccounts.
@@ -2349,20 +2363,20 @@ class GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse {
   GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse.fromJson(
     core.Map json_,
   ) : this(
-        errors:
-            (json_['errors'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errors != null) 'errors': errors!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    return {'errors': ?errors};
+  }
 }
 
 /// Error info for account failed to be deleted.
@@ -2389,11 +2403,12 @@ class GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo {
         message: json_['message'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (index != null) 'index': index!,
-    if (localId != null) 'localId': localId!,
-    if (message != null) 'message': message!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final index = this.index;
+    final localId = this.localId;
+    final message = this.message;
+    return {'index': ?index, 'localId': ?localId, 'message': ?message};
+  }
 }
 
 /// Request message for CreateAuthUri.
@@ -2509,9 +2524,9 @@ class GoogleCloudIdentitytoolkitV1CreateAuthUriRequest {
         authFlowType: json_['authFlowType'] as core.String?,
         context: json_['context'] as core.String?,
         continueUri: json_['continueUri'] as core.String?,
-        customParameter: (json_['customParameter']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        customParameter:
+            (json_['customParameter'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         hostedDomain: json_['hostedDomain'] as core.String?,
         identifier: json_['identifier'] as core.String?,
         oauthConsumerKey: json_['oauthConsumerKey'] as core.String?,
@@ -2523,22 +2538,38 @@ class GoogleCloudIdentitytoolkitV1CreateAuthUriRequest {
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appId != null) 'appId': appId!,
-    if (authFlowType != null) 'authFlowType': authFlowType!,
-    if (context != null) 'context': context!,
-    if (continueUri != null) 'continueUri': continueUri!,
-    if (customParameter != null) 'customParameter': customParameter!,
-    if (hostedDomain != null) 'hostedDomain': hostedDomain!,
-    if (identifier != null) 'identifier': identifier!,
-    if (oauthConsumerKey != null) 'oauthConsumerKey': oauthConsumerKey!,
-    if (oauthScope != null) 'oauthScope': oauthScope!,
-    if (openidRealm != null) 'openidRealm': openidRealm!,
-    if (otaApp != null) 'otaApp': otaApp!,
-    if (providerId != null) 'providerId': providerId!,
-    if (sessionId != null) 'sessionId': sessionId!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appId = this.appId;
+    final authFlowType = this.authFlowType;
+    final context = this.context;
+    final continueUri = this.continueUri;
+    final customParameter = this.customParameter;
+    final hostedDomain = this.hostedDomain;
+    final identifier = this.identifier;
+    final oauthConsumerKey = this.oauthConsumerKey;
+    final oauthScope = this.oauthScope;
+    final openidRealm = this.openidRealm;
+    final otaApp = this.otaApp;
+    final providerId = this.providerId;
+    final sessionId = this.sessionId;
+    final tenantId = this.tenantId;
+    return {
+      'appId': ?appId,
+      'authFlowType': ?authFlowType,
+      'context': ?context,
+      'continueUri': ?continueUri,
+      'customParameter': ?customParameter,
+      'hostedDomain': ?hostedDomain,
+      'identifier': ?identifier,
+      'oauthConsumerKey': ?oauthConsumerKey,
+      'oauthScope': ?oauthScope,
+      'openidRealm': ?openidRealm,
+      'otaApp': ?otaApp,
+      'providerId': ?providerId,
+      'sessionId': ?sessionId,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for CreateAuthUri.
@@ -2606,10 +2637,9 @@ class GoogleCloudIdentitytoolkitV1CreateAuthUriResponse {
 
   GoogleCloudIdentitytoolkitV1CreateAuthUriResponse.fromJson(core.Map json_)
     : this(
-        allProviders:
-            (json_['allProviders'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        allProviders: (json_['allProviders'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         authUri: json_['authUri'] as core.String?,
         captchaRequired: json_['captchaRequired'] as core.bool?,
         forExistingProvider: json_['forExistingProvider'] as core.bool?,
@@ -2617,24 +2647,33 @@ class GoogleCloudIdentitytoolkitV1CreateAuthUriResponse {
         providerId: json_['providerId'] as core.String?,
         registered: json_['registered'] as core.bool?,
         sessionId: json_['sessionId'] as core.String?,
-        signinMethods:
-            (json_['signinMethods'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        signinMethods: (json_['signinMethods'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allProviders != null) 'allProviders': allProviders!,
-    if (authUri != null) 'authUri': authUri!,
-    if (captchaRequired != null) 'captchaRequired': captchaRequired!,
-    if (forExistingProvider != null)
-      'forExistingProvider': forExistingProvider!,
-    if (kind != null) 'kind': kind!,
-    if (providerId != null) 'providerId': providerId!,
-    if (registered != null) 'registered': registered!,
-    if (sessionId != null) 'sessionId': sessionId!,
-    if (signinMethods != null) 'signinMethods': signinMethods!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allProviders = this.allProviders;
+    final authUri = this.authUri;
+    final captchaRequired = this.captchaRequired;
+    final forExistingProvider = this.forExistingProvider;
+    final kind = this.kind;
+    final providerId = this.providerId;
+    final registered = this.registered;
+    final sessionId = this.sessionId;
+    final signinMethods = this.signinMethods;
+    return {
+      'allProviders': ?allProviders,
+      'authUri': ?authUri,
+      'captchaRequired': ?captchaRequired,
+      'forExistingProvider': ?forExistingProvider,
+      'kind': ?kind,
+      'providerId': ?providerId,
+      'registered': ?registered,
+      'sessionId': ?sessionId,
+      'signinMethods': ?signinMethods,
+    };
+  }
 }
 
 /// Request message for CreateSessionCookie.
@@ -2667,11 +2706,16 @@ class GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest {
         validDuration: json_['validDuration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (idToken != null) 'idToken': idToken!,
-    if (tenantId != null) 'tenantId': tenantId!,
-    if (validDuration != null) 'validDuration': validDuration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final idToken = this.idToken;
+    final tenantId = this.tenantId;
+    final validDuration = this.validDuration;
+    return {
+      'idToken': ?idToken,
+      'tenantId': ?tenantId,
+      'validDuration': ?validDuration,
+    };
+  }
 }
 
 /// Response message for CreateSessionCookie.
@@ -2688,9 +2732,10 @@ class GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse {
     core.Map json_,
   ) : this(sessionCookie: json_['sessionCookie'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sessionCookie != null) 'sessionCookie': sessionCookie!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sessionCookie = this.sessionCookie;
+    return {'sessionCookie': ?sessionCookie};
+  }
 }
 
 /// Request message for DeleteAccount.
@@ -2746,14 +2791,20 @@ class GoogleCloudIdentitytoolkitV1DeleteAccountRequest {
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delegatedProjectNumber != null)
-      'delegatedProjectNumber': delegatedProjectNumber!,
-    if (idToken != null) 'idToken': idToken!,
-    if (localId != null) 'localId': localId!,
-    if (targetProjectId != null) 'targetProjectId': targetProjectId!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delegatedProjectNumber = this.delegatedProjectNumber;
+    final idToken = this.idToken;
+    final localId = this.localId;
+    final targetProjectId = this.targetProjectId;
+    final tenantId = this.tenantId;
+    return {
+      'delegatedProjectNumber': ?delegatedProjectNumber,
+      'idToken': ?idToken,
+      'localId': ?localId,
+      'targetProjectId': ?targetProjectId,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for DeleteAccount.
@@ -2768,9 +2819,10 @@ class GoogleCloudIdentitytoolkitV1DeleteAccountResponse {
   GoogleCloudIdentitytoolkitV1DeleteAccountResponse.fromJson(core.Map json_)
     : this(kind: json_['kind'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    return {'kind': ?kind};
+  }
 }
 
 /// Response message for DownloadAccount.
@@ -2800,21 +2852,21 @@ class GoogleCloudIdentitytoolkitV1DownloadAccountResponse {
     : this(
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
-        users:
-            (json_['users'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1UserInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        users: (json_['users'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1UserInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (users != null) 'users': users!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final users = this.users;
+    return {'kind': ?kind, 'nextPageToken': ?nextPageToken, 'users': ?users};
+  }
 }
 
 /// Information about email MFA.
@@ -2827,9 +2879,10 @@ class GoogleCloudIdentitytoolkitV1EmailInfo {
   GoogleCloudIdentitytoolkitV1EmailInfo.fromJson(core.Map json_)
     : this(emailAddress: json_['emailAddress'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (emailAddress != null) 'emailAddress': emailAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final emailAddress = this.emailAddress;
+    return {'emailAddress': ?emailAddress};
+  }
 }
 
 /// Email template
@@ -2899,18 +2952,30 @@ class GoogleCloudIdentitytoolkitV1EmailTemplate {
         subject: json_['subject'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (body != null) 'body': body!,
-    if (customized != null) 'customized': customized!,
-    if (disabled != null) 'disabled': disabled!,
-    if (format != null) 'format': format!,
-    if (from != null) 'from': from!,
-    if (fromDisplayName != null) 'fromDisplayName': fromDisplayName!,
-    if (fromLocalPart != null) 'fromLocalPart': fromLocalPart!,
-    if (locale != null) 'locale': locale!,
-    if (replyTo != null) 'replyTo': replyTo!,
-    if (subject != null) 'subject': subject!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final body = this.body;
+    final customized = this.customized;
+    final disabled = this.disabled;
+    final format = this.format;
+    final from = this.from;
+    final fromDisplayName = this.fromDisplayName;
+    final fromLocalPart = this.fromLocalPart;
+    final locale = this.locale;
+    final replyTo = this.replyTo;
+    final subject = this.subject;
+    return {
+      'body': ?body,
+      'customized': ?customized,
+      'disabled': ?disabled,
+      'format': ?format,
+      'from': ?from,
+      'fromDisplayName': ?fromDisplayName,
+      'fromLocalPart': ?fromLocalPart,
+      'locale': ?locale,
+      'replyTo': ?replyTo,
+      'subject': ?subject,
+    };
+  }
 }
 
 /// Error information explaining why an account cannot be uploaded.
@@ -2931,10 +2996,11 @@ class GoogleCloudIdentitytoolkitV1ErrorInfo {
         message: json_['message'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (index != null) 'index': index!,
-    if (message != null) 'message': message!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final index = this.index;
+    final message = this.message;
+    return {'index': ?index, 'message': ?message};
+  }
 }
 
 /// Federated user identifier at an Identity Provider.
@@ -2963,10 +3029,11 @@ class GoogleCloudIdentitytoolkitV1FederatedUserIdentifier {
         rawId: json_['rawId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (providerId != null) 'providerId': providerId!,
-    if (rawId != null) 'rawId': rawId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final providerId = this.providerId;
+    final rawId = this.rawId;
+    return {'providerId': ?providerId, 'rawId': ?rawId};
+  }
 }
 
 /// Request message for GetAccountInfo.
@@ -3040,48 +3107,53 @@ class GoogleCloudIdentitytoolkitV1GetAccountInfoRequest {
   GoogleCloudIdentitytoolkitV1GetAccountInfoRequest.fromJson(core.Map json_)
     : this(
         delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
-        email:
-            (json_['email'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        federatedUserId:
-            (json_['federatedUserId'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudIdentitytoolkitV1FederatedUserIdentifier.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        email: (json_['email'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        federatedUserId: (json_['federatedUserId'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudIdentitytoolkitV1FederatedUserIdentifier.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         idToken: json_['idToken'] as core.String?,
-        initialEmail:
-            (json_['initialEmail'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        localId:
-            (json_['localId'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        phoneNumber:
-            (json_['phoneNumber'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        initialEmail: (json_['initialEmail'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        localId: (json_['localId'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        phoneNumber: (json_['phoneNumber'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         targetProjectId: json_['targetProjectId'] as core.String?,
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delegatedProjectNumber != null)
-      'delegatedProjectNumber': delegatedProjectNumber!,
-    if (email != null) 'email': email!,
-    if (federatedUserId != null) 'federatedUserId': federatedUserId!,
-    if (idToken != null) 'idToken': idToken!,
-    if (initialEmail != null) 'initialEmail': initialEmail!,
-    if (localId != null) 'localId': localId!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (targetProjectId != null) 'targetProjectId': targetProjectId!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delegatedProjectNumber = this.delegatedProjectNumber;
+    final email = this.email;
+    final federatedUserId = this.federatedUserId;
+    final idToken = this.idToken;
+    final initialEmail = this.initialEmail;
+    final localId = this.localId;
+    final phoneNumber = this.phoneNumber;
+    final targetProjectId = this.targetProjectId;
+    final tenantId = this.tenantId;
+    return {
+      'delegatedProjectNumber': ?delegatedProjectNumber,
+      'email': ?email,
+      'federatedUserId': ?federatedUserId,
+      'idToken': ?idToken,
+      'initialEmail': ?initialEmail,
+      'localId': ?localId,
+      'phoneNumber': ?phoneNumber,
+      'targetProjectId': ?targetProjectId,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for GetAccountInfo.
@@ -3100,20 +3172,20 @@ class GoogleCloudIdentitytoolkitV1GetAccountInfoResponse {
   GoogleCloudIdentitytoolkitV1GetAccountInfoResponse.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
-        users:
-            (json_['users'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1UserInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        users: (json_['users'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1UserInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (users != null) 'users': users!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final users = this.users;
+    return {'kind': ?kind, 'users': ?users};
+  }
 }
 
 /// Request message for GetOobCode.
@@ -3327,30 +3399,52 @@ class GoogleCloudIdentitytoolkitV1GetOobCodeRequest {
         userIp: json_['userIp'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (androidInstallApp != null) 'androidInstallApp': androidInstallApp!,
-    if (androidMinimumVersion != null)
-      'androidMinimumVersion': androidMinimumVersion!,
-    if (androidPackageName != null) 'androidPackageName': androidPackageName!,
-    if (canHandleCodeInApp != null) 'canHandleCodeInApp': canHandleCodeInApp!,
-    if (captchaResp != null) 'captchaResp': captchaResp!,
-    if (challenge != null) 'challenge': challenge!,
-    if (clientType != null) 'clientType': clientType!,
-    if (continueUrl != null) 'continueUrl': continueUrl!,
-    if (dynamicLinkDomain != null) 'dynamicLinkDomain': dynamicLinkDomain!,
-    if (email != null) 'email': email!,
-    if (iOSAppStoreId != null) 'iOSAppStoreId': iOSAppStoreId!,
-    if (iOSBundleId != null) 'iOSBundleId': iOSBundleId!,
-    if (idToken != null) 'idToken': idToken!,
-    if (linkDomain != null) 'linkDomain': linkDomain!,
-    if (newEmail != null) 'newEmail': newEmail!,
-    if (recaptchaVersion != null) 'recaptchaVersion': recaptchaVersion!,
-    if (requestType != null) 'requestType': requestType!,
-    if (returnOobLink != null) 'returnOobLink': returnOobLink!,
-    if (targetProjectId != null) 'targetProjectId': targetProjectId!,
-    if (tenantId != null) 'tenantId': tenantId!,
-    if (userIp != null) 'userIp': userIp!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final androidInstallApp = this.androidInstallApp;
+    final androidMinimumVersion = this.androidMinimumVersion;
+    final androidPackageName = this.androidPackageName;
+    final canHandleCodeInApp = this.canHandleCodeInApp;
+    final captchaResp = this.captchaResp;
+    final challenge = this.challenge;
+    final clientType = this.clientType;
+    final continueUrl = this.continueUrl;
+    final dynamicLinkDomain = this.dynamicLinkDomain;
+    final email = this.email;
+    final iOSAppStoreId = this.iOSAppStoreId;
+    final iOSBundleId = this.iOSBundleId;
+    final idToken = this.idToken;
+    final linkDomain = this.linkDomain;
+    final newEmail = this.newEmail;
+    final recaptchaVersion = this.recaptchaVersion;
+    final requestType = this.requestType;
+    final returnOobLink = this.returnOobLink;
+    final targetProjectId = this.targetProjectId;
+    final tenantId = this.tenantId;
+    final userIp = this.userIp;
+    return {
+      'androidInstallApp': ?androidInstallApp,
+      'androidMinimumVersion': ?androidMinimumVersion,
+      'androidPackageName': ?androidPackageName,
+      'canHandleCodeInApp': ?canHandleCodeInApp,
+      'captchaResp': ?captchaResp,
+      'challenge': ?challenge,
+      'clientType': ?clientType,
+      'continueUrl': ?continueUrl,
+      'dynamicLinkDomain': ?dynamicLinkDomain,
+      'email': ?email,
+      'iOSAppStoreId': ?iOSAppStoreId,
+      'iOSBundleId': ?iOSBundleId,
+      'idToken': ?idToken,
+      'linkDomain': ?linkDomain,
+      'newEmail': ?newEmail,
+      'recaptchaVersion': ?recaptchaVersion,
+      'requestType': ?requestType,
+      'returnOobLink': ?returnOobLink,
+      'targetProjectId': ?targetProjectId,
+      'tenantId': ?tenantId,
+      'userIp': ?userIp,
+    };
+  }
 }
 
 /// Response message for GetOobCode.
@@ -3389,12 +3483,18 @@ class GoogleCloudIdentitytoolkitV1GetOobCodeResponse {
         oobLink: json_['oobLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (kind != null) 'kind': kind!,
-    if (oobCode != null) 'oobCode': oobCode!,
-    if (oobLink != null) 'oobLink': oobLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final kind = this.kind;
+    final oobCode = this.oobCode;
+    final oobLink = this.oobLink;
+    return {
+      'email': ?email,
+      'kind': ?kind,
+      'oobCode': ?oobCode,
+      'oobLink': ?oobLink,
+    };
+  }
 }
 
 /// Response message for GetProjectConfig.
@@ -3479,80 +3579,85 @@ class GoogleCloudIdentitytoolkitV1GetProjectConfigResponse {
     : this(
         allowPasswordUser: json_['allowPasswordUser'] as core.bool?,
         apiKey: json_['apiKey'] as core.String?,
-        authorizedDomains:
-            (json_['authorizedDomains'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        changeEmailTemplate:
-            json_.containsKey('changeEmailTemplate')
-                ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
-                  json_['changeEmailTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        authorizedDomains: (json_['authorizedDomains'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        changeEmailTemplate: json_.containsKey('changeEmailTemplate')
+            ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
+                json_['changeEmailTemplate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         dynamicLinksDomain: json_['dynamicLinksDomain'] as core.String?,
         enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
-        idpConfig:
-            (json_['idpConfig'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1IdpConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        idpConfig: (json_['idpConfig'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1IdpConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         legacyResetPasswordTemplate:
             json_.containsKey('legacyResetPasswordTemplate')
-                ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
-                  json_['legacyResetPasswordTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
+                json_['legacyResetPasswordTemplate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         projectId: json_['projectId'] as core.String?,
-        resetPasswordTemplate:
-            json_.containsKey('resetPasswordTemplate')
-                ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
-                  json_['resetPasswordTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resetPasswordTemplate: json_.containsKey('resetPasswordTemplate')
+            ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
+                json_['resetPasswordTemplate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         revertSecondFactorAdditionTemplate:
             json_.containsKey('revertSecondFactorAdditionTemplate')
-                ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
-                  json_['revertSecondFactorAdditionTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
+                json_['revertSecondFactorAdditionTemplate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         useEmailSending: json_['useEmailSending'] as core.bool?,
-        verifyEmailTemplate:
-            json_.containsKey('verifyEmailTemplate')
-                ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
-                  json_['verifyEmailTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        verifyEmailTemplate: json_.containsKey('verifyEmailTemplate')
+            ? GoogleCloudIdentitytoolkitV1EmailTemplate.fromJson(
+                json_['verifyEmailTemplate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser!,
-    if (apiKey != null) 'apiKey': apiKey!,
-    if (authorizedDomains != null) 'authorizedDomains': authorizedDomains!,
-    if (changeEmailTemplate != null)
-      'changeEmailTemplate': changeEmailTemplate!,
-    if (dynamicLinksDomain != null) 'dynamicLinksDomain': dynamicLinksDomain!,
-    if (enableAnonymousUser != null)
-      'enableAnonymousUser': enableAnonymousUser!,
-    if (idpConfig != null) 'idpConfig': idpConfig!,
-    if (legacyResetPasswordTemplate != null)
-      'legacyResetPasswordTemplate': legacyResetPasswordTemplate!,
-    if (projectId != null) 'projectId': projectId!,
-    if (resetPasswordTemplate != null)
-      'resetPasswordTemplate': resetPasswordTemplate!,
-    if (revertSecondFactorAdditionTemplate != null)
-      'revertSecondFactorAdditionTemplate': revertSecondFactorAdditionTemplate!,
-    if (useEmailSending != null) 'useEmailSending': useEmailSending!,
-    if (verifyEmailTemplate != null)
-      'verifyEmailTemplate': verifyEmailTemplate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowPasswordUser = this.allowPasswordUser;
+    final apiKey = this.apiKey;
+    final authorizedDomains = this.authorizedDomains;
+    final changeEmailTemplate = this.changeEmailTemplate;
+    final dynamicLinksDomain = this.dynamicLinksDomain;
+    final enableAnonymousUser = this.enableAnonymousUser;
+    final idpConfig = this.idpConfig;
+    final legacyResetPasswordTemplate = this.legacyResetPasswordTemplate;
+    final projectId = this.projectId;
+    final resetPasswordTemplate = this.resetPasswordTemplate;
+    final revertSecondFactorAdditionTemplate =
+        this.revertSecondFactorAdditionTemplate;
+    final useEmailSending = this.useEmailSending;
+    final verifyEmailTemplate = this.verifyEmailTemplate;
+    return {
+      'allowPasswordUser': ?allowPasswordUser,
+      'apiKey': ?apiKey,
+      'authorizedDomains': ?authorizedDomains,
+      'changeEmailTemplate': ?changeEmailTemplate,
+      'dynamicLinksDomain': ?dynamicLinksDomain,
+      'enableAnonymousUser': ?enableAnonymousUser,
+      'idpConfig': ?idpConfig,
+      'legacyResetPasswordTemplate': ?legacyResetPasswordTemplate,
+      'projectId': ?projectId,
+      'resetPasswordTemplate': ?resetPasswordTemplate,
+      'revertSecondFactorAdditionTemplate': ?revertSecondFactorAdditionTemplate,
+      'useEmailSending': ?useEmailSending,
+      'verifyEmailTemplate': ?verifyEmailTemplate,
+    };
+  }
 }
 
 /// Response message for GetRecaptchaParam.
@@ -3589,13 +3694,18 @@ class GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse {
         recaptchaStoken: json_['recaptchaStoken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (producerProjectNumber != null)
-      'producerProjectNumber': producerProjectNumber!,
-    if (recaptchaSiteKey != null) 'recaptchaSiteKey': recaptchaSiteKey!,
-    if (recaptchaStoken != null) 'recaptchaStoken': recaptchaStoken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final producerProjectNumber = this.producerProjectNumber;
+    final recaptchaSiteKey = this.recaptchaSiteKey;
+    final recaptchaStoken = this.recaptchaStoken;
+    return {
+      'kind': ?kind,
+      'producerProjectNumber': ?producerProjectNumber,
+      'recaptchaSiteKey': ?recaptchaSiteKey,
+      'recaptchaStoken': ?recaptchaStoken,
+    };
+  }
 }
 
 /// Response message for GetSessionCookiePublicKeys.
@@ -3609,20 +3719,19 @@ class GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse {
   GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse.fromJson(
     core.Map json_,
   ) : this(
-        keys:
-            (json_['keys'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudIdentitytoolkitV1OpenIdConnectKey.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        keys: (json_['keys'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1OpenIdConnectKey.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keys != null) 'keys': keys!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keys = this.keys;
+    return {'keys': ?keys};
+  }
 }
 
 /// Config of an identity provider.
@@ -3675,21 +3784,27 @@ class GoogleCloudIdentitytoolkitV1IdpConfig {
         experimentPercent: json_['experimentPercent'] as core.int?,
         provider: json_['provider'] as core.String?,
         secret: json_['secret'] as core.String?,
-        whitelistedAudiences:
-            (json_['whitelistedAudiences'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        whitelistedAudiences: (json_['whitelistedAudiences'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clientId != null) 'clientId': clientId!,
-    if (enabled != null) 'enabled': enabled!,
-    if (experimentPercent != null) 'experimentPercent': experimentPercent!,
-    if (provider != null) 'provider': provider!,
-    if (secret != null) 'secret': secret!,
-    if (whitelistedAudiences != null)
-      'whitelistedAudiences': whitelistedAudiences!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientId = this.clientId;
+    final enabled = this.enabled;
+    final experimentPercent = this.experimentPercent;
+    final provider = this.provider;
+    final secret = this.secret;
+    final whitelistedAudiences = this.whitelistedAudiences;
+    return {
+      'clientId': ?clientId,
+      'enabled': ?enabled,
+      'experimentPercent': ?experimentPercent,
+      'provider': ?provider,
+      'secret': ?secret,
+      'whitelistedAudiences': ?whitelistedAudiences,
+    };
+  }
 }
 
 /// Request message for IssueSamlResponse.
@@ -3723,11 +3838,16 @@ class GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest {
         samlAppEntityId: json_['samlAppEntityId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (idToken != null) 'idToken': idToken!,
-    if (rpId != null) 'rpId': rpId!,
-    if (samlAppEntityId != null) 'samlAppEntityId': samlAppEntityId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final idToken = this.idToken;
+    final rpId = this.rpId;
+    final samlAppEntityId = this.samlAppEntityId;
+    return {
+      'idToken': ?idToken,
+      'rpId': ?rpId,
+      'samlAppEntityId': ?samlAppEntityId,
+    };
+  }
 }
 
 /// Response for IssueSamlResponse request.
@@ -3774,15 +3894,24 @@ class GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse {
         samlResponse: json_['samlResponse'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acsEndpoint != null) 'acsEndpoint': acsEndpoint!,
-    if (email != null) 'email': email!,
-    if (firstName != null) 'firstName': firstName!,
-    if (isNewUser != null) 'isNewUser': isNewUser!,
-    if (lastName != null) 'lastName': lastName!,
-    if (relayState != null) 'relayState': relayState!,
-    if (samlResponse != null) 'samlResponse': samlResponse!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acsEndpoint = this.acsEndpoint;
+    final email = this.email;
+    final firstName = this.firstName;
+    final isNewUser = this.isNewUser;
+    final lastName = this.lastName;
+    final relayState = this.relayState;
+    final samlResponse = this.samlResponse;
+    return {
+      'acsEndpoint': ?acsEndpoint,
+      'email': ?email,
+      'firstName': ?firstName,
+      'isNewUser': ?isNewUser,
+      'lastName': ?lastName,
+      'relayState': ?relayState,
+      'samlResponse': ?samlResponse,
+    };
+  }
 }
 
 /// Information on which multi-factor authentication (MFA) providers are enabled
@@ -3827,34 +3956,40 @@ class GoogleCloudIdentitytoolkitV1MfaEnrollment {
   GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
-        emailInfo:
-            json_.containsKey('emailInfo')
-                ? GoogleCloudIdentitytoolkitV1EmailInfo.fromJson(
-                  json_['emailInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        emailInfo: json_.containsKey('emailInfo')
+            ? GoogleCloudIdentitytoolkitV1EmailInfo.fromJson(
+                json_['emailInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enrolledAt: json_['enrolledAt'] as core.String?,
         mfaEnrollmentId: json_['mfaEnrollmentId'] as core.String?,
         phoneInfo: json_['phoneInfo'] as core.String?,
-        totpInfo:
-            json_.containsKey('totpInfo')
-                ? GoogleCloudIdentitytoolkitV1TotpInfo.fromJson(
-                  json_['totpInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        totpInfo: json_.containsKey('totpInfo')
+            ? GoogleCloudIdentitytoolkitV1TotpInfo.fromJson(
+                json_['totpInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         unobfuscatedPhoneInfo: json_['unobfuscatedPhoneInfo'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (emailInfo != null) 'emailInfo': emailInfo!,
-    if (enrolledAt != null) 'enrolledAt': enrolledAt!,
-    if (mfaEnrollmentId != null) 'mfaEnrollmentId': mfaEnrollmentId!,
-    if (phoneInfo != null) 'phoneInfo': phoneInfo!,
-    if (totpInfo != null) 'totpInfo': totpInfo!,
-    if (unobfuscatedPhoneInfo != null)
-      'unobfuscatedPhoneInfo': unobfuscatedPhoneInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final emailInfo = this.emailInfo;
+    final enrolledAt = this.enrolledAt;
+    final mfaEnrollmentId = this.mfaEnrollmentId;
+    final phoneInfo = this.phoneInfo;
+    final totpInfo = this.totpInfo;
+    final unobfuscatedPhoneInfo = this.unobfuscatedPhoneInfo;
+    return {
+      'displayName': ?displayName,
+      'emailInfo': ?emailInfo,
+      'enrolledAt': ?enrolledAt,
+      'mfaEnrollmentId': ?mfaEnrollmentId,
+      'phoneInfo': ?phoneInfo,
+      'totpInfo': ?totpInfo,
+      'unobfuscatedPhoneInfo': ?unobfuscatedPhoneInfo,
+    };
+  }
 }
 
 class GoogleCloudIdentitytoolkitV1MfaFactor {
@@ -3872,10 +4007,11 @@ class GoogleCloudIdentitytoolkitV1MfaFactor {
         phoneInfo: json_['phoneInfo'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (phoneInfo != null) 'phoneInfo': phoneInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final phoneInfo = this.phoneInfo;
+    return {'displayName': ?displayName, 'phoneInfo': ?phoneInfo};
+  }
 }
 
 /// Multi-factor authentication related information.
@@ -3887,19 +4023,19 @@ class GoogleCloudIdentitytoolkitV1MfaInfo {
 
   GoogleCloudIdentitytoolkitV1MfaInfo.fromJson(core.Map json_)
     : this(
-        enrollments:
-            (json_['enrollments'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        enrollments: (json_['enrollments'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enrollments != null) 'enrollments': enrollments!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enrollments = this.enrollments;
+    return {'enrollments': ?enrollments};
+  }
 }
 
 /// Represents a public key of the session cookie signer, formatted as a \[JSON
@@ -3944,14 +4080,22 @@ class GoogleCloudIdentitytoolkitV1OpenIdConnectKey {
         use: json_['use'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alg != null) 'alg': alg!,
-    if (e != null) 'e': e!,
-    if (kid != null) 'kid': kid!,
-    if (kty != null) 'kty': kty!,
-    if (n != null) 'n': n!,
-    if (use != null) 'use': use!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final alg = this.alg;
+    final e = this.e;
+    final kid = this.kid;
+    final kty = this.kty;
+    final n = this.n;
+    final use = this.use;
+    return {
+      'alg': ?alg,
+      'e': ?e,
+      'kid': ?kid,
+      'kty': ?kty,
+      'n': ?n,
+      'use': ?use,
+    };
+  }
 }
 
 /// Information about the user as provided by various Identity Providers.
@@ -4003,16 +4147,26 @@ class GoogleCloudIdentitytoolkitV1ProviderUserInfo {
         screenName: json_['screenName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (federatedId != null) 'federatedId': federatedId!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (photoUrl != null) 'photoUrl': photoUrl!,
-    if (providerId != null) 'providerId': providerId!,
-    if (rawId != null) 'rawId': rawId!,
-    if (screenName != null) 'screenName': screenName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final email = this.email;
+    final federatedId = this.federatedId;
+    final phoneNumber = this.phoneNumber;
+    final photoUrl = this.photoUrl;
+    final providerId = this.providerId;
+    final rawId = this.rawId;
+    final screenName = this.screenName;
+    return {
+      'displayName': ?displayName,
+      'email': ?email,
+      'federatedId': ?federatedId,
+      'phoneNumber': ?phoneNumber,
+      'photoUrl': ?photoUrl,
+      'providerId': ?providerId,
+      'rawId': ?rawId,
+      'screenName': ?screenName,
+    };
+  }
 }
 
 /// Request message for QueryUserInfo.
@@ -4067,14 +4221,13 @@ class GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
 
   GoogleCloudIdentitytoolkitV1QueryUserInfoRequest.fromJson(core.Map json_)
     : this(
-        expression:
-            (json_['expression'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1SqlExpression.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        expression: (json_['expression'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1SqlExpression.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         limit: json_['limit'] as core.String?,
         offset: json_['offset'] as core.String?,
         order: json_['order'] as core.String?,
@@ -4083,15 +4236,24 @@ class GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expression != null) 'expression': expression!,
-    if (limit != null) 'limit': limit!,
-    if (offset != null) 'offset': offset!,
-    if (order != null) 'order': order!,
-    if (returnUserInfo != null) 'returnUserInfo': returnUserInfo!,
-    if (sortBy != null) 'sortBy': sortBy!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final expression = this.expression;
+    final limit = this.limit;
+    final offset = this.offset;
+    final order = this.order;
+    final returnUserInfo = this.returnUserInfo;
+    final sortBy = this.sortBy;
+    final tenantId = this.tenantId;
+    return {
+      'expression': ?expression,
+      'limit': ?limit,
+      'offset': ?offset,
+      'order': ?order,
+      'returnUserInfo': ?returnUserInfo,
+      'sortBy': ?sortBy,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for QueryUserInfo.
@@ -4114,20 +4276,20 @@ class GoogleCloudIdentitytoolkitV1QueryUserInfoResponse {
   GoogleCloudIdentitytoolkitV1QueryUserInfoResponse.fromJson(core.Map json_)
     : this(
         recordsCount: json_['recordsCount'] as core.String?,
-        userInfo:
-            (json_['userInfo'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1UserInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        userInfo: (json_['userInfo'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1UserInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (recordsCount != null) 'recordsCount': recordsCount!,
-    if (userInfo != null) 'userInfo': userInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final recordsCount = this.recordsCount;
+    final userInfo = this.userInfo;
+    return {'recordsCount': ?recordsCount, 'userInfo': ?userInfo};
+  }
 }
 
 /// Request message for ResetPassword.
@@ -4183,13 +4345,20 @@ class GoogleCloudIdentitytoolkitV1ResetPasswordRequest {
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (newPassword != null) 'newPassword': newPassword!,
-    if (oldPassword != null) 'oldPassword': oldPassword!,
-    if (oobCode != null) 'oobCode': oobCode!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final newPassword = this.newPassword;
+    final oldPassword = this.oldPassword;
+    final oobCode = this.oobCode;
+    final tenantId = this.tenantId;
+    return {
+      'email': ?email,
+      'newPassword': ?newPassword,
+      'oldPassword': ?oldPassword,
+      'oobCode': ?oobCode,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for ResetPassword.
@@ -4231,23 +4400,29 @@ class GoogleCloudIdentitytoolkitV1ResetPasswordResponse {
     : this(
         email: json_['email'] as core.String?,
         kind: json_['kind'] as core.String?,
-        mfaInfo:
-            json_.containsKey('mfaInfo')
-                ? GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
-                  json_['mfaInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mfaInfo: json_.containsKey('mfaInfo')
+            ? GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
+                json_['mfaInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         newEmail: json_['newEmail'] as core.String?,
         requestType: json_['requestType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (kind != null) 'kind': kind!,
-    if (mfaInfo != null) 'mfaInfo': mfaInfo!,
-    if (newEmail != null) 'newEmail': newEmail!,
-    if (requestType != null) 'requestType': requestType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final kind = this.kind;
+    final mfaInfo = this.mfaInfo;
+    final newEmail = this.newEmail;
+    final requestType = this.requestType;
+    return {
+      'email': ?email,
+      'kind': ?kind,
+      'mfaInfo': ?mfaInfo,
+      'newEmail': ?newEmail,
+      'requestType': ?requestType,
+    };
+  }
 }
 
 /// Request message for SendVerificationCode.
@@ -4362,13 +4537,12 @@ class GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
   GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest.fromJson(
     core.Map json_,
   ) : this(
-        autoRetrievalInfo:
-            json_.containsKey('autoRetrievalInfo')
-                ? GoogleCloudIdentitytoolkitV1AutoRetrievalInfo.fromJson(
-                  json_['autoRetrievalInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        autoRetrievalInfo: json_.containsKey('autoRetrievalInfo')
+            ? GoogleCloudIdentitytoolkitV1AutoRetrievalInfo.fromJson(
+                json_['autoRetrievalInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         captchaResponse: json_['captchaResponse'] as core.String?,
         clientType: json_['clientType'] as core.String?,
         iosReceipt: json_['iosReceipt'] as core.String?,
@@ -4381,19 +4555,32 @@ class GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoRetrievalInfo != null) 'autoRetrievalInfo': autoRetrievalInfo!,
-    if (captchaResponse != null) 'captchaResponse': captchaResponse!,
-    if (clientType != null) 'clientType': clientType!,
-    if (iosReceipt != null) 'iosReceipt': iosReceipt!,
-    if (iosSecret != null) 'iosSecret': iosSecret!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (playIntegrityToken != null) 'playIntegrityToken': playIntegrityToken!,
-    if (recaptchaToken != null) 'recaptchaToken': recaptchaToken!,
-    if (recaptchaVersion != null) 'recaptchaVersion': recaptchaVersion!,
-    if (safetyNetToken != null) 'safetyNetToken': safetyNetToken!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoRetrievalInfo = this.autoRetrievalInfo;
+    final captchaResponse = this.captchaResponse;
+    final clientType = this.clientType;
+    final iosReceipt = this.iosReceipt;
+    final iosSecret = this.iosSecret;
+    final phoneNumber = this.phoneNumber;
+    final playIntegrityToken = this.playIntegrityToken;
+    final recaptchaToken = this.recaptchaToken;
+    final recaptchaVersion = this.recaptchaVersion;
+    final safetyNetToken = this.safetyNetToken;
+    final tenantId = this.tenantId;
+    return {
+      'autoRetrievalInfo': ?autoRetrievalInfo,
+      'captchaResponse': ?captchaResponse,
+      'clientType': ?clientType,
+      'iosReceipt': ?iosReceipt,
+      'iosSecret': ?iosSecret,
+      'phoneNumber': ?phoneNumber,
+      'playIntegrityToken': ?playIntegrityToken,
+      'recaptchaToken': ?recaptchaToken,
+      'recaptchaVersion': ?recaptchaVersion,
+      'safetyNetToken': ?safetyNetToken,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for SendVerificationCode.
@@ -4410,9 +4597,10 @@ class GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse {
     core.Map json_,
   ) : this(sessionInfo: json_['sessionInfo'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sessionInfo != null) 'sessionInfo': sessionInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sessionInfo = this.sessionInfo;
+    return {'sessionInfo': ?sessionInfo};
+  }
 }
 
 /// Request message for SetAccountInfo.
@@ -4590,14 +4778,12 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
         createdAt: json_['createdAt'] as core.String?,
         customAttributes: json_['customAttributes'] as core.String?,
         delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
-        deleteAttribute:
-            (json_['deleteAttribute'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        deleteProvider:
-            (json_['deleteProvider'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        deleteAttribute: (json_['deleteAttribute'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        deleteProvider: (json_['deleteProvider'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         disableUser: json_['disableUser'] as core.bool?,
         displayName: json_['displayName'] as core.String?,
         email: json_['email'] as core.String?,
@@ -4605,28 +4791,25 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
         idToken: json_['idToken'] as core.String?,
         instanceId: json_['instanceId'] as core.String?,
         lastLoginAt: json_['lastLoginAt'] as core.String?,
-        linkProviderUserInfo:
-            json_.containsKey('linkProviderUserInfo')
-                ? GoogleCloudIdentitytoolkitV1ProviderUserInfo.fromJson(
-                  json_['linkProviderUserInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        linkProviderUserInfo: json_.containsKey('linkProviderUserInfo')
+            ? GoogleCloudIdentitytoolkitV1ProviderUserInfo.fromJson(
+                json_['linkProviderUserInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localId: json_['localId'] as core.String?,
-        mfa:
-            json_.containsKey('mfa')
-                ? GoogleCloudIdentitytoolkitV1MfaInfo.fromJson(
-                  json_['mfa'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        mfa: json_.containsKey('mfa')
+            ? GoogleCloudIdentitytoolkitV1MfaInfo.fromJson(
+                json_['mfa'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         oobCode: json_['oobCode'] as core.String?,
         password: json_['password'] as core.String?,
         phoneNumber: json_['phoneNumber'] as core.String?,
         photoUrl: json_['photoUrl'] as core.String?,
-        provider:
-            (json_['provider'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        provider: (json_['provider'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         returnSecureToken: json_['returnSecureToken'] as core.bool?,
         targetProjectId: json_['targetProjectId'] as core.String?,
         tenantId: json_['tenantId'] as core.String?,
@@ -4634,38 +4817,64 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
         validSince: json_['validSince'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
-    if (captchaResponse != null) 'captchaResponse': captchaResponse!,
-    if (createdAt != null) 'createdAt': createdAt!,
-    if (customAttributes != null) 'customAttributes': customAttributes!,
-    if (delegatedProjectNumber != null)
-      'delegatedProjectNumber': delegatedProjectNumber!,
-    if (deleteAttribute != null) 'deleteAttribute': deleteAttribute!,
-    if (deleteProvider != null) 'deleteProvider': deleteProvider!,
-    if (disableUser != null) 'disableUser': disableUser!,
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (emailVerified != null) 'emailVerified': emailVerified!,
-    if (idToken != null) 'idToken': idToken!,
-    if (instanceId != null) 'instanceId': instanceId!,
-    if (lastLoginAt != null) 'lastLoginAt': lastLoginAt!,
-    if (linkProviderUserInfo != null)
-      'linkProviderUserInfo': linkProviderUserInfo!,
-    if (localId != null) 'localId': localId!,
-    if (mfa != null) 'mfa': mfa!,
-    if (oobCode != null) 'oobCode': oobCode!,
-    if (password != null) 'password': password!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (photoUrl != null) 'photoUrl': photoUrl!,
-    if (provider != null) 'provider': provider!,
-    if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
-    if (targetProjectId != null) 'targetProjectId': targetProjectId!,
-    if (tenantId != null) 'tenantId': tenantId!,
-    if (upgradeToFederatedLogin != null)
-      'upgradeToFederatedLogin': upgradeToFederatedLogin!,
-    if (validSince != null) 'validSince': validSince!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final captchaChallenge = this.captchaChallenge;
+    final captchaResponse = this.captchaResponse;
+    final createdAt = this.createdAt;
+    final customAttributes = this.customAttributes;
+    final delegatedProjectNumber = this.delegatedProjectNumber;
+    final deleteAttribute = this.deleteAttribute;
+    final deleteProvider = this.deleteProvider;
+    final disableUser = this.disableUser;
+    final displayName = this.displayName;
+    final email = this.email;
+    final emailVerified = this.emailVerified;
+    final idToken = this.idToken;
+    final instanceId = this.instanceId;
+    final lastLoginAt = this.lastLoginAt;
+    final linkProviderUserInfo = this.linkProviderUserInfo;
+    final localId = this.localId;
+    final mfa = this.mfa;
+    final oobCode = this.oobCode;
+    final password = this.password;
+    final phoneNumber = this.phoneNumber;
+    final photoUrl = this.photoUrl;
+    final provider = this.provider;
+    final returnSecureToken = this.returnSecureToken;
+    final targetProjectId = this.targetProjectId;
+    final tenantId = this.tenantId;
+    final upgradeToFederatedLogin = this.upgradeToFederatedLogin;
+    final validSince = this.validSince;
+    return {
+      'captchaChallenge': ?captchaChallenge,
+      'captchaResponse': ?captchaResponse,
+      'createdAt': ?createdAt,
+      'customAttributes': ?customAttributes,
+      'delegatedProjectNumber': ?delegatedProjectNumber,
+      'deleteAttribute': ?deleteAttribute,
+      'deleteProvider': ?deleteProvider,
+      'disableUser': ?disableUser,
+      'displayName': ?displayName,
+      'email': ?email,
+      'emailVerified': ?emailVerified,
+      'idToken': ?idToken,
+      'instanceId': ?instanceId,
+      'lastLoginAt': ?lastLoginAt,
+      'linkProviderUserInfo': ?linkProviderUserInfo,
+      'localId': ?localId,
+      'mfa': ?mfa,
+      'oobCode': ?oobCode,
+      'password': ?password,
+      'phoneNumber': ?phoneNumber,
+      'photoUrl': ?photoUrl,
+      'provider': ?provider,
+      'returnSecureToken': ?returnSecureToken,
+      'targetProjectId': ?targetProjectId,
+      'tenantId': ?tenantId,
+      'upgradeToFederatedLogin': ?upgradeToFederatedLogin,
+      'validSince': ?validSince,
+    };
+  }
 }
 
 /// Response message for SetAccountInfo
@@ -4752,32 +4961,44 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoResponse {
         newEmail: json_['newEmail'] as core.String?,
         passwordHash: json_['passwordHash'] as core.String?,
         photoUrl: json_['photoUrl'] as core.String?,
-        providerUserInfo:
-            (json_['providerUserInfo'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudIdentitytoolkitV1ProviderUserInfo.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        providerUserInfo: (json_['providerUserInfo'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1ProviderUserInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         refreshToken: json_['refreshToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (emailVerified != null) 'emailVerified': emailVerified!,
-    if (expiresIn != null) 'expiresIn': expiresIn!,
-    if (idToken != null) 'idToken': idToken!,
-    if (kind != null) 'kind': kind!,
-    if (localId != null) 'localId': localId!,
-    if (newEmail != null) 'newEmail': newEmail!,
-    if (passwordHash != null) 'passwordHash': passwordHash!,
-    if (photoUrl != null) 'photoUrl': photoUrl!,
-    if (providerUserInfo != null) 'providerUserInfo': providerUserInfo!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final email = this.email;
+    final emailVerified = this.emailVerified;
+    final expiresIn = this.expiresIn;
+    final idToken = this.idToken;
+    final kind = this.kind;
+    final localId = this.localId;
+    final newEmail = this.newEmail;
+    final passwordHash = this.passwordHash;
+    final photoUrl = this.photoUrl;
+    final providerUserInfo = this.providerUserInfo;
+    final refreshToken = this.refreshToken;
+    return {
+      'displayName': ?displayName,
+      'email': ?email,
+      'emailVerified': ?emailVerified,
+      'expiresIn': ?expiresIn,
+      'idToken': ?idToken,
+      'kind': ?kind,
+      'localId': ?localId,
+      'newEmail': ?newEmail,
+      'passwordHash': ?passwordHash,
+      'photoUrl': ?photoUrl,
+      'providerUserInfo': ?providerUserInfo,
+      'refreshToken': ?refreshToken,
+    };
+  }
 }
 
 /// Request message for SignInWithCustomToken.
@@ -4828,14 +5049,20 @@ class GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest {
         token: json_['token'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delegatedProjectNumber != null)
-      'delegatedProjectNumber': delegatedProjectNumber!,
-    if (instanceId != null) 'instanceId': instanceId!,
-    if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
-    if (tenantId != null) 'tenantId': tenantId!,
-    if (token != null) 'token': token!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delegatedProjectNumber = this.delegatedProjectNumber;
+    final instanceId = this.instanceId;
+    final returnSecureToken = this.returnSecureToken;
+    final tenantId = this.tenantId;
+    final token = this.token;
+    return {
+      'delegatedProjectNumber': ?delegatedProjectNumber,
+      'instanceId': ?instanceId,
+      'returnSecureToken': ?returnSecureToken,
+      'tenantId': ?tenantId,
+      'token': ?token,
+    };
+  }
 }
 
 /// Response message for SignInWithCustomToken.
@@ -4874,13 +5101,20 @@ class GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse {
         refreshToken: json_['refreshToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expiresIn != null) 'expiresIn': expiresIn!,
-    if (idToken != null) 'idToken': idToken!,
-    if (isNewUser != null) 'isNewUser': isNewUser!,
-    if (kind != null) 'kind': kind!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final expiresIn = this.expiresIn;
+    final idToken = this.idToken;
+    final isNewUser = this.isNewUser;
+    final kind = this.kind;
+    final refreshToken = this.refreshToken;
+    return {
+      'expiresIn': ?expiresIn,
+      'idToken': ?idToken,
+      'isNewUser': ?isNewUser,
+      'kind': ?kind,
+      'refreshToken': ?refreshToken,
+    };
+  }
 }
 
 /// Request message for SignInWithEmailLink
@@ -4928,12 +5162,18 @@ class GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest {
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (idToken != null) 'idToken': idToken!,
-    if (oobCode != null) 'oobCode': oobCode!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final idToken = this.idToken;
+    final oobCode = this.oobCode;
+    final tenantId = this.tenantId;
+    return {
+      'email': ?email,
+      'idToken': ?idToken,
+      'oobCode': ?oobCode,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for SignInWithEmailLink.
@@ -4995,30 +5235,39 @@ class GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse {
         isNewUser: json_['isNewUser'] as core.bool?,
         kind: json_['kind'] as core.String?,
         localId: json_['localId'] as core.String?,
-        mfaInfo:
-            (json_['mfaInfo'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        mfaInfo: (json_['mfaInfo'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         mfaPendingCredential: json_['mfaPendingCredential'] as core.String?,
         refreshToken: json_['refreshToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (expiresIn != null) 'expiresIn': expiresIn!,
-    if (idToken != null) 'idToken': idToken!,
-    if (isNewUser != null) 'isNewUser': isNewUser!,
-    if (kind != null) 'kind': kind!,
-    if (localId != null) 'localId': localId!,
-    if (mfaInfo != null) 'mfaInfo': mfaInfo!,
-    if (mfaPendingCredential != null)
-      'mfaPendingCredential': mfaPendingCredential!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final expiresIn = this.expiresIn;
+    final idToken = this.idToken;
+    final isNewUser = this.isNewUser;
+    final kind = this.kind;
+    final localId = this.localId;
+    final mfaInfo = this.mfaInfo;
+    final mfaPendingCredential = this.mfaPendingCredential;
+    final refreshToken = this.refreshToken;
+    return {
+      'email': ?email,
+      'expiresIn': ?expiresIn,
+      'idToken': ?idToken,
+      'isNewUser': ?isNewUser,
+      'kind': ?kind,
+      'localId': ?localId,
+      'mfaInfo': ?mfaInfo,
+      'mfaPendingCredential': ?mfaPendingCredential,
+      'refreshToken': ?refreshToken,
+    };
+  }
 }
 
 /// Request message for SignInWithGameCenter
@@ -5107,18 +5356,30 @@ class GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest {
         timestamp: json_['timestamp'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (gamePlayerId != null) 'gamePlayerId': gamePlayerId!,
-    if (idToken != null) 'idToken': idToken!,
-    if (playerId != null) 'playerId': playerId!,
-    if (publicKeyUrl != null) 'publicKeyUrl': publicKeyUrl!,
-    if (salt != null) 'salt': salt!,
-    if (signature != null) 'signature': signature!,
-    if (teamPlayerId != null) 'teamPlayerId': teamPlayerId!,
-    if (tenantId != null) 'tenantId': tenantId!,
-    if (timestamp != null) 'timestamp': timestamp!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final gamePlayerId = this.gamePlayerId;
+    final idToken = this.idToken;
+    final playerId = this.playerId;
+    final publicKeyUrl = this.publicKeyUrl;
+    final salt = this.salt;
+    final signature = this.signature;
+    final teamPlayerId = this.teamPlayerId;
+    final tenantId = this.tenantId;
+    final timestamp = this.timestamp;
+    return {
+      'displayName': ?displayName,
+      'gamePlayerId': ?gamePlayerId,
+      'idToken': ?idToken,
+      'playerId': ?playerId,
+      'publicKeyUrl': ?publicKeyUrl,
+      'salt': ?salt,
+      'signature': ?signature,
+      'teamPlayerId': ?teamPlayerId,
+      'tenantId': ?tenantId,
+      'timestamp': ?timestamp,
+    };
+  }
 }
 
 /// Response message for SignInWithGameCenter
@@ -5188,17 +5449,28 @@ class GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse {
         teamPlayerId: json_['teamPlayerId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (expiresIn != null) 'expiresIn': expiresIn!,
-    if (gamePlayerId != null) 'gamePlayerId': gamePlayerId!,
-    if (idToken != null) 'idToken': idToken!,
-    if (isNewUser != null) 'isNewUser': isNewUser!,
-    if (localId != null) 'localId': localId!,
-    if (playerId != null) 'playerId': playerId!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-    if (teamPlayerId != null) 'teamPlayerId': teamPlayerId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final expiresIn = this.expiresIn;
+    final gamePlayerId = this.gamePlayerId;
+    final idToken = this.idToken;
+    final isNewUser = this.isNewUser;
+    final localId = this.localId;
+    final playerId = this.playerId;
+    final refreshToken = this.refreshToken;
+    final teamPlayerId = this.teamPlayerId;
+    return {
+      'displayName': ?displayName,
+      'expiresIn': ?expiresIn,
+      'gamePlayerId': ?gamePlayerId,
+      'idToken': ?idToken,
+      'isNewUser': ?isNewUser,
+      'localId': ?localId,
+      'playerId': ?playerId,
+      'refreshToken': ?refreshToken,
+      'teamPlayerId': ?teamPlayerId,
+    };
+  }
 }
 
 /// Request message for SignInWithIdp.
@@ -5323,22 +5595,34 @@ class GoogleCloudIdentitytoolkitV1SignInWithIdpRequest {
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoCreate != null) 'autoCreate': autoCreate!,
-    if (delegatedProjectNumber != null)
-      'delegatedProjectNumber': delegatedProjectNumber!,
-    if (idToken != null) 'idToken': idToken!,
-    if (pendingIdToken != null) 'pendingIdToken': pendingIdToken!,
-    if (pendingToken != null) 'pendingToken': pendingToken!,
-    if (postBody != null) 'postBody': postBody!,
-    if (requestUri != null) 'requestUri': requestUri!,
-    if (returnIdpCredential != null)
-      'returnIdpCredential': returnIdpCredential!,
-    if (returnRefreshToken != null) 'returnRefreshToken': returnRefreshToken!,
-    if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
-    if (sessionId != null) 'sessionId': sessionId!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoCreate = this.autoCreate;
+    final delegatedProjectNumber = this.delegatedProjectNumber;
+    final idToken = this.idToken;
+    final pendingIdToken = this.pendingIdToken;
+    final pendingToken = this.pendingToken;
+    final postBody = this.postBody;
+    final requestUri = this.requestUri;
+    final returnIdpCredential = this.returnIdpCredential;
+    final returnRefreshToken = this.returnRefreshToken;
+    final returnSecureToken = this.returnSecureToken;
+    final sessionId = this.sessionId;
+    final tenantId = this.tenantId;
+    return {
+      'autoCreate': ?autoCreate,
+      'delegatedProjectNumber': ?delegatedProjectNumber,
+      'idToken': ?idToken,
+      'pendingIdToken': ?pendingIdToken,
+      'pendingToken': ?pendingToken,
+      'postBody': ?postBody,
+      'requestUri': ?requestUri,
+      'returnIdpCredential': ?returnIdpCredential,
+      'returnRefreshToken': ?returnRefreshToken,
+      'returnSecureToken': ?returnSecureToken,
+      'sessionId': ?sessionId,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for SignInWithIdp.
@@ -5571,14 +5855,13 @@ class GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
         language: json_['language'] as core.String?,
         lastName: json_['lastName'] as core.String?,
         localId: json_['localId'] as core.String?,
-        mfaInfo:
-            (json_['mfaInfo'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        mfaInfo: (json_['mfaInfo'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         mfaPendingCredential: json_['mfaPendingCredential'] as core.String?,
         needConfirmation: json_['needConfirmation'] as core.bool?,
         needEmail: json_['needEmail'] as core.bool?,
@@ -5598,55 +5881,93 @@ class GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
         screenName: json_['screenName'] as core.String?,
         tenantId: json_['tenantId'] as core.String?,
         timeZone: json_['timeZone'] as core.String?,
-        verifiedProvider:
-            (json_['verifiedProvider'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        verifiedProvider: (json_['verifiedProvider'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (context != null) 'context': context!,
-    if (dateOfBirth != null) 'dateOfBirth': dateOfBirth!,
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (emailRecycled != null) 'emailRecycled': emailRecycled!,
-    if (emailVerified != null) 'emailVerified': emailVerified!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (expiresIn != null) 'expiresIn': expiresIn!,
-    if (federatedId != null) 'federatedId': federatedId!,
-    if (firstName != null) 'firstName': firstName!,
-    if (fullName != null) 'fullName': fullName!,
-    if (idToken != null) 'idToken': idToken!,
-    if (inputEmail != null) 'inputEmail': inputEmail!,
-    if (isNewUser != null) 'isNewUser': isNewUser!,
-    if (kind != null) 'kind': kind!,
-    if (language != null) 'language': language!,
-    if (lastName != null) 'lastName': lastName!,
-    if (localId != null) 'localId': localId!,
-    if (mfaInfo != null) 'mfaInfo': mfaInfo!,
-    if (mfaPendingCredential != null)
-      'mfaPendingCredential': mfaPendingCredential!,
-    if (needConfirmation != null) 'needConfirmation': needConfirmation!,
-    if (needEmail != null) 'needEmail': needEmail!,
-    if (nickName != null) 'nickName': nickName!,
-    if (oauthAccessToken != null) 'oauthAccessToken': oauthAccessToken!,
-    if (oauthAuthorizationCode != null)
-      'oauthAuthorizationCode': oauthAuthorizationCode!,
-    if (oauthExpireIn != null) 'oauthExpireIn': oauthExpireIn!,
-    if (oauthIdToken != null) 'oauthIdToken': oauthIdToken!,
-    if (oauthRefreshToken != null) 'oauthRefreshToken': oauthRefreshToken!,
-    if (oauthTokenSecret != null) 'oauthTokenSecret': oauthTokenSecret!,
-    if (originalEmail != null) 'originalEmail': originalEmail!,
-    if (pendingToken != null) 'pendingToken': pendingToken!,
-    if (photoUrl != null) 'photoUrl': photoUrl!,
-    if (providerId != null) 'providerId': providerId!,
-    if (rawUserInfo != null) 'rawUserInfo': rawUserInfo!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-    if (screenName != null) 'screenName': screenName!,
-    if (tenantId != null) 'tenantId': tenantId!,
-    if (timeZone != null) 'timeZone': timeZone!,
-    if (verifiedProvider != null) 'verifiedProvider': verifiedProvider!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final context = this.context;
+    final dateOfBirth = this.dateOfBirth;
+    final displayName = this.displayName;
+    final email = this.email;
+    final emailRecycled = this.emailRecycled;
+    final emailVerified = this.emailVerified;
+    final errorMessage = this.errorMessage;
+    final expiresIn = this.expiresIn;
+    final federatedId = this.federatedId;
+    final firstName = this.firstName;
+    final fullName = this.fullName;
+    final idToken = this.idToken;
+    final inputEmail = this.inputEmail;
+    final isNewUser = this.isNewUser;
+    final kind = this.kind;
+    final language = this.language;
+    final lastName = this.lastName;
+    final localId = this.localId;
+    final mfaInfo = this.mfaInfo;
+    final mfaPendingCredential = this.mfaPendingCredential;
+    final needConfirmation = this.needConfirmation;
+    final needEmail = this.needEmail;
+    final nickName = this.nickName;
+    final oauthAccessToken = this.oauthAccessToken;
+    final oauthAuthorizationCode = this.oauthAuthorizationCode;
+    final oauthExpireIn = this.oauthExpireIn;
+    final oauthIdToken = this.oauthIdToken;
+    final oauthRefreshToken = this.oauthRefreshToken;
+    final oauthTokenSecret = this.oauthTokenSecret;
+    final originalEmail = this.originalEmail;
+    final pendingToken = this.pendingToken;
+    final photoUrl = this.photoUrl;
+    final providerId = this.providerId;
+    final rawUserInfo = this.rawUserInfo;
+    final refreshToken = this.refreshToken;
+    final screenName = this.screenName;
+    final tenantId = this.tenantId;
+    final timeZone = this.timeZone;
+    final verifiedProvider = this.verifiedProvider;
+    return {
+      'context': ?context,
+      'dateOfBirth': ?dateOfBirth,
+      'displayName': ?displayName,
+      'email': ?email,
+      'emailRecycled': ?emailRecycled,
+      'emailVerified': ?emailVerified,
+      'errorMessage': ?errorMessage,
+      'expiresIn': ?expiresIn,
+      'federatedId': ?federatedId,
+      'firstName': ?firstName,
+      'fullName': ?fullName,
+      'idToken': ?idToken,
+      'inputEmail': ?inputEmail,
+      'isNewUser': ?isNewUser,
+      'kind': ?kind,
+      'language': ?language,
+      'lastName': ?lastName,
+      'localId': ?localId,
+      'mfaInfo': ?mfaInfo,
+      'mfaPendingCredential': ?mfaPendingCredential,
+      'needConfirmation': ?needConfirmation,
+      'needEmail': ?needEmail,
+      'nickName': ?nickName,
+      'oauthAccessToken': ?oauthAccessToken,
+      'oauthAuthorizationCode': ?oauthAuthorizationCode,
+      'oauthExpireIn': ?oauthExpireIn,
+      'oauthIdToken': ?oauthIdToken,
+      'oauthRefreshToken': ?oauthRefreshToken,
+      'oauthTokenSecret': ?oauthTokenSecret,
+      'originalEmail': ?originalEmail,
+      'pendingToken': ?pendingToken,
+      'photoUrl': ?photoUrl,
+      'providerId': ?providerId,
+      'rawUserInfo': ?rawUserInfo,
+      'refreshToken': ?refreshToken,
+      'screenName': ?screenName,
+      'tenantId': ?tenantId,
+      'timeZone': ?timeZone,
+      'verifiedProvider': ?verifiedProvider,
+    };
+  }
 }
 
 /// Request message for SignInWithPassword.
@@ -5749,21 +6070,34 @@ class GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest {
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
-    if (captchaResponse != null) 'captchaResponse': captchaResponse!,
-    if (clientType != null) 'clientType': clientType!,
-    if (delegatedProjectNumber != null)
-      'delegatedProjectNumber': delegatedProjectNumber!,
-    if (email != null) 'email': email!,
-    if (idToken != null) 'idToken': idToken!,
-    if (instanceId != null) 'instanceId': instanceId!,
-    if (password != null) 'password': password!,
-    if (pendingIdToken != null) 'pendingIdToken': pendingIdToken!,
-    if (recaptchaVersion != null) 'recaptchaVersion': recaptchaVersion!,
-    if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final captchaChallenge = this.captchaChallenge;
+    final captchaResponse = this.captchaResponse;
+    final clientType = this.clientType;
+    final delegatedProjectNumber = this.delegatedProjectNumber;
+    final email = this.email;
+    final idToken = this.idToken;
+    final instanceId = this.instanceId;
+    final password = this.password;
+    final pendingIdToken = this.pendingIdToken;
+    final recaptchaVersion = this.recaptchaVersion;
+    final returnSecureToken = this.returnSecureToken;
+    final tenantId = this.tenantId;
+    return {
+      'captchaChallenge': ?captchaChallenge,
+      'captchaResponse': ?captchaResponse,
+      'clientType': ?clientType,
+      'delegatedProjectNumber': ?delegatedProjectNumber,
+      'email': ?email,
+      'idToken': ?idToken,
+      'instanceId': ?instanceId,
+      'password': ?password,
+      'pendingIdToken': ?pendingIdToken,
+      'recaptchaVersion': ?recaptchaVersion,
+      'returnSecureToken': ?returnSecureToken,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for SignInWithPassword.
@@ -5862,14 +6196,13 @@ class GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
         idToken: json_['idToken'] as core.String?,
         kind: json_['kind'] as core.String?,
         localId: json_['localId'] as core.String?,
-        mfaInfo:
-            (json_['mfaInfo'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        mfaInfo: (json_['mfaInfo'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         mfaPendingCredential: json_['mfaPendingCredential'] as core.String?,
         oauthAccessToken: json_['oauthAccessToken'] as core.String?,
         oauthAuthorizationCode: json_['oauthAuthorizationCode'] as core.String?,
@@ -5877,36 +6210,49 @@ class GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
         profilePicture: json_['profilePicture'] as core.String?,
         refreshToken: json_['refreshToken'] as core.String?,
         registered: json_['registered'] as core.bool?,
-        userNotifications:
-            (json_['userNotifications'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudIdentitytoolkitV1UserNotification.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        userNotifications: (json_['userNotifications'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1UserNotification.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (expiresIn != null) 'expiresIn': expiresIn!,
-    if (idToken != null) 'idToken': idToken!,
-    if (kind != null) 'kind': kind!,
-    if (localId != null) 'localId': localId!,
-    if (mfaInfo != null) 'mfaInfo': mfaInfo!,
-    if (mfaPendingCredential != null)
-      'mfaPendingCredential': mfaPendingCredential!,
-    if (oauthAccessToken != null) 'oauthAccessToken': oauthAccessToken!,
-    if (oauthAuthorizationCode != null)
-      'oauthAuthorizationCode': oauthAuthorizationCode!,
-    if (oauthExpireIn != null) 'oauthExpireIn': oauthExpireIn!,
-    if (profilePicture != null) 'profilePicture': profilePicture!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-    if (registered != null) 'registered': registered!,
-    if (userNotifications != null) 'userNotifications': userNotifications!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final email = this.email;
+    final expiresIn = this.expiresIn;
+    final idToken = this.idToken;
+    final kind = this.kind;
+    final localId = this.localId;
+    final mfaInfo = this.mfaInfo;
+    final mfaPendingCredential = this.mfaPendingCredential;
+    final oauthAccessToken = this.oauthAccessToken;
+    final oauthAuthorizationCode = this.oauthAuthorizationCode;
+    final oauthExpireIn = this.oauthExpireIn;
+    final profilePicture = this.profilePicture;
+    final refreshToken = this.refreshToken;
+    final registered = this.registered;
+    final userNotifications = this.userNotifications;
+    return {
+      'displayName': ?displayName,
+      'email': ?email,
+      'expiresIn': ?expiresIn,
+      'idToken': ?idToken,
+      'kind': ?kind,
+      'localId': ?localId,
+      'mfaInfo': ?mfaInfo,
+      'mfaPendingCredential': ?mfaPendingCredential,
+      'oauthAccessToken': ?oauthAccessToken,
+      'oauthAuthorizationCode': ?oauthAuthorizationCode,
+      'oauthExpireIn': ?oauthExpireIn,
+      'profilePicture': ?profilePicture,
+      'refreshToken': ?refreshToken,
+      'registered': ?registered,
+      'userNotifications': ?userNotifications,
+    };
+  }
 }
 
 /// Request message for SignInWithPhoneNumber.
@@ -5987,16 +6333,26 @@ class GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest {
         verificationProof: json_['verificationProof'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (idToken != null) 'idToken': idToken!,
-    if (operation != null) 'operation': operation!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (sessionInfo != null) 'sessionInfo': sessionInfo!,
-    if (temporaryProof != null) 'temporaryProof': temporaryProof!,
-    if (tenantId != null) 'tenantId': tenantId!,
-    if (verificationProof != null) 'verificationProof': verificationProof!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final idToken = this.idToken;
+    final operation = this.operation;
+    final phoneNumber = this.phoneNumber;
+    final sessionInfo = this.sessionInfo;
+    final temporaryProof = this.temporaryProof;
+    final tenantId = this.tenantId;
+    final verificationProof = this.verificationProof;
+    return {
+      'code': ?code,
+      'idToken': ?idToken,
+      'operation': ?operation,
+      'phoneNumber': ?phoneNumber,
+      'sessionInfo': ?sessionInfo,
+      'temporaryProof': ?temporaryProof,
+      'tenantId': ?tenantId,
+      'verificationProof': ?verificationProof,
+    };
+  }
 }
 
 /// Response message for SignInWithPhoneNumber.
@@ -6072,20 +6428,30 @@ class GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse {
             json_['verificationProofExpiresIn'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expiresIn != null) 'expiresIn': expiresIn!,
-    if (idToken != null) 'idToken': idToken!,
-    if (isNewUser != null) 'isNewUser': isNewUser!,
-    if (localId != null) 'localId': localId!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-    if (temporaryProof != null) 'temporaryProof': temporaryProof!,
-    if (temporaryProofExpiresIn != null)
-      'temporaryProofExpiresIn': temporaryProofExpiresIn!,
-    if (verificationProof != null) 'verificationProof': verificationProof!,
-    if (verificationProofExpiresIn != null)
-      'verificationProofExpiresIn': verificationProofExpiresIn!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final expiresIn = this.expiresIn;
+    final idToken = this.idToken;
+    final isNewUser = this.isNewUser;
+    final localId = this.localId;
+    final phoneNumber = this.phoneNumber;
+    final refreshToken = this.refreshToken;
+    final temporaryProof = this.temporaryProof;
+    final temporaryProofExpiresIn = this.temporaryProofExpiresIn;
+    final verificationProof = this.verificationProof;
+    final verificationProofExpiresIn = this.verificationProofExpiresIn;
+    return {
+      'expiresIn': ?expiresIn,
+      'idToken': ?idToken,
+      'isNewUser': ?isNewUser,
+      'localId': ?localId,
+      'phoneNumber': ?phoneNumber,
+      'refreshToken': ?refreshToken,
+      'temporaryProof': ?temporaryProof,
+      'temporaryProofExpiresIn': ?temporaryProofExpiresIn,
+      'verificationProof': ?verificationProof,
+      'verificationProofExpiresIn': ?verificationProofExpiresIn,
+    };
+  }
 }
 
 /// Request message for SignUp.
@@ -6229,14 +6595,13 @@ class GoogleCloudIdentitytoolkitV1SignUpRequest {
         idToken: json_['idToken'] as core.String?,
         instanceId: json_['instanceId'] as core.String?,
         localId: json_['localId'] as core.String?,
-        mfaInfo:
-            (json_['mfaInfo'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1MfaFactor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        mfaInfo: (json_['mfaInfo'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1MfaFactor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         password: json_['password'] as core.String?,
         phoneNumber: json_['phoneNumber'] as core.String?,
         photoUrl: json_['photoUrl'] as core.String?,
@@ -6245,25 +6610,44 @@ class GoogleCloudIdentitytoolkitV1SignUpRequest {
         tenantId: json_['tenantId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
-    if (captchaResponse != null) 'captchaResponse': captchaResponse!,
-    if (clientType != null) 'clientType': clientType!,
-    if (disabled != null) 'disabled': disabled!,
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (emailVerified != null) 'emailVerified': emailVerified!,
-    if (idToken != null) 'idToken': idToken!,
-    if (instanceId != null) 'instanceId': instanceId!,
-    if (localId != null) 'localId': localId!,
-    if (mfaInfo != null) 'mfaInfo': mfaInfo!,
-    if (password != null) 'password': password!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (photoUrl != null) 'photoUrl': photoUrl!,
-    if (recaptchaVersion != null) 'recaptchaVersion': recaptchaVersion!,
-    if (targetProjectId != null) 'targetProjectId': targetProjectId!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final captchaChallenge = this.captchaChallenge;
+    final captchaResponse = this.captchaResponse;
+    final clientType = this.clientType;
+    final disabled = this.disabled;
+    final displayName = this.displayName;
+    final email = this.email;
+    final emailVerified = this.emailVerified;
+    final idToken = this.idToken;
+    final instanceId = this.instanceId;
+    final localId = this.localId;
+    final mfaInfo = this.mfaInfo;
+    final password = this.password;
+    final phoneNumber = this.phoneNumber;
+    final photoUrl = this.photoUrl;
+    final recaptchaVersion = this.recaptchaVersion;
+    final targetProjectId = this.targetProjectId;
+    final tenantId = this.tenantId;
+    return {
+      'captchaChallenge': ?captchaChallenge,
+      'captchaResponse': ?captchaResponse,
+      'clientType': ?clientType,
+      'disabled': ?disabled,
+      'displayName': ?displayName,
+      'email': ?email,
+      'emailVerified': ?emailVerified,
+      'idToken': ?idToken,
+      'instanceId': ?instanceId,
+      'localId': ?localId,
+      'mfaInfo': ?mfaInfo,
+      'password': ?password,
+      'phoneNumber': ?phoneNumber,
+      'photoUrl': ?photoUrl,
+      'recaptchaVersion': ?recaptchaVersion,
+      'targetProjectId': ?targetProjectId,
+      'tenantId': ?tenantId,
+    };
+  }
 }
 
 /// Response message for SignUp.
@@ -6314,15 +6698,24 @@ class GoogleCloudIdentitytoolkitV1SignUpResponse {
         refreshToken: json_['refreshToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (expiresIn != null) 'expiresIn': expiresIn!,
-    if (idToken != null) 'idToken': idToken!,
-    if (kind != null) 'kind': kind!,
-    if (localId != null) 'localId': localId!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final email = this.email;
+    final expiresIn = this.expiresIn;
+    final idToken = this.idToken;
+    final kind = this.kind;
+    final localId = this.localId;
+    final refreshToken = this.refreshToken;
+    return {
+      'displayName': ?displayName,
+      'email': ?email,
+      'expiresIn': ?expiresIn,
+      'idToken': ?idToken,
+      'kind': ?kind,
+      'localId': ?localId,
+      'refreshToken': ?refreshToken,
+    };
+  }
 }
 
 /// Query conditions used to filter results.
@@ -6361,11 +6754,12 @@ class GoogleCloudIdentitytoolkitV1SqlExpression {
         userId: json_['userId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (userId != null) 'userId': userId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final phoneNumber = this.phoneNumber;
+    final userId = this.userId;
+    return {'email': ?email, 'phoneNumber': ?phoneNumber, 'userId': ?userId};
+  }
 }
 
 /// Information about TOTP MFA.
@@ -6511,13 +6905,12 @@ class GoogleCloudIdentitytoolkitV1UploadAccountRequest {
   GoogleCloudIdentitytoolkitV1UploadAccountRequest.fromJson(core.Map json_)
     : this(
         allowOverwrite: json_['allowOverwrite'] as core.bool?,
-        argon2Parameters:
-            json_.containsKey('argon2Parameters')
-                ? GoogleCloudIdentitytoolkitV1Argon2Parameters.fromJson(
-                  json_['argon2Parameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        argon2Parameters: json_.containsKey('argon2Parameters')
+            ? GoogleCloudIdentitytoolkitV1Argon2Parameters.fromJson(
+                json_['argon2Parameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         blockSize: json_['blockSize'] as core.int?,
         cpuMemCost: json_['cpuMemCost'] as core.int?,
         delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
@@ -6531,35 +6924,51 @@ class GoogleCloudIdentitytoolkitV1UploadAccountRequest {
         sanityCheck: json_['sanityCheck'] as core.bool?,
         signerKey: json_['signerKey'] as core.String?,
         tenantId: json_['tenantId'] as core.String?,
-        users:
-            (json_['users'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1UserInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        users: (json_['users'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1UserInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowOverwrite != null) 'allowOverwrite': allowOverwrite!,
-    if (argon2Parameters != null) 'argon2Parameters': argon2Parameters!,
-    if (blockSize != null) 'blockSize': blockSize!,
-    if (cpuMemCost != null) 'cpuMemCost': cpuMemCost!,
-    if (delegatedProjectNumber != null)
-      'delegatedProjectNumber': delegatedProjectNumber!,
-    if (dkLen != null) 'dkLen': dkLen!,
-    if (hashAlgorithm != null) 'hashAlgorithm': hashAlgorithm!,
-    if (memoryCost != null) 'memoryCost': memoryCost!,
-    if (parallelization != null) 'parallelization': parallelization!,
-    if (passwordHashOrder != null) 'passwordHashOrder': passwordHashOrder!,
-    if (rounds != null) 'rounds': rounds!,
-    if (saltSeparator != null) 'saltSeparator': saltSeparator!,
-    if (sanityCheck != null) 'sanityCheck': sanityCheck!,
-    if (signerKey != null) 'signerKey': signerKey!,
-    if (tenantId != null) 'tenantId': tenantId!,
-    if (users != null) 'users': users!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowOverwrite = this.allowOverwrite;
+    final argon2Parameters = this.argon2Parameters;
+    final blockSize = this.blockSize;
+    final cpuMemCost = this.cpuMemCost;
+    final delegatedProjectNumber = this.delegatedProjectNumber;
+    final dkLen = this.dkLen;
+    final hashAlgorithm = this.hashAlgorithm;
+    final memoryCost = this.memoryCost;
+    final parallelization = this.parallelization;
+    final passwordHashOrder = this.passwordHashOrder;
+    final rounds = this.rounds;
+    final saltSeparator = this.saltSeparator;
+    final sanityCheck = this.sanityCheck;
+    final signerKey = this.signerKey;
+    final tenantId = this.tenantId;
+    final users = this.users;
+    return {
+      'allowOverwrite': ?allowOverwrite,
+      'argon2Parameters': ?argon2Parameters,
+      'blockSize': ?blockSize,
+      'cpuMemCost': ?cpuMemCost,
+      'delegatedProjectNumber': ?delegatedProjectNumber,
+      'dkLen': ?dkLen,
+      'hashAlgorithm': ?hashAlgorithm,
+      'memoryCost': ?memoryCost,
+      'parallelization': ?parallelization,
+      'passwordHashOrder': ?passwordHashOrder,
+      'rounds': ?rounds,
+      'saltSeparator': ?saltSeparator,
+      'sanityCheck': ?sanityCheck,
+      'signerKey': ?signerKey,
+      'tenantId': ?tenantId,
+      'users': ?users,
+    };
+  }
 }
 
 /// Response message for UploadAccount.
@@ -6575,21 +6984,21 @@ class GoogleCloudIdentitytoolkitV1UploadAccountResponse {
 
   GoogleCloudIdentitytoolkitV1UploadAccountResponse.fromJson(core.Map json_)
     : this(
-        error:
-            (json_['error'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1ErrorInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        error: (json_['error'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1ErrorInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final kind = this.kind;
+    return {'error': ?error, 'kind': ?kind};
+  }
 }
 
 /// An Identity Platform account's information.
@@ -6802,28 +7211,25 @@ class GoogleCloudIdentitytoolkitV1UserInfo {
         lastLoginAt: json_['lastLoginAt'] as core.String?,
         lastRefreshAt: json_['lastRefreshAt'] as core.String?,
         localId: json_['localId'] as core.String?,
-        mfaInfo:
-            (json_['mfaInfo'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        mfaInfo: (json_['mfaInfo'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1MfaEnrollment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         passwordHash: json_['passwordHash'] as core.String?,
-        passwordUpdatedAt:
-            (json_['passwordUpdatedAt'] as core.num?)?.toDouble(),
+        passwordUpdatedAt: (json_['passwordUpdatedAt'] as core.num?)
+            ?.toDouble(),
         phoneNumber: json_['phoneNumber'] as core.String?,
         photoUrl: json_['photoUrl'] as core.String?,
-        providerUserInfo:
-            (json_['providerUserInfo'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudIdentitytoolkitV1ProviderUserInfo.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        providerUserInfo: (json_['providerUserInfo'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudIdentitytoolkitV1ProviderUserInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         rawPassword: json_['rawPassword'] as core.String?,
         salt: json_['salt'] as core.String?,
         screenName: json_['screenName'] as core.String?,
@@ -6833,35 +7239,64 @@ class GoogleCloudIdentitytoolkitV1UserInfo {
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createdAt != null) 'createdAt': createdAt!,
-    if (customAttributes != null) 'customAttributes': customAttributes!,
-    if (customAuth != null) 'customAuth': customAuth!,
-    if (dateOfBirth != null) 'dateOfBirth': dateOfBirth!,
-    if (disabled != null) 'disabled': disabled!,
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (emailLinkSignin != null) 'emailLinkSignin': emailLinkSignin!,
-    if (emailVerified != null) 'emailVerified': emailVerified!,
-    if (initialEmail != null) 'initialEmail': initialEmail!,
-    if (language != null) 'language': language!,
-    if (lastLoginAt != null) 'lastLoginAt': lastLoginAt!,
-    if (lastRefreshAt != null) 'lastRefreshAt': lastRefreshAt!,
-    if (localId != null) 'localId': localId!,
-    if (mfaInfo != null) 'mfaInfo': mfaInfo!,
-    if (passwordHash != null) 'passwordHash': passwordHash!,
-    if (passwordUpdatedAt != null) 'passwordUpdatedAt': passwordUpdatedAt!,
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-    if (photoUrl != null) 'photoUrl': photoUrl!,
-    if (providerUserInfo != null) 'providerUserInfo': providerUserInfo!,
-    if (rawPassword != null) 'rawPassword': rawPassword!,
-    if (salt != null) 'salt': salt!,
-    if (screenName != null) 'screenName': screenName!,
-    if (tenantId != null) 'tenantId': tenantId!,
-    if (timeZone != null) 'timeZone': timeZone!,
-    if (validSince != null) 'validSince': validSince!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createdAt = this.createdAt;
+    final customAttributes = this.customAttributes;
+    final customAuth = this.customAuth;
+    final dateOfBirth = this.dateOfBirth;
+    final disabled = this.disabled;
+    final displayName = this.displayName;
+    final email = this.email;
+    final emailLinkSignin = this.emailLinkSignin;
+    final emailVerified = this.emailVerified;
+    final initialEmail = this.initialEmail;
+    final language = this.language;
+    final lastLoginAt = this.lastLoginAt;
+    final lastRefreshAt = this.lastRefreshAt;
+    final localId = this.localId;
+    final mfaInfo = this.mfaInfo;
+    final passwordHash = this.passwordHash;
+    final passwordUpdatedAt = this.passwordUpdatedAt;
+    final phoneNumber = this.phoneNumber;
+    final photoUrl = this.photoUrl;
+    final providerUserInfo = this.providerUserInfo;
+    final rawPassword = this.rawPassword;
+    final salt = this.salt;
+    final screenName = this.screenName;
+    final tenantId = this.tenantId;
+    final timeZone = this.timeZone;
+    final validSince = this.validSince;
+    final version = this.version;
+    return {
+      'createdAt': ?createdAt,
+      'customAttributes': ?customAttributes,
+      'customAuth': ?customAuth,
+      'dateOfBirth': ?dateOfBirth,
+      'disabled': ?disabled,
+      'displayName': ?displayName,
+      'email': ?email,
+      'emailLinkSignin': ?emailLinkSignin,
+      'emailVerified': ?emailVerified,
+      'initialEmail': ?initialEmail,
+      'language': ?language,
+      'lastLoginAt': ?lastLoginAt,
+      'lastRefreshAt': ?lastRefreshAt,
+      'localId': ?localId,
+      'mfaInfo': ?mfaInfo,
+      'passwordHash': ?passwordHash,
+      'passwordUpdatedAt': ?passwordUpdatedAt,
+      'phoneNumber': ?phoneNumber,
+      'photoUrl': ?photoUrl,
+      'providerUserInfo': ?providerUserInfo,
+      'rawPassword': ?rawPassword,
+      'salt': ?salt,
+      'screenName': ?screenName,
+      'tenantId': ?tenantId,
+      'timeZone': ?timeZone,
+      'validSince': ?validSince,
+      'version': ?version,
+    };
+  }
 }
 
 /// Warning notifications for the user.
@@ -6897,11 +7332,14 @@ class GoogleCloudIdentitytoolkitV1UserNotification {
         notificationMessage: json_['notificationMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (notificationCode != null) 'notificationCode': notificationCode!,
-    if (notificationMessage != null)
-      'notificationMessage': notificationMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final notificationCode = this.notificationCode;
+    final notificationMessage = this.notificationMessage;
+    return {
+      'notificationCode': ?notificationCode,
+      'notificationMessage': ?notificationMessage,
+    };
+  }
 }
 
 /// Request message for VerifyIosClient
@@ -6926,10 +7364,11 @@ class GoogleCloudIdentitytoolkitV1VerifyIosClientRequest {
         isSandbox: json_['isSandbox'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appToken != null) 'appToken': appToken!,
-    if (isSandbox != null) 'isSandbox': isSandbox!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appToken = this.appToken;
+    final isSandbox = this.isSandbox;
+    return {'appToken': ?appToken, 'isSandbox': ?isSandbox};
+  }
 }
 
 /// Response message for VerifyIosClient.
@@ -6952,8 +7391,9 @@ class GoogleCloudIdentitytoolkitV1VerifyIosClientResponse {
         suggestedTimeout: json_['suggestedTimeout'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (receipt != null) 'receipt': receipt!,
-    if (suggestedTimeout != null) 'suggestedTimeout': suggestedTimeout!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final receipt = this.receipt;
+    final suggestedTimeout = this.suggestedTimeout;
+    return {'receipt': ?receipt, 'suggestedTimeout': ?suggestedTimeout};
+  }
 }

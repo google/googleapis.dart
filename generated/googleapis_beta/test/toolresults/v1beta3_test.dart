@@ -3892,8 +3892,9 @@ void main() {
   unittest.group('resource-ProjectsHistoriesExecutionsClustersResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ToolResultsApi(mock).projects.histories.executions.clusters;
+      final res = api.ToolResultsApi(
+        mock,
+      ).projects.histories.executions.clusters;
       final arg_projectId = 'foo';
       final arg_historyId = 'foo';
       final arg_executionId = 'foo';
@@ -3993,8 +3994,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ToolResultsApi(mock).projects.histories.executions.clusters;
+      final res = api.ToolResultsApi(
+        mock,
+      ).projects.histories.executions.clusters;
       final arg_projectId = 'foo';
       final arg_historyId = 'foo';
       final arg_executionId = 'foo';
@@ -4097,8 +4099,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(mock).projects.histories.executions.environments;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.environments;
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
         final arg_executionId = 'foo';
@@ -4198,8 +4201,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(mock).projects.histories.executions.environments;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.environments;
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
         final arg_executionId = 'foo';
@@ -5032,10 +5036,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(
-              mock,
-            ).projects.histories.executions.steps.perfMetricsSummary;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.steps.perfMetricsSummary;
         final arg_request = buildPerfMetricsSummary();
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
@@ -5156,10 +5159,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(
-              mock,
-            ).projects.histories.executions.steps.perfSampleSeries;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.steps.perfSampleSeries;
         final arg_request = buildPerfSampleSeries();
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
@@ -5275,10 +5277,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(
-              mock,
-            ).projects.histories.executions.steps.perfSampleSeries;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.steps.perfSampleSeries;
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
         final arg_executionId = 'foo';
@@ -5392,10 +5393,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(
-              mock,
-            ).projects.histories.executions.steps.perfSampleSeries;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.steps.perfSampleSeries;
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
         final arg_executionId = 'foo';
@@ -5516,10 +5516,9 @@ void main() {
     () {
       unittest.test('method--batchCreate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(
-              mock,
-            ).projects.histories.executions.steps.perfSampleSeries.samples;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.steps.perfSampleSeries.samples;
         final arg_request = buildBatchCreatePerfSamplesRequest();
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
@@ -5653,10 +5652,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(
-              mock,
-            ).projects.histories.executions.steps.perfSampleSeries.samples;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.steps.perfSampleSeries.samples;
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
         final arg_executionId = 'foo';
@@ -5796,10 +5794,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(
-              mock,
-            ).projects.histories.executions.steps.testCases;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.steps.testCases;
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
         final arg_executionId = 'foo';
@@ -5913,10 +5910,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(
-              mock,
-            ).projects.histories.executions.steps.testCases;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.steps.testCases;
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
         final arg_executionId = 'foo';
@@ -6042,10 +6038,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ToolResultsApi(
-              mock,
-            ).projects.histories.executions.steps.thumbnails;
+        final res = api.ToolResultsApi(
+          mock,
+        ).projects.histories.executions.steps.thumbnails;
         final arg_projectId = 'foo';
         final arg_historyId = 'foo';
         final arg_executionId = 'foo';

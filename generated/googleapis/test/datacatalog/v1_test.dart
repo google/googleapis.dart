@@ -3861,10 +3861,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1CloudBigtableInstanceSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1CloudBigtableInstanceSpec(od);
       });
     },
@@ -3877,10 +3877,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec(
           od,
         );
@@ -3908,10 +3908,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec(od);
       });
     },
@@ -3934,10 +3934,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1ColumnSchemaFieldElementType();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1ColumnSchemaFieldElementType.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1ColumnSchemaFieldElementType.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1ColumnSchemaFieldElementType(od);
       });
     },
@@ -3949,10 +3949,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec(od);
       });
     },
@@ -4019,10 +4019,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1DataSourceConnectionSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1DataSourceConnectionSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1DataSourceConnectionSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1DataSourceConnectionSpec(od);
       });
     },
@@ -4046,10 +4046,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec(od);
       });
     },
@@ -4152,10 +4152,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1ExportTaxonomiesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1ExportTaxonomiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1ExportTaxonomiesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1ExportTaxonomiesResponse(od);
       });
     },
@@ -4203,10 +4203,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue(od);
       });
     },
@@ -4262,10 +4262,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1GraphSpecGraphElementTable();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1GraphSpecGraphElementTable.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1GraphSpecGraphElementTable.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1GraphSpecGraphElementTable(od);
       });
     },
@@ -4278,10 +4278,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference(
           od,
         );
@@ -4296,10 +4296,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties(
           od,
         );
@@ -4314,10 +4314,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty(od);
       });
     },
@@ -4354,10 +4354,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1ImportTaxonomiesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1ImportTaxonomiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1ImportTaxonomiesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1ImportTaxonomiesResponse(od);
       });
     },
@@ -4477,10 +4477,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1ModifyEntryContactsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1ModifyEntryContactsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1ModifyEntryContactsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1ModifyEntryContactsRequest(od);
       });
     },
@@ -4492,10 +4492,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1ModifyEntryOverviewRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1ModifyEntryOverviewRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1ModifyEntryOverviewRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1ModifyEntryOverviewRequest(od);
       });
     },
@@ -4540,10 +4540,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1PhysicalSchemaAvroSchema();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1PhysicalSchemaAvroSchema(od);
       });
     },
@@ -4583,10 +4583,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1PhysicalSchemaParquetSchema();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1PhysicalSchemaParquetSchema(od);
       });
     },
@@ -4598,10 +4598,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema(od);
       });
     },
@@ -4613,10 +4613,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1PhysicalSchemaThriftSchema();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1PhysicalSchemaThriftSchema(od);
       });
     },
@@ -4651,10 +4651,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest(od);
       });
     },
@@ -4666,10 +4666,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1RenameTagTemplateFieldRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1RenameTagTemplateFieldRequest(od);
       });
     },
@@ -4739,10 +4739,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatacatalogV1SearchCatalogRequestScope();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1SearchCatalogRequestScope.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1SearchCatalogRequestScope.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1SearchCatalogRequestScope(od);
       });
     },
@@ -4835,10 +4835,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey(od);
       });
     },
@@ -4851,10 +4851,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping(
           od,
         );
@@ -4869,10 +4869,10 @@ void main() {
         final o =
             buildGoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey(od);
       });
     },
@@ -6201,8 +6201,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsEntryGroupsEntriesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request = buildGoogleCloudDatacatalogV1Entry();
       final arg_parent = 'foo';
       final arg_entryId = 'foo';
@@ -6275,8 +6276,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6329,8 +6331,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6387,8 +6390,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6451,8 +6455,9 @@ void main() {
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request = buildGoogleCloudDatacatalogV1ImportEntriesRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6515,8 +6520,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6594,18 +6600,19 @@ void main() {
 
     unittest.test('method--modifyEntryContacts', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request =
           buildGoogleCloudDatacatalogV1ModifyEntryContactsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogV1ModifyEntryContactsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogV1ModifyEntryContactsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogV1ModifyEntryContactsRequest(obj);
 
           final path = req.url.path;
@@ -6664,18 +6671,19 @@ void main() {
 
     unittest.test('method--modifyEntryOverview', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request =
           buildGoogleCloudDatacatalogV1ModifyEntryOverviewRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogV1ModifyEntryOverviewRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogV1ModifyEntryOverviewRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogV1ModifyEntryOverviewRequest(obj);
 
           final path = req.url.path;
@@ -6734,8 +6742,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request = buildGoogleCloudDatacatalogV1Entry();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6808,8 +6817,9 @@ void main() {
 
     unittest.test('method--star', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request = buildGoogleCloudDatacatalogV1StarEntryRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -6876,8 +6886,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6942,8 +6953,9 @@ void main() {
 
     unittest.test('method--unstar', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries;
       final arg_request = buildGoogleCloudDatacatalogV1UnstarEntryRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7012,8 +7024,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsEntryGroupsEntriesTagsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries.tags;
       final arg_request = buildGoogleCloudDatacatalogV1Tag();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -7078,8 +7091,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries.tags;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7132,8 +7146,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries.tags;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7205,8 +7220,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries.tags;
       final arg_request = buildGoogleCloudDatacatalogV1Tag();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -7277,8 +7293,9 @@ void main() {
 
     unittest.test('method--reconcile', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.entryGroups.entries.tags;
       final arg_request = buildGoogleCloudDatacatalogV1ReconcileTagsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -8305,8 +8322,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsTagTemplatesFieldsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.tagTemplates.fields;
       final arg_request = buildGoogleCloudDatacatalogV1TagTemplateField();
       final arg_parent = 'foo';
       final arg_tagTemplateFieldId = 'foo';
@@ -8379,8 +8397,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.tagTemplates.fields;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -8442,8 +8461,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.tagTemplates.fields;
       final arg_request = buildGoogleCloudDatacatalogV1TagTemplateField();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -8516,18 +8536,19 @@ void main() {
 
     unittest.test('method--rename', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.tagTemplates.fields;
       final arg_request =
           buildGoogleCloudDatacatalogV1RenameTagTemplateFieldRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogV1RenameTagTemplateFieldRequest(obj);
 
           final path = req.url.path;
@@ -8590,20 +8611,19 @@ void main() {
     () {
       unittest.test('method--rename', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataCatalogApi(
-              mock,
-            ).projects.locations.tagTemplates.fields.enumValues;
+        final res = api.DataCatalogApi(
+          mock,
+        ).projects.locations.tagTemplates.fields.enumValues;
         final arg_request =
             buildGoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest(
               obj,
             );
@@ -8986,10 +9006,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogV1ImportTaxonomiesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogV1ImportTaxonomiesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogV1ImportTaxonomiesRequest(obj);
 
           final path = req.url.path;
@@ -9205,10 +9225,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatacatalogV1ReplaceTaxonomyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatacatalogV1ReplaceTaxonomyRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatacatalogV1ReplaceTaxonomyRequest(obj);
 
           final path = req.url.path;
@@ -9397,8 +9417,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsTaxonomiesPolicyTagsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.taxonomies.policyTags;
       final arg_request = buildGoogleCloudDatacatalogV1PolicyTag();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -9465,8 +9486,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.taxonomies.policyTags;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9519,8 +9541,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.taxonomies.policyTags;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9577,8 +9600,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.taxonomies.policyTags;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -9641,8 +9665,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.taxonomies.policyTags;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9714,8 +9739,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.taxonomies.policyTags;
       final arg_request = buildGoogleCloudDatacatalogV1PolicyTag();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -9788,8 +9814,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.taxonomies.policyTags;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -9852,8 +9879,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
+      final res = api.DataCatalogApi(
+        mock,
+      ).projects.locations.taxonomies.policyTags;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';

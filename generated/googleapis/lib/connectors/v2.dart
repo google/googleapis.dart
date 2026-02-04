@@ -128,7 +128,7 @@ class ProjectsLocationsConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':checkReadiness';
@@ -177,9 +177,10 @@ class ProjectsLocationsConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':checkStatus';
@@ -222,7 +223,7 @@ class ProjectsLocationsConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':exchangeAuthCode';
@@ -269,7 +270,7 @@ class ProjectsLocationsConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -314,7 +315,7 @@ class ProjectsLocationsConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':refreshAccessToken';
@@ -358,7 +359,7 @@ class ProjectsLocationsConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tools';
@@ -412,7 +413,7 @@ class ProjectsLocationsConnectionsActionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':execute';
@@ -465,10 +466,11 @@ class ProjectsLocationsConnectionsActionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -527,12 +529,13 @@ class ProjectsLocationsConnectionsActionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/actions';
@@ -599,11 +602,12 @@ class ProjectsLocationsConnectionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (contextMetadata != null) 'contextMetadata': [contextMetadata],
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'contextMetadata': ?contextMetadata == null ? null : [contextMetadata],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -664,12 +668,13 @@ class ProjectsLocationsConnectionsEntityTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entityTypes';
@@ -730,9 +735,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entities';
@@ -776,9 +782,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -830,10 +837,11 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (conditions != null) 'conditions': [conditions],
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if ($fields != null) 'fields': [$fields],
+      'conditions': ?conditions == null ? null : [conditions],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -879,9 +887,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -953,14 +962,15 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (conditions != null) 'conditions': [conditions],
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (sortBy != null) 'sortBy': sortBy,
-      if (sortOrder != null) 'sortOrder': sortOrder,
-      if ($fields != null) 'fields': [$fields],
+      'conditions': ?conditions == null ? null : [conditions],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'sortBy': ?sortBy,
+      'sortOrder': ?sortOrder,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/entities';
@@ -1014,9 +1024,10 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1074,10 +1085,11 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (conditions != null) 'conditions': [conditions],
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if ($fields != null) 'fields': [$fields],
+      'conditions': ?conditions == null ? null : [conditions],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1132,9 +1144,10 @@ class ProjectsLocationsConnectionsResourcesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1177,7 +1190,7 @@ class ProjectsLocationsConnectionsResourcesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1228,11 +1241,12 @@ class ProjectsLocationsConnectionsResourcesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/resources';
@@ -1282,7 +1296,7 @@ class ProjectsLocationsConnectionsToolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':execute';
@@ -1333,11 +1347,12 @@ class ProjectsLocationsConnectionsToolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (executionConfig_headers != null)
-        'executionConfig.headers': [executionConfig_headers],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'executionConfig.headers': ?executionConfig_headers == null
+          ? null
+          : [executionConfig_headers],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tools';
@@ -1374,11 +1389,16 @@ class AccessCredentials {
         refreshToken: json_['refreshToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessToken != null) 'accessToken': accessToken!,
-    if (expiresIn != null) 'expiresIn': expiresIn!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessToken = this.accessToken;
+    final expiresIn = this.expiresIn;
+    final refreshToken = this.refreshToken;
+    return {
+      'accessToken': ?accessToken,
+      'expiresIn': ?expiresIn,
+      'refreshToken': ?refreshToken,
+    };
+  }
 }
 
 /// Action message contains metadata information about a single action present
@@ -1426,21 +1446,18 @@ class Action {
     : this(
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        inputJsonSchema:
-            json_.containsKey('inputJsonSchema')
-                ? JsonSchema.fromJson(
-                  json_['inputJsonSchema']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        inputParameters:
-            (json_['inputParameters'] as core.List?)
-                ?.map(
-                  (value) => InputParameter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        inputJsonSchema: json_.containsKey('inputJsonSchema')
+            ? JsonSchema.fromJson(
+                json_['inputJsonSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inputParameters: (json_['inputParameters'] as core.List?)
+            ?.map(
+              (value) => InputParameter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -1449,33 +1466,41 @@ class Action {
               ),
             ),
         name: json_['name'] as core.String?,
-        resultJsonSchema:
-            json_.containsKey('resultJsonSchema')
-                ? JsonSchema.fromJson(
-                  json_['resultJsonSchema']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resultMetadata:
-            (json_['resultMetadata'] as core.List?)
-                ?.map(
-                  (value) => ResultMetadata.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        resultJsonSchema: json_.containsKey('resultJsonSchema')
+            ? JsonSchema.fromJson(
+                json_['resultJsonSchema']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resultMetadata: (json_['resultMetadata'] as core.List?)
+            ?.map(
+              (value) => ResultMetadata.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (inputJsonSchema != null) 'inputJsonSchema': inputJsonSchema!,
-    if (inputParameters != null) 'inputParameters': inputParameters!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (resultJsonSchema != null) 'resultJsonSchema': resultJsonSchema!,
-    if (resultMetadata != null) 'resultMetadata': resultMetadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final inputJsonSchema = this.inputJsonSchema;
+    final inputParameters = this.inputParameters;
+    final metadata = this.metadata;
+    final name = this.name;
+    final resultJsonSchema = this.resultJsonSchema;
+    final resultMetadata = this.resultMetadata;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'inputJsonSchema': ?inputJsonSchema,
+      'inputParameters': ?inputParameters,
+      'metadata': ?metadata,
+      'name': ?name,
+      'resultJsonSchema': ?resultJsonSchema,
+      'resultMetadata': ?resultMetadata,
+    };
+  }
 }
 
 /// AuthCodeData contains the data the runtime plane will give the connector
@@ -1508,18 +1533,23 @@ class AuthCodeData {
         authCode: json_['authCode'] as core.String?,
         pkceVerifier: json_['pkceVerifier'] as core.String?,
         redirectUri: json_['redirectUri'] as core.String?,
-        scopes:
-            (json_['scopes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        scopes: (json_['scopes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authCode != null) 'authCode': authCode!,
-    if (pkceVerifier != null) 'pkceVerifier': pkceVerifier!,
-    if (redirectUri != null) 'redirectUri': redirectUri!,
-    if (scopes != null) 'scopes': scopes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authCode = this.authCode;
+    final pkceVerifier = this.pkceVerifier;
+    final redirectUri = this.redirectUri;
+    final scopes = this.scopes;
+    return {
+      'authCode': ?authCode,
+      'pkceVerifier': ?pkceVerifier,
+      'redirectUri': ?redirectUri,
+      'scopes': ?scopes,
+    };
+  }
 }
 
 /// Response containing status of the connector for readiness prober.
@@ -1531,9 +1561,10 @@ class CheckReadinessResponse {
   CheckReadinessResponse.fromJson(core.Map json_)
     : this(status: json_['status'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final status = this.status;
+    return {'status': ?status};
+  }
 }
 
 /// The status of the connector.
@@ -1578,11 +1609,16 @@ class CheckStatusResponse {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (metadata != null) 'metadata': metadata!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final metadata = this.metadata;
+    final state = this.state;
+    return {
+      'description': ?description,
+      'metadata': ?metadata,
+      'state': ?state,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1622,10 +1658,9 @@ class Entity {
 
   Entity.fromJson(core.Map json_)
     : this(
-        fields:
-            json_.containsKey('fields')
-                ? json_['fields'] as core.Map<core.String, core.dynamic>
-                : null,
+        fields: json_.containsKey('fields')
+            ? json_['fields'] as core.Map<core.String, core.dynamic>
+            : null,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -1636,11 +1671,12 @@ class Entity {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fields != null) 'fields': fields!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fields = this.fields;
+    final metadata = this.metadata;
+    final name = this.name;
+    return {'fields': ?fields, 'metadata': ?metadata, 'name': ?name};
+  }
 }
 
 /// EntityType message contains metadata information about a single entity type
@@ -1676,20 +1712,17 @@ class EntityType {
   EntityType.fromJson(core.Map json_)
     : this(
         defaultSortBy: json_['defaultSortBy'] as core.String?,
-        fields:
-            (json_['fields'] as core.List?)
-                ?.map(
-                  (value) => Field.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        jsonSchema:
-            json_.containsKey('jsonSchema')
-                ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fields: (json_['fields'] as core.List?)
+            ?.map(
+              (value) =>
+                  Field.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        jsonSchema: json_.containsKey('jsonSchema')
+            ? JsonSchema.fromJson(
+                json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -1698,20 +1731,27 @@ class EntityType {
               ),
             ),
         name: json_['name'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultSortBy != null) 'defaultSortBy': defaultSortBy!,
-    if (fields != null) 'fields': fields!,
-    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (operations != null) 'operations': operations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultSortBy = this.defaultSortBy;
+    final fields = this.fields;
+    final jsonSchema = this.jsonSchema;
+    final metadata = this.metadata;
+    final name = this.name;
+    final operations = this.operations;
+    return {
+      'defaultSortBy': ?defaultSortBy,
+      'fields': ?fields,
+      'jsonSchema': ?jsonSchema,
+      'metadata': ?metadata,
+      'name': ?name,
+      'operations': ?operations,
+    };
+  }
 }
 
 /// ExchangeAuthCodeRequest currently includes the auth code data.
@@ -1740,32 +1780,33 @@ class ExchangeAuthCodeRequest {
 
   ExchangeAuthCodeRequest.fromJson(core.Map json_)
     : this(
-        authCodeData:
-            json_.containsKey('authCodeData')
-                ? AuthCodeData.fromJson(
-                  json_['authCodeData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        executionConfig:
-            json_.containsKey('executionConfig')
-                ? ExecutionConfig.fromJson(
-                  json_['executionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        oauth2Config:
-            json_.containsKey('oauth2Config')
-                ? OAuth2Config.fromJson(
-                  json_['oauth2Config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        authCodeData: json_.containsKey('authCodeData')
+            ? AuthCodeData.fromJson(
+                json_['authCodeData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        executionConfig: json_.containsKey('executionConfig')
+            ? ExecutionConfig.fromJson(
+                json_['executionConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oauth2Config: json_.containsKey('oauth2Config')
+            ? OAuth2Config.fromJson(
+                json_['oauth2Config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authCodeData != null) 'authCodeData': authCodeData!,
-    if (executionConfig != null) 'executionConfig': executionConfig!,
-    if (oauth2Config != null) 'oauth2Config': oauth2Config!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authCodeData = this.authCodeData;
+    final executionConfig = this.executionConfig;
+    final oauth2Config = this.oauth2Config;
+    return {
+      'authCodeData': ?authCodeData,
+      'executionConfig': ?executionConfig,
+      'oauth2Config': ?oauth2Config,
+    };
+  }
 }
 
 /// ExchangeAuthCodeResponse includes the returned access token and its
@@ -1783,13 +1824,12 @@ class ExchangeAuthCodeResponse {
 
   ExchangeAuthCodeResponse.fromJson(core.Map json_)
     : this(
-        accessCredentials:
-            json_.containsKey('accessCredentials')
-                ? AccessCredentials.fromJson(
-                  json_['accessCredentials']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accessCredentials: json_.containsKey('accessCredentials')
+            ? AccessCredentials.fromJson(
+                json_['accessCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -1799,10 +1839,11 @@ class ExchangeAuthCodeResponse {
             ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessCredentials != null) 'accessCredentials': accessCredentials!,
-    if (metadata != null) 'metadata': metadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessCredentials = this.accessCredentials;
+    final metadata = this.metadata;
+    return {'accessCredentials': ?accessCredentials, 'metadata': ?metadata};
+  }
 }
 
 /// Request message for ActionService.ExecuteAction
@@ -1822,23 +1863,21 @@ class ExecuteActionRequest {
 
   ExecuteActionRequest.fromJson(core.Map json_)
     : this(
-        executionConfig:
-            json_.containsKey('executionConfig')
-                ? ExecutionConfig.fromJson(
-                  json_['executionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        parameters:
-            json_.containsKey('parameters')
-                ? json_['parameters'] as core.Map<core.String, core.dynamic>
-                : null,
+        executionConfig: json_.containsKey('executionConfig')
+            ? ExecutionConfig.fromJson(
+                json_['executionConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        parameters: json_.containsKey('parameters')
+            ? json_['parameters'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionConfig != null) 'executionConfig': executionConfig!,
-    if (parameters != null) 'parameters': parameters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionConfig = this.executionConfig;
+    final parameters = this.parameters;
+    return {'executionConfig': ?executionConfig, 'parameters': ?parameters};
+  }
 }
 
 /// Response message for ActionService.ExecuteAction
@@ -1872,16 +1911,16 @@ class ExecuteActionResponse {
                 value as core.Map<core.String, core.dynamic>,
               ),
             ),
-        results:
-            (json_['results'] as core.List?)
-                ?.map((value) => value as core.Map<core.String, core.dynamic>)
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final results = this.results;
+    return {'metadata': ?metadata, 'results': ?results};
+  }
 }
 
 /// An execute sql query request containing the query and the connection to
@@ -1897,17 +1936,17 @@ class ExecuteSqlQueryRequest {
 
   ExecuteSqlQueryRequest.fromJson(core.Map json_)
     : this(
-        query:
-            json_.containsKey('query')
-                ? Query.fromJson(
-                  json_['query'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        query: json_.containsKey('query')
+            ? Query.fromJson(
+                json_['query'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (query != null) 'query': query!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final query = this.query;
+    return {'query': ?query};
+  }
 }
 
 /// A response returned by the connection after executing the sql query.
@@ -1928,15 +1967,15 @@ class ExecuteSqlQueryResponse {
 
   ExecuteSqlQueryResponse.fromJson(core.Map json_)
     : this(
-        results:
-            (json_['results'] as core.List?)
-                ?.map((value) => value as core.Map<core.String, core.dynamic>)
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final results = this.results;
+    return {'results': ?results};
+  }
 }
 
 /// Request message for ConnectorAgentService.ExecuteTool
@@ -1964,28 +2003,29 @@ class ExecuteToolRequest {
 
   ExecuteToolRequest.fromJson(core.Map json_)
     : this(
-        executionConfig:
-            json_.containsKey('executionConfig')
-                ? ExecutionConfig.fromJson(
-                  json_['executionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        parameters:
-            json_.containsKey('parameters')
-                ? json_['parameters'] as core.Map<core.String, core.dynamic>
-                : null,
-        toolDefinition:
-            json_.containsKey('toolDefinition')
-                ? json_['toolDefinition'] as core.Map<core.String, core.dynamic>
-                : null,
+        executionConfig: json_.containsKey('executionConfig')
+            ? ExecutionConfig.fromJson(
+                json_['executionConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        parameters: json_.containsKey('parameters')
+            ? json_['parameters'] as core.Map<core.String, core.dynamic>
+            : null,
+        toolDefinition: json_.containsKey('toolDefinition')
+            ? json_['toolDefinition'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionConfig != null) 'executionConfig': executionConfig!,
-    if (parameters != null) 'parameters': parameters!,
-    if (toolDefinition != null) 'toolDefinition': toolDefinition!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionConfig = this.executionConfig;
+    final parameters = this.parameters;
+    final toolDefinition = this.toolDefinition;
+    return {
+      'executionConfig': ?executionConfig,
+      'parameters': ?parameters,
+      'toolDefinition': ?toolDefinition,
+    };
+  }
 }
 
 /// Response message for ConnectorAgentService.ExecuteTool
@@ -2013,16 +2053,16 @@ class ExecuteToolResponse {
                 value as core.Map<core.String, core.dynamic>,
               ),
             ),
-        result:
-            json_.containsKey('result')
-                ? json_['result'] as core.Map<core.String, core.dynamic>
-                : null,
+        result: json_.containsKey('result')
+            ? json_['result'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (result != null) 'result': result!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final result = this.result;
+    return {'metadata': ?metadata, 'result': ?result};
+  }
 }
 
 class ExecutionConfig {
@@ -2037,9 +2077,10 @@ class ExecutionConfig {
   ExecutionConfig.fromJson(core.Map json_)
     : this(headers: json_['headers'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (headers != null) 'headers': headers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final headers = this.headers;
+    return {'headers': ?headers};
+  }
 }
 
 /// Message contains EntityType's Field metadata.
@@ -2142,42 +2183,49 @@ class Field {
 
   Field.fromJson(core.Map json_)
     : this(
-        additionalDetails:
-            json_.containsKey('additionalDetails')
-                ? json_['additionalDetails']
-                    as core.Map<core.String, core.dynamic>
-                : null,
+        additionalDetails: json_.containsKey('additionalDetails')
+            ? json_['additionalDetails'] as core.Map<core.String, core.dynamic>
+            : null,
         dataType: json_['dataType'] as core.String?,
         defaultValue: json_['defaultValue'],
         description: json_['description'] as core.String?,
-        jsonSchema:
-            json_.containsKey('jsonSchema')
-                ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        jsonSchema: json_.containsKey('jsonSchema')
+            ? JsonSchema.fromJson(
+                json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         key: json_['key'] as core.bool?,
         name: json_['name'] as core.String?,
         nullable: json_['nullable'] as core.bool?,
-        reference:
-            json_.containsKey('reference')
-                ? Reference.fromJson(
-                  json_['reference'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        reference: json_.containsKey('reference')
+            ? Reference.fromJson(
+                json_['reference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalDetails != null) 'additionalDetails': additionalDetails!,
-    if (dataType != null) 'dataType': dataType!,
-    if (defaultValue != null) 'defaultValue': defaultValue!,
-    if (description != null) 'description': description!,
-    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
-    if (key != null) 'key': key!,
-    if (name != null) 'name': name!,
-    if (nullable != null) 'nullable': nullable!,
-    if (reference != null) 'reference': reference!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalDetails = this.additionalDetails;
+    final dataType = this.dataType;
+    final defaultValue = this.defaultValue;
+    final description = this.description;
+    final jsonSchema = this.jsonSchema;
+    final key = this.key;
+    final name = this.name;
+    final nullable = this.nullable;
+    final reference = this.reference;
+    return {
+      'additionalDetails': ?additionalDetails,
+      'dataType': ?dataType,
+      'defaultValue': ?defaultValue,
+      'description': ?description,
+      'jsonSchema': ?jsonSchema,
+      'key': ?key,
+      'name': ?name,
+      'nullable': ?nullable,
+      'reference': ?reference,
+    };
+  }
 }
 
 /// Request message for ConnectorAgentService.GetResourcePost
@@ -2192,25 +2240,23 @@ class GetResourcePostRequest {
 
   GetResourcePostRequest.fromJson(core.Map json_)
     : this(
-        executionConfig:
-            json_.containsKey('executionConfig')
-                ? ExecutionConfig.fromJson(
-                  json_['executionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        toolSpec:
-            json_.containsKey('toolSpec')
-                ? ToolSpec.fromJson(
-                  json_['toolSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        executionConfig: json_.containsKey('executionConfig')
+            ? ExecutionConfig.fromJson(
+                json_['executionConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolSpec: json_.containsKey('toolSpec')
+            ? ToolSpec.fromJson(
+                json_['toolSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionConfig != null) 'executionConfig': executionConfig!,
-    if (toolSpec != null) 'toolSpec': toolSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionConfig = this.executionConfig;
+    final toolSpec = this.toolSpec;
+    return {'executionConfig': ?executionConfig, 'toolSpec': ?toolSpec};
+  }
 }
 
 class GetResourceResponse {
@@ -2249,11 +2295,12 @@ class GetResourceResponse {
         mimeType: json_['mimeType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (metadata != null) 'metadata': metadata!,
-    if (mimeType != null) 'mimeType': mimeType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final metadata = this.metadata;
+    final mimeType = this.mimeType;
+    return {'data': ?data, 'metadata': ?metadata, 'mimeType': ?mimeType};
+  }
 }
 
 /// Input Parameter message contains metadata about the parameters required for
@@ -2347,33 +2394,39 @@ class InputParameter {
 
   InputParameter.fromJson(core.Map json_)
     : this(
-        additionalDetails:
-            json_.containsKey('additionalDetails')
-                ? json_['additionalDetails']
-                    as core.Map<core.String, core.dynamic>
-                : null,
+        additionalDetails: json_.containsKey('additionalDetails')
+            ? json_['additionalDetails'] as core.Map<core.String, core.dynamic>
+            : null,
         dataType: json_['dataType'] as core.String?,
         defaultValue: json_['defaultValue'],
         description: json_['description'] as core.String?,
-        jsonSchema:
-            json_.containsKey('jsonSchema')
-                ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        jsonSchema: json_.containsKey('jsonSchema')
+            ? JsonSchema.fromJson(
+                json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         nullable: json_['nullable'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalDetails != null) 'additionalDetails': additionalDetails!,
-    if (dataType != null) 'dataType': dataType!,
-    if (defaultValue != null) 'defaultValue': defaultValue!,
-    if (description != null) 'description': description!,
-    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
-    if (name != null) 'name': name!,
-    if (nullable != null) 'nullable': nullable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalDetails = this.additionalDetails;
+    final dataType = this.dataType;
+    final defaultValue = this.defaultValue;
+    final description = this.description;
+    final jsonSchema = this.jsonSchema;
+    final name = this.name;
+    final nullable = this.nullable;
+    return {
+      'additionalDetails': ?additionalDetails,
+      'dataType': ?dataType,
+      'defaultValue': ?defaultValue,
+      'description': ?description,
+      'jsonSchema': ?jsonSchema,
+      'name': ?name,
+      'nullable': ?nullable,
+    };
+  }
 }
 
 /// JsonSchema representation of schema metadata
@@ -2487,21 +2540,18 @@ class JsonSchema {
 
   JsonSchema.fromJson(core.Map json_)
     : this(
-        additionalDetails:
-            json_.containsKey('additionalDetails')
-                ? json_['additionalDetails']
-                    as core.Map<core.String, core.dynamic>
-                : null,
+        additionalDetails: json_.containsKey('additionalDetails')
+            ? json_['additionalDetails'] as core.Map<core.String, core.dynamic>
+            : null,
         default_: json_['default'],
         description: json_['description'] as core.String?,
         enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
         format: json_['format'] as core.String?,
-        items:
-            json_.containsKey('items')
-                ? JsonSchema.fromJson(
-                  json_['items'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        items: json_.containsKey('items')
+            ? JsonSchema.fromJson(
+                json_['items'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         jdbcType: json_['jdbcType'] as core.String?,
         properties:
             (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -2512,28 +2562,38 @@ class JsonSchema {
                 ),
               ),
             ),
-        required:
-            (json_['required'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        type:
-            (json_['type'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        required: (json_['required'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        type: (json_['type'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalDetails != null) 'additionalDetails': additionalDetails!,
-    if (default_ != null) 'default': default_!,
-    if (description != null) 'description': description!,
-    if (enum_ != null) 'enum': enum_!,
-    if (format != null) 'format': format!,
-    if (items != null) 'items': items!,
-    if (jdbcType != null) 'jdbcType': jdbcType!,
-    if (properties != null) 'properties': properties!,
-    if (required != null) 'required': required!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalDetails = this.additionalDetails;
+    final default_ = this.default_;
+    final description = this.description;
+    final enum_ = this.enum_;
+    final format = this.format;
+    final items = this.items;
+    final jdbcType = this.jdbcType;
+    final properties = this.properties;
+    final required = this.required;
+    final type = this.type;
+    return {
+      'additionalDetails': ?additionalDetails,
+      'default': ?default_,
+      'description': ?description,
+      'enum': ?enum_,
+      'format': ?format,
+      'items': ?items,
+      'jdbcType': ?jdbcType,
+      'properties': ?properties,
+      'required': ?required,
+      'type': ?type,
+    };
+  }
 }
 
 /// Response message for ActionService.ListActions
@@ -2564,14 +2624,12 @@ class ListActionsResponse {
 
   ListActionsResponse.fromJson(core.Map json_)
     : this(
-        actions:
-            (json_['actions'] as core.List?)
-                ?.map(
-                  (value) => Action.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        actions: (json_['actions'] as core.List?)
+            ?.map(
+              (value) =>
+                  Action.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -2580,19 +2638,23 @@ class ListActionsResponse {
               ),
             ),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unsupportedActionNames:
-            (json_['unsupportedActionNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unsupportedActionNames: (json_['unsupportedActionNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actions != null) 'actions': actions!,
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unsupportedActionNames != null)
-      'unsupportedActionNames': unsupportedActionNames!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final actions = this.actions;
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    final unsupportedActionNames = this.unsupportedActionNames;
+    return {
+      'actions': ?actions,
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+      'unsupportedActionNames': ?unsupportedActionNames,
+    };
+  }
 }
 
 /// Response message for EntityService.ListEntities
@@ -2613,14 +2675,12 @@ class ListEntitiesResponse {
 
   ListEntitiesResponse.fromJson(core.Map json_)
     : this(
-        entities:
-            (json_['entities'] as core.List?)
-                ?.map(
-                  (value) => Entity.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        entities: (json_['entities'] as core.List?)
+            ?.map(
+              (value) =>
+                  Entity.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -2631,11 +2691,16 @@ class ListEntitiesResponse {
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entities != null) 'entities': entities!,
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entities = this.entities;
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'entities': ?entities,
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response message for EntityService.ListEntityTypes
@@ -2674,27 +2739,30 @@ class ListEntityTypesResponse {
               ),
             ),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        types:
-            (json_['types'] as core.List?)
-                ?.map(
-                  (value) => EntityType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unsupportedTypeNames:
-            (json_['unsupportedTypeNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        types: (json_['types'] as core.List?)
+            ?.map(
+              (value) => EntityType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unsupportedTypeNames: (json_['unsupportedTypeNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (types != null) 'types': types!,
-    if (unsupportedTypeNames != null)
-      'unsupportedTypeNames': unsupportedTypeNames!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    final types = this.types;
+    final unsupportedTypeNames = this.unsupportedTypeNames;
+    return {
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+      'types': ?types,
+      'unsupportedTypeNames': ?unsupportedTypeNames,
+    };
+  }
 }
 
 class ListResourcesResponse {
@@ -2722,21 +2790,25 @@ class ListResourcesResponse {
               ),
             ),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) => Resource.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => Resource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (resources != null) 'resources': resources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    final resources = this.resources;
+    return {
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+      'resources': ?resources,
+    };
+  }
 }
 
 /// Request message for ConnectorAgentService.ListToolsPost
@@ -2762,29 +2834,32 @@ class ListToolsPostRequest {
 
   ListToolsPostRequest.fromJson(core.Map json_)
     : this(
-        executionConfig:
-            json_.containsKey('executionConfig')
-                ? ExecutionConfig.fromJson(
-                  json_['executionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        executionConfig: json_.containsKey('executionConfig')
+            ? ExecutionConfig.fromJson(
+                json_['executionConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         pageSize: json_['pageSize'] as core.int?,
         pageToken: json_['pageToken'] as core.String?,
-        toolSpec:
-            json_.containsKey('toolSpec')
-                ? ToolSpec.fromJson(
-                  json_['toolSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        toolSpec: json_.containsKey('toolSpec')
+            ? ToolSpec.fromJson(
+                json_['toolSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionConfig != null) 'executionConfig': executionConfig!,
-    if (pageSize != null) 'pageSize': pageSize!,
-    if (pageToken != null) 'pageToken': pageToken!,
-    if (toolSpec != null) 'toolSpec': toolSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionConfig = this.executionConfig;
+    final pageSize = this.pageSize;
+    final pageToken = this.pageToken;
+    final toolSpec = this.toolSpec;
+    return {
+      'executionConfig': ?executionConfig,
+      'pageSize': ?pageSize,
+      'pageToken': ?pageToken,
+      'toolSpec': ?toolSpec,
+    };
+  }
 }
 
 /// Response message for ConnectorAgentService.ListTools
@@ -2813,21 +2888,24 @@ class ListToolsResponse {
               ),
             ),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tools:
-            (json_['tools'] as core.List?)
-                ?.map(
-                  (value) => Tool.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tools: (json_['tools'] as core.List?)
+            ?.map(
+              (value) =>
+                  Tool.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tools != null) 'tools': tools!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final nextPageToken = this.nextPageToken;
+    final tools = this.tools;
+    return {
+      'metadata': ?metadata,
+      'nextPageToken': ?nextPageToken,
+      'tools': ?tools,
+    };
+  }
 }
 
 class OAuth2Config {
@@ -2849,11 +2927,16 @@ class OAuth2Config {
         clientSecret: json_['clientSecret'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authUri != null) 'authUri': authUri!,
-    if (clientId != null) 'clientId': clientId!,
-    if (clientSecret != null) 'clientSecret': clientSecret!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authUri = this.authUri;
+    final clientId = this.clientId;
+    final clientSecret = this.clientSecret;
+    return {
+      'authUri': ?authUri,
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+    };
+  }
 }
 
 /// A wrapper around the SQL query statement.
@@ -2883,23 +2966,28 @@ class Query {
     : this(
         maxRows: json_['maxRows'] as core.String?,
         query: json_['query'] as core.String?,
-        queryParameters:
-            (json_['queryParameters'] as core.List?)
-                ?.map(
-                  (value) => QueryParameter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        queryParameters: (json_['queryParameters'] as core.List?)
+            ?.map(
+              (value) => QueryParameter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         timeout: json_['timeout'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxRows != null) 'maxRows': maxRows!,
-    if (query != null) 'query': query!,
-    if (queryParameters != null) 'queryParameters': queryParameters!,
-    if (timeout != null) 'timeout': timeout!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxRows = this.maxRows;
+    final query = this.query;
+    final queryParameters = this.queryParameters;
+    final timeout = this.timeout;
+    return {
+      'maxRows': ?maxRows,
+      'query': ?query,
+      'queryParameters': ?queryParameters,
+      'timeout': ?timeout,
+    };
+  }
 }
 
 /// Query parameter definition
@@ -2964,10 +3052,11 @@ class QueryParameter {
   QueryParameter.fromJson(core.Map json_)
     : this(dataType: json_['dataType'] as core.String?, value: json_['value']);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataType != null) 'dataType': dataType!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataType = this.dataType;
+    final value = this.value;
+    return {'dataType': ?dataType, 'value': ?value};
+  }
 }
 
 class Reference {
@@ -2985,10 +3074,11 @@ class Reference {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final type = this.type;
+    return {'name': ?name, 'type': ?type};
+  }
 }
 
 /// RefreshAccessTokenRequest includes the refresh token.
@@ -3016,27 +3106,29 @@ class RefreshAccessTokenRequest {
 
   RefreshAccessTokenRequest.fromJson(core.Map json_)
     : this(
-        executionConfig:
-            json_.containsKey('executionConfig')
-                ? ExecutionConfig.fromJson(
-                  json_['executionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        oauth2Config:
-            json_.containsKey('oauth2Config')
-                ? OAuth2Config.fromJson(
-                  json_['oauth2Config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        executionConfig: json_.containsKey('executionConfig')
+            ? ExecutionConfig.fromJson(
+                json_['executionConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oauth2Config: json_.containsKey('oauth2Config')
+            ? OAuth2Config.fromJson(
+                json_['oauth2Config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         refreshToken: json_['refreshToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionConfig != null) 'executionConfig': executionConfig!,
-    if (oauth2Config != null) 'oauth2Config': oauth2Config!,
-    if (refreshToken != null) 'refreshToken': refreshToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionConfig = this.executionConfig;
+    final oauth2Config = this.oauth2Config;
+    final refreshToken = this.refreshToken;
+    return {
+      'executionConfig': ?executionConfig,
+      'oauth2Config': ?oauth2Config,
+      'refreshToken': ?refreshToken,
+    };
+  }
 }
 
 /// RefreshAccessTokenResponse includes the returned access token and its
@@ -3054,13 +3146,12 @@ class RefreshAccessTokenResponse {
 
   RefreshAccessTokenResponse.fromJson(core.Map json_)
     : this(
-        accessCredentials:
-            json_.containsKey('accessCredentials')
-                ? AccessCredentials.fromJson(
-                  json_['accessCredentials']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accessCredentials: json_.containsKey('accessCredentials')
+            ? AccessCredentials.fromJson(
+                json_['accessCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -3070,10 +3161,11 @@ class RefreshAccessTokenResponse {
             ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessCredentials != null) 'accessCredentials': accessCredentials!,
-    if (metadata != null) 'metadata': metadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessCredentials = this.accessCredentials;
+    final metadata = this.metadata;
+    return {'accessCredentials': ?accessCredentials, 'metadata': ?metadata};
+  }
 }
 
 class Resource {
@@ -3103,13 +3195,20 @@ class Resource {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (name != null) 'name': name!,
-    if (size != null) 'size': size!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final mimeType = this.mimeType;
+    final name = this.name;
+    final size = this.size;
+    final uri = this.uri;
+    return {
+      'description': ?description,
+      'mimeType': ?mimeType,
+      'name': ?name,
+      'size': ?size,
+      'uri': ?uri,
+    };
+  }
 }
 
 /// Result Metadata message contains metadata about the result returned after
@@ -3197,24 +3296,31 @@ class ResultMetadata {
         dataType: json_['dataType'] as core.String?,
         defaultValue: json_['defaultValue'],
         description: json_['description'] as core.String?,
-        jsonSchema:
-            json_.containsKey('jsonSchema')
-                ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        jsonSchema: json_.containsKey('jsonSchema')
+            ? JsonSchema.fromJson(
+                json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         nullable: json_['nullable'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataType != null) 'dataType': dataType!,
-    if (defaultValue != null) 'defaultValue': defaultValue!,
-    if (description != null) 'description': description!,
-    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
-    if (name != null) 'name': name!,
-    if (nullable != null) 'nullable': nullable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataType = this.dataType;
+    final defaultValue = this.defaultValue;
+    final description = this.description;
+    final jsonSchema = this.jsonSchema;
+    final name = this.name;
+    final nullable = this.nullable;
+    return {
+      'dataType': ?dataType,
+      'defaultValue': ?defaultValue,
+      'description': ?description,
+      'jsonSchema': ?jsonSchema,
+      'name': ?name,
+      'nullable': ?nullable,
+    };
+  }
 }
 
 /// Message representing a single tool.
@@ -3248,40 +3354,44 @@ class Tool {
 
   Tool.fromJson(core.Map json_)
     : this(
-        annotations:
-            json_.containsKey('annotations')
-                ? ToolAnnotations.fromJson(
-                  json_['annotations'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dependsOn:
-            (json_['dependsOn'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        annotations: json_.containsKey('annotations')
+            ? ToolAnnotations.fromJson(
+                json_['annotations'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dependsOn: (json_['dependsOn'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         description: json_['description'] as core.String?,
-        inputSchema:
-            json_.containsKey('inputSchema')
-                ? JsonSchema.fromJson(
-                  json_['inputSchema'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        inputSchema: json_.containsKey('inputSchema')
+            ? JsonSchema.fromJson(
+                json_['inputSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        outputSchema:
-            json_.containsKey('outputSchema')
-                ? JsonSchema.fromJson(
-                  json_['outputSchema'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        outputSchema: json_.containsKey('outputSchema')
+            ? JsonSchema.fromJson(
+                json_['outputSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (dependsOn != null) 'dependsOn': dependsOn!,
-    if (description != null) 'description': description!,
-    if (inputSchema != null) 'inputSchema': inputSchema!,
-    if (name != null) 'name': name!,
-    if (outputSchema != null) 'outputSchema': outputSchema!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final dependsOn = this.dependsOn;
+    final description = this.description;
+    final inputSchema = this.inputSchema;
+    final name = this.name;
+    final outputSchema = this.outputSchema;
+    return {
+      'annotations': ?annotations,
+      'dependsOn': ?dependsOn,
+      'description': ?description,
+      'inputSchema': ?inputSchema,
+      'name': ?name,
+      'outputSchema': ?outputSchema,
+    };
+  }
 }
 
 /// ToolAnnotations holds annotations for a tool.
@@ -3327,13 +3437,20 @@ class ToolAnnotations {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destructiveHint != null) 'destructiveHint': destructiveHint!,
-    if (idempotentHint != null) 'idempotentHint': idempotentHint!,
-    if (openWorldHint != null) 'openWorldHint': openWorldHint!,
-    if (readOnlyHint != null) 'readOnlyHint': readOnlyHint!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destructiveHint = this.destructiveHint;
+    final idempotentHint = this.idempotentHint;
+    final openWorldHint = this.openWorldHint;
+    final readOnlyHint = this.readOnlyHint;
+    final title = this.title;
+    return {
+      'destructiveHint': ?destructiveHint,
+      'idempotentHint': ?idempotentHint,
+      'openWorldHint': ?openWorldHint,
+      'readOnlyHint': ?readOnlyHint,
+      'title': ?title,
+    };
+  }
 }
 
 class ToolSpec {
@@ -3352,17 +3469,20 @@ class ToolSpec {
 
   ToolSpec.fromJson(core.Map json_)
     : this(
-        toolDefinitions:
-            (json_['toolDefinitions'] as core.List?)
-                ?.map((value) => value as core.Map<core.String, core.dynamic>)
-                .toList(),
+        toolDefinitions: (json_['toolDefinitions'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
         toolSpecVersion: json_['toolSpecVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (toolDefinitions != null) 'toolDefinitions': toolDefinitions!,
-    if (toolSpecVersion != null) 'toolSpecVersion': toolSpecVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolDefinitions = this.toolDefinitions;
+    final toolSpecVersion = this.toolSpecVersion;
+    return {
+      'toolDefinitions': ?toolDefinitions,
+      'toolSpecVersion': ?toolSpecVersion,
+    };
+  }
 }
 
 /// Response message for EntityService.UpdateEntitiesWithConditions
@@ -3390,14 +3510,14 @@ class UpdateEntitiesWithConditionsResponse {
                 value as core.Map<core.String, core.dynamic>,
               ),
             ),
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final response = this.response;
+    return {'metadata': ?metadata, 'response': ?response};
+  }
 }

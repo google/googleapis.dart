@@ -1604,10 +1604,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudSecuritypostureV1PolicyRuleStringValues();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudSecuritypostureV1PolicyRuleStringValues.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudSecuritypostureV1PolicyRuleStringValues.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudSecuritypostureV1PolicyRuleStringValues(od);
       });
     },
@@ -1922,8 +1922,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(mock).organizations.locations.operations;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1986,8 +1987,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(mock).organizations.locations.operations;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2040,8 +2042,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(mock).organizations.locations.operations;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2094,8 +2097,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(mock).organizations.locations.operations;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2177,10 +2181,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsPostureDeploymentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(
-            mock,
-          ).organizations.locations.postureDeployments;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.postureDeployments;
       final arg_request = buildPostureDeployment();
       final arg_parent = 'foo';
       final arg_postureDeploymentId = 'foo';
@@ -2249,10 +2252,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(
-            mock,
-          ).organizations.locations.postureDeployments;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.postureDeployments;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -2311,10 +2313,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(
-            mock,
-          ).organizations.locations.postureDeployments;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.postureDeployments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2367,10 +2368,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(
-            mock,
-          ).organizations.locations.postureDeployments;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.postureDeployments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2448,10 +2448,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(
-            mock,
-          ).organizations.locations.postureDeployments;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.postureDeployments;
       final arg_request = buildPostureDeployment();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2522,8 +2521,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsPostureTemplatesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(mock).organizations.locations.postureTemplates;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.postureTemplates;
       final arg_name = 'foo';
       final arg_revisionId = 'foo';
       final arg_$fields = 'foo';
@@ -2585,8 +2585,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecurityPostureApi(mock).organizations.locations.postureTemplates;
+      final res = api.SecurityPostureApi(
+        mock,
+      ).organizations.locations.postureTemplates;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

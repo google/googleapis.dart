@@ -684,10 +684,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudOrgpolicyV2ConstraintBooleanConstraint();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOrgpolicyV2ConstraintBooleanConstraint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOrgpolicyV2ConstraintBooleanConstraint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOrgpolicyV2ConstraintBooleanConstraint(od);
       });
     },
@@ -700,10 +700,10 @@ void main() {
         final o =
             buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition(od);
       });
     },
@@ -716,10 +716,10 @@ void main() {
         final o =
             buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(
           od,
         );
@@ -734,10 +734,10 @@ void main() {
         final o =
             buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata(
           od,
         );
@@ -790,10 +790,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudOrgpolicyV2ListCustomConstraintsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOrgpolicyV2ListCustomConstraintsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOrgpolicyV2ListCustomConstraintsResponse(od);
       });
     },
@@ -849,10 +849,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(od);
       });
     },

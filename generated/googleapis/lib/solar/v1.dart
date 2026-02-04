@@ -130,15 +130,18 @@ class BuildingInsightsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (exactQualityRequired != null)
-        'exactQualityRequired': ['${exactQualityRequired}'],
-      if (experiments != null) 'experiments': experiments,
-      if (location_latitude != null)
-        'location.latitude': ['${location_latitude}'],
-      if (location_longitude != null)
-        'location.longitude': ['${location_longitude}'],
-      if (requiredQuality != null) 'requiredQuality': [requiredQuality],
-      if ($fields != null) 'fields': [$fields],
+      'exactQualityRequired': ?exactQualityRequired == null
+          ? null
+          : ['${exactQualityRequired}'],
+      'experiments': ?experiments,
+      'location.latitude': ?location_latitude == null
+          ? null
+          : ['${location_latitude}'],
+      'location.longitude': ?location_longitude == null
+          ? null
+          : ['${location_longitude}'],
+      'requiredQuality': ?requiredQuality == null ? null : [requiredQuality],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/buildingInsights:findClosest';
@@ -250,18 +253,23 @@ class DataLayersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (exactQualityRequired != null)
-        'exactQualityRequired': ['${exactQualityRequired}'],
-      if (experiments != null) 'experiments': experiments,
-      if (location_latitude != null)
-        'location.latitude': ['${location_latitude}'],
-      if (location_longitude != null)
-        'location.longitude': ['${location_longitude}'],
-      if (pixelSizeMeters != null) 'pixelSizeMeters': ['${pixelSizeMeters}'],
-      if (radiusMeters != null) 'radiusMeters': ['${radiusMeters}'],
-      if (requiredQuality != null) 'requiredQuality': [requiredQuality],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'exactQualityRequired': ?exactQualityRequired == null
+          ? null
+          : ['${exactQualityRequired}'],
+      'experiments': ?experiments,
+      'location.latitude': ?location_latitude == null
+          ? null
+          : ['${location_latitude}'],
+      'location.longitude': ?location_longitude == null
+          ? null
+          : ['${location_longitude}'],
+      'pixelSizeMeters': ?pixelSizeMeters == null
+          ? null
+          : ['${pixelSizeMeters}'],
+      'radiusMeters': ?radiusMeters == null ? null : ['${radiusMeters}'],
+      'requiredQuality': ?requiredQuality == null ? null : [requiredQuality],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/dataLayers:get';
@@ -300,8 +308,8 @@ class GeoTiffResource {
   /// this method will complete with the same error.
   async.Future<HttpBody> get({core.String? id, core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (id != null) 'id': [id],
-      if ($fields != null) 'fields': [$fields],
+      'id': ?id == null ? null : [id],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/geoTiff:get';
@@ -385,59 +393,65 @@ class BuildingInsights {
   BuildingInsights.fromJson(core.Map json_)
     : this(
         administrativeArea: json_['administrativeArea'] as core.String?,
-        boundingBox:
-            json_.containsKey('boundingBox')
-                ? LatLngBox.fromJson(
-                  json_['boundingBox'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        center:
-            json_.containsKey('center')
-                ? LatLng.fromJson(
-                  json_['center'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        imageryDate:
-            json_.containsKey('imageryDate')
-                ? Date.fromJson(
-                  json_['imageryDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        imageryProcessedDate:
-            json_.containsKey('imageryProcessedDate')
-                ? Date.fromJson(
-                  json_['imageryProcessedDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        boundingBox: json_.containsKey('boundingBox')
+            ? LatLngBox.fromJson(
+                json_['boundingBox'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        center: json_.containsKey('center')
+            ? LatLng.fromJson(
+                json_['center'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageryDate: json_.containsKey('imageryDate')
+            ? Date.fromJson(
+                json_['imageryDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageryProcessedDate: json_.containsKey('imageryProcessedDate')
+            ? Date.fromJson(
+                json_['imageryProcessedDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         imageryQuality: json_['imageryQuality'] as core.String?,
         name: json_['name'] as core.String?,
         postalCode: json_['postalCode'] as core.String?,
         regionCode: json_['regionCode'] as core.String?,
-        solarPotential:
-            json_.containsKey('solarPotential')
-                ? SolarPotential.fromJson(
-                  json_['solarPotential']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        solarPotential: json_.containsKey('solarPotential')
+            ? SolarPotential.fromJson(
+                json_['solarPotential'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         statisticalArea: json_['statisticalArea'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (administrativeArea != null) 'administrativeArea': administrativeArea!,
-    if (boundingBox != null) 'boundingBox': boundingBox!,
-    if (center != null) 'center': center!,
-    if (imageryDate != null) 'imageryDate': imageryDate!,
-    if (imageryProcessedDate != null)
-      'imageryProcessedDate': imageryProcessedDate!,
-    if (imageryQuality != null) 'imageryQuality': imageryQuality!,
-    if (name != null) 'name': name!,
-    if (postalCode != null) 'postalCode': postalCode!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (solarPotential != null) 'solarPotential': solarPotential!,
-    if (statisticalArea != null) 'statisticalArea': statisticalArea!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final administrativeArea = this.administrativeArea;
+    final boundingBox = this.boundingBox;
+    final center = this.center;
+    final imageryDate = this.imageryDate;
+    final imageryProcessedDate = this.imageryProcessedDate;
+    final imageryQuality = this.imageryQuality;
+    final name = this.name;
+    final postalCode = this.postalCode;
+    final regionCode = this.regionCode;
+    final solarPotential = this.solarPotential;
+    final statisticalArea = this.statisticalArea;
+    return {
+      'administrativeArea': ?administrativeArea,
+      'boundingBox': ?boundingBox,
+      'center': ?center,
+      'imageryDate': ?imageryDate,
+      'imageryProcessedDate': ?imageryProcessedDate,
+      'imageryQuality': ?imageryQuality,
+      'name': ?name,
+      'postalCode': ?postalCode,
+      'regionCode': ?regionCode,
+      'solarPotential': ?solarPotential,
+      'statisticalArea': ?statisticalArea,
+    };
+  }
 }
 
 /// Cost and benefit of an outright purchase of a particular configuration of
@@ -476,41 +490,43 @@ class CashPurchaseSavings {
 
   CashPurchaseSavings.fromJson(core.Map json_)
     : this(
-        outOfPocketCost:
-            json_.containsKey('outOfPocketCost')
-                ? Money.fromJson(
-                  json_['outOfPocketCost']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        outOfPocketCost: json_.containsKey('outOfPocketCost')
+            ? Money.fromJson(
+                json_['outOfPocketCost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         paybackYears: (json_['paybackYears'] as core.num?)?.toDouble(),
-        rebateValue:
-            json_.containsKey('rebateValue')
-                ? Money.fromJson(
-                  json_['rebateValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        savings:
-            json_.containsKey('savings')
-                ? SavingsOverTime.fromJson(
-                  json_['savings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        upfrontCost:
-            json_.containsKey('upfrontCost')
-                ? Money.fromJson(
-                  json_['upfrontCost'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rebateValue: json_.containsKey('rebateValue')
+            ? Money.fromJson(
+                json_['rebateValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        savings: json_.containsKey('savings')
+            ? SavingsOverTime.fromJson(
+                json_['savings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        upfrontCost: json_.containsKey('upfrontCost')
+            ? Money.fromJson(
+                json_['upfrontCost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (outOfPocketCost != null) 'outOfPocketCost': outOfPocketCost!,
-    if (paybackYears != null) 'paybackYears': paybackYears!,
-    if (rebateValue != null) 'rebateValue': rebateValue!,
-    if (savings != null) 'savings': savings!,
-    if (upfrontCost != null) 'upfrontCost': upfrontCost!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final outOfPocketCost = this.outOfPocketCost;
+    final paybackYears = this.paybackYears;
+    final rebateValue = this.rebateValue;
+    final savings = this.savings;
+    final upfrontCost = this.upfrontCost;
+    return {
+      'outOfPocketCost': ?outOfPocketCost,
+      'paybackYears': ?paybackYears,
+      'rebateValue': ?rebateValue,
+      'savings': ?savings,
+      'upfrontCost': ?upfrontCost,
+    };
+  }
 }
 
 /// Information about the solar potential of a region.
@@ -618,41 +634,48 @@ class DataLayers {
     : this(
         annualFluxUrl: json_['annualFluxUrl'] as core.String?,
         dsmUrl: json_['dsmUrl'] as core.String?,
-        hourlyShadeUrls:
-            (json_['hourlyShadeUrls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        imageryDate:
-            json_.containsKey('imageryDate')
-                ? Date.fromJson(
-                  json_['imageryDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        imageryProcessedDate:
-            json_.containsKey('imageryProcessedDate')
-                ? Date.fromJson(
-                  json_['imageryProcessedDate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        hourlyShadeUrls: (json_['hourlyShadeUrls'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        imageryDate: json_.containsKey('imageryDate')
+            ? Date.fromJson(
+                json_['imageryDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageryProcessedDate: json_.containsKey('imageryProcessedDate')
+            ? Date.fromJson(
+                json_['imageryProcessedDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         imageryQuality: json_['imageryQuality'] as core.String?,
         maskUrl: json_['maskUrl'] as core.String?,
         monthlyFluxUrl: json_['monthlyFluxUrl'] as core.String?,
         rgbUrl: json_['rgbUrl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annualFluxUrl != null) 'annualFluxUrl': annualFluxUrl!,
-    if (dsmUrl != null) 'dsmUrl': dsmUrl!,
-    if (hourlyShadeUrls != null) 'hourlyShadeUrls': hourlyShadeUrls!,
-    if (imageryDate != null) 'imageryDate': imageryDate!,
-    if (imageryProcessedDate != null)
-      'imageryProcessedDate': imageryProcessedDate!,
-    if (imageryQuality != null) 'imageryQuality': imageryQuality!,
-    if (maskUrl != null) 'maskUrl': maskUrl!,
-    if (monthlyFluxUrl != null) 'monthlyFluxUrl': monthlyFluxUrl!,
-    if (rgbUrl != null) 'rgbUrl': rgbUrl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annualFluxUrl = this.annualFluxUrl;
+    final dsmUrl = this.dsmUrl;
+    final hourlyShadeUrls = this.hourlyShadeUrls;
+    final imageryDate = this.imageryDate;
+    final imageryProcessedDate = this.imageryProcessedDate;
+    final imageryQuality = this.imageryQuality;
+    final maskUrl = this.maskUrl;
+    final monthlyFluxUrl = this.monthlyFluxUrl;
+    final rgbUrl = this.rgbUrl;
+    return {
+      'annualFluxUrl': ?annualFluxUrl,
+      'dsmUrl': ?dsmUrl,
+      'hourlyShadeUrls': ?hourlyShadeUrls,
+      'imageryDate': ?imageryDate,
+      'imageryProcessedDate': ?imageryProcessedDate,
+      'imageryQuality': ?imageryQuality,
+      'maskUrl': ?maskUrl,
+      'monthlyFluxUrl': ?monthlyFluxUrl,
+      'rgbUrl': ?rgbUrl,
+    };
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -692,34 +715,37 @@ class FinancedPurchaseSavings {
 
   FinancedPurchaseSavings.fromJson(core.Map json_)
     : this(
-        annualLoanPayment:
-            json_.containsKey('annualLoanPayment')
-                ? Money.fromJson(
-                  json_['annualLoanPayment']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        annualLoanPayment: json_.containsKey('annualLoanPayment')
+            ? Money.fromJson(
+                json_['annualLoanPayment']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         loanInterestRate: (json_['loanInterestRate'] as core.num?)?.toDouble(),
-        rebateValue:
-            json_.containsKey('rebateValue')
-                ? Money.fromJson(
-                  json_['rebateValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        savings:
-            json_.containsKey('savings')
-                ? SavingsOverTime.fromJson(
-                  json_['savings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rebateValue: json_.containsKey('rebateValue')
+            ? Money.fromJson(
+                json_['rebateValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        savings: json_.containsKey('savings')
+            ? SavingsOverTime.fromJson(
+                json_['savings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annualLoanPayment != null) 'annualLoanPayment': annualLoanPayment!,
-    if (loanInterestRate != null) 'loanInterestRate': loanInterestRate!,
-    if (rebateValue != null) 'rebateValue': rebateValue!,
-    if (savings != null) 'savings': savings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annualLoanPayment = this.annualLoanPayment;
+    final loanInterestRate = this.loanInterestRate;
+    final rebateValue = this.rebateValue;
+    final savings = this.savings;
+    return {
+      'annualLoanPayment': ?annualLoanPayment,
+      'loanInterestRate': ?loanInterestRate,
+      'rebateValue': ?rebateValue,
+      'savings': ?savings,
+    };
+  }
 }
 
 /// Analysis of the cost and benefits of the optimum solar layout for a
@@ -772,58 +798,60 @@ class FinancialAnalysis {
 
   FinancialAnalysis.fromJson(core.Map json_)
     : this(
-        averageKwhPerMonth:
-            (json_['averageKwhPerMonth'] as core.num?)?.toDouble(),
-        cashPurchaseSavings:
-            json_.containsKey('cashPurchaseSavings')
-                ? CashPurchaseSavings.fromJson(
-                  json_['cashPurchaseSavings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        averageKwhPerMonth: (json_['averageKwhPerMonth'] as core.num?)
+            ?.toDouble(),
+        cashPurchaseSavings: json_.containsKey('cashPurchaseSavings')
+            ? CashPurchaseSavings.fromJson(
+                json_['cashPurchaseSavings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         defaultBill: json_['defaultBill'] as core.bool?,
-        financedPurchaseSavings:
-            json_.containsKey('financedPurchaseSavings')
-                ? FinancedPurchaseSavings.fromJson(
-                  json_['financedPurchaseSavings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        financialDetails:
-            json_.containsKey('financialDetails')
-                ? FinancialDetails.fromJson(
-                  json_['financialDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        leasingSavings:
-            json_.containsKey('leasingSavings')
-                ? LeasingSavings.fromJson(
-                  json_['leasingSavings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        monthlyBill:
-            json_.containsKey('monthlyBill')
-                ? Money.fromJson(
-                  json_['monthlyBill'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        financedPurchaseSavings: json_.containsKey('financedPurchaseSavings')
+            ? FinancedPurchaseSavings.fromJson(
+                json_['financedPurchaseSavings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        financialDetails: json_.containsKey('financialDetails')
+            ? FinancialDetails.fromJson(
+                json_['financialDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        leasingSavings: json_.containsKey('leasingSavings')
+            ? LeasingSavings.fromJson(
+                json_['leasingSavings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        monthlyBill: json_.containsKey('monthlyBill')
+            ? Money.fromJson(
+                json_['monthlyBill'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         panelConfigIndex: json_['panelConfigIndex'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (averageKwhPerMonth != null) 'averageKwhPerMonth': averageKwhPerMonth!,
-    if (cashPurchaseSavings != null)
-      'cashPurchaseSavings': cashPurchaseSavings!,
-    if (defaultBill != null) 'defaultBill': defaultBill!,
-    if (financedPurchaseSavings != null)
-      'financedPurchaseSavings': financedPurchaseSavings!,
-    if (financialDetails != null) 'financialDetails': financialDetails!,
-    if (leasingSavings != null) 'leasingSavings': leasingSavings!,
-    if (monthlyBill != null) 'monthlyBill': monthlyBill!,
-    if (panelConfigIndex != null) 'panelConfigIndex': panelConfigIndex!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final averageKwhPerMonth = this.averageKwhPerMonth;
+    final cashPurchaseSavings = this.cashPurchaseSavings;
+    final defaultBill = this.defaultBill;
+    final financedPurchaseSavings = this.financedPurchaseSavings;
+    final financialDetails = this.financialDetails;
+    final leasingSavings = this.leasingSavings;
+    final monthlyBill = this.monthlyBill;
+    final panelConfigIndex = this.panelConfigIndex;
+    return {
+      'averageKwhPerMonth': ?averageKwhPerMonth,
+      'cashPurchaseSavings': ?cashPurchaseSavings,
+      'defaultBill': ?defaultBill,
+      'financedPurchaseSavings': ?financedPurchaseSavings,
+      'financialDetails': ?financialDetails,
+      'leasingSavings': ?leasingSavings,
+      'monthlyBill': ?monthlyBill,
+      'panelConfigIndex': ?panelConfigIndex,
+    };
+  }
 }
 
 /// Details of a financial analysis.
@@ -894,70 +922,73 @@ class FinancialDetails {
     : this(
         costOfElectricityWithoutSolar:
             json_.containsKey('costOfElectricityWithoutSolar')
-                ? Money.fromJson(
-                  json_['costOfElectricityWithoutSolar']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        federalIncentive:
-            json_.containsKey('federalIncentive')
-                ? Money.fromJson(
-                  json_['federalIncentive']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        initialAcKwhPerYear:
-            (json_['initialAcKwhPerYear'] as core.num?)?.toDouble(),
-        lifetimeSrecTotal:
-            json_.containsKey('lifetimeSrecTotal')
-                ? Money.fromJson(
-                  json_['lifetimeSrecTotal']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? Money.fromJson(
+                json_['costOfElectricityWithoutSolar']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        federalIncentive: json_.containsKey('federalIncentive')
+            ? Money.fromJson(
+                json_['federalIncentive']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        initialAcKwhPerYear: (json_['initialAcKwhPerYear'] as core.num?)
+            ?.toDouble(),
+        lifetimeSrecTotal: json_.containsKey('lifetimeSrecTotal')
+            ? Money.fromJson(
+                json_['lifetimeSrecTotal']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         netMeteringAllowed: json_['netMeteringAllowed'] as core.bool?,
         percentageExportedToGrid:
             (json_['percentageExportedToGrid'] as core.num?)?.toDouble(),
         remainingLifetimeUtilityBill:
             json_.containsKey('remainingLifetimeUtilityBill')
-                ? Money.fromJson(
-                  json_['remainingLifetimeUtilityBill']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? Money.fromJson(
+                json_['remainingLifetimeUtilityBill']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         solarPercentage: (json_['solarPercentage'] as core.num?)?.toDouble(),
-        stateIncentive:
-            json_.containsKey('stateIncentive')
-                ? Money.fromJson(
-                  json_['stateIncentive']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        utilityIncentive:
-            json_.containsKey('utilityIncentive')
-                ? Money.fromJson(
-                  json_['utilityIncentive']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        stateIncentive: json_.containsKey('stateIncentive')
+            ? Money.fromJson(
+                json_['stateIncentive'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        utilityIncentive: json_.containsKey('utilityIncentive')
+            ? Money.fromJson(
+                json_['utilityIncentive']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (costOfElectricityWithoutSolar != null)
-      'costOfElectricityWithoutSolar': costOfElectricityWithoutSolar!,
-    if (federalIncentive != null) 'federalIncentive': federalIncentive!,
-    if (initialAcKwhPerYear != null)
-      'initialAcKwhPerYear': initialAcKwhPerYear!,
-    if (lifetimeSrecTotal != null) 'lifetimeSrecTotal': lifetimeSrecTotal!,
-    if (netMeteringAllowed != null) 'netMeteringAllowed': netMeteringAllowed!,
-    if (percentageExportedToGrid != null)
-      'percentageExportedToGrid': percentageExportedToGrid!,
-    if (remainingLifetimeUtilityBill != null)
-      'remainingLifetimeUtilityBill': remainingLifetimeUtilityBill!,
-    if (solarPercentage != null) 'solarPercentage': solarPercentage!,
-    if (stateIncentive != null) 'stateIncentive': stateIncentive!,
-    if (utilityIncentive != null) 'utilityIncentive': utilityIncentive!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final costOfElectricityWithoutSolar = this.costOfElectricityWithoutSolar;
+    final federalIncentive = this.federalIncentive;
+    final initialAcKwhPerYear = this.initialAcKwhPerYear;
+    final lifetimeSrecTotal = this.lifetimeSrecTotal;
+    final netMeteringAllowed = this.netMeteringAllowed;
+    final percentageExportedToGrid = this.percentageExportedToGrid;
+    final remainingLifetimeUtilityBill = this.remainingLifetimeUtilityBill;
+    final solarPercentage = this.solarPercentage;
+    final stateIncentive = this.stateIncentive;
+    final utilityIncentive = this.utilityIncentive;
+    return {
+      'costOfElectricityWithoutSolar': ?costOfElectricityWithoutSolar,
+      'federalIncentive': ?federalIncentive,
+      'initialAcKwhPerYear': ?initialAcKwhPerYear,
+      'lifetimeSrecTotal': ?lifetimeSrecTotal,
+      'netMeteringAllowed': ?netMeteringAllowed,
+      'percentageExportedToGrid': ?percentageExportedToGrid,
+      'remainingLifetimeUtilityBill': ?remainingLifetimeUtilityBill,
+      'solarPercentage': ?solarPercentage,
+      'stateIncentive': ?stateIncentive,
+      'utilityIncentive': ?utilityIncentive,
+    };
+  }
 }
 
 /// Message that represents an arbitrary HTTP body.
@@ -999,24 +1030,23 @@ class LatLngBox {
 
   LatLngBox.fromJson(core.Map json_)
     : this(
-        ne:
-            json_.containsKey('ne')
-                ? LatLng.fromJson(
-                  json_['ne'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sw:
-            json_.containsKey('sw')
-                ? LatLng.fromJson(
-                  json_['sw'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ne: json_.containsKey('ne')
+            ? LatLng.fromJson(
+                json_['ne'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sw: json_.containsKey('sw')
+            ? LatLng.fromJson(
+                json_['sw'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ne != null) 'ne': ne!,
-    if (sw != null) 'sw': sw!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ne = this.ne;
+    final sw = this.sw;
+    return {'ne': ?ne, 'sw': ?sw};
+  }
 }
 
 /// Cost and benefit of leasing a particular configuration of solar panels with
@@ -1052,29 +1082,33 @@ class LeasingSavings {
 
   LeasingSavings.fromJson(core.Map json_)
     : this(
-        annualLeasingCost:
-            json_.containsKey('annualLeasingCost')
-                ? Money.fromJson(
-                  json_['annualLeasingCost']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        annualLeasingCost: json_.containsKey('annualLeasingCost')
+            ? Money.fromJson(
+                json_['annualLeasingCost']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         leasesAllowed: json_['leasesAllowed'] as core.bool?,
         leasesSupported: json_['leasesSupported'] as core.bool?,
-        savings:
-            json_.containsKey('savings')
-                ? SavingsOverTime.fromJson(
-                  json_['savings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        savings: json_.containsKey('savings')
+            ? SavingsOverTime.fromJson(
+                json_['savings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annualLeasingCost != null) 'annualLeasingCost': annualLeasingCost!,
-    if (leasesAllowed != null) 'leasesAllowed': leasesAllowed!,
-    if (leasesSupported != null) 'leasesSupported': leasesSupported!,
-    if (savings != null) 'savings': savings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annualLeasingCost = this.annualLeasingCost;
+    final leasesAllowed = this.leasesAllowed;
+    final leasesSupported = this.leasesSupported;
+    final savings = this.savings;
+    return {
+      'annualLeasingCost': ?annualLeasingCost,
+      'leasesAllowed': ?leasesAllowed,
+      'leasesSupported': ?leasesSupported,
+      'savings': ?savings,
+    };
+  }
 }
 
 /// Represents an amount of money with its currency type.
@@ -1122,38 +1156,42 @@ class RoofSegmentSizeAndSunshineStats {
   RoofSegmentSizeAndSunshineStats.fromJson(core.Map json_)
     : this(
         azimuthDegrees: (json_['azimuthDegrees'] as core.num?)?.toDouble(),
-        boundingBox:
-            json_.containsKey('boundingBox')
-                ? LatLngBox.fromJson(
-                  json_['boundingBox'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        center:
-            json_.containsKey('center')
-                ? LatLng.fromJson(
-                  json_['center'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        boundingBox: json_.containsKey('boundingBox')
+            ? LatLngBox.fromJson(
+                json_['boundingBox'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        center: json_.containsKey('center')
+            ? LatLng.fromJson(
+                json_['center'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         pitchDegrees: (json_['pitchDegrees'] as core.num?)?.toDouble(),
         planeHeightAtCenterMeters:
             (json_['planeHeightAtCenterMeters'] as core.num?)?.toDouble(),
-        stats:
-            json_.containsKey('stats')
-                ? SizeAndSunshineStats.fromJson(
-                  json_['stats'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        stats: json_.containsKey('stats')
+            ? SizeAndSunshineStats.fromJson(
+                json_['stats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (azimuthDegrees != null) 'azimuthDegrees': azimuthDegrees!,
-    if (boundingBox != null) 'boundingBox': boundingBox!,
-    if (center != null) 'center': center!,
-    if (pitchDegrees != null) 'pitchDegrees': pitchDegrees!,
-    if (planeHeightAtCenterMeters != null)
-      'planeHeightAtCenterMeters': planeHeightAtCenterMeters!,
-    if (stats != null) 'stats': stats!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final azimuthDegrees = this.azimuthDegrees;
+    final boundingBox = this.boundingBox;
+    final center = this.center;
+    final pitchDegrees = this.pitchDegrees;
+    final planeHeightAtCenterMeters = this.planeHeightAtCenterMeters;
+    final stats = this.stats;
+    return {
+      'azimuthDegrees': ?azimuthDegrees,
+      'boundingBox': ?boundingBox,
+      'center': ?center,
+      'pitchDegrees': ?pitchDegrees,
+      'planeHeightAtCenterMeters': ?planeHeightAtCenterMeters,
+      'stats': ?stats,
+    };
+  }
 }
 
 /// Information about a roof segment on the building, with some number of panels
@@ -1196,17 +1234,24 @@ class RoofSegmentSummary {
         panelsCount: json_['panelsCount'] as core.int?,
         pitchDegrees: (json_['pitchDegrees'] as core.num?)?.toDouble(),
         segmentIndex: json_['segmentIndex'] as core.int?,
-        yearlyEnergyDcKwh:
-            (json_['yearlyEnergyDcKwh'] as core.num?)?.toDouble(),
+        yearlyEnergyDcKwh: (json_['yearlyEnergyDcKwh'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (azimuthDegrees != null) 'azimuthDegrees': azimuthDegrees!,
-    if (panelsCount != null) 'panelsCount': panelsCount!,
-    if (pitchDegrees != null) 'pitchDegrees': pitchDegrees!,
-    if (segmentIndex != null) 'segmentIndex': segmentIndex!,
-    if (yearlyEnergyDcKwh != null) 'yearlyEnergyDcKwh': yearlyEnergyDcKwh!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final azimuthDegrees = this.azimuthDegrees;
+    final panelsCount = this.panelsCount;
+    final pitchDegrees = this.pitchDegrees;
+    final segmentIndex = this.segmentIndex;
+    final yearlyEnergyDcKwh = this.yearlyEnergyDcKwh;
+    return {
+      'azimuthDegrees': ?azimuthDegrees,
+      'panelsCount': ?panelsCount,
+      'pitchDegrees': ?pitchDegrees,
+      'segmentIndex': ?segmentIndex,
+      'yearlyEnergyDcKwh': ?yearlyEnergyDcKwh,
+    };
+  }
 }
 
 /// Financial information that's shared between different financing methods.
@@ -1248,49 +1293,51 @@ class SavingsOverTime {
         financiallyViable: json_['financiallyViable'] as core.bool?,
         presentValueOfSavingsLifetime:
             json_.containsKey('presentValueOfSavingsLifetime')
-                ? Money.fromJson(
-                  json_['presentValueOfSavingsLifetime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? Money.fromJson(
+                json_['presentValueOfSavingsLifetime']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         presentValueOfSavingsYear20:
             json_.containsKey('presentValueOfSavingsYear20')
-                ? Money.fromJson(
-                  json_['presentValueOfSavingsYear20']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        savingsLifetime:
-            json_.containsKey('savingsLifetime')
-                ? Money.fromJson(
-                  json_['savingsLifetime']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        savingsYear1:
-            json_.containsKey('savingsYear1')
-                ? Money.fromJson(
-                  json_['savingsYear1'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        savingsYear20:
-            json_.containsKey('savingsYear20')
-                ? Money.fromJson(
-                  json_['savingsYear20'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? Money.fromJson(
+                json_['presentValueOfSavingsYear20']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        savingsLifetime: json_.containsKey('savingsLifetime')
+            ? Money.fromJson(
+                json_['savingsLifetime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        savingsYear1: json_.containsKey('savingsYear1')
+            ? Money.fromJson(
+                json_['savingsYear1'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        savingsYear20: json_.containsKey('savingsYear20')
+            ? Money.fromJson(
+                json_['savingsYear20'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (financiallyViable != null) 'financiallyViable': financiallyViable!,
-    if (presentValueOfSavingsLifetime != null)
-      'presentValueOfSavingsLifetime': presentValueOfSavingsLifetime!,
-    if (presentValueOfSavingsYear20 != null)
-      'presentValueOfSavingsYear20': presentValueOfSavingsYear20!,
-    if (savingsLifetime != null) 'savingsLifetime': savingsLifetime!,
-    if (savingsYear1 != null) 'savingsYear1': savingsYear1!,
-    if (savingsYear20 != null) 'savingsYear20': savingsYear20!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final financiallyViable = this.financiallyViable;
+    final presentValueOfSavingsLifetime = this.presentValueOfSavingsLifetime;
+    final presentValueOfSavingsYear20 = this.presentValueOfSavingsYear20;
+    final savingsLifetime = this.savingsLifetime;
+    final savingsYear1 = this.savingsYear1;
+    final savingsYear20 = this.savingsYear20;
+    return {
+      'financiallyViable': ?financiallyViable,
+      'presentValueOfSavingsLifetime': ?presentValueOfSavingsLifetime,
+      'presentValueOfSavingsYear20': ?presentValueOfSavingsYear20,
+      'savingsLifetime': ?savingsLifetime,
+      'savingsYear1': ?savingsYear1,
+      'savingsYear20': ?savingsYear20,
+    };
+  }
 }
 
 /// Size and sunniness quantiles of a roof, or part of a roof.
@@ -1320,19 +1367,23 @@ class SizeAndSunshineStats {
   SizeAndSunshineStats.fromJson(core.Map json_)
     : this(
         areaMeters2: (json_['areaMeters2'] as core.num?)?.toDouble(),
-        groundAreaMeters2:
-            (json_['groundAreaMeters2'] as core.num?)?.toDouble(),
-        sunshineQuantiles:
-            (json_['sunshineQuantiles'] as core.List?)
-                ?.map((value) => (value as core.num).toDouble())
-                .toList(),
+        groundAreaMeters2: (json_['groundAreaMeters2'] as core.num?)
+            ?.toDouble(),
+        sunshineQuantiles: (json_['sunshineQuantiles'] as core.List?)
+            ?.map((value) => (value as core.num).toDouble())
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (areaMeters2 != null) 'areaMeters2': areaMeters2!,
-    if (groundAreaMeters2 != null) 'groundAreaMeters2': groundAreaMeters2!,
-    if (sunshineQuantiles != null) 'sunshineQuantiles': sunshineQuantiles!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final areaMeters2 = this.areaMeters2;
+    final groundAreaMeters2 = this.groundAreaMeters2;
+    final sunshineQuantiles = this.sunshineQuantiles;
+    return {
+      'areaMeters2': ?areaMeters2,
+      'groundAreaMeters2': ?groundAreaMeters2,
+      'sunshineQuantiles': ?sunshineQuantiles,
+    };
+  }
 }
 
 /// SolarPanel describes the position, orientation, and production of a single
@@ -1370,24 +1421,29 @@ class SolarPanel {
 
   SolarPanel.fromJson(core.Map json_)
     : this(
-        center:
-            json_.containsKey('center')
-                ? LatLng.fromJson(
-                  json_['center'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        center: json_.containsKey('center')
+            ? LatLng.fromJson(
+                json_['center'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         orientation: json_['orientation'] as core.String?,
         segmentIndex: json_['segmentIndex'] as core.int?,
-        yearlyEnergyDcKwh:
-            (json_['yearlyEnergyDcKwh'] as core.num?)?.toDouble(),
+        yearlyEnergyDcKwh: (json_['yearlyEnergyDcKwh'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (center != null) 'center': center!,
-    if (orientation != null) 'orientation': orientation!,
-    if (segmentIndex != null) 'segmentIndex': segmentIndex!,
-    if (yearlyEnergyDcKwh != null) 'yearlyEnergyDcKwh': yearlyEnergyDcKwh!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final center = this.center;
+    final orientation = this.orientation;
+    final segmentIndex = this.segmentIndex;
+    final yearlyEnergyDcKwh = this.yearlyEnergyDcKwh;
+    return {
+      'center': ?center,
+      'orientation': ?orientation,
+      'segmentIndex': ?segmentIndex,
+      'yearlyEnergyDcKwh': ?yearlyEnergyDcKwh,
+    };
+  }
 }
 
 /// SolarPanelConfig describes a particular placement of solar panels on the
@@ -1419,24 +1475,27 @@ class SolarPanelConfig {
   SolarPanelConfig.fromJson(core.Map json_)
     : this(
         panelsCount: json_['panelsCount'] as core.int?,
-        roofSegmentSummaries:
-            (json_['roofSegmentSummaries'] as core.List?)
-                ?.map(
-                  (value) => RoofSegmentSummary.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        yearlyEnergyDcKwh:
-            (json_['yearlyEnergyDcKwh'] as core.num?)?.toDouble(),
+        roofSegmentSummaries: (json_['roofSegmentSummaries'] as core.List?)
+            ?.map(
+              (value) => RoofSegmentSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        yearlyEnergyDcKwh: (json_['yearlyEnergyDcKwh'] as core.num?)
+            ?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (panelsCount != null) 'panelsCount': panelsCount!,
-    if (roofSegmentSummaries != null)
-      'roofSegmentSummaries': roofSegmentSummaries!,
-    if (yearlyEnergyDcKwh != null) 'yearlyEnergyDcKwh': yearlyEnergyDcKwh!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final panelsCount = this.panelsCount;
+    final roofSegmentSummaries = this.roofSegmentSummaries;
+    final yearlyEnergyDcKwh = this.yearlyEnergyDcKwh;
+    return {
+      'panelsCount': ?panelsCount,
+      'roofSegmentSummaries': ?roofSegmentSummaries,
+      'yearlyEnergyDcKwh': ?yearlyEnergyDcKwh,
+    };
+  }
 }
 
 /// Information about the solar potential of a building.
@@ -1544,84 +1603,89 @@ class SolarPotential {
 
   SolarPotential.fromJson(core.Map json_)
     : this(
-        buildingStats:
-            json_.containsKey('buildingStats')
-                ? SizeAndSunshineStats.fromJson(
-                  json_['buildingStats'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        buildingStats: json_.containsKey('buildingStats')
+            ? SizeAndSunshineStats.fromJson(
+                json_['buildingStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         carbonOffsetFactorKgPerMwh:
             (json_['carbonOffsetFactorKgPerMwh'] as core.num?)?.toDouble(),
-        financialAnalyses:
-            (json_['financialAnalyses'] as core.List?)
-                ?.map(
-                  (value) => FinancialAnalysis.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        maxArrayAreaMeters2:
-            (json_['maxArrayAreaMeters2'] as core.num?)?.toDouble(),
+        financialAnalyses: (json_['financialAnalyses'] as core.List?)
+            ?.map(
+              (value) => FinancialAnalysis.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        maxArrayAreaMeters2: (json_['maxArrayAreaMeters2'] as core.num?)
+            ?.toDouble(),
         maxArrayPanelsCount: json_['maxArrayPanelsCount'] as core.int?,
-        maxSunshineHoursPerYear:
-            (json_['maxSunshineHoursPerYear'] as core.num?)?.toDouble(),
-        panelCapacityWatts:
-            (json_['panelCapacityWatts'] as core.num?)?.toDouble(),
-        panelHeightMeters:
-            (json_['panelHeightMeters'] as core.num?)?.toDouble(),
+        maxSunshineHoursPerYear: (json_['maxSunshineHoursPerYear'] as core.num?)
+            ?.toDouble(),
+        panelCapacityWatts: (json_['panelCapacityWatts'] as core.num?)
+            ?.toDouble(),
+        panelHeightMeters: (json_['panelHeightMeters'] as core.num?)
+            ?.toDouble(),
         panelLifetimeYears: json_['panelLifetimeYears'] as core.int?,
         panelWidthMeters: (json_['panelWidthMeters'] as core.num?)?.toDouble(),
-        roofSegmentStats:
-            (json_['roofSegmentStats'] as core.List?)
-                ?.map(
-                  (value) => RoofSegmentSizeAndSunshineStats.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        solarPanelConfigs:
-            (json_['solarPanelConfigs'] as core.List?)
-                ?.map(
-                  (value) => SolarPanelConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        solarPanels:
-            (json_['solarPanels'] as core.List?)
-                ?.map(
-                  (value) => SolarPanel.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        wholeRoofStats:
-            json_.containsKey('wholeRoofStats')
-                ? SizeAndSunshineStats.fromJson(
-                  json_['wholeRoofStats']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        roofSegmentStats: (json_['roofSegmentStats'] as core.List?)
+            ?.map(
+              (value) => RoofSegmentSizeAndSunshineStats.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        solarPanelConfigs: (json_['solarPanelConfigs'] as core.List?)
+            ?.map(
+              (value) => SolarPanelConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        solarPanels: (json_['solarPanels'] as core.List?)
+            ?.map(
+              (value) => SolarPanel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        wholeRoofStats: json_.containsKey('wholeRoofStats')
+            ? SizeAndSunshineStats.fromJson(
+                json_['wholeRoofStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buildingStats != null) 'buildingStats': buildingStats!,
-    if (carbonOffsetFactorKgPerMwh != null)
-      'carbonOffsetFactorKgPerMwh': carbonOffsetFactorKgPerMwh!,
-    if (financialAnalyses != null) 'financialAnalyses': financialAnalyses!,
-    if (maxArrayAreaMeters2 != null)
-      'maxArrayAreaMeters2': maxArrayAreaMeters2!,
-    if (maxArrayPanelsCount != null)
-      'maxArrayPanelsCount': maxArrayPanelsCount!,
-    if (maxSunshineHoursPerYear != null)
-      'maxSunshineHoursPerYear': maxSunshineHoursPerYear!,
-    if (panelCapacityWatts != null) 'panelCapacityWatts': panelCapacityWatts!,
-    if (panelHeightMeters != null) 'panelHeightMeters': panelHeightMeters!,
-    if (panelLifetimeYears != null) 'panelLifetimeYears': panelLifetimeYears!,
-    if (panelWidthMeters != null) 'panelWidthMeters': panelWidthMeters!,
-    if (roofSegmentStats != null) 'roofSegmentStats': roofSegmentStats!,
-    if (solarPanelConfigs != null) 'solarPanelConfigs': solarPanelConfigs!,
-    if (solarPanels != null) 'solarPanels': solarPanels!,
-    if (wholeRoofStats != null) 'wholeRoofStats': wholeRoofStats!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildingStats = this.buildingStats;
+    final carbonOffsetFactorKgPerMwh = this.carbonOffsetFactorKgPerMwh;
+    final financialAnalyses = this.financialAnalyses;
+    final maxArrayAreaMeters2 = this.maxArrayAreaMeters2;
+    final maxArrayPanelsCount = this.maxArrayPanelsCount;
+    final maxSunshineHoursPerYear = this.maxSunshineHoursPerYear;
+    final panelCapacityWatts = this.panelCapacityWatts;
+    final panelHeightMeters = this.panelHeightMeters;
+    final panelLifetimeYears = this.panelLifetimeYears;
+    final panelWidthMeters = this.panelWidthMeters;
+    final roofSegmentStats = this.roofSegmentStats;
+    final solarPanelConfigs = this.solarPanelConfigs;
+    final solarPanels = this.solarPanels;
+    final wholeRoofStats = this.wholeRoofStats;
+    return {
+      'buildingStats': ?buildingStats,
+      'carbonOffsetFactorKgPerMwh': ?carbonOffsetFactorKgPerMwh,
+      'financialAnalyses': ?financialAnalyses,
+      'maxArrayAreaMeters2': ?maxArrayAreaMeters2,
+      'maxArrayPanelsCount': ?maxArrayPanelsCount,
+      'maxSunshineHoursPerYear': ?maxSunshineHoursPerYear,
+      'panelCapacityWatts': ?panelCapacityWatts,
+      'panelHeightMeters': ?panelHeightMeters,
+      'panelLifetimeYears': ?panelLifetimeYears,
+      'panelWidthMeters': ?panelWidthMeters,
+      'roofSegmentStats': ?roofSegmentStats,
+      'solarPanelConfigs': ?solarPanelConfigs,
+      'solarPanels': ?solarPanels,
+      'wholeRoofStats': ?wholeRoofStats,
+    };
+  }
 }

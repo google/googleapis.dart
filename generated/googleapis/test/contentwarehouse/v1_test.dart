@@ -6032,10 +6032,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1AccessControlAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1AccessControlAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1AccessControlAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1AccessControlAction(od);
       });
     },
@@ -6058,10 +6058,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1ActionExecutorOutput();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ActionExecutorOutput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ActionExecutorOutput.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ActionExecutorOutput(od);
       });
     },
@@ -6098,10 +6098,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1CloudAIDocumentOption();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1CloudAIDocumentOption.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1CloudAIDocumentOption.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1CloudAIDocumentOption(od);
       });
     },
@@ -6113,10 +6113,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1CreateDocumentLinkRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1CreateDocumentLinkRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1CreateDocumentLinkRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1CreateDocumentLinkRequest(od);
       });
     },
@@ -6128,10 +6128,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1CreateDocumentRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1CreateDocumentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1CreateDocumentRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1CreateDocumentRequest(od);
       });
     },
@@ -6143,10 +6143,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1CreateDocumentResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1CreateDocumentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1CreateDocumentResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1CreateDocumentResponse(od);
       });
     },
@@ -6158,10 +6158,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1CustomWeightsMetadata();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1CustomWeightsMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1CustomWeightsMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1CustomWeightsMetadata(od);
       });
     },
@@ -6187,10 +6187,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1DataValidationAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1DataValidationAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1DataValidationAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1DataValidationAction(od);
       });
     },
@@ -6213,10 +6213,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1DateTimeTypeOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1DateTimeTypeOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1DateTimeTypeOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1DateTimeTypeOptions(od);
       });
     },
@@ -6228,10 +6228,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1DeleteDocumentAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1DeleteDocumentAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1DeleteDocumentAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1DeleteDocumentAction(od);
       });
     },
@@ -6243,10 +6243,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1DeleteDocumentLinkRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1DeleteDocumentLinkRequest(od);
       });
     },
@@ -6258,10 +6258,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1DeleteDocumentRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1DeleteDocumentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1DeleteDocumentRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1DeleteDocumentRequest(od);
       });
     },
@@ -6364,10 +6364,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1ExportToCdwPipeline();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ExportToCdwPipeline.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ExportToCdwPipeline.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ExportToCdwPipeline(od);
       });
     },
@@ -6455,10 +6455,10 @@ void main() {
         final o =
             buildGoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline(
           od,
         );
@@ -6498,10 +6498,10 @@ void main() {
         final o =
             buildGoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter(od);
       });
     },
@@ -6513,10 +6513,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1HistogramQueryResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1HistogramQueryResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1HistogramQueryResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1HistogramQueryResult(od);
       });
     },
@@ -6528,10 +6528,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1IngestPipelineConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1IngestPipelineConfig(od);
       });
     },
@@ -6543,10 +6543,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1InitializeProjectRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1InitializeProjectRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1InitializeProjectRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1InitializeProjectRequest(od);
       });
     },
@@ -6595,10 +6595,10 @@ void main() {
         final o =
             buildGoogleCloudContentwarehouseV1ListDocumentSchemasResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ListDocumentSchemasResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ListDocumentSchemasResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ListDocumentSchemasResponse(od);
       });
     },
@@ -6610,10 +6610,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1ListLinkedSourcesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ListLinkedSourcesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ListLinkedSourcesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ListLinkedSourcesRequest(od);
       });
     },
@@ -6625,10 +6625,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1ListLinkedSourcesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ListLinkedSourcesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ListLinkedSourcesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ListLinkedSourcesResponse(od);
       });
     },
@@ -6640,10 +6640,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1ListLinkedTargetsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ListLinkedTargetsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ListLinkedTargetsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ListLinkedTargetsRequest(od);
       });
     },
@@ -6655,10 +6655,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1ListLinkedTargetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ListLinkedTargetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ListLinkedTargetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ListLinkedTargetsResponse(od);
       });
     },
@@ -6670,10 +6670,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1ListRuleSetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ListRuleSetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ListRuleSetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ListRuleSetsResponse(od);
       });
     },
@@ -6685,10 +6685,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1ListSynonymSetsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ListSynonymSetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ListSynonymSetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ListSynonymSetsResponse(od);
       });
     },
@@ -6700,10 +6700,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1LockDocumentRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1LockDocumentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1LockDocumentRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1LockDocumentRequest(od);
       });
     },
@@ -6751,10 +6751,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1ProcessWithDocAiPipeline();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1ProcessWithDocAiPipeline(od);
       });
     },
@@ -6825,10 +6825,10 @@ void main() {
         final o =
             buildGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource(od);
       });
     },
@@ -6851,10 +6851,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1PropertyTypeOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1PropertyTypeOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1PropertyTypeOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1PropertyTypeOptions(od);
       });
     },
@@ -6902,10 +6902,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1RemoveFromFolderAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1RemoveFromFolderAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1RemoveFromFolderAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1RemoveFromFolderAction(od);
       });
     },
@@ -6978,10 +6978,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1RuleEvaluatorOutput();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1RuleEvaluatorOutput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1RuleEvaluatorOutput.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1RuleEvaluatorOutput(od);
       });
     },
@@ -7018,10 +7018,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1SearchDocumentsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1SearchDocumentsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1SearchDocumentsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1SearchDocumentsRequest(od);
       });
     },
@@ -7033,10 +7033,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1SearchDocumentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1SearchDocumentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1SearchDocumentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1SearchDocumentsResponse(od);
       });
     },
@@ -7049,10 +7049,10 @@ void main() {
         final o =
             buildGoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument(
           od,
         );
@@ -7157,10 +7157,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1TimestampTypeOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1TimestampTypeOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1TimestampTypeOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1TimestampTypeOptions(od);
       });
     },
@@ -7183,10 +7183,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1UpdateDocumentRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1UpdateDocumentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1UpdateDocumentRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1UpdateDocumentRequest(od);
       });
     },
@@ -7198,10 +7198,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1UpdateDocumentResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1UpdateDocumentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1UpdateDocumentResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1UpdateDocumentResponse(od);
       });
     },
@@ -7214,10 +7214,10 @@ void main() {
         final o =
             buildGoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest(od);
       });
     },
@@ -7240,10 +7240,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1UpdateRuleSetRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1UpdateRuleSetRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1UpdateRuleSetRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1UpdateRuleSetRequest(od);
       });
     },
@@ -7277,10 +7277,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudContentwarehouseV1WeightedSchemaProperty();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudContentwarehouseV1WeightedSchemaProperty.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudContentwarehouseV1WeightedSchemaProperty.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudContentwarehouseV1WeightedSchemaProperty(od);
       });
     },
@@ -7339,10 +7339,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentChunkedDocumentChunk();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentChunkedDocumentChunk(od);
       });
     },
@@ -7355,10 +7355,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter(
           od,
         );
@@ -7373,10 +7373,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader(
           od,
         );
@@ -7391,10 +7391,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan(
           od,
         );
@@ -7423,10 +7423,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock(
           od,
         );
@@ -7441,10 +7441,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock(
           od,
         );
@@ -7459,10 +7459,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry(
           od,
         );
@@ -7477,10 +7477,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan(
           od,
         );
@@ -7495,10 +7495,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock(
           od,
         );
@@ -7513,10 +7513,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell(
           od,
         );
@@ -7531,10 +7531,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow(
           od,
         );
@@ -7549,10 +7549,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock(
           od,
         );
@@ -7577,10 +7577,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentEntityNormalizedValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentEntityNormalizedValue(od);
       });
     },
@@ -7628,10 +7628,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageAnchorPageRef();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageAnchorPageRef(od);
       });
     },
@@ -7654,10 +7654,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageDetectedBarcode();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageDetectedBarcode(od);
       });
     },
@@ -7669,10 +7669,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(od);
       });
     },
@@ -7717,10 +7717,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageImageQualityScores();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageImageQualityScores(od);
       });
     },
@@ -7733,10 +7733,10 @@ void main() {
         final o =
             buildGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect(
           od,
         );
@@ -7816,10 +7816,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageTableTableCell();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageTableTableCell(od);
       });
     },
@@ -7831,10 +7831,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageTableTableRow();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(od);
       });
     },
@@ -7857,10 +7857,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak(od);
       });
     },
@@ -7872,10 +7872,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageTokenStyleInfo(od);
       });
     },
@@ -7887,10 +7887,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentPageVisualElement();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentPageVisualElement.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentPageVisualElement(od);
       });
     },
@@ -7938,10 +7938,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentRevisionHumanReview();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentRevisionHumanReview(od);
       });
     },
@@ -7997,10 +7997,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDocumentaiV1DocumentTextAnchorTextSegment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDocumentaiV1DocumentTextAnchorTextSegment(od);
       });
     },
@@ -8407,10 +8407,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1InitializeProjectRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1InitializeProjectRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1InitializeProjectRequest(obj);
 
           final path = req.url.path;
@@ -8474,10 +8474,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1RunPipelineRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1RunPipelineRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1RunPipelineRequest(obj);
 
           final path = req.url.path;
@@ -8536,8 +8536,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDocumentSchemasResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(mock).projects.locations.documentSchemas;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documentSchemas;
       final arg_request = buildGoogleCloudContentwarehouseV1DocumentSchema();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -8604,8 +8605,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(mock).projects.locations.documentSchemas;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documentSchemas;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8658,8 +8660,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(mock).projects.locations.documentSchemas;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documentSchemas;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8716,8 +8719,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(mock).projects.locations.documentSchemas;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documentSchemas;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8790,18 +8794,19 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(mock).projects.locations.documentSchemas;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documentSchemas;
       final arg_request =
           buildGoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest(obj);
 
           final path = req.url.path;
@@ -8869,10 +8874,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1CreateDocumentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1CreateDocumentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1CreateDocumentRequest(obj);
 
           final path = req.url.path;
@@ -8938,10 +8943,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1DeleteDocumentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1DeleteDocumentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1DeleteDocumentRequest(obj);
 
           final path = req.url.path;
@@ -9070,10 +9075,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1GetDocumentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1GetDocumentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1GetDocumentRequest(obj);
 
           final path = req.url.path;
@@ -9139,10 +9144,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1ListLinkedSourcesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1ListLinkedSourcesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1ListLinkedSourcesRequest(obj);
 
           final path = req.url.path;
@@ -9208,10 +9213,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1ListLinkedTargetsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1ListLinkedTargetsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1ListLinkedTargetsRequest(obj);
 
           final path = req.url.path;
@@ -9277,10 +9282,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1LockDocumentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1LockDocumentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1LockDocumentRequest(obj);
 
           final path = req.url.path;
@@ -9346,10 +9351,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1UpdateDocumentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1UpdateDocumentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1UpdateDocumentRequest(obj);
 
           final path = req.url.path;
@@ -9415,10 +9420,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1SearchDocumentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1SearchDocumentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1SearchDocumentsRequest(obj);
 
           final path = req.url.path;
@@ -9546,20 +9551,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsDocumentsDocumentLinksResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(
-            mock,
-          ).projects.locations.documents.documentLinks;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documents.documentLinks;
       final arg_request =
           buildGoogleCloudContentwarehouseV1CreateDocumentLinkRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1CreateDocumentLinkRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1CreateDocumentLinkRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1CreateDocumentLinkRequest(obj);
 
           final path = req.url.path;
@@ -9618,20 +9622,19 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(
-            mock,
-          ).projects.locations.documents.documentLinks;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documents.documentLinks;
       final arg_request =
           buildGoogleCloudContentwarehouseV1DeleteDocumentLinkRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1DeleteDocumentLinkRequest(obj);
 
           final path = req.url.path;
@@ -9688,20 +9691,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsDocumentsReferenceIdResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(
-            mock,
-          ).projects.locations.documents.referenceId;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documents.referenceId;
       final arg_request =
           buildGoogleCloudContentwarehouseV1DeleteDocumentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1DeleteDocumentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1DeleteDocumentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1DeleteDocumentRequest(obj);
 
           final path = req.url.path;
@@ -9756,20 +9758,19 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(
-            mock,
-          ).projects.locations.documents.referenceId;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documents.referenceId;
       final arg_request =
           buildGoogleCloudContentwarehouseV1GetDocumentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1GetDocumentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1GetDocumentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1GetDocumentRequest(obj);
 
           final path = req.url.path;
@@ -9828,20 +9829,19 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ContentwarehouseApi(
-            mock,
-          ).projects.locations.documents.referenceId;
+      final res = api.ContentwarehouseApi(
+        mock,
+      ).projects.locations.documents.referenceId;
       final arg_request =
           buildGoogleCloudContentwarehouseV1UpdateDocumentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1UpdateDocumentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1UpdateDocumentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1UpdateDocumentRequest(obj);
 
           final path = req.url.path;
@@ -10215,10 +10215,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudContentwarehouseV1UpdateRuleSetRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudContentwarehouseV1UpdateRuleSetRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudContentwarehouseV1UpdateRuleSetRequest(obj);
 
           final path = req.url.path;

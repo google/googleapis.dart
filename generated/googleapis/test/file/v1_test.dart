@@ -2561,8 +2561,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInstancesSnapshotsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudFilestoreApi(mock).projects.locations.instances.snapshots;
+      final res = api.CloudFilestoreApi(
+        mock,
+      ).projects.locations.instances.snapshots;
       final arg_request = buildSnapshot();
       final arg_parent = 'foo';
       final arg_snapshotId = 'foo';
@@ -2631,8 +2632,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudFilestoreApi(mock).projects.locations.instances.snapshots;
+      final res = api.CloudFilestoreApi(
+        mock,
+      ).projects.locations.instances.snapshots;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2685,8 +2687,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudFilestoreApi(mock).projects.locations.instances.snapshots;
+      final res = api.CloudFilestoreApi(
+        mock,
+      ).projects.locations.instances.snapshots;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2739,8 +2742,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudFilestoreApi(mock).projects.locations.instances.snapshots;
+      final res = api.CloudFilestoreApi(
+        mock,
+      ).projects.locations.instances.snapshots;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2826,8 +2830,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudFilestoreApi(mock).projects.locations.instances.snapshots;
+      final res = api.CloudFilestoreApi(
+        mock,
+      ).projects.locations.instances.snapshots;
       final arg_request = buildSnapshot();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

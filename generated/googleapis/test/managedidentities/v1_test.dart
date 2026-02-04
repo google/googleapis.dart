@@ -1719,10 +1719,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1775,10 +1774,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -1854,10 +1852,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalDomainsResource', () {
     unittest.test('method--attachTrust', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildAttachTrustRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1920,10 +1917,9 @@ void main() {
 
     unittest.test('method--checkMigrationPermission', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildCheckMigrationPermissionRequest();
       final arg_domain = 'foo';
       final arg_$fields = 'foo';
@@ -1990,10 +1986,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildDomain();
       final arg_parent = 'foo';
       final arg_domainName = 'foo';
@@ -2062,10 +2057,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2118,10 +2112,9 @@ void main() {
 
     unittest.test('method--detachTrust', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildDetachTrustRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2184,10 +2177,9 @@ void main() {
 
     unittest.test('method--disableMigration', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildDisableMigrationRequest();
       final arg_domain = 'foo';
       final arg_$fields = 'foo';
@@ -2250,10 +2242,9 @@ void main() {
 
     unittest.test('method--domainJoinMachine', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildDomainJoinMachineRequest();
       final arg_domain = 'foo';
       final arg_$fields = 'foo';
@@ -2316,10 +2307,9 @@ void main() {
 
     unittest.test('method--enableMigration', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildEnableMigrationRequest();
       final arg_domain = 'foo';
       final arg_$fields = 'foo';
@@ -2382,10 +2372,9 @@ void main() {
 
     unittest.test('method--extendSchema', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildExtendSchemaRequest();
       final arg_domain = 'foo';
       final arg_$fields = 'foo';
@@ -2448,10 +2437,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2504,10 +2492,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -2569,10 +2556,9 @@ void main() {
 
     unittest.test('method--getLdapssettings', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2628,10 +2614,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2711,10 +2696,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildDomain();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2783,10 +2767,9 @@ void main() {
 
     unittest.test('method--reconfigureTrust', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildReconfigureTrustRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2849,10 +2832,9 @@ void main() {
 
     unittest.test('method--resetAdminPassword', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildResetAdminPasswordRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2917,10 +2899,9 @@ void main() {
 
     unittest.test('method--restore', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildRestoreDomainRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2983,10 +2964,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3049,10 +3029,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3117,10 +3096,9 @@ void main() {
 
     unittest.test('method--updateLdapssettings', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildLDAPSSettings();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3189,10 +3167,9 @@ void main() {
 
     unittest.test('method--validateTrust', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains;
       final arg_request = buildValidateTrustRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3257,10 +3234,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalDomainsBackupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains.backups;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains.backups;
       final arg_request = buildBackup();
       final arg_parent = 'foo';
       final arg_backupId = 'foo';
@@ -3329,10 +3305,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains.backups;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains.backups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3385,10 +3360,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains.backups;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains.backups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3441,10 +3415,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains.backups;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains.backups;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -3506,10 +3479,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains.backups;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains.backups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3589,10 +3561,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains.backups;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains.backups;
       final arg_request = buildBackup();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3661,10 +3632,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains.backups;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains.backups;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3727,10 +3697,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.domains.backups;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.domains.backups;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3799,10 +3768,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-              mock,
-            ).projects.locations.global.domains.sqlIntegrations;
+        final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+          mock,
+        ).projects.locations.global.domains.sqlIntegrations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3855,10 +3823,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-              mock,
-            ).projects.locations.global.domains.sqlIntegrations;
+        final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+          mock,
+        ).projects.locations.global.domains.sqlIntegrations;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -3945,10 +3912,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.operations;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4011,10 +3977,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.operations;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4067,10 +4032,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.operations;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4123,10 +4087,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.operations;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -4202,10 +4165,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalPeeringsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.peerings;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.peerings;
       final arg_request = buildPeering();
       final arg_parent = 'foo';
       final arg_peeringId = 'foo';
@@ -4274,10 +4236,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.peerings;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.peerings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4330,10 +4291,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.peerings;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.peerings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4386,10 +4346,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.peerings;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.peerings;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -4451,10 +4410,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.peerings;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.peerings;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4534,10 +4492,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.peerings;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.peerings;
       final arg_request = buildPeering();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4606,10 +4563,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.peerings;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.peerings;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -4672,10 +4628,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
-            mock,
-          ).projects.locations.global.peerings;
+      final res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+        mock,
+      ).projects.locations.global.peerings;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';

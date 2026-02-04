@@ -756,10 +756,10 @@ void main() {
         final o =
             buildGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment(od);
       });
     },
@@ -782,10 +782,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatapipelinesV1LaunchFlexTemplateParameter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatapipelinesV1LaunchFlexTemplateParameter(od);
       });
     },
@@ -797,10 +797,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatapipelinesV1LaunchFlexTemplateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatapipelinesV1LaunchFlexTemplateRequest(od);
       });
     },
@@ -812,10 +812,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDatapipelinesV1LaunchTemplateParameters();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDatapipelinesV1LaunchTemplateParameters.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDatapipelinesV1LaunchTemplateParameters.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDatapipelinesV1LaunchTemplateParameters(od);
       });
     },
@@ -1380,10 +1380,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDatapipelinesV1StopPipelineRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDatapipelinesV1StopPipelineRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDatapipelinesV1StopPipelineRequest(obj);
 
           final path = req.url.path;

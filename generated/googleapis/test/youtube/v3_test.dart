@@ -7338,10 +7338,10 @@ void main() {
         final o =
             buildChannelToStoreLinkDetailsMerchantAffiliateProgramDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkChannelToStoreLinkDetailsMerchantAffiliateProgramDetails(od);
       });
     },

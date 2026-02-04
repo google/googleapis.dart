@@ -89,7 +89,7 @@ class IamResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/iam:troubleshoot';
@@ -165,26 +165,32 @@ class GoogleCloudPolicytroubleshooterIamV3AccessTuple {
 
   GoogleCloudPolicytroubleshooterIamV3AccessTuple.fromJson(core.Map json_)
     : this(
-        conditionContext:
-            json_.containsKey('conditionContext')
-                ? GoogleCloudPolicytroubleshooterIamV3ConditionContext.fromJson(
-                  json_['conditionContext']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        conditionContext: json_.containsKey('conditionContext')
+            ? GoogleCloudPolicytroubleshooterIamV3ConditionContext.fromJson(
+                json_['conditionContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fullResourceName: json_['fullResourceName'] as core.String?,
         permission: json_['permission'] as core.String?,
         permissionFqdn: json_['permissionFqdn'] as core.String?,
         principal: json_['principal'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conditionContext != null) 'conditionContext': conditionContext!,
-    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-    if (permission != null) 'permission': permission!,
-    if (permissionFqdn != null) 'permissionFqdn': permissionFqdn!,
-    if (principal != null) 'principal': principal!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conditionContext = this.conditionContext;
+    final fullResourceName = this.fullResourceName;
+    final permission = this.permission;
+    final permissionFqdn = this.permissionFqdn;
+    final principal = this.principal;
+    return {
+      'conditionContext': ?conditionContext,
+      'fullResourceName': ?fullResourceName,
+      'permission': ?permission,
+      'permissionFqdn': ?permissionFqdn,
+      'principal': ?principal,
+    };
+  }
 }
 
 /// Details about how a role binding in an allow policy affects a principal's
@@ -310,26 +316,23 @@ class GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation {
     core.Map json_,
   ) : this(
         allowAccessState: json_['allowAccessState'] as core.String?,
-        combinedMembership:
-            json_.containsKey('combinedMembership')
-                ? GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership.fromJson(
-                  json_['combinedMembership']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        condition:
-            json_.containsKey('condition')
-                ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        conditionExplanation:
-            json_.containsKey('conditionExplanation')
-                ? GoogleCloudPolicytroubleshooterIamV3ConditionExplanation.fromJson(
-                  json_['conditionExplanation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        combinedMembership: json_.containsKey('combinedMembership')
+            ? GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership.fromJson(
+                json_['combinedMembership']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        condition: json_.containsKey('condition')
+            ? GoogleTypeExpr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        conditionExplanation: json_.containsKey('conditionExplanation')
+            ? GoogleCloudPolicytroubleshooterIamV3ConditionExplanation.fromJson(
+                json_['conditionExplanation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         memberships:
             (json_['memberships'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(
@@ -346,19 +349,28 @@ class GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation {
             json_['rolePermissionRelevance'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowAccessState != null) 'allowAccessState': allowAccessState!,
-    if (combinedMembership != null) 'combinedMembership': combinedMembership!,
-    if (condition != null) 'condition': condition!,
-    if (conditionExplanation != null)
-      'conditionExplanation': conditionExplanation!,
-    if (memberships != null) 'memberships': memberships!,
-    if (relevance != null) 'relevance': relevance!,
-    if (role != null) 'role': role!,
-    if (rolePermission != null) 'rolePermission': rolePermission!,
-    if (rolePermissionRelevance != null)
-      'rolePermissionRelevance': rolePermissionRelevance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowAccessState = this.allowAccessState;
+    final combinedMembership = this.combinedMembership;
+    final condition = this.condition;
+    final conditionExplanation = this.conditionExplanation;
+    final memberships = this.memberships;
+    final relevance = this.relevance;
+    final role = this.role;
+    final rolePermission = this.rolePermission;
+    final rolePermissionRelevance = this.rolePermissionRelevance;
+    return {
+      'allowAccessState': ?allowAccessState,
+      'combinedMembership': ?combinedMembership,
+      'condition': ?condition,
+      'conditionExplanation': ?conditionExplanation,
+      'memberships': ?memberships,
+      'relevance': ?relevance,
+      'role': ?role,
+      'rolePermission': ?rolePermission,
+      'rolePermissionRelevance': ?rolePermissionRelevance,
+    };
+  }
 }
 
 /// Details about whether the role binding includes the principal.
@@ -404,10 +416,11 @@ class GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowM
         relevance: json_['relevance'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (membership != null) 'membership': membership!,
-    if (relevance != null) 'relevance': relevance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final membership = this.membership;
+    final relevance = this.relevance;
+    return {'membership': ?membership, 'relevance': ?relevance};
+  }
 }
 
 /// Details about how the relevant IAM allow policies affect the final access
@@ -463,23 +476,27 @@ class GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation {
     core.Map json_,
   ) : this(
         allowAccessState: json_['allowAccessState'] as core.String?,
-        explainedPolicies:
-            (json_['explainedPolicies'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        explainedPolicies: (json_['explainedPolicies'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         relevance: json_['relevance'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowAccessState != null) 'allowAccessState': allowAccessState!,
-    if (explainedPolicies != null) 'explainedPolicies': explainedPolicies!,
-    if (relevance != null) 'relevance': relevance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowAccessState = this.allowAccessState;
+    final explainedPolicies = this.explainedPolicies;
+    final relevance = this.relevance;
+    return {
+      'allowAccessState': ?allowAccessState,
+      'explainedPolicies': ?explainedPolicies,
+      'relevance': ?relevance,
+    };
+  }
 }
 
 /// Additional context for troubleshooting conditional role bindings and deny
@@ -517,41 +534,43 @@ class GoogleCloudPolicytroubleshooterIamV3ConditionContext {
 
   GoogleCloudPolicytroubleshooterIamV3ConditionContext.fromJson(core.Map json_)
     : this(
-        destination:
-            json_.containsKey('destination')
-                ? GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        effectiveTags:
-            (json_['effectiveTags'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        request:
-            json_.containsKey('request')
-                ? GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest.fromJson(
-                  json_['request'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resource:
-            json_.containsKey('resource')
-                ? GoogleCloudPolicytroubleshooterIamV3ConditionContextResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        destination: json_.containsKey('destination')
+            ? GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer.fromJson(
+                json_['destination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        effectiveTags: (json_['effectiveTags'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        request: json_.containsKey('request')
+            ? GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest.fromJson(
+                json_['request'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resource: json_.containsKey('resource')
+            ? GoogleCloudPolicytroubleshooterIamV3ConditionContextResource.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destination != null) 'destination': destination!,
-    if (effectiveTags != null) 'effectiveTags': effectiveTags!,
-    if (request != null) 'request': request!,
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destination = this.destination;
+    final effectiveTags = this.effectiveTags;
+    final request = this.request;
+    final resource = this.resource;
+    return {
+      'destination': ?destination,
+      'effectiveTags': ?effectiveTags,
+      'request': ?request,
+      'resource': ?resource,
+    };
+  }
 }
 
 /// A tag that applies to a resource during policy evaluation.
@@ -627,14 +646,22 @@ class GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag {
         tagValue: json_['tagValue'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inherited != null) 'inherited': inherited!,
-    if (namespacedTagKey != null) 'namespacedTagKey': namespacedTagKey!,
-    if (namespacedTagValue != null) 'namespacedTagValue': namespacedTagValue!,
-    if (tagKey != null) 'tagKey': tagKey!,
-    if (tagKeyParentName != null) 'tagKeyParentName': tagKeyParentName!,
-    if (tagValue != null) 'tagValue': tagValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inherited = this.inherited;
+    final namespacedTagKey = this.namespacedTagKey;
+    final namespacedTagValue = this.namespacedTagValue;
+    final tagKey = this.tagKey;
+    final tagKeyParentName = this.tagKeyParentName;
+    final tagValue = this.tagValue;
+    return {
+      'inherited': ?inherited,
+      'namespacedTagKey': ?namespacedTagKey,
+      'namespacedTagValue': ?namespacedTagValue,
+      'tagKey': ?tagKey,
+      'tagKeyParentName': ?tagKeyParentName,
+      'tagValue': ?tagValue,
+    };
+  }
 }
 
 /// This message defines attributes for a node that handles a network request.
@@ -661,10 +688,11 @@ class GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer {
         port: json_['port'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ip != null) 'ip': ip!,
-    if (port != null) 'port': port!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ip = this.ip;
+    final port = this.port;
+    return {'ip': ?ip, 'port': ?port};
+  }
 }
 
 /// This message defines attributes for an HTTP request.
@@ -686,9 +714,10 @@ class GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest {
     core.Map json_,
   ) : this(receiveTime: json_['receiveTime'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (receiveTime != null) 'receiveTime': receiveTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final receiveTime = this.receiveTime;
+    return {'receiveTime': ?receiveTime};
+  }
 }
 
 /// Core attributes for a resource.
@@ -733,11 +762,12 @@ class GoogleCloudPolicytroubleshooterIamV3ConditionContextResource {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (service != null) 'service': service!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final service = this.service;
+    final type = this.type;
+    return {'name': ?name, 'service': ?service, 'type': ?type};
+  }
 }
 
 /// Explanation for how a condition affects a principal's access
@@ -769,31 +799,34 @@ class GoogleCloudPolicytroubleshooterIamV3ConditionExplanation {
   GoogleCloudPolicytroubleshooterIamV3ConditionExplanation.fromJson(
     core.Map json_,
   ) : this(
-        errors:
-            (json_['errors'] as core.List?)
-                ?.map(
-                  (value) => GoogleRpcStatus.fromJson(
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) => GoogleRpcStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        evaluationStates: (json_['evaluationStates'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
-                )
-                .toList(),
-        evaluationStates:
-            (json_['evaluationStates'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+            )
+            .toList(),
         value: json_['value'],
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errors != null) 'errors': errors!,
-    if (evaluationStates != null) 'evaluationStates': evaluationStates!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    final evaluationStates = this.evaluationStates;
+    final value = this.value;
+    return {
+      'errors': ?errors,
+      'evaluationStates': ?evaluationStates,
+      'value': ?value,
+    };
+  }
 }
 
 /// Evaluated state of a condition expression.
@@ -826,24 +859,24 @@ class GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState {
     core.Map json_,
   ) : this(
         end: json_['end'] as core.int?,
-        errors:
-            (json_['errors'] as core.List?)
-                ?.map(
-                  (value) => GoogleRpcStatus.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) => GoogleRpcStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         start: json_['start'] as core.int?,
         value: json_['value'],
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (end != null) 'end': end!,
-    if (errors != null) 'errors': errors!,
-    if (start != null) 'start': start!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final end = this.end;
+    final errors = this.errors;
+    final start = this.start;
+    final value = this.value;
+    return {'end': ?end, 'errors': ?errors, 'start': ?start, 'value': ?value};
+  }
 }
 
 /// Details about how the relevant IAM deny policies affect the final access
@@ -905,25 +938,30 @@ class GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation {
     core.Map json_,
   ) : this(
         denyAccessState: json_['denyAccessState'] as core.String?,
-        explainedResources:
-            (json_['explainedResources'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        explainedResources: (json_['explainedResources'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         permissionDeniable: json_['permissionDeniable'] as core.bool?,
         relevance: json_['relevance'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (denyAccessState != null) 'denyAccessState': denyAccessState!,
-    if (explainedResources != null) 'explainedResources': explainedResources!,
-    if (permissionDeniable != null) 'permissionDeniable': permissionDeniable!,
-    if (relevance != null) 'relevance': relevance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final denyAccessState = this.denyAccessState;
+    final explainedResources = this.explainedResources;
+    final permissionDeniable = this.permissionDeniable;
+    final relevance = this.relevance;
+    return {
+      'denyAccessState': ?denyAccessState,
+      'explainedResources': ?explainedResources,
+      'permissionDeniable': ?permissionDeniable,
+      'relevance': ?relevance,
+    };
+  }
 }
 
 /// Details about how a deny rule in a deny policy affects a principal's ability
@@ -1065,112 +1103,117 @@ class GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation {
   GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation.fromJson(
     core.Map json_,
   ) : this(
-        combinedDeniedPermission:
-            json_.containsKey('combinedDeniedPermission')
-                ? GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
-                  json_['combinedDeniedPermission']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        combinedDeniedPrincipal:
-            json_.containsKey('combinedDeniedPrincipal')
-                ? GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
-                  json_['combinedDeniedPrincipal']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        combinedDeniedPermission: json_.containsKey('combinedDeniedPermission')
+            ? GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
+                json_['combinedDeniedPermission']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        combinedDeniedPrincipal: json_.containsKey('combinedDeniedPrincipal')
+            ? GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
+                json_['combinedDeniedPrincipal']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         combinedExceptionPermission:
             json_.containsKey('combinedExceptionPermission')
-                ? GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
-                  json_['combinedExceptionPermission']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
+                json_['combinedExceptionPermission']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         combinedExceptionPrincipal:
             json_.containsKey('combinedExceptionPrincipal')
-                ? GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
-                  json_['combinedExceptionPrincipal']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        condition:
-            json_.containsKey('condition')
-                ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        conditionExplanation:
-            json_.containsKey('conditionExplanation')
-                ? GoogleCloudPolicytroubleshooterIamV3ConditionExplanation.fromJson(
-                  json_['conditionExplanation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        deniedPermissions: (json_['deniedPermissions']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+            ? GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
+                json_['combinedExceptionPrincipal']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        condition: json_.containsKey('condition')
+            ? GoogleTypeExpr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        conditionExplanation: json_.containsKey('conditionExplanation')
+            ? GoogleCloudPolicytroubleshooterIamV3ConditionExplanation.fromJson(
+                json_['conditionExplanation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deniedPermissions:
+            (json_['deniedPermissions'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-        deniedPrincipals: (json_['deniedPrincipals']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        deniedPrincipals:
+            (json_['deniedPrincipals'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
         denyAccessState: json_['denyAccessState'] as core.String?,
-        exceptionPermissions: (json_['exceptionPermissions']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        exceptionPermissions:
+            (json_['exceptionPermissions']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-        exceptionPrincipals: (json_['exceptionPrincipals']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        exceptionPrincipals:
+            (json_['exceptionPrincipals']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
         relevance: json_['relevance'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (combinedDeniedPermission != null)
-      'combinedDeniedPermission': combinedDeniedPermission!,
-    if (combinedDeniedPrincipal != null)
-      'combinedDeniedPrincipal': combinedDeniedPrincipal!,
-    if (combinedExceptionPermission != null)
-      'combinedExceptionPermission': combinedExceptionPermission!,
-    if (combinedExceptionPrincipal != null)
-      'combinedExceptionPrincipal': combinedExceptionPrincipal!,
-    if (condition != null) 'condition': condition!,
-    if (conditionExplanation != null)
-      'conditionExplanation': conditionExplanation!,
-    if (deniedPermissions != null) 'deniedPermissions': deniedPermissions!,
-    if (deniedPrincipals != null) 'deniedPrincipals': deniedPrincipals!,
-    if (denyAccessState != null) 'denyAccessState': denyAccessState!,
-    if (exceptionPermissions != null)
-      'exceptionPermissions': exceptionPermissions!,
-    if (exceptionPrincipals != null)
-      'exceptionPrincipals': exceptionPrincipals!,
-    if (relevance != null) 'relevance': relevance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final combinedDeniedPermission = this.combinedDeniedPermission;
+    final combinedDeniedPrincipal = this.combinedDeniedPrincipal;
+    final combinedExceptionPermission = this.combinedExceptionPermission;
+    final combinedExceptionPrincipal = this.combinedExceptionPrincipal;
+    final condition = this.condition;
+    final conditionExplanation = this.conditionExplanation;
+    final deniedPermissions = this.deniedPermissions;
+    final deniedPrincipals = this.deniedPrincipals;
+    final denyAccessState = this.denyAccessState;
+    final exceptionPermissions = this.exceptionPermissions;
+    final exceptionPrincipals = this.exceptionPrincipals;
+    final relevance = this.relevance;
+    return {
+      'combinedDeniedPermission': ?combinedDeniedPermission,
+      'combinedDeniedPrincipal': ?combinedDeniedPrincipal,
+      'combinedExceptionPermission': ?combinedExceptionPermission,
+      'combinedExceptionPrincipal': ?combinedExceptionPrincipal,
+      'condition': ?condition,
+      'conditionExplanation': ?conditionExplanation,
+      'deniedPermissions': ?deniedPermissions,
+      'deniedPrincipals': ?deniedPrincipals,
+      'denyAccessState': ?denyAccessState,
+      'exceptionPermissions': ?exceptionPermissions,
+      'exceptionPrincipals': ?exceptionPrincipals,
+      'relevance': ?relevance,
+    };
+  }
 }
 
 /// Details about whether the principal in the request is listed as a denied
@@ -1219,10 +1262,11 @@ class GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrinci
         relevance: json_['relevance'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (membership != null) 'membership': membership!,
-    if (relevance != null) 'relevance': relevance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final membership = this.membership;
+    final relevance = this.relevance;
+    return {'membership': ?membership, 'relevance': ?relevance};
+  }
 }
 
 /// Details about whether the permission in the request is denied by the deny
@@ -1263,11 +1307,14 @@ class GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermission
         relevance: json_['relevance'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (permissionMatchingState != null)
-      'permissionMatchingState': permissionMatchingState!,
-    if (relevance != null) 'relevance': relevance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final permissionMatchingState = this.permissionMatchingState;
+    final relevance = this.relevance;
+    return {
+      'permissionMatchingState': ?permissionMatchingState,
+      'relevance': ?relevance,
+    };
+  }
 }
 
 /// Details about how a specific IAM allow policy contributed to the final
@@ -1350,33 +1397,37 @@ class GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy {
     core.Map json_,
   ) : this(
         allowAccessState: json_['allowAccessState'] as core.String?,
-        bindingExplanations:
-            (json_['bindingExplanations'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        bindingExplanations: (json_['bindingExplanations'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         fullResourceName: json_['fullResourceName'] as core.String?,
-        policy:
-            json_.containsKey('policy')
-                ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? GoogleIamV1Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         relevance: json_['relevance'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowAccessState != null) 'allowAccessState': allowAccessState!,
-    if (bindingExplanations != null)
-      'bindingExplanations': bindingExplanations!,
-    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-    if (policy != null) 'policy': policy!,
-    if (relevance != null) 'relevance': relevance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowAccessState = this.allowAccessState;
+    final bindingExplanations = this.bindingExplanations;
+    final fullResourceName = this.fullResourceName;
+    final policy = this.policy;
+    final relevance = this.relevance;
+    return {
+      'allowAccessState': ?allowAccessState,
+      'bindingExplanations': ?bindingExplanations,
+      'fullResourceName': ?fullResourceName,
+      'policy': ?policy,
+      'relevance': ?relevance,
+    };
+  }
 }
 
 /// Details about how a specific IAM deny policy Policy contributed to the
@@ -1448,30 +1499,34 @@ class GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy {
     core.Map json_,
   ) : this(
         denyAccessState: json_['denyAccessState'] as core.String?,
-        policy:
-            json_.containsKey('policy')
-                ? GoogleIamV2Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? GoogleIamV2Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         relevance: json_['relevance'] as core.String?,
-        ruleExplanations:
-            (json_['ruleExplanations'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        ruleExplanations: (json_['ruleExplanations'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (denyAccessState != null) 'denyAccessState': denyAccessState!,
-    if (policy != null) 'policy': policy!,
-    if (relevance != null) 'relevance': relevance!,
-    if (ruleExplanations != null) 'ruleExplanations': ruleExplanations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final denyAccessState = this.denyAccessState;
+    final policy = this.policy;
+    final relevance = this.relevance;
+    final ruleExplanations = this.ruleExplanations;
+    return {
+      'denyAccessState': ?denyAccessState,
+      'policy': ?policy,
+      'relevance': ?relevance,
+      'ruleExplanations': ?ruleExplanations,
+    };
+  }
 }
 
 /// Details about how a specific resource contributed to the deny policy
@@ -1544,25 +1599,30 @@ class GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource {
     core.Map json_,
   ) : this(
         denyAccessState: json_['denyAccessState'] as core.String?,
-        explainedPolicies:
-            (json_['explainedPolicies'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        explainedPolicies: (json_['explainedPolicies'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         fullResourceName: json_['fullResourceName'] as core.String?,
         relevance: json_['relevance'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (denyAccessState != null) 'denyAccessState': denyAccessState!,
-    if (explainedPolicies != null) 'explainedPolicies': explainedPolicies!,
-    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-    if (relevance != null) 'relevance': relevance!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final denyAccessState = this.denyAccessState;
+    final explainedPolicies = this.explainedPolicies;
+    final fullResourceName = this.fullResourceName;
+    final relevance = this.relevance;
+    return {
+      'denyAccessState': ?denyAccessState,
+      'explainedPolicies': ?explainedPolicies,
+      'fullResourceName': ?fullResourceName,
+      'relevance': ?relevance,
+    };
+  }
 }
 
 /// Request for TroubleshootIamPolicy.
@@ -1578,17 +1638,17 @@ class GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest {
   GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest.fromJson(
     core.Map json_,
   ) : this(
-        accessTuple:
-            json_.containsKey('accessTuple')
-                ? GoogleCloudPolicytroubleshooterIamV3AccessTuple.fromJson(
-                  json_['accessTuple'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accessTuple: json_.containsKey('accessTuple')
+            ? GoogleCloudPolicytroubleshooterIamV3AccessTuple.fromJson(
+                json_['accessTuple'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessTuple != null) 'accessTuple': accessTuple!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessTuple = this.accessTuple;
+    return {'accessTuple': ?accessTuple};
+  }
 }
 
 /// Response for TroubleshootIamPolicy.
@@ -1632,37 +1692,38 @@ class GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse {
   GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse.fromJson(
     core.Map json_,
   ) : this(
-        accessTuple:
-            json_.containsKey('accessTuple')
-                ? GoogleCloudPolicytroubleshooterIamV3AccessTuple.fromJson(
-                  json_['accessTuple'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        allowPolicyExplanation:
-            json_.containsKey('allowPolicyExplanation')
-                ? GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation.fromJson(
-                  json_['allowPolicyExplanation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        denyPolicyExplanation:
-            json_.containsKey('denyPolicyExplanation')
-                ? GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation.fromJson(
-                  json_['denyPolicyExplanation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accessTuple: json_.containsKey('accessTuple')
+            ? GoogleCloudPolicytroubleshooterIamV3AccessTuple.fromJson(
+                json_['accessTuple'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        allowPolicyExplanation: json_.containsKey('allowPolicyExplanation')
+            ? GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation.fromJson(
+                json_['allowPolicyExplanation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        denyPolicyExplanation: json_.containsKey('denyPolicyExplanation')
+            ? GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation.fromJson(
+                json_['denyPolicyExplanation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         overallAccessState: json_['overallAccessState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessTuple != null) 'accessTuple': accessTuple!,
-    if (allowPolicyExplanation != null)
-      'allowPolicyExplanation': allowPolicyExplanation!,
-    if (denyPolicyExplanation != null)
-      'denyPolicyExplanation': denyPolicyExplanation!,
-    if (overallAccessState != null) 'overallAccessState': overallAccessState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessTuple = this.accessTuple;
+    final allowPolicyExplanation = this.allowPolicyExplanation;
+    final denyPolicyExplanation = this.denyPolicyExplanation;
+    final overallAccessState = this.overallAccessState;
+    return {
+      'accessTuple': ?accessTuple,
+      'allowPolicyExplanation': ?allowPolicyExplanation,
+      'denyPolicyExplanation': ?denyPolicyExplanation,
+      'overallAccessState': ?overallAccessState,
+    };
+  }
 }
 
 /// Specifies the audit configuration for a service.
@@ -1696,21 +1757,21 @@ class GoogleIamV1AuditConfig {
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1805,24 +1866,23 @@ class GoogleIamV1Binding {
 
   GoogleIamV1Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? GoogleTypeExpr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1922,32 +1982,36 @@ class GoogleIamV1Policy {
 
   GoogleIamV1Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// A deny rule in an IAM deny policy.
@@ -2059,40 +2123,39 @@ class GoogleIamV2DenyRule {
 
   GoogleIamV2DenyRule.fromJson(core.Map json_)
     : this(
-        denialCondition:
-            json_.containsKey('denialCondition')
-                ? GoogleTypeExpr.fromJson(
-                  json_['denialCondition']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        deniedPermissions:
-            (json_['deniedPermissions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        deniedPrincipals:
-            (json_['deniedPrincipals'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        exceptionPermissions:
-            (json_['exceptionPermissions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        exceptionPrincipals:
-            (json_['exceptionPrincipals'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        denialCondition: json_.containsKey('denialCondition')
+            ? GoogleTypeExpr.fromJson(
+                json_['denialCondition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deniedPermissions: (json_['deniedPermissions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        deniedPrincipals: (json_['deniedPrincipals'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        exceptionPermissions: (json_['exceptionPermissions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        exceptionPrincipals: (json_['exceptionPrincipals'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (denialCondition != null) 'denialCondition': denialCondition!,
-    if (deniedPermissions != null) 'deniedPermissions': deniedPermissions!,
-    if (deniedPrincipals != null) 'deniedPrincipals': deniedPrincipals!,
-    if (exceptionPermissions != null)
-      'exceptionPermissions': exceptionPermissions!,
-    if (exceptionPrincipals != null)
-      'exceptionPrincipals': exceptionPrincipals!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final denialCondition = this.denialCondition;
+    final deniedPermissions = this.deniedPermissions;
+    final deniedPrincipals = this.deniedPrincipals;
+    final exceptionPermissions = this.exceptionPermissions;
+    final exceptionPrincipals = this.exceptionPrincipals;
+    return {
+      'denialCondition': ?denialCondition,
+      'deniedPermissions': ?deniedPermissions,
+      'deniedPrincipals': ?deniedPrincipals,
+      'exceptionPermissions': ?exceptionPermissions,
+      'exceptionPrincipals': ?exceptionPrincipals,
+    };
+  }
 }
 
 /// Data for an IAM policy.
@@ -2179,39 +2242,51 @@ class GoogleIamV2Policy {
 
   GoogleIamV2Policy.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV2PolicyRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV2PolicyRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (rules != null) 'rules': rules!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final kind = this.kind;
+    final name = this.name;
+    final rules = this.rules;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'kind': ?kind,
+      'name': ?name,
+      'rules': ?rules,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A single rule in a `Policy`.
@@ -2228,19 +2303,19 @@ class GoogleIamV2PolicyRule {
 
   GoogleIamV2PolicyRule.fromJson(core.Map json_)
     : this(
-        denyRule:
-            json_.containsKey('denyRule')
-                ? GoogleIamV2DenyRule.fromJson(
-                  json_['denyRule'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        denyRule: json_.containsKey('denyRule')
+            ? GoogleIamV2DenyRule.fromJson(
+                json_['denyRule'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (denyRule != null) 'denyRule': denyRule!,
-    if (description != null) 'description': description!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final denyRule = this.denyRule;
+    final description = this.description;
+    return {'denyRule': ?denyRule, 'description': ?description};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

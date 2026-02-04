@@ -174,7 +174,7 @@ class MessageResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/message:stream';
@@ -218,7 +218,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -277,8 +277,8 @@ class SubscriptionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/subscriptions';
@@ -331,10 +331,10 @@ class SubscriptionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -373,7 +373,7 @@ class SubscriptionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -439,10 +439,10 @@ class SubscriptionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/subscriptions';
@@ -511,9 +511,9 @@ class SubscriptionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -571,7 +571,7 @@ class SubscriptionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reactivate';
@@ -622,7 +622,7 @@ class TasksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -666,9 +666,9 @@ class TasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (historyLength != null) 'historyLength': ['${historyLength}'],
-      if (tenant != null) 'tenant': [tenant],
-      if ($fields != null) 'fields': [$fields],
+      'historyLength': ?historyLength == null ? null : ['${historyLength}'],
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -713,8 +713,8 @@ class TasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (tenant != null) 'tenant': [tenant],
-      if ($fields != null) 'fields': [$fields],
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':subscribe';
@@ -770,9 +770,9 @@ class TasksPushNotificationConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (configId != null) 'configId': [configId],
-      if (tenant != null) 'tenant': [tenant],
-      if ($fields != null) 'fields': [$fields],
+      'configId': ?configId == null ? null : [configId],
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent');
@@ -815,8 +815,8 @@ class TasksPushNotificationConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (tenant != null) 'tenant': [tenant],
-      if ($fields != null) 'fields': [$fields],
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -856,8 +856,8 @@ class TasksPushNotificationConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (tenant != null) 'tenant': [tenant],
-      if ($fields != null) 'fields': [$fields],
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -910,10 +910,10 @@ class TasksPushNotificationConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (tenant != null) 'tenant': [tenant],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -971,33 +971,37 @@ class Artifact {
     : this(
         artifactId: json_['artifactId'] as core.String?,
         description: json_['description'] as core.String?,
-        extensions:
-            (json_['extensions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        extensions: (json_['extensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        parts:
-            (json_['parts'] as core.List?)
-                ?.map(
-                  (value) => Part.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        parts: (json_['parts'] as core.List?)
+            ?.map(
+              (value) =>
+                  Part.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (artifactId != null) 'artifactId': artifactId!,
-    if (description != null) 'description': description!,
-    if (extensions != null) 'extensions': extensions!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (parts != null) 'parts': parts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifactId = this.artifactId;
+    final description = this.description;
+    final extensions = this.extensions;
+    final metadata = this.metadata;
+    final name = this.name;
+    final parts = this.parts;
+    return {
+      'artifactId': ?artifactId,
+      'description': ?description,
+      'extensions': ?extensions,
+      'metadata': ?metadata,
+      'name': ?name,
+      'parts': ?parts,
+    };
+  }
 }
 
 /// Defines authentication details, used for push notifications.
@@ -1013,16 +1017,16 @@ class AuthenticationInfo {
   AuthenticationInfo.fromJson(core.Map json_)
     : this(
         credentials: json_['credentials'] as core.String?,
-        schemes:
-            (json_['schemes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        schemes: (json_['schemes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (credentials != null) 'credentials': credentials!,
-    if (schemes != null) 'schemes': schemes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final credentials = this.credentials;
+    final schemes = this.schemes;
+    return {'credentials': ?credentials, 'schemes': ?schemes};
+  }
 }
 
 class CancelTaskRequest {
@@ -1036,9 +1040,10 @@ class CancelTaskRequest {
   CancelTaskRequest.fromJson(core.Map json_)
     : this(tenant: json_['tenant'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (tenant != null) 'tenant': tenant!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final tenant = this.tenant;
+    return {'tenant': ?tenant};
+  }
 }
 
 /// DataPart represents a structured blob.
@@ -1055,15 +1060,15 @@ class DataPart {
 
   DataPart.fromJson(core.Map json_)
     : this(
-        data:
-            json_.containsKey('data')
-                ? json_['data'] as core.Map<core.String, core.dynamic>
-                : null,
+        data: json_.containsKey('data')
+            ? json_['data'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    return {'data': ?data};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1105,12 +1110,18 @@ class FilePart {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fileWithBytes != null) 'fileWithBytes': fileWithBytes!,
-    if (fileWithUri != null) 'fileWithUri': fileWithUri!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileWithBytes = this.fileWithBytes;
+    final fileWithUri = this.fileWithUri;
+    final mimeType = this.mimeType;
+    final name = this.name;
+    return {
+      'fileWithBytes': ?fileWithBytes,
+      'fileWithUri': ?fileWithUri,
+      'mimeType': ?mimeType,
+      'name': ?name,
+    };
+  }
 }
 
 /// The response message for SubscriptionsService.ListSubscriptions.
@@ -1128,20 +1139,20 @@ class ListSubscriptionsResponse {
   ListSubscriptionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        subscriptions:
-            (json_['subscriptions'] as core.List?)
-                ?.map(
-                  (value) => Subscription.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        subscriptions: (json_['subscriptions'] as core.List?)
+            ?.map(
+              (value) => Subscription.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (subscriptions != null) 'subscriptions': subscriptions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final subscriptions = this.subscriptions;
+    return {'nextPageToken': ?nextPageToken, 'subscriptions': ?subscriptions};
+  }
 }
 
 class ListTaskPushNotificationConfigResponse {
@@ -1157,21 +1168,21 @@ class ListTaskPushNotificationConfigResponse {
 
   ListTaskPushNotificationConfigResponse.fromJson(core.Map json_)
     : this(
-        configs:
-            (json_['configs'] as core.List?)
-                ?.map(
-                  (value) => TaskPushNotificationConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        configs: (json_['configs'] as core.List?)
+            ?.map(
+              (value) => TaskPushNotificationConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configs != null) 'configs': configs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configs = this.configs;
+    final nextPageToken = this.nextPageToken;
+    return {'configs': ?configs, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Message is one unit of communication between client and server.
@@ -1234,37 +1245,42 @@ class Message {
 
   Message.fromJson(core.Map json_)
     : this(
-        content:
-            (json_['content'] as core.List?)
-                ?.map(
-                  (value) => Part.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        content: (json_['content'] as core.List?)
+            ?.map(
+              (value) =>
+                  Part.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         contextId: json_['contextId'] as core.String?,
-        extensions:
-            (json_['extensions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        extensions: (json_['extensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         messageId: json_['messageId'] as core.String?,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         role: json_['role'] as core.String?,
         taskId: json_['taskId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (contextId != null) 'contextId': contextId!,
-    if (extensions != null) 'extensions': extensions!,
-    if (messageId != null) 'messageId': messageId!,
-    if (metadata != null) 'metadata': metadata!,
-    if (role != null) 'role': role!,
-    if (taskId != null) 'taskId': taskId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final contextId = this.contextId;
+    final extensions = this.extensions;
+    final messageId = this.messageId;
+    final metadata = this.metadata;
+    final role = this.role;
+    final taskId = this.taskId;
+    return {
+      'content': ?content,
+      'contextId': ?contextId,
+      'extensions': ?extensions,
+      'messageId': ?messageId,
+      'metadata': ?metadata,
+      'role': ?role,
+      'taskId': ?taskId,
+    };
+  }
 }
 
 /// The endpoint where the subscription delivers events.
@@ -1290,9 +1306,10 @@ class NotificationEndpoint {
   NotificationEndpoint.fromJson(core.Map json_)
     : this(pubsubTopic: json_['pubsubTopic'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pubsubTopic = this.pubsubTopic;
+    return {'pubsubTopic': ?pubsubTopic};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1343,30 +1360,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Part represents a container for a section of communication content.
@@ -1388,31 +1409,29 @@ class Part {
 
   Part.fromJson(core.Map json_)
     : this(
-        data:
-            json_.containsKey('data')
-                ? DataPart.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        file:
-            json_.containsKey('file')
-                ? FilePart.fromJson(
-                  json_['file'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        data: json_.containsKey('data')
+            ? DataPart.fromJson(
+                json_['data'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        file: json_.containsKey('file')
+            ? FilePart.fromJson(
+                json_['file'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (file != null) 'file': file!,
-    if (metadata != null) 'metadata': metadata!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final file = this.file;
+    final metadata = this.metadata;
+    final text = this.text;
+    return {'data': ?data, 'file': ?file, 'metadata': ?metadata, 'text': ?text};
+  }
 }
 
 /// Options about what data to include in the event payload.
@@ -1450,10 +1469,11 @@ class PayloadOptions {
         includeResource: json_['includeResource'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldMask != null) 'fieldMask': fieldMask!,
-    if (includeResource != null) 'includeResource': includeResource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldMask = this.fieldMask;
+    final includeResource = this.includeResource;
+    return {'fieldMask': ?fieldMask, 'includeResource': ?includeResource};
+  }
 }
 
 /// Configuration for setting up push notifications for task updates.
@@ -1474,24 +1494,28 @@ class PushNotificationConfig {
 
   PushNotificationConfig.fromJson(core.Map json_)
     : this(
-        authentication:
-            json_.containsKey('authentication')
-                ? AuthenticationInfo.fromJson(
-                  json_['authentication']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        authentication: json_.containsKey('authentication')
+            ? AuthenticationInfo.fromJson(
+                json_['authentication'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
         token: json_['token'] as core.String?,
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authentication != null) 'authentication': authentication!,
-    if (id != null) 'id': id!,
-    if (token != null) 'token': token!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authentication = this.authentication;
+    final id = this.id;
+    final token = this.token;
+    final url = this.url;
+    return {
+      'authentication': ?authentication,
+      'id': ?id,
+      'token': ?token,
+      'url': ?url,
+    };
+  }
 }
 
 /// The request message for SubscriptionsService.ReactivateSubscription.
@@ -1526,28 +1550,31 @@ class SendMessageConfiguration {
 
   SendMessageConfiguration.fromJson(core.Map json_)
     : this(
-        acceptedOutputModes:
-            (json_['acceptedOutputModes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        acceptedOutputModes: (json_['acceptedOutputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         blocking: json_['blocking'] as core.bool?,
         historyLength: json_['historyLength'] as core.int?,
-        pushNotification:
-            json_.containsKey('pushNotification')
-                ? PushNotificationConfig.fromJson(
-                  json_['pushNotification']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pushNotification: json_.containsKey('pushNotification')
+            ? PushNotificationConfig.fromJson(
+                json_['pushNotification']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acceptedOutputModes != null)
-      'acceptedOutputModes': acceptedOutputModes!,
-    if (blocking != null) 'blocking': blocking!,
-    if (historyLength != null) 'historyLength': historyLength!,
-    if (pushNotification != null) 'pushNotification': pushNotification!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceptedOutputModes = this.acceptedOutputModes;
+    final blocking = this.blocking;
+    final historyLength = this.historyLength;
+    final pushNotification = this.pushNotification;
+    return {
+      'acceptedOutputModes': ?acceptedOutputModes,
+      'blocking': ?blocking,
+      'historyLength': ?historyLength,
+      'pushNotification': ?pushNotification,
+    };
+  }
 }
 
 /// /////////// Request Messages ///////////
@@ -1580,31 +1607,34 @@ class SendMessageRequest {
 
   SendMessageRequest.fromJson(core.Map json_)
     : this(
-        configuration:
-            json_.containsKey('configuration')
-                ? SendMessageConfiguration.fromJson(
-                  json_['configuration'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        message:
-            json_.containsKey('message')
-                ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        configuration: json_.containsKey('configuration')
+            ? SendMessageConfiguration.fromJson(
+                json_['configuration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        message: json_.containsKey('message')
+            ? Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         tenant: json_['tenant'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configuration != null) 'configuration': configuration!,
-    if (message != null) 'message': message!,
-    if (metadata != null) 'metadata': metadata!,
-    if (tenant != null) 'tenant': tenant!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configuration = this.configuration;
+    final message = this.message;
+    final metadata = this.metadata;
+    final tenant = this.tenant;
+    return {
+      'configuration': ?configuration,
+      'message': ?message,
+      'metadata': ?metadata,
+      'tenant': ?tenant,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1640,39 +1670,40 @@ class StreamResponse {
 
   StreamResponse.fromJson(core.Map json_)
     : this(
-        artifactUpdate:
-            json_.containsKey('artifactUpdate')
-                ? TaskArtifactUpdateEvent.fromJson(
-                  json_['artifactUpdate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        message:
-            json_.containsKey('message')
-                ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        statusUpdate:
-            json_.containsKey('statusUpdate')
-                ? TaskStatusUpdateEvent.fromJson(
-                  json_['statusUpdate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        task:
-            json_.containsKey('task')
-                ? Task.fromJson(
-                  json_['task'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        artifactUpdate: json_.containsKey('artifactUpdate')
+            ? TaskArtifactUpdateEvent.fromJson(
+                json_['artifactUpdate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        message: json_.containsKey('message')
+            ? Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        statusUpdate: json_.containsKey('statusUpdate')
+            ? TaskStatusUpdateEvent.fromJson(
+                json_['statusUpdate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        task: json_.containsKey('task')
+            ? Task.fromJson(
+                json_['task'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (artifactUpdate != null) 'artifactUpdate': artifactUpdate!,
-    if (message != null) 'message': message!,
-    if (statusUpdate != null) 'statusUpdate': statusUpdate!,
-    if (task != null) 'task': task!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifactUpdate = this.artifactUpdate;
+    final message = this.message;
+    final statusUpdate = this.statusUpdate;
+    final task = this.task;
+    return {
+      'artifactUpdate': ?artifactUpdate,
+      'message': ?message,
+      'statusUpdate': ?statusUpdate,
+      'task': ?task,
+    };
+  }
 }
 
 /// A subscription to receive events about a Google Workspace resource.
@@ -1844,26 +1875,22 @@ class Subscription {
         authority: json_['authority'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         etag: json_['etag'] as core.String?,
-        eventTypes:
-            (json_['eventTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        eventTypes: (json_['eventTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         expireTime: json_['expireTime'] as core.String?,
         name: json_['name'] as core.String?,
-        notificationEndpoint:
-            json_.containsKey('notificationEndpoint')
-                ? NotificationEndpoint.fromJson(
-                  json_['notificationEndpoint']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        payloadOptions:
-            json_.containsKey('payloadOptions')
-                ? PayloadOptions.fromJson(
-                  json_['payloadOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        notificationEndpoint: json_.containsKey('notificationEndpoint')
+            ? NotificationEndpoint.fromJson(
+                json_['notificationEndpoint']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        payloadOptions: json_.containsKey('payloadOptions')
+            ? PayloadOptions.fromJson(
+                json_['payloadOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reconciling: json_['reconciling'] as core.bool?,
         state: json_['state'] as core.String?,
         suspensionReason: json_['suspensionReason'] as core.String?,
@@ -1873,24 +1900,40 @@ class Subscription {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authority != null) 'authority': authority!,
-    if (createTime != null) 'createTime': createTime!,
-    if (etag != null) 'etag': etag!,
-    if (eventTypes != null) 'eventTypes': eventTypes!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (name != null) 'name': name!,
-    if (notificationEndpoint != null)
-      'notificationEndpoint': notificationEndpoint!,
-    if (payloadOptions != null) 'payloadOptions': payloadOptions!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (state != null) 'state': state!,
-    if (suspensionReason != null) 'suspensionReason': suspensionReason!,
-    if (targetResource != null) 'targetResource': targetResource!,
-    if (ttl != null) 'ttl': ttl!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authority = this.authority;
+    final createTime = this.createTime;
+    final etag = this.etag;
+    final eventTypes = this.eventTypes;
+    final expireTime = this.expireTime;
+    final name = this.name;
+    final notificationEndpoint = this.notificationEndpoint;
+    final payloadOptions = this.payloadOptions;
+    final reconciling = this.reconciling;
+    final state = this.state;
+    final suspensionReason = this.suspensionReason;
+    final targetResource = this.targetResource;
+    final ttl = this.ttl;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'authority': ?authority,
+      'createTime': ?createTime,
+      'etag': ?etag,
+      'eventTypes': ?eventTypes,
+      'expireTime': ?expireTime,
+      'name': ?name,
+      'notificationEndpoint': ?notificationEndpoint,
+      'payloadOptions': ?payloadOptions,
+      'reconciling': ?reconciling,
+      'state': ?state,
+      'suspensionReason': ?suspensionReason,
+      'targetResource': ?targetResource,
+      'ttl': ?ttl,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Task is the core unit of action for A2A.
@@ -1937,44 +1980,48 @@ class Task {
 
   Task.fromJson(core.Map json_)
     : this(
-        artifacts:
-            (json_['artifacts'] as core.List?)
-                ?.map(
-                  (value) => Artifact.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        artifacts: (json_['artifacts'] as core.List?)
+            ?.map(
+              (value) => Artifact.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         contextId: json_['contextId'] as core.String?,
-        history:
-            (json_['history'] as core.List?)
-                ?.map(
-                  (value) => Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        history: (json_['history'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         id: json_['id'] as core.String?,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
-        status:
-            json_.containsKey('status')
-                ? TaskStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        status: json_.containsKey('status')
+            ? TaskStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (artifacts != null) 'artifacts': artifacts!,
-    if (contextId != null) 'contextId': contextId!,
-    if (history != null) 'history': history!,
-    if (id != null) 'id': id!,
-    if (metadata != null) 'metadata': metadata!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifacts = this.artifacts;
+    final contextId = this.contextId;
+    final history = this.history;
+    final id = this.id;
+    final metadata = this.metadata;
+    final status = this.status;
+    return {
+      'artifacts': ?artifacts,
+      'contextId': ?contextId,
+      'history': ?history,
+      'id': ?id,
+      'metadata': ?metadata,
+      'status': ?status,
+    };
+  }
 }
 
 /// TaskArtifactUpdateEvent represents a task delta where an artifact has been
@@ -2013,29 +2060,35 @@ class TaskArtifactUpdateEvent {
   TaskArtifactUpdateEvent.fromJson(core.Map json_)
     : this(
         append: json_['append'] as core.bool?,
-        artifact:
-            json_.containsKey('artifact')
-                ? Artifact.fromJson(
-                  json_['artifact'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        artifact: json_.containsKey('artifact')
+            ? Artifact.fromJson(
+                json_['artifact'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         contextId: json_['contextId'] as core.String?,
         lastChunk: json_['lastChunk'] as core.bool?,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         taskId: json_['taskId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (append != null) 'append': append!,
-    if (artifact != null) 'artifact': artifact!,
-    if (contextId != null) 'contextId': contextId!,
-    if (lastChunk != null) 'lastChunk': lastChunk!,
-    if (metadata != null) 'metadata': metadata!,
-    if (taskId != null) 'taskId': taskId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final append = this.append;
+    final artifact = this.artifact;
+    final contextId = this.contextId;
+    final lastChunk = this.lastChunk;
+    final metadata = this.metadata;
+    final taskId = this.taskId;
+    return {
+      'append': ?append,
+      'artifact': ?artifact,
+      'contextId': ?contextId,
+      'lastChunk': ?lastChunk,
+      'metadata': ?metadata,
+      'taskId': ?taskId,
+    };
+  }
 }
 
 class TaskPushNotificationConfig {
@@ -2052,20 +2105,19 @@ class TaskPushNotificationConfig {
   TaskPushNotificationConfig.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        pushNotificationConfig:
-            json_.containsKey('pushNotificationConfig')
-                ? PushNotificationConfig.fromJson(
-                  json_['pushNotificationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pushNotificationConfig: json_.containsKey('pushNotificationConfig')
+            ? PushNotificationConfig.fromJson(
+                json_['pushNotificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (pushNotificationConfig != null)
-      'pushNotificationConfig': pushNotificationConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final pushNotificationConfig = this.pushNotificationConfig;
+    return {'name': ?name, 'pushNotificationConfig': ?pushNotificationConfig};
+  }
 }
 
 /// A container for the status of a task
@@ -2107,21 +2159,21 @@ class TaskStatus {
 
   TaskStatus.fromJson(core.Map json_)
     : this(
-        message:
-            json_.containsKey('message')
-                ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        message: json_.containsKey('message')
+            ? Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         timestamp: json_['timestamp'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (message != null) 'message': message!,
-    if (state != null) 'state': state!,
-    if (timestamp != null) 'timestamp': timestamp!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final state = this.state;
+    final timestamp = this.timestamp;
+    return {'message': ?message, 'state': ?state, 'timestamp': ?timestamp};
+  }
 }
 
 /// TaskStatusUpdateEvent is a delta even on a task indicating that a task has
@@ -2157,24 +2209,29 @@ class TaskStatusUpdateEvent {
     : this(
         contextId: json_['contextId'] as core.String?,
         final_: json_['final'] as core.bool?,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
-        status:
-            json_.containsKey('status')
-                ? TaskStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        status: json_.containsKey('status')
+            ? TaskStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         taskId: json_['taskId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextId != null) 'contextId': contextId!,
-    if (final_ != null) 'final': final_!,
-    if (metadata != null) 'metadata': metadata!,
-    if (status != null) 'status': status!,
-    if (taskId != null) 'taskId': taskId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextId = this.contextId;
+    final final_ = this.final_;
+    final metadata = this.metadata;
+    final status = this.status;
+    final taskId = this.taskId;
+    return {
+      'contextId': ?contextId,
+      'final': ?final_,
+      'metadata': ?metadata,
+      'status': ?status,
+      'taskId': ?taskId,
+    };
+  }
 }

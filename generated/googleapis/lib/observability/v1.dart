@@ -113,7 +113,7 @@ class FoldersLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -172,11 +172,11 @@ class FoldersLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -234,7 +234,7 @@ class FoldersLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -272,7 +272,7 @@ class FoldersLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -308,7 +308,7 @@ class FoldersLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -363,12 +363,13 @@ class FoldersLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -421,7 +422,7 @@ class OrganizationsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -480,11 +481,11 @@ class OrganizationsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -542,7 +543,7 @@ class OrganizationsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -580,7 +581,7 @@ class OrganizationsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -616,7 +617,7 @@ class OrganizationsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -671,12 +672,13 @@ class OrganizationsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -734,7 +736,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -793,11 +795,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -843,7 +845,7 @@ class ProjectsLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<Bucket> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -892,10 +894,10 @@ class ProjectsLocationsBucketsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/buckets';
@@ -943,7 +945,7 @@ class ProjectsLocationsBucketsDatasetsResource {
   /// this method will complete with the same error.
   async.Future<Dataset> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -994,10 +996,10 @@ class ProjectsLocationsBucketsDatasetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/datasets';
@@ -1051,8 +1053,8 @@ class ProjectsLocationsBucketsDatasetsLinksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (linkId != null) 'linkId': [linkId],
-      if ($fields != null) 'fields': [$fields],
+      'linkId': ?linkId == null ? null : [linkId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/links';
@@ -1090,7 +1092,7 @@ class ProjectsLocationsBucketsDatasetsLinksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1124,7 +1126,7 @@ class ProjectsLocationsBucketsDatasetsLinksResource {
   /// this method will complete with the same error.
   async.Future<Link> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1171,9 +1173,9 @@ class ProjectsLocationsBucketsDatasetsLinksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/links';
@@ -1219,8 +1221,8 @@ class ProjectsLocationsBucketsDatasetsLinksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1262,7 +1264,7 @@ class ProjectsLocationsBucketsDatasetsViewsResource {
   /// this method will complete with the same error.
   async.Future<View> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1308,9 +1310,9 @@ class ProjectsLocationsBucketsDatasetsViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/views';
@@ -1368,7 +1370,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -1406,7 +1408,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1442,7 +1444,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1497,12 +1499,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -1547,7 +1550,7 @@ class ProjectsLocationsScopesResource {
   /// this method will complete with the same error.
   async.Future<Scope> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1597,8 +1600,8 @@ class ProjectsLocationsScopesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1652,8 +1655,8 @@ class ProjectsLocationsTraceScopesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (traceScopeId != null) 'traceScopeId': [traceScopeId],
-      if ($fields != null) 'fields': [$fields],
+      'traceScopeId': ?traceScopeId == null ? null : [traceScopeId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/traceScopes';
@@ -1692,7 +1695,7 @@ class ProjectsLocationsTraceScopesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1728,7 +1731,7 @@ class ProjectsLocationsTraceScopesResource {
   /// this method will complete with the same error.
   async.Future<TraceScope> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1779,9 +1782,9 @@ class ProjectsLocationsTraceScopesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/traceScopes';
@@ -1827,8 +1830,8 @@ class ProjectsLocationsTraceScopesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1901,12 +1904,11 @@ class Bucket {
 
   Bucket.fromJson(core.Map json_)
     : this(
-        cmekSettings:
-            json_.containsKey('cmekSettings')
-                ? CmekSettings.fromJson(
-                  json_['cmekSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cmekSettings: json_.containsKey('cmekSettings')
+            ? CmekSettings.fromJson(
+                json_['cmekSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
@@ -1916,16 +1918,26 @@ class Bucket {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cmekSettings != null) 'cmekSettings': cmekSettings!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (purgeTime != null) 'purgeTime': purgeTime!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cmekSettings = this.cmekSettings;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final purgeTime = this.purgeTime;
+    final updateTime = this.updateTime;
+    return {
+      'cmekSettings': ?cmekSettings,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'purgeTime': ?purgeTime,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1970,11 +1982,16 @@ class CmekSettings {
         serviceAccountId: json_['serviceAccountId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
-    if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKey = this.kmsKey;
+    final kmsKeyVersion = this.kmsKeyVersion;
+    final serviceAccountId = this.serviceAccountId;
+    return {
+      'kmsKey': ?kmsKey,
+      'kmsKeyVersion': ?kmsKeyVersion,
+      'serviceAccountId': ?serviceAccountId,
+    };
+  }
 }
 
 /// A dataset is a collection of data that has a specific configuration.
@@ -2032,14 +2049,22 @@ class Dataset {
         purgeTime: json_['purgeTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (purgeTime != null) 'purgeTime': purgeTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final purgeTime = this.purgeTime;
+    return {
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'purgeTime': ?purgeTime,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2084,12 +2109,18 @@ class Link {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+    };
+  }
 }
 
 /// Response for listing buckets.
@@ -2110,21 +2141,20 @@ class ListBucketsResponse {
 
   ListBucketsResponse.fromJson(core.Map json_)
     : this(
-        buckets:
-            (json_['buckets'] as core.List?)
-                ?.map(
-                  (value) => Bucket.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        buckets: (json_['buckets'] as core.List?)
+            ?.map(
+              (value) =>
+                  Bucket.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buckets != null) 'buckets': buckets!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buckets = this.buckets;
+    final nextPageToken = this.nextPageToken;
+    return {'buckets': ?buckets, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for listing datasets.
@@ -2141,21 +2171,21 @@ class ListDatasetsResponse {
 
   ListDatasetsResponse.fromJson(core.Map json_)
     : this(
-        datasets:
-            (json_['datasets'] as core.List?)
-                ?.map(
-                  (value) => Dataset.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        datasets: (json_['datasets'] as core.List?)
+            ?.map(
+              (value) => Dataset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datasets != null) 'datasets': datasets!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final datasets = this.datasets;
+    final nextPageToken = this.nextPageToken;
+    return {'datasets': ?datasets, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for listing links.
@@ -2174,21 +2204,20 @@ class ListLinksResponse {
 
   ListLinksResponse.fromJson(core.Map json_)
     : this(
-        links:
-            (json_['links'] as core.List?)
-                ?.map(
-                  (value) => Link.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        links: (json_['links'] as core.List?)
+            ?.map(
+              (value) =>
+                  Link.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (links != null) 'links': links!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final links = this.links;
+    final nextPageToken = this.nextPageToken;
+    return {'links': ?links, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -2203,21 +2232,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -2245,25 +2274,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for listing TraceScopes.
@@ -2287,20 +2319,20 @@ class ListTraceScopesResponse {
   ListTraceScopesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        traceScopes:
-            (json_['traceScopes'] as core.List?)
-                ?.map(
-                  (value) => TraceScope.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        traceScopes: (json_['traceScopes'] as core.List?)
+            ?.map(
+              (value) => TraceScope.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (traceScopes != null) 'traceScopes': traceScopes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final traceScopes = this.traceScopes;
+    return {'nextPageToken': ?nextPageToken, 'traceScopes': ?traceScopes};
+  }
 }
 
 /// Response for listing views.
@@ -2320,20 +2352,19 @@ class ListViewsResponse {
   ListViewsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        views:
-            (json_['views'] as core.List?)
-                ?.map(
-                  (value) => View.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        views: (json_['views'] as core.List?)
+            ?.map(
+              (value) =>
+                  View.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (views != null) 'views': views!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final views = this.views;
+    return {'nextPageToken': ?nextPageToken, 'views': ?views};
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2387,30 +2418,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Message describing Scope object
@@ -2456,12 +2491,18 @@ class Scope {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (logScope != null) 'logScope': logScope!,
-    if (name != null) 'name': name!,
-    if (traceScope != null) 'traceScope': traceScope!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final logScope = this.logScope;
+    final name = this.name;
+    final traceScope = this.traceScope;
+    final updateTime = this.updateTime;
+    return {
+      'logScope': ?logScope,
+      'name': ?name,
+      'traceScope': ?traceScope,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2520,20 +2561,26 @@ class TraceScope {
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         name: json_['name'] as core.String?,
-        resourceNames:
-            (json_['resourceNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        resourceNames: (json_['resourceNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (name != null) 'name': name!,
-    if (resourceNames != null) 'resourceNames': resourceNames!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final name = this.name;
+    final resourceNames = this.resourceNames;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'name': ?name,
+      'resourceNames': ?resourceNames,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A view corresponds to a read-only representation of a subset of the data in
@@ -2582,11 +2629,18 @@ class View {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
 }

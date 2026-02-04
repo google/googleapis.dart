@@ -86,7 +86,7 @@ class SitesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -124,7 +124,7 @@ class ViolatingSitesResource {
   /// this method will complete with the same error.
   async.Future<ViolatingSitesResponse> list({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/violatingSites';
@@ -206,23 +206,31 @@ class PlatformSummary {
         enforcementTime: json_['enforcementTime'] as core.String?,
         filterStatus: json_['filterStatus'] as core.String?,
         lastChangeTime: json_['lastChangeTime'] as core.String?,
-        region:
-            (json_['region'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        region: (json_['region'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         reportUrl: json_['reportUrl'] as core.String?,
         underReview: json_['underReview'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (betterAdsStatus != null) 'betterAdsStatus': betterAdsStatus!,
-    if (enforcementTime != null) 'enforcementTime': enforcementTime!,
-    if (filterStatus != null) 'filterStatus': filterStatus!,
-    if (lastChangeTime != null) 'lastChangeTime': lastChangeTime!,
-    if (region != null) 'region': region!,
-    if (reportUrl != null) 'reportUrl': reportUrl!,
-    if (underReview != null) 'underReview': underReview!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final betterAdsStatus = this.betterAdsStatus;
+    final enforcementTime = this.enforcementTime;
+    final filterStatus = this.filterStatus;
+    final lastChangeTime = this.lastChangeTime;
+    final region = this.region;
+    final reportUrl = this.reportUrl;
+    final underReview = this.underReview;
+    return {
+      'betterAdsStatus': ?betterAdsStatus,
+      'enforcementTime': ?enforcementTime,
+      'filterStatus': ?filterStatus,
+      'lastChangeTime': ?lastChangeTime,
+      'region': ?region,
+      'reportUrl': ?reportUrl,
+      'underReview': ?underReview,
+    };
+  }
 }
 
 /// Response message for GetSiteSummary.
@@ -244,27 +252,29 @@ class SiteSummaryResponse {
 
   SiteSummaryResponse.fromJson(core.Map json_)
     : this(
-        desktopSummary:
-            json_.containsKey('desktopSummary')
-                ? PlatformSummary.fromJson(
-                  json_['desktopSummary']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        mobileSummary:
-            json_.containsKey('mobileSummary')
-                ? PlatformSummary.fromJson(
-                  json_['mobileSummary'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        desktopSummary: json_.containsKey('desktopSummary')
+            ? PlatformSummary.fromJson(
+                json_['desktopSummary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mobileSummary: json_.containsKey('mobileSummary')
+            ? PlatformSummary.fromJson(
+                json_['mobileSummary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reviewedSite: json_['reviewedSite'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (desktopSummary != null) 'desktopSummary': desktopSummary!,
-    if (mobileSummary != null) 'mobileSummary': mobileSummary!,
-    if (reviewedSite != null) 'reviewedSite': reviewedSite!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final desktopSummary = this.desktopSummary;
+    final mobileSummary = this.mobileSummary;
+    final reviewedSite = this.reviewedSite;
+    return {
+      'desktopSummary': ?desktopSummary,
+      'mobileSummary': ?mobileSummary,
+      'reviewedSite': ?reviewedSite,
+    };
+  }
 }
 
 /// Response message for ListViolatingSites.
@@ -276,17 +286,17 @@ class ViolatingSitesResponse {
 
   ViolatingSitesResponse.fromJson(core.Map json_)
     : this(
-        violatingSites:
-            (json_['violatingSites'] as core.List?)
-                ?.map(
-                  (value) => SiteSummaryResponse.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        violatingSites: (json_['violatingSites'] as core.List?)
+            ?.map(
+              (value) => SiteSummaryResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (violatingSites != null) 'violatingSites': violatingSites!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final violatingSites = this.violatingSites;
+    return {'violatingSites': ?violatingSites};
+  }
 }

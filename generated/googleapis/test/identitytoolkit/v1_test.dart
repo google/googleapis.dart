@@ -2553,10 +2553,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest(od);
       });
     },
@@ -2569,10 +2569,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse(od);
       });
     },
@@ -2584,10 +2584,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo(od);
       });
     },
@@ -2599,10 +2599,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1CreateAuthUriRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1CreateAuthUriRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1CreateAuthUriRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1CreateAuthUriRequest(od);
       });
     },
@@ -2614,10 +2614,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1CreateAuthUriResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1CreateAuthUriResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1CreateAuthUriResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1CreateAuthUriResponse(od);
       });
     },
@@ -2629,10 +2629,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1CreateSessionCookieRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1CreateSessionCookieRequest(od);
       });
     },
@@ -2645,10 +2645,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1CreateSessionCookieResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1CreateSessionCookieResponse(od);
       });
     },
@@ -2660,10 +2660,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1DeleteAccountRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1DeleteAccountRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1DeleteAccountRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1DeleteAccountRequest(od);
       });
     },
@@ -2675,10 +2675,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1DeleteAccountResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1DeleteAccountResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1DeleteAccountResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1DeleteAccountResponse(od);
       });
     },
@@ -2690,10 +2690,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1DownloadAccountResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1DownloadAccountResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1DownloadAccountResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1DownloadAccountResponse(od);
       });
     },
@@ -2738,10 +2738,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1FederatedUserIdentifier();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1FederatedUserIdentifier.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1FederatedUserIdentifier.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1FederatedUserIdentifier(od);
       });
     },
@@ -2753,10 +2753,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1GetAccountInfoRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1GetAccountInfoRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1GetAccountInfoRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1GetAccountInfoRequest(od);
       });
     },
@@ -2768,10 +2768,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1GetAccountInfoResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1GetAccountInfoResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1GetAccountInfoResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1GetAccountInfoResponse(od);
       });
     },
@@ -2811,10 +2811,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1GetProjectConfigResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1GetProjectConfigResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1GetProjectConfigResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1GetProjectConfigResponse(od);
       });
     },
@@ -2826,10 +2826,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse(od);
       });
     },
@@ -2842,10 +2842,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse(od);
       });
     },
@@ -2868,10 +2868,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1IssueSamlResponseRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1IssueSamlResponseRequest(od);
       });
     },
@@ -2883,10 +2883,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1IssueSamlResponseResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1IssueSamlResponseResponse(od);
       });
     },
@@ -2953,10 +2953,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1QueryUserInfoRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1QueryUserInfoRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1QueryUserInfoRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1QueryUserInfoRequest(od);
       });
     },
@@ -2968,10 +2968,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1QueryUserInfoResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1QueryUserInfoResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1QueryUserInfoResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1QueryUserInfoResponse(od);
       });
     },
@@ -2983,10 +2983,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1ResetPasswordRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1ResetPasswordRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1ResetPasswordRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1ResetPasswordRequest(od);
       });
     },
@@ -2998,10 +2998,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1ResetPasswordResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1ResetPasswordResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1ResetPasswordResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1ResetPasswordResponse(od);
       });
     },
@@ -3014,10 +3014,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1SendVerificationCodeRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SendVerificationCodeRequest(od);
       });
     },
@@ -3030,10 +3030,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1SendVerificationCodeResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SendVerificationCodeResponse(od);
       });
     },
@@ -3045,10 +3045,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1SetAccountInfoRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SetAccountInfoRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SetAccountInfoRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SetAccountInfoRequest(od);
       });
     },
@@ -3060,10 +3060,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1SetAccountInfoResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SetAccountInfoResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SetAccountInfoResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SetAccountInfoResponse(od);
       });
     },
@@ -3076,10 +3076,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest(od);
       });
     },
@@ -3092,10 +3092,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse(od);
       });
     },
@@ -3107,10 +3107,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest(od);
       });
     },
@@ -3123,10 +3123,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse(od);
       });
     },
@@ -3139,10 +3139,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest(od);
       });
     },
@@ -3155,10 +3155,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse(od);
       });
     },
@@ -3170,10 +3170,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1SignInWithIdpRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithIdpRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithIdpRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithIdpRequest(od);
       });
     },
@@ -3185,10 +3185,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1SignInWithIdpResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithIdpResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithIdpResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithIdpResponse(od);
       });
     },
@@ -3200,10 +3200,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1SignInWithPasswordRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithPasswordRequest(od);
       });
     },
@@ -3215,10 +3215,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1SignInWithPasswordResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithPasswordResponse(od);
       });
     },
@@ -3231,10 +3231,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest(od);
       });
     },
@@ -3247,10 +3247,10 @@ void main() {
         final o =
             buildGoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse(od);
       });
     },
@@ -3306,10 +3306,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1UploadAccountRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1UploadAccountRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1UploadAccountRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1UploadAccountRequest(od);
       });
     },
@@ -3321,10 +3321,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1UploadAccountResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1UploadAccountResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1UploadAccountResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1UploadAccountResponse(od);
       });
     },
@@ -3358,10 +3358,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1VerifyIosClientRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1VerifyIosClientRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1VerifyIosClientRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1VerifyIosClientRequest(od);
       });
     },
@@ -3373,10 +3373,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudIdentitytoolkitV1VerifyIosClientResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudIdentitytoolkitV1VerifyIosClientResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudIdentitytoolkitV1VerifyIosClientResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudIdentitytoolkitV1VerifyIosClientResponse(od);
       });
     },
@@ -3391,10 +3391,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1CreateAuthUriRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1CreateAuthUriRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1CreateAuthUriRequest(obj);
 
           final path = req.url.path;
@@ -3457,10 +3457,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1DeleteAccountRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1DeleteAccountRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1DeleteAccountRequest(obj);
 
           final path = req.url.path;
@@ -3520,10 +3520,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1IssueSamlResponseRequest(obj);
 
           final path = req.url.path;
@@ -3586,10 +3586,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1GetAccountInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1GetAccountInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1GetAccountInfoRequest(obj);
 
           final path = req.url.path;
@@ -3649,10 +3649,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1ResetPasswordRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1ResetPasswordRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1ResetPasswordRequest(obj);
 
           final path = req.url.path;
@@ -3714,10 +3714,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1GetOobCodeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1GetOobCodeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1GetOobCodeRequest(obj);
 
           final path = req.url.path;
@@ -3777,10 +3777,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SendVerificationCodeRequest(obj);
 
           final path = req.url.path;
@@ -3844,10 +3844,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest(obj);
 
           final path = req.url.path;
@@ -3911,10 +3911,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest(obj);
 
           final path = req.url.path;
@@ -3977,10 +3977,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest(obj);
 
           final path = req.url.path;
@@ -4044,10 +4044,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SignInWithIdpRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SignInWithIdpRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SignInWithIdpRequest(obj);
 
           final path = req.url.path;
@@ -4110,10 +4110,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SignInWithPasswordRequest(obj);
 
           final path = req.url.path;
@@ -4176,10 +4176,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest(obj);
 
           final path = req.url.path;
@@ -4304,10 +4304,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SetAccountInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SetAccountInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SetAccountInfoRequest(obj);
 
           final path = req.url.path;
@@ -4367,10 +4367,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1VerifyIosClientRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1VerifyIosClientRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1VerifyIosClientRequest(obj);
 
           final path = req.url.path;
@@ -4503,10 +4503,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1CreateSessionCookieRequest(obj);
 
           final path = req.url.path;
@@ -4572,10 +4572,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1QueryUserInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1QueryUserInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1QueryUserInfoRequest(obj);
 
           final path = req.url.path;
@@ -4643,10 +4643,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1UploadAccountRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1UploadAccountRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1UploadAccountRequest(obj);
 
           final path = req.url.path;
@@ -4712,10 +4712,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest(obj);
 
           final path = req.url.path;
@@ -4865,10 +4865,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1DeleteAccountRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1DeleteAccountRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1DeleteAccountRequest(obj);
 
           final path = req.url.path;
@@ -4934,10 +4934,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1GetAccountInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1GetAccountInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1GetAccountInfoRequest(obj);
 
           final path = req.url.path;
@@ -5003,10 +5003,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1QueryUserInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1QueryUserInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1QueryUserInfoRequest(obj);
 
           final path = req.url.path;
@@ -5071,10 +5071,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1GetOobCodeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1GetOobCodeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1GetOobCodeRequest(obj);
 
           final path = req.url.path;
@@ -5140,10 +5140,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SetAccountInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SetAccountInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SetAccountInfoRequest(obj);
 
           final path = req.url.path;
@@ -5281,10 +5281,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1CreateSessionCookieRequest(obj);
 
           final path = req.url.path;
@@ -5354,10 +5354,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1UploadAccountRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1UploadAccountRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1UploadAccountRequest(obj);
 
           final path = req.url.path;
@@ -5425,10 +5425,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest(obj);
 
           final path = req.url.path;
@@ -5576,10 +5576,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1DeleteAccountRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1DeleteAccountRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1DeleteAccountRequest(obj);
 
           final path = req.url.path;
@@ -5647,10 +5647,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1GetAccountInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1GetAccountInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1GetAccountInfoRequest(obj);
 
           final path = req.url.path;
@@ -5718,10 +5718,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1QueryUserInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1QueryUserInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1QueryUserInfoRequest(obj);
 
           final path = req.url.path;
@@ -5788,10 +5788,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1GetOobCodeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1GetOobCodeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1GetOobCodeRequest(obj);
 
           final path = req.url.path;
@@ -5859,10 +5859,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudIdentitytoolkitV1SetAccountInfoRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudIdentitytoolkitV1SetAccountInfoRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudIdentitytoolkitV1SetAccountInfoRequest(obj);
 
           final path = req.url.path;

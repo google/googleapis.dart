@@ -1780,10 +1780,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommendationengineV1beta1BigQuerySource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1BigQuerySource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1BigQuerySource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1BigQuerySource(od);
       });
     },
@@ -1810,10 +1810,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1CatalogInlineSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1CatalogInlineSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1CatalogInlineSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1CatalogInlineSource(od);
       });
     },
@@ -1825,10 +1825,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommendationengineV1beta1CatalogItem();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1CatalogItem(od);
       });
     },
@@ -1841,10 +1841,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(
           od,
         );
@@ -1859,10 +1859,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig(od);
       });
     },
@@ -1875,10 +1875,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest(
           od,
         );
@@ -1892,10 +1892,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommendationengineV1beta1EventDetail();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1EventDetail.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1EventDetail.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1EventDetail(od);
       });
     },
@@ -1907,10 +1907,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommendationengineV1beta1FeatureMap();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1FeatureMap(od);
       });
     },
@@ -1923,10 +1923,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1FeatureMapFloatList();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1FeatureMapFloatList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(od);
       });
     },
@@ -1939,10 +1939,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1FeatureMapStringList();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1FeatureMapStringList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1FeatureMapStringList(od);
       });
     },
@@ -1980,10 +1980,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(
           od,
         );
@@ -1998,10 +1998,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ImportErrorsConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ImportErrorsConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(od);
       });
     },
@@ -2014,10 +2014,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(od);
       });
     },
@@ -2029,10 +2029,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommendationengineV1beta1InputConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1InputConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1InputConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1InputConfig(od);
       });
     },
@@ -2045,10 +2045,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(od);
       });
     },
@@ -2061,10 +2061,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ListCatalogsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ListCatalogsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(od);
       });
     },
@@ -2077,10 +2077,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
           od,
         );
@@ -2095,10 +2095,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ListUserEventsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ListUserEventsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(od);
       });
     },
@@ -2110,10 +2110,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommendationengineV1beta1PredictRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1PredictRequest(od);
       });
     },
@@ -2125,10 +2125,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommendationengineV1beta1PredictResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1PredictResponse(od);
       });
     },
@@ -2141,10 +2141,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(
           od,
         );
@@ -2159,10 +2159,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
           od,
         );
@@ -2177,10 +2177,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ProductCatalogItem();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ProductCatalogItem(od);
       });
     },
@@ -2193,10 +2193,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice(
           od,
         );
@@ -2211,10 +2211,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange(
           od,
         );
@@ -2228,10 +2228,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommendationengineV1beta1ProductDetail();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ProductDetail.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ProductDetail.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ProductDetail(od);
       });
     },
@@ -2244,10 +2244,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1ProductEventDetail();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1ProductEventDetail.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1ProductEventDetail.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1ProductEventDetail(od);
       });
     },
@@ -2260,10 +2260,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1PurchaseTransaction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1PurchaseTransaction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1PurchaseTransaction(od);
       });
     },
@@ -2276,10 +2276,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(od);
       });
     },
@@ -2292,10 +2292,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest(od);
       });
     },
@@ -2322,10 +2322,10 @@ void main() {
         final o =
             buildGoogleCloudRecommendationengineV1beta1UserEventInlineSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommendationengineV1beta1UserEventInlineSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommendationengineV1beta1UserEventInlineSource(od);
       });
     },
@@ -2472,10 +2472,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommendationengineV1beta1Catalog(obj);
 
           final path = req.url.path;
@@ -2541,20 +2541,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsCatalogItemsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1CatalogItem();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommendationengineV1beta1CatalogItem(obj);
 
           final path = req.url.path;
@@ -2613,10 +2612,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2669,10 +2667,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2729,20 +2726,19 @@ void main() {
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(
             obj,
           );
@@ -2801,10 +2797,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2883,10 +2878,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.catalogItems;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.catalogItems;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1CatalogItem();
       final arg_name = 'foo';
@@ -2894,10 +2888,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommendationengineV1beta1CatalogItem(obj);
 
           final path = req.url.path;
@@ -2965,10 +2959,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.RecommendationsAIApi(
-              mock,
-            ).projects.locations.catalogs.eventStores.operations;
+        final res = api.RecommendationsAIApi(
+          mock,
+        ).projects.locations.catalogs.eventStores.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3023,10 +3016,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.RecommendationsAIApi(
-              mock,
-            ).projects.locations.catalogs.eventStores.operations;
+        final res = api.RecommendationsAIApi(
+          mock,
+        ).projects.locations.catalogs.eventStores.operations;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -3115,20 +3107,19 @@ void main() {
     () {
       unittest.test('method--predict', () async {
         final mock = HttpServerMock();
-        final res =
-            api.RecommendationsAIApi(
-              mock,
-            ).projects.locations.catalogs.eventStores.placements;
+        final res = api.RecommendationsAIApi(
+          mock,
+        ).projects.locations.catalogs.eventStores.placements;
         final arg_request =
             buildGoogleCloudRecommendationengineV1beta1PredictRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudRecommendationengineV1beta1PredictRequest(obj);
 
             final path = req.url.path;
@@ -3192,23 +3183,19 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.RecommendationsAIApi(mock)
-                .projects
-                .locations
-                .catalogs
-                .eventStores
-                .predictionApiKeyRegistrations;
+        final res = api.RecommendationsAIApi(
+          mock,
+        ).projects.locations.catalogs.eventStores.predictionApiKeyRegistrations;
         final arg_request =
             buildGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest(
               obj,
             );
@@ -3270,13 +3257,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.RecommendationsAIApi(mock)
-                .projects
-                .locations
-                .catalogs
-                .eventStores
-                .predictionApiKeyRegistrations;
+        final res = api.RecommendationsAIApi(
+          mock,
+        ).projects.locations.catalogs.eventStores.predictionApiKeyRegistrations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3329,13 +3312,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.RecommendationsAIApi(mock)
-                .projects
-                .locations
-                .catalogs
-                .eventStores
-                .predictionApiKeyRegistrations;
+        final res = api.RecommendationsAIApi(
+          mock,
+        ).projects.locations.catalogs.eventStores.predictionApiKeyRegistrations;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -3411,10 +3390,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsEventStoresUserEventsResource', () {
     unittest.test('method--collect', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.eventStores.userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_parent = 'foo';
       final arg_ets = 'foo';
       final arg_uri = 'foo';
@@ -3482,20 +3460,19 @@ void main() {
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.eventStores.userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(
             obj,
           );
@@ -3554,10 +3531,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.eventStores.userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3636,20 +3612,19 @@ void main() {
 
     unittest.test('method--purge', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.eventStores.userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(
             obj,
           );
@@ -3708,20 +3683,19 @@ void main() {
 
     unittest.test('method--rejoin', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.eventStores.userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest(
             obj,
           );
@@ -3780,20 +3754,19 @@ void main() {
 
     unittest.test('method--write', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(
-            mock,
-          ).projects.locations.catalogs.eventStores.userEvents;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.eventStores.userEvents;
       final arg_request =
           buildGoogleCloudRecommendationengineV1beta1UserEvent();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommendationengineV1beta1UserEvent(obj);
 
           final path = req.url.path;
@@ -3854,8 +3827,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCatalogsOperationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(mock).projects.locations.catalogs.operations;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3910,8 +3884,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommendationsAIApi(mock).projects.locations.catalogs.operations;
+      final res = api.RecommendationsAIApi(
+        mock,
+      ).projects.locations.catalogs.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

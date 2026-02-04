@@ -9725,10 +9725,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildAuthorizedSellerStatusAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkAuthorizedSellerStatusAssignedTargetingOptionDetails(od);
       });
     },
@@ -9795,10 +9795,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildBulkEditAdvertiserAssignedTargetingOptionsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkBulkEditAdvertiserAssignedTargetingOptionsRequest(od);
       });
     },
@@ -9810,10 +9810,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildBulkEditAdvertiserAssignedTargetingOptionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkBulkEditAdvertiserAssignedTargetingOptionsResponse(od);
       });
     },
@@ -9999,10 +9999,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildBulkListAdvertiserAssignedTargetingOptionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkBulkListAdvertiserAssignedTargetingOptionsResponse(od);
       });
     },
@@ -10314,10 +10314,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildContentInstreamPositionAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkContentInstreamPositionAssignedTargetingOptionDetails(od);
       });
     },
@@ -10343,10 +10343,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildContentOutstreamPositionAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkContentOutstreamPositionAssignedTargetingOptionDetails(od);
       });
     },
@@ -10675,10 +10675,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildDigitalContentLabelAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .DigitalContentLabelAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.DigitalContentLabelAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkDigitalContentLabelAssignedTargetingOptionDetails(od);
       });
     },
@@ -10845,10 +10845,10 @@ void main() {
         final o =
             buildEditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate(od);
       });
     },
@@ -11328,10 +11328,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildInventorySourceGroupAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .InventorySourceGroupAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.InventorySourceGroupAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkInventorySourceGroupAssignedTargetingOptionDetails(od);
       });
     },
@@ -11786,10 +11786,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildListYoutubeAdGroupAssignedTargetingOptionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ListYoutubeAdGroupAssignedTargetingOptionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ListYoutubeAdGroupAssignedTargetingOptionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkListYoutubeAdGroupAssignedTargetingOptionsResponse(od);
       });
     },
@@ -11911,10 +11911,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildNativeContentPositionAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .NativeContentPositionAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.NativeContentPositionAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkNativeContentPositionAssignedTargetingOptionDetails(od);
       });
     },
@@ -11959,10 +11959,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildNegativeKeywordListAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkNegativeKeywordListAssignedTargetingOptionDetails(od);
       });
     },
@@ -12288,10 +12288,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildProximityLocationListAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ProximityLocationListAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ProximityLocationListAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkProximityLocationListAssignedTargetingOptionDetails(od);
       });
     },
@@ -12325,10 +12325,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildRegionalLocationListAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .RegionalLocationListAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.RegionalLocationListAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkRegionalLocationListAssignedTargetingOptionDetails(od);
       });
     },
@@ -12599,10 +12599,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildThirdPartyVerifierAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkThirdPartyVerifierAssignedTargetingOptionDetails(od);
       });
     },
@@ -12691,10 +12691,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildUserRewardedContentAssignedTargetingOptionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .UserRewardedContentAssignedTargetingOptionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.UserRewardedContentAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkUserRewardedContentAssignedTargetingOptionDetails(od);
       });
     },
@@ -13108,10 +13108,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkBulkEditAdvertiserAssignedTargetingOptionsRequest(obj);
 
           final path = req.url.path;
@@ -15999,10 +15999,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(
-              mock,
-            ).advertisers.lineItems.targetingTypes.assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.lineItems.targetingTypes.assignedTargetingOptions;
         final arg_request = buildAssignedTargetingOption();
         final arg_advertiserId = 'foo';
         final arg_lineItemId = 'foo';
@@ -16069,10 +16068,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(
-              mock,
-            ).advertisers.lineItems.targetingTypes.assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.lineItems.targetingTypes.assignedTargetingOptions;
         final arg_advertiserId = 'foo';
         final arg_lineItemId = 'foo';
         final arg_targetingType = 'foo';
@@ -16134,10 +16132,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(
-              mock,
-            ).advertisers.lineItems.targetingTypes.assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.lineItems.targetingTypes.assignedTargetingOptions;
         final arg_advertiserId = 'foo';
         final arg_lineItemId = 'foo';
         final arg_targetingType = 'foo';
@@ -16199,10 +16196,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(
-              mock,
-            ).advertisers.lineItems.targetingTypes.assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.lineItems.targetingTypes.assignedTargetingOptions;
         final arg_advertiserId = 'foo';
         final arg_lineItemId = 'foo';
         final arg_targetingType = 'foo';
@@ -16567,8 +16563,9 @@ void main() {
   unittest.group('resource-AdvertisersLocationListsAssignedLocationsResource', () {
     unittest.test('method--bulkEdit', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(mock).advertisers.locationLists.assignedLocations;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).advertisers.locationLists.assignedLocations;
       final arg_request = buildBulkEditAssignedLocationsRequest();
       final arg_advertiserId = 'foo';
       final arg_locationListId = 'foo';
@@ -16649,8 +16646,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(mock).advertisers.locationLists.assignedLocations;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).advertisers.locationLists.assignedLocations;
       final arg_request = buildAssignedLocation();
       final arg_advertiserId = 'foo';
       final arg_locationListId = 'foo';
@@ -16738,8 +16736,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(mock).advertisers.locationLists.assignedLocations;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).advertisers.locationLists.assignedLocations;
       final arg_advertiserId = 'foo';
       final arg_locationListId = 'foo';
       final arg_assignedLocationId = 'foo';
@@ -16823,8 +16822,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(mock).advertisers.locationLists.assignedLocations;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).advertisers.locationLists.assignedLocations;
       final arg_advertiserId = 'foo';
       final arg_locationListId = 'foo';
       final arg_filter = 'foo';
@@ -17665,10 +17665,9 @@ void main() {
   unittest.group('resource-AdvertisersNegativeKeywordListsNegativeKeywordsResource', () {
     unittest.test('method--bulkEdit', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).advertisers.negativeKeywordLists.negativeKeywords;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).advertisers.negativeKeywordLists.negativeKeywords;
       final arg_request = buildBulkEditNegativeKeywordsRequest();
       final arg_advertiserId = 'foo';
       final arg_negativeKeywordListId = 'foo';
@@ -17749,10 +17748,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).advertisers.negativeKeywordLists.negativeKeywords;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).advertisers.negativeKeywordLists.negativeKeywords;
       final arg_request = buildNegativeKeyword();
       final arg_advertiserId = 'foo';
       final arg_negativeKeywordListId = 'foo';
@@ -17829,10 +17827,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).advertisers.negativeKeywordLists.negativeKeywords;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).advertisers.negativeKeywordLists.negativeKeywords;
       final arg_advertiserId = 'foo';
       final arg_negativeKeywordListId = 'foo';
       final arg_keywordValue = 'foo';
@@ -17904,10 +17901,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).advertisers.negativeKeywordLists.negativeKeywords;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).advertisers.negativeKeywordLists.negativeKeywords;
       final arg_advertiserId = 'foo';
       final arg_negativeKeywordListId = 'foo';
       final arg_filter = 'foo';
@@ -17991,10 +17987,9 @@ void main() {
 
     unittest.test('method--replace', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).advertisers.negativeKeywordLists.negativeKeywords;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).advertisers.negativeKeywordLists.negativeKeywords;
       final arg_request = buildReplaceNegativeKeywordsRequest();
       final arg_advertiserId = 'foo';
       final arg_negativeKeywordListId = 'foo';
@@ -18079,10 +18074,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(
-              mock,
-            ).advertisers.targetingTypes.assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.targetingTypes.assignedTargetingOptions;
         final arg_request = buildAssignedTargetingOption();
         final arg_advertiserId = 'foo';
         final arg_targetingType = 'foo';
@@ -18147,10 +18141,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(
-              mock,
-            ).advertisers.targetingTypes.assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.targetingTypes.assignedTargetingOptions;
         final arg_advertiserId = 'foo';
         final arg_targetingType = 'foo';
         final arg_assignedTargetingOptionId = 'foo';
@@ -18210,10 +18203,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(
-              mock,
-            ).advertisers.targetingTypes.assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.targetingTypes.assignedTargetingOptions;
         final arg_advertiserId = 'foo';
         final arg_targetingType = 'foo';
         final arg_assignedTargetingOptionId = 'foo';
@@ -18273,10 +18265,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(
-              mock,
-            ).advertisers.targetingTypes.assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.targetingTypes.assignedTargetingOptions;
         final arg_advertiserId = 'foo';
         final arg_targetingType = 'foo';
         final arg_filter = 'foo';
@@ -18743,12 +18734,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(mock)
-                .advertisers
-                .youtubeAdGroups
-                .targetingTypes
-                .assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.youtubeAdGroups.targetingTypes.assignedTargetingOptions;
         final arg_advertiserId = 'foo';
         final arg_youtubeAdGroupId = 'foo';
         final arg_targetingType = 'foo';
@@ -18810,12 +18798,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DisplayVideoApi(mock)
-                .advertisers
-                .youtubeAdGroups
-                .targetingTypes
-                .assignedTargetingOptions;
+        final res = api.DisplayVideoApi(
+          mock,
+        ).advertisers.youtubeAdGroups.targetingTypes.assignedTargetingOptions;
         final arg_advertiserId = 'foo';
         final arg_youtubeAdGroupId = 'foo';
         final arg_targetingType = 'foo';
@@ -19951,8 +19936,9 @@ void main() {
   unittest.group('resource-FloodlightGroupsFloodlightActivitiesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(mock).floodlightGroups.floodlightActivities;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).floodlightGroups.floodlightActivities;
       final arg_floodlightGroupId = 'foo';
       final arg_floodlightActivityId = 'foo';
       final arg_partnerId = 'foo';
@@ -20016,8 +20002,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(mock).floodlightGroups.floodlightActivities;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).floodlightGroups.floodlightActivities;
       final arg_floodlightGroupId = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
@@ -21034,10 +21021,9 @@ void main() {
   unittest.group('resource-InventorySourceGroupsAssignedInventorySourcesResource', () {
     unittest.test('method--bulkEdit', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).inventorySourceGroups.assignedInventorySources;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).inventorySourceGroups.assignedInventorySources;
       final arg_request = buildBulkEditAssignedInventorySourcesRequest();
       final arg_inventorySourceGroupId = 'foo';
       final arg_$fields = 'foo';
@@ -21104,10 +21090,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).inventorySourceGroups.assignedInventorySources;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).inventorySourceGroups.assignedInventorySources;
       final arg_request = buildAssignedInventorySource();
       final arg_inventorySourceGroupId = 'foo';
       final arg_advertiserId = 'foo';
@@ -21182,10 +21167,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).inventorySourceGroups.assignedInventorySources;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).inventorySourceGroups.assignedInventorySources;
       final arg_inventorySourceGroupId = 'foo';
       final arg_assignedInventorySourceId = 'foo';
       final arg_advertiserId = 'foo';
@@ -21255,10 +21239,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).inventorySourceGroups.assignedInventorySources;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).inventorySourceGroups.assignedInventorySources;
       final arg_inventorySourceGroupId = 'foo';
       final arg_advertiserId = 'foo';
       final arg_filter = 'foo';
@@ -21860,10 +21843,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkBulkEditPartnerAssignedTargetingOptionsRequest(obj);
 
           final path = req.url.path;
@@ -22757,10 +22740,9 @@ void main() {
   unittest.group('resource-PartnersTargetingTypesAssignedTargetingOptionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).partners.targetingTypes.assignedTargetingOptions;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).partners.targetingTypes.assignedTargetingOptions;
       final arg_request = buildAssignedTargetingOption();
       final arg_partnerId = 'foo';
       final arg_targetingType = 'foo';
@@ -22825,10 +22807,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).partners.targetingTypes.assignedTargetingOptions;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).partners.targetingTypes.assignedTargetingOptions;
       final arg_partnerId = 'foo';
       final arg_targetingType = 'foo';
       final arg_assignedTargetingOptionId = 'foo';
@@ -22888,10 +22869,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).partners.targetingTypes.assignedTargetingOptions;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).partners.targetingTypes.assignedTargetingOptions;
       final arg_partnerId = 'foo';
       final arg_targetingType = 'foo';
       final arg_assignedTargetingOptionId = 'foo';
@@ -22951,10 +22931,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DisplayVideoApi(
-            mock,
-          ).partners.targetingTypes.assignedTargetingOptions;
+      final res = api.DisplayVideoApi(
+        mock,
+      ).partners.targetingTypes.assignedTargetingOptions;
       final arg_partnerId = 'foo';
       final arg_targetingType = 'foo';
       final arg_filter = 'foo';

@@ -100,7 +100,7 @@ class AccountsConversionSourcesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -144,7 +144,7 @@ class AccountsConversionSourcesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'conversions/v1/' + core.Uri.encodeFull('$name');
@@ -180,7 +180,7 @@ class AccountsConversionSourcesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'conversions/v1/' + core.Uri.encodeFull('$name');
@@ -232,10 +232,10 @@ class AccountsConversionSourcesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -291,8 +291,8 @@ class AccountsConversionSourcesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'conversions/v1/' + core.Uri.encodeFull('$name');
@@ -337,7 +337,7 @@ class AccountsConversionSourcesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'conversions/v1/' + core.Uri.encodeFull('$name') + ':undelete';
@@ -398,22 +398,25 @@ class AttributionSettings {
         attributionLookbackWindowDays:
             json_['attributionLookbackWindowDays'] as core.int?,
         attributionModel: json_['attributionModel'] as core.String?,
-        conversionType:
-            (json_['conversionType'] as core.List?)
-                ?.map(
-                  (value) => ConversionType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conversionType: (json_['conversionType'] as core.List?)
+            ?.map(
+              (value) => ConversionType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributionLookbackWindowDays != null)
-      'attributionLookbackWindowDays': attributionLookbackWindowDays!,
-    if (attributionModel != null) 'attributionModel': attributionModel!,
-    if (conversionType != null) 'conversionType': conversionType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributionLookbackWindowDays = this.attributionLookbackWindowDays;
+    final attributionModel = this.attributionModel;
+    final conversionType = this.conversionType;
+    return {
+      'attributionLookbackWindowDays': ?attributionLookbackWindowDays,
+      'attributionModel': ?attributionModel,
+      'conversionType': ?conversionType,
+    };
+  }
 }
 
 /// Represents a conversion source owned by a Merchant account.
@@ -483,34 +486,39 @@ class ConversionSource {
     : this(
         controller: json_['controller'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
-        googleAnalyticsLink:
-            json_.containsKey('googleAnalyticsLink')
-                ? GoogleAnalyticsLink.fromJson(
-                  json_['googleAnalyticsLink']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        googleAnalyticsLink: json_.containsKey('googleAnalyticsLink')
+            ? GoogleAnalyticsLink.fromJson(
+                json_['googleAnalyticsLink']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         merchantCenterDestination:
             json_.containsKey('merchantCenterDestination')
-                ? MerchantCenterDestination.fromJson(
-                  json_['merchantCenterDestination']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? MerchantCenterDestination.fromJson(
+                json_['merchantCenterDestination']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controller != null) 'controller': controller!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (googleAnalyticsLink != null)
-      'googleAnalyticsLink': googleAnalyticsLink!,
-    if (merchantCenterDestination != null)
-      'merchantCenterDestination': merchantCenterDestination!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final controller = this.controller;
+    final expireTime = this.expireTime;
+    final googleAnalyticsLink = this.googleAnalyticsLink;
+    final merchantCenterDestination = this.merchantCenterDestination;
+    final name = this.name;
+    final state = this.state;
+    return {
+      'controller': ?controller,
+      'expireTime': ?expireTime,
+      'googleAnalyticsLink': ?googleAnalyticsLink,
+      'merchantCenterDestination': ?merchantCenterDestination,
+      'name': ?name,
+      'state': ?state,
+    };
+  }
 }
 
 /// Message representing the type of a conversion event.
@@ -534,10 +542,11 @@ class ConversionType {
         report: json_['report'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (report != null) 'report': report!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final report = this.report;
+    return {'name': ?name, 'report': ?report};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -574,23 +583,26 @@ class GoogleAnalyticsLink {
 
   GoogleAnalyticsLink.fromJson(core.Map json_)
     : this(
-        attributionSettings:
-            json_.containsKey('attributionSettings')
-                ? AttributionSettings.fromJson(
-                  json_['attributionSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attributionSettings: json_.containsKey('attributionSettings')
+            ? AttributionSettings.fromJson(
+                json_['attributionSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         property: json_['property'] as core.String?,
         propertyId: json_['propertyId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributionSettings != null)
-      'attributionSettings': attributionSettings!,
-    if (property != null) 'property': property!,
-    if (propertyId != null) 'propertyId': propertyId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributionSettings = this.attributionSettings;
+    final property = this.property;
+    final propertyId = this.propertyId;
+    return {
+      'attributionSettings': ?attributionSettings,
+      'property': ?property,
+      'propertyId': ?propertyId,
+    };
+  }
 }
 
 /// Response message for the ListConversionSources method.
@@ -605,21 +617,24 @@ class ListConversionSourcesResponse {
 
   ListConversionSourcesResponse.fromJson(core.Map json_)
     : this(
-        conversionSources:
-            (json_['conversionSources'] as core.List?)
-                ?.map(
-                  (value) => ConversionSource.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conversionSources: (json_['conversionSources'] as core.List?)
+            ?.map(
+              (value) => ConversionSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conversionSources != null) 'conversionSources': conversionSources!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversionSources = this.conversionSources;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'conversionSources': ?conversionSources,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// "Merchant Center Destination" sources can be used to send conversion events
@@ -661,25 +676,29 @@ class MerchantCenterDestination {
 
   MerchantCenterDestination.fromJson(core.Map json_)
     : this(
-        attributionSettings:
-            json_.containsKey('attributionSettings')
-                ? AttributionSettings.fromJson(
-                  json_['attributionSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attributionSettings: json_.containsKey('attributionSettings')
+            ? AttributionSettings.fromJson(
+                json_['attributionSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         currencyCode: json_['currencyCode'] as core.String?,
         destination: json_['destination'] as core.String?,
         displayName: json_['displayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributionSettings != null)
-      'attributionSettings': attributionSettings!,
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (destination != null) 'destination': destination!,
-    if (displayName != null) 'displayName': displayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributionSettings = this.attributionSettings;
+    final currencyCode = this.currencyCode;
+    final destination = this.destination;
+    final displayName = this.displayName;
+    return {
+      'attributionSettings': ?attributionSettings,
+      'currencyCode': ?currencyCode,
+      'destination': ?destination,
+      'displayName': ?displayName,
+    };
+  }
 }
 
 /// Request message for the UndeleteConversionSource method.

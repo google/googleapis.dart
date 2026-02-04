@@ -137,7 +137,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -208,12 +208,13 @@ class OperationsProjectsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
@@ -289,7 +290,7 @@ class ProjectsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/instances';
@@ -323,7 +324,7 @@ class ProjectsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -356,7 +357,7 @@ class ProjectsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -401,7 +402,7 @@ class ProjectsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -441,8 +442,8 @@ class ProjectsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/instances';
@@ -491,8 +492,8 @@ class ProjectsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -537,7 +538,7 @@ class ProjectsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -581,7 +582,7 @@ class ProjectsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -629,7 +630,7 @@ class ProjectsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -687,9 +688,9 @@ class ProjectsInstancesAppProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (appProfileId != null) 'appProfileId': [appProfileId],
-      if (ignoreWarnings != null) 'ignoreWarnings': ['${ignoreWarnings}'],
-      if ($fields != null) 'fields': [$fields],
+      'appProfileId': ?appProfileId == null ? null : [appProfileId],
+      'ignoreWarnings': ?ignoreWarnings == null ? null : ['${ignoreWarnings}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/appProfiles';
@@ -734,8 +735,8 @@ class ProjectsInstancesAppProfilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (ignoreWarnings != null) 'ignoreWarnings': ['${ignoreWarnings}'],
-      if ($fields != null) 'fields': [$fields],
+      'ignoreWarnings': ?ignoreWarnings == null ? null : ['${ignoreWarnings}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -770,7 +771,7 @@ class ProjectsInstancesAppProfilesResource {
   /// this method will complete with the same error.
   async.Future<AppProfile> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -823,9 +824,9 @@ class ProjectsInstancesAppProfilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/appProfiles';
@@ -877,9 +878,9 @@ class ProjectsInstancesAppProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (ignoreWarnings != null) 'ignoreWarnings': ['${ignoreWarnings}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'ignoreWarnings': ?ignoreWarnings == null ? null : ['${ignoreWarnings}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -944,8 +945,8 @@ class ProjectsInstancesClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (clusterId != null) 'clusterId': [clusterId],
-      if ($fields != null) 'fields': [$fields],
+      'clusterId': ?clusterId == null ? null : [clusterId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/clusters';
@@ -981,7 +982,7 @@ class ProjectsInstancesClustersResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1015,7 +1016,7 @@ class ProjectsInstancesClustersResource {
   /// this method will complete with the same error.
   async.Future<Cluster> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1057,8 +1058,8 @@ class ProjectsInstancesClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/clusters';
@@ -1115,8 +1116,8 @@ class ProjectsInstancesClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1162,7 +1163,7 @@ class ProjectsInstancesClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1213,7 +1214,7 @@ class ProjectsInstancesClustersBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/backups:copy';
@@ -1270,8 +1271,8 @@ class ProjectsInstancesClustersBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (backupId != null) 'backupId': [backupId],
-      if ($fields != null) 'fields': [$fields],
+      'backupId': ?backupId == null ? null : [backupId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/backups';
@@ -1306,7 +1307,7 @@ class ProjectsInstancesClustersBackupsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1340,7 +1341,7 @@ class ProjectsInstancesClustersBackupsResource {
   /// this method will complete with the same error.
   async.Future<Backup> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1386,7 +1387,7 @@ class ProjectsInstancesClustersBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1473,11 +1474,11 @@ class ProjectsInstancesClustersBackupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/backups';
@@ -1532,8 +1533,8 @@ class ProjectsInstancesClustersBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1579,7 +1580,7 @@ class ProjectsInstancesClustersBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1624,7 +1625,7 @@ class ProjectsInstancesClustersBackupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1698,11 +1699,11 @@ class ProjectsInstancesClustersHotTabletsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (endTime != null) 'endTime': [endTime],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (startTime != null) 'startTime': [startTime],
-      if ($fields != null) 'fields': [$fields],
+      'endTime': ?endTime == null ? null : [endTime],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'startTime': ?startTime == null ? null : [startTime],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/hotTablets';
@@ -1755,8 +1756,8 @@ class ProjectsInstancesLogicalViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (logicalViewId != null) 'logicalViewId': [logicalViewId],
-      if ($fields != null) 'fields': [$fields],
+      'logicalViewId': ?logicalViewId == null ? null : [logicalViewId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logicalViews';
@@ -1800,8 +1801,8 @@ class ProjectsInstancesLogicalViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1839,7 +1840,7 @@ class ProjectsInstancesLogicalViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1887,7 +1888,7 @@ class ProjectsInstancesLogicalViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1935,9 +1936,9 @@ class ProjectsInstancesLogicalViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logicalViews';
@@ -1983,8 +1984,8 @@ class ProjectsInstancesLogicalViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2030,7 +2031,7 @@ class ProjectsInstancesLogicalViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2075,7 +2076,7 @@ class ProjectsInstancesLogicalViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2131,9 +2132,10 @@ class ProjectsInstancesMaterializedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (materializedViewId != null)
-        'materializedViewId': [materializedViewId],
-      if ($fields != null) 'fields': [$fields],
+      'materializedViewId': ?materializedViewId == null
+          ? null
+          : [materializedViewId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/materializedViews';
@@ -2177,8 +2179,8 @@ class ProjectsInstancesMaterializedViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2228,8 +2230,8 @@ class ProjectsInstancesMaterializedViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2277,7 +2279,7 @@ class ProjectsInstancesMaterializedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2338,10 +2340,10 @@ class ProjectsInstancesMaterializedViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/materializedViews';
@@ -2388,8 +2390,8 @@ class ProjectsInstancesMaterializedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2435,7 +2437,7 @@ class ProjectsInstancesMaterializedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2480,7 +2482,7 @@ class ProjectsInstancesMaterializedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2540,7 +2542,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':checkConsistency';
@@ -2587,7 +2589,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tables';
@@ -2622,7 +2624,7 @@ class ProjectsInstancesTablesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2670,7 +2672,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':dropRowRange';
@@ -2717,7 +2719,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2776,8 +2778,8 @@ class ProjectsInstancesTablesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2823,7 +2825,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2892,10 +2894,10 @@ class ProjectsInstancesTablesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tables';
@@ -2943,7 +2945,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':modifyColumnFamilies';
@@ -3003,9 +3005,9 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (ignoreWarnings != null) 'ignoreWarnings': ['${ignoreWarnings}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'ignoreWarnings': ?ignoreWarnings == null ? null : ['${ignoreWarnings}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3050,7 +3052,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tables:restore';
@@ -3096,7 +3098,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -3141,7 +3143,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3186,7 +3188,7 @@ class ProjectsInstancesTablesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
@@ -3242,8 +3244,8 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (authorizedViewId != null) 'authorizedViewId': [authorizedViewId],
-      if ($fields != null) 'fields': [$fields],
+      'authorizedViewId': ?authorizedViewId == null ? null : [authorizedViewId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/authorizedViews';
@@ -3287,8 +3289,8 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3337,8 +3339,8 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3386,7 +3388,7 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -3449,10 +3451,10 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/authorizedViews';
@@ -3508,9 +3510,9 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (ignoreWarnings != null) 'ignoreWarnings': ['${ignoreWarnings}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'ignoreWarnings': ?ignoreWarnings == null ? null : ['${ignoreWarnings}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3556,7 +3558,7 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -3601,7 +3603,7 @@ class ProjectsInstancesTablesAuthorizedViewsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3659,8 +3661,8 @@ class ProjectsInstancesTablesSchemaBundlesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (schemaBundleId != null) 'schemaBundleId': [schemaBundleId],
-      if ($fields != null) 'fields': [$fields],
+      'schemaBundleId': ?schemaBundleId == null ? null : [schemaBundleId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/schemaBundles';
@@ -3704,8 +3706,8 @@ class ProjectsInstancesTablesSchemaBundlesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3743,7 +3745,7 @@ class ProjectsInstancesTablesSchemaBundlesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3791,7 +3793,7 @@ class ProjectsInstancesTablesSchemaBundlesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -3852,10 +3854,10 @@ class ProjectsInstancesTablesSchemaBundlesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/schemaBundles';
@@ -3907,9 +3909,9 @@ class ProjectsInstancesTablesSchemaBundlesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (ignoreWarnings != null) 'ignoreWarnings': ['${ignoreWarnings}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'ignoreWarnings': ?ignoreWarnings == null ? null : ['${ignoreWarnings}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -3955,7 +3957,7 @@ class ProjectsInstancesTablesSchemaBundlesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -4000,7 +4002,7 @@ class ProjectsInstancesTablesSchemaBundlesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4063,11 +4065,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
@@ -4150,51 +4152,56 @@ class AppProfile {
     : this(
         dataBoostIsolationReadOnly:
             json_.containsKey('dataBoostIsolationReadOnly')
-                ? DataBoostIsolationReadOnly.fromJson(
-                  json_['dataBoostIsolationReadOnly']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? DataBoostIsolationReadOnly.fromJson(
+                json_['dataBoostIsolationReadOnly']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
         etag: json_['etag'] as core.String?,
         multiClusterRoutingUseAny:
             json_.containsKey('multiClusterRoutingUseAny')
-                ? MultiClusterRoutingUseAny.fromJson(
-                  json_['multiClusterRoutingUseAny']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? MultiClusterRoutingUseAny.fromJson(
+                json_['multiClusterRoutingUseAny']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         priority: json_['priority'] as core.String?,
-        singleClusterRouting:
-            json_.containsKey('singleClusterRouting')
-                ? SingleClusterRouting.fromJson(
-                  json_['singleClusterRouting']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        standardIsolation:
-            json_.containsKey('standardIsolation')
-                ? StandardIsolation.fromJson(
-                  json_['standardIsolation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        singleClusterRouting: json_.containsKey('singleClusterRouting')
+            ? SingleClusterRouting.fromJson(
+                json_['singleClusterRouting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        standardIsolation: json_.containsKey('standardIsolation')
+            ? StandardIsolation.fromJson(
+                json_['standardIsolation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataBoostIsolationReadOnly != null)
-      'dataBoostIsolationReadOnly': dataBoostIsolationReadOnly!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (multiClusterRoutingUseAny != null)
-      'multiClusterRoutingUseAny': multiClusterRoutingUseAny!,
-    if (name != null) 'name': name!,
-    if (priority != null) 'priority': priority!,
-    if (singleClusterRouting != null)
-      'singleClusterRouting': singleClusterRouting!,
-    if (standardIsolation != null) 'standardIsolation': standardIsolation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataBoostIsolationReadOnly = this.dataBoostIsolationReadOnly;
+    final description = this.description;
+    final etag = this.etag;
+    final multiClusterRoutingUseAny = this.multiClusterRoutingUseAny;
+    final name = this.name;
+    final priority = this.priority;
+    final singleClusterRouting = this.singleClusterRouting;
+    final standardIsolation = this.standardIsolation;
+    return {
+      'dataBoostIsolationReadOnly': ?dataBoostIsolationReadOnly,
+      'description': ?description,
+      'etag': ?etag,
+      'multiClusterRoutingUseAny': ?multiClusterRoutingUseAny,
+      'name': ?name,
+      'priority': ?priority,
+      'singleClusterRouting': ?singleClusterRouting,
+      'standardIsolation': ?standardIsolation,
+    };
+  }
 }
 
 /// Specifies the audit configuration for a service.
@@ -4228,21 +4235,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -4288,20 +4295,25 @@ class AuthorizedView {
         deletionProtection: json_['deletionProtection'] as core.bool?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
-        subsetView:
-            json_.containsKey('subsetView')
-                ? GoogleBigtableAdminV2AuthorizedViewSubsetView.fromJson(
-                  json_['subsetView'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        subsetView: json_.containsKey('subsetView')
+            ? GoogleBigtableAdminV2AuthorizedViewSubsetView.fromJson(
+                json_['subsetView'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deletionProtection != null) 'deletionProtection': deletionProtection!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (subsetView != null) 'subsetView': subsetView!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deletionProtection = this.deletionProtection;
+    final etag = this.etag;
+    final name = this.name;
+    final subsetView = this.subsetView;
+    return {
+      'deletionProtection': ?deletionProtection,
+      'etag': ?etag,
+      'name': ?name,
+      'subsetView': ?subsetView,
+    };
+  }
 }
 
 /// Defines an automated backup policy for a table
@@ -4327,10 +4339,11 @@ class AutomatedBackupPolicy {
         retentionPeriod: json_['retentionPeriod'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (frequency != null) 'frequency': frequency!,
-    if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final frequency = this.frequency;
+    final retentionPeriod = this.retentionPeriod;
+    return {'frequency': ?frequency, 'retentionPeriod': ?retentionPeriod};
+  }
 }
 
 /// Limits for the number of nodes a Cluster can autoscale up/down to.
@@ -4353,10 +4366,11 @@ class AutoscalingLimits {
         minServeNodes: json_['minServeNodes'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxServeNodes != null) 'maxServeNodes': maxServeNodes!,
-    if (minServeNodes != null) 'minServeNodes': minServeNodes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxServeNodes = this.maxServeNodes;
+    final minServeNodes = this.minServeNodes;
+    return {'maxServeNodes': ?maxServeNodes, 'minServeNodes': ?minServeNodes};
+  }
 }
 
 /// The Autoscaling targets for a Cluster.
@@ -4391,12 +4405,14 @@ class AutoscalingTargets {
             json_['storageUtilizationGibPerNode'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpuUtilizationPercent != null)
-      'cpuUtilizationPercent': cpuUtilizationPercent!,
-    if (storageUtilizationGibPerNode != null)
-      'storageUtilizationGibPerNode': storageUtilizationGibPerNode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpuUtilizationPercent = this.cpuUtilizationPercent;
+    final storageUtilizationGibPerNode = this.storageUtilizationGibPerNode;
+    return {
+      'cpuUtilizationPercent': ?cpuUtilizationPercent,
+      'storageUtilizationGibPerNode': ?storageUtilizationGibPerNode,
+    };
+  }
 }
 
 /// A backup of a Cloud Bigtable table.
@@ -4510,13 +4526,11 @@ class Backup {
   Backup.fromJson(core.Map json_)
     : this(
         backupType: json_['backupType'] as core.String?,
-        encryptionInfo:
-            json_.containsKey('encryptionInfo')
-                ? EncryptionInfo.fromJson(
-                  json_['encryptionInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encryptionInfo: json_.containsKey('encryptionInfo')
+            ? EncryptionInfo.fromJson(
+                json_['encryptionInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         endTime: json_['endTime'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
         hotToStandardTime: json_['hotToStandardTime'] as core.String?,
@@ -4528,19 +4542,32 @@ class Backup {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupType != null) 'backupType': backupType!,
-    if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
-    if (endTime != null) 'endTime': endTime!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (hotToStandardTime != null) 'hotToStandardTime': hotToStandardTime!,
-    if (name != null) 'name': name!,
-    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-    if (sourceBackup != null) 'sourceBackup': sourceBackup!,
-    if (sourceTable != null) 'sourceTable': sourceTable!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupType = this.backupType;
+    final encryptionInfo = this.encryptionInfo;
+    final endTime = this.endTime;
+    final expireTime = this.expireTime;
+    final hotToStandardTime = this.hotToStandardTime;
+    final name = this.name;
+    final sizeBytes = this.sizeBytes;
+    final sourceBackup = this.sourceBackup;
+    final sourceTable = this.sourceTable;
+    final startTime = this.startTime;
+    final state = this.state;
+    return {
+      'backupType': ?backupType,
+      'encryptionInfo': ?encryptionInfo,
+      'endTime': ?endTime,
+      'expireTime': ?expireTime,
+      'hotToStandardTime': ?hotToStandardTime,
+      'name': ?name,
+      'sizeBytes': ?sizeBytes,
+      'sourceBackup': ?sourceBackup,
+      'sourceTable': ?sourceTable,
+      'startTime': ?startTime,
+      'state': ?state,
+    };
+  }
 }
 
 /// Information about a backup.
@@ -4594,13 +4621,20 @@ class BackupInfo {
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backup != null) 'backup': backup!,
-    if (endTime != null) 'endTime': endTime!,
-    if (sourceBackup != null) 'sourceBackup': sourceBackup!,
-    if (sourceTable != null) 'sourceTable': sourceTable!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backup = this.backup;
+    final endTime = this.endTime;
+    final sourceBackup = this.sourceBackup;
+    final sourceTable = this.sourceTable;
+    final startTime = this.startTime;
+    return {
+      'backup': ?backup,
+      'endTime': ?endTime,
+      'sourceBackup': ?sourceBackup,
+      'sourceTable': ?sourceTable,
+      'startTime': ?startTime,
+    };
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -4687,24 +4721,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Change stream configuration.
@@ -4721,9 +4754,10 @@ class ChangeStreamConfig {
   ChangeStreamConfig.fromJson(core.Map json_)
     : this(retentionPeriod: json_['retentionPeriod'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final retentionPeriod = this.retentionPeriod;
+    return {'retentionPeriod': ?retentionPeriod};
+  }
 }
 
 /// Request message for
@@ -4753,29 +4787,30 @@ class CheckConsistencyRequest {
   CheckConsistencyRequest.fromJson(core.Map json_)
     : this(
         consistencyToken: json_['consistencyToken'] as core.String?,
-        dataBoostReadLocalWrites:
-            json_.containsKey('dataBoostReadLocalWrites')
-                ? DataBoostReadLocalWrites.fromJson(
-                  json_['dataBoostReadLocalWrites']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        standardReadRemoteWrites:
-            json_.containsKey('standardReadRemoteWrites')
-                ? StandardReadRemoteWrites.fromJson(
-                  json_['standardReadRemoteWrites']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dataBoostReadLocalWrites: json_.containsKey('dataBoostReadLocalWrites')
+            ? DataBoostReadLocalWrites.fromJson(
+                json_['dataBoostReadLocalWrites']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        standardReadRemoteWrites: json_.containsKey('standardReadRemoteWrites')
+            ? StandardReadRemoteWrites.fromJson(
+                json_['standardReadRemoteWrites']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consistencyToken != null) 'consistencyToken': consistencyToken!,
-    if (dataBoostReadLocalWrites != null)
-      'dataBoostReadLocalWrites': dataBoostReadLocalWrites!,
-    if (standardReadRemoteWrites != null)
-      'standardReadRemoteWrites': standardReadRemoteWrites!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consistencyToken = this.consistencyToken;
+    final dataBoostReadLocalWrites = this.dataBoostReadLocalWrites;
+    final standardReadRemoteWrites = this.standardReadRemoteWrites;
+    return {
+      'consistencyToken': ?consistencyToken,
+      'dataBoostReadLocalWrites': ?dataBoostReadLocalWrites,
+      'standardReadRemoteWrites': ?standardReadRemoteWrites,
+    };
+  }
 }
 
 /// Response message for
@@ -4792,9 +4827,10 @@ class CheckConsistencyResponse {
   CheckConsistencyResponse.fromJson(core.Map json_)
     : this(consistent: json_['consistent'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consistent != null) 'consistent': consistent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consistent = this.consistent;
+    return {'consistent': ?consistent};
+  }
 }
 
 /// A resizable group of nodes in a particular cloud location, capable of
@@ -4884,20 +4920,18 @@ class Cluster {
 
   Cluster.fromJson(core.Map json_)
     : this(
-        clusterConfig:
-            json_.containsKey('clusterConfig')
-                ? ClusterConfig.fromJson(
-                  json_['clusterConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        clusterConfig: json_.containsKey('clusterConfig')
+            ? ClusterConfig.fromJson(
+                json_['clusterConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         defaultStorageType: json_['defaultStorageType'] as core.String?,
-        encryptionConfig:
-            json_.containsKey('encryptionConfig')
-                ? EncryptionConfig.fromJson(
-                  json_['encryptionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encryptionConfig: json_.containsKey('encryptionConfig')
+            ? EncryptionConfig.fromJson(
+                json_['encryptionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         location: json_['location'] as core.String?,
         name: json_['name'] as core.String?,
         nodeScalingFactor: json_['nodeScalingFactor'] as core.String?,
@@ -4905,16 +4939,26 @@ class Cluster {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterConfig != null) 'clusterConfig': clusterConfig!,
-    if (defaultStorageType != null) 'defaultStorageType': defaultStorageType!,
-    if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
-    if (location != null) 'location': location!,
-    if (name != null) 'name': name!,
-    if (nodeScalingFactor != null) 'nodeScalingFactor': nodeScalingFactor!,
-    if (serveNodes != null) 'serveNodes': serveNodes!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusterConfig = this.clusterConfig;
+    final defaultStorageType = this.defaultStorageType;
+    final encryptionConfig = this.encryptionConfig;
+    final location = this.location;
+    final name = this.name;
+    final nodeScalingFactor = this.nodeScalingFactor;
+    final serveNodes = this.serveNodes;
+    final state = this.state;
+    return {
+      'clusterConfig': ?clusterConfig,
+      'defaultStorageType': ?defaultStorageType,
+      'encryptionConfig': ?encryptionConfig,
+      'location': ?location,
+      'name': ?name,
+      'nodeScalingFactor': ?nodeScalingFactor,
+      'serveNodes': ?serveNodes,
+      'state': ?state,
+    };
+  }
 }
 
 /// Autoscaling config for a cluster.
@@ -4933,26 +4977,28 @@ class ClusterAutoscalingConfig {
 
   ClusterAutoscalingConfig.fromJson(core.Map json_)
     : this(
-        autoscalingLimits:
-            json_.containsKey('autoscalingLimits')
-                ? AutoscalingLimits.fromJson(
-                  json_['autoscalingLimits']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        autoscalingTargets:
-            json_.containsKey('autoscalingTargets')
-                ? AutoscalingTargets.fromJson(
-                  json_['autoscalingTargets']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        autoscalingLimits: json_.containsKey('autoscalingLimits')
+            ? AutoscalingLimits.fromJson(
+                json_['autoscalingLimits']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        autoscalingTargets: json_.containsKey('autoscalingTargets')
+            ? AutoscalingTargets.fromJson(
+                json_['autoscalingTargets']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoscalingLimits != null) 'autoscalingLimits': autoscalingLimits!,
-    if (autoscalingTargets != null) 'autoscalingTargets': autoscalingTargets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoscalingLimits = this.autoscalingLimits;
+    final autoscalingTargets = this.autoscalingTargets;
+    return {
+      'autoscalingLimits': ?autoscalingLimits,
+      'autoscalingTargets': ?autoscalingTargets,
+    };
+  }
 }
 
 /// Configuration for a cluster.
@@ -4964,19 +5010,18 @@ class ClusterConfig {
 
   ClusterConfig.fromJson(core.Map json_)
     : this(
-        clusterAutoscalingConfig:
-            json_.containsKey('clusterAutoscalingConfig')
-                ? ClusterAutoscalingConfig.fromJson(
-                  json_['clusterAutoscalingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        clusterAutoscalingConfig: json_.containsKey('clusterAutoscalingConfig')
+            ? ClusterAutoscalingConfig.fromJson(
+                json_['clusterAutoscalingConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterAutoscalingConfig != null)
-      'clusterAutoscalingConfig': clusterAutoscalingConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusterAutoscalingConfig = this.clusterAutoscalingConfig;
+    return {'clusterAutoscalingConfig': ?clusterAutoscalingConfig};
+  }
 }
 
 /// The state of a table's data in a particular cluster.
@@ -5016,21 +5061,24 @@ class ClusterState {
 
   ClusterState.fromJson(core.Map json_)
     : this(
-        encryptionInfo:
-            (json_['encryptionInfo'] as core.List?)
-                ?.map(
-                  (value) => EncryptionInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        encryptionInfo: (json_['encryptionInfo'] as core.List?)
+            ?.map(
+              (value) => EncryptionInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         replicationState: json_['replicationState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
-    if (replicationState != null) 'replicationState': replicationState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encryptionInfo = this.encryptionInfo;
+    final replicationState = this.replicationState;
+    return {
+      'encryptionInfo': ?encryptionInfo,
+      'replicationState': ?replicationState,
+    };
+  }
 }
 
 /// A set of columns within a table which share a common configuration.
@@ -5064,31 +5112,29 @@ class ColumnFamily {
 
   ColumnFamily.fromJson(core.Map json_)
     : this(
-        gcRule:
-            json_.containsKey('gcRule')
-                ? GcRule.fromJson(
-                  json_['gcRule'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        stats:
-            json_.containsKey('stats')
-                ? ColumnFamilyStats.fromJson(
-                  json_['stats'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueType:
-            json_.containsKey('valueType')
-                ? Type.fromJson(
-                  json_['valueType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gcRule: json_.containsKey('gcRule')
+            ? GcRule.fromJson(
+                json_['gcRule'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stats: json_.containsKey('stats')
+            ? ColumnFamilyStats.fromJson(
+                json_['stats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueType: json_.containsKey('valueType')
+            ? Type.fromJson(
+                json_['valueType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcRule != null) 'gcRule': gcRule!,
-    if (stats != null) 'stats': stats!,
-    if (valueType != null) 'valueType': valueType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gcRule = this.gcRule;
+    final stats = this.stats;
+    final valueType = this.valueType;
+    return {'gcRule': ?gcRule, 'stats': ?stats, 'valueType': ?valueType};
+  }
 }
 
 /// Approximate statistics related to a single column family within a table.
@@ -5133,20 +5179,23 @@ class ColumnFamilyStats {
 
   ColumnFamilyStats.fromJson(core.Map json_)
     : this(
-        averageCellsPerColumn:
-            (json_['averageCellsPerColumn'] as core.num?)?.toDouble(),
-        averageColumnsPerRow:
-            (json_['averageColumnsPerRow'] as core.num?)?.toDouble(),
+        averageCellsPerColumn: (json_['averageCellsPerColumn'] as core.num?)
+            ?.toDouble(),
+        averageColumnsPerRow: (json_['averageColumnsPerRow'] as core.num?)
+            ?.toDouble(),
         logicalDataBytes: json_['logicalDataBytes'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (averageCellsPerColumn != null)
-      'averageCellsPerColumn': averageCellsPerColumn!,
-    if (averageColumnsPerRow != null)
-      'averageColumnsPerRow': averageColumnsPerRow!,
-    if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final averageCellsPerColumn = this.averageCellsPerColumn;
+    final averageColumnsPerRow = this.averageColumnsPerRow;
+    final logicalDataBytes = this.logicalDataBytes;
+    return {
+      'averageCellsPerColumn': ?averageCellsPerColumn,
+      'averageColumnsPerRow': ?averageColumnsPerRow,
+      'logicalDataBytes': ?logicalDataBytes,
+    };
+  }
 }
 
 /// The request for CopyBackup.
@@ -5192,11 +5241,16 @@ class CopyBackupRequest {
         sourceBackup: json_['sourceBackup'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupId != null) 'backupId': backupId!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (sourceBackup != null) 'sourceBackup': sourceBackup!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupId = this.backupId;
+    final expireTime = this.expireTime;
+    final sourceBackup = this.sourceBackup;
+    return {
+      'backupId': ?backupId,
+      'expireTime': ?expireTime,
+      'sourceBackup': ?sourceBackup,
+    };
+  }
 }
 
 /// Request message for BigtableInstanceAdmin.CreateInstance.
@@ -5247,22 +5301,27 @@ class CreateInstanceRequest {
                 Cluster.fromJson(value as core.Map<core.String, core.dynamic>),
               ),
             ),
-        instance:
-            json_.containsKey('instance')
-                ? Instance.fromJson(
-                  json_['instance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        instance: json_.containsKey('instance')
+            ? Instance.fromJson(
+                json_['instance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         instanceId: json_['instanceId'] as core.String?,
         parent: json_['parent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusters != null) 'clusters': clusters!,
-    if (instance != null) 'instance': instance!,
-    if (instanceId != null) 'instanceId': instanceId!,
-    if (parent != null) 'parent': parent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusters = this.clusters;
+    final instance = this.instance;
+    final instanceId = this.instanceId;
+    final parent = this.parent;
+    return {
+      'clusters': ?clusters,
+      'instance': ?instance,
+      'instanceId': ?instanceId,
+      'parent': ?parent,
+    };
+  }
 }
 
 /// Request message for google.bigtable.admin.v2.BigtableTableAdmin.CreateTable
@@ -5297,28 +5356,30 @@ class CreateTableRequest {
 
   CreateTableRequest.fromJson(core.Map json_)
     : this(
-        initialSplits:
-            (json_['initialSplits'] as core.List?)
-                ?.map(
-                  (value) => Split.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        table:
-            json_.containsKey('table')
-                ? Table.fromJson(
-                  json_['table'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        initialSplits: (json_['initialSplits'] as core.List?)
+            ?.map(
+              (value) =>
+                  Split.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        table: json_.containsKey('table')
+            ? Table.fromJson(
+                json_['table'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tableId: json_['tableId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (initialSplits != null) 'initialSplits': initialSplits!,
-    if (table != null) 'table': table!,
-    if (tableId != null) 'tableId': tableId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final initialSplits = this.initialSplits;
+    final table = this.table;
+    final tableId = this.tableId;
+    return {
+      'initialSplits': ?initialSplits,
+      'table': ?table,
+      'tableId': ?tableId,
+    };
+  }
 }
 
 /// Data Boost is a serverless compute capability that lets you run
@@ -5340,10 +5401,10 @@ class DataBoostIsolationReadOnly {
   DataBoostIsolationReadOnly.fromJson(core.Map json_)
     : this(computeBillingOwner: json_['computeBillingOwner'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (computeBillingOwner != null)
-      'computeBillingOwner': computeBillingOwner!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final computeBillingOwner = this.computeBillingOwner;
+    return {'computeBillingOwner': ?computeBillingOwner};
+  }
 }
 
 /// Checks that all writes before the consistency token was generated in the
@@ -5379,11 +5440,14 @@ class DropRowRangeRequest {
         rowKeyPrefix: json_['rowKeyPrefix'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deleteAllDataFromTable != null)
-      'deleteAllDataFromTable': deleteAllDataFromTable!,
-    if (rowKeyPrefix != null) 'rowKeyPrefix': rowKeyPrefix!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deleteAllDataFromTable = this.deleteAllDataFromTable;
+    final rowKeyPrefix = this.rowKeyPrefix;
+    return {
+      'deleteAllDataFromTable': ?deleteAllDataFromTable,
+      'rowKeyPrefix': ?rowKeyPrefix,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5413,9 +5477,10 @@ class EncryptionConfig {
   EncryptionConfig.fromJson(core.Map json_)
     : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKeyName = this.kmsKeyName;
+    return {'kmsKeyName': ?kmsKeyName};
+  }
 }
 
 /// Encryption information for a given resource.
@@ -5462,22 +5527,26 @@ class EncryptionInfo {
 
   EncryptionInfo.fromJson(core.Map json_)
     : this(
-        encryptionStatus:
-            json_.containsKey('encryptionStatus')
-                ? Status.fromJson(
-                  json_['encryptionStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encryptionStatus: json_.containsKey('encryptionStatus')
+            ? Status.fromJson(
+                json_['encryptionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         encryptionType: json_['encryptionType'] as core.String?,
         kmsKeyVersion: json_['kmsKeyVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
-    if (encryptionType != null) 'encryptionType': encryptionType!,
-    if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encryptionStatus = this.encryptionStatus;
+    final encryptionType = this.encryptionType;
+    final kmsKeyVersion = this.kmsKeyVersion;
+    return {
+      'encryptionStatus': ?encryptionStatus,
+      'encryptionType': ?encryptionType,
+      'kmsKeyVersion': ?kmsKeyVersion,
+    };
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -5521,28 +5590,32 @@ class GcRule {
 
   GcRule.fromJson(core.Map json_)
     : this(
-        intersection:
-            json_.containsKey('intersection')
-                ? Intersection.fromJson(
-                  json_['intersection'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        intersection: json_.containsKey('intersection')
+            ? Intersection.fromJson(
+                json_['intersection'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxAge: json_['maxAge'] as core.String?,
         maxNumVersions: json_['maxNumVersions'] as core.int?,
-        union:
-            json_.containsKey('union')
-                ? Union.fromJson(
-                  json_['union'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        union: json_.containsKey('union')
+            ? Union.fromJson(
+                json_['union'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (intersection != null) 'intersection': intersection!,
-    if (maxAge != null) 'maxAge': maxAge!,
-    if (maxNumVersions != null) 'maxNumVersions': maxNumVersions!,
-    if (union != null) 'union': union!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final intersection = this.intersection;
+    final maxAge = this.maxAge;
+    final maxNumVersions = this.maxNumVersions;
+    final union = this.union;
+    return {
+      'intersection': ?intersection,
+      'maxAge': ?maxAge,
+      'maxNumVersions': ?maxNumVersions,
+      'union': ?union,
+    };
+  }
 }
 
 /// Request message for
@@ -5560,9 +5633,10 @@ class GenerateConsistencyTokenResponse {
   GenerateConsistencyTokenResponse.fromJson(core.Map json_)
     : this(consistencyToken: json_['consistencyToken'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consistencyToken != null) 'consistencyToken': consistencyToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consistencyToken = this.consistencyToken;
+    return {'consistencyToken': ?consistencyToken};
+  }
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -5575,17 +5649,17 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        options:
-            json_.containsKey('options')
-                ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        options: json_.containsKey('options')
+            ? GetPolicyOptions.fromJson(
+                json_['options'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (options != null) 'options': options!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    return {'options': ?options};
+  }
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -5610,20 +5684,19 @@ class GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
 
   GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(core.Map json_)
     : this(
-        qualifierPrefixes:
-            (json_['qualifierPrefixes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        qualifiers:
-            (json_['qualifiers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        qualifierPrefixes: (json_['qualifierPrefixes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        qualifiers: (json_['qualifiers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (qualifierPrefixes != null) 'qualifierPrefixes': qualifierPrefixes!,
-    if (qualifiers != null) 'qualifiers': qualifiers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final qualifierPrefixes = this.qualifierPrefixes;
+    final qualifiers = this.qualifiers;
+    return {'qualifierPrefixes': ?qualifierPrefixes, 'qualifiers': ?qualifiers};
+  }
 }
 
 /// Defines a simple AuthorizedView that is a subset of the underlying Table.
@@ -5645,26 +5718,26 @@ class GoogleBigtableAdminV2AuthorizedViewSubsetView {
 
   GoogleBigtableAdminV2AuthorizedViewSubsetView.fromJson(core.Map json_)
     : this(
-        familySubsets: (json_['familySubsets']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        familySubsets:
+            (json_['familySubsets'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-        rowPrefixes:
-            (json_['rowPrefixes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        rowPrefixes: (json_['rowPrefixes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (familySubsets != null) 'familySubsets': familySubsets!,
-    if (rowPrefixes != null) 'rowPrefixes': rowPrefixes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final familySubsets = this.familySubsets;
+    final rowPrefixes = this.rowPrefixes;
+    return {'familySubsets': ?familySubsets, 'rowPrefixes': ?rowPrefixes};
+  }
 }
 
 /// The state of a materialized view's data in a particular cluster.
@@ -5688,9 +5761,10 @@ class GoogleBigtableAdminV2MaterializedViewClusterState {
   GoogleBigtableAdminV2MaterializedViewClusterState.fromJson(core.Map json_)
     : this(replicationState: json_['replicationState'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (replicationState != null) 'replicationState': replicationState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final replicationState = this.replicationState;
+    return {'replicationState': ?replicationState};
+  }
 }
 
 /// A value that combines incremental updates into a summarized value.
@@ -5735,53 +5809,55 @@ class GoogleBigtableAdminV2TypeAggregate {
 
   GoogleBigtableAdminV2TypeAggregate.fromJson(core.Map json_)
     : this(
-        hllppUniqueCount:
-            json_.containsKey('hllppUniqueCount')
-                ? GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount.fromJson(
-                  json_['hllppUniqueCount']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        inputType:
-            json_.containsKey('inputType')
-                ? Type.fromJson(
-                  json_['inputType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        max:
-            json_.containsKey('max')
-                ? GoogleBigtableAdminV2TypeAggregateMax.fromJson(
-                  json_['max'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        min:
-            json_.containsKey('min')
-                ? GoogleBigtableAdminV2TypeAggregateMin.fromJson(
-                  json_['min'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        stateType:
-            json_.containsKey('stateType')
-                ? Type.fromJson(
-                  json_['stateType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sum:
-            json_.containsKey('sum')
-                ? GoogleBigtableAdminV2TypeAggregateSum.fromJson(
-                  json_['sum'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        hllppUniqueCount: json_.containsKey('hllppUniqueCount')
+            ? GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount.fromJson(
+                json_['hllppUniqueCount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inputType: json_.containsKey('inputType')
+            ? Type.fromJson(
+                json_['inputType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        max: json_.containsKey('max')
+            ? GoogleBigtableAdminV2TypeAggregateMax.fromJson(
+                json_['max'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        min: json_.containsKey('min')
+            ? GoogleBigtableAdminV2TypeAggregateMin.fromJson(
+                json_['min'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stateType: json_.containsKey('stateType')
+            ? Type.fromJson(
+                json_['stateType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sum: json_.containsKey('sum')
+            ? GoogleBigtableAdminV2TypeAggregateSum.fromJson(
+                json_['sum'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hllppUniqueCount != null) 'hllppUniqueCount': hllppUniqueCount!,
-    if (inputType != null) 'inputType': inputType!,
-    if (max != null) 'max': max!,
-    if (min != null) 'min': min!,
-    if (stateType != null) 'stateType': stateType!,
-    if (sum != null) 'sum': sum!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hllppUniqueCount = this.hllppUniqueCount;
+    final inputType = this.inputType;
+    final max = this.max;
+    final min = this.min;
+    final stateType = this.stateType;
+    final sum = this.sum;
+    return {
+      'hllppUniqueCount': ?hllppUniqueCount,
+      'inputType': ?inputType,
+      'max': ?max,
+      'min': ?min,
+      'stateType': ?stateType,
+      'sum': ?sum,
+    };
+  }
 }
 
 /// Computes an approximate unique count over the input values.
@@ -5821,17 +5897,17 @@ class GoogleBigtableAdminV2TypeArray {
 
   GoogleBigtableAdminV2TypeArray.fromJson(core.Map json_)
     : this(
-        elementType:
-            json_.containsKey('elementType')
-                ? Type.fromJson(
-                  json_['elementType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        elementType: json_.containsKey('elementType')
+            ? Type.fromJson(
+                json_['elementType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (elementType != null) 'elementType': elementType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final elementType = this.elementType;
+    return {'elementType': ?elementType};
+  }
 }
 
 /// bool Values of type `Bool` are stored in `Value.bool_value`.
@@ -5846,17 +5922,17 @@ class GoogleBigtableAdminV2TypeBytes {
 
   GoogleBigtableAdminV2TypeBytes.fromJson(core.Map json_)
     : this(
-        encoding:
-            json_.containsKey('encoding')
-                ? GoogleBigtableAdminV2TypeBytesEncoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encoding: json_.containsKey('encoding')
+            ? GoogleBigtableAdminV2TypeBytesEncoding.fromJson(
+                json_['encoding'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encoding != null) 'encoding': encoding!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encoding = this.encoding;
+    return {'encoding': ?encoding};
+  }
 }
 
 /// Rules used to convert to or from lower level types.
@@ -5868,17 +5944,17 @@ class GoogleBigtableAdminV2TypeBytesEncoding {
 
   GoogleBigtableAdminV2TypeBytesEncoding.fromJson(core.Map json_)
     : this(
-        raw:
-            json_.containsKey('raw')
-                ? GoogleBigtableAdminV2TypeBytesEncodingRaw.fromJson(
-                  json_['raw'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        raw: json_.containsKey('raw')
+            ? GoogleBigtableAdminV2TypeBytesEncodingRaw.fromJson(
+                json_['raw'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (raw != null) 'raw': raw!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final raw = this.raw;
+    return {'raw': ?raw};
+  }
 }
 
 /// Leaves the value as-is.
@@ -5897,9 +5973,10 @@ class GoogleBigtableAdminV2TypeBytesEncodingRaw {
   GoogleBigtableAdminV2TypeBytesEncodingRaw.fromJson(core.Map json_)
     : this(escapeNulls: json_['escapeNulls'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (escapeNulls != null) 'escapeNulls': escapeNulls!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final escapeNulls = this.escapeNulls;
+    return {'escapeNulls': ?escapeNulls};
+  }
 }
 
 /// Date Values of type `Date` are stored in `Value.date_value`.
@@ -5925,10 +6002,11 @@ class GoogleBigtableAdminV2TypeEnum {
         schemaBundleId: json_['schemaBundleId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enumName != null) 'enumName': enumName!,
-    if (schemaBundleId != null) 'schemaBundleId': schemaBundleId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enumName = this.enumName;
+    final schemaBundleId = this.schemaBundleId;
+    return {'enumName': ?enumName, 'schemaBundleId': ?schemaBundleId};
+  }
 }
 
 /// Float32 Values of type `Float32` are stored in `Value.float_value`.
@@ -5946,17 +6024,17 @@ class GoogleBigtableAdminV2TypeInt64 {
 
   GoogleBigtableAdminV2TypeInt64.fromJson(core.Map json_)
     : this(
-        encoding:
-            json_.containsKey('encoding')
-                ? GoogleBigtableAdminV2TypeInt64Encoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encoding: json_.containsKey('encoding')
+            ? GoogleBigtableAdminV2TypeInt64Encoding.fromJson(
+                json_['encoding'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encoding != null) 'encoding': encoding!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encoding = this.encoding;
+    return {'encoding': ?encoding};
+  }
 }
 
 /// Rules used to convert to or from lower level types.
@@ -5974,26 +6052,27 @@ class GoogleBigtableAdminV2TypeInt64Encoding {
 
   GoogleBigtableAdminV2TypeInt64Encoding.fromJson(core.Map json_)
     : this(
-        bigEndianBytes:
-            json_.containsKey('bigEndianBytes')
-                ? GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(
-                  json_['bigEndianBytes']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        orderedCodeBytes:
-            json_.containsKey('orderedCodeBytes')
-                ? GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes.fromJson(
-                  json_['orderedCodeBytes']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bigEndianBytes: json_.containsKey('bigEndianBytes')
+            ? GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(
+                json_['bigEndianBytes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        orderedCodeBytes: json_.containsKey('orderedCodeBytes')
+            ? GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes.fromJson(
+                json_['orderedCodeBytes']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bigEndianBytes != null) 'bigEndianBytes': bigEndianBytes!,
-    if (orderedCodeBytes != null) 'orderedCodeBytes': orderedCodeBytes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bigEndianBytes = this.bigEndianBytes;
+    final orderedCodeBytes = this.orderedCodeBytes;
+    return {
+      'bigEndianBytes': ?bigEndianBytes,
+      'orderedCodeBytes': ?orderedCodeBytes,
+    };
+  }
 }
 
 /// Encodes the value as an 8-byte big-endian two's complement value.
@@ -6012,17 +6091,17 @@ class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
 
   GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(core.Map json_)
     : this(
-        bytesType:
-            json_.containsKey('bytesType')
-                ? GoogleBigtableAdminV2TypeBytes.fromJson(
-                  json_['bytesType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bytesType: json_.containsKey('bytesType')
+            ? GoogleBigtableAdminV2TypeBytes.fromJson(
+                json_['bytesType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bytesType != null) 'bytesType': bytesType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bytesType = this.bytesType;
+    return {'bytesType': ?bytesType};
+  }
 }
 
 /// Encodes the value in a variable length binary format of up to 10 bytes.
@@ -6051,24 +6130,23 @@ class GoogleBigtableAdminV2TypeMap {
 
   GoogleBigtableAdminV2TypeMap.fromJson(core.Map json_)
     : this(
-        keyType:
-            json_.containsKey('keyType')
-                ? Type.fromJson(
-                  json_['keyType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        valueType:
-            json_.containsKey('valueType')
-                ? Type.fromJson(
-                  json_['valueType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        keyType: json_.containsKey('keyType')
+            ? Type.fromJson(
+                json_['keyType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valueType: json_.containsKey('valueType')
+            ? Type.fromJson(
+                json_['valueType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyType != null) 'keyType': keyType!,
-    if (valueType != null) 'valueType': valueType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyType = this.keyType;
+    final valueType = this.valueType;
+    return {'keyType': ?keyType, 'valueType': ?valueType};
+  }
 }
 
 /// A protobuf message type.
@@ -6091,10 +6169,11 @@ class GoogleBigtableAdminV2TypeProto {
         schemaBundleId: json_['schemaBundleId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (messageName != null) 'messageName': messageName!,
-    if (schemaBundleId != null) 'schemaBundleId': schemaBundleId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final messageName = this.messageName;
+    final schemaBundleId = this.schemaBundleId;
+    return {'messageName': ?messageName, 'schemaBundleId': ?schemaBundleId};
+  }
 }
 
 /// String Values of type `String` are stored in `Value.string_value`.
@@ -6106,17 +6185,17 @@ class GoogleBigtableAdminV2TypeString {
 
   GoogleBigtableAdminV2TypeString.fromJson(core.Map json_)
     : this(
-        encoding:
-            json_.containsKey('encoding')
-                ? GoogleBigtableAdminV2TypeStringEncoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encoding: json_.containsKey('encoding')
+            ? GoogleBigtableAdminV2TypeStringEncoding.fromJson(
+                json_['encoding'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encoding != null) 'encoding': encoding!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encoding = this.encoding;
+    return {'encoding': ?encoding};
+  }
 }
 
 /// Rules used to convert to or from lower level types.
@@ -6134,24 +6213,23 @@ class GoogleBigtableAdminV2TypeStringEncoding {
 
   GoogleBigtableAdminV2TypeStringEncoding.fromJson(core.Map json_)
     : this(
-        utf8Bytes:
-            json_.containsKey('utf8Bytes')
-                ? GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes.fromJson(
-                  json_['utf8Bytes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        utf8Raw:
-            json_.containsKey('utf8Raw')
-                ? GoogleBigtableAdminV2TypeStringEncodingUtf8Raw.fromJson(
-                  json_['utf8Raw'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        utf8Bytes: json_.containsKey('utf8Bytes')
+            ? GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes.fromJson(
+                json_['utf8Bytes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        utf8Raw: json_.containsKey('utf8Raw')
+            ? GoogleBigtableAdminV2TypeStringEncodingUtf8Raw.fromJson(
+                json_['utf8Raw'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (utf8Bytes != null) 'utf8Bytes': utf8Bytes!,
-    if (utf8Raw != null) 'utf8Raw': utf8Raw!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final utf8Bytes = this.utf8Bytes;
+    final utf8Raw = this.utf8Raw;
+    return {'utf8Bytes': ?utf8Bytes, 'utf8Raw': ?utf8Raw};
+  }
 }
 
 /// UTF-8 encoding.
@@ -6175,9 +6253,10 @@ class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
   GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes.fromJson(core.Map json_)
     : this(nullEscapeChar: json_['nullEscapeChar'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nullEscapeChar != null) 'nullEscapeChar': nullEscapeChar!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nullEscapeChar = this.nullEscapeChar;
+    return {'nullEscapeChar': ?nullEscapeChar};
+  }
 }
 
 /// Deprecated: prefer the equivalent `Utf8Bytes`.
@@ -6199,26 +6278,25 @@ class GoogleBigtableAdminV2TypeStruct {
 
   GoogleBigtableAdminV2TypeStruct.fromJson(core.Map json_)
     : this(
-        encoding:
-            json_.containsKey('encoding')
-                ? GoogleBigtableAdminV2TypeStructEncoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        fields:
-            (json_['fields'] as core.List?)
-                ?.map(
-                  (value) => GoogleBigtableAdminV2TypeStructField.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        encoding: json_.containsKey('encoding')
+            ? GoogleBigtableAdminV2TypeStructEncoding.fromJson(
+                json_['encoding'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fields: (json_['fields'] as core.List?)
+            ?.map(
+              (value) => GoogleBigtableAdminV2TypeStructField.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encoding != null) 'encoding': encoding!,
-    if (fields != null) 'fields': fields!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encoding = this.encoding;
+    final fields = this.fields;
+    return {'encoding': ?encoding, 'fields': ?fields};
+  }
 }
 
 /// Rules used to convert to or from lower level types.
@@ -6240,33 +6318,34 @@ class GoogleBigtableAdminV2TypeStructEncoding {
 
   GoogleBigtableAdminV2TypeStructEncoding.fromJson(core.Map json_)
     : this(
-        delimitedBytes:
-            json_.containsKey('delimitedBytes')
-                ? GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes.fromJson(
-                  json_['delimitedBytes']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        orderedCodeBytes:
-            json_.containsKey('orderedCodeBytes')
-                ? GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes.fromJson(
-                  json_['orderedCodeBytes']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        singleton:
-            json_.containsKey('singleton')
-                ? GoogleBigtableAdminV2TypeStructEncodingSingleton.fromJson(
-                  json_['singleton'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        delimitedBytes: json_.containsKey('delimitedBytes')
+            ? GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes.fromJson(
+                json_['delimitedBytes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        orderedCodeBytes: json_.containsKey('orderedCodeBytes')
+            ? GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes.fromJson(
+                json_['orderedCodeBytes']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        singleton: json_.containsKey('singleton')
+            ? GoogleBigtableAdminV2TypeStructEncodingSingleton.fromJson(
+                json_['singleton'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delimitedBytes != null) 'delimitedBytes': delimitedBytes!,
-    if (orderedCodeBytes != null) 'orderedCodeBytes': orderedCodeBytes!,
-    if (singleton != null) 'singleton': singleton!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delimitedBytes = this.delimitedBytes;
+    final orderedCodeBytes = this.orderedCodeBytes;
+    final singleton = this.singleton;
+    return {
+      'delimitedBytes': ?delimitedBytes,
+      'orderedCodeBytes': ?orderedCodeBytes,
+      'singleton': ?singleton,
+    };
+  }
 }
 
 /// Fields are encoded independently and concatenated with a configurable
@@ -6298,9 +6377,10 @@ class GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes {
   GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes.fromJson(core.Map json_)
     : this(delimiter: json_['delimiter'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delimiter != null) 'delimiter': delimiter!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delimiter = this.delimiter;
+    return {'delimiter': ?delimiter};
+  }
 }
 
 /// Fields are encoded independently, then escaped and delimited by appling the
@@ -6355,18 +6435,18 @@ class GoogleBigtableAdminV2TypeStructField {
   GoogleBigtableAdminV2TypeStructField.fromJson(core.Map json_)
     : this(
         fieldName: json_['fieldName'] as core.String?,
-        type:
-            json_.containsKey('type')
-                ? Type.fromJson(
-                  json_['type'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        type: json_.containsKey('type')
+            ? Type.fromJson(
+                json_['type'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldName != null) 'fieldName': fieldName!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldName = this.fieldName;
+    final type = this.type;
+    return {'fieldName': ?fieldName, 'type': ?type};
+  }
 }
 
 /// Timestamp Values of type `Timestamp` are stored in `Value.timestamp_value`.
@@ -6378,17 +6458,17 @@ class GoogleBigtableAdminV2TypeTimestamp {
 
   GoogleBigtableAdminV2TypeTimestamp.fromJson(core.Map json_)
     : this(
-        encoding:
-            json_.containsKey('encoding')
-                ? GoogleBigtableAdminV2TypeTimestampEncoding.fromJson(
-                  json_['encoding'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        encoding: json_.containsKey('encoding')
+            ? GoogleBigtableAdminV2TypeTimestampEncoding.fromJson(
+                json_['encoding'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encoding != null) 'encoding': encoding!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encoding = this.encoding;
+    return {'encoding': ?encoding};
+  }
 }
 
 /// Rules used to convert to or from lower level types.
@@ -6404,18 +6484,17 @@ class GoogleBigtableAdminV2TypeTimestampEncoding {
 
   GoogleBigtableAdminV2TypeTimestampEncoding.fromJson(core.Map json_)
     : this(
-        unixMicrosInt64:
-            json_.containsKey('unixMicrosInt64')
-                ? GoogleBigtableAdminV2TypeInt64Encoding.fromJson(
-                  json_['unixMicrosInt64']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        unixMicrosInt64: json_.containsKey('unixMicrosInt64')
+            ? GoogleBigtableAdminV2TypeInt64Encoding.fromJson(
+                json_['unixMicrosInt64'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (unixMicrosInt64 != null) 'unixMicrosInt64': unixMicrosInt64!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final unixMicrosInt64 = this.unixMicrosInt64;
+    return {'unixMicrosInt64': ?unixMicrosInt64};
+  }
 }
 
 /// A tablet is a defined by a start and end key and is explained in
@@ -6478,23 +6557,31 @@ class HotTablet {
         endKey: json_['endKey'] as core.String?,
         endTime: json_['endTime'] as core.String?,
         name: json_['name'] as core.String?,
-        nodeCpuUsagePercent:
-            (json_['nodeCpuUsagePercent'] as core.num?)?.toDouble(),
+        nodeCpuUsagePercent: (json_['nodeCpuUsagePercent'] as core.num?)
+            ?.toDouble(),
         startKey: json_['startKey'] as core.String?,
         startTime: json_['startTime'] as core.String?,
         tableName: json_['tableName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endKey != null) 'endKey': endKey!,
-    if (endTime != null) 'endTime': endTime!,
-    if (name != null) 'name': name!,
-    if (nodeCpuUsagePercent != null)
-      'nodeCpuUsagePercent': nodeCpuUsagePercent!,
-    if (startKey != null) 'startKey': startKey!,
-    if (startTime != null) 'startTime': startTime!,
-    if (tableName != null) 'tableName': tableName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endKey = this.endKey;
+    final endTime = this.endTime;
+    final name = this.name;
+    final nodeCpuUsagePercent = this.nodeCpuUsagePercent;
+    final startKey = this.startKey;
+    final startTime = this.startTime;
+    final tableName = this.tableName;
+    return {
+      'endKey': ?endKey,
+      'endTime': ?endTime,
+      'name': ?name,
+      'nodeCpuUsagePercent': ?nodeCpuUsagePercent,
+      'startKey': ?startKey,
+      'startTime': ?startTime,
+      'tableName': ?tableName,
+    };
+  }
 }
 
 /// A collection of Bigtable Tables and the resources that serve them.
@@ -6609,17 +6696,28 @@ class Instance {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (state != null) 'state': state!,
-    if (tags != null) 'tags': tags!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final name = this.name;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
+    final state = this.state;
+    final tags = this.tags;
+    final type = this.type;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
+      'state': ?state,
+      'tags': ?tags,
+      'type': ?type,
+    };
+  }
 }
 
 /// A GcRule which deletes cells matching all of the given rules.
@@ -6631,19 +6729,18 @@ class Intersection {
 
   Intersection.fromJson(core.Map json_)
     : this(
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => GcRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) =>
+                  GcRule.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rules != null) 'rules': rules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rules = this.rules;
+    return {'rules': ?rules};
+  }
 }
 
 /// Response message for BigtableInstanceAdmin.ListAppProfiles.
@@ -6672,26 +6769,29 @@ class ListAppProfilesResponse {
 
   ListAppProfilesResponse.fromJson(core.Map json_)
     : this(
-        appProfiles:
-            (json_['appProfiles'] as core.List?)
-                ?.map(
-                  (value) => AppProfile.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        failedLocations:
-            (json_['failedLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        appProfiles: (json_['appProfiles'] as core.List?)
+            ?.map(
+              (value) => AppProfile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        failedLocations: (json_['failedLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appProfiles != null) 'appProfiles': appProfiles!,
-    if (failedLocations != null) 'failedLocations': failedLocations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appProfiles = this.appProfiles;
+    final failedLocations = this.failedLocations;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'appProfiles': ?appProfiles,
+      'failedLocations': ?failedLocations,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response message for
@@ -6710,21 +6810,24 @@ class ListAuthorizedViewsResponse {
 
   ListAuthorizedViewsResponse.fromJson(core.Map json_)
     : this(
-        authorizedViews:
-            (json_['authorizedViews'] as core.List?)
-                ?.map(
-                  (value) => AuthorizedView.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        authorizedViews: (json_['authorizedViews'] as core.List?)
+            ?.map(
+              (value) => AuthorizedView.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authorizedViews != null) 'authorizedViews': authorizedViews!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizedViews = this.authorizedViews;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'authorizedViews': ?authorizedViews,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// The response for ListBackups.
@@ -6740,21 +6843,20 @@ class ListBackupsResponse {
 
   ListBackupsResponse.fromJson(core.Map json_)
     : this(
-        backups:
-            (json_['backups'] as core.List?)
-                ?.map(
-                  (value) => Backup.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        backups: (json_['backups'] as core.List?)
+            ?.map(
+              (value) =>
+                  Backup.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backups != null) 'backups': backups!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backups = this.backups;
+    final nextPageToken = this.nextPageToken;
+    return {'backups': ?backups, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for BigtableInstanceAdmin.ListClusters.
@@ -6784,26 +6886,29 @@ class ListClustersResponse {
 
   ListClustersResponse.fromJson(core.Map json_)
     : this(
-        clusters:
-            (json_['clusters'] as core.List?)
-                ?.map(
-                  (value) => Cluster.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        failedLocations:
-            (json_['failedLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        clusters: (json_['clusters'] as core.List?)
+            ?.map(
+              (value) => Cluster.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        failedLocations: (json_['failedLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusters != null) 'clusters': clusters!,
-    if (failedLocations != null) 'failedLocations': failedLocations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusters = this.clusters;
+    final failedLocations = this.failedLocations;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'clusters': ?clusters,
+      'failedLocations': ?failedLocations,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response message for BigtableInstanceAdmin.ListHotTablets.
@@ -6827,21 +6932,21 @@ class ListHotTabletsResponse {
 
   ListHotTabletsResponse.fromJson(core.Map json_)
     : this(
-        hotTablets:
-            (json_['hotTablets'] as core.List?)
-                ?.map(
-                  (value) => HotTablet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        hotTablets: (json_['hotTablets'] as core.List?)
+            ?.map(
+              (value) => HotTablet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hotTablets != null) 'hotTablets': hotTablets!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hotTablets = this.hotTablets;
+    final nextPageToken = this.nextPageToken;
+    return {'hotTablets': ?hotTablets, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for BigtableInstanceAdmin.ListInstances.
@@ -6872,26 +6977,29 @@ class ListInstancesResponse {
 
   ListInstancesResponse.fromJson(core.Map json_)
     : this(
-        failedLocations:
-            (json_['failedLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        instances:
-            (json_['instances'] as core.List?)
-                ?.map(
-                  (value) => Instance.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        failedLocations: (json_['failedLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        instances: (json_['instances'] as core.List?)
+            ?.map(
+              (value) => Instance.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failedLocations != null) 'failedLocations': failedLocations!,
-    if (instances != null) 'instances': instances!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failedLocations = this.failedLocations;
+    final instances = this.instances;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'failedLocations': ?failedLocations,
+      'instances': ?instances,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -6906,21 +7014,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for BigtableInstanceAdmin.ListLogicalViews.
@@ -6937,21 +7045,21 @@ class ListLogicalViewsResponse {
 
   ListLogicalViewsResponse.fromJson(core.Map json_)
     : this(
-        logicalViews:
-            (json_['logicalViews'] as core.List?)
-                ?.map(
-                  (value) => LogicalView.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        logicalViews: (json_['logicalViews'] as core.List?)
+            ?.map(
+              (value) => LogicalView.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (logicalViews != null) 'logicalViews': logicalViews!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final logicalViews = this.logicalViews;
+    final nextPageToken = this.nextPageToken;
+    return {'logicalViews': ?logicalViews, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for BigtableInstanceAdmin.ListMaterializedViews.
@@ -6968,21 +7076,24 @@ class ListMaterializedViewsResponse {
 
   ListMaterializedViewsResponse.fromJson(core.Map json_)
     : this(
-        materializedViews:
-            (json_['materializedViews'] as core.List?)
-                ?.map(
-                  (value) => MaterializedView.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        materializedViews: (json_['materializedViews'] as core.List?)
+            ?.map(
+              (value) => MaterializedView.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (materializedViews != null) 'materializedViews': materializedViews!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final materializedViews = this.materializedViews;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'materializedViews': ?materializedViews,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -7010,25 +7121,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response for ListSchemaBundles.
@@ -7046,20 +7160,20 @@ class ListSchemaBundlesResponse {
   ListSchemaBundlesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        schemaBundles:
-            (json_['schemaBundles'] as core.List?)
-                ?.map(
-                  (value) => SchemaBundle.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        schemaBundles: (json_['schemaBundles'] as core.List?)
+            ?.map(
+              (value) => SchemaBundle.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (schemaBundles != null) 'schemaBundles': schemaBundles!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final schemaBundles = this.schemaBundles;
+    return {'nextPageToken': ?nextPageToken, 'schemaBundles': ?schemaBundles};
+  }
 }
 
 /// Response message for google.bigtable.admin.v2.BigtableTableAdmin.ListTables
@@ -7078,20 +7192,19 @@ class ListTablesResponse {
   ListTablesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tables:
-            (json_['tables'] as core.List?)
-                ?.map(
-                  (value) => Table.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tables: (json_['tables'] as core.List?)
+            ?.map(
+              (value) =>
+                  Table.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tables != null) 'tables': tables!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tables = this.tables;
+    return {'nextPageToken': ?nextPageToken, 'tables': ?tables};
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -7134,12 +7247,18 @@ class LogicalView {
         query: json_['query'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deletionProtection != null) 'deletionProtection': deletionProtection!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (query != null) 'query': query!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deletionProtection = this.deletionProtection;
+    final etag = this.etag;
+    final name = this.name;
+    final query = this.query;
+    return {
+      'deletionProtection': ?deletionProtection,
+      'etag': ?etag,
+      'name': ?name,
+      'query': ?query,
+    };
+  }
 }
 
 /// A materialized view object that can be referenced in SQL queries.
@@ -7193,29 +7312,36 @@ class MaterializedView {
 
   MaterializedView.fromJson(core.Map json_)
     : this(
-        clusterStates: (json_['clusterStates']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleBigtableAdminV2MaterializedViewClusterState.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        clusterStates:
+            (json_['clusterStates'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleBigtableAdminV2MaterializedViewClusterState.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
         deletionProtection: json_['deletionProtection'] as core.bool?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
         query: json_['query'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterStates != null) 'clusterStates': clusterStates!,
-    if (deletionProtection != null) 'deletionProtection': deletionProtection!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (query != null) 'query': query!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusterStates = this.clusterStates;
+    final deletionProtection = this.deletionProtection;
+    final etag = this.etag;
+    final name = this.name;
+    final query = this.query;
+    return {
+      'clusterStates': ?clusterStates,
+      'deletionProtection': ?deletionProtection,
+      'etag': ?etag,
+      'name': ?name,
+      'query': ?query,
+    };
+  }
 }
 
 /// A create, update, or delete of a particular column family.
@@ -7248,30 +7374,35 @@ class Modification {
 
   Modification.fromJson(core.Map json_)
     : this(
-        create:
-            json_.containsKey('create')
-                ? ColumnFamily.fromJson(
-                  json_['create'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        create: json_.containsKey('create')
+            ? ColumnFamily.fromJson(
+                json_['create'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         drop: json_['drop'] as core.bool?,
         id: json_['id'] as core.String?,
-        update:
-            json_.containsKey('update')
-                ? ColumnFamily.fromJson(
-                  json_['update'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        update: json_.containsKey('update')
+            ? ColumnFamily.fromJson(
+                json_['update'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (create != null) 'create': create!,
-    if (drop != null) 'drop': drop!,
-    if (id != null) 'id': id!,
-    if (update != null) 'update': update!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final create = this.create;
+    final drop = this.drop;
+    final id = this.id;
+    final update = this.update;
+    final updateMask = this.updateMask;
+    return {
+      'create': ?create,
+      'drop': ?drop,
+      'id': ?id,
+      'update': ?update,
+      'updateMask': ?updateMask,
+    };
+  }
 }
 
 /// Request message for
@@ -7296,20 +7427,20 @@ class ModifyColumnFamiliesRequest {
   ModifyColumnFamiliesRequest.fromJson(core.Map json_)
     : this(
         ignoreWarnings: json_['ignoreWarnings'] as core.bool?,
-        modifications:
-            (json_['modifications'] as core.List?)
-                ?.map(
-                  (value) => Modification.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        modifications: (json_['modifications'] as core.List?)
+            ?.map(
+              (value) => Modification.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ignoreWarnings != null) 'ignoreWarnings': ignoreWarnings!,
-    if (modifications != null) 'modifications': modifications!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ignoreWarnings = this.ignoreWarnings;
+    final modifications = this.modifications;
+    return {'ignoreWarnings': ?ignoreWarnings, 'modifications': ?modifications};
+  }
 }
 
 /// Read/write requests are routed to the nearest cluster in the instance, and
@@ -7334,22 +7465,21 @@ class MultiClusterRoutingUseAny {
 
   MultiClusterRoutingUseAny.fromJson(core.Map json_)
     : this(
-        clusterIds:
-            (json_['clusterIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        rowAffinity:
-            json_.containsKey('rowAffinity')
-                ? RowAffinity.fromJson(
-                  json_['rowAffinity'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        clusterIds: (json_['clusterIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        rowAffinity: json_.containsKey('rowAffinity')
+            ? RowAffinity.fromJson(
+                json_['rowAffinity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterIds != null) 'clusterIds': clusterIds!,
-    if (rowAffinity != null) 'rowAffinity': rowAffinity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusterIds = this.clusterIds;
+    final rowAffinity = this.rowAffinity;
+    return {'clusterIds': ?clusterIds, 'rowAffinity': ?rowAffinity};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -7400,30 +7530,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -7518,32 +7652,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// Represents a protobuf schema.
@@ -7577,9 +7715,10 @@ class ProtoSchema {
   ProtoSchema.fromJson(core.Map json_)
     : this(protoDescriptors: json_['protoDescriptors'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final protoDescriptors = this.protoDescriptors;
+    return {'protoDescriptors': ?protoDescriptors};
+  }
 }
 
 /// Information about a table restore.
@@ -7599,19 +7738,19 @@ class RestoreInfo {
 
   RestoreInfo.fromJson(core.Map json_)
     : this(
-        backupInfo:
-            json_.containsKey('backupInfo')
-                ? BackupInfo.fromJson(
-                  json_['backupInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        backupInfo: json_.containsKey('backupInfo')
+            ? BackupInfo.fromJson(
+                json_['backupInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sourceType: json_['sourceType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupInfo != null) 'backupInfo': backupInfo!,
-    if (sourceType != null) 'sourceType': sourceType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupInfo = this.backupInfo;
+    final sourceType = this.sourceType;
+    return {'backupInfo': ?backupInfo, 'sourceType': ?sourceType};
+  }
 }
 
 /// The request for RestoreTable.
@@ -7637,10 +7776,11 @@ class RestoreTableRequest {
         tableId: json_['tableId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backup != null) 'backup': backup!,
-    if (tableId != null) 'tableId': tableId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final backup = this.backup;
+    final tableId = this.tableId;
+    return {'backup': ?backup, 'tableId': ?tableId};
+  }
 }
 
 /// If enabled, Bigtable will route the request based on the row key of the
@@ -7681,19 +7821,19 @@ class SchemaBundle {
     : this(
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
-        protoSchema:
-            json_.containsKey('protoSchema')
-                ? ProtoSchema.fromJson(
-                  json_['protoSchema'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        protoSchema: json_.containsKey('protoSchema')
+            ? ProtoSchema.fromJson(
+                json_['protoSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (protoSchema != null) 'protoSchema': protoSchema!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final name = this.name;
+    final protoSchema = this.protoSchema;
+    return {'etag': ?etag, 'name': ?name, 'protoSchema': ?protoSchema};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -7715,19 +7855,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// Unconditionally routes all read/write requests to a specific cluster.
@@ -7754,11 +7894,14 @@ class SingleClusterRouting {
         clusterId: json_['clusterId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowTransactionalWrites != null)
-      'allowTransactionalWrites': allowTransactionalWrites!,
-    if (clusterId != null) 'clusterId': clusterId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowTransactionalWrites = this.allowTransactionalWrites;
+    final clusterId = this.clusterId;
+    return {
+      'allowTransactionalWrites': ?allowTransactionalWrites,
+      'clusterId': ?clusterId,
+    };
+  }
 }
 
 /// An initial split point for a newly created table.
@@ -7778,9 +7921,10 @@ class Split {
 
   Split.fromJson(core.Map json_) : this(key: json_['key'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    return {'key': ?key};
+  }
 }
 
 /// Standard options for isolating this app profile's traffic from other use
@@ -7800,9 +7944,10 @@ class StandardIsolation {
   StandardIsolation.fromJson(core.Map json_)
     : this(priority: json_['priority'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (priority != null) 'priority': priority!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final priority = this.priority;
+    return {'priority': ?priority};
+  }
 }
 
 /// Checks that all writes before the consistency token was generated are
@@ -7955,85 +8100,90 @@ class Table {
 
   Table.fromJson(core.Map json_)
     : this(
-        automatedBackupPolicy:
-            json_.containsKey('automatedBackupPolicy')
-                ? AutomatedBackupPolicy.fromJson(
-                  json_['automatedBackupPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        changeStreamConfig:
-            json_.containsKey('changeStreamConfig')
-                ? ChangeStreamConfig.fromJson(
-                  json_['changeStreamConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        clusterStates: (json_['clusterStates']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                ClusterState.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        automatedBackupPolicy: json_.containsKey('automatedBackupPolicy')
+            ? AutomatedBackupPolicy.fromJson(
+                json_['automatedBackupPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        changeStreamConfig: json_.containsKey('changeStreamConfig')
+            ? ChangeStreamConfig.fromJson(
+                json_['changeStreamConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        clusterStates:
+            (json_['clusterStates'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ClusterState.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-        columnFamilies: (json_['columnFamilies']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                ColumnFamily.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        columnFamilies:
+            (json_['columnFamilies'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ColumnFamily.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
         deletionProtection: json_['deletionProtection'] as core.bool?,
         granularity: json_['granularity'] as core.String?,
         name: json_['name'] as core.String?,
-        restoreInfo:
-            json_.containsKey('restoreInfo')
-                ? RestoreInfo.fromJson(
-                  json_['restoreInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rowKeySchema:
-            json_.containsKey('rowKeySchema')
-                ? GoogleBigtableAdminV2TypeStruct.fromJson(
-                  json_['rowKeySchema'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        stats:
-            json_.containsKey('stats')
-                ? TableStats.fromJson(
-                  json_['stats'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        tieredStorageConfig:
-            json_.containsKey('tieredStorageConfig')
-                ? TieredStorageConfig.fromJson(
-                  json_['tieredStorageConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        restoreInfo: json_.containsKey('restoreInfo')
+            ? RestoreInfo.fromJson(
+                json_['restoreInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rowKeySchema: json_.containsKey('rowKeySchema')
+            ? GoogleBigtableAdminV2TypeStruct.fromJson(
+                json_['rowKeySchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stats: json_.containsKey('stats')
+            ? TableStats.fromJson(
+                json_['stats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tieredStorageConfig: json_.containsKey('tieredStorageConfig')
+            ? TieredStorageConfig.fromJson(
+                json_['tieredStorageConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (automatedBackupPolicy != null)
-      'automatedBackupPolicy': automatedBackupPolicy!,
-    if (changeStreamConfig != null) 'changeStreamConfig': changeStreamConfig!,
-    if (clusterStates != null) 'clusterStates': clusterStates!,
-    if (columnFamilies != null) 'columnFamilies': columnFamilies!,
-    if (deletionProtection != null) 'deletionProtection': deletionProtection!,
-    if (granularity != null) 'granularity': granularity!,
-    if (name != null) 'name': name!,
-    if (restoreInfo != null) 'restoreInfo': restoreInfo!,
-    if (rowKeySchema != null) 'rowKeySchema': rowKeySchema!,
-    if (stats != null) 'stats': stats!,
-    if (tieredStorageConfig != null)
-      'tieredStorageConfig': tieredStorageConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final automatedBackupPolicy = this.automatedBackupPolicy;
+    final changeStreamConfig = this.changeStreamConfig;
+    final clusterStates = this.clusterStates;
+    final columnFamilies = this.columnFamilies;
+    final deletionProtection = this.deletionProtection;
+    final granularity = this.granularity;
+    final name = this.name;
+    final restoreInfo = this.restoreInfo;
+    final rowKeySchema = this.rowKeySchema;
+    final stats = this.stats;
+    final tieredStorageConfig = this.tieredStorageConfig;
+    return {
+      'automatedBackupPolicy': ?automatedBackupPolicy,
+      'changeStreamConfig': ?changeStreamConfig,
+      'clusterStates': ?clusterStates,
+      'columnFamilies': ?columnFamilies,
+      'deletionProtection': ?deletionProtection,
+      'granularity': ?granularity,
+      'name': ?name,
+      'restoreInfo': ?restoreInfo,
+      'rowKeySchema': ?rowKeySchema,
+      'stats': ?stats,
+      'tieredStorageConfig': ?tieredStorageConfig,
+    };
+  }
 }
 
 /// Approximate statistics related to a table.
@@ -8078,22 +8228,26 @@ class TableStats {
 
   TableStats.fromJson(core.Map json_)
     : this(
-        averageCellsPerColumn:
-            (json_['averageCellsPerColumn'] as core.num?)?.toDouble(),
-        averageColumnsPerRow:
-            (json_['averageColumnsPerRow'] as core.num?)?.toDouble(),
+        averageCellsPerColumn: (json_['averageCellsPerColumn'] as core.num?)
+            ?.toDouble(),
+        averageColumnsPerRow: (json_['averageColumnsPerRow'] as core.num?)
+            ?.toDouble(),
         logicalDataBytes: json_['logicalDataBytes'] as core.String?,
         rowCount: json_['rowCount'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (averageCellsPerColumn != null)
-      'averageCellsPerColumn': averageCellsPerColumn!,
-    if (averageColumnsPerRow != null)
-      'averageColumnsPerRow': averageColumnsPerRow!,
-    if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
-    if (rowCount != null) 'rowCount': rowCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final averageCellsPerColumn = this.averageCellsPerColumn;
+    final averageColumnsPerRow = this.averageColumnsPerRow;
+    final logicalDataBytes = this.logicalDataBytes;
+    final rowCount = this.rowCount;
+    return {
+      'averageCellsPerColumn': ?averageCellsPerColumn,
+      'averageColumnsPerRow': ?averageColumnsPerRow,
+      'logicalDataBytes': ?logicalDataBytes,
+      'rowCount': ?rowCount,
+    };
+  }
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -8117,18 +8271,18 @@ class TieredStorageConfig {
 
   TieredStorageConfig.fromJson(core.Map json_)
     : this(
-        infrequentAccess:
-            json_.containsKey('infrequentAccess')
-                ? TieredStorageRule.fromJson(
-                  json_['infrequentAccess']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        infrequentAccess: json_.containsKey('infrequentAccess')
+            ? TieredStorageRule.fromJson(
+                json_['infrequentAccess']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (infrequentAccess != null) 'infrequentAccess': infrequentAccess!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final infrequentAccess = this.infrequentAccess;
+    return {'infrequentAccess': ?infrequentAccess};
+  }
 }
 
 /// Rule to specify what data is stored in a storage tier.
@@ -8143,9 +8297,10 @@ class TieredStorageRule {
   TieredStorageRule.fromJson(core.Map json_)
     : this(includeIfOlderThan: json_['includeIfOlderThan'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includeIfOlderThan != null) 'includeIfOlderThan': includeIfOlderThan!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final includeIfOlderThan = this.includeIfOlderThan;
+    return {'includeIfOlderThan': ?includeIfOlderThan};
+  }
 }
 
 /// `Type` represents the type of data that is written to, read from, or stored
@@ -8228,108 +8383,110 @@ class Type {
 
   Type.fromJson(core.Map json_)
     : this(
-        aggregateType:
-            json_.containsKey('aggregateType')
-                ? GoogleBigtableAdminV2TypeAggregate.fromJson(
-                  json_['aggregateType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        arrayType:
-            json_.containsKey('arrayType')
-                ? GoogleBigtableAdminV2TypeArray.fromJson(
-                  json_['arrayType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        boolType:
-            json_.containsKey('boolType')
-                ? GoogleBigtableAdminV2TypeBool.fromJson(
-                  json_['boolType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        bytesType:
-            json_.containsKey('bytesType')
-                ? GoogleBigtableAdminV2TypeBytes.fromJson(
-                  json_['bytesType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dateType:
-            json_.containsKey('dateType')
-                ? GoogleBigtableAdminV2TypeDate.fromJson(
-                  json_['dateType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        enumType:
-            json_.containsKey('enumType')
-                ? GoogleBigtableAdminV2TypeEnum.fromJson(
-                  json_['enumType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        float32Type:
-            json_.containsKey('float32Type')
-                ? GoogleBigtableAdminV2TypeFloat32.fromJson(
-                  json_['float32Type'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        float64Type:
-            json_.containsKey('float64Type')
-                ? GoogleBigtableAdminV2TypeFloat64.fromJson(
-                  json_['float64Type'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        int64Type:
-            json_.containsKey('int64Type')
-                ? GoogleBigtableAdminV2TypeInt64.fromJson(
-                  json_['int64Type'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        mapType:
-            json_.containsKey('mapType')
-                ? GoogleBigtableAdminV2TypeMap.fromJson(
-                  json_['mapType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        protoType:
-            json_.containsKey('protoType')
-                ? GoogleBigtableAdminV2TypeProto.fromJson(
-                  json_['protoType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        stringType:
-            json_.containsKey('stringType')
-                ? GoogleBigtableAdminV2TypeString.fromJson(
-                  json_['stringType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        structType:
-            json_.containsKey('structType')
-                ? GoogleBigtableAdminV2TypeStruct.fromJson(
-                  json_['structType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        timestampType:
-            json_.containsKey('timestampType')
-                ? GoogleBigtableAdminV2TypeTimestamp.fromJson(
-                  json_['timestampType'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        aggregateType: json_.containsKey('aggregateType')
+            ? GoogleBigtableAdminV2TypeAggregate.fromJson(
+                json_['aggregateType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        arrayType: json_.containsKey('arrayType')
+            ? GoogleBigtableAdminV2TypeArray.fromJson(
+                json_['arrayType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        boolType: json_.containsKey('boolType')
+            ? GoogleBigtableAdminV2TypeBool.fromJson(
+                json_['boolType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bytesType: json_.containsKey('bytesType')
+            ? GoogleBigtableAdminV2TypeBytes.fromJson(
+                json_['bytesType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dateType: json_.containsKey('dateType')
+            ? GoogleBigtableAdminV2TypeDate.fromJson(
+                json_['dateType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        enumType: json_.containsKey('enumType')
+            ? GoogleBigtableAdminV2TypeEnum.fromJson(
+                json_['enumType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        float32Type: json_.containsKey('float32Type')
+            ? GoogleBigtableAdminV2TypeFloat32.fromJson(
+                json_['float32Type'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        float64Type: json_.containsKey('float64Type')
+            ? GoogleBigtableAdminV2TypeFloat64.fromJson(
+                json_['float64Type'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        int64Type: json_.containsKey('int64Type')
+            ? GoogleBigtableAdminV2TypeInt64.fromJson(
+                json_['int64Type'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mapType: json_.containsKey('mapType')
+            ? GoogleBigtableAdminV2TypeMap.fromJson(
+                json_['mapType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        protoType: json_.containsKey('protoType')
+            ? GoogleBigtableAdminV2TypeProto.fromJson(
+                json_['protoType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stringType: json_.containsKey('stringType')
+            ? GoogleBigtableAdminV2TypeString.fromJson(
+                json_['stringType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        structType: json_.containsKey('structType')
+            ? GoogleBigtableAdminV2TypeStruct.fromJson(
+                json_['structType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timestampType: json_.containsKey('timestampType')
+            ? GoogleBigtableAdminV2TypeTimestamp.fromJson(
+                json_['timestampType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregateType != null) 'aggregateType': aggregateType!,
-    if (arrayType != null) 'arrayType': arrayType!,
-    if (boolType != null) 'boolType': boolType!,
-    if (bytesType != null) 'bytesType': bytesType!,
-    if (dateType != null) 'dateType': dateType!,
-    if (enumType != null) 'enumType': enumType!,
-    if (float32Type != null) 'float32Type': float32Type!,
-    if (float64Type != null) 'float64Type': float64Type!,
-    if (int64Type != null) 'int64Type': int64Type!,
-    if (mapType != null) 'mapType': mapType!,
-    if (protoType != null) 'protoType': protoType!,
-    if (stringType != null) 'stringType': stringType!,
-    if (structType != null) 'structType': structType!,
-    if (timestampType != null) 'timestampType': timestampType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregateType = this.aggregateType;
+    final arrayType = this.arrayType;
+    final boolType = this.boolType;
+    final bytesType = this.bytesType;
+    final dateType = this.dateType;
+    final enumType = this.enumType;
+    final float32Type = this.float32Type;
+    final float64Type = this.float64Type;
+    final int64Type = this.int64Type;
+    final mapType = this.mapType;
+    final protoType = this.protoType;
+    final stringType = this.stringType;
+    final structType = this.structType;
+    final timestampType = this.timestampType;
+    return {
+      'aggregateType': ?aggregateType,
+      'arrayType': ?arrayType,
+      'boolType': ?boolType,
+      'bytesType': ?bytesType,
+      'dateType': ?dateType,
+      'enumType': ?enumType,
+      'float32Type': ?float32Type,
+      'float64Type': ?float64Type,
+      'int64Type': ?int64Type,
+      'mapType': ?mapType,
+      'protoType': ?protoType,
+      'stringType': ?stringType,
+      'structType': ?structType,
+      'timestampType': ?timestampType,
+    };
+  }
 }
 
 /// Request message for
@@ -8345,17 +8502,16 @@ class Union {
 
   Union.fromJson(core.Map json_)
     : this(
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => GcRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) =>
+                  GcRule.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rules != null) 'rules': rules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rules = this.rules;
+    return {'rules': ?rules};
+  }
 }

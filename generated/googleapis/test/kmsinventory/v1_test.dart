@@ -566,10 +566,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudKmsInventoryV1ProtectedResourcesSummary();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudKmsInventoryV1ProtectedResourcesSummary.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudKmsInventoryV1ProtectedResourcesSummary.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudKmsInventoryV1ProtectedResourcesSummary(od);
       });
     },
@@ -582,10 +582,10 @@ void main() {
         final o =
             buildGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse(od);
       });
     },
@@ -681,10 +681,10 @@ void main() {
         final o =
             buildGoogleCloudKmsV1KeyOperationAttestationCertificateChains();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudKmsV1KeyOperationAttestationCertificateChains.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudKmsV1KeyOperationAttestationCertificateChains.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudKmsV1KeyOperationAttestationCertificateChains(od);
       });
     },
@@ -854,8 +854,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsKeyRingsCryptoKeysResource', () {
     unittest.test('method--getProtectedResourcesSummary', () async {
       final mock = HttpServerMock();
-      final res =
-          api.KmsinventoryApi(mock).projects.locations.keyRings.cryptoKeys;
+      final res = api.KmsinventoryApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys;
       final arg_name = 'foo';
       final arg_fallbackScope = 'foo';
       final arg_$fields = 'foo';

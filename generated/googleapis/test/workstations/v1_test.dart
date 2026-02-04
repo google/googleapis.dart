@@ -2672,8 +2672,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsWorkstationClustersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(mock).projects.locations.workstationClusters;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters;
       final arg_request = buildWorkstationCluster();
       final arg_parent = 'foo';
       final arg_validateOnly = true;
@@ -2748,8 +2749,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(mock).projects.locations.workstationClusters;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_force = true;
@@ -2820,8 +2822,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(mock).projects.locations.workstationClusters;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2874,8 +2877,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(mock).projects.locations.workstationClusters;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2953,8 +2957,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(mock).projects.locations.workstationClusters;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters;
       final arg_request = buildWorkstationCluster();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -3037,10 +3042,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsWorkstationClustersWorkstationConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(
-            mock,
-          ).projects.locations.workstationClusters.workstationConfigs;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters.workstationConfigs;
       final arg_request = buildWorkstationConfig();
       final arg_parent = 'foo';
       final arg_validateOnly = true;
@@ -3115,10 +3119,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(
-            mock,
-          ).projects.locations.workstationClusters.workstationConfigs;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters.workstationConfigs;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_force = true;
@@ -3189,10 +3192,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(
-            mock,
-          ).projects.locations.workstationClusters.workstationConfigs;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters.workstationConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3245,10 +3247,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(
-            mock,
-          ).projects.locations.workstationClusters.workstationConfigs;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters.workstationConfigs;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -3310,10 +3311,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(
-            mock,
-          ).projects.locations.workstationClusters.workstationConfigs;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters.workstationConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3391,10 +3391,9 @@ void main() {
 
     unittest.test('method--listUsable', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(
-            mock,
-          ).projects.locations.workstationClusters.workstationConfigs;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters.workstationConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3466,10 +3465,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(
-            mock,
-          ).projects.locations.workstationClusters.workstationConfigs;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters.workstationConfigs;
       final arg_request = buildWorkstationConfig();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -3550,10 +3548,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(
-            mock,
-          ).projects.locations.workstationClusters.workstationConfigs;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters.workstationConfigs;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3616,10 +3613,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudWorkstationsApi(
-            mock,
-          ).projects.locations.workstationClusters.workstationConfigs;
+      final res = api.CloudWorkstationsApi(
+        mock,
+      ).projects.locations.workstationClusters.workstationConfigs;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3688,13 +3684,12 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_request = buildWorkstation();
         final arg_parent = 'foo';
         final arg_validateOnly = true;
@@ -3769,13 +3764,12 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_name = 'foo';
         final arg_etag = 'foo';
         final arg_validateOnly = true;
@@ -3840,13 +3834,12 @@ void main() {
 
       unittest.test('method--generateAccessToken', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_request = buildGenerateAccessTokenRequest();
         final arg_workstation = 'foo';
         final arg_$fields = 'foo';
@@ -3913,13 +3906,12 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3972,13 +3964,12 @@ void main() {
 
       unittest.test('method--getIamPolicy', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_resource = 'foo';
         final arg_options_requestedPolicyVersion = 42;
         final arg_$fields = 'foo';
@@ -4040,13 +4031,12 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -4120,13 +4110,12 @@ void main() {
 
       unittest.test('method--listUsable', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -4198,13 +4187,12 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_request = buildWorkstation();
         final arg_name = 'foo';
         final arg_allowMissing = true;
@@ -4285,13 +4273,12 @@ void main() {
 
       unittest.test('method--setIamPolicy', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_request = buildSetIamPolicyRequest();
         final arg_resource = 'foo';
         final arg_$fields = 'foo';
@@ -4354,13 +4341,12 @@ void main() {
 
       unittest.test('method--start', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_request = buildStartWorkstationRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -4423,13 +4409,12 @@ void main() {
 
       unittest.test('method--stop', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_request = buildStopWorkstationRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -4492,13 +4477,12 @@ void main() {
 
       unittest.test('method--testIamPermissions', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudWorkstationsApi(mock)
-                .projects
-                .locations
-                .workstationClusters
-                .workstationConfigs
-                .workstations;
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
         final arg_request = buildTestIamPermissionsRequest();
         final arg_resource = 'foo';
         final arg_$fields = 'foo';

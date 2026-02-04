@@ -131,16 +131,18 @@ class AccountReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
-      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
-      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (query != null) 'query': [query],
-      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
-      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
-      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
-      if ($fields != null) 'fields': [$fields],
+      'endDate.day': ?endDate_day == null ? null : ['${endDate_day}'],
+      'endDate.month': ?endDate_month == null ? null : ['${endDate_month}'],
+      'endDate.year': ?endDate_year == null ? null : ['${endDate_year}'],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'query': ?query == null ? null : [query],
+      'startDate.day': ?startDate_day == null ? null : ['${startDate_day}'],
+      'startDate.month': ?startDate_month == null
+          ? null
+          : ['${startDate_month}'],
+      'startDate.year': ?startDate_year == null ? null : ['${startDate_year}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accountReports:search';
@@ -233,16 +235,18 @@ class DetailedLeadReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
-      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
-      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (query != null) 'query': [query],
-      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
-      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
-      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
-      if ($fields != null) 'fields': [$fields],
+      'endDate.day': ?endDate_day == null ? null : ['${endDate_day}'],
+      'endDate.month': ?endDate_month == null ? null : ['${endDate_month}'],
+      'endDate.year': ?endDate_year == null ? null : ['${endDate_year}'],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'query': ?query == null ? null : [query],
+      'startDate.day': ?startDate_day == null ? null : ['${startDate_day}'],
+      'startDate.month': ?startDate_month == null
+          ? null
+          : ['${startDate_month}'],
+      'startDate.year': ?startDate_year == null ? null : ['${startDate_year}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/detailedLeadReports:search';
@@ -347,17 +351,15 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
   GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(core.Map json_)
     : this(
         accountId: json_['accountId'] as core.String?,
-        aggregatorInfo:
-            json_.containsKey('aggregatorInfo')
-                ? GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
-                  json_['aggregatorInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        averageFiveStarRating:
-            (json_['averageFiveStarRating'] as core.num?)?.toDouble(),
-        averageWeeklyBudget:
-            (json_['averageWeeklyBudget'] as core.num?)?.toDouble(),
+        aggregatorInfo: json_.containsKey('aggregatorInfo')
+            ? GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
+                json_['aggregatorInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        averageFiveStarRating: (json_['averageFiveStarRating'] as core.num?)
+            ?.toDouble(),
+        averageWeeklyBudget: (json_['averageWeeklyBudget'] as core.num?)
+            ?.toDouble(),
         businessName: json_['businessName'] as core.String?,
         currencyCode: json_['currencyCode'] as core.String?,
         currentPeriodChargedLeads:
@@ -366,53 +368,62 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
             json_['currentPeriodConnectedPhoneCalls'] as core.String?,
         currentPeriodPhoneCalls:
             json_['currentPeriodPhoneCalls'] as core.String?,
-        currentPeriodTotalCost:
-            (json_['currentPeriodTotalCost'] as core.num?)?.toDouble(),
+        currentPeriodTotalCost: (json_['currentPeriodTotalCost'] as core.num?)
+            ?.toDouble(),
         impressionsLastTwoDays: json_['impressionsLastTwoDays'] as core.String?,
-        phoneLeadResponsiveness:
-            (json_['phoneLeadResponsiveness'] as core.num?)?.toDouble(),
+        phoneLeadResponsiveness: (json_['phoneLeadResponsiveness'] as core.num?)
+            ?.toDouble(),
         previousPeriodChargedLeads:
             json_['previousPeriodChargedLeads'] as core.String?,
         previousPeriodConnectedPhoneCalls:
             json_['previousPeriodConnectedPhoneCalls'] as core.String?,
         previousPeriodPhoneCalls:
             json_['previousPeriodPhoneCalls'] as core.String?,
-        previousPeriodTotalCost:
-            (json_['previousPeriodTotalCost'] as core.num?)?.toDouble(),
+        previousPeriodTotalCost: (json_['previousPeriodTotalCost'] as core.num?)
+            ?.toDouble(),
         totalReview: json_['totalReview'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountId != null) 'accountId': accountId!,
-    if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!,
-    if (averageFiveStarRating != null)
-      'averageFiveStarRating': averageFiveStarRating!,
-    if (averageWeeklyBudget != null)
-      'averageWeeklyBudget': averageWeeklyBudget!,
-    if (businessName != null) 'businessName': businessName!,
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (currentPeriodChargedLeads != null)
-      'currentPeriodChargedLeads': currentPeriodChargedLeads!,
-    if (currentPeriodConnectedPhoneCalls != null)
-      'currentPeriodConnectedPhoneCalls': currentPeriodConnectedPhoneCalls!,
-    if (currentPeriodPhoneCalls != null)
-      'currentPeriodPhoneCalls': currentPeriodPhoneCalls!,
-    if (currentPeriodTotalCost != null)
-      'currentPeriodTotalCost': currentPeriodTotalCost!,
-    if (impressionsLastTwoDays != null)
-      'impressionsLastTwoDays': impressionsLastTwoDays!,
-    if (phoneLeadResponsiveness != null)
-      'phoneLeadResponsiveness': phoneLeadResponsiveness!,
-    if (previousPeriodChargedLeads != null)
-      'previousPeriodChargedLeads': previousPeriodChargedLeads!,
-    if (previousPeriodConnectedPhoneCalls != null)
-      'previousPeriodConnectedPhoneCalls': previousPeriodConnectedPhoneCalls!,
-    if (previousPeriodPhoneCalls != null)
-      'previousPeriodPhoneCalls': previousPeriodPhoneCalls!,
-    if (previousPeriodTotalCost != null)
-      'previousPeriodTotalCost': previousPeriodTotalCost!,
-    if (totalReview != null) 'totalReview': totalReview!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final aggregatorInfo = this.aggregatorInfo;
+    final averageFiveStarRating = this.averageFiveStarRating;
+    final averageWeeklyBudget = this.averageWeeklyBudget;
+    final businessName = this.businessName;
+    final currencyCode = this.currencyCode;
+    final currentPeriodChargedLeads = this.currentPeriodChargedLeads;
+    final currentPeriodConnectedPhoneCalls =
+        this.currentPeriodConnectedPhoneCalls;
+    final currentPeriodPhoneCalls = this.currentPeriodPhoneCalls;
+    final currentPeriodTotalCost = this.currentPeriodTotalCost;
+    final impressionsLastTwoDays = this.impressionsLastTwoDays;
+    final phoneLeadResponsiveness = this.phoneLeadResponsiveness;
+    final previousPeriodChargedLeads = this.previousPeriodChargedLeads;
+    final previousPeriodConnectedPhoneCalls =
+        this.previousPeriodConnectedPhoneCalls;
+    final previousPeriodPhoneCalls = this.previousPeriodPhoneCalls;
+    final previousPeriodTotalCost = this.previousPeriodTotalCost;
+    final totalReview = this.totalReview;
+    return {
+      'accountId': ?accountId,
+      'aggregatorInfo': ?aggregatorInfo,
+      'averageFiveStarRating': ?averageFiveStarRating,
+      'averageWeeklyBudget': ?averageWeeklyBudget,
+      'businessName': ?businessName,
+      'currencyCode': ?currencyCode,
+      'currentPeriodChargedLeads': ?currentPeriodChargedLeads,
+      'currentPeriodConnectedPhoneCalls': ?currentPeriodConnectedPhoneCalls,
+      'currentPeriodPhoneCalls': ?currentPeriodPhoneCalls,
+      'currentPeriodTotalCost': ?currentPeriodTotalCost,
+      'impressionsLastTwoDays': ?impressionsLastTwoDays,
+      'phoneLeadResponsiveness': ?phoneLeadResponsiveness,
+      'previousPeriodChargedLeads': ?previousPeriodChargedLeads,
+      'previousPeriodConnectedPhoneCalls': ?previousPeriodConnectedPhoneCalls,
+      'previousPeriodPhoneCalls': ?previousPeriodPhoneCalls,
+      'previousPeriodTotalCost': ?previousPeriodTotalCost,
+      'totalReview': ?totalReview,
+    };
+  }
 }
 
 /// Conatiner for aggregator specific information if lead is for an aggregator
@@ -429,10 +440,10 @@ class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
   GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(core.Map json_)
     : this(aggregatorProviderId: json_['aggregatorProviderId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregatorProviderId != null)
-      'aggregatorProviderId': aggregatorProviderId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregatorProviderId = this.aggregatorProviderId;
+    return {'aggregatorProviderId': ?aggregatorProviderId};
+  }
 }
 
 /// Container for booking lead specific information.
@@ -470,15 +481,20 @@ class GoogleAdsHomeservicesLocalservicesV1BookingLead {
         jobType: json_['jobType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bookingAppointmentTimestamp != null)
-      'bookingAppointmentTimestamp': bookingAppointmentTimestamp!,
-    if (consumerEmail != null) 'consumerEmail': consumerEmail!,
-    if (consumerPhoneNumber != null)
-      'consumerPhoneNumber': consumerPhoneNumber!,
-    if (customerName != null) 'customerName': customerName!,
-    if (jobType != null) 'jobType': jobType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bookingAppointmentTimestamp = this.bookingAppointmentTimestamp;
+    final consumerEmail = this.consumerEmail;
+    final consumerPhoneNumber = this.consumerPhoneNumber;
+    final customerName = this.customerName;
+    final jobType = this.jobType;
+    return {
+      'bookingAppointmentTimestamp': ?bookingAppointmentTimestamp,
+      'consumerEmail': ?consumerEmail,
+      'consumerPhoneNumber': ?consumerPhoneNumber,
+      'customerName': ?customerName,
+      'jobType': ?jobType,
+    };
+  }
 }
 
 /// A Detailed Lead Report of a lead identified by their lead id and contains
@@ -570,19 +586,16 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
     core.Map json_,
   ) : this(
         accountId: json_['accountId'] as core.String?,
-        aggregatorInfo:
-            json_.containsKey('aggregatorInfo')
-                ? GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
-                  json_['aggregatorInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        bookingLead:
-            json_.containsKey('bookingLead')
-                ? GoogleAdsHomeservicesLocalservicesV1BookingLead.fromJson(
-                  json_['bookingLead'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        aggregatorInfo: json_.containsKey('aggregatorInfo')
+            ? GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
+                json_['aggregatorInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bookingLead: json_.containsKey('bookingLead')
+            ? GoogleAdsHomeservicesLocalservicesV1BookingLead.fromJson(
+                json_['bookingLead'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         businessName: json_['businessName'] as core.String?,
         chargeStatus: json_['chargeStatus'] as core.String?,
         currencyCode: json_['currencyCode'] as core.String?,
@@ -594,46 +607,61 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
         leadId: json_['leadId'] as core.String?,
         leadPrice: (json_['leadPrice'] as core.num?)?.toDouble(),
         leadType: json_['leadType'] as core.String?,
-        messageLead:
-            json_.containsKey('messageLead')
-                ? GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
-                  json_['messageLead'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        phoneLead:
-            json_.containsKey('phoneLead')
-                ? GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(
-                  json_['phoneLead'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        timezone:
-            json_.containsKey('timezone')
-                ? GoogleTypeTimeZone.fromJson(
-                  json_['timezone'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        messageLead: json_.containsKey('messageLead')
+            ? GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
+                json_['messageLead'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        phoneLead: json_.containsKey('phoneLead')
+            ? GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(
+                json_['phoneLead'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timezone: json_.containsKey('timezone')
+            ? GoogleTypeTimeZone.fromJson(
+                json_['timezone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountId != null) 'accountId': accountId!,
-    if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!,
-    if (bookingLead != null) 'bookingLead': bookingLead!,
-    if (businessName != null) 'businessName': businessName!,
-    if (chargeStatus != null) 'chargeStatus': chargeStatus!,
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (disputeStatus != null) 'disputeStatus': disputeStatus!,
-    if (geo != null) 'geo': geo!,
-    if (googleAdsLeadId != null) 'googleAdsLeadId': googleAdsLeadId!,
-    if (leadCategory != null) 'leadCategory': leadCategory!,
-    if (leadCreationTimestamp != null)
-      'leadCreationTimestamp': leadCreationTimestamp!,
-    if (leadId != null) 'leadId': leadId!,
-    if (leadPrice != null) 'leadPrice': leadPrice!,
-    if (leadType != null) 'leadType': leadType!,
-    if (messageLead != null) 'messageLead': messageLead!,
-    if (phoneLead != null) 'phoneLead': phoneLead!,
-    if (timezone != null) 'timezone': timezone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final aggregatorInfo = this.aggregatorInfo;
+    final bookingLead = this.bookingLead;
+    final businessName = this.businessName;
+    final chargeStatus = this.chargeStatus;
+    final currencyCode = this.currencyCode;
+    final disputeStatus = this.disputeStatus;
+    final geo = this.geo;
+    final googleAdsLeadId = this.googleAdsLeadId;
+    final leadCategory = this.leadCategory;
+    final leadCreationTimestamp = this.leadCreationTimestamp;
+    final leadId = this.leadId;
+    final leadPrice = this.leadPrice;
+    final leadType = this.leadType;
+    final messageLead = this.messageLead;
+    final phoneLead = this.phoneLead;
+    final timezone = this.timezone;
+    return {
+      'accountId': ?accountId,
+      'aggregatorInfo': ?aggregatorInfo,
+      'bookingLead': ?bookingLead,
+      'businessName': ?businessName,
+      'chargeStatus': ?chargeStatus,
+      'currencyCode': ?currencyCode,
+      'disputeStatus': ?disputeStatus,
+      'geo': ?geo,
+      'googleAdsLeadId': ?googleAdsLeadId,
+      'leadCategory': ?leadCategory,
+      'leadCreationTimestamp': ?leadCreationTimestamp,
+      'leadId': ?leadId,
+      'leadPrice': ?leadPrice,
+      'leadType': ?leadType,
+      'messageLead': ?messageLead,
+      'phoneLead': ?phoneLead,
+      'timezone': ?timezone,
+    };
+  }
 }
 
 /// Container for message lead specific information.
@@ -665,13 +693,18 @@ class GoogleAdsHomeservicesLocalservicesV1MessageLead {
         postalCode: json_['postalCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerPhoneNumber != null)
-      'consumerPhoneNumber': consumerPhoneNumber!,
-    if (customerName != null) 'customerName': customerName!,
-    if (jobType != null) 'jobType': jobType!,
-    if (postalCode != null) 'postalCode': postalCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerPhoneNumber = this.consumerPhoneNumber;
+    final customerName = this.customerName;
+    final jobType = this.jobType;
+    final postalCode = this.postalCode;
+    return {
+      'consumerPhoneNumber': ?consumerPhoneNumber,
+      'customerName': ?customerName,
+      'jobType': ?jobType,
+      'postalCode': ?postalCode,
+    };
+  }
 }
 
 /// Container for phone lead specific information.
@@ -699,15 +732,18 @@ class GoogleAdsHomeservicesLocalservicesV1PhoneLead {
         consumerPhoneNumber: json_['consumerPhoneNumber'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (chargedCallTimestamp != null)
-      'chargedCallTimestamp': chargedCallTimestamp!,
-    if (chargedConnectedCallDurationSeconds != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final chargedCallTimestamp = this.chargedCallTimestamp;
+    final chargedConnectedCallDurationSeconds =
+        this.chargedConnectedCallDurationSeconds;
+    final consumerPhoneNumber = this.consumerPhoneNumber;
+    return {
+      'chargedCallTimestamp': ?chargedCallTimestamp,
       'chargedConnectedCallDurationSeconds':
-          chargedConnectedCallDurationSeconds!,
-    if (consumerPhoneNumber != null)
-      'consumerPhoneNumber': consumerPhoneNumber!,
-  };
+          ?chargedConnectedCallDurationSeconds,
+      'consumerPhoneNumber': ?consumerPhoneNumber,
+    };
+  }
 }
 
 /// A page of the response received from the SearchAccountReports method.
@@ -733,22 +769,22 @@ class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
   GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse.fromJson(
     core.Map json_,
   ) : this(
-        accountReports:
-            (json_['accountReports'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        accountReports: (json_['accountReports'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountReports != null) 'accountReports': accountReports!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountReports = this.accountReports;
+    final nextPageToken = this.nextPageToken;
+    return {'accountReports': ?accountReports, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// A page of the response received from the SearchDetailedLeadReports method.
@@ -775,23 +811,25 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
   GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse.fromJson(
     core.Map json_,
   ) : this(
-        detailedLeadReports:
-            (json_['detailedLeadReports'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        detailedLeadReports: (json_['detailedLeadReports'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detailedLeadReports != null)
-      'detailedLeadReports': detailedLeadReports!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detailedLeadReports = this.detailedLeadReports;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'detailedLeadReports': ?detailedLeadReports,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Represents a time zone from the

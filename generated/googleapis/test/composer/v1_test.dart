@@ -3222,10 +3222,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsConfigMaps;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsConfigMaps;
         final arg_request = buildUserWorkloadsConfigMap();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -3288,10 +3287,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsConfigMaps;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsConfigMaps;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3344,10 +3342,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsConfigMaps;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsConfigMaps;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3400,10 +3397,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsConfigMaps;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsConfigMaps;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -3475,10 +3471,9 @@ void main() {
 
       unittest.test('method--update', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsConfigMaps;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsConfigMaps;
         final arg_request = buildUserWorkloadsConfigMap();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -3546,10 +3541,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsSecrets;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsSecrets;
         final arg_request = buildUserWorkloadsSecret();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -3612,10 +3606,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsSecrets;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsSecrets;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3668,10 +3661,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsSecrets;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsSecrets;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3724,10 +3716,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsSecrets;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsSecrets;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -3799,10 +3790,9 @@ void main() {
 
       unittest.test('method--update', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudComposerApi(
-              mock,
-            ).projects.locations.environments.userWorkloadsSecrets;
+        final res = api.CloudComposerApi(
+          mock,
+        ).projects.locations.environments.userWorkloadsSecrets;
         final arg_request = buildUserWorkloadsSecret();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -3868,8 +3858,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsEnvironmentsWorkloadsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudComposerApi(mock).projects.locations.environments.workloads;
+      final res = api.CloudComposerApi(
+        mock,
+      ).projects.locations.environments.workloads;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

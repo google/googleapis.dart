@@ -54,21 +54,29 @@ class ClientObjectType extends ObjectType {
     fromJsonString.writeln('  }');
 
     final toJsonString = StringBuffer();
-    toJsonString.writeln(
-      'static ${imports.coreJsonMap} toJson($className message) {',
-    );
-    toJsonString.writeln('    final json_ = ${imports.coreJsonTypeArgs}{};');
-
-    for (var property in properties) {
-      toJsonString.writeln('    if (message.${property.name} != null) {');
+    if (properties.isEmpty) {
       toJsonString.writeln(
-        '      json_[${escapeDartString(property.jsonName)}] = '
-        '${property.type.jsonEncode('message.${property.name}!')};',
+        'static ${imports.coreJsonMap} toJson($className message) => {};',
       );
-      toJsonString.writeln('    }');
+    } else {
+      toJsonString.writeln(
+        'static ${imports.coreJsonMap} toJson($className message) {',
+      );
+      for (var property in properties) {
+        toJsonString.writeln(
+          '    final ${property.name} = message.${property.name};',
+        );
+      }
+      toJsonString.writeln('    return {');
+      for (var property in properties) {
+        toJsonString.writeln(
+          '      "${escapeDartString(property.jsonName)}": '
+          '?${property.type.jsonEncodeNullable(property.name.toString())},',
+        );
+      }
+      toJsonString.writeln('    };');
+      toJsonString.writeln('  }');
     }
-    toJsonString.writeln('    return json_;');
-    toJsonString.write('  }');
 
     return '''
 ${comment.asDartDoc(0)}class ${className}Factory $superClassString{

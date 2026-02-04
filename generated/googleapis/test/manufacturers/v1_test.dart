@@ -1085,10 +1085,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleShoppingManufacturersV1ProductCertification();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleShoppingManufacturersV1ProductCertification.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleShoppingManufacturersV1ProductCertification.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleShoppingManufacturersV1ProductCertification(od);
       });
     },
@@ -1218,10 +1218,9 @@ void main() {
   unittest.group('resource-AccountsLanguagesProductCertificationsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManufacturerCenterApi(
-            mock,
-          ).accounts.languages.productCertifications;
+      final res = api.ManufacturerCenterApi(
+        mock,
+      ).accounts.languages.productCertifications;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1274,10 +1273,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManufacturerCenterApi(
-            mock,
-          ).accounts.languages.productCertifications;
+      final res = api.ManufacturerCenterApi(
+        mock,
+      ).accounts.languages.productCertifications;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1330,10 +1328,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManufacturerCenterApi(
-            mock,
-          ).accounts.languages.productCertifications;
+      final res = api.ManufacturerCenterApi(
+        mock,
+      ).accounts.languages.productCertifications;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1405,10 +1402,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManufacturerCenterApi(
-            mock,
-          ).accounts.languages.productCertifications;
+      final res = api.ManufacturerCenterApi(
+        mock,
+      ).accounts.languages.productCertifications;
       final arg_request = buildProductCertification();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

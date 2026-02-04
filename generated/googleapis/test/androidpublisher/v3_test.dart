@@ -11080,10 +11080,10 @@ void main() {
         final o =
             buildOneTimeProductOfferRegionalPricingAndAvailabilityConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .OneTimeProductOfferRegionalPricingAndAvailabilityConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.OneTimeProductOfferRegionalPricingAndAvailabilityConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkOneTimeProductOfferRegionalPricingAndAvailabilityConfig(od);
       });
     },
@@ -11129,10 +11129,10 @@ void main() {
         final o =
             buildOneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkOneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig(
           od,
         );
@@ -11256,10 +11256,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildOtherRegionsSubscriptionOfferPhaseFreePriceOverride();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .OtherRegionsSubscriptionOfferPhaseFreePriceOverride.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.OtherRegionsSubscriptionOfferPhaseFreePriceOverride.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkOtherRegionsSubscriptionOfferPhaseFreePriceOverride(od);
       });
     },
@@ -18828,10 +18828,9 @@ void main() {
     () {
       unittest.test('method--batchDelete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions;
         final arg_request = buildBatchDeletePurchaseOptionsRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -18918,10 +18917,9 @@ void main() {
 
       unittest.test('method--batchUpdateStates', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions;
         final arg_request = buildBatchUpdatePurchaseOptionStatesRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -19021,10 +19019,9 @@ void main() {
     () {
       unittest.test('method--activate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions.offers;
         final arg_request = buildActivateOneTimeProductOfferRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -19140,10 +19137,9 @@ void main() {
 
       unittest.test('method--batchDelete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions.offers;
         final arg_request = buildBatchDeleteOneTimeProductOffersRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -19244,10 +19240,9 @@ void main() {
 
       unittest.test('method--batchGet', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions.offers;
         final arg_request = buildBatchGetOneTimeProductOffersRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -19353,10 +19348,9 @@ void main() {
 
       unittest.test('method--batchUpdate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions.offers;
         final arg_request = buildBatchUpdateOneTimeProductOffersRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -19462,10 +19456,9 @@ void main() {
 
       unittest.test('method--batchUpdateStates', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions.offers;
         final arg_request = buildBatchUpdateOneTimeProductOfferStatesRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -19473,10 +19466,10 @@ void main() {
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .BatchUpdateOneTimeProductOfferStatesRequest.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.BatchUpdateOneTimeProductOfferStatesRequest.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkBatchUpdateOneTimeProductOfferStatesRequest(obj);
 
             final path = req.url.path;
@@ -19572,10 +19565,9 @@ void main() {
 
       unittest.test('method--cancel', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions.offers;
         final arg_request = buildCancelOneTimeProductOfferRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -19691,10 +19683,9 @@ void main() {
 
       unittest.test('method--deactivate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions.offers;
         final arg_request = buildDeactivateOneTimeProductOfferRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -19810,10 +19801,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.onetimeproducts.purchaseOptions.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.onetimeproducts.purchaseOptions.offers;
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
         final arg_purchaseOptionId = 'foo';
@@ -20585,8 +20575,9 @@ void main() {
   unittest.group('resource-MonetizationSubscriptionsBasePlansResource', () {
     unittest.test('method--activate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidPublisherApi(mock).monetization.subscriptions.basePlans;
+      final res = api.AndroidPublisherApi(
+        mock,
+      ).monetization.subscriptions.basePlans;
       final arg_request = buildActivateBasePlanRequest();
       final arg_packageName = 'foo';
       final arg_productId = 'foo';
@@ -20688,8 +20679,9 @@ void main() {
 
     unittest.test('method--batchMigratePrices', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidPublisherApi(mock).monetization.subscriptions.basePlans;
+      final res = api.AndroidPublisherApi(
+        mock,
+      ).monetization.subscriptions.basePlans;
       final arg_request = buildBatchMigrateBasePlanPricesRequest();
       final arg_packageName = 'foo';
       final arg_productId = 'foo';
@@ -20781,8 +20773,9 @@ void main() {
 
     unittest.test('method--batchUpdateStates', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidPublisherApi(mock).monetization.subscriptions.basePlans;
+      final res = api.AndroidPublisherApi(
+        mock,
+      ).monetization.subscriptions.basePlans;
       final arg_request = buildBatchUpdateBasePlanStatesRequest();
       final arg_packageName = 'foo';
       final arg_productId = 'foo';
@@ -20874,8 +20867,9 @@ void main() {
 
     unittest.test('method--deactivate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidPublisherApi(mock).monetization.subscriptions.basePlans;
+      final res = api.AndroidPublisherApi(
+        mock,
+      ).monetization.subscriptions.basePlans;
       final arg_request = buildDeactivateBasePlanRequest();
       final arg_packageName = 'foo';
       final arg_productId = 'foo';
@@ -20977,8 +20971,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidPublisherApi(mock).monetization.subscriptions.basePlans;
+      final res = api.AndroidPublisherApi(
+        mock,
+      ).monetization.subscriptions.basePlans;
       final arg_packageName = 'foo';
       final arg_productId = 'foo';
       final arg_basePlanId = 'foo';
@@ -21063,8 +21058,9 @@ void main() {
 
     unittest.test('method--migratePrices', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AndroidPublisherApi(mock).monetization.subscriptions.basePlans;
+      final res = api.AndroidPublisherApi(
+        mock,
+      ).monetization.subscriptions.basePlans;
       final arg_request = buildMigrateBasePlanPricesRequest();
       final arg_packageName = 'foo';
       final arg_productId = 'foo';
@@ -21174,10 +21170,9 @@ void main() {
     () {
       unittest.test('method--activate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_request = buildActivateSubscriptionOfferRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -21293,10 +21288,9 @@ void main() {
 
       unittest.test('method--batchGet', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_request = buildBatchGetSubscriptionOffersRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -21402,10 +21396,9 @@ void main() {
 
       unittest.test('method--batchUpdate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_request = buildBatchUpdateSubscriptionOffersRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -21511,10 +21504,9 @@ void main() {
 
       unittest.test('method--batchUpdateStates', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_request = buildBatchUpdateSubscriptionOfferStatesRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -21620,10 +21612,9 @@ void main() {
 
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_request = buildSubscriptionOffer();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -21737,10 +21728,9 @@ void main() {
 
       unittest.test('method--deactivate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_request = buildDeactivateSubscriptionOfferRequest();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
@@ -21856,10 +21846,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
         final arg_basePlanId = 'foo';
@@ -21958,10 +21947,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
         final arg_basePlanId = 'foo';
@@ -22061,10 +22049,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_packageName = 'foo';
         final arg_productId = 'foo';
         final arg_basePlanId = 'foo';
@@ -22175,10 +22162,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AndroidPublisherApi(
-              mock,
-            ).monetization.subscriptions.basePlans.offers;
+        final res = api.AndroidPublisherApi(
+          mock,
+        ).monetization.subscriptions.basePlans.offers;
         final arg_request = buildSubscriptionOffer();
         final arg_packageName = 'foo';
         final arg_productId = 'foo';

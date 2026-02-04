@@ -117,7 +117,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -165,10 +165,10 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -230,8 +230,8 @@ class ProjectsLocationsApisResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (apiId != null) 'apiId': [apiId],
-      if ($fields != null) 'fields': [$fields],
+      'apiId': ?apiId == null ? null : [apiId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apis';
@@ -273,8 +273,8 @@ class ProjectsLocationsApisResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -308,7 +308,7 @@ class ProjectsLocationsApisResource {
   /// this method will complete with the same error.
   async.Future<Api> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -363,9 +363,10 @@ class ProjectsLocationsApisResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -421,11 +422,11 @@ class ProjectsLocationsApisResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apis';
@@ -477,9 +478,9 @@ class ProjectsLocationsApisResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -526,7 +527,7 @@ class ProjectsLocationsApisResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -575,7 +576,7 @@ class ProjectsLocationsApisResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -633,8 +634,8 @@ class ProjectsLocationsApisArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (artifactId != null) 'artifactId': [artifactId],
-      if ($fields != null) 'fields': [$fields],
+      'artifactId': ?artifactId == null ? null : [artifactId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -669,7 +670,7 @@ class ProjectsLocationsApisArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -703,7 +704,7 @@ class ProjectsLocationsApisArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -744,7 +745,7 @@ class ProjectsLocationsApisArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getContents';
@@ -799,9 +800,10 @@ class ProjectsLocationsApisArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -859,11 +861,11 @@ class ProjectsLocationsApisArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -905,7 +907,7 @@ class ProjectsLocationsApisArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -952,7 +954,7 @@ class ProjectsLocationsApisArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1001,7 +1003,7 @@ class ProjectsLocationsApisArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1062,8 +1064,8 @@ class ProjectsLocationsApisDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (apiDeploymentId != null) 'apiDeploymentId': [apiDeploymentId],
-      if ($fields != null) 'fields': [$fields],
+      'apiDeploymentId': ?apiDeploymentId == null ? null : [apiDeploymentId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/deployments';
@@ -1108,8 +1110,8 @@ class ProjectsLocationsApisDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1147,7 +1149,7 @@ class ProjectsLocationsApisDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deleteRevision';
@@ -1186,7 +1188,7 @@ class ProjectsLocationsApisDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1243,9 +1245,10 @@ class ProjectsLocationsApisDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1302,11 +1305,11 @@ class ProjectsLocationsApisDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/deployments';
@@ -1358,10 +1361,10 @@ class ProjectsLocationsApisDeploymentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':listRevisions';
@@ -1413,9 +1416,9 @@ class ProjectsLocationsApisDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1460,7 +1463,7 @@ class ProjectsLocationsApisDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rollback';
@@ -1509,7 +1512,7 @@ class ProjectsLocationsApisDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1552,7 +1555,7 @@ class ProjectsLocationsApisDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':tagRevision';
@@ -1603,7 +1606,7 @@ class ProjectsLocationsApisDeploymentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1661,8 +1664,8 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (artifactId != null) 'artifactId': [artifactId],
-      if ($fields != null) 'fields': [$fields],
+      'artifactId': ?artifactId == null ? null : [artifactId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -1697,7 +1700,7 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1731,7 +1734,7 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1772,7 +1775,7 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getContents';
@@ -1830,11 +1833,11 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -1876,7 +1879,7 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1936,8 +1939,8 @@ class ProjectsLocationsApisVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (apiVersionId != null) 'apiVersionId': [apiVersionId],
-      if ($fields != null) 'fields': [$fields],
+      'apiVersionId': ?apiVersionId == null ? null : [apiVersionId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
@@ -1981,8 +1984,8 @@ class ProjectsLocationsApisVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2016,7 +2019,7 @@ class ProjectsLocationsApisVersionsResource {
   /// this method will complete with the same error.
   async.Future<ApiVersion> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2073,9 +2076,10 @@ class ProjectsLocationsApisVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2132,11 +2136,11 @@ class ProjectsLocationsApisVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
@@ -2188,9 +2192,9 @@ class ProjectsLocationsApisVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2239,7 +2243,7 @@ class ProjectsLocationsApisVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2288,7 +2292,7 @@ class ProjectsLocationsApisVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2346,8 +2350,8 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (artifactId != null) 'artifactId': [artifactId],
-      if ($fields != null) 'fields': [$fields],
+      'artifactId': ?artifactId == null ? null : [artifactId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -2382,7 +2386,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2416,7 +2420,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2457,7 +2461,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getContents';
@@ -2512,9 +2516,10 @@ class ProjectsLocationsApisVersionsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2572,11 +2577,11 @@ class ProjectsLocationsApisVersionsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -2618,7 +2623,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2665,7 +2670,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2714,7 +2719,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2775,8 +2780,8 @@ class ProjectsLocationsApisVersionsSpecsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (apiSpecId != null) 'apiSpecId': [apiSpecId],
-      if ($fields != null) 'fields': [$fields],
+      'apiSpecId': ?apiSpecId == null ? null : [apiSpecId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/specs';
@@ -2819,8 +2824,8 @@ class ProjectsLocationsApisVersionsSpecsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2858,7 +2863,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deleteRevision';
@@ -2892,7 +2897,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
   /// this method will complete with the same error.
   async.Future<ApiSpec> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2934,7 +2939,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getContents';
@@ -2989,9 +2994,10 @@ class ProjectsLocationsApisVersionsSpecsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -3049,11 +3055,11 @@ class ProjectsLocationsApisVersionsSpecsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/specs';
@@ -3104,10 +3110,10 @@ class ProjectsLocationsApisVersionsSpecsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':listRevisions';
@@ -3159,9 +3165,9 @@ class ProjectsLocationsApisVersionsSpecsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3204,7 +3210,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rollback';
@@ -3251,7 +3257,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -3294,7 +3300,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':tagRevision';
@@ -3343,7 +3349,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3402,8 +3408,8 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (artifactId != null) 'artifactId': [artifactId],
-      if ($fields != null) 'fields': [$fields],
+      'artifactId': ?artifactId == null ? null : [artifactId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -3438,7 +3444,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3472,7 +3478,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3513,7 +3519,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getContents';
@@ -3568,9 +3574,10 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -3628,11 +3635,11 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -3674,7 +3681,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3721,7 +3728,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -3770,7 +3777,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3827,8 +3834,8 @@ class ProjectsLocationsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (artifactId != null) 'artifactId': [artifactId],
-      if ($fields != null) 'fields': [$fields],
+      'artifactId': ?artifactId == null ? null : [artifactId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -3863,7 +3870,7 @@ class ProjectsLocationsArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3897,7 +3904,7 @@ class ProjectsLocationsArtifactsResource {
   /// this method will complete with the same error.
   async.Future<Artifact> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3938,7 +3945,7 @@ class ProjectsLocationsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getContents';
@@ -3993,9 +4000,10 @@ class ProjectsLocationsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -4052,11 +4060,11 @@ class ProjectsLocationsArtifactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/artifacts';
@@ -4098,7 +4106,7 @@ class ProjectsLocationsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4145,7 +4153,7 @@ class ProjectsLocationsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -4194,7 +4202,7 @@ class ProjectsLocationsArtifactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4259,9 +4267,10 @@ class ProjectsLocationsDocumentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -4306,7 +4315,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -4354,7 +4363,7 @@ class ProjectsLocationsDocumentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4409,8 +4418,8 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (instanceId != null) 'instanceId': [instanceId],
-      if ($fields != null) 'fields': [$fields],
+      'instanceId': ?instanceId == null ? null : [instanceId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/instances';
@@ -4448,7 +4457,7 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4482,7 +4491,7 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4537,9 +4546,10 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -4585,7 +4595,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -4634,7 +4644,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4694,7 +4704,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -4732,7 +4742,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4768,7 +4778,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4814,10 +4824,10 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -4880,9 +4890,10 @@ class ProjectsLocationsRuntimeResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -4927,7 +4938,7 @@ class ProjectsLocationsRuntimeResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -4975,7 +4986,7 @@ class ProjectsLocationsRuntimeResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -5068,9 +5079,10 @@ class Api {
 
   Api.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         availability: json_['availability'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
@@ -5084,19 +5096,30 @@ class Api {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (availability != null) 'availability': availability!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (recommendedDeployment != null)
-      'recommendedDeployment': recommendedDeployment!,
-    if (recommendedVersion != null) 'recommendedVersion': recommendedVersion!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final availability = this.availability;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final name = this.name;
+    final recommendedDeployment = this.recommendedDeployment;
+    final recommendedVersion = this.recommendedVersion;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'availability': ?availability,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'recommendedDeployment': ?recommendedDeployment,
+      'recommendedVersion': ?recommendedVersion,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Describes a service running at particular address that provides a particular
@@ -5205,9 +5228,10 @@ class ApiDeployment {
   ApiDeployment.fromJson(core.Map json_)
     : this(
         accessGuidance: json_['accessGuidance'] as core.String?,
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         apiSpecRevision: json_['apiSpecRevision'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
@@ -5224,22 +5248,38 @@ class ApiDeployment {
         revisionUpdateTime: json_['revisionUpdateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessGuidance != null) 'accessGuidance': accessGuidance!,
-    if (annotations != null) 'annotations': annotations!,
-    if (apiSpecRevision != null) 'apiSpecRevision': apiSpecRevision!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (endpointUri != null) 'endpointUri': endpointUri!,
-    if (externalChannelUri != null) 'externalChannelUri': externalChannelUri!,
-    if (intendedAudience != null) 'intendedAudience': intendedAudience!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (revisionCreateTime != null) 'revisionCreateTime': revisionCreateTime!,
-    if (revisionId != null) 'revisionId': revisionId!,
-    if (revisionUpdateTime != null) 'revisionUpdateTime': revisionUpdateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessGuidance = this.accessGuidance;
+    final annotations = this.annotations;
+    final apiSpecRevision = this.apiSpecRevision;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final endpointUri = this.endpointUri;
+    final externalChannelUri = this.externalChannelUri;
+    final intendedAudience = this.intendedAudience;
+    final labels = this.labels;
+    final name = this.name;
+    final revisionCreateTime = this.revisionCreateTime;
+    final revisionId = this.revisionId;
+    final revisionUpdateTime = this.revisionUpdateTime;
+    return {
+      'accessGuidance': ?accessGuidance,
+      'annotations': ?annotations,
+      'apiSpecRevision': ?apiSpecRevision,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'endpointUri': ?endpointUri,
+      'externalChannelUri': ?externalChannelUri,
+      'intendedAudience': ?intendedAudience,
+      'labels': ?labels,
+      'name': ?name,
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'revisionUpdateTime': ?revisionUpdateTime,
+    };
+  }
 }
 
 /// Describes a version of an API in a structured way.
@@ -5369,9 +5409,10 @@ class ApiSpec {
 
   ApiSpec.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         contents: json_['contents'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
@@ -5389,22 +5430,38 @@ class ApiSpec {
         sourceUri: json_['sourceUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (contents != null) 'contents': contents!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (filename != null) 'filename': filename!,
-    if (hash != null) 'hash': hash!,
-    if (labels != null) 'labels': labels!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (name != null) 'name': name!,
-    if (revisionCreateTime != null) 'revisionCreateTime': revisionCreateTime!,
-    if (revisionId != null) 'revisionId': revisionId!,
-    if (revisionUpdateTime != null) 'revisionUpdateTime': revisionUpdateTime!,
-    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-    if (sourceUri != null) 'sourceUri': sourceUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final contents = this.contents;
+    final createTime = this.createTime;
+    final description = this.description;
+    final filename = this.filename;
+    final hash = this.hash;
+    final labels = this.labels;
+    final mimeType = this.mimeType;
+    final name = this.name;
+    final revisionCreateTime = this.revisionCreateTime;
+    final revisionId = this.revisionId;
+    final revisionUpdateTime = this.revisionUpdateTime;
+    final sizeBytes = this.sizeBytes;
+    final sourceUri = this.sourceUri;
+    return {
+      'annotations': ?annotations,
+      'contents': ?contents,
+      'createTime': ?createTime,
+      'description': ?description,
+      'filename': ?filename,
+      'hash': ?hash,
+      'labels': ?labels,
+      'mimeType': ?mimeType,
+      'name': ?name,
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'revisionUpdateTime': ?revisionUpdateTime,
+      'sizeBytes': ?sizeBytes,
+      'sourceUri': ?sourceUri,
+    };
+  }
 }
 
 /// Describes a particular version of an API.
@@ -5476,9 +5533,10 @@ class ApiVersion {
 
   ApiVersion.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -5491,17 +5549,28 @@ class ApiVersion {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (primarySpec != null) 'primarySpec': primarySpec!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final name = this.name;
+    final primarySpec = this.primarySpec;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'primarySpec': ?primarySpec,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Artifacts of resources.
@@ -5599,9 +5668,10 @@ class Artifact {
 
   Artifact.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         contents: json_['contents'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         hash: json_['hash'] as core.String?,
@@ -5614,17 +5684,28 @@ class Artifact {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (contents != null) 'contents': contents!,
-    if (createTime != null) 'createTime': createTime!,
-    if (hash != null) 'hash': hash!,
-    if (labels != null) 'labels': labels!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (name != null) 'name': name!,
-    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final contents = this.contents;
+    final createTime = this.createTime;
+    final hash = this.hash;
+    final labels = this.labels;
+    final mimeType = this.mimeType;
+    final name = this.name;
+    final sizeBytes = this.sizeBytes;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'contents': ?contents,
+      'createTime': ?createTime,
+      'hash': ?hash,
+      'labels': ?labels,
+      'mimeType': ?mimeType,
+      'name': ?name,
+      'sizeBytes': ?sizeBytes,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -5687,24 +5768,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Build information of the Instance if it's in `ACTIVE` state.
@@ -5733,11 +5813,12 @@ class Build {
         repo: json_['repo'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commitId != null) 'commitId': commitId!,
-    if (commitTime != null) 'commitTime': commitTime!,
-    if (repo != null) 'repo': repo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final commitId = this.commitId;
+    final commitTime = this.commitTime;
+    final repo = this.repo;
+    return {'commitId': ?commitId, 'commitTime': ?commitTime, 'repo': ?repo};
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -5767,10 +5848,11 @@ class Config {
         location: json_['location'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
-    if (location != null) 'location': location!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cmekKeyName = this.cmekKeyName;
+    final location = this.location;
+    return {'cmekKeyName': ?cmekKeyName, 'location': ?location};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5881,18 +5963,16 @@ class Instance {
 
   Instance.fromJson(core.Map json_)
     : this(
-        build:
-            json_.containsKey('build')
-                ? Build.fromJson(
-                  json_['build'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        config:
-            json_.containsKey('config')
-                ? Config.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        build: json_.containsKey('build')
+            ? Build.fromJson(
+                json_['build'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        config: json_.containsKey('config')
+            ? Config.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
@@ -5900,15 +5980,24 @@ class Instance {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (build != null) 'build': build!,
-    if (config != null) 'config': config!,
-    if (createTime != null) 'createTime': createTime!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (stateMessage != null) 'stateMessage': stateMessage!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final build = this.build;
+    final config = this.config;
+    final createTime = this.createTime;
+    final name = this.name;
+    final state = this.state;
+    final stateMessage = this.stateMessage;
+    final updateTime = this.updateTime;
+    return {
+      'build': ?build,
+      'config': ?config,
+      'createTime': ?createTime,
+      'name': ?name,
+      'state': ?state,
+      'stateMessage': ?stateMessage,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Response message for ListApiDeploymentRevisionsResponse.
@@ -5925,21 +6014,21 @@ class ListApiDeploymentRevisionsResponse {
 
   ListApiDeploymentRevisionsResponse.fromJson(core.Map json_)
     : this(
-        apiDeployments:
-            (json_['apiDeployments'] as core.List?)
-                ?.map(
-                  (value) => ApiDeployment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apiDeployments: (json_['apiDeployments'] as core.List?)
+            ?.map(
+              (value) => ApiDeployment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiDeployments != null) 'apiDeployments': apiDeployments!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiDeployments = this.apiDeployments;
+    final nextPageToken = this.nextPageToken;
+    return {'apiDeployments': ?apiDeployments, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ListApiDeployments.
@@ -5956,21 +6045,21 @@ class ListApiDeploymentsResponse {
 
   ListApiDeploymentsResponse.fromJson(core.Map json_)
     : this(
-        apiDeployments:
-            (json_['apiDeployments'] as core.List?)
-                ?.map(
-                  (value) => ApiDeployment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apiDeployments: (json_['apiDeployments'] as core.List?)
+            ?.map(
+              (value) => ApiDeployment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiDeployments != null) 'apiDeployments': apiDeployments!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiDeployments = this.apiDeployments;
+    final nextPageToken = this.nextPageToken;
+    return {'apiDeployments': ?apiDeployments, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ListApiSpecRevisionsResponse.
@@ -5987,21 +6076,21 @@ class ListApiSpecRevisionsResponse {
 
   ListApiSpecRevisionsResponse.fromJson(core.Map json_)
     : this(
-        apiSpecs:
-            (json_['apiSpecs'] as core.List?)
-                ?.map(
-                  (value) => ApiSpec.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apiSpecs: (json_['apiSpecs'] as core.List?)
+            ?.map(
+              (value) => ApiSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiSpecs != null) 'apiSpecs': apiSpecs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiSpecs = this.apiSpecs;
+    final nextPageToken = this.nextPageToken;
+    return {'apiSpecs': ?apiSpecs, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ListApiSpecs.
@@ -6018,21 +6107,21 @@ class ListApiSpecsResponse {
 
   ListApiSpecsResponse.fromJson(core.Map json_)
     : this(
-        apiSpecs:
-            (json_['apiSpecs'] as core.List?)
-                ?.map(
-                  (value) => ApiSpec.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apiSpecs: (json_['apiSpecs'] as core.List?)
+            ?.map(
+              (value) => ApiSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiSpecs != null) 'apiSpecs': apiSpecs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiSpecs = this.apiSpecs;
+    final nextPageToken = this.nextPageToken;
+    return {'apiSpecs': ?apiSpecs, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ListApiVersions.
@@ -6049,21 +6138,21 @@ class ListApiVersionsResponse {
 
   ListApiVersionsResponse.fromJson(core.Map json_)
     : this(
-        apiVersions:
-            (json_['apiVersions'] as core.List?)
-                ?.map(
-                  (value) => ApiVersion.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apiVersions: (json_['apiVersions'] as core.List?)
+            ?.map(
+              (value) => ApiVersion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiVersions != null) 'apiVersions': apiVersions!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiVersions = this.apiVersions;
+    final nextPageToken = this.nextPageToken;
+    return {'apiVersions': ?apiVersions, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ListApis.
@@ -6080,21 +6169,20 @@ class ListApisResponse {
 
   ListApisResponse.fromJson(core.Map json_)
     : this(
-        apis:
-            (json_['apis'] as core.List?)
-                ?.map(
-                  (value) => Api.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apis: (json_['apis'] as core.List?)
+            ?.map(
+              (value) =>
+                  Api.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apis != null) 'apis': apis!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apis = this.apis;
+    final nextPageToken = this.nextPageToken;
+    return {'apis': ?apis, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for ListArtifacts.
@@ -6111,21 +6199,21 @@ class ListArtifactsResponse {
 
   ListArtifactsResponse.fromJson(core.Map json_)
     : this(
-        artifacts:
-            (json_['artifacts'] as core.List?)
-                ?.map(
-                  (value) => Artifact.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        artifacts: (json_['artifacts'] as core.List?)
+            ?.map(
+              (value) => Artifact.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (artifacts != null) 'artifacts': artifacts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifacts = this.artifacts;
+    final nextPageToken = this.nextPageToken;
+    return {'artifacts': ?artifacts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -6140,21 +6228,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -6170,20 +6258,20 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    return {'nextPageToken': ?nextPageToken, 'operations': ?operations};
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -6237,30 +6325,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -6352,23 +6444,23 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {'bindings': ?bindings, 'etag': ?etag, 'version': ?version};
+  }
 }
 
 /// Request message for RollbackApiDeployment.
@@ -6385,9 +6477,10 @@ class RollbackApiDeploymentRequest {
   RollbackApiDeploymentRequest.fromJson(core.Map json_)
     : this(revisionId: json_['revisionId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (revisionId != null) 'revisionId': revisionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final revisionId = this.revisionId;
+    return {'revisionId': ?revisionId};
+  }
 }
 
 /// Request message for RollbackApiSpec.
@@ -6404,9 +6497,10 @@ class RollbackApiSpecRequest {
   RollbackApiSpecRequest.fromJson(core.Map json_)
     : this(revisionId: json_['revisionId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (revisionId != null) 'revisionId': revisionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final revisionId = this.revisionId;
+    return {'revisionId': ?revisionId};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -6422,17 +6516,17 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    return {'policy': ?policy};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

@@ -1362,10 +1362,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation(od);
       });
     },
@@ -1378,10 +1378,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership(
           od,
         );
@@ -1396,10 +1396,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation(od);
       });
     },
@@ -1411,10 +1411,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudPolicytroubleshooterIamV3ConditionContext();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ConditionContext.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ConditionContext.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ConditionContext(od);
       });
     },
@@ -1427,10 +1427,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag(
           od,
         );
@@ -1445,10 +1445,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3ConditionContextPeer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ConditionContextPeer(od);
       });
     },
@@ -1461,10 +1461,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3ConditionContextRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ConditionContextRequest(od);
       });
     },
@@ -1477,10 +1477,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3ConditionContextResource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ConditionContextResource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ConditionContextResource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ConditionContextResource(od);
       });
     },
@@ -1493,10 +1493,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3ConditionExplanation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ConditionExplanation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ConditionExplanation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ConditionExplanation(od);
       });
     },
@@ -1509,10 +1509,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState(
           od,
         );
@@ -1527,10 +1527,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation(od);
       });
     },
@@ -1543,10 +1543,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation(od);
       });
     },
@@ -1559,10 +1559,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching(
           od,
         );
@@ -1577,10 +1577,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching(
           od,
         );
@@ -1595,10 +1595,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy(od);
       });
     },
@@ -1611,10 +1611,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy(od);
       });
     },
@@ -1627,10 +1627,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource(od);
       });
     },
@@ -1643,10 +1643,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest(
           od,
         );
@@ -1661,10 +1661,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse(
           od,
         );
@@ -1780,10 +1780,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest(
             obj,
           );

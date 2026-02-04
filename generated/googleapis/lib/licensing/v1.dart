@@ -100,7 +100,7 @@ class LicenseAssignmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -152,7 +152,7 @@ class LicenseAssignmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -203,7 +203,7 @@ class LicenseAssignmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -264,9 +264,9 @@ class LicenseAssignmentsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'customerId': [customerId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -328,9 +328,9 @@ class LicenseAssignmentsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'customerId': [customerId],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -389,7 +389,7 @@ class LicenseAssignmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -448,7 +448,7 @@ class LicenseAssignmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -541,16 +541,26 @@ class LicenseAssignment {
         userId: json_['userId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etags != null) 'etags': etags!,
-    if (kind != null) 'kind': kind!,
-    if (productId != null) 'productId': productId!,
-    if (productName != null) 'productName': productName!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (skuId != null) 'skuId': skuId!,
-    if (skuName != null) 'skuName': skuName!,
-    if (userId != null) 'userId': userId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etags = this.etags;
+    final kind = this.kind;
+    final productId = this.productId;
+    final productName = this.productName;
+    final selfLink = this.selfLink;
+    final skuId = this.skuId;
+    final skuName = this.skuName;
+    final userId = this.userId;
+    return {
+      'etags': ?etags,
+      'kind': ?kind,
+      'productId': ?productId,
+      'productName': ?productName,
+      'selfLink': ?selfLink,
+      'skuId': ?skuId,
+      'skuName': ?skuName,
+      'userId': ?userId,
+    };
+  }
 }
 
 /// Representation of a license assignment.
@@ -563,9 +573,10 @@ class LicenseAssignmentInsert {
   LicenseAssignmentInsert.fromJson(core.Map json_)
     : this(userId: json_['userId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (userId != null) 'userId': userId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final userId = this.userId;
+    return {'userId': ?userId};
+  }
 }
 
 class LicenseAssignmentList {
@@ -590,22 +601,27 @@ class LicenseAssignmentList {
   LicenseAssignmentList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => LicenseAssignment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => LicenseAssignment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }

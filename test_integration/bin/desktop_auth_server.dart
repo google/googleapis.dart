@@ -30,8 +30,9 @@ class _Server {
     '',
   );
 
-  late final serverRedirectUri =
-      serverUri.replace(pathSegments: [_redirectPath]).toString();
+  late final serverRedirectUri = serverUri
+      .replace(pathSegments: [_redirectPath])
+      .toString();
 
   static Future<_Server> create() async {
     final server = await HttpServer.bind('localhost', 8080);
@@ -72,10 +73,9 @@ class _Server {
         case _redirectPath:
           final queryParams = request.url.queryParameters;
 
-          final entries =
-              _cache
-                  .where((element) => element.state == queryParams['state'])
-                  .toSet();
+          final entries = _cache
+              .where((element) => element.state == queryParams['state'])
+              .toSet();
 
           if (entries.length != 1) {
             throw StateError('Could not find an entry for this response!');

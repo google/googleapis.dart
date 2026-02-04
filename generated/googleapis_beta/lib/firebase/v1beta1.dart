@@ -128,9 +128,9 @@ class AvailableProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1beta1/availableProjects';
@@ -173,7 +173,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -260,7 +260,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$project') + ':addFirebase';
@@ -341,7 +341,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -381,7 +381,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -426,7 +426,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -470,7 +470,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -527,10 +527,10 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1beta1/projects';
@@ -589,8 +589,8 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -648,7 +648,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -729,11 +729,11 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + ':searchApps';
@@ -793,7 +793,7 @@ class ProjectsAndroidAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/androidApps';
@@ -831,7 +831,7 @@ class ProjectsAndroidAppsResource {
   /// this method will complete with the same error.
   async.Future<AndroidApp> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -874,7 +874,7 @@ class ProjectsAndroidAppsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -933,10 +933,10 @@ class ProjectsAndroidAppsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/androidApps';
@@ -993,8 +993,8 @@ class ProjectsAndroidAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -1041,7 +1041,7 @@ class ProjectsAndroidAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
@@ -1086,7 +1086,7 @@ class ProjectsAndroidAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':undelete';
@@ -1139,7 +1139,7 @@ class ProjectsAndroidAppsShaResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/sha';
@@ -1182,7 +1182,7 @@ class ProjectsAndroidAppsShaResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -1223,7 +1223,7 @@ class ProjectsAndroidAppsShaResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/sha';
@@ -1312,9 +1312,9 @@ class ProjectsAvailableLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1405,7 +1405,7 @@ class ProjectsDefaultLocationResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1462,7 +1462,7 @@ class ProjectsIosAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/iosApps';
@@ -1500,7 +1500,7 @@ class ProjectsIosAppsResource {
   /// this method will complete with the same error.
   async.Future<IosApp> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -1540,7 +1540,7 @@ class ProjectsIosAppsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -1599,10 +1599,10 @@ class ProjectsIosAppsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/iosApps';
@@ -1659,8 +1659,8 @@ class ProjectsIosAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -1705,7 +1705,7 @@ class ProjectsIosAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
@@ -1750,7 +1750,7 @@ class ProjectsIosAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':undelete';
@@ -1804,7 +1804,7 @@ class ProjectsWebAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/webApps';
@@ -1842,7 +1842,7 @@ class ProjectsWebAppsResource {
   /// this method will complete with the same error.
   async.Future<WebApp> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -1882,7 +1882,7 @@ class ProjectsWebAppsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -1941,10 +1941,10 @@ class ProjectsWebAppsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/webApps';
@@ -2001,8 +2001,8 @@ class ProjectsWebAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
@@ -2047,7 +2047,7 @@ class ProjectsWebAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
@@ -2092,7 +2092,7 @@ class ProjectsWebAppsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':undelete';
@@ -2126,9 +2126,10 @@ class AddFirebaseRequest {
   AddFirebaseRequest.fromJson(core.Map json_)
     : this(locationId: json_['locationId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locationId != null) 'locationId': locationId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locationId = this.locationId;
+    return {'locationId': ?locationId};
+  }
 }
 
 class AddGoogleAnalyticsRequest {
@@ -2156,11 +2157,14 @@ class AddGoogleAnalyticsRequest {
         analyticsPropertyId: json_['analyticsPropertyId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (analyticsAccountId != null) 'analyticsAccountId': analyticsAccountId!,
-    if (analyticsPropertyId != null)
-      'analyticsPropertyId': analyticsPropertyId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final analyticsAccountId = this.analyticsAccountId;
+    final analyticsPropertyId = this.analyticsPropertyId;
+    return {
+      'analyticsAccountId': ?analyticsAccountId,
+      'analyticsPropertyId': ?analyticsPropertyId,
+    };
+  }
 }
 
 class AdminSdkConfig {
@@ -2235,12 +2239,18 @@ class AdminSdkConfig {
         storageBucket: json_['storageBucket'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseURL != null) 'databaseURL': databaseURL!,
-    if (locationId != null) 'locationId': locationId!,
-    if (projectId != null) 'projectId': projectId!,
-    if (storageBucket != null) 'storageBucket': storageBucket!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final databaseURL = this.databaseURL;
+    final locationId = this.locationId;
+    final projectId = this.projectId;
+    final storageBucket = this.storageBucket;
+    return {
+      'databaseURL': ?databaseURL,
+      'locationId': ?locationId,
+      'projectId': ?projectId,
+      'storageBucket': ?storageBucket,
+    };
+  }
 }
 
 class AnalyticsDetails {
@@ -2264,27 +2274,29 @@ class AnalyticsDetails {
 
   AnalyticsDetails.fromJson(core.Map json_)
     : this(
-        analyticsProperty:
-            json_.containsKey('analyticsProperty')
-                ? AnalyticsProperty.fromJson(
-                  json_['analyticsProperty']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        streamMappings:
-            (json_['streamMappings'] as core.List?)
-                ?.map(
-                  (value) => StreamMapping.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        analyticsProperty: json_.containsKey('analyticsProperty')
+            ? AnalyticsProperty.fromJson(
+                json_['analyticsProperty']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        streamMappings: (json_['streamMappings'] as core.List?)
+            ?.map(
+              (value) => StreamMapping.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (analyticsProperty != null) 'analyticsProperty': analyticsProperty!,
-    if (streamMappings != null) 'streamMappings': streamMappings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final analyticsProperty = this.analyticsProperty;
+    final streamMappings = this.streamMappings;
+    return {
+      'analyticsProperty': ?analyticsProperty,
+      'streamMappings': ?streamMappings,
+    };
+  }
 }
 
 /// Details of a Google Analytics property
@@ -2319,11 +2331,16 @@ class AnalyticsProperty {
         id: json_['id'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (analyticsAccountId != null) 'analyticsAccountId': analyticsAccountId!,
-    if (displayName != null) 'displayName': displayName!,
-    if (id != null) 'id': id!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final analyticsAccountId = this.analyticsAccountId;
+    final displayName = this.displayName;
+    final id = this.id;
+    return {
+      'analyticsAccountId': ?analyticsAccountId,
+      'displayName': ?displayName,
+      'id': ?id,
+    };
+  }
 }
 
 /// Details of a Firebase App for Android.
@@ -2447,30 +2464,41 @@ class AndroidApp {
         name: json_['name'] as core.String?,
         packageName: json_['packageName'] as core.String?,
         projectId: json_['projectId'] as core.String?,
-        sha1Hashes:
-            (json_['sha1Hashes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        sha256Hashes:
-            (json_['sha256Hashes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        sha1Hashes: (json_['sha1Hashes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        sha256Hashes: (json_['sha256Hashes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiKeyId != null) 'apiKeyId': apiKeyId!,
-    if (appId != null) 'appId': appId!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (name != null) 'name': name!,
-    if (packageName != null) 'packageName': packageName!,
-    if (projectId != null) 'projectId': projectId!,
-    if (sha1Hashes != null) 'sha1Hashes': sha1Hashes!,
-    if (sha256Hashes != null) 'sha256Hashes': sha256Hashes!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKeyId = this.apiKeyId;
+    final appId = this.appId;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final expireTime = this.expireTime;
+    final name = this.name;
+    final packageName = this.packageName;
+    final projectId = this.projectId;
+    final sha1Hashes = this.sha1Hashes;
+    final sha256Hashes = this.sha256Hashes;
+    final state = this.state;
+    return {
+      'apiKeyId': ?apiKeyId,
+      'appId': ?appId,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'expireTime': ?expireTime,
+      'name': ?name,
+      'packageName': ?packageName,
+      'projectId': ?projectId,
+      'sha1Hashes': ?sha1Hashes,
+      'sha256Hashes': ?sha256Hashes,
+      'state': ?state,
+    };
+  }
 }
 
 /// Configuration metadata of a single Firebase App for Android.
@@ -2501,10 +2529,14 @@ class AndroidAppConfig {
         configFilename: json_['configFilename'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configFileContents != null) 'configFileContents': configFileContents!,
-    if (configFilename != null) 'configFilename': configFilename!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configFileContents = this.configFileContents;
+    final configFilename = this.configFilename;
+    return {
+      'configFileContents': ?configFileContents,
+      'configFilename': ?configFilename,
+    };
+  }
 }
 
 /// **DEPRECATED.** _Auto-provisioning of these resources is changing, so this
@@ -2611,13 +2643,18 @@ class DefaultResources {
         storageBucket: json_['storageBucket'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostingSite != null) 'hostingSite': hostingSite!,
-    if (locationId != null) 'locationId': locationId!,
-    if (realtimeDatabaseInstance != null)
-      'realtimeDatabaseInstance': realtimeDatabaseInstance!,
-    if (storageBucket != null) 'storageBucket': storageBucket!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hostingSite = this.hostingSite;
+    final locationId = this.locationId;
+    final realtimeDatabaseInstance = this.realtimeDatabaseInstance;
+    final storageBucket = this.storageBucket;
+    return {
+      'hostingSite': ?hostingSite,
+      'locationId': ?locationId,
+      'realtimeDatabaseInstance': ?realtimeDatabaseInstance,
+      'storageBucket': ?storageBucket,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2643,9 +2680,10 @@ class FinalizeDefaultLocationRequest {
   FinalizeDefaultLocationRequest.fromJson(core.Map json_)
     : this(locationId: json_['locationId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locationId != null) 'locationId': locationId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locationId = this.locationId;
+    return {'locationId': ?locationId};
+  }
 }
 
 /// A high-level summary of an App.
@@ -2753,16 +2791,26 @@ class FirebaseAppInfo {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiKeyId != null) 'apiKeyId': apiKeyId!,
-    if (appId != null) 'appId': appId!,
-    if (displayName != null) 'displayName': displayName!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (name != null) 'name': name!,
-    if (namespace != null) 'namespace': namespace!,
-    if (platform != null) 'platform': platform!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKeyId = this.apiKeyId;
+    final appId = this.appId;
+    final displayName = this.displayName;
+    final expireTime = this.expireTime;
+    final name = this.name;
+    final namespace = this.namespace;
+    final platform = this.platform;
+    final state = this.state;
+    return {
+      'apiKeyId': ?apiKeyId,
+      'appId': ?appId,
+      'displayName': ?displayName,
+      'expireTime': ?expireTime,
+      'name': ?name,
+      'namespace': ?namespace,
+      'platform': ?platform,
+      'state': ?state,
+    };
+  }
 }
 
 /// A `FirebaseProject` is the top-level Firebase entity.
@@ -2862,33 +2910,43 @@ class FirebaseProject {
 
   FirebaseProject.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
         projectId: json_['projectId'] as core.String?,
         projectNumber: json_['projectNumber'] as core.String?,
-        resources:
-            json_.containsKey('resources')
-                ? DefaultResources.fromJson(
-                  json_['resources'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resources: json_.containsKey('resources')
+            ? DefaultResources.fromJson(
+                json_['resources'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (projectNumber != null) 'projectNumber': projectNumber!,
-    if (resources != null) 'resources': resources!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final name = this.name;
+    final projectId = this.projectId;
+    final projectNumber = this.projectNumber;
+    final resources = this.resources;
+    final state = this.state;
+    return {
+      'annotations': ?annotations,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'name': ?name,
+      'projectId': ?projectId,
+      'projectNumber': ?projectNumber,
+      'resources': ?resources,
+      'state': ?state,
+    };
+  }
 }
 
 /// Details of a Firebase App for iOS.
@@ -3018,19 +3076,32 @@ class IosApp {
         teamId: json_['teamId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiKeyId != null) 'apiKeyId': apiKeyId!,
-    if (appId != null) 'appId': appId!,
-    if (appStoreId != null) 'appStoreId': appStoreId!,
-    if (bundleId != null) 'bundleId': bundleId!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (state != null) 'state': state!,
-    if (teamId != null) 'teamId': teamId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKeyId = this.apiKeyId;
+    final appId = this.appId;
+    final appStoreId = this.appStoreId;
+    final bundleId = this.bundleId;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final expireTime = this.expireTime;
+    final name = this.name;
+    final projectId = this.projectId;
+    final state = this.state;
+    final teamId = this.teamId;
+    return {
+      'apiKeyId': ?apiKeyId,
+      'appId': ?appId,
+      'appStoreId': ?appStoreId,
+      'bundleId': ?bundleId,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'expireTime': ?expireTime,
+      'name': ?name,
+      'projectId': ?projectId,
+      'state': ?state,
+      'teamId': ?teamId,
+    };
+  }
 }
 
 /// Configuration metadata of a single Firebase App for iOS.
@@ -3061,10 +3132,14 @@ class IosAppConfig {
         configFilename: json_['configFilename'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configFileContents != null) 'configFileContents': configFileContents!,
-    if (configFilename != null) 'configFilename': configFilename!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configFileContents = this.configFileContents;
+    final configFilename = this.configFilename;
+    return {
+      'configFileContents': ?configFileContents,
+      'configFilename': ?configFilename,
+    };
+  }
 }
 
 class ListAndroidAppsResponse {
@@ -3084,21 +3159,21 @@ class ListAndroidAppsResponse {
 
   ListAndroidAppsResponse.fromJson(core.Map json_)
     : this(
-        apps:
-            (json_['apps'] as core.List?)
-                ?.map(
-                  (value) => AndroidApp.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apps: (json_['apps'] as core.List?)
+            ?.map(
+              (value) => AndroidApp.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apps != null) 'apps': apps!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apps = this.apps;
+    final nextPageToken = this.nextPageToken;
+    return {'apps': ?apps, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class ListAvailableLocationsResponse {
@@ -3118,21 +3193,21 @@ class ListAvailableLocationsResponse {
 
   ListAvailableLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class ListAvailableProjectsResponse {
@@ -3154,20 +3229,20 @@ class ListAvailableProjectsResponse {
   ListAvailableProjectsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        projectInfo:
-            (json_['projectInfo'] as core.List?)
-                ?.map(
-                  (value) => ProjectInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        projectInfo: (json_['projectInfo'] as core.List?)
+            ?.map(
+              (value) => ProjectInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (projectInfo != null) 'projectInfo': projectInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final projectInfo = this.projectInfo;
+    return {'nextPageToken': ?nextPageToken, 'projectInfo': ?projectInfo};
+  }
 }
 
 class ListFirebaseProjectsResponse {
@@ -3188,20 +3263,20 @@ class ListFirebaseProjectsResponse {
   ListFirebaseProjectsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        results:
-            (json_['results'] as core.List?)
-                ?.map(
-                  (value) => FirebaseProject.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => FirebaseProject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (results != null) 'results': results!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final results = this.results;
+    return {'nextPageToken': ?nextPageToken, 'results': ?results};
+  }
 }
 
 class ListIosAppsResponse {
@@ -3221,21 +3296,20 @@ class ListIosAppsResponse {
 
   ListIosAppsResponse.fromJson(core.Map json_)
     : this(
-        apps:
-            (json_['apps'] as core.List?)
-                ?.map(
-                  (value) => IosApp.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apps: (json_['apps'] as core.List?)
+            ?.map(
+              (value) =>
+                  IosApp.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apps != null) 'apps': apps!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apps = this.apps;
+    final nextPageToken = this.nextPageToken;
+    return {'apps': ?apps, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 class ListShaCertificatesResponse {
@@ -3246,19 +3320,19 @@ class ListShaCertificatesResponse {
 
   ListShaCertificatesResponse.fromJson(core.Map json_)
     : this(
-        certificates:
-            (json_['certificates'] as core.List?)
-                ?.map(
-                  (value) => ShaCertificate.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        certificates: (json_['certificates'] as core.List?)
+            ?.map(
+              (value) => ShaCertificate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificates != null) 'certificates': certificates!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificates = this.certificates;
+    return {'certificates': ?certificates};
+  }
 }
 
 class ListWebAppsResponse {
@@ -3278,21 +3352,20 @@ class ListWebAppsResponse {
 
   ListWebAppsResponse.fromJson(core.Map json_)
     : this(
-        apps:
-            (json_['apps'] as core.List?)
-                ?.map(
-                  (value) => WebApp.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apps: (json_['apps'] as core.List?)
+            ?.map(
+              (value) =>
+                  WebApp.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apps != null) 'apps': apps!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apps = this.apps;
+    final nextPageToken = this.nextPageToken;
+    return {'apps': ?apps, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// **DEPRECATED.** _This Location is no longer used to determine Firebase
@@ -3332,19 +3405,19 @@ class Location {
 
   Location.fromJson(core.Map json_)
     : this(
-        features:
-            (json_['features'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        features: (json_['features'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         locationId: json_['locationId'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (features != null) 'features': features!,
-    if (locationId != null) 'locationId': locationId!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final features = this.features;
+    final locationId = this.locationId;
+    final type = this.type;
+    return {'features': ?features, 'locationId': ?locationId, 'type': ?type};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3395,30 +3468,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// A reference to a Google Cloud `Project`.
@@ -3457,11 +3534,16 @@ class ProjectInfo {
         project: json_['project'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (locationId != null) 'locationId': locationId!,
-    if (project != null) 'project': project!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final locationId = this.locationId;
+    final project = this.project;
+    return {
+      'displayName': ?displayName,
+      'locationId': ?locationId,
+      'project': ?project,
+    };
+  }
 }
 
 class RemoveAnalyticsRequest {
@@ -3482,10 +3564,10 @@ class RemoveAnalyticsRequest {
   RemoveAnalyticsRequest.fromJson(core.Map json_)
     : this(analyticsPropertyId: json_['analyticsPropertyId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (analyticsPropertyId != null)
-      'analyticsPropertyId': analyticsPropertyId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final analyticsPropertyId = this.analyticsPropertyId;
+    return {'analyticsPropertyId': ?analyticsPropertyId};
+  }
 }
 
 class RemoveAndroidAppRequest {
@@ -3527,12 +3609,18 @@ class RemoveAndroidAppRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMissing != null) 'allowMissing': allowMissing!,
-    if (etag != null) 'etag': etag!,
-    if (immediate != null) 'immediate': immediate!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMissing = this.allowMissing;
+    final etag = this.etag;
+    final immediate = this.immediate;
+    final validateOnly = this.validateOnly;
+    return {
+      'allowMissing': ?allowMissing,
+      'etag': ?etag,
+      'immediate': ?immediate,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 class RemoveIosAppRequest {
@@ -3574,12 +3662,18 @@ class RemoveIosAppRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMissing != null) 'allowMissing': allowMissing!,
-    if (etag != null) 'etag': etag!,
-    if (immediate != null) 'immediate': immediate!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMissing = this.allowMissing;
+    final etag = this.etag;
+    final immediate = this.immediate;
+    final validateOnly = this.validateOnly;
+    return {
+      'allowMissing': ?allowMissing,
+      'etag': ?etag,
+      'immediate': ?immediate,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 class RemoveWebAppRequest {
@@ -3621,12 +3715,18 @@ class RemoveWebAppRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMissing != null) 'allowMissing': allowMissing!,
-    if (etag != null) 'etag': etag!,
-    if (immediate != null) 'immediate': immediate!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMissing = this.allowMissing;
+    final etag = this.etag;
+    final immediate = this.immediate;
+    final validateOnly = this.validateOnly;
+    return {
+      'allowMissing': ?allowMissing,
+      'etag': ?etag,
+      'immediate': ?immediate,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 class SearchFirebaseAppsResponse {
@@ -3645,21 +3745,21 @@ class SearchFirebaseAppsResponse {
 
   SearchFirebaseAppsResponse.fromJson(core.Map json_)
     : this(
-        apps:
-            (json_['apps'] as core.List?)
-                ?.map(
-                  (value) => FirebaseAppInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apps: (json_['apps'] as core.List?)
+            ?.map(
+              (value) => FirebaseAppInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apps != null) 'apps': apps!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apps = this.apps;
+    final nextPageToken = this.nextPageToken;
+    return {'apps': ?apps, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// A SHA-1 or SHA-256 certificate associated with the AndroidApp.
@@ -3700,11 +3800,12 @@ class ShaCertificate {
         shaHash: json_['shaHash'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certType != null) 'certType': certType!,
-    if (name != null) 'name': name!,
-    if (shaHash != null) 'shaHash': shaHash!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certType = this.certType;
+    final name = this.name;
+    final shaHash = this.shaHash;
+    return {'certType': ?certType, 'name': ?name, 'shaHash': ?shaHash};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3751,11 +3852,16 @@ class StreamMapping {
         streamId: json_['streamId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (app != null) 'app': app!,
-    if (measurementId != null) 'measurementId': measurementId!,
-    if (streamId != null) 'streamId': streamId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final app = this.app;
+    final measurementId = this.measurementId;
+    final streamId = this.streamId;
+    return {
+      'app': ?app,
+      'measurementId': ?measurementId,
+      'streamId': ?streamId,
+    };
+  }
 }
 
 class UndeleteAndroidAppRequest {
@@ -3778,10 +3884,11 @@ class UndeleteAndroidAppRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final validateOnly = this.validateOnly;
+    return {'etag': ?etag, 'validateOnly': ?validateOnly};
+  }
 }
 
 class UndeleteIosAppRequest {
@@ -3804,10 +3911,11 @@ class UndeleteIosAppRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final validateOnly = this.validateOnly;
+    return {'etag': ?etag, 'validateOnly': ?validateOnly};
+  }
 }
 
 class UndeleteWebAppRequest {
@@ -3830,10 +3938,11 @@ class UndeleteWebAppRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final validateOnly = this.validateOnly;
+    return {'etag': ?etag, 'validateOnly': ?validateOnly};
+  }
 }
 
 /// Details of a Firebase App for the web.
@@ -3954,10 +4063,9 @@ class WebApp {
     : this(
         apiKeyId: json_['apiKeyId'] as core.String?,
         appId: json_['appId'] as core.String?,
-        appUrls:
-            (json_['appUrls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        appUrls: (json_['appUrls'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
@@ -3967,18 +4075,30 @@ class WebApp {
         webId: json_['webId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiKeyId != null) 'apiKeyId': apiKeyId!,
-    if (appId != null) 'appId': appId!,
-    if (appUrls != null) 'appUrls': appUrls!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (state != null) 'state': state!,
-    if (webId != null) 'webId': webId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKeyId = this.apiKeyId;
+    final appId = this.appId;
+    final appUrls = this.appUrls;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final expireTime = this.expireTime;
+    final name = this.name;
+    final projectId = this.projectId;
+    final state = this.state;
+    final webId = this.webId;
+    return {
+      'apiKeyId': ?apiKeyId,
+      'appId': ?appId,
+      'appUrls': ?appUrls,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'expireTime': ?expireTime,
+      'name': ?name,
+      'projectId': ?projectId,
+      'state': ?state,
+      'webId': ?webId,
+    };
+  }
 }
 
 /// Configuration metadata of a single Firebase App for the web.
@@ -4124,19 +4244,32 @@ class WebAppConfig {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiKey != null) 'apiKey': apiKey!,
-    if (appId != null) 'appId': appId!,
-    if (authDomain != null) 'authDomain': authDomain!,
-    if (databaseURL != null) 'databaseURL': databaseURL!,
-    if (locationId != null) 'locationId': locationId!,
-    if (measurementId != null) 'measurementId': measurementId!,
-    if (messagingSenderId != null) 'messagingSenderId': messagingSenderId!,
-    if (projectId != null) 'projectId': projectId!,
-    if (projectNumber != null) 'projectNumber': projectNumber!,
-    if (realtimeDatabaseUrl != null)
-      'realtimeDatabaseUrl': realtimeDatabaseUrl!,
-    if (storageBucket != null) 'storageBucket': storageBucket!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKey = this.apiKey;
+    final appId = this.appId;
+    final authDomain = this.authDomain;
+    final databaseURL = this.databaseURL;
+    final locationId = this.locationId;
+    final measurementId = this.measurementId;
+    final messagingSenderId = this.messagingSenderId;
+    final projectId = this.projectId;
+    final projectNumber = this.projectNumber;
+    final realtimeDatabaseUrl = this.realtimeDatabaseUrl;
+    final storageBucket = this.storageBucket;
+    final version = this.version;
+    return {
+      'apiKey': ?apiKey,
+      'appId': ?appId,
+      'authDomain': ?authDomain,
+      'databaseURL': ?databaseURL,
+      'locationId': ?locationId,
+      'measurementId': ?measurementId,
+      'messagingSenderId': ?messagingSenderId,
+      'projectId': ?projectId,
+      'projectNumber': ?projectNumber,
+      'realtimeDatabaseUrl': ?realtimeDatabaseUrl,
+      'storageBucket': ?storageBucket,
+      'version': ?version,
+    };
+  }
 }

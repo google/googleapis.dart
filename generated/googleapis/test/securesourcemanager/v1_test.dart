@@ -2989,8 +2989,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.operations;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3053,8 +3054,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.operations;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3107,8 +3109,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.operations;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3161,8 +3164,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.operations;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3238,8 +3242,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_request = buildRepository();
       final arg_parent = 'foo';
       final arg_repositoryId = 'foo';
@@ -3308,8 +3313,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_$fields = 'foo';
@@ -3371,8 +3377,9 @@ void main() {
 
     unittest.test('method--fetchBlob', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_repository = 'foo';
       final arg_sha = 'foo';
       final arg_$fields = 'foo';
@@ -3431,8 +3438,9 @@ void main() {
 
     unittest.test('method--fetchTree', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_repository = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3509,8 +3517,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3563,8 +3572,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -3626,8 +3636,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_instance = 'foo';
@@ -3707,8 +3718,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_request = buildRepository();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3783,8 +3795,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3847,8 +3860,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(mock).projects.locations.repositories;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3915,10 +3929,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesBranchRulesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.branchRules;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.branchRules;
       final arg_request = buildBranchRule();
       final arg_parent = 'foo';
       final arg_branchRuleId = 'foo';
@@ -3987,10 +4000,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.branchRules;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.branchRules;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_$fields = 'foo';
@@ -4052,10 +4064,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.branchRules;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.branchRules;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4108,10 +4119,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.branchRules;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.branchRules;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4179,10 +4189,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.branchRules;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.branchRules;
       final arg_request = buildBranchRule();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4259,10 +4268,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesHooksResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.hooks;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.hooks;
       final arg_request = buildHook();
       final arg_parent = 'foo';
       final arg_hookId = 'foo';
@@ -4331,10 +4339,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.hooks;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.hooks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4387,10 +4394,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.hooks;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.hooks;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4443,10 +4449,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.hooks;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.hooks;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4514,10 +4519,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.hooks;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.hooks;
       final arg_request = buildHook();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4588,10 +4592,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesIssuesResource', () {
     unittest.test('method--close', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues;
       final arg_request = buildCloseIssueRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4654,10 +4657,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues;
       final arg_request = buildIssue();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -4720,10 +4722,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -4782,10 +4783,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4838,10 +4838,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -4915,10 +4914,9 @@ void main() {
 
     unittest.test('method--open', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues;
       final arg_request = buildOpenIssueRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4981,10 +4979,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues;
       final arg_request = buildIssue();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -5055,10 +5052,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesIssuesIssueCommentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues.issueComments;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues.issueComments;
       final arg_request = buildIssueComment();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5121,10 +5117,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues.issueComments;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues.issueComments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5177,10 +5172,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues.issueComments;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues.issueComments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5233,10 +5227,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues.issueComments;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues.issueComments;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5304,10 +5297,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.issues.issueComments;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.issues.issueComments;
       final arg_request = buildIssueComment();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -5378,10 +5370,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesPullRequestsResource', () {
     unittest.test('method--close', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.pullRequests;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.pullRequests;
       final arg_request = buildClosePullRequestRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5444,10 +5435,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.pullRequests;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.pullRequests;
       final arg_request = buildPullRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5510,10 +5500,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.pullRequests;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.pullRequests;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5566,10 +5555,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.pullRequests;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.pullRequests;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5637,10 +5625,9 @@ void main() {
 
     unittest.test('method--listFileDiffs', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.pullRequests;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.pullRequests;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5712,10 +5699,9 @@ void main() {
 
     unittest.test('method--merge', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.pullRequests;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.pullRequests;
       final arg_request = buildMergePullRequestRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5778,10 +5764,9 @@ void main() {
 
     unittest.test('method--open', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.pullRequests;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.pullRequests;
       final arg_request = buildOpenPullRequestRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5844,10 +5829,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecureSourceManagerApi(
-            mock,
-          ).projects.locations.repositories.pullRequests;
+      final res = api.SecureSourceManagerApi(
+        mock,
+      ).projects.locations.repositories.pullRequests;
       final arg_request = buildPullRequest();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -5920,10 +5904,9 @@ void main() {
     () {
       unittest.test('method--batchCreate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecureSourceManagerApi(
-              mock,
-            ).projects.locations.repositories.pullRequests.pullRequestComments;
+        final res = api.SecureSourceManagerApi(
+          mock,
+        ).projects.locations.repositories.pullRequests.pullRequestComments;
         final arg_request = buildBatchCreatePullRequestCommentsRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -5986,10 +5969,9 @@ void main() {
 
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecureSourceManagerApi(
-              mock,
-            ).projects.locations.repositories.pullRequests.pullRequestComments;
+        final res = api.SecureSourceManagerApi(
+          mock,
+        ).projects.locations.repositories.pullRequests.pullRequestComments;
         final arg_request = buildPullRequestComment();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -6052,10 +6034,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecureSourceManagerApi(
-              mock,
-            ).projects.locations.repositories.pullRequests.pullRequestComments;
+        final res = api.SecureSourceManagerApi(
+          mock,
+        ).projects.locations.repositories.pullRequests.pullRequestComments;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6108,10 +6089,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecureSourceManagerApi(
-              mock,
-            ).projects.locations.repositories.pullRequests.pullRequestComments;
+        final res = api.SecureSourceManagerApi(
+          mock,
+        ).projects.locations.repositories.pullRequests.pullRequestComments;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6164,10 +6144,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecureSourceManagerApi(
-              mock,
-            ).projects.locations.repositories.pullRequests.pullRequestComments;
+        final res = api.SecureSourceManagerApi(
+          mock,
+        ).projects.locations.repositories.pullRequests.pullRequestComments;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -6239,10 +6218,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecureSourceManagerApi(
-              mock,
-            ).projects.locations.repositories.pullRequests.pullRequestComments;
+        final res = api.SecureSourceManagerApi(
+          mock,
+        ).projects.locations.repositories.pullRequests.pullRequestComments;
         final arg_request = buildPullRequestComment();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -6311,10 +6289,9 @@ void main() {
 
       unittest.test('method--resolve', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecureSourceManagerApi(
-              mock,
-            ).projects.locations.repositories.pullRequests.pullRequestComments;
+        final res = api.SecureSourceManagerApi(
+          mock,
+        ).projects.locations.repositories.pullRequests.pullRequestComments;
         final arg_request = buildResolvePullRequestCommentsRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -6377,10 +6354,9 @@ void main() {
 
       unittest.test('method--unresolve', () async {
         final mock = HttpServerMock();
-        final res =
-            api.SecureSourceManagerApi(
-              mock,
-            ).projects.locations.repositories.pullRequests.pullRequestComments;
+        final res = api.SecureSourceManagerApi(
+          mock,
+        ).projects.locations.repositories.pullRequests.pullRequestComments;
         final arg_request = buildUnresolvePullRequestCommentsRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';

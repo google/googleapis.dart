@@ -95,7 +95,7 @@ class AccountsPromotionsResource {
   /// this method will complete with the same error.
   async.Future<Promotion> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'promotions/v1/' + core.Uri.encodeFull('$name');
@@ -137,7 +137,7 @@ class AccountsPromotionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -194,9 +194,9 @@ class AccountsPromotionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -558,154 +558,155 @@ class Attributes {
 
   Attributes.fromJson(core.Map json_)
     : this(
-        brandExclusion:
-            (json_['brandExclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        brandInclusion:
-            (json_['brandInclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        brandExclusion: (json_['brandExclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        brandInclusion: (json_['brandInclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         couponValueType: json_['couponValueType'] as core.String?,
         freeGiftDescription: json_['freeGiftDescription'] as core.String?,
         freeGiftItemId: json_['freeGiftItemId'] as core.String?,
-        freeGiftValue:
-            json_.containsKey('freeGiftValue')
-                ? Price.fromJson(
-                  json_['freeGiftValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        freeGiftValue: json_.containsKey('freeGiftValue')
+            ? Price.fromJson(
+                json_['freeGiftValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         genericRedemptionCode: json_['genericRedemptionCode'] as core.String?,
         getThisQuantityDiscounted:
             json_['getThisQuantityDiscounted'] as core.String?,
-        itemGroupIdExclusion:
-            (json_['itemGroupIdExclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        itemGroupIdInclusion:
-            (json_['itemGroupIdInclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        itemIdExclusion:
-            (json_['itemIdExclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        itemIdInclusion:
-            (json_['itemIdInclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        itemGroupIdExclusion: (json_['itemGroupIdExclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        itemGroupIdInclusion: (json_['itemGroupIdInclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        itemIdExclusion: (json_['itemIdExclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        itemIdInclusion: (json_['itemIdInclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         limitQuantity: json_['limitQuantity'] as core.String?,
-        limitValue:
-            json_.containsKey('limitValue')
-                ? Price.fromJson(
-                  json_['limitValue'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        limitValue: json_.containsKey('limitValue')
+            ? Price.fromJson(
+                json_['limitValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         longTitle: json_['longTitle'] as core.String?,
-        minimumPurchaseAmount:
-            json_.containsKey('minimumPurchaseAmount')
-                ? Price.fromJson(
-                  json_['minimumPurchaseAmount']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        minimumPurchaseAmount: json_.containsKey('minimumPurchaseAmount')
+            ? Price.fromJson(
+                json_['minimumPurchaseAmount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         minimumPurchaseQuantity:
             json_['minimumPurchaseQuantity'] as core.String?,
-        moneyOffAmount:
-            json_.containsKey('moneyOffAmount')
-                ? Price.fromJson(
-                  json_['moneyOffAmount']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        moneyOffAmount: json_.containsKey('moneyOffAmount')
+            ? Price.fromJson(
+                json_['moneyOffAmount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         offerType: json_['offerType'] as core.String?,
         percentOff: json_['percentOff'] as core.String?,
         productApplicability: json_['productApplicability'] as core.String?,
-        productTypeExclusion:
-            (json_['productTypeExclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        productTypeInclusion:
-            (json_['productTypeInclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        promotionDestinations:
-            (json_['promotionDestinations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        productTypeExclusion: (json_['productTypeExclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        productTypeInclusion: (json_['productTypeInclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        promotionDestinations: (json_['promotionDestinations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         promotionDisplayTimePeriod:
             json_.containsKey('promotionDisplayTimePeriod')
-                ? Interval.fromJson(
-                  json_['promotionDisplayTimePeriod']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? Interval.fromJson(
+                json_['promotionDisplayTimePeriod']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         promotionEffectiveTimePeriod:
             json_.containsKey('promotionEffectiveTimePeriod')
-                ? Interval.fromJson(
-                  json_['promotionEffectiveTimePeriod']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? Interval.fromJson(
+                json_['promotionEffectiveTimePeriod']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         promotionUrl: json_['promotionUrl'] as core.String?,
         storeApplicability: json_['storeApplicability'] as core.String?,
-        storeCodesExclusion:
-            (json_['storeCodesExclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        storeCodesInclusion:
-            (json_['storeCodesInclusion'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        storeCodesExclusion: (json_['storeCodesExclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        storeCodesInclusion: (json_['storeCodesInclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (brandExclusion != null) 'brandExclusion': brandExclusion!,
-    if (brandInclusion != null) 'brandInclusion': brandInclusion!,
-    if (couponValueType != null) 'couponValueType': couponValueType!,
-    if (freeGiftDescription != null)
-      'freeGiftDescription': freeGiftDescription!,
-    if (freeGiftItemId != null) 'freeGiftItemId': freeGiftItemId!,
-    if (freeGiftValue != null) 'freeGiftValue': freeGiftValue!,
-    if (genericRedemptionCode != null)
-      'genericRedemptionCode': genericRedemptionCode!,
-    if (getThisQuantityDiscounted != null)
-      'getThisQuantityDiscounted': getThisQuantityDiscounted!,
-    if (itemGroupIdExclusion != null)
-      'itemGroupIdExclusion': itemGroupIdExclusion!,
-    if (itemGroupIdInclusion != null)
-      'itemGroupIdInclusion': itemGroupIdInclusion!,
-    if (itemIdExclusion != null) 'itemIdExclusion': itemIdExclusion!,
-    if (itemIdInclusion != null) 'itemIdInclusion': itemIdInclusion!,
-    if (limitQuantity != null) 'limitQuantity': limitQuantity!,
-    if (limitValue != null) 'limitValue': limitValue!,
-    if (longTitle != null) 'longTitle': longTitle!,
-    if (minimumPurchaseAmount != null)
-      'minimumPurchaseAmount': minimumPurchaseAmount!,
-    if (minimumPurchaseQuantity != null)
-      'minimumPurchaseQuantity': minimumPurchaseQuantity!,
-    if (moneyOffAmount != null) 'moneyOffAmount': moneyOffAmount!,
-    if (offerType != null) 'offerType': offerType!,
-    if (percentOff != null) 'percentOff': percentOff!,
-    if (productApplicability != null)
-      'productApplicability': productApplicability!,
-    if (productTypeExclusion != null)
-      'productTypeExclusion': productTypeExclusion!,
-    if (productTypeInclusion != null)
-      'productTypeInclusion': productTypeInclusion!,
-    if (promotionDestinations != null)
-      'promotionDestinations': promotionDestinations!,
-    if (promotionDisplayTimePeriod != null)
-      'promotionDisplayTimePeriod': promotionDisplayTimePeriod!,
-    if (promotionEffectiveTimePeriod != null)
-      'promotionEffectiveTimePeriod': promotionEffectiveTimePeriod!,
-    if (promotionUrl != null) 'promotionUrl': promotionUrl!,
-    if (storeApplicability != null) 'storeApplicability': storeApplicability!,
-    if (storeCodesExclusion != null)
-      'storeCodesExclusion': storeCodesExclusion!,
-    if (storeCodesInclusion != null)
-      'storeCodesInclusion': storeCodesInclusion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final brandExclusion = this.brandExclusion;
+    final brandInclusion = this.brandInclusion;
+    final couponValueType = this.couponValueType;
+    final freeGiftDescription = this.freeGiftDescription;
+    final freeGiftItemId = this.freeGiftItemId;
+    final freeGiftValue = this.freeGiftValue;
+    final genericRedemptionCode = this.genericRedemptionCode;
+    final getThisQuantityDiscounted = this.getThisQuantityDiscounted;
+    final itemGroupIdExclusion = this.itemGroupIdExclusion;
+    final itemGroupIdInclusion = this.itemGroupIdInclusion;
+    final itemIdExclusion = this.itemIdExclusion;
+    final itemIdInclusion = this.itemIdInclusion;
+    final limitQuantity = this.limitQuantity;
+    final limitValue = this.limitValue;
+    final longTitle = this.longTitle;
+    final minimumPurchaseAmount = this.minimumPurchaseAmount;
+    final minimumPurchaseQuantity = this.minimumPurchaseQuantity;
+    final moneyOffAmount = this.moneyOffAmount;
+    final offerType = this.offerType;
+    final percentOff = this.percentOff;
+    final productApplicability = this.productApplicability;
+    final productTypeExclusion = this.productTypeExclusion;
+    final productTypeInclusion = this.productTypeInclusion;
+    final promotionDestinations = this.promotionDestinations;
+    final promotionDisplayTimePeriod = this.promotionDisplayTimePeriod;
+    final promotionEffectiveTimePeriod = this.promotionEffectiveTimePeriod;
+    final promotionUrl = this.promotionUrl;
+    final storeApplicability = this.storeApplicability;
+    final storeCodesExclusion = this.storeCodesExclusion;
+    final storeCodesInclusion = this.storeCodesInclusion;
+    return {
+      'brandExclusion': ?brandExclusion,
+      'brandInclusion': ?brandInclusion,
+      'couponValueType': ?couponValueType,
+      'freeGiftDescription': ?freeGiftDescription,
+      'freeGiftItemId': ?freeGiftItemId,
+      'freeGiftValue': ?freeGiftValue,
+      'genericRedemptionCode': ?genericRedemptionCode,
+      'getThisQuantityDiscounted': ?getThisQuantityDiscounted,
+      'itemGroupIdExclusion': ?itemGroupIdExclusion,
+      'itemGroupIdInclusion': ?itemGroupIdInclusion,
+      'itemIdExclusion': ?itemIdExclusion,
+      'itemIdInclusion': ?itemIdInclusion,
+      'limitQuantity': ?limitQuantity,
+      'limitValue': ?limitValue,
+      'longTitle': ?longTitle,
+      'minimumPurchaseAmount': ?minimumPurchaseAmount,
+      'minimumPurchaseQuantity': ?minimumPurchaseQuantity,
+      'moneyOffAmount': ?moneyOffAmount,
+      'offerType': ?offerType,
+      'percentOff': ?percentOff,
+      'productApplicability': ?productApplicability,
+      'productTypeExclusion': ?productTypeExclusion,
+      'productTypeInclusion': ?productTypeInclusion,
+      'promotionDestinations': ?promotionDestinations,
+      'promotionDisplayTimePeriod': ?promotionDisplayTimePeriod,
+      'promotionEffectiveTimePeriod': ?promotionEffectiveTimePeriod,
+      'promotionUrl': ?promotionUrl,
+      'storeApplicability': ?storeApplicability,
+      'storeCodesExclusion': ?storeCodesExclusion,
+      'storeCodesInclusion': ?storeCodesInclusion,
+    };
+  }
 }
 
 /// A message that represents custom attributes.
@@ -729,23 +730,23 @@ class CustomAttribute {
 
   CustomAttribute.fromJson(core.Map json_)
     : this(
-        groupValues:
-            (json_['groupValues'] as core.List?)
-                ?.map(
-                  (value) => CustomAttribute.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        groupValues: (json_['groupValues'] as core.List?)
+            ?.map(
+              (value) => CustomAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (groupValues != null) 'groupValues': groupValues!,
-    if (name != null) 'name': name!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupValues = this.groupValues;
+    final name = this.name;
+    final value = this.value;
+    return {'groupValues': ?groupValues, 'name': ?name, 'value': ?value};
+  }
 }
 
 /// The status for the specified destination.
@@ -814,10 +815,11 @@ class DestinationStatus {
         status: json_['status'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reportingContext != null) 'reportingContext': reportingContext!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final reportingContext = this.reportingContext;
+    final status = this.status;
+    return {'reportingContext': ?reportingContext, 'status': ?status};
+  }
 }
 
 /// Request message for the `InsertPromotion` method.
@@ -839,18 +841,18 @@ class InsertPromotionRequest {
   InsertPromotionRequest.fromJson(core.Map json_)
     : this(
         dataSource: json_['dataSource'] as core.String?,
-        promotion:
-            json_.containsKey('promotion')
-                ? Promotion.fromJson(
-                  json_['promotion'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        promotion: json_.containsKey('promotion')
+            ? Promotion.fromJson(
+                json_['promotion'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataSource != null) 'dataSource': dataSource!,
-    if (promotion != null) 'promotion': promotion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataSource = this.dataSource;
+    final promotion = this.promotion;
+    return {'dataSource': ?dataSource, 'promotion': ?promotion};
+  }
 }
 
 /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
@@ -967,10 +969,9 @@ class ItemLevelIssue {
 
   ItemLevelIssue.fromJson(core.Map json_)
     : this(
-        applicableCountries:
-            (json_['applicableCountries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        applicableCountries: (json_['applicableCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         attribute: json_['attribute'] as core.String?,
         code: json_['code'] as core.String?,
         description: json_['description'] as core.String?,
@@ -981,18 +982,28 @@ class ItemLevelIssue {
         severity: json_['severity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applicableCountries != null)
-      'applicableCountries': applicableCountries!,
-    if (attribute != null) 'attribute': attribute!,
-    if (code != null) 'code': code!,
-    if (description != null) 'description': description!,
-    if (detail != null) 'detail': detail!,
-    if (documentation != null) 'documentation': documentation!,
-    if (reportingContext != null) 'reportingContext': reportingContext!,
-    if (resolution != null) 'resolution': resolution!,
-    if (severity != null) 'severity': severity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final applicableCountries = this.applicableCountries;
+    final attribute = this.attribute;
+    final code = this.code;
+    final description = this.description;
+    final detail = this.detail;
+    final documentation = this.documentation;
+    final reportingContext = this.reportingContext;
+    final resolution = this.resolution;
+    final severity = this.severity;
+    return {
+      'applicableCountries': ?applicableCountries,
+      'attribute': ?attribute,
+      'code': ?code,
+      'description': ?description,
+      'detail': ?detail,
+      'documentation': ?documentation,
+      'reportingContext': ?reportingContext,
+      'resolution': ?resolution,
+      'severity': ?severity,
+    };
+  }
 }
 
 /// Response message for the `ListPromotions` method.
@@ -1010,20 +1021,20 @@ class ListPromotionsResponse {
   ListPromotionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        promotions:
-            (json_['promotions'] as core.List?)
-                ?.map(
-                  (value) => Promotion.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        promotions: (json_['promotions'] as core.List?)
+            ?.map(
+              (value) => Promotion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (promotions != null) 'promotions': promotions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final promotions = this.promotions;
+    return {'nextPageToken': ?nextPageToken, 'promotions': ?promotions};
+  }
 }
 
 /// The price represented as a number and currency.
@@ -1138,51 +1149,58 @@ class Promotion {
 
   Promotion.fromJson(core.Map json_)
     : this(
-        attributes:
-            json_.containsKey('attributes')
-                ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attributes: json_.containsKey('attributes')
+            ? Attributes.fromJson(
+                json_['attributes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         contentLanguage: json_['contentLanguage'] as core.String?,
-        customAttributes:
-            (json_['customAttributes'] as core.List?)
-                ?.map(
-                  (value) => CustomAttribute.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        customAttributes: (json_['customAttributes'] as core.List?)
+            ?.map(
+              (value) => CustomAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         dataSource: json_['dataSource'] as core.String?,
         name: json_['name'] as core.String?,
         promotionId: json_['promotionId'] as core.String?,
-        promotionStatus:
-            json_.containsKey('promotionStatus')
-                ? PromotionStatus.fromJson(
-                  json_['promotionStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        redemptionChannel:
-            (json_['redemptionChannel'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        promotionStatus: json_.containsKey('promotionStatus')
+            ? PromotionStatus.fromJson(
+                json_['promotionStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        redemptionChannel: (json_['redemptionChannel'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         targetCountry: json_['targetCountry'] as core.String?,
         versionNumber: json_['versionNumber'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-    if (customAttributes != null) 'customAttributes': customAttributes!,
-    if (dataSource != null) 'dataSource': dataSource!,
-    if (name != null) 'name': name!,
-    if (promotionId != null) 'promotionId': promotionId!,
-    if (promotionStatus != null) 'promotionStatus': promotionStatus!,
-    if (redemptionChannel != null) 'redemptionChannel': redemptionChannel!,
-    if (targetCountry != null) 'targetCountry': targetCountry!,
-    if (versionNumber != null) 'versionNumber': versionNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final contentLanguage = this.contentLanguage;
+    final customAttributes = this.customAttributes;
+    final dataSource = this.dataSource;
+    final name = this.name;
+    final promotionId = this.promotionId;
+    final promotionStatus = this.promotionStatus;
+    final redemptionChannel = this.redemptionChannel;
+    final targetCountry = this.targetCountry;
+    final versionNumber = this.versionNumber;
+    return {
+      'attributes': ?attributes,
+      'contentLanguage': ?contentLanguage,
+      'customAttributes': ?customAttributes,
+      'dataSource': ?dataSource,
+      'name': ?name,
+      'promotionId': ?promotionId,
+      'promotionStatus': ?promotionStatus,
+      'redemptionChannel': ?redemptionChannel,
+      'targetCountry': ?targetCountry,
+      'versionNumber': ?versionNumber,
+    };
+  }
 }
 
 /// The status of the promotion.
@@ -1221,30 +1239,33 @@ class PromotionStatus {
   PromotionStatus.fromJson(core.Map json_)
     : this(
         creationDate: json_['creationDate'] as core.String?,
-        destinationStatuses:
-            (json_['destinationStatuses'] as core.List?)
-                ?.map(
-                  (value) => DestinationStatus.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        itemLevelIssues:
-            (json_['itemLevelIssues'] as core.List?)
-                ?.map(
-                  (value) => ItemLevelIssue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        destinationStatuses: (json_['destinationStatuses'] as core.List?)
+            ?.map(
+              (value) => DestinationStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        itemLevelIssues: (json_['itemLevelIssues'] as core.List?)
+            ?.map(
+              (value) => ItemLevelIssue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         lastUpdateDate: json_['lastUpdateDate'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (creationDate != null) 'creationDate': creationDate!,
-    if (destinationStatuses != null)
-      'destinationStatuses': destinationStatuses!,
-    if (itemLevelIssues != null) 'itemLevelIssues': itemLevelIssues!,
-    if (lastUpdateDate != null) 'lastUpdateDate': lastUpdateDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationDate = this.creationDate;
+    final destinationStatuses = this.destinationStatuses;
+    final itemLevelIssues = this.itemLevelIssues;
+    final lastUpdateDate = this.lastUpdateDate;
+    return {
+      'creationDate': ?creationDate,
+      'destinationStatuses': ?destinationStatuses,
+      'itemLevelIssues': ?itemLevelIssues,
+      'lastUpdateDate': ?lastUpdateDate,
+    };
+  }
 }

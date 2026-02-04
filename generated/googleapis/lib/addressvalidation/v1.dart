@@ -107,7 +107,7 @@ class V1Resource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1:provideValidationFeedback';
@@ -146,7 +146,7 @@ class V1Resource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1:validateAddress';
@@ -196,24 +196,23 @@ class GoogleGeoTypeViewport {
 
   GoogleGeoTypeViewport.fromJson(core.Map json_)
     : this(
-        high:
-            json_.containsKey('high')
-                ? GoogleTypeLatLng.fromJson(
-                  json_['high'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        low:
-            json_.containsKey('low')
-                ? GoogleTypeLatLng.fromJson(
-                  json_['low'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        high: json_.containsKey('high')
+            ? GoogleTypeLatLng.fromJson(
+                json_['high'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        low: json_.containsKey('low')
+            ? GoogleTypeLatLng.fromJson(
+                json_['low'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (high != null) 'high': high!,
-    if (low != null) 'low': low!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final high = this.high;
+    final low = this.low;
+    return {'high': ?high, 'low': ?low};
+  }
 }
 
 /// Details of the post-processed address.
@@ -288,46 +287,47 @@ class GoogleMapsAddressvalidationV1Address {
 
   GoogleMapsAddressvalidationV1Address.fromJson(core.Map json_)
     : this(
-        addressComponents:
-            (json_['addressComponents'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleMapsAddressvalidationV1AddressComponent.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        addressComponents: (json_['addressComponents'] as core.List?)
+            ?.map(
+              (value) => GoogleMapsAddressvalidationV1AddressComponent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         formattedAddress: json_['formattedAddress'] as core.String?,
-        missingComponentTypes:
-            (json_['missingComponentTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        postalAddress:
-            json_.containsKey('postalAddress')
-                ? GoogleTypePostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        missingComponentTypes: (json_['missingComponentTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        postalAddress: json_.containsKey('postalAddress')
+            ? GoogleTypePostalAddress.fromJson(
+                json_['postalAddress'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         unconfirmedComponentTypes:
             (json_['unconfirmedComponentTypes'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        unresolvedTokens:
-            (json_['unresolvedTokens'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unresolvedTokens: (json_['unresolvedTokens'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressComponents != null) 'addressComponents': addressComponents!,
-    if (formattedAddress != null) 'formattedAddress': formattedAddress!,
-    if (missingComponentTypes != null)
-      'missingComponentTypes': missingComponentTypes!,
-    if (postalAddress != null) 'postalAddress': postalAddress!,
-    if (unconfirmedComponentTypes != null)
-      'unconfirmedComponentTypes': unconfirmedComponentTypes!,
-    if (unresolvedTokens != null) 'unresolvedTokens': unresolvedTokens!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressComponents = this.addressComponents;
+    final formattedAddress = this.formattedAddress;
+    final missingComponentTypes = this.missingComponentTypes;
+    final postalAddress = this.postalAddress;
+    final unconfirmedComponentTypes = this.unconfirmedComponentTypes;
+    final unresolvedTokens = this.unresolvedTokens;
+    return {
+      'addressComponents': ?addressComponents,
+      'formattedAddress': ?formattedAddress,
+      'missingComponentTypes': ?missingComponentTypes,
+      'postalAddress': ?postalAddress,
+      'unconfirmedComponentTypes': ?unconfirmedComponentTypes,
+      'unresolvedTokens': ?unresolvedTokens,
+    };
+  }
 }
 
 /// Represents an address component, such as a street, city, or state.
@@ -396,12 +396,11 @@ class GoogleMapsAddressvalidationV1AddressComponent {
 
   GoogleMapsAddressvalidationV1AddressComponent.fromJson(core.Map json_)
     : this(
-        componentName:
-            json_.containsKey('componentName')
-                ? GoogleMapsAddressvalidationV1ComponentName.fromJson(
-                  json_['componentName'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        componentName: json_.containsKey('componentName')
+            ? GoogleMapsAddressvalidationV1ComponentName.fromJson(
+                json_['componentName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         componentType: json_['componentType'] as core.String?,
         confirmationLevel: json_['confirmationLevel'] as core.String?,
         inferred: json_['inferred'] as core.bool?,
@@ -410,15 +409,24 @@ class GoogleMapsAddressvalidationV1AddressComponent {
         unexpected: json_['unexpected'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (componentName != null) 'componentName': componentName!,
-    if (componentType != null) 'componentType': componentType!,
-    if (confirmationLevel != null) 'confirmationLevel': confirmationLevel!,
-    if (inferred != null) 'inferred': inferred!,
-    if (replaced != null) 'replaced': replaced!,
-    if (spellCorrected != null) 'spellCorrected': spellCorrected!,
-    if (unexpected != null) 'unexpected': unexpected!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final componentName = this.componentName;
+    final componentType = this.componentType;
+    final confirmationLevel = this.confirmationLevel;
+    final inferred = this.inferred;
+    final replaced = this.replaced;
+    final spellCorrected = this.spellCorrected;
+    final unexpected = this.unexpected;
+    return {
+      'componentName': ?componentName,
+      'componentType': ?componentType,
+      'confirmationLevel': ?confirmationLevel,
+      'inferred': ?inferred,
+      'replaced': ?replaced,
+      'spellCorrected': ?spellCorrected,
+      'unexpected': ?unexpected,
+    };
+  }
 }
 
 /// The metadata for the post-processed address.
@@ -454,11 +462,16 @@ class GoogleMapsAddressvalidationV1AddressMetadata {
         residential: json_['residential'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (business != null) 'business': business!,
-    if (poBox != null) 'poBox': poBox!,
-    if (residential != null) 'residential': residential!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final business = this.business;
+    final poBox = this.poBox;
+    final residential = this.residential;
+    return {
+      'business': ?business,
+      'poBox': ?poBox,
+      'residential': ?residential,
+    };
+  }
 }
 
 /// A wrapper for the name of the component.
@@ -482,10 +495,11 @@ class GoogleMapsAddressvalidationV1ComponentName {
         text: json_['text'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final languageCode = this.languageCode;
+    final text = this.text;
+    return {'languageCode': ?languageCode, 'text': ?text};
+  }
 }
 
 /// Contains information about the place the input was geocoded to.
@@ -537,41 +551,45 @@ class GoogleMapsAddressvalidationV1Geocode {
 
   GoogleMapsAddressvalidationV1Geocode.fromJson(core.Map json_)
     : this(
-        bounds:
-            json_.containsKey('bounds')
-                ? GoogleGeoTypeViewport.fromJson(
-                  json_['bounds'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        featureSizeMeters:
-            (json_['featureSizeMeters'] as core.num?)?.toDouble(),
-        location:
-            json_.containsKey('location')
-                ? GoogleTypeLatLng.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bounds: json_.containsKey('bounds')
+            ? GoogleGeoTypeViewport.fromJson(
+                json_['bounds'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        featureSizeMeters: (json_['featureSizeMeters'] as core.num?)
+            ?.toDouble(),
+        location: json_.containsKey('location')
+            ? GoogleTypeLatLng.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         placeId: json_['placeId'] as core.String?,
-        placeTypes:
-            (json_['placeTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        plusCode:
-            json_.containsKey('plusCode')
-                ? GoogleMapsAddressvalidationV1PlusCode.fromJson(
-                  json_['plusCode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        placeTypes: (json_['placeTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        plusCode: json_.containsKey('plusCode')
+            ? GoogleMapsAddressvalidationV1PlusCode.fromJson(
+                json_['plusCode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bounds != null) 'bounds': bounds!,
-    if (featureSizeMeters != null) 'featureSizeMeters': featureSizeMeters!,
-    if (location != null) 'location': location!,
-    if (placeId != null) 'placeId': placeId!,
-    if (placeTypes != null) 'placeTypes': placeTypes!,
-    if (plusCode != null) 'plusCode': plusCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bounds = this.bounds;
+    final featureSizeMeters = this.featureSizeMeters;
+    final location = this.location;
+    final placeId = this.placeId;
+    final placeTypes = this.placeTypes;
+    final plusCode = this.plusCode;
+    return {
+      'bounds': ?bounds,
+      'featureSizeMeters': ?featureSizeMeters,
+      'location': ?location,
+      'placeId': ?placeId,
+      'placeTypes': ?placeTypes,
+      'plusCode': ?plusCode,
+    };
+  }
 }
 
 /// Preview: This feature is in Preview (pre-GA).
@@ -602,10 +620,10 @@ class GoogleMapsAddressvalidationV1LanguageOptions {
             json_['returnEnglishLatinAddress'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (returnEnglishLatinAddress != null)
-      'returnEnglishLatinAddress': returnEnglishLatinAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final returnEnglishLatinAddress = this.returnEnglishLatinAddress;
+    return {'returnEnglishLatinAddress': ?returnEnglishLatinAddress};
+  }
 }
 
 /// Plus code (http://plus.codes) is a location reference with two formats:
@@ -656,10 +674,11 @@ class GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest {
         responseId: json_['responseId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conclusion != null) 'conclusion': conclusion!,
-    if (responseId != null) 'responseId': responseId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conclusion = this.conclusion;
+    final responseId = this.responseId;
+    return {'conclusion': ?conclusion, 'responseId': ?responseId};
+  }
 }
 
 /// The response for validation feedback.
@@ -722,18 +741,28 @@ class GoogleMapsAddressvalidationV1UspsAddress {
         zipCodeExtension: json_['zipCodeExtension'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (city != null) 'city': city!,
-    if (cityStateZipAddressLine != null)
-      'cityStateZipAddressLine': cityStateZipAddressLine!,
-    if (firm != null) 'firm': firm!,
-    if (firstAddressLine != null) 'firstAddressLine': firstAddressLine!,
-    if (secondAddressLine != null) 'secondAddressLine': secondAddressLine!,
-    if (state != null) 'state': state!,
-    if (urbanization != null) 'urbanization': urbanization!,
-    if (zipCode != null) 'zipCode': zipCode!,
-    if (zipCodeExtension != null) 'zipCodeExtension': zipCodeExtension!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final city = this.city;
+    final cityStateZipAddressLine = this.cityStateZipAddressLine;
+    final firm = this.firm;
+    final firstAddressLine = this.firstAddressLine;
+    final secondAddressLine = this.secondAddressLine;
+    final state = this.state;
+    final urbanization = this.urbanization;
+    final zipCode = this.zipCode;
+    final zipCodeExtension = this.zipCodeExtension;
+    return {
+      'city': ?city,
+      'cityStateZipAddressLine': ?cityStateZipAddressLine,
+      'firm': ?firm,
+      'firstAddressLine': ?firstAddressLine,
+      'secondAddressLine': ?secondAddressLine,
+      'state': ?state,
+      'urbanization': ?urbanization,
+      'zipCode': ?zipCode,
+      'zipCodeExtension': ?zipCodeExtension,
+    };
+  }
 }
 
 /// The USPS data for the address.
@@ -1049,64 +1078,93 @@ class GoogleMapsAddressvalidationV1UspsData {
         poBoxOnlyPostalCode: json_['poBoxOnlyPostalCode'] as core.bool?,
         postOfficeCity: json_['postOfficeCity'] as core.String?,
         postOfficeState: json_['postOfficeState'] as core.String?,
-        standardizedAddress:
-            json_.containsKey('standardizedAddress')
-                ? GoogleMapsAddressvalidationV1UspsAddress.fromJson(
-                  json_['standardizedAddress']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        standardizedAddress: json_.containsKey('standardizedAddress')
+            ? GoogleMapsAddressvalidationV1UspsAddress.fromJson(
+                json_['standardizedAddress']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         suitelinkFootnote: json_['suitelinkFootnote'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (abbreviatedCity != null) 'abbreviatedCity': abbreviatedCity!,
-    if (addressRecordType != null) 'addressRecordType': addressRecordType!,
-    if (carrierRoute != null) 'carrierRoute': carrierRoute!,
-    if (carrierRouteIndicator != null)
-      'carrierRouteIndicator': carrierRouteIndicator!,
-    if (cassProcessed != null) 'cassProcessed': cassProcessed!,
-    if (county != null) 'county': county!,
-    if (defaultAddress != null) 'defaultAddress': defaultAddress!,
-    if (deliveryPointCheckDigit != null)
-      'deliveryPointCheckDigit': deliveryPointCheckDigit!,
-    if (deliveryPointCode != null) 'deliveryPointCode': deliveryPointCode!,
-    if (dpvCmra != null) 'dpvCmra': dpvCmra!,
-    if (dpvConfirmation != null) 'dpvConfirmation': dpvConfirmation!,
-    if (dpvDoorNotAccessible != null)
-      'dpvDoorNotAccessible': dpvDoorNotAccessible!,
-    if (dpvDrop != null) 'dpvDrop': dpvDrop!,
-    if (dpvEnhancedDeliveryCode != null)
-      'dpvEnhancedDeliveryCode': dpvEnhancedDeliveryCode!,
-    if (dpvFootnote != null) 'dpvFootnote': dpvFootnote!,
-    if (dpvNoSecureLocation != null)
-      'dpvNoSecureLocation': dpvNoSecureLocation!,
-    if (dpvNoStat != null) 'dpvNoStat': dpvNoStat!,
-    if (dpvNoStatReasonCode != null)
-      'dpvNoStatReasonCode': dpvNoStatReasonCode!,
-    if (dpvNonDeliveryDays != null) 'dpvNonDeliveryDays': dpvNonDeliveryDays!,
-    if (dpvNonDeliveryDaysValues != null)
-      'dpvNonDeliveryDaysValues': dpvNonDeliveryDaysValues!,
-    if (dpvPbsa != null) 'dpvPbsa': dpvPbsa!,
-    if (dpvThrowback != null) 'dpvThrowback': dpvThrowback!,
-    if (dpvVacant != null) 'dpvVacant': dpvVacant!,
-    if (elotFlag != null) 'elotFlag': elotFlag!,
-    if (elotNumber != null) 'elotNumber': elotNumber!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (ewsNoMatch != null) 'ewsNoMatch': ewsNoMatch!,
-    if (fipsCountyCode != null) 'fipsCountyCode': fipsCountyCode!,
-    if (lacsLinkIndicator != null) 'lacsLinkIndicator': lacsLinkIndicator!,
-    if (lacsLinkReturnCode != null) 'lacsLinkReturnCode': lacsLinkReturnCode!,
-    if (pmbDesignator != null) 'pmbDesignator': pmbDesignator!,
-    if (pmbNumber != null) 'pmbNumber': pmbNumber!,
-    if (poBoxOnlyPostalCode != null)
-      'poBoxOnlyPostalCode': poBoxOnlyPostalCode!,
-    if (postOfficeCity != null) 'postOfficeCity': postOfficeCity!,
-    if (postOfficeState != null) 'postOfficeState': postOfficeState!,
-    if (standardizedAddress != null)
-      'standardizedAddress': standardizedAddress!,
-    if (suitelinkFootnote != null) 'suitelinkFootnote': suitelinkFootnote!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final abbreviatedCity = this.abbreviatedCity;
+    final addressRecordType = this.addressRecordType;
+    final carrierRoute = this.carrierRoute;
+    final carrierRouteIndicator = this.carrierRouteIndicator;
+    final cassProcessed = this.cassProcessed;
+    final county = this.county;
+    final defaultAddress = this.defaultAddress;
+    final deliveryPointCheckDigit = this.deliveryPointCheckDigit;
+    final deliveryPointCode = this.deliveryPointCode;
+    final dpvCmra = this.dpvCmra;
+    final dpvConfirmation = this.dpvConfirmation;
+    final dpvDoorNotAccessible = this.dpvDoorNotAccessible;
+    final dpvDrop = this.dpvDrop;
+    final dpvEnhancedDeliveryCode = this.dpvEnhancedDeliveryCode;
+    final dpvFootnote = this.dpvFootnote;
+    final dpvNoSecureLocation = this.dpvNoSecureLocation;
+    final dpvNoStat = this.dpvNoStat;
+    final dpvNoStatReasonCode = this.dpvNoStatReasonCode;
+    final dpvNonDeliveryDays = this.dpvNonDeliveryDays;
+    final dpvNonDeliveryDaysValues = this.dpvNonDeliveryDaysValues;
+    final dpvPbsa = this.dpvPbsa;
+    final dpvThrowback = this.dpvThrowback;
+    final dpvVacant = this.dpvVacant;
+    final elotFlag = this.elotFlag;
+    final elotNumber = this.elotNumber;
+    final errorMessage = this.errorMessage;
+    final ewsNoMatch = this.ewsNoMatch;
+    final fipsCountyCode = this.fipsCountyCode;
+    final lacsLinkIndicator = this.lacsLinkIndicator;
+    final lacsLinkReturnCode = this.lacsLinkReturnCode;
+    final pmbDesignator = this.pmbDesignator;
+    final pmbNumber = this.pmbNumber;
+    final poBoxOnlyPostalCode = this.poBoxOnlyPostalCode;
+    final postOfficeCity = this.postOfficeCity;
+    final postOfficeState = this.postOfficeState;
+    final standardizedAddress = this.standardizedAddress;
+    final suitelinkFootnote = this.suitelinkFootnote;
+    return {
+      'abbreviatedCity': ?abbreviatedCity,
+      'addressRecordType': ?addressRecordType,
+      'carrierRoute': ?carrierRoute,
+      'carrierRouteIndicator': ?carrierRouteIndicator,
+      'cassProcessed': ?cassProcessed,
+      'county': ?county,
+      'defaultAddress': ?defaultAddress,
+      'deliveryPointCheckDigit': ?deliveryPointCheckDigit,
+      'deliveryPointCode': ?deliveryPointCode,
+      'dpvCmra': ?dpvCmra,
+      'dpvConfirmation': ?dpvConfirmation,
+      'dpvDoorNotAccessible': ?dpvDoorNotAccessible,
+      'dpvDrop': ?dpvDrop,
+      'dpvEnhancedDeliveryCode': ?dpvEnhancedDeliveryCode,
+      'dpvFootnote': ?dpvFootnote,
+      'dpvNoSecureLocation': ?dpvNoSecureLocation,
+      'dpvNoStat': ?dpvNoStat,
+      'dpvNoStatReasonCode': ?dpvNoStatReasonCode,
+      'dpvNonDeliveryDays': ?dpvNonDeliveryDays,
+      'dpvNonDeliveryDaysValues': ?dpvNonDeliveryDaysValues,
+      'dpvPbsa': ?dpvPbsa,
+      'dpvThrowback': ?dpvThrowback,
+      'dpvVacant': ?dpvVacant,
+      'elotFlag': ?elotFlag,
+      'elotNumber': ?elotNumber,
+      'errorMessage': ?errorMessage,
+      'ewsNoMatch': ?ewsNoMatch,
+      'fipsCountyCode': ?fipsCountyCode,
+      'lacsLinkIndicator': ?lacsLinkIndicator,
+      'lacsLinkReturnCode': ?lacsLinkReturnCode,
+      'pmbDesignator': ?pmbDesignator,
+      'pmbNumber': ?pmbNumber,
+      'poBoxOnlyPostalCode': ?poBoxOnlyPostalCode,
+      'postOfficeCity': ?postOfficeCity,
+      'postOfficeState': ?postOfficeState,
+      'standardizedAddress': ?standardizedAddress,
+      'suitelinkFootnote': ?suitelinkFootnote,
+    };
+  }
 }
 
 /// The request for validating an address.
@@ -1195,31 +1253,35 @@ class GoogleMapsAddressvalidationV1ValidateAddressRequest {
 
   GoogleMapsAddressvalidationV1ValidateAddressRequest.fromJson(core.Map json_)
     : this(
-        address:
-            json_.containsKey('address')
-                ? GoogleTypePostalAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        address: json_.containsKey('address')
+            ? GoogleTypePostalAddress.fromJson(
+                json_['address'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableUspsCass: json_['enableUspsCass'] as core.bool?,
-        languageOptions:
-            json_.containsKey('languageOptions')
-                ? GoogleMapsAddressvalidationV1LanguageOptions.fromJson(
-                  json_['languageOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        languageOptions: json_.containsKey('languageOptions')
+            ? GoogleMapsAddressvalidationV1LanguageOptions.fromJson(
+                json_['languageOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         previousResponseId: json_['previousResponseId'] as core.String?,
         sessionToken: json_['sessionToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (enableUspsCass != null) 'enableUspsCass': enableUspsCass!,
-    if (languageOptions != null) 'languageOptions': languageOptions!,
-    if (previousResponseId != null) 'previousResponseId': previousResponseId!,
-    if (sessionToken != null) 'sessionToken': sessionToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final enableUspsCass = this.enableUspsCass;
+    final languageOptions = this.languageOptions;
+    final previousResponseId = this.previousResponseId;
+    final sessionToken = this.sessionToken;
+    return {
+      'address': ?address,
+      'enableUspsCass': ?enableUspsCass,
+      'languageOptions': ?languageOptions,
+      'previousResponseId': ?previousResponseId,
+      'sessionToken': ?sessionToken,
+    };
+  }
 }
 
 /// The response to an address validation request.
@@ -1241,18 +1303,18 @@ class GoogleMapsAddressvalidationV1ValidateAddressResponse {
   GoogleMapsAddressvalidationV1ValidateAddressResponse.fromJson(core.Map json_)
     : this(
         responseId: json_['responseId'] as core.String?,
-        result:
-            json_.containsKey('result')
-                ? GoogleMapsAddressvalidationV1ValidationResult.fromJson(
-                  json_['result'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        result: json_.containsKey('result')
+            ? GoogleMapsAddressvalidationV1ValidationResult.fromJson(
+                json_['result'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (responseId != null) 'responseId': responseId!,
-    if (result != null) 'result': result!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final responseId = this.responseId;
+    final result = this.result;
+    return {'responseId': ?responseId, 'result': ?result};
+  }
 }
 
 /// The result of validating an address.
@@ -1316,54 +1378,55 @@ class GoogleMapsAddressvalidationV1ValidationResult {
 
   GoogleMapsAddressvalidationV1ValidationResult.fromJson(core.Map json_)
     : this(
-        address:
-            json_.containsKey('address')
-                ? GoogleMapsAddressvalidationV1Address.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        englishLatinAddress:
-            json_.containsKey('englishLatinAddress')
-                ? GoogleMapsAddressvalidationV1Address.fromJson(
-                  json_['englishLatinAddress']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        geocode:
-            json_.containsKey('geocode')
-                ? GoogleMapsAddressvalidationV1Geocode.fromJson(
-                  json_['geocode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? GoogleMapsAddressvalidationV1AddressMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        uspsData:
-            json_.containsKey('uspsData')
-                ? GoogleMapsAddressvalidationV1UspsData.fromJson(
-                  json_['uspsData'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        verdict:
-            json_.containsKey('verdict')
-                ? GoogleMapsAddressvalidationV1Verdict.fromJson(
-                  json_['verdict'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        address: json_.containsKey('address')
+            ? GoogleMapsAddressvalidationV1Address.fromJson(
+                json_['address'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        englishLatinAddress: json_.containsKey('englishLatinAddress')
+            ? GoogleMapsAddressvalidationV1Address.fromJson(
+                json_['englishLatinAddress']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        geocode: json_.containsKey('geocode')
+            ? GoogleMapsAddressvalidationV1Geocode.fromJson(
+                json_['geocode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? GoogleMapsAddressvalidationV1AddressMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uspsData: json_.containsKey('uspsData')
+            ? GoogleMapsAddressvalidationV1UspsData.fromJson(
+                json_['uspsData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        verdict: json_.containsKey('verdict')
+            ? GoogleMapsAddressvalidationV1Verdict.fromJson(
+                json_['verdict'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (englishLatinAddress != null)
-      'englishLatinAddress': englishLatinAddress!,
-    if (geocode != null) 'geocode': geocode!,
-    if (metadata != null) 'metadata': metadata!,
-    if (uspsData != null) 'uspsData': uspsData!,
-    if (verdict != null) 'verdict': verdict!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final englishLatinAddress = this.englishLatinAddress;
+    final geocode = this.geocode;
+    final metadata = this.metadata;
+    final uspsData = this.uspsData;
+    final verdict = this.verdict;
+    return {
+      'address': ?address,
+      'englishLatinAddress': ?englishLatinAddress,
+      'geocode': ?geocode,
+      'metadata': ?metadata,
+      'uspsData': ?uspsData,
+      'verdict': ?verdict,
+    };
+  }
 }
 
 /// High level overview of the address validation result and geocode.
@@ -1529,22 +1592,28 @@ class GoogleMapsAddressvalidationV1Verdict {
         validationGranularity: json_['validationGranularity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressComplete != null) 'addressComplete': addressComplete!,
-    if (geocodeGranularity != null) 'geocodeGranularity': geocodeGranularity!,
-    if (hasInferredComponents != null)
-      'hasInferredComponents': hasInferredComponents!,
-    if (hasReplacedComponents != null)
-      'hasReplacedComponents': hasReplacedComponents!,
-    if (hasSpellCorrectedComponents != null)
-      'hasSpellCorrectedComponents': hasSpellCorrectedComponents!,
-    if (hasUnconfirmedComponents != null)
-      'hasUnconfirmedComponents': hasUnconfirmedComponents!,
-    if (inputGranularity != null) 'inputGranularity': inputGranularity!,
-    if (possibleNextAction != null) 'possibleNextAction': possibleNextAction!,
-    if (validationGranularity != null)
-      'validationGranularity': validationGranularity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressComplete = this.addressComplete;
+    final geocodeGranularity = this.geocodeGranularity;
+    final hasInferredComponents = this.hasInferredComponents;
+    final hasReplacedComponents = this.hasReplacedComponents;
+    final hasSpellCorrectedComponents = this.hasSpellCorrectedComponents;
+    final hasUnconfirmedComponents = this.hasUnconfirmedComponents;
+    final inputGranularity = this.inputGranularity;
+    final possibleNextAction = this.possibleNextAction;
+    final validationGranularity = this.validationGranularity;
+    return {
+      'addressComplete': ?addressComplete,
+      'geocodeGranularity': ?geocodeGranularity,
+      'hasInferredComponents': ?hasInferredComponents,
+      'hasReplacedComponents': ?hasReplacedComponents,
+      'hasSpellCorrectedComponents': ?hasSpellCorrectedComponents,
+      'hasUnconfirmedComponents': ?hasUnconfirmedComponents,
+      'inputGranularity': ?inputGranularity,
+      'possibleNextAction': ?possibleNextAction,
+      'validationGranularity': ?validationGranularity,
+    };
+  }
 }
 
 /// An object that represents a latitude/longitude pair.

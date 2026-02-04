@@ -4930,10 +4930,10 @@ void main() {
         final o =
             buildGoogleCloudApihubV1ApplicationIntegrationEndpointDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1ApplicationIntegrationEndpointDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1ApplicationIntegrationEndpointDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1ApplicationIntegrationEndpointDetails(od);
       });
     },
@@ -5154,10 +5154,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApihubV1DisablePluginInstanceActionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1DisablePluginInstanceActionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1DisablePluginInstanceActionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1DisablePluginInstanceActionRequest(od);
       });
     },
@@ -5213,10 +5213,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApihubV1EnablePluginInstanceActionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1EnablePluginInstanceActionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1EnablePluginInstanceActionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1EnablePluginInstanceActionRequest(od);
       });
     },
@@ -5272,10 +5272,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApihubV1ExecutePluginInstanceActionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1ExecutePluginInstanceActionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1ExecutePluginInstanceActionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1ExecutePluginInstanceActionRequest(od);
       });
     },
@@ -5309,10 +5309,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApihubV1FetchAdditionalSpecContentResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1FetchAdditionalSpecContentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1FetchAdditionalSpecContentResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1FetchAdditionalSpecContentResponse(od);
       });
     },
@@ -5324,10 +5324,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApihubV1FlattenedApiVersionDeploymentView();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1FlattenedApiVersionDeploymentView.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1FlattenedApiVersionDeploymentView.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1FlattenedApiVersionDeploymentView(od);
       });
     },
@@ -5340,10 +5340,10 @@ void main() {
         final o =
             buildGoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView(od);
       });
     },
@@ -5590,10 +5590,10 @@ void main() {
         final o =
             buildGoogleCloudApihubV1ListDiscoveredApiObservationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1ListDiscoveredApiObservationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1ListDiscoveredApiObservationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1ListDiscoveredApiObservationsResponse(od);
       });
     },
@@ -5605,10 +5605,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApihubV1ListDiscoveredApiOperationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1ListDiscoveredApiOperationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1ListDiscoveredApiOperationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1ListDiscoveredApiOperationsResponse(od);
       });
     },
@@ -5632,10 +5632,10 @@ void main() {
         final o =
             buildGoogleCloudApihubV1ListHostProjectRegistrationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1ListHostProjectRegistrationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1ListHostProjectRegistrationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1ListHostProjectRegistrationsResponse(od);
       });
     },
@@ -5673,10 +5673,10 @@ void main() {
         final o =
             buildGoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse(od);
       });
     },
@@ -5725,10 +5725,10 @@ void main() {
         final o =
             buildGoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse(od);
       });
     },
@@ -5752,10 +5752,10 @@ void main() {
         final o =
             buildGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest(od);
       });
     },
@@ -5768,10 +5768,10 @@ void main() {
         final o =
             buildGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse(od);
       });
     },
@@ -5838,10 +5838,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApihubV1Oauth2ClientCredentialsConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApihubV1Oauth2ClientCredentialsConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApihubV1Oauth2ClientCredentialsConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApihubV1Oauth2ClientCredentialsConfig(od);
       });
     },
@@ -7850,8 +7850,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsApisVersionsDefinitionsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.apis.versions.definitions;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.apis.versions.definitions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7910,8 +7911,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsApisVersionsOperationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.apis.versions.operations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.apis.versions.operations;
       final arg_request = buildGoogleCloudApihubV1ApiOperation();
       final arg_parent = 'foo';
       final arg_apiOperationId = 'foo';
@@ -7984,8 +7986,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.apis.versions.operations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.apis.versions.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8038,8 +8041,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.apis.versions.operations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.apis.versions.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8096,8 +8100,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.apis.versions.operations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.apis.versions.operations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -8175,8 +8180,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.apis.versions.operations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.apis.versions.operations;
       final arg_request = buildGoogleCloudApihubV1ApiOperation();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10093,8 +10099,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDiscoveredApiObservationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.discoveredApiObservations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.discoveredApiObservations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10151,8 +10158,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.discoveredApiObservations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.discoveredApiObservations;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10229,12 +10237,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.APIHubApi(mock)
-                .projects
-                .locations
-                .discoveredApiObservations
-                .discoveredApiOperations;
+        final res = api.APIHubApi(
+          mock,
+        ).projects.locations.discoveredApiObservations.discoveredApiOperations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -10291,12 +10296,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.APIHubApi(mock)
-                .projects
-                .locations
-                .discoveredApiObservations
-                .discoveredApiOperations;
+        final res = api.APIHubApi(
+          mock,
+        ).projects.locations.discoveredApiObservations.discoveredApiOperations;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -10702,8 +10704,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsHostProjectRegistrationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.hostProjectRegistrations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.hostProjectRegistrations;
       final arg_request = buildGoogleCloudApihubV1HostProjectRegistration();
       final arg_parent = 'foo';
       final arg_hostProjectRegistrationId = 'foo';
@@ -10776,8 +10779,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.hostProjectRegistrations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.hostProjectRegistrations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10834,8 +10838,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.hostProjectRegistrations;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.hostProjectRegistrations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -11824,10 +11829,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApihubV1DisablePluginInstanceActionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApihubV1DisablePluginInstanceActionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApihubV1DisablePluginInstanceActionRequest(obj);
 
           final path = req.url.path;
@@ -11891,10 +11896,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApihubV1EnablePluginInstanceActionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApihubV1EnablePluginInstanceActionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApihubV1EnablePluginInstanceActionRequest(obj);
 
           final path = req.url.path;
@@ -11958,10 +11963,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApihubV1ExecutePluginInstanceActionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApihubV1ExecutePluginInstanceActionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApihubV1ExecutePluginInstanceActionRequest(obj);
 
           final path = req.url.path;
@@ -12160,10 +12165,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest(obj);
 
           final path = req.url.path;
@@ -12357,8 +12362,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRuntimeProjectAttachmentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.runtimeProjectAttachments;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.runtimeProjectAttachments;
       final arg_request = buildGoogleCloudApihubV1RuntimeProjectAttachment();
       final arg_parent = 'foo';
       final arg_runtimeProjectAttachmentId = 'foo';
@@ -12431,8 +12437,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.runtimeProjectAttachments;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.runtimeProjectAttachments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12485,8 +12492,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.runtimeProjectAttachments;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.runtimeProjectAttachments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12543,8 +12551,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.APIHubApi(mock).projects.locations.runtimeProjectAttachments;
+      final res = api.APIHubApi(
+        mock,
+      ).projects.locations.runtimeProjectAttachments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';

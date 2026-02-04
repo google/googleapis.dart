@@ -2692,8 +2692,9 @@ void main() {
   unittest.group('resource-ProjectsPlatformsGkePoliciesResource', () {
     unittest.test('method--evaluate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BinaryAuthorizationApi(mock).projects.platforms.gke.policies;
+      final res = api.BinaryAuthorizationApi(
+        mock,
+      ).projects.platforms.gke.policies;
       final arg_request = buildEvaluateGkePolicyRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

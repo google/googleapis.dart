@@ -3293,8 +3293,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCaPoolsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools;
       final arg_request = buildCaPool();
       final arg_parent = 'foo';
       final arg_caPoolId = 'foo';
@@ -3369,8 +3370,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools;
       final arg_name = 'foo';
       final arg_ignoreDependentResources = true;
       final arg_requestId = 'foo';
@@ -3438,8 +3440,9 @@ void main() {
 
     unittest.test('method--fetchCaCerts', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools;
       final arg_request = buildFetchCaCertsRequest();
       final arg_caPool = 'foo';
       final arg_$fields = 'foo';
@@ -3502,8 +3505,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3556,8 +3560,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -3619,8 +3624,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3700,8 +3706,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools;
       final arg_request = buildCaPool();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -3776,8 +3783,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3840,8 +3848,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(mock).projects.locations.caPools;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -3908,10 +3917,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCaPoolsCertificateAuthoritiesResource', () {
     unittest.test('method--activate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_request = buildActivateCertificateAuthorityRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -3974,10 +3982,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_request = buildCertificateAuthority();
       final arg_parent = 'foo';
       final arg_certificateAuthorityId = 'foo';
@@ -4052,10 +4059,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_name = 'foo';
       final arg_ignoreActiveCertificates = true;
       final arg_ignoreDependentResources = true;
@@ -4135,10 +4141,9 @@ void main() {
 
     unittest.test('method--disable', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_request = buildDisableCertificateAuthorityRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4201,10 +4206,9 @@ void main() {
 
     unittest.test('method--enable', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_request = buildEnableCertificateAuthorityRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4267,10 +4271,9 @@ void main() {
 
     unittest.test('method--fetch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4327,10 +4330,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4383,10 +4385,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4470,10 +4471,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_request = buildCertificateAuthority();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -4548,10 +4548,9 @@ void main() {
 
     unittest.test('method--undelete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificateAuthorities;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificateAuthorities;
       final arg_request = buildUndeleteCertificateAuthorityRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4618,13 +4617,12 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateAuthorityServiceApi(mock)
-                .projects
-                .locations
-                .caPools
-                .certificateAuthorities
-                .certificateRevocationLists;
+        final res = api.CertificateAuthorityServiceApi(mock)
+            .projects
+            .locations
+            .caPools
+            .certificateAuthorities
+            .certificateRevocationLists;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -4679,13 +4677,12 @@ void main() {
 
       unittest.test('method--getIamPolicy', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateAuthorityServiceApi(mock)
-                .projects
-                .locations
-                .caPools
-                .certificateAuthorities
-                .certificateRevocationLists;
+        final res = api.CertificateAuthorityServiceApi(mock)
+            .projects
+            .locations
+            .caPools
+            .certificateAuthorities
+            .certificateRevocationLists;
         final arg_resource = 'foo';
         final arg_options_requestedPolicyVersion = 42;
         final arg_$fields = 'foo';
@@ -4747,13 +4744,12 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateAuthorityServiceApi(mock)
-                .projects
-                .locations
-                .caPools
-                .certificateAuthorities
-                .certificateRevocationLists;
+        final res = api.CertificateAuthorityServiceApi(mock)
+            .projects
+            .locations
+            .caPools
+            .certificateAuthorities
+            .certificateRevocationLists;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -4837,13 +4833,12 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateAuthorityServiceApi(mock)
-                .projects
-                .locations
-                .caPools
-                .certificateAuthorities
-                .certificateRevocationLists;
+        final res = api.CertificateAuthorityServiceApi(mock)
+            .projects
+            .locations
+            .caPools
+            .certificateAuthorities
+            .certificateRevocationLists;
         final arg_request = buildCertificateRevocationList();
         final arg_name = 'foo';
         final arg_requestId = 'foo';
@@ -4918,13 +4913,12 @@ void main() {
 
       unittest.test('method--setIamPolicy', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateAuthorityServiceApi(mock)
-                .projects
-                .locations
-                .caPools
-                .certificateAuthorities
-                .certificateRevocationLists;
+        final res = api.CertificateAuthorityServiceApi(mock)
+            .projects
+            .locations
+            .caPools
+            .certificateAuthorities
+            .certificateRevocationLists;
         final arg_request = buildSetIamPolicyRequest();
         final arg_resource = 'foo';
         final arg_$fields = 'foo';
@@ -4987,13 +4981,12 @@ void main() {
 
       unittest.test('method--testIamPermissions', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateAuthorityServiceApi(mock)
-                .projects
-                .locations
-                .caPools
-                .certificateAuthorities
-                .certificateRevocationLists;
+        final res = api.CertificateAuthorityServiceApi(mock)
+            .projects
+            .locations
+            .caPools
+            .certificateAuthorities
+            .certificateRevocationLists;
         final arg_request = buildTestIamPermissionsRequest();
         final arg_resource = 'foo';
         final arg_$fields = 'foo';
@@ -5061,10 +5054,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCaPoolsCertificatesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificates;
       final arg_request = buildCertificate();
       final arg_parent = 'foo';
       final arg_certificateId = 'foo';
@@ -5151,10 +5143,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5207,10 +5198,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificates;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5290,10 +5280,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificates;
       final arg_request = buildCertificate();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -5368,10 +5357,9 @@ void main() {
 
     unittest.test('method--revoke', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.caPools.certificates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.caPools.certificates;
       final arg_request = buildRevokeCertificateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5436,10 +5424,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCertificateTemplatesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.certificateTemplates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.certificateTemplates;
       final arg_request = buildCertificateTemplate();
       final arg_parent = 'foo';
       final arg_certificateTemplateId = 'foo';
@@ -5514,10 +5501,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.certificateTemplates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.certificateTemplates;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -5579,10 +5565,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.certificateTemplates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.certificateTemplates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5635,10 +5620,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.certificateTemplates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.certificateTemplates;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -5700,10 +5684,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.certificateTemplates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.certificateTemplates;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5787,10 +5770,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.certificateTemplates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.certificateTemplates;
       final arg_request = buildCertificateTemplate();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -5865,10 +5847,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.certificateTemplates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.certificateTemplates;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -5931,10 +5912,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.certificateTemplates;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.certificateTemplates;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6001,10 +5981,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.operations;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -6067,10 +6046,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.operations;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6123,10 +6101,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.operations;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6179,10 +6156,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateAuthorityServiceApi(
-            mock,
-          ).projects.locations.operations;
+      final res = api.CertificateAuthorityServiceApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

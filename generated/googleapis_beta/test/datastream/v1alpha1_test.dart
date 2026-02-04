@@ -3468,8 +3468,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPrivateConnectionsRoutesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatastreamApi(mock).projects.locations.privateConnections.routes;
+      final res = api.DatastreamApi(
+        mock,
+      ).projects.locations.privateConnections.routes;
       final arg_request = buildRoute();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -3544,8 +3545,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatastreamApi(mock).projects.locations.privateConnections.routes;
+      final res = api.DatastreamApi(
+        mock,
+      ).projects.locations.privateConnections.routes;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -3607,8 +3609,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatastreamApi(mock).projects.locations.privateConnections.routes;
+      final res = api.DatastreamApi(
+        mock,
+      ).projects.locations.privateConnections.routes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3661,8 +3664,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DatastreamApi(mock).projects.locations.privateConnections.routes;
+      final res = api.DatastreamApi(
+        mock,
+      ).projects.locations.privateConnections.routes;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';

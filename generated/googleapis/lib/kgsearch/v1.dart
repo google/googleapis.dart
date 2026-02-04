@@ -104,14 +104,14 @@ class EntitiesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (ids != null) 'ids': ids,
-      if (indent != null) 'indent': ['${indent}'],
-      if (languages != null) 'languages': languages,
-      if (limit != null) 'limit': ['${limit}'],
-      if (prefix != null) 'prefix': ['${prefix}'],
-      if (query != null) 'query': [query],
-      if (types != null) 'types': types,
-      if ($fields != null) 'fields': [$fields],
+      'ids': ?ids,
+      'indent': ?indent == null ? null : ['${indent}'],
+      'languages': ?languages,
+      'limit': ?limit == null ? null : ['${limit}'],
+      'prefix': ?prefix == null ? null : ['${prefix}'],
+      'query': ?query == null ? null : [query],
+      'types': ?types,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/entities:search';
@@ -156,15 +156,19 @@ class SearchResponse {
     : this(
         P_context: json_['@context'],
         P_type: json_['@type'],
-        itemListElement:
-            json_.containsKey('itemListElement')
-                ? json_['itemListElement'] as core.List
-                : null,
+        itemListElement: json_.containsKey('itemListElement')
+            ? json_['itemListElement'] as core.List
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (P_context != null) '@context': P_context!,
-    if (P_type != null) '@type': P_type!,
-    if (itemListElement != null) 'itemListElement': itemListElement!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final P_context = this.P_context;
+    final P_type = this.P_type;
+    final itemListElement = this.itemListElement;
+    return {
+      '@context': ?P_context,
+      '@type': ?P_type,
+      'itemListElement': ?itemListElement,
+    };
+  }
 }

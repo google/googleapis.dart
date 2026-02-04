@@ -526,10 +526,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV5BatchGetHashListsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV5BatchGetHashListsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV5BatchGetHashListsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV5BatchGetHashListsResponse(od);
       });
     },
@@ -552,10 +552,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV5FullHashFullHashDetail();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV5FullHashFullHashDetail.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV5FullHashFullHashDetail(od);
       });
     },
@@ -589,10 +589,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV5ListHashListsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV5ListHashListsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV5ListHashListsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV5ListHashListsResponse(od);
       });
     },
@@ -604,10 +604,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit(od);
       });
     },
@@ -619,10 +619,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit(od);
       });
     },
@@ -634,10 +634,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit(od);
       });
     },
@@ -649,10 +649,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit(od);
       });
     },
@@ -664,10 +664,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleSecuritySafebrowsingV5SearchHashesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleSecuritySafebrowsingV5SearchHashesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleSecuritySafebrowsingV5SearchHashesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleSecuritySafebrowsingV5SearchHashesResponse(od);
       });
     },

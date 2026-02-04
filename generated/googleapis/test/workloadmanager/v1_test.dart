@@ -3452,10 +3452,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSapDiscoveryResourceInstancePropertiesAppInstance();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SapDiscoveryResourceInstancePropertiesAppInstance.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SapDiscoveryResourceInstancePropertiesAppInstance.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSapDiscoveryResourceInstancePropertiesAppInstance(od);
       });
     },
@@ -3481,10 +3481,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildSapDiscoveryResourceInstancePropertiesKernelVersion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SapDiscoveryResourceInstancePropertiesKernelVersion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SapDiscoveryResourceInstancePropertiesKernelVersion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSapDiscoveryResourceInstancePropertiesKernelVersion(od);
       });
     },
@@ -3497,10 +3497,10 @@ void main() {
         final o =
             buildSapDiscoveryResourceInstancePropertiesKernelVersionVersion();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SapDiscoveryResourceInstancePropertiesKernelVersionVersion.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SapDiscoveryResourceInstancePropertiesKernelVersionVersion.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSapDiscoveryResourceInstancePropertiesKernelVersionVersion(od);
       });
     },
@@ -3535,10 +3535,10 @@ void main() {
         final o =
             buildSapDiscoveryWorkloadPropertiesSoftwareComponentProperties();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SapDiscoveryWorkloadPropertiesSoftwareComponentProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SapDiscoveryWorkloadPropertiesSoftwareComponentProperties.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSapDiscoveryWorkloadPropertiesSoftwareComponentProperties(od);
       });
     },
@@ -3891,8 +3891,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDiscoveredprofilesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkloadManagerApi(mock).projects.locations.discoveredprofiles;
+      final res = api.WorkloadManagerApi(
+        mock,
+      ).projects.locations.discoveredprofiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3945,8 +3946,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkloadManagerApi(mock).projects.locations.discoveredprofiles;
+      final res = api.WorkloadManagerApi(
+        mock,
+      ).projects.locations.discoveredprofiles;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -4028,10 +4030,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.WorkloadManagerApi(
-              mock,
-            ).projects.locations.discoveredprofiles.health;
+        final res = api.WorkloadManagerApi(
+          mock,
+        ).projects.locations.discoveredprofiles.health;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -4440,10 +4441,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsEvaluationsExecutionsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkloadManagerApi(
-            mock,
-          ).projects.locations.evaluations.executions;
+      final res = api.WorkloadManagerApi(
+        mock,
+      ).projects.locations.evaluations.executions;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -4505,10 +4505,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkloadManagerApi(
-            mock,
-          ).projects.locations.evaluations.executions;
+      final res = api.WorkloadManagerApi(
+        mock,
+      ).projects.locations.evaluations.executions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4561,10 +4560,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkloadManagerApi(
-            mock,
-          ).projects.locations.evaluations.executions;
+      final res = api.WorkloadManagerApi(
+        mock,
+      ).projects.locations.evaluations.executions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4644,10 +4642,9 @@ void main() {
 
     unittest.test('method--run', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WorkloadManagerApi(
-            mock,
-          ).projects.locations.evaluations.executions;
+      final res = api.WorkloadManagerApi(
+        mock,
+      ).projects.locations.evaluations.executions;
       final arg_request = buildRunEvaluationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4714,10 +4711,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.WorkloadManagerApi(
-              mock,
-            ).projects.locations.evaluations.executions.results;
+        final res = api.WorkloadManagerApi(
+          mock,
+        ).projects.locations.evaluations.executions.results;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -4800,10 +4796,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.WorkloadManagerApi(
-              mock,
-            ).projects.locations.evaluations.executions.scannedResources;
+        final res = api.WorkloadManagerApi(
+          mock,
+        ).projects.locations.evaluations.executions.scannedResources;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';

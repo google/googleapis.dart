@@ -12508,10 +12508,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1AdjustDeveloperBalanceRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1AdjustDeveloperBalanceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1AdjustDeveloperBalanceRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1AdjustDeveloperBalanceRequest(od);
       });
     },
@@ -12724,10 +12724,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ApimServiceExtensionExtension();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ApimServiceExtensionExtension.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ApimServiceExtensionExtension.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ApimServiceExtensionExtension(od);
       });
     },
@@ -12739,10 +12739,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ApimServiceExtensionNetworkConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ApimServiceExtensionNetworkConfig(od);
       });
     },
@@ -12923,10 +12923,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest(
           od,
         );
@@ -12941,10 +12941,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray(
           od,
         );
@@ -12959,10 +12959,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray(
           od,
         );
@@ -12977,10 +12977,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll(
           od,
         );
@@ -12995,10 +12995,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray(
           od,
         );
@@ -13013,10 +13013,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource(
           od,
         );
@@ -13031,10 +13031,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse(
           od,
         );
@@ -13048,10 +13048,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest(od);
       });
     },
@@ -13064,10 +13064,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse(od);
       });
     },
@@ -13137,10 +13137,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ComputeEnvironmentScoresRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ComputeEnvironmentScoresRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ComputeEnvironmentScoresRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ComputeEnvironmentScoresRequest(od);
       });
     },
@@ -13153,10 +13153,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter(od);
       });
     },
@@ -13168,10 +13168,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ComputeEnvironmentScoresResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ComputeEnvironmentScoresResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ComputeEnvironmentScoresResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ComputeEnvironmentScoresResponse(od);
       });
     },
@@ -13241,10 +13241,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1CreditDeveloperBalanceRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1CreditDeveloperBalanceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1CreditDeveloperBalanceRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1CreditDeveloperBalanceRequest(od);
       });
     },
@@ -13413,10 +13413,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1DeploymentChangeReportRoutingChange.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1DeploymentChangeReportRoutingChange(od);
       });
     },
@@ -13429,10 +13429,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(od);
       });
     },
@@ -13445,10 +13445,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment(od);
       });
     },
@@ -13678,10 +13678,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1EnvironmentClientIPResolutionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1EnvironmentClientIPResolutionConfig(od);
       });
     },
@@ -13694,10 +13694,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm(
           od,
         );
@@ -13723,10 +13723,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig(od);
       });
     },
@@ -13739,10 +13739,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm(
           od,
         );
@@ -13792,10 +13792,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest(od);
       });
     },
@@ -13807,10 +13807,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest(od);
       });
     },
@@ -13916,10 +13916,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1GetAsyncQueryResultUrlResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1GetAsyncQueryResultUrlResponse(od);
       });
     },
@@ -13932,10 +13932,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo(od);
       });
     },
@@ -14072,10 +14072,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(od);
       });
     },
@@ -14088,10 +14088,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(od);
       });
     },
@@ -14227,10 +14227,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListApimServiceExtensionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListApimServiceExtensionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListApimServiceExtensionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListApimServiceExtensionsResponse(od);
       });
     },
@@ -14253,10 +14253,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListAppGroupSubscriptionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListAppGroupSubscriptionsResponse(od);
       });
     },
@@ -14290,10 +14290,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListArchiveDeploymentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListArchiveDeploymentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListArchiveDeploymentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListArchiveDeploymentsResponse(od);
       });
     },
@@ -14385,10 +14385,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListDeveloperSubscriptionsResponse(od);
       });
     },
@@ -14411,10 +14411,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListEndpointAttachmentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListEndpointAttachmentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListEndpointAttachmentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListEndpointAttachmentsResponse(od);
       });
     },
@@ -14427,10 +14427,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(od);
       });
     },
@@ -14442,10 +14442,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(od);
       });
     },
@@ -14457,10 +14457,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(od);
       });
     },
@@ -14494,10 +14494,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(od);
       });
     },
@@ -14606,10 +14606,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListSecurityIncidentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListSecurityIncidentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListSecurityIncidentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListSecurityIncidentsResponse(od);
       });
     },
@@ -14622,10 +14622,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse(od);
       });
     },
@@ -14638,10 +14638,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1ListSecurityProfileRevisionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListSecurityProfileRevisionsResponse(od);
       });
     },
@@ -14667,10 +14667,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListSecurityProfilesV2Response();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListSecurityProfilesV2Response.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListSecurityProfilesV2Response.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListSecurityProfilesV2Response(od);
       });
     },
@@ -14718,10 +14718,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ListTraceConfigOverridesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ListTraceConfigOverridesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ListTraceConfigOverridesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ListTraceConfigOverridesResponse(od);
       });
     },
@@ -14789,10 +14789,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow(od);
       });
     },
@@ -15238,10 +15238,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence(od);
       });
     },
@@ -15598,10 +15598,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1ScoreComponentRecommendationAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ScoreComponentRecommendationAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ScoreComponentRecommendationAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ScoreComponentRecommendationAction(od);
       });
     },
@@ -15614,10 +15614,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext(
           od,
         );
@@ -15653,10 +15653,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1SecurityActionConditionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityActionConditionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityActionConditionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityActionConditionConfig(od);
       });
     },
@@ -15723,10 +15723,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1SecurityAssessmentResultResource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityAssessmentResultResource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityAssessmentResultResource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityAssessmentResultResource(od);
       });
     },
@@ -15739,10 +15739,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails(
           od,
         );
@@ -15757,10 +15757,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1SecurityAssessmentResultScoringResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityAssessmentResultScoringResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityAssessmentResultScoringResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityAssessmentResultScoringResult(od);
       });
     },
@@ -15773,10 +15773,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation(
           od,
         );
@@ -15791,10 +15791,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation(
           od,
         );
@@ -15809,10 +15809,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink(
           od,
         );
@@ -15837,10 +15837,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1SecurityFeedbackFeedbackContext();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityFeedbackFeedbackContext.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityFeedbackFeedbackContext.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityFeedbackFeedbackContext(od);
       });
     },
@@ -15903,10 +15903,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1SecurityProfileEnvironmentAssociation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityProfileEnvironmentAssociation(od);
       });
     },
@@ -15944,10 +15944,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig(od);
       });
     },
@@ -15960,10 +15960,10 @@ void main() {
         final o =
             buildGoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray(
           od,
         );
@@ -16313,10 +16313,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudApigeeV1UpdateSecurityIncidentRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudApigeeV1UpdateSecurityIncidentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudApigeeV1UpdateSecurityIncidentRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudApigeeV1UpdateSecurityIncidentRequest(od);
       });
     },
@@ -17069,10 +17069,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1GetSyncAuthorizationRequest(obj);
 
           final path = req.url.path;
@@ -21090,10 +21090,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1AppGroupMonetizationConfig.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1AppGroupMonetizationConfig.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1AppGroupMonetizationConfig(obj);
 
           final path = req.url.path;
@@ -21669,10 +21669,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1UpdateAppGroupAppKeyRequest(obj);
 
           final path = req.url.path;
@@ -21733,8 +21733,9 @@ void main() {
   unittest.group('resource-OrganizationsAppgroupsAppsKeysApiproductsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.appgroups.apps.keys.apiproducts;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.appgroups.apps.keys.apiproducts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21791,8 +21792,9 @@ void main() {
 
     unittest.test('method--updateAppGroupAppKeyApiProduct', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.appgroups.apps.keys.apiproducts;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.appgroups.apps.keys.apiproducts;
       final arg_name = 'foo';
       final arg_action = 'foo';
       final arg_$fields = 'foo';
@@ -21863,10 +21865,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1AdjustAppGroupBalanceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1AdjustAppGroupBalanceRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1AdjustAppGroupBalanceRequest(obj);
 
           final path = req.url.path;
@@ -21932,10 +21934,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1CreditAppGroupBalanceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1CreditAppGroupBalanceRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1CreditAppGroupBalanceRequest(obj);
 
           final path = req.url.path;
@@ -22070,10 +22072,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest(obj);
 
           final path = req.url.path;
@@ -23430,10 +23432,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1DeveloperMonetizationConfig.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1DeveloperMonetizationConfig.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1DeveloperMonetizationConfig(obj);
 
           final path = req.url.path;
@@ -23977,8 +23979,9 @@ void main() {
   unittest.group('resource-OrganizationsDevelopersAppsAttributesResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.developers.apps.attributes_1;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -24033,8 +24036,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.developers.apps.attributes_1;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -24089,8 +24093,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.developers.apps.attributes_1;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -24147,8 +24152,9 @@ void main() {
 
     unittest.test('method--updateDeveloperAppAttribute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.developers.apps.attributes_1;
       final arg_request = buildGoogleCloudApigeeV1Attribute();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -24538,8 +24544,9 @@ void main() {
   unittest.group('resource-OrganizationsDevelopersAppsKeysApiproductsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.developers.apps.keys.apiproducts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -24596,8 +24603,9 @@ void main() {
 
     unittest.test('method--updateDeveloperAppKeyApiProduct', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.developers.apps.keys.apiproducts;
       final arg_name = 'foo';
       final arg_action = 'foo';
       final arg_$fields = 'foo';
@@ -24661,8 +24669,9 @@ void main() {
   unittest.group('resource-OrganizationsDevelopersAppsKeysCreateResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.developers.apps.keys.create_1;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.developers.apps.keys.create_1;
       final arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -24972,10 +24981,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1AdjustDeveloperBalanceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1AdjustDeveloperBalanceRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1AdjustDeveloperBalanceRequest(obj);
 
           final path = req.url.path;
@@ -25041,10 +25050,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1CreditDeveloperBalanceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1CreditDeveloperBalanceRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1CreditDeveloperBalanceRequest(obj);
 
           final path = req.url.path;
@@ -25179,10 +25188,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest(obj);
 
           final path = req.url.path;
@@ -26278,10 +26287,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1EnvironmentGroupAttachment(obj);
 
           final path = req.url.path;
@@ -27866,8 +27875,9 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsAnalyticsAdminResource', () {
     unittest.test('method--getSchemav2', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.analytics.admin;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.analytics.admin;
       final arg_name = 'foo';
       final arg_disableCache = true;
       final arg_type = 'foo';
@@ -27934,8 +27944,9 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsAnalyticsExportsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.analytics.exports;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.analytics.exports;
       final arg_request = buildGoogleCloudApigeeV1ExportRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -27998,8 +28009,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.analytics.exports;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.analytics.exports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -28052,8 +28064,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.analytics.exports;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.analytics.exports;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -28112,8 +28125,9 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsApisDeploymentsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.apis.deployments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.apis.deployments;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -28373,10 +28387,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.apis.revisions.debugsessions;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.apis.revisions.debugsessions;
         final arg_request = buildGoogleCloudApigeeV1DebugSession();
         final arg_parent = 'foo';
         final arg_timeout = 'foo';
@@ -28449,10 +28462,9 @@ void main() {
 
       unittest.test('method--deleteData', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.apis.revisions.debugsessions;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.apis.revisions.debugsessions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -28505,10 +28517,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.apis.revisions.debugsessions;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.apis.revisions.debugsessions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -28565,10 +28576,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.apis.revisions.debugsessions;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.apis.revisions.debugsessions;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -28645,10 +28655,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.apis.revisions.debugsessions.data;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.apis.revisions.debugsessions.data;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -28710,10 +28719,9 @@ void main() {
     () {
       unittest.test('method--generateDeployChangeReport', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.apis.revisions.deployments;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.apis.revisions.deployments;
         final arg_name = 'foo';
         final arg_override = true;
         final arg_$fields = 'foo';
@@ -28779,10 +28787,9 @@ void main() {
 
       unittest.test('method--generateUndeployChangeReport', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.apis.revisions.deployments;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.apis.revisions.deployments;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -28845,8 +28852,9 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsArchiveDeploymentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.archiveDeployments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.archiveDeployments;
       final arg_request = buildGoogleCloudApigeeV1ArchiveDeployment();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -28911,8 +28919,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.archiveDeployments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.archiveDeployments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -28965,17 +28974,18 @@ void main() {
 
     unittest.test('method--generateDownloadUrl', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.archiveDeployments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.archiveDeployments;
       final arg_request = buildGoogleCloudApigeeV1GenerateDownloadUrlRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1GenerateDownloadUrlRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1GenerateDownloadUrlRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1GenerateDownloadUrlRequest(obj);
 
           final path = req.url.path;
@@ -29034,8 +29044,9 @@ void main() {
 
     unittest.test('method--generateUploadUrl', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.archiveDeployments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.archiveDeployments;
       final arg_request = buildGoogleCloudApigeeV1GenerateUploadUrlRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -29102,8 +29113,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.archiveDeployments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.archiveDeployments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -29160,8 +29172,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.archiveDeployments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.archiveDeployments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -29239,8 +29252,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.archiveDeployments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.archiveDeployments;
       final arg_request = buildGoogleCloudApigeeV1ArchiveDeployment();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -30047,8 +30061,9 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsKeystoresAliasesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keystores.aliases;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keystores.aliases;
       final arg_request = buildGoogleApiHttpBody();
       final arg_parent = 'foo';
       final arg_P_password = 'foo';
@@ -30138,8 +30153,9 @@ void main() {
 
     unittest.test('method--csr', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keystores.aliases;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keystores.aliases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -30192,8 +30208,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keystores.aliases;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keystores.aliases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -30246,8 +30263,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keystores.aliases;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keystores.aliases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -30300,8 +30318,9 @@ void main() {
 
     unittest.test('method--getCertificate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keystores.aliases;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keystores.aliases;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -30354,8 +30373,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keystores.aliases;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keystores.aliases;
       final arg_request = buildGoogleApiHttpBody();
       final arg_name = 'foo';
       final arg_ignoreExpiryValidation = true;
@@ -30682,8 +30702,9 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsKeyvaluemapsEntriesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keyvaluemaps.entries;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keyvaluemaps.entries;
       final arg_request = buildGoogleCloudApigeeV1KeyValueEntry();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -30750,8 +30771,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keyvaluemaps.entries;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keyvaluemaps.entries;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -30808,8 +30830,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keyvaluemaps.entries;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keyvaluemaps.entries;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -30866,8 +30889,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keyvaluemaps.entries;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keyvaluemaps.entries;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -30939,8 +30963,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.keyvaluemaps.entries;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.keyvaluemaps.entries;
       final arg_request = buildGoogleCloudApigeeV1KeyValueEntry();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -32112,8 +32137,9 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsSecurityActionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityActions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityActions;
       final arg_request = buildGoogleCloudApigeeV1SecurityAction();
       final arg_parent = 'foo';
       final arg_securityActionId = 'foo';
@@ -32186,8 +32212,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityActions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityActions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -32240,18 +32267,19 @@ void main() {
 
     unittest.test('method--disable', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityActions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityActions;
       final arg_request =
           buildGoogleCloudApigeeV1DisableSecurityActionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1DisableSecurityActionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1DisableSecurityActionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1DisableSecurityActionRequest(obj);
 
           final path = req.url.path;
@@ -32310,17 +32338,18 @@ void main() {
 
     unittest.test('method--enable', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityActions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityActions;
       final arg_request = buildGoogleCloudApigeeV1EnableSecurityActionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1EnableSecurityActionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1EnableSecurityActionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1EnableSecurityActionRequest(obj);
 
           final path = req.url.path;
@@ -32379,8 +32408,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityActions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityActions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -32437,8 +32467,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityActions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityActions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -32516,8 +32547,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityActions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityActions;
       final arg_request = buildGoogleCloudApigeeV1SecurityAction();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -32592,18 +32624,19 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsSecurityIncidentsResource', () {
     unittest.test('method--batchUpdate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityIncidents;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityIncidents;
       final arg_request =
           buildGoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest(obj);
 
           final path = req.url.path;
@@ -32662,8 +32695,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityIncidents;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityIncidents;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -32720,8 +32754,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityIncidents;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityIncidents;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -32799,8 +32834,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityIncidents;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityIncidents;
       final arg_request = buildGoogleCloudApigeeV1SecurityIncident();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -32875,8 +32911,9 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsSecurityReportsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityReports;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityReports;
       final arg_request = buildGoogleCloudApigeeV1SecurityReportQuery();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -32943,8 +32980,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityReports;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityReports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -33001,8 +33039,9 @@ void main() {
 
     unittest.test('method--getResult', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityReports;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityReports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -33055,8 +33094,9 @@ void main() {
 
     unittest.test('method--getResultView', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityReports;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityReports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -33113,8 +33153,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.securityReports;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.securityReports;
       final arg_parent = 'foo';
       final arg_dataset = 'foo';
       final arg_from = 'foo';
@@ -33285,10 +33326,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1QueryTimeSeriesStatsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1QueryTimeSeriesStatsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1QueryTimeSeriesStatsRequest(obj);
 
           final path = req.url.path;
@@ -33351,10 +33392,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.sharedflows.deployments;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.sharedflows.deployments;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -33416,10 +33456,9 @@ void main() {
     () {
       unittest.test('method--deploy', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.sharedflows.revisions;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.sharedflows.revisions;
         final arg_name = 'foo';
         final arg_override = true;
         final arg_serviceAccount = 'foo';
@@ -33491,10 +33530,9 @@ void main() {
 
       unittest.test('method--getDeployments', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.sharedflows.revisions;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.sharedflows.revisions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -33554,10 +33592,9 @@ void main() {
 
       unittest.test('method--undeploy', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(
-              mock,
-            ).organizations.environments.sharedflows.revisions;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.environments.sharedflows.revisions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -34002,8 +34039,9 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsTraceConfigOverridesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.traceConfig.overrides;
       final arg_request = buildGoogleCloudApigeeV1TraceConfigOverride();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -34070,8 +34108,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.traceConfig.overrides;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -34124,8 +34163,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.traceConfig.overrides;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -34182,8 +34222,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.traceConfig.overrides;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -34255,8 +34296,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.environments.traceConfig.overrides;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.environments.traceConfig.overrides;
       final arg_request = buildGoogleCloudApigeeV1TraceConfigOverride();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -35455,10 +35497,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1ReportInstanceStatusRequest(obj);
 
           final path = req.url.path;
@@ -37380,10 +37422,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest(
             obj,
           );
@@ -37777,18 +37819,19 @@ void main() {
   unittest.group('resource-OrganizationsSecurityMonitoringConditionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.securityMonitoringConditions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.securityMonitoringConditions;
       final arg_request = buildGoogleCloudApigeeV1SecurityMonitoringCondition();
       final arg_parent = 'foo';
       final arg_securityMonitoringConditionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1SecurityMonitoringCondition(obj);
 
           final path = req.url.path;
@@ -37852,8 +37895,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.securityMonitoringConditions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.securityMonitoringConditions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -37906,8 +37950,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.securityMonitoringConditions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.securityMonitoringConditions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -37964,8 +38009,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.securityMonitoringConditions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.securityMonitoringConditions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -38044,18 +38090,19 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.securityMonitoringConditions;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.securityMonitoringConditions;
       final arg_request = buildGoogleCloudApigeeV1SecurityMonitoringCondition();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1SecurityMonitoringCondition(obj);
 
           final path = req.url.path;
@@ -38523,18 +38570,19 @@ void main() {
   unittest.group('resource-OrganizationsSecurityProfilesEnvironmentsResource', () {
     unittest.test('method--computeEnvironmentScores', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.securityProfiles.environments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.securityProfiles.environments;
       final arg_request =
           buildGoogleCloudApigeeV1ComputeEnvironmentScoresRequest();
       final arg_profileEnvironment = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1ComputeEnvironmentScoresRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1ComputeEnvironmentScoresRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1ComputeEnvironmentScoresRequest(obj);
 
           final path = req.url.path;
@@ -38593,18 +38641,19 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.securityProfiles.environments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.securityProfiles.environments;
       final arg_request =
           buildGoogleCloudApigeeV1SecurityProfileEnvironmentAssociation();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1SecurityProfileEnvironmentAssociation(obj);
 
           final path = req.url.path;
@@ -38664,8 +38713,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ApigeeApi(mock).organizations.securityProfiles.environments;
+      final res = api.ApigeeApi(
+        mock,
+      ).organizations.securityProfiles.environments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -39666,8 +39716,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ApigeeApi(mock).organizations.sharedflows.revisions.deployments;
+        final res = api.ApigeeApi(
+          mock,
+        ).organizations.sharedflows.revisions.deployments;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -41000,10 +41051,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudApigeeV1ProvisionOrganizationRequest(obj);
 
           final path = req.url.path;

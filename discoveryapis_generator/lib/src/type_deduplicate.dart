@@ -185,7 +185,8 @@ class DuplicateItem implements Comparable<DuplicateItem> {
 
   String? _definition;
 
-  String get definition => '''
+  String get definition =>
+      '''
 /// Used by:
 ///
 ${_replacements.map((e) => '/// - $e').join('\n')}

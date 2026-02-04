@@ -2274,10 +2274,10 @@ void main() {
         final o =
             buildSetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo(
           od,
         );

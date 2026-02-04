@@ -4115,8 +4115,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsExtendedMetadataSchemasResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AppHubApi(mock).projects.locations.extendedMetadataSchemas;
+      final res = api.AppHubApi(
+        mock,
+      ).projects.locations.extendedMetadataSchemas;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4169,8 +4170,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AppHubApi(mock).projects.locations.extendedMetadataSchemas;
+      final res = api.AppHubApi(
+        mock,
+      ).projects.locations.extendedMetadataSchemas;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4495,8 +4497,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsServiceProjectAttachmentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AppHubApi(mock).projects.locations.serviceProjectAttachments;
+      final res = api.AppHubApi(
+        mock,
+      ).projects.locations.serviceProjectAttachments;
       final arg_request = buildServiceProjectAttachment();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -4571,8 +4574,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AppHubApi(mock).projects.locations.serviceProjectAttachments;
+      final res = api.AppHubApi(
+        mock,
+      ).projects.locations.serviceProjectAttachments;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -4634,8 +4638,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AppHubApi(mock).projects.locations.serviceProjectAttachments;
+      final res = api.AppHubApi(
+        mock,
+      ).projects.locations.serviceProjectAttachments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4688,8 +4693,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AppHubApi(mock).projects.locations.serviceProjectAttachments;
+      final res = api.AppHubApi(
+        mock,
+      ).projects.locations.serviceProjectAttachments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';

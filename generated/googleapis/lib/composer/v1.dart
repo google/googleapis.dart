@@ -134,7 +134,7 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':checkUpgrade';
@@ -175,7 +175,7 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/environments';
@@ -217,7 +217,7 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -256,7 +256,7 @@ class ProjectsLocationsEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -297,7 +297,7 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -339,7 +339,7 @@ class ProjectsLocationsEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -381,7 +381,7 @@ class ProjectsLocationsEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -426,9 +426,9 @@ class ProjectsLocationsEnvironmentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/environments';
@@ -474,7 +474,7 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':loadSnapshot';
@@ -597,8 +597,8 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -640,7 +640,7 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -686,7 +686,7 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restartWebServer';
@@ -731,7 +731,7 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':saveSnapshot';
@@ -773,7 +773,7 @@ class ProjectsLocationsEnvironmentsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -830,7 +830,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -871,7 +871,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -911,7 +911,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -961,9 +961,9 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1010,7 +1010,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1066,7 +1066,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1107,7 +1107,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1148,7 +1148,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1197,9 +1197,9 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1246,7 +1246,7 @@ class ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1312,10 +1312,10 @@ class ProjectsLocationsEnvironmentsWorkloadsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workloads';
@@ -1371,11 +1371,12 @@ class ProjectsLocationsImageVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includePastReleases != null)
-        'includePastReleases': ['${includePastReleases}'],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'includePastReleases': ?includePastReleases == null
+          ? null
+          : ['${includePastReleases}'],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/imageVersions';
@@ -1421,7 +1422,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1457,7 +1458,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1512,12 +1513,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -1561,10 +1563,11 @@ class AirflowMetadataRetentionPolicyConfig {
         retentionMode: json_['retentionMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (retentionDays != null) 'retentionDays': retentionDays!,
-    if (retentionMode != null) 'retentionMode': retentionMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final retentionDays = this.retentionDays;
+    final retentionMode = this.retentionMode;
+    return {'retentionDays': ?retentionDays, 'retentionMode': ?retentionMode};
+  }
 }
 
 /// Allowed IP range with user-provided description.
@@ -1594,10 +1597,11 @@ class AllowedIpRange {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final value = this.value;
+    return {'description': ?description, 'value': ?value};
+  }
 }
 
 /// Request to check whether image upgrade will succeed.
@@ -1632,9 +1636,10 @@ class CheckUpgradeRequest {
   CheckUpgradeRequest.fromJson(core.Map json_)
     : this(imageVersion: json_['imageVersion'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageVersion != null) 'imageVersion': imageVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageVersion = this.imageVersion;
+    return {'imageVersion': ?imageVersion};
+  }
 }
 
 /// CIDR block with an optional name.
@@ -1653,10 +1658,11 @@ class CidrBlock {
         displayName: json_['displayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cidrBlock != null) 'cidrBlock': cidrBlock!,
-    if (displayName != null) 'displayName': displayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cidrBlock = this.cidrBlock;
+    final displayName = this.displayName;
+    return {'cidrBlock': ?cidrBlock, 'displayName': ?displayName};
+  }
 }
 
 /// Configuration for Cloud Data Lineage integration.
@@ -1671,9 +1677,10 @@ class CloudDataLineageIntegration {
   CloudDataLineageIntegration.fromJson(core.Map json_)
     : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }
 
 /// Information about a single workload.
@@ -1705,20 +1712,20 @@ class ComposerWorkload {
   ComposerWorkload.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? ComposerWorkloadStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ComposerWorkloadStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (status != null) 'status': status!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final status = this.status;
+    final type = this.type;
+    return {'name': ?name, 'status': ?status, 'type': ?type};
+  }
 }
 
 /// Workload status.
@@ -1761,12 +1768,16 @@ class ComposerWorkloadStatus {
         statusMessage: json_['statusMessage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detailedStatusMessage != null)
-      'detailedStatusMessage': detailedStatusMessage!,
-    if (state != null) 'state': state!,
-    if (statusMessage != null) 'statusMessage': statusMessage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final detailedStatusMessage = this.detailedStatusMessage;
+    final state = this.state;
+    final statusMessage = this.statusMessage;
+    return {
+      'detailedStatusMessage': ?detailedStatusMessage,
+      'state': ?state,
+      'statusMessage': ?statusMessage,
+    };
+  }
 }
 
 /// Configuration for resources used by Airflow DAG processors.
@@ -1807,12 +1818,18 @@ class DagProcessorResource {
         storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (cpu != null) 'cpu': cpu!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-    if (storageGb != null) 'storageGb': storageGb!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final cpu = this.cpu;
+    final memoryGb = this.memoryGb;
+    final storageGb = this.storageGb;
+    return {
+      'count': ?count,
+      'cpu': ?cpu,
+      'memoryGb': ?memoryGb,
+      'storageGb': ?storageGb,
+    };
+  }
 }
 
 /// The configuration setting for Airflow database data retention mechanism.
@@ -1836,26 +1853,27 @@ class DataRetentionConfig {
     : this(
         airflowMetadataRetentionConfig:
             json_.containsKey('airflowMetadataRetentionConfig')
-                ? AirflowMetadataRetentionPolicyConfig.fromJson(
-                  json_['airflowMetadataRetentionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        taskLogsRetentionConfig:
-            json_.containsKey('taskLogsRetentionConfig')
-                ? TaskLogsRetentionConfig.fromJson(
-                  json_['taskLogsRetentionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? AirflowMetadataRetentionPolicyConfig.fromJson(
+                json_['airflowMetadataRetentionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        taskLogsRetentionConfig: json_.containsKey('taskLogsRetentionConfig')
+            ? TaskLogsRetentionConfig.fromJson(
+                json_['taskLogsRetentionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (airflowMetadataRetentionConfig != null)
-      'airflowMetadataRetentionConfig': airflowMetadataRetentionConfig!,
-    if (taskLogsRetentionConfig != null)
-      'taskLogsRetentionConfig': taskLogsRetentionConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final airflowMetadataRetentionConfig = this.airflowMetadataRetentionConfig;
+    final taskLogsRetentionConfig = this.taskLogsRetentionConfig;
+    return {
+      'airflowMetadataRetentionConfig': ?airflowMetadataRetentionConfig,
+      'taskLogsRetentionConfig': ?taskLogsRetentionConfig,
+    };
+  }
 }
 
 /// The configuration of Cloud SQL instance that is used by the Apache Airflow
@@ -1889,10 +1907,11 @@ class DatabaseConfig {
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineType != null) 'machineType': machineType!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineType = this.machineType;
+    final zone = this.zone;
+    return {'machineType': ?machineType, 'zone': ?zone};
+  }
 }
 
 /// Request to trigger database failover (only for highly resilient
@@ -1936,9 +1955,10 @@ class EncryptionConfig {
   EncryptionConfig.fromJson(core.Map json_)
     : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKeyName = this.kmsKeyName;
+    return {'kmsKeyName': ?kmsKeyName};
+  }
 }
 
 /// An environment for running orchestration tasks.
@@ -2026,12 +2046,11 @@ class Environment {
 
   Environment.fromJson(core.Map json_)
     : this(
-        config:
-            json_.containsKey('config')
-                ? EnvironmentConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        config: json_.containsKey('config')
+            ? EnvironmentConfig.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -2040,28 +2059,39 @@ class Environment {
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         state: json_['state'] as core.String?,
-        storageConfig:
-            json_.containsKey('storageConfig')
-                ? StorageConfig.fromJson(
-                  json_['storageConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        storageConfig: json_.containsKey('storageConfig')
+            ? StorageConfig.fromJson(
+                json_['storageConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateTime: json_['updateTime'] as core.String?,
         uuid: json_['uuid'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (config != null) 'config': config!,
-    if (createTime != null) 'createTime': createTime!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (state != null) 'state': state!,
-    if (storageConfig != null) 'storageConfig': storageConfig!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (uuid != null) 'uuid': uuid!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final config = this.config;
+    final createTime = this.createTime;
+    final labels = this.labels;
+    final name = this.name;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
+    final state = this.state;
+    final storageConfig = this.storageConfig;
+    final updateTime = this.updateTime;
+    final uuid = this.uuid;
+    return {
+      'config': ?config,
+      'createTime': ?createTime,
+      'labels': ?labels,
+      'name': ?name,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
+      'state': ?state,
+      'storageConfig': ?storageConfig,
+      'updateTime': ?updateTime,
+      'uuid': ?uuid,
+    };
+  }
 }
 
 /// Configuration information for an environment.
@@ -2248,120 +2278,122 @@ class EnvironmentConfig {
         airflowByoidUri: json_['airflowByoidUri'] as core.String?,
         airflowUri: json_['airflowUri'] as core.String?,
         dagGcsPrefix: json_['dagGcsPrefix'] as core.String?,
-        dataRetentionConfig:
-            json_.containsKey('dataRetentionConfig')
-                ? DataRetentionConfig.fromJson(
-                  json_['dataRetentionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        databaseConfig:
-            json_.containsKey('databaseConfig')
-                ? DatabaseConfig.fromJson(
-                  json_['databaseConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        encryptionConfig:
-            json_.containsKey('encryptionConfig')
-                ? EncryptionConfig.fromJson(
-                  json_['encryptionConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dataRetentionConfig: json_.containsKey('dataRetentionConfig')
+            ? DataRetentionConfig.fromJson(
+                json_['dataRetentionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        databaseConfig: json_.containsKey('databaseConfig')
+            ? DatabaseConfig.fromJson(
+                json_['databaseConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        encryptionConfig: json_.containsKey('encryptionConfig')
+            ? EncryptionConfig.fromJson(
+                json_['encryptionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         environmentSize: json_['environmentSize'] as core.String?,
         gkeCluster: json_['gkeCluster'] as core.String?,
-        maintenanceWindow:
-            json_.containsKey('maintenanceWindow')
-                ? MaintenanceWindow.fromJson(
-                  json_['maintenanceWindow']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        maintenanceWindow: json_.containsKey('maintenanceWindow')
+            ? MaintenanceWindow.fromJson(
+                json_['maintenanceWindow']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         masterAuthorizedNetworksConfig:
             json_.containsKey('masterAuthorizedNetworksConfig')
-                ? MasterAuthorizedNetworksConfig.fromJson(
-                  json_['masterAuthorizedNetworksConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        nodeConfig:
-            json_.containsKey('nodeConfig')
-                ? NodeConfig.fromJson(
-                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? MasterAuthorizedNetworksConfig.fromJson(
+                json_['masterAuthorizedNetworksConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nodeConfig: json_.containsKey('nodeConfig')
+            ? NodeConfig.fromJson(
+                json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nodeCount: json_['nodeCount'] as core.int?,
-        privateEnvironmentConfig:
-            json_.containsKey('privateEnvironmentConfig')
-                ? PrivateEnvironmentConfig.fromJson(
-                  json_['privateEnvironmentConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        recoveryConfig:
-            json_.containsKey('recoveryConfig')
-                ? RecoveryConfig.fromJson(
-                  json_['recoveryConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        privateEnvironmentConfig: json_.containsKey('privateEnvironmentConfig')
+            ? PrivateEnvironmentConfig.fromJson(
+                json_['privateEnvironmentConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        recoveryConfig: json_.containsKey('recoveryConfig')
+            ? RecoveryConfig.fromJson(
+                json_['recoveryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         resilienceMode: json_['resilienceMode'] as core.String?,
-        softwareConfig:
-            json_.containsKey('softwareConfig')
-                ? SoftwareConfig.fromJson(
-                  json_['softwareConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        webServerConfig:
-            json_.containsKey('webServerConfig')
-                ? WebServerConfig.fromJson(
-                  json_['webServerConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        softwareConfig: json_.containsKey('softwareConfig')
+            ? SoftwareConfig.fromJson(
+                json_['softwareConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        webServerConfig: json_.containsKey('webServerConfig')
+            ? WebServerConfig.fromJson(
+                json_['webServerConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         webServerNetworkAccessControl:
             json_.containsKey('webServerNetworkAccessControl')
-                ? WebServerNetworkAccessControl.fromJson(
-                  json_['webServerNetworkAccessControl']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        workloadsConfig:
-            json_.containsKey('workloadsConfig')
-                ? WorkloadsConfig.fromJson(
-                  json_['workloadsConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? WebServerNetworkAccessControl.fromJson(
+                json_['webServerNetworkAccessControl']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        workloadsConfig: json_.containsKey('workloadsConfig')
+            ? WorkloadsConfig.fromJson(
+                json_['workloadsConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (airflowByoidUri != null) 'airflowByoidUri': airflowByoidUri!,
-    if (airflowUri != null) 'airflowUri': airflowUri!,
-    if (dagGcsPrefix != null) 'dagGcsPrefix': dagGcsPrefix!,
-    if (dataRetentionConfig != null)
-      'dataRetentionConfig': dataRetentionConfig!,
-    if (databaseConfig != null) 'databaseConfig': databaseConfig!,
-    if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
-    if (environmentSize != null) 'environmentSize': environmentSize!,
-    if (gkeCluster != null) 'gkeCluster': gkeCluster!,
-    if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
-    if (masterAuthorizedNetworksConfig != null)
-      'masterAuthorizedNetworksConfig': masterAuthorizedNetworksConfig!,
-    if (nodeConfig != null) 'nodeConfig': nodeConfig!,
-    if (nodeCount != null) 'nodeCount': nodeCount!,
-    if (privateEnvironmentConfig != null)
-      'privateEnvironmentConfig': privateEnvironmentConfig!,
-    if (recoveryConfig != null) 'recoveryConfig': recoveryConfig!,
-    if (resilienceMode != null) 'resilienceMode': resilienceMode!,
-    if (softwareConfig != null) 'softwareConfig': softwareConfig!,
-    if (webServerConfig != null) 'webServerConfig': webServerConfig!,
-    if (webServerNetworkAccessControl != null)
-      'webServerNetworkAccessControl': webServerNetworkAccessControl!,
-    if (workloadsConfig != null) 'workloadsConfig': workloadsConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final airflowByoidUri = this.airflowByoidUri;
+    final airflowUri = this.airflowUri;
+    final dagGcsPrefix = this.dagGcsPrefix;
+    final dataRetentionConfig = this.dataRetentionConfig;
+    final databaseConfig = this.databaseConfig;
+    final encryptionConfig = this.encryptionConfig;
+    final environmentSize = this.environmentSize;
+    final gkeCluster = this.gkeCluster;
+    final maintenanceWindow = this.maintenanceWindow;
+    final masterAuthorizedNetworksConfig = this.masterAuthorizedNetworksConfig;
+    final nodeConfig = this.nodeConfig;
+    final nodeCount = this.nodeCount;
+    final privateEnvironmentConfig = this.privateEnvironmentConfig;
+    final recoveryConfig = this.recoveryConfig;
+    final resilienceMode = this.resilienceMode;
+    final softwareConfig = this.softwareConfig;
+    final webServerConfig = this.webServerConfig;
+    final webServerNetworkAccessControl = this.webServerNetworkAccessControl;
+    final workloadsConfig = this.workloadsConfig;
+    return {
+      'airflowByoidUri': ?airflowByoidUri,
+      'airflowUri': ?airflowUri,
+      'dagGcsPrefix': ?dagGcsPrefix,
+      'dataRetentionConfig': ?dataRetentionConfig,
+      'databaseConfig': ?databaseConfig,
+      'encryptionConfig': ?encryptionConfig,
+      'environmentSize': ?environmentSize,
+      'gkeCluster': ?gkeCluster,
+      'maintenanceWindow': ?maintenanceWindow,
+      'masterAuthorizedNetworksConfig': ?masterAuthorizedNetworksConfig,
+      'nodeConfig': ?nodeConfig,
+      'nodeCount': ?nodeCount,
+      'privateEnvironmentConfig': ?privateEnvironmentConfig,
+      'recoveryConfig': ?recoveryConfig,
+      'resilienceMode': ?resilienceMode,
+      'softwareConfig': ?softwareConfig,
+      'webServerConfig': ?webServerConfig,
+      'webServerNetworkAccessControl': ?webServerNetworkAccessControl,
+      'workloadsConfig': ?workloadsConfig,
+    };
+  }
 }
 
 /// Execute Airflow Command request.
@@ -2388,18 +2420,22 @@ class ExecuteAirflowCommandRequest {
   ExecuteAirflowCommandRequest.fromJson(core.Map json_)
     : this(
         command: json_['command'] as core.String?,
-        parameters:
-            (json_['parameters'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        parameters: (json_['parameters'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         subcommand: json_['subcommand'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (command != null) 'command': command!,
-    if (parameters != null) 'parameters': parameters!,
-    if (subcommand != null) 'subcommand': subcommand!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final command = this.command;
+    final parameters = this.parameters;
+    final subcommand = this.subcommand;
+    return {
+      'command': ?command,
+      'parameters': ?parameters,
+      'subcommand': ?subcommand,
+    };
+  }
 }
 
 /// Response to ExecuteAirflowCommandRequest.
@@ -2433,12 +2469,18 @@ class ExecuteAirflowCommandResponse {
         podNamespace: json_['podNamespace'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (executionId != null) 'executionId': executionId!,
-    if (pod != null) 'pod': pod!,
-    if (podNamespace != null) 'podNamespace': podNamespace!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final executionId = this.executionId;
+    final pod = this.pod;
+    final podNamespace = this.podNamespace;
+    return {
+      'error': ?error,
+      'executionId': ?executionId,
+      'pod': ?pod,
+      'podNamespace': ?podNamespace,
+    };
+  }
 }
 
 /// Information about how a command ended.
@@ -2459,10 +2501,11 @@ class ExitInfo {
         exitCode: json_['exitCode'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (exitCode != null) 'exitCode': exitCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final exitCode = this.exitCode;
+    return {'error': ?error, 'exitCode': ?exitCode};
+  }
 }
 
 /// Response for FetchDatabasePropertiesRequest.
@@ -2495,12 +2538,16 @@ class FetchDatabasePropertiesResponse {
         secondaryGceZone: json_['secondaryGceZone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isFailoverReplicaAvailable != null)
-      'isFailoverReplicaAvailable': isFailoverReplicaAvailable!,
-    if (primaryGceZone != null) 'primaryGceZone': primaryGceZone!,
-    if (secondaryGceZone != null) 'secondaryGceZone': secondaryGceZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final isFailoverReplicaAvailable = this.isFailoverReplicaAvailable;
+    final primaryGceZone = this.primaryGceZone;
+    final secondaryGceZone = this.secondaryGceZone;
+    return {
+      'isFailoverReplicaAvailable': ?isFailoverReplicaAvailable,
+      'primaryGceZone': ?primaryGceZone,
+      'secondaryGceZone': ?secondaryGceZone,
+    };
+  }
 }
 
 /// Configuration for controlling how IPs are allocated in the GKE cluster
@@ -2581,17 +2628,20 @@ class IPAllocationPolicy {
         useIpAliases: json_['useIpAliases'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterIpv4CidrBlock != null)
-      'clusterIpv4CidrBlock': clusterIpv4CidrBlock!,
-    if (clusterSecondaryRangeName != null)
-      'clusterSecondaryRangeName': clusterSecondaryRangeName!,
-    if (servicesIpv4CidrBlock != null)
-      'servicesIpv4CidrBlock': servicesIpv4CidrBlock!,
-    if (servicesSecondaryRangeName != null)
-      'servicesSecondaryRangeName': servicesSecondaryRangeName!,
-    if (useIpAliases != null) 'useIpAliases': useIpAliases!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusterIpv4CidrBlock = this.clusterIpv4CidrBlock;
+    final clusterSecondaryRangeName = this.clusterSecondaryRangeName;
+    final servicesIpv4CidrBlock = this.servicesIpv4CidrBlock;
+    final servicesSecondaryRangeName = this.servicesSecondaryRangeName;
+    final useIpAliases = this.useIpAliases;
+    return {
+      'clusterIpv4CidrBlock': ?clusterIpv4CidrBlock,
+      'clusterSecondaryRangeName': ?clusterSecondaryRangeName,
+      'servicesIpv4CidrBlock': ?servicesIpv4CidrBlock,
+      'servicesSecondaryRangeName': ?servicesSecondaryRangeName,
+      'useIpAliases': ?useIpAliases,
+    };
+  }
 }
 
 /// ImageVersion information
@@ -2631,12 +2681,11 @@ class ImageVersion {
         creationDisabled: json_['creationDisabled'] as core.bool?,
         imageVersionId: json_['imageVersionId'] as core.String?,
         isDefault: json_['isDefault'] as core.bool?,
-        releaseDate:
-            json_.containsKey('releaseDate')
-                ? Date.fromJson(
-                  json_['releaseDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        releaseDate: json_.containsKey('releaseDate')
+            ? Date.fromJson(
+                json_['releaseDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         supportedPythonVersions:
             (json_['supportedPythonVersions'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -2644,15 +2693,22 @@ class ImageVersion {
         upgradeDisabled: json_['upgradeDisabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (creationDisabled != null) 'creationDisabled': creationDisabled!,
-    if (imageVersionId != null) 'imageVersionId': imageVersionId!,
-    if (isDefault != null) 'isDefault': isDefault!,
-    if (releaseDate != null) 'releaseDate': releaseDate!,
-    if (supportedPythonVersions != null)
-      'supportedPythonVersions': supportedPythonVersions!,
-    if (upgradeDisabled != null) 'upgradeDisabled': upgradeDisabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationDisabled = this.creationDisabled;
+    final imageVersionId = this.imageVersionId;
+    final isDefault = this.isDefault;
+    final releaseDate = this.releaseDate;
+    final supportedPythonVersions = this.supportedPythonVersions;
+    final upgradeDisabled = this.upgradeDisabled;
+    return {
+      'creationDisabled': ?creationDisabled,
+      'imageVersionId': ?imageVersionId,
+      'isDefault': ?isDefault,
+      'releaseDate': ?releaseDate,
+      'supportedPythonVersions': ?supportedPythonVersions,
+      'upgradeDisabled': ?upgradeDisabled,
+    };
+  }
 }
 
 /// Contains information about a single line from logs.
@@ -2671,10 +2727,11 @@ class Line {
         lineNumber: json_['lineNumber'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (lineNumber != null) 'lineNumber': lineNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final lineNumber = this.lineNumber;
+    return {'content': ?content, 'lineNumber': ?lineNumber};
+  }
 }
 
 /// The environments in a project and location.
@@ -2689,21 +2746,21 @@ class ListEnvironmentsResponse {
 
   ListEnvironmentsResponse.fromJson(core.Map json_)
     : this(
-        environments:
-            (json_['environments'] as core.List?)
-                ?.map(
-                  (value) => Environment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        environments: (json_['environments'] as core.List?)
+            ?.map(
+              (value) => Environment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (environments != null) 'environments': environments!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final environments = this.environments;
+    final nextPageToken = this.nextPageToken;
+    return {'environments': ?environments, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The ImageVersions in a project and location.
@@ -2718,21 +2775,21 @@ class ListImageVersionsResponse {
 
   ListImageVersionsResponse.fromJson(core.Map json_)
     : this(
-        imageVersions:
-            (json_['imageVersions'] as core.List?)
-                ?.map(
-                  (value) => ImageVersion.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        imageVersions: (json_['imageVersions'] as core.List?)
+            ?.map(
+              (value) => ImageVersion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageVersions != null) 'imageVersions': imageVersions!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageVersions = this.imageVersions;
+    final nextPageToken = this.nextPageToken;
+    return {'imageVersions': ?imageVersions, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -2760,25 +2817,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The user workloads ConfigMaps for a given environment.
@@ -2807,11 +2867,14 @@ class ListUserWorkloadsConfigMapsResponse {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (userWorkloadsConfigMaps != null)
-      'userWorkloadsConfigMaps': userWorkloadsConfigMaps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final userWorkloadsConfigMaps = this.userWorkloadsConfigMaps;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'userWorkloadsConfigMaps': ?userWorkloadsConfigMaps,
+    };
+  }
 }
 
 /// The user workloads Secrets for a given environment.
@@ -2830,21 +2893,23 @@ class ListUserWorkloadsSecretsResponse {
   ListUserWorkloadsSecretsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        userWorkloadsSecrets:
-            (json_['userWorkloadsSecrets'] as core.List?)
-                ?.map(
-                  (value) => UserWorkloadsSecret.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        userWorkloadsSecrets: (json_['userWorkloadsSecrets'] as core.List?)
+            ?.map(
+              (value) => UserWorkloadsSecret.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (userWorkloadsSecrets != null)
-      'userWorkloadsSecrets': userWorkloadsSecrets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final userWorkloadsSecrets = this.userWorkloadsSecrets;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'userWorkloadsSecrets': ?userWorkloadsSecrets,
+    };
+  }
 }
 
 /// Response to ListWorkloadsRequest.
@@ -2860,20 +2925,20 @@ class ListWorkloadsResponse {
   ListWorkloadsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        workloads:
-            (json_['workloads'] as core.List?)
-                ?.map(
-                  (value) => ComposerWorkload.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        workloads: (json_['workloads'] as core.List?)
+            ?.map(
+              (value) => ComposerWorkload.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (workloads != null) 'workloads': workloads!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final workloads = this.workloads;
+    return {'nextPageToken': ?nextPageToken, 'workloads': ?workloads};
+  }
 }
 
 /// Request to load a snapshot into a Cloud Composer environment.
@@ -2918,16 +2983,21 @@ class LoadSnapshotRequest {
         snapshotPath: json_['snapshotPath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (skipAirflowOverridesSetting != null)
-      'skipAirflowOverridesSetting': skipAirflowOverridesSetting!,
-    if (skipEnvironmentVariablesSetting != null)
-      'skipEnvironmentVariablesSetting': skipEnvironmentVariablesSetting!,
-    if (skipGcsDataCopying != null) 'skipGcsDataCopying': skipGcsDataCopying!,
-    if (skipPypiPackagesInstallation != null)
-      'skipPypiPackagesInstallation': skipPypiPackagesInstallation!,
-    if (snapshotPath != null) 'snapshotPath': snapshotPath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final skipAirflowOverridesSetting = this.skipAirflowOverridesSetting;
+    final skipEnvironmentVariablesSetting =
+        this.skipEnvironmentVariablesSetting;
+    final skipGcsDataCopying = this.skipGcsDataCopying;
+    final skipPypiPackagesInstallation = this.skipPypiPackagesInstallation;
+    final snapshotPath = this.snapshotPath;
+    return {
+      'skipAirflowOverridesSetting': ?skipAirflowOverridesSetting,
+      'skipEnvironmentVariablesSetting': ?skipEnvironmentVariablesSetting,
+      'skipGcsDataCopying': ?skipGcsDataCopying,
+      'skipPypiPackagesInstallation': ?skipPypiPackagesInstallation,
+      'snapshotPath': ?snapshotPath,
+    };
+  }
 }
 
 /// The configuration settings for Cloud Composer maintenance window.
@@ -2969,11 +3039,16 @@ class MaintenanceWindow {
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (recurrence != null) 'recurrence': recurrence!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final recurrence = this.recurrence;
+    final startTime = this.startTime;
+    return {
+      'endTime': ?endTime,
+      'recurrence': ?recurrence,
+      'startTime': ?startTime,
+    };
+  }
 }
 
 /// Configuration options for the master authorized networks feature.
@@ -2995,21 +3070,21 @@ class MasterAuthorizedNetworksConfig {
 
   MasterAuthorizedNetworksConfig.fromJson(core.Map json_)
     : this(
-        cidrBlocks:
-            (json_['cidrBlocks'] as core.List?)
-                ?.map(
-                  (value) => CidrBlock.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cidrBlocks: (json_['cidrBlocks'] as core.List?)
+            ?.map(
+              (value) => CidrBlock.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         enabled: json_['enabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cidrBlocks != null) 'cidrBlocks': cidrBlocks!,
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cidrBlocks = this.cidrBlocks;
+    final enabled = this.enabled;
+    return {'cidrBlocks': ?cidrBlocks, 'enabled': ?enabled};
+  }
 }
 
 /// Configuration options for networking connections in the Composer 2
@@ -3036,9 +3111,10 @@ class NetworkingConfig {
   NetworkingConfig.fromJson(core.Map json_)
     : this(connectionType: json_['connectionType'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connectionType != null) 'connectionType': connectionType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionType = this.connectionType;
+    return {'connectionType': ?connectionType};
+  }
 }
 
 /// The configuration information for the Kubernetes Engine nodes running the
@@ -3215,44 +3291,53 @@ class NodeConfig {
             json_['composerNetworkAttachment'] as core.String?,
         diskSizeGb: json_['diskSizeGb'] as core.int?,
         enableIpMasqAgent: json_['enableIpMasqAgent'] as core.bool?,
-        ipAllocationPolicy:
-            json_.containsKey('ipAllocationPolicy')
-                ? IPAllocationPolicy.fromJson(
-                  json_['ipAllocationPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        ipAllocationPolicy: json_.containsKey('ipAllocationPolicy')
+            ? IPAllocationPolicy.fromJson(
+                json_['ipAllocationPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         location: json_['location'] as core.String?,
         machineType: json_['machineType'] as core.String?,
         network: json_['network'] as core.String?,
-        oauthScopes:
-            (json_['oauthScopes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        oauthScopes: (json_['oauthScopes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         serviceAccount: json_['serviceAccount'] as core.String?,
         subnetwork: json_['subnetwork'] as core.String?,
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (composerInternalIpv4CidrBlock != null)
-      'composerInternalIpv4CidrBlock': composerInternalIpv4CidrBlock!,
-    if (composerNetworkAttachment != null)
-      'composerNetworkAttachment': composerNetworkAttachment!,
-    if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
-    if (enableIpMasqAgent != null) 'enableIpMasqAgent': enableIpMasqAgent!,
-    if (ipAllocationPolicy != null) 'ipAllocationPolicy': ipAllocationPolicy!,
-    if (location != null) 'location': location!,
-    if (machineType != null) 'machineType': machineType!,
-    if (network != null) 'network': network!,
-    if (oauthScopes != null) 'oauthScopes': oauthScopes!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-    if (tags != null) 'tags': tags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final composerInternalIpv4CidrBlock = this.composerInternalIpv4CidrBlock;
+    final composerNetworkAttachment = this.composerNetworkAttachment;
+    final diskSizeGb = this.diskSizeGb;
+    final enableIpMasqAgent = this.enableIpMasqAgent;
+    final ipAllocationPolicy = this.ipAllocationPolicy;
+    final location = this.location;
+    final machineType = this.machineType;
+    final network = this.network;
+    final oauthScopes = this.oauthScopes;
+    final serviceAccount = this.serviceAccount;
+    final subnetwork = this.subnetwork;
+    final tags = this.tags;
+    return {
+      'composerInternalIpv4CidrBlock': ?composerInternalIpv4CidrBlock,
+      'composerNetworkAttachment': ?composerNetworkAttachment,
+      'diskSizeGb': ?diskSizeGb,
+      'enableIpMasqAgent': ?enableIpMasqAgent,
+      'ipAllocationPolicy': ?ipAllocationPolicy,
+      'location': ?location,
+      'machineType': ?machineType,
+      'network': ?network,
+      'oauthScopes': ?oauthScopes,
+      'serviceAccount': ?serviceAccount,
+      'subnetwork': ?subnetwork,
+      'tags': ?tags,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3303,30 +3388,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Poll Airflow Command request.
@@ -3358,12 +3447,18 @@ class PollAirflowCommandRequest {
         podNamespace: json_['podNamespace'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionId != null) 'executionId': executionId!,
-    if (nextLineNumber != null) 'nextLineNumber': nextLineNumber!,
-    if (pod != null) 'pod': pod!,
-    if (podNamespace != null) 'podNamespace': podNamespace!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionId = this.executionId;
+    final nextLineNumber = this.nextLineNumber;
+    final pod = this.pod;
+    final podNamespace = this.podNamespace;
+    return {
+      'executionId': ?executionId,
+      'nextLineNumber': ?nextLineNumber,
+      'pod': ?pod,
+      'podNamespace': ?podNamespace,
+    };
+  }
 }
 
 /// Response to PollAirflowCommandRequest.
@@ -3384,28 +3479,26 @@ class PollAirflowCommandResponse {
 
   PollAirflowCommandResponse.fromJson(core.Map json_)
     : this(
-        exitInfo:
-            json_.containsKey('exitInfo')
-                ? ExitInfo.fromJson(
-                  json_['exitInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        output:
-            (json_['output'] as core.List?)
-                ?.map(
-                  (value) => Line.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        exitInfo: json_.containsKey('exitInfo')
+            ? ExitInfo.fromJson(
+                json_['exitInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        output: (json_['output'] as core.List?)
+            ?.map(
+              (value) =>
+                  Line.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         outputEnd: json_['outputEnd'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exitInfo != null) 'exitInfo': exitInfo!,
-    if (output != null) 'output': output!,
-    if (outputEnd != null) 'outputEnd': outputEnd!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final exitInfo = this.exitInfo;
+    final output = this.output;
+    final outputEnd = this.outputEnd;
+    return {'exitInfo': ?exitInfo, 'output': ?output, 'outputEnd': ?outputEnd};
+  }
 }
 
 /// Configuration options for the private GKE cluster in a Cloud Composer
@@ -3447,14 +3540,16 @@ class PrivateClusterConfig {
             json_['masterIpv4ReservedRange'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enablePrivateEndpoint != null)
-      'enablePrivateEndpoint': enablePrivateEndpoint!,
-    if (masterIpv4CidrBlock != null)
-      'masterIpv4CidrBlock': masterIpv4CidrBlock!,
-    if (masterIpv4ReservedRange != null)
-      'masterIpv4ReservedRange': masterIpv4ReservedRange!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enablePrivateEndpoint = this.enablePrivateEndpoint;
+    final masterIpv4CidrBlock = this.masterIpv4CidrBlock;
+    final masterIpv4ReservedRange = this.masterIpv4ReservedRange;
+    return {
+      'enablePrivateEndpoint': ?enablePrivateEndpoint,
+      'masterIpv4CidrBlock': ?masterIpv4CidrBlock,
+      'masterIpv4ReservedRange': ?masterIpv4ReservedRange,
+    };
+  }
 }
 
 /// The configuration information for configuring a Private IP Cloud Composer
@@ -3581,49 +3676,53 @@ class PrivateEnvironmentConfig {
             json_['enablePrivateEnvironment'] as core.bool?,
         enablePrivatelyUsedPublicIps:
             json_['enablePrivatelyUsedPublicIps'] as core.bool?,
-        networkingConfig:
-            json_.containsKey('networkingConfig')
-                ? NetworkingConfig.fromJson(
-                  json_['networkingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        privateClusterConfig:
-            json_.containsKey('privateClusterConfig')
-                ? PrivateClusterConfig.fromJson(
-                  json_['privateClusterConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        networkingConfig: json_.containsKey('networkingConfig')
+            ? NetworkingConfig.fromJson(
+                json_['networkingConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        privateClusterConfig: json_.containsKey('privateClusterConfig')
+            ? PrivateClusterConfig.fromJson(
+                json_['privateClusterConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         webServerIpv4CidrBlock: json_['webServerIpv4CidrBlock'] as core.String?,
         webServerIpv4ReservedRange:
             json_['webServerIpv4ReservedRange'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudComposerConnectionSubnetwork != null)
-      'cloudComposerConnectionSubnetwork': cloudComposerConnectionSubnetwork!,
-    if (cloudComposerNetworkIpv4CidrBlock != null)
-      'cloudComposerNetworkIpv4CidrBlock': cloudComposerNetworkIpv4CidrBlock!,
-    if (cloudComposerNetworkIpv4ReservedRange != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudComposerConnectionSubnetwork =
+        this.cloudComposerConnectionSubnetwork;
+    final cloudComposerNetworkIpv4CidrBlock =
+        this.cloudComposerNetworkIpv4CidrBlock;
+    final cloudComposerNetworkIpv4ReservedRange =
+        this.cloudComposerNetworkIpv4ReservedRange;
+    final cloudSqlIpv4CidrBlock = this.cloudSqlIpv4CidrBlock;
+    final enablePrivateBuildsOnly = this.enablePrivateBuildsOnly;
+    final enablePrivateEnvironment = this.enablePrivateEnvironment;
+    final enablePrivatelyUsedPublicIps = this.enablePrivatelyUsedPublicIps;
+    final networkingConfig = this.networkingConfig;
+    final privateClusterConfig = this.privateClusterConfig;
+    final webServerIpv4CidrBlock = this.webServerIpv4CidrBlock;
+    final webServerIpv4ReservedRange = this.webServerIpv4ReservedRange;
+    return {
+      'cloudComposerConnectionSubnetwork': ?cloudComposerConnectionSubnetwork,
+      'cloudComposerNetworkIpv4CidrBlock': ?cloudComposerNetworkIpv4CidrBlock,
       'cloudComposerNetworkIpv4ReservedRange':
-          cloudComposerNetworkIpv4ReservedRange!,
-    if (cloudSqlIpv4CidrBlock != null)
-      'cloudSqlIpv4CidrBlock': cloudSqlIpv4CidrBlock!,
-    if (enablePrivateBuildsOnly != null)
-      'enablePrivateBuildsOnly': enablePrivateBuildsOnly!,
-    if (enablePrivateEnvironment != null)
-      'enablePrivateEnvironment': enablePrivateEnvironment!,
-    if (enablePrivatelyUsedPublicIps != null)
-      'enablePrivatelyUsedPublicIps': enablePrivatelyUsedPublicIps!,
-    if (networkingConfig != null) 'networkingConfig': networkingConfig!,
-    if (privateClusterConfig != null)
-      'privateClusterConfig': privateClusterConfig!,
-    if (webServerIpv4CidrBlock != null)
-      'webServerIpv4CidrBlock': webServerIpv4CidrBlock!,
-    if (webServerIpv4ReservedRange != null)
-      'webServerIpv4ReservedRange': webServerIpv4ReservedRange!,
-  };
+          ?cloudComposerNetworkIpv4ReservedRange,
+      'cloudSqlIpv4CidrBlock': ?cloudSqlIpv4CidrBlock,
+      'enablePrivateBuildsOnly': ?enablePrivateBuildsOnly,
+      'enablePrivateEnvironment': ?enablePrivateEnvironment,
+      'enablePrivatelyUsedPublicIps': ?enablePrivatelyUsedPublicIps,
+      'networkingConfig': ?networkingConfig,
+      'privateClusterConfig': ?privateClusterConfig,
+      'webServerIpv4CidrBlock': ?webServerIpv4CidrBlock,
+      'webServerIpv4ReservedRange': ?webServerIpv4ReservedRange,
+    };
+  }
 }
 
 /// The Recovery settings of an environment.
@@ -3637,19 +3736,18 @@ class RecoveryConfig {
 
   RecoveryConfig.fromJson(core.Map json_)
     : this(
-        scheduledSnapshotsConfig:
-            json_.containsKey('scheduledSnapshotsConfig')
-                ? ScheduledSnapshotsConfig.fromJson(
-                  json_['scheduledSnapshotsConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        scheduledSnapshotsConfig: json_.containsKey('scheduledSnapshotsConfig')
+            ? ScheduledSnapshotsConfig.fromJson(
+                json_['scheduledSnapshotsConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (scheduledSnapshotsConfig != null)
-      'scheduledSnapshotsConfig': scheduledSnapshotsConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final scheduledSnapshotsConfig = this.scheduledSnapshotsConfig;
+    return {'scheduledSnapshotsConfig': ?scheduledSnapshotsConfig};
+  }
 }
 
 /// Restart Airflow web server.
@@ -3666,9 +3764,10 @@ class SaveSnapshotRequest {
   SaveSnapshotRequest.fromJson(core.Map json_)
     : this(snapshotLocation: json_['snapshotLocation'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (snapshotLocation != null) 'snapshotLocation': snapshotLocation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final snapshotLocation = this.snapshotLocation;
+    return {'snapshotLocation': ?snapshotLocation};
+  }
 }
 
 /// The configuration for scheduled snapshot creation mechanism.
@@ -3713,13 +3812,18 @@ class ScheduledSnapshotsConfig {
         timeZone: json_['timeZone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (snapshotCreationSchedule != null)
-      'snapshotCreationSchedule': snapshotCreationSchedule!,
-    if (snapshotLocation != null) 'snapshotLocation': snapshotLocation!,
-    if (timeZone != null) 'timeZone': timeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final snapshotCreationSchedule = this.snapshotCreationSchedule;
+    final snapshotLocation = this.snapshotLocation;
+    final timeZone = this.timeZone;
+    return {
+      'enabled': ?enabled,
+      'snapshotCreationSchedule': ?snapshotCreationSchedule,
+      'snapshotLocation': ?snapshotLocation,
+      'timeZone': ?timeZone,
+    };
+  }
 }
 
 /// Configuration for resources used by Airflow schedulers.
@@ -3754,12 +3858,18 @@ class SchedulerResource {
         storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (cpu != null) 'cpu': cpu!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-    if (storageGb != null) 'storageGb': storageGb!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final cpu = this.cpu;
+    final memoryGb = this.memoryGb;
+    final storageGb = this.storageGb;
+    return {
+      'count': ?count,
+      'cpu': ?cpu,
+      'memoryGb': ?memoryGb,
+      'storageGb': ?storageGb,
+    };
+  }
 }
 
 /// Specifies the selection and configuration of software inside the
@@ -3885,41 +3995,49 @@ class SoftwareConfig {
 
   SoftwareConfig.fromJson(core.Map json_)
     : this(
-        airflowConfigOverrides: (json_['airflowConfigOverrides']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        airflowConfigOverrides:
+            (json_['airflowConfigOverrides']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         cloudDataLineageIntegration:
             json_.containsKey('cloudDataLineageIntegration')
-                ? CloudDataLineageIntegration.fromJson(
-                  json_['cloudDataLineageIntegration']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        envVariables: (json_['envVariables']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+            ? CloudDataLineageIntegration.fromJson(
+                json_['cloudDataLineageIntegration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        envVariables:
+            (json_['envVariables'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         imageVersion: json_['imageVersion'] as core.String?,
-        pypiPackages: (json_['pypiPackages']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        pypiPackages:
+            (json_['pypiPackages'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         pythonVersion: json_['pythonVersion'] as core.String?,
         schedulerCount: json_['schedulerCount'] as core.int?,
         webServerPluginsMode: json_['webServerPluginsMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (airflowConfigOverrides != null)
-      'airflowConfigOverrides': airflowConfigOverrides!,
-    if (cloudDataLineageIntegration != null)
-      'cloudDataLineageIntegration': cloudDataLineageIntegration!,
-    if (envVariables != null) 'envVariables': envVariables!,
-    if (imageVersion != null) 'imageVersion': imageVersion!,
-    if (pypiPackages != null) 'pypiPackages': pypiPackages!,
-    if (pythonVersion != null) 'pythonVersion': pythonVersion!,
-    if (schedulerCount != null) 'schedulerCount': schedulerCount!,
-    if (webServerPluginsMode != null)
-      'webServerPluginsMode': webServerPluginsMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final airflowConfigOverrides = this.airflowConfigOverrides;
+    final cloudDataLineageIntegration = this.cloudDataLineageIntegration;
+    final envVariables = this.envVariables;
+    final imageVersion = this.imageVersion;
+    final pypiPackages = this.pypiPackages;
+    final pythonVersion = this.pythonVersion;
+    final schedulerCount = this.schedulerCount;
+    final webServerPluginsMode = this.webServerPluginsMode;
+    return {
+      'airflowConfigOverrides': ?airflowConfigOverrides,
+      'cloudDataLineageIntegration': ?cloudDataLineageIntegration,
+      'envVariables': ?envVariables,
+      'imageVersion': ?imageVersion,
+      'pypiPackages': ?pypiPackages,
+      'pythonVersion': ?pythonVersion,
+      'schedulerCount': ?schedulerCount,
+      'webServerPluginsMode': ?webServerPluginsMode,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3962,12 +4080,18 @@ class StopAirflowCommandRequest {
         podNamespace: json_['podNamespace'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionId != null) 'executionId': executionId!,
-    if (force != null) 'force': force!,
-    if (pod != null) 'pod': pod!,
-    if (podNamespace != null) 'podNamespace': podNamespace!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionId = this.executionId;
+    final force = this.force;
+    final pod = this.pod;
+    final podNamespace = this.podNamespace;
+    return {
+      'executionId': ?executionId,
+      'force': ?force,
+      'pod': ?pod,
+      'podNamespace': ?podNamespace,
+    };
+  }
 }
 
 /// Response to StopAirflowCommandRequest.
@@ -3983,16 +4107,16 @@ class StopAirflowCommandResponse {
   StopAirflowCommandResponse.fromJson(core.Map json_)
     : this(
         isDone: json_['isDone'] as core.bool?,
-        output:
-            (json_['output'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        output: (json_['output'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isDone != null) 'isDone': isDone!,
-    if (output != null) 'output': output!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final isDone = this.isDone;
+    final output = this.output;
+    return {'isDone': ?isDone, 'output': ?output};
+  }
 }
 
 /// The configuration for data storage in the environment.
@@ -4009,9 +4133,10 @@ class StorageConfig {
   StorageConfig.fromJson(core.Map json_)
     : this(bucket: json_['bucket'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    return {'bucket': ?bucket};
+  }
 }
 
 /// The configuration setting for Task Logs.
@@ -4032,9 +4157,10 @@ class TaskLogsRetentionConfig {
   TaskLogsRetentionConfig.fromJson(core.Map json_)
     : this(storageMode: json_['storageMode'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (storageMode != null) 'storageMode': storageMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final storageMode = this.storageMode;
+    return {'storageMode': ?storageMode};
+  }
 }
 
 /// Configuration for resources used by Airflow triggerers.
@@ -4063,11 +4189,12 @@ class TriggererResource {
         memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (cpu != null) 'cpu': cpu!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final cpu = this.cpu;
+    final memoryGb = this.memoryGb;
+    return {'count': ?count, 'cpu': ?cpu, 'memoryGb': ?memoryGb};
+  }
 }
 
 /// User workloads ConfigMap used by Airflow tasks that run with Kubernetes
@@ -4098,10 +4225,11 @@ class UserWorkloadsConfigMap {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final name = this.name;
+    return {'data': ?data, 'name': ?name};
+  }
 }
 
 /// User workloads Secret used by Airflow tasks that run with Kubernetes
@@ -4134,10 +4262,11 @@ class UserWorkloadsSecret {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final name = this.name;
+    return {'data': ?data, 'name': ?name};
+  }
 }
 
 /// The configuration settings for the Airflow web server App Engine instance.
@@ -4160,9 +4289,10 @@ class WebServerConfig {
   WebServerConfig.fromJson(core.Map json_)
     : this(machineType: json_['machineType'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineType != null) 'machineType': machineType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineType = this.machineType;
+    return {'machineType': ?machineType};
+  }
 }
 
 /// Network-level access control policy for the Airflow web server.
@@ -4174,19 +4304,19 @@ class WebServerNetworkAccessControl {
 
   WebServerNetworkAccessControl.fromJson(core.Map json_)
     : this(
-        allowedIpRanges:
-            (json_['allowedIpRanges'] as core.List?)
-                ?.map(
-                  (value) => AllowedIpRange.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        allowedIpRanges: (json_['allowedIpRanges'] as core.List?)
+            ?.map(
+              (value) => AllowedIpRange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedIpRanges != null) 'allowedIpRanges': allowedIpRanges!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedIpRanges = this.allowedIpRanges;
+    return {'allowedIpRanges': ?allowedIpRanges};
+  }
 }
 
 /// Configuration for resources used by Airflow web server.
@@ -4215,11 +4345,12 @@ class WebServerResource {
         storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpu != null) 'cpu': cpu!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-    if (storageGb != null) 'storageGb': storageGb!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpu = this.cpu;
+    final memoryGb = this.memoryGb;
+    final storageGb = this.storageGb;
+    return {'cpu': ?cpu, 'memoryGb': ?memoryGb, 'storageGb': ?storageGb};
+  }
 }
 
 /// Configuration for resources used by Airflow workers.
@@ -4266,13 +4397,20 @@ class WorkerResource {
         storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpu != null) 'cpu': cpu!,
-    if (maxCount != null) 'maxCount': maxCount!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-    if (minCount != null) 'minCount': minCount!,
-    if (storageGb != null) 'storageGb': storageGb!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpu = this.cpu;
+    final maxCount = this.maxCount;
+    final memoryGb = this.memoryGb;
+    final minCount = this.minCount;
+    final storageGb = this.storageGb;
+    return {
+      'cpu': ?cpu,
+      'maxCount': ?maxCount,
+      'memoryGb': ?memoryGb,
+      'minCount': ?minCount,
+      'storageGb': ?storageGb,
+    };
+  }
 }
 
 /// The Kubernetes workloads configuration for GKE cluster associated with the
@@ -4319,43 +4457,45 @@ class WorkloadsConfig {
 
   WorkloadsConfig.fromJson(core.Map json_)
     : this(
-        dagProcessor:
-            json_.containsKey('dagProcessor')
-                ? DagProcessorResource.fromJson(
-                  json_['dagProcessor'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        scheduler:
-            json_.containsKey('scheduler')
-                ? SchedulerResource.fromJson(
-                  json_['scheduler'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        triggerer:
-            json_.containsKey('triggerer')
-                ? TriggererResource.fromJson(
-                  json_['triggerer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        webServer:
-            json_.containsKey('webServer')
-                ? WebServerResource.fromJson(
-                  json_['webServer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        worker:
-            json_.containsKey('worker')
-                ? WorkerResource.fromJson(
-                  json_['worker'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dagProcessor: json_.containsKey('dagProcessor')
+            ? DagProcessorResource.fromJson(
+                json_['dagProcessor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        scheduler: json_.containsKey('scheduler')
+            ? SchedulerResource.fromJson(
+                json_['scheduler'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        triggerer: json_.containsKey('triggerer')
+            ? TriggererResource.fromJson(
+                json_['triggerer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        webServer: json_.containsKey('webServer')
+            ? WebServerResource.fromJson(
+                json_['webServer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        worker: json_.containsKey('worker')
+            ? WorkerResource.fromJson(
+                json_['worker'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dagProcessor != null) 'dagProcessor': dagProcessor!,
-    if (scheduler != null) 'scheduler': scheduler!,
-    if (triggerer != null) 'triggerer': triggerer!,
-    if (webServer != null) 'webServer': webServer!,
-    if (worker != null) 'worker': worker!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dagProcessor = this.dagProcessor;
+    final scheduler = this.scheduler;
+    final triggerer = this.triggerer;
+    final webServer = this.webServer;
+    final worker = this.worker;
+    return {
+      'dagProcessor': ?dagProcessor,
+      'scheduler': ?scheduler,
+      'triggerer': ?triggerer,
+      'webServer': ?webServer,
+      'worker': ?worker,
+    };
+  }
 }

@@ -129,8 +129,8 @@ class BillingAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (parent != null) 'parent': [parent],
-      if ($fields != null) 'fields': [$fields],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/billingAccounts';
@@ -172,7 +172,7 @@ class BillingAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -229,9 +229,10 @@ class BillingAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -288,11 +289,11 @@ class BillingAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/billingAccounts';
@@ -336,7 +337,7 @@ class BillingAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
@@ -388,8 +389,8 @@ class BillingAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -439,7 +440,7 @@ class BillingAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -486,7 +487,7 @@ class BillingAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -549,9 +550,9 @@ class BillingAccountsProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/projects';
@@ -613,7 +614,7 @@ class BillingAccountsSubAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/subAccounts';
@@ -674,10 +675,10 @@ class BillingAccountsSubAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/subAccounts';
@@ -748,7 +749,7 @@ class OrganizationsBillingAccountsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/billingAccounts';
@@ -809,10 +810,10 @@ class OrganizationsBillingAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/billingAccounts';
@@ -858,7 +859,7 @@ class OrganizationsBillingAccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -913,7 +914,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/billingInfo';
@@ -982,7 +983,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/billingInfo';
@@ -1032,9 +1033,9 @@ class ServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/services';
@@ -1107,12 +1108,12 @@ class ServicesSkusResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (currencyCode != null) 'currencyCode': [currencyCode],
-      if (endTime != null) 'endTime': [endTime],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (startTime != null) 'startTime': [startTime],
-      if ($fields != null) 'fields': [$fields],
+      'currencyCode': ?currencyCode == null ? null : [currencyCode],
+      'endTime': ?endTime == null ? null : [endTime],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'startTime': ?startTime == null ? null : [startTime],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/skus';
@@ -1163,12 +1164,16 @@ class AggregationInfo {
         aggregationLevel: json_['aggregationLevel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregationCount != null) 'aggregationCount': aggregationCount!,
-    if (aggregationInterval != null)
-      'aggregationInterval': aggregationInterval!,
-    if (aggregationLevel != null) 'aggregationLevel': aggregationLevel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregationCount = this.aggregationCount;
+    final aggregationInterval = this.aggregationInterval;
+    final aggregationLevel = this.aggregationLevel;
+    return {
+      'aggregationCount': ?aggregationCount,
+      'aggregationInterval': ?aggregationInterval,
+      'aggregationLevel': ?aggregationLevel,
+    };
+  }
 }
 
 /// Specifies the audit configuration for a service.
@@ -1202,21 +1207,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1307,15 +1312,22 @@ class BillingAccount {
         parent: json_['parent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (displayName != null) 'displayName': displayName!,
-    if (masterBillingAccount != null)
-      'masterBillingAccount': masterBillingAccount!,
-    if (name != null) 'name': name!,
-    if (open != null) 'open': open!,
-    if (parent != null) 'parent': parent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currencyCode = this.currencyCode;
+    final displayName = this.displayName;
+    final masterBillingAccount = this.masterBillingAccount;
+    final name = this.name;
+    final open = this.open;
+    final parent = this.parent;
+    return {
+      'currencyCode': ?currencyCode,
+      'displayName': ?displayName,
+      'masterBillingAccount': ?masterBillingAccount,
+      'name': ?name,
+      'open': ?open,
+      'parent': ?parent,
+    };
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -1402,24 +1414,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Represents the category hierarchy of a SKU.
@@ -1457,12 +1468,18 @@ class Category {
         usageType: json_['usageType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourceFamily != null) 'resourceFamily': resourceFamily!,
-    if (resourceGroup != null) 'resourceGroup': resourceGroup!,
-    if (serviceDisplayName != null) 'serviceDisplayName': serviceDisplayName!,
-    if (usageType != null) 'usageType': usageType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceFamily = this.resourceFamily;
+    final resourceGroup = this.resourceGroup;
+    final serviceDisplayName = this.serviceDisplayName;
+    final usageType = this.usageType;
+    return {
+      'resourceFamily': ?resourceFamily,
+      'resourceGroup': ?resourceGroup,
+      'serviceDisplayName': ?serviceDisplayName,
+      'usageType': ?usageType,
+    };
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1506,17 +1523,17 @@ class GeoTaxonomy {
 
   GeoTaxonomy.fromJson(core.Map json_)
     : this(
-        regions:
-            (json_['regions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        regions: (json_['regions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (regions != null) 'regions': regions!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final regions = this.regions;
+    final type = this.type;
+    return {'regions': ?regions, 'type': ?type};
+  }
 }
 
 /// Response message for `ListBillingAccounts`.
@@ -1535,21 +1552,24 @@ class ListBillingAccountsResponse {
 
   ListBillingAccountsResponse.fromJson(core.Map json_)
     : this(
-        billingAccounts:
-            (json_['billingAccounts'] as core.List?)
-                ?.map(
-                  (value) => BillingAccount.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        billingAccounts: (json_['billingAccounts'] as core.List?)
+            ?.map(
+              (value) => BillingAccount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (billingAccounts != null) 'billingAccounts': billingAccounts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final billingAccounts = this.billingAccounts;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'billingAccounts': ?billingAccounts,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Request message for `ListProjectBillingInfoResponse`.
@@ -1570,20 +1590,23 @@ class ListProjectBillingInfoResponse {
   ListProjectBillingInfoResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        projectBillingInfo:
-            (json_['projectBillingInfo'] as core.List?)
-                ?.map(
-                  (value) => ProjectBillingInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        projectBillingInfo: (json_['projectBillingInfo'] as core.List?)
+            ?.map(
+              (value) => ProjectBillingInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (projectBillingInfo != null) 'projectBillingInfo': projectBillingInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final projectBillingInfo = this.projectBillingInfo;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'projectBillingInfo': ?projectBillingInfo,
+    };
+  }
 }
 
 /// Response message for `ListServices`.
@@ -1603,20 +1626,20 @@ class ListServicesResponse {
   ListServicesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        services:
-            (json_['services'] as core.List?)
-                ?.map(
-                  (value) => Service.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        services: (json_['services'] as core.List?)
+            ?.map(
+              (value) => Service.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (services != null) 'services': services!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final services = this.services;
+    return {'nextPageToken': ?nextPageToken, 'services': ?services};
+  }
 }
 
 /// Response message for `ListSkus`.
@@ -1636,20 +1659,19 @@ class ListSkusResponse {
   ListSkusResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        skus:
-            (json_['skus'] as core.List?)
-                ?.map(
-                  (value) => Sku.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        skus: (json_['skus'] as core.List?)
+            ?.map(
+              (value) =>
+                  Sku.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (skus != null) 'skus': skus!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final skus = this.skus;
+    return {'nextPageToken': ?nextPageToken, 'skus': ?skus};
+  }
 }
 
 /// Represents an amount of money with its currency type.
@@ -1669,9 +1691,10 @@ class MoveBillingAccountRequest {
   MoveBillingAccountRequest.fromJson(core.Map json_)
     : this(destinationParent: json_['destinationParent'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinationParent != null) 'destinationParent': destinationParent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationParent = this.destinationParent;
+    return {'destinationParent': ?destinationParent};
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1766,32 +1789,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// Expresses a mathematical pricing formula.
@@ -1863,30 +1890,35 @@ class PricingExpression {
             (json_['baseUnitConversionFactor'] as core.num?)?.toDouble(),
         baseUnitDescription: json_['baseUnitDescription'] as core.String?,
         displayQuantity: (json_['displayQuantity'] as core.num?)?.toDouble(),
-        tieredRates:
-            (json_['tieredRates'] as core.List?)
-                ?.map(
-                  (value) => TierRate.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tieredRates: (json_['tieredRates'] as core.List?)
+            ?.map(
+              (value) => TierRate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         usageUnit: json_['usageUnit'] as core.String?,
         usageUnitDescription: json_['usageUnitDescription'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baseUnit != null) 'baseUnit': baseUnit!,
-    if (baseUnitConversionFactor != null)
-      'baseUnitConversionFactor': baseUnitConversionFactor!,
-    if (baseUnitDescription != null)
-      'baseUnitDescription': baseUnitDescription!,
-    if (displayQuantity != null) 'displayQuantity': displayQuantity!,
-    if (tieredRates != null) 'tieredRates': tieredRates!,
-    if (usageUnit != null) 'usageUnit': usageUnit!,
-    if (usageUnitDescription != null)
-      'usageUnitDescription': usageUnitDescription!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final baseUnit = this.baseUnit;
+    final baseUnitConversionFactor = this.baseUnitConversionFactor;
+    final baseUnitDescription = this.baseUnitDescription;
+    final displayQuantity = this.displayQuantity;
+    final tieredRates = this.tieredRates;
+    final usageUnit = this.usageUnit;
+    final usageUnitDescription = this.usageUnitDescription;
+    return {
+      'baseUnit': ?baseUnit,
+      'baseUnitConversionFactor': ?baseUnitConversionFactor,
+      'baseUnitDescription': ?baseUnitDescription,
+      'displayQuantity': ?displayQuantity,
+      'tieredRates': ?tieredRates,
+      'usageUnit': ?usageUnit,
+      'usageUnitDescription': ?usageUnitDescription,
+    };
+  }
 }
 
 /// Represents the pricing information for a SKU at a single point of time.
@@ -1933,34 +1965,37 @@ class PricingInfo {
 
   PricingInfo.fromJson(core.Map json_)
     : this(
-        aggregationInfo:
-            json_.containsKey('aggregationInfo')
-                ? AggregationInfo.fromJson(
-                  json_['aggregationInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        currencyConversionRate:
-            (json_['currencyConversionRate'] as core.num?)?.toDouble(),
+        aggregationInfo: json_.containsKey('aggregationInfo')
+            ? AggregationInfo.fromJson(
+                json_['aggregationInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        currencyConversionRate: (json_['currencyConversionRate'] as core.num?)
+            ?.toDouble(),
         effectiveTime: json_['effectiveTime'] as core.String?,
-        pricingExpression:
-            json_.containsKey('pricingExpression')
-                ? PricingExpression.fromJson(
-                  json_['pricingExpression']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pricingExpression: json_.containsKey('pricingExpression')
+            ? PricingExpression.fromJson(
+                json_['pricingExpression']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         summary: json_['summary'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregationInfo != null) 'aggregationInfo': aggregationInfo!,
-    if (currencyConversionRate != null)
-      'currencyConversionRate': currencyConversionRate!,
-    if (effectiveTime != null) 'effectiveTime': effectiveTime!,
-    if (pricingExpression != null) 'pricingExpression': pricingExpression!,
-    if (summary != null) 'summary': summary!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregationInfo = this.aggregationInfo;
+    final currencyConversionRate = this.currencyConversionRate;
+    final effectiveTime = this.effectiveTime;
+    final pricingExpression = this.pricingExpression;
+    final summary = this.summary;
+    return {
+      'aggregationInfo': ?aggregationInfo,
+      'currencyConversionRate': ?currencyConversionRate,
+      'effectiveTime': ?effectiveTime,
+      'pricingExpression': ?pricingExpression,
+      'summary': ?summary,
+    };
+  }
 }
 
 /// Encapsulation of billing information for a Google Cloud Console project.
@@ -2016,12 +2051,18 @@ class ProjectBillingInfo {
         projectId: json_['projectId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (billingAccountName != null) 'billingAccountName': billingAccountName!,
-    if (billingEnabled != null) 'billingEnabled': billingEnabled!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final billingAccountName = this.billingAccountName;
+    final billingEnabled = this.billingEnabled;
+    final name = this.name;
+    final projectId = this.projectId;
+    return {
+      'billingAccountName': ?billingAccountName,
+      'billingEnabled': ?billingEnabled,
+      'name': ?name,
+      'projectId': ?projectId,
+    };
+  }
 }
 
 /// Encapsulates a single service in Google Cloud Platform.
@@ -2059,12 +2100,18 @@ class Service {
         serviceId: json_['serviceId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (businessEntityName != null) 'businessEntityName': businessEntityName!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (serviceId != null) 'serviceId': serviceId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessEntityName = this.businessEntityName;
+    final displayName = this.displayName;
+    final name = this.name;
+    final serviceId = this.serviceId;
+    return {
+      'businessEntityName': ?businessEntityName,
+      'displayName': ?displayName,
+      'name': ?name,
+      'serviceId': ?serviceId,
+    };
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2086,19 +2133,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// Encapsulates a single SKU in Google Cloud
@@ -2150,47 +2197,52 @@ class Sku {
 
   Sku.fromJson(core.Map json_)
     : this(
-        category:
-            json_.containsKey('category')
-                ? Category.fromJson(
-                  json_['category'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        category: json_.containsKey('category')
+            ? Category.fromJson(
+                json_['category'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
-        geoTaxonomy:
-            json_.containsKey('geoTaxonomy')
-                ? GeoTaxonomy.fromJson(
-                  json_['geoTaxonomy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        geoTaxonomy: json_.containsKey('geoTaxonomy')
+            ? GeoTaxonomy.fromJson(
+                json_['geoTaxonomy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        pricingInfo:
-            (json_['pricingInfo'] as core.List?)
-                ?.map(
-                  (value) => PricingInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pricingInfo: (json_['pricingInfo'] as core.List?)
+            ?.map(
+              (value) => PricingInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         serviceProviderName: json_['serviceProviderName'] as core.String?,
-        serviceRegions:
-            (json_['serviceRegions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        serviceRegions: (json_['serviceRegions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         skuId: json_['skuId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (description != null) 'description': description!,
-    if (geoTaxonomy != null) 'geoTaxonomy': geoTaxonomy!,
-    if (name != null) 'name': name!,
-    if (pricingInfo != null) 'pricingInfo': pricingInfo!,
-    if (serviceProviderName != null)
-      'serviceProviderName': serviceProviderName!,
-    if (serviceRegions != null) 'serviceRegions': serviceRegions!,
-    if (skuId != null) 'skuId': skuId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final description = this.description;
+    final geoTaxonomy = this.geoTaxonomy;
+    final name = this.name;
+    final pricingInfo = this.pricingInfo;
+    final serviceProviderName = this.serviceProviderName;
+    final serviceRegions = this.serviceRegions;
+    final skuId = this.skuId;
+    return {
+      'category': ?category,
+      'description': ?description,
+      'geoTaxonomy': ?geoTaxonomy,
+      'name': ?name,
+      'pricingInfo': ?pricingInfo,
+      'serviceProviderName': ?serviceProviderName,
+      'serviceRegions': ?serviceRegions,
+      'skuId': ?skuId,
+    };
+  }
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -2217,16 +2269,16 @@ class TierRate {
   TierRate.fromJson(core.Map json_)
     : this(
         startUsageAmount: (json_['startUsageAmount'] as core.num?)?.toDouble(),
-        unitPrice:
-            json_.containsKey('unitPrice')
-                ? Money.fromJson(
-                  json_['unitPrice'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        unitPrice: json_.containsKey('unitPrice')
+            ? Money.fromJson(
+                json_['unitPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (startUsageAmount != null) 'startUsageAmount': startUsageAmount!,
-    if (unitPrice != null) 'unitPrice': unitPrice!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final startUsageAmount = this.startUsageAmount;
+    final unitPrice = this.unitPrice;
+    return {'startUsageAmount': ?startUsageAmount, 'unitPrice': ?unitPrice};
+  }
 }

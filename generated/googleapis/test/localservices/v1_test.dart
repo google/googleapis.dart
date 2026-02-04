@@ -365,10 +365,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAdsHomeservicesLocalservicesV1AccountReport();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAdsHomeservicesLocalservicesV1AccountReport(od);
       });
     },
@@ -380,10 +380,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(od);
       });
     },
@@ -409,10 +409,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(od);
       });
     },
@@ -453,10 +453,10 @@ void main() {
         final o =
             buildGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(
           od,
         );
@@ -471,10 +471,10 @@ void main() {
         final o =
             buildGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse(
           od,
         );

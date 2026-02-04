@@ -24,8 +24,10 @@ class HttpServerMock extends http.BaseClient {
   @core.override
   async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      final jsonString =
-          await request.finalize().transform(convert.utf8.decoder).join();
+      final jsonString = await request
+          .finalize()
+          .transform(convert.utf8.decoder)
+          .join();
       if (jsonString.isEmpty) {
         return _callback(request, null);
       } else {

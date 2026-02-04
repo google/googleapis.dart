@@ -9541,10 +9541,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings(od);
       });
     },
@@ -9557,10 +9557,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings(od);
       });
     },
@@ -9573,10 +9573,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings(od);
       });
     },
@@ -9599,10 +9599,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings(od);
       });
     },
@@ -9615,10 +9615,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3AgentClientCertificateSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AgentClientCertificateSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AgentClientCertificateSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AgentClientCertificateSettings(od);
       });
     },
@@ -9630,10 +9630,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3AgentGenAppBuilderSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AgentGenAppBuilderSettings(od);
       });
     },
@@ -9645,10 +9645,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3AgentGitIntegrationSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AgentGitIntegrationSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AgentGitIntegrationSettings(od);
       });
     },
@@ -9661,10 +9661,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings(
           od,
         );
@@ -9678,10 +9678,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3AgentPersonalizationSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AgentPersonalizationSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AgentPersonalizationSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AgentPersonalizationSettings(od);
       });
     },
@@ -9729,10 +9729,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3AnswerFeedbackRatingReason();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3AnswerFeedbackRatingReason(od);
       });
     },
@@ -9766,10 +9766,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest(od);
       });
     },
@@ -9781,10 +9781,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3BatchRunTestCasesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3BatchRunTestCasesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3BatchRunTestCasesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3BatchRunTestCasesRequest(od);
       });
     },
@@ -9807,10 +9807,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec(od);
       });
     },
@@ -9823,10 +9823,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec(
           od,
         );
@@ -9841,10 +9841,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint(
           od,
         );
@@ -9869,10 +9869,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3CalculateCoverageResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3CalculateCoverageResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3CalculateCoverageResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3CalculateCoverageResponse(od);
       });
     },
@@ -9920,10 +9920,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3CompareVersionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3CompareVersionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3CompareVersionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3CompareVersionsResponse(od);
       });
     },
@@ -9960,10 +9960,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ConversationTurnUserInput();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ConversationTurnUserInput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ConversationTurnUserInput.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ConversationTurnUserInput(od);
       });
     },
@@ -9976,10 +9976,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput(od);
       });
     },
@@ -10002,10 +10002,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3DataStoreConnectionSignals();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3DataStoreConnectionSignals.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3DataStoreConnectionSignals.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3DataStoreConnectionSignals(od);
       });
     },
@@ -10018,10 +10018,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals(
           od,
         );
@@ -10036,10 +10036,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart(od);
       });
     },
@@ -10052,10 +10052,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet(
           od,
         );
@@ -10070,10 +10070,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals(
           od,
         );
@@ -10088,10 +10088,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals(
           od,
         );
@@ -10106,10 +10106,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals(
           od,
         );
@@ -10124,10 +10124,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet(
           od,
         );
@@ -10232,10 +10232,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3EntityTypeExcludedPhrase();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3EntityTypeExcludedPhrase(od);
       });
     },
@@ -10258,10 +10258,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3EnvironmentTestCasesConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3EnvironmentTestCasesConfig(od);
       });
     },
@@ -10273,10 +10273,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3EnvironmentVersionConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3EnvironmentVersionConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3EnvironmentVersionConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3EnvironmentVersionConfig(od);
       });
     },
@@ -10288,10 +10288,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3EnvironmentWebhookConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3EnvironmentWebhookConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3EnvironmentWebhookConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3EnvironmentWebhookConfig(od);
       });
     },
@@ -10373,10 +10373,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval(od);
       });
     },
@@ -10403,10 +10403,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics(od);
       });
     },
@@ -10430,10 +10430,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination(od);
       });
     },
@@ -10445,10 +10445,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ExportEntityTypesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ExportEntityTypesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ExportEntityTypesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ExportEntityTypesRequest(od);
       });
     },
@@ -10557,10 +10557,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3FlowMultiLanguageSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3FlowMultiLanguageSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3FlowMultiLanguageSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3FlowMultiLanguageSettings(od);
       });
     },
@@ -10619,10 +10619,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3FormParameterFillBehavior();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3FormParameterFillBehavior.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3FormParameterFillBehavior.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3FormParameterFillBehavior(od);
       });
     },
@@ -10673,10 +10673,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3FulfillmentConditionalCases();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3FulfillmentConditionalCases(od);
       });
     },
@@ -10689,10 +10689,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase(od);
       });
     },
@@ -10705,10 +10705,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent(
           od,
         );
@@ -10722,10 +10722,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3FulfillmentGeneratorSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3FulfillmentGeneratorSettings(od);
       });
     },
@@ -10737,10 +10737,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3FulfillmentSetParameterAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3FulfillmentSetParameterAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3FulfillmentSetParameterAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3FulfillmentSetParameterAction(od);
       });
     },
@@ -10775,10 +10775,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings(od);
       });
     },
@@ -10791,10 +10791,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate(
           od,
         );
@@ -10809,10 +10809,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings(
           od,
         );
@@ -10837,10 +10837,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3GeneratorModelParameter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3GeneratorModelParameter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3GeneratorModelParameter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3GeneratorModelParameter(od);
       });
     },
@@ -10888,10 +10888,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3HandlerLifecycleHandler();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3HandlerLifecycleHandler.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3HandlerLifecycleHandler.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3HandlerLifecycleHandler(od);
       });
     },
@@ -10903,10 +10903,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ImportEntityTypesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ImportEntityTypesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ImportEntityTypesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ImportEntityTypesRequest(od);
       });
     },
@@ -11076,10 +11076,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3IntentTrainingPhrasePart();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3IntentTrainingPhrasePart.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3IntentTrainingPhrasePart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3IntentTrainingPhrasePart(od);
       });
     },
@@ -11091,10 +11091,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3KnowledgeConnectorSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3KnowledgeConnectorSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3KnowledgeConnectorSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3KnowledgeConnectorSettings(od);
       });
     },
@@ -11132,10 +11132,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse(od);
       });
     },
@@ -11147,10 +11147,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ListDeploymentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListDeploymentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListDeploymentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListDeploymentsResponse(od);
       });
     },
@@ -11162,10 +11162,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ListEntityTypesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListEntityTypesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListEntityTypesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListEntityTypesResponse(od);
       });
     },
@@ -11177,10 +11177,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ListEnvironmentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListEnvironmentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListEnvironmentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListEnvironmentsResponse(od);
       });
     },
@@ -11206,10 +11206,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ListExperimentsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListExperimentsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListExperimentsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListExperimentsResponse(od);
       });
     },
@@ -11268,10 +11268,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ListPlaybookVersionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListPlaybookVersionsResponse(od);
       });
     },
@@ -11297,10 +11297,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ListSecuritySettingsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListSecuritySettingsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListSecuritySettingsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListSecuritySettingsResponse(od);
       });
     },
@@ -11313,10 +11313,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ListSessionEntityTypesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListSessionEntityTypesResponse(od);
       });
     },
@@ -11328,10 +11328,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ListTestCaseResultsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListTestCaseResultsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListTestCaseResultsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListTestCaseResultsResponse(od);
       });
     },
@@ -11357,10 +11357,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ListToolVersionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListToolVersionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListToolVersionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListToolVersionsResponse(od);
       });
     },
@@ -11384,10 +11384,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse(od);
       });
     },
@@ -11450,10 +11450,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse(od);
       });
     },
@@ -11711,10 +11711,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess(od);
       });
     },
@@ -11726,10 +11726,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ResponseMessageEndInteraction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ResponseMessageEndInteraction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ResponseMessageEndInteraction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ResponseMessageEndInteraction(od);
       });
     },
@@ -11742,10 +11742,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard(od);
       });
     },
@@ -11758,10 +11758,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff(od);
       });
     },
@@ -11773,10 +11773,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ResponseMessageMixedAudio();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ResponseMessageMixedAudio.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ResponseMessageMixedAudio.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ResponseMessageMixedAudio(od);
       });
     },
@@ -11789,10 +11789,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment(od);
       });
     },
@@ -11805,10 +11805,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ResponseMessageOutputAudioText();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ResponseMessageOutputAudioText(od);
       });
     },
@@ -11820,10 +11820,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ResponseMessagePlayAudio();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ResponseMessagePlayAudio(od);
       });
     },
@@ -11836,10 +11836,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall(od);
       });
     },
@@ -11873,10 +11873,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource(od);
       });
     },
@@ -11888,10 +11888,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3RestorePlaybookVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3RestorePlaybookVersionRequest(od);
       });
     },
@@ -11904,10 +11904,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3RestorePlaybookVersionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3RestorePlaybookVersionResponse(od);
       });
     },
@@ -11919,10 +11919,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3RestoreToolVersionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3RestoreToolVersionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3RestoreToolVersionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3RestoreToolVersionRequest(od);
       });
     },
@@ -11934,10 +11934,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3RestoreToolVersionResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3RestoreToolVersionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3RestoreToolVersionResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3RestoreToolVersionResponse(od);
       });
     },
@@ -11960,10 +11960,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3RolloutConfigRolloutStep();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3RolloutConfigRolloutStep.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3RolloutConfigRolloutStep.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3RolloutConfigRolloutStep(od);
       });
     },
@@ -11986,10 +11986,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3RunContinuousTestRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3RunContinuousTestRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3RunContinuousTestRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3RunContinuousTestRequest(od);
       });
     },
@@ -12038,10 +12038,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings(od);
       });
     },
@@ -12053,10 +12053,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3SafetySettingsRaiSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3SafetySettingsRaiSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3SafetySettingsRaiSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3SafetySettingsRaiSettings(od);
       });
     },
@@ -12069,10 +12069,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter(
           od,
         );
@@ -12109,10 +12109,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings(od);
       });
     },
@@ -12125,10 +12125,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings(
           od,
         );
@@ -12142,10 +12142,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3SentimentAnalysisResult();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3SentimentAnalysisResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3SentimentAnalysisResult.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3SentimentAnalysisResult(od);
       });
     },
@@ -12210,10 +12210,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest(od);
       });
     },
@@ -12331,10 +12331,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig(od);
       });
     },
@@ -12347,10 +12347,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig(od);
       });
     },
@@ -12362,10 +12362,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig(od);
       });
     },
@@ -12378,10 +12378,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig(
           od,
         );
@@ -12396,10 +12396,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig(
           od,
         );
@@ -12458,10 +12458,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt(od);
       });
     },
@@ -12495,10 +12495,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3ToolServiceDirectoryConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3ToolServiceDirectoryConfig(od);
       });
     },
@@ -12576,10 +12576,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3TransitionCoverageTransition();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3TransitionCoverageTransition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3TransitionCoverageTransition.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3TransitionCoverageTransition(od);
       });
     },
@@ -12592,10 +12592,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3TransitionCoverageTransitionNode();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3TransitionCoverageTransitionNode(od);
       });
     },
@@ -12632,10 +12632,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3TransitionRouteGroupCoverage();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3TransitionRouteGroupCoverage(od);
       });
     },
@@ -12648,10 +12648,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage(od);
       });
     },
@@ -12664,10 +12664,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition(
           od,
         );
@@ -12692,10 +12692,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3TypeSchemaSchemaReference();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3TypeSchemaSchemaReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3TypeSchemaSchemaReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3TypeSchemaSchemaReference(od);
       });
     },
@@ -12826,10 +12826,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3WebhookGenericWebService();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3WebhookGenericWebService.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3WebhookGenericWebService.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3WebhookGenericWebService(od);
       });
     },
@@ -12842,10 +12842,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig(od);
       });
     },
@@ -12858,10 +12858,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue(
           od,
         );
@@ -12876,10 +12876,10 @@ void main() {
         final o =
             buildGoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig(
           od,
         );
@@ -12893,10 +12893,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig(od);
       });
     },
@@ -13786,10 +13786,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3ValidateAgentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3ValidateAgentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3ValidateAgentRequest(obj);
 
           final path = req.url.path;
@@ -14129,10 +14129,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3ExportEntityTypesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3ExportEntityTypesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3ExportEntityTypesRequest(obj);
 
           final path = req.url.path;
@@ -14262,10 +14262,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3ImportEntityTypesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3ImportEntityTypesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3ImportEntityTypesRequest(obj);
 
           final path = req.url.path;
@@ -14481,8 +14481,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsEnvironmentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.environments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments;
       final arg_request = buildGoogleCloudDialogflowCxV3Environment();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -14547,8 +14548,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.environments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14601,8 +14603,9 @@ void main() {
 
     unittest.test('method--deployFlow', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.environments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments;
       final arg_request = buildGoogleCloudDialogflowCxV3DeployFlowRequest();
       final arg_environment = 'foo';
       final arg_$fields = 'foo';
@@ -14667,8 +14670,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.environments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -14725,8 +14729,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.environments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -14798,8 +14803,9 @@ void main() {
 
     unittest.test('method--lookupEnvironmentHistory', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.environments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -14872,8 +14878,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.environments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments;
       final arg_request = buildGoogleCloudDialogflowCxV3Environment();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -14944,18 +14951,19 @@ void main() {
 
     unittest.test('method--runContinuousTest', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.environments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments;
       final arg_request =
           buildGoogleCloudDialogflowCxV3RunContinuousTestRequest();
       final arg_environment = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3RunContinuousTestRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3RunContinuousTestRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3RunContinuousTestRequest(obj);
 
           final path = req.url.path;
@@ -15016,10 +15024,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.environments.continuousTestResults;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.environments.continuousTestResults;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -15097,10 +15104,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.environments.deployments;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.environments.deployments;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -15157,10 +15163,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.environments.deployments;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.environments.deployments;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -15235,10 +15240,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsEnvironmentsExperimentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.experiments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.experiments;
       final arg_request = buildGoogleCloudDialogflowCxV3Experiment();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -15305,10 +15309,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.experiments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.experiments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15361,10 +15364,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.experiments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.experiments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15421,10 +15423,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.experiments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.experiments;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -15496,10 +15497,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.experiments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.experiments;
       final arg_request = buildGoogleCloudDialogflowCxV3Experiment();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -15572,20 +15572,19 @@ void main() {
 
     unittest.test('method--start', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.experiments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.experiments;
       final arg_request =
           buildGoogleCloudDialogflowCxV3StartExperimentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3StartExperimentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3StartExperimentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3StartExperimentRequest(obj);
 
           final path = req.url.path;
@@ -15644,19 +15643,18 @@ void main() {
 
     unittest.test('method--stop', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.experiments;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.experiments;
       final arg_request = buildGoogleCloudDialogflowCxV3StopExperimentRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3StopExperimentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3StopExperimentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3StopExperimentRequest(obj);
 
           final path = req.url.path;
@@ -15717,10 +15715,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsEnvironmentsSessionsResource', () {
     unittest.test('method--detectIntent', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.sessions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.sessions;
       final arg_request = buildGoogleCloudDialogflowCxV3DetectIntentRequest();
       final arg_session = 'foo';
       final arg_$fields = 'foo';
@@ -15787,19 +15784,18 @@ void main() {
 
     unittest.test('method--fulfillIntent', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.sessions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.sessions;
       final arg_request = buildGoogleCloudDialogflowCxV3FulfillIntentRequest();
       final arg_session = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3FulfillIntentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3FulfillIntentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3FulfillIntentRequest(obj);
 
           final path = req.url.path;
@@ -15858,10 +15854,9 @@ void main() {
 
     unittest.test('method--matchIntent', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.sessions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.sessions;
       final arg_request = buildGoogleCloudDialogflowCxV3MatchIntentRequest();
       final arg_session = 'foo';
       final arg_$fields = 'foo';
@@ -15928,10 +15923,9 @@ void main() {
 
     unittest.test('method--serverStreamingDetectIntent', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.environments.sessions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.environments.sessions;
       final arg_request = buildGoogleCloudDialogflowCxV3DetectIntentRequest();
       final arg_session = 'foo';
       final arg_$fields = 'foo';
@@ -16002,10 +15996,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.environments.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.environments.sessions.entityTypes;
         final arg_request = buildGoogleCloudDialogflowCxV3SessionEntityType();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -16072,10 +16065,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.environments.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.environments.sessions.entityTypes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -16128,10 +16120,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.environments.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.environments.sessions.entityTypes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -16188,10 +16179,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.environments.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.environments.sessions.entityTypes;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -16264,10 +16254,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.environments.sessions.entityTypes;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.environments.sessions.entityTypes;
         final arg_request = buildGoogleCloudDialogflowCxV3SessionEntityType();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -17393,10 +17382,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.flows.transitionRouteGroups;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.flows.transitionRouteGroups;
         final arg_request =
             buildGoogleCloudDialogflowCxV3TransitionRouteGroup();
         final arg_parent = 'foo';
@@ -17404,10 +17392,10 @@ void main() {
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudDialogflowCxV3TransitionRouteGroup(obj);
 
             final path = req.url.path;
@@ -17471,10 +17459,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.flows.transitionRouteGroups;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.flows.transitionRouteGroups;
         final arg_name = 'foo';
         final arg_force = true;
         final arg_$fields = 'foo';
@@ -17536,10 +17523,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.flows.transitionRouteGroups;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.flows.transitionRouteGroups;
         final arg_name = 'foo';
         final arg_languageCode = 'foo';
         final arg_$fields = 'foo';
@@ -17605,10 +17591,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.flows.transitionRouteGroups;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.flows.transitionRouteGroups;
         final arg_parent = 'foo';
         final arg_languageCode = 'foo';
         final arg_pageSize = 42;
@@ -17687,10 +17672,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DialogflowApi(
-              mock,
-            ).projects.locations.agents.flows.transitionRouteGroups;
+        final res = api.DialogflowApi(
+          mock,
+        ).projects.locations.agents.flows.transitionRouteGroups;
         final arg_request =
             buildGoogleCloudDialogflowCxV3TransitionRouteGroup();
         final arg_name = 'foo';
@@ -17699,10 +17683,10 @@ void main() {
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudDialogflowCxV3TransitionRouteGroup(obj);
 
             final path = req.url.path;
@@ -17774,18 +17758,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsFlowsVersionsResource', () {
     unittest.test('method--compareVersions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.flows.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.flows.versions;
       final arg_request =
           buildGoogleCloudDialogflowCxV3CompareVersionsRequest();
       final arg_baseVersion = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3CompareVersionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3CompareVersionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3CompareVersionsRequest(obj);
 
           final path = req.url.path;
@@ -17844,8 +17829,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.flows.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.flows.versions;
       final arg_request = buildGoogleCloudDialogflowCxV3Version();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -17910,8 +17896,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.flows.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.flows.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -17964,8 +17951,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.flows.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.flows.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -18022,8 +18010,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.flows.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.flows.versions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -18095,8 +18084,9 @@ void main() {
 
     unittest.test('method--load', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.flows.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.flows.versions;
       final arg_request = buildGoogleCloudDialogflowCxV3LoadVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -18161,8 +18151,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.flows.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.flows.versions;
       final arg_request = buildGoogleCloudDialogflowCxV3Version();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -18729,10 +18720,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3ExportIntentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3ExportIntentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3ExportIntentsRequest(obj);
 
           final path = req.url.path;
@@ -18861,10 +18852,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3ImportIntentsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3ImportIntentsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3ImportIntentsRequest(obj);
 
           final path = req.url.path;
@@ -19212,10 +19203,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3ExportPlaybookRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3ExportPlaybookRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3ExportPlaybookRequest(obj);
 
           final path = req.url.path;
@@ -19335,10 +19326,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3ImportPlaybookRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3ImportPlaybookRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3ImportPlaybookRequest(obj);
 
           final path = req.url.path;
@@ -19542,8 +19533,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsPlaybooksExamplesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.examples;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.examples;
       final arg_request = buildGoogleCloudDialogflowCxV3Example();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -19610,8 +19602,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.examples;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.examples;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19664,8 +19657,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.examples;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.examples;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19722,8 +19716,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.examples;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.examples;
       final arg_parent = 'foo';
       final arg_languageCode = 'foo';
       final arg_pageSize = 42;
@@ -19801,8 +19796,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.examples;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.examples;
       final arg_request = buildGoogleCloudDialogflowCxV3Example();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -19877,8 +19873,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsPlaybooksVersionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.versions;
       final arg_request = buildGoogleCloudDialogflowCxV3PlaybookVersion();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -19945,8 +19942,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -19999,8 +19997,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -20057,8 +20056,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.versions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -20130,18 +20130,19 @@ void main() {
 
     unittest.test('method--restore', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.playbooks.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.playbooks.versions;
       final arg_request =
           buildGoogleCloudDialogflowCxV3RestorePlaybookVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3RestorePlaybookVersionRequest(obj);
 
           final path = req.url.path;
@@ -20275,10 +20276,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3FulfillIntentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3FulfillIntentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3FulfillIntentRequest(obj);
 
           final path = req.url.path;
@@ -20478,10 +20479,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest(obj);
 
           final path = req.url.path;
@@ -20542,10 +20543,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsSessionsEntityTypesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.sessions.entityTypes;
       final arg_request = buildGoogleCloudDialogflowCxV3SessionEntityType();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -20612,10 +20612,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.sessions.entityTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -20668,10 +20667,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.sessions.entityTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -20728,10 +20726,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.sessions.entityTypes;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -20803,10 +20800,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.sessions.entityTypes;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.sessions.entityTypes;
       final arg_request = buildGoogleCloudDialogflowCxV3SessionEntityType();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -20888,10 +20884,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest(obj);
 
           final path = req.url.path;
@@ -20953,10 +20949,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3BatchRunTestCasesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3BatchRunTestCasesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3BatchRunTestCasesRequest(obj);
 
           final path = req.url.path;
@@ -21150,10 +21146,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3ExportTestCasesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3ExportTestCasesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3ExportTestCasesRequest(obj);
 
           final path = req.url.path;
@@ -21274,10 +21270,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3ImportTestCasesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3ImportTestCasesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3ImportTestCasesRequest(obj);
 
           final path = req.url.path;
@@ -21549,8 +21545,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsTestCasesResultsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.testCases.results;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.testCases.results;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21607,8 +21604,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.testCases.results;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.testCases.results;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -22021,8 +22019,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsToolsVersionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.tools.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.tools.versions;
       final arg_request = buildGoogleCloudDialogflowCxV3ToolVersion();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -22089,8 +22088,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.tools.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.tools.versions;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -22152,8 +22152,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.tools.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.tools.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -22210,8 +22211,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.tools.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.tools.versions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -22283,18 +22285,19 @@ void main() {
 
     unittest.test('method--restore', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(mock).projects.locations.agents.tools.versions;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.tools.versions;
       final arg_request =
           buildGoogleCloudDialogflowCxV3RestoreToolVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3RestoreToolVersionRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3RestoreToolVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3RestoreToolVersionRequest(obj);
 
           final path = req.url.path;
@@ -22355,20 +22358,19 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentsTransitionRouteGroupsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.transitionRouteGroups;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.transitionRouteGroups;
       final arg_request = buildGoogleCloudDialogflowCxV3TransitionRouteGroup();
       final arg_parent = 'foo';
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3TransitionRouteGroup(obj);
 
           final path = req.url.path;
@@ -22432,10 +22434,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.transitionRouteGroups;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.transitionRouteGroups;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -22497,10 +22498,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.transitionRouteGroups;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.transitionRouteGroups;
       final arg_name = 'foo';
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
@@ -22566,10 +22566,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.transitionRouteGroups;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.transitionRouteGroups;
       final arg_parent = 'foo';
       final arg_languageCode = 'foo';
       final arg_pageSize = 42;
@@ -22648,10 +22647,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DialogflowApi(
-            mock,
-          ).projects.locations.agents.transitionRouteGroups;
+      final res = api.DialogflowApi(
+        mock,
+      ).projects.locations.agents.transitionRouteGroups;
       final arg_request = buildGoogleCloudDialogflowCxV3TransitionRouteGroup();
       final arg_name = 'foo';
       final arg_languageCode = 'foo';
@@ -22659,10 +22657,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudDialogflowCxV3TransitionRouteGroup(obj);
 
           final path = req.url.path;

@@ -2215,10 +2215,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBeyondcorpAppconnectionsV1AppConnection();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectionsV1AppConnection(od);
       });
     },
@@ -2231,10 +2231,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint(
           od,
         );
@@ -2249,10 +2249,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway(od);
       });
     },
@@ -2265,10 +2265,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse(
           od,
         );
@@ -2283,10 +2283,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse(
           od,
         );
@@ -2301,10 +2301,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails(
           od,
         );
@@ -2318,10 +2318,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBeyondcorpAppconnectorsV1AppConnector();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1AppConnector(od);
       });
     },
@@ -2334,10 +2334,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig(od);
       });
     },
@@ -2350,10 +2350,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo(od);
       });
     },
@@ -2366,10 +2366,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount(
           od,
         );
@@ -2398,10 +2398,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse(od);
       });
     },
@@ -2413,10 +2413,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBeyondcorpAppconnectorsV1NotificationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1NotificationConfig(od);
       });
     },
@@ -2429,10 +2429,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig(
           od,
         );
@@ -2447,10 +2447,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest(od);
       });
     },
@@ -2463,10 +2463,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse(
           od,
         );
@@ -2480,10 +2480,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBeyondcorpAppconnectorsV1ResourceInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpAppconnectorsV1ResourceInfo(od);
       });
     },
@@ -2495,10 +2495,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1Application();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(od);
       });
     },
@@ -2511,10 +2511,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream(od);
       });
     },
@@ -2527,10 +2527,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal(
           od,
         );
@@ -2545,10 +2545,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork(
           od,
         );
@@ -2563,10 +2563,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders(od);
       });
     },
@@ -2579,10 +2579,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo(
           od,
         );
@@ -2597,10 +2597,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo(
           od,
         );
@@ -2615,10 +2615,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo(
           od,
         );
@@ -2632,10 +2632,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy(od);
       });
     },
@@ -2661,10 +2661,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher(od);
       });
     },
@@ -2687,10 +2687,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway(od);
       });
     },
@@ -2703,10 +2703,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse(
           od,
         );
@@ -2721,10 +2721,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse(
           od,
         );
@@ -2739,10 +2739,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig(od);
       });
     },
@@ -2754,10 +2754,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(od);
       });
     },
@@ -2770,10 +2770,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery(od);
       });
     },
@@ -2786,10 +2786,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway(
           od,
         );
@@ -2804,10 +2804,10 @@ void main() {
         final o =
             buildGoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor(
           od,
         );
@@ -3391,10 +3391,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudBeyondcorpAppconnectionsV1AppConnection(obj);
 
           final path = req.url.path;
@@ -3751,10 +3751,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudBeyondcorpAppconnectionsV1AppConnection(obj);
 
           final path = req.url.path;
@@ -4052,10 +4052,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudBeyondcorpAppconnectorsV1AppConnector(obj);
 
           final path = req.url.path;
@@ -4411,10 +4411,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudBeyondcorpAppconnectorsV1AppConnector(obj);
 
           final path = req.url.path;
@@ -4493,10 +4493,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest(obj);
 
           final path = req.url.path;
@@ -5492,10 +5492,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(obj);
 
           final path = req.url.path;
@@ -5845,10 +5845,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(obj);
 
           final path = req.url.path;
@@ -6047,10 +6047,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSecurityGatewaysApplicationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BeyondCorpApi(
-            mock,
-          ).projects.locations.securityGateways.applications;
+      final res = api.BeyondCorpApi(
+        mock,
+      ).projects.locations.securityGateways.applications;
       final arg_request =
           buildGoogleCloudBeyondcorpSecuritygatewaysV1Application();
       final arg_parent = 'foo';
@@ -6059,10 +6058,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(obj);
 
           final path = req.url.path;
@@ -6129,10 +6128,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BeyondCorpApi(
-            mock,
-          ).projects.locations.securityGateways.applications;
+      final res = api.BeyondCorpApi(
+        mock,
+      ).projects.locations.securityGateways.applications;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_validateOnly = true;
@@ -6202,10 +6200,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BeyondCorpApi(
-            mock,
-          ).projects.locations.securityGateways.applications;
+      final res = api.BeyondCorpApi(
+        mock,
+      ).projects.locations.securityGateways.applications;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6262,10 +6259,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BeyondCorpApi(
-            mock,
-          ).projects.locations.securityGateways.applications;
+      final res = api.BeyondCorpApi(
+        mock,
+      ).projects.locations.securityGateways.applications;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -6327,10 +6323,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BeyondCorpApi(
-            mock,
-          ).projects.locations.securityGateways.applications;
+      final res = api.BeyondCorpApi(
+        mock,
+      ).projects.locations.securityGateways.applications;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6415,10 +6410,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BeyondCorpApi(
-            mock,
-          ).projects.locations.securityGateways.applications;
+      final res = api.BeyondCorpApi(
+        mock,
+      ).projects.locations.securityGateways.applications;
       final arg_request =
           buildGoogleCloudBeyondcorpSecuritygatewaysV1Application();
       final arg_name = 'foo';
@@ -6427,10 +6421,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudBeyondcorpSecuritygatewaysV1Application(obj);
 
           final path = req.url.path;
@@ -6497,10 +6491,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BeyondCorpApi(
-            mock,
-          ).projects.locations.securityGateways.applications;
+      final res = api.BeyondCorpApi(
+        mock,
+      ).projects.locations.securityGateways.applications;
       final arg_request = buildGoogleIamV1SetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6563,10 +6556,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BeyondCorpApi(
-            mock,
-          ).projects.locations.securityGateways.applications;
+      final res = api.BeyondCorpApi(
+        mock,
+      ).projects.locations.securityGateways.applications;
       final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';

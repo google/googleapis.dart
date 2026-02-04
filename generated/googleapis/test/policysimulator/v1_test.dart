@@ -1467,10 +1467,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(od);
       });
     },
@@ -1519,10 +1519,10 @@ void main() {
         final o =
             buildGoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership(
           od,
         );
@@ -1559,10 +1559,10 @@ void main() {
         final o =
             buildGoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse(
           od,
         );
@@ -1577,10 +1577,10 @@ void main() {
         final o =
             buildGoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse(od);
       });
     },
@@ -1592,10 +1592,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudPolicysimulatorV1ListReplayResultsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicysimulatorV1ListReplayResultsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicysimulatorV1ListReplayResultsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicysimulatorV1ListReplayResultsResponse(od);
       });
     },
@@ -1619,10 +1619,10 @@ void main() {
         final o =
             buildGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay(
           od,
         );
@@ -1637,10 +1637,10 @@ void main() {
         final o =
             buildGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay(od);
       });
     },
@@ -1666,10 +1666,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview(od);
       });
     },
@@ -1682,10 +1682,10 @@ void main() {
         final o =
             buildGoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts(
           od,
         );
@@ -1743,10 +1743,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudPolicysimulatorV1ReplayResultsSummary();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicysimulatorV1ReplayResultsSummary.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicysimulatorV1ReplayResultsSummary.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicysimulatorV1ReplayResultsSummary(od);
       });
     },
@@ -1867,10 +1867,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PolicySimulatorApi(
-              mock,
-            ).folders.locations.accessPolicySimulations.operations;
+        final res = api.PolicySimulatorApi(
+          mock,
+        ).folders.locations.accessPolicySimulations.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -1930,10 +1929,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PolicySimulatorApi(
-              mock,
-            ).folders.locations.orgPolicyViolationsPreviews.operations;
+        final res = api.PolicySimulatorApi(
+          mock,
+        ).folders.locations.orgPolicyViolationsPreviews.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -2115,8 +2113,9 @@ void main() {
   unittest.group('resource-FoldersLocationsReplaysOperationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(mock).folders.locations.replays.operations;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).folders.locations.replays.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2171,8 +2170,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(mock).folders.locations.replays.operations;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).folders.locations.replays.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2258,8 +2258,9 @@ void main() {
   unittest.group('resource-FoldersLocationsReplaysResultsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(mock).folders.locations.replays.results;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).folders.locations.replays.results;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2476,10 +2477,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PolicySimulatorApi(
-              mock,
-            ).organizations.locations.accessPolicySimulations.operations;
+        final res = api.PolicySimulatorApi(
+          mock,
+        ).organizations.locations.accessPolicySimulations.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -2537,10 +2537,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsOrgPolicyViolationsPreviewsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(
-            mock,
-          ).organizations.locations.orgPolicyViolationsPreviews;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).organizations.locations.orgPolicyViolationsPreviews;
       final arg_request =
           buildGoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview();
       final arg_parent = 'foo';
@@ -2548,10 +2547,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview(obj);
 
           final path = req.url.path;
@@ -2613,10 +2612,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(
-            mock,
-          ).organizations.locations.orgPolicyViolationsPreviews;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).organizations.locations.orgPolicyViolationsPreviews;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2673,10 +2671,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(
-            mock,
-          ).organizations.locations.orgPolicyViolationsPreviews;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).organizations.locations.orgPolicyViolationsPreviews;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2753,10 +2750,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PolicySimulatorApi(
-              mock,
-            ).organizations.locations.orgPolicyViolationsPreviews.operations;
+        final res = api.PolicySimulatorApi(
+          mock,
+        ).organizations.locations.orgPolicyViolationsPreviews.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -2816,12 +2812,11 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PolicySimulatorApi(mock)
-                .organizations
-                .locations
-                .orgPolicyViolationsPreviews
-                .orgPolicyViolations;
+        final res = api.PolicySimulatorApi(mock)
+            .organizations
+            .locations
+            .orgPolicyViolationsPreviews
+            .orgPolicyViolations;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -3021,10 +3016,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsReplaysOperationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(
-            mock,
-          ).organizations.locations.replays.operations;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).organizations.locations.replays.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3079,10 +3073,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(
-            mock,
-          ).organizations.locations.replays.operations;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).organizations.locations.replays.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3168,8 +3161,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsReplaysResultsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(mock).organizations.locations.replays.results;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).organizations.locations.replays.results;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3245,10 +3239,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PolicySimulatorApi(
-              mock,
-            ).projects.locations.accessPolicySimulations.operations;
+        final res = api.PolicySimulatorApi(
+          mock,
+        ).projects.locations.accessPolicySimulations.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3308,10 +3301,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.PolicySimulatorApi(
-              mock,
-            ).projects.locations.orgPolicyViolationsPreviews.operations;
+        final res = api.PolicySimulatorApi(
+          mock,
+        ).projects.locations.orgPolicyViolationsPreviews.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3493,8 +3485,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsReplaysOperationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(mock).projects.locations.replays.operations;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).projects.locations.replays.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3549,8 +3542,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(mock).projects.locations.replays.operations;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).projects.locations.replays.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3636,8 +3630,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsReplaysResultsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PolicySimulatorApi(mock).projects.locations.replays.results;
+      final res = api.PolicySimulatorApi(
+        mock,
+      ).projects.locations.replays.results;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

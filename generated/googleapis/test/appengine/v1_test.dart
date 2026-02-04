@@ -6320,10 +6320,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.authorizedCertificates;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.authorizedCertificates;
         final arg_request = buildAuthorizedCertificate();
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
@@ -6425,10 +6424,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.authorizedCertificates;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.authorizedCertificates;
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
         final arg_applicationsId = 'foo';
@@ -6531,10 +6529,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.authorizedCertificates;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.authorizedCertificates;
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
         final arg_applicationsId = 'foo';
@@ -6640,10 +6637,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.authorizedCertificates;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.authorizedCertificates;
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
         final arg_applicationsId = 'foo';
@@ -6757,10 +6753,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.authorizedCertificates;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.authorizedCertificates;
         final arg_request = buildAuthorizedCertificate();
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
@@ -6881,10 +6876,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.authorizedDomains;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.authorizedDomains;
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
         final arg_applicationsId = 'foo';
@@ -7000,10 +6994,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.domainMappings;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.domainMappings;
         final arg_request = buildDomainMapping();
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
@@ -7111,10 +7104,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.domainMappings;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.domainMappings;
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
         final arg_applicationsId = 'foo';
@@ -7214,10 +7206,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.domainMappings;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.domainMappings;
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
         final arg_applicationsId = 'foo';
@@ -7317,10 +7308,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.domainMappings;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.domainMappings;
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
         final arg_applicationsId = 'foo';
@@ -7429,10 +7419,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.domainMappings;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.domainMappings;
         final arg_request = buildDomainMapping();
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
@@ -7548,8 +7537,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsApplicationsServicesResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AppengineApi(mock).projects.locations.applications.services;
+      final res = api.AppengineApi(
+        mock,
+      ).projects.locations.applications.services;
       final arg_projectsId = 'foo';
       final arg_locationsId = 'foo';
       final arg_applicationsId = 'foo';
@@ -7649,8 +7639,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AppengineApi(mock).projects.locations.applications.services;
+      final res = api.AppengineApi(
+        mock,
+      ).projects.locations.applications.services;
       final arg_request = buildService();
       final arg_projectsId = 'foo';
       final arg_locationsId = 'foo';
@@ -7773,10 +7764,9 @@ void main() {
     () {
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.services.versions;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.services.versions;
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
         final arg_applicationsId = 'foo';
@@ -7890,10 +7880,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.services.versions;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.services.versions;
         final arg_request = buildVersion();
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
@@ -8025,10 +8014,9 @@ void main() {
     () {
       unittest.test('method--debug', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.services.versions.instances;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.services.versions.instances;
         final arg_request = buildDebugInstanceRequest();
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
@@ -8172,10 +8160,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.AppengineApi(
-              mock,
-            ).projects.locations.applications.services.versions.instances;
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.services.versions.instances;
         final arg_projectsId = 'foo';
         final arg_locationsId = 'foo';
         final arg_applicationsId = 'foo';

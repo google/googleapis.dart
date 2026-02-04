@@ -119,13 +119,13 @@ class PagespeedapiResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'url': [url],
-      if (captchaToken != null) 'captchaToken': [captchaToken],
-      if (category != null) 'category': category,
-      if (locale != null) 'locale': [locale],
-      if (strategy != null) 'strategy': [strategy],
-      if (utmCampaign != null) 'utm_campaign': [utmCampaign],
-      if (utmSource != null) 'utm_source': [utmSource],
-      if ($fields != null) 'fields': [$fields],
+      'captchaToken': ?captchaToken == null ? null : [captchaToken],
+      'category': ?category,
+      'locale': ?locale == null ? null : [locale],
+      'strategy': ?strategy == null ? null : [strategy],
+      'utm_campaign': ?utmCampaign == null ? null : [utmCampaign],
+      'utm_source': ?utmSource == null ? null : [utmSource],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'pagespeedonline/v5/runPagespeed';
@@ -172,20 +172,26 @@ class AuditRefs {
         acronym: json_['acronym'] as core.String?,
         group: json_['group'] as core.String?,
         id: json_['id'] as core.String?,
-        relevantAudits:
-            (json_['relevantAudits'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        relevantAudits: (json_['relevantAudits'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         weight: (json_['weight'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acronym != null) 'acronym': acronym!,
-    if (group != null) 'group': group!,
-    if (id != null) 'id': id!,
-    if (relevantAudits != null) 'relevantAudits': relevantAudits!,
-    if (weight != null) 'weight': weight!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acronym = this.acronym;
+    final group = this.group;
+    final id = this.id;
+    final relevantAudits = this.relevantAudits;
+    final weight = this.weight;
+    return {
+      'acronym': ?acronym,
+      'group': ?group,
+      'id': ?id,
+      'relevantAudits': ?relevantAudits,
+      'weight': ?weight,
+    };
+  }
 }
 
 /// A proportion of data in the total distribution, bucketed by a min/max
@@ -211,11 +217,12 @@ class Bucket {
         proportion: (json_['proportion'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (max != null) 'max': max!,
-    if (min != null) 'min': min!,
-    if (proportion != null) 'proportion': proportion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final max = this.max;
+    final min = this.min;
+    final proportion = this.proportion;
+    return {'max': ?max, 'min': ?min, 'proportion': ?proportion};
+  }
 }
 
 /// The categories in a Lighthouse run.
@@ -251,46 +258,47 @@ class Categories {
 
   Categories.fromJson(core.Map json_)
     : this(
-        accessibility:
-            json_.containsKey('accessibility')
-                ? LighthouseCategoryV5.fromJson(
-                  json_['accessibility'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        bestPractices:
-            json_.containsKey('best-practices')
-                ? LighthouseCategoryV5.fromJson(
-                  json_['best-practices']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        performance:
-            json_.containsKey('performance')
-                ? LighthouseCategoryV5.fromJson(
-                  json_['performance'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pwa:
-            json_.containsKey('pwa')
-                ? LighthouseCategoryV5.fromJson(
-                  json_['pwa'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        seo:
-            json_.containsKey('seo')
-                ? LighthouseCategoryV5.fromJson(
-                  json_['seo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        accessibility: json_.containsKey('accessibility')
+            ? LighthouseCategoryV5.fromJson(
+                json_['accessibility'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bestPractices: json_.containsKey('best-practices')
+            ? LighthouseCategoryV5.fromJson(
+                json_['best-practices'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        performance: json_.containsKey('performance')
+            ? LighthouseCategoryV5.fromJson(
+                json_['performance'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pwa: json_.containsKey('pwa')
+            ? LighthouseCategoryV5.fromJson(
+                json_['pwa'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        seo: json_.containsKey('seo')
+            ? LighthouseCategoryV5.fromJson(
+                json_['seo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessibility != null) 'accessibility': accessibility!,
-    if (bestPractices != null) 'best-practices': bestPractices!,
-    if (performance != null) 'performance': performance!,
-    if (pwa != null) 'pwa': pwa!,
-    if (seo != null) 'seo': seo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessibility = this.accessibility;
+    final bestPractices = this.bestPractices;
+    final performance = this.performance;
+    final pwa = this.pwa;
+    final seo = this.seo;
+    return {
+      'accessibility': ?accessibility,
+      'best-practices': ?bestPractices,
+      'performance': ?performance,
+      'pwa': ?pwa,
+      'seo': ?seo,
+    };
+  }
 }
 
 /// Message containing a category
@@ -309,10 +317,11 @@ class CategoryGroupV5 {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final title = this.title;
+    return {'description': ?description, 'title': ?title};
+  }
 }
 
 /// Message containing the configuration settings for the Lighthouse run.
@@ -359,13 +368,20 @@ class ConfigSettings {
         onlyCategories: json_['onlyCategories'],
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (channel != null) 'channel': channel!,
-    if (emulatedFormFactor != null) 'emulatedFormFactor': emulatedFormFactor!,
-    if (formFactor != null) 'formFactor': formFactor!,
-    if (locale != null) 'locale': locale!,
-    if (onlyCategories != null) 'onlyCategories': onlyCategories!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final channel = this.channel;
+    final emulatedFormFactor = this.emulatedFormFactor;
+    final formFactor = this.formFactor;
+    final locale = this.locale;
+    final onlyCategories = this.onlyCategories;
+    return {
+      'channel': ?channel,
+      'emulatedFormFactor': ?emulatedFormFactor,
+      'formFactor': ?formFactor,
+      'locale': ?locale,
+      'onlyCategories': ?onlyCategories,
+    };
+  }
 }
 
 /// Message containing environment configuration for a Lighthouse run.
@@ -400,12 +416,18 @@ class Environment {
         networkUserAgent: json_['networkUserAgent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (benchmarkIndex != null) 'benchmarkIndex': benchmarkIndex!,
-    if (credits != null) 'credits': credits!,
-    if (hostUserAgent != null) 'hostUserAgent': hostUserAgent!,
-    if (networkUserAgent != null) 'networkUserAgent': networkUserAgent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final benchmarkIndex = this.benchmarkIndex;
+    final credits = this.credits;
+    final hostUserAgent = this.hostUserAgent;
+    final networkUserAgent = this.networkUserAgent;
+    return {
+      'benchmarkIndex': ?benchmarkIndex,
+      'credits': ?credits,
+      'hostUserAgent': ?hostUserAgent,
+      'networkUserAgent': ?networkUserAgent,
+    };
+  }
 }
 
 /// Message containing the i18n data for the LHR - Version 1.
@@ -418,19 +440,18 @@ class I18n {
 
   I18n.fromJson(core.Map json_)
     : this(
-        rendererFormattedStrings:
-            json_.containsKey('rendererFormattedStrings')
-                ? RendererFormattedStrings.fromJson(
-                  json_['rendererFormattedStrings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rendererFormattedStrings: json_.containsKey('rendererFormattedStrings')
+            ? RendererFormattedStrings.fromJson(
+                json_['rendererFormattedStrings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rendererFormattedStrings != null)
-      'rendererFormattedStrings': rendererFormattedStrings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rendererFormattedStrings = this.rendererFormattedStrings;
+    return {'rendererFormattedStrings': ?rendererFormattedStrings};
+  }
 }
 
 /// Message containing an Entity.
@@ -481,20 +502,27 @@ class LhrEntity {
         isFirstParty: json_['isFirstParty'] as core.bool?,
         isUnrecognized: json_['isUnrecognized'] as core.bool?,
         name: json_['name'] as core.String?,
-        origins:
-            (json_['origins'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        origins: (json_['origins'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (homepage != null) 'homepage': homepage!,
-    if (isFirstParty != null) 'isFirstParty': isFirstParty!,
-    if (isUnrecognized != null) 'isUnrecognized': isUnrecognized!,
-    if (name != null) 'name': name!,
-    if (origins != null) 'origins': origins!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final homepage = this.homepage;
+    final isFirstParty = this.isFirstParty;
+    final isUnrecognized = this.isUnrecognized;
+    final name = this.name;
+    final origins = this.origins;
+    return {
+      'category': ?category,
+      'homepage': ?homepage,
+      'isFirstParty': ?isFirstParty,
+      'isUnrecognized': ?isUnrecognized,
+      'name': ?name,
+      'origins': ?origins,
+    };
+  }
 }
 
 /// An audit's result object in a Lighthouse result.
@@ -571,20 +599,18 @@ class LighthouseAuditResultV5 {
   LighthouseAuditResultV5.fromJson(core.Map json_)
     : this(
         description: json_['description'] as core.String?,
-        details:
-            json_.containsKey('details')
-                ? json_['details'] as core.Map<core.String, core.dynamic>
-                : null,
+        details: json_.containsKey('details')
+            ? json_['details'] as core.Map<core.String, core.dynamic>
+            : null,
         displayValue: json_['displayValue'] as core.String?,
         errorMessage: json_['errorMessage'] as core.String?,
         explanation: json_['explanation'] as core.String?,
         id: json_['id'] as core.String?,
-        metricSavings:
-            json_.containsKey('metricSavings')
-                ? MetricSavings.fromJson(
-                  json_['metricSavings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metricSavings: json_.containsKey('metricSavings')
+            ? MetricSavings.fromJson(
+                json_['metricSavings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         numericUnit: json_['numericUnit'] as core.String?,
         numericValue: (json_['numericValue'] as core.num?)?.toDouble(),
         score: json_['score'],
@@ -593,21 +619,36 @@ class LighthouseAuditResultV5 {
         warnings: json_['warnings'],
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (details != null) 'details': details!,
-    if (displayValue != null) 'displayValue': displayValue!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (explanation != null) 'explanation': explanation!,
-    if (id != null) 'id': id!,
-    if (metricSavings != null) 'metricSavings': metricSavings!,
-    if (numericUnit != null) 'numericUnit': numericUnit!,
-    if (numericValue != null) 'numericValue': numericValue!,
-    if (score != null) 'score': score!,
-    if (scoreDisplayMode != null) 'scoreDisplayMode': scoreDisplayMode!,
-    if (title != null) 'title': title!,
-    if (warnings != null) 'warnings': warnings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final details = this.details;
+    final displayValue = this.displayValue;
+    final errorMessage = this.errorMessage;
+    final explanation = this.explanation;
+    final id = this.id;
+    final metricSavings = this.metricSavings;
+    final numericUnit = this.numericUnit;
+    final numericValue = this.numericValue;
+    final score = this.score;
+    final scoreDisplayMode = this.scoreDisplayMode;
+    final title = this.title;
+    final warnings = this.warnings;
+    return {
+      'description': ?description,
+      'details': ?details,
+      'displayValue': ?displayValue,
+      'errorMessage': ?errorMessage,
+      'explanation': ?explanation,
+      'id': ?id,
+      'metricSavings': ?metricSavings,
+      'numericUnit': ?numericUnit,
+      'numericValue': ?numericValue,
+      'score': ?score,
+      'scoreDisplayMode': ?scoreDisplayMode,
+      'title': ?title,
+      'warnings': ?warnings,
+    };
+  }
 }
 
 /// A Lighthouse category.
@@ -646,14 +687,13 @@ class LighthouseCategoryV5 {
 
   LighthouseCategoryV5.fromJson(core.Map json_)
     : this(
-        auditRefs:
-            (json_['auditRefs'] as core.List?)
-                ?.map(
-                  (value) => AuditRefs.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditRefs: (json_['auditRefs'] as core.List?)
+            ?.map(
+              (value) => AuditRefs.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         description: json_['description'] as core.String?,
         id: json_['id'] as core.String?,
         manualDescription: json_['manualDescription'] as core.String?,
@@ -661,14 +701,22 @@ class LighthouseCategoryV5 {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditRefs != null) 'auditRefs': auditRefs!,
-    if (description != null) 'description': description!,
-    if (id != null) 'id': id!,
-    if (manualDescription != null) 'manualDescription': manualDescription!,
-    if (score != null) 'score': score!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditRefs = this.auditRefs;
+    final description = this.description;
+    final id = this.id;
+    final manualDescription = this.manualDescription;
+    final score = this.score;
+    final title = this.title;
+    return {
+      'auditRefs': ?auditRefs,
+      'description': ?description,
+      'id': ?id,
+      'manualDescription': ?manualDescription,
+      'score': ?score,
+      'title': ?title,
+    };
+  }
 }
 
 /// The Lighthouse result object.
@@ -772,104 +820,115 @@ class LighthouseResultV5 {
             ),
           ),
         ),
-        categories:
-            json_.containsKey('categories')
-                ? Categories.fromJson(
-                  json_['categories'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        categoryGroups: (json_['categoryGroups']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                CategoryGroupV5.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              ),
-            ),
-        configSettings:
-            json_.containsKey('configSettings')
-                ? ConfigSettings.fromJson(
-                  json_['configSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        entities:
-            (json_['entities'] as core.List?)
+        categories: json_.containsKey('categories')
+            ? Categories.fromJson(
+                json_['categories'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        categoryGroups:
+            (json_['categoryGroups'] as core.Map<core.String, core.dynamic>?)
                 ?.map(
-                  (value) => LhrEntity.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
+                  (key, value) => core.MapEntry(
+                    key,
+                    CategoryGroupV5.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
                   ),
-                )
-                .toList(),
-        environment:
-            json_.containsKey('environment')
-                ? Environment.fromJson(
-                  json_['environment'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+                ),
+        configSettings: json_.containsKey('configSettings')
+            ? ConfigSettings.fromJson(
+                json_['configSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        entities: (json_['entities'] as core.List?)
+            ?.map(
+              (value) => LhrEntity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        environment: json_.containsKey('environment')
+            ? Environment.fromJson(
+                json_['environment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fetchTime: json_['fetchTime'] as core.String?,
         finalDisplayedUrl: json_['finalDisplayedUrl'] as core.String?,
         finalUrl: json_['finalUrl'] as core.String?,
         fullPageScreenshot: json_['fullPageScreenshot'],
-        i18n:
-            json_.containsKey('i18n')
-                ? I18n.fromJson(
-                  json_['i18n'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        i18n: json_.containsKey('i18n')
+            ? I18n.fromJson(
+                json_['i18n'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lighthouseVersion: json_['lighthouseVersion'] as core.String?,
         mainDocumentUrl: json_['mainDocumentUrl'] as core.String?,
         requestedUrl: json_['requestedUrl'] as core.String?,
-        runWarnings:
-            json_.containsKey('runWarnings')
-                ? json_['runWarnings'] as core.List
-                : null,
-        runtimeError:
-            json_.containsKey('runtimeError')
-                ? RuntimeError.fromJson(
-                  json_['runtimeError'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        stackPacks:
-            (json_['stackPacks'] as core.List?)
-                ?.map(
-                  (value) => StackPack.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        timing:
-            json_.containsKey('timing')
-                ? Timing.fromJson(
-                  json_['timing'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        runWarnings: json_.containsKey('runWarnings')
+            ? json_['runWarnings'] as core.List
+            : null,
+        runtimeError: json_.containsKey('runtimeError')
+            ? RuntimeError.fromJson(
+                json_['runtimeError'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stackPacks: (json_['stackPacks'] as core.List?)
+            ?.map(
+              (value) => StackPack.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        timing: json_.containsKey('timing')
+            ? Timing.fromJson(
+                json_['timing'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         userAgent: json_['userAgent'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audits != null) 'audits': audits!,
-    if (categories != null) 'categories': categories!,
-    if (categoryGroups != null) 'categoryGroups': categoryGroups!,
-    if (configSettings != null) 'configSettings': configSettings!,
-    if (entities != null) 'entities': entities!,
-    if (environment != null) 'environment': environment!,
-    if (fetchTime != null) 'fetchTime': fetchTime!,
-    if (finalDisplayedUrl != null) 'finalDisplayedUrl': finalDisplayedUrl!,
-    if (finalUrl != null) 'finalUrl': finalUrl!,
-    if (fullPageScreenshot != null) 'fullPageScreenshot': fullPageScreenshot!,
-    if (i18n != null) 'i18n': i18n!,
-    if (lighthouseVersion != null) 'lighthouseVersion': lighthouseVersion!,
-    if (mainDocumentUrl != null) 'mainDocumentUrl': mainDocumentUrl!,
-    if (requestedUrl != null) 'requestedUrl': requestedUrl!,
-    if (runWarnings != null) 'runWarnings': runWarnings!,
-    if (runtimeError != null) 'runtimeError': runtimeError!,
-    if (stackPacks != null) 'stackPacks': stackPacks!,
-    if (timing != null) 'timing': timing!,
-    if (userAgent != null) 'userAgent': userAgent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audits = this.audits;
+    final categories = this.categories;
+    final categoryGroups = this.categoryGroups;
+    final configSettings = this.configSettings;
+    final entities = this.entities;
+    final environment = this.environment;
+    final fetchTime = this.fetchTime;
+    final finalDisplayedUrl = this.finalDisplayedUrl;
+    final finalUrl = this.finalUrl;
+    final fullPageScreenshot = this.fullPageScreenshot;
+    final i18n = this.i18n;
+    final lighthouseVersion = this.lighthouseVersion;
+    final mainDocumentUrl = this.mainDocumentUrl;
+    final requestedUrl = this.requestedUrl;
+    final runWarnings = this.runWarnings;
+    final runtimeError = this.runtimeError;
+    final stackPacks = this.stackPacks;
+    final timing = this.timing;
+    final userAgent = this.userAgent;
+    return {
+      'audits': ?audits,
+      'categories': ?categories,
+      'categoryGroups': ?categoryGroups,
+      'configSettings': ?configSettings,
+      'entities': ?entities,
+      'environment': ?environment,
+      'fetchTime': ?fetchTime,
+      'finalDisplayedUrl': ?finalDisplayedUrl,
+      'finalUrl': ?finalUrl,
+      'fullPageScreenshot': ?fullPageScreenshot,
+      'i18n': ?i18n,
+      'lighthouseVersion': ?lighthouseVersion,
+      'mainDocumentUrl': ?mainDocumentUrl,
+      'requestedUrl': ?requestedUrl,
+      'runWarnings': ?runWarnings,
+      'runtimeError': ?runtimeError,
+      'stackPacks': ?stackPacks,
+      'timing': ?timing,
+      'userAgent': ?userAgent,
+    };
+  }
 }
 
 /// The metric savings of the audit.
@@ -915,13 +974,14 @@ class MetricSavings {
         TBT: (json_['TBT'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (CLS != null) 'CLS': CLS!,
-    if (FCP != null) 'FCP': FCP!,
-    if (INP != null) 'INP': INP!,
-    if (LCP != null) 'LCP': LCP!,
-    if (TBT != null) 'TBT': TBT!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final CLS = this.CLS;
+    final FCP = this.FCP;
+    final INP = this.INP;
+    final LCP = this.LCP;
+    final TBT = this.TBT;
+    return {'CLS': ?CLS, 'FCP': ?FCP, 'INP': ?INP, 'LCP': ?LCP, 'TBT': ?TBT};
+  }
 }
 
 /// The CrUX loading experience object that contains CrUX data breakdowns.
@@ -966,13 +1026,20 @@ class PagespeedApiLoadingExperienceV5 {
         overallCategory: json_['overall_category'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (initialUrl != null) 'initial_url': initialUrl!,
-    if (metrics != null) 'metrics': metrics!,
-    if (originFallback != null) 'origin_fallback': originFallback!,
-    if (overallCategory != null) 'overall_category': overallCategory!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final initialUrl = this.initialUrl;
+    final metrics = this.metrics;
+    final originFallback = this.originFallback;
+    final overallCategory = this.overallCategory;
+    return {
+      'id': ?id,
+      'initial_url': ?initialUrl,
+      'metrics': ?metrics,
+      'origin_fallback': ?originFallback,
+      'overall_category': ?overallCategory,
+    };
+  }
 }
 
 /// The Pagespeed API response object.
@@ -1019,47 +1086,51 @@ class PagespeedApiPagespeedResponseV5 {
         captchaResult: json_['captchaResult'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        lighthouseResult:
-            json_.containsKey('lighthouseResult')
-                ? LighthouseResultV5.fromJson(
-                  json_['lighthouseResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        loadingExperience:
-            json_.containsKey('loadingExperience')
-                ? PagespeedApiLoadingExperienceV5.fromJson(
-                  json_['loadingExperience']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        originLoadingExperience:
-            json_.containsKey('originLoadingExperience')
-                ? PagespeedApiLoadingExperienceV5.fromJson(
-                  json_['originLoadingExperience']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        version:
-            json_.containsKey('version')
-                ? PagespeedVersion.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lighthouseResult: json_.containsKey('lighthouseResult')
+            ? LighthouseResultV5.fromJson(
+                json_['lighthouseResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        loadingExperience: json_.containsKey('loadingExperience')
+            ? PagespeedApiLoadingExperienceV5.fromJson(
+                json_['loadingExperience']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        originLoadingExperience: json_.containsKey('originLoadingExperience')
+            ? PagespeedApiLoadingExperienceV5.fromJson(
+                json_['originLoadingExperience']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        version: json_.containsKey('version')
+            ? PagespeedVersion.fromJson(
+                json_['version'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (analysisUTCTimestamp != null)
-      'analysisUTCTimestamp': analysisUTCTimestamp!,
-    if (captchaResult != null) 'captchaResult': captchaResult!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (lighthouseResult != null) 'lighthouseResult': lighthouseResult!,
-    if (loadingExperience != null) 'loadingExperience': loadingExperience!,
-    if (originLoadingExperience != null)
-      'originLoadingExperience': originLoadingExperience!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final analysisUTCTimestamp = this.analysisUTCTimestamp;
+    final captchaResult = this.captchaResult;
+    final id = this.id;
+    final kind = this.kind;
+    final lighthouseResult = this.lighthouseResult;
+    final loadingExperience = this.loadingExperience;
+    final originLoadingExperience = this.originLoadingExperience;
+    final version = this.version;
+    return {
+      'analysisUTCTimestamp': ?analysisUTCTimestamp,
+      'captchaResult': ?captchaResult,
+      'id': ?id,
+      'kind': ?kind,
+      'lighthouseResult': ?lighthouseResult,
+      'loadingExperience': ?loadingExperience,
+      'originLoadingExperience': ?originLoadingExperience,
+      'version': ?version,
+    };
+  }
 }
 
 /// The Pagespeed Version object.
@@ -1078,10 +1149,11 @@ class PagespeedVersion {
         minor: json_['minor'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (major != null) 'major': major!,
-    if (minor != null) 'minor': minor!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final major = this.major;
+    final minor = this.minor;
+    return {'major': ?major, 'minor': ?minor};
+  }
 }
 
 /// Message holding the formatted strings used in the renderer.
@@ -1390,84 +1462,108 @@ class RendererFormattedStrings {
         warningHeader: json_['warningHeader'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditGroupExpandTooltip != null)
-      'auditGroupExpandTooltip': auditGroupExpandTooltip!,
-    if (calculatorLink != null) 'calculatorLink': calculatorLink!,
-    if (crcInitialNavigation != null)
-      'crcInitialNavigation': crcInitialNavigation!,
-    if (crcLongestDurationLabel != null)
-      'crcLongestDurationLabel': crcLongestDurationLabel!,
-    if (dropdownCopyJSON != null) 'dropdownCopyJSON': dropdownCopyJSON!,
-    if (dropdownDarkTheme != null) 'dropdownDarkTheme': dropdownDarkTheme!,
-    if (dropdownPrintExpanded != null)
-      'dropdownPrintExpanded': dropdownPrintExpanded!,
-    if (dropdownPrintSummary != null)
-      'dropdownPrintSummary': dropdownPrintSummary!,
-    if (dropdownSaveGist != null) 'dropdownSaveGist': dropdownSaveGist!,
-    if (dropdownSaveHTML != null) 'dropdownSaveHTML': dropdownSaveHTML!,
-    if (dropdownSaveJSON != null) 'dropdownSaveJSON': dropdownSaveJSON!,
-    if (dropdownViewer != null) 'dropdownViewer': dropdownViewer!,
-    if (errorLabel != null) 'errorLabel': errorLabel!,
-    if (errorMissingAuditInfo != null)
-      'errorMissingAuditInfo': errorMissingAuditInfo!,
-    if (footerIssue != null) 'footerIssue': footerIssue!,
-    if (labDataTitle != null) 'labDataTitle': labDataTitle!,
-    if (lsPerformanceCategoryDescription != null)
-      'lsPerformanceCategoryDescription': lsPerformanceCategoryDescription!,
-    if (manualAuditsGroupTitle != null)
-      'manualAuditsGroupTitle': manualAuditsGroupTitle!,
-    if (notApplicableAuditsGroupTitle != null)
-      'notApplicableAuditsGroupTitle': notApplicableAuditsGroupTitle!,
-    if (opportunityResourceColumnLabel != null)
-      'opportunityResourceColumnLabel': opportunityResourceColumnLabel!,
-    if (opportunitySavingsColumnLabel != null)
-      'opportunitySavingsColumnLabel': opportunitySavingsColumnLabel!,
-    if (passedAuditsGroupTitle != null)
-      'passedAuditsGroupTitle': passedAuditsGroupTitle!,
-    if (runtimeDesktopEmulation != null)
-      'runtimeDesktopEmulation': runtimeDesktopEmulation!,
-    if (runtimeMobileEmulation != null)
-      'runtimeMobileEmulation': runtimeMobileEmulation!,
-    if (runtimeNoEmulation != null) 'runtimeNoEmulation': runtimeNoEmulation!,
-    if (runtimeSettingsAxeVersion != null)
-      'runtimeSettingsAxeVersion': runtimeSettingsAxeVersion!,
-    if (runtimeSettingsBenchmark != null)
-      'runtimeSettingsBenchmark': runtimeSettingsBenchmark!,
-    if (runtimeSettingsCPUThrottling != null)
-      'runtimeSettingsCPUThrottling': runtimeSettingsCPUThrottling!,
-    if (runtimeSettingsChannel != null)
-      'runtimeSettingsChannel': runtimeSettingsChannel!,
-    if (runtimeSettingsDevice != null)
-      'runtimeSettingsDevice': runtimeSettingsDevice!,
-    if (runtimeSettingsFetchTime != null)
-      'runtimeSettingsFetchTime': runtimeSettingsFetchTime!,
-    if (runtimeSettingsNetworkThrottling != null)
-      'runtimeSettingsNetworkThrottling': runtimeSettingsNetworkThrottling!,
-    if (runtimeSettingsTitle != null)
-      'runtimeSettingsTitle': runtimeSettingsTitle!,
-    if (runtimeSettingsUA != null) 'runtimeSettingsUA': runtimeSettingsUA!,
-    if (runtimeSettingsUANetwork != null)
-      'runtimeSettingsUANetwork': runtimeSettingsUANetwork!,
-    if (runtimeSettingsUrl != null) 'runtimeSettingsUrl': runtimeSettingsUrl!,
-    if (runtimeUnknown != null) 'runtimeUnknown': runtimeUnknown!,
-    if (scorescaleLabel != null) 'scorescaleLabel': scorescaleLabel!,
-    if (showRelevantAudits != null) 'showRelevantAudits': showRelevantAudits!,
-    if (snippetCollapseButtonLabel != null)
-      'snippetCollapseButtonLabel': snippetCollapseButtonLabel!,
-    if (snippetExpandButtonLabel != null)
-      'snippetExpandButtonLabel': snippetExpandButtonLabel!,
-    if (thirdPartyResourcesLabel != null)
-      'thirdPartyResourcesLabel': thirdPartyResourcesLabel!,
-    if (throttlingProvided != null) 'throttlingProvided': throttlingProvided!,
-    if (toplevelWarningsMessage != null)
-      'toplevelWarningsMessage': toplevelWarningsMessage!,
-    if (varianceDisclaimer != null) 'varianceDisclaimer': varianceDisclaimer!,
-    if (viewTreemapLabel != null) 'viewTreemapLabel': viewTreemapLabel!,
-    if (warningAuditsGroupTitle != null)
-      'warningAuditsGroupTitle': warningAuditsGroupTitle!,
-    if (warningHeader != null) 'warningHeader': warningHeader!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditGroupExpandTooltip = this.auditGroupExpandTooltip;
+    final calculatorLink = this.calculatorLink;
+    final crcInitialNavigation = this.crcInitialNavigation;
+    final crcLongestDurationLabel = this.crcLongestDurationLabel;
+    final dropdownCopyJSON = this.dropdownCopyJSON;
+    final dropdownDarkTheme = this.dropdownDarkTheme;
+    final dropdownPrintExpanded = this.dropdownPrintExpanded;
+    final dropdownPrintSummary = this.dropdownPrintSummary;
+    final dropdownSaveGist = this.dropdownSaveGist;
+    final dropdownSaveHTML = this.dropdownSaveHTML;
+    final dropdownSaveJSON = this.dropdownSaveJSON;
+    final dropdownViewer = this.dropdownViewer;
+    final errorLabel = this.errorLabel;
+    final errorMissingAuditInfo = this.errorMissingAuditInfo;
+    final footerIssue = this.footerIssue;
+    final labDataTitle = this.labDataTitle;
+    final lsPerformanceCategoryDescription =
+        this.lsPerformanceCategoryDescription;
+    final manualAuditsGroupTitle = this.manualAuditsGroupTitle;
+    final notApplicableAuditsGroupTitle = this.notApplicableAuditsGroupTitle;
+    final opportunityResourceColumnLabel = this.opportunityResourceColumnLabel;
+    final opportunitySavingsColumnLabel = this.opportunitySavingsColumnLabel;
+    final passedAuditsGroupTitle = this.passedAuditsGroupTitle;
+    final runtimeDesktopEmulation = this.runtimeDesktopEmulation;
+    final runtimeMobileEmulation = this.runtimeMobileEmulation;
+    final runtimeNoEmulation = this.runtimeNoEmulation;
+    final runtimeSettingsAxeVersion = this.runtimeSettingsAxeVersion;
+    final runtimeSettingsBenchmark = this.runtimeSettingsBenchmark;
+    final runtimeSettingsCPUThrottling = this.runtimeSettingsCPUThrottling;
+    final runtimeSettingsChannel = this.runtimeSettingsChannel;
+    final runtimeSettingsDevice = this.runtimeSettingsDevice;
+    final runtimeSettingsFetchTime = this.runtimeSettingsFetchTime;
+    final runtimeSettingsNetworkThrottling =
+        this.runtimeSettingsNetworkThrottling;
+    final runtimeSettingsTitle = this.runtimeSettingsTitle;
+    final runtimeSettingsUA = this.runtimeSettingsUA;
+    final runtimeSettingsUANetwork = this.runtimeSettingsUANetwork;
+    final runtimeSettingsUrl = this.runtimeSettingsUrl;
+    final runtimeUnknown = this.runtimeUnknown;
+    final scorescaleLabel = this.scorescaleLabel;
+    final showRelevantAudits = this.showRelevantAudits;
+    final snippetCollapseButtonLabel = this.snippetCollapseButtonLabel;
+    final snippetExpandButtonLabel = this.snippetExpandButtonLabel;
+    final thirdPartyResourcesLabel = this.thirdPartyResourcesLabel;
+    final throttlingProvided = this.throttlingProvided;
+    final toplevelWarningsMessage = this.toplevelWarningsMessage;
+    final varianceDisclaimer = this.varianceDisclaimer;
+    final viewTreemapLabel = this.viewTreemapLabel;
+    final warningAuditsGroupTitle = this.warningAuditsGroupTitle;
+    final warningHeader = this.warningHeader;
+    return {
+      'auditGroupExpandTooltip': ?auditGroupExpandTooltip,
+      'calculatorLink': ?calculatorLink,
+      'crcInitialNavigation': ?crcInitialNavigation,
+      'crcLongestDurationLabel': ?crcLongestDurationLabel,
+      'dropdownCopyJSON': ?dropdownCopyJSON,
+      'dropdownDarkTheme': ?dropdownDarkTheme,
+      'dropdownPrintExpanded': ?dropdownPrintExpanded,
+      'dropdownPrintSummary': ?dropdownPrintSummary,
+      'dropdownSaveGist': ?dropdownSaveGist,
+      'dropdownSaveHTML': ?dropdownSaveHTML,
+      'dropdownSaveJSON': ?dropdownSaveJSON,
+      'dropdownViewer': ?dropdownViewer,
+      'errorLabel': ?errorLabel,
+      'errorMissingAuditInfo': ?errorMissingAuditInfo,
+      'footerIssue': ?footerIssue,
+      'labDataTitle': ?labDataTitle,
+      'lsPerformanceCategoryDescription': ?lsPerformanceCategoryDescription,
+      'manualAuditsGroupTitle': ?manualAuditsGroupTitle,
+      'notApplicableAuditsGroupTitle': ?notApplicableAuditsGroupTitle,
+      'opportunityResourceColumnLabel': ?opportunityResourceColumnLabel,
+      'opportunitySavingsColumnLabel': ?opportunitySavingsColumnLabel,
+      'passedAuditsGroupTitle': ?passedAuditsGroupTitle,
+      'runtimeDesktopEmulation': ?runtimeDesktopEmulation,
+      'runtimeMobileEmulation': ?runtimeMobileEmulation,
+      'runtimeNoEmulation': ?runtimeNoEmulation,
+      'runtimeSettingsAxeVersion': ?runtimeSettingsAxeVersion,
+      'runtimeSettingsBenchmark': ?runtimeSettingsBenchmark,
+      'runtimeSettingsCPUThrottling': ?runtimeSettingsCPUThrottling,
+      'runtimeSettingsChannel': ?runtimeSettingsChannel,
+      'runtimeSettingsDevice': ?runtimeSettingsDevice,
+      'runtimeSettingsFetchTime': ?runtimeSettingsFetchTime,
+      'runtimeSettingsNetworkThrottling': ?runtimeSettingsNetworkThrottling,
+      'runtimeSettingsTitle': ?runtimeSettingsTitle,
+      'runtimeSettingsUA': ?runtimeSettingsUA,
+      'runtimeSettingsUANetwork': ?runtimeSettingsUANetwork,
+      'runtimeSettingsUrl': ?runtimeSettingsUrl,
+      'runtimeUnknown': ?runtimeUnknown,
+      'scorescaleLabel': ?scorescaleLabel,
+      'showRelevantAudits': ?showRelevantAudits,
+      'snippetCollapseButtonLabel': ?snippetCollapseButtonLabel,
+      'snippetExpandButtonLabel': ?snippetExpandButtonLabel,
+      'thirdPartyResourcesLabel': ?thirdPartyResourcesLabel,
+      'throttlingProvided': ?throttlingProvided,
+      'toplevelWarningsMessage': ?toplevelWarningsMessage,
+      'varianceDisclaimer': ?varianceDisclaimer,
+      'viewTreemapLabel': ?viewTreemapLabel,
+      'warningAuditsGroupTitle': ?warningAuditsGroupTitle,
+      'warningHeader': ?warningHeader,
+    };
+  }
 }
 
 /// Message containing a runtime error config.
@@ -1486,10 +1582,11 @@ class RuntimeError {
         message: json_['message'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (message != null) 'message': message!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final message = this.message;
+    return {'code': ?code, 'message': ?message};
+  }
 }
 
 /// Message containing Stack Pack information.
@@ -1510,20 +1607,26 @@ class StackPack {
 
   StackPack.fromJson(core.Map json_)
     : this(
-        descriptions: (json_['descriptions']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        descriptions:
+            (json_['descriptions'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         iconDataURL: json_['iconDataURL'] as core.String?,
         id: json_['id'] as core.String?,
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (descriptions != null) 'descriptions': descriptions!,
-    if (iconDataURL != null) 'iconDataURL': iconDataURL!,
-    if (id != null) 'id': id!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final descriptions = this.descriptions;
+    final iconDataURL = this.iconDataURL;
+    final id = this.id;
+    final title = this.title;
+    return {
+      'descriptions': ?descriptions,
+      'iconDataURL': ?iconDataURL,
+      'id': ?id,
+      'title': ?title,
+    };
+  }
 }
 
 /// Message containing the performance timing data for the Lighthouse run.
@@ -1536,9 +1639,10 @@ class Timing {
   Timing.fromJson(core.Map json_)
     : this(total: (json_['total'] as core.num?)?.toDouble());
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (total != null) 'total': total!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final total = this.total;
+    return {'total': ?total};
+  }
 }
 
 /// A CrUX metric object for a single metric and form factor.
@@ -1577,26 +1681,32 @@ class UserPageLoadMetricV5 {
   UserPageLoadMetricV5.fromJson(core.Map json_)
     : this(
         category: json_['category'] as core.String?,
-        distributions:
-            (json_['distributions'] as core.List?)
-                ?.map(
-                  (value) => Bucket.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        distributions: (json_['distributions'] as core.List?)
+            ?.map(
+              (value) =>
+                  Bucket.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         formFactor: json_['formFactor'] as core.String?,
         median: json_['median'] as core.int?,
         metricId: json_['metricId'] as core.String?,
         percentile: json_['percentile'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (distributions != null) 'distributions': distributions!,
-    if (formFactor != null) 'formFactor': formFactor!,
-    if (median != null) 'median': median!,
-    if (metricId != null) 'metricId': metricId!,
-    if (percentile != null) 'percentile': percentile!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final distributions = this.distributions;
+    final formFactor = this.formFactor;
+    final median = this.median;
+    final metricId = this.metricId;
+    final percentile = this.percentile;
+    return {
+      'category': ?category,
+      'distributions': ?distributions,
+      'formFactor': ?formFactor,
+      'median': ?median,
+      'metricId': ?metricId,
+      'percentile': ?percentile,
+    };
+  }
 }

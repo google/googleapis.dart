@@ -31,7 +31,8 @@ class $Response {
   $Response.fromJson(core.Map json_)
     : this(result: json_['result'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (result != null) 'result': result!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final result = this.result;
+    return {'result': ?result};
+  }
 }

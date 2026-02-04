@@ -3510,8 +3510,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsClustersConsumerGroupsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.clusters.consumerGroups;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.clusters.consumerGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3564,8 +3565,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.clusters.consumerGroups;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.clusters.consumerGroups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3618,8 +3620,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.clusters.consumerGroups;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.clusters.consumerGroups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3698,8 +3701,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.clusters.consumerGroups;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.clusters.consumerGroups;
       final arg_request = buildConsumerGroup();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4433,10 +4437,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectClustersConnectorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.connectClusters.connectors;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.connectClusters.connectors;
       final arg_request = buildConnector();
       final arg_parent = 'foo';
       final arg_connectorId = 'foo';
@@ -4505,10 +4508,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.connectClusters.connectors;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.connectClusters.connectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4561,10 +4563,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.connectClusters.connectors;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.connectClusters.connectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4617,10 +4618,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.connectClusters.connectors;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.connectClusters.connectors;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4688,10 +4688,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.connectClusters.connectors;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.connectClusters.connectors;
       final arg_request = buildConnector();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4760,10 +4759,9 @@ void main() {
 
     unittest.test('method--pause', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.connectClusters.connectors;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.connectClusters.connectors;
       final arg_request = buildPauseConnectorRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4826,10 +4824,9 @@ void main() {
 
     unittest.test('method--restart', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.connectClusters.connectors;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.connectClusters.connectors;
       final arg_request = buildRestartConnectorRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4892,10 +4889,9 @@ void main() {
 
     unittest.test('method--resume', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.connectClusters.connectors;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.connectClusters.connectors;
       final arg_request = buildResumeConnectorRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4958,10 +4954,9 @@ void main() {
 
     unittest.test('method--stop', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.connectClusters.connectors;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.connectClusters.connectors;
       final arg_request = buildStopConnectorRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5511,10 +5506,9 @@ void main() {
     () {
       unittest.test('method--checkCompatibility', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.compatibility;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.compatibility;
         final arg_request = buildCheckCompatibilityRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -5582,8 +5576,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSchemaRegistriesConfigResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.schemaRegistries.config;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.config;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5636,8 +5631,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.schemaRegistries.config;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.config;
       final arg_name = 'foo';
       final arg_defaultToGlobal = true;
       final arg_$fields = 'foo';
@@ -5699,8 +5695,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.schemaRegistries.config;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.config;
       final arg_request = buildUpdateSchemaConfigRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5765,10 +5762,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSchemaRegistriesContextsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.schemaRegistries.contexts;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.contexts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5821,10 +5817,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.schemaRegistries.contexts;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.contexts;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5881,10 +5876,9 @@ void main() {
     () {
       unittest.test('method--checkCompatibility', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.compatibility;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.compatibility;
         final arg_request = buildCheckCompatibilityRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -5954,10 +5948,9 @@ void main() {
     () {
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.config;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.config;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6010,10 +6003,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.config;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.config;
         final arg_name = 'foo';
         final arg_defaultToGlobal = true;
         final arg_$fields = 'foo';
@@ -6075,10 +6067,9 @@ void main() {
 
       unittest.test('method--update', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.config;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.config;
         final arg_request = buildUpdateSchemaConfigRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -6146,10 +6137,9 @@ void main() {
     () {
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.mode;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.mode;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6202,10 +6192,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.mode;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.mode;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6258,10 +6247,9 @@ void main() {
 
       unittest.test('method--update', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.mode;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.mode;
         final arg_request = buildUpdateSchemaModeRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -6329,10 +6317,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.schemas;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.schemas;
         final arg_name = 'foo';
         final arg_subject = 'foo';
         final arg_$fields = 'foo';
@@ -6394,10 +6381,9 @@ void main() {
 
       unittest.test('method--getSchema', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.schemas;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.schemas;
         final arg_name = 'foo';
         final arg_subject = 'foo';
         final arg_$fields = 'foo';
@@ -6464,10 +6450,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.schemas.subjects;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.schemas.subjects;
         final arg_parent = 'foo';
         final arg_deleted = true;
         final arg_subject = 'foo';
@@ -6540,10 +6525,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.schemas.types;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.schemas.types;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6601,10 +6585,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.schemas.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.schemas.versions;
         final arg_parent = 'foo';
         final arg_deleted = true;
         final arg_subject = 'foo';
@@ -6677,10 +6660,9 @@ void main() {
     () {
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.subjects;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.subjects;
         final arg_name = 'foo';
         final arg_permanent = true;
         final arg_$fields = 'foo';
@@ -6742,10 +6724,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.subjects;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.subjects;
         final arg_parent = 'foo';
         final arg_deleted = true;
         final arg_subjectPrefix = 'foo';
@@ -6813,10 +6794,9 @@ void main() {
 
       unittest.test('method--lookupVersion', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.subjects;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.subjects;
         final arg_request = buildLookupVersionRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -6884,10 +6864,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.subjects.versions;
         final arg_request = buildCreateVersionRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -6950,10 +6929,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.subjects.versions;
         final arg_name = 'foo';
         final arg_permanent = true;
         final arg_$fields = 'foo';
@@ -7015,10 +6993,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.subjects.versions;
         final arg_name = 'foo';
         final arg_deleted = true;
         final arg_$fields = 'foo';
@@ -7080,10 +7057,9 @@ void main() {
 
       unittest.test('method--getSchema', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.subjects.versions;
         final arg_name = 'foo';
         final arg_deleted = true;
         final arg_$fields = 'foo';
@@ -7145,10 +7121,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.contexts.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.contexts.subjects.versions;
         final arg_parent = 'foo';
         final arg_deleted = true;
         final arg_$fields = 'foo';
@@ -7215,15 +7190,14 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(mock)
-                .projects
-                .locations
-                .schemaRegistries
-                .contexts
-                .subjects
-                .versions
-                .referencedby;
+        final res = api.ManagedKafkaApi(mock)
+            .projects
+            .locations
+            .schemaRegistries
+            .contexts
+            .subjects
+            .versions
+            .referencedby;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -7279,8 +7253,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSchemaRegistriesModeResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.schemaRegistries.mode;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.mode;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7333,8 +7308,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.schemaRegistries.mode;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.mode;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7387,8 +7363,9 @@ void main() {
 
     unittest.test('method--update', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.schemaRegistries.mode;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.mode;
       final arg_request = buildUpdateSchemaModeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7453,8 +7430,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSchemaRegistriesSchemasResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.schemaRegistries.schemas;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.schemas;
       final arg_name = 'foo';
       final arg_subject = 'foo';
       final arg_$fields = 'foo';
@@ -7516,8 +7494,9 @@ void main() {
 
     unittest.test('method--getSchema', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(mock).projects.locations.schemaRegistries.schemas;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.schemas;
       final arg_name = 'foo';
       final arg_subject = 'foo';
       final arg_$fields = 'foo';
@@ -7583,10 +7562,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.schemas.subjects;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.schemas.subjects;
         final arg_parent = 'foo';
         final arg_deleted = true;
         final arg_subject = 'foo';
@@ -7659,10 +7637,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.schemas.types;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.schemas.types;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -7720,10 +7697,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.schemas.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.schemas.versions;
         final arg_parent = 'foo';
         final arg_deleted = true;
         final arg_subject = 'foo';
@@ -7794,10 +7770,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSchemaRegistriesSubjectsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.schemaRegistries.subjects;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.subjects;
       final arg_name = 'foo';
       final arg_permanent = true;
       final arg_$fields = 'foo';
@@ -7859,10 +7834,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.schemaRegistries.subjects;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.subjects;
       final arg_parent = 'foo';
       final arg_deleted = true;
       final arg_subjectPrefix = 'foo';
@@ -7930,10 +7904,9 @@ void main() {
 
     unittest.test('method--lookupVersion', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ManagedKafkaApi(
-            mock,
-          ).projects.locations.schemaRegistries.subjects;
+      final res = api.ManagedKafkaApi(
+        mock,
+      ).projects.locations.schemaRegistries.subjects;
       final arg_request = buildLookupVersionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -8000,10 +7973,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.subjects.versions;
         final arg_request = buildCreateVersionRequest();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -8066,10 +8038,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.subjects.versions;
         final arg_name = 'foo';
         final arg_permanent = true;
         final arg_$fields = 'foo';
@@ -8131,10 +8102,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.subjects.versions;
         final arg_name = 'foo';
         final arg_deleted = true;
         final arg_$fields = 'foo';
@@ -8196,10 +8166,9 @@ void main() {
 
       unittest.test('method--getSchema', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.subjects.versions;
         final arg_name = 'foo';
         final arg_deleted = true;
         final arg_$fields = 'foo';
@@ -8261,10 +8230,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(
-              mock,
-            ).projects.locations.schemaRegistries.subjects.versions;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.subjects.versions;
         final arg_parent = 'foo';
         final arg_deleted = true;
         final arg_$fields = 'foo';
@@ -8331,14 +8299,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ManagedKafkaApi(mock)
-                .projects
-                .locations
-                .schemaRegistries
-                .subjects
-                .versions
-                .referencedby;
+        final res = api.ManagedKafkaApi(
+          mock,
+        ).projects.locations.schemaRegistries.subjects.versions.referencedby;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(

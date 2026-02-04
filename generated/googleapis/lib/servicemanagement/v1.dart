@@ -108,7 +108,7 @@ class OperationsResource {
   /// call, this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -173,13 +173,14 @@ class OperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (name != null) 'name': [name],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'name': ?name == null ? null : [name],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/operations';
@@ -233,7 +234,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/services';
@@ -275,7 +276,7 @@ class ServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/services/' + commons.escapeVariable('$serviceName');
@@ -319,7 +320,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/services:generateConfigReport';
@@ -360,7 +361,7 @@ class ServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/services/' + commons.escapeVariable('$serviceName');
@@ -413,9 +414,9 @@ class ServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (configId != null) 'configId': [configId],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'configId': ?configId == null ? null : [configId],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -461,7 +462,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -513,11 +514,13 @@ class ServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (consumerId != null) 'consumerId': [consumerId],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (producerProjectId != null) 'producerProjectId': [producerProjectId],
-      if ($fields != null) 'fields': [$fields],
+      'consumerId': ?consumerId == null ? null : [consumerId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'producerProjectId': ?producerProjectId == null
+          ? null
+          : [producerProjectId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/services';
@@ -564,7 +567,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -612,7 +615,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -656,7 +659,7 @@ class ServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -708,7 +711,7 @@ class ServicesConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -761,8 +764,8 @@ class ServicesConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -810,9 +813,9 @@ class ServicesConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -864,7 +867,7 @@ class ServicesConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -919,7 +922,7 @@ class ServicesConsumersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -965,7 +968,7 @@ class ServicesConsumersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1013,7 +1016,7 @@ class ServicesConsumersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1072,7 +1075,7 @@ class ServicesRolloutsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1113,7 +1116,7 @@ class ServicesRolloutsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1167,10 +1170,10 @@ class ServicesRolloutsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1199,9 +1202,10 @@ class Advice {
   Advice.fromJson(core.Map json_)
     : this(description: json_['description'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    return {'description': ?description};
+  }
 }
 
 /// Api is a light-weight descriptor for an API Interface.
@@ -1279,51 +1283,54 @@ class Api {
   Api.fromJson(core.Map json_)
     : this(
         edition: json_['edition'] as core.String?,
-        methods:
-            (json_['methods'] as core.List?)
-                ?.map(
-                  (value) => Method.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        mixins:
-            (json_['mixins'] as core.List?)
-                ?.map(
-                  (value) => Mixin.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        methods: (json_['methods'] as core.List?)
+            ?.map(
+              (value) =>
+                  Method.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        mixins: (json_['mixins'] as core.List?)
+            ?.map(
+              (value) =>
+                  Mixin.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        options:
-            (json_['options'] as core.List?)
-                ?.map(
-                  (value) => Option.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        sourceContext:
-            json_.containsKey('sourceContext')
-                ? SourceContext.fromJson(
-                  json_['sourceContext'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        options: (json_['options'] as core.List?)
+            ?.map(
+              (value) =>
+                  Option.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        sourceContext: json_.containsKey('sourceContext')
+            ? SourceContext.fromJson(
+                json_['sourceContext'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         syntax: json_['syntax'] as core.String?,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (edition != null) 'edition': edition!,
-    if (methods != null) 'methods': methods!,
-    if (mixins != null) 'mixins': mixins!,
-    if (name != null) 'name': name!,
-    if (options != null) 'options': options!,
-    if (sourceContext != null) 'sourceContext': sourceContext!,
-    if (syntax != null) 'syntax': syntax!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final edition = this.edition;
+    final methods = this.methods;
+    final mixins = this.mixins;
+    final name = this.name;
+    final options = this.options;
+    final sourceContext = this.sourceContext;
+    final syntax = this.syntax;
+    final version = this.version;
+    return {
+      'edition': ?edition,
+      'methods': ?methods,
+      'mixins': ?mixins,
+      'name': ?name,
+      'options': ?options,
+      'sourceContext': ?sourceContext,
+      'syntax': ?syntax,
+      'version': ?version,
+    };
+  }
 }
 
 /// Aspect represents Generic aspect.
@@ -1348,16 +1355,16 @@ class Aspect {
   Aspect.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
-        spec:
-            json_.containsKey('spec')
-                ? json_['spec'] as core.Map<core.String, core.dynamic>
-                : null,
+        spec: json_.containsKey('spec')
+            ? json_['spec'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (spec != null) 'spec': spec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final spec = this.spec;
+    return {'kind': ?kind, 'spec': ?spec};
+  }
 }
 
 /// Specifies the audit configuration for a service.
@@ -1391,21 +1398,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1495,24 +1502,31 @@ class AuthProvider {
         id: json_['id'] as core.String?,
         issuer: json_['issuer'] as core.String?,
         jwksUri: json_['jwksUri'] as core.String?,
-        jwtLocations:
-            (json_['jwtLocations'] as core.List?)
-                ?.map(
-                  (value) => JwtLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        jwtLocations: (json_['jwtLocations'] as core.List?)
+            ?.map(
+              (value) => JwtLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audiences != null) 'audiences': audiences!,
-    if (authorizationUrl != null) 'authorizationUrl': authorizationUrl!,
-    if (id != null) 'id': id!,
-    if (issuer != null) 'issuer': issuer!,
-    if (jwksUri != null) 'jwksUri': jwksUri!,
-    if (jwtLocations != null) 'jwtLocations': jwtLocations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audiences = this.audiences;
+    final authorizationUrl = this.authorizationUrl;
+    final id = this.id;
+    final issuer = this.issuer;
+    final jwksUri = this.jwksUri;
+    final jwtLocations = this.jwtLocations;
+    return {
+      'audiences': ?audiences,
+      'authorizationUrl': ?authorizationUrl,
+      'id': ?id,
+      'issuer': ?issuer,
+      'jwksUri': ?jwksUri,
+      'jwtLocations': ?jwtLocations,
+    };
+  }
 }
 
 /// User-defined authentication requirements, including support for \[JSON Web
@@ -1541,28 +1555,27 @@ class Authentication {
 
   Authentication.fromJson(core.Map json_)
     : this(
-        providers:
-            (json_['providers'] as core.List?)
-                ?.map(
-                  (value) => AuthProvider.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => AuthenticationRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        providers: (json_['providers'] as core.List?)
+            ?.map(
+              (value) => AuthProvider.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => AuthenticationRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (providers != null) 'providers': providers!,
-    if (rules != null) 'rules': rules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final providers = this.providers;
+    final rules = this.rules;
+    return {'providers': ?providers, 'rules': ?rules};
+  }
 }
 
 /// Authentication rules for the service.
@@ -1599,30 +1612,33 @@ class AuthenticationRule {
   AuthenticationRule.fromJson(core.Map json_)
     : this(
         allowWithoutCredential: json_['allowWithoutCredential'] as core.bool?,
-        oauth:
-            json_.containsKey('oauth')
-                ? OAuthRequirements.fromJson(
-                  json_['oauth'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        requirements:
-            (json_['requirements'] as core.List?)
-                ?.map(
-                  (value) => AuthRequirement.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        oauth: json_.containsKey('oauth')
+            ? OAuthRequirements.fromJson(
+                json_['oauth'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        requirements: (json_['requirements'] as core.List?)
+            ?.map(
+              (value) => AuthRequirement.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         selector: json_['selector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowWithoutCredential != null)
-      'allowWithoutCredential': allowWithoutCredential!,
-    if (oauth != null) 'oauth': oauth!,
-    if (requirements != null) 'requirements': requirements!,
-    if (selector != null) 'selector': selector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowWithoutCredential = this.allowWithoutCredential;
+    final oauth = this.oauth;
+    final requirements = this.requirements;
+    final selector = this.selector;
+    return {
+      'allowWithoutCredential': ?allowWithoutCredential,
+      'oauth': ?oauth,
+      'requirements': ?requirements,
+      'selector': ?selector,
+    };
+  }
 }
 
 /// `Backend` defines the backend configuration for a service.
@@ -1636,19 +1652,19 @@ class Backend {
 
   Backend.fromJson(core.Map json_)
     : this(
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => BackendRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => BackendRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rules != null) 'rules': rules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rules = this.rules;
+    return {'rules': ?rules};
+  }
 }
 
 /// A backend rule provides configuration for an individual API element.
@@ -1772,38 +1788,50 @@ class BackendRule {
         jwtAudience: json_['jwtAudience'] as core.String?,
         loadBalancingPolicy: json_['loadBalancingPolicy'] as core.String?,
         minDeadline: (json_['minDeadline'] as core.num?)?.toDouble(),
-        operationDeadline:
-            (json_['operationDeadline'] as core.num?)?.toDouble(),
-        overridesByRequestProtocol: (json_['overridesByRequestProtocol']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                BackendRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        operationDeadline: (json_['operationDeadline'] as core.num?)
+            ?.toDouble(),
+        overridesByRequestProtocol:
+            (json_['overridesByRequestProtocol']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    BackendRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
         pathTranslation: json_['pathTranslation'] as core.String?,
         protocol: json_['protocol'] as core.String?,
         selector: json_['selector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (deadline != null) 'deadline': deadline!,
-    if (disableAuth != null) 'disableAuth': disableAuth!,
-    if (jwtAudience != null) 'jwtAudience': jwtAudience!,
-    if (loadBalancingPolicy != null)
-      'loadBalancingPolicy': loadBalancingPolicy!,
-    if (minDeadline != null) 'minDeadline': minDeadline!,
-    if (operationDeadline != null) 'operationDeadline': operationDeadline!,
-    if (overridesByRequestProtocol != null)
-      'overridesByRequestProtocol': overridesByRequestProtocol!,
-    if (pathTranslation != null) 'pathTranslation': pathTranslation!,
-    if (protocol != null) 'protocol': protocol!,
-    if (selector != null) 'selector': selector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final deadline = this.deadline;
+    final disableAuth = this.disableAuth;
+    final jwtAudience = this.jwtAudience;
+    final loadBalancingPolicy = this.loadBalancingPolicy;
+    final minDeadline = this.minDeadline;
+    final operationDeadline = this.operationDeadline;
+    final overridesByRequestProtocol = this.overridesByRequestProtocol;
+    final pathTranslation = this.pathTranslation;
+    final protocol = this.protocol;
+    final selector = this.selector;
+    return {
+      'address': ?address,
+      'deadline': ?deadline,
+      'disableAuth': ?disableAuth,
+      'jwtAudience': ?jwtAudience,
+      'loadBalancingPolicy': ?loadBalancingPolicy,
+      'minDeadline': ?minDeadline,
+      'operationDeadline': ?operationDeadline,
+      'overridesByRequestProtocol': ?overridesByRequestProtocol,
+      'pathTranslation': ?pathTranslation,
+      'protocol': ?protocol,
+      'selector': ?selector,
+    };
+  }
 }
 
 /// `BatchingConfigProto` defines the batching configuration for an API method.
@@ -1818,25 +1846,23 @@ class BatchingConfigProto {
 
   BatchingConfigProto.fromJson(core.Map json_)
     : this(
-        batchDescriptor:
-            json_.containsKey('batchDescriptor')
-                ? BatchingDescriptorProto.fromJson(
-                  json_['batchDescriptor']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        thresholds:
-            json_.containsKey('thresholds')
-                ? BatchingSettingsProto.fromJson(
-                  json_['thresholds'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        batchDescriptor: json_.containsKey('batchDescriptor')
+            ? BatchingDescriptorProto.fromJson(
+                json_['batchDescriptor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        thresholds: json_.containsKey('thresholds')
+            ? BatchingSettingsProto.fromJson(
+                json_['thresholds'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (batchDescriptor != null) 'batchDescriptor': batchDescriptor!,
-    if (thresholds != null) 'thresholds': thresholds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final batchDescriptor = this.batchDescriptor;
+    final thresholds = this.thresholds;
+    return {'batchDescriptor': ?batchDescriptor, 'thresholds': ?thresholds};
+  }
 }
 
 /// `BatchingDescriptorProto` specifies the fields of the request message to be
@@ -1870,19 +1896,22 @@ class BatchingDescriptorProto {
   BatchingDescriptorProto.fromJson(core.Map json_)
     : this(
         batchedField: json_['batchedField'] as core.String?,
-        discriminatorFields:
-            (json_['discriminatorFields'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        discriminatorFields: (json_['discriminatorFields'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         subresponseField: json_['subresponseField'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (batchedField != null) 'batchedField': batchedField!,
-    if (discriminatorFields != null)
-      'discriminatorFields': discriminatorFields!,
-    if (subresponseField != null) 'subresponseField': subresponseField!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final batchedField = this.batchedField;
+    final discriminatorFields = this.discriminatorFields;
+    final subresponseField = this.subresponseField;
+    return {
+      'batchedField': ?batchedField,
+      'discriminatorFields': ?discriminatorFields,
+      'subresponseField': ?subresponseField,
+    };
+  }
 }
 
 /// `BatchingSettingsProto` specifies a set of batching thresholds, each of
@@ -1950,21 +1979,27 @@ class BatchingSettingsProto {
         requestByteThreshold: json_['requestByteThreshold'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (delayThreshold != null) 'delayThreshold': delayThreshold!,
-    if (elementCountLimit != null) 'elementCountLimit': elementCountLimit!,
-    if (elementCountThreshold != null)
-      'elementCountThreshold': elementCountThreshold!,
-    if (flowControlByteLimit != null)
-      'flowControlByteLimit': flowControlByteLimit!,
-    if (flowControlElementLimit != null)
-      'flowControlElementLimit': flowControlElementLimit!,
-    if (flowControlLimitExceededBehavior != null)
-      'flowControlLimitExceededBehavior': flowControlLimitExceededBehavior!,
-    if (requestByteLimit != null) 'requestByteLimit': requestByteLimit!,
-    if (requestByteThreshold != null)
-      'requestByteThreshold': requestByteThreshold!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final delayThreshold = this.delayThreshold;
+    final elementCountLimit = this.elementCountLimit;
+    final elementCountThreshold = this.elementCountThreshold;
+    final flowControlByteLimit = this.flowControlByteLimit;
+    final flowControlElementLimit = this.flowControlElementLimit;
+    final flowControlLimitExceededBehavior =
+        this.flowControlLimitExceededBehavior;
+    final requestByteLimit = this.requestByteLimit;
+    final requestByteThreshold = this.requestByteThreshold;
+    return {
+      'delayThreshold': ?delayThreshold,
+      'elementCountLimit': ?elementCountLimit,
+      'elementCountThreshold': ?elementCountThreshold,
+      'flowControlByteLimit': ?flowControlByteLimit,
+      'flowControlElementLimit': ?flowControlElementLimit,
+      'flowControlLimitExceededBehavior': ?flowControlLimitExceededBehavior,
+      'requestByteLimit': ?requestByteLimit,
+      'requestByteThreshold': ?requestByteThreshold,
+    };
+  }
 }
 
 /// Billing related configuration of the service.
@@ -1996,20 +2031,19 @@ class Billing {
 
   Billing.fromJson(core.Map json_)
     : this(
-        consumerDestinations:
-            (json_['consumerDestinations'] as core.List?)
-                ?.map(
-                  (value) => BillingDestination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        consumerDestinations: (json_['consumerDestinations'] as core.List?)
+            ?.map(
+              (value) => BillingDestination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerDestinations != null)
-      'consumerDestinations': consumerDestinations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerDestinations = this.consumerDestinations;
+    return {'consumerDestinations': ?consumerDestinations};
+  }
 }
 
 /// Configuration of a specific billing destination (Currently only support bill
@@ -2029,17 +2063,17 @@ class BillingDestination {
 
   BillingDestination.fromJson(core.Map json_)
     : this(
-        metrics:
-            (json_['metrics'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        metrics: (json_['metrics'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         monitoredResource: json_['monitoredResource'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metrics != null) 'metrics': metrics!,
-    if (monitoredResource != null) 'monitoredResource': monitoredResource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metrics = this.metrics;
+    final monitoredResource = this.monitoredResource;
+    return {'metrics': ?metrics, 'monitoredResource': ?monitoredResource};
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -2126,24 +2160,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Change report associated with a particular service configuration.
@@ -2163,19 +2196,19 @@ class ChangeReport {
 
   ChangeReport.fromJson(core.Map json_)
     : this(
-        configChanges:
-            (json_['configChanges'] as core.List?)
-                ?.map(
-                  (value) => ConfigChange.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        configChanges: (json_['configChanges'] as core.List?)
+            ?.map(
+              (value) => ConfigChange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configChanges != null) 'configChanges': configChanges!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configChanges = this.configChanges;
+    return {'configChanges': ?configChanges};
+  }
 }
 
 /// Details about how and where to publish client libraries.
@@ -2266,74 +2299,77 @@ class ClientLibrarySettings {
 
   ClientLibrarySettings.fromJson(core.Map json_)
     : this(
-        cppSettings:
-            json_.containsKey('cppSettings')
-                ? CppSettings.fromJson(
-                  json_['cppSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dotnetSettings:
-            json_.containsKey('dotnetSettings')
-                ? DotnetSettings.fromJson(
-                  json_['dotnetSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        goSettings:
-            json_.containsKey('goSettings')
-                ? GoSettings.fromJson(
-                  json_['goSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        javaSettings:
-            json_.containsKey('javaSettings')
-                ? JavaSettings.fromJson(
-                  json_['javaSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cppSettings: json_.containsKey('cppSettings')
+            ? CppSettings.fromJson(
+                json_['cppSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dotnetSettings: json_.containsKey('dotnetSettings')
+            ? DotnetSettings.fromJson(
+                json_['dotnetSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        goSettings: json_.containsKey('goSettings')
+            ? GoSettings.fromJson(
+                json_['goSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        javaSettings: json_.containsKey('javaSettings')
+            ? JavaSettings.fromJson(
+                json_['javaSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         launchStage: json_['launchStage'] as core.String?,
-        nodeSettings:
-            json_.containsKey('nodeSettings')
-                ? NodeSettings.fromJson(
-                  json_['nodeSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        phpSettings:
-            json_.containsKey('phpSettings')
-                ? PhpSettings.fromJson(
-                  json_['phpSettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        pythonSettings:
-            json_.containsKey('pythonSettings')
-                ? PythonSettings.fromJson(
-                  json_['pythonSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodeSettings: json_.containsKey('nodeSettings')
+            ? NodeSettings.fromJson(
+                json_['nodeSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        phpSettings: json_.containsKey('phpSettings')
+            ? PhpSettings.fromJson(
+                json_['phpSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pythonSettings: json_.containsKey('pythonSettings')
+            ? PythonSettings.fromJson(
+                json_['pythonSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         restNumericEnums: json_['restNumericEnums'] as core.bool?,
-        rubySettings:
-            json_.containsKey('rubySettings')
-                ? RubySettings.fromJson(
-                  json_['rubySettings'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rubySettings: json_.containsKey('rubySettings')
+            ? RubySettings.fromJson(
+                json_['rubySettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cppSettings != null) 'cppSettings': cppSettings!,
-    if (dotnetSettings != null) 'dotnetSettings': dotnetSettings!,
-    if (goSettings != null) 'goSettings': goSettings!,
-    if (javaSettings != null) 'javaSettings': javaSettings!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (nodeSettings != null) 'nodeSettings': nodeSettings!,
-    if (phpSettings != null) 'phpSettings': phpSettings!,
-    if (pythonSettings != null) 'pythonSettings': pythonSettings!,
-    if (restNumericEnums != null) 'restNumericEnums': restNumericEnums!,
-    if (rubySettings != null) 'rubySettings': rubySettings!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cppSettings = this.cppSettings;
+    final dotnetSettings = this.dotnetSettings;
+    final goSettings = this.goSettings;
+    final javaSettings = this.javaSettings;
+    final launchStage = this.launchStage;
+    final nodeSettings = this.nodeSettings;
+    final phpSettings = this.phpSettings;
+    final pythonSettings = this.pythonSettings;
+    final restNumericEnums = this.restNumericEnums;
+    final rubySettings = this.rubySettings;
+    final version = this.version;
+    return {
+      'cppSettings': ?cppSettings,
+      'dotnetSettings': ?dotnetSettings,
+      'goSettings': ?goSettings,
+      'javaSettings': ?javaSettings,
+      'launchStage': ?launchStage,
+      'nodeSettings': ?nodeSettings,
+      'phpSettings': ?phpSettings,
+      'pythonSettings': ?pythonSettings,
+      'restNumericEnums': ?restNumericEnums,
+      'rubySettings': ?rubySettings,
+      'version': ?version,
+    };
+  }
 }
 
 /// Required information for every language.
@@ -2360,26 +2396,28 @@ class CommonLanguageSettings {
 
   CommonLanguageSettings.fromJson(core.Map json_)
     : this(
-        destinations:
-            (json_['destinations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        destinations: (json_['destinations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         referenceDocsUri: json_['referenceDocsUri'] as core.String?,
-        selectiveGapicGeneration:
-            json_.containsKey('selectiveGapicGeneration')
-                ? SelectiveGapicGeneration.fromJson(
-                  json_['selectiveGapicGeneration']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        selectiveGapicGeneration: json_.containsKey('selectiveGapicGeneration')
+            ? SelectiveGapicGeneration.fromJson(
+                json_['selectiveGapicGeneration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinations != null) 'destinations': destinations!,
-    if (referenceDocsUri != null) 'referenceDocsUri': referenceDocsUri!,
-    if (selectiveGapicGeneration != null)
-      'selectiveGapicGeneration': selectiveGapicGeneration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinations = this.destinations;
+    final referenceDocsUri = this.referenceDocsUri;
+    final selectiveGapicGeneration = this.selectiveGapicGeneration;
+    return {
+      'destinations': ?destinations,
+      'referenceDocsUri': ?referenceDocsUri,
+      'selectiveGapicGeneration': ?selectiveGapicGeneration,
+    };
+  }
 }
 
 /// Output generated from semantically comparing two versions of a service
@@ -2439,27 +2477,32 @@ class ConfigChange {
 
   ConfigChange.fromJson(core.Map json_)
     : this(
-        advices:
-            (json_['advices'] as core.List?)
-                ?.map(
-                  (value) => Advice.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        advices: (json_['advices'] as core.List?)
+            ?.map(
+              (value) =>
+                  Advice.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         changeType: json_['changeType'] as core.String?,
         element: json_['element'] as core.String?,
         newValue: json_['newValue'] as core.String?,
         oldValue: json_['oldValue'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (advices != null) 'advices': advices!,
-    if (changeType != null) 'changeType': changeType!,
-    if (element != null) 'element': element!,
-    if (newValue != null) 'newValue': newValue!,
-    if (oldValue != null) 'oldValue': oldValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final advices = this.advices;
+    final changeType = this.changeType;
+    final element = this.element;
+    final newValue = this.newValue;
+    final oldValue = this.oldValue;
+    return {
+      'advices': ?advices,
+      'changeType': ?changeType,
+      'element': ?element,
+      'newValue': ?newValue,
+      'oldValue': ?oldValue,
+    };
+  }
 }
 
 /// Generic specification of a source configuration file
@@ -2506,11 +2549,16 @@ class ConfigFile {
         fileType: json_['fileType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fileContents != null) 'fileContents': fileContents!,
-    if (filePath != null) 'filePath': filePath!,
-    if (fileType != null) 'fileType': fileType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileContents = this.fileContents;
+    final filePath = this.filePath;
+    final fileType = this.fileType;
+    return {
+      'fileContents': ?fileContents,
+      'filePath': ?filePath,
+      'fileType': ?fileType,
+    };
+  }
 }
 
 /// Represents a source file which is used to generate the service configuration
@@ -2530,21 +2578,21 @@ class ConfigSource {
 
   ConfigSource.fromJson(core.Map json_)
     : this(
-        files:
-            (json_['files'] as core.List?)
-                ?.map(
-                  (value) => ConfigFile.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        files: (json_['files'] as core.List?)
+            ?.map(
+              (value) => ConfigFile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         id: json_['id'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (files != null) 'files': files!,
-    if (id != null) 'id': id!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final files = this.files;
+    final id = this.id;
+    return {'files': ?files, 'id': ?id};
+  }
 }
 
 /// `Context` defines which contexts an API requests.
@@ -2572,19 +2620,19 @@ class Context {
 
   Context.fromJson(core.Map json_)
     : this(
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => ContextRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => ContextRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rules != null) 'rules': rules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rules = this.rules;
+    return {'rules': ?rules};
+  }
 }
 
 /// A context rule provides information about the context for an individual API
@@ -2631,26 +2679,29 @@ class ContextRule {
             (json_['allowedResponseExtensions'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        provided:
-            (json_['provided'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        requested:
-            (json_['requested'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        provided: (json_['provided'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        requested: (json_['requested'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         selector: json_['selector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedRequestExtensions != null)
-      'allowedRequestExtensions': allowedRequestExtensions!,
-    if (allowedResponseExtensions != null)
-      'allowedResponseExtensions': allowedResponseExtensions!,
-    if (provided != null) 'provided': provided!,
-    if (requested != null) 'requested': requested!,
-    if (selector != null) 'selector': selector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedRequestExtensions = this.allowedRequestExtensions;
+    final allowedResponseExtensions = this.allowedResponseExtensions;
+    final provided = this.provided;
+    final requested = this.requested;
+    final selector = this.selector;
+    return {
+      'allowedRequestExtensions': ?allowedRequestExtensions,
+      'allowedResponseExtensions': ?allowedResponseExtensions,
+      'provided': ?provided,
+      'requested': ?requested,
+      'selector': ?selector,
+    };
+  }
 }
 
 /// Selects and configures the service controller used by the service.
@@ -2672,20 +2723,20 @@ class Control {
   Control.fromJson(core.Map json_)
     : this(
         environment: json_['environment'] as core.String?,
-        methodPolicies:
-            (json_['methodPolicies'] as core.List?)
-                ?.map(
-                  (value) => MethodPolicy.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        methodPolicies: (json_['methodPolicies'] as core.List?)
+            ?.map(
+              (value) => MethodPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (environment != null) 'environment': environment!,
-    if (methodPolicies != null) 'methodPolicies': methodPolicies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final environment = this.environment;
+    final methodPolicies = this.methodPolicies;
+    return {'environment': ?environment, 'methodPolicies': ?methodPolicies};
+  }
 }
 
 /// Settings for C++ client libraries.
@@ -2697,17 +2748,17 @@ class CppSettings {
 
   CppSettings.fromJson(core.Map json_)
     : this(
-        common:
-            json_.containsKey('common')
-                ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        common: json_.containsKey('common')
+            ? CommonLanguageSettings.fromJson(
+                json_['common'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (common != null) 'common': common!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final common = this.common;
+    return {'common': ?common};
+  }
 }
 
 /// Customize service error responses.
@@ -2728,24 +2779,23 @@ class CustomError {
 
   CustomError.fromJson(core.Map json_)
     : this(
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => CustomErrorRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        types:
-            (json_['types'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => CustomErrorRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        types: (json_['types'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rules != null) 'rules': rules!,
-    if (types != null) 'types': types!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rules = this.rules;
+    final types = this.types;
+    return {'rules': ?rules, 'types': ?types};
+  }
 }
 
 /// A custom error rule.
@@ -2769,10 +2819,11 @@ class CustomErrorRule {
         selector: json_['selector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isErrorType != null) 'isErrorType': isErrorType!,
-    if (selector != null) 'selector': selector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final isErrorType = this.isErrorType;
+    final selector = this.selector;
+    return {'isErrorType': ?isErrorType, 'selector': ?selector};
+  }
 }
 
 /// A custom pattern is used for defining custom HTTP verb.
@@ -2791,10 +2842,11 @@ class CustomHttpPattern {
         path: json_['path'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (path != null) 'path': path!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final path = this.path;
+    return {'kind': ?kind, 'path': ?path};
+  }
 }
 
 /// Strategy used to delete a service.
@@ -2826,11 +2878,12 @@ class Diagnostic {
         message: json_['message'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (location != null) 'location': location!,
-    if (message != null) 'message': message!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final location = this.location;
+    final message = this.message;
+    return {'kind': ?kind, 'location': ?location, 'message': ?message};
+  }
 }
 
 /// `Documentation` provides the information for describing a service.
@@ -2924,45 +2977,49 @@ class Documentation {
         additionalIamInfo: json_['additionalIamInfo'] as core.String?,
         documentationRootUrl: json_['documentationRootUrl'] as core.String?,
         overview: json_['overview'] as core.String?,
-        pages:
-            (json_['pages'] as core.List?)
-                ?.map(
-                  (value) => Page.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => DocumentationRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        sectionOverrides:
-            (json_['sectionOverrides'] as core.List?)
-                ?.map(
-                  (value) => Page.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        pages: (json_['pages'] as core.List?)
+            ?.map(
+              (value) =>
+                  Page.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => DocumentationRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        sectionOverrides: (json_['sectionOverrides'] as core.List?)
+            ?.map(
+              (value) =>
+                  Page.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         serviceRootUrl: json_['serviceRootUrl'] as core.String?,
         summary: json_['summary'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalIamInfo != null) 'additionalIamInfo': additionalIamInfo!,
-    if (documentationRootUrl != null)
-      'documentationRootUrl': documentationRootUrl!,
-    if (overview != null) 'overview': overview!,
-    if (pages != null) 'pages': pages!,
-    if (rules != null) 'rules': rules!,
-    if (sectionOverrides != null) 'sectionOverrides': sectionOverrides!,
-    if (serviceRootUrl != null) 'serviceRootUrl': serviceRootUrl!,
-    if (summary != null) 'summary': summary!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalIamInfo = this.additionalIamInfo;
+    final documentationRootUrl = this.documentationRootUrl;
+    final overview = this.overview;
+    final pages = this.pages;
+    final rules = this.rules;
+    final sectionOverrides = this.sectionOverrides;
+    final serviceRootUrl = this.serviceRootUrl;
+    final summary = this.summary;
+    return {
+      'additionalIamInfo': ?additionalIamInfo,
+      'documentationRootUrl': ?documentationRootUrl,
+      'overview': ?overview,
+      'pages': ?pages,
+      'rules': ?rules,
+      'sectionOverrides': ?sectionOverrides,
+      'serviceRootUrl': ?serviceRootUrl,
+      'summary': ?summary,
+    };
+  }
 }
 
 /// A documentation rule provides information about individual API elements.
@@ -3015,42 +3072,44 @@ class DotnetSettings {
 
   DotnetSettings.fromJson(core.Map json_)
     : this(
-        common:
-            json_.containsKey('common')
-                ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        forcedNamespaceAliases:
-            (json_['forcedNamespaceAliases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        handwrittenSignatures:
-            (json_['handwrittenSignatures'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        ignoredResources:
-            (json_['ignoredResources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        renamedResources: (json_['renamedResources']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        renamedServices: (json_['renamedServices']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        common: json_.containsKey('common')
+            ? CommonLanguageSettings.fromJson(
+                json_['common'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        forcedNamespaceAliases: (json_['forcedNamespaceAliases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        handwrittenSignatures: (json_['handwrittenSignatures'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        ignoredResources: (json_['ignoredResources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        renamedResources:
+            (json_['renamedResources'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        renamedServices:
+            (json_['renamedServices'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (common != null) 'common': common!,
-    if (forcedNamespaceAliases != null)
-      'forcedNamespaceAliases': forcedNamespaceAliases!,
-    if (handwrittenSignatures != null)
-      'handwrittenSignatures': handwrittenSignatures!,
-    if (ignoredResources != null) 'ignoredResources': ignoredResources!,
-    if (renamedResources != null) 'renamedResources': renamedResources!,
-    if (renamedServices != null) 'renamedServices': renamedServices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final common = this.common;
+    final forcedNamespaceAliases = this.forcedNamespaceAliases;
+    final handwrittenSignatures = this.handwrittenSignatures;
+    final ignoredResources = this.ignoredResources;
+    final renamedResources = this.renamedResources;
+    final renamedServices = this.renamedServices;
+    return {
+      'common': ?common,
+      'forcedNamespaceAliases': ?forcedNamespaceAliases,
+      'handwrittenSignatures': ?handwrittenSignatures,
+      'ignoredResources': ?ignoredResources,
+      'renamedResources': ?renamedResources,
+      'renamedServices': ?renamedServices,
+    };
+  }
 }
 
 /// `Endpoint` describes a network address of a service that serves a set of
@@ -3110,40 +3169,44 @@ class Enum {
   Enum.fromJson(core.Map json_)
     : this(
         edition: json_['edition'] as core.String?,
-        enumvalue:
-            (json_['enumvalue'] as core.List?)
-                ?.map(
-                  (value) => EnumValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        enumvalue: (json_['enumvalue'] as core.List?)
+            ?.map(
+              (value) => EnumValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        options:
-            (json_['options'] as core.List?)
-                ?.map(
-                  (value) => Option.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        sourceContext:
-            json_.containsKey('sourceContext')
-                ? SourceContext.fromJson(
-                  json_['sourceContext'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        options: (json_['options'] as core.List?)
+            ?.map(
+              (value) =>
+                  Option.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        sourceContext: json_.containsKey('sourceContext')
+            ? SourceContext.fromJson(
+                json_['sourceContext'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         syntax: json_['syntax'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (edition != null) 'edition': edition!,
-    if (enumvalue != null) 'enumvalue': enumvalue!,
-    if (name != null) 'name': name!,
-    if (options != null) 'options': options!,
-    if (sourceContext != null) 'sourceContext': sourceContext!,
-    if (syntax != null) 'syntax': syntax!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final edition = this.edition;
+    final enumvalue = this.enumvalue;
+    final name = this.name;
+    final options = this.options;
+    final sourceContext = this.sourceContext;
+    final syntax = this.syntax;
+    return {
+      'edition': ?edition,
+      'enumvalue': ?enumvalue,
+      'name': ?name,
+      'options': ?options,
+      'sourceContext': ?sourceContext,
+      'syntax': ?syntax,
+    };
+  }
 }
 
 /// Enum value definition.
@@ -3168,21 +3231,20 @@ class EnumValue {
     : this(
         name: json_['name'] as core.String?,
         number: json_['number'] as core.int?,
-        options:
-            (json_['options'] as core.List?)
-                ?.map(
-                  (value) => Option.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        options: (json_['options'] as core.List?)
+            ?.map(
+              (value) =>
+                  Option.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (number != null) 'number': number!,
-    if (options != null) 'options': options!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final number = this.number;
+    final options = this.options;
+    return {'name': ?name, 'number': ?number, 'options': ?options};
+  }
 }
 
 /// Experimental features to be included during client library generation.
@@ -3228,13 +3290,16 @@ class ExperimentalFeatures {
             json_['unversionedPackageDisabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (protobufPythonicTypesEnabled != null)
-      'protobufPythonicTypesEnabled': protobufPythonicTypesEnabled!,
-    if (restAsyncIoEnabled != null) 'restAsyncIoEnabled': restAsyncIoEnabled!,
-    if (unversionedPackageDisabled != null)
-      'unversionedPackageDisabled': unversionedPackageDisabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final protobufPythonicTypesEnabled = this.protobufPythonicTypesEnabled;
+    final restAsyncIoEnabled = this.restAsyncIoEnabled;
+    final unversionedPackageDisabled = this.unversionedPackageDisabled;
+    return {
+      'protobufPythonicTypesEnabled': ?protobufPythonicTypesEnabled,
+      'restAsyncIoEnabled': ?restAsyncIoEnabled,
+      'unversionedPackageDisabled': ?unversionedPackageDisabled,
+    };
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3348,30 +3413,40 @@ class Field {
         name: json_['name'] as core.String?,
         number: json_['number'] as core.int?,
         oneofIndex: json_['oneofIndex'] as core.int?,
-        options:
-            (json_['options'] as core.List?)
-                ?.map(
-                  (value) => Option.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        options: (json_['options'] as core.List?)
+            ?.map(
+              (value) =>
+                  Option.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         packed: json_['packed'] as core.bool?,
         typeUrl: json_['typeUrl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cardinality != null) 'cardinality': cardinality!,
-    if (defaultValue != null) 'defaultValue': defaultValue!,
-    if (jsonName != null) 'jsonName': jsonName!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (number != null) 'number': number!,
-    if (oneofIndex != null) 'oneofIndex': oneofIndex!,
-    if (options != null) 'options': options!,
-    if (packed != null) 'packed': packed!,
-    if (typeUrl != null) 'typeUrl': typeUrl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cardinality = this.cardinality;
+    final defaultValue = this.defaultValue;
+    final jsonName = this.jsonName;
+    final kind = this.kind;
+    final name = this.name;
+    final number = this.number;
+    final oneofIndex = this.oneofIndex;
+    final options = this.options;
+    final packed = this.packed;
+    final typeUrl = this.typeUrl;
+    return {
+      'cardinality': ?cardinality,
+      'defaultValue': ?defaultValue,
+      'jsonName': ?jsonName,
+      'kind': ?kind,
+      'name': ?name,
+      'number': ?number,
+      'oneofIndex': ?oneofIndex,
+      'options': ?options,
+      'packed': ?packed,
+      'typeUrl': ?typeUrl,
+    };
+  }
 }
 
 /// Google API Policy Annotation This message defines a simple API policy
@@ -3413,11 +3488,16 @@ class FieldPolicy {
         selector: json_['selector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourcePermission != null) 'resourcePermission': resourcePermission!,
-    if (resourceType != null) 'resourceType': resourceType!,
-    if (selector != null) 'selector': selector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourcePermission = this.resourcePermission;
+    final resourceType = this.resourceType;
+    final selector = this.selector;
+    return {
+      'resourcePermission': ?resourcePermission,
+      'resourceType': ?resourceType,
+      'selector': ?selector,
+    };
+  }
 }
 
 /// Request message for GenerateConfigReport method.
@@ -3450,20 +3530,19 @@ class GenerateConfigReportRequest {
 
   GenerateConfigReportRequest.fromJson(core.Map json_)
     : this(
-        newConfig:
-            json_.containsKey('newConfig')
-                ? json_['newConfig'] as core.Map<core.String, core.dynamic>
-                : null,
-        oldConfig:
-            json_.containsKey('oldConfig')
-                ? json_['oldConfig'] as core.Map<core.String, core.dynamic>
-                : null,
+        newConfig: json_.containsKey('newConfig')
+            ? json_['newConfig'] as core.Map<core.String, core.dynamic>
+            : null,
+        oldConfig: json_.containsKey('oldConfig')
+            ? json_['oldConfig'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (newConfig != null) 'newConfig': newConfig!,
-    if (oldConfig != null) 'oldConfig': oldConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final newConfig = this.newConfig;
+    final oldConfig = this.oldConfig;
+    return {'newConfig': ?newConfig, 'oldConfig': ?oldConfig};
+  }
 }
 
 /// Response message for GenerateConfigReport method.
@@ -3491,32 +3570,36 @@ class GenerateConfigReportResponse {
 
   GenerateConfigReportResponse.fromJson(core.Map json_)
     : this(
-        changeReports:
-            (json_['changeReports'] as core.List?)
-                ?.map(
-                  (value) => ChangeReport.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        diagnostics:
-            (json_['diagnostics'] as core.List?)
-                ?.map(
-                  (value) => Diagnostic.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        changeReports: (json_['changeReports'] as core.List?)
+            ?.map(
+              (value) => ChangeReport.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        diagnostics: (json_['diagnostics'] as core.List?)
+            ?.map(
+              (value) => Diagnostic.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         id: json_['id'] as core.String?,
         serviceName: json_['serviceName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (changeReports != null) 'changeReports': changeReports!,
-    if (diagnostics != null) 'diagnostics': diagnostics!,
-    if (id != null) 'id': id!,
-    if (serviceName != null) 'serviceName': serviceName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final changeReports = this.changeReports;
+    final diagnostics = this.diagnostics;
+    final id = this.id;
+    final serviceName = this.serviceName;
+    return {
+      'changeReports': ?changeReports,
+      'diagnostics': ?diagnostics,
+      'id': ?id,
+      'serviceName': ?serviceName,
+    };
+  }
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -3529,17 +3612,17 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        options:
-            json_.containsKey('options')
-                ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        options: json_.containsKey('options')
+            ? GetPolicyOptions.fromJson(
+                json_['options'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (options != null) 'options': options!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    return {'options': ?options};
+  }
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -3561,21 +3644,21 @@ class GoSettings {
 
   GoSettings.fromJson(core.Map json_)
     : this(
-        common:
-            json_.containsKey('common')
-                ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        renamedServices: (json_['renamedServices']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        common: json_.containsKey('common')
+            ? CommonLanguageSettings.fromJson(
+                json_['common'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        renamedServices:
+            (json_['renamedServices'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (common != null) 'common': common!,
-    if (renamedServices != null) 'renamedServices': renamedServices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final common = this.common;
+    final renamedServices = this.renamedServices;
+    return {'common': ?common, 'renamedServices': ?renamedServices};
+  }
 }
 
 /// Defines the HTTP configuration for an API service.
@@ -3602,21 +3685,23 @@ class Http {
     : this(
         fullyDecodeReservedExpansion:
             json_['fullyDecodeReservedExpansion'] as core.bool?,
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => HttpRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => HttpRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fullyDecodeReservedExpansion != null)
-      'fullyDecodeReservedExpansion': fullyDecodeReservedExpansion!,
-    if (rules != null) 'rules': rules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final fullyDecodeReservedExpansion = this.fullyDecodeReservedExpansion;
+    final rules = this.rules;
+    return {
+      'fullyDecodeReservedExpansion': ?fullyDecodeReservedExpansion,
+      'rules': ?rules,
+    };
+  }
 }
 
 /// gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC
@@ -3835,21 +3920,19 @@ class HttpRule {
 
   HttpRule.fromJson(core.Map json_)
     : this(
-        additionalBindings:
-            (json_['additionalBindings'] as core.List?)
-                ?.map(
-                  (value) => HttpRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        additionalBindings: (json_['additionalBindings'] as core.List?)
+            ?.map(
+              (value) => HttpRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         body: json_['body'] as core.String?,
-        custom:
-            json_.containsKey('custom')
-                ? CustomHttpPattern.fromJson(
-                  json_['custom'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        custom: json_.containsKey('custom')
+            ? CustomHttpPattern.fromJson(
+                json_['custom'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         delete: json_['delete'] as core.String?,
         get: json_['get'] as core.String?,
         patch: json_['patch'] as core.String?,
@@ -3859,18 +3942,30 @@ class HttpRule {
         selector: json_['selector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalBindings != null) 'additionalBindings': additionalBindings!,
-    if (body != null) 'body': body!,
-    if (custom != null) 'custom': custom!,
-    if (delete != null) 'delete': delete!,
-    if (get != null) 'get': get!,
-    if (patch != null) 'patch': patch!,
-    if (post != null) 'post': post!,
-    if (put != null) 'put': put!,
-    if (responseBody != null) 'responseBody': responseBody!,
-    if (selector != null) 'selector': selector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalBindings = this.additionalBindings;
+    final body = this.body;
+    final custom = this.custom;
+    final delete = this.delete;
+    final get = this.get;
+    final patch = this.patch;
+    final post = this.post;
+    final put = this.put;
+    final responseBody = this.responseBody;
+    final selector = this.selector;
+    return {
+      'additionalBindings': ?additionalBindings,
+      'body': ?body,
+      'custom': ?custom,
+      'delete': ?delete,
+      'get': ?get,
+      'patch': ?patch,
+      'post': ?post,
+      'put': ?put,
+      'responseBody': ?responseBody,
+      'selector': ?selector,
+    };
+  }
 }
 
 /// Settings for Java client libraries.
@@ -3903,23 +3998,27 @@ class JavaSettings {
 
   JavaSettings.fromJson(core.Map json_)
     : this(
-        common:
-            json_.containsKey('common')
-                ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        common: json_.containsKey('common')
+            ? CommonLanguageSettings.fromJson(
+                json_['common'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         libraryPackage: json_['libraryPackage'] as core.String?,
-        serviceClassNames: (json_['serviceClassNames']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        serviceClassNames:
+            (json_['serviceClassNames'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (common != null) 'common': common!,
-    if (libraryPackage != null) 'libraryPackage': libraryPackage!,
-    if (serviceClassNames != null) 'serviceClassNames': serviceClassNames!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final common = this.common;
+    final libraryPackage = this.libraryPackage;
+    final serviceClassNames = this.serviceClassNames;
+    return {
+      'common': ?common,
+      'libraryPackage': ?libraryPackage,
+      'serviceClassNames': ?serviceClassNames,
+    };
+  }
 }
 
 /// Specifies a location to extract JWT from an API request.
@@ -3953,25 +4052,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for ListServiceConfigs method.
@@ -3987,20 +4089,20 @@ class ListServiceConfigsResponse {
   ListServiceConfigsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        serviceConfigs:
-            (json_['serviceConfigs'] as core.List?)
-                ?.map(
-                  (value) => Service.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        serviceConfigs: (json_['serviceConfigs'] as core.List?)
+            ?.map(
+              (value) => Service.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (serviceConfigs != null) 'serviceConfigs': serviceConfigs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final serviceConfigs = this.serviceConfigs;
+    return {'nextPageToken': ?nextPageToken, 'serviceConfigs': ?serviceConfigs};
+  }
 }
 
 /// Response message for ListServiceRollouts method.
@@ -4016,20 +4118,20 @@ class ListServiceRolloutsResponse {
   ListServiceRolloutsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        rollouts:
-            (json_['rollouts'] as core.List?)
-                ?.map(
-                  (value) => Rollout.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rollouts: (json_['rollouts'] as core.List?)
+            ?.map(
+              (value) => Rollout.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (rollouts != null) 'rollouts': rollouts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final rollouts = this.rollouts;
+    return {'nextPageToken': ?nextPageToken, 'rollouts': ?rollouts};
+  }
 }
 
 /// Response message for `ListServices` method.
@@ -4045,20 +4147,20 @@ class ListServicesResponse {
   ListServicesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        services:
-            (json_['services'] as core.List?)
-                ?.map(
-                  (value) => ManagedService.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        services: (json_['services'] as core.List?)
+            ?.map(
+              (value) => ManagedService.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (services != null) 'services': services!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final services = this.services;
+    return {'nextPageToken': ?nextPageToken, 'services': ?services};
+  }
 }
 
 /// A description of a log type.
@@ -4098,23 +4200,28 @@ class LogDescriptor {
     : this(
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        labels:
-            (json_['labels'] as core.List?)
-                ?.map(
-                  (value) => LabelDescriptor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        labels: (json_['labels'] as core.List?)
+            ?.map(
+              (value) => LabelDescriptor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final name = this.name;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+    };
+  }
 }
 
 /// Logging configuration of the service.
@@ -4149,30 +4256,30 @@ class Logging {
 
   Logging.fromJson(core.Map json_)
     : this(
-        consumerDestinations:
-            (json_['consumerDestinations'] as core.List?)
-                ?.map(
-                  (value) => LoggingDestination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        producerDestinations:
-            (json_['producerDestinations'] as core.List?)
-                ?.map(
-                  (value) => LoggingDestination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        consumerDestinations: (json_['consumerDestinations'] as core.List?)
+            ?.map(
+              (value) => LoggingDestination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        producerDestinations: (json_['producerDestinations'] as core.List?)
+            ?.map(
+              (value) => LoggingDestination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerDestinations != null)
-      'consumerDestinations': consumerDestinations!,
-    if (producerDestinations != null)
-      'producerDestinations': producerDestinations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerDestinations = this.consumerDestinations;
+    final producerDestinations = this.producerDestinations;
+    return {
+      'consumerDestinations': ?consumerDestinations,
+      'producerDestinations': ?producerDestinations,
+    };
+  }
 }
 
 /// Configuration of a specific logging destination (the producer project or the
@@ -4194,17 +4301,17 @@ class LoggingDestination {
 
   LoggingDestination.fromJson(core.Map json_)
     : this(
-        logs:
-            (json_['logs'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        logs: (json_['logs'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         monitoredResource: json_['monitoredResource'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (logs != null) 'logs': logs!,
-    if (monitoredResource != null) 'monitoredResource': monitoredResource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final logs = this.logs;
+    final monitoredResource = this.monitoredResource;
+    return {'logs': ?logs, 'monitoredResource': ?monitoredResource};
+  }
 }
 
 /// Describes settings to use when generating API methods that use the
@@ -4246,18 +4353,23 @@ class LongRunning {
     : this(
         initialPollDelay: json_['initialPollDelay'] as core.String?,
         maxPollDelay: json_['maxPollDelay'] as core.String?,
-        pollDelayMultiplier:
-            (json_['pollDelayMultiplier'] as core.num?)?.toDouble(),
+        pollDelayMultiplier: (json_['pollDelayMultiplier'] as core.num?)
+            ?.toDouble(),
         totalPollTimeout: json_['totalPollTimeout'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (initialPollDelay != null) 'initialPollDelay': initialPollDelay!,
-    if (maxPollDelay != null) 'maxPollDelay': maxPollDelay!,
-    if (pollDelayMultiplier != null)
-      'pollDelayMultiplier': pollDelayMultiplier!,
-    if (totalPollTimeout != null) 'totalPollTimeout': totalPollTimeout!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final initialPollDelay = this.initialPollDelay;
+    final maxPollDelay = this.maxPollDelay;
+    final pollDelayMultiplier = this.pollDelayMultiplier;
+    final totalPollTimeout = this.totalPollTimeout;
+    return {
+      'initialPollDelay': ?initialPollDelay,
+      'maxPollDelay': ?maxPollDelay,
+      'pollDelayMultiplier': ?pollDelayMultiplier,
+      'totalPollTimeout': ?totalPollTimeout,
+    };
+  }
 }
 
 /// The full representation of a Service that is managed by Google Service
@@ -4281,10 +4393,14 @@ class ManagedService {
         serviceName: json_['serviceName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (producerProjectId != null) 'producerProjectId': producerProjectId!,
-    if (serviceName != null) 'serviceName': serviceName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final producerProjectId = this.producerProjectId;
+    final serviceName = this.serviceName;
+    return {
+      'producerProjectId': ?producerProjectId,
+      'serviceName': ?serviceName,
+    };
+  }
 }
 
 /// Method represents a method of an API interface.
@@ -4349,14 +4465,12 @@ class Method {
     : this(
         edition: json_['edition'] as core.String?,
         name: json_['name'] as core.String?,
-        options:
-            (json_['options'] as core.List?)
-                ?.map(
-                  (value) => Option.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        options: (json_['options'] as core.List?)
+            ?.map(
+              (value) =>
+                  Option.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         requestStreaming: json_['requestStreaming'] as core.bool?,
         requestTypeUrl: json_['requestTypeUrl'] as core.String?,
         responseStreaming: json_['responseStreaming'] as core.bool?,
@@ -4364,16 +4478,26 @@ class Method {
         syntax: json_['syntax'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (edition != null) 'edition': edition!,
-    if (name != null) 'name': name!,
-    if (options != null) 'options': options!,
-    if (requestStreaming != null) 'requestStreaming': requestStreaming!,
-    if (requestTypeUrl != null) 'requestTypeUrl': requestTypeUrl!,
-    if (responseStreaming != null) 'responseStreaming': responseStreaming!,
-    if (responseTypeUrl != null) 'responseTypeUrl': responseTypeUrl!,
-    if (syntax != null) 'syntax': syntax!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final edition = this.edition;
+    final name = this.name;
+    final options = this.options;
+    final requestStreaming = this.requestStreaming;
+    final requestTypeUrl = this.requestTypeUrl;
+    final responseStreaming = this.responseStreaming;
+    final responseTypeUrl = this.responseTypeUrl;
+    final syntax = this.syntax;
+    return {
+      'edition': ?edition,
+      'name': ?name,
+      'options': ?options,
+      'requestStreaming': ?requestStreaming,
+      'requestTypeUrl': ?requestTypeUrl,
+      'responseStreaming': ?responseStreaming,
+      'responseTypeUrl': ?responseTypeUrl,
+      'syntax': ?syntax,
+    };
+  }
 }
 
 /// Defines policies applying to an RPC method.
@@ -4393,21 +4517,21 @@ class MethodPolicy {
 
   MethodPolicy.fromJson(core.Map json_)
     : this(
-        requestPolicies:
-            (json_['requestPolicies'] as core.List?)
-                ?.map(
-                  (value) => FieldPolicy.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        requestPolicies: (json_['requestPolicies'] as core.List?)
+            ?.map(
+              (value) => FieldPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         selector: json_['selector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestPolicies != null) 'requestPolicies': requestPolicies!,
-    if (selector != null) 'selector': selector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestPolicies = this.requestPolicies;
+    final selector = this.selector;
+    return {'requestPolicies': ?requestPolicies, 'selector': ?selector};
+  }
 }
 
 /// Describes the generator configuration for a method.
@@ -4458,32 +4582,34 @@ class MethodSettings {
 
   MethodSettings.fromJson(core.Map json_)
     : this(
-        autoPopulatedFields:
-            (json_['autoPopulatedFields'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        batching:
-            json_.containsKey('batching')
-                ? BatchingConfigProto.fromJson(
-                  json_['batching'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        longRunning:
-            json_.containsKey('longRunning')
-                ? LongRunning.fromJson(
-                  json_['longRunning'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        autoPopulatedFields: (json_['autoPopulatedFields'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        batching: json_.containsKey('batching')
+            ? BatchingConfigProto.fromJson(
+                json_['batching'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        longRunning: json_.containsKey('longRunning')
+            ? LongRunning.fromJson(
+                json_['longRunning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         selector: json_['selector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoPopulatedFields != null)
-      'autoPopulatedFields': autoPopulatedFields!,
-    if (batching != null) 'batching': batching!,
-    if (longRunning != null) 'longRunning': longRunning!,
-    if (selector != null) 'selector': selector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoPopulatedFields = this.autoPopulatedFields;
+    final batching = this.batching;
+    final longRunning = this.longRunning;
+    final selector = this.selector;
+    return {
+      'autoPopulatedFields': ?autoPopulatedFields,
+      'batching': ?batching,
+      'longRunning': ?longRunning,
+      'selector': ?selector,
+    };
+  }
 }
 
 /// Defines a metric type and its schema.
@@ -4674,46 +4800,55 @@ class MetricDescriptor {
     : this(
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        labels:
-            (json_['labels'] as core.List?)
-                ?.map(
-                  (value) => LabelDescriptor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        labels: (json_['labels'] as core.List?)
+            ?.map(
+              (value) => LabelDescriptor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         launchStage: json_['launchStage'] as core.String?,
-        metadata:
-            json_.containsKey('metadata')
-                ? MetricDescriptorMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        metadata: json_.containsKey('metadata')
+            ? MetricDescriptorMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         metricKind: json_['metricKind'] as core.String?,
-        monitoredResourceTypes:
-            (json_['monitoredResourceTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        monitoredResourceTypes: (json_['monitoredResourceTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         name: json_['name'] as core.String?,
         type: json_['type'] as core.String?,
         unit: json_['unit'] as core.String?,
         valueType: json_['valueType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (metadata != null) 'metadata': metadata!,
-    if (metricKind != null) 'metricKind': metricKind!,
-    if (monitoredResourceTypes != null)
-      'monitoredResourceTypes': monitoredResourceTypes!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-    if (unit != null) 'unit': unit!,
-    if (valueType != null) 'valueType': valueType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final launchStage = this.launchStage;
+    final metadata = this.metadata;
+    final metricKind = this.metricKind;
+    final monitoredResourceTypes = this.monitoredResourceTypes;
+    final name = this.name;
+    final type = this.type;
+    final unit = this.unit;
+    final valueType = this.valueType;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'launchStage': ?launchStage,
+      'metadata': ?metadata,
+      'metricKind': ?metricKind,
+      'monitoredResourceTypes': ?monitoredResourceTypes,
+      'name': ?name,
+      'type': ?type,
+      'unit': ?unit,
+      'valueType': ?valueType,
+    };
+  }
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
@@ -4792,13 +4927,19 @@ class MetricDescriptorMetadata {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ingestDelay != null) 'ingestDelay': ingestDelay!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (samplePeriod != null) 'samplePeriod': samplePeriod!,
-    if (timeSeriesResourceHierarchyLevel != null)
-      'timeSeriesResourceHierarchyLevel': timeSeriesResourceHierarchyLevel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ingestDelay = this.ingestDelay;
+    final launchStage = this.launchStage;
+    final samplePeriod = this.samplePeriod;
+    final timeSeriesResourceHierarchyLevel =
+        this.timeSeriesResourceHierarchyLevel;
+    return {
+      'ingestDelay': ?ingestDelay,
+      'launchStage': ?launchStage,
+      'samplePeriod': ?samplePeriod,
+      'timeSeriesResourceHierarchyLevel': ?timeSeriesResourceHierarchyLevel,
+    };
+  }
 }
 
 /// Bind API methods to metrics.
@@ -4947,27 +5088,34 @@ class MonitoredResourceDescriptor {
     : this(
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        labels:
-            (json_['labels'] as core.List?)
-                ?.map(
-                  (value) => LabelDescriptor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        labels: (json_['labels'] as core.List?)
+            ?.map(
+              (value) => LabelDescriptor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         launchStage: json_['launchStage'] as core.String?,
         name: json_['name'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final launchStage = this.launchStage;
+    final name = this.name;
+    final type = this.type;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'launchStage': ?launchStage,
+      'name': ?name,
+      'type': ?type,
+    };
+  }
 }
 
 /// Monitoring configuration of the service.
@@ -5018,30 +5166,30 @@ class Monitoring {
 
   Monitoring.fromJson(core.Map json_)
     : this(
-        consumerDestinations:
-            (json_['consumerDestinations'] as core.List?)
-                ?.map(
-                  (value) => MonitoringDestination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        producerDestinations:
-            (json_['producerDestinations'] as core.List?)
-                ?.map(
-                  (value) => MonitoringDestination.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        consumerDestinations: (json_['consumerDestinations'] as core.List?)
+            ?.map(
+              (value) => MonitoringDestination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        producerDestinations: (json_['producerDestinations'] as core.List?)
+            ?.map(
+              (value) => MonitoringDestination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerDestinations != null)
-      'consumerDestinations': consumerDestinations!,
-    if (producerDestinations != null)
-      'producerDestinations': producerDestinations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerDestinations = this.consumerDestinations;
+    final producerDestinations = this.producerDestinations;
+    return {
+      'consumerDestinations': ?consumerDestinations,
+      'producerDestinations': ?producerDestinations,
+    };
+  }
 }
 
 /// Configuration of a specific monitoring destination (the producer project or
@@ -5057,17 +5205,17 @@ class NodeSettings {
 
   NodeSettings.fromJson(core.Map json_)
     : this(
-        common:
-            json_.containsKey('common')
-                ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        common: json_.containsKey('common')
+            ? CommonLanguageSettings.fromJson(
+                json_['common'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (common != null) 'common': common!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final common = this.common;
+    return {'common': ?common};
+  }
 }
 
 /// OAuth scopes are a way to define data and permissions on data.
@@ -5135,30 +5283,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// A protocol buffer option, which can be attached to a message, field,
@@ -5203,21 +5355,20 @@ class Page {
     : this(
         content: json_['content'] as core.String?,
         name: json_['name'] as core.String?,
-        subpages:
-            (json_['subpages'] as core.List?)
-                ?.map(
-                  (value) => Page.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        subpages: (json_['subpages'] as core.List?)
+            ?.map(
+              (value) =>
+                  Page.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (name != null) 'name': name!,
-    if (subpages != null) 'subpages': subpages!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final name = this.name;
+    final subpages = this.subpages;
+    return {'content': ?content, 'name': ?name, 'subpages': ?subpages};
+  }
 }
 
 /// Settings for Php client libraries.
@@ -5239,19 +5390,19 @@ class PhpSettings {
 
   PhpSettings.fromJson(core.Map json_)
     : this(
-        common:
-            json_.containsKey('common')
-                ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        common: json_.containsKey('common')
+            ? CommonLanguageSettings.fromJson(
+                json_['common'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         libraryPackage: json_['libraryPackage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (common != null) 'common': common!,
-    if (libraryPackage != null) 'libraryPackage': libraryPackage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final common = this.common;
+    final libraryPackage = this.libraryPackage;
+    return {'common': ?common, 'libraryPackage': ?libraryPackage};
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -5346,32 +5497,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// This message configures the settings for publishing
@@ -5457,29 +5612,26 @@ class Publishing {
   Publishing.fromJson(core.Map json_)
     : this(
         apiShortName: json_['apiShortName'] as core.String?,
-        codeownerGithubTeams:
-            (json_['codeownerGithubTeams'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        codeownerGithubTeams: (json_['codeownerGithubTeams'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         docTagPrefix: json_['docTagPrefix'] as core.String?,
         documentationUri: json_['documentationUri'] as core.String?,
         githubLabel: json_['githubLabel'] as core.String?,
-        librarySettings:
-            (json_['librarySettings'] as core.List?)
-                ?.map(
-                  (value) => ClientLibrarySettings.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        methodSettings:
-            (json_['methodSettings'] as core.List?)
-                ?.map(
-                  (value) => MethodSettings.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        librarySettings: (json_['librarySettings'] as core.List?)
+            ?.map(
+              (value) => ClientLibrarySettings.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        methodSettings: (json_['methodSettings'] as core.List?)
+            ?.map(
+              (value) => MethodSettings.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         newIssueUri: json_['newIssueUri'] as core.String?,
         organization: json_['organization'] as core.String?,
         protoReferenceDocumentationUri:
@@ -5488,22 +5640,32 @@ class Publishing {
             json_['restReferenceDocumentationUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiShortName != null) 'apiShortName': apiShortName!,
-    if (codeownerGithubTeams != null)
-      'codeownerGithubTeams': codeownerGithubTeams!,
-    if (docTagPrefix != null) 'docTagPrefix': docTagPrefix!,
-    if (documentationUri != null) 'documentationUri': documentationUri!,
-    if (githubLabel != null) 'githubLabel': githubLabel!,
-    if (librarySettings != null) 'librarySettings': librarySettings!,
-    if (methodSettings != null) 'methodSettings': methodSettings!,
-    if (newIssueUri != null) 'newIssueUri': newIssueUri!,
-    if (organization != null) 'organization': organization!,
-    if (protoReferenceDocumentationUri != null)
-      'protoReferenceDocumentationUri': protoReferenceDocumentationUri!,
-    if (restReferenceDocumentationUri != null)
-      'restReferenceDocumentationUri': restReferenceDocumentationUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiShortName = this.apiShortName;
+    final codeownerGithubTeams = this.codeownerGithubTeams;
+    final docTagPrefix = this.docTagPrefix;
+    final documentationUri = this.documentationUri;
+    final githubLabel = this.githubLabel;
+    final librarySettings = this.librarySettings;
+    final methodSettings = this.methodSettings;
+    final newIssueUri = this.newIssueUri;
+    final organization = this.organization;
+    final protoReferenceDocumentationUri = this.protoReferenceDocumentationUri;
+    final restReferenceDocumentationUri = this.restReferenceDocumentationUri;
+    return {
+      'apiShortName': ?apiShortName,
+      'codeownerGithubTeams': ?codeownerGithubTeams,
+      'docTagPrefix': ?docTagPrefix,
+      'documentationUri': ?documentationUri,
+      'githubLabel': ?githubLabel,
+      'librarySettings': ?librarySettings,
+      'methodSettings': ?methodSettings,
+      'newIssueUri': ?newIssueUri,
+      'organization': ?organization,
+      'protoReferenceDocumentationUri': ?protoReferenceDocumentationUri,
+      'restReferenceDocumentationUri': ?restReferenceDocumentationUri,
+    };
+  }
 }
 
 /// Settings for Python client libraries.
@@ -5518,26 +5680,24 @@ class PythonSettings {
 
   PythonSettings.fromJson(core.Map json_)
     : this(
-        common:
-            json_.containsKey('common')
-                ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        experimentalFeatures:
-            json_.containsKey('experimentalFeatures')
-                ? ExperimentalFeatures.fromJson(
-                  json_['experimentalFeatures']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        common: json_.containsKey('common')
+            ? CommonLanguageSettings.fromJson(
+                json_['common'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        experimentalFeatures: json_.containsKey('experimentalFeatures')
+            ? ExperimentalFeatures.fromJson(
+                json_['experimentalFeatures']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (common != null) 'common': common!,
-    if (experimentalFeatures != null)
-      'experimentalFeatures': experimentalFeatures!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final common = this.common;
+    final experimentalFeatures = this.experimentalFeatures;
+    return {'common': ?common, 'experimentalFeatures': ?experimentalFeatures};
+  }
 }
 
 /// Quota configuration helps to achieve fairness and budgeting in service
@@ -5575,28 +5735,27 @@ class Quota {
 
   Quota.fromJson(core.Map json_)
     : this(
-        limits:
-            (json_['limits'] as core.List?)
-                ?.map(
-                  (value) => QuotaLimit.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        metricRules:
-            (json_['metricRules'] as core.List?)
-                ?.map(
-                  (value) => MetricRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        limits: (json_['limits'] as core.List?)
+            ?.map(
+              (value) => QuotaLimit.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metricRules: (json_['metricRules'] as core.List?)
+            ?.map(
+              (value) => MetricRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (limits != null) 'limits': limits!,
-    if (metricRules != null) 'metricRules': metricRules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final limits = this.limits;
+    final metricRules = this.metricRules;
+    return {'limits': ?limits, 'metricRules': ?metricRules};
+  }
 }
 
 /// `QuotaLimit` defines a specific limit that applies over a specified duration
@@ -5678,36 +5837,41 @@ class Rollout {
     : this(
         createTime: json_['createTime'] as core.String?,
         createdBy: json_['createdBy'] as core.String?,
-        deleteServiceStrategy:
-            json_.containsKey('deleteServiceStrategy')
-                ? DeleteServiceStrategy.fromJson(
-                  json_['deleteServiceStrategy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deleteServiceStrategy: json_.containsKey('deleteServiceStrategy')
+            ? DeleteServiceStrategy.fromJson(
+                json_['deleteServiceStrategy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         rolloutId: json_['rolloutId'] as core.String?,
         serviceName: json_['serviceName'] as core.String?,
         status: json_['status'] as core.String?,
-        trafficPercentStrategy:
-            json_.containsKey('trafficPercentStrategy')
-                ? TrafficPercentStrategy.fromJson(
-                  json_['trafficPercentStrategy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        trafficPercentStrategy: json_.containsKey('trafficPercentStrategy')
+            ? TrafficPercentStrategy.fromJson(
+                json_['trafficPercentStrategy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (createdBy != null) 'createdBy': createdBy!,
-    if (deleteServiceStrategy != null)
-      'deleteServiceStrategy': deleteServiceStrategy!,
-    if (rolloutId != null) 'rolloutId': rolloutId!,
-    if (serviceName != null) 'serviceName': serviceName!,
-    if (status != null) 'status': status!,
-    if (trafficPercentStrategy != null)
-      'trafficPercentStrategy': trafficPercentStrategy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final createdBy = this.createdBy;
+    final deleteServiceStrategy = this.deleteServiceStrategy;
+    final rolloutId = this.rolloutId;
+    final serviceName = this.serviceName;
+    final status = this.status;
+    final trafficPercentStrategy = this.trafficPercentStrategy;
+    return {
+      'createTime': ?createTime,
+      'createdBy': ?createdBy,
+      'deleteServiceStrategy': ?deleteServiceStrategy,
+      'rolloutId': ?rolloutId,
+      'serviceName': ?serviceName,
+      'status': ?status,
+      'trafficPercentStrategy': ?trafficPercentStrategy,
+    };
+  }
 }
 
 /// Settings for Ruby client libraries.
@@ -5719,17 +5883,17 @@ class RubySettings {
 
   RubySettings.fromJson(core.Map json_)
     : this(
-        common:
-            json_.containsKey('common')
-                ? CommonLanguageSettings.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        common: json_.containsKey('common')
+            ? CommonLanguageSettings.fromJson(
+                json_['common'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (common != null) 'common': common!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final common = this.common;
+    return {'common': ?common};
+  }
 }
 
 /// This message is used to configure the generation of a subset of the RPCs in
@@ -5754,17 +5918,19 @@ class SelectiveGapicGeneration {
     : this(
         generateOmittedAsInternal:
             json_['generateOmittedAsInternal'] as core.bool?,
-        methods:
-            (json_['methods'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        methods: (json_['methods'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (generateOmittedAsInternal != null)
-      'generateOmittedAsInternal': generateOmittedAsInternal!,
-    if (methods != null) 'methods': methods!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final generateOmittedAsInternal = this.generateOmittedAsInternal;
+    final methods = this.methods;
+    return {
+      'generateOmittedAsInternal': ?generateOmittedAsInternal,
+      'methods': ?methods,
+    };
+  }
 }
 
 /// `Service` is the root object of Google API service configuration (service
@@ -5954,208 +6120,209 @@ class Service {
 
   Service.fromJson(core.Map json_)
     : this(
-        apis:
-            (json_['apis'] as core.List?)
-                ?.map(
-                  (value) => Api.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        aspects:
-            (json_['aspects'] as core.List?)
-                ?.map(
-                  (value) => Aspect.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        authentication:
-            json_.containsKey('authentication')
-                ? Authentication.fromJson(
-                  json_['authentication']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        backend:
-            json_.containsKey('backend')
-                ? Backend.fromJson(
-                  json_['backend'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        billing:
-            json_.containsKey('billing')
-                ? Billing.fromJson(
-                  json_['billing'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        apis: (json_['apis'] as core.List?)
+            ?.map(
+              (value) =>
+                  Api.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        aspects: (json_['aspects'] as core.List?)
+            ?.map(
+              (value) =>
+                  Aspect.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        authentication: json_.containsKey('authentication')
+            ? Authentication.fromJson(
+                json_['authentication'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        backend: json_.containsKey('backend')
+            ? Backend.fromJson(
+                json_['backend'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        billing: json_.containsKey('billing')
+            ? Billing.fromJson(
+                json_['billing'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         configVersion: json_['configVersion'] as core.int?,
-        context:
-            json_.containsKey('context')
-                ? Context.fromJson(
-                  json_['context'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        control:
-            json_.containsKey('control')
-                ? Control.fromJson(
-                  json_['control'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        customError:
-            json_.containsKey('customError')
-                ? CustomError.fromJson(
-                  json_['customError'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        documentation:
-            json_.containsKey('documentation')
-                ? Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        endpoints:
-            (json_['endpoints'] as core.List?)
-                ?.map(
-                  (value) => Endpoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        enums:
-            (json_['enums'] as core.List?)
-                ?.map(
-                  (value) => Enum.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        http:
-            json_.containsKey('http')
-                ? Http.fromJson(
-                  json_['http'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        context: json_.containsKey('context')
+            ? Context.fromJson(
+                json_['context'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        control: json_.containsKey('control')
+            ? Control.fromJson(
+                json_['control'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customError: json_.containsKey('customError')
+            ? CustomError.fromJson(
+                json_['customError'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        documentation: json_.containsKey('documentation')
+            ? Documentation.fromJson(
+                json_['documentation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        endpoints: (json_['endpoints'] as core.List?)
+            ?.map(
+              (value) => Endpoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        enums: (json_['enums'] as core.List?)
+            ?.map(
+              (value) =>
+                  Enum.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        http: json_.containsKey('http')
+            ? Http.fromJson(
+                json_['http'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
-        logging:
-            json_.containsKey('logging')
-                ? Logging.fromJson(
-                  json_['logging'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        logs:
-            (json_['logs'] as core.List?)
-                ?.map(
-                  (value) => LogDescriptor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        metrics:
-            (json_['metrics'] as core.List?)
-                ?.map(
-                  (value) => MetricDescriptor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        monitoredResources:
-            (json_['monitoredResources'] as core.List?)
-                ?.map(
-                  (value) => MonitoredResourceDescriptor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        monitoring:
-            json_.containsKey('monitoring')
-                ? Monitoring.fromJson(
-                  json_['monitoring'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        logging: json_.containsKey('logging')
+            ? Logging.fromJson(
+                json_['logging'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        logs: (json_['logs'] as core.List?)
+            ?.map(
+              (value) => LogDescriptor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metrics: (json_['metrics'] as core.List?)
+            ?.map(
+              (value) => MetricDescriptor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        monitoredResources: (json_['monitoredResources'] as core.List?)
+            ?.map(
+              (value) => MonitoredResourceDescriptor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        monitoring: json_.containsKey('monitoring')
+            ? Monitoring.fromJson(
+                json_['monitoring'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         producerProjectId: json_['producerProjectId'] as core.String?,
-        publishing:
-            json_.containsKey('publishing')
-                ? Publishing.fromJson(
-                  json_['publishing'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        quota:
-            json_.containsKey('quota')
-                ? Quota.fromJson(
-                  json_['quota'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sourceInfo:
-            json_.containsKey('sourceInfo')
-                ? SourceInfo.fromJson(
-                  json_['sourceInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        systemParameters:
-            json_.containsKey('systemParameters')
-                ? SystemParameters.fromJson(
-                  json_['systemParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        systemTypes:
-            (json_['systemTypes'] as core.List?)
-                ?.map(
-                  (value) => Type.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        publishing: json_.containsKey('publishing')
+            ? Publishing.fromJson(
+                json_['publishing'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        quota: json_.containsKey('quota')
+            ? Quota.fromJson(
+                json_['quota'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sourceInfo: json_.containsKey('sourceInfo')
+            ? SourceInfo.fromJson(
+                json_['sourceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        systemParameters: json_.containsKey('systemParameters')
+            ? SystemParameters.fromJson(
+                json_['systemParameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        systemTypes: (json_['systemTypes'] as core.List?)
+            ?.map(
+              (value) =>
+                  Type.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         title: json_['title'] as core.String?,
-        types:
-            (json_['types'] as core.List?)
-                ?.map(
-                  (value) => Type.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        usage:
-            json_.containsKey('usage')
-                ? Usage.fromJson(
-                  json_['usage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        types: (json_['types'] as core.List?)
+            ?.map(
+              (value) =>
+                  Type.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        usage: json_.containsKey('usage')
+            ? Usage.fromJson(
+                json_['usage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apis != null) 'apis': apis!,
-    if (aspects != null) 'aspects': aspects!,
-    if (authentication != null) 'authentication': authentication!,
-    if (backend != null) 'backend': backend!,
-    if (billing != null) 'billing': billing!,
-    if (configVersion != null) 'configVersion': configVersion!,
-    if (context != null) 'context': context!,
-    if (control != null) 'control': control!,
-    if (customError != null) 'customError': customError!,
-    if (documentation != null) 'documentation': documentation!,
-    if (endpoints != null) 'endpoints': endpoints!,
-    if (enums != null) 'enums': enums!,
-    if (http != null) 'http': http!,
-    if (id != null) 'id': id!,
-    if (logging != null) 'logging': logging!,
-    if (logs != null) 'logs': logs!,
-    if (metrics != null) 'metrics': metrics!,
-    if (monitoredResources != null) 'monitoredResources': monitoredResources!,
-    if (monitoring != null) 'monitoring': monitoring!,
-    if (name != null) 'name': name!,
-    if (producerProjectId != null) 'producerProjectId': producerProjectId!,
-    if (publishing != null) 'publishing': publishing!,
-    if (quota != null) 'quota': quota!,
-    if (sourceInfo != null) 'sourceInfo': sourceInfo!,
-    if (systemParameters != null) 'systemParameters': systemParameters!,
-    if (systemTypes != null) 'systemTypes': systemTypes!,
-    if (title != null) 'title': title!,
-    if (types != null) 'types': types!,
-    if (usage != null) 'usage': usage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apis = this.apis;
+    final aspects = this.aspects;
+    final authentication = this.authentication;
+    final backend = this.backend;
+    final billing = this.billing;
+    final configVersion = this.configVersion;
+    final context = this.context;
+    final control = this.control;
+    final customError = this.customError;
+    final documentation = this.documentation;
+    final endpoints = this.endpoints;
+    final enums = this.enums;
+    final http = this.http;
+    final id = this.id;
+    final logging = this.logging;
+    final logs = this.logs;
+    final metrics = this.metrics;
+    final monitoredResources = this.monitoredResources;
+    final monitoring = this.monitoring;
+    final name = this.name;
+    final producerProjectId = this.producerProjectId;
+    final publishing = this.publishing;
+    final quota = this.quota;
+    final sourceInfo = this.sourceInfo;
+    final systemParameters = this.systemParameters;
+    final systemTypes = this.systemTypes;
+    final title = this.title;
+    final types = this.types;
+    final usage = this.usage;
+    return {
+      'apis': ?apis,
+      'aspects': ?aspects,
+      'authentication': ?authentication,
+      'backend': ?backend,
+      'billing': ?billing,
+      'configVersion': ?configVersion,
+      'context': ?context,
+      'control': ?control,
+      'customError': ?customError,
+      'documentation': ?documentation,
+      'endpoints': ?endpoints,
+      'enums': ?enums,
+      'http': ?http,
+      'id': ?id,
+      'logging': ?logging,
+      'logs': ?logs,
+      'metrics': ?metrics,
+      'monitoredResources': ?monitoredResources,
+      'monitoring': ?monitoring,
+      'name': ?name,
+      'producerProjectId': ?producerProjectId,
+      'publishing': ?publishing,
+      'quota': ?quota,
+      'sourceInfo': ?sourceInfo,
+      'systemParameters': ?systemParameters,
+      'systemTypes': ?systemTypes,
+      'title': ?title,
+      'types': ?types,
+      'usage': ?usage,
+    };
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -6177,19 +6344,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// `SourceContext` represents information about the source of a protobuf
@@ -6208,15 +6375,15 @@ class SourceInfo {
 
   SourceInfo.fromJson(core.Map json_)
     : this(
-        sourceFiles:
-            (json_['sourceFiles'] as core.List?)
-                ?.map((value) => value as core.Map<core.String, core.dynamic>)
-                .toList(),
+        sourceFiles: (json_['sourceFiles'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sourceFiles != null) 'sourceFiles': sourceFiles!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sourceFiles = this.sourceFiles;
+    return {'sourceFiles': ?sourceFiles};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -6246,19 +6413,19 @@ class SubmitConfigSourceRequest {
 
   SubmitConfigSourceRequest.fromJson(core.Map json_)
     : this(
-        configSource:
-            json_.containsKey('configSource')
-                ? ConfigSource.fromJson(
-                  json_['configSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        configSource: json_.containsKey('configSource')
+            ? ConfigSource.fromJson(
+                json_['configSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configSource != null) 'configSource': configSource!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configSource = this.configSource;
+    final validateOnly = this.validateOnly;
+    return {'configSource': ?configSource, 'validateOnly': ?validateOnly};
+  }
 }
 
 /// Define a parameter's name and location.
@@ -6290,11 +6457,16 @@ class SystemParameter {
         urlQueryParameter: json_['urlQueryParameter'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (httpHeader != null) 'httpHeader': httpHeader!,
-    if (name != null) 'name': name!,
-    if (urlQueryParameter != null) 'urlQueryParameter': urlQueryParameter!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final httpHeader = this.httpHeader;
+    final name = this.name;
+    final urlQueryParameter = this.urlQueryParameter;
+    return {
+      'httpHeader': ?httpHeader,
+      'name': ?name,
+      'urlQueryParameter': ?urlQueryParameter,
+    };
+  }
 }
 
 /// Define a system parameter rule mapping system parameter definitions to
@@ -6318,21 +6490,21 @@ class SystemParameterRule {
 
   SystemParameterRule.fromJson(core.Map json_)
     : this(
-        parameters:
-            (json_['parameters'] as core.List?)
-                ?.map(
-                  (value) => SystemParameter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        parameters: (json_['parameters'] as core.List?)
+            ?.map(
+              (value) => SystemParameter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         selector: json_['selector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parameters != null) 'parameters': parameters!,
-    if (selector != null) 'selector': selector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final parameters = this.parameters;
+    final selector = this.selector;
+    return {'parameters': ?parameters, 'selector': ?selector};
+  }
 }
 
 /// ### System parameter configuration A system parameter is a special kind of
@@ -6360,19 +6532,19 @@ class SystemParameters {
 
   SystemParameters.fromJson(core.Map json_)
     : this(
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => SystemParameterRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => SystemParameterRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rules != null) 'rules': rules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final rules = this.rules;
+    return {'rules': ?rules};
+  }
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -6410,9 +6582,10 @@ class TrafficPercentStrategy {
             ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (percentages != null) 'percentages': percentages!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final percentages = this.percentages;
+    return {'percentages': ?percentages};
+  }
 }
 
 /// A protocol buffer message type.
@@ -6460,45 +6633,48 @@ class Type {
   Type.fromJson(core.Map json_)
     : this(
         edition: json_['edition'] as core.String?,
-        fields:
-            (json_['fields'] as core.List?)
-                ?.map(
-                  (value) => Field.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        fields: (json_['fields'] as core.List?)
+            ?.map(
+              (value) =>
+                  Field.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
-        oneofs:
-            (json_['oneofs'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        options:
-            (json_['options'] as core.List?)
-                ?.map(
-                  (value) => Option.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        sourceContext:
-            json_.containsKey('sourceContext')
-                ? SourceContext.fromJson(
-                  json_['sourceContext'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        oneofs: (json_['oneofs'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        options: (json_['options'] as core.List?)
+            ?.map(
+              (value) =>
+                  Option.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        sourceContext: json_.containsKey('sourceContext')
+            ? SourceContext.fromJson(
+                json_['sourceContext'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         syntax: json_['syntax'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (edition != null) 'edition': edition!,
-    if (fields != null) 'fields': fields!,
-    if (name != null) 'name': name!,
-    if (oneofs != null) 'oneofs': oneofs!,
-    if (options != null) 'options': options!,
-    if (sourceContext != null) 'sourceContext': sourceContext!,
-    if (syntax != null) 'syntax': syntax!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final edition = this.edition;
+    final fields = this.fields;
+    final name = this.name;
+    final oneofs = this.oneofs;
+    final options = this.options;
+    final sourceContext = this.sourceContext;
+    final syntax = this.syntax;
+    return {
+      'edition': ?edition,
+      'fields': ?fields,
+      'name': ?name,
+      'oneofs': ?oneofs,
+      'options': ?options,
+      'sourceContext': ?sourceContext,
+      'syntax': ?syntax,
+    };
+  }
 }
 
 /// Configuration controlling usage of a service.
@@ -6535,26 +6711,28 @@ class Usage {
     : this(
         producerNotificationChannel:
             json_['producerNotificationChannel'] as core.String?,
-        requirements:
-            (json_['requirements'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        rules:
-            (json_['rules'] as core.List?)
-                ?.map(
-                  (value) => UsageRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        requirements: (json_['requirements'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => UsageRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (producerNotificationChannel != null)
-      'producerNotificationChannel': producerNotificationChannel!,
-    if (requirements != null) 'requirements': requirements!,
-    if (rules != null) 'rules': rules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final producerNotificationChannel = this.producerNotificationChannel;
+    final requirements = this.requirements;
+    final rules = this.rules;
+    return {
+      'producerNotificationChannel': ?producerNotificationChannel,
+      'requirements': ?requirements,
+      'rules': ?rules,
+    };
+  }
 }
 
 /// Usage configuration rules for the service.

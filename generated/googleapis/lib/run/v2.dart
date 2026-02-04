@@ -136,7 +136,7 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':exportImage';
@@ -179,7 +179,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':exportImageMetadata';
@@ -224,7 +224,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':exportMetadata';
@@ -263,7 +263,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -314,7 +314,7 @@ class ProjectsLocationsBuildsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/builds:submit';
@@ -374,9 +374,9 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (instanceId != null) 'instanceId': [instanceId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'instanceId': ?instanceId == null ? null : [instanceId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/instances';
@@ -423,9 +423,9 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -463,7 +463,7 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -515,10 +515,10 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/instances';
@@ -562,7 +562,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':start';
@@ -607,7 +607,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':stop';
@@ -670,9 +670,9 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (jobId != null) 'jobId': [jobId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'jobId': ?jobId == null ? null : [jobId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/jobs';
@@ -721,9 +721,9 @@ class ProjectsLocationsJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -763,7 +763,7 @@ class ProjectsLocationsJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -819,9 +819,10 @@ class ProjectsLocationsJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -873,10 +874,10 @@ class ProjectsLocationsJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/jobs';
@@ -929,9 +930,9 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -976,7 +977,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':run';
@@ -1024,7 +1025,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1072,7 +1073,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1128,7 +1129,7 @@ class ProjectsLocationsJobsExecutionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -1177,9 +1178,9 @@ class ProjectsLocationsJobsExecutionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1226,7 +1227,7 @@ class ProjectsLocationsJobsExecutionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1271,7 +1272,7 @@ class ProjectsLocationsJobsExecutionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1325,10 +1326,10 @@ class ProjectsLocationsJobsExecutionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/executions';
@@ -1374,7 +1375,7 @@ class ProjectsLocationsJobsExecutionsTasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1426,10 +1427,10 @@ class ProjectsLocationsJobsExecutionsTasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tasks';
@@ -1478,7 +1479,7 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1519,7 +1520,7 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1583,12 +1584,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
@@ -1639,7 +1641,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':wait';
@@ -1705,9 +1707,9 @@ class ProjectsLocationsServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (serviceId != null) 'serviceId': [serviceId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'serviceId': ?serviceId == null ? null : [serviceId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/services';
@@ -1759,9 +1761,9 @@ class ProjectsLocationsServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1801,7 +1803,7 @@ class ProjectsLocationsServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -1858,9 +1860,10 @@ class ProjectsLocationsServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1913,10 +1916,10 @@ class ProjectsLocationsServicesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/services';
@@ -1975,10 +1978,10 @@ class ProjectsLocationsServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2026,7 +2029,7 @@ class ProjectsLocationsServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2074,7 +2077,7 @@ class ProjectsLocationsServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2130,9 +2133,9 @@ class ProjectsLocationsServicesRevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2179,7 +2182,7 @@ class ProjectsLocationsServicesRevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2223,7 +2226,7 @@ class ProjectsLocationsServicesRevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2276,10 +2279,10 @@ class ProjectsLocationsServicesRevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/revisions';
@@ -2344,9 +2347,9 @@ class ProjectsLocationsWorkerPoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if (workerPoolId != null) 'workerPoolId': [workerPoolId],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'workerPoolId': ?workerPoolId == null ? null : [workerPoolId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/workerPools';
@@ -2395,9 +2398,9 @@ class ProjectsLocationsWorkerPoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2437,7 +2440,7 @@ class ProjectsLocationsWorkerPoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2494,9 +2497,10 @@ class ProjectsLocationsWorkerPoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2549,10 +2553,10 @@ class ProjectsLocationsWorkerPoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/workerPools';
@@ -2620,11 +2624,13 @@ class ProjectsLocationsWorkerPoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (forceNewRevision != null) 'forceNewRevision': ['${forceNewRevision}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'forceNewRevision': ?forceNewRevision == null
+          ? null
+          : ['${forceNewRevision}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2672,7 +2678,7 @@ class ProjectsLocationsWorkerPoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2720,7 +2726,7 @@ class ProjectsLocationsWorkerPoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2776,9 +2782,9 @@ class ProjectsLocationsWorkerPoolsRevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2817,7 +2823,7 @@ class ProjectsLocationsWorkerPoolsRevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -2870,10 +2876,10 @@ class ProjectsLocationsWorkerPoolsRevisionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/revisions';
@@ -2929,12 +2935,16 @@ class GoogleCloudRunV2BinaryAuthorization {
         useDefault: json_['useDefault'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (breakglassJustification != null)
-      'breakglassJustification': breakglassJustification!,
-    if (policy != null) 'policy': policy!,
-    if (useDefault != null) 'useDefault': useDefault!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final breakglassJustification = this.breakglassJustification;
+    final policy = this.policy;
+    final useDefault = this.useDefault;
+    return {
+      'breakglassJustification': ?breakglassJustification,
+      'policy': ?policy,
+      'useDefault': ?useDefault,
+    };
+  }
 }
 
 /// Describes the Build step of the function that builds a container from the
@@ -3014,9 +3024,10 @@ class GoogleCloudRunV2BuildConfig {
     : this(
         baseImage: json_['baseImage'] as core.String?,
         enableAutomaticUpdates: json_['enableAutomaticUpdates'] as core.bool?,
-        environmentVariables: (json_['environmentVariables']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        environmentVariables:
+            (json_['environmentVariables']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         functionTarget: json_['functionTarget'] as core.String?,
         imageUri: json_['imageUri'] as core.String?,
         name: json_['name'] as core.String?,
@@ -3025,19 +3036,28 @@ class GoogleCloudRunV2BuildConfig {
         workerPool: json_['workerPool'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baseImage != null) 'baseImage': baseImage!,
-    if (enableAutomaticUpdates != null)
-      'enableAutomaticUpdates': enableAutomaticUpdates!,
-    if (environmentVariables != null)
-      'environmentVariables': environmentVariables!,
-    if (functionTarget != null) 'functionTarget': functionTarget!,
-    if (imageUri != null) 'imageUri': imageUri!,
-    if (name != null) 'name': name!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (sourceLocation != null) 'sourceLocation': sourceLocation!,
-    if (workerPool != null) 'workerPool': workerPool!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final baseImage = this.baseImage;
+    final enableAutomaticUpdates = this.enableAutomaticUpdates;
+    final environmentVariables = this.environmentVariables;
+    final functionTarget = this.functionTarget;
+    final imageUri = this.imageUri;
+    final name = this.name;
+    final serviceAccount = this.serviceAccount;
+    final sourceLocation = this.sourceLocation;
+    final workerPool = this.workerPool;
+    return {
+      'baseImage': ?baseImage,
+      'enableAutomaticUpdates': ?enableAutomaticUpdates,
+      'environmentVariables': ?environmentVariables,
+      'functionTarget': ?functionTarget,
+      'imageUri': ?imageUri,
+      'name': ?name,
+      'serviceAccount': ?serviceAccount,
+      'sourceLocation': ?sourceLocation,
+      'workerPool': ?workerPool,
+    };
+  }
 }
 
 /// Build information of the image.
@@ -3060,10 +3080,14 @@ class GoogleCloudRunV2BuildInfo {
         sourceLocation: json_['sourceLocation'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (functionTarget != null) 'functionTarget': functionTarget!,
-    if (sourceLocation != null) 'sourceLocation': sourceLocation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final functionTarget = this.functionTarget;
+    final sourceLocation = this.sourceLocation;
+    return {
+      'functionTarget': ?functionTarget,
+      'sourceLocation': ?sourceLocation,
+    };
+  }
 }
 
 /// Build the source using Buildpacks.
@@ -3135,25 +3159,33 @@ class GoogleCloudRunV2BuildpacksBuild {
         baseImage: json_['baseImage'] as core.String?,
         cacheImageUri: json_['cacheImageUri'] as core.String?,
         enableAutomaticUpdates: json_['enableAutomaticUpdates'] as core.bool?,
-        environmentVariables: (json_['environmentVariables']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        environmentVariables:
+            (json_['environmentVariables']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         functionTarget: json_['functionTarget'] as core.String?,
         projectDescriptor: json_['projectDescriptor'] as core.String?,
         runtime: json_['runtime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baseImage != null) 'baseImage': baseImage!,
-    if (cacheImageUri != null) 'cacheImageUri': cacheImageUri!,
-    if (enableAutomaticUpdates != null)
-      'enableAutomaticUpdates': enableAutomaticUpdates!,
-    if (environmentVariables != null)
-      'environmentVariables': environmentVariables!,
-    if (functionTarget != null) 'functionTarget': functionTarget!,
-    if (projectDescriptor != null) 'projectDescriptor': projectDescriptor!,
-    if (runtime != null) 'runtime': runtime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final baseImage = this.baseImage;
+    final cacheImageUri = this.cacheImageUri;
+    final enableAutomaticUpdates = this.enableAutomaticUpdates;
+    final environmentVariables = this.environmentVariables;
+    final functionTarget = this.functionTarget;
+    final projectDescriptor = this.projectDescriptor;
+    final runtime = this.runtime;
+    return {
+      'baseImage': ?baseImage,
+      'cacheImageUri': ?cacheImageUri,
+      'enableAutomaticUpdates': ?enableAutomaticUpdates,
+      'environmentVariables': ?environmentVariables,
+      'functionTarget': ?functionTarget,
+      'projectDescriptor': ?projectDescriptor,
+      'runtime': ?runtime,
+    };
+  }
 }
 
 /// Request message for deleting an Execution.
@@ -3175,10 +3207,11 @@ class GoogleCloudRunV2CancelExecutionRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final validateOnly = this.validateOnly;
+    return {'etag': ?etag, 'validateOnly': ?validateOnly};
+  }
 }
 
 /// Represents a set of Cloud SQL instances.
@@ -3199,15 +3232,15 @@ class GoogleCloudRunV2CloudSqlInstance {
 
   GoogleCloudRunV2CloudSqlInstance.fromJson(core.Map json_)
     : this(
-        instances:
-            (json_['instances'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        instances: (json_['instances'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instances != null) 'instances': instances!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instances = this.instances;
+    return {'instances': ?instances};
+  }
 }
 
 /// Cloud Storage source.
@@ -3240,11 +3273,12 @@ class GoogleCloudRunV2CloudStorageSource {
         object: json_['object'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-    if (generation != null) 'generation': generation!,
-    if (object != null) 'object': object!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final generation = this.generation;
+    final object = this.object;
+    return {'bucket': ?bucket, 'generation': ?generation, 'object': ?object};
+  }
 }
 
 /// Defines a status condition for a resource.
@@ -3381,16 +3415,26 @@ class GoogleCloudRunV2Condition {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionReason != null) 'executionReason': executionReason!,
-    if (lastTransitionTime != null) 'lastTransitionTime': lastTransitionTime!,
-    if (message != null) 'message': message!,
-    if (reason != null) 'reason': reason!,
-    if (revisionReason != null) 'revisionReason': revisionReason!,
-    if (severity != null) 'severity': severity!,
-    if (state != null) 'state': state!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionReason = this.executionReason;
+    final lastTransitionTime = this.lastTransitionTime;
+    final message = this.message;
+    final reason = this.reason;
+    final revisionReason = this.revisionReason;
+    final severity = this.severity;
+    final state = this.state;
+    final type = this.type;
+    return {
+      'executionReason': ?executionReason,
+      'lastTransitionTime': ?lastTransitionTime,
+      'message': ?message,
+      'reason': ?reason,
+      'revisionReason': ?revisionReason,
+      'severity': ?severity,
+      'state': ?state,
+      'type': ?type,
+    };
+  }
 }
 
 /// A single application container.
@@ -3499,103 +3543,108 @@ class GoogleCloudRunV2Container {
 
   GoogleCloudRunV2Container.fromJson(core.Map json_)
     : this(
-        args:
-            (json_['args'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        args: (json_['args'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         baseImageUri: json_['baseImageUri'] as core.String?,
-        buildInfo:
-            json_.containsKey('buildInfo')
-                ? GoogleCloudRunV2BuildInfo.fromJson(
-                  json_['buildInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        command:
-            (json_['command'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        dependsOn:
-            (json_['dependsOn'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        env:
-            (json_['env'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2EnvVar.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        buildInfo: json_.containsKey('buildInfo')
+            ? GoogleCloudRunV2BuildInfo.fromJson(
+                json_['buildInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        command: (json_['command'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        dependsOn: (json_['dependsOn'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        env: (json_['env'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2EnvVar.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         image: json_['image'] as core.String?,
-        livenessProbe:
-            json_.containsKey('livenessProbe')
-                ? GoogleCloudRunV2Probe.fromJson(
-                  json_['livenessProbe'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        livenessProbe: json_.containsKey('livenessProbe')
+            ? GoogleCloudRunV2Probe.fromJson(
+                json_['livenessProbe'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        ports:
-            (json_['ports'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2ContainerPort.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        readinessProbe:
-            json_.containsKey('readinessProbe')
-                ? GoogleCloudRunV2Probe.fromJson(
-                  json_['readinessProbe']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resources:
-            json_.containsKey('resources')
-                ? GoogleCloudRunV2ResourceRequirements.fromJson(
-                  json_['resources'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        sourceCode:
-            json_.containsKey('sourceCode')
-                ? GoogleCloudRunV2SourceCode.fromJson(
-                  json_['sourceCode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        startupProbe:
-            json_.containsKey('startupProbe')
-                ? GoogleCloudRunV2Probe.fromJson(
-                  json_['startupProbe'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        volumeMounts:
-            (json_['volumeMounts'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2VolumeMount.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ports: (json_['ports'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2ContainerPort.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        readinessProbe: json_.containsKey('readinessProbe')
+            ? GoogleCloudRunV2Probe.fromJson(
+                json_['readinessProbe'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resources: json_.containsKey('resources')
+            ? GoogleCloudRunV2ResourceRequirements.fromJson(
+                json_['resources'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sourceCode: json_.containsKey('sourceCode')
+            ? GoogleCloudRunV2SourceCode.fromJson(
+                json_['sourceCode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startupProbe: json_.containsKey('startupProbe')
+            ? GoogleCloudRunV2Probe.fromJson(
+                json_['startupProbe'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        volumeMounts: (json_['volumeMounts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2VolumeMount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         workingDir: json_['workingDir'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (args != null) 'args': args!,
-    if (baseImageUri != null) 'baseImageUri': baseImageUri!,
-    if (buildInfo != null) 'buildInfo': buildInfo!,
-    if (command != null) 'command': command!,
-    if (dependsOn != null) 'dependsOn': dependsOn!,
-    if (env != null) 'env': env!,
-    if (image != null) 'image': image!,
-    if (livenessProbe != null) 'livenessProbe': livenessProbe!,
-    if (name != null) 'name': name!,
-    if (ports != null) 'ports': ports!,
-    if (readinessProbe != null) 'readinessProbe': readinessProbe!,
-    if (resources != null) 'resources': resources!,
-    if (sourceCode != null) 'sourceCode': sourceCode!,
-    if (startupProbe != null) 'startupProbe': startupProbe!,
-    if (volumeMounts != null) 'volumeMounts': volumeMounts!,
-    if (workingDir != null) 'workingDir': workingDir!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final args = this.args;
+    final baseImageUri = this.baseImageUri;
+    final buildInfo = this.buildInfo;
+    final command = this.command;
+    final dependsOn = this.dependsOn;
+    final env = this.env;
+    final image = this.image;
+    final livenessProbe = this.livenessProbe;
+    final name = this.name;
+    final ports = this.ports;
+    final readinessProbe = this.readinessProbe;
+    final resources = this.resources;
+    final sourceCode = this.sourceCode;
+    final startupProbe = this.startupProbe;
+    final volumeMounts = this.volumeMounts;
+    final workingDir = this.workingDir;
+    return {
+      'args': ?args,
+      'baseImageUri': ?baseImageUri,
+      'buildInfo': ?buildInfo,
+      'command': ?command,
+      'dependsOn': ?dependsOn,
+      'env': ?env,
+      'image': ?image,
+      'livenessProbe': ?livenessProbe,
+      'name': ?name,
+      'ports': ?ports,
+      'readinessProbe': ?readinessProbe,
+      'resources': ?resources,
+      'sourceCode': ?sourceCode,
+      'startupProbe': ?startupProbe,
+      'volumeMounts': ?volumeMounts,
+      'workingDir': ?workingDir,
+    };
+  }
 }
 
 /// Per-container override specification.
@@ -3629,28 +3678,27 @@ class GoogleCloudRunV2ContainerOverride {
 
   GoogleCloudRunV2ContainerOverride.fromJson(core.Map json_)
     : this(
-        args:
-            (json_['args'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        args: (json_['args'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         clearArgs: json_['clearArgs'] as core.bool?,
-        env:
-            (json_['env'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2EnvVar.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        env: (json_['env'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2EnvVar.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (args != null) 'args': args!,
-    if (clearArgs != null) 'clearArgs': clearArgs!,
-    if (env != null) 'env': env!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final args = this.args;
+    final clearArgs = this.clearArgs;
+    final env = this.env;
+    final name = this.name;
+    return {'args': ?args, 'clearArgs': ?clearArgs, 'env': ?env, 'name': ?name};
+  }
 }
 
 /// ContainerPort represents a network port in a single container.
@@ -3673,10 +3721,11 @@ class GoogleCloudRunV2ContainerPort {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (containerPort != null) 'containerPort': containerPort!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final containerPort = this.containerPort;
+    final name = this.name;
+    return {'containerPort': ?containerPort, 'name': ?name};
+  }
 }
 
 /// ContainerStatus holds the information of container name and image digest
@@ -3700,10 +3749,11 @@ class GoogleCloudRunV2ContainerStatus {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageDigest != null) 'imageDigest': imageDigest!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageDigest = this.imageDigest;
+    final name = this.name;
+    return {'imageDigest': ?imageDigest, 'name': ?name};
+  }
 }
 
 /// Build the source using Docker.
@@ -3745,10 +3795,11 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
         sizeLimit: json_['sizeLimit'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (medium != null) 'medium': medium!,
-    if (sizeLimit != null) 'sizeLimit': sizeLimit!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final medium = this.medium;
+    final sizeLimit = this.sizeLimit;
+    return {'medium': ?medium, 'sizeLimit': ?sizeLimit};
+  }
 }
 
 /// EnvVar represents an environment variable present in a Container.
@@ -3775,19 +3826,19 @@ class GoogleCloudRunV2EnvVar {
     : this(
         name: json_['name'] as core.String?,
         value: json_['value'] as core.String?,
-        valueSource:
-            json_.containsKey('valueSource')
-                ? GoogleCloudRunV2EnvVarSource.fromJson(
-                  json_['valueSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        valueSource: json_.containsKey('valueSource')
+            ? GoogleCloudRunV2EnvVarSource.fromJson(
+                json_['valueSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (value != null) 'value': value!,
-    if (valueSource != null) 'valueSource': valueSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    final valueSource = this.valueSource;
+    return {'name': ?name, 'value': ?value, 'valueSource': ?valueSource};
+  }
 }
 
 /// EnvVarSource represents a source for the value of an EnvVar.
@@ -3799,17 +3850,17 @@ class GoogleCloudRunV2EnvVarSource {
 
   GoogleCloudRunV2EnvVarSource.fromJson(core.Map json_)
     : this(
-        secretKeyRef:
-            json_.containsKey('secretKeyRef')
-                ? GoogleCloudRunV2SecretKeySelector.fromJson(
-                  json_['secretKeyRef'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        secretKeyRef: json_.containsKey('secretKeyRef')
+            ? GoogleCloudRunV2SecretKeySelector.fromJson(
+                json_['secretKeyRef'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (secretKeyRef != null) 'secretKeyRef': secretKeyRef!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final secretKeyRef = this.secretKeyRef;
+    return {'secretKeyRef': ?secretKeyRef};
+  }
 }
 
 /// Execution represents the configuration of a single execution.
@@ -4086,21 +4137,21 @@ class GoogleCloudRunV2Execution {
 
   GoogleCloudRunV2Execution.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         cancelledCount: json_['cancelledCount'] as core.int?,
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
         completionTime: json_['completionTime'] as core.String?,
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Condition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Condition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         creator: json_['creator'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
@@ -4124,48 +4175,79 @@ class GoogleCloudRunV2Execution {
         startTime: json_['startTime'] as core.String?,
         succeededCount: json_['succeededCount'] as core.int?,
         taskCount: json_['taskCount'] as core.int?,
-        template:
-            json_.containsKey('template')
-                ? GoogleCloudRunV2TaskTemplate.fromJson(
-                  json_['template'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        template: json_.containsKey('template')
+            ? GoogleCloudRunV2TaskTemplate.fromJson(
+                json_['template'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (cancelledCount != null) 'cancelledCount': cancelledCount!,
-    if (client != null) 'client': client!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (conditions != null) 'conditions': conditions!,
-    if (createTime != null) 'createTime': createTime!,
-    if (creator != null) 'creator': creator!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (etag != null) 'etag': etag!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (failedCount != null) 'failedCount': failedCount!,
-    if (generation != null) 'generation': generation!,
-    if (job != null) 'job': job!,
-    if (labels != null) 'labels': labels!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (logUri != null) 'logUri': logUri!,
-    if (name != null) 'name': name!,
-    if (observedGeneration != null) 'observedGeneration': observedGeneration!,
-    if (parallelism != null) 'parallelism': parallelism!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (retriedCount != null) 'retriedCount': retriedCount!,
-    if (runningCount != null) 'runningCount': runningCount!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (startTime != null) 'startTime': startTime!,
-    if (succeededCount != null) 'succeededCount': succeededCount!,
-    if (taskCount != null) 'taskCount': taskCount!,
-    if (template != null) 'template': template!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final cancelledCount = this.cancelledCount;
+    final client = this.client;
+    final clientVersion = this.clientVersion;
+    final completionTime = this.completionTime;
+    final conditions = this.conditions;
+    final createTime = this.createTime;
+    final creator = this.creator;
+    final deleteTime = this.deleteTime;
+    final etag = this.etag;
+    final expireTime = this.expireTime;
+    final failedCount = this.failedCount;
+    final generation = this.generation;
+    final job = this.job;
+    final labels = this.labels;
+    final launchStage = this.launchStage;
+    final logUri = this.logUri;
+    final name = this.name;
+    final observedGeneration = this.observedGeneration;
+    final parallelism = this.parallelism;
+    final reconciling = this.reconciling;
+    final retriedCount = this.retriedCount;
+    final runningCount = this.runningCount;
+    final satisfiesPzs = this.satisfiesPzs;
+    final startTime = this.startTime;
+    final succeededCount = this.succeededCount;
+    final taskCount = this.taskCount;
+    final template = this.template;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'cancelledCount': ?cancelledCount,
+      'client': ?client,
+      'clientVersion': ?clientVersion,
+      'completionTime': ?completionTime,
+      'conditions': ?conditions,
+      'createTime': ?createTime,
+      'creator': ?creator,
+      'deleteTime': ?deleteTime,
+      'etag': ?etag,
+      'expireTime': ?expireTime,
+      'failedCount': ?failedCount,
+      'generation': ?generation,
+      'job': ?job,
+      'labels': ?labels,
+      'launchStage': ?launchStage,
+      'logUri': ?logUri,
+      'name': ?name,
+      'observedGeneration': ?observedGeneration,
+      'parallelism': ?parallelism,
+      'reconciling': ?reconciling,
+      'retriedCount': ?retriedCount,
+      'runningCount': ?runningCount,
+      'satisfiesPzs': ?satisfiesPzs,
+      'startTime': ?startTime,
+      'succeededCount': ?succeededCount,
+      'taskCount': ?taskCount,
+      'template': ?template,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Reference to an Execution.
@@ -4215,13 +4297,20 @@ class GoogleCloudRunV2ExecutionReference {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionStatus != null) 'completionStatus': completionStatus!,
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final completionStatus = this.completionStatus;
+    final completionTime = this.completionTime;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final name = this.name;
+    return {
+      'completionStatus': ?completionStatus,
+      'completionTime': ?completionTime,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'name': ?name,
+    };
+  }
 }
 
 /// ExecutionTemplate describes the data an execution should have when created
@@ -4298,9 +4387,10 @@ class GoogleCloudRunV2ExecutionTemplate {
 
   GoogleCloudRunV2ExecutionTemplate.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -4308,23 +4398,31 @@ class GoogleCloudRunV2ExecutionTemplate {
         ),
         parallelism: json_['parallelism'] as core.int?,
         taskCount: json_['taskCount'] as core.int?,
-        template:
-            json_.containsKey('template')
-                ? GoogleCloudRunV2TaskTemplate.fromJson(
-                  json_['template'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        template: json_.containsKey('template')
+            ? GoogleCloudRunV2TaskTemplate.fromJson(
+                json_['template'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (client != null) 'client': client!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-    if (labels != null) 'labels': labels!,
-    if (parallelism != null) 'parallelism': parallelism!,
-    if (taskCount != null) 'taskCount': taskCount!,
-    if (template != null) 'template': template!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final client = this.client;
+    final clientVersion = this.clientVersion;
+    final labels = this.labels;
+    final parallelism = this.parallelism;
+    final taskCount = this.taskCount;
+    final template = this.template;
+    return {
+      'annotations': ?annotations,
+      'client': ?client,
+      'clientVersion': ?clientVersion,
+      'labels': ?labels,
+      'parallelism': ?parallelism,
+      'taskCount': ?taskCount,
+      'template': ?template,
+    };
+  }
 }
 
 /// Request message for exporting Cloud Run image.
@@ -4339,9 +4437,10 @@ class GoogleCloudRunV2ExportImageRequest {
   GoogleCloudRunV2ExportImageRequest.fromJson(core.Map json_)
     : this(destinationRepo: json_['destinationRepo'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinationRepo != null) 'destinationRepo': destinationRepo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationRepo = this.destinationRepo;
+    return {'destinationRepo': ?destinationRepo};
+  }
 }
 
 /// ExportImageResponse contains an operation Id to track the image export
@@ -4356,9 +4455,10 @@ class GoogleCloudRunV2ExportImageResponse {
   GoogleCloudRunV2ExportImageResponse.fromJson(core.Map json_)
     : this(operationId: json_['operationId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (operationId != null) 'operationId': operationId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final operationId = this.operationId;
+    return {'operationId': ?operationId};
+  }
 }
 
 /// ExportStatusResponse contains the status of image export operation, with the
@@ -4387,24 +4487,27 @@ class GoogleCloudRunV2ExportStatusResponse {
 
   GoogleCloudRunV2ExportStatusResponse.fromJson(core.Map json_)
     : this(
-        imageExportStatuses:
-            (json_['imageExportStatuses'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2ImageExportStatus.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        imageExportStatuses: (json_['imageExportStatuses'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2ImageExportStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         operationId: json_['operationId'] as core.String?,
         operationState: json_['operationState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageExportStatuses != null)
-      'imageExportStatuses': imageExportStatuses!,
-    if (operationId != null) 'operationId': operationId!,
-    if (operationState != null) 'operationState': operationState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageExportStatuses = this.imageExportStatuses;
+    final operationId = this.operationId;
+    final operationState = this.operationState;
+    return {
+      'imageExportStatuses': ?imageExportStatuses,
+      'operationId': ?operationId,
+      'operationState': ?operationState,
+    };
+  }
 }
 
 /// Represents a volume backed by a Cloud Storage bucket using Cloud Storage
@@ -4430,18 +4533,22 @@ class GoogleCloudRunV2GCSVolumeSource {
   GoogleCloudRunV2GCSVolumeSource.fromJson(core.Map json_)
     : this(
         bucket: json_['bucket'] as core.String?,
-        mountOptions:
-            (json_['mountOptions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        mountOptions: (json_['mountOptions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         readOnly: json_['readOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-    if (mountOptions != null) 'mountOptions': mountOptions!,
-    if (readOnly != null) 'readOnly': readOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final mountOptions = this.mountOptions;
+    final readOnly = this.readOnly;
+    return {
+      'bucket': ?bucket,
+      'mountOptions': ?mountOptions,
+      'readOnly': ?readOnly,
+    };
+  }
 }
 
 /// GRPCAction describes an action involving a GRPC port.
@@ -4471,10 +4578,11 @@ class GoogleCloudRunV2GRPCAction {
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (port != null) 'port': port!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final port = this.port;
+    final service = this.service;
+    return {'port': ?port, 'service': ?service};
+  }
 }
 
 /// HTTPGetAction describes an action based on HTTP Get requests.
@@ -4506,23 +4614,23 @@ class GoogleCloudRunV2HTTPGetAction {
 
   GoogleCloudRunV2HTTPGetAction.fromJson(core.Map json_)
     : this(
-        httpHeaders:
-            (json_['httpHeaders'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2HTTPHeader.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        httpHeaders: (json_['httpHeaders'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2HTTPHeader.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         path: json_['path'] as core.String?,
         port: json_['port'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (httpHeaders != null) 'httpHeaders': httpHeaders!,
-    if (path != null) 'path': path!,
-    if (port != null) 'port': port!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final httpHeaders = this.httpHeaders;
+    final path = this.path;
+    final port = this.port;
+    return {'httpHeaders': ?httpHeaders, 'path': ?path, 'port': ?port};
+  }
 }
 
 /// HTTPHeader describes a custom header to be used in HTTP probes
@@ -4545,10 +4653,11 @@ class GoogleCloudRunV2HTTPHeader {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    return {'name': ?name, 'value': ?value};
+  }
 }
 
 /// The status of an image export job.
@@ -4582,22 +4691,26 @@ class GoogleCloudRunV2ImageExportStatus {
     : this(
         exportJobState: json_['exportJobState'] as core.String?,
         exportedImageDigest: json_['exportedImageDigest'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? UtilStatusProto.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? UtilStatusProto.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tag: json_['tag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exportJobState != null) 'exportJobState': exportJobState!,
-    if (exportedImageDigest != null)
-      'exportedImageDigest': exportedImageDigest!,
-    if (status != null) 'status': status!,
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final exportJobState = this.exportJobState;
+    final exportedImageDigest = this.exportedImageDigest;
+    final status = this.status;
+    final tag = this.tag;
+    return {
+      'exportJobState': ?exportJobState,
+      'exportedImageDigest': ?exportedImageDigest,
+      'status': ?status,
+      'tag': ?tag,
+    };
+  }
 }
 
 /// A Cloud Run Instance represents a single group of containers running in a
@@ -4911,42 +5024,39 @@ class GoogleCloudRunV2Instance {
 
   GoogleCloudRunV2Instance.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        binaryAuthorization:
-            json_.containsKey('binaryAuthorization')
-                ? GoogleCloudRunV2BinaryAuthorization.fromJson(
-                  json_['binaryAuthorization']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        binaryAuthorization: json_.containsKey('binaryAuthorization')
+            ? GoogleCloudRunV2BinaryAuthorization.fromJson(
+                json_['binaryAuthorization']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Condition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        containerStatuses:
-            (json_['containerStatuses'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2ContainerStatus.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        containers:
-            (json_['containers'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Container.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Condition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        containerStatuses: (json_['containerStatuses'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2ContainerStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        containers: (json_['containers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Container.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         creator: json_['creator'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
@@ -4971,88 +5081,118 @@ class GoogleCloudRunV2Instance {
         launchStage: json_['launchStage'] as core.String?,
         logUri: json_['logUri'] as core.String?,
         name: json_['name'] as core.String?,
-        nodeSelector:
-            json_.containsKey('nodeSelector')
-                ? GoogleCloudRunV2NodeSelector.fromJson(
-                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodeSelector: json_.containsKey('nodeSelector')
+            ? GoogleCloudRunV2NodeSelector.fromJson(
+                json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         observedGeneration: json_['observedGeneration'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         serviceAccount: json_['serviceAccount'] as core.String?,
-        terminalCondition:
-            json_.containsKey('terminalCondition')
-                ? GoogleCloudRunV2Condition.fromJson(
-                  json_['terminalCondition']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        terminalCondition: json_.containsKey('terminalCondition')
+            ? GoogleCloudRunV2Condition.fromJson(
+                json_['terminalCondition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        urls:
-            (json_['urls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        volumes:
-            (json_['volumes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Volume.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        vpcAccess:
-            json_.containsKey('vpcAccess')
-                ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        urls: (json_['urls'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        volumes: (json_['volumes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Volume.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vpcAccess: json_.containsKey('vpcAccess')
+            ? GoogleCloudRunV2VpcAccess.fromJson(
+                json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (binaryAuthorization != null)
-      'binaryAuthorization': binaryAuthorization!,
-    if (client != null) 'client': client!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-    if (conditions != null) 'conditions': conditions!,
-    if (containerStatuses != null) 'containerStatuses': containerStatuses!,
-    if (containers != null) 'containers': containers!,
-    if (createTime != null) 'createTime': createTime!,
-    if (creator != null) 'creator': creator!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (description != null) 'description': description!,
-    if (encryptionKey != null) 'encryptionKey': encryptionKey!,
-    if (encryptionKeyRevocationAction != null)
-      'encryptionKeyRevocationAction': encryptionKeyRevocationAction!,
-    if (encryptionKeyShutdownDuration != null)
-      'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
-    if (etag != null) 'etag': etag!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (generation != null) 'generation': generation!,
-    if (gpuZonalRedundancyDisabled != null)
-      'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
-    if (iapEnabled != null) 'iapEnabled': iapEnabled!,
-    if (ingress != null) 'ingress': ingress!,
-    if (invokerIamDisabled != null) 'invokerIamDisabled': invokerIamDisabled!,
-    if (labels != null) 'labels': labels!,
-    if (lastModifier != null) 'lastModifier': lastModifier!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (logUri != null) 'logUri': logUri!,
-    if (name != null) 'name': name!,
-    if (nodeSelector != null) 'nodeSelector': nodeSelector!,
-    if (observedGeneration != null) 'observedGeneration': observedGeneration!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (terminalCondition != null) 'terminalCondition': terminalCondition!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (urls != null) 'urls': urls!,
-    if (volumes != null) 'volumes': volumes!,
-    if (vpcAccess != null) 'vpcAccess': vpcAccess!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final binaryAuthorization = this.binaryAuthorization;
+    final client = this.client;
+    final clientVersion = this.clientVersion;
+    final conditions = this.conditions;
+    final containerStatuses = this.containerStatuses;
+    final containers = this.containers;
+    final createTime = this.createTime;
+    final creator = this.creator;
+    final deleteTime = this.deleteTime;
+    final description = this.description;
+    final encryptionKey = this.encryptionKey;
+    final encryptionKeyRevocationAction = this.encryptionKeyRevocationAction;
+    final encryptionKeyShutdownDuration = this.encryptionKeyShutdownDuration;
+    final etag = this.etag;
+    final expireTime = this.expireTime;
+    final generation = this.generation;
+    final gpuZonalRedundancyDisabled = this.gpuZonalRedundancyDisabled;
+    final iapEnabled = this.iapEnabled;
+    final ingress = this.ingress;
+    final invokerIamDisabled = this.invokerIamDisabled;
+    final labels = this.labels;
+    final lastModifier = this.lastModifier;
+    final launchStage = this.launchStage;
+    final logUri = this.logUri;
+    final name = this.name;
+    final nodeSelector = this.nodeSelector;
+    final observedGeneration = this.observedGeneration;
+    final reconciling = this.reconciling;
+    final satisfiesPzs = this.satisfiesPzs;
+    final serviceAccount = this.serviceAccount;
+    final terminalCondition = this.terminalCondition;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final urls = this.urls;
+    final volumes = this.volumes;
+    final vpcAccess = this.vpcAccess;
+    return {
+      'annotations': ?annotations,
+      'binaryAuthorization': ?binaryAuthorization,
+      'client': ?client,
+      'clientVersion': ?clientVersion,
+      'conditions': ?conditions,
+      'containerStatuses': ?containerStatuses,
+      'containers': ?containers,
+      'createTime': ?createTime,
+      'creator': ?creator,
+      'deleteTime': ?deleteTime,
+      'description': ?description,
+      'encryptionKey': ?encryptionKey,
+      'encryptionKeyRevocationAction': ?encryptionKeyRevocationAction,
+      'encryptionKeyShutdownDuration': ?encryptionKeyShutdownDuration,
+      'etag': ?etag,
+      'expireTime': ?expireTime,
+      'generation': ?generation,
+      'gpuZonalRedundancyDisabled': ?gpuZonalRedundancyDisabled,
+      'iapEnabled': ?iapEnabled,
+      'ingress': ?ingress,
+      'invokerIamDisabled': ?invokerIamDisabled,
+      'labels': ?labels,
+      'lastModifier': ?lastModifier,
+      'launchStage': ?launchStage,
+      'logUri': ?logUri,
+      'name': ?name,
+      'nodeSelector': ?nodeSelector,
+      'observedGeneration': ?observedGeneration,
+      'reconciling': ?reconciling,
+      'satisfiesPzs': ?satisfiesPzs,
+      'serviceAccount': ?serviceAccount,
+      'terminalCondition': ?terminalCondition,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'urls': ?urls,
+      'volumes': ?volumes,
+      'vpcAccess': ?vpcAccess,
+    };
+  }
 }
 
 /// Holds a single instance split entry for the Worker.
@@ -5088,11 +5228,12 @@ class GoogleCloudRunV2InstanceSplit {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (percent != null) 'percent': percent!,
-    if (revision != null) 'revision': revision!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final percent = this.percent;
+    final revision = this.revision;
+    final type = this.type;
+    return {'percent': ?percent, 'revision': ?revision, 'type': ?type};
+  }
 }
 
 /// Represents the observed state of a single `InstanceSplit` entry.
@@ -5122,11 +5263,12 @@ class GoogleCloudRunV2InstanceSplitStatus {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (percent != null) 'percent': percent!,
-    if (revision != null) 'revision': revision!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final percent = this.percent;
+    final revision = this.revision;
+    final type = this.type;
+    return {'percent': ?percent, 'revision': ?revision, 'type': ?type};
+  }
 }
 
 /// Job represents the configuration of a single job, which references a
@@ -5377,26 +5519,25 @@ class GoogleCloudRunV2Job {
 
   GoogleCloudRunV2Job.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        binaryAuthorization:
-            json_.containsKey('binaryAuthorization')
-                ? GoogleCloudRunV2BinaryAuthorization.fromJson(
-                  json_['binaryAuthorization']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        binaryAuthorization: json_.containsKey('binaryAuthorization')
+            ? GoogleCloudRunV2BinaryAuthorization.fromJson(
+                json_['binaryAuthorization']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Condition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Condition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         creator: json_['creator'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
@@ -5408,13 +5549,12 @@ class GoogleCloudRunV2Job {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         lastModifier: json_['lastModifier'] as core.String?,
-        latestCreatedExecution:
-            json_.containsKey('latestCreatedExecution')
-                ? GoogleCloudRunV2ExecutionReference.fromJson(
-                  json_['latestCreatedExecution']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        latestCreatedExecution: json_.containsKey('latestCreatedExecution')
+            ? GoogleCloudRunV2ExecutionReference.fromJson(
+                json_['latestCreatedExecution']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         launchStage: json_['launchStage'] as core.String?,
         name: json_['name'] as core.String?,
         observedGeneration: json_['observedGeneration'] as core.String?,
@@ -5422,54 +5562,77 @@ class GoogleCloudRunV2Job {
         runExecutionToken: json_['runExecutionToken'] as core.String?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         startExecutionToken: json_['startExecutionToken'] as core.String?,
-        template:
-            json_.containsKey('template')
-                ? GoogleCloudRunV2ExecutionTemplate.fromJson(
-                  json_['template'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        terminalCondition:
-            json_.containsKey('terminalCondition')
-                ? GoogleCloudRunV2Condition.fromJson(
-                  json_['terminalCondition']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        template: json_.containsKey('template')
+            ? GoogleCloudRunV2ExecutionTemplate.fromJson(
+                json_['template'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        terminalCondition: json_.containsKey('terminalCondition')
+            ? GoogleCloudRunV2Condition.fromJson(
+                json_['terminalCondition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (binaryAuthorization != null)
-      'binaryAuthorization': binaryAuthorization!,
-    if (client != null) 'client': client!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-    if (conditions != null) 'conditions': conditions!,
-    if (createTime != null) 'createTime': createTime!,
-    if (creator != null) 'creator': creator!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (etag != null) 'etag': etag!,
-    if (executionCount != null) 'executionCount': executionCount!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (generation != null) 'generation': generation!,
-    if (labels != null) 'labels': labels!,
-    if (lastModifier != null) 'lastModifier': lastModifier!,
-    if (latestCreatedExecution != null)
-      'latestCreatedExecution': latestCreatedExecution!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (name != null) 'name': name!,
-    if (observedGeneration != null) 'observedGeneration': observedGeneration!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (runExecutionToken != null) 'runExecutionToken': runExecutionToken!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (startExecutionToken != null)
-      'startExecutionToken': startExecutionToken!,
-    if (template != null) 'template': template!,
-    if (terminalCondition != null) 'terminalCondition': terminalCondition!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final binaryAuthorization = this.binaryAuthorization;
+    final client = this.client;
+    final clientVersion = this.clientVersion;
+    final conditions = this.conditions;
+    final createTime = this.createTime;
+    final creator = this.creator;
+    final deleteTime = this.deleteTime;
+    final etag = this.etag;
+    final executionCount = this.executionCount;
+    final expireTime = this.expireTime;
+    final generation = this.generation;
+    final labels = this.labels;
+    final lastModifier = this.lastModifier;
+    final latestCreatedExecution = this.latestCreatedExecution;
+    final launchStage = this.launchStage;
+    final name = this.name;
+    final observedGeneration = this.observedGeneration;
+    final reconciling = this.reconciling;
+    final runExecutionToken = this.runExecutionToken;
+    final satisfiesPzs = this.satisfiesPzs;
+    final startExecutionToken = this.startExecutionToken;
+    final template = this.template;
+    final terminalCondition = this.terminalCondition;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'binaryAuthorization': ?binaryAuthorization,
+      'client': ?client,
+      'clientVersion': ?clientVersion,
+      'conditions': ?conditions,
+      'createTime': ?createTime,
+      'creator': ?creator,
+      'deleteTime': ?deleteTime,
+      'etag': ?etag,
+      'executionCount': ?executionCount,
+      'expireTime': ?expireTime,
+      'generation': ?generation,
+      'labels': ?labels,
+      'lastModifier': ?lastModifier,
+      'latestCreatedExecution': ?latestCreatedExecution,
+      'launchStage': ?launchStage,
+      'name': ?name,
+      'observedGeneration': ?observedGeneration,
+      'reconciling': ?reconciling,
+      'runExecutionToken': ?runExecutionToken,
+      'satisfiesPzs': ?satisfiesPzs,
+      'startExecutionToken': ?startExecutionToken,
+      'template': ?template,
+      'terminalCondition': ?terminalCondition,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Response message containing a list of Executions.
@@ -5486,21 +5649,21 @@ class GoogleCloudRunV2ListExecutionsResponse {
 
   GoogleCloudRunV2ListExecutionsResponse.fromJson(core.Map json_)
     : this(
-        executions:
-            (json_['executions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Execution.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        executions: (json_['executions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Execution.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executions != null) 'executions': executions!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final executions = this.executions;
+    final nextPageToken = this.nextPageToken;
+    return {'executions': ?executions, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message containing a list of Instances.
@@ -5517,21 +5680,21 @@ class GoogleCloudRunV2ListInstancesResponse {
 
   GoogleCloudRunV2ListInstancesResponse.fromJson(core.Map json_)
     : this(
-        instances:
-            (json_['instances'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Instance.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        instances: (json_['instances'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Instance.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instances != null) 'instances': instances!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instances = this.instances;
+    final nextPageToken = this.nextPageToken;
+    return {'instances': ?instances, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message containing a list of Jobs.
@@ -5548,21 +5711,21 @@ class GoogleCloudRunV2ListJobsResponse {
 
   GoogleCloudRunV2ListJobsResponse.fromJson(core.Map json_)
     : this(
-        jobs:
-            (json_['jobs'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Job.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        jobs: (json_['jobs'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Job.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobs != null) 'jobs': jobs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobs = this.jobs;
+    final nextPageToken = this.nextPageToken;
+    return {'jobs': ?jobs, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message containing a list of Revisions.
@@ -5580,20 +5743,20 @@ class GoogleCloudRunV2ListRevisionsResponse {
   GoogleCloudRunV2ListRevisionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        revisions:
-            (json_['revisions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Revision.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        revisions: (json_['revisions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Revision.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (revisions != null) 'revisions': revisions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final revisions = this.revisions;
+    return {'nextPageToken': ?nextPageToken, 'revisions': ?revisions};
+  }
 }
 
 /// Response message containing a list of Services.
@@ -5621,25 +5784,28 @@ class GoogleCloudRunV2ListServicesResponse {
   GoogleCloudRunV2ListServicesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        services:
-            (json_['services'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Service.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        services: (json_['services'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Service.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (services != null) 'services': services!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final services = this.services;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'services': ?services,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message containing a list of Tasks.
@@ -5657,20 +5823,20 @@ class GoogleCloudRunV2ListTasksResponse {
   GoogleCloudRunV2ListTasksResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tasks:
-            (json_['tasks'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Task.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tasks: (json_['tasks'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Task.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tasks != null) 'tasks': tasks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tasks = this.tasks;
+    return {'nextPageToken': ?nextPageToken, 'tasks': ?tasks};
+  }
 }
 
 /// Response message containing a list of WorkerPools.
@@ -5691,20 +5857,20 @@ class GoogleCloudRunV2ListWorkerPoolsResponse {
   GoogleCloudRunV2ListWorkerPoolsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        workerPools:
-            (json_['workerPools'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2WorkerPool.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        workerPools: (json_['workerPools'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2WorkerPool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (workerPools != null) 'workerPools': workerPools!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final workerPools = this.workerPools;
+    return {'nextPageToken': ?nextPageToken, 'workerPools': ?workerPools};
+  }
 }
 
 /// Metadata represents the JSON encoded generated customer metadata.
@@ -5718,9 +5884,10 @@ class GoogleCloudRunV2Metadata {
   GoogleCloudRunV2Metadata.fromJson(core.Map json_)
     : this(metadata: json_['metadata'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    return {'metadata': ?metadata};
+  }
 }
 
 /// Settings for multi-region deployment.
@@ -5740,16 +5907,16 @@ class GoogleCloudRunV2MultiRegionSettings {
   GoogleCloudRunV2MultiRegionSettings.fromJson(core.Map json_)
     : this(
         multiRegionId: json_['multiRegionId'] as core.String?,
-        regions:
-            (json_['regions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        regions: (json_['regions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (multiRegionId != null) 'multiRegionId': multiRegionId!,
-    if (regions != null) 'regions': regions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final multiRegionId = this.multiRegionId;
+    final regions = this.regions;
+    return {'multiRegionId': ?multiRegionId, 'regions': ?regions};
+  }
 }
 
 /// Represents an NFS mount.
@@ -5772,11 +5939,12 @@ class GoogleCloudRunV2NFSVolumeSource {
         server: json_['server'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (path != null) 'path': path!,
-    if (readOnly != null) 'readOnly': readOnly!,
-    if (server != null) 'server': server!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    final readOnly = this.readOnly;
+    final server = this.server;
+    return {'path': ?path, 'readOnly': ?readOnly, 'server': ?server};
+  }
 }
 
 /// Direct VPC egress settings.
@@ -5813,17 +5981,17 @@ class GoogleCloudRunV2NetworkInterface {
     : this(
         network: json_['network'] as core.String?,
         subnetwork: json_['subnetwork'] as core.String?,
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (network != null) 'network': network!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-    if (tags != null) 'tags': tags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final network = this.network;
+    final subnetwork = this.subnetwork;
+    final tags = this.tags;
+    return {'network': ?network, 'subnetwork': ?subnetwork, 'tags': ?tags};
+  }
 }
 
 /// Hardware constraints configuration.
@@ -5838,9 +6006,10 @@ class GoogleCloudRunV2NodeSelector {
   GoogleCloudRunV2NodeSelector.fromJson(core.Map json_)
     : this(accelerator: json_['accelerator'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accelerator != null) 'accelerator': accelerator!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accelerator = this.accelerator;
+    return {'accelerator': ?accelerator};
+  }
 }
 
 /// RunJob Overrides that contains Execution fields to be overridden.
@@ -5869,23 +6038,27 @@ class GoogleCloudRunV2Overrides {
 
   GoogleCloudRunV2Overrides.fromJson(core.Map json_)
     : this(
-        containerOverrides:
-            (json_['containerOverrides'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2ContainerOverride.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        containerOverrides: (json_['containerOverrides'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2ContainerOverride.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         taskCount: json_['taskCount'] as core.int?,
         timeout: json_['timeout'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (containerOverrides != null) 'containerOverrides': containerOverrides!,
-    if (taskCount != null) 'taskCount': taskCount!,
-    if (timeout != null) 'timeout': timeout!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final containerOverrides = this.containerOverrides;
+    final taskCount = this.taskCount;
+    final timeout = this.timeout;
+    return {
+      'containerOverrides': ?containerOverrides,
+      'taskCount': ?taskCount,
+      'timeout': ?timeout,
+    };
+  }
 }
 
 /// Probe describes a health check to be performed against a container to
@@ -5959,39 +6132,44 @@ class GoogleCloudRunV2Probe {
   GoogleCloudRunV2Probe.fromJson(core.Map json_)
     : this(
         failureThreshold: json_['failureThreshold'] as core.int?,
-        grpc:
-            json_.containsKey('grpc')
-                ? GoogleCloudRunV2GRPCAction.fromJson(
-                  json_['grpc'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        httpGet:
-            json_.containsKey('httpGet')
-                ? GoogleCloudRunV2HTTPGetAction.fromJson(
-                  json_['httpGet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        grpc: json_.containsKey('grpc')
+            ? GoogleCloudRunV2GRPCAction.fromJson(
+                json_['grpc'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        httpGet: json_.containsKey('httpGet')
+            ? GoogleCloudRunV2HTTPGetAction.fromJson(
+                json_['httpGet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         initialDelaySeconds: json_['initialDelaySeconds'] as core.int?,
         periodSeconds: json_['periodSeconds'] as core.int?,
-        tcpSocket:
-            json_.containsKey('tcpSocket')
-                ? GoogleCloudRunV2TCPSocketAction.fromJson(
-                  json_['tcpSocket'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        tcpSocket: json_.containsKey('tcpSocket')
+            ? GoogleCloudRunV2TCPSocketAction.fromJson(
+                json_['tcpSocket'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         timeoutSeconds: json_['timeoutSeconds'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (failureThreshold != null) 'failureThreshold': failureThreshold!,
-    if (grpc != null) 'grpc': grpc!,
-    if (httpGet != null) 'httpGet': httpGet!,
-    if (initialDelaySeconds != null)
-      'initialDelaySeconds': initialDelaySeconds!,
-    if (periodSeconds != null) 'periodSeconds': periodSeconds!,
-    if (tcpSocket != null) 'tcpSocket': tcpSocket!,
-    if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final failureThreshold = this.failureThreshold;
+    final grpc = this.grpc;
+    final httpGet = this.httpGet;
+    final initialDelaySeconds = this.initialDelaySeconds;
+    final periodSeconds = this.periodSeconds;
+    final tcpSocket = this.tcpSocket;
+    final timeoutSeconds = this.timeoutSeconds;
+    return {
+      'failureThreshold': ?failureThreshold,
+      'grpc': ?grpc,
+      'httpGet': ?httpGet,
+      'initialDelaySeconds': ?initialDelaySeconds,
+      'periodSeconds': ?periodSeconds,
+      'tcpSocket': ?tcpSocket,
+      'timeoutSeconds': ?timeoutSeconds,
+    };
+  }
 }
 
 /// ResourceRequirements describes the compute resource requirements.
@@ -6033,11 +6211,16 @@ class GoogleCloudRunV2ResourceRequirements {
         startupCpuBoost: json_['startupCpuBoost'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpuIdle != null) 'cpuIdle': cpuIdle!,
-    if (limits != null) 'limits': limits!,
-    if (startupCpuBoost != null) 'startupCpuBoost': startupCpuBoost!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpuIdle = this.cpuIdle;
+    final limits = this.limits;
+    final startupCpuBoost = this.startupCpuBoost;
+    return {
+      'cpuIdle': ?cpuIdle,
+      'limits': ?limits,
+      'startupCpuBoost': ?startupCpuBoost,
+    };
+  }
 }
 
 /// A Revision is an immutable snapshot of code and configuration.
@@ -6328,27 +6511,26 @@ class GoogleCloudRunV2Revision {
 
   GoogleCloudRunV2Revision.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Condition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        containers:
-            (json_['containers'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Container.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Condition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        containers: (json_['containers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Container.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         creator: json_['creator'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
@@ -6371,98 +6553,125 @@ class GoogleCloudRunV2Revision {
         maxInstanceRequestConcurrency:
             json_['maxInstanceRequestConcurrency'] as core.int?,
         name: json_['name'] as core.String?,
-        nodeSelector:
-            json_.containsKey('nodeSelector')
-                ? GoogleCloudRunV2NodeSelector.fromJson(
-                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodeSelector: json_.containsKey('nodeSelector')
+            ? GoogleCloudRunV2NodeSelector.fromJson(
+                json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         observedGeneration: json_['observedGeneration'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-        scaling:
-            json_.containsKey('scaling')
-                ? GoogleCloudRunV2RevisionScaling.fromJson(
-                  json_['scaling'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        scalingStatus:
-            json_.containsKey('scalingStatus')
-                ? GoogleCloudRunV2RevisionScalingStatus.fromJson(
-                  json_['scalingStatus'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        scaling: json_.containsKey('scaling')
+            ? GoogleCloudRunV2RevisionScaling.fromJson(
+                json_['scaling'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        scalingStatus: json_.containsKey('scalingStatus')
+            ? GoogleCloudRunV2RevisionScalingStatus.fromJson(
+                json_['scalingStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         service: json_['service'] as core.String?,
         serviceAccount: json_['serviceAccount'] as core.String?,
-        serviceMesh:
-            json_.containsKey('serviceMesh')
-                ? GoogleCloudRunV2ServiceMesh.fromJson(
-                  json_['serviceMesh'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serviceMesh: json_.containsKey('serviceMesh')
+            ? GoogleCloudRunV2ServiceMesh.fromJson(
+                json_['serviceMesh'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sessionAffinity: json_['sessionAffinity'] as core.bool?,
         timeout: json_['timeout'] as core.String?,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        volumes:
-            (json_['volumes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Volume.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        vpcAccess:
-            json_.containsKey('vpcAccess')
-                ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        volumes: (json_['volumes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Volume.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vpcAccess: json_.containsKey('vpcAccess')
+            ? GoogleCloudRunV2VpcAccess.fromJson(
+                json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (client != null) 'client': client!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-    if (conditions != null) 'conditions': conditions!,
-    if (containers != null) 'containers': containers!,
-    if (createTime != null) 'createTime': createTime!,
-    if (creator != null) 'creator': creator!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (encryptionKey != null) 'encryptionKey': encryptionKey!,
-    if (encryptionKeyRevocationAction != null)
-      'encryptionKeyRevocationAction': encryptionKeyRevocationAction!,
-    if (encryptionKeyShutdownDuration != null)
-      'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
-    if (etag != null) 'etag': etag!,
-    if (executionEnvironment != null)
-      'executionEnvironment': executionEnvironment!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (generation != null) 'generation': generation!,
-    if (gpuZonalRedundancyDisabled != null)
-      'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
-    if (labels != null) 'labels': labels!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (logUri != null) 'logUri': logUri!,
-    if (maxInstanceRequestConcurrency != null)
-      'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
-    if (name != null) 'name': name!,
-    if (nodeSelector != null) 'nodeSelector': nodeSelector!,
-    if (observedGeneration != null) 'observedGeneration': observedGeneration!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (scaling != null) 'scaling': scaling!,
-    if (scalingStatus != null) 'scalingStatus': scalingStatus!,
-    if (service != null) 'service': service!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (serviceMesh != null) 'serviceMesh': serviceMesh!,
-    if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
-    if (timeout != null) 'timeout': timeout!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (volumes != null) 'volumes': volumes!,
-    if (vpcAccess != null) 'vpcAccess': vpcAccess!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final client = this.client;
+    final clientVersion = this.clientVersion;
+    final conditions = this.conditions;
+    final containers = this.containers;
+    final createTime = this.createTime;
+    final creator = this.creator;
+    final deleteTime = this.deleteTime;
+    final encryptionKey = this.encryptionKey;
+    final encryptionKeyRevocationAction = this.encryptionKeyRevocationAction;
+    final encryptionKeyShutdownDuration = this.encryptionKeyShutdownDuration;
+    final etag = this.etag;
+    final executionEnvironment = this.executionEnvironment;
+    final expireTime = this.expireTime;
+    final generation = this.generation;
+    final gpuZonalRedundancyDisabled = this.gpuZonalRedundancyDisabled;
+    final labels = this.labels;
+    final launchStage = this.launchStage;
+    final logUri = this.logUri;
+    final maxInstanceRequestConcurrency = this.maxInstanceRequestConcurrency;
+    final name = this.name;
+    final nodeSelector = this.nodeSelector;
+    final observedGeneration = this.observedGeneration;
+    final reconciling = this.reconciling;
+    final satisfiesPzs = this.satisfiesPzs;
+    final scaling = this.scaling;
+    final scalingStatus = this.scalingStatus;
+    final service = this.service;
+    final serviceAccount = this.serviceAccount;
+    final serviceMesh = this.serviceMesh;
+    final sessionAffinity = this.sessionAffinity;
+    final timeout = this.timeout;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final volumes = this.volumes;
+    final vpcAccess = this.vpcAccess;
+    return {
+      'annotations': ?annotations,
+      'client': ?client,
+      'clientVersion': ?clientVersion,
+      'conditions': ?conditions,
+      'containers': ?containers,
+      'createTime': ?createTime,
+      'creator': ?creator,
+      'deleteTime': ?deleteTime,
+      'encryptionKey': ?encryptionKey,
+      'encryptionKeyRevocationAction': ?encryptionKeyRevocationAction,
+      'encryptionKeyShutdownDuration': ?encryptionKeyShutdownDuration,
+      'etag': ?etag,
+      'executionEnvironment': ?executionEnvironment,
+      'expireTime': ?expireTime,
+      'generation': ?generation,
+      'gpuZonalRedundancyDisabled': ?gpuZonalRedundancyDisabled,
+      'labels': ?labels,
+      'launchStage': ?launchStage,
+      'logUri': ?logUri,
+      'maxInstanceRequestConcurrency': ?maxInstanceRequestConcurrency,
+      'name': ?name,
+      'nodeSelector': ?nodeSelector,
+      'observedGeneration': ?observedGeneration,
+      'reconciling': ?reconciling,
+      'satisfiesPzs': ?satisfiesPzs,
+      'scaling': ?scaling,
+      'scalingStatus': ?scalingStatus,
+      'service': ?service,
+      'serviceAccount': ?serviceAccount,
+      'serviceMesh': ?serviceMesh,
+      'sessionAffinity': ?sessionAffinity,
+      'timeout': ?timeout,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'volumes': ?volumes,
+      'vpcAccess': ?vpcAccess,
+    };
+  }
 }
 
 /// Settings for revision-level scaling settings.
@@ -6492,10 +6701,14 @@ class GoogleCloudRunV2RevisionScaling {
         minInstanceCount: json_['minInstanceCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
-    if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxInstanceCount = this.maxInstanceCount;
+    final minInstanceCount = this.minInstanceCount;
+    return {
+      'maxInstanceCount': ?maxInstanceCount,
+      'minInstanceCount': ?minInstanceCount,
+    };
+  }
 }
 
 /// Effective settings for the current revision
@@ -6510,10 +6723,10 @@ class GoogleCloudRunV2RevisionScalingStatus {
         desiredMinInstanceCount: json_['desiredMinInstanceCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (desiredMinInstanceCount != null)
-      'desiredMinInstanceCount': desiredMinInstanceCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final desiredMinInstanceCount = this.desiredMinInstanceCount;
+    return {'desiredMinInstanceCount': ?desiredMinInstanceCount};
+  }
 }
 
 /// RevisionTemplate describes the data a revision should have when created from
@@ -6698,19 +6911,19 @@ class GoogleCloudRunV2RevisionTemplate {
 
   GoogleCloudRunV2RevisionTemplate.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
-        containers:
-            (json_['containers'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Container.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        containers: (json_['containers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Container.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         encryptionKey: json_['encryptionKey'] as core.String?,
         encryptionKeyRevocationAction:
             json_['encryptionKeyRevocationAction'] as core.String?,
@@ -6725,73 +6938,85 @@ class GoogleCloudRunV2RevisionTemplate {
         ),
         maxInstanceRequestConcurrency:
             json_['maxInstanceRequestConcurrency'] as core.int?,
-        nodeSelector:
-            json_.containsKey('nodeSelector')
-                ? GoogleCloudRunV2NodeSelector.fromJson(
-                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodeSelector: json_.containsKey('nodeSelector')
+            ? GoogleCloudRunV2NodeSelector.fromJson(
+                json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         revision: json_['revision'] as core.String?,
-        scaling:
-            json_.containsKey('scaling')
-                ? GoogleCloudRunV2RevisionScaling.fromJson(
-                  json_['scaling'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        scaling: json_.containsKey('scaling')
+            ? GoogleCloudRunV2RevisionScaling.fromJson(
+                json_['scaling'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAccount: json_['serviceAccount'] as core.String?,
-        serviceMesh:
-            json_.containsKey('serviceMesh')
-                ? GoogleCloudRunV2ServiceMesh.fromJson(
-                  json_['serviceMesh'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serviceMesh: json_.containsKey('serviceMesh')
+            ? GoogleCloudRunV2ServiceMesh.fromJson(
+                json_['serviceMesh'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sessionAffinity: json_['sessionAffinity'] as core.bool?,
         timeout: json_['timeout'] as core.String?,
-        volumes:
-            (json_['volumes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Volume.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        vpcAccess:
-            json_.containsKey('vpcAccess')
-                ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        volumes: (json_['volumes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Volume.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vpcAccess: json_.containsKey('vpcAccess')
+            ? GoogleCloudRunV2VpcAccess.fromJson(
+                json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (client != null) 'client': client!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-    if (containers != null) 'containers': containers!,
-    if (encryptionKey != null) 'encryptionKey': encryptionKey!,
-    if (encryptionKeyRevocationAction != null)
-      'encryptionKeyRevocationAction': encryptionKeyRevocationAction!,
-    if (encryptionKeyShutdownDuration != null)
-      'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
-    if (executionEnvironment != null)
-      'executionEnvironment': executionEnvironment!,
-    if (gpuZonalRedundancyDisabled != null)
-      'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
-    if (healthCheckDisabled != null)
-      'healthCheckDisabled': healthCheckDisabled!,
-    if (labels != null) 'labels': labels!,
-    if (maxInstanceRequestConcurrency != null)
-      'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
-    if (nodeSelector != null) 'nodeSelector': nodeSelector!,
-    if (revision != null) 'revision': revision!,
-    if (scaling != null) 'scaling': scaling!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (serviceMesh != null) 'serviceMesh': serviceMesh!,
-    if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
-    if (timeout != null) 'timeout': timeout!,
-    if (volumes != null) 'volumes': volumes!,
-    if (vpcAccess != null) 'vpcAccess': vpcAccess!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final client = this.client;
+    final clientVersion = this.clientVersion;
+    final containers = this.containers;
+    final encryptionKey = this.encryptionKey;
+    final encryptionKeyRevocationAction = this.encryptionKeyRevocationAction;
+    final encryptionKeyShutdownDuration = this.encryptionKeyShutdownDuration;
+    final executionEnvironment = this.executionEnvironment;
+    final gpuZonalRedundancyDisabled = this.gpuZonalRedundancyDisabled;
+    final healthCheckDisabled = this.healthCheckDisabled;
+    final labels = this.labels;
+    final maxInstanceRequestConcurrency = this.maxInstanceRequestConcurrency;
+    final nodeSelector = this.nodeSelector;
+    final revision = this.revision;
+    final scaling = this.scaling;
+    final serviceAccount = this.serviceAccount;
+    final serviceMesh = this.serviceMesh;
+    final sessionAffinity = this.sessionAffinity;
+    final timeout = this.timeout;
+    final volumes = this.volumes;
+    final vpcAccess = this.vpcAccess;
+    return {
+      'annotations': ?annotations,
+      'client': ?client,
+      'clientVersion': ?clientVersion,
+      'containers': ?containers,
+      'encryptionKey': ?encryptionKey,
+      'encryptionKeyRevocationAction': ?encryptionKeyRevocationAction,
+      'encryptionKeyShutdownDuration': ?encryptionKeyShutdownDuration,
+      'executionEnvironment': ?executionEnvironment,
+      'gpuZonalRedundancyDisabled': ?gpuZonalRedundancyDisabled,
+      'healthCheckDisabled': ?healthCheckDisabled,
+      'labels': ?labels,
+      'maxInstanceRequestConcurrency': ?maxInstanceRequestConcurrency,
+      'nodeSelector': ?nodeSelector,
+      'revision': ?revision,
+      'scaling': ?scaling,
+      'serviceAccount': ?serviceAccount,
+      'serviceMesh': ?serviceMesh,
+      'sessionAffinity': ?sessionAffinity,
+      'timeout': ?timeout,
+      'volumes': ?volumes,
+      'vpcAccess': ?vpcAccess,
+    };
+  }
 }
 
 /// Request message to create a new Execution of a Job.
@@ -6816,20 +7041,24 @@ class GoogleCloudRunV2RunJobRequest {
   GoogleCloudRunV2RunJobRequest.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        overrides:
-            json_.containsKey('overrides')
-                ? GoogleCloudRunV2Overrides.fromJson(
-                  json_['overrides'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        overrides: json_.containsKey('overrides')
+            ? GoogleCloudRunV2Overrides.fromJson(
+                json_['overrides'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (overrides != null) 'overrides': overrides!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final overrides = this.overrides;
+    final validateOnly = this.validateOnly;
+    return {
+      'etag': ?etag,
+      'overrides': ?overrides,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 /// SecretEnvVarSource represents a source for the value of an EnvVar.
@@ -6857,10 +7086,11 @@ class GoogleCloudRunV2SecretKeySelector {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (secret != null) 'secret': secret!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final secret = this.secret;
+    final version = this.version;
+    return {'secret': ?secret, 'version': ?version};
+  }
 }
 
 /// The secret's value will be presented as the content of a file whose name is
@@ -6909,22 +7139,22 @@ class GoogleCloudRunV2SecretVolumeSource {
   GoogleCloudRunV2SecretVolumeSource.fromJson(core.Map json_)
     : this(
         defaultMode: json_['defaultMode'] as core.int?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2VersionToPath.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2VersionToPath.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         secret: json_['secret'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultMode != null) 'defaultMode': defaultMode!,
-    if (items != null) 'items': items!,
-    if (secret != null) 'secret': secret!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultMode = this.defaultMode;
+    final items = this.items;
+    final secret = this.secret;
+    return {'defaultMode': ?defaultMode, 'items': ?items, 'secret': ?secret};
+  }
 }
 
 /// Service acts as a top-level container that manages a set of configurations
@@ -7300,38 +7530,35 @@ class GoogleCloudRunV2Service {
 
   GoogleCloudRunV2Service.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        binaryAuthorization:
-            json_.containsKey('binaryAuthorization')
-                ? GoogleCloudRunV2BinaryAuthorization.fromJson(
-                  json_['binaryAuthorization']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        buildConfig:
-            json_.containsKey('buildConfig')
-                ? GoogleCloudRunV2BuildConfig.fromJson(
-                  json_['buildConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        binaryAuthorization: json_.containsKey('binaryAuthorization')
+            ? GoogleCloudRunV2BinaryAuthorization.fromJson(
+                json_['binaryAuthorization']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        buildConfig: json_.containsKey('buildConfig')
+            ? GoogleCloudRunV2BuildConfig.fromJson(
+                json_['buildConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Condition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Condition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         creator: json_['creator'] as core.String?,
-        customAudiences:
-            (json_['customAudiences'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        customAudiences: (json_['customAudiences'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         defaultUriDisabled: json_['defaultUriDisabled'] as core.bool?,
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
@@ -7348,107 +7575,135 @@ class GoogleCloudRunV2Service {
         latestCreatedRevision: json_['latestCreatedRevision'] as core.String?,
         latestReadyRevision: json_['latestReadyRevision'] as core.String?,
         launchStage: json_['launchStage'] as core.String?,
-        multiRegionSettings:
-            json_.containsKey('multiRegionSettings')
-                ? GoogleCloudRunV2MultiRegionSettings.fromJson(
-                  json_['multiRegionSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        multiRegionSettings: json_.containsKey('multiRegionSettings')
+            ? GoogleCloudRunV2MultiRegionSettings.fromJson(
+                json_['multiRegionSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         observedGeneration: json_['observedGeneration'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-        scaling:
-            json_.containsKey('scaling')
-                ? GoogleCloudRunV2ServiceScaling.fromJson(
-                  json_['scaling'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        template:
-            json_.containsKey('template')
-                ? GoogleCloudRunV2RevisionTemplate.fromJson(
-                  json_['template'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        terminalCondition:
-            json_.containsKey('terminalCondition')
-                ? GoogleCloudRunV2Condition.fromJson(
-                  json_['terminalCondition']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        scaling: json_.containsKey('scaling')
+            ? GoogleCloudRunV2ServiceScaling.fromJson(
+                json_['scaling'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        template: json_.containsKey('template')
+            ? GoogleCloudRunV2RevisionTemplate.fromJson(
+                json_['template'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        terminalCondition: json_.containsKey('terminalCondition')
+            ? GoogleCloudRunV2Condition.fromJson(
+                json_['terminalCondition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         threatDetectionEnabled: json_['threatDetectionEnabled'] as core.bool?,
-        traffic:
-            (json_['traffic'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2TrafficTarget.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        trafficStatuses:
-            (json_['trafficStatuses'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2TrafficTargetStatus.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        traffic: (json_['traffic'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2TrafficTarget.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        trafficStatuses: (json_['trafficStatuses'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2TrafficTargetStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         uri: json_['uri'] as core.String?,
-        urls:
-            (json_['urls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        urls: (json_['urls'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (binaryAuthorization != null)
-      'binaryAuthorization': binaryAuthorization!,
-    if (buildConfig != null) 'buildConfig': buildConfig!,
-    if (client != null) 'client': client!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-    if (conditions != null) 'conditions': conditions!,
-    if (createTime != null) 'createTime': createTime!,
-    if (creator != null) 'creator': creator!,
-    if (customAudiences != null) 'customAudiences': customAudiences!,
-    if (defaultUriDisabled != null) 'defaultUriDisabled': defaultUriDisabled!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (generation != null) 'generation': generation!,
-    if (iapEnabled != null) 'iapEnabled': iapEnabled!,
-    if (ingress != null) 'ingress': ingress!,
-    if (invokerIamDisabled != null) 'invokerIamDisabled': invokerIamDisabled!,
-    if (labels != null) 'labels': labels!,
-    if (lastModifier != null) 'lastModifier': lastModifier!,
-    if (latestCreatedRevision != null)
-      'latestCreatedRevision': latestCreatedRevision!,
-    if (latestReadyRevision != null)
-      'latestReadyRevision': latestReadyRevision!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (multiRegionSettings != null)
-      'multiRegionSettings': multiRegionSettings!,
-    if (name != null) 'name': name!,
-    if (observedGeneration != null) 'observedGeneration': observedGeneration!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (scaling != null) 'scaling': scaling!,
-    if (template != null) 'template': template!,
-    if (terminalCondition != null) 'terminalCondition': terminalCondition!,
-    if (threatDetectionEnabled != null)
-      'threatDetectionEnabled': threatDetectionEnabled!,
-    if (traffic != null) 'traffic': traffic!,
-    if (trafficStatuses != null) 'trafficStatuses': trafficStatuses!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (uri != null) 'uri': uri!,
-    if (urls != null) 'urls': urls!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final binaryAuthorization = this.binaryAuthorization;
+    final buildConfig = this.buildConfig;
+    final client = this.client;
+    final clientVersion = this.clientVersion;
+    final conditions = this.conditions;
+    final createTime = this.createTime;
+    final creator = this.creator;
+    final customAudiences = this.customAudiences;
+    final defaultUriDisabled = this.defaultUriDisabled;
+    final deleteTime = this.deleteTime;
+    final description = this.description;
+    final etag = this.etag;
+    final expireTime = this.expireTime;
+    final generation = this.generation;
+    final iapEnabled = this.iapEnabled;
+    final ingress = this.ingress;
+    final invokerIamDisabled = this.invokerIamDisabled;
+    final labels = this.labels;
+    final lastModifier = this.lastModifier;
+    final latestCreatedRevision = this.latestCreatedRevision;
+    final latestReadyRevision = this.latestReadyRevision;
+    final launchStage = this.launchStage;
+    final multiRegionSettings = this.multiRegionSettings;
+    final name = this.name;
+    final observedGeneration = this.observedGeneration;
+    final reconciling = this.reconciling;
+    final satisfiesPzs = this.satisfiesPzs;
+    final scaling = this.scaling;
+    final template = this.template;
+    final terminalCondition = this.terminalCondition;
+    final threatDetectionEnabled = this.threatDetectionEnabled;
+    final traffic = this.traffic;
+    final trafficStatuses = this.trafficStatuses;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final uri = this.uri;
+    final urls = this.urls;
+    return {
+      'annotations': ?annotations,
+      'binaryAuthorization': ?binaryAuthorization,
+      'buildConfig': ?buildConfig,
+      'client': ?client,
+      'clientVersion': ?clientVersion,
+      'conditions': ?conditions,
+      'createTime': ?createTime,
+      'creator': ?creator,
+      'customAudiences': ?customAudiences,
+      'defaultUriDisabled': ?defaultUriDisabled,
+      'deleteTime': ?deleteTime,
+      'description': ?description,
+      'etag': ?etag,
+      'expireTime': ?expireTime,
+      'generation': ?generation,
+      'iapEnabled': ?iapEnabled,
+      'ingress': ?ingress,
+      'invokerIamDisabled': ?invokerIamDisabled,
+      'labels': ?labels,
+      'lastModifier': ?lastModifier,
+      'latestCreatedRevision': ?latestCreatedRevision,
+      'latestReadyRevision': ?latestReadyRevision,
+      'launchStage': ?launchStage,
+      'multiRegionSettings': ?multiRegionSettings,
+      'name': ?name,
+      'observedGeneration': ?observedGeneration,
+      'reconciling': ?reconciling,
+      'satisfiesPzs': ?satisfiesPzs,
+      'scaling': ?scaling,
+      'template': ?template,
+      'terminalCondition': ?terminalCondition,
+      'threatDetectionEnabled': ?threatDetectionEnabled,
+      'traffic': ?traffic,
+      'trafficStatuses': ?trafficStatuses,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'uri': ?uri,
+      'urls': ?urls,
+    };
+  }
 }
 
 /// Settings for Cloud Service Mesh.
@@ -7467,9 +7722,10 @@ class GoogleCloudRunV2ServiceMesh {
   GoogleCloudRunV2ServiceMesh.fromJson(core.Map json_)
     : this(mesh: json_['mesh'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mesh != null) 'mesh': mesh!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mesh = this.mesh;
+    return {'mesh': ?mesh};
+  }
 }
 
 /// Scaling settings applied at the service level rather than at the revision
@@ -7523,13 +7779,18 @@ class GoogleCloudRunV2ServiceScaling {
         scalingMode: json_['scalingMode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (manualInstanceCount != null)
-      'manualInstanceCount': manualInstanceCount!,
-    if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
-    if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
-    if (scalingMode != null) 'scalingMode': scalingMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final manualInstanceCount = this.manualInstanceCount;
+    final maxInstanceCount = this.maxInstanceCount;
+    final minInstanceCount = this.minInstanceCount;
+    final scalingMode = this.scalingMode;
+    return {
+      'manualInstanceCount': ?manualInstanceCount,
+      'maxInstanceCount': ?maxInstanceCount,
+      'minInstanceCount': ?minInstanceCount,
+      'scalingMode': ?scalingMode,
+    };
+  }
 }
 
 /// Source type for the container.
@@ -7541,18 +7802,18 @@ class GoogleCloudRunV2SourceCode {
 
   GoogleCloudRunV2SourceCode.fromJson(core.Map json_)
     : this(
-        cloudStorageSource:
-            json_.containsKey('cloudStorageSource')
-                ? GoogleCloudRunV2CloudStorageSource.fromJson(
-                  json_['cloudStorageSource']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cloudStorageSource: json_.containsKey('cloudStorageSource')
+            ? GoogleCloudRunV2CloudStorageSource.fromJson(
+                json_['cloudStorageSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudStorageSource != null) 'cloudStorageSource': cloudStorageSource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudStorageSource = this.cloudStorageSource;
+    return {'cloudStorageSource': ?cloudStorageSource};
+  }
 }
 
 /// Request message for starting an Instance.
@@ -7593,11 +7854,12 @@ class GoogleCloudRunV2StorageSource {
         object: json_['object'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-    if (generation != null) 'generation': generation!,
-    if (object != null) 'object': object!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final generation = this.generation;
+    final object = this.object;
+    return {'bucket': ?bucket, 'generation': ?generation, 'object': ?object};
+  }
 }
 
 /// Request message for submitting a Build.
@@ -7711,49 +7973,56 @@ class GoogleCloudRunV2SubmitBuildRequest {
 
   GoogleCloudRunV2SubmitBuildRequest.fromJson(core.Map json_)
     : this(
-        buildpackBuild:
-            json_.containsKey('buildpackBuild')
-                ? GoogleCloudRunV2BuildpacksBuild.fromJson(
-                  json_['buildpackBuild']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        buildpackBuild: json_.containsKey('buildpackBuild')
+            ? GoogleCloudRunV2BuildpacksBuild.fromJson(
+                json_['buildpackBuild'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         client: json_['client'] as core.String?,
-        dockerBuild:
-            json_.containsKey('dockerBuild')
-                ? GoogleCloudRunV2DockerBuild.fromJson(
-                  json_['dockerBuild'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dockerBuild: json_.containsKey('dockerBuild')
+            ? GoogleCloudRunV2DockerBuild.fromJson(
+                json_['dockerBuild'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         imageUri: json_['imageUri'] as core.String?,
         machineType: json_['machineType'] as core.String?,
         releaseTrack: json_['releaseTrack'] as core.String?,
         serviceAccount: json_['serviceAccount'] as core.String?,
-        storageSource:
-            json_.containsKey('storageSource')
-                ? GoogleCloudRunV2StorageSource.fromJson(
-                  json_['storageSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        storageSource: json_.containsKey('storageSource')
+            ? GoogleCloudRunV2StorageSource.fromJson(
+                json_['storageSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         workerPool: json_['workerPool'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buildpackBuild != null) 'buildpackBuild': buildpackBuild!,
-    if (client != null) 'client': client!,
-    if (dockerBuild != null) 'dockerBuild': dockerBuild!,
-    if (imageUri != null) 'imageUri': imageUri!,
-    if (machineType != null) 'machineType': machineType!,
-    if (releaseTrack != null) 'releaseTrack': releaseTrack!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (storageSource != null) 'storageSource': storageSource!,
-    if (tags != null) 'tags': tags!,
-    if (workerPool != null) 'workerPool': workerPool!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildpackBuild = this.buildpackBuild;
+    final client = this.client;
+    final dockerBuild = this.dockerBuild;
+    final imageUri = this.imageUri;
+    final machineType = this.machineType;
+    final releaseTrack = this.releaseTrack;
+    final serviceAccount = this.serviceAccount;
+    final storageSource = this.storageSource;
+    final tags = this.tags;
+    final workerPool = this.workerPool;
+    return {
+      'buildpackBuild': ?buildpackBuild,
+      'client': ?client,
+      'dockerBuild': ?dockerBuild,
+      'imageUri': ?imageUri,
+      'machineType': ?machineType,
+      'releaseTrack': ?releaseTrack,
+      'serviceAccount': ?serviceAccount,
+      'storageSource': ?storageSource,
+      'tags': ?tags,
+      'workerPool': ?workerPool,
+    };
+  }
 }
 
 /// Response message for submitting a Build.
@@ -7780,20 +8049,23 @@ class GoogleCloudRunV2SubmitBuildResponse {
     : this(
         baseImageUri: json_['baseImageUri'] as core.String?,
         baseImageWarning: json_['baseImageWarning'] as core.String?,
-        buildOperation:
-            json_.containsKey('buildOperation')
-                ? GoogleLongrunningOperation.fromJson(
-                  json_['buildOperation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        buildOperation: json_.containsKey('buildOperation')
+            ? GoogleLongrunningOperation.fromJson(
+                json_['buildOperation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baseImageUri != null) 'baseImageUri': baseImageUri!,
-    if (baseImageWarning != null) 'baseImageWarning': baseImageWarning!,
-    if (buildOperation != null) 'buildOperation': buildOperation!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final baseImageUri = this.baseImageUri;
+    final baseImageWarning = this.baseImageWarning;
+    final buildOperation = this.buildOperation;
+    return {
+      'baseImageUri': ?baseImageUri,
+      'baseImageWarning': ?baseImageWarning,
+      'buildOperation': ?buildOperation,
+    };
+  }
 }
 
 /// TCPSocketAction describes an action based on opening a socket
@@ -7812,9 +8084,10 @@ class GoogleCloudRunV2TCPSocketAction {
   GoogleCloudRunV2TCPSocketAction.fromJson(core.Map json_)
     : this(port: json_['port'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (port != null) 'port': port!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final port = this.port;
+    return {'port': ?port};
+  }
 }
 
 /// Task represents a single run of a container to completion.
@@ -8073,26 +8346,25 @@ class GoogleCloudRunV2Task {
 
   GoogleCloudRunV2Task.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         completionTime: json_['completionTime'] as core.String?,
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Condition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        containers:
-            (json_['containers'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Container.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Condition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        containers: (json_['containers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Container.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         encryptionKey: json_['encryptionKey'] as core.String?,
@@ -8108,22 +8380,20 @@ class GoogleCloudRunV2Task {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        lastAttemptResult:
-            json_.containsKey('lastAttemptResult')
-                ? GoogleCloudRunV2TaskAttemptResult.fromJson(
-                  json_['lastAttemptResult']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lastAttemptResult: json_.containsKey('lastAttemptResult')
+            ? GoogleCloudRunV2TaskAttemptResult.fromJson(
+                json_['lastAttemptResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         logUri: json_['logUri'] as core.String?,
         maxRetries: json_['maxRetries'] as core.int?,
         name: json_['name'] as core.String?,
-        nodeSelector:
-            json_.containsKey('nodeSelector')
-                ? GoogleCloudRunV2NodeSelector.fromJson(
-                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodeSelector: json_.containsKey('nodeSelector')
+            ? GoogleCloudRunV2NodeSelector.fromJson(
+                json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         observedGeneration: json_['observedGeneration'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         retried: json_['retried'] as core.int?,
@@ -8134,59 +8404,90 @@ class GoogleCloudRunV2Task {
         timeout: json_['timeout'] as core.String?,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        volumes:
-            (json_['volumes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Volume.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        vpcAccess:
-            json_.containsKey('vpcAccess')
-                ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        volumes: (json_['volumes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Volume.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vpcAccess: json_.containsKey('vpcAccess')
+            ? GoogleCloudRunV2VpcAccess.fromJson(
+                json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (conditions != null) 'conditions': conditions!,
-    if (containers != null) 'containers': containers!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (encryptionKey != null) 'encryptionKey': encryptionKey!,
-    if (etag != null) 'etag': etag!,
-    if (execution != null) 'execution': execution!,
-    if (executionEnvironment != null)
-      'executionEnvironment': executionEnvironment!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (generation != null) 'generation': generation!,
-    if (gpuZonalRedundancyDisabled != null)
-      'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
-    if (index != null) 'index': index!,
-    if (job != null) 'job': job!,
-    if (labels != null) 'labels': labels!,
-    if (lastAttemptResult != null) 'lastAttemptResult': lastAttemptResult!,
-    if (logUri != null) 'logUri': logUri!,
-    if (maxRetries != null) 'maxRetries': maxRetries!,
-    if (name != null) 'name': name!,
-    if (nodeSelector != null) 'nodeSelector': nodeSelector!,
-    if (observedGeneration != null) 'observedGeneration': observedGeneration!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (retried != null) 'retried': retried!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (scheduledTime != null) 'scheduledTime': scheduledTime!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (startTime != null) 'startTime': startTime!,
-    if (timeout != null) 'timeout': timeout!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (volumes != null) 'volumes': volumes!,
-    if (vpcAccess != null) 'vpcAccess': vpcAccess!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final completionTime = this.completionTime;
+    final conditions = this.conditions;
+    final containers = this.containers;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final encryptionKey = this.encryptionKey;
+    final etag = this.etag;
+    final execution = this.execution;
+    final executionEnvironment = this.executionEnvironment;
+    final expireTime = this.expireTime;
+    final generation = this.generation;
+    final gpuZonalRedundancyDisabled = this.gpuZonalRedundancyDisabled;
+    final index = this.index;
+    final job = this.job;
+    final labels = this.labels;
+    final lastAttemptResult = this.lastAttemptResult;
+    final logUri = this.logUri;
+    final maxRetries = this.maxRetries;
+    final name = this.name;
+    final nodeSelector = this.nodeSelector;
+    final observedGeneration = this.observedGeneration;
+    final reconciling = this.reconciling;
+    final retried = this.retried;
+    final satisfiesPzs = this.satisfiesPzs;
+    final scheduledTime = this.scheduledTime;
+    final serviceAccount = this.serviceAccount;
+    final startTime = this.startTime;
+    final timeout = this.timeout;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final volumes = this.volumes;
+    final vpcAccess = this.vpcAccess;
+    return {
+      'annotations': ?annotations,
+      'completionTime': ?completionTime,
+      'conditions': ?conditions,
+      'containers': ?containers,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'encryptionKey': ?encryptionKey,
+      'etag': ?etag,
+      'execution': ?execution,
+      'executionEnvironment': ?executionEnvironment,
+      'expireTime': ?expireTime,
+      'generation': ?generation,
+      'gpuZonalRedundancyDisabled': ?gpuZonalRedundancyDisabled,
+      'index': ?index,
+      'job': ?job,
+      'labels': ?labels,
+      'lastAttemptResult': ?lastAttemptResult,
+      'logUri': ?logUri,
+      'maxRetries': ?maxRetries,
+      'name': ?name,
+      'nodeSelector': ?nodeSelector,
+      'observedGeneration': ?observedGeneration,
+      'reconciling': ?reconciling,
+      'retried': ?retried,
+      'satisfiesPzs': ?satisfiesPzs,
+      'scheduledTime': ?scheduledTime,
+      'serviceAccount': ?serviceAccount,
+      'startTime': ?startTime,
+      'timeout': ?timeout,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'volumes': ?volumes,
+      'vpcAccess': ?vpcAccess,
+    };
+  }
 }
 
 /// Result of a task attempt.
@@ -8224,20 +8525,24 @@ class GoogleCloudRunV2TaskAttemptResult {
   GoogleCloudRunV2TaskAttemptResult.fromJson(core.Map json_)
     : this(
         exitCode: json_['exitCode'] as core.int?,
-        status:
-            json_.containsKey('status')
-                ? GoogleRpcStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? GoogleRpcStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         termSignal: json_['termSignal'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exitCode != null) 'exitCode': exitCode!,
-    if (status != null) 'status': status!,
-    if (termSignal != null) 'termSignal': termSignal!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final exitCode = this.exitCode;
+    final status = this.status;
+    final termSignal = this.termSignal;
+    return {
+      'exitCode': ?exitCode,
+      'status': ?status,
+      'termSignal': ?termSignal,
+    };
+  }
 }
 
 /// TaskTemplate describes the data a task should have when created from a
@@ -8325,57 +8630,63 @@ class GoogleCloudRunV2TaskTemplate {
 
   GoogleCloudRunV2TaskTemplate.fromJson(core.Map json_)
     : this(
-        containers:
-            (json_['containers'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Container.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        containers: (json_['containers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Container.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         encryptionKey: json_['encryptionKey'] as core.String?,
         executionEnvironment: json_['executionEnvironment'] as core.String?,
         gpuZonalRedundancyDisabled:
             json_['gpuZonalRedundancyDisabled'] as core.bool?,
         maxRetries: json_['maxRetries'] as core.int?,
-        nodeSelector:
-            json_.containsKey('nodeSelector')
-                ? GoogleCloudRunV2NodeSelector.fromJson(
-                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodeSelector: json_.containsKey('nodeSelector')
+            ? GoogleCloudRunV2NodeSelector.fromJson(
+                json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAccount: json_['serviceAccount'] as core.String?,
         timeout: json_['timeout'] as core.String?,
-        volumes:
-            (json_['volumes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Volume.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        vpcAccess:
-            json_.containsKey('vpcAccess')
-                ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        volumes: (json_['volumes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Volume.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vpcAccess: json_.containsKey('vpcAccess')
+            ? GoogleCloudRunV2VpcAccess.fromJson(
+                json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (containers != null) 'containers': containers!,
-    if (encryptionKey != null) 'encryptionKey': encryptionKey!,
-    if (executionEnvironment != null)
-      'executionEnvironment': executionEnvironment!,
-    if (gpuZonalRedundancyDisabled != null)
-      'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
-    if (maxRetries != null) 'maxRetries': maxRetries!,
-    if (nodeSelector != null) 'nodeSelector': nodeSelector!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (timeout != null) 'timeout': timeout!,
-    if (volumes != null) 'volumes': volumes!,
-    if (vpcAccess != null) 'vpcAccess': vpcAccess!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final containers = this.containers;
+    final encryptionKey = this.encryptionKey;
+    final executionEnvironment = this.executionEnvironment;
+    final gpuZonalRedundancyDisabled = this.gpuZonalRedundancyDisabled;
+    final maxRetries = this.maxRetries;
+    final nodeSelector = this.nodeSelector;
+    final serviceAccount = this.serviceAccount;
+    final timeout = this.timeout;
+    final volumes = this.volumes;
+    final vpcAccess = this.vpcAccess;
+    return {
+      'containers': ?containers,
+      'encryptionKey': ?encryptionKey,
+      'executionEnvironment': ?executionEnvironment,
+      'gpuZonalRedundancyDisabled': ?gpuZonalRedundancyDisabled,
+      'maxRetries': ?maxRetries,
+      'nodeSelector': ?nodeSelector,
+      'serviceAccount': ?serviceAccount,
+      'timeout': ?timeout,
+      'volumes': ?volumes,
+      'vpcAccess': ?vpcAccess,
+    };
+  }
 }
 
 /// Holds a single traffic routing entry for the Service.
@@ -8421,12 +8732,18 @@ class GoogleCloudRunV2TrafficTarget {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (percent != null) 'percent': percent!,
-    if (revision != null) 'revision': revision!,
-    if (tag != null) 'tag': tag!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final percent = this.percent;
+    final revision = this.revision;
+    final tag = this.tag;
+    final type = this.type;
+    return {
+      'percent': ?percent,
+      'revision': ?revision,
+      'tag': ?tag,
+      'type': ?type,
+    };
+  }
 }
 
 /// Represents the observed state of a single `TrafficTarget` entry.
@@ -8470,13 +8787,20 @@ class GoogleCloudRunV2TrafficTargetStatus {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (percent != null) 'percent': percent!,
-    if (revision != null) 'revision': revision!,
-    if (tag != null) 'tag': tag!,
-    if (type != null) 'type': type!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final percent = this.percent;
+    final revision = this.revision;
+    final tag = this.tag;
+    final type = this.type;
+    final uri = this.uri;
+    return {
+      'percent': ?percent,
+      'revision': ?revision,
+      'tag': ?tag,
+      'type': ?type,
+      'uri': ?uri,
+    };
+  }
 }
 
 /// VersionToPath maps a specific version of a secret to a relative file to
@@ -8515,11 +8839,12 @@ class GoogleCloudRunV2VersionToPath {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mode != null) 'mode': mode!,
-    if (path != null) 'path': path!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mode = this.mode;
+    final path = this.path;
+    final version = this.version;
+    return {'mode': ?mode, 'path': ?path, 'version': ?version};
+  }
 }
 
 /// Volume represents a named volume in a container.
@@ -8559,48 +8884,51 @@ class GoogleCloudRunV2Volume {
 
   GoogleCloudRunV2Volume.fromJson(core.Map json_)
     : this(
-        cloudSqlInstance:
-            json_.containsKey('cloudSqlInstance')
-                ? GoogleCloudRunV2CloudSqlInstance.fromJson(
-                  json_['cloudSqlInstance']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        emptyDir:
-            json_.containsKey('emptyDir')
-                ? GoogleCloudRunV2EmptyDirVolumeSource.fromJson(
-                  json_['emptyDir'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        gcs:
-            json_.containsKey('gcs')
-                ? GoogleCloudRunV2GCSVolumeSource.fromJson(
-                  json_['gcs'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        cloudSqlInstance: json_.containsKey('cloudSqlInstance')
+            ? GoogleCloudRunV2CloudSqlInstance.fromJson(
+                json_['cloudSqlInstance']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        emptyDir: json_.containsKey('emptyDir')
+            ? GoogleCloudRunV2EmptyDirVolumeSource.fromJson(
+                json_['emptyDir'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gcs: json_.containsKey('gcs')
+            ? GoogleCloudRunV2GCSVolumeSource.fromJson(
+                json_['gcs'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        nfs:
-            json_.containsKey('nfs')
-                ? GoogleCloudRunV2NFSVolumeSource.fromJson(
-                  json_['nfs'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        secret:
-            json_.containsKey('secret')
-                ? GoogleCloudRunV2SecretVolumeSource.fromJson(
-                  json_['secret'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nfs: json_.containsKey('nfs')
+            ? GoogleCloudRunV2NFSVolumeSource.fromJson(
+                json_['nfs'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        secret: json_.containsKey('secret')
+            ? GoogleCloudRunV2SecretVolumeSource.fromJson(
+                json_['secret'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
-    if (emptyDir != null) 'emptyDir': emptyDir!,
-    if (gcs != null) 'gcs': gcs!,
-    if (name != null) 'name': name!,
-    if (nfs != null) 'nfs': nfs!,
-    if (secret != null) 'secret': secret!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudSqlInstance = this.cloudSqlInstance;
+    final emptyDir = this.emptyDir;
+    final gcs = this.gcs;
+    final name = this.name;
+    final nfs = this.nfs;
+    final secret = this.secret;
+    return {
+      'cloudSqlInstance': ?cloudSqlInstance,
+      'emptyDir': ?emptyDir,
+      'gcs': ?gcs,
+      'name': ?name,
+      'nfs': ?nfs,
+      'secret': ?secret,
+    };
+  }
 }
 
 /// VolumeMount describes a mounting of a Volume within a container.
@@ -8637,11 +8965,12 @@ class GoogleCloudRunV2VolumeMount {
         subPath: json_['subPath'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mountPath != null) 'mountPath': mountPath!,
-    if (name != null) 'name': name!,
-    if (subPath != null) 'subPath': subPath!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mountPath = this.mountPath;
+    final name = this.name;
+    final subPath = this.subPath;
+    return {'mountPath': ?mountPath, 'name': ?name, 'subPath': ?subPath};
+  }
 }
 
 /// VPC Access settings.
@@ -8687,21 +9016,25 @@ class GoogleCloudRunV2VpcAccess {
     : this(
         connector: json_['connector'] as core.String?,
         egress: json_['egress'] as core.String?,
-        networkInterfaces:
-            (json_['networkInterfaces'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2NetworkInterface.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        networkInterfaces: (json_['networkInterfaces'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2NetworkInterface.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connector != null) 'connector': connector!,
-    if (egress != null) 'egress': egress!,
-    if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final connector = this.connector;
+    final egress = this.egress;
+    final networkInterfaces = this.networkInterfaces;
+    return {
+      'connector': ?connector,
+      'egress': ?egress,
+      'networkInterfaces': ?networkInterfaces,
+    };
+  }
 }
 
 /// WorkerPool acts as a top-level container that manages a set of
@@ -9010,53 +9343,49 @@ class GoogleCloudRunV2WorkerPool {
 
   GoogleCloudRunV2WorkerPool.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        binaryAuthorization:
-            json_.containsKey('binaryAuthorization')
-                ? GoogleCloudRunV2BinaryAuthorization.fromJson(
-                  json_['binaryAuthorization']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        binaryAuthorization: json_.containsKey('binaryAuthorization')
+            ? GoogleCloudRunV2BinaryAuthorization.fromJson(
+                json_['binaryAuthorization']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Condition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Condition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         creator: json_['creator'] as core.String?,
-        customAudiences:
-            (json_['customAudiences'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        customAudiences: (json_['customAudiences'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
         etag: json_['etag'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
         generation: json_['generation'] as core.String?,
-        instanceSplitStatuses:
-            (json_['instanceSplitStatuses'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2InstanceSplitStatus.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        instanceSplits:
-            (json_['instanceSplits'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2InstanceSplit.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        instanceSplitStatuses: (json_['instanceSplitStatuses'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2InstanceSplitStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        instanceSplits: (json_['instanceSplits'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2InstanceSplit.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -9068,67 +9397,91 @@ class GoogleCloudRunV2WorkerPool {
         observedGeneration: json_['observedGeneration'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-        scaling:
-            json_.containsKey('scaling')
-                ? GoogleCloudRunV2WorkerPoolScaling.fromJson(
-                  json_['scaling'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        template:
-            json_.containsKey('template')
-                ? GoogleCloudRunV2WorkerPoolRevisionTemplate.fromJson(
-                  json_['template'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        terminalCondition:
-            json_.containsKey('terminalCondition')
-                ? GoogleCloudRunV2Condition.fromJson(
-                  json_['terminalCondition']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        scaling: json_.containsKey('scaling')
+            ? GoogleCloudRunV2WorkerPoolScaling.fromJson(
+                json_['scaling'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        template: json_.containsKey('template')
+            ? GoogleCloudRunV2WorkerPoolRevisionTemplate.fromJson(
+                json_['template'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        terminalCondition: json_.containsKey('terminalCondition')
+            ? GoogleCloudRunV2Condition.fromJson(
+                json_['terminalCondition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         threatDetectionEnabled: json_['threatDetectionEnabled'] as core.bool?,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (binaryAuthorization != null)
-      'binaryAuthorization': binaryAuthorization!,
-    if (client != null) 'client': client!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-    if (conditions != null) 'conditions': conditions!,
-    if (createTime != null) 'createTime': createTime!,
-    if (creator != null) 'creator': creator!,
-    if (customAudiences != null) 'customAudiences': customAudiences!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (generation != null) 'generation': generation!,
-    if (instanceSplitStatuses != null)
-      'instanceSplitStatuses': instanceSplitStatuses!,
-    if (instanceSplits != null) 'instanceSplits': instanceSplits!,
-    if (labels != null) 'labels': labels!,
-    if (lastModifier != null) 'lastModifier': lastModifier!,
-    if (latestCreatedRevision != null)
-      'latestCreatedRevision': latestCreatedRevision!,
-    if (latestReadyRevision != null)
-      'latestReadyRevision': latestReadyRevision!,
-    if (launchStage != null) 'launchStage': launchStage!,
-    if (name != null) 'name': name!,
-    if (observedGeneration != null) 'observedGeneration': observedGeneration!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (scaling != null) 'scaling': scaling!,
-    if (template != null) 'template': template!,
-    if (terminalCondition != null) 'terminalCondition': terminalCondition!,
-    if (threatDetectionEnabled != null)
-      'threatDetectionEnabled': threatDetectionEnabled!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final binaryAuthorization = this.binaryAuthorization;
+    final client = this.client;
+    final clientVersion = this.clientVersion;
+    final conditions = this.conditions;
+    final createTime = this.createTime;
+    final creator = this.creator;
+    final customAudiences = this.customAudiences;
+    final deleteTime = this.deleteTime;
+    final description = this.description;
+    final etag = this.etag;
+    final expireTime = this.expireTime;
+    final generation = this.generation;
+    final instanceSplitStatuses = this.instanceSplitStatuses;
+    final instanceSplits = this.instanceSplits;
+    final labels = this.labels;
+    final lastModifier = this.lastModifier;
+    final latestCreatedRevision = this.latestCreatedRevision;
+    final latestReadyRevision = this.latestReadyRevision;
+    final launchStage = this.launchStage;
+    final name = this.name;
+    final observedGeneration = this.observedGeneration;
+    final reconciling = this.reconciling;
+    final satisfiesPzs = this.satisfiesPzs;
+    final scaling = this.scaling;
+    final template = this.template;
+    final terminalCondition = this.terminalCondition;
+    final threatDetectionEnabled = this.threatDetectionEnabled;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'binaryAuthorization': ?binaryAuthorization,
+      'client': ?client,
+      'clientVersion': ?clientVersion,
+      'conditions': ?conditions,
+      'createTime': ?createTime,
+      'creator': ?creator,
+      'customAudiences': ?customAudiences,
+      'deleteTime': ?deleteTime,
+      'description': ?description,
+      'etag': ?etag,
+      'expireTime': ?expireTime,
+      'generation': ?generation,
+      'instanceSplitStatuses': ?instanceSplitStatuses,
+      'instanceSplits': ?instanceSplits,
+      'labels': ?labels,
+      'lastModifier': ?lastModifier,
+      'latestCreatedRevision': ?latestCreatedRevision,
+      'latestReadyRevision': ?latestReadyRevision,
+      'launchStage': ?launchStage,
+      'name': ?name,
+      'observedGeneration': ?observedGeneration,
+      'reconciling': ?reconciling,
+      'satisfiesPzs': ?satisfiesPzs,
+      'scaling': ?scaling,
+      'template': ?template,
+      'terminalCondition': ?terminalCondition,
+      'threatDetectionEnabled': ?threatDetectionEnabled,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// WorkerPoolRevisionTemplate describes the data a worker pool revision should
@@ -9269,19 +9622,19 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
 
   GoogleCloudRunV2WorkerPoolRevisionTemplate.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
-        containers:
-            (json_['containers'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Container.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        containers: (json_['containers'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Container.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         encryptionKey: json_['encryptionKey'] as core.String?,
         encryptionKeyRevocationAction:
             json_['encryptionKeyRevocationAction'] as core.String?,
@@ -9292,56 +9645,66 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        nodeSelector:
-            json_.containsKey('nodeSelector')
-                ? GoogleCloudRunV2NodeSelector.fromJson(
-                  json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodeSelector: json_.containsKey('nodeSelector')
+            ? GoogleCloudRunV2NodeSelector.fromJson(
+                json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         revision: json_['revision'] as core.String?,
         serviceAccount: json_['serviceAccount'] as core.String?,
-        serviceMesh:
-            json_.containsKey('serviceMesh')
-                ? GoogleCloudRunV2ServiceMesh.fromJson(
-                  json_['serviceMesh'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        volumes:
-            (json_['volumes'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudRunV2Volume.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        vpcAccess:
-            json_.containsKey('vpcAccess')
-                ? GoogleCloudRunV2VpcAccess.fromJson(
-                  json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serviceMesh: json_.containsKey('serviceMesh')
+            ? GoogleCloudRunV2ServiceMesh.fromJson(
+                json_['serviceMesh'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        volumes: (json_['volumes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2Volume.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vpcAccess: json_.containsKey('vpcAccess')
+            ? GoogleCloudRunV2VpcAccess.fromJson(
+                json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (client != null) 'client': client!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-    if (containers != null) 'containers': containers!,
-    if (encryptionKey != null) 'encryptionKey': encryptionKey!,
-    if (encryptionKeyRevocationAction != null)
-      'encryptionKeyRevocationAction': encryptionKeyRevocationAction!,
-    if (encryptionKeyShutdownDuration != null)
-      'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
-    if (gpuZonalRedundancyDisabled != null)
-      'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
-    if (labels != null) 'labels': labels!,
-    if (nodeSelector != null) 'nodeSelector': nodeSelector!,
-    if (revision != null) 'revision': revision!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (serviceMesh != null) 'serviceMesh': serviceMesh!,
-    if (volumes != null) 'volumes': volumes!,
-    if (vpcAccess != null) 'vpcAccess': vpcAccess!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final client = this.client;
+    final clientVersion = this.clientVersion;
+    final containers = this.containers;
+    final encryptionKey = this.encryptionKey;
+    final encryptionKeyRevocationAction = this.encryptionKeyRevocationAction;
+    final encryptionKeyShutdownDuration = this.encryptionKeyShutdownDuration;
+    final gpuZonalRedundancyDisabled = this.gpuZonalRedundancyDisabled;
+    final labels = this.labels;
+    final nodeSelector = this.nodeSelector;
+    final revision = this.revision;
+    final serviceAccount = this.serviceAccount;
+    final serviceMesh = this.serviceMesh;
+    final volumes = this.volumes;
+    final vpcAccess = this.vpcAccess;
+    return {
+      'annotations': ?annotations,
+      'client': ?client,
+      'clientVersion': ?clientVersion,
+      'containers': ?containers,
+      'encryptionKey': ?encryptionKey,
+      'encryptionKeyRevocationAction': ?encryptionKeyRevocationAction,
+      'encryptionKeyShutdownDuration': ?encryptionKeyShutdownDuration,
+      'gpuZonalRedundancyDisabled': ?gpuZonalRedundancyDisabled,
+      'labels': ?labels,
+      'nodeSelector': ?nodeSelector,
+      'revision': ?revision,
+      'serviceAccount': ?serviceAccount,
+      'serviceMesh': ?serviceMesh,
+      'volumes': ?volumes,
+      'vpcAccess': ?vpcAccess,
+    };
+  }
 }
 
 /// Worker pool scaling settings.
@@ -9356,10 +9719,10 @@ class GoogleCloudRunV2WorkerPoolScaling {
   GoogleCloudRunV2WorkerPoolScaling.fromJson(core.Map json_)
     : this(manualInstanceCount: json_['manualInstanceCount'] as core.int?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (manualInstanceCount != null)
-      'manualInstanceCount': manualInstanceCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final manualInstanceCount = this.manualInstanceCount;
+    return {'manualInstanceCount': ?manualInstanceCount};
+  }
 }
 
 /// Specifies the audit configuration for a service.
@@ -9393,21 +9756,21 @@ class GoogleIamV1AuditConfig {
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -9502,24 +9865,23 @@ class GoogleIamV1Binding {
 
   GoogleIamV1Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? GoogleTypeExpr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -9619,32 +9981,36 @@ class GoogleIamV1Policy {
 
   GoogleIamV1Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -9666,19 +10032,19 @@ class GoogleIamV1SetIamPolicyRequest {
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? GoogleIamV1Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -9712,25 +10078,28 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => GoogleLongrunningOperation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => GoogleLongrunningOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -9787,30 +10156,34 @@ class GoogleLongrunningOperation {
   GoogleLongrunningOperation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// The request message for Operations.WaitOperation.
@@ -9907,20 +10280,26 @@ class UtilStatusProto {
         canonicalCode: json_['canonicalCode'] as core.int?,
         code: json_['code'] as core.int?,
         message: json_['message'] as core.String?,
-        messageSet:
-            json_.containsKey('messageSet')
-                ? Proto2BridgeMessageSet.fromJson(
-                  json_['messageSet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        messageSet: json_.containsKey('messageSet')
+            ? Proto2BridgeMessageSet.fromJson(
+                json_['messageSet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         space: json_['space'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canonicalCode != null) 'canonicalCode': canonicalCode!,
-    if (code != null) 'code': code!,
-    if (message != null) 'message': message!,
-    if (messageSet != null) 'messageSet': messageSet!,
-    if (space != null) 'space': space!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final canonicalCode = this.canonicalCode;
+    final code = this.code;
+    final message = this.message;
+    final messageSet = this.messageSet;
+    final space = this.space;
+    return {
+      'canonicalCode': ?canonicalCode,
+      'code': ?code,
+      'message': ?message,
+      'messageSet': ?messageSet,
+      'space': ?space,
+    };
+  }
 }

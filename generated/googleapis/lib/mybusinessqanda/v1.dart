@@ -105,7 +105,7 @@ class LocationsQuestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent');
@@ -138,7 +138,7 @@ class LocationsQuestionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -198,13 +198,14 @@ class LocationsQuestionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (answersPerQuestion != null)
-        'answersPerQuestion': ['${answersPerQuestion}'],
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'answersPerQuestion': ?answersPerQuestion == null
+          ? null
+          : ['${answersPerQuestion}'],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent');
@@ -250,8 +251,8 @@ class LocationsQuestionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -291,7 +292,7 @@ class LocationsQuestionsAnswersResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/answers:delete';
@@ -340,10 +341,10 @@ class LocationsQuestionsAnswersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/answers';
@@ -387,7 +388,7 @@ class LocationsQuestionsAnswersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/answers:upsert';
@@ -452,12 +453,11 @@ class Answer {
 
   Answer.fromJson(core.Map json_)
     : this(
-        author:
-            json_.containsKey('author')
-                ? Author.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        author: json_.containsKey('author')
+            ? Author.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         name: json_['name'] as core.String?,
         text: json_['text'] as core.String?,
@@ -465,14 +465,22 @@ class Answer {
         upvoteCount: json_['upvoteCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (author != null) 'author': author!,
-    if (createTime != null) 'createTime': createTime!,
-    if (name != null) 'name': name!,
-    if (text != null) 'text': text!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (upvoteCount != null) 'upvoteCount': upvoteCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final createTime = this.createTime;
+    final name = this.name;
+    final text = this.text;
+    final updateTime = this.updateTime;
+    final upvoteCount = this.upvoteCount;
+    return {
+      'author': ?author,
+      'createTime': ?createTime,
+      'name': ?name,
+      'text': ?text,
+      'updateTime': ?updateTime,
+      'upvoteCount': ?upvoteCount,
+    };
+  }
 }
 
 /// Represents the author of a question or answer
@@ -500,11 +508,16 @@ class Author {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (profilePhotoUri != null) 'profilePhotoUri': profilePhotoUri!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final profilePhotoUri = this.profilePhotoUri;
+    final type = this.type;
+    return {
+      'displayName': ?displayName,
+      'profilePhotoUri': ?profilePhotoUri,
+      'type': ?type,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -534,23 +547,26 @@ class ListAnswersResponse {
 
   ListAnswersResponse.fromJson(core.Map json_)
     : this(
-        answers:
-            (json_['answers'] as core.List?)
-                ?.map(
-                  (value) => Answer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        answers: (json_['answers'] as core.List?)
+            ?.map(
+              (value) =>
+                  Answer.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answers != null) 'answers': answers!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answers = this.answers;
+    final nextPageToken = this.nextPageToken;
+    final totalSize = this.totalSize;
+    return {
+      'answers': ?answers,
+      'nextPageToken': ?nextPageToken,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Response message for QuestionsAndAnswers.ListQuestions
@@ -573,22 +589,26 @@ class ListQuestionsResponse {
   ListQuestionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        questions:
-            (json_['questions'] as core.List?)
-                ?.map(
-                  (value) => Question.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        questions: (json_['questions'] as core.List?)
+            ?.map(
+              (value) => Question.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (questions != null) 'questions': questions!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final questions = this.questions;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'questions': ?questions,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Represents a single question and some of its answers.
@@ -656,38 +676,45 @@ class Question {
 
   Question.fromJson(core.Map json_)
     : this(
-        author:
-            json_.containsKey('author')
-                ? Author.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        author: json_.containsKey('author')
+            ? Author.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         name: json_['name'] as core.String?,
         text: json_['text'] as core.String?,
-        topAnswers:
-            (json_['topAnswers'] as core.List?)
-                ?.map(
-                  (value) => Answer.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        topAnswers: (json_['topAnswers'] as core.List?)
+            ?.map(
+              (value) =>
+                  Answer.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         totalAnswerCount: json_['totalAnswerCount'] as core.int?,
         updateTime: json_['updateTime'] as core.String?,
         upvoteCount: json_['upvoteCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (author != null) 'author': author!,
-    if (createTime != null) 'createTime': createTime!,
-    if (name != null) 'name': name!,
-    if (text != null) 'text': text!,
-    if (topAnswers != null) 'topAnswers': topAnswers!,
-    if (totalAnswerCount != null) 'totalAnswerCount': totalAnswerCount!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (upvoteCount != null) 'upvoteCount': upvoteCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final createTime = this.createTime;
+    final name = this.name;
+    final text = this.text;
+    final topAnswers = this.topAnswers;
+    final totalAnswerCount = this.totalAnswerCount;
+    final updateTime = this.updateTime;
+    final upvoteCount = this.upvoteCount;
+    return {
+      'author': ?author,
+      'createTime': ?createTime,
+      'name': ?name,
+      'text': ?text,
+      'topAnswers': ?topAnswers,
+      'totalAnswerCount': ?totalAnswerCount,
+      'updateTime': ?updateTime,
+      'upvoteCount': ?upvoteCount,
+    };
+  }
 }
 
 /// Request message for QuestionsAndAnswers.UpsertAnswer
@@ -701,15 +728,15 @@ class UpsertAnswerRequest {
 
   UpsertAnswerRequest.fromJson(core.Map json_)
     : this(
-        answer:
-            json_.containsKey('answer')
-                ? Answer.fromJson(
-                  json_['answer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        answer: json_.containsKey('answer')
+            ? Answer.fromJson(
+                json_['answer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answer != null) 'answer': answer!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final answer = this.answer;
+    return {'answer': ?answer};
+  }
 }

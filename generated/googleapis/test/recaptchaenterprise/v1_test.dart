@@ -2531,10 +2531,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment(od);
       });
     },
@@ -2547,10 +2547,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1AccountVerificationInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1AccountVerificationInfo(od);
       });
     },
@@ -2562,10 +2562,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest(od);
       });
     },
@@ -2577,10 +2577,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse(od);
       });
     },
@@ -2592,10 +2592,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1AndroidKeySettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1AndroidKeySettings(od);
       });
     },
@@ -2608,10 +2608,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest(od);
       });
     },
@@ -2624,10 +2624,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse(od);
       });
     },
@@ -2639,10 +2639,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1AppleDeveloperId();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1AppleDeveloperId(od);
       });
     },
@@ -2665,10 +2665,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1AssessmentEnvironment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1AssessmentEnvironment(od);
       });
     },
@@ -2691,10 +2691,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1ChallengeMetrics();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ChallengeMetrics.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ChallengeMetrics.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ChallengeMetrics(od);
       });
     },
@@ -2707,10 +2707,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo(od);
       });
     },
@@ -2733,10 +2733,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1ExpressKeySettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ExpressKeySettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ExpressKeySettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ExpressKeySettings(od);
       });
     },
@@ -2763,10 +2763,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction(od);
       });
     },
@@ -2779,10 +2779,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction(od);
       });
     },
@@ -2795,10 +2795,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction(
           od,
         );
@@ -2813,10 +2813,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction(od);
       });
     },
@@ -2829,10 +2829,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction(od);
       });
     },
@@ -2845,10 +2845,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction(od);
       });
     },
@@ -2875,10 +2875,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment(od);
       });
     },
@@ -2891,10 +2891,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment(od);
       });
     },
@@ -2907,10 +2907,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict(
           od,
         );
@@ -2925,10 +2925,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict(
           od,
         );
@@ -2943,10 +2943,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason(
           od,
         );
@@ -2961,10 +2961,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict(
           od,
         );
@@ -2990,10 +2990,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals(od);
       });
     },
@@ -3006,10 +3006,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals(od);
       });
     },
@@ -3061,10 +3061,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse(od);
       });
     },
@@ -3077,10 +3077,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse(od);
       });
     },
@@ -3092,10 +3092,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1ListKeysResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ListKeysResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ListKeysResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ListKeysResponse(od);
       });
     },
@@ -3108,10 +3108,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse(
           od,
         );
@@ -3126,10 +3126,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse(
           od,
         );
@@ -3154,10 +3154,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest(od);
       });
     },
@@ -3170,10 +3170,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent(od);
       });
     },
@@ -3185,10 +3185,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment(od);
       });
     },
@@ -3201,10 +3201,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification(
           od,
         );
@@ -3218,10 +3218,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1RelatedAccountGroup();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1RelatedAccountGroup(od);
       });
     },
@@ -3234,10 +3234,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership(od);
       });
     },
@@ -3250,10 +3250,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest(od);
       });
     },
@@ -3266,10 +3266,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse(od);
       });
     },
@@ -3282,10 +3282,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest(od);
       });
     },
@@ -3298,10 +3298,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse(
           od,
         );
@@ -3316,10 +3316,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse(
           od,
         );
@@ -3344,10 +3344,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1ScoreDistribution();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1ScoreDistribution(od);
       });
     },
@@ -3371,10 +3371,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest(
           od,
         );
@@ -3389,10 +3389,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse(
           od,
         );
@@ -3406,10 +3406,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict(od);
       });
     },
@@ -3463,10 +3463,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1TransactionDataAddress();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1TransactionDataAddress(od);
       });
     },
@@ -3479,10 +3479,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo(od);
       });
     },
@@ -3494,10 +3494,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1TransactionDataItem();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1TransactionDataItem.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1TransactionDataItem.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1TransactionDataItem(od);
       });
     },
@@ -3509,10 +3509,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1TransactionDataUser();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1TransactionDataUser.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1TransactionDataUser.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1TransactionDataUser(od);
       });
     },
@@ -3524,10 +3524,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecaptchaenterpriseV1TransactionEvent();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1TransactionEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1TransactionEvent.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1TransactionEvent(od);
       });
     },
@@ -3587,10 +3587,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings(od);
       });
     },
@@ -3603,10 +3603,10 @@ void main() {
         final o =
             buildGoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings(
           od,
         );
@@ -3646,10 +3646,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest(obj);
 
           final path = req.url.path;
@@ -3784,10 +3784,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(obj);
 
           final path = req.url.path;
@@ -4036,10 +4036,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecaptchaenterpriseV1FirewallPolicy(obj);
 
           final path = req.url.path;
@@ -4110,10 +4110,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest(
             obj,
           );
@@ -4184,10 +4184,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest(obj);
 
           final path = req.url.path;
@@ -4631,10 +4631,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest(obj);
 
           final path = req.url.path;
@@ -4773,10 +4773,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest(obj);
 
           final path = req.url.path;
@@ -4899,20 +4899,19 @@ void main() {
   unittest.group('resource-ProjectsRelatedaccountgroupmembershipsResource', () {
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecaptchaEnterpriseApi(
-            mock,
-          ).projects.relatedaccountgroupmemberships;
+      final res = api.RecaptchaEnterpriseApi(
+        mock,
+      ).projects.relatedaccountgroupmemberships;
       final arg_request =
           buildGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest();
       final arg_project = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest(
             obj,
           );
@@ -4976,8 +4975,9 @@ void main() {
   unittest.group('resource-ProjectsRelatedaccountgroupsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecaptchaEnterpriseApi(mock).projects.relatedaccountgroups;
+      final res = api.RecaptchaEnterpriseApi(
+        mock,
+      ).projects.relatedaccountgroups;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5052,10 +5052,9 @@ void main() {
   unittest.group('resource-ProjectsRelatedaccountgroupsMembershipsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecaptchaEnterpriseApi(
-            mock,
-          ).projects.relatedaccountgroups.memberships;
+      final res = api.RecaptchaEnterpriseApi(
+        mock,
+      ).projects.relatedaccountgroups.memberships;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

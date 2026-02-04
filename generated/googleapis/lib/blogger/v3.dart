@@ -109,8 +109,8 @@ class BlogUserInfosResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxPosts != null) 'maxPosts': ['${maxPosts}'],
-      if ($fields != null) 'fields': [$fields],
+      'maxPosts': ?maxPosts == null ? null : ['${maxPosts}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -167,9 +167,9 @@ class BlogsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxPosts != null) 'maxPosts': ['${maxPosts}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'maxPosts': ?maxPosts == null ? null : ['${maxPosts}'],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId');
@@ -212,8 +212,8 @@ class BlogsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'url': [url],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/blogs/byurl';
@@ -264,11 +264,11 @@ class BlogsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (fetchUserInfo != null) 'fetchUserInfo': ['${fetchUserInfo}'],
-      if (role != null) 'role': role,
-      if (status != null) 'status': status,
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'fetchUserInfo': ?fetchUserInfo == null ? null : ['${fetchUserInfo}'],
+      'role': ?role,
+      'status': ?status,
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/users/' + commons.escapeVariable('$userId') + '/blogs';
@@ -314,7 +314,7 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -359,7 +359,7 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -413,8 +413,8 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -488,14 +488,14 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate != null) 'endDate': [endDate],
-      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (startDate != null) 'startDate': [startDate],
-      if (status != null) 'status': [status],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'endDate': ?endDate == null ? null : [endDate],
+      'fetchBodies': ?fetchBodies == null ? null : ['${fetchBodies}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'startDate': ?startDate == null ? null : [startDate],
+      'status': ?status == null ? null : [status],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -554,13 +554,13 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate != null) 'endDate': [endDate],
-      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (startDate != null) 'startDate': [startDate],
-      if (status != null) 'status': status,
-      if ($fields != null) 'fields': [$fields],
+      'endDate': ?endDate == null ? null : [endDate],
+      'fetchBodies': ?fetchBodies == null ? null : ['${fetchBodies}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'startDate': ?startDate == null ? null : [startDate],
+      'status': ?status,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/comments';
@@ -602,7 +602,7 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -649,7 +649,7 @@ class CommentsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -699,8 +699,8 @@ class PageViewsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (range != null) 'range': range,
-      if ($fields != null) 'fields': [$fields],
+      'range': ?range,
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pageviews';
@@ -744,8 +744,8 @@ class PagesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (useTrash != null) 'useTrash': ['${useTrash}'],
-      if ($fields != null) 'fields': [$fields],
+      'useTrash': ?useTrash == null ? null : ['${useTrash}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -794,8 +794,8 @@ class PagesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -840,8 +840,8 @@ class PagesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (isDraft != null) 'isDraft': ['${isDraft}'],
-      if ($fields != null) 'fields': [$fields],
+      'isDraft': ?isDraft == null ? null : ['${isDraft}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pages';
@@ -896,12 +896,12 @@ class PagesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (status != null) 'status': status,
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'fetchBodies': ?fetchBodies == null ? null : ['${fetchBodies}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'status': ?status,
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pages';
@@ -948,9 +948,9 @@ class PagesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (publish_1 != null) 'publish': ['${publish_1}'],
-      if (revert_1 != null) 'revert': ['${revert_1}'],
-      if ($fields != null) 'fields': [$fields],
+      'publish': ?publish_1 == null ? null : ['${publish_1}'],
+      'revert': ?revert_1 == null ? null : ['${revert_1}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -992,7 +992,7 @@ class PagesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1034,7 +1034,7 @@ class PagesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1086,9 +1086,9 @@ class PagesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (publish_1 != null) 'publish': ['${publish_1}'],
-      if (revert_1 != null) 'revert': ['${revert_1}'],
-      if ($fields != null) 'fields': [$fields],
+      'publish': ?publish_1 == null ? null : ['${publish_1}'],
+      'revert': ?revert_1 == null ? null : ['${revert_1}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1142,8 +1142,8 @@ class PostUserInfosResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxComments != null) 'maxComments': ['${maxComments}'],
-      if ($fields != null) 'fields': [$fields],
+      'maxComments': ?maxComments == null ? null : ['${maxComments}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1224,16 +1224,16 @@ class PostUserInfosResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate != null) 'endDate': [endDate],
-      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
-      if (labels != null) 'labels': [labels],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (startDate != null) 'startDate': [startDate],
-      if (status != null) 'status': status,
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'endDate': ?endDate == null ? null : [endDate],
+      'fetchBodies': ?fetchBodies == null ? null : ['${fetchBodies}'],
+      'labels': ?labels == null ? null : [labels],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'startDate': ?startDate == null ? null : [startDate],
+      'status': ?status,
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1284,8 +1284,8 @@ class PostsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (useTrash != null) 'useTrash': ['${useTrash}'],
-      if ($fields != null) 'fields': [$fields],
+      'useTrash': ?useTrash == null ? null : ['${useTrash}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1343,11 +1343,11 @@ class PostsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
-      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
-      if (maxComments != null) 'maxComments': ['${maxComments}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'fetchBody': ?fetchBody == null ? null : ['${fetchBody}'],
+      'fetchImages': ?fetchImages == null ? null : ['${fetchImages}'],
+      'maxComments': ?maxComments == null ? null : ['${maxComments}'],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1400,9 +1400,9 @@ class PostsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'path': [path],
-      if (maxComments != null) 'maxComments': ['${maxComments}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'maxComments': ?maxComments == null ? null : ['${maxComments}'],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1450,10 +1450,10 @@ class PostsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
-      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
-      if (isDraft != null) 'isDraft': ['${isDraft}'],
-      if ($fields != null) 'fields': [$fields],
+      'fetchBody': ?fetchBody == null ? null : ['${fetchBody}'],
+      'fetchImages': ?fetchImages == null ? null : ['${fetchImages}'],
+      'isDraft': ?isDraft == null ? null : ['${isDraft}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts';
@@ -1534,18 +1534,18 @@ class PostsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate != null) 'endDate': [endDate],
-      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
-      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
-      if (labels != null) 'labels': [labels],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (sortOption != null) 'sortOption': [sortOption],
-      if (startDate != null) 'startDate': [startDate],
-      if (status != null) 'status': status,
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'endDate': ?endDate == null ? null : [endDate],
+      'fetchBodies': ?fetchBodies == null ? null : ['${fetchBodies}'],
+      'fetchImages': ?fetchImages == null ? null : ['${fetchImages}'],
+      'labels': ?labels == null ? null : [labels],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'sortOption': ?sortOption == null ? null : [sortOption],
+      'startDate': ?startDate == null ? null : [startDate],
+      'status': ?status,
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts';
@@ -1601,12 +1601,12 @@ class PostsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
-      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
-      if (maxComments != null) 'maxComments': ['${maxComments}'],
-      if (publish_1 != null) 'publish': ['${publish_1}'],
-      if (revert_1 != null) 'revert': ['${revert_1}'],
-      if ($fields != null) 'fields': [$fields],
+      'fetchBody': ?fetchBody == null ? null : ['${fetchBody}'],
+      'fetchImages': ?fetchImages == null ? null : ['${fetchImages}'],
+      'maxComments': ?maxComments == null ? null : ['${maxComments}'],
+      'publish': ?publish_1 == null ? null : ['${publish_1}'],
+      'revert': ?revert_1 == null ? null : ['${revert_1}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1651,8 +1651,8 @@ class PostsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (publishDate != null) 'publishDate': [publishDate],
-      if ($fields != null) 'fields': [$fields],
+      'publishDate': ?publishDate == null ? null : [publishDate],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1694,7 +1694,7 @@ class PostsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1747,9 +1747,9 @@ class PostsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'q': [q],
-      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if ($fields != null) 'fields': [$fields],
+      'fetchBodies': ?fetchBodies == null ? null : ['${fetchBodies}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1806,12 +1806,12 @@ class PostsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
-      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
-      if (maxComments != null) 'maxComments': ['${maxComments}'],
-      if (publish_1 != null) 'publish': ['${publish_1}'],
-      if (revert_1 != null) 'revert': ['${revert_1}'],
-      if ($fields != null) 'fields': [$fields],
+      'fetchBody': ?fetchBody == null ? null : ['${fetchBody}'],
+      'fetchImages': ?fetchImages == null ? null : ['${fetchImages}'],
+      'maxComments': ?maxComments == null ? null : ['${maxComments}'],
+      'publish': ?publish_1 == null ? null : ['${publish_1}'],
+      'revert': ?revert_1 == null ? null : ['${revert_1}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1853,7 +1853,7 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<User> get(core.String userId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/users/' + commons.escapeVariable('$userId');
@@ -1887,11 +1887,12 @@ class BlogLocale {
         variant: json_['variant'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (country != null) 'country': country!,
-    if (language != null) 'language': language!,
-    if (variant != null) 'variant': variant!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final country = this.country;
+    final language = this.language;
+    final variant = this.variant;
+    return {'country': ?country, 'language': ?language, 'variant': ?variant};
+  }
 }
 
 /// The container of pages in this blog.
@@ -1910,10 +1911,11 @@ class BlogPages {
         totalItems: json_['totalItems'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (totalItems != null) 'totalItems': totalItems!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final selfLink = this.selfLink;
+    final totalItems = this.totalItems;
+    return {'selfLink': ?selfLink, 'totalItems': ?totalItems};
+  }
 }
 
 /// The container of posts in this blog.
@@ -1931,23 +1933,22 @@ class BlogPosts {
 
   BlogPosts.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Post.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Post.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         selfLink: json_['selfLink'] as core.String?,
         totalItems: json_['totalItems'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (totalItems != null) 'totalItems': totalItems!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final selfLink = this.selfLink;
+    final totalItems = this.totalItems;
+    return {'items': ?items, 'selfLink': ?selfLink, 'totalItems': ?totalItems};
+  }
 }
 
 class Blog {
@@ -2024,25 +2025,22 @@ class Blog {
         description: json_['description'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        locale:
-            json_.containsKey('locale')
-                ? BlogLocale.fromJson(
-                  json_['locale'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        locale: json_.containsKey('locale')
+            ? BlogLocale.fromJson(
+                json_['locale'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        pages:
-            json_.containsKey('pages')
-                ? BlogPages.fromJson(
-                  json_['pages'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        posts:
-            json_.containsKey('posts')
-                ? BlogPosts.fromJson(
-                  json_['posts'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pages: json_.containsKey('pages')
+            ? BlogPages.fromJson(
+                json_['pages'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        posts: json_.containsKey('posts')
+            ? BlogPosts.fromJson(
+                json_['posts'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         published: json_['published'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
         status: json_['status'] as core.String?,
@@ -2050,21 +2048,36 @@ class Blog {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customMetaData != null) 'customMetaData': customMetaData!,
-    if (description != null) 'description': description!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (locale != null) 'locale': locale!,
-    if (name != null) 'name': name!,
-    if (pages != null) 'pages': pages!,
-    if (posts != null) 'posts': posts!,
-    if (published != null) 'published': published!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (status != null) 'status': status!,
-    if (updated != null) 'updated': updated!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final customMetaData = this.customMetaData;
+    final description = this.description;
+    final id = this.id;
+    final kind = this.kind;
+    final locale = this.locale;
+    final name = this.name;
+    final pages = this.pages;
+    final posts = this.posts;
+    final published = this.published;
+    final selfLink = this.selfLink;
+    final status = this.status;
+    final updated = this.updated;
+    final url = this.url;
+    return {
+      'customMetaData': ?customMetaData,
+      'description': ?description,
+      'id': ?id,
+      'kind': ?kind,
+      'locale': ?locale,
+      'name': ?name,
+      'pages': ?pages,
+      'posts': ?posts,
+      'published': ?published,
+      'selfLink': ?selfLink,
+      'status': ?status,
+      'updated': ?updated,
+      'url': ?url,
+    };
+  }
 }
 
 class BlogList {
@@ -2083,30 +2096,28 @@ class BlogList {
 
   BlogList.fromJson(core.Map json_)
     : this(
-        blogUserInfos:
-            (json_['blogUserInfos'] as core.List?)
-                ?.map(
-                  (value) => BlogUserInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Blog.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        blogUserInfos: (json_['blogUserInfos'] as core.List?)
+            ?.map(
+              (value) => BlogUserInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Blog.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blogUserInfos != null) 'blogUserInfos': blogUserInfos!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blogUserInfos = this.blogUserInfos;
+    final items = this.items;
+    final kind = this.kind;
+    return {'blogUserInfos': ?blogUserInfos, 'items': ?items, 'kind': ?kind};
+  }
 }
 
 class BlogPerUserInfo {
@@ -2155,14 +2166,22 @@ class BlogPerUserInfo {
         userId: json_['userId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blogId != null) 'blogId': blogId!,
-    if (hasAdminAccess != null) 'hasAdminAccess': hasAdminAccess!,
-    if (kind != null) 'kind': kind!,
-    if (photosAlbumKey != null) 'photosAlbumKey': photosAlbumKey!,
-    if (role != null) 'role': role!,
-    if (userId != null) 'userId': userId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blogId = this.blogId;
+    final hasAdminAccess = this.hasAdminAccess;
+    final kind = this.kind;
+    final photosAlbumKey = this.photosAlbumKey;
+    final role = this.role;
+    final userId = this.userId;
+    return {
+      'blogId': ?blogId,
+      'hasAdminAccess': ?hasAdminAccess,
+      'kind': ?kind,
+      'photosAlbumKey': ?photosAlbumKey,
+      'role': ?role,
+      'userId': ?userId,
+    };
+  }
 }
 
 class BlogUserInfo {
@@ -2181,27 +2200,25 @@ class BlogUserInfo {
 
   BlogUserInfo.fromJson(core.Map json_)
     : this(
-        blog:
-            json_.containsKey('blog')
-                ? Blog.fromJson(
-                  json_['blog'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        blogUserInfo:
-            json_.containsKey('blog_user_info')
-                ? BlogPerUserInfo.fromJson(
-                  json_['blog_user_info']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        blog: json_.containsKey('blog')
+            ? Blog.fromJson(
+                json_['blog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        blogUserInfo: json_.containsKey('blog_user_info')
+            ? BlogPerUserInfo.fromJson(
+                json_['blog_user_info'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blog != null) 'blog': blog!,
-    if (blogUserInfo != null) 'blog_user_info': blogUserInfo!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blog = this.blog;
+    final blogUserInfo = this.blogUserInfo;
+    final kind = this.kind;
+    return {'blog': ?blog, 'blog_user_info': ?blogUserInfo, 'kind': ?kind};
+  }
 }
 
 /// The creator's avatar.
@@ -2214,9 +2231,10 @@ class CommentAuthorImage {
   CommentAuthorImage.fromJson(core.Map json_)
     : this(url: json_['url'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final url = this.url;
+    return {'url': ?url};
+  }
 }
 
 /// The author of this Comment.
@@ -2239,21 +2257,26 @@ class CommentAuthor {
     : this(
         displayName: json_['displayName'] as core.String?,
         id: json_['id'] as core.String?,
-        image:
-            json_.containsKey('image')
-                ? CommentAuthorImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        image: json_.containsKey('image')
+            ? CommentAuthorImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (id != null) 'id': id!,
-    if (image != null) 'image': image!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final id = this.id;
+    final image = this.image;
+    final url = this.url;
+    return {
+      'displayName': ?displayName,
+      'id': ?id,
+      'image': ?image,
+      'url': ?url,
+    };
+  }
 }
 
 /// Data about the blog containing this comment.
@@ -2265,7 +2288,10 @@ class CommentBlog {
 
   CommentBlog.fromJson(core.Map json_) : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    return {'id': ?id};
+  }
 }
 
 /// Data about the comment this is in reply to.
@@ -2278,7 +2304,10 @@ class CommentInReplyTo {
   CommentInReplyTo.fromJson(core.Map json_)
     : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    return {'id': ?id};
+  }
 }
 
 /// Data about the post containing this comment.
@@ -2290,7 +2319,10 @@ class CommentPost {
 
   CommentPost.fromJson(core.Map json_) : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    return {'id': ?id};
+  }
 }
 
 class Comment {
@@ -2352,52 +2384,61 @@ class Comment {
 
   Comment.fromJson(core.Map json_)
     : this(
-        author:
-            json_.containsKey('author')
-                ? CommentAuthor.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        blog:
-            json_.containsKey('blog')
-                ? CommentBlog.fromJson(
-                  json_['blog'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        author: json_.containsKey('author')
+            ? CommentAuthor.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        blog: json_.containsKey('blog')
+            ? CommentBlog.fromJson(
+                json_['blog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         content: json_['content'] as core.String?,
         id: json_['id'] as core.String?,
-        inReplyTo:
-            json_.containsKey('inReplyTo')
-                ? CommentInReplyTo.fromJson(
-                  json_['inReplyTo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        inReplyTo: json_.containsKey('inReplyTo')
+            ? CommentInReplyTo.fromJson(
+                json_['inReplyTo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        post:
-            json_.containsKey('post')
-                ? CommentPost.fromJson(
-                  json_['post'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        post: json_.containsKey('post')
+            ? CommentPost.fromJson(
+                json_['post'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         published: json_['published'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
         status: json_['status'] as core.String?,
         updated: json_['updated'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (author != null) 'author': author!,
-    if (blog != null) 'blog': blog!,
-    if (content != null) 'content': content!,
-    if (id != null) 'id': id!,
-    if (inReplyTo != null) 'inReplyTo': inReplyTo!,
-    if (kind != null) 'kind': kind!,
-    if (post != null) 'post': post!,
-    if (published != null) 'published': published!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (status != null) 'status': status!,
-    if (updated != null) 'updated': updated!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final blog = this.blog;
+    final content = this.content;
+    final id = this.id;
+    final inReplyTo = this.inReplyTo;
+    final kind = this.kind;
+    final post = this.post;
+    final published = this.published;
+    final selfLink = this.selfLink;
+    final status = this.status;
+    final updated = this.updated;
+    return {
+      'author': ?author,
+      'blog': ?blog,
+      'content': ?content,
+      'id': ?id,
+      'inReplyTo': ?inReplyTo,
+      'kind': ?kind,
+      'post': ?post,
+      'published': ?published,
+      'selfLink': ?selfLink,
+      'status': ?status,
+      'updated': ?updated,
+    };
+  }
 }
 
 class CommentList {
@@ -2429,26 +2470,32 @@ class CommentList {
   CommentList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Comment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => Comment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         prevPageToken: json_['prevPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (prevPageToken != null) 'prevPageToken': prevPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final prevPageToken = this.prevPageToken;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'prevPageToken': ?prevPageToken,
+    };
+  }
 }
 
 /// The creator's avatar.
@@ -2461,9 +2508,10 @@ class PageAuthorImage {
   PageAuthorImage.fromJson(core.Map json_)
     : this(url: json_['url'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final url = this.url;
+    return {'url': ?url};
+  }
 }
 
 /// The author of this Page.
@@ -2486,21 +2534,26 @@ class PageAuthor {
     : this(
         displayName: json_['displayName'] as core.String?,
         id: json_['id'] as core.String?,
-        image:
-            json_.containsKey('image')
-                ? PageAuthorImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        image: json_.containsKey('image')
+            ? PageAuthorImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (id != null) 'id': id!,
-    if (image != null) 'image': image!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final id = this.id;
+    final image = this.image;
+    final url = this.url;
+    return {
+      'displayName': ?displayName,
+      'id': ?id,
+      'image': ?image,
+      'url': ?url,
+    };
+  }
 }
 
 /// Data about the blog containing this Page.
@@ -2512,7 +2565,10 @@ class PageBlog {
 
   PageBlog.fromJson(core.Map json_) : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    return {'id': ?id};
+  }
 }
 
 class Page {
@@ -2581,18 +2637,16 @@ class Page {
 
   Page.fromJson(core.Map json_)
     : this(
-        author:
-            json_.containsKey('author')
-                ? PageAuthor.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        blog:
-            json_.containsKey('blog')
-                ? PageBlog.fromJson(
-                  json_['blog'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        author: json_.containsKey('author')
+            ? PageAuthor.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        blog: json_.containsKey('blog')
+            ? PageBlog.fromJson(
+                json_['blog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         content: json_['content'] as core.String?,
         etag: json_['etag'] as core.String?,
         id: json_['id'] as core.String?,
@@ -2606,21 +2660,36 @@ class Page {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (author != null) 'author': author!,
-    if (blog != null) 'blog': blog!,
-    if (content != null) 'content': content!,
-    if (etag != null) 'etag': etag!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (published != null) 'published': published!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (status != null) 'status': status!,
-    if (title != null) 'title': title!,
-    if (trashed != null) 'trashed': trashed!,
-    if (updated != null) 'updated': updated!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final blog = this.blog;
+    final content = this.content;
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final published = this.published;
+    final selfLink = this.selfLink;
+    final status = this.status;
+    final title = this.title;
+    final trashed = this.trashed;
+    final updated = this.updated;
+    final url = this.url;
+    return {
+      'author': ?author,
+      'blog': ?blog,
+      'content': ?content,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'published': ?published,
+      'selfLink': ?selfLink,
+      'status': ?status,
+      'title': ?title,
+      'trashed': ?trashed,
+      'updated': ?updated,
+      'url': ?url,
+    };
+  }
 }
 
 class PageList {
@@ -2643,24 +2712,28 @@ class PageList {
   PageList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Page.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Page.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 class PageviewsCounts {
@@ -2682,10 +2755,11 @@ class PageviewsCounts {
         timeRange: json_['timeRange'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (timeRange != null) 'timeRange': timeRange!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final timeRange = this.timeRange;
+    return {'count': ?count, 'timeRange': ?timeRange};
+  }
 }
 
 class Pageviews {
@@ -2705,22 +2779,22 @@ class Pageviews {
   Pageviews.fromJson(core.Map json_)
     : this(
         blogId: json_['blogId'] as core.String?,
-        counts:
-            (json_['counts'] as core.List?)
-                ?.map(
-                  (value) => PageviewsCounts.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        counts: (json_['counts'] as core.List?)
+            ?.map(
+              (value) => PageviewsCounts.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blogId != null) 'blogId': blogId!,
-    if (counts != null) 'counts': counts!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blogId = this.blogId;
+    final counts = this.counts;
+    final kind = this.kind;
+    return {'blogId': ?blogId, 'counts': ?counts, 'kind': ?kind};
+  }
 }
 
 /// The creator's avatar.
@@ -2733,9 +2807,10 @@ class PostAuthorImage {
   PostAuthorImage.fromJson(core.Map json_)
     : this(url: json_['url'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final url = this.url;
+    return {'url': ?url};
+  }
 }
 
 /// The author of this Post.
@@ -2758,21 +2833,26 @@ class PostAuthor {
     : this(
         displayName: json_['displayName'] as core.String?,
         id: json_['id'] as core.String?,
-        image:
-            json_.containsKey('image')
-                ? PostAuthorImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        image: json_.containsKey('image')
+            ? PostAuthorImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (id != null) 'id': id!,
-    if (image != null) 'image': image!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final id = this.id;
+    final image = this.image;
+    final url = this.url;
+    return {
+      'displayName': ?displayName,
+      'id': ?id,
+      'image': ?image,
+      'url': ?url,
+    };
+  }
 }
 
 /// Data about the blog containing this Post.
@@ -2784,7 +2864,10 @@ class PostBlog {
 
   PostBlog.fromJson(core.Map json_) : this(id: json_['id'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    return {'id': ?id};
+  }
 }
 
 class PostImages {
@@ -2794,9 +2877,10 @@ class PostImages {
 
   PostImages.fromJson(core.Map json_) : this(url: json_['url'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final url = this.url;
+    return {'url': ?url};
+  }
 }
 
 /// The location for geotagged posts.
@@ -2825,12 +2909,13 @@ class PostLocation {
         span: json_['span'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lat != null) 'lat': lat!,
-    if (lng != null) 'lng': lng!,
-    if (name != null) 'name': name!,
-    if (span != null) 'span': span!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lat = this.lat;
+    final lng = this.lng;
+    final name = this.name;
+    final span = this.span;
+    return {'lat': ?lat, 'lng': ?lng, 'name': ?name, 'span': ?span};
+  }
 }
 
 /// The container of comments on this Post.
@@ -2848,23 +2933,23 @@ class PostReplies {
 
   PostReplies.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Comment.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => Comment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         selfLink: json_['selfLink'] as core.String?,
         totalItems: json_['totalItems'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (totalItems != null) 'totalItems': totalItems!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final selfLink = this.selfLink;
+    final totalItems = this.totalItems;
+    return {'items': ?items, 'selfLink': ?selfLink, 'totalItems': ?totalItems};
+  }
 }
 
 class Post {
@@ -2971,49 +3056,43 @@ class Post {
 
   Post.fromJson(core.Map json_)
     : this(
-        author:
-            json_.containsKey('author')
-                ? PostAuthor.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        blog:
-            json_.containsKey('blog')
-                ? PostBlog.fromJson(
-                  json_['blog'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        author: json_.containsKey('author')
+            ? PostAuthor.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        blog: json_.containsKey('blog')
+            ? PostBlog.fromJson(
+                json_['blog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         content: json_['content'] as core.String?,
         customMetaData: json_['customMetaData'] as core.String?,
         etag: json_['etag'] as core.String?,
         id: json_['id'] as core.String?,
-        images:
-            (json_['images'] as core.List?)
-                ?.map(
-                  (value) => PostImages.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        images: (json_['images'] as core.List?)
+            ?.map(
+              (value) => PostImages.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
-        labels:
-            (json_['labels'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        location:
-            json_.containsKey('location')
-                ? PostLocation.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        labels: (json_['labels'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        location: json_.containsKey('location')
+            ? PostLocation.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         published: json_['published'] as core.String?,
         readerComments: json_['readerComments'] as core.String?,
-        replies:
-            json_.containsKey('replies')
-                ? PostReplies.fromJson(
-                  json_['replies'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        replies: json_.containsKey('replies')
+            ? PostReplies.fromJson(
+                json_['replies'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         selfLink: json_['selfLink'] as core.String?,
         status: json_['status'] as core.String?,
         title: json_['title'] as core.String?,
@@ -3023,28 +3102,50 @@ class Post {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (author != null) 'author': author!,
-    if (blog != null) 'blog': blog!,
-    if (content != null) 'content': content!,
-    if (customMetaData != null) 'customMetaData': customMetaData!,
-    if (etag != null) 'etag': etag!,
-    if (id != null) 'id': id!,
-    if (images != null) 'images': images!,
-    if (kind != null) 'kind': kind!,
-    if (labels != null) 'labels': labels!,
-    if (location != null) 'location': location!,
-    if (published != null) 'published': published!,
-    if (readerComments != null) 'readerComments': readerComments!,
-    if (replies != null) 'replies': replies!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (status != null) 'status': status!,
-    if (title != null) 'title': title!,
-    if (titleLink != null) 'titleLink': titleLink!,
-    if (trashed != null) 'trashed': trashed!,
-    if (updated != null) 'updated': updated!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final blog = this.blog;
+    final content = this.content;
+    final customMetaData = this.customMetaData;
+    final etag = this.etag;
+    final id = this.id;
+    final images = this.images;
+    final kind = this.kind;
+    final labels = this.labels;
+    final location = this.location;
+    final published = this.published;
+    final readerComments = this.readerComments;
+    final replies = this.replies;
+    final selfLink = this.selfLink;
+    final status = this.status;
+    final title = this.title;
+    final titleLink = this.titleLink;
+    final trashed = this.trashed;
+    final updated = this.updated;
+    final url = this.url;
+    return {
+      'author': ?author,
+      'blog': ?blog,
+      'content': ?content,
+      'customMetaData': ?customMetaData,
+      'etag': ?etag,
+      'id': ?id,
+      'images': ?images,
+      'kind': ?kind,
+      'labels': ?labels,
+      'location': ?location,
+      'published': ?published,
+      'readerComments': ?readerComments,
+      'replies': ?replies,
+      'selfLink': ?selfLink,
+      'status': ?status,
+      'title': ?title,
+      'titleLink': ?titleLink,
+      'trashed': ?trashed,
+      'updated': ?updated,
+      'url': ?url,
+    };
+  }
 }
 
 class PostList {
@@ -3076,26 +3177,31 @@ class PostList {
   PostList.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Post.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Post.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
         prevPageToken: json_['prevPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (prevPageToken != null) 'prevPageToken': prevPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final prevPageToken = this.prevPageToken;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'prevPageToken': ?prevPageToken,
+    };
+  }
 }
 
 class PostPerUserInfo {
@@ -3133,13 +3239,20 @@ class PostPerUserInfo {
         userId: json_['userId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blogId != null) 'blogId': blogId!,
-    if (hasEditAccess != null) 'hasEditAccess': hasEditAccess!,
-    if (kind != null) 'kind': kind!,
-    if (postId != null) 'postId': postId!,
-    if (userId != null) 'userId': userId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final blogId = this.blogId;
+    final hasEditAccess = this.hasEditAccess;
+    final kind = this.kind;
+    final postId = this.postId;
+    final userId = this.userId;
+    return {
+      'blogId': ?blogId,
+      'hasEditAccess': ?hasEditAccess,
+      'kind': ?kind,
+      'postId': ?postId,
+      'userId': ?userId,
+    };
+  }
 }
 
 class PostUserInfo {
@@ -3159,26 +3272,24 @@ class PostUserInfo {
   PostUserInfo.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
-        post:
-            json_.containsKey('post')
-                ? Post.fromJson(
-                  json_['post'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        postUserInfo:
-            json_.containsKey('post_user_info')
-                ? PostPerUserInfo.fromJson(
-                  json_['post_user_info']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        post: json_.containsKey('post')
+            ? Post.fromJson(
+                json_['post'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        postUserInfo: json_.containsKey('post_user_info')
+            ? PostPerUserInfo.fromJson(
+                json_['post_user_info'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (post != null) 'post': post!,
-    if (postUserInfo != null) 'post_user_info': postUserInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final post = this.post;
+    final postUserInfo = this.postUserInfo;
+    return {'kind': ?kind, 'post': ?post, 'post_user_info': ?postUserInfo};
+  }
 }
 
 class PostUserInfosList {
@@ -3197,23 +3308,23 @@ class PostUserInfosList {
 
   PostUserInfosList.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => PostUserInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => PostUserInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {'items': ?items, 'kind': ?kind, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The container of blogs for this user.
@@ -3226,9 +3337,10 @@ class UserBlogs {
   UserBlogs.fromJson(core.Map json_)
     : this(selfLink: json_['selfLink'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (selfLink != null) 'selfLink': selfLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final selfLink = this.selfLink;
+    return {'selfLink': ?selfLink};
+  }
 }
 
 /// This user's locale
@@ -3251,11 +3363,12 @@ class UserLocale {
         variant: json_['variant'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (country != null) 'country': country!,
-    if (language != null) 'language': language!,
-    if (variant != null) 'variant': variant!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final country = this.country;
+    final language = this.language;
+    final variant = this.variant;
+    return {'country': ?country, 'language': ?language, 'variant': ?variant};
+  }
 }
 
 class User {
@@ -3303,35 +3416,44 @@ class User {
   User.fromJson(core.Map json_)
     : this(
         about: json_['about'] as core.String?,
-        blogs:
-            json_.containsKey('blogs')
-                ? UserBlogs.fromJson(
-                  json_['blogs'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        blogs: json_.containsKey('blogs')
+            ? UserBlogs.fromJson(
+                json_['blogs'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         created: json_['created'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        locale:
-            json_.containsKey('locale')
-                ? UserLocale.fromJson(
-                  json_['locale'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        locale: json_.containsKey('locale')
+            ? UserLocale.fromJson(
+                json_['locale'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         selfLink: json_['selfLink'] as core.String?,
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (about != null) 'about': about!,
-    if (blogs != null) 'blogs': blogs!,
-    if (created != null) 'created': created!,
-    if (displayName != null) 'displayName': displayName!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (locale != null) 'locale': locale!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final about = this.about;
+    final blogs = this.blogs;
+    final created = this.created;
+    final displayName = this.displayName;
+    final id = this.id;
+    final kind = this.kind;
+    final locale = this.locale;
+    final selfLink = this.selfLink;
+    final url = this.url;
+    return {
+      'about': ?about,
+      'blogs': ?blogs,
+      'created': ?created,
+      'displayName': ?displayName,
+      'id': ?id,
+      'kind': ?kind,
+      'locale': ?locale,
+      'selfLink': ?selfLink,
+      'url': ?url,
+    };
+  }
 }

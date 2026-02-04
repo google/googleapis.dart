@@ -4272,10 +4272,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildChromeOsDeviceCpuStatusReportsCpuTemperatureInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(od);
       });
     },

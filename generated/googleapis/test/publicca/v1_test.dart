@@ -64,10 +64,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsExternalAccountKeysResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.PublicCertificateAuthorityApi(
-            mock,
-          ).projects.locations.externalAccountKeys;
+      final res = api.PublicCertificateAuthorityApi(
+        mock,
+      ).projects.locations.externalAccountKeys;
       final arg_request = buildExternalAccountKey();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';

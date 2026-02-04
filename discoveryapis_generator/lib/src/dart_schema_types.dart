@@ -22,11 +22,10 @@ abstract class ComplexDartSchemaType extends DartSchemaType {
   String? classDefinition();
 
   @override
-  String get declaration =>
-      throw UnsupportedError(
-        'Complex schema types do not have a primitive string encoding for URI'
-        'query parameters.',
-      );
+  String get declaration => throw UnsupportedError(
+    'Complex schema types do not have a primitive string encoding for URI'
+    'query parameters.',
+  );
 
   @override
   String primitiveEncoding(String? value) {
@@ -137,10 +136,9 @@ class ObjectType extends ComplexDartSchemaType {
 
     final fromJsonString = StringBuffer();
 
-    final emptyPropertiesComment =
-        properties.isEmpty
-            ? '  // ignore: avoid_unused_constructor_parameters\n'
-            : '';
+    final emptyPropertiesComment = properties.isEmpty
+        ? '  // ignore: avoid_unused_constructor_parameters\n'
+        : '';
     fromJsonString.writeln(
       '  $className.fromJson'
       '($emptyPropertiesComment ${imports.core.ref()}Map json_)',
@@ -163,16 +161,25 @@ class ObjectType extends ComplexDartSchemaType {
     }
 
     final toJsonString = StringBuffer();
-    toJsonString.writeln('${jsonType.declaration} toJson() =>');
-    toJsonString.writeln('{');
-    for (var property in properties) {
-      toJsonString.writeln('if (${property.name} != null)');
-      toJsonString.writeln(
-        '${escapeDartString(property.jsonName)}:'
-        '${property.type.jsonEncode('${property.name}!')},',
-      );
+    if (properties.isEmpty) {
+      toJsonString.writeln('${jsonType.declaration} toJson() => {};');
+    } else {
+      toJsonString.writeln('${jsonType.declaration} toJson() {');
+      for (var property in properties) {
+        toJsonString.writeln(
+          '    final ${property.name} = this.${property.name};',
+        );
+      }
+      toJsonString.writeln('    return {');
+      for (var property in properties) {
+        toJsonString.writeln(
+          '${escapeDartString(property.jsonName)}:'
+          '?${property.type.jsonEncodeNullable(property.name.toString())},',
+        );
+      }
+      toJsonString.write('};');
+      toJsonString.writeln('  }');
     }
-    toJsonString.write('};');
 
     var positionalConstructorParams = properties
         .map((e) => 'this.${e.name},')
@@ -332,11 +339,10 @@ class DartSchemaForwardRef extends DartSchemaType {
   }
 
   @override
-  DartSchemaType resolveCore(DartSchemaTypeDB db) =>
-      throw StateError(
-        'Type declarations can only be created after '
-        'resolving references.',
-      );
+  DartSchemaType resolveCore(DartSchemaTypeDB db) => throw StateError(
+    'Type declarations can only be created after '
+    'resolving references.',
+  );
 
   @override
   JsonType get jsonType {
@@ -564,6 +570,10 @@ class DateTimeType extends StringType {
   String jsonEncode(String value) => '$value.toUtc().toIso8601String()';
 
   @override
+  String jsonEncodeNullable(String value) =>
+      '$value?.toUtc().toIso8601String()';
+
+  @override
   String jsonDecode(String json, {String? importName}) =>
       '${imports.core.ref()}DateTime'
       '.parse($json as ${imports.core.ref()}String)';
@@ -623,6 +633,15 @@ class UnnamedArrayType extends ComplexDartSchemaType implements HasInnertype {
     // NOTE: The List from the user is already JSON. We have a big
     // ASSUMPTION here: The user does not modify the list while we're
     // converting JSON -> String (-> Bytes).
+    return value;
+  }
+
+  @override
+  String jsonEncodeNullable(String value) {
+    if (innerType!.needsJsonEncoding) {
+      return '$value?.map((value) => ${innerType!.jsonEncode('value')})'
+          '.toList()';
+    }
     return value;
   }
 
@@ -762,6 +781,18 @@ class UnnamedMapType extends ComplexDartSchemaType {
       // NOTE: The Map from the user can be encoded directly. We have a big
       // ASSUMPTION here: The user does not modify the map while we're
       // converting JSON -> String (-> Bytes).
+      return value;
+    }
+  }
+
+  @override
+  String jsonEncodeNullable(String value) {
+    final valueType = this.valueType!;
+
+    if (valueType.needsJsonEncoding) {
+      return '$value?.map((key, item) => ${imports.core.ref()}MapEntry'
+          '(key, ${valueType.jsonEncode('item')}))';
+    } else {
       return value;
     }
   }

@@ -5013,10 +5013,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsScansVulnerabilitiesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OnDemandScanningApi(
-            mock,
-          ).projects.locations.scans.vulnerabilities;
+      final res = api.OnDemandScanningApi(
+        mock,
+      ).projects.locations.scans.vulnerabilities;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

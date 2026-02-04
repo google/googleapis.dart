@@ -3615,10 +3615,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ChangeRenewalSettingsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ChangeRenewalSettingsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ChangeRenewalSettingsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ChangeRenewalSettingsRequest(od);
       });
     },
@@ -3641,10 +3641,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ChannelPartnerRepricingConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ChannelPartnerRepricingConfig(od);
       });
     },
@@ -3657,10 +3657,10 @@ void main() {
         final o =
             buildGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest(od);
       });
     },
@@ -3673,10 +3673,10 @@ void main() {
         final o =
             buildGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse(od);
       });
     },
@@ -3688,10 +3688,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1CloudIdentityCustomerAccount();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1CloudIdentityCustomerAccount.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1CloudIdentityCustomerAccount.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1CloudIdentityCustomerAccount(od);
       });
     },
@@ -3907,10 +3907,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ListChannelPartnerLinksResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ListChannelPartnerLinksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ListChannelPartnerLinksResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ListChannelPartnerLinksResponse(od);
       });
     },
@@ -3923,10 +3923,10 @@ void main() {
         final o =
             buildGoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse(od);
       });
     },
@@ -3939,10 +3939,10 @@ void main() {
         final o =
             buildGoogleCloudChannelV1ListCustomerRepricingConfigsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ListCustomerRepricingConfigsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ListCustomerRepricingConfigsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ListCustomerRepricingConfigsResponse(od);
       });
     },
@@ -3965,10 +3965,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ListEntitlementChangesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ListEntitlementChangesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ListEntitlementChangesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ListEntitlementChangesResponse(od);
       });
     },
@@ -4013,10 +4013,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ListPurchasableOffersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ListPurchasableOffersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ListPurchasableOffersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ListPurchasableOffersResponse(od);
       });
     },
@@ -4053,10 +4053,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ListSkuGroupBillableSkusResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ListSkuGroupBillableSkusResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ListSkuGroupBillableSkusResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ListSkuGroupBillableSkusResponse(od);
       });
     },
@@ -4101,10 +4101,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ListTransferableOffersRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ListTransferableOffersRequest(od);
       });
     },
@@ -4116,10 +4116,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ListTransferableOffersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ListTransferableOffersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ListTransferableOffersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ListTransferableOffersResponse(od);
       });
     },
@@ -4145,10 +4145,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ListTransferableSkusResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ListTransferableSkusResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ListTransferableSkusResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ListTransferableSkusResponse(od);
       });
     },
@@ -4303,10 +4303,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1ProvisionCloudIdentityRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1ProvisionCloudIdentityRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1ProvisionCloudIdentityRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1ProvisionCloudIdentityRequest(od);
       });
     },
@@ -4352,10 +4352,10 @@ void main() {
         final o =
             buildGoogleCloudChannelV1QueryEligibleBillingAccountsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1QueryEligibleBillingAccountsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1QueryEligibleBillingAccountsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1QueryEligibleBillingAccountsResponse(od);
       });
     },
@@ -4473,10 +4473,10 @@ void main() {
         final o =
             buildGoogleCloudChannelV1RepricingConfigChannelPartnerGranularity();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1RepricingConfigChannelPartnerGranularity(od);
       });
     },
@@ -4489,10 +4489,10 @@ void main() {
         final o =
             buildGoogleCloudChannelV1RepricingConfigEntitlementGranularity();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1RepricingConfigEntitlementGranularity.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1RepricingConfigEntitlementGranularity.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1RepricingConfigEntitlementGranularity(od);
       });
     },
@@ -4621,10 +4621,10 @@ void main() {
         final o =
             buildGoogleCloudChannelV1TransferEntitlementsToGoogleRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1TransferEntitlementsToGoogleRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1TransferEntitlementsToGoogleRequest(od);
       });
     },
@@ -4683,10 +4683,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1UnregisterSubscriberResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1UnregisterSubscriberResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1UnregisterSubscriberResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1UnregisterSubscriberResponse(od);
       });
     },
@@ -4698,10 +4698,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudChannelV1UpdateChannelPartnerLinkRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudChannelV1UpdateChannelPartnerLinkRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudChannelV1UpdateChannelPartnerLinkRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudChannelV1UpdateChannelPartnerLinkRequest(od);
       });
     },
@@ -4849,10 +4849,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest(obj);
 
           final path = req.url.path;
@@ -4997,10 +4997,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1ListTransferableOffersRequest(obj);
 
           final path = req.url.path;
@@ -5066,10 +5066,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1ListTransferableSkusRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1ListTransferableSkusRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1ListTransferableSkusRequest(obj);
 
           final path = req.url.path;
@@ -5134,10 +5134,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1RegisterSubscriberRequest(obj);
 
           final path = req.url.path;
@@ -5203,10 +5203,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1UnregisterSubscriberRequest(obj);
 
           final path = req.url.path;
@@ -5479,10 +5479,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1UpdateChannelPartnerLinkRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1UpdateChannelPartnerLinkRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1UpdateChannelPartnerLinkRequest(obj);
 
           final path = req.url.path;
@@ -5545,20 +5545,19 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudchannelApi(
-              mock,
-            ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
+        final res = api.CloudchannelApi(
+          mock,
+        ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
         final arg_request =
             buildGoogleCloudChannelV1ChannelPartnerRepricingConfig();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudChannelV1ChannelPartnerRepricingConfig(obj);
 
             final path = req.url.path;
@@ -5617,10 +5616,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudchannelApi(
-              mock,
-            ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
+        final res = api.CloudchannelApi(
+          mock,
+        ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -5673,10 +5671,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudchannelApi(
-              mock,
-            ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
+        final res = api.CloudchannelApi(
+          mock,
+        ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -5733,10 +5730,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudchannelApi(
-              mock,
-            ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
+        final res = api.CloudchannelApi(
+          mock,
+        ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -5815,20 +5811,19 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudchannelApi(
-              mock,
-            ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
+        final res = api.CloudchannelApi(
+          mock,
+        ).accounts.channelPartnerLinks.channelPartnerRepricingConfigs;
         final arg_request =
             buildGoogleCloudChannelV1ChannelPartnerRepricingConfig();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
-            final obj = api
-                .GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(
-              json as core.Map<core.String, core.dynamic>,
-            );
+            final obj =
+                api.GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(
+                  json as core.Map<core.String, core.dynamic>,
+                );
             checkGoogleCloudChannelV1ChannelPartnerRepricingConfig(obj);
 
             final path = req.url.path;
@@ -5890,8 +5885,9 @@ void main() {
   unittest.group('resource-AccountsChannelPartnerLinksCustomersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.channelPartnerLinks.customers;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.channelPartnerLinks.customers;
       final arg_request = buildGoogleCloudChannelV1Customer();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5956,8 +5952,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.channelPartnerLinks.customers;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.channelPartnerLinks.customers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6010,8 +6007,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.channelPartnerLinks.customers;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.channelPartnerLinks.customers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6066,8 +6064,9 @@ void main() {
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.channelPartnerLinks.customers;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.channelPartnerLinks.customers;
       final arg_request = buildGoogleCloudChannelV1ImportCustomerRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6132,8 +6131,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.channelPartnerLinks.customers;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.channelPartnerLinks.customers;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -6211,8 +6211,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.channelPartnerLinks.customers;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.channelPartnerLinks.customers;
       final arg_request = buildGoogleCloudChannelV1Customer();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6886,10 +6887,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1ProvisionCloudIdentityRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1ProvisionCloudIdentityRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1ProvisionCloudIdentityRequest(obj);
 
           final path = req.url.path;
@@ -7017,10 +7018,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1TransferEntitlementsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1TransferEntitlementsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1TransferEntitlementsRequest(obj);
 
           final path = req.url.path;
@@ -7084,10 +7085,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1TransferEntitlementsToGoogleRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1TransferEntitlementsToGoogleRequest(obj);
 
           final path = req.url.path;
@@ -7146,8 +7147,9 @@ void main() {
   unittest.group('resource-AccountsCustomersCustomerRepricingConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.customers.customerRepricingConfigs;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.customers.customerRepricingConfigs;
       final arg_request = buildGoogleCloudChannelV1CustomerRepricingConfig();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -7214,8 +7216,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.customers.customerRepricingConfigs;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.customers.customerRepricingConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7268,8 +7271,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.customers.customerRepricingConfigs;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.customers.customerRepricingConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7326,8 +7330,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.customers.customerRepricingConfigs;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.customers.customerRepricingConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -7406,8 +7411,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudchannelApi(mock).accounts.customers.customerRepricingConfigs;
+      final res = api.CloudchannelApi(
+        mock,
+      ).accounts.customers.customerRepricingConfigs;
       final arg_request = buildGoogleCloudChannelV1CustomerRepricingConfig();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7482,10 +7488,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1ActivateEntitlementRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1ActivateEntitlementRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1ActivateEntitlementRequest(obj);
 
           final path = req.url.path;
@@ -7744,10 +7750,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1ChangeRenewalSettingsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1ChangeRenewalSettingsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1ChangeRenewalSettingsRequest(obj);
 
           final path = req.url.path;
@@ -8203,10 +8209,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1SuspendEntitlementRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1SuspendEntitlementRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1SuspendEntitlementRequest(obj);
 
           final path = req.url.path;
@@ -8363,10 +8369,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1FetchReportResultsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1FetchReportResultsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1FetchReportResultsRequest(obj);
 
           final path = req.url.path;
@@ -8804,10 +8810,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1RegisterSubscriberRequest(obj);
 
           final path = req.url.path;
@@ -8873,10 +8879,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudChannelV1UnregisterSubscriberRequest(obj);
 
           final path = req.url.path;

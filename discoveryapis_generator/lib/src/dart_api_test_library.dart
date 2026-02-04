@@ -112,14 +112,13 @@ class DartApiTestLibrary extends TestHelper {
       "import 'package:test/test.dart' as unittest;",
     ]..sort();
 
-    final optionalSkip =
-        skip
-            ? '''
+    final optionalSkip = skip
+        ? '''
 \n@unittest.Skip()
 library;
 
 '''
-            : '';
+        : '';
 
     return """
 ${ignoreForFileComments(_testIgnores)}
@@ -579,10 +578,9 @@ core.bool parseBool(n) {
   }
 
   MethodParameter _findMethodParameter(String varname) {
-    final parameters =
-        parameterValues.keys
-            .where((parameter) => parameter.jsonName == varname)
-            .toList();
+    final parameters = parameterValues.keys
+        .where((parameter) => parameter.jsonName == varname)
+        .toList();
     if (parameters.length != 1) {
       throw ArgumentError(
         'Invalid generator. Expected exactly one parameter of name $varname',

@@ -3156,8 +3156,9 @@ void main() {
     () {
       unittest.test('method--update', () async {
         final mock = HttpServerMock();
-        final res =
-            api.TagManagerApi(mock).accounts.containers.reauthorizeEnvironments;
+        final res = api.TagManagerApi(
+          mock,
+        ).accounts.containers.reauthorizeEnvironments;
         final arg_request = buildEnvironment();
         final arg_accountId = 'foo';
         final arg_containerId = 'foo';

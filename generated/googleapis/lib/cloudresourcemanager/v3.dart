@@ -127,10 +127,10 @@ class EffectiveTagsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/effectiveTags';
@@ -191,7 +191,7 @@ class FoldersResource {
   async.Future<Operation> create(Folder request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/folders';
@@ -235,7 +235,7 @@ class FoldersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -272,7 +272,7 @@ class FoldersResource {
   /// this method will complete with the same error.
   async.Future<Folder> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -320,7 +320,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -378,11 +378,11 @@ class FoldersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/folders';
@@ -438,7 +438,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name') + ':move';
@@ -495,8 +495,8 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -563,10 +563,10 @@ class FoldersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (query != null) 'query': [query],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'query': ?query == null ? null : [query],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/folders:search';
@@ -615,7 +615,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -662,7 +662,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -714,7 +714,7 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name') + ':undelete';
@@ -755,7 +755,7 @@ class FoldersCapabilitiesResource {
   /// this method will complete with the same error.
   async.Future<Capability> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -804,8 +804,8 @@ class FoldersCapabilitiesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -849,7 +849,7 @@ class LiensResource {
   async.Future<Lien> create(Lien request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/liens';
@@ -886,7 +886,7 @@ class LiensResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -922,7 +922,7 @@ class LiensResource {
   /// this method will complete with the same error.
   async.Future<Lien> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -973,10 +973,10 @@ class LiensResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/liens';
@@ -1038,7 +1038,7 @@ class LocationsEffectiveTagBindingCollectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -1087,7 +1087,7 @@ class LocationsTagBindingCollectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -1139,8 +1139,8 @@ class LocationsTagBindingCollectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -1182,7 +1182,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -1226,7 +1226,7 @@ class OrganizationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -1276,7 +1276,7 @@ class OrganizationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1338,10 +1338,10 @@ class OrganizationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (query != null) 'query': [query],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'query': ?query == null ? null : [query],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/organizations:search';
@@ -1391,7 +1391,7 @@ class OrganizationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1438,7 +1438,7 @@ class OrganizationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1488,7 +1488,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/projects';
@@ -1537,7 +1537,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -1574,7 +1574,7 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Project> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -1619,7 +1619,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1678,11 +1678,11 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/projects';
@@ -1733,7 +1733,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name') + ':move';
@@ -1782,8 +1782,8 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -1856,10 +1856,10 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (query != null) 'query': [query],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'query': ?query == null ? null : [query],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/projects:search';
@@ -1932,7 +1932,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1976,7 +1976,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2026,7 +2026,7 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name') + ':undelete';
@@ -2072,8 +2072,8 @@ class TagBindingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/tagBindings';
@@ -2111,7 +2111,7 @@ class TagBindingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -2161,10 +2161,10 @@ class TagBindingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/tagBindings';
@@ -2215,8 +2215,8 @@ class TagKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/tagKeys';
@@ -2264,9 +2264,9 @@ class TagKeysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -2302,7 +2302,7 @@ class TagKeysResource {
   /// this method will complete with the same error.
   async.Future<TagKey> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -2350,7 +2350,7 @@ class TagKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2391,8 +2391,8 @@ class TagKeysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (name != null) 'name': [name],
-      if ($fields != null) 'fields': [$fields],
+      'name': ?name == null ? null : [name],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/tagKeys/namespaced';
@@ -2437,10 +2437,10 @@ class TagKeysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/tagKeys';
@@ -2492,9 +2492,9 @@ class TagKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -2542,7 +2542,7 @@ class TagKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2589,7 +2589,7 @@ class TagKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2645,8 +2645,8 @@ class TagValuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/tagValues';
@@ -2693,9 +2693,9 @@ class TagValuesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -2731,7 +2731,7 @@ class TagValuesResource {
   /// this method will complete with the same error.
   async.Future<TagValue> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -2779,7 +2779,7 @@ class TagValuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2822,8 +2822,8 @@ class TagValuesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (name != null) 'name': [name],
-      if ($fields != null) 'fields': [$fields],
+      'name': ?name == null ? null : [name],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/tagValues/namespaced';
@@ -2867,10 +2867,10 @@ class TagValuesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (parent != null) 'parent': [parent],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v3/tagValues';
@@ -2919,9 +2919,9 @@ class TagValuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -2970,7 +2970,7 @@ class TagValuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -3017,7 +3017,7 @@ class TagValuesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3074,8 +3074,8 @@ class TagValuesTagHoldsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/tagHolds';
@@ -3116,8 +3116,8 @@ class TagValuesTagHoldsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$name');
@@ -3173,10 +3173,10 @@ class TagValuesTagHoldsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/tagHolds';
@@ -3223,21 +3223,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -3332,24 +3332,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// Representation of a Capability.
@@ -3377,10 +3376,11 @@ class Capability {
         value: json_['value'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    return {'name': ?name, 'value': ?value};
+  }
 }
 
 /// An EffectiveTag represents a tag that applies to a resource during policy
@@ -3446,14 +3446,22 @@ class EffectiveTag {
         tagValue: json_['tagValue'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inherited != null) 'inherited': inherited!,
-    if (namespacedTagKey != null) 'namespacedTagKey': namespacedTagKey!,
-    if (namespacedTagValue != null) 'namespacedTagValue': namespacedTagValue!,
-    if (tagKey != null) 'tagKey': tagKey!,
-    if (tagKeyParentName != null) 'tagKeyParentName': tagKeyParentName!,
-    if (tagValue != null) 'tagValue': tagValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final inherited = this.inherited;
+    final namespacedTagKey = this.namespacedTagKey;
+    final namespacedTagValue = this.namespacedTagValue;
+    final tagKey = this.tagKey;
+    final tagKeyParentName = this.tagKeyParentName;
+    final tagValue = this.tagValue;
+    return {
+      'inherited': ?inherited,
+      'namespacedTagKey': ?namespacedTagKey,
+      'namespacedTagValue': ?namespacedTagValue,
+      'tagKey': ?tagKey,
+      'tagKeyParentName': ?tagKeyParentName,
+      'tagValue': ?tagValue,
+    };
+  }
 }
 
 /// Represents a collection of effective tag bindings for a GCP resource.
@@ -3486,18 +3494,23 @@ class EffectiveTagBindingCollection {
 
   EffectiveTagBindingCollection.fromJson(core.Map json_)
     : this(
-        effectiveTags: (json_['effectiveTags']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        effectiveTags:
+            (json_['effectiveTags'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         fullResourceName: json_['fullResourceName'] as core.String?,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effectiveTags != null) 'effectiveTags': effectiveTags!,
-    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final effectiveTags = this.effectiveTags;
+    final fullResourceName = this.fullResourceName;
+    final name = this.name;
+    return {
+      'effectiveTags': ?effectiveTags,
+      'fullResourceName': ?fullResourceName,
+      'name': ?name,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3633,10 +3646,9 @@ class Folder {
 
   Folder.fromJson(core.Map json_)
     : this(
-        configuredCapabilities:
-            (json_['configuredCapabilities'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        configuredCapabilities: (json_['configuredCapabilities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -3651,20 +3663,32 @@ class Folder {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configuredCapabilities != null)
-      'configuredCapabilities': configuredCapabilities!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (managementProject != null) 'managementProject': managementProject!,
-    if (name != null) 'name': name!,
-    if (parent != null) 'parent': parent!,
-    if (state != null) 'state': state!,
-    if (tags != null) 'tags': tags!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configuredCapabilities = this.configuredCapabilities;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final managementProject = this.managementProject;
+    final name = this.name;
+    final parent = this.parent;
+    final state = this.state;
+    final tags = this.tags;
+    final updateTime = this.updateTime;
+    return {
+      'configuredCapabilities': ?configuredCapabilities,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'managementProject': ?managementProject,
+      'name': ?name,
+      'parent': ?parent,
+      'state': ?state,
+      'tags': ?tags,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -3677,17 +3701,17 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        options:
-            json_.containsKey('options')
-                ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        options: json_.containsKey('options')
+            ? GetPolicyOptions.fromJson(
+                json_['options'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (options != null) 'options': options!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    return {'options': ?options};
+  }
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -3716,21 +3740,21 @@ class ListEffectiveTagsResponse {
 
   ListEffectiveTagsResponse.fromJson(core.Map json_)
     : this(
-        effectiveTags:
-            (json_['effectiveTags'] as core.List?)
-                ?.map(
-                  (value) => EffectiveTag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        effectiveTags: (json_['effectiveTags'] as core.List?)
+            ?.map(
+              (value) => EffectiveTag.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effectiveTags != null) 'effectiveTags': effectiveTags!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final effectiveTags = this.effectiveTags;
+    final nextPageToken = this.nextPageToken;
+    return {'effectiveTags': ?effectiveTags, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The ListFolders response message.
@@ -3747,21 +3771,20 @@ class ListFoldersResponse {
 
   ListFoldersResponse.fromJson(core.Map json_)
     : this(
-        folders:
-            (json_['folders'] as core.List?)
-                ?.map(
-                  (value) => Folder.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        folders: (json_['folders'] as core.List?)
+            ?.map(
+              (value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (folders != null) 'folders': folders!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final folders = this.folders;
+    final nextPageToken = this.nextPageToken;
+    return {'folders': ?folders, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Liens.ListLiens.
@@ -3777,21 +3800,20 @@ class ListLiensResponse {
 
   ListLiensResponse.fromJson(core.Map json_)
     : this(
-        liens:
-            (json_['liens'] as core.List?)
-                ?.map(
-                  (value) => Lien.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        liens: (json_['liens'] as core.List?)
+            ?.map(
+              (value) =>
+                  Lien.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (liens != null) 'liens': liens!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final liens = this.liens;
+    final nextPageToken = this.nextPageToken;
+    return {'liens': ?liens, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// A page of the response received from the ListProjects method.
@@ -3821,20 +3843,20 @@ class ListProjectsResponse {
   ListProjectsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        projects:
-            (json_['projects'] as core.List?)
-                ?.map(
-                  (value) => Project.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        projects: (json_['projects'] as core.List?)
+            ?.map(
+              (value) => Project.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (projects != null) 'projects': projects!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final projects = this.projects;
+    return {'nextPageToken': ?nextPageToken, 'projects': ?projects};
+  }
 }
 
 /// The ListTagBindings response.
@@ -3857,20 +3879,20 @@ class ListTagBindingsResponse {
   ListTagBindingsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tagBindings:
-            (json_['tagBindings'] as core.List?)
-                ?.map(
-                  (value) => TagBinding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tagBindings: (json_['tagBindings'] as core.List?)
+            ?.map(
+              (value) => TagBinding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tagBindings != null) 'tagBindings': tagBindings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tagBindings = this.tagBindings;
+    return {'nextPageToken': ?nextPageToken, 'tagBindings': ?tagBindings};
+  }
 }
 
 /// The ListTagHolds response.
@@ -3893,20 +3915,20 @@ class ListTagHoldsResponse {
   ListTagHoldsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tagHolds:
-            (json_['tagHolds'] as core.List?)
-                ?.map(
-                  (value) => TagHold.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tagHolds: (json_['tagHolds'] as core.List?)
+            ?.map(
+              (value) => TagHold.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tagHolds != null) 'tagHolds': tagHolds!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tagHolds = this.tagHolds;
+    return {'nextPageToken': ?nextPageToken, 'tagHolds': ?tagHolds};
+  }
 }
 
 /// The ListTagKeys response message.
@@ -3923,20 +3945,19 @@ class ListTagKeysResponse {
   ListTagKeysResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tagKeys:
-            (json_['tagKeys'] as core.List?)
-                ?.map(
-                  (value) => TagKey.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tagKeys: (json_['tagKeys'] as core.List?)
+            ?.map(
+              (value) =>
+                  TagKey.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tagKeys != null) 'tagKeys': tagKeys!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tagKeys = this.tagKeys;
+    return {'nextPageToken': ?nextPageToken, 'tagKeys': ?tagKeys};
+  }
 }
 
 /// The ListTagValues response.
@@ -3954,20 +3975,20 @@ class ListTagValuesResponse {
   ListTagValuesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tagValues:
-            (json_['tagValues'] as core.List?)
-                ?.map(
-                  (value) => TagValue.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        tagValues: (json_['tagValues'] as core.List?)
+            ?.map(
+              (value) => TagValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tagValues != null) 'tagValues': tagValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tagValues = this.tagValues;
+    return {'nextPageToken': ?nextPageToken, 'tagValues': ?tagValues};
+  }
 }
 
 /// The MoveFolder request message.
@@ -3985,9 +4006,10 @@ class MoveFolderRequest {
   MoveFolderRequest.fromJson(core.Map json_)
     : this(destinationParent: json_['destinationParent'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinationParent != null) 'destinationParent': destinationParent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationParent = this.destinationParent;
+    return {'destinationParent': ?destinationParent};
+  }
 }
 
 /// The request sent to MoveProject method.
@@ -4002,9 +4024,10 @@ class MoveProjectRequest {
   MoveProjectRequest.fromJson(core.Map json_)
     : this(destinationParent: json_['destinationParent'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinationParent != null) 'destinationParent': destinationParent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationParent = this.destinationParent;
+    return {'destinationParent': ?destinationParent};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4055,30 +4078,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// The root node in the resource hierarchy to which a particular entity's (a
@@ -4165,17 +4192,26 @@ class Organization {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (directoryCustomerId != null)
-      'directoryCustomerId': directoryCustomerId!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final directoryCustomerId = this.directoryCustomerId;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final name = this.name;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'directoryCustomerId': ?directoryCustomerId,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4270,32 +4306,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// A project is a high-level Google Cloud entity.
@@ -4422,10 +4462,9 @@ class Project {
 
   Project.fromJson(core.Map json_)
     : this(
-        configuredCapabilities:
-            (json_['configuredCapabilities'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        configuredCapabilities: (json_['configuredCapabilities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -4443,21 +4482,34 @@ class Project {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configuredCapabilities != null)
-      'configuredCapabilities': configuredCapabilities!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (parent != null) 'parent': parent!,
-    if (projectId != null) 'projectId': projectId!,
-    if (state != null) 'state': state!,
-    if (tags != null) 'tags': tags!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final configuredCapabilities = this.configuredCapabilities;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final labels = this.labels;
+    final name = this.name;
+    final parent = this.parent;
+    final projectId = this.projectId;
+    final state = this.state;
+    final tags = this.tags;
+    final updateTime = this.updateTime;
+    return {
+      'configuredCapabilities': ?configuredCapabilities,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'parent': ?parent,
+      'projectId': ?projectId,
+      'state': ?state,
+      'tags': ?tags,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// The response message for searching folders.
@@ -4475,21 +4527,20 @@ class SearchFoldersResponse {
 
   SearchFoldersResponse.fromJson(core.Map json_)
     : this(
-        folders:
-            (json_['folders'] as core.List?)
-                ?.map(
-                  (value) => Folder.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        folders: (json_['folders'] as core.List?)
+            ?.map(
+              (value) =>
+                  Folder.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (folders != null) 'folders': folders!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final folders = this.folders;
+    final nextPageToken = this.nextPageToken;
+    return {'folders': ?folders, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response returned from the `SearchOrganizations` method.
@@ -4511,20 +4562,20 @@ class SearchOrganizationsResponse {
   SearchOrganizationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        organizations:
-            (json_['organizations'] as core.List?)
-                ?.map(
-                  (value) => Organization.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        organizations: (json_['organizations'] as core.List?)
+            ?.map(
+              (value) => Organization.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (organizations != null) 'organizations': organizations!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final organizations = this.organizations;
+    return {'nextPageToken': ?nextPageToken, 'organizations': ?organizations};
+  }
 }
 
 /// A page of the response received from the SearchProjects method.
@@ -4553,20 +4604,20 @@ class SearchProjectsResponse {
   SearchProjectsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        projects:
-            (json_['projects'] as core.List?)
-                ?.map(
-                  (value) => Project.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        projects: (json_['projects'] as core.List?)
+            ?.map(
+              (value) => Project.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (projects != null) 'projects': projects!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final projects = this.projects;
+    return {'nextPageToken': ?nextPageToken, 'projects': ?projects};
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4588,19 +4639,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4658,13 +4709,18 @@ class TagBinding {
         tagValueNamespacedName: json_['tagValueNamespacedName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (parent != null) 'parent': parent!,
-    if (tagValue != null) 'tagValue': tagValue!,
-    if (tagValueNamespacedName != null)
-      'tagValueNamespacedName': tagValueNamespacedName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final parent = this.parent;
+    final tagValue = this.tagValue;
+    final tagValueNamespacedName = this.tagValueNamespacedName;
+    return {
+      'name': ?name,
+      'parent': ?parent,
+      'tagValue': ?tagValue,
+      'tagValueNamespacedName': ?tagValueNamespacedName,
+    };
+  }
 }
 
 /// Represents a collection of tags directly bound to a GCP resource.
@@ -4714,12 +4770,18 @@ class TagBindingCollection {
         ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-    if (name != null) 'name': name!,
-    if (tags != null) 'tags': tags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final fullResourceName = this.fullResourceName;
+    final name = this.name;
+    final tags = this.tags;
+    return {
+      'etag': ?etag,
+      'fullResourceName': ?fullResourceName,
+      'name': ?name,
+      'tags': ?tags,
+    };
+  }
 }
 
 /// A TagHold represents the use of a TagValue that is not captured by
@@ -4785,13 +4847,20 @@ class TagHold {
         origin: json_['origin'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (helpLink != null) 'helpLink': helpLink!,
-    if (holder != null) 'holder': holder!,
-    if (name != null) 'name': name!,
-    if (origin != null) 'origin': origin!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final helpLink = this.helpLink;
+    final holder = this.holder;
+    final name = this.name;
+    final origin = this.origin;
+    return {
+      'createTime': ?createTime,
+      'helpLink': ?helpLink,
+      'holder': ?holder,
+      'name': ?name,
+      'origin': ?origin,
+    };
+  }
 }
 
 /// A TagKey, used to group a set of TagValues.
@@ -4919,26 +4988,40 @@ class TagKey {
         namespacedName: json_['namespacedName'] as core.String?,
         parent: json_['parent'] as core.String?,
         purpose: json_['purpose'] as core.String?,
-        purposeData: (json_['purposeData']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        purposeData:
+            (json_['purposeData'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         shortName: json_['shortName'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedValuesRegex != null) 'allowedValuesRegex': allowedValuesRegex!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (namespacedName != null) 'namespacedName': namespacedName!,
-    if (parent != null) 'parent': parent!,
-    if (purpose != null) 'purpose': purpose!,
-    if (purposeData != null) 'purposeData': purposeData!,
-    if (shortName != null) 'shortName': shortName!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedValuesRegex = this.allowedValuesRegex;
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final name = this.name;
+    final namespacedName = this.namespacedName;
+    final parent = this.parent;
+    final purpose = this.purpose;
+    final purposeData = this.purposeData;
+    final shortName = this.shortName;
+    final updateTime = this.updateTime;
+    return {
+      'allowedValuesRegex': ?allowedValuesRegex,
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'name': ?name,
+      'namespacedName': ?namespacedName,
+      'parent': ?parent,
+      'purpose': ?purpose,
+      'purposeData': ?purposeData,
+      'shortName': ?shortName,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A TagValue is a child of a particular TagKey.
@@ -5026,16 +5109,26 @@ class TagValue {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (namespacedName != null) 'namespacedName': namespacedName!,
-    if (parent != null) 'parent': parent!,
-    if (shortName != null) 'shortName': shortName!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final name = this.name;
+    final namespacedName = this.namespacedName;
+    final parent = this.parent;
+    final shortName = this.shortName;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'name': ?name,
+      'namespacedName': ?namespacedName,
+      'parent': ?parent,
+      'shortName': ?shortName,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Request message for `TestIamPermissions` method.

@@ -143,9 +143,9 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (databaseId != null) 'databaseId': [databaseId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'databaseId': ?databaseId == null ? null : [databaseId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/instances';
@@ -191,7 +191,7 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -239,7 +239,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':disable';
@@ -285,7 +285,7 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
@@ -347,10 +347,10 @@ class ProjectsLocationsInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/instances';
@@ -398,7 +398,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':reenable';
@@ -449,7 +449,7 @@ class ProjectsLocationsInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':undelete';
@@ -534,13 +534,20 @@ class DatabaseInstance {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseUrl != null) 'databaseUrl': databaseUrl!,
-    if (name != null) 'name': name!,
-    if (project != null) 'project': project!,
-    if (state != null) 'state': state!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final databaseUrl = this.databaseUrl;
+    final name = this.name;
+    final project = this.project;
+    final state = this.state;
+    final type = this.type;
+    return {
+      'databaseUrl': ?databaseUrl,
+      'name': ?name,
+      'project': ?project,
+      'state': ?state,
+      'type': ?type,
+    };
+  }
 }
 
 /// The request sent to the DisableDatabaseInstance method.
@@ -564,21 +571,21 @@ class ListDatabaseInstancesResponse {
 
   ListDatabaseInstancesResponse.fromJson(core.Map json_)
     : this(
-        instances:
-            (json_['instances'] as core.List?)
-                ?.map(
-                  (value) => DatabaseInstance.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        instances: (json_['instances'] as core.List?)
+            ?.map(
+              (value) => DatabaseInstance.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instances != null) 'instances': instances!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instances = this.instances;
+    final nextPageToken = this.nextPageToken;
+    return {'instances': ?instances, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The request sent to the ReenableDatabaseInstance method.

@@ -142,7 +142,7 @@ class OrganizationsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -180,7 +180,7 @@ class OrganizationsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -219,7 +219,7 @@ class OrganizationsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -276,12 +276,13 @@ class OrganizationsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -344,7 +345,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -399,11 +400,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -474,10 +475,10 @@ class ProjectsLocationsAppConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (appConnectionId != null) 'appConnectionId': [appConnectionId],
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'appConnectionId': ?appConnectionId == null ? null : [appConnectionId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnections';
@@ -534,9 +535,9 @@ class ProjectsLocationsAppConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -575,7 +576,7 @@ class ProjectsLocationsAppConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -632,9 +633,10 @@ class ProjectsLocationsAppConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -693,11 +695,11 @@ class ProjectsLocationsAppConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnections';
@@ -767,11 +769,11 @@ class ProjectsLocationsAppConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -833,10 +835,10 @@ class ProjectsLocationsAppConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (appConnectorId != null) 'appConnectorId': [appConnectorId],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'appConnectorId': ?appConnectorId == null ? null : [appConnectorId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -885,7 +887,7 @@ class ProjectsLocationsAppConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -936,7 +938,7 @@ class ProjectsLocationsAppConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1009,10 +1011,10 @@ class ProjectsLocationsAppConnectorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (appConnectorId != null) 'appConnectorId': [appConnectorId],
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'appConnectorId': ?appConnectorId == null ? null : [appConnectorId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnectors';
@@ -1069,9 +1071,9 @@ class ProjectsLocationsAppConnectorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1110,7 +1112,7 @@ class ProjectsLocationsAppConnectorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1167,9 +1169,10 @@ class ProjectsLocationsAppConnectorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1228,11 +1231,11 @@ class ProjectsLocationsAppConnectorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnectors';
@@ -1298,10 +1301,10 @@ class ProjectsLocationsAppConnectorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1345,7 +1348,7 @@ class ProjectsLocationsAppConnectorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$appConnector') + ':reportStatus';
@@ -1391,7 +1394,7 @@ class ProjectsLocationsAppConnectorsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1440,7 +1443,7 @@ class ProjectsLocationsAppConnectorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1491,7 +1494,7 @@ class ProjectsLocationsAppConnectorsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1564,10 +1567,10 @@ class ProjectsLocationsAppGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (appGatewayId != null) 'appGatewayId': [appGatewayId],
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'appGatewayId': ?appGatewayId == null ? null : [appGatewayId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appGateways';
@@ -1624,9 +1627,9 @@ class ProjectsLocationsAppGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1662,7 +1665,7 @@ class ProjectsLocationsAppGatewaysResource {
   /// this method will complete with the same error.
   async.Future<AppGateway> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1719,9 +1722,10 @@ class ProjectsLocationsAppGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1778,11 +1782,11 @@ class ProjectsLocationsAppGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appGateways';
@@ -1830,7 +1834,7 @@ class ProjectsLocationsAppGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1881,7 +1885,7 @@ class ProjectsLocationsAppGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1941,7 +1945,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -1979,7 +1983,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2018,7 +2022,7 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2075,12 +2079,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -2144,9 +2149,11 @@ class ProjectsLocationsSecurityGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (securityGatewayId != null) 'securityGatewayId': [securityGatewayId],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'securityGatewayId': ?securityGatewayId == null
+          ? null
+          : [securityGatewayId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityGateways';
@@ -2203,9 +2210,9 @@ class ProjectsLocationsSecurityGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2244,7 +2251,7 @@ class ProjectsLocationsSecurityGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2301,9 +2308,10 @@ class ProjectsLocationsSecurityGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2368,11 +2376,11 @@ class ProjectsLocationsSecurityGatewaysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityGateways';
@@ -2430,9 +2438,9 @@ class ProjectsLocationsSecurityGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2481,7 +2489,7 @@ class ProjectsLocationsSecurityGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2532,7 +2540,7 @@ class ProjectsLocationsSecurityGatewaysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2598,9 +2606,9 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (applicationId != null) 'applicationId': [applicationId],
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
+      'applicationId': ?applicationId == null ? null : [applicationId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/applications';
@@ -2656,9 +2664,9 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2697,7 +2705,7 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2754,9 +2762,10 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2820,11 +2829,11 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/applications';
@@ -2882,9 +2891,9 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2933,7 +2942,7 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2984,7 +2993,7 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3022,10 +3031,11 @@ class AllocatedConnection {
         pscUri: json_['pscUri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ingressPort != null) 'ingressPort': ingressPort!,
-    if (pscUri != null) 'pscUri': pscUri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ingressPort = this.ingressPort;
+    final pscUri = this.pscUri;
+    return {'ingressPort': ?ingressPort, 'pscUri': ?pscUri};
+  }
 }
 
 /// A BeyondCorp AppGateway resource represents a BeyondCorp protected
@@ -3138,14 +3148,13 @@ class AppGateway {
 
   AppGateway.fromJson(core.Map json_)
     : this(
-        allocatedConnections:
-            (json_['allocatedConnections'] as core.List?)
-                ?.map(
-                  (value) => AllocatedConnection.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        allocatedConnections: (json_['allocatedConnections'] as core.List?)
+            ?.map(
+              (value) => AllocatedConnection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         hostType: json_['hostType'] as core.String?,
@@ -3162,22 +3171,36 @@ class AppGateway {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocatedConnections != null)
-      'allocatedConnections': allocatedConnections!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (hostType != null) 'hostType': hostType!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (state != null) 'state': state!,
-    if (type != null) 'type': type!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allocatedConnections = this.allocatedConnections;
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final hostType = this.hostType;
+    final labels = this.labels;
+    final name = this.name;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
+    final state = this.state;
+    final type = this.type;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final uri = this.uri;
+    return {
+      'allocatedConnections': ?allocatedConnections,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'hostType': ?hostType,
+      'labels': ?labels,
+      'name': ?name,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
+      'state': ?state,
+      'type': ?type,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'uri': ?uri,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3297,25 +3320,22 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
 
   GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(core.Map json_)
     : this(
-        applicationEndpoint:
-            json_.containsKey('applicationEndpoint')
-                ? GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint.fromJson(
-                  json_['applicationEndpoint']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        connectors:
-            (json_['connectors'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        applicationEndpoint: json_.containsKey('applicationEndpoint')
+            ? GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint.fromJson(
+                json_['applicationEndpoint']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        connectors: (json_['connectors'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        gateway:
-            json_.containsKey('gateway')
-                ? GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromJson(
-                  json_['gateway'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        gateway: json_.containsKey('gateway')
+            ? GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromJson(
+                json_['gateway'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -3328,22 +3348,36 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applicationEndpoint != null)
-      'applicationEndpoint': applicationEndpoint!,
-    if (connectors != null) 'connectors': connectors!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (gateway != null) 'gateway': gateway!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-    if (state != null) 'state': state!,
-    if (type != null) 'type': type!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final applicationEndpoint = this.applicationEndpoint;
+    final connectors = this.connectors;
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final gateway = this.gateway;
+    final labels = this.labels;
+    final name = this.name;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
+    final state = this.state;
+    final type = this.type;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'applicationEndpoint': ?applicationEndpoint,
+      'connectors': ?connectors,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'gateway': ?gateway,
+      'labels': ?labels,
+      'name': ?name,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
+      'state': ?state,
+      'type': ?type,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// ApplicationEndpoint represents a remote application endpoint.
@@ -3370,10 +3404,11 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
         port: json_['port'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (host != null) 'host': host!,
-    if (port != null) 'port': port!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final host = this.host;
+    final port = this.port;
+    return {'host': ?host, 'port': ?port};
+  }
 }
 
 /// Gateway represents a user facing component that serves as an entrance to
@@ -3428,13 +3463,20 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appGateway != null) 'appGateway': appGateway!,
-    if (ingressPort != null) 'ingressPort': ingressPort!,
-    if (l7psc != null) 'l7psc': l7psc!,
-    if (type != null) 'type': type!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appGateway = this.appGateway;
+    final ingressPort = this.ingressPort;
+    final l7psc = this.l7psc;
+    final type = this.type;
+    final uri = this.uri;
+    return {
+      'appGateway': ?appGateway,
+      'ingressPort': ?ingressPort,
+      'l7psc': ?l7psc,
+      'type': ?type,
+      'uri': ?uri,
+    };
+  }
 }
 
 /// Response message for BeyondCorp.ListAppConnections.
@@ -3458,27 +3500,30 @@ class GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
   GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse.fromJson(
     core.Map json_,
   ) : this(
-        appConnections:
-            (json_['appConnections'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        appConnections: (json_['appConnections'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appConnections != null) 'appConnections': appConnections!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appConnections = this.appConnections;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'appConnections': ?appConnections,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for BeyondCorp.ResolveAppConnections.
@@ -3505,28 +3550,30 @@ class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
   GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse.fromJson(
     core.Map json_,
   ) : this(
-        appConnectionDetails:
-            (json_['appConnectionDetails'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        appConnectionDetails: (json_['appConnectionDetails'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appConnectionDetails != null)
-      'appConnectionDetails': appConnectionDetails!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appConnectionDetails = this.appConnectionDetails;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'appConnectionDetails': ?appConnectionDetails,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Details of the AppConnection.
@@ -3546,22 +3593,21 @@ class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConne
   GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails.fromJson(
     core.Map json_,
   ) : this(
-        appConnection:
-            json_.containsKey('appConnection')
-                ? GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-                  json_['appConnection'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        recentMigVms:
-            (json_['recentMigVms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        appConnection: json_.containsKey('appConnection')
+            ? GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
+                json_['appConnection'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        recentMigVms: (json_['recentMigVms'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appConnection != null) 'appConnection': appConnection!,
-    if (recentMigVms != null) 'recentMigVms': recentMigVms!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appConnection = this.appConnection;
+    final recentMigVms = this.recentMigVms;
+    return {'appConnection': ?appConnection, 'recentMigVms': ?recentMigVms};
+  }
 }
 
 /// A BeyondCorp connector resource that represents an application facing
@@ -3649,34 +3695,43 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
-        principalInfo:
-            json_.containsKey('principalInfo')
-                ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromJson(
-                  json_['principalInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        resourceInfo:
-            json_.containsKey('resourceInfo')
-                ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                  json_['resourceInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        principalInfo: json_.containsKey('principalInfo')
+            ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromJson(
+                json_['principalInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resourceInfo: json_.containsKey('resourceInfo')
+            ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
+                json_['resourceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (principalInfo != null) 'principalInfo': principalInfo!,
-    if (resourceInfo != null) 'resourceInfo': resourceInfo!,
-    if (state != null) 'state': state!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final name = this.name;
+    final principalInfo = this.principalInfo;
+    final resourceInfo = this.resourceInfo;
+    final state = this.state;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'principalInfo': ?principalInfo,
+      'resourceInfo': ?resourceInfo,
+      'state': ?state,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// AppConnectorInstanceConfig defines the instance config of a AppConnector.
@@ -3714,32 +3769,35 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig {
   GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig.fromJson(
     core.Map json_,
   ) : this(
-        imageConfig:
-            json_.containsKey('imageConfig')
-                ? GoogleCloudBeyondcorpAppconnectorsV1ImageConfig.fromJson(
-                  json_['imageConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        instanceConfig:
-            json_.containsKey('instanceConfig')
-                ? json_['instanceConfig'] as core.Map<core.String, core.dynamic>
-                : null,
-        notificationConfig:
-            json_.containsKey('notificationConfig')
-                ? GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig.fromJson(
-                  json_['notificationConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        imageConfig: json_.containsKey('imageConfig')
+            ? GoogleCloudBeyondcorpAppconnectorsV1ImageConfig.fromJson(
+                json_['imageConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        instanceConfig: json_.containsKey('instanceConfig')
+            ? json_['instanceConfig'] as core.Map<core.String, core.dynamic>
+            : null,
+        notificationConfig: json_.containsKey('notificationConfig')
+            ? GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig.fromJson(
+                json_['notificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sequenceNumber: json_['sequenceNumber'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageConfig != null) 'imageConfig': imageConfig!,
-    if (instanceConfig != null) 'instanceConfig': instanceConfig!,
-    if (notificationConfig != null) 'notificationConfig': notificationConfig!,
-    if (sequenceNumber != null) 'sequenceNumber': sequenceNumber!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageConfig = this.imageConfig;
+    final instanceConfig = this.instanceConfig;
+    final notificationConfig = this.notificationConfig;
+    final sequenceNumber = this.sequenceNumber;
+    return {
+      'imageConfig': ?imageConfig,
+      'instanceConfig': ?instanceConfig,
+      'notificationConfig': ?notificationConfig,
+      'sequenceNumber': ?sequenceNumber,
+    };
+  }
 }
 
 /// PrincipalInfo represents an Identity oneof.
@@ -3755,18 +3813,17 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
   GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromJson(
     core.Map json_,
   ) : this(
-        serviceAccount:
-            json_.containsKey('serviceAccount')
-                ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromJson(
-                  json_['serviceAccount']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        serviceAccount: json_.containsKey('serviceAccount')
+            ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromJson(
+                json_['serviceAccount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final serviceAccount = this.serviceAccount;
+    return {'serviceAccount': ?serviceAccount};
+  }
 }
 
 /// ServiceAccount represents a GCP service account.
@@ -3782,9 +3839,10 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccoun
     core.Map json_,
   ) : this(email: json_['email'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    return {'email': ?email};
+  }
 }
 
 /// ImageConfig defines the control plane images to run.
@@ -3812,10 +3870,11 @@ class GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
         targetImage: json_['targetImage'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (stableImage != null) 'stableImage': stableImage!,
-    if (targetImage != null) 'targetImage': targetImage!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final stableImage = this.stableImage;
+    final targetImage = this.targetImage;
+    return {'stableImage': ?stableImage, 'targetImage': ?targetImage};
+  }
 }
 
 /// Response message for BeyondCorp.ListAppConnectors.
@@ -3839,27 +3898,30 @@ class GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
   GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse.fromJson(
     core.Map json_,
   ) : this(
-        appConnectors:
-            (json_['appConnectors'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        appConnectors: (json_['appConnectors'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appConnectors != null) 'appConnectors': appConnectors!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appConnectors = this.appConnectors;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'appConnectors': ?appConnectors,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// NotificationConfig defines the mechanisms to notify instance agent.
@@ -3875,18 +3937,18 @@ class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig {
   GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig.fromJson(
     core.Map json_,
   ) : this(
-        pubsubNotification:
-            json_.containsKey('pubsubNotification')
-                ? GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig.fromJson(
-                  json_['pubsubNotification']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        pubsubNotification: json_.containsKey('pubsubNotification')
+            ? GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig.fromJson(
+                json_['pubsubNotification']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pubsubNotification != null) 'pubsubNotification': pubsubNotification!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pubsubNotification = this.pubsubNotification;
+    return {'pubsubNotification': ?pubsubNotification};
+  }
 }
 
 /// The configuration for Pub/Sub messaging for the AppConnector.
@@ -3902,9 +3964,10 @@ class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificat
     core.Map json_,
   ) : this(pubsubSubscription: json_['pubsubSubscription'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pubsubSubscription != null) 'pubsubSubscription': pubsubSubscription!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pubsubSubscription = this.pubsubSubscription;
+    return {'pubsubSubscription': ?pubsubSubscription};
+  }
 }
 
 /// Request report the connector status.
@@ -3946,20 +4009,24 @@ class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
     core.Map json_,
   ) : this(
         requestId: json_['requestId'] as core.String?,
-        resourceInfo:
-            json_.containsKey('resourceInfo')
-                ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                  json_['resourceInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resourceInfo: json_.containsKey('resourceInfo')
+            ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
+                json_['resourceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestId != null) 'requestId': requestId!,
-    if (resourceInfo != null) 'resourceInfo': resourceInfo!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    final resourceInfo = this.resourceInfo;
+    final validateOnly = this.validateOnly;
+    return {
+      'requestId': ?requestId,
+      'resourceInfo': ?resourceInfo,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 /// Response message for BeyondCorp.ResolveInstanceConfig.
@@ -3975,18 +4042,17 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse {
   GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse.fromJson(
     core.Map json_,
   ) : this(
-        instanceConfig:
-            json_.containsKey('instanceConfig')
-                ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig.fromJson(
-                  json_['instanceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        instanceConfig: json_.containsKey('instanceConfig')
+            ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig.fromJson(
+                json_['instanceConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instanceConfig != null) 'instanceConfig': instanceConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final instanceConfig = this.instanceConfig;
+    return {'instanceConfig': ?instanceConfig};
+  }
 }
 
 /// ResourceInfo represents the information/status of an app connector resource.
@@ -4038,30 +4104,35 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
   GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(core.Map json_)
     : this(
         id: json_['id'] as core.String?,
-        resource:
-            json_.containsKey('resource')
-                ? json_['resource'] as core.Map<core.String, core.dynamic>
-                : null,
+        resource: json_.containsKey('resource')
+            ? json_['resource'] as core.Map<core.String, core.dynamic>
+            : null,
         status: json_['status'] as core.String?,
-        sub:
-            (json_['sub'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        sub: (json_['sub'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         time: json_['time'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (resource != null) 'resource': resource!,
-    if (status != null) 'status': status!,
-    if (sub != null) 'sub': sub!,
-    if (time != null) 'time': time!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final resource = this.resource;
+    final status = this.status;
+    final sub = this.sub;
+    final time = this.time;
+    return {
+      'id': ?id,
+      'resource': ?resource,
+      'status': ?status,
+      'sub': ?sub,
+      'time': ?time,
+    };
+  }
 }
 
 /// The information about an application resource.
@@ -4134,38 +4205,45 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Application {
     : this(
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        endpointMatchers:
-            (json_['endpointMatchers'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        endpointMatchers: (json_['endpointMatchers'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
         schema: json_['schema'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        upstreams:
-            (json_['upstreams'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        upstreams: (json_['upstreams'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (endpointMatchers != null) 'endpointMatchers': endpointMatchers!,
-    if (name != null) 'name': name!,
-    if (schema != null) 'schema': schema!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (upstreams != null) 'upstreams': upstreams!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final endpointMatchers = this.endpointMatchers;
+    final name = this.name;
+    final schema = this.schema;
+    final updateTime = this.updateTime;
+    final upstreams = this.upstreams;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'endpointMatchers': ?endpointMatchers,
+      'name': ?name,
+      'schema': ?schema,
+      'updateTime': ?updateTime,
+      'upstreams': ?upstreams,
+    };
+  }
 }
 
 /// Which upstream resource to forward traffic to.
@@ -4196,38 +4274,40 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
   GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream.fromJson(
     core.Map json_,
   ) : this(
-        egressPolicy:
-            json_.containsKey('egressPolicy')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy.fromJson(
-                  json_['egressPolicy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        external_:
-            json_.containsKey('external')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal.fromJson(
-                  json_['external'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        network:
-            json_.containsKey('network')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork.fromJson(
-                  json_['network'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        proxyProtocol:
-            json_.containsKey('proxyProtocol')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
-                  json_['proxyProtocol'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        egressPolicy: json_.containsKey('egressPolicy')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy.fromJson(
+                json_['egressPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        external_: json_.containsKey('external')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal.fromJson(
+                json_['external'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        network: json_.containsKey('network')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork.fromJson(
+                json_['network'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        proxyProtocol: json_.containsKey('proxyProtocol')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
+                json_['proxyProtocol'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (egressPolicy != null) 'egressPolicy': egressPolicy!,
-    if (external_ != null) 'external': external_!,
-    if (network != null) 'network': network!,
-    if (proxyProtocol != null) 'proxyProtocol': proxyProtocol!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final egressPolicy = this.egressPolicy;
+    final external_ = this.external_;
+    final network = this.network;
+    final proxyProtocol = this.proxyProtocol;
+    return {
+      'egressPolicy': ?egressPolicy,
+      'external': ?external_,
+      'network': ?network,
+      'proxyProtocol': ?proxyProtocol,
+    };
+  }
 }
 
 /// Endpoints to forward traffic to.
@@ -4244,20 +4324,20 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal {
   GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal.fromJson(
     core.Map json_,
   ) : this(
-        endpoints:
-            (json_['endpoints'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        endpoints: (json_['endpoints'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endpoints != null) 'endpoints': endpoints!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endpoints = this.endpoints;
+    return {'endpoints': ?endpoints};
+  }
 }
 
 /// Network to forward traffic to.
@@ -4276,9 +4356,10 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork {
     core.Map json_,
   ) : this(name: json_['name'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
 }
 
 /// Contextual headers configuration.
@@ -4321,33 +4402,36 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
   GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders.fromJson(
     core.Map json_,
   ) : this(
-        deviceInfo:
-            json_.containsKey('deviceInfo')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo.fromJson(
-                  json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        groupInfo:
-            json_.containsKey('groupInfo')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo.fromJson(
-                  json_['groupInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deviceInfo: json_.containsKey('deviceInfo')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo.fromJson(
+                json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        groupInfo: json_.containsKey('groupInfo')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo.fromJson(
+                json_['groupInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         outputType: json_['outputType'] as core.String?,
-        userInfo:
-            json_.containsKey('userInfo')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo.fromJson(
-                  json_['userInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        userInfo: json_.containsKey('userInfo')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo.fromJson(
+                json_['userInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceInfo != null) 'deviceInfo': deviceInfo!,
-    if (groupInfo != null) 'groupInfo': groupInfo!,
-    if (outputType != null) 'outputType': outputType!,
-    if (userInfo != null) 'userInfo': userInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceInfo = this.deviceInfo;
+    final groupInfo = this.groupInfo;
+    final outputType = this.outputType;
+    final userInfo = this.userInfo;
+    return {
+      'deviceInfo': ?deviceInfo,
+      'groupInfo': ?groupInfo,
+      'outputType': ?outputType,
+      'userInfo': ?userInfo,
+    };
+  }
 }
 
 /// The delegated device information configuration.
@@ -4370,9 +4454,10 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInf
     core.Map json_,
   ) : this(outputType: json_['outputType'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (outputType != null) 'outputType': outputType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final outputType = this.outputType;
+    return {'outputType': ?outputType};
+  }
 }
 
 /// The delegated group configuration details.
@@ -4395,9 +4480,10 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo
     core.Map json_,
   ) : this(outputType: json_['outputType'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (outputType != null) 'outputType': outputType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final outputType = this.outputType;
+    return {'outputType': ?outputType};
+  }
 }
 
 /// The configuration information for the delegated user.
@@ -4420,9 +4506,10 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo 
     core.Map json_,
   ) : this(outputType: json_['outputType'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (outputType != null) 'outputType': outputType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final outputType = this.outputType;
+    return {'outputType': ?outputType};
+  }
 }
 
 /// Routing policy information.
@@ -4436,15 +4523,15 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy {
 
   GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy.fromJson(core.Map json_)
     : this(
-        regions:
-            (json_['regions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        regions: (json_['regions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (regions != null) 'regions': regions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final regions = this.regions;
+    return {'regions': ?regions};
+  }
 }
 
 /// Internet Gateway endpoint to forward traffic to.
@@ -4467,10 +4554,11 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint {
         port: json_['port'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostname != null) 'hostname': hostname!,
-    if (port != null) 'port': port!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hostname = this.hostname;
+    final port = this.port;
+    return {'hostname': ?hostname, 'port': ?port};
+  }
 }
 
 /// EndpointMatcher contains the information of the endpoint that will match the
@@ -4495,16 +4583,16 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
     core.Map json_,
   ) : this(
         hostname: json_['hostname'] as core.String?,
-        ports:
-            (json_['ports'] as core.List?)
-                ?.map((value) => value as core.int)
-                .toList(),
+        ports: (json_['ports'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostname != null) 'hostname': hostname!,
-    if (ports != null) 'ports': ports!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hostname = this.hostname;
+    final ports = this.ports;
+    return {'hostname': ?hostname, 'ports': ?ports};
+  }
 }
 
 /// The Hub message contains information pertaining to the regional data path
@@ -4519,18 +4607,17 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Hub {
 
   GoogleCloudBeyondcorpSecuritygatewaysV1Hub.fromJson(core.Map json_)
     : this(
-        internetGateway:
-            json_.containsKey('internetGateway')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
-                  json_['internetGateway']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        internetGateway: json_.containsKey('internetGateway')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
+                json_['internetGateway'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (internetGateway != null) 'internetGateway': internetGateway!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final internetGateway = this.internetGateway;
+    return {'internetGateway': ?internetGateway};
+  }
 }
 
 /// Represents the Internet Gateway configuration.
@@ -4545,15 +4632,15 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
   GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
     core.Map json_,
   ) : this(
-        assignedIps:
-            (json_['assignedIps'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        assignedIps: (json_['assignedIps'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assignedIps != null) 'assignedIps': assignedIps!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assignedIps = this.assignedIps;
+    return {'assignedIps': ?assignedIps};
+  }
 }
 
 /// Message for response to listing Applications.
@@ -4577,27 +4664,30 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse {
   GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse.fromJson(
     core.Map json_,
   ) : this(
-        applications:
-            (json_['applications'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        applications: (json_['applications'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1Application.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applications != null) 'applications': applications!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final applications = this.applications;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'applications': ?applications,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Message for response to listing SecurityGateways.
@@ -4623,26 +4713,29 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
     core.Map json_,
   ) : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        securityGateways:
-            (json_['securityGateways'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        securityGateways: (json_['securityGateways'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (securityGateways != null) 'securityGateways': securityGateways!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final securityGateways = this.securityGateways;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'securityGateways': ?securityGateways,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The configuration for the proxy.
@@ -4693,32 +4786,36 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
   GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
     core.Map json_,
   ) : this(
-        allowedClientHeaders:
-            (json_['allowedClientHeaders'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        allowedClientHeaders: (json_['allowedClientHeaders'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         clientIp: json_['clientIp'] as core.bool?,
-        contextualHeaders:
-            json_.containsKey('contextualHeaders')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders.fromJson(
-                  json_['contextualHeaders']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contextualHeaders: json_.containsKey('contextualHeaders')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders.fromJson(
+                json_['contextualHeaders']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gatewayIdentity: json_['gatewayIdentity'] as core.String?,
-        metadataHeaders: (json_['metadataHeaders']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        metadataHeaders:
+            (json_['metadataHeaders'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedClientHeaders != null)
-      'allowedClientHeaders': allowedClientHeaders!,
-    if (clientIp != null) 'clientIp': clientIp!,
-    if (contextualHeaders != null) 'contextualHeaders': contextualHeaders!,
-    if (gatewayIdentity != null) 'gatewayIdentity': gatewayIdentity!,
-    if (metadataHeaders != null) 'metadataHeaders': metadataHeaders!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedClientHeaders = this.allowedClientHeaders;
+    final clientIp = this.clientIp;
+    final contextualHeaders = this.contextualHeaders;
+    final gatewayIdentity = this.gatewayIdentity;
+    final metadataHeaders = this.metadataHeaders;
+    return {
+      'allowedClientHeaders': ?allowedClientHeaders,
+      'clientIp': ?clientIp,
+      'contextualHeaders': ?contextualHeaders,
+      'gatewayIdentity': ?gatewayIdentity,
+      'metadataHeaders': ?metadataHeaders,
+    };
+  }
 }
 
 /// The information about a security gateway resource.
@@ -4808,10 +4905,9 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
         delegatingServiceAccount:
             json_['delegatingServiceAccount'] as core.String?,
         displayName: json_['displayName'] as core.String?,
-        externalIps:
-            (json_['externalIps'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        externalIps: (json_['externalIps'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         hubs: (json_['hubs'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(
             key,
@@ -4821,38 +4917,46 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
           ),
         ),
         name: json_['name'] as core.String?,
-        proxyProtocolConfig:
-            json_.containsKey('proxyProtocolConfig')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
-                  json_['proxyProtocolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        serviceDiscovery:
-            json_.containsKey('serviceDiscovery')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery.fromJson(
-                  json_['serviceDiscovery']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        proxyProtocolConfig: json_.containsKey('proxyProtocolConfig')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
+                json_['proxyProtocolConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceDiscovery: json_.containsKey('serviceDiscovery')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery.fromJson(
+                json_['serviceDiscovery']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (delegatingServiceAccount != null)
-      'delegatingServiceAccount': delegatingServiceAccount!,
-    if (displayName != null) 'displayName': displayName!,
-    if (externalIps != null) 'externalIps': externalIps!,
-    if (hubs != null) 'hubs': hubs!,
-    if (name != null) 'name': name!,
-    if (proxyProtocolConfig != null)
-      'proxyProtocolConfig': proxyProtocolConfig!,
-    if (serviceDiscovery != null) 'serviceDiscovery': serviceDiscovery!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final delegatingServiceAccount = this.delegatingServiceAccount;
+    final displayName = this.displayName;
+    final externalIps = this.externalIps;
+    final hubs = this.hubs;
+    final name = this.name;
+    final proxyProtocolConfig = this.proxyProtocolConfig;
+    final serviceDiscovery = this.serviceDiscovery;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'delegatingServiceAccount': ?delegatingServiceAccount,
+      'displayName': ?displayName,
+      'externalIps': ?externalIps,
+      'hubs': ?hubs,
+      'name': ?name,
+      'proxyProtocolConfig': ?proxyProtocolConfig,
+      'serviceDiscovery': ?serviceDiscovery,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Settings related to the Service Discovery.
@@ -4867,17 +4971,17 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery {
   GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery.fromJson(
     core.Map json_,
   ) : this(
-        apiGateway:
-            json_.containsKey('apiGateway')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway.fromJson(
-                  json_['apiGateway'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        apiGateway: json_.containsKey('apiGateway')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway.fromJson(
+                json_['apiGateway'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiGateway != null) 'apiGateway': apiGateway!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiGateway = this.apiGateway;
+    return {'apiGateway': ?apiGateway};
+  }
 }
 
 /// If Service Discovery is done through API, defines its settings.
@@ -4896,18 +5000,18 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway {
   GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway.fromJson(
     core.Map json_,
   ) : this(
-        resourceOverride:
-            json_.containsKey('resourceOverride')
-                ? GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor.fromJson(
-                  json_['resourceOverride']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resourceOverride: json_.containsKey('resourceOverride')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor.fromJson(
+                json_['resourceOverride']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourceOverride != null) 'resourceOverride': resourceOverride!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceOverride = this.resourceOverride;
+    return {'resourceOverride': ?resourceOverride};
+  }
 }
 
 /// API operation descriptor.
@@ -4925,9 +5029,10 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperation
     core.Map json_,
   ) : this(path: json_['path'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (path != null) 'path': path!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    return {'path': ?path};
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -4945,21 +5050,21 @@ class GoogleCloudLocationListLocationsResponse {
 
   GoogleCloudLocationListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudLocationLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudLocationLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -4996,21 +5101,21 @@ class GoogleIamV1AuditConfig {
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -5105,24 +5210,23 @@ class GoogleIamV1Binding {
 
   GoogleIamV1Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? GoogleTypeExpr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -5222,32 +5326,36 @@ class GoogleIamV1Policy {
 
   GoogleIamV1Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => GoogleIamV1Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => GoogleIamV1Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -5269,19 +5377,19 @@ class GoogleIamV1SetIamPolicyRequest {
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? GoogleIamV1Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -5318,25 +5426,28 @@ class GoogleLongrunningListOperationsResponse {
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => GoogleLongrunningOperation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => GoogleLongrunningOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -5393,30 +5504,34 @@ class GoogleLongrunningOperation {
   GoogleLongrunningOperation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5468,24 +5583,27 @@ class ListAppGatewaysResponse {
 
   ListAppGatewaysResponse.fromJson(core.Map json_)
     : this(
-        appGateways:
-            (json_['appGateways'] as core.List?)
-                ?.map(
-                  (value) => AppGateway.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        appGateways: (json_['appGateways'] as core.List?)
+            ?.map(
+              (value) => AppGateway.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appGateways != null) 'appGateways': appGateways!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appGateways = this.appGateways;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'appGateways': ?appGateways,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }

@@ -2613,10 +2613,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsCloudidentityDevicesV1AndroidAttributes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(od);
       });
     },
@@ -2629,10 +2629,10 @@ void main() {
         final o =
             buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(od);
       });
     },
@@ -2644,10 +2644,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(od);
       });
     },
@@ -2659,10 +2659,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsCloudidentityDevicesV1BrowserAttributes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1BrowserAttributes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1BrowserAttributes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1BrowserAttributes(od);
       });
     },
@@ -2686,10 +2686,10 @@ void main() {
         final o =
             buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(od);
       });
     },
@@ -2702,10 +2702,10 @@ void main() {
         final o =
             buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(od);
       });
     },
@@ -2717,10 +2717,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsCloudidentityDevicesV1CertificateAttributes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1CertificateAttributes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1CertificateAttributes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1CertificateAttributes(od);
       });
     },
@@ -2732,10 +2732,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsCloudidentityDevicesV1CertificateTemplate();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1CertificateTemplate.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1CertificateTemplate.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1CertificateTemplate(od);
       });
     },
@@ -2758,10 +2758,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(od);
       });
     },
@@ -2796,10 +2796,10 @@ void main() {
         final o =
             buildGoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes(
           od,
         );
@@ -2814,10 +2814,10 @@ void main() {
         final o =
             buildGoogleAppsCloudidentityDevicesV1ListClientStatesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(od);
       });
     },
@@ -2830,10 +2830,10 @@ void main() {
         final o =
             buildGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(od);
       });
     },
@@ -2845,10 +2845,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(od);
       });
     },
@@ -2861,10 +2861,10 @@ void main() {
         final o =
             buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(od);
       });
     },
@@ -2876,10 +2876,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(od);
       });
     },
@@ -2891,10 +2891,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(od);
       });
     },
@@ -3768,10 +3768,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(obj);
 
           final path = req.url.path;
@@ -4117,10 +4117,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(obj);
 
           final path = req.url.path;
@@ -4184,10 +4184,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(obj);
 
           final path = req.url.path;
@@ -4249,10 +4249,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(obj);
 
           final path = req.url.path;
@@ -4314,10 +4314,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(obj);
 
           final path = req.url.path;
@@ -4700,10 +4700,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(obj);
 
           final path = req.url.path;
@@ -6917,8 +6917,9 @@ void main() {
   unittest.group('resource-InboundSamlSsoProfilesIdpCredentialsResource', () {
     unittest.test('method--add', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudIdentityApi(mock).inboundSamlSsoProfiles.idpCredentials;
+      final res = api.CloudIdentityApi(
+        mock,
+      ).inboundSamlSsoProfiles.idpCredentials;
       final arg_request = buildAddIdpCredentialRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6981,8 +6982,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudIdentityApi(mock).inboundSamlSsoProfiles.idpCredentials;
+      final res = api.CloudIdentityApi(
+        mock,
+      ).inboundSamlSsoProfiles.idpCredentials;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7035,8 +7037,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudIdentityApi(mock).inboundSamlSsoProfiles.idpCredentials;
+      final res = api.CloudIdentityApi(
+        mock,
+      ).inboundSamlSsoProfiles.idpCredentials;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7089,8 +7092,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudIdentityApi(mock).inboundSamlSsoProfiles.idpCredentials;
+      final res = api.CloudIdentityApi(
+        mock,
+      ).inboundSamlSsoProfiles.idpCredentials;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

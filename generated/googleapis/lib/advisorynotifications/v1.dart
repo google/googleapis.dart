@@ -107,7 +107,7 @@ class OrganizationsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -151,7 +151,7 @@ class OrganizationsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -206,8 +206,8 @@ class OrganizationsLocationsNotificationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -278,11 +278,11 @@ class OrganizationsLocationsNotificationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/notifications';
@@ -339,7 +339,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -382,7 +382,7 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -437,8 +437,8 @@ class ProjectsLocationsNotificationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -509,11 +509,11 @@ class ProjectsLocationsNotificationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'languageCode': ?languageCode == null ? null : [languageCode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/notifications';
@@ -543,19 +543,19 @@ class GoogleCloudAdvisorynotificationsV1Attachment {
 
   GoogleCloudAdvisorynotificationsV1Attachment.fromJson(core.Map json_)
     : this(
-        csv:
-            json_.containsKey('csv')
-                ? GoogleCloudAdvisorynotificationsV1Csv.fromJson(
-                  json_['csv'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        csv: json_.containsKey('csv')
+            ? GoogleCloudAdvisorynotificationsV1Csv.fromJson(
+                json_['csv'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (csv != null) 'csv': csv!,
-    if (displayName != null) 'displayName': displayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final csv = this.csv;
+    final displayName = this.displayName;
+    return {'csv': ?csv, 'displayName': ?displayName};
+  }
 }
 
 /// A representation of a CSV file attachment, as a list of column headers and a
@@ -572,25 +572,23 @@ class GoogleCloudAdvisorynotificationsV1Csv {
 
   GoogleCloudAdvisorynotificationsV1Csv.fromJson(core.Map json_)
     : this(
-        dataRows:
-            (json_['dataRows'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudAdvisorynotificationsV1CsvCsvRow.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        headers:
-            (json_['headers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        dataRows: (json_['dataRows'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAdvisorynotificationsV1CsvCsvRow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        headers: (json_['headers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataRows != null) 'dataRows': dataRows!,
-    if (headers != null) 'headers': headers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataRows = this.dataRows;
+    final headers = this.headers;
+    return {'dataRows': ?dataRows, 'headers': ?headers};
+  }
 }
 
 /// A representation of a single data row in a CSV file.
@@ -603,15 +601,15 @@ class GoogleCloudAdvisorynotificationsV1CsvCsvRow {
 
   GoogleCloudAdvisorynotificationsV1CsvCsvRow.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// Response of ListNotifications endpoint.
@@ -637,23 +635,27 @@ class GoogleCloudAdvisorynotificationsV1ListNotificationsResponse {
     core.Map json_,
   ) : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        notifications:
-            (json_['notifications'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudAdvisorynotificationsV1Notification.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        notifications: (json_['notifications'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudAdvisorynotificationsV1Notification.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (notifications != null) 'notifications': notifications!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final notifications = this.notifications;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'notifications': ?notifications,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// A message which contains notification details.
@@ -679,31 +681,34 @@ class GoogleCloudAdvisorynotificationsV1Message {
 
   GoogleCloudAdvisorynotificationsV1Message.fromJson(core.Map json_)
     : this(
-        attachments:
-            (json_['attachments'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudAdvisorynotificationsV1Attachment.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        body:
-            json_.containsKey('body')
-                ? GoogleCloudAdvisorynotificationsV1MessageBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attachments: (json_['attachments'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAdvisorynotificationsV1Attachment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        body: json_.containsKey('body')
+            ? GoogleCloudAdvisorynotificationsV1MessageBody.fromJson(
+                json_['body'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         localizationTime: json_['localizationTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attachments != null) 'attachments': attachments!,
-    if (body != null) 'body': body!,
-    if (createTime != null) 'createTime': createTime!,
-    if (localizationTime != null) 'localizationTime': localizationTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attachments = this.attachments;
+    final body = this.body;
+    final createTime = this.createTime;
+    final localizationTime = this.localizationTime;
+    return {
+      'attachments': ?attachments,
+      'body': ?body,
+      'createTime': ?createTime,
+      'localizationTime': ?localizationTime,
+    };
+  }
 }
 
 /// A message body containing text.
@@ -715,17 +720,17 @@ class GoogleCloudAdvisorynotificationsV1MessageBody {
 
   GoogleCloudAdvisorynotificationsV1MessageBody.fromJson(core.Map json_)
     : this(
-        text:
-            json_.containsKey('text')
-                ? GoogleCloudAdvisorynotificationsV1Text.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        text: json_.containsKey('text')
+            ? GoogleCloudAdvisorynotificationsV1Text.fromJson(
+                json_['text'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
 }
 
 /// A notification object for notifying customers about security and privacy
@@ -770,31 +775,36 @@ class GoogleCloudAdvisorynotificationsV1Notification {
   GoogleCloudAdvisorynotificationsV1Notification.fromJson(core.Map json_)
     : this(
         createTime: json_['createTime'] as core.String?,
-        messages:
-            (json_['messages'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudAdvisorynotificationsV1Message.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAdvisorynotificationsV1Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         name: json_['name'] as core.String?,
         notificationType: json_['notificationType'] as core.String?,
-        subject:
-            json_.containsKey('subject')
-                ? GoogleCloudAdvisorynotificationsV1Subject.fromJson(
-                  json_['subject'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        subject: json_.containsKey('subject')
+            ? GoogleCloudAdvisorynotificationsV1Subject.fromJson(
+                json_['subject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (messages != null) 'messages': messages!,
-    if (name != null) 'name': name!,
-    if (notificationType != null) 'notificationType': notificationType!,
-    if (subject != null) 'subject': subject!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final messages = this.messages;
+    final name = this.name;
+    final notificationType = this.notificationType;
+    final subject = this.subject;
+    return {
+      'createTime': ?createTime,
+      'messages': ?messages,
+      'name': ?name,
+      'notificationType': ?notificationType,
+      'subject': ?subject,
+    };
+  }
 }
 
 /// Settings for each NotificationType.
@@ -808,9 +818,10 @@ class GoogleCloudAdvisorynotificationsV1NotificationSettings {
     core.Map json_,
   ) : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }
 
 /// Settings for Advisory Notifications.
@@ -850,24 +861,29 @@ class GoogleCloudAdvisorynotificationsV1Settings {
     : this(
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
-        notificationSettings: (json_['notificationSettings']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                GoogleCloudAdvisorynotificationsV1NotificationSettings.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        notificationSettings:
+            (json_['notificationSettings']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudAdvisorynotificationsV1NotificationSettings.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (notificationSettings != null)
-      'notificationSettings': notificationSettings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final name = this.name;
+    final notificationSettings = this.notificationSettings;
+    return {
+      'etag': ?etag,
+      'name': ?name,
+      'notificationSettings': ?notificationSettings,
+    };
+  }
 }
 
 /// A subject line of a notification.
@@ -879,17 +895,17 @@ class GoogleCloudAdvisorynotificationsV1Subject {
 
   GoogleCloudAdvisorynotificationsV1Subject.fromJson(core.Map json_)
     : this(
-        text:
-            json_.containsKey('text')
-                ? GoogleCloudAdvisorynotificationsV1Text.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        text: json_.containsKey('text')
+            ? GoogleCloudAdvisorynotificationsV1Text.fromJson(
+                json_['text'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
 }
 
 /// A text object containing the English text and its localized copies.
@@ -927,9 +943,14 @@ class GoogleCloudAdvisorynotificationsV1Text {
         localizedText: json_['localizedText'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enText != null) 'enText': enText!,
-    if (localizationState != null) 'localizationState': localizationState!,
-    if (localizedText != null) 'localizedText': localizedText!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enText = this.enText;
+    final localizationState = this.localizationState;
+    final localizedText = this.localizedText;
+    return {
+      'enText': ?enText,
+      'localizationState': ?localizationState,
+      'localizedText': ?localizedText,
+    };
+  }
 }

@@ -96,7 +96,7 @@ class ArchiveResource {
     commons.Media? uploadMedia,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     core.String url_;
@@ -137,8 +137,9 @@ class Groups {
         responseCode: json_['responseCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (responseCode != null) 'responseCode': responseCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final responseCode = this.responseCode;
+    return {'kind': ?kind, 'responseCode': ?responseCode};
+  }
 }

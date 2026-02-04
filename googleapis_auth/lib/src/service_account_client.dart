@@ -20,14 +20,13 @@ Future<AccessCredentials> obtainAccessCredentialsViaServiceAccount(
   ServiceAccountCredentials clientCredentials,
   List<String> scopes,
   Client client,
-) =>
-    JwtFlow(
-      clientCredentials.email,
-      clientCredentials.privateRSAKey,
-      clientCredentials.impersonatedUser,
-      scopes,
-      client,
-    ).run();
+) => JwtFlow(
+  clientCredentials.email,
+  clientCredentials.privateRSAKey,
+  clientCredentials.impersonatedUser,
+  scopes,
+  client,
+).run();
 
 /// Obtains oauth2 credentials and returns an authenticated HTTP client.
 ///

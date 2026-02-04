@@ -115,7 +115,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -168,11 +168,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -244,12 +244,14 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowPreflightFailure != null)
-        'allowPreflightFailure': ['${allowPreflightFailure}'],
-      if (bareMetalAdminClusterId != null)
-        'bareMetalAdminClusterId': [bareMetalAdminClusterId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowPreflightFailure': ?allowPreflightFailure == null
+          ? null
+          : ['${allowPreflightFailure}'],
+      'bareMetalAdminClusterId': ?bareMetalAdminClusterId == null
+          ? null
+          : [bareMetalAdminClusterId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -297,7 +299,7 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -356,9 +358,9 @@ class ProjectsLocationsBareMetalAdminClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -415,9 +417,10 @@ class ProjectsLocationsBareMetalAdminClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -480,11 +483,11 @@ class ProjectsLocationsBareMetalAdminClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -539,9 +542,9 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -583,9 +586,10 @@ class ProjectsLocationsBareMetalAdminClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (upgradeConfig_clusterName != null)
-        'upgradeConfig.clusterName': [upgradeConfig_clusterName],
-      if ($fields != null) 'fields': [$fields],
+      'upgradeConfig.clusterName': ?upgradeConfig_clusterName == null
+          ? null
+          : [upgradeConfig_clusterName],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -636,7 +640,7 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -685,7 +689,7 @@ class ProjectsLocationsBareMetalAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -755,11 +759,11 @@ class ProjectsLocationsBareMetalAdminClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (ignoreErrors != null) 'ignoreErrors': ['${ignoreErrors}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'ignoreErrors': ?ignoreErrors == null ? null : ['${ignoreErrors}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unenroll';
@@ -803,7 +807,7 @@ class ProjectsLocationsBareMetalAdminClustersOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -859,12 +863,13 @@ class ProjectsLocationsBareMetalAdminClustersOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -935,12 +940,14 @@ class ProjectsLocationsBareMetalClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowPreflightFailure != null)
-        'allowPreflightFailure': ['${allowPreflightFailure}'],
-      if (bareMetalClusterId != null)
-        'bareMetalClusterId': [bareMetalClusterId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowPreflightFailure': ?allowPreflightFailure == null
+          ? null
+          : ['${allowPreflightFailure}'],
+      'bareMetalClusterId': ?bareMetalClusterId == null
+          ? null
+          : [bareMetalClusterId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bareMetalClusters';
@@ -1005,12 +1012,12 @@ class ProjectsLocationsBareMetalClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (force != null) 'force': ['${force}'],
-      if (ignoreErrors != null) 'ignoreErrors': ['${ignoreErrors}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'force': ?force == null ? null : ['${force}'],
+      'ignoreErrors': ?ignoreErrors == null ? null : ['${ignoreErrors}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1056,7 +1063,7 @@ class ProjectsLocationsBareMetalClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1112,9 +1119,9 @@ class ProjectsLocationsBareMetalClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1171,9 +1178,10 @@ class ProjectsLocationsBareMetalClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1241,12 +1249,12 @@ class ProjectsLocationsBareMetalClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bareMetalClusters';
@@ -1306,10 +1314,10 @@ class ProjectsLocationsBareMetalClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1361,15 +1369,17 @@ class ProjectsLocationsBareMetalClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (createConfig_adminClusterMembership != null)
-        'createConfig.adminClusterMembership': [
-          createConfig_adminClusterMembership,
-        ],
-      if (createConfig_adminClusterName != null)
-        'createConfig.adminClusterName': [createConfig_adminClusterName],
-      if (upgradeConfig_clusterName != null)
-        'upgradeConfig.clusterName': [upgradeConfig_clusterName],
-      if ($fields != null) 'fields': [$fields],
+      'createConfig.adminClusterMembership':
+          ?createConfig_adminClusterMembership == null
+          ? null
+          : [createConfig_adminClusterMembership],
+      'createConfig.adminClusterName': ?createConfig_adminClusterName == null
+          ? null
+          : [createConfig_adminClusterName],
+      'upgradeConfig.clusterName': ?upgradeConfig_clusterName == null
+          ? null
+          : [upgradeConfig_clusterName],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1420,7 +1430,7 @@ class ProjectsLocationsBareMetalClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1469,7 +1479,7 @@ class ProjectsLocationsBareMetalClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1534,11 +1544,11 @@ class ProjectsLocationsBareMetalClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (force != null) 'force': ['${force}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'force': ?force == null ? null : ['${force}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unenroll';
@@ -1606,10 +1616,11 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (bareMetalNodePoolId != null)
-        'bareMetalNodePoolId': [bareMetalNodePoolId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'bareMetalNodePoolId': ?bareMetalNodePoolId == null
+          ? null
+          : [bareMetalNodePoolId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bareMetalNodePools';
@@ -1669,11 +1680,11 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (ignoreErrors != null) 'ignoreErrors': ['${ignoreErrors}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'ignoreErrors': ?ignoreErrors == null ? null : ['${ignoreErrors}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1719,7 +1730,7 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1772,8 +1783,8 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1830,9 +1841,10 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1897,10 +1909,10 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bareMetalNodePools';
@@ -1960,10 +1972,10 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2010,7 +2022,7 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2059,7 +2071,7 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2114,10 +2126,10 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unenroll';
@@ -2161,7 +2173,7 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2217,12 +2229,13 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -2268,7 +2281,7 @@ class ProjectsLocationsBareMetalClustersOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2324,12 +2337,13 @@ class ProjectsLocationsBareMetalClustersOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -2387,7 +2401,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -2425,7 +2439,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2461,7 +2475,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2516,12 +2530,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -2594,13 +2609,15 @@ class ProjectsLocationsVmwareAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowPreflightFailure != null)
-        'allowPreflightFailure': ['${allowPreflightFailure}'],
-      if (skipValidations != null) 'skipValidations': skipValidations,
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if (vmwareAdminClusterId != null)
-        'vmwareAdminClusterId': [vmwareAdminClusterId],
-      if ($fields != null) 'fields': [$fields],
+      'allowPreflightFailure': ?allowPreflightFailure == null
+          ? null
+          : ['${allowPreflightFailure}'],
+      'skipValidations': ?skipValidations,
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'vmwareAdminClusterId': ?vmwareAdminClusterId == null
+          ? null
+          : [vmwareAdminClusterId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2648,7 +2665,7 @@ class ProjectsLocationsVmwareAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2706,9 +2723,9 @@ class ProjectsLocationsVmwareAdminClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2765,9 +2782,10 @@ class ProjectsLocationsVmwareAdminClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2830,11 +2848,11 @@ class ProjectsLocationsVmwareAdminClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2893,10 +2911,10 @@ class ProjectsLocationsVmwareAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (skipValidations != null) 'skipValidations': skipValidations,
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'skipValidations': ?skipValidations,
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2943,7 +2961,7 @@ class ProjectsLocationsVmwareAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2992,7 +3010,7 @@ class ProjectsLocationsVmwareAdminClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3062,11 +3080,11 @@ class ProjectsLocationsVmwareAdminClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (ignoreErrors != null) 'ignoreErrors': ['${ignoreErrors}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'ignoreErrors': ?ignoreErrors == null ? null : ['${ignoreErrors}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unenroll';
@@ -3110,7 +3128,7 @@ class ProjectsLocationsVmwareAdminClustersOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3166,12 +3184,13 @@ class ProjectsLocationsVmwareAdminClustersOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -3244,12 +3263,13 @@ class ProjectsLocationsVmwareClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowPreflightFailure != null)
-        'allowPreflightFailure': ['${allowPreflightFailure}'],
-      if (skipValidations != null) 'skipValidations': skipValidations,
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if (vmwareClusterId != null) 'vmwareClusterId': [vmwareClusterId],
-      if ($fields != null) 'fields': [$fields],
+      'allowPreflightFailure': ?allowPreflightFailure == null
+          ? null
+          : ['${allowPreflightFailure}'],
+      'skipValidations': ?skipValidations,
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'vmwareClusterId': ?vmwareClusterId == null ? null : [vmwareClusterId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/vmwareClusters';
@@ -3313,12 +3333,12 @@ class ProjectsLocationsVmwareClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (force != null) 'force': ['${force}'],
-      if (ignoreErrors != null) 'ignoreErrors': ['${ignoreErrors}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'force': ?force == null ? null : ['${force}'],
+      'ignoreErrors': ?ignoreErrors == null ? null : ['${ignoreErrors}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3364,7 +3384,7 @@ class ProjectsLocationsVmwareClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3420,9 +3440,9 @@ class ProjectsLocationsVmwareClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3479,9 +3499,10 @@ class ProjectsLocationsVmwareClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -3548,12 +3569,12 @@ class ProjectsLocationsVmwareClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/vmwareClusters';
@@ -3610,10 +3631,10 @@ class ProjectsLocationsVmwareClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (skipValidations != null) 'skipValidations': skipValidations,
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'skipValidations': ?skipValidations,
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3665,15 +3686,17 @@ class ProjectsLocationsVmwareClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (createConfig_adminClusterMembership != null)
-        'createConfig.adminClusterMembership': [
-          createConfig_adminClusterMembership,
-        ],
-      if (createConfig_adminClusterName != null)
-        'createConfig.adminClusterName': [createConfig_adminClusterName],
-      if (upgradeConfig_clusterName != null)
-        'upgradeConfig.clusterName': [upgradeConfig_clusterName],
-      if ($fields != null) 'fields': [$fields],
+      'createConfig.adminClusterMembership':
+          ?createConfig_adminClusterMembership == null
+          ? null
+          : [createConfig_adminClusterMembership],
+      'createConfig.adminClusterName': ?createConfig_adminClusterName == null
+          ? null
+          : [createConfig_adminClusterName],
+      'upgradeConfig.clusterName': ?upgradeConfig_clusterName == null
+          ? null
+          : [upgradeConfig_clusterName],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3724,7 +3747,7 @@ class ProjectsLocationsVmwareClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -3773,7 +3796,7 @@ class ProjectsLocationsVmwareClustersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3838,11 +3861,11 @@ class ProjectsLocationsVmwareClustersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (force != null) 'force': ['${force}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'force': ?force == null ? null : ['${force}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unenroll';
@@ -3885,7 +3908,7 @@ class ProjectsLocationsVmwareClustersOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3941,12 +3964,13 @@ class ProjectsLocationsVmwareClustersOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -4016,9 +4040,9 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if (vmwareNodePoolId != null) 'vmwareNodePoolId': [vmwareNodePoolId],
-      if ($fields != null) 'fields': [$fields],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'vmwareNodePoolId': ?vmwareNodePoolId == null ? null : [vmwareNodePoolId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/vmwareNodePools';
@@ -4078,11 +4102,11 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (ignoreErrors != null) 'ignoreErrors': ['${ignoreErrors}'],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'ignoreErrors': ?ignoreErrors == null ? null : ['${ignoreErrors}'],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4123,7 +4147,7 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4175,8 +4199,8 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4233,9 +4257,10 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -4298,10 +4323,10 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/vmwareNodePools';
@@ -4355,9 +4380,9 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4404,7 +4429,7 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -4453,7 +4478,7 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -4508,10 +4533,10 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'etag': ?etag == null ? null : [etag],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unenroll';
@@ -4555,7 +4580,7 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4611,12 +4636,13 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -4647,19 +4673,19 @@ class Authorization {
 
   Authorization.fromJson(core.Map json_)
     : this(
-        adminUsers:
-            (json_['adminUsers'] as core.List?)
-                ?.map(
-                  (value) => ClusterUser.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        adminUsers: (json_['adminUsers'] as core.List?)
+            ?.map(
+              (value) => ClusterUser.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminUsers != null) 'adminUsers': adminUsers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminUsers = this.adminUsers;
+    return {'adminUsers': ?adminUsers};
+  }
 }
 
 /// BareMetalAdminApiServerArgument represents an arg name-\>value pair.
@@ -4687,10 +4713,11 @@ class BareMetalAdminApiServerArgument {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (argument != null) 'argument': argument!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final argument = this.argument;
+    final value = this.value;
+    return {'argument': ?argument, 'value': ?value};
+  }
 }
 
 /// BareMetalAdminBgpLbConfig represents configuration parameters for a Border
@@ -4737,39 +4764,42 @@ class BareMetalAdminBgpLbConfig {
 
   BareMetalAdminBgpLbConfig.fromJson(core.Map json_)
     : this(
-        addressPools:
-            (json_['addressPools'] as core.List?)
-                ?.map(
-                  (value) => BareMetalAdminLoadBalancerAddressPool.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        addressPools: (json_['addressPools'] as core.List?)
+            ?.map(
+              (value) => BareMetalAdminLoadBalancerAddressPool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         asn: json_['asn'] as core.String?,
-        bgpPeerConfigs:
-            (json_['bgpPeerConfigs'] as core.List?)
-                ?.map(
-                  (value) => BareMetalAdminBgpPeerConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bgpPeerConfigs: (json_['bgpPeerConfigs'] as core.List?)
+            ?.map(
+              (value) => BareMetalAdminBgpPeerConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         loadBalancerNodePoolConfig:
             json_.containsKey('loadBalancerNodePoolConfig')
-                ? BareMetalAdminLoadBalancerNodePoolConfig.fromJson(
-                  json_['loadBalancerNodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? BareMetalAdminLoadBalancerNodePoolConfig.fromJson(
+                json_['loadBalancerNodePoolConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressPools != null) 'addressPools': addressPools!,
-    if (asn != null) 'asn': asn!,
-    if (bgpPeerConfigs != null) 'bgpPeerConfigs': bgpPeerConfigs!,
-    if (loadBalancerNodePoolConfig != null)
-      'loadBalancerNodePoolConfig': loadBalancerNodePoolConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressPools = this.addressPools;
+    final asn = this.asn;
+    final bgpPeerConfigs = this.bgpPeerConfigs;
+    final loadBalancerNodePoolConfig = this.loadBalancerNodePoolConfig;
+    return {
+      'addressPools': ?addressPools,
+      'asn': ?asn,
+      'bgpPeerConfigs': ?bgpPeerConfigs,
+      'loadBalancerNodePoolConfig': ?loadBalancerNodePoolConfig,
+    };
+  }
 }
 
 /// BareMetalAdminBgpPeerConfig represents configuration parameters for a Border
@@ -4963,160 +4993,172 @@ class BareMetalAdminCluster {
 
   BareMetalAdminCluster.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         bareMetalVersion: json_['bareMetalVersion'] as core.String?,
-        binaryAuthorization:
-            json_.containsKey('binaryAuthorization')
-                ? BinaryAuthorization.fromJson(
-                  json_['binaryAuthorization']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        clusterOperations:
-            json_.containsKey('clusterOperations')
-                ? BareMetalAdminClusterOperationsConfig.fromJson(
-                  json_['clusterOperations']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        controlPlane:
-            json_.containsKey('controlPlane')
-                ? BareMetalAdminControlPlaneConfig.fromJson(
-                  json_['controlPlane'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        binaryAuthorization: json_.containsKey('binaryAuthorization')
+            ? BinaryAuthorization.fromJson(
+                json_['binaryAuthorization']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        clusterOperations: json_.containsKey('clusterOperations')
+            ? BareMetalAdminClusterOperationsConfig.fromJson(
+                json_['clusterOperations']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        controlPlane: json_.containsKey('controlPlane')
+            ? BareMetalAdminControlPlaneConfig.fromJson(
+                json_['controlPlane'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
         endpoint: json_['endpoint'] as core.String?,
         etag: json_['etag'] as core.String?,
-        fleet:
-            json_.containsKey('fleet')
-                ? Fleet.fromJson(
-                  json_['fleet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        loadBalancer:
-            json_.containsKey('loadBalancer')
-                ? BareMetalAdminLoadBalancerConfig.fromJson(
-                  json_['loadBalancer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fleet: json_.containsKey('fleet')
+            ? Fleet.fromJson(
+                json_['fleet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        loadBalancer: json_.containsKey('loadBalancer')
+            ? BareMetalAdminLoadBalancerConfig.fromJson(
+                json_['loadBalancer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localName: json_['localName'] as core.String?,
-        maintenanceConfig:
-            json_.containsKey('maintenanceConfig')
-                ? BareMetalAdminMaintenanceConfig.fromJson(
-                  json_['maintenanceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        maintenanceStatus:
-            json_.containsKey('maintenanceStatus')
-                ? BareMetalAdminMaintenanceStatus.fromJson(
-                  json_['maintenanceStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        maintenanceConfig: json_.containsKey('maintenanceConfig')
+            ? BareMetalAdminMaintenanceConfig.fromJson(
+                json_['maintenanceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        maintenanceStatus: json_.containsKey('maintenanceStatus')
+            ? BareMetalAdminMaintenanceStatus.fromJson(
+                json_['maintenanceStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        networkConfig:
-            json_.containsKey('networkConfig')
-                ? BareMetalAdminNetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        nodeAccessConfig:
-            json_.containsKey('nodeAccessConfig')
-                ? BareMetalAdminNodeAccessConfig.fromJson(
-                  json_['nodeAccessConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        nodeConfig:
-            json_.containsKey('nodeConfig')
-                ? BareMetalAdminWorkloadNodeConfig.fromJson(
-                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        osEnvironmentConfig:
-            json_.containsKey('osEnvironmentConfig')
-                ? BareMetalAdminOsEnvironmentConfig.fromJson(
-                  json_['osEnvironmentConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        proxy:
-            json_.containsKey('proxy')
-                ? BareMetalAdminProxyConfig.fromJson(
-                  json_['proxy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        networkConfig: json_.containsKey('networkConfig')
+            ? BareMetalAdminNetworkConfig.fromJson(
+                json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nodeAccessConfig: json_.containsKey('nodeAccessConfig')
+            ? BareMetalAdminNodeAccessConfig.fromJson(
+                json_['nodeAccessConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nodeConfig: json_.containsKey('nodeConfig')
+            ? BareMetalAdminWorkloadNodeConfig.fromJson(
+                json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        osEnvironmentConfig: json_.containsKey('osEnvironmentConfig')
+            ? BareMetalAdminOsEnvironmentConfig.fromJson(
+                json_['osEnvironmentConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        proxy: json_.containsKey('proxy')
+            ? BareMetalAdminProxyConfig.fromJson(
+                json_['proxy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reconciling: json_['reconciling'] as core.bool?,
-        securityConfig:
-            json_.containsKey('securityConfig')
-                ? BareMetalAdminSecurityConfig.fromJson(
-                  json_['securityConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        securityConfig: json_.containsKey('securityConfig')
+            ? BareMetalAdminSecurityConfig.fromJson(
+                json_['securityConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? ResourceStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        storage:
-            json_.containsKey('storage')
-                ? BareMetalAdminStorageConfig.fromJson(
-                  json_['storage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ResourceStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storage: json_.containsKey('storage')
+            ? BareMetalAdminStorageConfig.fromJson(
+                json_['storage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        validationCheck:
-            json_.containsKey('validationCheck')
-                ? ValidationCheck.fromJson(
-                  json_['validationCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        validationCheck: json_.containsKey('validationCheck')
+            ? ValidationCheck.fromJson(
+                json_['validationCheck'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (bareMetalVersion != null) 'bareMetalVersion': bareMetalVersion!,
-    if (binaryAuthorization != null)
-      'binaryAuthorization': binaryAuthorization!,
-    if (clusterOperations != null) 'clusterOperations': clusterOperations!,
-    if (controlPlane != null) 'controlPlane': controlPlane!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (description != null) 'description': description!,
-    if (endpoint != null) 'endpoint': endpoint!,
-    if (etag != null) 'etag': etag!,
-    if (fleet != null) 'fleet': fleet!,
-    if (loadBalancer != null) 'loadBalancer': loadBalancer!,
-    if (localName != null) 'localName': localName!,
-    if (maintenanceConfig != null) 'maintenanceConfig': maintenanceConfig!,
-    if (maintenanceStatus != null) 'maintenanceStatus': maintenanceStatus!,
-    if (name != null) 'name': name!,
-    if (networkConfig != null) 'networkConfig': networkConfig!,
-    if (nodeAccessConfig != null) 'nodeAccessConfig': nodeAccessConfig!,
-    if (nodeConfig != null) 'nodeConfig': nodeConfig!,
-    if (osEnvironmentConfig != null)
-      'osEnvironmentConfig': osEnvironmentConfig!,
-    if (proxy != null) 'proxy': proxy!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (securityConfig != null) 'securityConfig': securityConfig!,
-    if (state != null) 'state': state!,
-    if (status != null) 'status': status!,
-    if (storage != null) 'storage': storage!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (validationCheck != null) 'validationCheck': validationCheck!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final bareMetalVersion = this.bareMetalVersion;
+    final binaryAuthorization = this.binaryAuthorization;
+    final clusterOperations = this.clusterOperations;
+    final controlPlane = this.controlPlane;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final description = this.description;
+    final endpoint = this.endpoint;
+    final etag = this.etag;
+    final fleet = this.fleet;
+    final loadBalancer = this.loadBalancer;
+    final localName = this.localName;
+    final maintenanceConfig = this.maintenanceConfig;
+    final maintenanceStatus = this.maintenanceStatus;
+    final name = this.name;
+    final networkConfig = this.networkConfig;
+    final nodeAccessConfig = this.nodeAccessConfig;
+    final nodeConfig = this.nodeConfig;
+    final osEnvironmentConfig = this.osEnvironmentConfig;
+    final proxy = this.proxy;
+    final reconciling = this.reconciling;
+    final securityConfig = this.securityConfig;
+    final state = this.state;
+    final status = this.status;
+    final storage = this.storage;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final validationCheck = this.validationCheck;
+    return {
+      'annotations': ?annotations,
+      'bareMetalVersion': ?bareMetalVersion,
+      'binaryAuthorization': ?binaryAuthorization,
+      'clusterOperations': ?clusterOperations,
+      'controlPlane': ?controlPlane,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'description': ?description,
+      'endpoint': ?endpoint,
+      'etag': ?etag,
+      'fleet': ?fleet,
+      'loadBalancer': ?loadBalancer,
+      'localName': ?localName,
+      'maintenanceConfig': ?maintenanceConfig,
+      'maintenanceStatus': ?maintenanceStatus,
+      'name': ?name,
+      'networkConfig': ?networkConfig,
+      'nodeAccessConfig': ?nodeAccessConfig,
+      'nodeConfig': ?nodeConfig,
+      'osEnvironmentConfig': ?osEnvironmentConfig,
+      'proxy': ?proxy,
+      'reconciling': ?reconciling,
+      'securityConfig': ?securityConfig,
+      'state': ?state,
+      'status': ?status,
+      'storage': ?storage,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'validationCheck': ?validationCheck,
+    };
+  }
 }
 
 /// BareMetalAdminClusterOperationsConfig specifies the admin cluster's
@@ -5148,28 +5190,30 @@ class BareMetalAdminControlPlaneConfig {
 
   BareMetalAdminControlPlaneConfig.fromJson(core.Map json_)
     : this(
-        apiServerArgs:
-            (json_['apiServerArgs'] as core.List?)
-                ?.map(
-                  (value) => BareMetalAdminApiServerArgument.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apiServerArgs: (json_['apiServerArgs'] as core.List?)
+            ?.map(
+              (value) => BareMetalAdminApiServerArgument.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         controlPlaneNodePoolConfig:
             json_.containsKey('controlPlaneNodePoolConfig')
-                ? BareMetalAdminControlPlaneNodePoolConfig.fromJson(
-                  json_['controlPlaneNodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? BareMetalAdminControlPlaneNodePoolConfig.fromJson(
+                json_['controlPlaneNodePoolConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiServerArgs != null) 'apiServerArgs': apiServerArgs!,
-    if (controlPlaneNodePoolConfig != null)
-      'controlPlaneNodePoolConfig': controlPlaneNodePoolConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiServerArgs = this.apiServerArgs;
+    final controlPlaneNodePoolConfig = this.controlPlaneNodePoolConfig;
+    return {
+      'apiServerArgs': ?apiServerArgs,
+      'controlPlaneNodePoolConfig': ?controlPlaneNodePoolConfig,
+    };
+  }
 }
 
 /// BareMetalAdminControlPlaneNodePoolConfig specifies the control plane node
@@ -5187,18 +5231,17 @@ class BareMetalAdminControlPlaneNodePoolConfig {
 
   BareMetalAdminControlPlaneNodePoolConfig.fromJson(core.Map json_)
     : this(
-        nodePoolConfig:
-            json_.containsKey('nodePoolConfig')
-                ? BareMetalNodePoolConfig.fromJson(
-                  json_['nodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodePoolConfig: json_.containsKey('nodePoolConfig')
+            ? BareMetalNodePoolConfig.fromJson(
+                json_['nodePoolConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nodePoolConfig != null) 'nodePoolConfig': nodePoolConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nodePoolConfig = this.nodePoolConfig;
+    return {'nodePoolConfig': ?nodePoolConfig};
+  }
 }
 
 /// BareMetalAdminDrainedMachine represents the machines that are drained.
@@ -5234,22 +5277,23 @@ class BareMetalAdminIslandModeCidrConfig {
 
   BareMetalAdminIslandModeCidrConfig.fromJson(core.Map json_)
     : this(
-        podAddressCidrBlocks:
-            (json_['podAddressCidrBlocks'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        podAddressCidrBlocks: (json_['podAddressCidrBlocks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         serviceAddressCidrBlocks:
             (json_['serviceAddressCidrBlocks'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (podAddressCidrBlocks != null)
-      'podAddressCidrBlocks': podAddressCidrBlocks!,
-    if (serviceAddressCidrBlocks != null)
-      'serviceAddressCidrBlocks': serviceAddressCidrBlocks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final podAddressCidrBlocks = this.podAddressCidrBlocks;
+    final serviceAddressCidrBlocks = this.serviceAddressCidrBlocks;
+    return {
+      'podAddressCidrBlocks': ?podAddressCidrBlocks,
+      'serviceAddressCidrBlocks': ?serviceAddressCidrBlocks,
+    };
+  }
 }
 
 /// Represents an IP pool used by the load balancer.
@@ -5278,39 +5322,40 @@ class BareMetalAdminLoadBalancerConfig {
 
   BareMetalAdminLoadBalancerConfig.fromJson(core.Map json_)
     : this(
-        bgpLbConfig:
-            json_.containsKey('bgpLbConfig')
-                ? BareMetalAdminBgpLbConfig.fromJson(
-                  json_['bgpLbConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        manualLbConfig:
-            json_.containsKey('manualLbConfig')
-                ? BareMetalAdminManualLbConfig.fromJson(
-                  json_['manualLbConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        portConfig:
-            json_.containsKey('portConfig')
-                ? BareMetalAdminPortConfig.fromJson(
-                  json_['portConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vipConfig:
-            json_.containsKey('vipConfig')
-                ? BareMetalAdminVipConfig.fromJson(
-                  json_['vipConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bgpLbConfig: json_.containsKey('bgpLbConfig')
+            ? BareMetalAdminBgpLbConfig.fromJson(
+                json_['bgpLbConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        manualLbConfig: json_.containsKey('manualLbConfig')
+            ? BareMetalAdminManualLbConfig.fromJson(
+                json_['manualLbConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        portConfig: json_.containsKey('portConfig')
+            ? BareMetalAdminPortConfig.fromJson(
+                json_['portConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vipConfig: json_.containsKey('vipConfig')
+            ? BareMetalAdminVipConfig.fromJson(
+                json_['vipConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bgpLbConfig != null) 'bgpLbConfig': bgpLbConfig!,
-    if (manualLbConfig != null) 'manualLbConfig': manualLbConfig!,
-    if (portConfig != null) 'portConfig': portConfig!,
-    if (vipConfig != null) 'vipConfig': vipConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bgpLbConfig = this.bgpLbConfig;
+    final manualLbConfig = this.manualLbConfig;
+    final portConfig = this.portConfig;
+    final vipConfig = this.vipConfig;
+    return {
+      'bgpLbConfig': ?bgpLbConfig,
+      'manualLbConfig': ?manualLbConfig,
+      'portConfig': ?portConfig,
+      'vipConfig': ?vipConfig,
+    };
+  }
 }
 
 /// Specifies the load balancer's node pool configuration.
@@ -5322,18 +5367,17 @@ class BareMetalAdminLoadBalancerNodePoolConfig {
 
   BareMetalAdminLoadBalancerNodePoolConfig.fromJson(core.Map json_)
     : this(
-        nodePoolConfig:
-            json_.containsKey('nodePoolConfig')
-                ? BareMetalNodePoolConfig.fromJson(
-                  json_['nodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodePoolConfig: json_.containsKey('nodePoolConfig')
+            ? BareMetalNodePoolConfig.fromJson(
+                json_['nodePoolConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nodePoolConfig != null) 'nodePoolConfig': nodePoolConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nodePoolConfig = this.nodePoolConfig;
+    return {'nodePoolConfig': ?nodePoolConfig};
+  }
 }
 
 /// BareMetalAdminMachineDrainStatus represents the status of bare metal node
@@ -5352,28 +5396,30 @@ class BareMetalAdminMachineDrainStatus {
 
   BareMetalAdminMachineDrainStatus.fromJson(core.Map json_)
     : this(
-        drainedMachines:
-            (json_['drainedMachines'] as core.List?)
-                ?.map(
-                  (value) => BareMetalAdminDrainedMachine.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        drainingMachines:
-            (json_['drainingMachines'] as core.List?)
-                ?.map(
-                  (value) => BareMetalAdminDrainingMachine.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        drainedMachines: (json_['drainedMachines'] as core.List?)
+            ?.map(
+              (value) => BareMetalAdminDrainedMachine.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        drainingMachines: (json_['drainingMachines'] as core.List?)
+            ?.map(
+              (value) => BareMetalAdminDrainingMachine.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (drainedMachines != null) 'drainedMachines': drainedMachines!,
-    if (drainingMachines != null) 'drainingMachines': drainingMachines!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final drainedMachines = this.drainedMachines;
+    final drainingMachines = this.drainingMachines;
+    return {
+      'drainedMachines': ?drainedMachines,
+      'drainingMachines': ?drainingMachines,
+    };
+  }
 }
 
 /// BareMetalAdminMaintenanceConfig specifies configurations to put bare metal
@@ -5392,18 +5438,18 @@ class BareMetalAdminMaintenanceStatus {
 
   BareMetalAdminMaintenanceStatus.fromJson(core.Map json_)
     : this(
-        machineDrainStatus:
-            json_.containsKey('machineDrainStatus')
-                ? BareMetalAdminMachineDrainStatus.fromJson(
-                  json_['machineDrainStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        machineDrainStatus: json_.containsKey('machineDrainStatus')
+            ? BareMetalAdminMachineDrainStatus.fromJson(
+                json_['machineDrainStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineDrainStatus != null) 'machineDrainStatus': machineDrainStatus!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineDrainStatus = this.machineDrainStatus;
+    return {'machineDrainStatus': ?machineDrainStatus};
+  }
 }
 
 /// BareMetalAdminManualLbConfig represents configuration parameters for a
@@ -5439,28 +5485,31 @@ class BareMetalAdminNetworkConfig {
   BareMetalAdminNetworkConfig.fromJson(core.Map json_)
     : this(
         advancedNetworking: json_['advancedNetworking'] as core.bool?,
-        islandModeCidr:
-            json_.containsKey('islandModeCidr')
-                ? BareMetalAdminIslandModeCidrConfig.fromJson(
-                  json_['islandModeCidr']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        islandModeCidr: json_.containsKey('islandModeCidr')
+            ? BareMetalAdminIslandModeCidrConfig.fromJson(
+                json_['islandModeCidr'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         multipleNetworkInterfacesConfig:
             json_.containsKey('multipleNetworkInterfacesConfig')
-                ? BareMetalAdminMultipleNetworkInterfacesConfig.fromJson(
-                  json_['multipleNetworkInterfacesConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? BareMetalAdminMultipleNetworkInterfacesConfig.fromJson(
+                json_['multipleNetworkInterfacesConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (advancedNetworking != null) 'advancedNetworking': advancedNetworking!,
-    if (islandModeCidr != null) 'islandModeCidr': islandModeCidr!,
-    if (multipleNetworkInterfacesConfig != null)
-      'multipleNetworkInterfacesConfig': multipleNetworkInterfacesConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final advancedNetworking = this.advancedNetworking;
+    final islandModeCidr = this.islandModeCidr;
+    final multipleNetworkInterfacesConfig =
+        this.multipleNetworkInterfacesConfig;
+    return {
+      'advancedNetworking': ?advancedNetworking,
+      'islandModeCidr': ?islandModeCidr,
+      'multipleNetworkInterfacesConfig': ?multipleNetworkInterfacesConfig,
+    };
+  }
 }
 
 /// Specifies the node access related settings for the bare metal admin cluster.
@@ -5477,9 +5526,10 @@ class BareMetalAdminNodeAccessConfig {
   BareMetalAdminNodeAccessConfig.fromJson(core.Map json_)
     : this(loginUser: json_['loginUser'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (loginUser != null) 'loginUser': loginUser!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final loginUser = this.loginUser;
+    return {'loginUser': ?loginUser};
+  }
 }
 
 /// Specifies operating system operation settings for cluster provisioning.
@@ -5493,10 +5543,10 @@ class BareMetalAdminOsEnvironmentConfig {
   BareMetalAdminOsEnvironmentConfig.fromJson(core.Map json_)
     : this(packageRepoExcluded: json_['packageRepoExcluded'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (packageRepoExcluded != null)
-      'packageRepoExcluded': packageRepoExcluded!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final packageRepoExcluded = this.packageRepoExcluded;
+    return {'packageRepoExcluded': ?packageRepoExcluded};
+  }
 }
 
 /// BareMetalAdminPortConfig is the specification of load balancer ports.
@@ -5522,17 +5572,17 @@ class BareMetalAdminProxyConfig {
 
   BareMetalAdminProxyConfig.fromJson(core.Map json_)
     : this(
-        noProxy:
-            (json_['noProxy'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        noProxy: (json_['noProxy'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (noProxy != null) 'noProxy': noProxy!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final noProxy = this.noProxy;
+    final uri = this.uri;
+    return {'noProxy': ?noProxy, 'uri': ?uri};
+  }
 }
 
 /// Specifies the security related settings for the bare metal admin cluster.
@@ -5544,17 +5594,17 @@ class BareMetalAdminSecurityConfig {
 
   BareMetalAdminSecurityConfig.fromJson(core.Map json_)
     : this(
-        authorization:
-            json_.containsKey('authorization')
-                ? Authorization.fromJson(
-                  json_['authorization'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        authorization: json_.containsKey('authorization')
+            ? Authorization.fromJson(
+                json_['authorization'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authorization != null) 'authorization': authorization!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorization = this.authorization;
+    return {'authorization': ?authorization};
+  }
 }
 
 /// BareMetalAdminStorageConfig specifies the cluster storage configuration.
@@ -5580,27 +5630,27 @@ class BareMetalAdminStorageConfig {
 
   BareMetalAdminStorageConfig.fromJson(core.Map json_)
     : this(
-        lvpNodeMountsConfig:
-            json_.containsKey('lvpNodeMountsConfig')
-                ? BareMetalLvpConfig.fromJson(
-                  json_['lvpNodeMountsConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lvpShareConfig:
-            json_.containsKey('lvpShareConfig')
-                ? BareMetalLvpShareConfig.fromJson(
-                  json_['lvpShareConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lvpNodeMountsConfig: json_.containsKey('lvpNodeMountsConfig')
+            ? BareMetalLvpConfig.fromJson(
+                json_['lvpNodeMountsConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lvpShareConfig: json_.containsKey('lvpShareConfig')
+            ? BareMetalLvpShareConfig.fromJson(
+                json_['lvpShareConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lvpNodeMountsConfig != null)
-      'lvpNodeMountsConfig': lvpNodeMountsConfig!,
-    if (lvpShareConfig != null) 'lvpShareConfig': lvpShareConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lvpNodeMountsConfig = this.lvpNodeMountsConfig;
+    final lvpShareConfig = this.lvpShareConfig;
+    return {
+      'lvpNodeMountsConfig': ?lvpNodeMountsConfig,
+      'lvpShareConfig': ?lvpShareConfig,
+    };
+  }
 }
 
 /// BareMetalAdminVipConfig for bare metal load balancer configurations.
@@ -5614,9 +5664,10 @@ class BareMetalAdminVipConfig {
   BareMetalAdminVipConfig.fromJson(core.Map json_)
     : this(controlPlaneVip: json_['controlPlaneVip'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlPlaneVip != null) 'controlPlaneVip': controlPlaneVip!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneVip = this.controlPlaneVip;
+    return {'controlPlaneVip': ?controlPlaneVip};
+  }
 }
 
 /// BareMetalAdminWorkloadNodeConfig specifies the workload node configurations.
@@ -5634,9 +5685,10 @@ class BareMetalAdminWorkloadNodeConfig {
   BareMetalAdminWorkloadNodeConfig.fromJson(core.Map json_)
     : this(maxPodsPerNode: json_['maxPodsPerNode'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxPodsPerNode = this.maxPodsPerNode;
+    return {'maxPodsPerNode': ?maxPodsPerNode};
+  }
 }
 
 /// Represents an arg name-\>value pair.
@@ -5664,10 +5716,11 @@ class BareMetalApiServerArgument {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (argument != null) 'argument': argument!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final argument = this.argument;
+    final value = this.value;
+    return {'argument': ?argument, 'value': ?value};
+  }
 }
 
 /// BareMetalBgpLbConfig represents configuration parameters for a Border
@@ -5714,39 +5767,42 @@ class BareMetalBgpLbConfig {
 
   BareMetalBgpLbConfig.fromJson(core.Map json_)
     : this(
-        addressPools:
-            (json_['addressPools'] as core.List?)
-                ?.map(
-                  (value) => BareMetalLoadBalancerAddressPool.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        addressPools: (json_['addressPools'] as core.List?)
+            ?.map(
+              (value) => BareMetalLoadBalancerAddressPool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         asn: json_['asn'] as core.String?,
-        bgpPeerConfigs:
-            (json_['bgpPeerConfigs'] as core.List?)
-                ?.map(
-                  (value) => BareMetalBgpPeerConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bgpPeerConfigs: (json_['bgpPeerConfigs'] as core.List?)
+            ?.map(
+              (value) => BareMetalBgpPeerConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         loadBalancerNodePoolConfig:
             json_.containsKey('loadBalancerNodePoolConfig')
-                ? BareMetalLoadBalancerNodePoolConfig.fromJson(
-                  json_['loadBalancerNodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? BareMetalLoadBalancerNodePoolConfig.fromJson(
+                json_['loadBalancerNodePoolConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressPools != null) 'addressPools': addressPools!,
-    if (asn != null) 'asn': asn!,
-    if (bgpPeerConfigs != null) 'bgpPeerConfigs': bgpPeerConfigs!,
-    if (loadBalancerNodePoolConfig != null)
-      'loadBalancerNodePoolConfig': loadBalancerNodePoolConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressPools = this.addressPools;
+    final asn = this.asn;
+    final bgpPeerConfigs = this.bgpPeerConfigs;
+    final loadBalancerNodePoolConfig = this.loadBalancerNodePoolConfig;
+    return {
+      'addressPools': ?addressPools,
+      'asn': ?asn,
+      'bgpPeerConfigs': ?bgpPeerConfigs,
+      'loadBalancerNodePoolConfig': ?loadBalancerNodePoolConfig,
+    };
+  }
 }
 
 /// BareMetalBgpPeerConfig represents configuration parameters for a Border
@@ -5980,172 +6036,186 @@ class BareMetalCluster {
     : this(
         adminClusterMembership: json_['adminClusterMembership'] as core.String?,
         adminClusterName: json_['adminClusterName'] as core.String?,
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         bareMetalVersion: json_['bareMetalVersion'] as core.String?,
-        binaryAuthorization:
-            json_.containsKey('binaryAuthorization')
-                ? BinaryAuthorization.fromJson(
-                  json_['binaryAuthorization']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        clusterOperations:
-            json_.containsKey('clusterOperations')
-                ? BareMetalClusterOperationsConfig.fromJson(
-                  json_['clusterOperations']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        controlPlane:
-            json_.containsKey('controlPlane')
-                ? BareMetalControlPlaneConfig.fromJson(
-                  json_['controlPlane'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        binaryAuthorization: json_.containsKey('binaryAuthorization')
+            ? BinaryAuthorization.fromJson(
+                json_['binaryAuthorization']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        clusterOperations: json_.containsKey('clusterOperations')
+            ? BareMetalClusterOperationsConfig.fromJson(
+                json_['clusterOperations']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        controlPlane: json_.containsKey('controlPlane')
+            ? BareMetalControlPlaneConfig.fromJson(
+                json_['controlPlane'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
         endpoint: json_['endpoint'] as core.String?,
         etag: json_['etag'] as core.String?,
-        fleet:
-            json_.containsKey('fleet')
-                ? Fleet.fromJson(
-                  json_['fleet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        loadBalancer:
-            json_.containsKey('loadBalancer')
-                ? BareMetalLoadBalancerConfig.fromJson(
-                  json_['loadBalancer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fleet: json_.containsKey('fleet')
+            ? Fleet.fromJson(
+                json_['fleet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        loadBalancer: json_.containsKey('loadBalancer')
+            ? BareMetalLoadBalancerConfig.fromJson(
+                json_['loadBalancer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localName: json_['localName'] as core.String?,
         localNamespace: json_['localNamespace'] as core.String?,
-        maintenanceConfig:
-            json_.containsKey('maintenanceConfig')
-                ? BareMetalMaintenanceConfig.fromJson(
-                  json_['maintenanceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        maintenanceStatus:
-            json_.containsKey('maintenanceStatus')
-                ? BareMetalMaintenanceStatus.fromJson(
-                  json_['maintenanceStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        maintenanceConfig: json_.containsKey('maintenanceConfig')
+            ? BareMetalMaintenanceConfig.fromJson(
+                json_['maintenanceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        maintenanceStatus: json_.containsKey('maintenanceStatus')
+            ? BareMetalMaintenanceStatus.fromJson(
+                json_['maintenanceStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
-        networkConfig:
-            json_.containsKey('networkConfig')
-                ? BareMetalNetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        nodeAccessConfig:
-            json_.containsKey('nodeAccessConfig')
-                ? BareMetalNodeAccessConfig.fromJson(
-                  json_['nodeAccessConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        nodeConfig:
-            json_.containsKey('nodeConfig')
-                ? BareMetalWorkloadNodeConfig.fromJson(
-                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        osEnvironmentConfig:
-            json_.containsKey('osEnvironmentConfig')
-                ? BareMetalOsEnvironmentConfig.fromJson(
-                  json_['osEnvironmentConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        proxy:
-            json_.containsKey('proxy')
-                ? BareMetalProxyConfig.fromJson(
-                  json_['proxy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        networkConfig: json_.containsKey('networkConfig')
+            ? BareMetalNetworkConfig.fromJson(
+                json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nodeAccessConfig: json_.containsKey('nodeAccessConfig')
+            ? BareMetalNodeAccessConfig.fromJson(
+                json_['nodeAccessConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nodeConfig: json_.containsKey('nodeConfig')
+            ? BareMetalWorkloadNodeConfig.fromJson(
+                json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        osEnvironmentConfig: json_.containsKey('osEnvironmentConfig')
+            ? BareMetalOsEnvironmentConfig.fromJson(
+                json_['osEnvironmentConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        proxy: json_.containsKey('proxy')
+            ? BareMetalProxyConfig.fromJson(
+                json_['proxy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reconciling: json_['reconciling'] as core.bool?,
-        securityConfig:
-            json_.containsKey('securityConfig')
-                ? BareMetalSecurityConfig.fromJson(
-                  json_['securityConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        securityConfig: json_.containsKey('securityConfig')
+            ? BareMetalSecurityConfig.fromJson(
+                json_['securityConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? ResourceStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        storage:
-            json_.containsKey('storage')
-                ? BareMetalStorageConfig.fromJson(
-                  json_['storage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ResourceStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storage: json_.containsKey('storage')
+            ? BareMetalStorageConfig.fromJson(
+                json_['storage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        upgradePolicy:
-            json_.containsKey('upgradePolicy')
-                ? BareMetalClusterUpgradePolicy.fromJson(
-                  json_['upgradePolicy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        validationCheck:
-            json_.containsKey('validationCheck')
-                ? ValidationCheck.fromJson(
-                  json_['validationCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        upgradePolicy: json_.containsKey('upgradePolicy')
+            ? BareMetalClusterUpgradePolicy.fromJson(
+                json_['upgradePolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        validationCheck: json_.containsKey('validationCheck')
+            ? ValidationCheck.fromJson(
+                json_['validationCheck'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminClusterMembership != null)
-      'adminClusterMembership': adminClusterMembership!,
-    if (adminClusterName != null) 'adminClusterName': adminClusterName!,
-    if (annotations != null) 'annotations': annotations!,
-    if (bareMetalVersion != null) 'bareMetalVersion': bareMetalVersion!,
-    if (binaryAuthorization != null)
-      'binaryAuthorization': binaryAuthorization!,
-    if (clusterOperations != null) 'clusterOperations': clusterOperations!,
-    if (controlPlane != null) 'controlPlane': controlPlane!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (description != null) 'description': description!,
-    if (endpoint != null) 'endpoint': endpoint!,
-    if (etag != null) 'etag': etag!,
-    if (fleet != null) 'fleet': fleet!,
-    if (loadBalancer != null) 'loadBalancer': loadBalancer!,
-    if (localName != null) 'localName': localName!,
-    if (localNamespace != null) 'localNamespace': localNamespace!,
-    if (maintenanceConfig != null) 'maintenanceConfig': maintenanceConfig!,
-    if (maintenanceStatus != null) 'maintenanceStatus': maintenanceStatus!,
-    if (name != null) 'name': name!,
-    if (networkConfig != null) 'networkConfig': networkConfig!,
-    if (nodeAccessConfig != null) 'nodeAccessConfig': nodeAccessConfig!,
-    if (nodeConfig != null) 'nodeConfig': nodeConfig!,
-    if (osEnvironmentConfig != null)
-      'osEnvironmentConfig': osEnvironmentConfig!,
-    if (proxy != null) 'proxy': proxy!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (securityConfig != null) 'securityConfig': securityConfig!,
-    if (state != null) 'state': state!,
-    if (status != null) 'status': status!,
-    if (storage != null) 'storage': storage!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (upgradePolicy != null) 'upgradePolicy': upgradePolicy!,
-    if (validationCheck != null) 'validationCheck': validationCheck!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminClusterMembership = this.adminClusterMembership;
+    final adminClusterName = this.adminClusterName;
+    final annotations = this.annotations;
+    final bareMetalVersion = this.bareMetalVersion;
+    final binaryAuthorization = this.binaryAuthorization;
+    final clusterOperations = this.clusterOperations;
+    final controlPlane = this.controlPlane;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final description = this.description;
+    final endpoint = this.endpoint;
+    final etag = this.etag;
+    final fleet = this.fleet;
+    final loadBalancer = this.loadBalancer;
+    final localName = this.localName;
+    final localNamespace = this.localNamespace;
+    final maintenanceConfig = this.maintenanceConfig;
+    final maintenanceStatus = this.maintenanceStatus;
+    final name = this.name;
+    final networkConfig = this.networkConfig;
+    final nodeAccessConfig = this.nodeAccessConfig;
+    final nodeConfig = this.nodeConfig;
+    final osEnvironmentConfig = this.osEnvironmentConfig;
+    final proxy = this.proxy;
+    final reconciling = this.reconciling;
+    final securityConfig = this.securityConfig;
+    final state = this.state;
+    final status = this.status;
+    final storage = this.storage;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final upgradePolicy = this.upgradePolicy;
+    final validationCheck = this.validationCheck;
+    return {
+      'adminClusterMembership': ?adminClusterMembership,
+      'adminClusterName': ?adminClusterName,
+      'annotations': ?annotations,
+      'bareMetalVersion': ?bareMetalVersion,
+      'binaryAuthorization': ?binaryAuthorization,
+      'clusterOperations': ?clusterOperations,
+      'controlPlane': ?controlPlane,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'description': ?description,
+      'endpoint': ?endpoint,
+      'etag': ?etag,
+      'fleet': ?fleet,
+      'loadBalancer': ?loadBalancer,
+      'localName': ?localName,
+      'localNamespace': ?localNamespace,
+      'maintenanceConfig': ?maintenanceConfig,
+      'maintenanceStatus': ?maintenanceStatus,
+      'name': ?name,
+      'networkConfig': ?networkConfig,
+      'nodeAccessConfig': ?nodeAccessConfig,
+      'nodeConfig': ?nodeConfig,
+      'osEnvironmentConfig': ?osEnvironmentConfig,
+      'proxy': ?proxy,
+      'reconciling': ?reconciling,
+      'securityConfig': ?securityConfig,
+      'state': ?state,
+      'status': ?status,
+      'storage': ?storage,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'upgradePolicy': ?upgradePolicy,
+      'validationCheck': ?validationCheck,
+    };
+  }
 }
 
 /// Specifies the bare metal user cluster's observability infrastructure.
@@ -6175,10 +6245,11 @@ class BareMetalClusterUpgradePolicy {
         policy: json_['policy'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pause != null) 'pause': pause!,
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pause = this.pause;
+    final policy = this.policy;
+    return {'pause': ?pause, 'policy': ?policy};
+  }
 }
 
 /// Specifies the control plane configuration.
@@ -6202,28 +6273,30 @@ class BareMetalControlPlaneConfig {
 
   BareMetalControlPlaneConfig.fromJson(core.Map json_)
     : this(
-        apiServerArgs:
-            (json_['apiServerArgs'] as core.List?)
-                ?.map(
-                  (value) => BareMetalApiServerArgument.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apiServerArgs: (json_['apiServerArgs'] as core.List?)
+            ?.map(
+              (value) => BareMetalApiServerArgument.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         controlPlaneNodePoolConfig:
             json_.containsKey('controlPlaneNodePoolConfig')
-                ? BareMetalControlPlaneNodePoolConfig.fromJson(
-                  json_['controlPlaneNodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? BareMetalControlPlaneNodePoolConfig.fromJson(
+                json_['controlPlaneNodePoolConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiServerArgs != null) 'apiServerArgs': apiServerArgs!,
-    if (controlPlaneNodePoolConfig != null)
-      'controlPlaneNodePoolConfig': controlPlaneNodePoolConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiServerArgs = this.apiServerArgs;
+    final controlPlaneNodePoolConfig = this.controlPlaneNodePoolConfig;
+    return {
+      'apiServerArgs': ?apiServerArgs,
+      'controlPlaneNodePoolConfig': ?controlPlaneNodePoolConfig,
+    };
+  }
 }
 
 /// Specifies the control plane node pool configuration.
@@ -6237,18 +6310,17 @@ class BareMetalControlPlaneNodePoolConfig {
 
   BareMetalControlPlaneNodePoolConfig.fromJson(core.Map json_)
     : this(
-        nodePoolConfig:
-            json_.containsKey('nodePoolConfig')
-                ? BareMetalNodePoolConfig.fromJson(
-                  json_['nodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodePoolConfig: json_.containsKey('nodePoolConfig')
+            ? BareMetalNodePoolConfig.fromJson(
+                json_['nodePoolConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nodePoolConfig != null) 'nodePoolConfig': nodePoolConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nodePoolConfig = this.nodePoolConfig;
+    return {'nodePoolConfig': ?nodePoolConfig};
+  }
 }
 
 /// Represents a machine that is currently drained.
@@ -6282,22 +6354,23 @@ class BareMetalIslandModeCidrConfig {
 
   BareMetalIslandModeCidrConfig.fromJson(core.Map json_)
     : this(
-        podAddressCidrBlocks:
-            (json_['podAddressCidrBlocks'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        podAddressCidrBlocks: (json_['podAddressCidrBlocks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         serviceAddressCidrBlocks:
             (json_['serviceAddressCidrBlocks'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (podAddressCidrBlocks != null)
-      'podAddressCidrBlocks': podAddressCidrBlocks!,
-    if (serviceAddressCidrBlocks != null)
-      'serviceAddressCidrBlocks': serviceAddressCidrBlocks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final podAddressCidrBlocks = this.podAddressCidrBlocks;
+    final serviceAddressCidrBlocks = this.serviceAddressCidrBlocks;
+    return {
+      'podAddressCidrBlocks': ?podAddressCidrBlocks,
+      'serviceAddressCidrBlocks': ?serviceAddressCidrBlocks,
+    };
+  }
 }
 
 /// KubeletConfig defines the modifiable kubelet configurations for bare metal
@@ -6343,12 +6416,16 @@ class BareMetalKubeletConfig {
             json_['serializeImagePullsDisabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (registryBurst != null) 'registryBurst': registryBurst!,
-    if (registryPullQps != null) 'registryPullQps': registryPullQps!,
-    if (serializeImagePullsDisabled != null)
-      'serializeImagePullsDisabled': serializeImagePullsDisabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final registryBurst = this.registryBurst;
+    final registryPullQps = this.registryPullQps;
+    final serializeImagePullsDisabled = this.serializeImagePullsDisabled;
+    return {
+      'registryBurst': ?registryBurst,
+      'registryPullQps': ?registryPullQps,
+      'serializeImagePullsDisabled': ?serializeImagePullsDisabled,
+    };
+  }
 }
 
 /// Represents an IP pool used by the load balancer.
@@ -6383,46 +6460,47 @@ class BareMetalLoadBalancerConfig {
 
   BareMetalLoadBalancerConfig.fromJson(core.Map json_)
     : this(
-        bgpLbConfig:
-            json_.containsKey('bgpLbConfig')
-                ? BareMetalBgpLbConfig.fromJson(
-                  json_['bgpLbConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        manualLbConfig:
-            json_.containsKey('manualLbConfig')
-                ? BareMetalManualLbConfig.fromJson(
-                  json_['manualLbConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metalLbConfig:
-            json_.containsKey('metalLbConfig')
-                ? BareMetalMetalLbConfig.fromJson(
-                  json_['metalLbConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        portConfig:
-            json_.containsKey('portConfig')
-                ? BareMetalPortConfig.fromJson(
-                  json_['portConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vipConfig:
-            json_.containsKey('vipConfig')
-                ? BareMetalVipConfig.fromJson(
-                  json_['vipConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        bgpLbConfig: json_.containsKey('bgpLbConfig')
+            ? BareMetalBgpLbConfig.fromJson(
+                json_['bgpLbConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        manualLbConfig: json_.containsKey('manualLbConfig')
+            ? BareMetalManualLbConfig.fromJson(
+                json_['manualLbConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metalLbConfig: json_.containsKey('metalLbConfig')
+            ? BareMetalMetalLbConfig.fromJson(
+                json_['metalLbConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        portConfig: json_.containsKey('portConfig')
+            ? BareMetalPortConfig.fromJson(
+                json_['portConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vipConfig: json_.containsKey('vipConfig')
+            ? BareMetalVipConfig.fromJson(
+                json_['vipConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bgpLbConfig != null) 'bgpLbConfig': bgpLbConfig!,
-    if (manualLbConfig != null) 'manualLbConfig': manualLbConfig!,
-    if (metalLbConfig != null) 'metalLbConfig': metalLbConfig!,
-    if (portConfig != null) 'portConfig': portConfig!,
-    if (vipConfig != null) 'vipConfig': vipConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bgpLbConfig = this.bgpLbConfig;
+    final manualLbConfig = this.manualLbConfig;
+    final metalLbConfig = this.metalLbConfig;
+    final portConfig = this.portConfig;
+    final vipConfig = this.vipConfig;
+    return {
+      'bgpLbConfig': ?bgpLbConfig,
+      'manualLbConfig': ?manualLbConfig,
+      'metalLbConfig': ?metalLbConfig,
+      'portConfig': ?portConfig,
+      'vipConfig': ?vipConfig,
+    };
+  }
 }
 
 /// Specifies the load balancer's node pool configuration.
@@ -6434,18 +6512,17 @@ class BareMetalLoadBalancerNodePoolConfig {
 
   BareMetalLoadBalancerNodePoolConfig.fromJson(core.Map json_)
     : this(
-        nodePoolConfig:
-            json_.containsKey('nodePoolConfig')
-                ? BareMetalNodePoolConfig.fromJson(
-                  json_['nodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodePoolConfig: json_.containsKey('nodePoolConfig')
+            ? BareMetalNodePoolConfig.fromJson(
+                json_['nodePoolConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nodePoolConfig != null) 'nodePoolConfig': nodePoolConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nodePoolConfig = this.nodePoolConfig;
+    return {'nodePoolConfig': ?nodePoolConfig};
+  }
 }
 
 /// Specifies the configs for local persistent volumes (PVs).
@@ -6468,10 +6545,11 @@ class BareMetalLvpConfig {
         storageClass: json_['storageClass'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (path != null) 'path': path!,
-    if (storageClass != null) 'storageClass': storageClass!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    final storageClass = this.storageClass;
+    return {'path': ?path, 'storageClass': ?storageClass};
+  }
 }
 
 /// Specifies the configs for local persistent volumes under a shared file
@@ -6489,19 +6567,19 @@ class BareMetalLvpShareConfig {
 
   BareMetalLvpShareConfig.fromJson(core.Map json_)
     : this(
-        lvpConfig:
-            json_.containsKey('lvpConfig')
-                ? BareMetalLvpConfig.fromJson(
-                  json_['lvpConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lvpConfig: json_.containsKey('lvpConfig')
+            ? BareMetalLvpConfig.fromJson(
+                json_['lvpConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sharedPathPvCount: json_['sharedPathPvCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lvpConfig != null) 'lvpConfig': lvpConfig!,
-    if (sharedPathPvCount != null) 'sharedPathPvCount': sharedPathPvCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lvpConfig = this.lvpConfig;
+    final sharedPathPvCount = this.sharedPathPvCount;
+    return {'lvpConfig': ?lvpConfig, 'sharedPathPvCount': ?sharedPathPvCount};
+  }
 }
 
 /// Represents the status of node machines that are undergoing drain operations.
@@ -6516,28 +6594,30 @@ class BareMetalMachineDrainStatus {
 
   BareMetalMachineDrainStatus.fromJson(core.Map json_)
     : this(
-        drainedMachines:
-            (json_['drainedMachines'] as core.List?)
-                ?.map(
-                  (value) => BareMetalDrainedMachine.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        drainingMachines:
-            (json_['drainingMachines'] as core.List?)
-                ?.map(
-                  (value) => BareMetalDrainingMachine.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        drainedMachines: (json_['drainedMachines'] as core.List?)
+            ?.map(
+              (value) => BareMetalDrainedMachine.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        drainingMachines: (json_['drainingMachines'] as core.List?)
+            ?.map(
+              (value) => BareMetalDrainingMachine.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (drainedMachines != null) 'drainedMachines': drainedMachines!,
-    if (drainingMachines != null) 'drainingMachines': drainingMachines!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final drainedMachines = this.drainedMachines;
+    final drainingMachines = this.drainingMachines;
+    return {
+      'drainedMachines': ?drainedMachines,
+      'drainingMachines': ?drainingMachines,
+    };
+  }
 }
 
 /// Specifies configurations to put bare metal nodes in and out of maintenance.
@@ -6552,18 +6632,18 @@ class BareMetalMaintenanceStatus {
 
   BareMetalMaintenanceStatus.fromJson(core.Map json_)
     : this(
-        machineDrainStatus:
-            json_.containsKey('machineDrainStatus')
-                ? BareMetalMachineDrainStatus.fromJson(
-                  json_['machineDrainStatus']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        machineDrainStatus: json_.containsKey('machineDrainStatus')
+            ? BareMetalMachineDrainStatus.fromJson(
+                json_['machineDrainStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineDrainStatus != null) 'machineDrainStatus': machineDrainStatus!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineDrainStatus = this.machineDrainStatus;
+    return {'machineDrainStatus': ?machineDrainStatus};
+  }
 }
 
 /// Represents configuration parameters for a manual load balancer.
@@ -6590,28 +6670,30 @@ class BareMetalMetalLbConfig {
 
   BareMetalMetalLbConfig.fromJson(core.Map json_)
     : this(
-        addressPools:
-            (json_['addressPools'] as core.List?)
-                ?.map(
-                  (value) => BareMetalLoadBalancerAddressPool.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        addressPools: (json_['addressPools'] as core.List?)
+            ?.map(
+              (value) => BareMetalLoadBalancerAddressPool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         loadBalancerNodePoolConfig:
             json_.containsKey('loadBalancerNodePoolConfig')
-                ? BareMetalLoadBalancerNodePoolConfig.fromJson(
-                  json_['loadBalancerNodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? BareMetalLoadBalancerNodePoolConfig.fromJson(
+                json_['loadBalancerNodePoolConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressPools != null) 'addressPools': addressPools!,
-    if (loadBalancerNodePoolConfig != null)
-      'loadBalancerNodePoolConfig': loadBalancerNodePoolConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressPools = this.addressPools;
+    final loadBalancerNodePoolConfig = this.loadBalancerNodePoolConfig;
+    return {
+      'addressPools': ?addressPools,
+      'loadBalancerNodePoolConfig': ?loadBalancerNodePoolConfig,
+    };
+  }
 }
 
 /// Specifies the multiple networking interfaces cluster configuration.
@@ -6652,35 +6734,38 @@ class BareMetalNetworkConfig {
   BareMetalNetworkConfig.fromJson(core.Map json_)
     : this(
         advancedNetworking: json_['advancedNetworking'] as core.bool?,
-        islandModeCidr:
-            json_.containsKey('islandModeCidr')
-                ? BareMetalIslandModeCidrConfig.fromJson(
-                  json_['islandModeCidr']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        islandModeCidr: json_.containsKey('islandModeCidr')
+            ? BareMetalIslandModeCidrConfig.fromJson(
+                json_['islandModeCidr'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         multipleNetworkInterfacesConfig:
             json_.containsKey('multipleNetworkInterfacesConfig')
-                ? BareMetalMultipleNetworkInterfacesConfig.fromJson(
-                  json_['multipleNetworkInterfacesConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        srIovConfig:
-            json_.containsKey('srIovConfig')
-                ? BareMetalSrIovConfig.fromJson(
-                  json_['srIovConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? BareMetalMultipleNetworkInterfacesConfig.fromJson(
+                json_['multipleNetworkInterfacesConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        srIovConfig: json_.containsKey('srIovConfig')
+            ? BareMetalSrIovConfig.fromJson(
+                json_['srIovConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (advancedNetworking != null) 'advancedNetworking': advancedNetworking!,
-    if (islandModeCidr != null) 'islandModeCidr': islandModeCidr!,
-    if (multipleNetworkInterfacesConfig != null)
-      'multipleNetworkInterfacesConfig': multipleNetworkInterfacesConfig!,
-    if (srIovConfig != null) 'srIovConfig': srIovConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final advancedNetworking = this.advancedNetworking;
+    final islandModeCidr = this.islandModeCidr;
+    final multipleNetworkInterfacesConfig =
+        this.multipleNetworkInterfacesConfig;
+    final srIovConfig = this.srIovConfig;
+    return {
+      'advancedNetworking': ?advancedNetworking,
+      'islandModeCidr': ?islandModeCidr,
+      'multipleNetworkInterfacesConfig': ?multipleNetworkInterfacesConfig,
+      'srIovConfig': ?srIovConfig,
+    };
+  }
 }
 
 /// Specifies the node access related settings for the bare metal user cluster.
@@ -6695,9 +6780,10 @@ class BareMetalNodeAccessConfig {
   BareMetalNodeAccessConfig.fromJson(core.Map json_)
     : this(loginUser: json_['loginUser'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (loginUser != null) 'loginUser': loginUser!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final loginUser = this.loginUser;
+    return {'loginUser': ?loginUser};
+  }
 }
 
 /// BareMetalNodeConfig lists machine addresses to access Nodes.
@@ -6726,10 +6812,11 @@ class BareMetalNodeConfig {
         nodeIp: json_['nodeIp'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (labels != null) 'labels': labels!,
-    if (nodeIp != null) 'nodeIp': nodeIp!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final labels = this.labels;
+    final nodeIp = this.nodeIp;
+    return {'labels': ?labels, 'nodeIp': ?nodeIp};
+  }
 }
 
 /// Resource that represents a bare metal node pool.
@@ -6838,54 +6925,66 @@ class BareMetalNodePool {
 
   BareMetalNodePool.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
-        nodePoolConfig:
-            json_.containsKey('nodePoolConfig')
-                ? BareMetalNodePoolConfig.fromJson(
-                  json_['nodePoolConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodePoolConfig: json_.containsKey('nodePoolConfig')
+            ? BareMetalNodePoolConfig.fromJson(
+                json_['nodePoolConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reconciling: json_['reconciling'] as core.bool?,
         state: json_['state'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? ResourceStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ResourceStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        upgradePolicy:
-            json_.containsKey('upgradePolicy')
-                ? BareMetalNodePoolUpgradePolicy.fromJson(
-                  json_['upgradePolicy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        upgradePolicy: json_.containsKey('upgradePolicy')
+            ? BareMetalNodePoolUpgradePolicy.fromJson(
+                json_['upgradePolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (nodePoolConfig != null) 'nodePoolConfig': nodePoolConfig!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (state != null) 'state': state!,
-    if (status != null) 'status': status!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (upgradePolicy != null) 'upgradePolicy': upgradePolicy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final name = this.name;
+    final nodePoolConfig = this.nodePoolConfig;
+    final reconciling = this.reconciling;
+    final state = this.state;
+    final status = this.status;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final upgradePolicy = this.upgradePolicy;
+    return {
+      'annotations': ?annotations,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'name': ?name,
+      'nodePoolConfig': ?nodePoolConfig,
+      'reconciling': ?reconciling,
+      'state': ?state,
+      'status': ?status,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'upgradePolicy': ?upgradePolicy,
+    };
+  }
 }
 
 /// BareMetalNodePoolConfig describes the configuration of all nodes within a
@@ -6924,41 +7023,45 @@ class BareMetalNodePoolConfig {
 
   BareMetalNodePoolConfig.fromJson(core.Map json_)
     : this(
-        kubeletConfig:
-            json_.containsKey('kubeletConfig')
-                ? BareMetalKubeletConfig.fromJson(
-                  json_['kubeletConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        kubeletConfig: json_.containsKey('kubeletConfig')
+            ? BareMetalKubeletConfig.fromJson(
+                json_['kubeletConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        nodeConfigs:
-            (json_['nodeConfigs'] as core.List?)
-                ?.map(
-                  (value) => BareMetalNodeConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        nodeConfigs: (json_['nodeConfigs'] as core.List?)
+            ?.map(
+              (value) => BareMetalNodeConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         operatingSystem: json_['operatingSystem'] as core.String?,
-        taints:
-            (json_['taints'] as core.List?)
-                ?.map(
-                  (value) => NodeTaint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        taints: (json_['taints'] as core.List?)
+            ?.map(
+              (value) => NodeTaint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!,
-    if (labels != null) 'labels': labels!,
-    if (nodeConfigs != null) 'nodeConfigs': nodeConfigs!,
-    if (operatingSystem != null) 'operatingSystem': operatingSystem!,
-    if (taints != null) 'taints': taints!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kubeletConfig = this.kubeletConfig;
+    final labels = this.labels;
+    final nodeConfigs = this.nodeConfigs;
+    final operatingSystem = this.operatingSystem;
+    final taints = this.taints;
+    return {
+      'kubeletConfig': ?kubeletConfig,
+      'labels': ?labels,
+      'nodeConfigs': ?nodeConfigs,
+      'operatingSystem': ?operatingSystem,
+      'taints': ?taints,
+    };
+  }
 }
 
 /// BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
@@ -6970,19 +7073,18 @@ class BareMetalNodePoolUpgradePolicy {
 
   BareMetalNodePoolUpgradePolicy.fromJson(core.Map json_)
     : this(
-        parallelUpgradeConfig:
-            json_.containsKey('parallelUpgradeConfig')
-                ? BareMetalParallelUpgradeConfig.fromJson(
-                  json_['parallelUpgradeConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        parallelUpgradeConfig: json_.containsKey('parallelUpgradeConfig')
+            ? BareMetalParallelUpgradeConfig.fromJson(
+                json_['parallelUpgradeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parallelUpgradeConfig != null)
-      'parallelUpgradeConfig': parallelUpgradeConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final parallelUpgradeConfig = this.parallelUpgradeConfig;
+    return {'parallelUpgradeConfig': ?parallelUpgradeConfig};
+  }
 }
 
 /// Specifies operating system settings for cluster provisioning.
@@ -6996,10 +7098,10 @@ class BareMetalOsEnvironmentConfig {
   BareMetalOsEnvironmentConfig.fromJson(core.Map json_)
     : this(packageRepoExcluded: json_['packageRepoExcluded'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (packageRepoExcluded != null)
-      'packageRepoExcluded': packageRepoExcluded!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final packageRepoExcluded = this.packageRepoExcluded;
+    return {'packageRepoExcluded': ?packageRepoExcluded};
+  }
 }
 
 /// BareMetalParallelUpgradeConfig defines the parallel upgrade settings for
@@ -7026,11 +7128,14 @@ class BareMetalParallelUpgradeConfig {
         minimumAvailableNodes: json_['minimumAvailableNodes'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (concurrentNodes != null) 'concurrentNodes': concurrentNodes!,
-    if (minimumAvailableNodes != null)
-      'minimumAvailableNodes': minimumAvailableNodes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final concurrentNodes = this.concurrentNodes;
+    final minimumAvailableNodes = this.minimumAvailableNodes;
+    return {
+      'concurrentNodes': ?concurrentNodes,
+      'minimumAvailableNodes': ?minimumAvailableNodes,
+    };
+  }
 }
 
 /// Specifies load balancer ports for the bare metal user cluster.
@@ -7055,17 +7160,17 @@ class BareMetalProxyConfig {
 
   BareMetalProxyConfig.fromJson(core.Map json_)
     : this(
-        noProxy:
-            (json_['noProxy'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        noProxy: (json_['noProxy'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         uri: json_['uri'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (noProxy != null) 'noProxy': noProxy!,
-    if (uri != null) 'uri': uri!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final noProxy = this.noProxy;
+    final uri = this.uri;
+    return {'noProxy': ?noProxy, 'uri': ?uri};
+  }
 }
 
 /// Specifies the security related settings for the bare metal user cluster.
@@ -7077,17 +7182,17 @@ class BareMetalSecurityConfig {
 
   BareMetalSecurityConfig.fromJson(core.Map json_)
     : this(
-        authorization:
-            json_.containsKey('authorization')
-                ? Authorization.fromJson(
-                  json_['authorization'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        authorization: json_.containsKey('authorization')
+            ? Authorization.fromJson(
+                json_['authorization'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authorization != null) 'authorization': authorization!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorization = this.authorization;
+    return {'authorization': ?authorization};
+  }
 }
 
 /// Specifies the SR-IOV networking operator config.
@@ -7100,9 +7205,10 @@ class BareMetalSrIovConfig {
   BareMetalSrIovConfig.fromJson(core.Map json_)
     : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }
 
 /// BareMetalStorageConfig specifies the cluster storage configuration.
@@ -7128,27 +7234,27 @@ class BareMetalStorageConfig {
 
   BareMetalStorageConfig.fromJson(core.Map json_)
     : this(
-        lvpNodeMountsConfig:
-            json_.containsKey('lvpNodeMountsConfig')
-                ? BareMetalLvpConfig.fromJson(
-                  json_['lvpNodeMountsConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        lvpShareConfig:
-            json_.containsKey('lvpShareConfig')
-                ? BareMetalLvpShareConfig.fromJson(
-                  json_['lvpShareConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lvpNodeMountsConfig: json_.containsKey('lvpNodeMountsConfig')
+            ? BareMetalLvpConfig.fromJson(
+                json_['lvpNodeMountsConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lvpShareConfig: json_.containsKey('lvpShareConfig')
+            ? BareMetalLvpShareConfig.fromJson(
+                json_['lvpShareConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lvpNodeMountsConfig != null)
-      'lvpNodeMountsConfig': lvpNodeMountsConfig!,
-    if (lvpShareConfig != null) 'lvpShareConfig': lvpShareConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lvpNodeMountsConfig = this.lvpNodeMountsConfig;
+    final lvpShareConfig = this.lvpShareConfig;
+    return {
+      'lvpNodeMountsConfig': ?lvpNodeMountsConfig,
+      'lvpShareConfig': ?lvpShareConfig,
+    };
+  }
 }
 
 /// Contains information about a specific Anthos on bare metal version.
@@ -7168,23 +7274,27 @@ class BareMetalVersionInfo {
 
   BareMetalVersionInfo.fromJson(core.Map json_)
     : this(
-        dependencies:
-            (json_['dependencies'] as core.List?)
-                ?.map(
-                  (value) => UpgradeDependency.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dependencies: (json_['dependencies'] as core.List?)
+            ?.map(
+              (value) => UpgradeDependency.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         hasDependencies: json_['hasDependencies'] as core.bool?,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dependencies != null) 'dependencies': dependencies!,
-    if (hasDependencies != null) 'hasDependencies': hasDependencies!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dependencies = this.dependencies;
+    final hasDependencies = this.hasDependencies;
+    final version = this.version;
+    return {
+      'dependencies': ?dependencies,
+      'hasDependencies': ?hasDependencies,
+      'version': ?version,
+    };
+  }
 }
 
 /// Specifies the VIP config for the bare metal load balancer.
@@ -7205,10 +7315,11 @@ class BareMetalVipConfig {
         ingressVip: json_['ingressVip'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlPlaneVip != null) 'controlPlaneVip': controlPlaneVip!,
-    if (ingressVip != null) 'ingressVip': ingressVip!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneVip = this.controlPlaneVip;
+    final ingressVip = this.ingressVip;
+    return {'controlPlaneVip': ?controlPlaneVip, 'ingressVip': ?ingressVip};
+  }
 }
 
 /// Specifies the workload node configurations.
@@ -7233,10 +7344,14 @@ class BareMetalWorkloadNodeConfig {
         maxPodsPerNode: json_['maxPodsPerNode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (containerRuntime != null) 'containerRuntime': containerRuntime!,
-    if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final containerRuntime = this.containerRuntime;
+    final maxPodsPerNode = this.maxPodsPerNode;
+    return {
+      'containerRuntime': ?containerRuntime,
+      'maxPodsPerNode': ?maxPodsPerNode,
+    };
+  }
 }
 
 /// Configuration for Binary Authorization.
@@ -7256,9 +7371,10 @@ class BinaryAuthorization {
   BinaryAuthorization.fromJson(core.Map json_)
     : this(evaluationMode: json_['evaluationMode'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (evaluationMode != null) 'evaluationMode': evaluationMode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final evaluationMode = this.evaluationMode;
+    return {'evaluationMode': ?evaluationMode};
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -7345,24 +7461,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -7380,9 +7495,10 @@ class ClusterUser {
   ClusterUser.fromJson(core.Map json_)
     : this(username: json_['username'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (username != null) 'username': username!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final username = this.username;
+    return {'username': ?username};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -7421,11 +7537,14 @@ class EnrollBareMetalAdminClusterRequest {
         membership: json_['membership'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bareMetalAdminClusterId != null)
-      'bareMetalAdminClusterId': bareMetalAdminClusterId!,
-    if (membership != null) 'membership': membership!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bareMetalAdminClusterId = this.bareMetalAdminClusterId;
+    final membership = this.membership;
+    return {
+      'bareMetalAdminClusterId': ?bareMetalAdminClusterId,
+      'membership': ?membership,
+    };
+  }
 }
 
 /// Message for enrolling an existing bare metal cluster to the Anthos On-Prem
@@ -7480,13 +7599,18 @@ class EnrollBareMetalClusterRequest {
         localNamespace: json_['localNamespace'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminClusterMembership != null)
-      'adminClusterMembership': adminClusterMembership!,
-    if (bareMetalClusterId != null) 'bareMetalClusterId': bareMetalClusterId!,
-    if (localName != null) 'localName': localName!,
-    if (localNamespace != null) 'localNamespace': localNamespace!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminClusterMembership = this.adminClusterMembership;
+    final bareMetalClusterId = this.bareMetalClusterId;
+    final localName = this.localName;
+    final localNamespace = this.localNamespace;
+    return {
+      'adminClusterMembership': ?adminClusterMembership,
+      'bareMetalClusterId': ?bareMetalClusterId,
+      'localName': ?localName,
+      'localNamespace': ?localNamespace,
+    };
+  }
 }
 
 /// Message for enrolling an existing bare metal node pool to the GKE on-prem
@@ -7510,11 +7634,14 @@ class EnrollBareMetalNodePoolRequest {
         validateOnly: json_['validateOnly'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bareMetalNodePoolId != null)
-      'bareMetalNodePoolId': bareMetalNodePoolId!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bareMetalNodePoolId = this.bareMetalNodePoolId;
+    final validateOnly = this.validateOnly;
+    return {
+      'bareMetalNodePoolId': ?bareMetalNodePoolId,
+      'validateOnly': ?validateOnly,
+    };
+  }
 }
 
 /// Message for enrolling an existing VMware admin cluster to the GKE on-prem
@@ -7541,11 +7668,14 @@ class EnrollVmwareAdminClusterRequest {
         vmwareAdminClusterId: json_['vmwareAdminClusterId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (membership != null) 'membership': membership!,
-    if (vmwareAdminClusterId != null)
-      'vmwareAdminClusterId': vmwareAdminClusterId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final membership = this.membership;
+    final vmwareAdminClusterId = this.vmwareAdminClusterId;
+    return {
+      'membership': ?membership,
+      'vmwareAdminClusterId': ?vmwareAdminClusterId,
+    };
+  }
 }
 
 /// Message for enrolling an existing VMware cluster to the Anthos On-Prem API.
@@ -7597,13 +7727,18 @@ class EnrollVmwareClusterRequest {
         vmwareClusterId: json_['vmwareClusterId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminClusterMembership != null)
-      'adminClusterMembership': adminClusterMembership!,
-    if (localName != null) 'localName': localName!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-    if (vmwareClusterId != null) 'vmwareClusterId': vmwareClusterId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminClusterMembership = this.adminClusterMembership;
+    final localName = this.localName;
+    final validateOnly = this.validateOnly;
+    final vmwareClusterId = this.vmwareClusterId;
+    return {
+      'adminClusterMembership': ?adminClusterMembership,
+      'localName': ?localName,
+      'validateOnly': ?validateOnly,
+      'vmwareClusterId': ?vmwareClusterId,
+    };
+  }
 }
 
 /// Message for enrolling a VMware node pool.
@@ -7616,9 +7751,10 @@ class EnrollVmwareNodePoolRequest {
   EnrollVmwareNodePoolRequest.fromJson(core.Map json_)
     : this(vmwareNodePoolId: json_['vmwareNodePoolId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vmwareNodePoolId != null) 'vmwareNodePoolId': vmwareNodePoolId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final vmwareNodePoolId = this.vmwareNodePoolId;
+    return {'vmwareNodePoolId': ?vmwareNodePoolId};
+  }
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -7662,9 +7798,10 @@ class Fleet {
   Fleet.fromJson(core.Map json_)
     : this(membership: json_['membership'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (membership != null) 'membership': membership!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final membership = this.membership;
+    return {'membership': ?membership};
+  }
 }
 
 /// Response message for listing bare metal admin clusters.
@@ -7689,27 +7826,29 @@ class ListBareMetalAdminClustersResponse {
 
   ListBareMetalAdminClustersResponse.fromJson(core.Map json_)
     : this(
-        bareMetalAdminClusters:
-            (json_['bareMetalAdminClusters'] as core.List?)
-                ?.map(
-                  (value) => BareMetalAdminCluster.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bareMetalAdminClusters: (json_['bareMetalAdminClusters'] as core.List?)
+            ?.map(
+              (value) => BareMetalAdminCluster.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bareMetalAdminClusters != null)
-      'bareMetalAdminClusters': bareMetalAdminClusters!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bareMetalAdminClusters = this.bareMetalAdminClusters;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'bareMetalAdminClusters': ?bareMetalAdminClusters,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for listing bare metal Clusters.
@@ -7734,26 +7873,29 @@ class ListBareMetalClustersResponse {
 
   ListBareMetalClustersResponse.fromJson(core.Map json_)
     : this(
-        bareMetalClusters:
-            (json_['bareMetalClusters'] as core.List?)
-                ?.map(
-                  (value) => BareMetalCluster.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bareMetalClusters: (json_['bareMetalClusters'] as core.List?)
+            ?.map(
+              (value) => BareMetalCluster.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bareMetalClusters != null) 'bareMetalClusters': bareMetalClusters!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bareMetalClusters = this.bareMetalClusters;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'bareMetalClusters': ?bareMetalClusters,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for listing bare metal node pools.
@@ -7777,26 +7919,29 @@ class ListBareMetalNodePoolsResponse {
 
   ListBareMetalNodePoolsResponse.fromJson(core.Map json_)
     : this(
-        bareMetalNodePools:
-            (json_['bareMetalNodePools'] as core.List?)
-                ?.map(
-                  (value) => BareMetalNodePool.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bareMetalNodePools: (json_['bareMetalNodePools'] as core.List?)
+            ?.map(
+              (value) => BareMetalNodePool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bareMetalNodePools != null) 'bareMetalNodePools': bareMetalNodePools!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bareMetalNodePools = this.bareMetalNodePools;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'bareMetalNodePools': ?bareMetalNodePools,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -7811,21 +7956,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -7853,25 +7998,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response message for listing VMware admin clusters.
@@ -7897,26 +8045,28 @@ class ListVmwareAdminClustersResponse {
   ListVmwareAdminClustersResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        vmwareAdminClusters:
-            (json_['vmwareAdminClusters'] as core.List?)
-                ?.map(
-                  (value) => VmwareAdminCluster.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        vmwareAdminClusters: (json_['vmwareAdminClusters'] as core.List?)
+            ?.map(
+              (value) => VmwareAdminCluster.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (vmwareAdminClusters != null)
-      'vmwareAdminClusters': vmwareAdminClusters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final vmwareAdminClusters = this.vmwareAdminClusters;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'vmwareAdminClusters': ?vmwareAdminClusters,
+    };
+  }
 }
 
 /// Response message for listing VMware Clusters.
@@ -7942,25 +8092,28 @@ class ListVmwareClustersResponse {
   ListVmwareClustersResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        vmwareClusters:
-            (json_['vmwareClusters'] as core.List?)
-                ?.map(
-                  (value) => VmwareCluster.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        vmwareClusters: (json_['vmwareClusters'] as core.List?)
+            ?.map(
+              (value) => VmwareCluster.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (vmwareClusters != null) 'vmwareClusters': vmwareClusters!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final vmwareClusters = this.vmwareClusters;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'vmwareClusters': ?vmwareClusters,
+    };
+  }
 }
 
 /// Response message for listing VMware node pools.
@@ -7985,25 +8138,28 @@ class ListVmwareNodePoolsResponse {
   ListVmwareNodePoolsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        vmwareNodePools:
-            (json_['vmwareNodePools'] as core.List?)
-                ?.map(
-                  (value) => VmwareNodePool.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        vmwareNodePools: (json_['vmwareNodePools'] as core.List?)
+            ?.map(
+              (value) => VmwareNodePool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-    if (vmwareNodePools != null) 'vmwareNodePools': vmwareNodePools!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final vmwareNodePools = this.vmwareNodePools;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'vmwareNodePools': ?vmwareNodePools,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -8043,11 +8199,12 @@ class NodeTaint {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effect != null) 'effect': effect!,
-    if (key != null) 'key': key!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final effect = this.effect;
+    final key = this.key;
+    final value = this.value;
+    return {'effect': ?effect, 'key': ?key, 'value': ?value};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -8098,30 +8255,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -8213,23 +8374,23 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {'bindings': ?bindings, 'etag': ?etag, 'version': ?version};
+  }
 }
 
 /// Response message for querying bare metal admin cluster version config.
@@ -8241,19 +8402,19 @@ class QueryBareMetalAdminVersionConfigResponse {
 
   QueryBareMetalAdminVersionConfigResponse.fromJson(core.Map json_)
     : this(
-        versions:
-            (json_['versions'] as core.List?)
-                ?.map(
-                  (value) => BareMetalVersionInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        versions: (json_['versions'] as core.List?)
+            ?.map(
+              (value) => BareMetalVersionInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (versions != null) 'versions': versions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final versions = this.versions;
+    return {'versions': ?versions};
+  }
 }
 
 /// Response message for querying bare metal admin cluster version config.
@@ -8265,19 +8426,19 @@ class QueryBareMetalVersionConfigResponse {
 
   QueryBareMetalVersionConfigResponse.fromJson(core.Map json_)
     : this(
-        versions:
-            (json_['versions'] as core.List?)
-                ?.map(
-                  (value) => BareMetalVersionInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        versions: (json_['versions'] as core.List?)
+            ?.map(
+              (value) => BareMetalVersionInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (versions != null) 'versions': versions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final versions = this.versions;
+    return {'versions': ?versions};
+  }
 }
 
 /// Response message for querying VMware user cluster version config.
@@ -8289,19 +8450,19 @@ class QueryVmwareVersionConfigResponse {
 
   QueryVmwareVersionConfigResponse.fromJson(core.Map json_)
     : this(
-        versions:
-            (json_['versions'] as core.List?)
-                ?.map(
-                  (value) => VmwareVersionInfo.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        versions: (json_['versions'] as core.List?)
+            ?.map(
+              (value) => VmwareVersionInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (versions != null) 'versions': versions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final versions = this.versions;
+    return {'versions': ?versions};
+  }
 }
 
 /// ResourceCondition provides a standard mechanism for higher-level status
@@ -8347,13 +8508,20 @@ class ResourceCondition {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lastTransitionTime != null) 'lastTransitionTime': lastTransitionTime!,
-    if (message != null) 'message': message!,
-    if (reason != null) 'reason': reason!,
-    if (state != null) 'state': state!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lastTransitionTime = this.lastTransitionTime;
+    final message = this.message;
+    final reason = this.reason;
+    final state = this.state;
+    final type = this.type;
+    return {
+      'lastTransitionTime': ?lastTransitionTime,
+      'message': ?message,
+      'reason': ?reason,
+      'state': ?state,
+      'type': ?type,
+    };
+  }
 }
 
 /// ResourceStatus describes why a cluster or node pool has a certain status.
@@ -8388,30 +8556,34 @@ class ResourceStatus {
 
   ResourceStatus.fromJson(core.Map json_)
     : this(
-        conditions:
-            (json_['conditions'] as core.List?)
-                ?.map(
-                  (value) => ResourceCondition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => ResourceCondition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         errorMessage: json_['errorMessage'] as core.String?,
         version: json_['version'] as core.String?,
-        versions:
-            json_.containsKey('versions')
-                ? Versions.fromJson(
-                  json_['versions'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        versions: json_.containsKey('versions')
+            ? Versions.fromJson(
+                json_['versions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (conditions != null) 'conditions': conditions!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (version != null) 'version': version!,
-    if (versions != null) 'versions': versions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final conditions = this.conditions;
+    final errorMessage = this.errorMessage;
+    final version = this.version;
+    final versions = this.versions;
+    return {
+      'conditions': ?conditions,
+      'errorMessage': ?errorMessage,
+      'version': ?version,
+      'versions': ?versions,
+    };
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -8427,17 +8599,17 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    return {'policy': ?policy};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -8487,12 +8659,18 @@ class UpgradeDependency {
         targetVersion: json_['targetVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currentVersion != null) 'currentVersion': currentVersion!,
-    if (membership != null) 'membership': membership!,
-    if (resourceName != null) 'resourceName': resourceName!,
-    if (targetVersion != null) 'targetVersion': targetVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentVersion = this.currentVersion;
+    final membership = this.membership;
+    final resourceName = this.resourceName;
+    final targetVersion = this.targetVersion;
+    return {
+      'currentVersion': ?currentVersion,
+      'membership': ?membership,
+      'resourceName': ?resourceName,
+      'targetVersion': ?targetVersion,
+    };
+  }
 }
 
 /// ValidationCheck represents the result of preflight check.
@@ -8526,19 +8704,19 @@ class ValidationCheck {
     : this(
         option: json_['option'] as core.String?,
         scenario: json_['scenario'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? ValidationCheckStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ValidationCheckStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (option != null) 'option': option!,
-    if (scenario != null) 'scenario': scenario!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final option = this.option;
+    final scenario = this.scenario;
+    final status = this.status;
+    return {'option': ?option, 'scenario': ?scenario, 'status': ?status};
+  }
 }
 
 /// ValidationCheckResult defines the details about the validation check.
@@ -8581,13 +8759,20 @@ class ValidationCheckResult {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (description != null) 'description': description!,
-    if (details != null) 'details': details!,
-    if (reason != null) 'reason': reason!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final description = this.description;
+    final details = this.details;
+    final reason = this.reason;
+    final state = this.state;
+    return {
+      'category': ?category,
+      'description': ?description,
+      'details': ?details,
+      'reason': ?reason,
+      'state': ?state,
+    };
+  }
 }
 
 /// ValidationCheckStatus defines the detailed validation check status.
@@ -8599,19 +8784,19 @@ class ValidationCheckStatus {
 
   ValidationCheckStatus.fromJson(core.Map json_)
     : this(
-        result:
-            (json_['result'] as core.List?)
-                ?.map(
-                  (value) => ValidationCheckResult.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        result: (json_['result'] as core.List?)
+            ?.map(
+              (value) => ValidationCheckResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (result != null) 'result': result!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final result = this.result;
+    return {'result': ?result};
+  }
 }
 
 /// Version describes the number of nodes at a given version under a resource.
@@ -8630,10 +8815,11 @@ class Version {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final version = this.version;
+    return {'count': ?count, 'version': ?version};
+  }
 }
 
 /// Versions describes the mapping of a given version to the number of machines
@@ -8647,19 +8833,19 @@ class Versions {
 
   Versions.fromJson(core.Map json_)
     : this(
-        versions:
-            (json_['versions'] as core.List?)
-                ?.map(
-                  (value) => Version.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        versions: (json_['versions'] as core.List?)
+            ?.map(
+              (value) => Version.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (versions != null) 'versions': versions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final versions = this.versions;
+    return {'versions': ?versions};
+  }
 }
 
 /// Specifies anti affinity group config for the VMware user cluster.
@@ -8675,9 +8861,10 @@ class VmwareAAGConfig {
   VmwareAAGConfig.fromJson(core.Map json_)
     : this(aagConfigDisabled: json_['aagConfigDisabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aagConfigDisabled != null) 'aagConfigDisabled': aagConfigDisabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final aagConfigDisabled = this.aagConfigDisabled;
+    return {'aagConfigDisabled': ?aagConfigDisabled};
+  }
 }
 
 /// Represents an IP pool used by the load balancer.
@@ -8693,18 +8880,18 @@ class VmwareAdminAddonNodeConfig {
 
   VmwareAdminAddonNodeConfig.fromJson(core.Map json_)
     : this(
-        autoResizeConfig:
-            json_.containsKey('autoResizeConfig')
-                ? VmwareAutoResizeConfig.fromJson(
-                  json_['autoResizeConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        autoResizeConfig: json_.containsKey('autoResizeConfig')
+            ? VmwareAutoResizeConfig.fromJson(
+                json_['autoResizeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoResizeConfig != null) 'autoResizeConfig': autoResizeConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoResizeConfig = this.autoResizeConfig;
+    return {'autoResizeConfig': ?autoResizeConfig};
+  }
 }
 
 /// VmwareAdminAuthorizationConfig represents configuration for admin cluster
@@ -8718,19 +8905,19 @@ class VmwareAdminAuthorizationConfig {
 
   VmwareAdminAuthorizationConfig.fromJson(core.Map json_)
     : this(
-        viewerUsers:
-            (json_['viewerUsers'] as core.List?)
-                ?.map(
-                  (value) => ClusterUser.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        viewerUsers: (json_['viewerUsers'] as core.List?)
+            ?.map(
+              (value) => ClusterUser.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (viewerUsers != null) 'viewerUsers': viewerUsers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final viewerUsers = this.viewerUsers;
+    return {'viewerUsers': ?viewerUsers};
+  }
 }
 
 /// Resource that represents a VMware admin cluster.
@@ -8921,158 +9108,170 @@ class VmwareAdminCluster {
 
   VmwareAdminCluster.fromJson(core.Map json_)
     : this(
-        addonNode:
-            json_.containsKey('addonNode')
-                ? VmwareAdminAddonNodeConfig.fromJson(
-                  json_['addonNode'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        antiAffinityGroups:
-            json_.containsKey('antiAffinityGroups')
-                ? VmwareAAGConfig.fromJson(
-                  json_['antiAffinityGroups']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        authorization:
-            json_.containsKey('authorization')
-                ? VmwareAdminAuthorizationConfig.fromJson(
-                  json_['authorization'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        autoRepairConfig:
-            json_.containsKey('autoRepairConfig')
-                ? VmwareAutoRepairConfig.fromJson(
-                  json_['autoRepairConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        addonNode: json_.containsKey('addonNode')
+            ? VmwareAdminAddonNodeConfig.fromJson(
+                json_['addonNode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        antiAffinityGroups: json_.containsKey('antiAffinityGroups')
+            ? VmwareAAGConfig.fromJson(
+                json_['antiAffinityGroups']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        authorization: json_.containsKey('authorization')
+            ? VmwareAdminAuthorizationConfig.fromJson(
+                json_['authorization'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        autoRepairConfig: json_.containsKey('autoRepairConfig')
+            ? VmwareAutoRepairConfig.fromJson(
+                json_['autoRepairConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bootstrapClusterMembership:
             json_['bootstrapClusterMembership'] as core.String?,
-        controlPlaneNode:
-            json_.containsKey('controlPlaneNode')
-                ? VmwareAdminControlPlaneNodeConfig.fromJson(
-                  json_['controlPlaneNode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        controlPlaneNode: json_.containsKey('controlPlaneNode')
+            ? VmwareAdminControlPlaneNodeConfig.fromJson(
+                json_['controlPlaneNode']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         enableAdvancedCluster: json_['enableAdvancedCluster'] as core.bool?,
         endpoint: json_['endpoint'] as core.String?,
         etag: json_['etag'] as core.String?,
-        fleet:
-            json_.containsKey('fleet')
-                ? Fleet.fromJson(
-                  json_['fleet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fleet: json_.containsKey('fleet')
+            ? Fleet.fromJson(
+                json_['fleet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         imageType: json_['imageType'] as core.String?,
-        loadBalancer:
-            json_.containsKey('loadBalancer')
-                ? VmwareAdminLoadBalancerConfig.fromJson(
-                  json_['loadBalancer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        loadBalancer: json_.containsKey('loadBalancer')
+            ? VmwareAdminLoadBalancerConfig.fromJson(
+                json_['loadBalancer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localName: json_['localName'] as core.String?,
         name: json_['name'] as core.String?,
-        networkConfig:
-            json_.containsKey('networkConfig')
-                ? VmwareAdminNetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        networkConfig: json_.containsKey('networkConfig')
+            ? VmwareAdminNetworkConfig.fromJson(
+                json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         onPremVersion: json_['onPremVersion'] as core.String?,
-        platformConfig:
-            json_.containsKey('platformConfig')
-                ? VmwarePlatformConfig.fromJson(
-                  json_['platformConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        preparedSecrets:
-            json_.containsKey('preparedSecrets')
-                ? VmwareAdminPreparedSecretsConfig.fromJson(
-                  json_['preparedSecrets']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        privateRegistryConfig:
-            json_.containsKey('privateRegistryConfig')
-                ? VmwareAdminPrivateRegistryConfig.fromJson(
-                  json_['privateRegistryConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        proxy:
-            json_.containsKey('proxy')
-                ? VmwareAdminProxy.fromJson(
-                  json_['proxy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        platformConfig: json_.containsKey('platformConfig')
+            ? VmwarePlatformConfig.fromJson(
+                json_['platformConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        preparedSecrets: json_.containsKey('preparedSecrets')
+            ? VmwareAdminPreparedSecretsConfig.fromJson(
+                json_['preparedSecrets'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        privateRegistryConfig: json_.containsKey('privateRegistryConfig')
+            ? VmwareAdminPrivateRegistryConfig.fromJson(
+                json_['privateRegistryConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        proxy: json_.containsKey('proxy')
+            ? VmwareAdminProxy.fromJson(
+                json_['proxy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reconciling: json_['reconciling'] as core.bool?,
         state: json_['state'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? ResourceStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ResourceStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        validationCheck:
-            json_.containsKey('validationCheck')
-                ? ValidationCheck.fromJson(
-                  json_['validationCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vcenter:
-            json_.containsKey('vcenter')
-                ? VmwareAdminVCenterConfig.fromJson(
-                  json_['vcenter'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        validationCheck: json_.containsKey('validationCheck')
+            ? ValidationCheck.fromJson(
+                json_['validationCheck'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vcenter: json_.containsKey('vcenter')
+            ? VmwareAdminVCenterConfig.fromJson(
+                json_['vcenter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addonNode != null) 'addonNode': addonNode!,
-    if (annotations != null) 'annotations': annotations!,
-    if (antiAffinityGroups != null) 'antiAffinityGroups': antiAffinityGroups!,
-    if (authorization != null) 'authorization': authorization!,
-    if (autoRepairConfig != null) 'autoRepairConfig': autoRepairConfig!,
-    if (bootstrapClusterMembership != null)
-      'bootstrapClusterMembership': bootstrapClusterMembership!,
-    if (controlPlaneNode != null) 'controlPlaneNode': controlPlaneNode!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (enableAdvancedCluster != null)
-      'enableAdvancedCluster': enableAdvancedCluster!,
-    if (endpoint != null) 'endpoint': endpoint!,
-    if (etag != null) 'etag': etag!,
-    if (fleet != null) 'fleet': fleet!,
-    if (imageType != null) 'imageType': imageType!,
-    if (loadBalancer != null) 'loadBalancer': loadBalancer!,
-    if (localName != null) 'localName': localName!,
-    if (name != null) 'name': name!,
-    if (networkConfig != null) 'networkConfig': networkConfig!,
-    if (onPremVersion != null) 'onPremVersion': onPremVersion!,
-    if (platformConfig != null) 'platformConfig': platformConfig!,
-    if (preparedSecrets != null) 'preparedSecrets': preparedSecrets!,
-    if (privateRegistryConfig != null)
-      'privateRegistryConfig': privateRegistryConfig!,
-    if (proxy != null) 'proxy': proxy!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (state != null) 'state': state!,
-    if (status != null) 'status': status!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (validationCheck != null) 'validationCheck': validationCheck!,
-    if (vcenter != null) 'vcenter': vcenter!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addonNode = this.addonNode;
+    final annotations = this.annotations;
+    final antiAffinityGroups = this.antiAffinityGroups;
+    final authorization = this.authorization;
+    final autoRepairConfig = this.autoRepairConfig;
+    final bootstrapClusterMembership = this.bootstrapClusterMembership;
+    final controlPlaneNode = this.controlPlaneNode;
+    final createTime = this.createTime;
+    final description = this.description;
+    final enableAdvancedCluster = this.enableAdvancedCluster;
+    final endpoint = this.endpoint;
+    final etag = this.etag;
+    final fleet = this.fleet;
+    final imageType = this.imageType;
+    final loadBalancer = this.loadBalancer;
+    final localName = this.localName;
+    final name = this.name;
+    final networkConfig = this.networkConfig;
+    final onPremVersion = this.onPremVersion;
+    final platformConfig = this.platformConfig;
+    final preparedSecrets = this.preparedSecrets;
+    final privateRegistryConfig = this.privateRegistryConfig;
+    final proxy = this.proxy;
+    final reconciling = this.reconciling;
+    final state = this.state;
+    final status = this.status;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final validationCheck = this.validationCheck;
+    final vcenter = this.vcenter;
+    return {
+      'addonNode': ?addonNode,
+      'annotations': ?annotations,
+      'antiAffinityGroups': ?antiAffinityGroups,
+      'authorization': ?authorization,
+      'autoRepairConfig': ?autoRepairConfig,
+      'bootstrapClusterMembership': ?bootstrapClusterMembership,
+      'controlPlaneNode': ?controlPlaneNode,
+      'createTime': ?createTime,
+      'description': ?description,
+      'enableAdvancedCluster': ?enableAdvancedCluster,
+      'endpoint': ?endpoint,
+      'etag': ?etag,
+      'fleet': ?fleet,
+      'imageType': ?imageType,
+      'loadBalancer': ?loadBalancer,
+      'localName': ?localName,
+      'name': ?name,
+      'networkConfig': ?networkConfig,
+      'onPremVersion': ?onPremVersion,
+      'platformConfig': ?platformConfig,
+      'preparedSecrets': ?preparedSecrets,
+      'privateRegistryConfig': ?privateRegistryConfig,
+      'proxy': ?proxy,
+      'reconciling': ?reconciling,
+      'state': ?state,
+      'status': ?status,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'validationCheck': ?validationCheck,
+      'vcenter': ?vcenter,
+    };
+  }
 }
 
 /// VmwareAdminControlPlaneNodeConfig contains control plane node configuration
@@ -9099,11 +9298,12 @@ class VmwareAdminControlPlaneNodeConfig {
         replicas: json_['replicas'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpus != null) 'cpus': cpus!,
-    if (memory != null) 'memory': memory!,
-    if (replicas != null) 'replicas': replicas!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpus = this.cpus;
+    final memory = this.memory;
+    final replicas = this.replicas;
+    return {'cpus': ?cpus, 'memory': ?memory, 'replicas': ?replicas};
+  }
 }
 
 /// VmwareAdminF5BigIpConfig represents configuration parameters for an F5
@@ -9119,19 +9319,18 @@ class VmwareAdminHAControlPlaneConfig {
 
   VmwareAdminHAControlPlaneConfig.fromJson(core.Map json_)
     : this(
-        controlPlaneIpBlock:
-            json_.containsKey('controlPlaneIpBlock')
-                ? VmwareIpBlock.fromJson(
-                  json_['controlPlaneIpBlock']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        controlPlaneIpBlock: json_.containsKey('controlPlaneIpBlock')
+            ? VmwareIpBlock.fromJson(
+                json_['controlPlaneIpBlock']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlPlaneIpBlock != null)
-      'controlPlaneIpBlock': controlPlaneIpBlock!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneIpBlock = this.controlPlaneIpBlock;
+    return {'controlPlaneIpBlock': ?controlPlaneIpBlock};
+  }
 }
 
 /// VmwareAdminLoadBalancerConfig contains load balancer configuration for
@@ -9164,46 +9363,47 @@ class VmwareAdminLoadBalancerConfig {
 
   VmwareAdminLoadBalancerConfig.fromJson(core.Map json_)
     : this(
-        f5Config:
-            json_.containsKey('f5Config')
-                ? VmwareAdminF5BigIpConfig.fromJson(
-                  json_['f5Config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        manualLbConfig:
-            json_.containsKey('manualLbConfig')
-                ? VmwareAdminManualLbConfig.fromJson(
-                  json_['manualLbConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metalLbConfig:
-            json_.containsKey('metalLbConfig')
-                ? VmwareAdminMetalLbConfig.fromJson(
-                  json_['metalLbConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        seesawConfig:
-            json_.containsKey('seesawConfig')
-                ? VmwareAdminSeesawConfig.fromJson(
-                  json_['seesawConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vipConfig:
-            json_.containsKey('vipConfig')
-                ? VmwareAdminVipConfig.fromJson(
-                  json_['vipConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        f5Config: json_.containsKey('f5Config')
+            ? VmwareAdminF5BigIpConfig.fromJson(
+                json_['f5Config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        manualLbConfig: json_.containsKey('manualLbConfig')
+            ? VmwareAdminManualLbConfig.fromJson(
+                json_['manualLbConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metalLbConfig: json_.containsKey('metalLbConfig')
+            ? VmwareAdminMetalLbConfig.fromJson(
+                json_['metalLbConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        seesawConfig: json_.containsKey('seesawConfig')
+            ? VmwareAdminSeesawConfig.fromJson(
+                json_['seesawConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vipConfig: json_.containsKey('vipConfig')
+            ? VmwareAdminVipConfig.fromJson(
+                json_['vipConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (f5Config != null) 'f5Config': f5Config!,
-    if (manualLbConfig != null) 'manualLbConfig': manualLbConfig!,
-    if (metalLbConfig != null) 'metalLbConfig': metalLbConfig!,
-    if (seesawConfig != null) 'seesawConfig': seesawConfig!,
-    if (vipConfig != null) 'vipConfig': vipConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final f5Config = this.f5Config;
+    final manualLbConfig = this.manualLbConfig;
+    final metalLbConfig = this.metalLbConfig;
+    final seesawConfig = this.seesawConfig;
+    final vipConfig = this.vipConfig;
+    return {
+      'f5Config': ?f5Config,
+      'manualLbConfig': ?manualLbConfig,
+      'metalLbConfig': ?metalLbConfig,
+      'seesawConfig': ?seesawConfig,
+      'vipConfig': ?vipConfig,
+    };
+  }
 }
 
 class VmwareAdminManualLbConfig {
@@ -9252,17 +9452,20 @@ class VmwareAdminManualLbConfig {
             json_['konnectivityServerNodePort'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addonsNodePort != null) 'addonsNodePort': addonsNodePort!,
-    if (controlPlaneNodePort != null)
-      'controlPlaneNodePort': controlPlaneNodePort!,
-    if (ingressHttpNodePort != null)
-      'ingressHttpNodePort': ingressHttpNodePort!,
-    if (ingressHttpsNodePort != null)
-      'ingressHttpsNodePort': ingressHttpsNodePort!,
-    if (konnectivityServerNodePort != null)
-      'konnectivityServerNodePort': konnectivityServerNodePort!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addonsNodePort = this.addonsNodePort;
+    final controlPlaneNodePort = this.controlPlaneNodePort;
+    final ingressHttpNodePort = this.ingressHttpNodePort;
+    final ingressHttpsNodePort = this.ingressHttpsNodePort;
+    final konnectivityServerNodePort = this.konnectivityServerNodePort;
+    return {
+      'addonsNodePort': ?addonsNodePort,
+      'controlPlaneNodePort': ?controlPlaneNodePort,
+      'ingressHttpNodePort': ?ingressHttpNodePort,
+      'ingressHttpsNodePort': ?ingressHttpsNodePort,
+      'konnectivityServerNodePort': ?konnectivityServerNodePort,
+    };
+  }
 }
 
 /// VmwareAdminMetalLbConfig represents configuration parameters for a MetalLB
@@ -9278,9 +9481,10 @@ class VmwareAdminMetalLbConfig {
   VmwareAdminMetalLbConfig.fromJson(core.Map json_)
     : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }
 
 /// VmwareAdminNetworkConfig contains network configuration for VMware admin
@@ -9331,55 +9535,55 @@ class VmwareAdminNetworkConfig {
 
   VmwareAdminNetworkConfig.fromJson(core.Map json_)
     : this(
-        dhcpIpConfig:
-            json_.containsKey('dhcpIpConfig')
-                ? VmwareDhcpIpConfig.fromJson(
-                  json_['dhcpIpConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        haControlPlaneConfig:
-            json_.containsKey('haControlPlaneConfig')
-                ? VmwareAdminHAControlPlaneConfig.fromJson(
-                  json_['haControlPlaneConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        hostConfig:
-            json_.containsKey('hostConfig')
-                ? VmwareHostConfig.fromJson(
-                  json_['hostConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        podAddressCidrBlocks:
-            (json_['podAddressCidrBlocks'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        dhcpIpConfig: json_.containsKey('dhcpIpConfig')
+            ? VmwareDhcpIpConfig.fromJson(
+                json_['dhcpIpConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        haControlPlaneConfig: json_.containsKey('haControlPlaneConfig')
+            ? VmwareAdminHAControlPlaneConfig.fromJson(
+                json_['haControlPlaneConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        hostConfig: json_.containsKey('hostConfig')
+            ? VmwareHostConfig.fromJson(
+                json_['hostConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        podAddressCidrBlocks: (json_['podAddressCidrBlocks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         serviceAddressCidrBlocks:
             (json_['serviceAddressCidrBlocks'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        staticIpConfig:
-            json_.containsKey('staticIpConfig')
-                ? VmwareStaticIpConfig.fromJson(
-                  json_['staticIpConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        staticIpConfig: json_.containsKey('staticIpConfig')
+            ? VmwareStaticIpConfig.fromJson(
+                json_['staticIpConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         vcenterNetwork: json_['vcenterNetwork'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dhcpIpConfig != null) 'dhcpIpConfig': dhcpIpConfig!,
-    if (haControlPlaneConfig != null)
-      'haControlPlaneConfig': haControlPlaneConfig!,
-    if (hostConfig != null) 'hostConfig': hostConfig!,
-    if (podAddressCidrBlocks != null)
-      'podAddressCidrBlocks': podAddressCidrBlocks!,
-    if (serviceAddressCidrBlocks != null)
-      'serviceAddressCidrBlocks': serviceAddressCidrBlocks!,
-    if (staticIpConfig != null) 'staticIpConfig': staticIpConfig!,
-    if (vcenterNetwork != null) 'vcenterNetwork': vcenterNetwork!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dhcpIpConfig = this.dhcpIpConfig;
+    final haControlPlaneConfig = this.haControlPlaneConfig;
+    final hostConfig = this.hostConfig;
+    final podAddressCidrBlocks = this.podAddressCidrBlocks;
+    final serviceAddressCidrBlocks = this.serviceAddressCidrBlocks;
+    final staticIpConfig = this.staticIpConfig;
+    final vcenterNetwork = this.vcenterNetwork;
+    return {
+      'dhcpIpConfig': ?dhcpIpConfig,
+      'haControlPlaneConfig': ?haControlPlaneConfig,
+      'hostConfig': ?hostConfig,
+      'podAddressCidrBlocks': ?podAddressCidrBlocks,
+      'serviceAddressCidrBlocks': ?serviceAddressCidrBlocks,
+      'staticIpConfig': ?staticIpConfig,
+      'vcenterNetwork': ?vcenterNetwork,
+    };
+  }
 }
 
 /// VmwareAdminPreparedSecretsConfig represents configuration for admin cluster
@@ -9393,9 +9597,10 @@ class VmwareAdminPreparedSecretsConfig {
   VmwareAdminPreparedSecretsConfig.fromJson(core.Map json_)
     : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }
 
 /// VmwareAdminPrivateRegistryConfig represents configuration for admin cluster
@@ -9420,10 +9625,11 @@ class VmwareAdminPrivateRegistryConfig {
         caCert: json_['caCert'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (caCert != null) 'caCert': caCert!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final caCert = this.caCert;
+    return {'address': ?address, 'caCert': ?caCert};
+  }
 }
 
 /// VmwareAdminProxy represents configuration for admin cluster proxy.
@@ -9446,10 +9652,11 @@ class VmwareAdminProxy {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (noProxy != null) 'noProxy': noProxy!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final noProxy = this.noProxy;
+    final url = this.url;
+    return {'noProxy': ?noProxy, 'url': ?url};
+  }
 }
 
 /// VmwareSeesawConfig represents configuration parameters for an already
@@ -9505,30 +9712,36 @@ class VmwareAdminSeesawConfig {
     : this(
         enableHa: json_['enableHa'] as core.bool?,
         group: json_['group'] as core.String?,
-        ipBlocks:
-            (json_['ipBlocks'] as core.List?)
-                ?.map(
-                  (value) => VmwareIpBlock.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ipBlocks: (json_['ipBlocks'] as core.List?)
+            ?.map(
+              (value) => VmwareIpBlock.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         masterIp: json_['masterIp'] as core.String?,
         stackdriverName: json_['stackdriverName'] as core.String?,
-        vms:
-            (json_['vms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        vms: (json_['vms'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableHa != null) 'enableHa': enableHa!,
-    if (group != null) 'group': group!,
-    if (ipBlocks != null) 'ipBlocks': ipBlocks!,
-    if (masterIp != null) 'masterIp': masterIp!,
-    if (stackdriverName != null) 'stackdriverName': stackdriverName!,
-    if (vms != null) 'vms': vms!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableHa = this.enableHa;
+    final group = this.group;
+    final ipBlocks = this.ipBlocks;
+    final masterIp = this.masterIp;
+    final stackdriverName = this.stackdriverName;
+    final vms = this.vms;
+    return {
+      'enableHa': ?enableHa,
+      'group': ?group,
+      'ipBlocks': ?ipBlocks,
+      'masterIp': ?masterIp,
+      'stackdriverName': ?stackdriverName,
+      'vms': ?vms,
+    };
+  }
 }
 
 /// VmwareAdminVCenterConfig contains VCenter configuration for VMware admin
@@ -9586,17 +9799,28 @@ class VmwareAdminVCenterConfig {
         storagePolicyName: json_['storagePolicyName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (caCertData != null) 'caCertData': caCertData!,
-    if (cluster != null) 'cluster': cluster!,
-    if (dataDisk != null) 'dataDisk': dataDisk!,
-    if (datacenter != null) 'datacenter': datacenter!,
-    if (datastore != null) 'datastore': datastore!,
-    if (folder != null) 'folder': folder!,
-    if (resourcePool != null) 'resourcePool': resourcePool!,
-    if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final caCertData = this.caCertData;
+    final cluster = this.cluster;
+    final dataDisk = this.dataDisk;
+    final datacenter = this.datacenter;
+    final datastore = this.datastore;
+    final folder = this.folder;
+    final resourcePool = this.resourcePool;
+    final storagePolicyName = this.storagePolicyName;
+    return {
+      'address': ?address,
+      'caCertData': ?caCertData,
+      'cluster': ?cluster,
+      'dataDisk': ?dataDisk,
+      'datacenter': ?datacenter,
+      'datastore': ?datastore,
+      'folder': ?folder,
+      'resourcePool': ?resourcePool,
+      'storagePolicyName': ?storagePolicyName,
+    };
+  }
 }
 
 /// VmwareAdminVipConfig for VMware load balancer configurations.
@@ -9616,10 +9840,11 @@ class VmwareAdminVipConfig {
         controlPlaneVip: json_['controlPlaneVip'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addonsVip != null) 'addonsVip': addonsVip!,
-    if (controlPlaneVip != null) 'controlPlaneVip': controlPlaneVip!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addonsVip = this.addonsVip;
+    final controlPlaneVip = this.controlPlaneVip;
+    return {'addonsVip': ?addonsVip, 'controlPlaneVip': ?controlPlaneVip};
+  }
 }
 
 /// Specifies config to enable/disable auto repair.
@@ -9634,9 +9859,10 @@ class VmwareAutoRepairConfig {
   VmwareAutoRepairConfig.fromJson(core.Map json_)
     : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }
 
 /// Represents auto resizing configurations for the VMware user cluster.
@@ -9649,9 +9875,10 @@ class VmwareAutoResizeConfig {
   VmwareAutoResizeConfig.fromJson(core.Map json_)
     : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }
 
 /// VmwareBundleConfig represents configuration for the bundle.
@@ -9668,19 +9895,19 @@ class VmwareBundleConfig {
 
   VmwareBundleConfig.fromJson(core.Map json_)
     : this(
-        status:
-            json_.containsKey('status')
-                ? ResourceStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ResourceStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (status != null) 'status': status!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final status = this.status;
+    final version = this.version;
+    return {'status': ?status, 'version': ?version};
+  }
 }
 
 /// Resource that represents a VMware user cluster.
@@ -9900,50 +10127,45 @@ class VmwareCluster {
     : this(
         adminClusterMembership: json_['adminClusterMembership'] as core.String?,
         adminClusterName: json_['adminClusterName'] as core.String?,
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        antiAffinityGroups:
-            json_.containsKey('antiAffinityGroups')
-                ? VmwareAAGConfig.fromJson(
-                  json_['antiAffinityGroups']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        authorization:
-            json_.containsKey('authorization')
-                ? Authorization.fromJson(
-                  json_['authorization'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        autoRepairConfig:
-            json_.containsKey('autoRepairConfig')
-                ? VmwareAutoRepairConfig.fromJson(
-                  json_['autoRepairConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        binaryAuthorization:
-            json_.containsKey('binaryAuthorization')
-                ? BinaryAuthorization.fromJson(
-                  json_['binaryAuthorization']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        controlPlaneNode:
-            json_.containsKey('controlPlaneNode')
-                ? VmwareControlPlaneNodeConfig.fromJson(
-                  json_['controlPlaneNode']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        antiAffinityGroups: json_.containsKey('antiAffinityGroups')
+            ? VmwareAAGConfig.fromJson(
+                json_['antiAffinityGroups']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        authorization: json_.containsKey('authorization')
+            ? Authorization.fromJson(
+                json_['authorization'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        autoRepairConfig: json_.containsKey('autoRepairConfig')
+            ? VmwareAutoRepairConfig.fromJson(
+                json_['autoRepairConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        binaryAuthorization: json_.containsKey('binaryAuthorization')
+            ? BinaryAuthorization.fromJson(
+                json_['binaryAuthorization']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        controlPlaneNode: json_.containsKey('controlPlaneNode')
+            ? VmwareControlPlaneNodeConfig.fromJson(
+                json_['controlPlaneNode']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
-        dataplaneV2:
-            json_.containsKey('dataplaneV2')
-                ? VmwareDataplaneV2Config.fromJson(
-                  json_['dataplaneV2'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dataplaneV2: json_.containsKey('dataplaneV2')
+            ? VmwareDataplaneV2Config.fromJson(
+                json_['dataplaneV2'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
         disableBundledIngress: json_['disableBundledIngress'] as core.bool?,
@@ -9951,105 +10173,126 @@ class VmwareCluster {
         enableControlPlaneV2: json_['enableControlPlaneV2'] as core.bool?,
         endpoint: json_['endpoint'] as core.String?,
         etag: json_['etag'] as core.String?,
-        fleet:
-            json_.containsKey('fleet')
-                ? Fleet.fromJson(
-                  json_['fleet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        loadBalancer:
-            json_.containsKey('loadBalancer')
-                ? VmwareLoadBalancerConfig.fromJson(
-                  json_['loadBalancer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        fleet: json_.containsKey('fleet')
+            ? Fleet.fromJson(
+                json_['fleet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        loadBalancer: json_.containsKey('loadBalancer')
+            ? VmwareLoadBalancerConfig.fromJson(
+                json_['loadBalancer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         localName: json_['localName'] as core.String?,
         name: json_['name'] as core.String?,
-        networkConfig:
-            json_.containsKey('networkConfig')
-                ? VmwareNetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        networkConfig: json_.containsKey('networkConfig')
+            ? VmwareNetworkConfig.fromJson(
+                json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         onPremVersion: json_['onPremVersion'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         state: json_['state'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? ResourceStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        storage:
-            json_.containsKey('storage')
-                ? VmwareStorageConfig.fromJson(
-                  json_['storage'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ResourceStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storage: json_.containsKey('storage')
+            ? VmwareStorageConfig.fromJson(
+                json_['storage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
-        upgradePolicy:
-            json_.containsKey('upgradePolicy')
-                ? VmwareClusterUpgradePolicy.fromJson(
-                  json_['upgradePolicy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        validationCheck:
-            json_.containsKey('validationCheck')
-                ? ValidationCheck.fromJson(
-                  json_['validationCheck']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vcenter:
-            json_.containsKey('vcenter')
-                ? VmwareVCenterConfig.fromJson(
-                  json_['vcenter'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        upgradePolicy: json_.containsKey('upgradePolicy')
+            ? VmwareClusterUpgradePolicy.fromJson(
+                json_['upgradePolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        validationCheck: json_.containsKey('validationCheck')
+            ? ValidationCheck.fromJson(
+                json_['validationCheck'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vcenter: json_.containsKey('vcenter')
+            ? VmwareVCenterConfig.fromJson(
+                json_['vcenter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         vmTrackingEnabled: json_['vmTrackingEnabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminClusterMembership != null)
-      'adminClusterMembership': adminClusterMembership!,
-    if (adminClusterName != null) 'adminClusterName': adminClusterName!,
-    if (annotations != null) 'annotations': annotations!,
-    if (antiAffinityGroups != null) 'antiAffinityGroups': antiAffinityGroups!,
-    if (authorization != null) 'authorization': authorization!,
-    if (autoRepairConfig != null) 'autoRepairConfig': autoRepairConfig!,
-    if (binaryAuthorization != null)
-      'binaryAuthorization': binaryAuthorization!,
-    if (controlPlaneNode != null) 'controlPlaneNode': controlPlaneNode!,
-    if (createTime != null) 'createTime': createTime!,
-    if (dataplaneV2 != null) 'dataplaneV2': dataplaneV2!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (description != null) 'description': description!,
-    if (disableBundledIngress != null)
-      'disableBundledIngress': disableBundledIngress!,
-    if (enableAdvancedCluster != null)
-      'enableAdvancedCluster': enableAdvancedCluster!,
-    if (enableControlPlaneV2 != null)
-      'enableControlPlaneV2': enableControlPlaneV2!,
-    if (endpoint != null) 'endpoint': endpoint!,
-    if (etag != null) 'etag': etag!,
-    if (fleet != null) 'fleet': fleet!,
-    if (loadBalancer != null) 'loadBalancer': loadBalancer!,
-    if (localName != null) 'localName': localName!,
-    if (name != null) 'name': name!,
-    if (networkConfig != null) 'networkConfig': networkConfig!,
-    if (onPremVersion != null) 'onPremVersion': onPremVersion!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (state != null) 'state': state!,
-    if (status != null) 'status': status!,
-    if (storage != null) 'storage': storage!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (upgradePolicy != null) 'upgradePolicy': upgradePolicy!,
-    if (validationCheck != null) 'validationCheck': validationCheck!,
-    if (vcenter != null) 'vcenter': vcenter!,
-    if (vmTrackingEnabled != null) 'vmTrackingEnabled': vmTrackingEnabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminClusterMembership = this.adminClusterMembership;
+    final adminClusterName = this.adminClusterName;
+    final annotations = this.annotations;
+    final antiAffinityGroups = this.antiAffinityGroups;
+    final authorization = this.authorization;
+    final autoRepairConfig = this.autoRepairConfig;
+    final binaryAuthorization = this.binaryAuthorization;
+    final controlPlaneNode = this.controlPlaneNode;
+    final createTime = this.createTime;
+    final dataplaneV2 = this.dataplaneV2;
+    final deleteTime = this.deleteTime;
+    final description = this.description;
+    final disableBundledIngress = this.disableBundledIngress;
+    final enableAdvancedCluster = this.enableAdvancedCluster;
+    final enableControlPlaneV2 = this.enableControlPlaneV2;
+    final endpoint = this.endpoint;
+    final etag = this.etag;
+    final fleet = this.fleet;
+    final loadBalancer = this.loadBalancer;
+    final localName = this.localName;
+    final name = this.name;
+    final networkConfig = this.networkConfig;
+    final onPremVersion = this.onPremVersion;
+    final reconciling = this.reconciling;
+    final state = this.state;
+    final status = this.status;
+    final storage = this.storage;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final upgradePolicy = this.upgradePolicy;
+    final validationCheck = this.validationCheck;
+    final vcenter = this.vcenter;
+    final vmTrackingEnabled = this.vmTrackingEnabled;
+    return {
+      'adminClusterMembership': ?adminClusterMembership,
+      'adminClusterName': ?adminClusterName,
+      'annotations': ?annotations,
+      'antiAffinityGroups': ?antiAffinityGroups,
+      'authorization': ?authorization,
+      'autoRepairConfig': ?autoRepairConfig,
+      'binaryAuthorization': ?binaryAuthorization,
+      'controlPlaneNode': ?controlPlaneNode,
+      'createTime': ?createTime,
+      'dataplaneV2': ?dataplaneV2,
+      'deleteTime': ?deleteTime,
+      'description': ?description,
+      'disableBundledIngress': ?disableBundledIngress,
+      'enableAdvancedCluster': ?enableAdvancedCluster,
+      'enableControlPlaneV2': ?enableControlPlaneV2,
+      'endpoint': ?endpoint,
+      'etag': ?etag,
+      'fleet': ?fleet,
+      'loadBalancer': ?loadBalancer,
+      'localName': ?localName,
+      'name': ?name,
+      'networkConfig': ?networkConfig,
+      'onPremVersion': ?onPremVersion,
+      'reconciling': ?reconciling,
+      'state': ?state,
+      'status': ?status,
+      'storage': ?storage,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'upgradePolicy': ?upgradePolicy,
+      'validationCheck': ?validationCheck,
+      'vcenter': ?vcenter,
+      'vmTrackingEnabled': ?vmTrackingEnabled,
+    };
+  }
 }
 
 /// VmwareClusterUpgradePolicy defines the cluster upgrade policy.
@@ -10062,9 +10305,10 @@ class VmwareClusterUpgradePolicy {
   VmwareClusterUpgradePolicy.fromJson(core.Map json_)
     : this(controlPlaneOnly: json_['controlPlaneOnly'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlPlaneOnly != null) 'controlPlaneOnly': controlPlaneOnly!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneOnly = this.controlPlaneOnly;
+    return {'controlPlaneOnly': ?controlPlaneOnly};
+  }
 }
 
 /// Specifies control plane node config for the VMware user cluster.
@@ -10100,31 +10344,36 @@ class VmwareControlPlaneNodeConfig {
 
   VmwareControlPlaneNodeConfig.fromJson(core.Map json_)
     : this(
-        autoResizeConfig:
-            json_.containsKey('autoResizeConfig')
-                ? VmwareAutoResizeConfig.fromJson(
-                  json_['autoResizeConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        autoResizeConfig: json_.containsKey('autoResizeConfig')
+            ? VmwareAutoResizeConfig.fromJson(
+                json_['autoResizeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cpus: json_['cpus'] as core.String?,
         memory: json_['memory'] as core.String?,
         replicas: json_['replicas'] as core.String?,
-        vsphereConfig:
-            json_.containsKey('vsphereConfig')
-                ? VmwareControlPlaneVsphereConfig.fromJson(
-                  json_['vsphereConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        vsphereConfig: json_.containsKey('vsphereConfig')
+            ? VmwareControlPlaneVsphereConfig.fromJson(
+                json_['vsphereConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoResizeConfig != null) 'autoResizeConfig': autoResizeConfig!,
-    if (cpus != null) 'cpus': cpus!,
-    if (memory != null) 'memory': memory!,
-    if (replicas != null) 'replicas': replicas!,
-    if (vsphereConfig != null) 'vsphereConfig': vsphereConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoResizeConfig = this.autoResizeConfig;
+    final cpus = this.cpus;
+    final memory = this.memory;
+    final replicas = this.replicas;
+    final vsphereConfig = this.vsphereConfig;
+    return {
+      'autoResizeConfig': ?autoResizeConfig,
+      'cpus': ?cpus,
+      'memory': ?memory,
+      'replicas': ?replicas,
+      'vsphereConfig': ?vsphereConfig,
+    };
+  }
 }
 
 /// Specifies control plane V2 config.
@@ -10136,19 +10385,18 @@ class VmwareControlPlaneV2Config {
 
   VmwareControlPlaneV2Config.fromJson(core.Map json_)
     : this(
-        controlPlaneIpBlock:
-            json_.containsKey('controlPlaneIpBlock')
-                ? VmwareIpBlock.fromJson(
-                  json_['controlPlaneIpBlock']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        controlPlaneIpBlock: json_.containsKey('controlPlaneIpBlock')
+            ? VmwareIpBlock.fromJson(
+                json_['controlPlaneIpBlock']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlPlaneIpBlock != null)
-      'controlPlaneIpBlock': controlPlaneIpBlock!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneIpBlock = this.controlPlaneIpBlock;
+    return {'controlPlaneIpBlock': ?controlPlaneIpBlock};
+  }
 }
 
 /// Specifies control plane node config.
@@ -10167,10 +10415,11 @@ class VmwareControlPlaneVsphereConfig {
         storagePolicyName: json_['storagePolicyName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datastore != null) 'datastore': datastore!,
-    if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final datastore = this.datastore;
+    final storagePolicyName = this.storagePolicyName;
+    return {'datastore': ?datastore, 'storagePolicyName': ?storagePolicyName};
+  }
 }
 
 /// Contains configurations for Dataplane V2, which is optimized dataplane for
@@ -10208,13 +10457,18 @@ class VmwareDataplaneV2Config {
             json_['windowsDataplaneV2Enabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (advancedNetworking != null) 'advancedNetworking': advancedNetworking!,
-    if (dataplaneV2Enabled != null) 'dataplaneV2Enabled': dataplaneV2Enabled!,
-    if (forwardMode != null) 'forwardMode': forwardMode!,
-    if (windowsDataplaneV2Enabled != null)
-      'windowsDataplaneV2Enabled': windowsDataplaneV2Enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final advancedNetworking = this.advancedNetworking;
+    final dataplaneV2Enabled = this.dataplaneV2Enabled;
+    final forwardMode = this.forwardMode;
+    final windowsDataplaneV2Enabled = this.windowsDataplaneV2Enabled;
+    return {
+      'advancedNetworking': ?advancedNetworking,
+      'dataplaneV2Enabled': ?dataplaneV2Enabled,
+      'forwardMode': ?forwardMode,
+      'windowsDataplaneV2Enabled': ?windowsDataplaneV2Enabled,
+    };
+  }
 }
 
 /// Represents the network configuration required for the VMware user clusters
@@ -10229,9 +10483,10 @@ class VmwareDhcpIpConfig {
   VmwareDhcpIpConfig.fromJson(core.Map json_)
     : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }
 
 /// Represents configuration parameters for an F5 BIG-IP load balancer.
@@ -10253,25 +10508,27 @@ class VmwareHostConfig {
 
   VmwareHostConfig.fromJson(core.Map json_)
     : this(
-        dnsSearchDomains:
-            (json_['dnsSearchDomains'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        dnsServers:
-            (json_['dnsServers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        ntpServers:
-            (json_['ntpServers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        dnsSearchDomains: (json_['dnsSearchDomains'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        dnsServers: (json_['dnsServers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        ntpServers: (json_['ntpServers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dnsSearchDomains != null) 'dnsSearchDomains': dnsSearchDomains!,
-    if (dnsServers != null) 'dnsServers': dnsServers!,
-    if (ntpServers != null) 'ntpServers': ntpServers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dnsSearchDomains = this.dnsSearchDomains;
+    final dnsServers = this.dnsServers;
+    final ntpServers = this.ntpServers;
+    return {
+      'dnsSearchDomains': ?dnsSearchDomains,
+      'dnsServers': ?dnsServers,
+      'ntpServers': ?ntpServers,
+    };
+  }
 }
 
 /// Represents VMware user cluster node's network configuration.
@@ -10292,10 +10549,11 @@ class VmwareHostIp {
         ip: json_['ip'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostname != null) 'hostname': hostname!,
-    if (ip != null) 'ip': ip!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final hostname = this.hostname;
+    final ip = this.ip;
+    return {'hostname': ?hostname, 'ip': ?ip};
+  }
 }
 
 /// Represents a collection of IP addresses to assign to nodes.
@@ -10314,22 +10572,22 @@ class VmwareIpBlock {
   VmwareIpBlock.fromJson(core.Map json_)
     : this(
         gateway: json_['gateway'] as core.String?,
-        ips:
-            (json_['ips'] as core.List?)
-                ?.map(
-                  (value) => VmwareHostIp.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ips: (json_['ips'] as core.List?)
+            ?.map(
+              (value) => VmwareHostIp.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         netmask: json_['netmask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gateway != null) 'gateway': gateway!,
-    if (ips != null) 'ips': ips!,
-    if (netmask != null) 'netmask': netmask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final gateway = this.gateway;
+    final ips = this.ips;
+    final netmask = this.netmask;
+    return {'gateway': ?gateway, 'ips': ?ips, 'netmask': ?netmask};
+  }
 }
 
 /// Specifies the locad balancer config for the VMware user cluster.
@@ -10361,46 +10619,47 @@ class VmwareLoadBalancerConfig {
 
   VmwareLoadBalancerConfig.fromJson(core.Map json_)
     : this(
-        f5Config:
-            json_.containsKey('f5Config')
-                ? VmwareF5BigIpConfig.fromJson(
-                  json_['f5Config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        manualLbConfig:
-            json_.containsKey('manualLbConfig')
-                ? VmwareManualLbConfig.fromJson(
-                  json_['manualLbConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metalLbConfig:
-            json_.containsKey('metalLbConfig')
-                ? VmwareMetalLbConfig.fromJson(
-                  json_['metalLbConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        seesawConfig:
-            json_.containsKey('seesawConfig')
-                ? VmwareSeesawConfig.fromJson(
-                  json_['seesawConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        vipConfig:
-            json_.containsKey('vipConfig')
-                ? VmwareVipConfig.fromJson(
-                  json_['vipConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        f5Config: json_.containsKey('f5Config')
+            ? VmwareF5BigIpConfig.fromJson(
+                json_['f5Config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        manualLbConfig: json_.containsKey('manualLbConfig')
+            ? VmwareManualLbConfig.fromJson(
+                json_['manualLbConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metalLbConfig: json_.containsKey('metalLbConfig')
+            ? VmwareMetalLbConfig.fromJson(
+                json_['metalLbConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        seesawConfig: json_.containsKey('seesawConfig')
+            ? VmwareSeesawConfig.fromJson(
+                json_['seesawConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vipConfig: json_.containsKey('vipConfig')
+            ? VmwareVipConfig.fromJson(
+                json_['vipConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (f5Config != null) 'f5Config': f5Config!,
-    if (manualLbConfig != null) 'manualLbConfig': manualLbConfig!,
-    if (metalLbConfig != null) 'metalLbConfig': metalLbConfig!,
-    if (seesawConfig != null) 'seesawConfig': seesawConfig!,
-    if (vipConfig != null) 'vipConfig': vipConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final f5Config = this.f5Config;
+    final manualLbConfig = this.manualLbConfig;
+    final metalLbConfig = this.metalLbConfig;
+    final seesawConfig = this.seesawConfig;
+    final vipConfig = this.vipConfig;
+    return {
+      'f5Config': ?f5Config,
+      'manualLbConfig': ?manualLbConfig,
+      'metalLbConfig': ?metalLbConfig,
+      'seesawConfig': ?seesawConfig,
+      'vipConfig': ?vipConfig,
+    };
+  }
 }
 
 /// Represents configuration parameters for an already existing manual load
@@ -10451,16 +10710,18 @@ class VmwareManualLbConfig {
             json_['konnectivityServerNodePort'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlPlaneNodePort != null)
-      'controlPlaneNodePort': controlPlaneNodePort!,
-    if (ingressHttpNodePort != null)
-      'ingressHttpNodePort': ingressHttpNodePort!,
-    if (ingressHttpsNodePort != null)
-      'ingressHttpsNodePort': ingressHttpsNodePort!,
-    if (konnectivityServerNodePort != null)
-      'konnectivityServerNodePort': konnectivityServerNodePort!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneNodePort = this.controlPlaneNodePort;
+    final ingressHttpNodePort = this.ingressHttpNodePort;
+    final ingressHttpsNodePort = this.ingressHttpsNodePort;
+    final konnectivityServerNodePort = this.konnectivityServerNodePort;
+    return {
+      'controlPlaneNodePort': ?controlPlaneNodePort,
+      'ingressHttpNodePort': ?ingressHttpNodePort,
+      'ingressHttpsNodePort': ?ingressHttpsNodePort,
+      'konnectivityServerNodePort': ?konnectivityServerNodePort,
+    };
+  }
 }
 
 /// Represents configuration parameters for the MetalLB load balancer.
@@ -10478,19 +10739,19 @@ class VmwareMetalLbConfig {
 
   VmwareMetalLbConfig.fromJson(core.Map json_)
     : this(
-        addressPools:
-            (json_['addressPools'] as core.List?)
-                ?.map(
-                  (value) => VmwareAddressPool.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        addressPools: (json_['addressPools'] as core.List?)
+            ?.map(
+              (value) => VmwareAddressPool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addressPools != null) 'addressPools': addressPools!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addressPools = this.addressPools;
+    return {'addressPools': ?addressPools};
+  }
 }
 
 /// Specifies network config for the VMware user cluster.
@@ -10542,55 +10803,55 @@ class VmwareNetworkConfig {
 
   VmwareNetworkConfig.fromJson(core.Map json_)
     : this(
-        controlPlaneV2Config:
-            json_.containsKey('controlPlaneV2Config')
-                ? VmwareControlPlaneV2Config.fromJson(
-                  json_['controlPlaneV2Config']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dhcpIpConfig:
-            json_.containsKey('dhcpIpConfig')
-                ? VmwareDhcpIpConfig.fromJson(
-                  json_['dhcpIpConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        hostConfig:
-            json_.containsKey('hostConfig')
-                ? VmwareHostConfig.fromJson(
-                  json_['hostConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        podAddressCidrBlocks:
-            (json_['podAddressCidrBlocks'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        controlPlaneV2Config: json_.containsKey('controlPlaneV2Config')
+            ? VmwareControlPlaneV2Config.fromJson(
+                json_['controlPlaneV2Config']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dhcpIpConfig: json_.containsKey('dhcpIpConfig')
+            ? VmwareDhcpIpConfig.fromJson(
+                json_['dhcpIpConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        hostConfig: json_.containsKey('hostConfig')
+            ? VmwareHostConfig.fromJson(
+                json_['hostConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        podAddressCidrBlocks: (json_['podAddressCidrBlocks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         serviceAddressCidrBlocks:
             (json_['serviceAddressCidrBlocks'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        staticIpConfig:
-            json_.containsKey('staticIpConfig')
-                ? VmwareStaticIpConfig.fromJson(
-                  json_['staticIpConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        staticIpConfig: json_.containsKey('staticIpConfig')
+            ? VmwareStaticIpConfig.fromJson(
+                json_['staticIpConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         vcenterNetwork: json_['vcenterNetwork'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlPlaneV2Config != null)
-      'controlPlaneV2Config': controlPlaneV2Config!,
-    if (dhcpIpConfig != null) 'dhcpIpConfig': dhcpIpConfig!,
-    if (hostConfig != null) 'hostConfig': hostConfig!,
-    if (podAddressCidrBlocks != null)
-      'podAddressCidrBlocks': podAddressCidrBlocks!,
-    if (serviceAddressCidrBlocks != null)
-      'serviceAddressCidrBlocks': serviceAddressCidrBlocks!,
-    if (staticIpConfig != null) 'staticIpConfig': staticIpConfig!,
-    if (vcenterNetwork != null) 'vcenterNetwork': vcenterNetwork!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneV2Config = this.controlPlaneV2Config;
+    final dhcpIpConfig = this.dhcpIpConfig;
+    final hostConfig = this.hostConfig;
+    final podAddressCidrBlocks = this.podAddressCidrBlocks;
+    final serviceAddressCidrBlocks = this.serviceAddressCidrBlocks;
+    final staticIpConfig = this.staticIpConfig;
+    final vcenterNetwork = this.vcenterNetwork;
+    return {
+      'controlPlaneV2Config': ?controlPlaneV2Config,
+      'dhcpIpConfig': ?dhcpIpConfig,
+      'hostConfig': ?hostConfig,
+      'podAddressCidrBlocks': ?podAddressCidrBlocks,
+      'serviceAddressCidrBlocks': ?serviceAddressCidrBlocks,
+      'staticIpConfig': ?staticIpConfig,
+      'vcenterNetwork': ?vcenterNetwork,
+    };
+  }
 }
 
 /// Parameters that describe the configuration of all nodes within a given node
@@ -10665,34 +10926,44 @@ class VmwareNodeConfig {
         ),
         memoryMb: json_['memoryMb'] as core.String?,
         replicas: json_['replicas'] as core.String?,
-        taints:
-            (json_['taints'] as core.List?)
-                ?.map(
-                  (value) => NodeTaint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        vsphereConfig:
-            json_.containsKey('vsphereConfig')
-                ? VmwareVsphereConfig.fromJson(
-                  json_['vsphereConfig'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        taints: (json_['taints'] as core.List?)
+            ?.map(
+              (value) => NodeTaint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vsphereConfig: json_.containsKey('vsphereConfig')
+            ? VmwareVsphereConfig.fromJson(
+                json_['vsphereConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
-    if (cpus != null) 'cpus': cpus!,
-    if (enableLoadBalancer != null) 'enableLoadBalancer': enableLoadBalancer!,
-    if (image != null) 'image': image!,
-    if (imageType != null) 'imageType': imageType!,
-    if (labels != null) 'labels': labels!,
-    if (memoryMb != null) 'memoryMb': memoryMb!,
-    if (replicas != null) 'replicas': replicas!,
-    if (taints != null) 'taints': taints!,
-    if (vsphereConfig != null) 'vsphereConfig': vsphereConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bootDiskSizeGb = this.bootDiskSizeGb;
+    final cpus = this.cpus;
+    final enableLoadBalancer = this.enableLoadBalancer;
+    final image = this.image;
+    final imageType = this.imageType;
+    final labels = this.labels;
+    final memoryMb = this.memoryMb;
+    final replicas = this.replicas;
+    final taints = this.taints;
+    final vsphereConfig = this.vsphereConfig;
+    return {
+      'bootDiskSizeGb': ?bootDiskSizeGb,
+      'cpus': ?cpus,
+      'enableLoadBalancer': ?enableLoadBalancer,
+      'image': ?image,
+      'imageType': ?imageType,
+      'labels': ?labels,
+      'memoryMb': ?memoryMb,
+      'replicas': ?replicas,
+      'taints': ?taints,
+      'vsphereConfig': ?vsphereConfig,
+    };
+  }
 }
 
 /// Resource VmwareNodePool represents a VMware node pool.
@@ -10808,57 +11079,70 @@ class VmwareNodePool {
 
   VmwareNodePool.fromJson(core.Map json_)
     : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        config:
-            json_.containsKey('config')
-                ? VmwareNodeConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        config: json_.containsKey('config')
+            ? VmwareNodeConfig.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
-        nodePoolAutoscaling:
-            json_.containsKey('nodePoolAutoscaling')
-                ? VmwareNodePoolAutoscalingConfig.fromJson(
-                  json_['nodePoolAutoscaling']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        nodePoolAutoscaling: json_.containsKey('nodePoolAutoscaling')
+            ? VmwareNodePoolAutoscalingConfig.fromJson(
+                json_['nodePoolAutoscaling']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         onPremVersion: json_['onPremVersion'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         state: json_['state'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? ResourceStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ResourceStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (config != null) 'config': config!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (nodePoolAutoscaling != null)
-      'nodePoolAutoscaling': nodePoolAutoscaling!,
-    if (onPremVersion != null) 'onPremVersion': onPremVersion!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (state != null) 'state': state!,
-    if (status != null) 'status': status!,
-    if (uid != null) 'uid': uid!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final config = this.config;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final name = this.name;
+    final nodePoolAutoscaling = this.nodePoolAutoscaling;
+    final onPremVersion = this.onPremVersion;
+    final reconciling = this.reconciling;
+    final state = this.state;
+    final status = this.status;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'config': ?config,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'name': ?name,
+      'nodePoolAutoscaling': ?nodePoolAutoscaling,
+      'onPremVersion': ?onPremVersion,
+      'reconciling': ?reconciling,
+      'state': ?state,
+      'status': ?status,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// NodePoolAutoscaling config for the NodePool to allow for the kubernetes to
@@ -10878,10 +11162,11 @@ class VmwareNodePoolAutoscalingConfig {
         minReplicas: json_['minReplicas'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxReplicas != null) 'maxReplicas': maxReplicas!,
-    if (minReplicas != null) 'minReplicas': minReplicas!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxReplicas = this.maxReplicas;
+    final minReplicas = this.minReplicas;
+    return {'maxReplicas': ?maxReplicas, 'minReplicas': ?minReplicas};
+  }
 }
 
 /// VmwarePlatformConfig represents configuration for the VMware platform.
@@ -10918,32 +11203,35 @@ class VmwarePlatformConfig {
 
   VmwarePlatformConfig.fromJson(core.Map json_)
     : this(
-        bundles:
-            (json_['bundles'] as core.List?)
-                ?.map(
-                  (value) => VmwareBundleConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        bundles: (json_['bundles'] as core.List?)
+            ?.map(
+              (value) => VmwareBundleConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         platformVersion: json_['platformVersion'] as core.String?,
         requiredPlatformVersion:
             json_['requiredPlatformVersion'] as core.String?,
-        status:
-            json_.containsKey('status')
-                ? ResourceStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        status: json_.containsKey('status')
+            ? ResourceStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bundles != null) 'bundles': bundles!,
-    if (platformVersion != null) 'platformVersion': platformVersion!,
-    if (requiredPlatformVersion != null)
-      'requiredPlatformVersion': requiredPlatformVersion!,
-    if (status != null) 'status': status!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bundles = this.bundles;
+    final platformVersion = this.platformVersion;
+    final requiredPlatformVersion = this.requiredPlatformVersion;
+    final status = this.status;
+    return {
+      'bundles': ?bundles,
+      'platformVersion': ?platformVersion,
+      'requiredPlatformVersion': ?requiredPlatformVersion,
+      'status': ?status,
+    };
+  }
 }
 
 /// VmwareSeesawConfig represents configuration parameters for an already
@@ -11005,30 +11293,36 @@ class VmwareSeesawConfig {
     : this(
         enableHa: json_['enableHa'] as core.bool?,
         group: json_['group'] as core.String?,
-        ipBlocks:
-            (json_['ipBlocks'] as core.List?)
-                ?.map(
-                  (value) => VmwareIpBlock.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ipBlocks: (json_['ipBlocks'] as core.List?)
+            ?.map(
+              (value) => VmwareIpBlock.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         masterIp: json_['masterIp'] as core.String?,
         stackdriverName: json_['stackdriverName'] as core.String?,
-        vms:
-            (json_['vms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        vms: (json_['vms'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableHa != null) 'enableHa': enableHa!,
-    if (group != null) 'group': group!,
-    if (ipBlocks != null) 'ipBlocks': ipBlocks!,
-    if (masterIp != null) 'masterIp': masterIp!,
-    if (stackdriverName != null) 'stackdriverName': stackdriverName!,
-    if (vms != null) 'vms': vms!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableHa = this.enableHa;
+    final group = this.group;
+    final ipBlocks = this.ipBlocks;
+    final masterIp = this.masterIp;
+    final stackdriverName = this.stackdriverName;
+    final vms = this.vms;
+    return {
+      'enableHa': ?enableHa,
+      'group': ?group,
+      'ipBlocks': ?ipBlocks,
+      'masterIp': ?masterIp,
+      'stackdriverName': ?stackdriverName,
+      'vms': ?vms,
+    };
+  }
 }
 
 /// Represents the network configuration required for the VMware user clusters
@@ -11041,19 +11335,19 @@ class VmwareStaticIpConfig {
 
   VmwareStaticIpConfig.fromJson(core.Map json_)
     : this(
-        ipBlocks:
-            (json_['ipBlocks'] as core.List?)
-                ?.map(
-                  (value) => VmwareIpBlock.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ipBlocks: (json_['ipBlocks'] as core.List?)
+            ?.map(
+              (value) => VmwareIpBlock.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipBlocks != null) 'ipBlocks': ipBlocks!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipBlocks = this.ipBlocks;
+    return {'ipBlocks': ?ipBlocks};
+  }
 }
 
 /// Specifies vSphere CSI components deployment config in the VMware user
@@ -11070,9 +11364,10 @@ class VmwareStorageConfig {
   VmwareStorageConfig.fromJson(core.Map json_)
     : this(vsphereCsiDisabled: json_['vsphereCsiDisabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vsphereCsiDisabled != null) 'vsphereCsiDisabled': vsphereCsiDisabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final vsphereCsiDisabled = this.vsphereCsiDisabled;
+    return {'vsphereCsiDisabled': ?vsphereCsiDisabled};
+  }
 }
 
 /// Represents configuration for the VMware VCenter for the user cluster.
@@ -11126,16 +11421,26 @@ class VmwareVCenterConfig {
         storagePolicyName: json_['storagePolicyName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (caCertData != null) 'caCertData': caCertData!,
-    if (cluster != null) 'cluster': cluster!,
-    if (datacenter != null) 'datacenter': datacenter!,
-    if (datastore != null) 'datastore': datastore!,
-    if (folder != null) 'folder': folder!,
-    if (resourcePool != null) 'resourcePool': resourcePool!,
-    if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final caCertData = this.caCertData;
+    final cluster = this.cluster;
+    final datacenter = this.datacenter;
+    final datastore = this.datastore;
+    final folder = this.folder;
+    final resourcePool = this.resourcePool;
+    final storagePolicyName = this.storagePolicyName;
+    return {
+      'address': ?address,
+      'caCertData': ?caCertData,
+      'cluster': ?cluster,
+      'datacenter': ?datacenter,
+      'datastore': ?datastore,
+      'folder': ?folder,
+      'resourcePool': ?resourcePool,
+      'storagePolicyName': ?storagePolicyName,
+    };
+  }
 }
 
 /// Contains information about a specific Anthos on VMware version.
@@ -11166,25 +11471,30 @@ class VmwareVersionInfo {
 
   VmwareVersionInfo.fromJson(core.Map json_)
     : this(
-        dependencies:
-            (json_['dependencies'] as core.List?)
-                ?.map(
-                  (value) => UpgradeDependency.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dependencies: (json_['dependencies'] as core.List?)
+            ?.map(
+              (value) => UpgradeDependency.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         hasDependencies: json_['hasDependencies'] as core.bool?,
         isInstalled: json_['isInstalled'] as core.bool?,
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dependencies != null) 'dependencies': dependencies!,
-    if (hasDependencies != null) 'hasDependencies': hasDependencies!,
-    if (isInstalled != null) 'isInstalled': isInstalled!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dependencies = this.dependencies;
+    final hasDependencies = this.hasDependencies;
+    final isInstalled = this.isInstalled;
+    final version = this.version;
+    return {
+      'dependencies': ?dependencies,
+      'hasDependencies': ?hasDependencies,
+      'isInstalled': ?isInstalled,
+      'version': ?version,
+    };
+  }
 }
 
 /// Specifies the VIP config for the VMware user cluster load balancer.
@@ -11205,10 +11515,11 @@ class VmwareVipConfig {
         ingressVip: json_['ingressVip'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlPlaneVip != null) 'controlPlaneVip': controlPlaneVip!,
-    if (ingressVip != null) 'ingressVip': ingressVip!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneVip = this.controlPlaneVip;
+    final ingressVip = this.ingressVip;
+    return {'controlPlaneVip': ?controlPlaneVip, 'ingressVip': ?ingressVip};
+  }
 }
 
 /// VmwareVsphereConfig represents configuration for the VMware VCenter for node
@@ -11230,25 +11541,24 @@ class VmwareVsphereConfig {
   VmwareVsphereConfig.fromJson(core.Map json_)
     : this(
         datastore: json_['datastore'] as core.String?,
-        hostGroups:
-            (json_['hostGroups'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map(
-                  (value) => VmwareVsphereTag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        hostGroups: (json_['hostGroups'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map(
+              (value) => VmwareVsphereTag.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datastore != null) 'datastore': datastore!,
-    if (hostGroups != null) 'hostGroups': hostGroups!,
-    if (tags != null) 'tags': tags!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final datastore = this.datastore;
+    final hostGroups = this.hostGroups;
+    final tags = this.tags;
+    return {'datastore': ?datastore, 'hostGroups': ?hostGroups, 'tags': ?tags};
+  }
 }
 
 /// VmwareVsphereTag describes a vSphere tag to be placed on VMs in the node
@@ -11271,8 +11581,9 @@ class VmwareVsphereTag {
         tag: json_['tag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final tag = this.tag;
+    return {'category': ?category, 'tag': ?tag};
+  }
 }

@@ -87,7 +87,7 @@ class SitesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -124,7 +124,7 @@ class ViolatingSitesResource {
   /// this method will complete with the same error.
   async.Future<ViolatingSitesResponse> list({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/violatingSites';
@@ -203,15 +203,24 @@ class SiteSummaryResponse {
         underReview: json_['underReview'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (abusiveStatus != null) 'abusiveStatus': abusiveStatus!,
-    if (enforcementTime != null) 'enforcementTime': enforcementTime!,
-    if (filterStatus != null) 'filterStatus': filterStatus!,
-    if (lastChangeTime != null) 'lastChangeTime': lastChangeTime!,
-    if (reportUrl != null) 'reportUrl': reportUrl!,
-    if (reviewedSite != null) 'reviewedSite': reviewedSite!,
-    if (underReview != null) 'underReview': underReview!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final abusiveStatus = this.abusiveStatus;
+    final enforcementTime = this.enforcementTime;
+    final filterStatus = this.filterStatus;
+    final lastChangeTime = this.lastChangeTime;
+    final reportUrl = this.reportUrl;
+    final reviewedSite = this.reviewedSite;
+    final underReview = this.underReview;
+    return {
+      'abusiveStatus': ?abusiveStatus,
+      'enforcementTime': ?enforcementTime,
+      'filterStatus': ?filterStatus,
+      'lastChangeTime': ?lastChangeTime,
+      'reportUrl': ?reportUrl,
+      'reviewedSite': ?reviewedSite,
+      'underReview': ?underReview,
+    };
+  }
 }
 
 /// Response message for ListViolatingSites.
@@ -223,17 +232,17 @@ class ViolatingSitesResponse {
 
   ViolatingSitesResponse.fromJson(core.Map json_)
     : this(
-        violatingSites:
-            (json_['violatingSites'] as core.List?)
-                ?.map(
-                  (value) => SiteSummaryResponse.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        violatingSites: (json_['violatingSites'] as core.List?)
+            ?.map(
+              (value) => SiteSummaryResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (violatingSites != null) 'violatingSites': violatingSites!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final violatingSites = this.violatingSites;
+    return {'violatingSites': ?violatingSites};
+  }
 }

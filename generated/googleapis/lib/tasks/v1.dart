@@ -89,7 +89,7 @@ class TasklistsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -124,7 +124,7 @@ class TasklistsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -163,7 +163,7 @@ class TasklistsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'tasks/v1/users/@me/lists';
@@ -204,9 +204,9 @@ class TasklistsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'tasks/v1/users/@me/lists';
@@ -246,7 +246,7 @@ class TasklistsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -286,7 +286,7 @@ class TasklistsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -326,7 +326,7 @@ class TasksResource {
   /// this method will complete with the same error.
   async.Future<void> clear(core.String tasklist, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -366,7 +366,7 @@ class TasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -407,7 +407,7 @@ class TasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -465,9 +465,9 @@ class TasksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (parent != null) 'parent': [parent],
-      if (previous != null) 'previous': [previous],
-      if ($fields != null) 'fields': [$fields],
+      'parent': ?parent == null ? null : [parent],
+      'previous': ?previous == null ? null : [previous],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -555,18 +555,18 @@ class TasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (completedMax != null) 'completedMax': [completedMax],
-      if (completedMin != null) 'completedMin': [completedMin],
-      if (dueMax != null) 'dueMax': [dueMax],
-      if (dueMin != null) 'dueMin': [dueMin],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showAssigned != null) 'showAssigned': ['${showAssigned}'],
-      if (showCompleted != null) 'showCompleted': ['${showCompleted}'],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if (showHidden != null) 'showHidden': ['${showHidden}'],
-      if (updatedMin != null) 'updatedMin': [updatedMin],
-      if ($fields != null) 'fields': [$fields],
+      'completedMax': ?completedMax == null ? null : [completedMax],
+      'completedMin': ?completedMin == null ? null : [completedMin],
+      'dueMax': ?dueMax == null ? null : [dueMax],
+      'dueMin': ?dueMin == null ? null : [dueMin],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showAssigned': ?showAssigned == null ? null : ['${showAssigned}'],
+      'showCompleted': ?showCompleted == null ? null : ['${showCompleted}'],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'showHidden': ?showHidden == null ? null : ['${showHidden}'],
+      'updatedMin': ?updatedMin == null ? null : [updatedMin],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -630,11 +630,12 @@ class TasksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (destinationTasklist != null)
-        'destinationTasklist': [destinationTasklist],
-      if (parent != null) 'parent': [parent],
-      if (previous != null) 'previous': [previous],
-      if ($fields != null) 'fields': [$fields],
+      'destinationTasklist': ?destinationTasklist == null
+          ? null
+          : [destinationTasklist],
+      'parent': ?parent == null ? null : [parent],
+      'previous': ?previous == null ? null : [previous],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -682,7 +683,7 @@ class TasksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -728,7 +729,7 @@ class TasksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -790,29 +791,33 @@ class AssignmentInfo {
 
   AssignmentInfo.fromJson(core.Map json_)
     : this(
-        driveResourceInfo:
-            json_.containsKey('driveResourceInfo')
-                ? DriveResourceInfo.fromJson(
-                  json_['driveResourceInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        driveResourceInfo: json_.containsKey('driveResourceInfo')
+            ? DriveResourceInfo.fromJson(
+                json_['driveResourceInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         linkToTask: json_['linkToTask'] as core.String?,
-        spaceInfo:
-            json_.containsKey('spaceInfo')
-                ? SpaceInfo.fromJson(
-                  json_['spaceInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        spaceInfo: json_.containsKey('spaceInfo')
+            ? SpaceInfo.fromJson(
+                json_['spaceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         surfaceType: json_['surfaceType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (driveResourceInfo != null) 'driveResourceInfo': driveResourceInfo!,
-    if (linkToTask != null) 'linkToTask': linkToTask!,
-    if (spaceInfo != null) 'spaceInfo': spaceInfo!,
-    if (surfaceType != null) 'surfaceType': surfaceType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final driveResourceInfo = this.driveResourceInfo;
+    final linkToTask = this.linkToTask;
+    final spaceInfo = this.spaceInfo;
+    final surfaceType = this.surfaceType;
+    return {
+      'driveResourceInfo': ?driveResourceInfo,
+      'linkToTask': ?linkToTask,
+      'spaceInfo': ?spaceInfo,
+      'surfaceType': ?surfaceType,
+    };
+  }
 }
 
 /// Information about the Drive resource where a task was assigned from (the
@@ -839,10 +844,11 @@ class DriveResourceInfo {
         resourceKey: json_['resourceKey'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (driveFileId != null) 'driveFileId': driveFileId!,
-    if (resourceKey != null) 'resourceKey': resourceKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final driveFileId = this.driveFileId;
+    final resourceKey = this.resourceKey;
+    return {'driveFileId': ?driveFileId, 'resourceKey': ?resourceKey};
+  }
 }
 
 /// Information about the Chat Space where a task was assigned from.
@@ -859,9 +865,10 @@ class SpaceInfo {
   SpaceInfo.fromJson(core.Map json_)
     : this(space: json_['space'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (space != null) 'space': space!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final space = this.space;
+    return {'space': ?space};
+  }
 }
 
 class TaskLinks {
@@ -883,11 +890,12 @@ class TaskLinks {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (link != null) 'link': link!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final link = this.link;
+    final type = this.type;
+    return {'description': ?description, 'link': ?link, 'type': ?type};
+  }
 }
 
 class Task {
@@ -1026,13 +1034,11 @@ class Task {
 
   Task.fromJson(core.Map json_)
     : this(
-        assignmentInfo:
-            json_.containsKey('assignmentInfo')
-                ? AssignmentInfo.fromJson(
-                  json_['assignmentInfo']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        assignmentInfo: json_.containsKey('assignmentInfo')
+            ? AssignmentInfo.fromJson(
+                json_['assignmentInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         completed: json_['completed'] as core.String?,
         deleted: json_['deleted'] as core.bool?,
         due: json_['due'] as core.String?,
@@ -1040,14 +1046,13 @@ class Task {
         hidden: json_['hidden'] as core.bool?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        links:
-            (json_['links'] as core.List?)
-                ?.map(
-                  (value) => TaskLinks.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        links: (json_['links'] as core.List?)
+            ?.map(
+              (value) => TaskLinks.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         notes: json_['notes'] as core.String?,
         parent: json_['parent'] as core.String?,
         position: json_['position'] as core.String?,
@@ -1058,25 +1063,44 @@ class Task {
         webViewLink: json_['webViewLink'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assignmentInfo != null) 'assignmentInfo': assignmentInfo!,
-    if (completed != null) 'completed': completed!,
-    if (deleted != null) 'deleted': deleted!,
-    if (due != null) 'due': due!,
-    if (etag != null) 'etag': etag!,
-    if (hidden != null) 'hidden': hidden!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (links != null) 'links': links!,
-    if (notes != null) 'notes': notes!,
-    if (parent != null) 'parent': parent!,
-    if (position != null) 'position': position!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (status != null) 'status': status!,
-    if (title != null) 'title': title!,
-    if (updated != null) 'updated': updated!,
-    if (webViewLink != null) 'webViewLink': webViewLink!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assignmentInfo = this.assignmentInfo;
+    final completed = this.completed;
+    final deleted = this.deleted;
+    final due = this.due;
+    final etag = this.etag;
+    final hidden = this.hidden;
+    final id = this.id;
+    final kind = this.kind;
+    final links = this.links;
+    final notes = this.notes;
+    final parent = this.parent;
+    final position = this.position;
+    final selfLink = this.selfLink;
+    final status = this.status;
+    final title = this.title;
+    final updated = this.updated;
+    final webViewLink = this.webViewLink;
+    return {
+      'assignmentInfo': ?assignmentInfo,
+      'completed': ?completed,
+      'deleted': ?deleted,
+      'due': ?due,
+      'etag': ?etag,
+      'hidden': ?hidden,
+      'id': ?id,
+      'kind': ?kind,
+      'links': ?links,
+      'notes': ?notes,
+      'parent': ?parent,
+      'position': ?position,
+      'selfLink': ?selfLink,
+      'status': ?status,
+      'title': ?title,
+      'updated': ?updated,
+      'webViewLink': ?webViewLink,
+    };
+  }
 }
 
 class TaskList {
@@ -1129,14 +1153,22 @@ class TaskList {
         updated: json_['updated'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (title != null) 'title': title!,
-    if (updated != null) 'updated': updated!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final selfLink = this.selfLink;
+    final title = this.title;
+    final updated = this.updated;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'selfLink': ?selfLink,
+      'title': ?title,
+      'updated': ?updated,
+    };
+  }
 }
 
 class TaskLists {
@@ -1159,24 +1191,29 @@ class TaskLists {
   TaskLists.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => TaskList.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => TaskList.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 class Tasks {
@@ -1199,22 +1236,26 @@ class Tasks {
   Tasks.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Task.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }

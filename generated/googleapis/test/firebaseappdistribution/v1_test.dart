@@ -1402,10 +1402,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppdistroV1BatchAddTestersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppdistroV1BatchAddTestersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppdistroV1BatchAddTestersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppdistroV1BatchAddTestersResponse(od);
       });
     },
@@ -1417,10 +1417,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppdistroV1BatchDeleteReleasesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppdistroV1BatchDeleteReleasesRequest(od);
       });
     },
@@ -1460,10 +1460,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppdistroV1BatchRemoveTestersRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppdistroV1BatchRemoveTestersRequest(od);
       });
     },
@@ -1475,10 +1475,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppdistroV1BatchRemoveTestersResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppdistroV1BatchRemoveTestersResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppdistroV1BatchRemoveTestersResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppdistroV1BatchRemoveTestersResponse(od);
       });
     },
@@ -1490,10 +1490,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppdistroV1DistributeReleaseRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppdistroV1DistributeReleaseRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppdistroV1DistributeReleaseRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppdistroV1DistributeReleaseRequest(od);
       });
     },
@@ -1505,10 +1505,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppdistroV1DistributeReleaseResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppdistroV1DistributeReleaseResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppdistroV1DistributeReleaseResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppdistroV1DistributeReleaseResponse(od);
       });
     },
@@ -1542,10 +1542,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleFirebaseAppdistroV1ListFeedbackReportsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleFirebaseAppdistroV1ListFeedbackReportsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleFirebaseAppdistroV1ListFeedbackReportsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleFirebaseAppdistroV1ListFeedbackReportsResponse(od);
       });
     },
@@ -1723,10 +1723,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppdistroV1UploadReleaseRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppdistroV1UploadReleaseRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppdistroV1UploadReleaseRequest(obj);
 
           final path = req.url.path;
@@ -1851,10 +1851,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppdistroV1BatchDeleteReleasesRequest(obj);
 
           final path = req.url.path;
@@ -1916,10 +1916,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppdistroV1DistributeReleaseRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppdistroV1DistributeReleaseRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppdistroV1DistributeReleaseRequest(obj);
 
           final path = req.url.path;
@@ -2194,10 +2194,9 @@ void main() {
   unittest.group('resource-ProjectsAppsReleasesFeedbackReportsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppDistributionApi(
-            mock,
-          ).projects.apps.releases.feedbackReports;
+      final res = api.FirebaseAppDistributionApi(
+        mock,
+      ).projects.apps.releases.feedbackReports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2250,10 +2249,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppDistributionApi(
-            mock,
-          ).projects.apps.releases.feedbackReports;
+      final res = api.FirebaseAppDistributionApi(
+        mock,
+      ).projects.apps.releases.feedbackReports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2310,10 +2308,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppDistributionApi(
-            mock,
-          ).projects.apps.releases.feedbackReports;
+      final res = api.FirebaseAppDistributionApi(
+        mock,
+      ).projects.apps.releases.feedbackReports;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2387,10 +2384,9 @@ void main() {
   unittest.group('resource-ProjectsAppsReleasesOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppDistributionApi(
-            mock,
-          ).projects.apps.releases.operations;
+      final res = api.FirebaseAppDistributionApi(
+        mock,
+      ).projects.apps.releases.operations;
       final arg_request = buildGoogleLongrunningCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2453,10 +2449,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppDistributionApi(
-            mock,
-          ).projects.apps.releases.operations;
+      final res = api.FirebaseAppDistributionApi(
+        mock,
+      ).projects.apps.releases.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2509,10 +2504,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppDistributionApi(
-            mock,
-          ).projects.apps.releases.operations;
+      final res = api.FirebaseAppDistributionApi(
+        mock,
+      ).projects.apps.releases.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2567,10 +2561,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppDistributionApi(
-            mock,
-          ).projects.apps.releases.operations;
+      final res = api.FirebaseAppDistributionApi(
+        mock,
+      ).projects.apps.releases.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2654,10 +2647,9 @@ void main() {
 
     unittest.test('method--wait', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseAppDistributionApi(
-            mock,
-          ).projects.apps.releases.operations;
+      final res = api.FirebaseAppDistributionApi(
+        mock,
+      ).projects.apps.releases.operations;
       final arg_request = buildGoogleLongrunningWaitOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2730,10 +2722,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppdistroV1BatchJoinGroupRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppdistroV1BatchJoinGroupRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppdistroV1BatchJoinGroupRequest(obj);
 
           final path = req.url.path;
@@ -2795,10 +2787,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppdistroV1BatchLeaveGroupRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppdistroV1BatchLeaveGroupRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppdistroV1BatchLeaveGroupRequest(obj);
 
           final path = req.url.path;
@@ -3190,10 +3182,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppdistroV1BatchAddTestersRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppdistroV1BatchAddTestersRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppdistroV1BatchAddTestersRequest(obj);
 
           final path = req.url.path;
@@ -3259,10 +3251,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleFirebaseAppdistroV1BatchRemoveTestersRequest(obj);
 
           final path = req.url.path;

@@ -437,10 +437,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest(od);
       });
     },
@@ -452,10 +452,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse(od);
       });
     },
@@ -540,10 +540,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest(obj);
 
           final path = req.url.path;
@@ -852,8 +852,9 @@ void main() {
   unittest.group('resource-EnterprisesStructuresRoomsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SmartDeviceManagementApi(mock).enterprises.structures.rooms;
+      final res = api.SmartDeviceManagementApi(
+        mock,
+      ).enterprises.structures.rooms;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -910,8 +911,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SmartDeviceManagementApi(mock).enterprises.structures.rooms;
+      final res = api.SmartDeviceManagementApi(
+        mock,
+      ).enterprises.structures.rooms;
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(

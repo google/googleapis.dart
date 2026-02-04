@@ -371,10 +371,9 @@ String generateSchemas(Iterable<ComplexDartSchemaType> classTypes) {
 
 Comment extendEnumComment(Comment baseComment, DartSchemaType type) {
   if (type is EnumType) {
-    final s =
-        StringBuffer()
-          ..writeln(baseComment.rawComment)
-          ..writeln('Possible string values are:');
+    final s = StringBuffer()
+      ..writeln(baseComment.rawComment)
+      ..writeln('Possible string values are:');
     for (var i = 0; i < type.enumValues.length; i++) {
       final description = type.enumDescriptions[i];
       if (description.trim().isNotEmpty) {

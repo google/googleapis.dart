@@ -3656,8 +3656,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsEnvironmentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.environments;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.environments;
       final arg_request = buildEnvironment();
       final arg_parent = 'foo';
       final arg_environmentId = 'foo';
@@ -3726,8 +3727,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.environments;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.environments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3780,8 +3782,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.environments;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.environments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3834,8 +3837,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.environments;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.environments;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3905,8 +3909,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsExecutionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.executions;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.executions;
       final arg_request = buildExecution();
       final arg_parent = 'foo';
       final arg_executionId = 'foo';
@@ -3975,8 +3980,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.executions;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.executions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4029,8 +4035,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.executions;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.executions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4083,8 +4090,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.executions;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.executions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -5807,8 +5815,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.operations;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -5871,8 +5880,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.operations;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5925,8 +5935,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.operations;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5979,8 +5990,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AIPlatformNotebooksApi(mock).projects.locations.operations;
+      final res = api.AIPlatformNotebooksApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

@@ -1527,10 +1527,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest(od);
       });
     },
@@ -1543,10 +1543,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse(od);
       });
     },
@@ -1559,10 +1559,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse(od);
       });
     },
@@ -1575,10 +1575,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest(od);
       });
     },
@@ -1605,10 +1605,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse(od);
       });
     },
@@ -1621,10 +1621,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse(od);
       });
     },
@@ -1636,10 +1636,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1ListViolationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1ListViolationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1ListViolationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1ListViolationsResponse(od);
       });
     },
@@ -1652,10 +1652,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse(od);
       });
     },
@@ -1667,10 +1667,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1ListWorkloadsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1ListWorkloadsResponse(od);
       });
     },
@@ -1722,10 +1722,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest(od);
       });
     },
@@ -1748,10 +1748,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule(od);
       });
     },
@@ -1764,10 +1764,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues(od);
       });
     },
@@ -1791,10 +1791,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest(od);
       });
     },
@@ -1807,10 +1807,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse(od);
       });
     },
@@ -1844,10 +1844,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1ViolationExceptionContext();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1ViolationExceptionContext.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1ViolationExceptionContext.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1ViolationExceptionContext(od);
       });
     },
@@ -1859,10 +1859,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1ViolationRemediation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1ViolationRemediation(od);
       });
     },
@@ -1875,10 +1875,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1ViolationRemediationInstructions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1ViolationRemediationInstructions(od);
       });
     },
@@ -1891,10 +1891,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole(
           od,
         );
@@ -1909,10 +1909,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud(
           od,
         );
@@ -1937,10 +1937,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus(od);
       });
     },
@@ -1953,10 +1953,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse(od);
       });
     },
@@ -1968,10 +1968,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1WorkloadKMSSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1WorkloadKMSSettings(od);
       });
     },
@@ -1984,10 +1984,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions(od);
       });
     },
@@ -1999,10 +1999,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1WorkloadResourceInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1WorkloadResourceInfo(od);
       });
     },
@@ -2014,10 +2014,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1WorkloadResourceSettings();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1WorkloadResourceSettings(od);
       });
     },
@@ -2030,10 +2030,10 @@ void main() {
         final o =
             buildGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse(od);
       });
     },
@@ -2056,10 +2056,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions(od);
       });
     },
@@ -2112,8 +2112,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsOperationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.operations;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2168,8 +2169,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.operations;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2255,8 +2257,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsWorkloadsResource', () {
     unittest.test('method--analyzeWorkloadMove', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_target = 'foo';
       final arg_assetTypes = buildUnnamed28();
       final arg_pageSize = 42;
@@ -2341,8 +2344,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_request = buildGoogleCloudAssuredworkloadsV1Workload();
       final arg_parent = 'foo';
       final arg_externalId = 'foo';
@@ -2413,8 +2417,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -2473,8 +2478,9 @@ void main() {
 
     unittest.test('method--enableComplianceUpdates', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2535,8 +2541,9 @@ void main() {
 
     unittest.test('method--enableResourceMonitoring', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2597,8 +2604,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2655,8 +2663,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2734,18 +2743,19 @@ void main() {
 
     unittest.test('method--mutatePartnerPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_request =
           buildGoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest(
             obj,
           );
@@ -2806,8 +2816,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_request = buildGoogleCloudAssuredworkloadsV1Workload();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2880,18 +2891,19 @@ void main() {
 
     unittest.test('method--restrictAllowedResources', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads;
       final arg_request =
           buildGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest(
             obj,
           );
@@ -2955,20 +2967,19 @@ void main() {
   unittest.group('resource-OrganizationsLocationsWorkloadsUpdatesResource', () {
     unittest.test('method--apply', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(
-            mock,
-          ).organizations.locations.workloads.updates;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads.updates;
       final arg_request =
           buildGoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest(obj);
 
           final path = req.url.path;
@@ -3025,10 +3036,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(
-            mock,
-          ).organizations.locations.workloads.updates;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads.updates;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3103,20 +3113,19 @@ void main() {
   unittest.group('resource-OrganizationsLocationsWorkloadsViolationsResource', () {
     unittest.test('method--acknowledge', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(
-            mock,
-          ).organizations.locations.workloads.violations;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads.violations;
       final arg_request =
           buildGoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest(obj);
 
           final path = req.url.path;
@@ -3176,10 +3185,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(
-            mock,
-          ).organizations.locations.workloads.violations;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads.violations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3236,10 +3244,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AssuredworkloadsApi(
-            mock,
-          ).organizations.locations.workloads.violations;
+      final res = api.AssuredworkloadsApi(
+        mock,
+      ).organizations.locations.workloads.violations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_interval_endTime = 'foo';

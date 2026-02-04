@@ -90,7 +90,7 @@ class AssetlinksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/assetlinks:bulkCheck';
@@ -241,24 +241,27 @@ class AssetlinksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (relation != null) 'relation': [relation],
-      if (returnRelationExtensions != null)
-        'returnRelationExtensions': ['${returnRelationExtensions}'],
-      if (source_androidApp_certificate_sha256Fingerprint != null)
-        'source.androidApp.certificate.sha256Fingerprint': [
-          source_androidApp_certificate_sha256Fingerprint,
-        ],
-      if (source_androidApp_packageName != null)
-        'source.androidApp.packageName': [source_androidApp_packageName],
-      if (source_web_site != null) 'source.web.site': [source_web_site],
-      if (target_androidApp_certificate_sha256Fingerprint != null)
-        'target.androidApp.certificate.sha256Fingerprint': [
-          target_androidApp_certificate_sha256Fingerprint,
-        ],
-      if (target_androidApp_packageName != null)
-        'target.androidApp.packageName': [target_androidApp_packageName],
-      if (target_web_site != null) 'target.web.site': [target_web_site],
-      if ($fields != null) 'fields': [$fields],
+      'relation': ?relation == null ? null : [relation],
+      'returnRelationExtensions': ?returnRelationExtensions == null
+          ? null
+          : ['${returnRelationExtensions}'],
+      'source.androidApp.certificate.sha256Fingerprint':
+          ?source_androidApp_certificate_sha256Fingerprint == null
+          ? null
+          : [source_androidApp_certificate_sha256Fingerprint],
+      'source.androidApp.packageName': ?source_androidApp_packageName == null
+          ? null
+          : [source_androidApp_packageName],
+      'source.web.site': ?source_web_site == null ? null : [source_web_site],
+      'target.androidApp.certificate.sha256Fingerprint':
+          ?target_androidApp_certificate_sha256Fingerprint == null
+          ? null
+          : [target_androidApp_certificate_sha256Fingerprint],
+      'target.androidApp.packageName': ?target_androidApp_packageName == null
+          ? null
+          : [target_androidApp_packageName],
+      'target.web.site': ?target_web_site == null ? null : [target_web_site],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/assetlinks:check';
@@ -368,17 +371,19 @@ class StatementsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (relation != null) 'relation': [relation],
-      if (returnRelationExtensions != null)
-        'returnRelationExtensions': ['${returnRelationExtensions}'],
-      if (source_androidApp_certificate_sha256Fingerprint != null)
-        'source.androidApp.certificate.sha256Fingerprint': [
-          source_androidApp_certificate_sha256Fingerprint,
-        ],
-      if (source_androidApp_packageName != null)
-        'source.androidApp.packageName': [source_androidApp_packageName],
-      if (source_web_site != null) 'source.web.site': [source_web_site],
-      if ($fields != null) 'fields': [$fields],
+      'relation': ?relation == null ? null : [relation],
+      'returnRelationExtensions': ?returnRelationExtensions == null
+          ? null
+          : ['${returnRelationExtensions}'],
+      'source.androidApp.certificate.sha256Fingerprint':
+          ?source_androidApp_certificate_sha256Fingerprint == null
+          ? null
+          : [source_androidApp_certificate_sha256Fingerprint],
+      'source.androidApp.packageName': ?source_androidApp_packageName == null
+          ? null
+          : [source_androidApp_packageName],
+      'source.web.site': ?source_web_site == null ? null : [source_web_site],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/statements:list';
@@ -420,19 +425,19 @@ class AndroidAppAsset {
 
   AndroidAppAsset.fromJson(core.Map json_)
     : this(
-        certificate:
-            json_.containsKey('certificate')
-                ? CertificateInfo.fromJson(
-                  json_['certificate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        certificate: json_.containsKey('certificate')
+            ? CertificateInfo.fromJson(
+                json_['certificate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         packageName: json_['packageName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificate != null) 'certificate': certificate!,
-    if (packageName != null) 'packageName': packageName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificate = this.certificate;
+    final packageName = this.packageName;
+    return {'certificate': ?certificate, 'packageName': ?packageName};
+  }
 }
 
 /// Uniquely identifies an asset.
@@ -451,24 +456,23 @@ class Asset {
 
   Asset.fromJson(core.Map json_)
     : this(
-        androidApp:
-            json_.containsKey('androidApp')
-                ? AndroidAppAsset.fromJson(
-                  json_['androidApp'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        web:
-            json_.containsKey('web')
-                ? WebAsset.fromJson(
-                  json_['web'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        androidApp: json_.containsKey('androidApp')
+            ? AndroidAppAsset.fromJson(
+                json_['androidApp'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        web: json_.containsKey('web')
+            ? WebAsset.fromJson(
+                json_['web'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (androidApp != null) 'androidApp': androidApp!,
-    if (web != null) 'web': web!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final androidApp = this.androidApp;
+    final web = this.web;
+    return {'androidApp': ?androidApp, 'web': ?web};
+  }
 }
 
 /// Message used to check for the existence of multiple digital asset links
@@ -508,38 +512,41 @@ class BulkCheckRequest {
   BulkCheckRequest.fromJson(core.Map json_)
     : this(
         defaultRelation: json_['defaultRelation'] as core.String?,
-        defaultSource:
-            json_.containsKey('defaultSource')
-                ? Asset.fromJson(
-                  json_['defaultSource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        defaultTarget:
-            json_.containsKey('defaultTarget')
-                ? Asset.fromJson(
-                  json_['defaultTarget'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        defaultSource: json_.containsKey('defaultSource')
+            ? Asset.fromJson(
+                json_['defaultSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        defaultTarget: json_.containsKey('defaultTarget')
+            ? Asset.fromJson(
+                json_['defaultTarget'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         returnRelationExtensions:
             json_['returnRelationExtensions'] as core.bool?,
-        statements:
-            (json_['statements'] as core.List?)
-                ?.map(
-                  (value) => StatementTemplate.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        statements: (json_['statements'] as core.List?)
+            ?.map(
+              (value) => StatementTemplate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultRelation != null) 'defaultRelation': defaultRelation!,
-    if (defaultSource != null) 'defaultSource': defaultSource!,
-    if (defaultTarget != null) 'defaultTarget': defaultTarget!,
-    if (returnRelationExtensions != null)
-      'returnRelationExtensions': returnRelationExtensions!,
-    if (statements != null) 'statements': statements!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultRelation = this.defaultRelation;
+    final defaultSource = this.defaultSource;
+    final defaultTarget = this.defaultTarget;
+    final returnRelationExtensions = this.returnRelationExtensions;
+    final statements = this.statements;
+    return {
+      'defaultRelation': ?defaultRelation,
+      'defaultSource': ?defaultSource,
+      'defaultTarget': ?defaultTarget,
+      'returnRelationExtensions': ?returnRelationExtensions,
+      'statements': ?statements,
+    };
+  }
 }
 
 /// Response for BulkCheck call.
@@ -580,20 +587,20 @@ class BulkCheckResponse {
   BulkCheckResponse.fromJson(core.Map json_)
     : this(
         bulkErrorCode: json_['bulkErrorCode'] as core.String?,
-        checkResults:
-            (json_['checkResults'] as core.List?)
-                ?.map(
-                  (value) => CheckResponse.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        checkResults: (json_['checkResults'] as core.List?)
+            ?.map(
+              (value) => CheckResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bulkErrorCode != null) 'bulkErrorCode': bulkErrorCode!,
-    if (checkResults != null) 'checkResults': checkResults!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final bulkErrorCode = this.bulkErrorCode;
+    final checkResults = this.checkResults;
+    return {'bulkErrorCode': ?bulkErrorCode, 'checkResults': ?checkResults};
+  }
 }
 
 /// Describes an X509 certificate.
@@ -620,9 +627,10 @@ class CertificateInfo {
   CertificateInfo.fromJson(core.Map json_)
     : this(sha256Fingerprint: json_['sha256Fingerprint'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sha256Fingerprint != null) 'sha256Fingerprint': sha256Fingerprint!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sha256Fingerprint = this.sha256Fingerprint;
+    return {'sha256Fingerprint': ?sha256Fingerprint};
+  }
 }
 
 /// Response message for the CheckAssetLinks call.
@@ -679,25 +687,30 @@ class CheckResponse {
   CheckResponse.fromJson(core.Map json_)
     : this(
         debugString: json_['debugString'] as core.String?,
-        errorCode:
-            (json_['errorCode'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        errorCode: (json_['errorCode'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         linked: json_['linked'] as core.bool?,
         maxAge: json_['maxAge'] as core.String?,
-        relationExtensions:
-            (json_['relationExtensions'] as core.List?)
-                ?.map((value) => value as core.Map<core.String, core.dynamic>)
-                .toList(),
+        relationExtensions: (json_['relationExtensions'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (debugString != null) 'debugString': debugString!,
-    if (errorCode != null) 'errorCode': errorCode!,
-    if (linked != null) 'linked': linked!,
-    if (maxAge != null) 'maxAge': maxAge!,
-    if (relationExtensions != null) 'relationExtensions': relationExtensions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final debugString = this.debugString;
+    final errorCode = this.errorCode;
+    final linked = this.linked;
+    final maxAge = this.maxAge;
+    final relationExtensions = this.relationExtensions;
+    return {
+      'debugString': ?debugString,
+      'errorCode': ?errorCode,
+      'linked': ?linked,
+      'maxAge': ?maxAge,
+      'relationExtensions': ?relationExtensions,
+    };
+  }
 }
 
 /// Response message for the List call.
@@ -734,27 +747,31 @@ class ListResponse {
   ListResponse.fromJson(core.Map json_)
     : this(
         debugString: json_['debugString'] as core.String?,
-        errorCode:
-            (json_['errorCode'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        errorCode: (json_['errorCode'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         maxAge: json_['maxAge'] as core.String?,
-        statements:
-            (json_['statements'] as core.List?)
-                ?.map(
-                  (value) => Statement.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        statements: (json_['statements'] as core.List?)
+            ?.map(
+              (value) => Statement.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (debugString != null) 'debugString': debugString!,
-    if (errorCode != null) 'errorCode': errorCode!,
-    if (maxAge != null) 'maxAge': maxAge!,
-    if (statements != null) 'statements': statements!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final debugString = this.debugString;
+    final errorCode = this.errorCode;
+    final maxAge = this.maxAge;
+    final statements = this.statements;
+    return {
+      'debugString': ?debugString,
+      'errorCode': ?errorCode,
+      'maxAge': ?maxAge,
+      'statements': ?statements,
+    };
+  }
 }
 
 /// Describes a reliable statement that has been made about the relationship
@@ -811,31 +828,33 @@ class Statement {
   Statement.fromJson(core.Map json_)
     : this(
         relation: json_['relation'] as core.String?,
-        relationExtensions:
-            json_.containsKey('relationExtensions')
-                ? json_['relationExtensions']
-                    as core.Map<core.String, core.dynamic>
-                : null,
-        source:
-            json_.containsKey('source')
-                ? Asset.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        target:
-            json_.containsKey('target')
-                ? Asset.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        relationExtensions: json_.containsKey('relationExtensions')
+            ? json_['relationExtensions'] as core.Map<core.String, core.dynamic>
+            : null,
+        source: json_.containsKey('source')
+            ? Asset.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        target: json_.containsKey('target')
+            ? Asset.fromJson(
+                json_['target'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (relation != null) 'relation': relation!,
-    if (relationExtensions != null) 'relationExtensions': relationExtensions!,
-    if (source != null) 'source': source!,
-    if (target != null) 'target': target!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final relation = this.relation;
+    final relationExtensions = this.relationExtensions;
+    final source = this.source;
+    final target = this.target;
+    return {
+      'relation': ?relation,
+      'relationExtensions': ?relationExtensions,
+      'source': ?source,
+      'target': ?target,
+    };
+  }
 }
 
 /// A single statement to check in a bulk call using BulkCheck.
@@ -865,25 +884,24 @@ class StatementTemplate {
   StatementTemplate.fromJson(core.Map json_)
     : this(
         relation: json_['relation'] as core.String?,
-        source:
-            json_.containsKey('source')
-                ? Asset.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        target:
-            json_.containsKey('target')
-                ? Asset.fromJson(
-                  json_['target'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        source: json_.containsKey('source')
+            ? Asset.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        target: json_.containsKey('target')
+            ? Asset.fromJson(
+                json_['target'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (relation != null) 'relation': relation!,
-    if (source != null) 'source': source!,
-    if (target != null) 'target': target!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final relation = this.relation;
+    final source = this.source;
+    final target = this.target;
+    return {'relation': ?relation, 'source': ?source, 'target': ?target};
+  }
 }
 
 /// Describes a web asset.
@@ -911,7 +929,8 @@ class WebAsset {
 
   WebAsset.fromJson(core.Map json_) : this(site: json_['site'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (site != null) 'site': site!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final site = this.site;
+    return {'site': ?site};
+  }
 }

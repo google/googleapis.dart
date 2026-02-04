@@ -107,8 +107,8 @@ class ItemsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (projection != null) 'projection': [projection],
-      if ($fields != null) 'fields': [$fields],
+      'projection': ?projection == null ? null : [projection],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -147,8 +147,8 @@ class ItemsResource {
     commons.Media? uploadMedia,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (publisherEmail != null) 'publisherEmail': [publisherEmail],
-      if ($fields != null) 'fields': [$fields],
+      'publisherEmail': ?publisherEmail == null ? null : [publisherEmail],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     core.String url_;
@@ -209,10 +209,14 @@ class ItemsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (deployPercentage != null) 'deployPercentage': ['${deployPercentage}'],
-      if (publishTarget != null) 'publishTarget': [publishTarget],
-      if (reviewExemption != null) 'reviewExemption': ['${reviewExemption}'],
-      if ($fields != null) 'fields': [$fields],
+      'deployPercentage': ?deployPercentage == null
+          ? null
+          : ['${deployPercentage}'],
+      'publishTarget': ?publishTarget == null ? null : [publishTarget],
+      'reviewExemption': ?reviewExemption == null
+          ? null
+          : ['${reviewExemption}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -257,7 +261,7 @@ class ItemsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     core.String url_;
@@ -323,27 +327,34 @@ class Item {
     : this(
         crxVersion: json_['crxVersion'] as core.String?,
         id: json_['id'] as core.String?,
-        itemError:
-            (json_['itemError'] as core.List?)
-                ?.map(
-                  (value) => ItemError.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        itemError: (json_['itemError'] as core.List?)
+            ?.map(
+              (value) => ItemError.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         publicKey: json_['publicKey'] as core.String?,
         uploadState: json_['uploadState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (crxVersion != null) 'crxVersion': crxVersion!,
-    if (id != null) 'id': id!,
-    if (itemError != null) 'itemError': itemError!,
-    if (kind != null) 'kind': kind!,
-    if (publicKey != null) 'publicKey': publicKey!,
-    if (uploadState != null) 'uploadState': uploadState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final crxVersion = this.crxVersion;
+    final id = this.id;
+    final itemError = this.itemError;
+    final kind = this.kind;
+    final publicKey = this.publicKey;
+    final uploadState = this.uploadState;
+    return {
+      'crxVersion': ?crxVersion,
+      'id': ?id,
+      'itemError': ?itemError,
+      'kind': ?kind,
+      'publicKey': ?publicKey,
+      'uploadState': ?uploadState,
+    };
+  }
 }
 
 class Item2 {
@@ -369,22 +380,26 @@ class Item2 {
     : this(
         itemId: json_['item_id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        status:
-            (json_['status'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        statusDetail:
-            (json_['statusDetail'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        status: (json_['status'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        statusDetail: (json_['statusDetail'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (itemId != null) 'item_id': itemId!,
-    if (kind != null) 'kind': kind!,
-    if (status != null) 'status': status!,
-    if (statusDetail != null) 'statusDetail': statusDetail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final itemId = this.itemId;
+    final kind = this.kind;
+    final status = this.status;
+    final statusDetail = this.statusDetail;
+    return {
+      'item_id': ?itemId,
+      'kind': ?kind,
+      'status': ?status,
+      'statusDetail': ?statusDetail,
+    };
+  }
 }
 
 /// Error of the item
@@ -403,10 +418,11 @@ class ItemError {
         errorDetail: json_['error_detail'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorCode != null) 'error_code': errorCode!,
-    if (errorDetail != null) 'error_detail': errorDetail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorCode = this.errorCode;
+    final errorDetail = this.errorDetail;
+    return {'error_code': ?errorCode, 'error_detail': ?errorDetail};
+  }
 }
 
 class PublishRequest {
@@ -440,9 +456,14 @@ class PublishRequest {
         target: json_['target'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployPercentage != null) 'deployPercentage': deployPercentage!,
-    if (reviewExemption != null) 'reviewExemption': reviewExemption!,
-    if (target != null) 'target': target!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployPercentage = this.deployPercentage;
+    final reviewExemption = this.reviewExemption;
+    final target = this.target;
+    return {
+      'deployPercentage': ?deployPercentage,
+      'reviewExemption': ?reviewExemption,
+      'target': ?target,
+    };
+  }
 }

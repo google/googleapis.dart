@@ -113,7 +113,7 @@ class BillingAccountsBudgetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/budgets';
@@ -154,7 +154,7 @@ class BillingAccountsBudgetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -197,7 +197,7 @@ class BillingAccountsBudgetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -259,10 +259,10 @@ class BillingAccountsBudgetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (scope != null) 'scope': [scope],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'scope': ?scope == null ? null : [scope],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/budgets';
@@ -317,8 +317,8 @@ class BillingAccountsBudgetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -414,49 +414,55 @@ class GoogleCloudBillingBudgetsV1Budget {
 
   GoogleCloudBillingBudgetsV1Budget.fromJson(core.Map json_)
     : this(
-        amount:
-            json_.containsKey('amount')
-                ? GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(
-                  json_['amount'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        budgetFilter:
-            json_.containsKey('budgetFilter')
-                ? GoogleCloudBillingBudgetsV1Filter.fromJson(
-                  json_['budgetFilter'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        amount: json_.containsKey('amount')
+            ? GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(
+                json_['amount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        budgetFilter: json_.containsKey('budgetFilter')
+            ? GoogleCloudBillingBudgetsV1Filter.fromJson(
+                json_['budgetFilter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
-        notificationsRule:
-            json_.containsKey('notificationsRule')
-                ? GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(
-                  json_['notificationsRule']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        notificationsRule: json_.containsKey('notificationsRule')
+            ? GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(
+                json_['notificationsRule']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         ownershipScope: json_['ownershipScope'] as core.String?,
-        thresholdRules:
-            (json_['thresholdRules'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        thresholdRules: (json_['thresholdRules'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (amount != null) 'amount': amount!,
-    if (budgetFilter != null) 'budgetFilter': budgetFilter!,
-    if (displayName != null) 'displayName': displayName!,
-    if (etag != null) 'etag': etag!,
-    if (name != null) 'name': name!,
-    if (notificationsRule != null) 'notificationsRule': notificationsRule!,
-    if (ownershipScope != null) 'ownershipScope': ownershipScope!,
-    if (thresholdRules != null) 'thresholdRules': thresholdRules!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final amount = this.amount;
+    final budgetFilter = this.budgetFilter;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final name = this.name;
+    final notificationsRule = this.notificationsRule;
+    final ownershipScope = this.ownershipScope;
+    final thresholdRules = this.thresholdRules;
+    return {
+      'amount': ?amount,
+      'budgetFilter': ?budgetFilter,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'name': ?name,
+      'notificationsRule': ?notificationsRule,
+      'ownershipScope': ?ownershipScope,
+      'thresholdRules': ?thresholdRules,
+    };
+  }
 }
 
 /// The budgeted amount for each usage period.
@@ -483,26 +489,27 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
 
   GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(core.Map json_)
     : this(
-        lastPeriodAmount:
-            json_.containsKey('lastPeriodAmount')
-                ? GoogleCloudBillingBudgetsV1LastPeriodAmount.fromJson(
-                  json_['lastPeriodAmount']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        specifiedAmount:
-            json_.containsKey('specifiedAmount')
-                ? GoogleTypeMoney.fromJson(
-                  json_['specifiedAmount']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        lastPeriodAmount: json_.containsKey('lastPeriodAmount')
+            ? GoogleCloudBillingBudgetsV1LastPeriodAmount.fromJson(
+                json_['lastPeriodAmount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        specifiedAmount: json_.containsKey('specifiedAmount')
+            ? GoogleTypeMoney.fromJson(
+                json_['specifiedAmount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lastPeriodAmount != null) 'lastPeriodAmount': lastPeriodAmount!,
-    if (specifiedAmount != null) 'specifiedAmount': specifiedAmount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lastPeriodAmount = this.lastPeriodAmount;
+    final specifiedAmount = this.specifiedAmount;
+    return {
+      'lastPeriodAmount': ?lastPeriodAmount,
+      'specifiedAmount': ?specifiedAmount,
+    };
+  }
 }
 
 /// All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
@@ -524,24 +531,23 @@ class GoogleCloudBillingBudgetsV1CustomPeriod {
 
   GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(core.Map json_)
     : this(
-        endDate:
-            json_.containsKey('endDate')
-                ? GoogleTypeDate.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        startDate:
-            json_.containsKey('startDate')
-                ? GoogleTypeDate.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        endDate: json_.containsKey('endDate')
+            ? GoogleTypeDate.fromJson(
+                json_['endDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startDate: json_.containsKey('startDate')
+            ? GoogleTypeDate.fromJson(
+                json_['startDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endDate != null) 'endDate': endDate!,
-    if (startDate != null) 'startDate': startDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endDate = this.endDate;
+    final startDate = this.startDate;
+    return {'endDate': ?endDate, 'startDate': ?startDate};
+  }
 }
 
 /// A filter for a budget, limiting the scope of the cost to calculate.
@@ -670,50 +676,54 @@ class GoogleCloudBillingBudgetsV1Filter {
   GoogleCloudBillingBudgetsV1Filter.fromJson(core.Map json_)
     : this(
         calendarPeriod: json_['calendarPeriod'] as core.String?,
-        creditTypes:
-            (json_['creditTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        creditTypes: (json_['creditTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         creditTypesTreatment: json_['creditTypesTreatment'] as core.String?,
-        customPeriod:
-            json_.containsKey('customPeriod')
-                ? GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(
-                  json_['customPeriod'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        customPeriod: json_.containsKey('customPeriod')
+            ? GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(
+                json_['customPeriod'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.List),
         ),
-        projects:
-            (json_['projects'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        resourceAncestors:
-            (json_['resourceAncestors'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        services:
-            (json_['services'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        subaccounts:
-            (json_['subaccounts'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        projects: (json_['projects'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        resourceAncestors: (json_['resourceAncestors'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        services: (json_['services'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        subaccounts: (json_['subaccounts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (calendarPeriod != null) 'calendarPeriod': calendarPeriod!,
-    if (creditTypes != null) 'creditTypes': creditTypes!,
-    if (creditTypesTreatment != null)
-      'creditTypesTreatment': creditTypesTreatment!,
-    if (customPeriod != null) 'customPeriod': customPeriod!,
-    if (labels != null) 'labels': labels!,
-    if (projects != null) 'projects': projects!,
-    if (resourceAncestors != null) 'resourceAncestors': resourceAncestors!,
-    if (services != null) 'services': services!,
-    if (subaccounts != null) 'subaccounts': subaccounts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final calendarPeriod = this.calendarPeriod;
+    final creditTypes = this.creditTypes;
+    final creditTypesTreatment = this.creditTypesTreatment;
+    final customPeriod = this.customPeriod;
+    final labels = this.labels;
+    final projects = this.projects;
+    final resourceAncestors = this.resourceAncestors;
+    final services = this.services;
+    final subaccounts = this.subaccounts;
+    return {
+      'calendarPeriod': ?calendarPeriod,
+      'creditTypes': ?creditTypes,
+      'creditTypesTreatment': ?creditTypesTreatment,
+      'customPeriod': ?customPeriod,
+      'labels': ?labels,
+      'projects': ?projects,
+      'resourceAncestors': ?resourceAncestors,
+      'services': ?services,
+      'subaccounts': ?subaccounts,
+    };
+  }
 }
 
 /// Describes a budget amount targeted to the last Filter.calendar_period spend.
@@ -739,21 +749,21 @@ class GoogleCloudBillingBudgetsV1ListBudgetsResponse {
 
   GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(core.Map json_)
     : this(
-        budgets:
-            (json_['budgets'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudBillingBudgetsV1Budget.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        budgets: (json_['budgets'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudBillingBudgetsV1Budget.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (budgets != null) 'budgets': budgets!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final budgets = this.budgets;
+    final nextPageToken = this.nextPageToken;
+    return {'budgets': ?budgets, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// NotificationsRule defines notifications that are sent based on budget spend
@@ -854,16 +864,20 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
         schemaVersion: json_['schemaVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disableDefaultIamRecipients != null)
-      'disableDefaultIamRecipients': disableDefaultIamRecipients!,
-    if (enableProjectLevelRecipients != null)
-      'enableProjectLevelRecipients': enableProjectLevelRecipients!,
-    if (monitoringNotificationChannels != null)
-      'monitoringNotificationChannels': monitoringNotificationChannels!,
-    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-    if (schemaVersion != null) 'schemaVersion': schemaVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final disableDefaultIamRecipients = this.disableDefaultIamRecipients;
+    final enableProjectLevelRecipients = this.enableProjectLevelRecipients;
+    final monitoringNotificationChannels = this.monitoringNotificationChannels;
+    final pubsubTopic = this.pubsubTopic;
+    final schemaVersion = this.schemaVersion;
+    return {
+      'disableDefaultIamRecipients': ?disableDefaultIamRecipients,
+      'enableProjectLevelRecipients': ?enableProjectLevelRecipients,
+      'monitoringNotificationChannels': ?monitoringNotificationChannels,
+      'pubsubTopic': ?pubsubTopic,
+      'schemaVersion': ?schemaVersion,
+    };
+  }
 }
 
 /// ThresholdRule contains the definition of a threshold.
@@ -915,10 +929,11 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
         thresholdPercent: (json_['thresholdPercent'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (spendBasis != null) 'spendBasis': spendBasis!,
-    if (thresholdPercent != null) 'thresholdPercent': thresholdPercent!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final spendBasis = this.spendBasis;
+    final thresholdPercent = this.thresholdPercent;
+    return {'spendBasis': ?spendBasis, 'thresholdPercent': ?thresholdPercent};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

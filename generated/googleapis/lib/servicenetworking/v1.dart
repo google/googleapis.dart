@@ -117,7 +117,7 @@ class OperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -154,7 +154,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -189,7 +189,7 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -244,12 +244,13 @@ class OperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -320,7 +321,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':addSubnetwork';
@@ -362,7 +363,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -405,7 +406,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -454,7 +455,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':searchRange';
@@ -501,7 +502,7 @@ class ServicesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':validate';
@@ -559,7 +560,7 @@ class ServicesConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/connections';
@@ -604,7 +605,7 @@ class ServicesConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -653,8 +654,8 @@ class ServicesConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (network != null) 'network': [network],
-      if ($fields != null) 'fields': [$fields],
+      'network': ?network == null ? null : [network],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/connections';
@@ -708,9 +709,9 @@ class ServicesConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (force != null) 'force': ['${force}'],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'force': ?force == null ? null : ['${force}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -760,7 +761,7 @@ class ServicesDnsRecordSetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsRecordSets:add';
@@ -813,11 +814,11 @@ class ServicesDnsRecordSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (consumerNetwork != null) 'consumerNetwork': [consumerNetwork],
-      if (domain != null) 'domain': [domain],
-      if (type != null) 'type': [type],
-      if (zone != null) 'zone': [zone],
-      if ($fields != null) 'fields': [$fields],
+      'consumerNetwork': ?consumerNetwork == null ? null : [consumerNetwork],
+      'domain': ?domain == null ? null : [domain],
+      'type': ?type == null ? null : [type],
+      'zone': ?zone == null ? null : [zone],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsRecordSets:get';
@@ -868,9 +869,9 @@ class ServicesDnsRecordSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (consumerNetwork != null) 'consumerNetwork': [consumerNetwork],
-      if (zone != null) 'zone': [zone],
-      if ($fields != null) 'fields': [$fields],
+      'consumerNetwork': ?consumerNetwork == null ? null : [consumerNetwork],
+      'zone': ?zone == null ? null : [zone],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsRecordSets:list';
@@ -914,7 +915,7 @@ class ServicesDnsRecordSetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -958,7 +959,7 @@ class ServicesDnsRecordSetsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1009,7 +1010,7 @@ class ServicesDnsZonesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsZones:add';
@@ -1053,7 +1054,7 @@ class ServicesDnsZonesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsZones:remove';
@@ -1136,9 +1137,10 @@ class ServicesProjectsGlobalNetworksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (includeUsedIpRanges != null)
-        'includeUsedIpRanges': ['${includeUsedIpRanges}'],
-      if ($fields != null) 'fields': [$fields],
+      'includeUsedIpRanges': ?includeUsedIpRanges == null
+          ? null
+          : ['${includeUsedIpRanges}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1185,7 +1187,7 @@ class ServicesProjectsGlobalNetworksResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/vpcServiceControls';
@@ -1237,7 +1239,7 @@ class ServicesProjectsGlobalNetworksResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1289,7 +1291,7 @@ class ServicesProjectsGlobalNetworksDnsZonesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1338,7 +1340,7 @@ class ServicesProjectsGlobalNetworksDnsZonesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsZones:list';
@@ -1398,7 +1400,7 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/peeredDnsDomains';
@@ -1443,7 +1445,7 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1486,7 +1488,7 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/peeredDnsDomains';
@@ -1540,7 +1542,7 @@ class ServicesRolesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/roles:add';
@@ -1583,20 +1585,24 @@ class AddDnsRecordSetRequest {
   AddDnsRecordSetRequest.fromJson(core.Map json_)
     : this(
         consumerNetwork: json_['consumerNetwork'] as core.String?,
-        dnsRecordSet:
-            json_.containsKey('dnsRecordSet')
-                ? DnsRecordSet.fromJson(
-                  json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dnsRecordSet: json_.containsKey('dnsRecordSet')
+            ? DnsRecordSet.fromJson(
+                json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-    if (dnsRecordSet != null) 'dnsRecordSet': dnsRecordSet!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerNetwork = this.consumerNetwork;
+    final dnsRecordSet = this.dnsRecordSet;
+    final zone = this.zone;
+    return {
+      'consumerNetwork': ?consumerNetwork,
+      'dnsRecordSet': ?dnsRecordSet,
+      'zone': ?zone,
+    };
+  }
 }
 
 /// Request to add a private managed DNS zone in the shared producer host
@@ -1637,11 +1643,16 @@ class AddDnsZoneRequest {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-    if (dnsSuffix != null) 'dnsSuffix': dnsSuffix!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerNetwork = this.consumerNetwork;
+    final dnsSuffix = this.dnsSuffix;
+    final name = this.name;
+    return {
+      'consumerNetwork': ?consumerNetwork,
+      'dnsSuffix': ?dnsSuffix,
+      'name': ?name,
+    };
+  }
 }
 
 /// Request for AddRoles to allow Service Producers to add roles in the shared
@@ -1665,20 +1676,23 @@ class AddRolesRequest {
   AddRolesRequest.fromJson(core.Map json_)
     : this(
         consumerNetwork: json_['consumerNetwork'] as core.String?,
-        policyBinding:
-            (json_['policyBinding'] as core.List?)
-                ?.map(
-                  (value) => PolicyBinding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        policyBinding: (json_['policyBinding'] as core.List?)
+            ?.map(
+              (value) => PolicyBinding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-    if (policyBinding != null) 'policyBinding': policyBinding!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerNetwork = this.consumerNetwork;
+    final policyBinding = this.policyBinding;
+    return {
+      'consumerNetwork': ?consumerNetwork,
+      'policyBinding': ?policyBinding,
+    };
+  }
 }
 
 /// Request to create a subnetwork in a previously peered service network.
@@ -1904,61 +1918,74 @@ class AddSubnetworkRequest {
         purpose: json_['purpose'] as core.String?,
         region: json_['region'] as core.String?,
         requestedAddress: json_['requestedAddress'] as core.String?,
-        requestedRanges:
-            (json_['requestedRanges'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        requestedRanges: (json_['requestedRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
-        secondaryIpRangeSpecs:
-            (json_['secondaryIpRangeSpecs'] as core.List?)
-                ?.map(
-                  (value) => SecondaryIpRangeSpec.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        secondaryIpRangeSpecs: (json_['secondaryIpRangeSpecs'] as core.List?)
+            ?.map(
+              (value) => SecondaryIpRangeSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         skipRequestedAddressValidation:
             json_['skipRequestedAddressValidation'] as core.bool?,
         subnetwork: json_['subnetwork'] as core.String?,
-        subnetworkUsers:
-            (json_['subnetworkUsers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        subnetworkUsers: (json_['subnetworkUsers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         useCustomComputeIdempotencyWindow:
             json_['useCustomComputeIdempotencyWindow'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowSubnetCidrRoutesOverlap != null)
-      'allowSubnetCidrRoutesOverlap': allowSubnetCidrRoutesOverlap!,
-    if (checkServiceNetworkingUsePermission != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowSubnetCidrRoutesOverlap = this.allowSubnetCidrRoutesOverlap;
+    final checkServiceNetworkingUsePermission =
+        this.checkServiceNetworkingUsePermission;
+    final computeIdempotencyWindow = this.computeIdempotencyWindow;
+    final consumer = this.consumer;
+    final consumerNetwork = this.consumerNetwork;
+    final description = this.description;
+    final internalRange = this.internalRange;
+    final ipPrefixLength = this.ipPrefixLength;
+    final outsideAllocationPublicIpRange = this.outsideAllocationPublicIpRange;
+    final privateIpv6GoogleAccess = this.privateIpv6GoogleAccess;
+    final purpose = this.purpose;
+    final region = this.region;
+    final requestedAddress = this.requestedAddress;
+    final requestedRanges = this.requestedRanges;
+    final role = this.role;
+    final secondaryIpRangeSpecs = this.secondaryIpRangeSpecs;
+    final skipRequestedAddressValidation = this.skipRequestedAddressValidation;
+    final subnetwork = this.subnetwork;
+    final subnetworkUsers = this.subnetworkUsers;
+    final useCustomComputeIdempotencyWindow =
+        this.useCustomComputeIdempotencyWindow;
+    return {
+      'allowSubnetCidrRoutesOverlap': ?allowSubnetCidrRoutesOverlap,
       'checkServiceNetworkingUsePermission':
-          checkServiceNetworkingUsePermission!,
-    if (computeIdempotencyWindow != null)
-      'computeIdempotencyWindow': computeIdempotencyWindow!,
-    if (consumer != null) 'consumer': consumer!,
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-    if (description != null) 'description': description!,
-    if (internalRange != null) 'internalRange': internalRange!,
-    if (ipPrefixLength != null) 'ipPrefixLength': ipPrefixLength!,
-    if (outsideAllocationPublicIpRange != null)
-      'outsideAllocationPublicIpRange': outsideAllocationPublicIpRange!,
-    if (privateIpv6GoogleAccess != null)
-      'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
-    if (purpose != null) 'purpose': purpose!,
-    if (region != null) 'region': region!,
-    if (requestedAddress != null) 'requestedAddress': requestedAddress!,
-    if (requestedRanges != null) 'requestedRanges': requestedRanges!,
-    if (role != null) 'role': role!,
-    if (secondaryIpRangeSpecs != null)
-      'secondaryIpRangeSpecs': secondaryIpRangeSpecs!,
-    if (skipRequestedAddressValidation != null)
-      'skipRequestedAddressValidation': skipRequestedAddressValidation!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-    if (subnetworkUsers != null) 'subnetworkUsers': subnetworkUsers!,
-    if (useCustomComputeIdempotencyWindow != null)
-      'useCustomComputeIdempotencyWindow': useCustomComputeIdempotencyWindow!,
-  };
+          ?checkServiceNetworkingUsePermission,
+      'computeIdempotencyWindow': ?computeIdempotencyWindow,
+      'consumer': ?consumer,
+      'consumerNetwork': ?consumerNetwork,
+      'description': ?description,
+      'internalRange': ?internalRange,
+      'ipPrefixLength': ?ipPrefixLength,
+      'outsideAllocationPublicIpRange': ?outsideAllocationPublicIpRange,
+      'privateIpv6GoogleAccess': ?privateIpv6GoogleAccess,
+      'purpose': ?purpose,
+      'region': ?region,
+      'requestedAddress': ?requestedAddress,
+      'requestedRanges': ?requestedRanges,
+      'role': ?role,
+      'secondaryIpRangeSpecs': ?secondaryIpRangeSpecs,
+      'skipRequestedAddressValidation': ?skipRequestedAddressValidation,
+      'subnetwork': ?subnetwork,
+      'subnetworkUsers': ?subnetworkUsers,
+      'useCustomComputeIdempotencyWindow': ?useCustomComputeIdempotencyWindow,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1990,11 +2017,16 @@ class CloudSQLConfig {
         umbrellaProject: json_['umbrellaProject'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (service != null) 'service': service!,
-    if (umbrellaNetwork != null) 'umbrellaNetwork': umbrellaNetwork!,
-    if (umbrellaProject != null) 'umbrellaProject': umbrellaProject!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final service = this.service;
+    final umbrellaNetwork = this.umbrellaNetwork;
+    final umbrellaProject = this.umbrellaProject;
+    return {
+      'service': ?service,
+      'umbrellaNetwork': ?umbrellaNetwork,
+      'umbrellaProject': ?umbrellaProject,
+    };
+  }
 }
 
 /// Represents a private connection resource.
@@ -2048,20 +2080,24 @@ class Connection {
     : this(
         network: json_['network'] as core.String?,
         peering: json_['peering'] as core.String?,
-        reservedPeeringRanges:
-            (json_['reservedPeeringRanges'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        reservedPeeringRanges: (json_['reservedPeeringRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (network != null) 'network': network!,
-    if (peering != null) 'peering': peering!,
-    if (reservedPeeringRanges != null)
-      'reservedPeeringRanges': reservedPeeringRanges!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final network = this.network;
+    final peering = this.peering;
+    final reservedPeeringRanges = this.reservedPeeringRanges;
+    final service = this.service;
+    return {
+      'network': ?network,
+      'peering': ?peering,
+      'reservedPeeringRanges': ?reservedPeeringRanges,
+      'service': ?service,
+    };
+  }
 }
 
 /// Configuration information for a private service access connection.
@@ -2142,14 +2178,13 @@ class ConsumerConfig {
 
   ConsumerConfig.fromJson(core.Map json_)
     : this(
-        cloudsqlConfigs:
-            (json_['cloudsqlConfigs'] as core.List?)
-                ?.map(
-                  (value) => CloudSQLConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cloudsqlConfigs: (json_['cloudsqlConfigs'] as core.List?)
+            ?.map(
+              (value) => CloudSQLConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         consumerExportCustomRoutes:
             json_['consumerExportCustomRoutes'] as core.bool?,
         consumerExportSubnetRoutesWithPublicIp:
@@ -2167,51 +2202,60 @@ class ConsumerConfig {
         producerImportSubnetRoutesWithPublicIp:
             json_['producerImportSubnetRoutesWithPublicIp'] as core.bool?,
         producerNetwork: json_['producerNetwork'] as core.String?,
-        reservedRanges:
-            (json_['reservedRanges'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudServicenetworkingV1ConsumerConfigReservedRange.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        usedIpRanges:
-            (json_['usedIpRanges'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        reservedRanges: (json_['reservedRanges'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudServicenetworkingV1ConsumerConfigReservedRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        usedIpRanges: (json_['usedIpRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         vpcScReferenceArchitectureEnabled:
             json_['vpcScReferenceArchitectureEnabled'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudsqlConfigs != null) 'cloudsqlConfigs': cloudsqlConfigs!,
-    if (consumerExportCustomRoutes != null)
-      'consumerExportCustomRoutes': consumerExportCustomRoutes!,
-    if (consumerExportSubnetRoutesWithPublicIp != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudsqlConfigs = this.cloudsqlConfigs;
+    final consumerExportCustomRoutes = this.consumerExportCustomRoutes;
+    final consumerExportSubnetRoutesWithPublicIp =
+        this.consumerExportSubnetRoutesWithPublicIp;
+    final consumerImportCustomRoutes = this.consumerImportCustomRoutes;
+    final consumerImportSubnetRoutesWithPublicIp =
+        this.consumerImportSubnetRoutesWithPublicIp;
+    final producerExportCustomRoutes = this.producerExportCustomRoutes;
+    final producerExportSubnetRoutesWithPublicIp =
+        this.producerExportSubnetRoutesWithPublicIp;
+    final producerImportCustomRoutes = this.producerImportCustomRoutes;
+    final producerImportSubnetRoutesWithPublicIp =
+        this.producerImportSubnetRoutesWithPublicIp;
+    final producerNetwork = this.producerNetwork;
+    final reservedRanges = this.reservedRanges;
+    final usedIpRanges = this.usedIpRanges;
+    final vpcScReferenceArchitectureEnabled =
+        this.vpcScReferenceArchitectureEnabled;
+    return {
+      'cloudsqlConfigs': ?cloudsqlConfigs,
+      'consumerExportCustomRoutes': ?consumerExportCustomRoutes,
       'consumerExportSubnetRoutesWithPublicIp':
-          consumerExportSubnetRoutesWithPublicIp!,
-    if (consumerImportCustomRoutes != null)
-      'consumerImportCustomRoutes': consumerImportCustomRoutes!,
-    if (consumerImportSubnetRoutesWithPublicIp != null)
+          ?consumerExportSubnetRoutesWithPublicIp,
+      'consumerImportCustomRoutes': ?consumerImportCustomRoutes,
       'consumerImportSubnetRoutesWithPublicIp':
-          consumerImportSubnetRoutesWithPublicIp!,
-    if (producerExportCustomRoutes != null)
-      'producerExportCustomRoutes': producerExportCustomRoutes!,
-    if (producerExportSubnetRoutesWithPublicIp != null)
+          ?consumerImportSubnetRoutesWithPublicIp,
+      'producerExportCustomRoutes': ?producerExportCustomRoutes,
       'producerExportSubnetRoutesWithPublicIp':
-          producerExportSubnetRoutesWithPublicIp!,
-    if (producerImportCustomRoutes != null)
-      'producerImportCustomRoutes': producerImportCustomRoutes!,
-    if (producerImportSubnetRoutesWithPublicIp != null)
+          ?producerExportSubnetRoutesWithPublicIp,
+      'producerImportCustomRoutes': ?producerImportCustomRoutes,
       'producerImportSubnetRoutesWithPublicIp':
-          producerImportSubnetRoutesWithPublicIp!,
-    if (producerNetwork != null) 'producerNetwork': producerNetwork!,
-    if (reservedRanges != null) 'reservedRanges': reservedRanges!,
-    if (usedIpRanges != null) 'usedIpRanges': usedIpRanges!,
-    if (vpcScReferenceArchitectureEnabled != null)
-      'vpcScReferenceArchitectureEnabled': vpcScReferenceArchitectureEnabled!,
-  };
+          ?producerImportSubnetRoutesWithPublicIp,
+      'producerNetwork': ?producerNetwork,
+      'reservedRanges': ?reservedRanges,
+      'usedIpRanges': ?usedIpRanges,
+      'vpcScReferenceArchitectureEnabled': ?vpcScReferenceArchitectureEnabled,
+    };
+  }
 }
 
 /// Represents a consumer project.
@@ -2229,9 +2273,10 @@ class ConsumerProject {
   ConsumerProject.fromJson(core.Map json_)
     : this(projectNum: json_['projectNum'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (projectNum != null) 'projectNum': projectNum!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final projectNum = this.projectNum;
+    return {'projectNum': ?projectNum};
+  }
 }
 
 /// Request to delete a private service access connection.
@@ -2252,9 +2297,10 @@ class DeleteConnectionRequest {
   DeleteConnectionRequest.fromJson(core.Map json_)
     : this(consumerNetwork: json_['consumerNetwork'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerNetwork = this.consumerNetwork;
+    return {'consumerNetwork': ?consumerNetwork};
+  }
 }
 
 /// Request to disable VPC service controls.
@@ -2289,21 +2335,21 @@ class DnsRecordSet {
 
   DnsRecordSet.fromJson(core.Map json_)
     : this(
-        data:
-            (json_['data'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        data: (json_['data'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         domain: json_['domain'] as core.String?,
         ttl: json_['ttl'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (domain != null) 'domain': domain!,
-    if (ttl != null) 'ttl': ttl!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final domain = this.domain;
+    final ttl = this.ttl;
+    final type = this.type;
+    return {'data': ?data, 'domain': ?domain, 'ttl': ?ttl, 'type': ?type};
+  }
 }
 
 /// Represents a DNS zone resource.
@@ -2328,10 +2374,11 @@ class DnsZone {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dnsSuffix != null) 'dnsSuffix': dnsSuffix!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dnsSuffix = this.dnsSuffix;
+    final name = this.name;
+    return {'dnsSuffix': ?dnsSuffix, 'name': ?name};
+  }
 }
 
 /// * Represents a pair of private and peering DNS zone resources.
@@ -2348,28 +2395,28 @@ class DnsZonePair {
 
   DnsZonePair.fromJson(core.Map json_)
     : this(
-        consumerPeeringZone:
-            json_.containsKey('consumerPeeringZone')
-                ? DnsZone.fromJson(
-                  json_['consumerPeeringZone']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        producerPrivateZone:
-            json_.containsKey('producerPrivateZone')
-                ? DnsZone.fromJson(
-                  json_['producerPrivateZone']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        consumerPeeringZone: json_.containsKey('consumerPeeringZone')
+            ? DnsZone.fromJson(
+                json_['consumerPeeringZone']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        producerPrivateZone: json_.containsKey('producerPrivateZone')
+            ? DnsZone.fromJson(
+                json_['producerPrivateZone']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerPeeringZone != null)
-      'consumerPeeringZone': consumerPeeringZone!,
-    if (producerPrivateZone != null)
-      'producerPrivateZone': producerPrivateZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerPeeringZone = this.consumerPeeringZone;
+    final producerPrivateZone = this.producerPrivateZone;
+    return {
+      'consumerPeeringZone': ?consumerPeeringZone,
+      'producerPrivateZone': ?producerPrivateZone,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2396,28 +2443,28 @@ class GetDnsZoneResponse {
 
   GetDnsZoneResponse.fromJson(core.Map json_)
     : this(
-        consumerPeeringZone:
-            json_.containsKey('consumerPeeringZone')
-                ? DnsZone.fromJson(
-                  json_['consumerPeeringZone']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        producerPrivateZone:
-            json_.containsKey('producerPrivateZone')
-                ? DnsZone.fromJson(
-                  json_['producerPrivateZone']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        consumerPeeringZone: json_.containsKey('consumerPeeringZone')
+            ? DnsZone.fromJson(
+                json_['consumerPeeringZone']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        producerPrivateZone: json_.containsKey('producerPrivateZone')
+            ? DnsZone.fromJson(
+                json_['producerPrivateZone']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerPeeringZone != null)
-      'consumerPeeringZone': consumerPeeringZone!,
-    if (producerPrivateZone != null)
-      'producerPrivateZone': producerPrivateZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerPeeringZone = this.consumerPeeringZone;
+    final producerPrivateZone = this.producerPrivateZone;
+    return {
+      'consumerPeeringZone': ?consumerPeeringZone,
+      'producerPrivateZone': ?producerPrivateZone,
+    };
+  }
 }
 
 /// Allocated IP address ranges for this private service access connection.
@@ -2449,11 +2496,16 @@ class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (ipPrefixLength != null) 'ipPrefixLength': ipPrefixLength!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final ipPrefixLength = this.ipPrefixLength;
+    final name = this.name;
+    return {
+      'address': ?address,
+      'ipPrefixLength': ?ipPrefixLength,
+      'name': ?name,
+    };
+  }
 }
 
 /// ListConnectionsResponse is the response to list peering states for the given
@@ -2466,19 +2518,19 @@ class ListConnectionsResponse {
 
   ListConnectionsResponse.fromJson(core.Map json_)
     : this(
-        connections:
-            (json_['connections'] as core.List?)
-                ?.map(
-                  (value) => Connection.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        connections: (json_['connections'] as core.List?)
+            ?.map(
+              (value) => Connection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connections != null) 'connections': connections!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final connections = this.connections;
+    return {'connections': ?connections};
+  }
 }
 
 /// Represents all DNS RecordSets associated with the producer network
@@ -2490,19 +2542,19 @@ class ListDnsRecordSetsResponse {
 
   ListDnsRecordSetsResponse.fromJson(core.Map json_)
     : this(
-        dnsRecordSets:
-            (json_['dnsRecordSets'] as core.List?)
-                ?.map(
-                  (value) => DnsRecordSet.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dnsRecordSets: (json_['dnsRecordSets'] as core.List?)
+            ?.map(
+              (value) => DnsRecordSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dnsRecordSets != null) 'dnsRecordSets': dnsRecordSets!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dnsRecordSets = this.dnsRecordSets;
+    return {'dnsRecordSets': ?dnsRecordSets};
+  }
 }
 
 /// Represents all DNS zones in the shared producer host project and the
@@ -2516,19 +2568,19 @@ class ListDnsZonesResponse {
 
   ListDnsZonesResponse.fromJson(core.Map json_)
     : this(
-        dnsZonePairs:
-            (json_['dnsZonePairs'] as core.List?)
-                ?.map(
-                  (value) => DnsZonePair.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dnsZonePairs: (json_['dnsZonePairs'] as core.List?)
+            ?.map(
+              (value) => DnsZonePair.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dnsZonePairs != null) 'dnsZonePairs': dnsZonePairs!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dnsZonePairs = this.dnsZonePairs;
+    return {'dnsZonePairs': ?dnsZonePairs};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -2556,25 +2608,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response to list peered DNS domains for a given connection.
@@ -2586,19 +2641,19 @@ class ListPeeredDnsDomainsResponse {
 
   ListPeeredDnsDomainsResponse.fromJson(core.Map json_)
     : this(
-        peeredDnsDomains:
-            (json_['peeredDnsDomains'] as core.List?)
-                ?.map(
-                  (value) => PeeredDnsDomain.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        peeredDnsDomains: (json_['peeredDnsDomains'] as core.List?)
+            ?.map(
+              (value) => PeeredDnsDomain.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (peeredDnsDomains != null) 'peeredDnsDomains': peeredDnsDomains!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final peeredDnsDomains = this.peeredDnsDomains;
+    return {'peeredDnsDomains': ?peeredDnsDomains};
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2649,30 +2704,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// DNS domain suffix for which requests originating in the producer VPC network
@@ -2700,10 +2759,11 @@ class PeeredDnsDomain {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dnsSuffix != null) 'dnsSuffix': dnsSuffix!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dnsSuffix = this.dnsSuffix;
+    final name = this.name;
+    return {'dnsSuffix': ?dnsSuffix, 'name': ?name};
+  }
 }
 
 /// Grouping of IAM role and IAM member.
@@ -2741,10 +2801,11 @@ class PolicyBinding {
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (member != null) 'member': member!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final member = this.member;
+    final role = this.role;
+    return {'member': ?member, 'role': ?role};
+  }
 }
 
 /// Represents a range reservation.
@@ -2799,32 +2860,34 @@ class RangeReservation {
   RangeReservation.fromJson(core.Map json_)
     : this(
         ipPrefixLength: json_['ipPrefixLength'] as core.int?,
-        requestedRanges:
-            (json_['requestedRanges'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        requestedRanges: (json_['requestedRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         secondaryRangeIpPrefixLengths:
             (json_['secondaryRangeIpPrefixLengths'] as core.List?)
                 ?.map((value) => value as core.int)
                 .toList(),
-        subnetworkCandidates:
-            (json_['subnetworkCandidates'] as core.List?)
-                ?.map(
-                  (value) => Subnetwork.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        subnetworkCandidates: (json_['subnetworkCandidates'] as core.List?)
+            ?.map(
+              (value) => Subnetwork.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipPrefixLength != null) 'ipPrefixLength': ipPrefixLength!,
-    if (requestedRanges != null) 'requestedRanges': requestedRanges!,
-    if (secondaryRangeIpPrefixLengths != null)
-      'secondaryRangeIpPrefixLengths': secondaryRangeIpPrefixLengths!,
-    if (subnetworkCandidates != null)
-      'subnetworkCandidates': subnetworkCandidates!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipPrefixLength = this.ipPrefixLength;
+    final requestedRanges = this.requestedRanges;
+    final secondaryRangeIpPrefixLengths = this.secondaryRangeIpPrefixLengths;
+    final subnetworkCandidates = this.subnetworkCandidates;
+    return {
+      'ipPrefixLength': ?ipPrefixLength,
+      'requestedRanges': ?requestedRanges,
+      'secondaryRangeIpPrefixLengths': ?secondaryRangeIpPrefixLengths,
+      'subnetworkCandidates': ?subnetworkCandidates,
+    };
+  }
 }
 
 /// Request to remove a record set from a private managed DNS zone in the shared
@@ -2862,20 +2925,24 @@ class RemoveDnsRecordSetRequest {
   RemoveDnsRecordSetRequest.fromJson(core.Map json_)
     : this(
         consumerNetwork: json_['consumerNetwork'] as core.String?,
-        dnsRecordSet:
-            json_.containsKey('dnsRecordSet')
-                ? DnsRecordSet.fromJson(
-                  json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dnsRecordSet: json_.containsKey('dnsRecordSet')
+            ? DnsRecordSet.fromJson(
+                json_['dnsRecordSet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-    if (dnsRecordSet != null) 'dnsRecordSet': dnsRecordSet!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerNetwork = this.consumerNetwork;
+    final dnsRecordSet = this.dnsRecordSet;
+    final zone = this.zone;
+    return {
+      'consumerNetwork': ?consumerNetwork,
+      'dnsRecordSet': ?dnsRecordSet,
+      'zone': ?zone,
+    };
+  }
 }
 
 /// Request to remove a private managed DNS zone in the shared producer host
@@ -2904,10 +2971,11 @@ class RemoveDnsZoneRequest {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerNetwork = this.consumerNetwork;
+    final name = this.name;
+    return {'consumerNetwork': ?consumerNetwork, 'name': ?name};
+  }
 }
 
 /// Request to search for an unused range within allocated ranges.
@@ -2939,10 +3007,11 @@ class SearchRangeRequest {
         network: json_['network'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipPrefixLength != null) 'ipPrefixLength': ipPrefixLength!,
-    if (network != null) 'network': network!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipPrefixLength = this.ipPrefixLength;
+    final network = this.network;
+    return {'ipPrefixLength': ?ipPrefixLength, 'network': ?network};
+  }
 }
 
 class SecondaryIpRange {
@@ -2960,10 +3029,11 @@ class SecondaryIpRange {
         rangeName: json_['rangeName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
-    if (rangeName != null) 'rangeName': rangeName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipCidrRange = this.ipCidrRange;
+    final rangeName = this.rangeName;
+    return {'ipCidrRange': ?ipCidrRange, 'rangeName': ?rangeName};
+  }
 }
 
 class SecondaryIpRangeSpec {
@@ -3018,13 +3088,18 @@ class SecondaryIpRangeSpec {
         requestedAddress: json_['requestedAddress'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipPrefixLength != null) 'ipPrefixLength': ipPrefixLength!,
-    if (outsideAllocationPublicIpRange != null)
-      'outsideAllocationPublicIpRange': outsideAllocationPublicIpRange!,
-    if (rangeName != null) 'rangeName': rangeName!,
-    if (requestedAddress != null) 'requestedAddress': requestedAddress!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipPrefixLength = this.ipPrefixLength;
+    final outsideAllocationPublicIpRange = this.outsideAllocationPublicIpRange;
+    final rangeName = this.rangeName;
+    final requestedAddress = this.requestedAddress;
+    return {
+      'ipPrefixLength': ?ipPrefixLength,
+      'outsideAllocationPublicIpRange': ?outsideAllocationPublicIpRange,
+      'rangeName': ?rangeName,
+      'requestedAddress': ?requestedAddress,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3079,24 +3154,31 @@ class Subnetwork {
         network: json_['network'] as core.String?,
         outsideAllocation: json_['outsideAllocation'] as core.bool?,
         region: json_['region'] as core.String?,
-        secondaryIpRanges:
-            (json_['secondaryIpRanges'] as core.List?)
-                ?.map(
-                  (value) => SecondaryIpRange.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        secondaryIpRanges: (json_['secondaryIpRanges'] as core.List?)
+            ?.map(
+              (value) => SecondaryIpRange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
-    if (name != null) 'name': name!,
-    if (network != null) 'network': network!,
-    if (outsideAllocation != null) 'outsideAllocation': outsideAllocation!,
-    if (region != null) 'region': region!,
-    if (secondaryIpRanges != null) 'secondaryIpRanges': secondaryIpRanges!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipCidrRange = this.ipCidrRange;
+    final name = this.name;
+    final network = this.network;
+    final outsideAllocation = this.outsideAllocation;
+    final region = this.region;
+    final secondaryIpRanges = this.secondaryIpRanges;
+    return {
+      'ipCidrRange': ?ipCidrRange,
+      'name': ?name,
+      'network': ?network,
+      'outsideAllocation': ?outsideAllocation,
+      'region': ?region,
+      'secondaryIpRanges': ?secondaryIpRanges,
+    };
+  }
 }
 
 /// Request to update the configuration of a service networking connection
@@ -3112,18 +3194,17 @@ class UpdateConsumerConfigRequest {
 
   UpdateConsumerConfigRequest.fromJson(core.Map json_)
     : this(
-        consumerConfig:
-            json_.containsKey('consumerConfig')
-                ? ConsumerConfig.fromJson(
-                  json_['consumerConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        consumerConfig: json_.containsKey('consumerConfig')
+            ? ConsumerConfig.fromJson(
+                json_['consumerConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerConfig != null) 'consumerConfig': consumerConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerConfig = this.consumerConfig;
+    return {'consumerConfig': ?consumerConfig};
+  }
 }
 
 /// Request to update a record set from a private managed DNS zone in the shared
@@ -3167,30 +3248,32 @@ class UpdateDnsRecordSetRequest {
   UpdateDnsRecordSetRequest.fromJson(core.Map json_)
     : this(
         consumerNetwork: json_['consumerNetwork'] as core.String?,
-        existingDnsRecordSet:
-            json_.containsKey('existingDnsRecordSet')
-                ? DnsRecordSet.fromJson(
-                  json_['existingDnsRecordSet']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        newDnsRecordSet:
-            json_.containsKey('newDnsRecordSet')
-                ? DnsRecordSet.fromJson(
-                  json_['newDnsRecordSet']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        existingDnsRecordSet: json_.containsKey('existingDnsRecordSet')
+            ? DnsRecordSet.fromJson(
+                json_['existingDnsRecordSet']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        newDnsRecordSet: json_.containsKey('newDnsRecordSet')
+            ? DnsRecordSet.fromJson(
+                json_['newDnsRecordSet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         zone: json_['zone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-    if (existingDnsRecordSet != null)
-      'existingDnsRecordSet': existingDnsRecordSet!,
-    if (newDnsRecordSet != null) 'newDnsRecordSet': newDnsRecordSet!,
-    if (zone != null) 'zone': zone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumerNetwork = this.consumerNetwork;
+    final existingDnsRecordSet = this.existingDnsRecordSet;
+    final newDnsRecordSet = this.newDnsRecordSet;
+    final zone = this.zone;
+    return {
+      'consumerNetwork': ?consumerNetwork,
+      'existingDnsRecordSet': ?existingDnsRecordSet,
+      'newDnsRecordSet': ?newDnsRecordSet,
+      'zone': ?zone,
+    };
+  }
 }
 
 class ValidateConsumerConfigRequest {
@@ -3239,32 +3322,36 @@ class ValidateConsumerConfigRequest {
         checkServiceNetworkingUsePermission:
             json_['checkServiceNetworkingUsePermission'] as core.bool?,
         consumerNetwork: json_['consumerNetwork'] as core.String?,
-        consumerProject:
-            json_.containsKey('consumerProject')
-                ? ConsumerProject.fromJson(
-                  json_['consumerProject']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rangeReservation:
-            json_.containsKey('rangeReservation')
-                ? RangeReservation.fromJson(
-                  json_['rangeReservation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        consumerProject: json_.containsKey('consumerProject')
+            ? ConsumerProject.fromJson(
+                json_['consumerProject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rangeReservation: json_.containsKey('rangeReservation')
+            ? RangeReservation.fromJson(
+                json_['rangeReservation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         validateNetwork: json_['validateNetwork'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checkServiceNetworkingUsePermission != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final checkServiceNetworkingUsePermission =
+        this.checkServiceNetworkingUsePermission;
+    final consumerNetwork = this.consumerNetwork;
+    final consumerProject = this.consumerProject;
+    final rangeReservation = this.rangeReservation;
+    final validateNetwork = this.validateNetwork;
+    return {
       'checkServiceNetworkingUsePermission':
-          checkServiceNetworkingUsePermission!,
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-    if (consumerProject != null) 'consumerProject': consumerProject!,
-    if (rangeReservation != null) 'rangeReservation': rangeReservation!,
-    if (validateNetwork != null) 'validateNetwork': validateNetwork!,
-  };
+          ?checkServiceNetworkingUsePermission,
+      'consumerNetwork': ?consumerNetwork,
+      'consumerProject': ?consumerProject,
+      'rangeReservation': ?rangeReservation,
+      'validateNetwork': ?validateNetwork,
+    };
+  }
 }
 
 class ValidateConsumerConfigResponse {
@@ -3329,12 +3416,16 @@ class ValidateConsumerConfigResponse {
         validationError: json_['validationError'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (existingSubnetworkCandidates != null)
-      'existingSubnetworkCandidates': existingSubnetworkCandidates!,
-    if (isValid != null) 'isValid': isValid!,
-    if (validationError != null) 'validationError': validationError!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final existingSubnetworkCandidates = this.existingSubnetworkCandidates;
+    final isValid = this.isValid;
+    final validationError = this.validationError;
+    return {
+      'existingSubnetworkCandidates': ?existingSubnetworkCandidates,
+      'isValid': ?isValid,
+      'validationError': ?validationError,
+    };
+  }
 }
 
 /// Response for the get VPC Service Controls request.
@@ -3354,7 +3445,8 @@ class VpcServiceControls {
   VpcServiceControls.fromJson(core.Map json_)
     : this(enabled: json_['enabled'] as core.bool?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
 }

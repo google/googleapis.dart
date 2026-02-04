@@ -93,7 +93,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -152,11 +152,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -201,7 +201,7 @@ class ProjectsLocationsCloudLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -260,10 +260,10 @@ class ProjectsLocationsCloudLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cloudLocations';
@@ -323,12 +323,13 @@ class ProjectsLocationsCloudLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (query != null) 'query': [query],
-      if (sourceCloudLocation != null)
-        'sourceCloudLocation': [sourceCloudLocation],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'query': ?query == null ? null : [query],
+      'sourceCloudLocation': ?sourceCloudLocation == null
+          ? null
+          : [sourceCloudLocation],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -437,17 +438,24 @@ class CloudLocation {
         territoryCode: json_['territoryCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (carbonFreeEnergyPercentage != null)
-      'carbonFreeEnergyPercentage': carbonFreeEnergyPercentage!,
-    if (cloudLocationType != null) 'cloudLocationType': cloudLocationType!,
-    if (cloudProvider != null) 'cloudProvider': cloudProvider!,
-    if (containingCloudLocation != null)
-      'containingCloudLocation': containingCloudLocation!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (territoryCode != null) 'territoryCode': territoryCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final carbonFreeEnergyPercentage = this.carbonFreeEnergyPercentage;
+    final cloudLocationType = this.cloudLocationType;
+    final cloudProvider = this.cloudProvider;
+    final containingCloudLocation = this.containingCloudLocation;
+    final displayName = this.displayName;
+    final name = this.name;
+    final territoryCode = this.territoryCode;
+    return {
+      'carbonFreeEnergyPercentage': ?carbonFreeEnergyPercentage,
+      'cloudLocationType': ?cloudLocationType,
+      'cloudProvider': ?cloudProvider,
+      'containingCloudLocation': ?containingCloudLocation,
+      'displayName': ?displayName,
+      'name': ?name,
+      'territoryCode': ?territoryCode,
+    };
+  }
 }
 
 /// Message for response to listing cloud locations.
@@ -470,21 +478,21 @@ class ListCloudLocationsResponse {
 
   ListCloudLocationsResponse.fromJson(core.Map json_)
     : this(
-        cloudLocations:
-            (json_['cloudLocations'] as core.List?)
-                ?.map(
-                  (value) => CloudLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cloudLocations: (json_['cloudLocations'] as core.List?)
+            ?.map(
+              (value) => CloudLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudLocations != null) 'cloudLocations': cloudLocations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudLocations = this.cloudLocations;
+    final nextPageToken = this.nextPageToken;
+    return {'cloudLocations': ?cloudLocations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -499,21 +507,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -539,19 +547,19 @@ class SearchCloudLocationsResponse {
 
   SearchCloudLocationsResponse.fromJson(core.Map json_)
     : this(
-        cloudLocations:
-            (json_['cloudLocations'] as core.List?)
-                ?.map(
-                  (value) => CloudLocation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cloudLocations: (json_['cloudLocations'] as core.List?)
+            ?.map(
+              (value) => CloudLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudLocations != null) 'cloudLocations': cloudLocations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudLocations = this.cloudLocations;
+    final nextPageToken = this.nextPageToken;
+    return {'cloudLocations': ?cloudLocations, 'nextPageToken': ?nextPageToken};
+  }
 }

@@ -3537,10 +3537,10 @@ void main() {
         final o =
             buildShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse(od);
       });
     },
@@ -3553,10 +3553,10 @@ void main() {
         final o =
             buildShowEffectiveKeyAccessJustificationsPolicyConfigResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .ShowEffectiveKeyAccessJustificationsPolicyConfigResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.ShowEffectiveKeyAccessJustificationsPolicyConfigResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkShowEffectiveKeyAccessJustificationsPolicyConfigResponse(od);
       });
     },
@@ -6791,10 +6791,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource', () {
     unittest.test('method--asymmetricDecrypt', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildAsymmetricDecryptRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -6857,10 +6856,9 @@ void main() {
 
     unittest.test('method--asymmetricSign', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildAsymmetricSignRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -6923,10 +6921,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildCryptoKeyVersion();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6989,10 +6986,9 @@ void main() {
 
     unittest.test('method--decapsulate', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildDecapsulateRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7055,10 +7051,9 @@ void main() {
 
     unittest.test('method--destroy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildDestroyCryptoKeyVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7121,10 +7116,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7177,10 +7171,9 @@ void main() {
 
     unittest.test('method--getPublicKey', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_name = 'foo';
       final arg_publicKeyFormat = 'foo';
       final arg_$fields = 'foo';
@@ -7242,10 +7235,9 @@ void main() {
 
     unittest.test('method--import', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildImportCryptoKeyVersionRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -7308,10 +7300,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7398,10 +7389,9 @@ void main() {
 
     unittest.test('method--macSign', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildMacSignRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7464,10 +7454,9 @@ void main() {
 
     unittest.test('method--macVerify', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildMacVerifyRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7530,10 +7519,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildCryptoKeyVersion();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -7602,10 +7590,9 @@ void main() {
 
     unittest.test('method--rawDecrypt', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildRawDecryptRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7668,10 +7655,9 @@ void main() {
 
     unittest.test('method--rawEncrypt', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildRawEncryptRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7734,10 +7720,9 @@ void main() {
 
     unittest.test('method--restore', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       final arg_request = buildRestoreCryptoKeyVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8251,8 +8236,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSingleTenantHsmInstancesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(mock).projects.locations.singleTenantHsmInstances;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.singleTenantHsmInstances;
       final arg_request = buildSingleTenantHsmInstance();
       final arg_parent = 'foo';
       final arg_singleTenantHsmInstanceId = 'foo';
@@ -8321,8 +8307,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(mock).projects.locations.singleTenantHsmInstances;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.singleTenantHsmInstances;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8375,8 +8362,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(mock).projects.locations.singleTenantHsmInstances;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.singleTenantHsmInstances;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8468,19 +8456,18 @@ void main() {
   unittest.group('resource-ProjectsLocationsSingleTenantHsmInstancesProposalsResource', () {
     unittest.test('method--approve', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.singleTenantHsmInstances.proposals;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.singleTenantHsmInstances.proposals;
       final arg_request = buildApproveSingleTenantHsmInstanceProposalRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .ApproveSingleTenantHsmInstanceProposalRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.ApproveSingleTenantHsmInstanceProposalRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkApproveSingleTenantHsmInstanceProposalRequest(obj);
 
           final path = req.url.path;
@@ -8539,10 +8526,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.singleTenantHsmInstances.proposals;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.singleTenantHsmInstances.proposals;
       final arg_request = buildSingleTenantHsmInstanceProposal();
       final arg_parent = 'foo';
       final arg_singleTenantHsmInstanceProposalId = 'foo';
@@ -8612,10 +8598,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.singleTenantHsmInstances.proposals;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.singleTenantHsmInstances.proposals;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8668,19 +8653,18 @@ void main() {
 
     unittest.test('method--execute', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.singleTenantHsmInstances.proposals;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.singleTenantHsmInstances.proposals;
       final arg_request = buildExecuteSingleTenantHsmInstanceProposalRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .ExecuteSingleTenantHsmInstanceProposalRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.ExecuteSingleTenantHsmInstanceProposalRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkExecuteSingleTenantHsmInstanceProposalRequest(obj);
 
           final path = req.url.path;
@@ -8735,10 +8719,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.singleTenantHsmInstances.proposals;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.singleTenantHsmInstances.proposals;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8795,10 +8778,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudKMSApi(
-            mock,
-          ).projects.locations.singleTenantHsmInstances.proposals;
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.singleTenantHsmInstances.proposals;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';

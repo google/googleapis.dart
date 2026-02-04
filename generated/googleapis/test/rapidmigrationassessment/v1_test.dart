@@ -860,8 +860,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAnnotationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.annotations;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.annotations;
       final arg_request = buildAnnotation();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
@@ -930,8 +931,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.annotations;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.annotations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -986,8 +988,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCollectorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.collectors;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.collectors;
       final arg_request = buildCollector();
       final arg_parent = 'foo';
       final arg_collectorId = 'foo';
@@ -1062,8 +1065,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.collectors;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.collectors;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -1125,8 +1129,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.collectors;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.collectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1179,8 +1184,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.collectors;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.collectors;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -1260,8 +1266,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.collectors;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.collectors;
       final arg_request = buildCollector();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -1336,8 +1343,9 @@ void main() {
 
     unittest.test('method--pause', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.collectors;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.collectors;
       final arg_request = buildPauseCollectorRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1400,8 +1408,9 @@ void main() {
 
     unittest.test('method--register', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.collectors;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.collectors;
       final arg_request = buildRegisterCollectorRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1464,8 +1473,9 @@ void main() {
 
     unittest.test('method--resume', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.collectors;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.collectors;
       final arg_request = buildResumeCollectorRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1530,8 +1540,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.operations;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.operations;
       final arg_request = buildCancelOperationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -1594,8 +1605,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.operations;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1648,8 +1660,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.operations;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1702,8 +1715,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RapidMigrationAssessmentApi(mock).projects.locations.operations;
+      final res = api.RapidMigrationAssessmentApi(
+        mock,
+      ).projects.locations.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

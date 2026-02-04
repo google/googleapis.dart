@@ -8909,8 +8909,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsAssetsExportJobsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.assetsExportJobs;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.assetsExportJobs;
       final arg_request = buildAssetsExportJob();
       final arg_parent = 'foo';
       final arg_assetsExportJobId = 'foo';
@@ -8985,8 +8986,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.assetsExportJobs;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.assetsExportJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9039,8 +9041,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.assetsExportJobs;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.assetsExportJobs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9093,8 +9096,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.assetsExportJobs;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.assetsExportJobs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9164,8 +9168,9 @@ void main() {
 
     unittest.test('method--run', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.assetsExportJobs;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.assetsExportJobs;
       final arg_request = buildRunAssetsExportJobRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -9230,8 +9235,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDiscoveryClientsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.discoveryClients;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.discoveryClients;
       final arg_request = buildDiscoveryClient();
       final arg_parent = 'foo';
       final arg_discoveryClientId = 'foo';
@@ -9306,8 +9312,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.discoveryClients;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.discoveryClients;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -9369,8 +9376,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.discoveryClients;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.discoveryClients;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9423,8 +9431,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.discoveryClients;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.discoveryClients;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -9506,8 +9515,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.discoveryClients;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.discoveryClients;
       final arg_request = buildDiscoveryClient();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -9582,8 +9592,9 @@ void main() {
 
     unittest.test('method--sendHeartbeat', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.discoveryClients;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.discoveryClients;
       final arg_request = buildSendDiscoveryClientHeartbeatRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -10609,10 +10620,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsImportJobsImportDataFilesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(
-            mock,
-          ).projects.locations.importJobs.importDataFiles;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.importJobs.importDataFiles;
       final arg_request = buildImportDataFile();
       final arg_parent = 'foo';
       final arg_importDataFileId = 'foo';
@@ -10687,10 +10697,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(
-            mock,
-          ).projects.locations.importJobs.importDataFiles;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.importJobs.importDataFiles;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -10752,10 +10761,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(
-            mock,
-          ).projects.locations.importJobs.importDataFiles;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.importJobs.importDataFiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10808,10 +10816,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(
-            mock,
-          ).projects.locations.importJobs.importDataFiles;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.importJobs.importDataFiles;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -11146,8 +11153,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPreferenceSetsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.preferenceSets;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.preferenceSets;
       final arg_request = buildPreferenceSet();
       final arg_parent = 'foo';
       final arg_preferenceSetId = 'foo';
@@ -11222,8 +11230,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.preferenceSets;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.preferenceSets;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -11285,8 +11294,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.preferenceSets;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.preferenceSets;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11339,8 +11349,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.preferenceSets;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.preferenceSets;
       final arg_parent = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
@@ -11416,8 +11427,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.preferenceSets;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.preferenceSets;
       final arg_request = buildPreferenceSet();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -11907,8 +11919,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsReportConfigsReportsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.reportConfigs.reports;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.reportConfigs.reports;
       final arg_request = buildReport();
       final arg_parent = 'foo';
       final arg_reportId = 'foo';
@@ -11983,8 +11996,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.reportConfigs.reports;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.reportConfigs.reports;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -12046,8 +12060,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.reportConfigs.reports;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.reportConfigs.reports;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -12106,8 +12121,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.reportConfigs.reports;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.reportConfigs.reports;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -12539,8 +12555,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSourcesErrorFramesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.sources.errorFrames;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.sources.errorFrames;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -12599,8 +12616,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MigrationCenterApi(mock).projects.locations.sources.errorFrames;
+      final res = api.MigrationCenterApi(
+        mock,
+      ).projects.locations.sources.errorFrames;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

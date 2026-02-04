@@ -3729,10 +3729,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildDictlayerdataDictWordsSensesDefinitionsExamplesSource();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkDictlayerdataDictWordsSensesDefinitionsExamplesSource(od);
       });
     },
@@ -3857,10 +3857,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildDiscoveryclustersClustersBannerWithContentContainer();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .DiscoveryclustersClustersBannerWithContentContainer.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.DiscoveryclustersClustersBannerWithContentContainer.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkDiscoveryclustersClustersBannerWithContentContainer(od);
       });
     },
@@ -4170,10 +4170,10 @@ void main() {
         final o =
             buildSeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo(od);
       });
     },
@@ -4186,10 +4186,10 @@ void main() {
         final o =
             buildSeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkSeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo(od);
       });
     },

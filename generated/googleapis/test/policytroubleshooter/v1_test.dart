@@ -510,10 +510,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudPolicytroubleshooterV1BindingExplanation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterV1BindingExplanation(od);
       });
     },
@@ -526,10 +526,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership(
           od,
         );
@@ -543,10 +543,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudPolicytroubleshooterV1ExplainedPolicy();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterV1ExplainedPolicy(od);
       });
     },
@@ -559,10 +559,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest(od);
       });
     },
@@ -575,10 +575,10 @@ void main() {
         final o =
             buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse(od);
       });
     },
@@ -659,10 +659,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest(
             obj,
           );

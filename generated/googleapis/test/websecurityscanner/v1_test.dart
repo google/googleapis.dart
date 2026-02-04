@@ -1737,10 +1737,9 @@ void main() {
   unittest.group('resource-ProjectsScanConfigsScanRunsCrawledUrlsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WebSecurityScannerApi(
-            mock,
-          ).projects.scanConfigs.scanRuns.crawledUrls;
+      final res = api.WebSecurityScannerApi(
+        mock,
+      ).projects.scanConfigs.scanRuns.crawledUrls;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1812,10 +1811,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.WebSecurityScannerApi(
-              mock,
-            ).projects.scanConfigs.scanRuns.findingTypeStats;
+        final res = api.WebSecurityScannerApi(
+          mock,
+        ).projects.scanConfigs.scanRuns.findingTypeStats;
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -1875,10 +1873,9 @@ void main() {
   unittest.group('resource-ProjectsScanConfigsScanRunsFindingsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WebSecurityScannerApi(
-            mock,
-          ).projects.scanConfigs.scanRuns.findings;
+      final res = api.WebSecurityScannerApi(
+        mock,
+      ).projects.scanConfigs.scanRuns.findings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1931,10 +1928,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.WebSecurityScannerApi(
-            mock,
-          ).projects.scanConfigs.scanRuns.findings;
+      final res = api.WebSecurityScannerApi(
+        mock,
+      ).projects.scanConfigs.scanRuns.findings;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

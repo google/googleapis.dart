@@ -119,7 +119,7 @@ class ProjectsProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/profiles';
@@ -165,7 +165,7 @@ class ProjectsProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -213,9 +213,9 @@ class ProjectsProfilesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/profiles';
@@ -269,8 +269,8 @@ class ProjectsProfilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name');
@@ -301,22 +301,21 @@ class CreateProfileRequest {
 
   CreateProfileRequest.fromJson(core.Map json_)
     : this(
-        deployment:
-            json_.containsKey('deployment')
-                ? Deployment.fromJson(
-                  json_['deployment'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        profileType:
-            (json_['profileType'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        deployment: json_.containsKey('deployment')
+            ? Deployment.fromJson(
+                json_['deployment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        profileType: (json_['profileType'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployment != null) 'deployment': deployment!,
-    if (profileType != null) 'profileType': profileType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployment = this.deployment;
+    final profileType = this.profileType;
+    return {'deployment': ?deployment, 'profileType': ?profileType};
+  }
 }
 
 /// Deployment contains the deployment identification information.
@@ -358,11 +357,12 @@ class Deployment {
         target: json_['target'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (labels != null) 'labels': labels!,
-    if (projectId != null) 'projectId': projectId!,
-    if (target != null) 'target': target!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final labels = this.labels;
+    final projectId = this.projectId;
+    final target = this.target;
+    return {'labels': ?labels, 'projectId': ?projectId, 'target': ?target};
+  }
 }
 
 /// ListProfileResponse contains the list of collected profiles for deployments
@@ -393,22 +393,26 @@ class ListProfilesResponse {
   ListProfilesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        profiles:
-            (json_['profiles'] as core.List?)
-                ?.map(
-                  (value) => Profile.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        profiles: (json_['profiles'] as core.List?)
+            ?.map(
+              (value) => Profile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         skippedProfiles: json_['skippedProfiles'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (profiles != null) 'profiles': profiles!,
-    if (skippedProfiles != null) 'skippedProfiles': skippedProfiles!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final profiles = this.profiles;
+    final skippedProfiles = this.skippedProfiles;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'profiles': ?profiles,
+      'skippedProfiles': ?skippedProfiles,
+    };
+  }
 }
 
 /// Profile resource.
@@ -492,12 +496,11 @@ class Profile {
 
   Profile.fromJson(core.Map json_)
     : this(
-        deployment:
-            json_.containsKey('deployment')
-                ? Deployment.fromJson(
-                  json_['deployment'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deployment: json_.containsKey('deployment')
+            ? Deployment.fromJson(
+                json_['deployment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         duration: json_['duration'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -508,13 +511,22 @@ class Profile {
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deployment != null) 'deployment': deployment!,
-    if (duration != null) 'duration': duration!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (profileBytes != null) 'profileBytes': profileBytes!,
-    if (profileType != null) 'profileType': profileType!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployment = this.deployment;
+    final duration = this.duration;
+    final labels = this.labels;
+    final name = this.name;
+    final profileBytes = this.profileBytes;
+    final profileType = this.profileType;
+    final startTime = this.startTime;
+    return {
+      'deployment': ?deployment,
+      'duration': ?duration,
+      'labels': ?labels,
+      'name': ?name,
+      'profileBytes': ?profileBytes,
+      'profileType': ?profileType,
+      'startTime': ?startTime,
+    };
+  }
 }

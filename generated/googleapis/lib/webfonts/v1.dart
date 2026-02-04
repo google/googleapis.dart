@@ -105,12 +105,12 @@ class WebfontsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (capability != null) 'capability': capability,
-      if (category != null) 'category': [category],
-      if (family != null) 'family': family,
-      if (sort != null) 'sort': [sort],
-      if (subset != null) 'subset': [subset],
-      if ($fields != null) 'fields': [$fields],
+      'capability': ?capability,
+      'category': ?category == null ? null : [category],
+      'family': ?family,
+      'sort': ?sort == null ? null : [sort],
+      'subset': ?subset == null ? null : [subset],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/webfonts';
@@ -146,11 +146,12 @@ class Axis {
         tag: json_['tag'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (end != null) 'end': end!,
-    if (start != null) 'start': start!,
-    if (tag != null) 'tag': tag!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final end = this.end;
+    final start = this.start;
+    final tag = this.tag;
+    return {'end': ?end, 'start': ?start, 'tag': ?tag};
+  }
 }
 
 /// Metadata for a tag.
@@ -169,10 +170,11 @@ class Tag {
         weight: (json_['weight'] as core.num?)?.toDouble(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (weight != null) 'weight': weight!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final weight = this.weight;
+    return {'name': ?name, 'weight': ?weight};
+  }
 }
 
 /// Metadata describing a family of fonts.
@@ -232,19 +234,16 @@ class Webfont {
 
   Webfont.fromJson(core.Map json_)
     : this(
-        axes:
-            (json_['axes'] as core.List?)
-                ?.map(
-                  (value) => Axis.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        axes: (json_['axes'] as core.List?)
+            ?.map(
+              (value) =>
+                  Axis.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         category: json_['category'] as core.String?,
-        colorCapabilities:
-            (json_['colorCapabilities'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        colorCapabilities: (json_['colorCapabilities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         family: json_['family'] as core.String?,
         files: (json_['files'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -252,39 +251,49 @@ class Webfont {
         kind: json_['kind'] as core.String?,
         lastModified: json_['lastModified'] as core.String?,
         menu: json_['menu'] as core.String?,
-        subsets:
-            (json_['subsets'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map(
-                  (value) => Tag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        variants:
-            (json_['variants'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        subsets: (json_['subsets'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map(
+              (value) =>
+                  Tag.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        variants: (json_['variants'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (axes != null) 'axes': axes!,
-    if (category != null) 'category': category!,
-    if (colorCapabilities != null) 'colorCapabilities': colorCapabilities!,
-    if (family != null) 'family': family!,
-    if (files != null) 'files': files!,
-    if (kind != null) 'kind': kind!,
-    if (lastModified != null) 'lastModified': lastModified!,
-    if (menu != null) 'menu': menu!,
-    if (subsets != null) 'subsets': subsets!,
-    if (tags != null) 'tags': tags!,
-    if (variants != null) 'variants': variants!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final axes = this.axes;
+    final category = this.category;
+    final colorCapabilities = this.colorCapabilities;
+    final family = this.family;
+    final files = this.files;
+    final kind = this.kind;
+    final lastModified = this.lastModified;
+    final menu = this.menu;
+    final subsets = this.subsets;
+    final tags = this.tags;
+    final variants = this.variants;
+    final version = this.version;
+    return {
+      'axes': ?axes,
+      'category': ?category,
+      'colorCapabilities': ?colorCapabilities,
+      'family': ?family,
+      'files': ?files,
+      'kind': ?kind,
+      'lastModified': ?lastModified,
+      'menu': ?menu,
+      'subsets': ?subsets,
+      'tags': ?tags,
+      'variants': ?variants,
+      'version': ?version,
+    };
+  }
 }
 
 /// Response containing the list of fonts currently served by the Google Fonts
@@ -300,19 +309,19 @@ class WebfontList {
 
   WebfontList.fromJson(core.Map json_)
     : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Webfont.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => Webfont.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    return {'items': ?items, 'kind': ?kind};
+  }
 }

@@ -119,11 +119,10 @@ class FoldersContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (notificationCategories != null)
-        'notificationCategories': notificationCategories,
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'notificationCategories': ?notificationCategories,
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts:compute';
@@ -166,7 +165,7 @@ class FoldersContactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
@@ -207,7 +206,7 @@ class FoldersContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -247,7 +246,7 @@ class FoldersContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -298,9 +297,9 @@ class FoldersContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
@@ -349,8 +348,8 @@ class FoldersContactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -397,7 +396,7 @@ class FoldersContactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -473,11 +472,10 @@ class OrganizationsContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (notificationCategories != null)
-        'notificationCategories': notificationCategories,
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'notificationCategories': ?notificationCategories,
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts:compute';
@@ -520,7 +518,7 @@ class OrganizationsContactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
@@ -561,7 +559,7 @@ class OrganizationsContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -601,7 +599,7 @@ class OrganizationsContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -652,9 +650,9 @@ class OrganizationsContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
@@ -703,8 +701,8 @@ class OrganizationsContactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -751,7 +749,7 @@ class OrganizationsContactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -825,11 +823,10 @@ class ProjectsContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (notificationCategories != null)
-        'notificationCategories': notificationCategories,
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'notificationCategories': ?notificationCategories,
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts:compute';
@@ -872,7 +869,7 @@ class ProjectsContactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
@@ -913,7 +910,7 @@ class ProjectsContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -953,7 +950,7 @@ class ProjectsContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1004,9 +1001,9 @@ class ProjectsContactsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
@@ -1055,8 +1052,8 @@ class ProjectsContactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1103,7 +1100,7 @@ class ProjectsContactsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1143,21 +1140,21 @@ class GoogleCloudEssentialcontactsV1ComputeContactsResponse {
 
   GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(core.Map json_)
     : this(
-        contacts:
-            (json_['contacts'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        contacts: (json_['contacts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contacts != null) 'contacts': contacts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contacts = this.contacts;
+    final nextPageToken = this.nextPageToken;
+    return {'contacts': ?contacts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// A contact that will receive notifications from Google Cloud.
@@ -1237,15 +1234,23 @@ class GoogleCloudEssentialcontactsV1Contact {
         validationState: json_['validationState'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (languageTag != null) 'languageTag': languageTag!,
-    if (name != null) 'name': name!,
-    if (notificationCategorySubscriptions != null)
-      'notificationCategorySubscriptions': notificationCategorySubscriptions!,
-    if (validateTime != null) 'validateTime': validateTime!,
-    if (validationState != null) 'validationState': validationState!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final languageTag = this.languageTag;
+    final name = this.name;
+    final notificationCategorySubscriptions =
+        this.notificationCategorySubscriptions;
+    final validateTime = this.validateTime;
+    final validationState = this.validationState;
+    return {
+      'email': ?email,
+      'languageTag': ?languageTag,
+      'name': ?name,
+      'notificationCategorySubscriptions': ?notificationCategorySubscriptions,
+      'validateTime': ?validateTime,
+      'validationState': ?validationState,
+    };
+  }
 }
 
 /// Response message for the ListContacts method.
@@ -1268,21 +1273,21 @@ class GoogleCloudEssentialcontactsV1ListContactsResponse {
 
   GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(core.Map json_)
     : this(
-        contacts:
-            (json_['contacts'] as core.List?)
-                ?.map(
-                  (value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        contacts: (json_['contacts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudEssentialcontactsV1Contact.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contacts != null) 'contacts': contacts!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contacts = this.contacts;
+    final nextPageToken = this.nextPageToken;
+    return {'contacts': ?contacts, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Request message for the SendTestMessage method.
@@ -1329,18 +1334,20 @@ class GoogleCloudEssentialcontactsV1SendTestMessageRequest {
 
   GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(core.Map json_)
     : this(
-        contacts:
-            (json_['contacts'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        contacts: (json_['contacts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         notificationCategory: json_['notificationCategory'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contacts != null) 'contacts': contacts!,
-    if (notificationCategory != null)
-      'notificationCategory': notificationCategory!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contacts = this.contacts;
+    final notificationCategory = this.notificationCategory;
+    return {
+      'contacts': ?contacts,
+      'notificationCategory': ?notificationCategory,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

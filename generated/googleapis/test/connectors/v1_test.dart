@@ -5877,10 +5877,10 @@ void main() {
         final o =
             buildEndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged(od);
       });
     },
@@ -5892,10 +5892,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEndUserAuthenticationConfigOauth2ClientCredentials();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EndUserAuthenticationConfigOauth2ClientCredentials.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EndUserAuthenticationConfigOauth2ClientCredentials.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEndUserAuthenticationConfigOauth2ClientCredentials(od);
       });
     },
@@ -5918,10 +5918,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEndUserAuthenticationConfigOauth2JwtBearerJwtClaims();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EndUserAuthenticationConfigOauth2JwtBearerJwtClaims.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EndUserAuthenticationConfigOauth2JwtBearerJwtClaims.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEndUserAuthenticationConfigOauth2JwtBearerJwtClaims(od);
       });
     },
@@ -5966,10 +5966,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEndUserAuthenticationEndUserAuthenticationStatus();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EndUserAuthenticationEndUserAuthenticationStatus.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EndUserAuthenticationEndUserAuthenticationStatus.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEndUserAuthenticationEndUserAuthenticationStatus(od);
       });
     },
@@ -5995,10 +5995,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildEndUserAuthenticationNotifyEndpointDestinationEndPoint();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EndUserAuthenticationNotifyEndpointDestinationEndPoint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EndUserAuthenticationNotifyEndpointDestinationEndPoint.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEndUserAuthenticationNotifyEndpointDestinationEndPoint(od);
       });
     },
@@ -6011,10 +6011,10 @@ void main() {
         final o =
             buildEndUserAuthenticationNotifyEndpointDestinationEndPointHeader();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .EndUserAuthenticationNotifyEndpointDestinationEndPointHeader.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.EndUserAuthenticationNotifyEndpointDestinationEndPointHeader.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkEndUserAuthenticationNotifyEndpointDestinationEndPointHeader(od);
       });
     },
@@ -8248,10 +8248,9 @@ void main() {
     () {
       unittest.test('method--getAction', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.connectionSchemaMetadata;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.connectionSchemaMetadata;
         final arg_name = 'foo';
         final arg_actionId = 'foo';
         final arg_$fields = 'foo';
@@ -8313,10 +8312,9 @@ void main() {
 
       unittest.test('method--getEntityType', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.connectionSchemaMetadata;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.connectionSchemaMetadata;
         final arg_name = 'foo';
         final arg_entityId = 'foo';
         final arg_$fields = 'foo';
@@ -8378,10 +8376,9 @@ void main() {
 
       unittest.test('method--listActions', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.connectionSchemaMetadata;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.connectionSchemaMetadata;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -8458,10 +8455,9 @@ void main() {
 
       unittest.test('method--listEntityTypes', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.connectionSchemaMetadata;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.connectionSchemaMetadata;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -8538,10 +8534,9 @@ void main() {
 
       unittest.test('method--refresh', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.connectionSchemaMetadata;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.connectionSchemaMetadata;
         final arg_request = buildRefreshConnectionSchemaMetadataRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -8609,10 +8604,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.endUserAuthentications;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.endUserAuthentications;
         final arg_request = buildEndUserAuthentication();
         final arg_parent = 'foo';
         final arg_endUserAuthenticationId = 'foo';
@@ -8681,10 +8675,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.endUserAuthentications;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.endUserAuthentications;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -8737,10 +8730,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.endUserAuthentications;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.endUserAuthentications;
         final arg_name = 'foo';
         final arg_view = 'foo';
         final arg_$fields = 'foo';
@@ -8799,10 +8791,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.endUserAuthentications;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.endUserAuthentications;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -8886,10 +8877,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.endUserAuthentications;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.endUserAuthentications;
         final arg_request = buildEndUserAuthentication();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -8961,10 +8951,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsEventSubscriptionsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.eventSubscriptions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.eventSubscriptions;
       final arg_request = buildEventSubscription();
       final arg_parent = 'foo';
       final arg_eventSubscriptionId = 'foo';
@@ -9033,10 +9022,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.eventSubscriptions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.eventSubscriptions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9089,10 +9077,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.eventSubscriptions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.eventSubscriptions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9145,10 +9132,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.eventSubscriptions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.eventSubscriptions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -9232,10 +9218,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.eventSubscriptions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.eventSubscriptions;
       final arg_request = buildEventSubscription();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -9304,10 +9289,9 @@ void main() {
 
     unittest.test('method--retry', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.connections.eventSubscriptions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.connections.eventSubscriptions;
       final arg_request = buildRetryEventSubscriptionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -9374,10 +9358,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.runtimeActionSchemas;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.runtimeActionSchemas;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -9466,10 +9449,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.connections.runtimeEntitySchemas;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.connections.runtimeEntitySchemas;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -9621,10 +9603,9 @@ void main() {
     () {
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.customConnectors.customConnectorVersions;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.customConnectors.customConnectorVersions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9677,10 +9658,9 @@ void main() {
 
       unittest.test('method--deprecate', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.customConnectors.customConnectorVersions;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.customConnectors.customConnectorVersions;
         final arg_request = buildDeprecateCustomConnectorVersionRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -9743,10 +9723,9 @@ void main() {
 
       unittest.test('method--publish', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.customConnectors.customConnectorVersions;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.customConnectors.customConnectorVersions;
         final arg_request = buildPublishCustomConnectorVersionRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -9809,10 +9788,9 @@ void main() {
 
       unittest.test('method--withdraw', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.customConnectors.customConnectorVersions;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.customConnectors.customConnectorVersions;
         final arg_request = buildWithdrawCustomConnectorVersionRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -9878,8 +9856,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsEndpointAttachmentsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.endpointAttachments;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.endpointAttachments;
       final arg_request = buildEndpointAttachment();
       final arg_parent = 'foo';
       final arg_endpointAttachmentId = 'foo';
@@ -9948,8 +9927,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.endpointAttachments;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.endpointAttachments;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10002,8 +9982,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.endpointAttachments;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.endpointAttachments;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -10062,8 +10043,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.endpointAttachments;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.endpointAttachments;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -10150,8 +10132,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.endpointAttachments;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.endpointAttachments;
       final arg_request = buildEndpointAttachment();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10346,8 +10329,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalCustomConnectorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.customConnectors;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.customConnectors;
       final arg_request = buildCustomConnector();
       final arg_parent = 'foo';
       final arg_customConnectorId = 'foo';
@@ -10416,8 +10400,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.customConnectors;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.customConnectors;
       final arg_name = 'foo';
       final arg_force = true;
       final arg_$fields = 'foo';
@@ -10479,8 +10464,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.customConnectors;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.customConnectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10533,8 +10519,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.customConnectors;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.customConnectors;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -10610,8 +10597,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.customConnectors;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.customConnectors;
       final arg_request = buildCustomConnector();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -10684,13 +10672,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(mock)
-                .projects
-                .locations
-                .global
-                .customConnectors
-                .customConnectorVersions;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.global.customConnectors.customConnectorVersions;
         final arg_request = buildCustomConnectorVersion();
         final arg_parent = 'foo';
         final arg_customConnectorVersionId = 'foo';
@@ -10759,13 +10743,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(mock)
-                .projects
-                .locations
-                .global
-                .customConnectors
-                .customConnectorVersions;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.global.customConnectors.customConnectorVersions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -10818,13 +10798,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(mock)
-                .projects
-                .locations
-                .global
-                .customConnectors
-                .customConnectorVersions;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.global.customConnectors.customConnectorVersions;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -10899,8 +10875,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalManagedZonesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.managedZones;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.managedZones;
       final arg_request = buildManagedZone();
       final arg_parent = 'foo';
       final arg_managedZoneId = 'foo';
@@ -10969,8 +10946,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.managedZones;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.managedZones;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11023,8 +11001,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.managedZones;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.managedZones;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11077,8 +11056,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.managedZones;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.managedZones;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -11164,8 +11144,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.global.managedZones;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.global.managedZones;
       final arg_request = buildManagedZone();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -11800,8 +11781,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProvidersConnectorsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.providers.connectors;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.providers.connectors;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11854,8 +11836,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(mock).projects.locations.providers.connectors;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.providers.connectors;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -11931,10 +11914,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsProvidersConnectorsVersionsResource', () {
     unittest.test('method--fetchAuthSchema', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.providers.connectors.versions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.providers.connectors.versions;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -11993,10 +11975,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.providers.connectors.versions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.providers.connectors.versions;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -12055,10 +12036,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConnectorsApi(
-            mock,
-          ).projects.locations.providers.connectors.versions;
+      final res = api.ConnectorsApi(
+        mock,
+      ).projects.locations.providers.connectors.versions;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -12137,10 +12117,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.providers.connectors.versions.eventtypes;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.providers.connectors.versions.eventtypes;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -12193,10 +12172,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConnectorsApi(
-              mock,
-            ).projects.locations.providers.connectors.versions.eventtypes;
+        final res = api.ConnectorsApi(
+          mock,
+        ).projects.locations.providers.connectors.versions.eventtypes;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';

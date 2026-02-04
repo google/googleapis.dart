@@ -111,7 +111,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -164,11 +164,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -222,9 +222,10 @@ class ProjectsLocationsCertificateIssuanceConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (certificateIssuanceConfigId != null)
-        'certificateIssuanceConfigId': [certificateIssuanceConfigId],
-      if ($fields != null) 'fields': [$fields],
+      'certificateIssuanceConfigId': ?certificateIssuanceConfigId == null
+          ? null
+          : [certificateIssuanceConfigId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -264,7 +265,7 @@ class ProjectsLocationsCertificateIssuanceConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -302,7 +303,7 @@ class ProjectsLocationsCertificateIssuanceConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -360,11 +361,11 @@ class ProjectsLocationsCertificateIssuanceConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -414,8 +415,8 @@ class ProjectsLocationsCertificateIssuanceConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -471,8 +472,8 @@ class ProjectsLocationsCertificateMapsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (certificateMapId != null) 'certificateMapId': [certificateMapId],
-      if ($fields != null) 'fields': [$fields],
+      'certificateMapId': ?certificateMapId == null ? null : [certificateMapId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/certificateMaps';
@@ -513,7 +514,7 @@ class ProjectsLocationsCertificateMapsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -550,7 +551,7 @@ class ProjectsLocationsCertificateMapsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -609,11 +610,11 @@ class ProjectsLocationsCertificateMapsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/certificateMaps';
@@ -662,8 +663,8 @@ class ProjectsLocationsCertificateMapsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -717,9 +718,10 @@ class ProjectsLocationsCertificateMapsCertificateMapEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (certificateMapEntryId != null)
-        'certificateMapEntryId': [certificateMapEntryId],
-      if ($fields != null) 'fields': [$fields],
+      'certificateMapEntryId': ?certificateMapEntryId == null
+          ? null
+          : [certificateMapEntryId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -759,7 +761,7 @@ class ProjectsLocationsCertificateMapsCertificateMapEntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -797,7 +799,7 @@ class ProjectsLocationsCertificateMapsCertificateMapEntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -859,11 +861,11 @@ class ProjectsLocationsCertificateMapsCertificateMapEntriesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -914,8 +916,8 @@ class ProjectsLocationsCertificateMapsCertificateMapEntriesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -966,8 +968,8 @@ class ProjectsLocationsCertificatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (certificateId != null) 'certificateId': [certificateId],
-      if ($fields != null) 'fields': [$fields],
+      'certificateId': ?certificateId == null ? null : [certificateId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/certificates';
@@ -1005,7 +1007,7 @@ class ProjectsLocationsCertificatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1042,7 +1044,7 @@ class ProjectsLocationsCertificatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1098,11 +1100,11 @@ class ProjectsLocationsCertificatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/certificates';
@@ -1151,8 +1153,8 @@ class ProjectsLocationsCertificatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1204,9 +1206,10 @@ class ProjectsLocationsDnsAuthorizationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (dnsAuthorizationId != null)
-        'dnsAuthorizationId': [dnsAuthorizationId],
-      if ($fields != null) 'fields': [$fields],
+      'dnsAuthorizationId': ?dnsAuthorizationId == null
+          ? null
+          : [dnsAuthorizationId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsAuthorizations';
@@ -1244,7 +1247,7 @@ class ProjectsLocationsDnsAuthorizationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1281,7 +1284,7 @@ class ProjectsLocationsDnsAuthorizationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1340,11 +1343,11 @@ class ProjectsLocationsDnsAuthorizationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsAuthorizations';
@@ -1393,8 +1396,8 @@ class ProjectsLocationsDnsAuthorizationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1451,7 +1454,7 @@ class ProjectsLocationsOperationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -1489,7 +1492,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1525,7 +1528,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1580,12 +1583,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -1638,8 +1642,8 @@ class ProjectsLocationsTrustConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (trustConfigId != null) 'trustConfigId': [trustConfigId],
-      if ($fields != null) 'fields': [$fields],
+      'trustConfigId': ?trustConfigId == null ? null : [trustConfigId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/trustConfigs';
@@ -1682,8 +1686,8 @@ class ProjectsLocationsTrustConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (etag != null) 'etag': [etag],
-      if ($fields != null) 'fields': [$fields],
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1720,7 +1724,7 @@ class ProjectsLocationsTrustConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1776,11 +1780,11 @@ class ProjectsLocationsTrustConfigsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/trustConfigs';
@@ -1829,8 +1833,8 @@ class ProjectsLocationsTrustConfigsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1860,9 +1864,10 @@ class AllowlistedCertificate {
   AllowlistedCertificate.fromJson(core.Map json_)
     : this(pemCertificate: json_['pemCertificate'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pemCertificate != null) 'pemCertificate': pemCertificate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pemCertificate = this.pemCertificate;
+    return {'pemCertificate': ?pemCertificate};
+  }
 }
 
 /// State of the latest attempt to authorize a domain for certificate issuance.
@@ -1935,23 +1940,29 @@ class AuthorizationAttemptInfo {
         domain: json_['domain'] as core.String?,
         failureReason: json_['failureReason'] as core.String?,
         state: json_['state'] as core.String?,
-        troubleshooting:
-            json_.containsKey('troubleshooting')
-                ? Troubleshooting.fromJson(
-                  json_['troubleshooting']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        troubleshooting: json_.containsKey('troubleshooting')
+            ? Troubleshooting.fromJson(
+                json_['troubleshooting'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attemptTime != null) 'attemptTime': attemptTime!,
-    if (details != null) 'details': details!,
-    if (domain != null) 'domain': domain!,
-    if (failureReason != null) 'failureReason': failureReason!,
-    if (state != null) 'state': state!,
-    if (troubleshooting != null) 'troubleshooting': troubleshooting!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attemptTime = this.attemptTime;
+    final details = this.details;
+    final domain = this.domain;
+    final failureReason = this.failureReason;
+    final state = this.state;
+    final troubleshooting = this.troubleshooting;
+    return {
+      'attemptTime': ?attemptTime,
+      'details': ?details,
+      'domain': ?domain,
+      'failureReason': ?failureReason,
+      'state': ?state,
+      'troubleshooting': ?troubleshooting,
+    };
+  }
 }
 
 /// CNAME troubleshooting information.
@@ -1984,17 +1995,21 @@ class CNAME {
     : this(
         expectedData: json_['expectedData'] as core.String?,
         name: json_['name'] as core.String?,
-        resolvedData:
-            (json_['resolvedData'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        resolvedData: (json_['resolvedData'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expectedData != null) 'expectedData': expectedData!,
-    if (name != null) 'name': name!,
-    if (resolvedData != null) 'resolvedData': resolvedData!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final expectedData = this.expectedData;
+    final name = this.name;
+    final resolvedData = this.resolvedData;
+    return {
+      'expectedData': ?expectedData,
+      'name': ?name,
+      'resolvedData': ?resolvedData,
+    };
+  }
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2105,58 +2120,66 @@ class Certificate {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
-        managed:
-            json_.containsKey('managed')
-                ? ManagedCertificate.fromJson(
-                  json_['managed'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        managedIdentity:
-            json_.containsKey('managedIdentity')
-                ? ManagedIdentityCertificate.fromJson(
-                  json_['managedIdentity']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        managed: json_.containsKey('managed')
+            ? ManagedCertificate.fromJson(
+                json_['managed'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        managedIdentity: json_.containsKey('managedIdentity')
+            ? ManagedIdentityCertificate.fromJson(
+                json_['managedIdentity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         pemCertificate: json_['pemCertificate'] as core.String?,
-        sanDnsnames:
-            (json_['sanDnsnames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        sanDnsnames: (json_['sanDnsnames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         scope: json_['scope'] as core.String?,
-        selfManaged:
-            json_.containsKey('selfManaged')
-                ? SelfManagedCertificate.fromJson(
-                  json_['selfManaged'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        selfManaged: json_.containsKey('selfManaged')
+            ? SelfManagedCertificate.fromJson(
+                json_['selfManaged'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateTime: json_['updateTime'] as core.String?,
-        usedBy:
-            (json_['usedBy'] as core.List?)
-                ?.map(
-                  (value) => UsedBy.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        usedBy: (json_['usedBy'] as core.List?)
+            ?.map(
+              (value) =>
+                  UsedBy.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (labels != null) 'labels': labels!,
-    if (managed != null) 'managed': managed!,
-    if (managedIdentity != null) 'managedIdentity': managedIdentity!,
-    if (name != null) 'name': name!,
-    if (pemCertificate != null) 'pemCertificate': pemCertificate!,
-    if (sanDnsnames != null) 'sanDnsnames': sanDnsnames!,
-    if (scope != null) 'scope': scope!,
-    if (selfManaged != null) 'selfManaged': selfManaged!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (usedBy != null) 'usedBy': usedBy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final expireTime = this.expireTime;
+    final labels = this.labels;
+    final managed = this.managed;
+    final managedIdentity = this.managedIdentity;
+    final name = this.name;
+    final pemCertificate = this.pemCertificate;
+    final sanDnsnames = this.sanDnsnames;
+    final scope = this.scope;
+    final selfManaged = this.selfManaged;
+    final updateTime = this.updateTime;
+    final usedBy = this.usedBy;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'expireTime': ?expireTime,
+      'labels': ?labels,
+      'managed': ?managed,
+      'managedIdentity': ?managedIdentity,
+      'name': ?name,
+      'pemCertificate': ?pemCertificate,
+      'sanDnsnames': ?sanDnsnames,
+      'scope': ?scope,
+      'selfManaged': ?selfManaged,
+      'updateTime': ?updateTime,
+      'usedBy': ?usedBy,
+    };
+  }
 }
 
 /// The CA that issues the workload certificate.
@@ -2172,17 +2195,20 @@ class CertificateAuthorityConfig {
     : this(
         certificateAuthorityServiceConfig:
             json_.containsKey('certificateAuthorityServiceConfig')
-                ? CertificateAuthorityServiceConfig.fromJson(
-                  json_['certificateAuthorityServiceConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CertificateAuthorityServiceConfig.fromJson(
+                json_['certificateAuthorityServiceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificateAuthorityServiceConfig != null)
-      'certificateAuthorityServiceConfig': certificateAuthorityServiceConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificateAuthorityServiceConfig =
+        this.certificateAuthorityServiceConfig;
+    return {
+      'certificateAuthorityServiceConfig': ?certificateAuthorityServiceConfig,
+    };
+  }
 }
 
 /// Contains information required to contact CA service.
@@ -2200,9 +2226,10 @@ class CertificateAuthorityServiceConfig {
   CertificateAuthorityServiceConfig.fromJson(core.Map json_)
     : this(caPool: json_['caPool'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (caPool != null) 'caPool': caPool!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final caPool = this.caPool;
+    return {'caPool': ?caPool};
+  }
 }
 
 /// CertificateIssuanceConfig specifies how to issue and manage a certificate.
@@ -2279,11 +2306,11 @@ class CertificateIssuanceConfig {
     : this(
         certificateAuthorityConfig:
             json_.containsKey('certificateAuthorityConfig')
-                ? CertificateAuthorityConfig.fromJson(
-                  json_['certificateAuthorityConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? CertificateAuthorityConfig.fromJson(
+                json_['certificateAuthorityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         keyAlgorithm: json_['keyAlgorithm'] as core.String?,
@@ -2297,19 +2324,28 @@ class CertificateIssuanceConfig {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificateAuthorityConfig != null)
-      'certificateAuthorityConfig': certificateAuthorityConfig!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
-    if (labels != null) 'labels': labels!,
-    if (lifetime != null) 'lifetime': lifetime!,
-    if (name != null) 'name': name!,
-    if (rotationWindowPercentage != null)
-      'rotationWindowPercentage': rotationWindowPercentage!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificateAuthorityConfig = this.certificateAuthorityConfig;
+    final createTime = this.createTime;
+    final description = this.description;
+    final keyAlgorithm = this.keyAlgorithm;
+    final labels = this.labels;
+    final lifetime = this.lifetime;
+    final name = this.name;
+    final rotationWindowPercentage = this.rotationWindowPercentage;
+    final updateTime = this.updateTime;
+    return {
+      'certificateAuthorityConfig': ?certificateAuthorityConfig,
+      'createTime': ?createTime,
+      'description': ?description,
+      'keyAlgorithm': ?keyAlgorithm,
+      'labels': ?labels,
+      'lifetime': ?lifetime,
+      'name': ?name,
+      'rotationWindowPercentage': ?rotationWindowPercentage,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Defines a collection of certificate configurations.
@@ -2362,14 +2398,13 @@ class CertificateMap {
     : this(
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
-        gclbTargets:
-            (json_['gclbTargets'] as core.List?)
-                ?.map(
-                  (value) => GclbTarget.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        gclbTargets: (json_['gclbTargets'] as core.List?)
+            ?.map(
+              (value) => GclbTarget.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -2377,14 +2412,22 @@ class CertificateMap {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (gclbTargets != null) 'gclbTargets': gclbTargets!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final gclbTargets = this.gclbTargets;
+    final labels = this.labels;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'gclbTargets': ?gclbTargets,
+      'labels': ?labels,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Defines a certificate map entry.
@@ -2462,10 +2505,9 @@ class CertificateMapEntry {
 
   CertificateMapEntry.fromJson(core.Map json_)
     : this(
-        certificates:
-            (json_['certificates'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        certificates: (json_['certificates'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         hostname: json_['hostname'] as core.String?,
@@ -2478,17 +2520,28 @@ class CertificateMapEntry {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificates != null) 'certificates': certificates!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (hostname != null) 'hostname': hostname!,
-    if (labels != null) 'labels': labels!,
-    if (matcher != null) 'matcher': matcher!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificates = this.certificates;
+    final createTime = this.createTime;
+    final description = this.description;
+    final hostname = this.hostname;
+    final labels = this.labels;
+    final matcher = this.matcher;
+    final name = this.name;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'certificates': ?certificates,
+      'createTime': ?createTime,
+      'description': ?description,
+      'hostname': ?hostname,
+      'labels': ?labels,
+      'matcher': ?matcher,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// A DnsAuthorization resource describes a way to perform domain authorization
@@ -2565,13 +2618,12 @@ class DnsAuthorization {
     : this(
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
-        dnsResourceRecord:
-            json_.containsKey('dnsResourceRecord')
-                ? DnsResourceRecord.fromJson(
-                  json_['dnsResourceRecord']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dnsResourceRecord: json_.containsKey('dnsResourceRecord')
+            ? DnsResourceRecord.fromJson(
+                json_['dnsResourceRecord']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         domain: json_['domain'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -2581,16 +2633,26 @@ class DnsAuthorization {
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (dnsResourceRecord != null) 'dnsResourceRecord': dnsResourceRecord!,
-    if (domain != null) 'domain': domain!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final dnsResourceRecord = this.dnsResourceRecord;
+    final domain = this.domain;
+    final labels = this.labels;
+    final name = this.name;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'dnsResourceRecord': ?dnsResourceRecord,
+      'domain': ?domain,
+      'labels': ?labels,
+      'name': ?name,
+      'type': ?type,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// The structure describing the DNS Resource Record that needs to be added to
@@ -2624,11 +2686,12 @@ class DnsResourceRecord {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final name = this.name;
+    final type = this.type;
+    return {'data': ?data, 'name': ?name, 'type': ?type};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2663,23 +2726,27 @@ class GclbTarget {
 
   GclbTarget.fromJson(core.Map json_)
     : this(
-        ipConfigs:
-            (json_['ipConfigs'] as core.List?)
-                ?.map(
-                  (value) => IpConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ipConfigs: (json_['ipConfigs'] as core.List?)
+            ?.map(
+              (value) => IpConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         targetHttpsProxy: json_['targetHttpsProxy'] as core.String?,
         targetSslProxy: json_['targetSslProxy'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipConfigs != null) 'ipConfigs': ipConfigs!,
-    if (targetHttpsProxy != null) 'targetHttpsProxy': targetHttpsProxy!,
-    if (targetSslProxy != null) 'targetSslProxy': targetSslProxy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipConfigs = this.ipConfigs;
+    final targetHttpsProxy = this.targetHttpsProxy;
+    final targetSslProxy = this.targetSslProxy;
+    return {
+      'ipConfigs': ?ipConfigs,
+      'targetHttpsProxy': ?targetHttpsProxy,
+      'targetSslProxy': ?targetSslProxy,
+    };
+  }
 }
 
 /// IPs troubleshooting information.
@@ -2707,25 +2774,27 @@ class IPs {
 
   IPs.fromJson(core.Map json_)
     : this(
-        resolved:
-            (json_['resolved'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        serving:
-            (json_['serving'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        servingOnAltPorts:
-            (json_['servingOnAltPorts'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        resolved: (json_['resolved'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        serving: (json_['serving'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        servingOnAltPorts: (json_['servingOnAltPorts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resolved != null) 'resolved': resolved!,
-    if (serving != null) 'serving': serving!,
-    if (servingOnAltPorts != null) 'servingOnAltPorts': servingOnAltPorts!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final resolved = this.resolved;
+    final serving = this.serving;
+    final servingOnAltPorts = this.servingOnAltPorts;
+    return {
+      'resolved': ?resolved,
+      'serving': ?serving,
+      'servingOnAltPorts': ?servingOnAltPorts,
+    };
+  }
 }
 
 /// Defines an intermediate CA.
@@ -2740,9 +2809,10 @@ class IntermediateCA {
   IntermediateCA.fromJson(core.Map json_)
     : this(pemCertificate: json_['pemCertificate'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pemCertificate != null) 'pemCertificate': pemCertificate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pemCertificate = this.pemCertificate;
+    return {'pemCertificate': ?pemCertificate};
+  }
 }
 
 /// Defines IP configuration where this Certificate Map is serving.
@@ -2762,16 +2832,16 @@ class IpConfig {
   IpConfig.fromJson(core.Map json_)
     : this(
         ipAddress: json_['ipAddress'] as core.String?,
-        ports:
-            (json_['ports'] as core.List?)
-                ?.map((value) => value as core.int)
-                .toList(),
+        ports: (json_['ports'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (ports != null) 'ports': ports!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipAddress = this.ipAddress;
+    final ports = this.ports;
+    return {'ipAddress': ?ipAddress, 'ports': ?ports};
+  }
 }
 
 /// Response for the `ListCertificateIssuanceConfigs` method.
@@ -2806,18 +2876,21 @@ class ListCertificateIssuanceConfigsResponse {
                 )
                 .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificateIssuanceConfigs != null)
-      'certificateIssuanceConfigs': certificateIssuanceConfigs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificateIssuanceConfigs = this.certificateIssuanceConfigs;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'certificateIssuanceConfigs': ?certificateIssuanceConfigs,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for the `ListCertificateMapEntries` method.
@@ -2843,27 +2916,29 @@ class ListCertificateMapEntriesResponse {
 
   ListCertificateMapEntriesResponse.fromJson(core.Map json_)
     : this(
-        certificateMapEntries:
-            (json_['certificateMapEntries'] as core.List?)
-                ?.map(
-                  (value) => CertificateMapEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        certificateMapEntries: (json_['certificateMapEntries'] as core.List?)
+            ?.map(
+              (value) => CertificateMapEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificateMapEntries != null)
-      'certificateMapEntries': certificateMapEntries!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificateMapEntries = this.certificateMapEntries;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'certificateMapEntries': ?certificateMapEntries,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for the `ListCertificateMaps` method.
@@ -2889,26 +2964,29 @@ class ListCertificateMapsResponse {
 
   ListCertificateMapsResponse.fromJson(core.Map json_)
     : this(
-        certificateMaps:
-            (json_['certificateMaps'] as core.List?)
-                ?.map(
-                  (value) => CertificateMap.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        certificateMaps: (json_['certificateMaps'] as core.List?)
+            ?.map(
+              (value) => CertificateMap.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificateMaps != null) 'certificateMaps': certificateMaps!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificateMaps = this.certificateMaps;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'certificateMaps': ?certificateMaps,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for the `ListCertificates` method.
@@ -2934,26 +3012,29 @@ class ListCertificatesResponse {
 
   ListCertificatesResponse.fromJson(core.Map json_)
     : this(
-        certificates:
-            (json_['certificates'] as core.List?)
-                ?.map(
-                  (value) => Certificate.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        certificates: (json_['certificates'] as core.List?)
+            ?.map(
+              (value) => Certificate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certificates != null) 'certificates': certificates!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificates = this.certificates;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'certificates': ?certificates,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for the `ListDnsAuthorizations` method.
@@ -2979,26 +3060,29 @@ class ListDnsAuthorizationsResponse {
 
   ListDnsAuthorizationsResponse.fromJson(core.Map json_)
     : this(
-        dnsAuthorizations:
-            (json_['dnsAuthorizations'] as core.List?)
-                ?.map(
-                  (value) => DnsAuthorization.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        dnsAuthorizations: (json_['dnsAuthorizations'] as core.List?)
+            ?.map(
+              (value) => DnsAuthorization.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dnsAuthorizations != null) 'dnsAuthorizations': dnsAuthorizations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dnsAuthorizations = this.dnsAuthorizations;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'dnsAuthorizations': ?dnsAuthorizations,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -3013,21 +3097,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -3055,25 +3139,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for the `ListTrustConfigs` method.
@@ -3100,25 +3187,28 @@ class ListTrustConfigsResponse {
   ListTrustConfigsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        trustConfigs:
-            (json_['trustConfigs'] as core.List?)
-                ?.map(
-                  (value) => TrustConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        trustConfigs: (json_['trustConfigs'] as core.List?)
+            ?.map(
+              (value) => TrustConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (trustConfigs != null) 'trustConfigs': trustConfigs!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final trustConfigs = this.trustConfigs;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'trustConfigs': ?trustConfigs,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -3197,34 +3287,38 @@ class ManagedCertificate {
                   ),
                 )
                 .toList(),
-        dnsAuthorizations:
-            (json_['dnsAuthorizations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        domains:
-            (json_['domains'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        dnsAuthorizations: (json_['dnsAuthorizations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        domains: (json_['domains'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         issuanceConfig: json_['issuanceConfig'] as core.String?,
-        provisioningIssue:
-            json_.containsKey('provisioningIssue')
-                ? ProvisioningIssue.fromJson(
-                  json_['provisioningIssue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        provisioningIssue: json_.containsKey('provisioningIssue')
+            ? ProvisioningIssue.fromJson(
+                json_['provisioningIssue']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authorizationAttemptInfo != null)
-      'authorizationAttemptInfo': authorizationAttemptInfo!,
-    if (dnsAuthorizations != null) 'dnsAuthorizations': dnsAuthorizations!,
-    if (domains != null) 'domains': domains!,
-    if (issuanceConfig != null) 'issuanceConfig': issuanceConfig!,
-    if (provisioningIssue != null) 'provisioningIssue': provisioningIssue!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationAttemptInfo = this.authorizationAttemptInfo;
+    final dnsAuthorizations = this.dnsAuthorizations;
+    final domains = this.domains;
+    final issuanceConfig = this.issuanceConfig;
+    final provisioningIssue = this.provisioningIssue;
+    final state = this.state;
+    return {
+      'authorizationAttemptInfo': ?authorizationAttemptInfo,
+      'dnsAuthorizations': ?dnsAuthorizations,
+      'domains': ?domains,
+      'issuanceConfig': ?issuanceConfig,
+      'provisioningIssue': ?provisioningIssue,
+      'state': ?state,
+    };
+  }
 }
 
 /// Configuration and state of a Managed Identity Certificate.
@@ -3266,21 +3360,25 @@ class ManagedIdentityCertificate {
   ManagedIdentityCertificate.fromJson(core.Map json_)
     : this(
         identity: json_['identity'] as core.String?,
-        provisioningIssue:
-            json_.containsKey('provisioningIssue')
-                ? ProvisioningIssue.fromJson(
-                  json_['provisioningIssue']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        provisioningIssue: json_.containsKey('provisioningIssue')
+            ? ProvisioningIssue.fromJson(
+                json_['provisioningIssue']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (identity != null) 'identity': identity!,
-    if (provisioningIssue != null) 'provisioningIssue': provisioningIssue!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final identity = this.identity;
+    final provisioningIssue = this.provisioningIssue;
+    final state = this.state;
+    return {
+      'identity': ?identity,
+      'provisioningIssue': ?provisioningIssue,
+      'state': ?state,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3331,30 +3429,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Information about issues with provisioning a Managed Certificate.
@@ -3387,10 +3489,11 @@ class ProvisioningIssue {
         reason: json_['reason'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (details != null) 'details': details!,
-    if (reason != null) 'reason': reason!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final details = this.details;
+    final reason = this.reason;
+    return {'details': ?details, 'reason': ?reason};
+  }
 }
 
 /// Certificate data for a SelfManaged Certificate.
@@ -3421,10 +3524,11 @@ class SelfManagedCertificate {
         pemPrivateKey: json_['pemPrivateKey'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pemCertificate != null) 'pemCertificate': pemCertificate!,
-    if (pemPrivateKey != null) 'pemPrivateKey': pemPrivateKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pemCertificate = this.pemCertificate;
+    final pemPrivateKey = this.pemPrivateKey;
+    return {'pemCertificate': ?pemCertificate, 'pemPrivateKey': ?pemPrivateKey};
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3457,29 +3561,25 @@ class Troubleshooting {
 
   Troubleshooting.fromJson(core.Map json_)
     : this(
-        cname:
-            json_.containsKey('cname')
-                ? CNAME.fromJson(
-                  json_['cname'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        ips:
-            json_.containsKey('ips')
-                ? IPs.fromJson(
-                  json_['ips'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        issues:
-            (json_['issues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        cname: json_.containsKey('cname')
+            ? CNAME.fromJson(
+                json_['cname'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ips: json_.containsKey('ips')
+            ? IPs.fromJson(json_['ips'] as core.Map<core.String, core.dynamic>)
+            : null,
+        issues: (json_['issues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cname != null) 'cname': cname!,
-    if (ips != null) 'ips': ips!,
-    if (issues != null) 'issues': issues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cname = this.cname;
+    final ips = this.ips;
+    final issues = this.issues;
+    return {'cname': ?cname, 'ips': ?ips, 'issues': ?issues};
+  }
 }
 
 /// Defines a trust anchor.
@@ -3494,9 +3594,10 @@ class TrustAnchor {
   TrustAnchor.fromJson(core.Map json_)
     : this(pemCertificate: json_['pemCertificate'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pemCertificate != null) 'pemCertificate': pemCertificate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pemCertificate = this.pemCertificate;
+    return {'pemCertificate': ?pemCertificate};
+  }
 }
 
 /// Defines a trust config.
@@ -3586,39 +3687,48 @@ class TrustConfig {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
-        spiffeTrustStores: (json_['spiffeTrustStores']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                TrustStore.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              ),
-            ),
-        trustStores:
-            (json_['trustStores'] as core.List?)
+        spiffeTrustStores:
+            (json_['spiffeTrustStores'] as core.Map<core.String, core.dynamic>?)
                 ?.map(
-                  (value) => TrustStore.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
+                  (key, value) => core.MapEntry(
+                    key,
+                    TrustStore.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
                   ),
-                )
-                .toList(),
+                ),
+        trustStores: (json_['trustStores'] as core.List?)
+            ?.map(
+              (value) => TrustStore.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         updateTime: json_['updateTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowlistedCertificates != null)
-      'allowlistedCertificates': allowlistedCertificates!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (spiffeTrustStores != null) 'spiffeTrustStores': spiffeTrustStores!,
-    if (trustStores != null) 'trustStores': trustStores!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowlistedCertificates = this.allowlistedCertificates;
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final labels = this.labels;
+    final name = this.name;
+    final spiffeTrustStores = this.spiffeTrustStores;
+    final trustStores = this.trustStores;
+    final updateTime = this.updateTime;
+    return {
+      'allowlistedCertificates': ?allowlistedCertificates,
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'spiffeTrustStores': ?spiffeTrustStores,
+      'trustStores': ?trustStores,
+      'updateTime': ?updateTime,
+    };
+  }
 }
 
 /// Defines a trust store.
@@ -3642,28 +3752,27 @@ class TrustStore {
 
   TrustStore.fromJson(core.Map json_)
     : this(
-        intermediateCas:
-            (json_['intermediateCas'] as core.List?)
-                ?.map(
-                  (value) => IntermediateCA.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        trustAnchors:
-            (json_['trustAnchors'] as core.List?)
-                ?.map(
-                  (value) => TrustAnchor.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        intermediateCas: (json_['intermediateCas'] as core.List?)
+            ?.map(
+              (value) => IntermediateCA.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        trustAnchors: (json_['trustAnchors'] as core.List?)
+            ?.map(
+              (value) => TrustAnchor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (intermediateCas != null) 'intermediateCas': intermediateCas!,
-    if (trustAnchors != null) 'trustAnchors': trustAnchors!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final intermediateCas = this.intermediateCas;
+    final trustAnchors = this.trustAnchors;
+    return {'intermediateCas': ?intermediateCas, 'trustAnchors': ?trustAnchors};
+  }
 }
 
 /// Defines a resource that uses the certificate.
@@ -3681,7 +3790,8 @@ class UsedBy {
 
   UsedBy.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
 }

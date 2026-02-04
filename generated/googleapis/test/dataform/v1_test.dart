@@ -6111,10 +6111,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataformApi(
-              mock,
-            ).projects.locations.repositories.compilationResults;
+        final res = api.DataformApi(
+          mock,
+        ).projects.locations.repositories.compilationResults;
         final arg_request = buildCompilationResult();
         final arg_parent = 'foo';
         final arg_$fields = 'foo';
@@ -6177,10 +6176,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataformApi(
-              mock,
-            ).projects.locations.repositories.compilationResults;
+        final res = api.DataformApi(
+          mock,
+        ).projects.locations.repositories.compilationResults;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -6233,10 +6231,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataformApi(
-              mock,
-            ).projects.locations.repositories.compilationResults;
+        final res = api.DataformApi(
+          mock,
+        ).projects.locations.repositories.compilationResults;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -6320,10 +6317,9 @@ void main() {
 
       unittest.test('method--query', () async {
         final mock = HttpServerMock();
-        final res =
-            api.DataformApi(
-              mock,
-            ).projects.locations.repositories.compilationResults;
+        final res = api.DataformApi(
+          mock,
+        ).projects.locations.repositories.compilationResults;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -6404,8 +6400,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesReleaseConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.releaseConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.releaseConfigs;
       final arg_request = buildReleaseConfig();
       final arg_parent = 'foo';
       final arg_releaseConfigId = 'foo';
@@ -6474,8 +6471,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.releaseConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.releaseConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6528,8 +6526,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.releaseConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.releaseConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6582,8 +6581,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.releaseConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.releaseConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6653,8 +6653,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.releaseConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.releaseConfigs;
       final arg_request = buildReleaseConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6725,8 +6726,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesWorkflowConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workflowConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowConfigs;
       final arg_request = buildWorkflowConfig();
       final arg_parent = 'foo';
       final arg_workflowConfigId = 'foo';
@@ -6795,8 +6797,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workflowConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6849,8 +6852,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workflowConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -6903,8 +6907,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workflowConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowConfigs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6974,8 +6979,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workflowConfigs;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowConfigs;
       final arg_request = buildWorkflowConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -7046,10 +7052,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesWorkflowInvocationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(
-            mock,
-          ).projects.locations.repositories.workflowInvocations;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowInvocations;
       final arg_request = buildCancelWorkflowInvocationRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7116,10 +7121,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(
-            mock,
-          ).projects.locations.repositories.workflowInvocations;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowInvocations;
       final arg_request = buildWorkflowInvocation();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -7182,10 +7186,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(
-            mock,
-          ).projects.locations.repositories.workflowInvocations;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowInvocations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7238,10 +7241,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(
-            mock,
-          ).projects.locations.repositories.workflowInvocations;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowInvocations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7294,10 +7296,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(
-            mock,
-          ).projects.locations.repositories.workflowInvocations;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowInvocations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -7381,10 +7382,9 @@ void main() {
 
     unittest.test('method--query', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(
-            mock,
-          ).projects.locations.repositories.workflowInvocations;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workflowInvocations;
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7458,8 +7458,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesWorkspacesResource', () {
     unittest.test('method--commit', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildCommitWorkspaceChangesRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -7526,8 +7527,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildWorkspace();
       final arg_parent = 'foo';
       final arg_workspaceId = 'foo';
@@ -7596,8 +7598,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7650,8 +7653,9 @@ void main() {
 
     unittest.test('method--fetchFileDiff', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_workspace = 'foo';
       final arg_path = 'foo';
       final arg_$fields = 'foo';
@@ -7710,8 +7714,9 @@ void main() {
 
     unittest.test('method--fetchFileGitStatuses', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7769,8 +7774,9 @@ void main() {
 
     unittest.test('method--fetchGitAheadBehind', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_name = 'foo';
       final arg_remoteBranch = 'foo';
       final arg_$fields = 'foo';
@@ -7834,8 +7840,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7888,8 +7895,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -7951,8 +7959,9 @@ void main() {
 
     unittest.test('method--installNpmPackages', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildInstallNpmPackagesRequest();
       final arg_workspace = 'foo';
       final arg_$fields = 'foo';
@@ -8017,8 +8026,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -8098,8 +8108,9 @@ void main() {
 
     unittest.test('method--makeDirectory', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildMakeDirectoryRequest();
       final arg_workspace = 'foo';
       final arg_$fields = 'foo';
@@ -8162,8 +8173,9 @@ void main() {
 
     unittest.test('method--moveDirectory', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildMoveDirectoryRequest();
       final arg_workspace = 'foo';
       final arg_$fields = 'foo';
@@ -8226,8 +8238,9 @@ void main() {
 
     unittest.test('method--moveFile', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildMoveFileRequest();
       final arg_workspace = 'foo';
       final arg_$fields = 'foo';
@@ -8290,8 +8303,9 @@ void main() {
 
     unittest.test('method--pull', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildPullGitCommitsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8354,8 +8368,9 @@ void main() {
 
     unittest.test('method--push', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildPushGitCommitsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8418,8 +8433,9 @@ void main() {
 
     unittest.test('method--queryDirectoryContents', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_workspace = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8494,8 +8510,9 @@ void main() {
 
     unittest.test('method--readFile', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_workspace = 'foo';
       final arg_path = 'foo';
       final arg_revision = 'foo';
@@ -8560,8 +8577,9 @@ void main() {
 
     unittest.test('method--removeDirectory', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildRemoveDirectoryRequest();
       final arg_workspace = 'foo';
       final arg_$fields = 'foo';
@@ -8624,8 +8642,9 @@ void main() {
 
     unittest.test('method--removeFile', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildRemoveFileRequest();
       final arg_workspace = 'foo';
       final arg_$fields = 'foo';
@@ -8688,8 +8707,9 @@ void main() {
 
     unittest.test('method--reset', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildResetWorkspaceChangesRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -8756,8 +8776,9 @@ void main() {
 
     unittest.test('method--searchFiles', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_workspace = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -8831,8 +8852,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8895,8 +8917,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8961,8 +8984,9 @@ void main() {
 
     unittest.test('method--writeFile', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DataformApi(mock).projects.locations.repositories.workspaces;
+      final res = api.DataformApi(
+        mock,
+      ).projects.locations.repositories.workspaces;
       final arg_request = buildWriteFileRequest();
       final arg_workspace = 'foo';
       final arg_$fields = 'foo';

@@ -1970,10 +1970,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCertificateIssuanceConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(
-            mock,
-          ).projects.locations.certificateIssuanceConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateIssuanceConfigs;
       final arg_request = buildCertificateIssuanceConfig();
       final arg_parent = 'foo';
       final arg_certificateIssuanceConfigId = 'foo';
@@ -2042,10 +2041,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(
-            mock,
-          ).projects.locations.certificateIssuanceConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateIssuanceConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2098,10 +2096,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(
-            mock,
-          ).projects.locations.certificateIssuanceConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateIssuanceConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2154,10 +2151,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(
-            mock,
-          ).projects.locations.certificateIssuanceConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateIssuanceConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2241,10 +2237,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(
-            mock,
-          ).projects.locations.certificateIssuanceConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateIssuanceConfigs;
       final arg_request = buildCertificateIssuanceConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2315,8 +2310,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCertificateMapsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificateMaps;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateMaps;
       final arg_request = buildCertificateMap();
       final arg_parent = 'foo';
       final arg_certificateMapId = 'foo';
@@ -2385,8 +2381,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificateMaps;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateMaps;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2439,8 +2436,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificateMaps;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateMaps;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2493,8 +2491,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificateMaps;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateMaps;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2576,8 +2575,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificateMaps;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificateMaps;
       final arg_request = buildCertificateMap();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2650,10 +2650,9 @@ void main() {
     () {
       unittest.test('method--create', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateManagerApi(
-              mock,
-            ).projects.locations.certificateMaps.certificateMapEntries;
+        final res = api.CertificateManagerApi(
+          mock,
+        ).projects.locations.certificateMaps.certificateMapEntries;
         final arg_request = buildCertificateMapEntry();
         final arg_parent = 'foo';
         final arg_certificateMapEntryId = 'foo';
@@ -2722,10 +2721,9 @@ void main() {
 
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateManagerApi(
-              mock,
-            ).projects.locations.certificateMaps.certificateMapEntries;
+        final res = api.CertificateManagerApi(
+          mock,
+        ).projects.locations.certificateMaps.certificateMapEntries;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -2778,10 +2776,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateManagerApi(
-              mock,
-            ).projects.locations.certificateMaps.certificateMapEntries;
+        final res = api.CertificateManagerApi(
+          mock,
+        ).projects.locations.certificateMaps.certificateMapEntries;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -2834,10 +2831,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateManagerApi(
-              mock,
-            ).projects.locations.certificateMaps.certificateMapEntries;
+        final res = api.CertificateManagerApi(
+          mock,
+        ).projects.locations.certificateMaps.certificateMapEntries;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -2921,10 +2917,9 @@ void main() {
 
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CertificateManagerApi(
-              mock,
-            ).projects.locations.certificateMaps.certificateMapEntries;
+        final res = api.CertificateManagerApi(
+          mock,
+        ).projects.locations.certificateMaps.certificateMapEntries;
         final arg_request = buildCertificateMapEntry();
         final arg_name = 'foo';
         final arg_updateMask = 'foo';
@@ -2996,8 +2991,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsCertificatesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificates;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificates;
       final arg_request = buildCertificate();
       final arg_parent = 'foo';
       final arg_certificateId = 'foo';
@@ -3066,8 +3062,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificates;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3120,8 +3117,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificates;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificates;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3174,8 +3172,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificates;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificates;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3255,8 +3254,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.certificates;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.certificates;
       final arg_request = buildCertificate();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3327,8 +3327,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsDnsAuthorizationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.dnsAuthorizations;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.dnsAuthorizations;
       final arg_request = buildDnsAuthorization();
       final arg_parent = 'foo';
       final arg_dnsAuthorizationId = 'foo';
@@ -3397,8 +3398,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.dnsAuthorizations;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.dnsAuthorizations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3451,8 +3453,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.dnsAuthorizations;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.dnsAuthorizations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3505,8 +3508,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.dnsAuthorizations;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.dnsAuthorizations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3590,8 +3594,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.dnsAuthorizations;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.dnsAuthorizations;
       final arg_request = buildDnsAuthorization();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3913,8 +3918,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsTrustConfigsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.trustConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.trustConfigs;
       final arg_request = buildTrustConfig();
       final arg_parent = 'foo';
       final arg_trustConfigId = 'foo';
@@ -3983,8 +3989,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.trustConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.trustConfigs;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -4043,8 +4050,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.trustConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.trustConfigs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4097,8 +4105,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.trustConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.trustConfigs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4178,8 +4187,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CertificateManagerApi(mock).projects.locations.trustConfigs;
+      final res = api.CertificateManagerApi(
+        mock,
+      ).projects.locations.trustConfigs;
       final arg_request = buildTrustConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

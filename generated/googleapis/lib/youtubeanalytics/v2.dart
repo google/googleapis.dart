@@ -116,10 +116,11 @@ class GroupItemsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (id != null) 'id': [id],
-      if (onBehalfOfContentOwner != null)
-        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
-      if ($fields != null) 'fields': [$fields],
+      'id': ?id == null ? null : [id],
+      'onBehalfOfContentOwner': ?onBehalfOfContentOwner == null
+          ? null
+          : [onBehalfOfContentOwner],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/groupItems';
@@ -168,9 +169,10 @@ class GroupItemsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (onBehalfOfContentOwner != null)
-        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
-      if ($fields != null) 'fields': [$fields],
+      'onBehalfOfContentOwner': ?onBehalfOfContentOwner == null
+          ? null
+          : [onBehalfOfContentOwner],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/groupItems';
@@ -218,10 +220,11 @@ class GroupItemsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (groupId != null) 'groupId': [groupId],
-      if (onBehalfOfContentOwner != null)
-        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
-      if ($fields != null) 'fields': [$fields],
+      'groupId': ?groupId == null ? null : [groupId],
+      'onBehalfOfContentOwner': ?onBehalfOfContentOwner == null
+          ? null
+          : [onBehalfOfContentOwner],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/groupItems';
@@ -276,10 +279,11 @@ class GroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (id != null) 'id': [id],
-      if (onBehalfOfContentOwner != null)
-        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
-      if ($fields != null) 'fields': [$fields],
+      'id': ?id == null ? null : [id],
+      'onBehalfOfContentOwner': ?onBehalfOfContentOwner == null
+          ? null
+          : [onBehalfOfContentOwner],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/groups';
@@ -328,9 +332,10 @@ class GroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (onBehalfOfContentOwner != null)
-        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
-      if ($fields != null) 'fields': [$fields],
+      'onBehalfOfContentOwner': ?onBehalfOfContentOwner == null
+          ? null
+          : [onBehalfOfContentOwner],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/groups';
@@ -395,12 +400,13 @@ class GroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (id != null) 'id': [id],
-      if (mine != null) 'mine': ['${mine}'],
-      if (onBehalfOfContentOwner != null)
-        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'id': ?id == null ? null : [id],
+      'mine': ?mine == null ? null : ['${mine}'],
+      'onBehalfOfContentOwner': ?onBehalfOfContentOwner == null
+          ? null
+          : [onBehalfOfContentOwner],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/groups';
@@ -451,9 +457,10 @@ class GroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (onBehalfOfContentOwner != null)
-        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
-      if ($fields != null) 'fields': [$fields],
+      'onBehalfOfContentOwner': ?onBehalfOfContentOwner == null
+          ? null
+          : [onBehalfOfContentOwner],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/groups';
@@ -564,19 +571,20 @@ class ReportsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (currency != null) 'currency': [currency],
-      if (dimensions != null) 'dimensions': [dimensions],
-      if (endDate != null) 'endDate': [endDate],
-      if (filters != null) 'filters': [filters],
-      if (ids != null) 'ids': [ids],
-      if (includeHistoricalChannelData != null)
-        'includeHistoricalChannelData': ['${includeHistoricalChannelData}'],
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (metrics != null) 'metrics': [metrics],
-      if (sort != null) 'sort': [sort],
-      if (startDate != null) 'startDate': [startDate],
-      if (startIndex != null) 'startIndex': ['${startIndex}'],
-      if ($fields != null) 'fields': [$fields],
+      'currency': ?currency == null ? null : [currency],
+      'dimensions': ?dimensions == null ? null : [dimensions],
+      'endDate': ?endDate == null ? null : [endDate],
+      'filters': ?filters == null ? null : [filters],
+      'ids': ?ids == null ? null : [ids],
+      'includeHistoricalChannelData': ?includeHistoricalChannelData == null
+          ? null
+          : ['${includeHistoricalChannelData}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'metrics': ?metrics == null ? null : [metrics],
+      'sort': ?sort == null ? null : [sort],
+      'startDate': ?startDate == null ? null : [startDate],
+      'startIndex': ?startIndex == null ? null : ['${startIndex}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/reports';
@@ -601,17 +609,17 @@ class EmptyResponse {
 
   EmptyResponse.fromJson(core.Map json_)
     : this(
-        errors:
-            json_.containsKey('errors')
-                ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        errors: json_.containsKey('errors')
+            ? Errors.fromJson(
+                json_['errors'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errors != null) 'errors': errors!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    return {'errors': ?errors};
+  }
 }
 
 /// Describes one specific error.
@@ -676,10 +684,9 @@ class ErrorProto {
 
   ErrorProto.fromJson(core.Map json_)
     : this(
-        argument:
-            (json_['argument'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        argument: (json_['argument'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         code: json_['code'] as core.String?,
         debugInfo: json_['debugInfo'] as core.String?,
         domain: json_['domain'] as core.String?,
@@ -688,16 +695,24 @@ class ErrorProto {
         locationType: json_['locationType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (argument != null) 'argument': argument!,
-    if (code != null) 'code': code!,
-    if (debugInfo != null) 'debugInfo': debugInfo!,
-    if (domain != null) 'domain': domain!,
-    if (externalErrorMessage != null)
-      'externalErrorMessage': externalErrorMessage!,
-    if (location != null) 'location': location!,
-    if (locationType != null) 'locationType': locationType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final argument = this.argument;
+    final code = this.code;
+    final debugInfo = this.debugInfo;
+    final domain = this.domain;
+    final externalErrorMessage = this.externalErrorMessage;
+    final location = this.location;
+    final locationType = this.locationType;
+    return {
+      'argument': ?argument,
+      'code': ?code,
+      'debugInfo': ?debugInfo,
+      'domain': ?domain,
+      'externalErrorMessage': ?externalErrorMessage,
+      'location': ?location,
+      'locationType': ?locationType,
+    };
+  }
 }
 
 /// Request Error information.
@@ -734,22 +749,22 @@ class Errors {
   Errors.fromJson(core.Map json_)
     : this(
         code: json_['code'] as core.String?,
-        error:
-            (json_['error'] as core.List?)
-                ?.map(
-                  (value) => ErrorProto.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        error: (json_['error'] as core.List?)
+            ?.map(
+              (value) => ErrorProto.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         requestId: json_['requestId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (error != null) 'error': error!,
-    if (requestId != null) 'requestId': requestId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final error = this.error;
+    final requestId = this.requestId;
+    return {'code': ?code, 'error': ?error, 'requestId': ?requestId};
+  }
 }
 
 /// A group.
@@ -787,38 +802,42 @@ class Group {
 
   Group.fromJson(core.Map json_)
     : this(
-        contentDetails:
-            json_.containsKey('contentDetails')
-                ? GroupContentDetails.fromJson(
-                  json_['contentDetails']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        errors:
-            json_.containsKey('errors')
-                ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        contentDetails: json_.containsKey('contentDetails')
+            ? GroupContentDetails.fromJson(
+                json_['contentDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        errors: json_.containsKey('errors')
+            ? Errors.fromJson(
+                json_['errors'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        snippet:
-            json_.containsKey('snippet')
-                ? GroupSnippet.fromJson(
-                  json_['snippet'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        snippet: json_.containsKey('snippet')
+            ? GroupSnippet.fromJson(
+                json_['snippet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentDetails != null) 'contentDetails': contentDetails!,
-    if (errors != null) 'errors': errors!,
-    if (etag != null) 'etag': etag!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (snippet != null) 'snippet': snippet!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentDetails = this.contentDetails;
+    final errors = this.errors;
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final snippet = this.snippet;
+    return {
+      'contentDetails': ?contentDetails,
+      'errors': ?errors,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'snippet': ?snippet,
+    };
+  }
 }
 
 /// A group's content details.
@@ -840,10 +859,11 @@ class GroupContentDetails {
         itemType: json_['itemType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (itemCount != null) 'itemCount': itemCount!,
-    if (itemType != null) 'itemType': itemType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final itemCount = this.itemCount;
+    final itemType = this.itemType;
+    return {'itemCount': ?itemCount, 'itemType': ?itemType};
+  }
 }
 
 /// A group item.
@@ -888,32 +908,38 @@ class GroupItem {
 
   GroupItem.fromJson(core.Map json_)
     : this(
-        errors:
-            json_.containsKey('errors')
-                ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        errors: json_.containsKey('errors')
+            ? Errors.fromJson(
+                json_['errors'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
         groupId: json_['groupId'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
-        resource:
-            json_.containsKey('resource')
-                ? GroupItemResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        resource: json_.containsKey('resource')
+            ? GroupItemResource.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errors != null) 'errors': errors!,
-    if (etag != null) 'etag': etag!,
-    if (groupId != null) 'groupId': groupId!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (resource != null) 'resource': resource!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    final etag = this.etag;
+    final groupId = this.groupId;
+    final id = this.id;
+    final kind = this.kind;
+    final resource = this.resource;
+    return {
+      'errors': ?errors,
+      'etag': ?etag,
+      'groupId': ?groupId,
+      'id': ?id,
+      'kind': ?kind,
+      'resource': ?resource,
+    };
+  }
 }
 
 class GroupItemResource {
@@ -935,10 +961,11 @@ class GroupItemResource {
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final kind = this.kind;
+    return {'id': ?id, 'kind': ?kind};
+  }
 }
 
 /// A group snippet.
@@ -961,10 +988,11 @@ class GroupSnippet {
         title: json_['title'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (publishedAt != null) 'publishedAt': publishedAt!,
-    if (title != null) 'title': title!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final publishedAt = this.publishedAt;
+    final title = this.title;
+    return {'publishedAt': ?publishedAt, 'title': ?title};
+  }
 }
 
 /// Response message for GroupsService.ListGroupItems.
@@ -989,30 +1017,29 @@ class ListGroupItemsResponse {
 
   ListGroupItemsResponse.fromJson(core.Map json_)
     : this(
-        errors:
-            json_.containsKey('errors')
-                ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        errors: json_.containsKey('errors')
+            ? Errors.fromJson(
+                json_['errors'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => GroupItem.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => GroupItem.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errors != null) 'errors': errors!,
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    return {'errors': ?errors, 'etag': ?etag, 'items': ?items, 'kind': ?kind};
+  }
 }
 
 /// Response message for GroupsService.ListGroups.
@@ -1047,32 +1074,36 @@ class ListGroupsResponse {
 
   ListGroupsResponse.fromJson(core.Map json_)
     : this(
-        errors:
-            json_.containsKey('errors')
-                ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        errors: json_.containsKey('errors')
+            ? Errors.fromJson(
+                json_['errors'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map(
-                  (value) => Group.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Group.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errors != null) 'errors': errors!,
-    if (etag != null) 'etag': etag!,
-    if (items != null) 'items': items!,
-    if (kind != null) 'kind': kind!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'errors': ?errors,
+      'etag': ?etag,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
 }
 
 /// Response message for TargetedQueriesService.Query.
@@ -1117,33 +1148,36 @@ class QueryResponse {
 
   QueryResponse.fromJson(core.Map json_)
     : this(
-        columnHeaders:
-            (json_['columnHeaders'] as core.List?)
-                ?.map(
-                  (value) => ResultTableColumnHeader.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        errors:
-            json_.containsKey('errors')
-                ? Errors.fromJson(
-                  json_['errors'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        columnHeaders: (json_['columnHeaders'] as core.List?)
+            ?.map(
+              (value) => ResultTableColumnHeader.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        errors: json_.containsKey('errors')
+            ? Errors.fromJson(
+                json_['errors'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        rows:
-            (json_['rows'] as core.List?)
-                ?.map((value) => value as core.List)
-                .toList(),
+        rows: (json_['rows'] as core.List?)
+            ?.map((value) => value as core.List)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columnHeaders != null) 'columnHeaders': columnHeaders!,
-    if (errors != null) 'errors': errors!,
-    if (kind != null) 'kind': kind!,
-    if (rows != null) 'rows': rows!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columnHeaders = this.columnHeaders;
+    final errors = this.errors;
+    final kind = this.kind;
+    final rows = this.rows;
+    return {
+      'columnHeaders': ?columnHeaders,
+      'errors': ?errors,
+      'kind': ?kind,
+      'rows': ?rows,
+    };
+  }
 }
 
 /// The description of a column of the result table.
@@ -1166,9 +1200,10 @@ class ResultTableColumnHeader {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columnType != null) 'columnType': columnType!,
-    if (dataType != null) 'dataType': dataType!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final columnType = this.columnType;
+    final dataType = this.dataType;
+    final name = this.name;
+    return {'columnType': ?columnType, 'dataType': ?dataType, 'name': ?name};
+  }
 }

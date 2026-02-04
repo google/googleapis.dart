@@ -1257,10 +1257,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.MeetApi(
-              mock,
-            ).conferenceRecords.participants.participantSessions;
+        final res = api.MeetApi(
+          mock,
+        ).conferenceRecords.participants.participantSessions;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -1313,10 +1312,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.MeetApi(
-              mock,
-            ).conferenceRecords.participants.participantSessions;
+        final res = api.MeetApi(
+          mock,
+        ).conferenceRecords.participants.participantSessions;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;

@@ -123,8 +123,9 @@ class DiscoveryPackagesConfiguration {
         '$discoveryDocsDir/${entry.key}',
         entry.value.apis
             .map((e) {
-              final allMatches =
-                  allApis.where((element) => element.id == e).toList();
+              final allMatches = allApis
+                  .where((element) => element.id == e)
+                  .toList();
 
               if (allMatches.length == 1) {
                 return allMatches.single;
@@ -337,8 +338,8 @@ package.
 
     Map<String, String>? extraDevDependencies;
     if (values.containsKey('extraDevDependencies')) {
-      extraDevDependencies =
-          (values['extraDevDependencies'] as YamlMap).cast<String, String>();
+      extraDevDependencies = (values['extraDevDependencies'] as YamlMap)
+          .cast<String, String>();
     }
 
     final configUri = Uri.file(configFile);
@@ -432,11 +433,10 @@ package.
   static List<String> _calculateMissingApis(
     Iterable<String> knownApis,
     List<RestDescription> allApis,
-  ) =>
-      allApis
-          .where((item) => !knownApis.contains(item.id))
-          .map((item) => item.id!)
-          .toList();
+  ) => allApis
+      .where((item) => !knownApis.contains(item.id))
+      .map((item) => item.id!)
+      .toList();
 
   /// The excess APIs are the APIs mentioned in the configuration but not
   /// returned from the Discovery Service.

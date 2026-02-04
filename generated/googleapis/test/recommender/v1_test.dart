@@ -1197,10 +1197,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommenderV1InsightRecommendationReference();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1InsightRecommendationReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1InsightRecommendationReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1InsightRecommendationReference(od);
       });
     },
@@ -1234,10 +1234,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommenderV1InsightTypeGenerationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1InsightTypeGenerationConfig(od);
       });
     },
@@ -1260,10 +1260,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommenderV1ListRecommendationsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1ListRecommendationsResponse(od);
       });
     },
@@ -1275,10 +1275,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommenderV1MarkInsightAcceptedRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1MarkInsightAcceptedRequest(od);
       });
     },
@@ -1291,10 +1291,10 @@ void main() {
         final o =
             buildGoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1MarkRecommendationClaimedRequest(od);
       });
     },
@@ -1307,10 +1307,10 @@ void main() {
         final o =
             buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(od);
       });
     },
@@ -1323,10 +1323,10 @@ void main() {
         final o =
             buildGoogleCloudRecommenderV1MarkRecommendationFailedRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1MarkRecommendationFailedRequest(od);
       });
     },
@@ -1339,10 +1339,10 @@ void main() {
         final o =
             buildGoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1MarkRecommendationSucceededRequest(od);
       });
     },
@@ -1401,10 +1401,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommenderV1RecommendationInsightReference();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1RecommendationInsightReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1RecommendationInsightReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1RecommendationInsightReference(od);
       });
     },
@@ -1441,10 +1441,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommenderV1RecommenderGenerationConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1RecommenderGenerationConfig(od);
       });
     },
@@ -1481,10 +1481,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudRecommenderV1SustainabilityProjection();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudRecommenderV1SustainabilityProjection.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudRecommenderV1SustainabilityProjection.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudRecommenderV1SustainabilityProjection(od);
       });
     },
@@ -1515,8 +1515,9 @@ void main() {
   unittest.group('resource-BillingAccountsLocationsInsightTypesResource', () {
     unittest.test('method--getConfig', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).billingAccounts.locations.insightTypes;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.insightTypes;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1573,8 +1574,9 @@ void main() {
 
     unittest.test('method--updateConfig', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).billingAccounts.locations.insightTypes;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.insightTypes;
       final arg_request = buildGoogleCloudRecommenderV1InsightTypeConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -1655,10 +1657,9 @@ void main() {
   unittest.group('resource-BillingAccountsLocationsInsightTypesInsightsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).billingAccounts.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.insightTypes.insights;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1715,10 +1716,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).billingAccounts.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.insightTypes.insights;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -1796,20 +1796,19 @@ void main() {
 
     unittest.test('method--markAccepted', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).billingAccounts.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.insightTypes.insights;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkInsightAcceptedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkInsightAcceptedRequest(obj);
 
           final path = req.url.path;
@@ -1870,8 +1869,9 @@ void main() {
   unittest.group('resource-BillingAccountsLocationsRecommendersResource', () {
     unittest.test('method--getConfig', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).billingAccounts.locations.recommenders;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.recommenders;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1928,8 +1928,9 @@ void main() {
 
     unittest.test('method--updateConfig', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).billingAccounts.locations.recommenders;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.recommenders;
       final arg_request = buildGoogleCloudRecommenderV1RecommenderConfig();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2010,10 +2011,9 @@ void main() {
   unittest.group('resource-BillingAccountsLocationsRecommendersRecommendationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).billingAccounts.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.recommenders.recommendations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2070,10 +2070,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).billingAccounts.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.recommenders.recommendations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2151,20 +2150,19 @@ void main() {
 
     unittest.test('method--markClaimed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).billingAccounts.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationClaimedRequest(obj);
 
           final path = req.url.path;
@@ -2223,20 +2221,19 @@ void main() {
 
     unittest.test('method--markDismissed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).billingAccounts.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(obj);
 
           final path = req.url.path;
@@ -2295,20 +2292,19 @@ void main() {
 
     unittest.test('method--markFailed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).billingAccounts.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationFailedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationFailedRequest(obj);
 
           final path = req.url.path;
@@ -2367,20 +2363,19 @@ void main() {
 
     unittest.test('method--markSucceeded', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).billingAccounts.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).billingAccounts.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationSucceededRequest(obj);
 
           final path = req.url.path;
@@ -2441,8 +2436,9 @@ void main() {
   unittest.group('resource-FoldersLocationsInsightTypesInsightsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).folders.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).folders.locations.insightTypes.insights;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2499,8 +2495,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).folders.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).folders.locations.insightTypes.insights;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2578,18 +2575,19 @@ void main() {
 
     unittest.test('method--markAccepted', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).folders.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).folders.locations.insightTypes.insights;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkInsightAcceptedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkInsightAcceptedRequest(obj);
 
           final path = req.url.path;
@@ -2650,10 +2648,9 @@ void main() {
   unittest.group('resource-FoldersLocationsRecommendersRecommendationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).folders.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).folders.locations.recommenders.recommendations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2710,10 +2707,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).folders.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).folders.locations.recommenders.recommendations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -2791,20 +2787,19 @@ void main() {
 
     unittest.test('method--markClaimed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).folders.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).folders.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationClaimedRequest(obj);
 
           final path = req.url.path;
@@ -2863,20 +2858,19 @@ void main() {
 
     unittest.test('method--markDismissed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).folders.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).folders.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(obj);
 
           final path = req.url.path;
@@ -2935,20 +2929,19 @@ void main() {
 
     unittest.test('method--markFailed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).folders.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).folders.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationFailedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationFailedRequest(obj);
 
           final path = req.url.path;
@@ -3007,20 +3000,19 @@ void main() {
 
     unittest.test('method--markSucceeded', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).folders.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).folders.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationSucceededRequest(obj);
 
           final path = req.url.path;
@@ -3219,10 +3211,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsInsightTypesInsightsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).organizations.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).organizations.locations.insightTypes.insights;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3279,10 +3270,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).organizations.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).organizations.locations.insightTypes.insights;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3360,20 +3350,19 @@ void main() {
 
     unittest.test('method--markAccepted', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).organizations.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).organizations.locations.insightTypes.insights;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkInsightAcceptedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkInsightAcceptedRequest(obj);
 
           final path = req.url.path;
@@ -3572,10 +3561,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsRecommendersRecommendationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).organizations.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).organizations.locations.recommenders.recommendations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3632,10 +3620,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).organizations.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).organizations.locations.recommenders.recommendations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -3713,20 +3700,19 @@ void main() {
 
     unittest.test('method--markClaimed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).organizations.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).organizations.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationClaimedRequest(obj);
 
           final path = req.url.path;
@@ -3785,20 +3771,19 @@ void main() {
 
     unittest.test('method--markDismissed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).organizations.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).organizations.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(obj);
 
           final path = req.url.path;
@@ -3857,20 +3842,19 @@ void main() {
 
     unittest.test('method--markFailed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).organizations.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).organizations.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationFailedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationFailedRequest(obj);
 
           final path = req.url.path;
@@ -3929,20 +3913,19 @@ void main() {
 
     unittest.test('method--markSucceeded', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).organizations.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).organizations.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationSucceededRequest(obj);
 
           final path = req.url.path;
@@ -4141,8 +4124,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInsightTypesInsightsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).projects.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).projects.locations.insightTypes.insights;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4199,8 +4183,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).projects.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).projects.locations.insightTypes.insights;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -4278,18 +4263,19 @@ void main() {
 
     unittest.test('method--markAccepted', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(mock).projects.locations.insightTypes.insights;
+      final res = api.RecommenderApi(
+        mock,
+      ).projects.locations.insightTypes.insights;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkInsightAcceptedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkInsightAcceptedRequest(obj);
 
           final path = req.url.path;
@@ -4488,10 +4474,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsRecommendersRecommendationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).projects.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).projects.locations.recommenders.recommendations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4548,10 +4533,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).projects.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).projects.locations.recommenders.recommendations;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -4629,20 +4613,19 @@ void main() {
 
     unittest.test('method--markClaimed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).projects.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).projects.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationClaimedRequest(obj);
 
           final path = req.url.path;
@@ -4701,20 +4684,19 @@ void main() {
 
     unittest.test('method--markDismissed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).projects.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).projects.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationDismissedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationDismissedRequest(obj);
 
           final path = req.url.path;
@@ -4773,20 +4755,19 @@ void main() {
 
     unittest.test('method--markFailed', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).projects.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).projects.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationFailedRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationFailedRequest(obj);
 
           final path = req.url.path;
@@ -4845,20 +4826,19 @@ void main() {
 
     unittest.test('method--markSucceeded', () async {
       final mock = HttpServerMock();
-      final res =
-          api.RecommenderApi(
-            mock,
-          ).projects.locations.recommenders.recommendations;
+      final res = api.RecommenderApi(
+        mock,
+      ).projects.locations.recommenders.recommendations;
       final arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleCloudRecommenderV1MarkRecommendationSucceededRequest(obj);
 
           final path = req.url.path;

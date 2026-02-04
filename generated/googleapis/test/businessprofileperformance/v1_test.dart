@@ -724,10 +724,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.BusinessProfilePerformanceApi(
-              mock,
-            ).locations.searchkeywords.impressions.monthly;
+        final res = api.BusinessProfilePerformanceApi(
+          mock,
+        ).locations.searchkeywords.impressions.monthly;
         final arg_parent = 'foo';
         final arg_monthlyRange_endMonth_day = 42;
         final arg_monthlyRange_endMonth_month = 42;

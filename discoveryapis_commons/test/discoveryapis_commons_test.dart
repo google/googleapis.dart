@@ -39,8 +39,10 @@ class HttpServerMock extends http.BaseClient {
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
     Object? data;
     if (_expectJson) {
-      final jsonString =
-          await request.finalize().transform(utf8.decoder).join();
+      final jsonString = await request
+          .finalize()
+          .transform(utf8.decoder)
+          .join();
 
       if (jsonString.isEmpty) {
         data = null;
@@ -80,33 +82,32 @@ const isTestError = TypeMatcher<TestError>();
 
 void main() {
   group('isJson', () {
-    for (var entry
-        in {
-          'application/json': true,
-          // case doesn't matter
-          'APPLICATION/JSON': true,
-          // charset is fine
-          'application/json; charset=utf-8': true,
-          // Regression test for https://github.com/google/googleapis.dart/issues/99
-          'application/fhir+json; charset=utf-8': true,
-          // false cases
-          'application/ecmascript': false,
-          'application/javascript': false,
-          'application/x-ecmascript': false,
-          'application/x-javascript': false,
-          'text/ecmascript': false,
-          'text/javascript': false,
-          'text/javascript1.0': false,
-          'text/javascript1.1': false,
-          'text/javascript1.2': false,
-          'text/javascript1.3': false,
-          'text/javascript1.4': false,
-          'text/javascript1.5': false,
-          'text/jscript': false,
-          'text/livescript': false,
-          'text/x-ecmascript': false,
-          'text/x-javascript': false,
-        }.entries) {
+    for (var entry in {
+      'application/json': true,
+      // case doesn't matter
+      'APPLICATION/JSON': true,
+      // charset is fine
+      'application/json; charset=utf-8': true,
+      // Regression test for https://github.com/google/googleapis.dart/issues/99
+      'application/fhir+json; charset=utf-8': true,
+      // false cases
+      'application/ecmascript': false,
+      'application/javascript': false,
+      'application/x-ecmascript': false,
+      'application/x-javascript': false,
+      'text/ecmascript': false,
+      'text/javascript': false,
+      'text/javascript1.0': false,
+      'text/javascript1.1': false,
+      'text/javascript1.2': false,
+      'text/javascript1.3': false,
+      'text/javascript1.4': false,
+      'text/javascript1.5': false,
+      'text/jscript': false,
+      'text/livescript': false,
+      'text/x-ecmascript': false,
+      'text/x-javascript': false,
+    }.entries) {
       test(entry.key, () {
         expect(isJson(entry.key), entry.value);
       });
@@ -180,11 +181,10 @@ void main() {
       final bytes2 = [5, 6, 7, 8, 9, 10, 11];
       final bytes = folded([bytes0, bytes1, bytes2]);
 
-      final chunkStack =
-          ChunkStack(9)
-            ..addBytes(bytes0)
-            ..addBytes(bytes1)
-            ..addBytes(bytes2);
+      final chunkStack = ChunkStack(9)
+        ..addBytes(bytes0)
+        ..addBytes(bytes1)
+        ..addBytes(bytes2);
       expect(chunkStack.length, equals(1));
       chunkStack.finalize();
       expect(chunkStack.length, equals(2));
@@ -481,10 +481,9 @@ void main() {
         List<List<int>> byteArrays, {
         bool withLen = true,
       }) {
-        final len =
-            withLen
-                ? byteArrays.fold<int>(0, (int v, array) => v + array.length)
-                : null;
+        final len = withLen
+            ? byteArrays.fold<int>(0, (int v, array) => v + array.length)
+            : null;
         return Media(
           streamFromByteArrays(byteArrays),
           len,
@@ -606,13 +605,14 @@ void main() {
               'url': 'http://example.com/xyz?uploadType=resumable&alt=json',
               'method': 'POST',
               'data': <int>[],
-              'headers': {
-                'content-length': '0',
-                'content-type': 'application/json; charset=utf-8',
-                'x-upload-content-type': 'foobar',
-              }..addAll(
-                stream ? {} : {'x-upload-content-length': '$totalLength'},
-              ),
+              'headers':
+                  {
+                    'content-length': '0',
+                    'content-type': 'application/json; charset=utf-8',
+                    'x-upload-content-type': 'foobar',
+                  }..addAll(
+                    stream ? {} : {'x-upload-content-length': '$totalLength'},
+                  ),
               'response': stringResponse(200, {
                 'location': 'http://upload.com/',
               }, ''),
@@ -642,10 +642,9 @@ void main() {
 
               http.StreamedResponse response;
               if (successfulResponse) {
-                final headers =
-                    isLast
-                        ? {'content-type': 'application/json; charset=utf-8'}
-                        : {'range': firstRange};
+                final headers = isLast
+                    ? {'content-type': 'application/json; charset=utf-8'}
+                    : {'range': firstRange};
                 response = stringResponse(isLast ? 200 : 308, headers, '');
               } else {
                 final headers = <String, String>{};

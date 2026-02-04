@@ -88,7 +88,7 @@ class ChallengeResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/challenge:generate';
@@ -124,7 +124,7 @@ class ChallengeResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v2/challenge:verify';
@@ -161,9 +161,10 @@ class Antivirus {
   Antivirus.fromJson(core.Map json_)
     : this(state: json_['state'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    return {'state': ?state};
+  }
 }
 
 /// Result message for VerifiedAccess.GenerateChallenge.
@@ -184,9 +185,10 @@ class Challenge {
   Challenge.fromJson(core.Map json_)
     : this(challenge: json_['challenge'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (challenge != null) 'challenge': challenge!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final challenge = this.challenge;
+    return {'challenge': ?challenge};
+  }
 }
 
 /// Properties of the CrowdStrike agent installed on a device.
@@ -209,10 +211,11 @@ class CrowdStrikeAgent {
         customerId: json_['customerId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentId != null) 'agentId': agentId!,
-    if (customerId != null) 'customerId': customerId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentId = this.agentId;
+    final customerId = this.customerId;
+    return {'agentId': ?agentId, 'customerId': ?customerId};
+  }
 }
 
 /// The device signals as reported by Chrome.
@@ -551,54 +554,47 @@ class DeviceSignals {
   DeviceSignals.fromJson(core.Map json_)
     : this(
         allowScreenLock: json_['allowScreenLock'] as core.bool?,
-        antivirus:
-            json_.containsKey('antivirus')
-                ? Antivirus.fromJson(
-                  json_['antivirus'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        antivirus: json_.containsKey('antivirus')
+            ? Antivirus.fromJson(
+                json_['antivirus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         browserVersion: json_['browserVersion'] as core.String?,
         builtInDnsClientEnabled: json_['builtInDnsClientEnabled'] as core.bool?,
         chromeRemoteDesktopAppBlocked:
             json_['chromeRemoteDesktopAppBlocked'] as core.bool?,
-        crowdStrikeAgent:
-            json_.containsKey('crowdStrikeAgent')
-                ? CrowdStrikeAgent.fromJson(
-                  json_['crowdStrikeAgent']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        deviceAffiliationIds:
-            (json_['deviceAffiliationIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        crowdStrikeAgent: json_.containsKey('crowdStrikeAgent')
+            ? CrowdStrikeAgent.fromJson(
+                json_['crowdStrikeAgent']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deviceAffiliationIds: (json_['deviceAffiliationIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         deviceEnrollmentDomain: json_['deviceEnrollmentDomain'] as core.String?,
         deviceManufacturer: json_['deviceManufacturer'] as core.String?,
         deviceModel: json_['deviceModel'] as core.String?,
         diskEncryption: json_['diskEncryption'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         hostname: json_['hostname'] as core.String?,
-        imei:
-            (json_['imei'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        macAddresses:
-            (json_['macAddresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        meid:
-            (json_['meid'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        imei: (json_['imei'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        macAddresses: (json_['macAddresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        meid: (json_['meid'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         operatingSystem: json_['operatingSystem'] as core.String?,
         osFirewall: json_['osFirewall'] as core.String?,
         osVersion: json_['osVersion'] as core.String?,
         passwordProtectionWarningTrigger:
             json_['passwordProtectionWarningTrigger'] as core.String?,
-        profileAffiliationIds:
-            (json_['profileAffiliationIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        profileAffiliationIds: (json_['profileAffiliationIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         profileEnrollmentDomain:
             json_['profileEnrollmentDomain'] as core.String?,
         realtimeUrlCheckMode: json_['realtimeUrlCheckMode'] as core.String?,
@@ -608,10 +604,9 @@ class DeviceSignals {
         secureBootMode: json_['secureBootMode'] as core.String?,
         serialNumber: json_['serialNumber'] as core.String?,
         siteIsolationEnabled: json_['siteIsolationEnabled'] as core.bool?,
-        systemDnsServers:
-            (json_['systemDnsServers'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        systemDnsServers: (json_['systemDnsServers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         thirdPartyBlockingEnabled:
             json_['thirdPartyBlockingEnabled'] as core.bool?,
         trigger: json_['trigger'] as core.String?,
@@ -619,53 +614,77 @@ class DeviceSignals {
         windowsUserDomain: json_['windowsUserDomain'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowScreenLock != null) 'allowScreenLock': allowScreenLock!,
-    if (antivirus != null) 'antivirus': antivirus!,
-    if (browserVersion != null) 'browserVersion': browserVersion!,
-    if (builtInDnsClientEnabled != null)
-      'builtInDnsClientEnabled': builtInDnsClientEnabled!,
-    if (chromeRemoteDesktopAppBlocked != null)
-      'chromeRemoteDesktopAppBlocked': chromeRemoteDesktopAppBlocked!,
-    if (crowdStrikeAgent != null) 'crowdStrikeAgent': crowdStrikeAgent!,
-    if (deviceAffiliationIds != null)
-      'deviceAffiliationIds': deviceAffiliationIds!,
-    if (deviceEnrollmentDomain != null)
-      'deviceEnrollmentDomain': deviceEnrollmentDomain!,
-    if (deviceManufacturer != null) 'deviceManufacturer': deviceManufacturer!,
-    if (deviceModel != null) 'deviceModel': deviceModel!,
-    if (diskEncryption != null) 'diskEncryption': diskEncryption!,
-    if (displayName != null) 'displayName': displayName!,
-    if (hostname != null) 'hostname': hostname!,
-    if (imei != null) 'imei': imei!,
-    if (macAddresses != null) 'macAddresses': macAddresses!,
-    if (meid != null) 'meid': meid!,
-    if (operatingSystem != null) 'operatingSystem': operatingSystem!,
-    if (osFirewall != null) 'osFirewall': osFirewall!,
-    if (osVersion != null) 'osVersion': osVersion!,
-    if (passwordProtectionWarningTrigger != null)
-      'passwordProtectionWarningTrigger': passwordProtectionWarningTrigger!,
-    if (profileAffiliationIds != null)
-      'profileAffiliationIds': profileAffiliationIds!,
-    if (profileEnrollmentDomain != null)
-      'profileEnrollmentDomain': profileEnrollmentDomain!,
-    if (realtimeUrlCheckMode != null)
-      'realtimeUrlCheckMode': realtimeUrlCheckMode!,
-    if (safeBrowsingProtectionLevel != null)
-      'safeBrowsingProtectionLevel': safeBrowsingProtectionLevel!,
-    if (screenLockSecured != null) 'screenLockSecured': screenLockSecured!,
-    if (secureBootMode != null) 'secureBootMode': secureBootMode!,
-    if (serialNumber != null) 'serialNumber': serialNumber!,
-    if (siteIsolationEnabled != null)
-      'siteIsolationEnabled': siteIsolationEnabled!,
-    if (systemDnsServers != null) 'systemDnsServers': systemDnsServers!,
-    if (thirdPartyBlockingEnabled != null)
-      'thirdPartyBlockingEnabled': thirdPartyBlockingEnabled!,
-    if (trigger != null) 'trigger': trigger!,
-    if (windowsMachineDomain != null)
-      'windowsMachineDomain': windowsMachineDomain!,
-    if (windowsUserDomain != null) 'windowsUserDomain': windowsUserDomain!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowScreenLock = this.allowScreenLock;
+    final antivirus = this.antivirus;
+    final browserVersion = this.browserVersion;
+    final builtInDnsClientEnabled = this.builtInDnsClientEnabled;
+    final chromeRemoteDesktopAppBlocked = this.chromeRemoteDesktopAppBlocked;
+    final crowdStrikeAgent = this.crowdStrikeAgent;
+    final deviceAffiliationIds = this.deviceAffiliationIds;
+    final deviceEnrollmentDomain = this.deviceEnrollmentDomain;
+    final deviceManufacturer = this.deviceManufacturer;
+    final deviceModel = this.deviceModel;
+    final diskEncryption = this.diskEncryption;
+    final displayName = this.displayName;
+    final hostname = this.hostname;
+    final imei = this.imei;
+    final macAddresses = this.macAddresses;
+    final meid = this.meid;
+    final operatingSystem = this.operatingSystem;
+    final osFirewall = this.osFirewall;
+    final osVersion = this.osVersion;
+    final passwordProtectionWarningTrigger =
+        this.passwordProtectionWarningTrigger;
+    final profileAffiliationIds = this.profileAffiliationIds;
+    final profileEnrollmentDomain = this.profileEnrollmentDomain;
+    final realtimeUrlCheckMode = this.realtimeUrlCheckMode;
+    final safeBrowsingProtectionLevel = this.safeBrowsingProtectionLevel;
+    final screenLockSecured = this.screenLockSecured;
+    final secureBootMode = this.secureBootMode;
+    final serialNumber = this.serialNumber;
+    final siteIsolationEnabled = this.siteIsolationEnabled;
+    final systemDnsServers = this.systemDnsServers;
+    final thirdPartyBlockingEnabled = this.thirdPartyBlockingEnabled;
+    final trigger = this.trigger;
+    final windowsMachineDomain = this.windowsMachineDomain;
+    final windowsUserDomain = this.windowsUserDomain;
+    return {
+      'allowScreenLock': ?allowScreenLock,
+      'antivirus': ?antivirus,
+      'browserVersion': ?browserVersion,
+      'builtInDnsClientEnabled': ?builtInDnsClientEnabled,
+      'chromeRemoteDesktopAppBlocked': ?chromeRemoteDesktopAppBlocked,
+      'crowdStrikeAgent': ?crowdStrikeAgent,
+      'deviceAffiliationIds': ?deviceAffiliationIds,
+      'deviceEnrollmentDomain': ?deviceEnrollmentDomain,
+      'deviceManufacturer': ?deviceManufacturer,
+      'deviceModel': ?deviceModel,
+      'diskEncryption': ?diskEncryption,
+      'displayName': ?displayName,
+      'hostname': ?hostname,
+      'imei': ?imei,
+      'macAddresses': ?macAddresses,
+      'meid': ?meid,
+      'operatingSystem': ?operatingSystem,
+      'osFirewall': ?osFirewall,
+      'osVersion': ?osVersion,
+      'passwordProtectionWarningTrigger': ?passwordProtectionWarningTrigger,
+      'profileAffiliationIds': ?profileAffiliationIds,
+      'profileEnrollmentDomain': ?profileEnrollmentDomain,
+      'realtimeUrlCheckMode': ?realtimeUrlCheckMode,
+      'safeBrowsingProtectionLevel': ?safeBrowsingProtectionLevel,
+      'screenLockSecured': ?screenLockSecured,
+      'secureBootMode': ?secureBootMode,
+      'serialNumber': ?serialNumber,
+      'siteIsolationEnabled': ?siteIsolationEnabled,
+      'systemDnsServers': ?systemDnsServers,
+      'thirdPartyBlockingEnabled': ?thirdPartyBlockingEnabled,
+      'trigger': ?trigger,
+      'windowsMachineDomain': ?windowsMachineDomain,
+      'windowsUserDomain': ?windowsUserDomain,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -714,10 +733,14 @@ class VerifyChallengeResponseRequest {
         expectedIdentity: json_['expectedIdentity'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (challengeResponse != null) 'challengeResponse': challengeResponse!,
-    if (expectedIdentity != null) 'expectedIdentity': expectedIdentity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final challengeResponse = this.challengeResponse;
+    final expectedIdentity = this.expectedIdentity;
+    return {
+      'challengeResponse': ?challengeResponse,
+      'expectedIdentity': ?expectedIdentity,
+    };
+  }
 }
 
 /// Result message for VerifiedAccess.VerifyChallengeResponse.
@@ -851,12 +874,11 @@ class VerifyChallengeResponseResult {
         deviceEnrollmentId: json_['deviceEnrollmentId'] as core.String?,
         devicePermanentId: json_['devicePermanentId'] as core.String?,
         deviceSignal: json_['deviceSignal'] as core.String?,
-        deviceSignals:
-            json_.containsKey('deviceSignals')
-                ? DeviceSignals.fromJson(
-                  json_['deviceSignals'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        deviceSignals: json_.containsKey('deviceSignals')
+            ? DeviceSignals.fromJson(
+                json_['deviceSignals'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         keyTrustLevel: json_['keyTrustLevel'] as core.String?,
         profileCustomerId: json_['profileCustomerId'] as core.String?,
         profileKeyTrustLevel: json_['profileKeyTrustLevel'] as core.String?,
@@ -867,21 +889,34 @@ class VerifyChallengeResponseResult {
         virtualProfileId: json_['virtualProfileId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestedDeviceId != null) 'attestedDeviceId': attestedDeviceId!,
-    if (customerId != null) 'customerId': customerId!,
-    if (deviceEnrollmentId != null) 'deviceEnrollmentId': deviceEnrollmentId!,
-    if (devicePermanentId != null) 'devicePermanentId': devicePermanentId!,
-    if (deviceSignal != null) 'deviceSignal': deviceSignal!,
-    if (deviceSignals != null) 'deviceSignals': deviceSignals!,
-    if (keyTrustLevel != null) 'keyTrustLevel': keyTrustLevel!,
-    if (profileCustomerId != null) 'profileCustomerId': profileCustomerId!,
-    if (profileKeyTrustLevel != null)
-      'profileKeyTrustLevel': profileKeyTrustLevel!,
-    if (profilePermanentId != null) 'profilePermanentId': profilePermanentId!,
-    if (signedPublicKeyAndChallenge != null)
-      'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge!,
-    if (virtualDeviceId != null) 'virtualDeviceId': virtualDeviceId!,
-    if (virtualProfileId != null) 'virtualProfileId': virtualProfileId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestedDeviceId = this.attestedDeviceId;
+    final customerId = this.customerId;
+    final deviceEnrollmentId = this.deviceEnrollmentId;
+    final devicePermanentId = this.devicePermanentId;
+    final deviceSignal = this.deviceSignal;
+    final deviceSignals = this.deviceSignals;
+    final keyTrustLevel = this.keyTrustLevel;
+    final profileCustomerId = this.profileCustomerId;
+    final profileKeyTrustLevel = this.profileKeyTrustLevel;
+    final profilePermanentId = this.profilePermanentId;
+    final signedPublicKeyAndChallenge = this.signedPublicKeyAndChallenge;
+    final virtualDeviceId = this.virtualDeviceId;
+    final virtualProfileId = this.virtualProfileId;
+    return {
+      'attestedDeviceId': ?attestedDeviceId,
+      'customerId': ?customerId,
+      'deviceEnrollmentId': ?deviceEnrollmentId,
+      'devicePermanentId': ?devicePermanentId,
+      'deviceSignal': ?deviceSignal,
+      'deviceSignals': ?deviceSignals,
+      'keyTrustLevel': ?keyTrustLevel,
+      'profileCustomerId': ?profileCustomerId,
+      'profileKeyTrustLevel': ?profileKeyTrustLevel,
+      'profilePermanentId': ?profilePermanentId,
+      'signedPublicKeyAndChallenge': ?signedPublicKeyAndChallenge,
+      'virtualDeviceId': ?virtualDeviceId,
+      'virtualProfileId': ?virtualProfileId,
+    };
+  }
 }

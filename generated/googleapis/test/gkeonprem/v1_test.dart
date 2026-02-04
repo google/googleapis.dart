@@ -6557,8 +6557,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBareMetalAdminClustersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_request = buildBareMetalAdminCluster();
       final arg_parent = 'foo';
       final arg_allowPreflightFailure = true;
@@ -6639,8 +6640,9 @@ void main() {
 
     unittest.test('method--enroll', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_request = buildEnrollBareMetalAdminClusterRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -6703,8 +6705,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_view = 'foo';
@@ -6769,8 +6772,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -6832,8 +6836,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_parent = 'foo';
       final arg_allowMissing = true;
       final arg_pageSize = 42;
@@ -6914,8 +6919,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_request = buildBareMetalAdminCluster();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6990,8 +6996,9 @@ void main() {
 
     unittest.test('method--queryVersionConfig', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_parent = 'foo';
       final arg_upgradeConfig_clusterName = 'foo';
       final arg_$fields = 'foo';
@@ -7057,8 +7064,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7121,8 +7129,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7187,8 +7196,9 @@ void main() {
 
     unittest.test('method--unenroll', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.bareMetalAdminClusters;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalAdminClusters;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
@@ -7269,10 +7279,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(
-              mock,
-            ).projects.locations.bareMetalAdminClusters.operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.bareMetalAdminClusters.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -7325,10 +7334,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(
-              mock,
-            ).projects.locations.bareMetalAdminClusters.operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.bareMetalAdminClusters.operations;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -8219,10 +8227,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_request = buildBareMetalNodePool();
       final arg_parent = 'foo';
       final arg_bareMetalNodePoolId = 'foo';
@@ -8297,10 +8304,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
@@ -8377,10 +8383,9 @@ void main() {
 
     unittest.test('method--enroll', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_request = buildEnrollBareMetalNodePoolRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -8443,10 +8448,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -8505,10 +8509,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -8570,10 +8573,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8648,10 +8650,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_request = buildBareMetalNodePool();
       final arg_name = 'foo';
       final arg_allowMissing = true;
@@ -8732,10 +8733,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8798,10 +8798,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8866,10 +8865,9 @@ void main() {
 
     unittest.test('method--unenroll', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.bareMetalClusters.bareMetalNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.bareMetalClusters.bareMetalNodePools;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
@@ -8944,13 +8942,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(mock)
-                .projects
-                .locations
-                .bareMetalClusters
-                .bareMetalNodePools
-                .operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.bareMetalClusters.bareMetalNodePools.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9003,13 +8997,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(mock)
-                .projects
-                .locations
-                .bareMetalClusters
-                .bareMetalNodePools
-                .operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.bareMetalClusters.bareMetalNodePools.operations;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -9094,10 +9084,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(
-              mock,
-            ).projects.locations.bareMetalClusters.operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.bareMetalClusters.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -9150,10 +9139,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(
-              mock,
-            ).projects.locations.bareMetalClusters.operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.bareMetalClusters.operations;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -10135,10 +10123,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(
-              mock,
-            ).projects.locations.vmwareAdminClusters.operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.vmwareAdminClusters.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -10191,10 +10178,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(
-              mock,
-            ).projects.locations.vmwareAdminClusters.operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.vmwareAdminClusters.operations;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -11089,8 +11075,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsVmwareClustersOperationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.vmwareClusters.operations;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.operations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -11143,8 +11130,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(mock).projects.locations.vmwareClusters.operations;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.operations;
       final arg_name = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -11226,10 +11214,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsVmwareClustersVmwareNodePoolsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_request = buildVmwareNodePool();
       final arg_parent = 'foo';
       final arg_validateOnly = true;
@@ -11304,10 +11291,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
@@ -11384,10 +11370,9 @@ void main() {
 
     unittest.test('method--enroll', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_request = buildEnrollVmwareNodePoolRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -11450,10 +11435,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -11512,10 +11496,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_resource = 'foo';
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
@@ -11577,10 +11560,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -11653,10 +11635,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_request = buildVmwareNodePool();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -11731,10 +11712,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -11797,10 +11777,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -11865,10 +11844,9 @@ void main() {
 
     unittest.test('method--unenroll', () async {
       final mock = HttpServerMock();
-      final res =
-          api.GKEOnPremApi(
-            mock,
-          ).projects.locations.vmwareClusters.vmwareNodePools;
+      final res = api.GKEOnPremApi(
+        mock,
+      ).projects.locations.vmwareClusters.vmwareNodePools;
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
@@ -11943,10 +11921,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(
-              mock,
-            ).projects.locations.vmwareClusters.vmwareNodePools.operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.vmwareClusters.vmwareNodePools.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -11999,10 +11976,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.GKEOnPremApi(
-              mock,
-            ).projects.locations.vmwareClusters.vmwareNodePools.operations;
+        final res = api.GKEOnPremApi(
+          mock,
+        ).projects.locations.vmwareClusters.vmwareNodePools.operations;
         final arg_name = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;

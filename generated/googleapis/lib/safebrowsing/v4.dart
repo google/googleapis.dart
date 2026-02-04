@@ -109,9 +109,9 @@ class EncodedFullHashesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (clientId != null) 'clientId': [clientId],
-      if (clientVersion != null) 'clientVersion': [clientVersion],
-      if ($fields != null) 'fields': [$fields],
+      'clientId': ?clientId == null ? null : [clientId],
+      'clientVersion': ?clientVersion == null ? null : [clientVersion],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -160,9 +160,9 @@ class EncodedUpdatesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (clientId != null) 'clientId': [clientId],
-      if (clientVersion != null) 'clientVersion': [clientVersion],
-      if ($fields != null) 'fields': [$fields],
+      'clientId': ?clientId == null ? null : [clientId],
+      'clientVersion': ?clientVersion == null ? null : [clientVersion],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -206,7 +206,7 @@ class FullHashesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v4/fullHashes:find';
@@ -252,7 +252,7 @@ class ThreatHitsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v4/threatHits';
@@ -300,7 +300,7 @@ class ThreatListUpdatesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v4/threatListUpdates:fetch';
@@ -340,7 +340,7 @@ class ThreatListsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v4/threatLists';
@@ -383,7 +383,7 @@ class ThreatMatchesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v4/threatMatches:find';
@@ -428,10 +428,11 @@ class GoogleSecuritySafebrowsingV4ClientInfo {
         clientVersion: json_['clientVersion'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clientId != null) 'clientId': clientId!,
-    if (clientVersion != null) 'clientVersion': clientVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientId = this.clientId;
+    final clientVersion = this.clientVersion;
+    return {'clientId': ?clientId, 'clientVersion': ?clientVersion};
+  }
 }
 
 /// Describes a Safe Browsing API update request.
@@ -457,27 +458,26 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest.fromJson(
     core.Map json_,
   ) : this(
-        client:
-            json_.containsKey('client')
-                ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
-                  json_['client'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        listUpdateRequests:
-            (json_['listUpdateRequests'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        client: json_.containsKey('client')
+            ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
+                json_['client'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        listUpdateRequests: (json_['listUpdateRequests'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (client != null) 'client': client!,
-    if (listUpdateRequests != null) 'listUpdateRequests': listUpdateRequests!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final client = this.client;
+    final listUpdateRequests = this.listUpdateRequests;
+    return {'client': ?client, 'listUpdateRequests': ?listUpdateRequests};
+  }
 }
 
 /// A single list update request.
@@ -562,25 +562,31 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest.fromJson(
     core.Map json_,
   ) : this(
-        constraints:
-            json_.containsKey('constraints')
-                ? GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints.fromJson(
-                  json_['constraints'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        constraints: json_.containsKey('constraints')
+            ? GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints.fromJson(
+                json_['constraints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         platformType: json_['platformType'] as core.String?,
         state: json_['state'] as core.String?,
         threatEntryType: json_['threatEntryType'] as core.String?,
         threatType: json_['threatType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (constraints != null) 'constraints': constraints!,
-    if (platformType != null) 'platformType': platformType!,
-    if (state != null) 'state': state!,
-    if (threatEntryType != null) 'threatEntryType': threatEntryType!,
-    if (threatType != null) 'threatType': threatType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final constraints = this.constraints;
+    final platformType = this.platformType;
+    final state = this.state;
+    final threatEntryType = this.threatEntryType;
+    final threatType = this.threatType;
+    return {
+      'constraints': ?constraints,
+      'platformType': ?platformType,
+      'state': ?state,
+      'threatEntryType': ?threatEntryType,
+      'threatType': ?threatType,
+    };
+  }
 }
 
 /// The constraints for this update.
@@ -633,21 +639,27 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
         maxDatabaseEntries: json_['maxDatabaseEntries'] as core.int?,
         maxUpdateEntries: json_['maxUpdateEntries'] as core.int?,
         region: json_['region'] as core.String?,
-        supportedCompressions:
-            (json_['supportedCompressions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        supportedCompressions: (json_['supportedCompressions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceLocation != null) 'deviceLocation': deviceLocation!,
-    if (language != null) 'language': language!,
-    if (maxDatabaseEntries != null) 'maxDatabaseEntries': maxDatabaseEntries!,
-    if (maxUpdateEntries != null) 'maxUpdateEntries': maxUpdateEntries!,
-    if (region != null) 'region': region!,
-    if (supportedCompressions != null)
-      'supportedCompressions': supportedCompressions!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceLocation = this.deviceLocation;
+    final language = this.language;
+    final maxDatabaseEntries = this.maxDatabaseEntries;
+    final maxUpdateEntries = this.maxUpdateEntries;
+    final region = this.region;
+    final supportedCompressions = this.supportedCompressions;
+    return {
+      'deviceLocation': ?deviceLocation,
+      'language': ?language,
+      'maxDatabaseEntries': ?maxDatabaseEntries,
+      'maxUpdateEntries': ?maxUpdateEntries,
+      'region': ?region,
+      'supportedCompressions': ?supportedCompressions,
+    };
+  }
 }
 
 class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
@@ -675,24 +687,25 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
     core.Map json_,
   ) : this(
-        listUpdateResponses:
-            (json_['listUpdateResponses'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        listUpdateResponses: (json_['listUpdateResponses'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         minimumWaitDuration: json_['minimumWaitDuration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (listUpdateResponses != null)
-      'listUpdateResponses': listUpdateResponses!,
-    if (minimumWaitDuration != null)
-      'minimumWaitDuration': minimumWaitDuration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final listUpdateResponses = this.listUpdateResponses;
+    final minimumWaitDuration = this.minimumWaitDuration;
+    return {
+      'listUpdateResponses': ?listUpdateResponses,
+      'minimumWaitDuration': ?minimumWaitDuration,
+    };
+  }
 }
 
 /// An update to an individual list.
@@ -809,47 +822,52 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse.fromJson(
     core.Map json_,
   ) : this(
-        additions:
-            (json_['additions'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        checksum:
-            json_.containsKey('checksum')
-                ? GoogleSecuritySafebrowsingV4Checksum.fromJson(
-                  json_['checksum'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        additions: (json_['additions'] as core.List?)
+            ?.map(
+              (value) => GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        checksum: json_.containsKey('checksum')
+            ? GoogleSecuritySafebrowsingV4Checksum.fromJson(
+                json_['checksum'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         newClientState: json_['newClientState'] as core.String?,
         platformType: json_['platformType'] as core.String?,
-        removals:
-            (json_['removals'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        removals: (json_['removals'] as core.List?)
+            ?.map(
+              (value) => GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         responseType: json_['responseType'] as core.String?,
         threatEntryType: json_['threatEntryType'] as core.String?,
         threatType: json_['threatType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additions != null) 'additions': additions!,
-    if (checksum != null) 'checksum': checksum!,
-    if (newClientState != null) 'newClientState': newClientState!,
-    if (platformType != null) 'platformType': platformType!,
-    if (removals != null) 'removals': removals!,
-    if (responseType != null) 'responseType': responseType!,
-    if (threatEntryType != null) 'threatEntryType': threatEntryType!,
-    if (threatType != null) 'threatType': threatType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additions = this.additions;
+    final checksum = this.checksum;
+    final newClientState = this.newClientState;
+    final platformType = this.platformType;
+    final removals = this.removals;
+    final responseType = this.responseType;
+    final threatEntryType = this.threatEntryType;
+    final threatType = this.threatType;
+    return {
+      'additions': ?additions,
+      'checksum': ?checksum,
+      'newClientState': ?newClientState,
+      'platformType': ?platformType,
+      'removals': ?removals,
+      'responseType': ?responseType,
+      'threatEntryType': ?threatEntryType,
+      'threatType': ?threatType,
+    };
+  }
 }
 
 /// Request to return full hashes matched by the provided hash prefixes.
@@ -876,36 +894,38 @@ class GoogleSecuritySafebrowsingV4FindFullHashesRequest {
 
   GoogleSecuritySafebrowsingV4FindFullHashesRequest.fromJson(core.Map json_)
     : this(
-        apiClient:
-            json_.containsKey('apiClient')
-                ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
-                  json_['apiClient'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        client:
-            json_.containsKey('client')
-                ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
-                  json_['client'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        clientStates:
-            (json_['clientStates'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        threatInfo:
-            json_.containsKey('threatInfo')
-                ? GoogleSecuritySafebrowsingV4ThreatInfo.fromJson(
-                  json_['threatInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        apiClient: json_.containsKey('apiClient')
+            ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
+                json_['apiClient'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        client: json_.containsKey('client')
+            ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
+                json_['client'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        clientStates: (json_['clientStates'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        threatInfo: json_.containsKey('threatInfo')
+            ? GoogleSecuritySafebrowsingV4ThreatInfo.fromJson(
+                json_['threatInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiClient != null) 'apiClient': apiClient!,
-    if (client != null) 'client': client!,
-    if (clientStates != null) 'clientStates': clientStates!,
-    if (threatInfo != null) 'threatInfo': threatInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiClient = this.apiClient;
+    final client = this.client;
+    final clientStates = this.clientStates;
+    final threatInfo = this.threatInfo;
+    return {
+      'apiClient': ?apiClient,
+      'client': ?client,
+      'clientStates': ?clientStates,
+      'threatInfo': ?threatInfo,
+    };
+  }
 }
 
 class GoogleSecuritySafebrowsingV4FindFullHashesResponse {
@@ -931,25 +951,27 @@ class GoogleSecuritySafebrowsingV4FindFullHashesResponse {
 
   GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(core.Map json_)
     : this(
-        matches:
-            (json_['matches'] as core.List?)
-                ?.map(
-                  (value) => GoogleSecuritySafebrowsingV4ThreatMatch.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        matches: (json_['matches'] as core.List?)
+            ?.map(
+              (value) => GoogleSecuritySafebrowsingV4ThreatMatch.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         minimumWaitDuration: json_['minimumWaitDuration'] as core.String?,
         negativeCacheDuration: json_['negativeCacheDuration'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (matches != null) 'matches': matches!,
-    if (minimumWaitDuration != null)
-      'minimumWaitDuration': minimumWaitDuration!,
-    if (negativeCacheDuration != null)
-      'negativeCacheDuration': negativeCacheDuration!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final matches = this.matches;
+    final minimumWaitDuration = this.minimumWaitDuration;
+    final negativeCacheDuration = this.negativeCacheDuration;
+    return {
+      'matches': ?matches,
+      'minimumWaitDuration': ?minimumWaitDuration,
+      'negativeCacheDuration': ?negativeCacheDuration,
+    };
+  }
 }
 
 /// Request to check entries against lists.
@@ -967,24 +989,23 @@ class GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
 
   GoogleSecuritySafebrowsingV4FindThreatMatchesRequest.fromJson(core.Map json_)
     : this(
-        client:
-            json_.containsKey('client')
-                ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
-                  json_['client'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        threatInfo:
-            json_.containsKey('threatInfo')
-                ? GoogleSecuritySafebrowsingV4ThreatInfo.fromJson(
-                  json_['threatInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        client: json_.containsKey('client')
+            ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
+                json_['client'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        threatInfo: json_.containsKey('threatInfo')
+            ? GoogleSecuritySafebrowsingV4ThreatInfo.fromJson(
+                json_['threatInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (client != null) 'client': client!,
-    if (threatInfo != null) 'threatInfo': threatInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final client = this.client;
+    final threatInfo = this.threatInfo;
+    return {'client': ?client, 'threatInfo': ?threatInfo};
+  }
 }
 
 class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
@@ -995,19 +1016,19 @@ class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
 
   GoogleSecuritySafebrowsingV4FindThreatMatchesResponse.fromJson(core.Map json_)
     : this(
-        matches:
-            (json_['matches'] as core.List?)
-                ?.map(
-                  (value) => GoogleSecuritySafebrowsingV4ThreatMatch.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        matches: (json_['matches'] as core.List?)
+            ?.map(
+              (value) => GoogleSecuritySafebrowsingV4ThreatMatch.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (matches != null) 'matches': matches!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final matches = this.matches;
+    return {'matches': ?matches};
+  }
 }
 
 class GoogleSecuritySafebrowsingV4ListThreatListsResponse {
@@ -1018,20 +1039,20 @@ class GoogleSecuritySafebrowsingV4ListThreatListsResponse {
 
   GoogleSecuritySafebrowsingV4ListThreatListsResponse.fromJson(core.Map json_)
     : this(
-        threatLists:
-            (json_['threatLists'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleSecuritySafebrowsingV4ThreatListDescriptor.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        threatLists: (json_['threatLists'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleSecuritySafebrowsingV4ThreatListDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (threatLists != null) 'threatLists': threatLists!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final threatLists = this.threatLists;
+    return {'threatLists': ?threatLists};
+  }
 }
 
 /// The uncompressed threat entries in hash format of a particular prefix
@@ -1071,10 +1092,11 @@ class GoogleSecuritySafebrowsingV4RawHashes {
         rawHashes: json_['rawHashes'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (prefixSize != null) 'prefixSize': prefixSize!,
-    if (rawHashes != null) 'rawHashes': rawHashes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final prefixSize = this.prefixSize;
+    final rawHashes = this.rawHashes;
+    return {'prefixSize': ?prefixSize, 'rawHashes': ?rawHashes};
+  }
 }
 
 /// A set of raw indices to remove from a local list.
@@ -1128,12 +1150,18 @@ class GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
         riceParameter: json_['riceParameter'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encodedData != null) 'encodedData': encodedData!,
-    if (firstValue != null) 'firstValue': firstValue!,
-    if (numEntries != null) 'numEntries': numEntries!,
-    if (riceParameter != null) 'riceParameter': riceParameter!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final encodedData = this.encodedData;
+    final firstValue = this.firstValue;
+    final numEntries = this.numEntries;
+    final riceParameter = this.riceParameter;
+    return {
+      'encodedData': ?encodedData,
+      'firstValue': ?firstValue,
+      'numEntries': ?numEntries,
+      'riceParameter': ?riceParameter,
+    };
+  }
 }
 
 /// An individual threat; for example, a malicious URL or its hash
@@ -1182,11 +1210,12 @@ class GoogleSecuritySafebrowsingV4ThreatEntry {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (digest != null) 'digest': digest!,
-    if (hash != null) 'hash': hash!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final digest = this.digest;
+    final hash = this.hash;
+    final url = this.url;
+    return {'digest': ?digest, 'hash': ?hash, 'url': ?url};
+  }
 }
 
 /// The metadata associated with a specific threat entry.
@@ -1202,20 +1231,20 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
 
   GoogleSecuritySafebrowsingV4ThreatEntryMetadata.fromJson(core.Map json_)
     : this(
-        entries:
-            (json_['entries'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entries != null) 'entries': entries!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    return {'entries': ?entries};
+  }
 }
 
 /// A single metadata entry.
@@ -1258,10 +1287,11 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
 }
 
 /// A set of threats that should be added or removed from a client's local
@@ -1306,39 +1336,42 @@ class GoogleSecuritySafebrowsingV4ThreatEntrySet {
   GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(core.Map json_)
     : this(
         compressionType: json_['compressionType'] as core.String?,
-        rawHashes:
-            json_.containsKey('rawHashes')
-                ? GoogleSecuritySafebrowsingV4RawHashes.fromJson(
-                  json_['rawHashes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        rawIndices:
-            json_.containsKey('rawIndices')
-                ? GoogleSecuritySafebrowsingV4RawIndices.fromJson(
-                  json_['rawIndices'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        riceHashes:
-            json_.containsKey('riceHashes')
-                ? GoogleSecuritySafebrowsingV4RiceDeltaEncoding.fromJson(
-                  json_['riceHashes'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        riceIndices:
-            json_.containsKey('riceIndices')
-                ? GoogleSecuritySafebrowsingV4RiceDeltaEncoding.fromJson(
-                  json_['riceIndices'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        rawHashes: json_.containsKey('rawHashes')
+            ? GoogleSecuritySafebrowsingV4RawHashes.fromJson(
+                json_['rawHashes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rawIndices: json_.containsKey('rawIndices')
+            ? GoogleSecuritySafebrowsingV4RawIndices.fromJson(
+                json_['rawIndices'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        riceHashes: json_.containsKey('riceHashes')
+            ? GoogleSecuritySafebrowsingV4RiceDeltaEncoding.fromJson(
+                json_['riceHashes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        riceIndices: json_.containsKey('riceIndices')
+            ? GoogleSecuritySafebrowsingV4RiceDeltaEncoding.fromJson(
+                json_['riceIndices'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (compressionType != null) 'compressionType': compressionType!,
-    if (rawHashes != null) 'rawHashes': rawHashes!,
-    if (rawIndices != null) 'rawIndices': rawIndices!,
-    if (riceHashes != null) 'riceHashes': riceHashes!,
-    if (riceIndices != null) 'riceIndices': riceIndices!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final compressionType = this.compressionType;
+    final rawHashes = this.rawHashes;
+    final rawIndices = this.rawIndices;
+    final riceHashes = this.riceHashes;
+    final riceIndices = this.riceIndices;
+    return {
+      'compressionType': ?compressionType,
+      'rawHashes': ?rawHashes,
+      'rawIndices': ?rawIndices,
+      'riceHashes': ?riceHashes,
+      'riceIndices': ?riceIndices,
+    };
+  }
 }
 
 class GoogleSecuritySafebrowsingV4ThreatHit {
@@ -1409,45 +1442,49 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
 
   GoogleSecuritySafebrowsingV4ThreatHit.fromJson(core.Map json_)
     : this(
-        clientInfo:
-            json_.containsKey('clientInfo')
-                ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
-                  json_['clientInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        entry:
-            json_.containsKey('entry')
-                ? GoogleSecuritySafebrowsingV4ThreatEntry.fromJson(
-                  json_['entry'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        clientInfo: json_.containsKey('clientInfo')
+            ? GoogleSecuritySafebrowsingV4ClientInfo.fromJson(
+                json_['clientInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        entry: json_.containsKey('entry')
+            ? GoogleSecuritySafebrowsingV4ThreatEntry.fromJson(
+                json_['entry'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         platformType: json_['platformType'] as core.String?,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleSecuritySafebrowsingV4ThreatHitThreatSource.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleSecuritySafebrowsingV4ThreatHitThreatSource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         threatType: json_['threatType'] as core.String?,
-        userInfo:
-            json_.containsKey('userInfo')
-                ? GoogleSecuritySafebrowsingV4ThreatHitUserInfo.fromJson(
-                  json_['userInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        userInfo: json_.containsKey('userInfo')
+            ? GoogleSecuritySafebrowsingV4ThreatHitUserInfo.fromJson(
+                json_['userInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clientInfo != null) 'clientInfo': clientInfo!,
-    if (entry != null) 'entry': entry!,
-    if (platformType != null) 'platformType': platformType!,
-    if (resources != null) 'resources': resources!,
-    if (threatType != null) 'threatType': threatType!,
-    if (userInfo != null) 'userInfo': userInfo!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientInfo = this.clientInfo;
+    final entry = this.entry;
+    final platformType = this.platformType;
+    final resources = this.resources;
+    final threatType = this.threatType;
+    final userInfo = this.userInfo;
+    return {
+      'clientInfo': ?clientInfo,
+      'entry': ?entry,
+      'platformType': ?platformType,
+      'resources': ?resources,
+      'threatType': ?threatType,
+      'userInfo': ?userInfo,
+    };
+  }
 }
 
 /// A single resource related to a threat hit.
@@ -1492,12 +1529,18 @@ class GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
         url: json_['url'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (referrer != null) 'referrer': referrer!,
-    if (remoteIp != null) 'remoteIp': remoteIp!,
-    if (type != null) 'type': type!,
-    if (url != null) 'url': url!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final referrer = this.referrer;
+    final remoteIp = this.remoteIp;
+    final type = this.type;
+    final url = this.url;
+    return {
+      'referrer': ?referrer,
+      'remoteIp': ?remoteIp,
+      'type': ?type,
+      'url': ?url,
+    };
+  }
 }
 
 /// Details about the user that encountered the threat.
@@ -1524,10 +1567,11 @@ class GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
         userId: json_['userId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (userId != null) 'userId': userId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final regionCode = this.regionCode;
+    final userId = this.userId;
+    return {'regionCode': ?regionCode, 'userId': ?userId};
+  }
 }
 
 /// The information regarding one or more threats that a client submits when
@@ -1554,34 +1598,36 @@ class GoogleSecuritySafebrowsingV4ThreatInfo {
 
   GoogleSecuritySafebrowsingV4ThreatInfo.fromJson(core.Map json_)
     : this(
-        platformTypes:
-            (json_['platformTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        threatEntries:
-            (json_['threatEntries'] as core.List?)
-                ?.map(
-                  (value) => GoogleSecuritySafebrowsingV4ThreatEntry.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        threatEntryTypes:
-            (json_['threatEntryTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        threatTypes:
-            (json_['threatTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        platformTypes: (json_['platformTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        threatEntries: (json_['threatEntries'] as core.List?)
+            ?.map(
+              (value) => GoogleSecuritySafebrowsingV4ThreatEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        threatEntryTypes: (json_['threatEntryTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        threatTypes: (json_['threatTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (platformTypes != null) 'platformTypes': platformTypes!,
-    if (threatEntries != null) 'threatEntries': threatEntries!,
-    if (threatEntryTypes != null) 'threatEntryTypes': threatEntryTypes!,
-    if (threatTypes != null) 'threatTypes': threatTypes!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final platformTypes = this.platformTypes;
+    final threatEntries = this.threatEntries;
+    final threatEntryTypes = this.threatEntryTypes;
+    final threatTypes = this.threatTypes;
+    return {
+      'platformTypes': ?platformTypes,
+      'threatEntries': ?threatEntries,
+      'threatEntryTypes': ?threatEntryTypes,
+      'threatTypes': ?threatTypes,
+    };
+  }
 }
 
 /// Describes an individual threat list.
@@ -1655,11 +1701,16 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
         threatType: json_['threatType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (platformType != null) 'platformType': platformType!,
-    if (threatEntryType != null) 'threatEntryType': threatEntryType!,
-    if (threatType != null) 'threatType': threatType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final platformType = this.platformType;
+    final threatEntryType = this.threatEntryType;
+    final threatType = this.threatType;
+    return {
+      'platformType': ?platformType,
+      'threatEntryType': ?threatEntryType,
+      'threatType': ?threatType,
+    };
+  }
 }
 
 /// A match when checking a threat entry in the Safe Browsing threat lists.
@@ -1742,30 +1793,35 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
     : this(
         cacheDuration: json_['cacheDuration'] as core.String?,
         platformType: json_['platformType'] as core.String?,
-        threat:
-            json_.containsKey('threat')
-                ? GoogleSecuritySafebrowsingV4ThreatEntry.fromJson(
-                  json_['threat'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        threatEntryMetadata:
-            json_.containsKey('threatEntryMetadata')
-                ? GoogleSecuritySafebrowsingV4ThreatEntryMetadata.fromJson(
-                  json_['threatEntryMetadata']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        threat: json_.containsKey('threat')
+            ? GoogleSecuritySafebrowsingV4ThreatEntry.fromJson(
+                json_['threat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        threatEntryMetadata: json_.containsKey('threatEntryMetadata')
+            ? GoogleSecuritySafebrowsingV4ThreatEntryMetadata.fromJson(
+                json_['threatEntryMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         threatEntryType: json_['threatEntryType'] as core.String?,
         threatType: json_['threatType'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cacheDuration != null) 'cacheDuration': cacheDuration!,
-    if (platformType != null) 'platformType': platformType!,
-    if (threat != null) 'threat': threat!,
-    if (threatEntryMetadata != null)
-      'threatEntryMetadata': threatEntryMetadata!,
-    if (threatEntryType != null) 'threatEntryType': threatEntryType!,
-    if (threatType != null) 'threatType': threatType!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cacheDuration = this.cacheDuration;
+    final platformType = this.platformType;
+    final threat = this.threat;
+    final threatEntryMetadata = this.threatEntryMetadata;
+    final threatEntryType = this.threatEntryType;
+    final threatType = this.threatType;
+    return {
+      'cacheDuration': ?cacheDuration,
+      'platformType': ?platformType,
+      'threat': ?threat,
+      'threatEntryMetadata': ?threatEntryMetadata,
+      'threatEntryType': ?threatEntryType,
+      'threatType': ?threatType,
+    };
+  }
 }

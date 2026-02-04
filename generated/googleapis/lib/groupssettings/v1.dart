@@ -84,7 +84,7 @@ class GroupsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = commons.escapeVariable('$groupUniqueId');
@@ -124,7 +124,7 @@ class GroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = commons.escapeVariable('$groupUniqueId');
@@ -163,7 +163,7 @@ class GroupsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = commons.escapeVariable('$groupUniqueId');
@@ -975,104 +975,139 @@ class Groups {
         whoCanViewMembership: json_['whoCanViewMembership'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowExternalMembers != null)
-      'allowExternalMembers': allowExternalMembers!,
-    if (allowGoogleCommunication != null)
-      'allowGoogleCommunication': allowGoogleCommunication!,
-    if (allowWebPosting != null) 'allowWebPosting': allowWebPosting!,
-    if (archiveOnly != null) 'archiveOnly': archiveOnly!,
-    if (customFooterText != null) 'customFooterText': customFooterText!,
-    if (customReplyTo != null) 'customReplyTo': customReplyTo!,
-    if (customRolesEnabledForSettingsToBeMerged != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowExternalMembers = this.allowExternalMembers;
+    final allowGoogleCommunication = this.allowGoogleCommunication;
+    final allowWebPosting = this.allowWebPosting;
+    final archiveOnly = this.archiveOnly;
+    final customFooterText = this.customFooterText;
+    final customReplyTo = this.customReplyTo;
+    final customRolesEnabledForSettingsToBeMerged =
+        this.customRolesEnabledForSettingsToBeMerged;
+    final defaultMessageDenyNotificationText =
+        this.defaultMessageDenyNotificationText;
+    final defaultSender = this.defaultSender;
+    final description = this.description;
+    final email = this.email;
+    final enableCollaborativeInbox = this.enableCollaborativeInbox;
+    final favoriteRepliesOnTop = this.favoriteRepliesOnTop;
+    final includeCustomFooter = this.includeCustomFooter;
+    final includeInGlobalAddressList = this.includeInGlobalAddressList;
+    final isArchived = this.isArchived;
+    final kind = this.kind;
+    final maxMessageBytes = this.maxMessageBytes;
+    final membersCanPostAsTheGroup = this.membersCanPostAsTheGroup;
+    final messageDisplayFont = this.messageDisplayFont;
+    final messageModerationLevel = this.messageModerationLevel;
+    final name = this.name;
+    final primaryLanguage = this.primaryLanguage;
+    final replyTo = this.replyTo;
+    final sendMessageDenyNotification = this.sendMessageDenyNotification;
+    final showInGroupDirectory = this.showInGroupDirectory;
+    final spamModerationLevel = this.spamModerationLevel;
+    final whoCanAdd = this.whoCanAdd;
+    final whoCanAddReferences = this.whoCanAddReferences;
+    final whoCanApproveMembers = this.whoCanApproveMembers;
+    final whoCanApproveMessages = this.whoCanApproveMessages;
+    final whoCanAssignTopics = this.whoCanAssignTopics;
+    final whoCanAssistContent = this.whoCanAssistContent;
+    final whoCanBanUsers = this.whoCanBanUsers;
+    final whoCanContactOwner = this.whoCanContactOwner;
+    final whoCanDeleteAnyPost = this.whoCanDeleteAnyPost;
+    final whoCanDeleteTopics = this.whoCanDeleteTopics;
+    final whoCanDiscoverGroup = this.whoCanDiscoverGroup;
+    final whoCanEnterFreeFormTags = this.whoCanEnterFreeFormTags;
+    final whoCanHideAbuse = this.whoCanHideAbuse;
+    final whoCanInvite = this.whoCanInvite;
+    final whoCanJoin = this.whoCanJoin;
+    final whoCanLeaveGroup = this.whoCanLeaveGroup;
+    final whoCanLockTopics = this.whoCanLockTopics;
+    final whoCanMakeTopicsSticky = this.whoCanMakeTopicsSticky;
+    final whoCanMarkDuplicate = this.whoCanMarkDuplicate;
+    final whoCanMarkFavoriteReplyOnAnyTopic =
+        this.whoCanMarkFavoriteReplyOnAnyTopic;
+    final whoCanMarkFavoriteReplyOnOwnTopic =
+        this.whoCanMarkFavoriteReplyOnOwnTopic;
+    final whoCanMarkNoResponseNeeded = this.whoCanMarkNoResponseNeeded;
+    final whoCanModerateContent = this.whoCanModerateContent;
+    final whoCanModerateMembers = this.whoCanModerateMembers;
+    final whoCanModifyMembers = this.whoCanModifyMembers;
+    final whoCanModifyTagsAndCategories = this.whoCanModifyTagsAndCategories;
+    final whoCanMoveTopicsIn = this.whoCanMoveTopicsIn;
+    final whoCanMoveTopicsOut = this.whoCanMoveTopicsOut;
+    final whoCanPostAnnouncements = this.whoCanPostAnnouncements;
+    final whoCanPostMessage = this.whoCanPostMessage;
+    final whoCanTakeTopics = this.whoCanTakeTopics;
+    final whoCanUnassignTopic = this.whoCanUnassignTopic;
+    final whoCanUnmarkFavoriteReplyOnAnyTopic =
+        this.whoCanUnmarkFavoriteReplyOnAnyTopic;
+    final whoCanViewGroup = this.whoCanViewGroup;
+    final whoCanViewMembership = this.whoCanViewMembership;
+    return {
+      'allowExternalMembers': ?allowExternalMembers,
+      'allowGoogleCommunication': ?allowGoogleCommunication,
+      'allowWebPosting': ?allowWebPosting,
+      'archiveOnly': ?archiveOnly,
+      'customFooterText': ?customFooterText,
+      'customReplyTo': ?customReplyTo,
       'customRolesEnabledForSettingsToBeMerged':
-          customRolesEnabledForSettingsToBeMerged!,
-    if (defaultMessageDenyNotificationText != null)
-      'defaultMessageDenyNotificationText': defaultMessageDenyNotificationText!,
-    if (defaultSender != null) 'default_sender': defaultSender!,
-    if (description != null) 'description': description!,
-    if (email != null) 'email': email!,
-    if (enableCollaborativeInbox != null)
-      'enableCollaborativeInbox': enableCollaborativeInbox!,
-    if (favoriteRepliesOnTop != null)
-      'favoriteRepliesOnTop': favoriteRepliesOnTop!,
-    if (includeCustomFooter != null)
-      'includeCustomFooter': includeCustomFooter!,
-    if (includeInGlobalAddressList != null)
-      'includeInGlobalAddressList': includeInGlobalAddressList!,
-    if (isArchived != null) 'isArchived': isArchived!,
-    if (kind != null) 'kind': kind!,
-    if (maxMessageBytes != null) 'maxMessageBytes': maxMessageBytes!,
-    if (membersCanPostAsTheGroup != null)
-      'membersCanPostAsTheGroup': membersCanPostAsTheGroup!,
-    if (messageDisplayFont != null) 'messageDisplayFont': messageDisplayFont!,
-    if (messageModerationLevel != null)
-      'messageModerationLevel': messageModerationLevel!,
-    if (name != null) 'name': name!,
-    if (primaryLanguage != null) 'primaryLanguage': primaryLanguage!,
-    if (replyTo != null) 'replyTo': replyTo!,
-    if (sendMessageDenyNotification != null)
-      'sendMessageDenyNotification': sendMessageDenyNotification!,
-    if (showInGroupDirectory != null)
-      'showInGroupDirectory': showInGroupDirectory!,
-    if (spamModerationLevel != null)
-      'spamModerationLevel': spamModerationLevel!,
-    if (whoCanAdd != null) 'whoCanAdd': whoCanAdd!,
-    if (whoCanAddReferences != null)
-      'whoCanAddReferences': whoCanAddReferences!,
-    if (whoCanApproveMembers != null)
-      'whoCanApproveMembers': whoCanApproveMembers!,
-    if (whoCanApproveMessages != null)
-      'whoCanApproveMessages': whoCanApproveMessages!,
-    if (whoCanAssignTopics != null) 'whoCanAssignTopics': whoCanAssignTopics!,
-    if (whoCanAssistContent != null)
-      'whoCanAssistContent': whoCanAssistContent!,
-    if (whoCanBanUsers != null) 'whoCanBanUsers': whoCanBanUsers!,
-    if (whoCanContactOwner != null) 'whoCanContactOwner': whoCanContactOwner!,
-    if (whoCanDeleteAnyPost != null)
-      'whoCanDeleteAnyPost': whoCanDeleteAnyPost!,
-    if (whoCanDeleteTopics != null) 'whoCanDeleteTopics': whoCanDeleteTopics!,
-    if (whoCanDiscoverGroup != null)
-      'whoCanDiscoverGroup': whoCanDiscoverGroup!,
-    if (whoCanEnterFreeFormTags != null)
-      'whoCanEnterFreeFormTags': whoCanEnterFreeFormTags!,
-    if (whoCanHideAbuse != null) 'whoCanHideAbuse': whoCanHideAbuse!,
-    if (whoCanInvite != null) 'whoCanInvite': whoCanInvite!,
-    if (whoCanJoin != null) 'whoCanJoin': whoCanJoin!,
-    if (whoCanLeaveGroup != null) 'whoCanLeaveGroup': whoCanLeaveGroup!,
-    if (whoCanLockTopics != null) 'whoCanLockTopics': whoCanLockTopics!,
-    if (whoCanMakeTopicsSticky != null)
-      'whoCanMakeTopicsSticky': whoCanMakeTopicsSticky!,
-    if (whoCanMarkDuplicate != null)
-      'whoCanMarkDuplicate': whoCanMarkDuplicate!,
-    if (whoCanMarkFavoriteReplyOnAnyTopic != null)
-      'whoCanMarkFavoriteReplyOnAnyTopic': whoCanMarkFavoriteReplyOnAnyTopic!,
-    if (whoCanMarkFavoriteReplyOnOwnTopic != null)
-      'whoCanMarkFavoriteReplyOnOwnTopic': whoCanMarkFavoriteReplyOnOwnTopic!,
-    if (whoCanMarkNoResponseNeeded != null)
-      'whoCanMarkNoResponseNeeded': whoCanMarkNoResponseNeeded!,
-    if (whoCanModerateContent != null)
-      'whoCanModerateContent': whoCanModerateContent!,
-    if (whoCanModerateMembers != null)
-      'whoCanModerateMembers': whoCanModerateMembers!,
-    if (whoCanModifyMembers != null)
-      'whoCanModifyMembers': whoCanModifyMembers!,
-    if (whoCanModifyTagsAndCategories != null)
-      'whoCanModifyTagsAndCategories': whoCanModifyTagsAndCategories!,
-    if (whoCanMoveTopicsIn != null) 'whoCanMoveTopicsIn': whoCanMoveTopicsIn!,
-    if (whoCanMoveTopicsOut != null)
-      'whoCanMoveTopicsOut': whoCanMoveTopicsOut!,
-    if (whoCanPostAnnouncements != null)
-      'whoCanPostAnnouncements': whoCanPostAnnouncements!,
-    if (whoCanPostMessage != null) 'whoCanPostMessage': whoCanPostMessage!,
-    if (whoCanTakeTopics != null) 'whoCanTakeTopics': whoCanTakeTopics!,
-    if (whoCanUnassignTopic != null)
-      'whoCanUnassignTopic': whoCanUnassignTopic!,
-    if (whoCanUnmarkFavoriteReplyOnAnyTopic != null)
+          ?customRolesEnabledForSettingsToBeMerged,
+      'defaultMessageDenyNotificationText': ?defaultMessageDenyNotificationText,
+      'default_sender': ?defaultSender,
+      'description': ?description,
+      'email': ?email,
+      'enableCollaborativeInbox': ?enableCollaborativeInbox,
+      'favoriteRepliesOnTop': ?favoriteRepliesOnTop,
+      'includeCustomFooter': ?includeCustomFooter,
+      'includeInGlobalAddressList': ?includeInGlobalAddressList,
+      'isArchived': ?isArchived,
+      'kind': ?kind,
+      'maxMessageBytes': ?maxMessageBytes,
+      'membersCanPostAsTheGroup': ?membersCanPostAsTheGroup,
+      'messageDisplayFont': ?messageDisplayFont,
+      'messageModerationLevel': ?messageModerationLevel,
+      'name': ?name,
+      'primaryLanguage': ?primaryLanguage,
+      'replyTo': ?replyTo,
+      'sendMessageDenyNotification': ?sendMessageDenyNotification,
+      'showInGroupDirectory': ?showInGroupDirectory,
+      'spamModerationLevel': ?spamModerationLevel,
+      'whoCanAdd': ?whoCanAdd,
+      'whoCanAddReferences': ?whoCanAddReferences,
+      'whoCanApproveMembers': ?whoCanApproveMembers,
+      'whoCanApproveMessages': ?whoCanApproveMessages,
+      'whoCanAssignTopics': ?whoCanAssignTopics,
+      'whoCanAssistContent': ?whoCanAssistContent,
+      'whoCanBanUsers': ?whoCanBanUsers,
+      'whoCanContactOwner': ?whoCanContactOwner,
+      'whoCanDeleteAnyPost': ?whoCanDeleteAnyPost,
+      'whoCanDeleteTopics': ?whoCanDeleteTopics,
+      'whoCanDiscoverGroup': ?whoCanDiscoverGroup,
+      'whoCanEnterFreeFormTags': ?whoCanEnterFreeFormTags,
+      'whoCanHideAbuse': ?whoCanHideAbuse,
+      'whoCanInvite': ?whoCanInvite,
+      'whoCanJoin': ?whoCanJoin,
+      'whoCanLeaveGroup': ?whoCanLeaveGroup,
+      'whoCanLockTopics': ?whoCanLockTopics,
+      'whoCanMakeTopicsSticky': ?whoCanMakeTopicsSticky,
+      'whoCanMarkDuplicate': ?whoCanMarkDuplicate,
+      'whoCanMarkFavoriteReplyOnAnyTopic': ?whoCanMarkFavoriteReplyOnAnyTopic,
+      'whoCanMarkFavoriteReplyOnOwnTopic': ?whoCanMarkFavoriteReplyOnOwnTopic,
+      'whoCanMarkNoResponseNeeded': ?whoCanMarkNoResponseNeeded,
+      'whoCanModerateContent': ?whoCanModerateContent,
+      'whoCanModerateMembers': ?whoCanModerateMembers,
+      'whoCanModifyMembers': ?whoCanModifyMembers,
+      'whoCanModifyTagsAndCategories': ?whoCanModifyTagsAndCategories,
+      'whoCanMoveTopicsIn': ?whoCanMoveTopicsIn,
+      'whoCanMoveTopicsOut': ?whoCanMoveTopicsOut,
+      'whoCanPostAnnouncements': ?whoCanPostAnnouncements,
+      'whoCanPostMessage': ?whoCanPostMessage,
+      'whoCanTakeTopics': ?whoCanTakeTopics,
+      'whoCanUnassignTopic': ?whoCanUnassignTopic,
       'whoCanUnmarkFavoriteReplyOnAnyTopic':
-          whoCanUnmarkFavoriteReplyOnAnyTopic!,
-    if (whoCanViewGroup != null) 'whoCanViewGroup': whoCanViewGroup!,
-    if (whoCanViewMembership != null)
-      'whoCanViewMembership': whoCanViewMembership!,
-  };
+          ?whoCanUnmarkFavoriteReplyOnAnyTopic,
+      'whoCanViewGroup': ?whoCanViewGroup,
+      'whoCanViewMembership': ?whoCanViewMembership,
+    };
+  }
 }

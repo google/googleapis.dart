@@ -3236,10 +3236,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildInventoryWindowsUpdatePackageWindowsUpdateCategory();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkInventoryWindowsUpdatePackageWindowsUpdateCategory(od);
       });
     },
@@ -3450,10 +3450,10 @@ void main() {
         final o =
             buildOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance(
           od,
         );
@@ -3468,10 +3468,10 @@ void main() {
         final o =
             buildOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput(
           od,
         );
@@ -3486,10 +3486,10 @@ void main() {
         final o =
             buildOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkOSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep(
           od,
         );
@@ -3754,10 +3754,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildOSPolicyResourceRepositoryResourceZypperRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .OSPolicyResourceRepositoryResourceZypperRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.OSPolicyResourceRepositoryResourceZypperRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkOSPolicyResourceRepositoryResourceZypperRepository(od);
       });
     },
@@ -3989,10 +3989,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildVulnerabilityReportVulnerabilityDetailsReference();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .VulnerabilityReportVulnerabilityDetailsReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.VulnerabilityReportVulnerabilityDetailsReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkVulnerabilityReportVulnerabilityDetailsReference(od);
       });
     },
@@ -4194,8 +4194,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsInstancesInventoriesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).projects.locations.instances.inventories;
+      final res = api.OSConfigApi(
+        mock,
+      ).projects.locations.instances.inventories;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -4254,8 +4255,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).projects.locations.instances.inventories;
+      final res = api.OSConfigApi(
+        mock,
+      ).projects.locations.instances.inventories;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
@@ -4336,10 +4338,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OSConfigApi(
-              mock,
-            ).projects.locations.instances.osPolicyAssignments.reports;
+        final res = api.OSConfigApi(
+          mock,
+        ).projects.locations.instances.osPolicyAssignments.reports;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -4392,10 +4393,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OSConfigApi(
-              mock,
-            ).projects.locations.instances.osPolicyAssignments.reports;
+        final res = api.OSConfigApi(
+          mock,
+        ).projects.locations.instances.osPolicyAssignments.reports;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -4478,10 +4478,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OSConfigApi(
-              mock,
-            ).projects.locations.instances.vulnerabilityReports;
+        final res = api.OSConfigApi(
+          mock,
+        ).projects.locations.instances.vulnerabilityReports;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -4534,10 +4533,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OSConfigApi(
-              mock,
-            ).projects.locations.instances.vulnerabilityReports;
+        final res = api.OSConfigApi(
+          mock,
+        ).projects.locations.instances.vulnerabilityReports;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_pageSize = 42;
@@ -5288,10 +5286,9 @@ void main() {
     () {
       unittest.test('method--cancel', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OSConfigApi(
-              mock,
-            ).projects.locations.osPolicyAssignments.operations;
+        final res = api.OSConfigApi(
+          mock,
+        ).projects.locations.osPolicyAssignments.operations;
         final arg_request = buildCancelOperationRequest();
         final arg_name = 'foo';
         final arg_$fields = 'foo';
@@ -5354,10 +5351,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.OSConfigApi(
-              mock,
-            ).projects.locations.osPolicyAssignments.operations;
+        final res = api.OSConfigApi(
+          mock,
+        ).projects.locations.osPolicyAssignments.operations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(

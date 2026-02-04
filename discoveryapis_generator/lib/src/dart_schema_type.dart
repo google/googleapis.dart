@@ -64,6 +64,17 @@ abstract class DartSchemaType {
   /// encoded.
   String jsonEncode(String value);
 
+  /// [value] is the string expression of this [DartSchemaType] that needs to be
+  /// encoded.
+  ///
+  /// The expression [value] may evaluate to `null`.
+  String jsonEncodeNullable(String value) {
+    if (needsJsonEncoding) {
+      return '$value == null ? null : ${jsonEncode(value)}';
+    }
+    return value;
+  }
+
   /// [json] is the string expression of json data that needs to be decoded to
   /// a [DartSchemaType].
   String jsonDecode(String json, {String? importName});

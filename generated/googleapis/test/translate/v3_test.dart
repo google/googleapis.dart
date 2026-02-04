@@ -4404,10 +4404,9 @@ void main() {
     () {
       unittest.test('method--delete', () async {
         final mock = HttpServerMock();
-        final res =
-            api.TranslateApi(
-              mock,
-            ).projects.locations.adaptiveMtDatasets.adaptiveMtFiles;
+        final res = api.TranslateApi(
+          mock,
+        ).projects.locations.adaptiveMtDatasets.adaptiveMtFiles;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -4460,10 +4459,9 @@ void main() {
 
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.TranslateApi(
-              mock,
-            ).projects.locations.adaptiveMtDatasets.adaptiveMtFiles;
+        final res = api.TranslateApi(
+          mock,
+        ).projects.locations.adaptiveMtDatasets.adaptiveMtFiles;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -4516,10 +4514,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.TranslateApi(
-              mock,
-            ).projects.locations.adaptiveMtDatasets.adaptiveMtFiles;
+        final res = api.TranslateApi(
+          mock,
+        ).projects.locations.adaptiveMtDatasets.adaptiveMtFiles;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -4596,13 +4593,12 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.TranslateApi(mock)
-                .projects
-                .locations
-                .adaptiveMtDatasets
-                .adaptiveMtFiles
-                .adaptiveMtSentences;
+        final res = api.TranslateApi(mock)
+            .projects
+            .locations
+            .adaptiveMtDatasets
+            .adaptiveMtFiles
+            .adaptiveMtSentences;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -4679,10 +4675,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.TranslateApi(
-              mock,
-            ).projects.locations.adaptiveMtDatasets.adaptiveMtSentences;
+        final res = api.TranslateApi(
+          mock,
+        ).projects.locations.adaptiveMtDatasets.adaptiveMtSentences;
         final arg_parent = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
@@ -5512,8 +5507,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlossariesGlossaryEntriesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final res = api.TranslateApi(
+        mock,
+      ).projects.locations.glossaries.glossaryEntries;
       final arg_request = buildGlossaryEntry();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5576,8 +5572,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final res = api.TranslateApi(
+        mock,
+      ).projects.locations.glossaries.glossaryEntries;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5630,8 +5627,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final res = api.TranslateApi(
+        mock,
+      ).projects.locations.glossaries.glossaryEntries;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5684,8 +5682,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final res = api.TranslateApi(
+        mock,
+      ).projects.locations.glossaries.glossaryEntries;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5755,8 +5754,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final res = api.TranslateApi(
+        mock,
+      ).projects.locations.glossaries.glossaryEntries;
       final arg_request = buildGlossaryEntry();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

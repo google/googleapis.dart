@@ -37,5 +37,6 @@ class RequestImpl extends http.BaseRequest {
 ///
 /// In a browser context we're not allowed to set `user-agent` and
 /// `content-length` headers.
-const _forbiddenHeaders =
-    isWeb ? <String>{'user-agent', 'content-length'} : <String>{};
+const _forbiddenHeaders = isWeb
+    ? <String>{'user-agent', 'content-length'}
+    : <String>{};

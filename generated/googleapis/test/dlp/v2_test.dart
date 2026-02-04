@@ -10414,10 +10414,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2CategoricalStatsHistogramBucket();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2CategoricalStatsHistogramBucket(od);
       });
     },
@@ -10677,10 +10677,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(od);
       });
     },
@@ -11071,10 +11071,10 @@ void main() {
         final o =
             buildGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket(od);
       });
     },
@@ -11086,10 +11086,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues(od);
       });
     },
@@ -11198,10 +11198,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence(od);
       });
     },
@@ -11213,10 +11213,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2DiscoveryCloudStorageConditions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DiscoveryCloudStorageConditions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DiscoveryCloudStorageConditions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DiscoveryCloudStorageConditions(od);
       });
     },
@@ -11243,10 +11243,10 @@ void main() {
         final o =
             buildGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence(od);
       });
     },
@@ -11295,10 +11295,10 @@ void main() {
         final o =
             buildGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence(od);
       });
     },
@@ -11335,10 +11335,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence(od);
       });
     },
@@ -11350,10 +11350,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2DiscoverySchemaModifiedCadence();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DiscoverySchemaModifiedCadence(od);
       });
     },
@@ -11401,10 +11401,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2DiscoveryVertexDatasetConditions();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DiscoveryVertexDatasetConditions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DiscoveryVertexDatasetConditions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DiscoveryVertexDatasetConditions(od);
       });
     },
@@ -11431,10 +11431,10 @@ void main() {
         final o =
             buildGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence(od);
       });
     },
@@ -11820,10 +11820,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2HybridInspectJobTriggerRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2HybridInspectJobTriggerRequest(od);
       });
     },
@@ -12372,10 +12372,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2ListColumnDataProfilesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2ListColumnDataProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2ListColumnDataProfilesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2ListColumnDataProfilesResponse(od);
       });
     },
@@ -12398,10 +12398,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(od);
       });
     },
@@ -12438,10 +12438,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2ListFileStoreDataProfilesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2ListFileStoreDataProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2ListFileStoreDataProfilesResponse(od);
       });
     },
@@ -12489,10 +12489,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2ListProjectDataProfilesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2ListProjectDataProfilesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2ListProjectDataProfilesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2ListProjectDataProfilesResponse(od);
       });
     },
@@ -12631,10 +12631,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation(od);
       });
     },
@@ -12693,10 +12693,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2OtherCloudSingleResourceReference();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2OtherCloudSingleResourceReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2OtherCloudSingleResourceReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2OtherCloudSingleResourceReference(od);
       });
     },
@@ -12862,10 +12862,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog(od);
       });
     },
@@ -12877,10 +12877,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2PublishFindingsToDataplexCatalog();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2PublishFindingsToDataplexCatalog.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2PublishFindingsToDataplexCatalog.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2PublishFindingsToDataplexCatalog(od);
       });
     },
@@ -12936,10 +12936,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2PublishToSecurityCommandCenter();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2PublishToSecurityCommandCenter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2PublishToSecurityCommandCenter.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2PublishToSecurityCommandCenter(od);
       });
     },
@@ -13636,10 +13636,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2TransformationDetailsStorageConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2TransformationDetailsStorageConfig(od);
       });
     },
@@ -13731,10 +13731,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(od);
       });
     },
@@ -13879,10 +13879,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGooglePrivacyDlpV2VertexDatasetResourceReference();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GooglePrivacyDlpV2VertexDatasetResourceReference.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GooglePrivacyDlpV2VertexDatasetResourceReference.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGooglePrivacyDlpV2VertexDatasetResourceReference(od);
       });
     },
@@ -14116,10 +14116,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
           final path = req.url.path;
@@ -14379,10 +14379,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
           final path = req.url.path;
@@ -14449,10 +14449,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
           final path = req.url.path;
@@ -14711,10 +14711,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
           final path = req.url.path;
@@ -15321,10 +15321,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
           final path = req.url.path;
@@ -15584,10 +15584,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
           final path = req.url.path;
@@ -15654,10 +15654,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateDiscoveryConfigRequest(obj);
 
           final path = req.url.path;
@@ -15910,10 +15910,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateDiscoveryConfigRequest(obj);
 
           final path = req.url.path;
@@ -16069,8 +16069,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsFileStoreDataProfilesResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DLPApi(mock).organizations.locations.fileStoreDataProfiles;
+      final res = api.DLPApi(
+        mock,
+      ).organizations.locations.fileStoreDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16123,8 +16124,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DLPApi(mock).organizations.locations.fileStoreDataProfiles;
+      final res = api.DLPApi(
+        mock,
+      ).organizations.locations.fileStoreDataProfiles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -16181,8 +16183,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.DLPApi(mock).organizations.locations.fileStoreDataProfiles;
+      final res = api.DLPApi(
+        mock,
+      ).organizations.locations.fileStoreDataProfiles;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -16354,10 +16357,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
           final path = req.url.path;
@@ -16616,10 +16619,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
           final path = req.url.path;
@@ -17162,10 +17165,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
           final path = req.url.path;
@@ -17424,10 +17427,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
           final path = req.url.path;
@@ -17690,10 +17693,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
           final path = req.url.path;
@@ -17952,10 +17955,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
           final path = req.url.path;
@@ -18226,10 +18229,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
           final path = req.url.path;
@@ -18489,10 +18492,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
           final path = req.url.path;
@@ -18955,10 +18958,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
           final path = req.url.path;
@@ -19217,10 +19220,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
           final path = req.url.path;
@@ -20426,10 +20429,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
           final path = req.url.path;
@@ -20689,10 +20692,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
           final path = req.url.path;
@@ -20759,10 +20762,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateDiscoveryConfigRequest(obj);
 
           final path = req.url.path;
@@ -21015,10 +21018,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateDiscoveryConfigRequest(obj);
 
           final path = req.url.path;
@@ -21887,10 +21890,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
           final path = req.url.path;
@@ -22149,10 +22152,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
           final path = req.url.path;
@@ -22456,10 +22459,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2HybridInspectJobTriggerRequest(obj);
 
           final path = req.url.path;
@@ -22827,10 +22830,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
           final path = req.url.path;
@@ -23089,10 +23092,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
           final path = req.url.path;
@@ -23355,10 +23358,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
           final path = req.url.path;
@@ -23617,10 +23620,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
           final path = req.url.path;

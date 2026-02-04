@@ -14,10 +14,9 @@ Future<void> main() async {
     return;
   }
 
-  final tags =
-      LineSplitter.split(
-        tagsResult.stdout as String,
-      ).where((t) => t.trim().isNotEmpty).toList();
+  final tags = LineSplitter.split(
+    tagsResult.stdout as String,
+  ).where((t) => t.trim().isNotEmpty).toList();
 
   if (tags.isEmpty) {
     stderr.writeln('No googleapis-v* tags found.');
@@ -67,10 +66,9 @@ Future<void> main() async {
   final newApis = _parseApis(newConfigContent);
 
   // 5. Calculate Delta
-  final allApiNames =
-      SplayTreeSet<String>()
-        ..addAll(oldApis.keys)
-        ..addAll(newApis.keys);
+  final allApiNames = SplayTreeSet<String>()
+    ..addAll(oldApis.keys)
+    ..addAll(newApis.keys);
 
   for (var api in allApiNames) {
     if (!oldApis.containsKey(api)) {
@@ -116,11 +114,10 @@ Map<String, Set<String>> _parseApis(String yamlContent) {
   final packages = doc['packages'] as List;
 
   // Find the 'googleapis' entry
-  final googleapisConfig =
-      packages
-          .whereType<Map>()
-          .where((element) => element.containsKey('googleapis'))
-          .firstOrNull;
+  final googleapisConfig = packages
+      .whereType<Map>()
+      .where((element) => element.containsKey('googleapis'))
+      .firstOrNull;
 
   if (googleapisConfig == null) return apis;
 

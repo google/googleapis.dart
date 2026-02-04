@@ -106,7 +106,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -165,11 +165,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -220,7 +220,7 @@ class ProjectsLocationsAcceleratorTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -273,11 +273,11 @@ class ProjectsLocationsAcceleratorTypesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/acceleratorTypes';
@@ -334,8 +334,8 @@ class ProjectsLocationsNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (nodeId != null) 'nodeId': [nodeId],
-      if ($fields != null) 'fields': [$fields],
+      'nodeId': ?nodeId == null ? null : [nodeId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -375,7 +375,7 @@ class ProjectsLocationsNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -411,7 +411,7 @@ class ProjectsLocationsNodesResource {
   )
   async.Future<Node> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -456,9 +456,9 @@ class ProjectsLocationsNodesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/nodes';
@@ -503,7 +503,7 @@ class ProjectsLocationsNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reimage';
@@ -547,7 +547,7 @@ class ProjectsLocationsNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':start';
@@ -591,7 +591,7 @@ class ProjectsLocationsNodesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
@@ -641,7 +641,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -678,7 +678,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -714,7 +714,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -769,12 +769,13 @@ class ProjectsLocationsOperationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (returnPartialSuccess != null)
-        'returnPartialSuccess': ['${returnPartialSuccess}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
@@ -825,7 +826,7 @@ class ProjectsLocationsTensorflowVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -878,11 +879,11 @@ class ProjectsLocationsTensorflowVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tensorflowVersions';
@@ -914,10 +915,11 @@ class AcceleratorType {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final type = this.type;
+    return {'name': ?name, 'type': ?type};
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -947,26 +949,29 @@ class ListAcceleratorTypesResponse {
 
   ListAcceleratorTypesResponse.fromJson(core.Map json_)
     : this(
-        acceleratorTypes:
-            (json_['acceleratorTypes'] as core.List?)
-                ?.map(
-                  (value) => AcceleratorType.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        acceleratorTypes: (json_['acceleratorTypes'] as core.List?)
+            ?.map(
+              (value) => AcceleratorType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acceleratorTypes != null) 'acceleratorTypes': acceleratorTypes!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceleratorTypes = this.acceleratorTypes;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'acceleratorTypes': ?acceleratorTypes,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -981,21 +986,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for ListNodes.
@@ -1014,25 +1019,27 @@ class ListNodesResponse {
   ListNodesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        nodes:
-            (json_['nodes'] as core.List?)
-                ?.map(
-                  (value) => Node.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        nodes: (json_['nodes'] as core.List?)
+            ?.map(
+              (value) =>
+                  Node.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (nodes != null) 'nodes': nodes!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final nodes = this.nodes;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'nodes': ?nodes,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// The response message for Operations.ListOperations.
@@ -1060,25 +1067,28 @@ class ListOperationsResponse {
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        operations:
-            (json_['operations'] as core.List?)
-                ?.map(
-                  (value) => Operation.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (operations != null) 'operations': operations!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// Response for ListTensorFlowVersions.
@@ -1101,25 +1111,28 @@ class ListTensorFlowVersionsResponse {
   ListTensorFlowVersionsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
-        tensorflowVersions:
-            (json_['tensorflowVersions'] as core.List?)
-                ?.map(
-                  (value) => TensorFlowVersion.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        tensorflowVersions: (json_['tensorflowVersions'] as core.List?)
+            ?.map(
+              (value) => TensorFlowVersion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (tensorflowVersions != null) 'tensorflowVersions': tensorflowVersions!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tensorflowVersions = this.tensorflowVersions;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'tensorflowVersions': ?tensorflowVersions,
+      'unreachable': ?unreachable,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -1141,10 +1154,11 @@ class NetworkEndpoint {
         port: json_['port'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (port != null) 'port': port!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipAddress = this.ipAddress;
+    final port = this.port;
+    return {'ipAddress': ?ipAddress, 'port': ?port};
+  }
 }
 
 /// A TPU instance.
@@ -1340,58 +1354,75 @@ class Node {
         ),
         name: json_['name'] as core.String?,
         network: json_['network'] as core.String?,
-        networkEndpoints:
-            (json_['networkEndpoints'] as core.List?)
-                ?.map(
-                  (value) => NetworkEndpoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        networkEndpoints: (json_['networkEndpoints'] as core.List?)
+            ?.map(
+              (value) => NetworkEndpoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         port: json_['port'] as core.String?,
-        schedulingConfig:
-            json_.containsKey('schedulingConfig')
-                ? SchedulingConfig.fromJson(
-                  json_['schedulingConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        schedulingConfig: json_.containsKey('schedulingConfig')
+            ? SchedulingConfig.fromJson(
+                json_['schedulingConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAccount: json_['serviceAccount'] as core.String?,
         state: json_['state'] as core.String?,
-        symptoms:
-            (json_['symptoms'] as core.List?)
-                ?.map(
-                  (value) => Symptom.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        symptoms: (json_['symptoms'] as core.List?)
+            ?.map(
+              (value) => Symptom.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         tensorflowVersion: json_['tensorflowVersion'] as core.String?,
         useServiceNetworking: json_['useServiceNetworking'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acceleratorType != null) 'acceleratorType': acceleratorType!,
-    if (apiVersion != null) 'apiVersion': apiVersion!,
-    if (cidrBlock != null) 'cidrBlock': cidrBlock!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (health != null) 'health': health!,
-    if (healthDescription != null) 'healthDescription': healthDescription!,
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (network != null) 'network': network!,
-    if (networkEndpoints != null) 'networkEndpoints': networkEndpoints!,
-    if (port != null) 'port': port!,
-    if (schedulingConfig != null) 'schedulingConfig': schedulingConfig!,
-    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-    if (state != null) 'state': state!,
-    if (symptoms != null) 'symptoms': symptoms!,
-    if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion!,
-    if (useServiceNetworking != null)
-      'useServiceNetworking': useServiceNetworking!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceleratorType = this.acceleratorType;
+    final apiVersion = this.apiVersion;
+    final cidrBlock = this.cidrBlock;
+    final createTime = this.createTime;
+    final description = this.description;
+    final health = this.health;
+    final healthDescription = this.healthDescription;
+    final ipAddress = this.ipAddress;
+    final labels = this.labels;
+    final name = this.name;
+    final network = this.network;
+    final networkEndpoints = this.networkEndpoints;
+    final port = this.port;
+    final schedulingConfig = this.schedulingConfig;
+    final serviceAccount = this.serviceAccount;
+    final state = this.state;
+    final symptoms = this.symptoms;
+    final tensorflowVersion = this.tensorflowVersion;
+    final useServiceNetworking = this.useServiceNetworking;
+    return {
+      'acceleratorType': ?acceleratorType,
+      'apiVersion': ?apiVersion,
+      'cidrBlock': ?cidrBlock,
+      'createTime': ?createTime,
+      'description': ?description,
+      'health': ?health,
+      'healthDescription': ?healthDescription,
+      'ipAddress': ?ipAddress,
+      'labels': ?labels,
+      'name': ?name,
+      'network': ?network,
+      'networkEndpoints': ?networkEndpoints,
+      'port': ?port,
+      'schedulingConfig': ?schedulingConfig,
+      'serviceAccount': ?serviceAccount,
+      'state': ?state,
+      'symptoms': ?symptoms,
+      'tensorflowVersion': ?tensorflowVersion,
+      'useServiceNetworking': ?useServiceNetworking,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1442,30 +1473,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// Request for ReimageNode.
@@ -1478,9 +1513,10 @@ class ReimageNodeRequest {
   ReimageNodeRequest.fromJson(core.Map json_)
     : this(tensorflowVersion: json_['tensorflowVersion'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final tensorflowVersion = this.tensorflowVersion;
+    return {'tensorflowVersion': ?tensorflowVersion};
+  }
 }
 
 /// Sets the scheduling options for this node.
@@ -1499,10 +1535,11 @@ class SchedulingConfig {
         reserved: json_['reserved'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (preemptible != null) 'preemptible': preemptible!,
-    if (reserved != null) 'reserved': reserved!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final preemptible = this.preemptible;
+    final reserved = this.reserved;
+    return {'preemptible': ?preemptible, 'reserved': ?reserved};
+  }
 }
 
 /// Request for StartNode.
@@ -1554,12 +1591,18 @@ class Symptom {
         workerId: json_['workerId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (details != null) 'details': details!,
-    if (symptomType != null) 'symptomType': symptomType!,
-    if (workerId != null) 'workerId': workerId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final details = this.details;
+    final symptomType = this.symptomType;
+    final workerId = this.workerId;
+    return {
+      'createTime': ?createTime,
+      'details': ?details,
+      'symptomType': ?symptomType,
+      'workerId': ?workerId,
+    };
+  }
 }
 
 /// A tensorflow version that a Node can be configured with.
@@ -1578,8 +1621,9 @@ class TensorFlowVersion {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final version = this.version;
+    return {'name': ?name, 'version': ?version};
+  }
 }

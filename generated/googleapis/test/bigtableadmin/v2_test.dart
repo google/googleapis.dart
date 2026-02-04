@@ -3412,10 +3412,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleBigtableAdminV2AuthorizedViewFamilySubsets();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleBigtableAdminV2AuthorizedViewFamilySubsets.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleBigtableAdminV2AuthorizedViewFamilySubsets(od);
       });
     },
@@ -3441,10 +3441,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleBigtableAdminV2MaterializedViewClusterState();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleBigtableAdminV2MaterializedViewClusterState.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleBigtableAdminV2MaterializedViewClusterState.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleBigtableAdminV2MaterializedViewClusterState(od);
       });
     },
@@ -3468,10 +3468,10 @@ void main() {
         final o =
             buildGoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount(
           od,
         );
@@ -3639,10 +3639,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes(od);
       });
     },
@@ -3654,10 +3654,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes(od);
       });
     },
@@ -3713,10 +3713,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleBigtableAdminV2TypeStringEncodingUtf8Bytes(od);
       });
     },
@@ -3764,10 +3764,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleBigtableAdminV2TypeStructEncodingDelimitedBytes(od);
       });
     },
@@ -3780,10 +3780,10 @@ void main() {
         final o =
             buildGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes(od);
       });
     },
@@ -3795,10 +3795,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleBigtableAdminV2TypeStructEncodingSingleton();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleBigtableAdminV2TypeStructEncodingSingleton.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleBigtableAdminV2TypeStructEncodingSingleton.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleBigtableAdminV2TypeStructEncodingSingleton(od);
       });
     },
@@ -5712,8 +5712,9 @@ void main() {
   unittest.group('resource-ProjectsInstancesClustersBackupsResource', () {
     unittest.test('method--copy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.backups;
       final arg_request = buildCopyBackupRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -5776,8 +5777,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.backups;
       final arg_request = buildBackup();
       final arg_parent = 'foo';
       final arg_backupId = 'foo';
@@ -5846,8 +5848,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.backups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5900,8 +5903,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.backups;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -5954,8 +5958,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.backups;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6018,8 +6023,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.backups;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -6099,8 +6105,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.backups;
       final arg_request = buildBackup();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -6169,8 +6176,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.backups;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6233,8 +6241,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.backups;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -6301,8 +6310,9 @@ void main() {
   unittest.group('resource-ProjectsInstancesClustersHotTabletsResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.clusters.hotTablets;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.clusters.hotTablets;
       final arg_parent = 'foo';
       final arg_endTime = 'foo';
       final arg_pageSize = 42;
@@ -6895,8 +6905,9 @@ void main() {
   unittest.group('resource-ProjectsInstancesMaterializedViewsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.materializedViews;
       final arg_request = buildMaterializedView();
       final arg_parent = 'foo';
       final arg_materializedViewId = 'foo';
@@ -6965,8 +6976,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.materializedViews;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -7025,8 +7037,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.materializedViews;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -7085,8 +7098,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.materializedViews;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7149,8 +7163,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.materializedViews;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7225,8 +7240,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.materializedViews;
       final arg_request = buildMaterializedView();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -7295,8 +7311,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.materializedViews;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -7359,8 +7376,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.materializedViews;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8323,8 +8341,9 @@ void main() {
   unittest.group('resource-ProjectsInstancesTablesAuthorizedViewsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.authorizedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.authorizedViews;
       final arg_request = buildAuthorizedView();
       final arg_parent = 'foo';
       final arg_authorizedViewId = 'foo';
@@ -8393,8 +8412,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.authorizedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.authorizedViews;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -8453,8 +8473,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.authorizedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.authorizedViews;
       final arg_name = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
@@ -8513,8 +8534,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.authorizedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.authorizedViews;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8577,8 +8599,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.authorizedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.authorizedViews;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -8651,8 +8674,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.authorizedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.authorizedViews;
       final arg_request = buildAuthorizedView();
       final arg_name = 'foo';
       final arg_ignoreWarnings = true;
@@ -8727,8 +8751,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.authorizedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.authorizedViews;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8791,8 +8816,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.authorizedViews;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.authorizedViews;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -8859,8 +8885,9 @@ void main() {
   unittest.group('resource-ProjectsInstancesTablesSchemaBundlesResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.schemaBundles;
       final arg_request = buildSchemaBundle();
       final arg_parent = 'foo';
       final arg_schemaBundleId = 'foo';
@@ -8929,8 +8956,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.schemaBundles;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
@@ -8989,8 +9017,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.schemaBundles;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -9043,8 +9072,9 @@ void main() {
 
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.schemaBundles;
       final arg_request = buildGetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -9107,8 +9137,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.schemaBundles;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -9179,8 +9210,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.schemaBundles;
       final arg_request = buildSchemaBundle();
       final arg_name = 'foo';
       final arg_ignoreWarnings = true;
@@ -9255,8 +9287,9 @@ void main() {
 
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.schemaBundles;
       final arg_request = buildSetIamPolicyRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -9319,8 +9352,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final res = api.BigtableAdminApi(
+        mock,
+      ).projects.instances.tables.schemaBundles;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';

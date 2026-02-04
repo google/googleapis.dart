@@ -151,8 +151,9 @@ class ResumableMediaUploader {
       bytes = utf8.encode(_body);
       length = bytes.length;
     }
-    final bodyStream =
-        bytes == null ? const Stream<List<int>>.empty() : Stream.value(bytes);
+    final bodyStream = bytes == null
+        ? const Stream<List<int>>.empty()
+        : Stream.value(bytes);
 
     final headers = {
       ..._requestHeaders,

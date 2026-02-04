@@ -109,7 +109,7 @@ class FoldersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -148,7 +148,7 @@ class FoldersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -200,8 +200,8 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -249,8 +249,8 @@ class FoldersResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -296,7 +296,7 @@ class OrganizationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -343,8 +343,8 @@ class OrganizationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -393,7 +393,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -432,7 +432,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -471,7 +471,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -513,7 +513,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -557,7 +557,7 @@ class ProjectsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -612,8 +612,8 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -661,8 +661,8 @@ class ProjectsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -726,7 +726,7 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -762,7 +762,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -797,7 +797,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -850,11 +850,11 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
@@ -899,8 +899,8 @@ class ProjectsLocationsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -962,9 +962,10 @@ class ProjectsLocationsEkmConfigResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1009,7 +1010,7 @@ class ProjectsLocationsEkmConfigResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1057,7 +1058,7 @@ class ProjectsLocationsEkmConfigResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1112,8 +1113,8 @@ class ProjectsLocationsEkmConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (ekmConnectionId != null) 'ekmConnectionId': [ekmConnectionId],
-      if ($fields != null) 'fields': [$fields],
+      'ekmConnectionId': ?ekmConnectionId == null ? null : [ekmConnectionId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/ekmConnections';
@@ -1152,7 +1153,7 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1209,9 +1210,10 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1269,11 +1271,11 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/ekmConnections';
@@ -1319,8 +1321,8 @@ class ProjectsLocationsEkmConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1369,7 +1371,7 @@ class ProjectsLocationsEkmConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1418,7 +1420,7 @@ class ProjectsLocationsEkmConnectionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1463,7 +1465,7 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':verifyConnectivity';
@@ -1522,8 +1524,8 @@ class ProjectsLocationsKeyHandlesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (keyHandleId != null) 'keyHandleId': [keyHandleId],
-      if ($fields != null) 'fields': [$fields],
+      'keyHandleId': ?keyHandleId == null ? null : [keyHandleId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keyHandles';
@@ -1558,7 +1560,7 @@ class ProjectsLocationsKeyHandlesResource {
   /// this method will complete with the same error.
   async.Future<KeyHandle> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1609,10 +1611,10 @@ class ProjectsLocationsKeyHandlesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keyHandles';
@@ -1670,8 +1672,8 @@ class ProjectsLocationsKeyRingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (keyRingId != null) 'keyRingId': [keyRingId],
-      if ($fields != null) 'fields': [$fields],
+      'keyRingId': ?keyRingId == null ? null : [keyRingId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keyRings';
@@ -1705,7 +1707,7 @@ class ProjectsLocationsKeyRingsResource {
   /// this method will complete with the same error.
   async.Future<KeyRing> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -1760,9 +1762,10 @@ class ProjectsLocationsKeyRingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -1819,11 +1822,11 @@ class ProjectsLocationsKeyRingsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keyRings';
@@ -1871,7 +1874,7 @@ class ProjectsLocationsKeyRingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -1920,7 +1923,7 @@ class ProjectsLocationsKeyRingsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -1988,10 +1991,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (cryptoKeyId != null) 'cryptoKeyId': [cryptoKeyId],
-      if (skipInitialVersionCreation != null)
-        'skipInitialVersionCreation': ['${skipInitialVersionCreation}'],
-      if ($fields != null) 'fields': [$fields],
+      'cryptoKeyId': ?cryptoKeyId == null ? null : [cryptoKeyId],
+      'skipInitialVersionCreation': ?skipInitialVersionCreation == null
+          ? null
+          : ['${skipInitialVersionCreation}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeys';
@@ -2035,7 +2039,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':decrypt';
@@ -2082,7 +2086,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':encrypt';
@@ -2119,7 +2123,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// this method will complete with the same error.
   async.Future<CryptoKey> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2174,9 +2178,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -2243,12 +2248,12 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (versionView != null) 'versionView': [versionView],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'versionView': ?versionView == null ? null : [versionView],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeys';
@@ -2294,8 +2299,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2342,7 +2347,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -2391,7 +2396,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2437,7 +2442,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':updatePrimaryVersion';
@@ -2489,7 +2494,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':asymmetricDecrypt';
@@ -2535,7 +2540,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':asymmetricSign';
@@ -2582,7 +2587,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeyVersions';
@@ -2628,7 +2633,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':decapsulate';
@@ -2678,7 +2683,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':destroy';
@@ -2717,7 +2722,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -2784,8 +2789,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (publicKeyFormat != null) 'publicKeyFormat': [publicKeyFormat],
-      if ($fields != null) 'fields': [$fields],
+      'publicKeyFormat': ?publicKeyFormat == null ? null : [publicKeyFormat],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/publicKey';
@@ -2832,7 +2837,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -2903,12 +2908,12 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeyVersions';
@@ -2952,7 +2957,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':macSign';
@@ -2998,7 +3003,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':macVerify';
@@ -3050,8 +3055,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3098,7 +3103,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rawDecrypt';
@@ -3145,7 +3150,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rawEncrypt';
@@ -3191,7 +3196,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
@@ -3248,8 +3253,8 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (importJobId != null) 'importJobId': [importJobId],
-      if ($fields != null) 'fields': [$fields],
+      'importJobId': ?importJobId == null ? null : [importJobId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/importJobs';
@@ -3283,7 +3288,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   /// this method will complete with the same error.
   async.Future<ImportJob> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3338,9 +3343,10 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
@@ -3398,11 +3404,11 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/importJobs';
@@ -3450,7 +3456,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
@@ -3499,7 +3505,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3546,7 +3552,7 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3603,9 +3609,10 @@ class ProjectsLocationsSingleTenantHsmInstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (singleTenantHsmInstanceId != null)
-        'singleTenantHsmInstanceId': [singleTenantHsmInstanceId],
-      if ($fields != null) 'fields': [$fields],
+      'singleTenantHsmInstanceId': ?singleTenantHsmInstanceId == null
+          ? null
+          : [singleTenantHsmInstanceId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3643,7 +3650,7 @@ class ProjectsLocationsSingleTenantHsmInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3709,12 +3716,12 @@ class ProjectsLocationsSingleTenantHsmInstancesResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -3769,7 +3776,7 @@ class ProjectsLocationsSingleTenantHsmInstancesProposalsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
@@ -3818,11 +3825,11 @@ class ProjectsLocationsSingleTenantHsmInstancesProposalsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (singleTenantHsmInstanceProposalId != null)
-        'singleTenantHsmInstanceProposalId': [
-          singleTenantHsmInstanceProposalId,
-        ],
-      if ($fields != null) 'fields': [$fields],
+      'singleTenantHsmInstanceProposalId':
+          ?singleTenantHsmInstanceProposalId == null
+          ? null
+          : [singleTenantHsmInstanceProposalId],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/proposals';
@@ -3857,7 +3864,7 @@ class ProjectsLocationsSingleTenantHsmInstancesProposalsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -3901,7 +3908,7 @@ class ProjectsLocationsSingleTenantHsmInstancesProposalsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':execute';
@@ -3938,7 +3945,7 @@ class ProjectsLocationsSingleTenantHsmInstancesProposalsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -4006,12 +4013,12 @@ class ProjectsLocationsSingleTenantHsmInstancesProposalsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if ($fields != null) 'fields': [$fields],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/proposals';
@@ -4048,10 +4055,10 @@ class AddQuorumMember {
         twoFactorPublicKeyPem: json_['twoFactorPublicKeyPem'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (twoFactorPublicKeyPem != null)
-      'twoFactorPublicKeyPem': twoFactorPublicKeyPem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final twoFactorPublicKeyPem = this.twoFactorPublicKeyPem;
+    return {'twoFactorPublicKeyPem': ?twoFactorPublicKeyPem};
+  }
 }
 
 /// Request message for HsmManagement.ApproveSingleTenantHsmInstanceProposal.
@@ -4073,26 +4080,28 @@ class ApproveSingleTenantHsmInstanceProposalRequest {
 
   ApproveSingleTenantHsmInstanceProposalRequest.fromJson(core.Map json_)
     : this(
-        quorumReply:
-            json_.containsKey('quorumReply')
-                ? QuorumReply.fromJson(
-                  json_['quorumReply'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        quorumReply: json_.containsKey('quorumReply')
+            ? QuorumReply.fromJson(
+                json_['quorumReply'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requiredActionQuorumReply:
             json_.containsKey('requiredActionQuorumReply')
-                ? RequiredActionQuorumReply.fromJson(
-                  json_['requiredActionQuorumReply']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? RequiredActionQuorumReply.fromJson(
+                json_['requiredActionQuorumReply']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (quorumReply != null) 'quorumReply': quorumReply!,
-    if (requiredActionQuorumReply != null)
-      'requiredActionQuorumReply': requiredActionQuorumReply!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final quorumReply = this.quorumReply;
+    final requiredActionQuorumReply = this.requiredActionQuorumReply;
+    return {
+      'quorumReply': ?quorumReply,
+      'requiredActionQuorumReply': ?requiredActionQuorumReply,
+    };
+  }
 }
 
 /// Response message for HsmManagement.ApproveSingleTenantHsmInstanceProposal.
@@ -4140,10 +4149,11 @@ class AsymmetricDecryptRequest {
         ciphertextCrc32c: json_['ciphertextCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ciphertext != null) 'ciphertext': ciphertext!,
-    if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ciphertext = this.ciphertext;
+    final ciphertextCrc32c = this.ciphertextCrc32c;
+    return {'ciphertext': ?ciphertext, 'ciphertextCrc32c': ?ciphertextCrc32c};
+  }
 }
 
 /// Response message for KeyManagementService.AsymmetricDecrypt.
@@ -4212,13 +4222,18 @@ class AsymmetricDecryptResponse {
             json_['verifiedCiphertextCrc32c'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (plaintext != null) 'plaintext': plaintext!,
-    if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (verifiedCiphertextCrc32c != null)
-      'verifiedCiphertextCrc32c': verifiedCiphertextCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final plaintext = this.plaintext;
+    final plaintextCrc32c = this.plaintextCrc32c;
+    final protectionLevel = this.protectionLevel;
+    final verifiedCiphertextCrc32c = this.verifiedCiphertextCrc32c;
+    return {
+      'plaintext': ?plaintext,
+      'plaintextCrc32c': ?plaintextCrc32c,
+      'protectionLevel': ?protectionLevel,
+      'verifiedCiphertextCrc32c': ?verifiedCiphertextCrc32c,
+    };
+  }
 }
 
 /// Request message for KeyManagementService.AsymmetricSign.
@@ -4292,21 +4307,26 @@ class AsymmetricSignRequest {
     : this(
         data: json_['data'] as core.String?,
         dataCrc32c: json_['dataCrc32c'] as core.String?,
-        digest:
-            json_.containsKey('digest')
-                ? Digest.fromJson(
-                  json_['digest'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        digest: json_.containsKey('digest')
+            ? Digest.fromJson(
+                json_['digest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         digestCrc32c: json_['digestCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
-    if (digest != null) 'digest': digest!,
-    if (digestCrc32c != null) 'digestCrc32c': digestCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final dataCrc32c = this.dataCrc32c;
+    final digest = this.digest;
+    final digestCrc32c = this.digestCrc32c;
+    return {
+      'data': ?data,
+      'dataCrc32c': ?dataCrc32c,
+      'digest': ?digest,
+      'digestCrc32c': ?digestCrc32c,
+    };
+  }
 }
 
 /// Response message for KeyManagementService.AsymmetricSign.
@@ -4395,15 +4415,22 @@ class AsymmetricSignResponse {
         verifiedDigestCrc32c: json_['verifiedDigestCrc32c'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (signature != null) 'signature': signature!,
-    if (signatureCrc32c != null) 'signatureCrc32c': signatureCrc32c!,
-    if (verifiedDataCrc32c != null) 'verifiedDataCrc32c': verifiedDataCrc32c!,
-    if (verifiedDigestCrc32c != null)
-      'verifiedDigestCrc32c': verifiedDigestCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final protectionLevel = this.protectionLevel;
+    final signature = this.signature;
+    final signatureCrc32c = this.signatureCrc32c;
+    final verifiedDataCrc32c = this.verifiedDataCrc32c;
+    final verifiedDigestCrc32c = this.verifiedDigestCrc32c;
+    return {
+      'name': ?name,
+      'protectionLevel': ?protectionLevel,
+      'signature': ?signature,
+      'signatureCrc32c': ?signatureCrc32c,
+      'verifiedDataCrc32c': ?verifiedDataCrc32c,
+      'verifiedDigestCrc32c': ?verifiedDigestCrc32c,
+    };
+  }
 }
 
 /// Specifies the audit configuration for a service.
@@ -4437,21 +4464,21 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map json_)
     : this(
-        auditLogConfigs:
-            (json_['auditLogConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditLogConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditLogConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         service: json_['service'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-    if (service != null) 'service': service!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogConfigs = this.auditLogConfigs;
+    final service = this.service;
+    return {'auditLogConfigs': ?auditLogConfigs, 'service': ?service};
+  }
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -4548,14 +4575,20 @@ class AutokeyConfig {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (keyProject != null) 'keyProject': keyProject!,
-    if (keyProjectResolutionMode != null)
-      'keyProjectResolutionMode': keyProjectResolutionMode!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final keyProject = this.keyProject;
+    final keyProjectResolutionMode = this.keyProjectResolutionMode;
+    final name = this.name;
+    final state = this.state;
+    return {
+      'etag': ?etag,
+      'keyProject': ?keyProject,
+      'keyProjectResolutionMode': ?keyProjectResolutionMode,
+      'name': ?name,
+      'state': ?state,
+    };
+  }
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -4642,24 +4675,23 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
     : this(
-        condition:
-            json_.containsKey('condition')
-                ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        members:
-            (json_['members'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        members: (json_['members'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         role: json_['role'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (members != null) 'members': members!,
-    if (role != null) 'role': role!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final members = this.members;
+    final role = this.role;
+    return {'condition': ?condition, 'members': ?members, 'role': ?role};
+  }
 }
 
 /// A Certificate represents an X.509 certificate used to authenticate HTTPS
@@ -4760,18 +4792,28 @@ class Certificate {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (issuer != null) 'issuer': issuer!,
-    if (notAfterTime != null) 'notAfterTime': notAfterTime!,
-    if (notBeforeTime != null) 'notBeforeTime': notBeforeTime!,
-    if (parsed != null) 'parsed': parsed!,
-    if (rawDer != null) 'rawDer': rawDer!,
-    if (serialNumber != null) 'serialNumber': serialNumber!,
-    if (sha256Fingerprint != null) 'sha256Fingerprint': sha256Fingerprint!,
-    if (subject != null) 'subject': subject!,
-    if (subjectAlternativeDnsNames != null)
-      'subjectAlternativeDnsNames': subjectAlternativeDnsNames!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final issuer = this.issuer;
+    final notAfterTime = this.notAfterTime;
+    final notBeforeTime = this.notBeforeTime;
+    final parsed = this.parsed;
+    final rawDer = this.rawDer;
+    final serialNumber = this.serialNumber;
+    final sha256Fingerprint = this.sha256Fingerprint;
+    final subject = this.subject;
+    final subjectAlternativeDnsNames = this.subjectAlternativeDnsNames;
+    return {
+      'issuer': ?issuer,
+      'notAfterTime': ?notAfterTime,
+      'notBeforeTime': ?notBeforeTime,
+      'parsed': ?parsed,
+      'rawDer': ?rawDer,
+      'serialNumber': ?serialNumber,
+      'sha256Fingerprint': ?sha256Fingerprint,
+      'subject': ?subject,
+      'subjectAlternativeDnsNames': ?subjectAlternativeDnsNames,
+    };
+  }
 }
 
 /// Certificate chains needed to verify the attestation.
@@ -4808,10 +4850,11 @@ class Challenge {
         publicKeyPem: json_['publicKeyPem'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (challenge != null) 'challenge': challenge!,
-    if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final challenge = this.challenge;
+    final publicKeyPem = this.publicKeyPem;
+    return {'challenge': ?challenge, 'publicKeyPem': ?publicKeyPem};
+  }
 }
 
 /// A reply to a challenge signed by a 2FA key.
@@ -4845,10 +4888,11 @@ class ChallengeReply {
         signedChallenge: json_['signedChallenge'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
-    if (signedChallenge != null) 'signedChallenge': signedChallenge!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final publicKeyPem = this.publicKeyPem;
+    final signedChallenge = this.signedChallenge;
+    return {'publicKeyPem': ?publicKeyPem, 'signedChallenge': ?signedChallenge};
+  }
 }
 
 /// Data with integrity verification field.
@@ -4885,10 +4929,11 @@ class ChecksummedData {
         data: json_['data'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (crc32cChecksum != null) 'crc32cChecksum': crc32cChecksum!,
-    if (data != null) 'data': data!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final crc32cChecksum = this.crc32cChecksum;
+    final data = this.data;
+    return {'crc32cChecksum': ?crc32cChecksum, 'data': ?data};
+  }
 }
 
 /// A CryptoKey represents a logical key that can be used for cryptographic
@@ -5033,49 +5078,58 @@ class CryptoKey {
         importOnly: json_['importOnly'] as core.bool?,
         keyAccessJustificationsPolicy:
             json_.containsKey('keyAccessJustificationsPolicy')
-                ? KeyAccessJustificationsPolicy.fromJson(
-                  json_['keyAccessJustificationsPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? KeyAccessJustificationsPolicy.fromJson(
+                json_['keyAccessJustificationsPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
         nextRotationTime: json_['nextRotationTime'] as core.String?,
-        primary:
-            json_.containsKey('primary')
-                ? CryptoKeyVersion.fromJson(
-                  json_['primary'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        primary: json_.containsKey('primary')
+            ? CryptoKeyVersion.fromJson(
+                json_['primary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         purpose: json_['purpose'] as core.String?,
         rotationPeriod: json_['rotationPeriod'] as core.String?,
-        versionTemplate:
-            json_.containsKey('versionTemplate')
-                ? CryptoKeyVersionTemplate.fromJson(
-                  json_['versionTemplate']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        versionTemplate: json_.containsKey('versionTemplate')
+            ? CryptoKeyVersionTemplate.fromJson(
+                json_['versionTemplate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (cryptoKeyBackend != null) 'cryptoKeyBackend': cryptoKeyBackend!,
-    if (destroyScheduledDuration != null)
-      'destroyScheduledDuration': destroyScheduledDuration!,
-    if (importOnly != null) 'importOnly': importOnly!,
-    if (keyAccessJustificationsPolicy != null)
-      'keyAccessJustificationsPolicy': keyAccessJustificationsPolicy!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-    if (primary != null) 'primary': primary!,
-    if (purpose != null) 'purpose': purpose!,
-    if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-    if (versionTemplate != null) 'versionTemplate': versionTemplate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final cryptoKeyBackend = this.cryptoKeyBackend;
+    final destroyScheduledDuration = this.destroyScheduledDuration;
+    final importOnly = this.importOnly;
+    final keyAccessJustificationsPolicy = this.keyAccessJustificationsPolicy;
+    final labels = this.labels;
+    final name = this.name;
+    final nextRotationTime = this.nextRotationTime;
+    final primary = this.primary;
+    final purpose = this.purpose;
+    final rotationPeriod = this.rotationPeriod;
+    final versionTemplate = this.versionTemplate;
+    return {
+      'createTime': ?createTime,
+      'cryptoKeyBackend': ?cryptoKeyBackend,
+      'destroyScheduledDuration': ?destroyScheduledDuration,
+      'importOnly': ?importOnly,
+      'keyAccessJustificationsPolicy': ?keyAccessJustificationsPolicy,
+      'labels': ?labels,
+      'name': ?name,
+      'nextRotationTime': ?nextRotationTime,
+      'primary': ?primary,
+      'purpose': ?purpose,
+      'rotationPeriod': ?rotationPeriod,
+      'versionTemplate': ?versionTemplate,
+    };
+  }
 }
 
 /// A CryptoKeyVersion represents an individual cryptographic key, and the
@@ -5339,12 +5393,11 @@ class CryptoKeyVersion {
   CryptoKeyVersion.fromJson(core.Map json_)
     : this(
         algorithm: json_['algorithm'] as core.String?,
-        attestation:
-            json_.containsKey('attestation')
-                ? KeyOperationAttestation.fromJson(
-                  json_['attestation'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attestation: json_.containsKey('attestation')
+            ? KeyOperationAttestation.fromJson(
+                json_['attestation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         destroyEventTime: json_['destroyEventTime'] as core.String?,
         destroyTime: json_['destroyTime'] as core.String?,
@@ -5352,11 +5405,11 @@ class CryptoKeyVersion {
             json_['externalDestructionFailureReason'] as core.String?,
         externalProtectionLevelOptions:
             json_.containsKey('externalProtectionLevelOptions')
-                ? ExternalProtectionLevelOptions.fromJson(
-                  json_['externalProtectionLevelOptions']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? ExternalProtectionLevelOptions.fromJson(
+                json_['externalProtectionLevelOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         generateTime: json_['generateTime'] as core.String?,
         generationFailureReason:
             json_['generationFailureReason'] as core.String?,
@@ -5369,28 +5422,43 @@ class CryptoKeyVersion {
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
-    if (attestation != null) 'attestation': attestation!,
-    if (createTime != null) 'createTime': createTime!,
-    if (destroyEventTime != null) 'destroyEventTime': destroyEventTime!,
-    if (destroyTime != null) 'destroyTime': destroyTime!,
-    if (externalDestructionFailureReason != null)
-      'externalDestructionFailureReason': externalDestructionFailureReason!,
-    if (externalProtectionLevelOptions != null)
-      'externalProtectionLevelOptions': externalProtectionLevelOptions!,
-    if (generateTime != null) 'generateTime': generateTime!,
-    if (generationFailureReason != null)
-      'generationFailureReason': generationFailureReason!,
-    if (importFailureReason != null)
-      'importFailureReason': importFailureReason!,
-    if (importJob != null) 'importJob': importJob!,
-    if (importTime != null) 'importTime': importTime!,
-    if (name != null) 'name': name!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (reimportEligible != null) 'reimportEligible': reimportEligible!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final algorithm = this.algorithm;
+    final attestation = this.attestation;
+    final createTime = this.createTime;
+    final destroyEventTime = this.destroyEventTime;
+    final destroyTime = this.destroyTime;
+    final externalDestructionFailureReason =
+        this.externalDestructionFailureReason;
+    final externalProtectionLevelOptions = this.externalProtectionLevelOptions;
+    final generateTime = this.generateTime;
+    final generationFailureReason = this.generationFailureReason;
+    final importFailureReason = this.importFailureReason;
+    final importJob = this.importJob;
+    final importTime = this.importTime;
+    final name = this.name;
+    final protectionLevel = this.protectionLevel;
+    final reimportEligible = this.reimportEligible;
+    final state = this.state;
+    return {
+      'algorithm': ?algorithm,
+      'attestation': ?attestation,
+      'createTime': ?createTime,
+      'destroyEventTime': ?destroyEventTime,
+      'destroyTime': ?destroyTime,
+      'externalDestructionFailureReason': ?externalDestructionFailureReason,
+      'externalProtectionLevelOptions': ?externalProtectionLevelOptions,
+      'generateTime': ?generateTime,
+      'generationFailureReason': ?generationFailureReason,
+      'importFailureReason': ?importFailureReason,
+      'importJob': ?importJob,
+      'importTime': ?importTime,
+      'name': ?name,
+      'protectionLevel': ?protectionLevel,
+      'reimportEligible': ?reimportEligible,
+      'state': ?state,
+    };
+  }
 }
 
 /// A CryptoKeyVersionTemplate specifies the properties to use when creating a
@@ -5440,10 +5508,11 @@ class DecapsulateRequest {
         ciphertextCrc32c: json_['ciphertextCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ciphertext != null) 'ciphertext': ciphertext!,
-    if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ciphertext = this.ciphertext;
+    final ciphertextCrc32c = this.ciphertextCrc32c;
+    return {'ciphertext': ?ciphertext, 'ciphertextCrc32c': ?ciphertextCrc32c};
+  }
 }
 
 /// Response message for KeyManagementService.Decapsulate.
@@ -5524,14 +5593,20 @@ class DecapsulateResponse {
             json_['verifiedCiphertextCrc32c'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (sharedSecret != null) 'sharedSecret': sharedSecret!,
-    if (sharedSecretCrc32c != null) 'sharedSecretCrc32c': sharedSecretCrc32c!,
-    if (verifiedCiphertextCrc32c != null)
-      'verifiedCiphertextCrc32c': verifiedCiphertextCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final protectionLevel = this.protectionLevel;
+    final sharedSecret = this.sharedSecret;
+    final sharedSecretCrc32c = this.sharedSecretCrc32c;
+    final verifiedCiphertextCrc32c = this.verifiedCiphertextCrc32c;
+    return {
+      'name': ?name,
+      'protectionLevel': ?protectionLevel,
+      'sharedSecret': ?sharedSecret,
+      'sharedSecretCrc32c': ?sharedSecretCrc32c,
+      'verifiedCiphertextCrc32c': ?verifiedCiphertextCrc32c,
+    };
+  }
 }
 
 /// Request message for KeyManagementService.Decrypt.
@@ -5617,14 +5692,19 @@ class DecryptRequest {
         ciphertextCrc32c: json_['ciphertextCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalAuthenticatedData != null)
-      'additionalAuthenticatedData': additionalAuthenticatedData!,
-    if (additionalAuthenticatedDataCrc32c != null)
-      'additionalAuthenticatedDataCrc32c': additionalAuthenticatedDataCrc32c!,
-    if (ciphertext != null) 'ciphertext': ciphertext!,
-    if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalAuthenticatedData = this.additionalAuthenticatedData;
+    final additionalAuthenticatedDataCrc32c =
+        this.additionalAuthenticatedDataCrc32c;
+    final ciphertext = this.ciphertext;
+    final ciphertextCrc32c = this.ciphertextCrc32c;
+    return {
+      'additionalAuthenticatedData': ?additionalAuthenticatedData,
+      'additionalAuthenticatedDataCrc32c': ?additionalAuthenticatedDataCrc32c,
+      'ciphertext': ?ciphertext,
+      'ciphertextCrc32c': ?ciphertextCrc32c,
+    };
+  }
 }
 
 /// Response message for KeyManagementService.Decrypt.
@@ -5685,12 +5765,18 @@ class DecryptResponse {
         usedPrimary: json_['usedPrimary'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (plaintext != null) 'plaintext': plaintext!,
-    if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (usedPrimary != null) 'usedPrimary': usedPrimary!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final plaintext = this.plaintext;
+    final plaintextCrc32c = this.plaintextCrc32c;
+    final protectionLevel = this.protectionLevel;
+    final usedPrimary = this.usedPrimary;
+    return {
+      'plaintext': ?plaintext,
+      'plaintextCrc32c': ?plaintextCrc32c,
+      'protectionLevel': ?protectionLevel,
+      'usedPrimary': ?usedPrimary,
+    };
+  }
 }
 
 /// Delete the SingleTenantHsmInstance.
@@ -5747,11 +5833,12 @@ class Digest {
         sha512: json_['sha512'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sha256 != null) 'sha256': sha256!,
-    if (sha384 != null) 'sha384': sha384!,
-    if (sha512 != null) 'sha512': sha512!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final sha256 = this.sha256;
+    final sha384 = this.sha384;
+    final sha512 = this.sha512;
+    return {'sha256': ?sha256, 'sha384': ?sha384, 'sha512': ?sha512};
+  }
 }
 
 /// Disable the SingleTenantHsmInstance.
@@ -5785,11 +5872,11 @@ class EkmConfig {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultEkmConnection != null)
-      'defaultEkmConnection': defaultEkmConnection!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultEkmConnection = this.defaultEkmConnection;
+    final name = this.name;
+    return {'defaultEkmConnection': ?defaultEkmConnection, 'name': ?name};
+  }
 }
 
 /// An EkmConnection represents an individual EKM connection.
@@ -5870,24 +5957,31 @@ class EkmConnection {
         etag: json_['etag'] as core.String?,
         keyManagementMode: json_['keyManagementMode'] as core.String?,
         name: json_['name'] as core.String?,
-        serviceResolvers:
-            (json_['serviceResolvers'] as core.List?)
-                ?.map(
-                  (value) => ServiceResolver.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        serviceResolvers: (json_['serviceResolvers'] as core.List?)
+            ?.map(
+              (value) => ServiceResolver.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (cryptoSpacePath != null) 'cryptoSpacePath': cryptoSpacePath!,
-    if (etag != null) 'etag': etag!,
-    if (keyManagementMode != null) 'keyManagementMode': keyManagementMode!,
-    if (name != null) 'name': name!,
-    if (serviceResolvers != null) 'serviceResolvers': serviceResolvers!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final cryptoSpacePath = this.cryptoSpacePath;
+    final etag = this.etag;
+    final keyManagementMode = this.keyManagementMode;
+    final name = this.name;
+    final serviceResolvers = this.serviceResolvers;
+    return {
+      'createTime': ?createTime,
+      'cryptoSpacePath': ?cryptoSpacePath,
+      'etag': ?etag,
+      'keyManagementMode': ?keyManagementMode,
+      'name': ?name,
+      'serviceResolvers': ?serviceResolvers,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5997,14 +6091,19 @@ class EncryptRequest {
         plaintextCrc32c: json_['plaintextCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalAuthenticatedData != null)
-      'additionalAuthenticatedData': additionalAuthenticatedData!,
-    if (additionalAuthenticatedDataCrc32c != null)
-      'additionalAuthenticatedDataCrc32c': additionalAuthenticatedDataCrc32c!,
-    if (plaintext != null) 'plaintext': plaintext!,
-    if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalAuthenticatedData = this.additionalAuthenticatedData;
+    final additionalAuthenticatedDataCrc32c =
+        this.additionalAuthenticatedDataCrc32c;
+    final plaintext = this.plaintext;
+    final plaintextCrc32c = this.plaintextCrc32c;
+    return {
+      'additionalAuthenticatedData': ?additionalAuthenticatedData,
+      'additionalAuthenticatedDataCrc32c': ?additionalAuthenticatedDataCrc32c,
+      'plaintext': ?plaintext,
+      'plaintextCrc32c': ?plaintextCrc32c,
+    };
+  }
 }
 
 /// Response message for KeyManagementService.Encrypt.
@@ -6096,17 +6195,24 @@ class EncryptResponse {
         verifiedPlaintextCrc32c: json_['verifiedPlaintextCrc32c'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ciphertext != null) 'ciphertext': ciphertext!,
-    if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
-    if (name != null) 'name': name!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (verifiedAdditionalAuthenticatedDataCrc32c != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final ciphertext = this.ciphertext;
+    final ciphertextCrc32c = this.ciphertextCrc32c;
+    final name = this.name;
+    final protectionLevel = this.protectionLevel;
+    final verifiedAdditionalAuthenticatedDataCrc32c =
+        this.verifiedAdditionalAuthenticatedDataCrc32c;
+    final verifiedPlaintextCrc32c = this.verifiedPlaintextCrc32c;
+    return {
+      'ciphertext': ?ciphertext,
+      'ciphertextCrc32c': ?ciphertextCrc32c,
+      'name': ?name,
+      'protectionLevel': ?protectionLevel,
       'verifiedAdditionalAuthenticatedDataCrc32c':
-          verifiedAdditionalAuthenticatedDataCrc32c!,
-    if (verifiedPlaintextCrc32c != null)
-      'verifiedPlaintextCrc32c': verifiedPlaintextCrc32c!,
-  };
+          ?verifiedAdditionalAuthenticatedDataCrc32c,
+      'verifiedPlaintextCrc32c': ?verifiedPlaintextCrc32c,
+    };
+  }
 }
 
 /// Request message for HsmManagement.ExecuteSingleTenantHsmInstanceProposal.
@@ -6166,10 +6272,11 @@ class GenerateRandomBytesRequest {
         protectionLevel: json_['protectionLevel'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lengthBytes != null) 'lengthBytes': lengthBytes!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final lengthBytes = this.lengthBytes;
+    final protectionLevel = this.protectionLevel;
+    return {'lengthBytes': ?lengthBytes, 'protectionLevel': ?protectionLevel};
+  }
 }
 
 /// Response message for KeyManagementService.GenerateRandomBytes.
@@ -6207,10 +6314,11 @@ class GenerateRandomBytesResponse {
         dataCrc32c: json_['dataCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final dataCrc32c = this.dataCrc32c;
+    return {'data': ?data, 'dataCrc32c': ?dataCrc32c};
+  }
 }
 
 /// Request message for KeyManagementService.ImportCryptoKeyVersion.
@@ -6396,13 +6504,20 @@ class ImportCryptoKeyVersionRequest {
         wrappedKey: json_['wrappedKey'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
-    if (cryptoKeyVersion != null) 'cryptoKeyVersion': cryptoKeyVersion!,
-    if (importJob != null) 'importJob': importJob!,
-    if (rsaAesWrappedKey != null) 'rsaAesWrappedKey': rsaAesWrappedKey!,
-    if (wrappedKey != null) 'wrappedKey': wrappedKey!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final algorithm = this.algorithm;
+    final cryptoKeyVersion = this.cryptoKeyVersion;
+    final importJob = this.importJob;
+    final rsaAesWrappedKey = this.rsaAesWrappedKey;
+    final wrappedKey = this.wrappedKey;
+    return {
+      'algorithm': ?algorithm,
+      'cryptoKeyVersion': ?cryptoKeyVersion,
+      'importJob': ?importJob,
+      'rsaAesWrappedKey': ?rsaAesWrappedKey,
+      'wrappedKey': ?wrappedKey,
+    };
+  }
 }
 
 /// An ImportJob can be used to create CryptoKeys and CryptoKeyVersions using
@@ -6569,12 +6684,11 @@ class ImportJob {
 
   ImportJob.fromJson(core.Map json_)
     : this(
-        attestation:
-            json_.containsKey('attestation')
-                ? KeyOperationAttestation.fromJson(
-                  json_['attestation'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        attestation: json_.containsKey('attestation')
+            ? KeyOperationAttestation.fromJson(
+                json_['attestation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         cryptoKeyBackend: json_['cryptoKeyBackend'] as core.String?,
         expireEventTime: json_['expireEventTime'] as core.String?,
@@ -6583,28 +6697,40 @@ class ImportJob {
         importMethod: json_['importMethod'] as core.String?,
         name: json_['name'] as core.String?,
         protectionLevel: json_['protectionLevel'] as core.String?,
-        publicKey:
-            json_.containsKey('publicKey')
-                ? WrappingPublicKey.fromJson(
-                  json_['publicKey'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        publicKey: json_.containsKey('publicKey')
+            ? WrappingPublicKey.fromJson(
+                json_['publicKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestation != null) 'attestation': attestation!,
-    if (createTime != null) 'createTime': createTime!,
-    if (cryptoKeyBackend != null) 'cryptoKeyBackend': cryptoKeyBackend!,
-    if (expireEventTime != null) 'expireEventTime': expireEventTime!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (generateTime != null) 'generateTime': generateTime!,
-    if (importMethod != null) 'importMethod': importMethod!,
-    if (name != null) 'name': name!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (publicKey != null) 'publicKey': publicKey!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final attestation = this.attestation;
+    final createTime = this.createTime;
+    final cryptoKeyBackend = this.cryptoKeyBackend;
+    final expireEventTime = this.expireEventTime;
+    final expireTime = this.expireTime;
+    final generateTime = this.generateTime;
+    final importMethod = this.importMethod;
+    final name = this.name;
+    final protectionLevel = this.protectionLevel;
+    final publicKey = this.publicKey;
+    final state = this.state;
+    return {
+      'attestation': ?attestation,
+      'createTime': ?createTime,
+      'cryptoKeyBackend': ?cryptoKeyBackend,
+      'expireEventTime': ?expireEventTime,
+      'expireTime': ?expireTime,
+      'generateTime': ?generateTime,
+      'importMethod': ?importMethod,
+      'name': ?name,
+      'protectionLevel': ?protectionLevel,
+      'publicKey': ?publicKey,
+      'state': ?state,
+    };
+  }
 }
 
 /// The configuration of a protection level for a project's Key Access
@@ -6627,10 +6753,14 @@ class KeyAccessJustificationsEnrollmentConfig {
         policyEnforcement: json_['policyEnforcement'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditLogging != null) 'auditLogging': auditLogging!,
-    if (policyEnforcement != null) 'policyEnforcement': policyEnforcement!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditLogging = this.auditLogging;
+    final policyEnforcement = this.policyEnforcement;
+    return {
+      'auditLogging': ?auditLogging,
+      'policyEnforcement': ?policyEnforcement,
+    };
+  }
 }
 
 /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
@@ -6664,20 +6794,24 @@ class KeyAccessJustificationsPolicyConfig {
     : this(
         defaultKeyAccessJustificationPolicy:
             json_.containsKey('defaultKeyAccessJustificationPolicy')
-                ? KeyAccessJustificationsPolicy.fromJson(
-                  json_['defaultKeyAccessJustificationPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? KeyAccessJustificationsPolicy.fromJson(
+                json_['defaultKeyAccessJustificationPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultKeyAccessJustificationPolicy != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultKeyAccessJustificationPolicy =
+        this.defaultKeyAccessJustificationPolicy;
+    final name = this.name;
+    return {
       'defaultKeyAccessJustificationPolicy':
-          defaultKeyAccessJustificationPolicy!,
-    if (name != null) 'name': name!,
-  };
+          ?defaultKeyAccessJustificationPolicy,
+      'name': ?name,
+    };
+  }
 }
 
 /// Resource-oriented representation of a request to Cloud KMS Autokey and the
@@ -6718,12 +6852,16 @@ class KeyHandle {
         resourceTypeSelector: json_['resourceTypeSelector'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (name != null) 'name': name!,
-    if (resourceTypeSelector != null)
-      'resourceTypeSelector': resourceTypeSelector!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKey = this.kmsKey;
+    final name = this.name;
+    final resourceTypeSelector = this.resourceTypeSelector;
+    return {
+      'kmsKey': ?kmsKey,
+      'name': ?name,
+      'resourceTypeSelector': ?resourceTypeSelector,
+    };
+  }
 }
 
 /// Contains an HSM-generated attestation about a key operation.
@@ -6767,21 +6905,21 @@ class KeyOperationAttestation {
 
   KeyOperationAttestation.fromJson(core.Map json_)
     : this(
-        certChains:
-            json_.containsKey('certChains')
-                ? CertificateChains.fromJson(
-                  json_['certChains'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        certChains: json_.containsKey('certChains')
+            ? CertificateChains.fromJson(
+                json_['certChains'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         content: json_['content'] as core.String?,
         format: json_['format'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (certChains != null) 'certChains': certChains!,
-    if (content != null) 'content': content!,
-    if (format != null) 'format': format!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final certChains = this.certChains;
+    final content = this.content;
+    final format = this.format;
+    return {'certChains': ?certChains, 'content': ?content, 'format': ?format};
+  }
 }
 
 /// A KeyRing is a toplevel logical grouping of CryptoKeys.
@@ -6805,10 +6943,11 @@ class KeyRing {
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final name = this.name;
+    return {'createTime': ?createTime, 'name': ?name};
+  }
 }
 
 /// Response message for KeyManagementService.ListCryptoKeyVersions.
@@ -6836,23 +6975,27 @@ class ListCryptoKeyVersionsResponse {
 
   ListCryptoKeyVersionsResponse.fromJson(core.Map json_)
     : this(
-        cryptoKeyVersions:
-            (json_['cryptoKeyVersions'] as core.List?)
-                ?.map(
-                  (value) => CryptoKeyVersion.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cryptoKeyVersions: (json_['cryptoKeyVersions'] as core.List?)
+            ?.map(
+              (value) => CryptoKeyVersion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cryptoKeyVersions != null) 'cryptoKeyVersions': cryptoKeyVersions!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cryptoKeyVersions = this.cryptoKeyVersions;
+    final nextPageToken = this.nextPageToken;
+    final totalSize = this.totalSize;
+    return {
+      'cryptoKeyVersions': ?cryptoKeyVersions,
+      'nextPageToken': ?nextPageToken,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Response message for KeyManagementService.ListCryptoKeys.
@@ -6875,23 +7018,27 @@ class ListCryptoKeysResponse {
 
   ListCryptoKeysResponse.fromJson(core.Map json_)
     : this(
-        cryptoKeys:
-            (json_['cryptoKeys'] as core.List?)
-                ?.map(
-                  (value) => CryptoKey.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        cryptoKeys: (json_['cryptoKeys'] as core.List?)
+            ?.map(
+              (value) => CryptoKey.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cryptoKeys != null) 'cryptoKeys': cryptoKeys!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cryptoKeys = this.cryptoKeys;
+    final nextPageToken = this.nextPageToken;
+    final totalSize = this.totalSize;
+    return {
+      'cryptoKeys': ?cryptoKeys,
+      'nextPageToken': ?nextPageToken,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Response message for EkmService.ListEkmConnections.
@@ -6919,23 +7066,27 @@ class ListEkmConnectionsResponse {
 
   ListEkmConnectionsResponse.fromJson(core.Map json_)
     : this(
-        ekmConnections:
-            (json_['ekmConnections'] as core.List?)
-                ?.map(
-                  (value) => EkmConnection.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        ekmConnections: (json_['ekmConnections'] as core.List?)
+            ?.map(
+              (value) => EkmConnection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ekmConnections != null) 'ekmConnections': ekmConnections!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final ekmConnections = this.ekmConnections;
+    final nextPageToken = this.nextPageToken;
+    final totalSize = this.totalSize;
+    return {
+      'ekmConnections': ?ekmConnections,
+      'nextPageToken': ?nextPageToken,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Response message for KeyManagementService.ListImportJobs.
@@ -6958,23 +7109,27 @@ class ListImportJobsResponse {
 
   ListImportJobsResponse.fromJson(core.Map json_)
     : this(
-        importJobs:
-            (json_['importJobs'] as core.List?)
-                ?.map(
-                  (value) => ImportJob.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        importJobs: (json_['importJobs'] as core.List?)
+            ?.map(
+              (value) => ImportJob.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (importJobs != null) 'importJobs': importJobs!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final importJobs = this.importJobs;
+    final nextPageToken = this.nextPageToken;
+    final totalSize = this.totalSize;
+    return {
+      'importJobs': ?importJobs,
+      'nextPageToken': ?nextPageToken,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Response message for Autokey.ListKeyHandles.
@@ -6992,21 +7147,21 @@ class ListKeyHandlesResponse {
 
   ListKeyHandlesResponse.fromJson(core.Map json_)
     : this(
-        keyHandles:
-            (json_['keyHandles'] as core.List?)
-                ?.map(
-                  (value) => KeyHandle.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        keyHandles: (json_['keyHandles'] as core.List?)
+            ?.map(
+              (value) => KeyHandle.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyHandles != null) 'keyHandles': keyHandles!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyHandles = this.keyHandles;
+    final nextPageToken = this.nextPageToken;
+    return {'keyHandles': ?keyHandles, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for KeyManagementService.ListKeyRings.
@@ -7029,23 +7184,27 @@ class ListKeyRingsResponse {
 
   ListKeyRingsResponse.fromJson(core.Map json_)
     : this(
-        keyRings:
-            (json_['keyRings'] as core.List?)
-                ?.map(
-                  (value) => KeyRing.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        keyRings: (json_['keyRings'] as core.List?)
+            ?.map(
+              (value) => KeyRing.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyRings != null) 'keyRings': keyRings!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyRings = this.keyRings;
+    final nextPageToken = this.nextPageToken;
+    final totalSize = this.totalSize;
+    return {
+      'keyRings': ?keyRings,
+      'nextPageToken': ?nextPageToken,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// The response message for Locations.ListLocations.
@@ -7060,21 +7219,21 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map json_)
     : this(
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map(
-                  (value) => Location.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locations != null) 'locations': locations!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response message for HsmManagement.ListSingleTenantHsmInstanceProposals.
@@ -7115,12 +7274,17 @@ class ListSingleTenantHsmInstanceProposalsResponse {
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (singleTenantHsmInstanceProposals != null)
-      'singleTenantHsmInstanceProposals': singleTenantHsmInstanceProposals!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final singleTenantHsmInstanceProposals =
+        this.singleTenantHsmInstanceProposals;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'singleTenantHsmInstanceProposals': ?singleTenantHsmInstanceProposals,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// Response message for HsmManagement.ListSingleTenantHsmInstances.
@@ -7160,12 +7324,16 @@ class ListSingleTenantHsmInstancesResponse {
         totalSize: json_['totalSize'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (singleTenantHsmInstances != null)
-      'singleTenantHsmInstances': singleTenantHsmInstances!,
-    if (totalSize != null) 'totalSize': totalSize!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final singleTenantHsmInstances = this.singleTenantHsmInstances;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'singleTenantHsmInstances': ?singleTenantHsmInstances,
+      'totalSize': ?totalSize,
+    };
+  }
 }
 
 /// A resource that represents a Google Cloud location.
@@ -7213,10 +7381,11 @@ class MacSignRequest {
         dataCrc32c: json_['dataCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final dataCrc32c = this.dataCrc32c;
+    return {'data': ?data, 'dataCrc32c': ?dataCrc32c};
+  }
 }
 
 /// Response message for KeyManagementService.MacSign.
@@ -7291,13 +7460,20 @@ class MacSignResponse {
         verifiedDataCrc32c: json_['verifiedDataCrc32c'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mac != null) 'mac': mac!,
-    if (macCrc32c != null) 'macCrc32c': macCrc32c!,
-    if (name != null) 'name': name!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (verifiedDataCrc32c != null) 'verifiedDataCrc32c': verifiedDataCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final mac = this.mac;
+    final macCrc32c = this.macCrc32c;
+    final name = this.name;
+    final protectionLevel = this.protectionLevel;
+    final verifiedDataCrc32c = this.verifiedDataCrc32c;
+    return {
+      'mac': ?mac,
+      'macCrc32c': ?macCrc32c,
+      'name': ?name,
+      'protectionLevel': ?protectionLevel,
+      'verifiedDataCrc32c': ?verifiedDataCrc32c,
+    };
+  }
 }
 
 /// Request message for KeyManagementService.MacVerify.
@@ -7372,12 +7548,18 @@ class MacVerifyRequest {
         macCrc32c: json_['macCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
-    if (mac != null) 'mac': mac!,
-    if (macCrc32c != null) 'macCrc32c': macCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final dataCrc32c = this.dataCrc32c;
+    final mac = this.mac;
+    final macCrc32c = this.macCrc32c;
+    return {
+      'data': ?data,
+      'dataCrc32c': ?dataCrc32c,
+      'mac': ?mac,
+      'macCrc32c': ?macCrc32c,
+    };
+  }
 }
 
 /// Response message for KeyManagementService.MacVerify.
@@ -7454,15 +7636,22 @@ class MacVerifyResponse {
             json_['verifiedSuccessIntegrity'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (success != null) 'success': success!,
-    if (verifiedDataCrc32c != null) 'verifiedDataCrc32c': verifiedDataCrc32c!,
-    if (verifiedMacCrc32c != null) 'verifiedMacCrc32c': verifiedMacCrc32c!,
-    if (verifiedSuccessIntegrity != null)
-      'verifiedSuccessIntegrity': verifiedSuccessIntegrity!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final protectionLevel = this.protectionLevel;
+    final success = this.success;
+    final verifiedDataCrc32c = this.verifiedDataCrc32c;
+    final verifiedMacCrc32c = this.verifiedMacCrc32c;
+    final verifiedSuccessIntegrity = this.verifiedSuccessIntegrity;
+    return {
+      'name': ?name,
+      'protectionLevel': ?protectionLevel,
+      'success': ?success,
+      'verifiedDataCrc32c': ?verifiedDataCrc32c,
+      'verifiedMacCrc32c': ?verifiedMacCrc32c,
+      'verifiedSuccessIntegrity': ?verifiedSuccessIntegrity,
+    };
+  }
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -7513,30 +7702,34 @@ class Operation {
   Operation.fromJson(core.Map json_)
     : this(
         done: json_['done'] as core.bool?,
-        error:
-            json_.containsKey('error')
-                ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
         name: json_['name'] as core.String?,
-        response:
-            json_.containsKey('response')
-                ? json_['response'] as core.Map<core.String, core.dynamic>
-                : null,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (done != null) 'done': done!,
-    if (error != null) 'error': error!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-    if (response != null) 'response': response!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -7631,32 +7824,36 @@ class Policy {
 
   Policy.fromJson(core.Map json_)
     : this(
-        auditConfigs:
-            (json_['auditConfigs'] as core.List?)
-                ?.map(
-                  (value) => AuditConfig.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        bindings:
-            (json_['bindings'] as core.List?)
-                ?.map(
-                  (value) => Binding.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        auditConfigs: (json_['auditConfigs'] as core.List?)
+            ?.map(
+              (value) => AuditConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindings: (json_['bindings'] as core.List?)
+            ?.map(
+              (value) => Binding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         etag: json_['etag'] as core.String?,
         version: json_['version'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-    if (bindings != null) 'bindings': bindings!,
-    if (etag != null) 'etag': etag!,
-    if (version != null) 'version': version!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditConfigs = this.auditConfigs;
+    final bindings = this.bindings;
+    final etag = this.etag;
+    final version = this.version;
+    return {
+      'auditConfigs': ?auditConfigs,
+      'bindings': ?bindings,
+      'etag': ?etag,
+      'version': ?version,
+    };
+  }
 }
 
 /// The public keys for a given CryptoKeyVersion.
@@ -7839,24 +8036,32 @@ class PublicKey {
         pem: json_['pem'] as core.String?,
         pemCrc32c: json_['pemCrc32c'] as core.String?,
         protectionLevel: json_['protectionLevel'] as core.String?,
-        publicKey:
-            json_.containsKey('publicKey')
-                ? ChecksummedData.fromJson(
-                  json_['publicKey'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        publicKey: json_.containsKey('publicKey')
+            ? ChecksummedData.fromJson(
+                json_['publicKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         publicKeyFormat: json_['publicKeyFormat'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
-    if (name != null) 'name': name!,
-    if (pem != null) 'pem': pem!,
-    if (pemCrc32c != null) 'pemCrc32c': pemCrc32c!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (publicKey != null) 'publicKey': publicKey!,
-    if (publicKeyFormat != null) 'publicKeyFormat': publicKeyFormat!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final algorithm = this.algorithm;
+    final name = this.name;
+    final pem = this.pem;
+    final pemCrc32c = this.pemCrc32c;
+    final protectionLevel = this.protectionLevel;
+    final publicKey = this.publicKey;
+    final publicKeyFormat = this.publicKeyFormat;
+    return {
+      'algorithm': ?algorithm,
+      'name': ?name,
+      'pem': ?pem,
+      'pemCrc32c': ?pemCrc32c,
+      'protectionLevel': ?protectionLevel,
+      'publicKey': ?publicKey,
+      'publicKeyFormat': ?publicKeyFormat,
+    };
+  }
 }
 
 /// Configuration for M of N quorum auth.
@@ -7892,19 +8097,21 @@ class QuorumAuth {
     : this(
         requiredApproverCount: json_['requiredApproverCount'] as core.int?,
         totalApproverCount: json_['totalApproverCount'] as core.int?,
-        twoFactorPublicKeyPems:
-            (json_['twoFactorPublicKeyPems'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        twoFactorPublicKeyPems: (json_['twoFactorPublicKeyPems'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requiredApproverCount != null)
-      'requiredApproverCount': requiredApproverCount!,
-    if (totalApproverCount != null) 'totalApproverCount': totalApproverCount!,
-    if (twoFactorPublicKeyPems != null)
-      'twoFactorPublicKeyPems': twoFactorPublicKeyPems!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requiredApproverCount = this.requiredApproverCount;
+    final totalApproverCount = this.totalApproverCount;
+    final twoFactorPublicKeyPems = this.twoFactorPublicKeyPems;
+    return {
+      'requiredApproverCount': ?requiredApproverCount,
+      'totalApproverCount': ?totalApproverCount,
+      'twoFactorPublicKeyPems': ?twoFactorPublicKeyPems,
+    };
+  }
 }
 
 /// Parameters of quorum approval for the SingleTenantHsmInstanceProposal.
@@ -7943,24 +8150,26 @@ class QuorumParameters {
             (json_['approvedTwoFactorPublicKeyPems'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        challenges:
-            (json_['challenges'] as core.List?)
-                ?.map(
-                  (value) => Challenge.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        challenges: (json_['challenges'] as core.List?)
+            ?.map(
+              (value) => Challenge.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         requiredApproverCount: json_['requiredApproverCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (approvedTwoFactorPublicKeyPems != null)
-      'approvedTwoFactorPublicKeyPems': approvedTwoFactorPublicKeyPems!,
-    if (challenges != null) 'challenges': challenges!,
-    if (requiredApproverCount != null)
-      'requiredApproverCount': requiredApproverCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final approvedTwoFactorPublicKeyPems = this.approvedTwoFactorPublicKeyPems;
+    final challenges = this.challenges;
+    final requiredApproverCount = this.requiredApproverCount;
+    return {
+      'approvedTwoFactorPublicKeyPems': ?approvedTwoFactorPublicKeyPems,
+      'challenges': ?challenges,
+      'requiredApproverCount': ?requiredApproverCount,
+    };
+  }
 }
 
 /// The reply to QuorumParameters for approving the proposal.
@@ -7977,19 +8186,19 @@ class QuorumReply {
 
   QuorumReply.fromJson(core.Map json_)
     : this(
-        challengeReplies:
-            (json_['challengeReplies'] as core.List?)
-                ?.map(
-                  (value) => ChallengeReply.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        challengeReplies: (json_['challengeReplies'] as core.List?)
+            ?.map(
+              (value) => ChallengeReply.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (challengeReplies != null) 'challengeReplies': challengeReplies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final challengeReplies = this.challengeReplies;
+    return {'challengeReplies': ?challengeReplies};
+  }
 }
 
 /// Request message for KeyManagementService.RawDecrypt.
@@ -8121,19 +8330,25 @@ class RawDecryptRequest {
         tagLength: json_['tagLength'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalAuthenticatedData != null)
-      'additionalAuthenticatedData': additionalAuthenticatedData!,
-    if (additionalAuthenticatedDataCrc32c != null)
-      'additionalAuthenticatedDataCrc32c': additionalAuthenticatedDataCrc32c!,
-    if (ciphertext != null) 'ciphertext': ciphertext!,
-    if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
-    if (initializationVector != null)
-      'initializationVector': initializationVector!,
-    if (initializationVectorCrc32c != null)
-      'initializationVectorCrc32c': initializationVectorCrc32c!,
-    if (tagLength != null) 'tagLength': tagLength!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalAuthenticatedData = this.additionalAuthenticatedData;
+    final additionalAuthenticatedDataCrc32c =
+        this.additionalAuthenticatedDataCrc32c;
+    final ciphertext = this.ciphertext;
+    final ciphertextCrc32c = this.ciphertextCrc32c;
+    final initializationVector = this.initializationVector;
+    final initializationVectorCrc32c = this.initializationVectorCrc32c;
+    final tagLength = this.tagLength;
+    return {
+      'additionalAuthenticatedData': ?additionalAuthenticatedData,
+      'additionalAuthenticatedDataCrc32c': ?additionalAuthenticatedDataCrc32c,
+      'ciphertext': ?ciphertext,
+      'ciphertextCrc32c': ?ciphertextCrc32c,
+      'initializationVector': ?initializationVector,
+      'initializationVectorCrc32c': ?initializationVectorCrc32c,
+      'tagLength': ?tagLength,
+    };
+  }
 }
 
 /// Response message for KeyManagementService.RawDecrypt.
@@ -8233,18 +8448,25 @@ class RawDecryptResponse {
             json_['verifiedInitializationVectorCrc32c'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (plaintext != null) 'plaintext': plaintext!,
-    if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (verifiedAdditionalAuthenticatedDataCrc32c != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final plaintext = this.plaintext;
+    final plaintextCrc32c = this.plaintextCrc32c;
+    final protectionLevel = this.protectionLevel;
+    final verifiedAdditionalAuthenticatedDataCrc32c =
+        this.verifiedAdditionalAuthenticatedDataCrc32c;
+    final verifiedCiphertextCrc32c = this.verifiedCiphertextCrc32c;
+    final verifiedInitializationVectorCrc32c =
+        this.verifiedInitializationVectorCrc32c;
+    return {
+      'plaintext': ?plaintext,
+      'plaintextCrc32c': ?plaintextCrc32c,
+      'protectionLevel': ?protectionLevel,
       'verifiedAdditionalAuthenticatedDataCrc32c':
-          verifiedAdditionalAuthenticatedDataCrc32c!,
-    if (verifiedCiphertextCrc32c != null)
-      'verifiedCiphertextCrc32c': verifiedCiphertextCrc32c!,
-    if (verifiedInitializationVectorCrc32c != null)
-      'verifiedInitializationVectorCrc32c': verifiedInitializationVectorCrc32c!,
-  };
+          ?verifiedAdditionalAuthenticatedDataCrc32c,
+      'verifiedCiphertextCrc32c': ?verifiedCiphertextCrc32c,
+      'verifiedInitializationVectorCrc32c': ?verifiedInitializationVectorCrc32c,
+    };
+  }
 }
 
 /// Request message for KeyManagementService.RawEncrypt.
@@ -8381,18 +8603,23 @@ class RawEncryptRequest {
         plaintextCrc32c: json_['plaintextCrc32c'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additionalAuthenticatedData != null)
-      'additionalAuthenticatedData': additionalAuthenticatedData!,
-    if (additionalAuthenticatedDataCrc32c != null)
-      'additionalAuthenticatedDataCrc32c': additionalAuthenticatedDataCrc32c!,
-    if (initializationVector != null)
-      'initializationVector': initializationVector!,
-    if (initializationVectorCrc32c != null)
-      'initializationVectorCrc32c': initializationVectorCrc32c!,
-    if (plaintext != null) 'plaintext': plaintext!,
-    if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalAuthenticatedData = this.additionalAuthenticatedData;
+    final additionalAuthenticatedDataCrc32c =
+        this.additionalAuthenticatedDataCrc32c;
+    final initializationVector = this.initializationVector;
+    final initializationVectorCrc32c = this.initializationVectorCrc32c;
+    final plaintext = this.plaintext;
+    final plaintextCrc32c = this.plaintextCrc32c;
+    return {
+      'additionalAuthenticatedData': ?additionalAuthenticatedData,
+      'additionalAuthenticatedDataCrc32c': ?additionalAuthenticatedDataCrc32c,
+      'initializationVector': ?initializationVector,
+      'initializationVectorCrc32c': ?initializationVectorCrc32c,
+      'plaintext': ?plaintext,
+      'plaintextCrc32c': ?plaintextCrc32c,
+    };
+  }
 }
 
 /// Response message for KeyManagementService.RawEncrypt.
@@ -8541,24 +8768,33 @@ class RawEncryptResponse {
         verifiedPlaintextCrc32c: json_['verifiedPlaintextCrc32c'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ciphertext != null) 'ciphertext': ciphertext!,
-    if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
-    if (initializationVector != null)
-      'initializationVector': initializationVector!,
-    if (initializationVectorCrc32c != null)
-      'initializationVectorCrc32c': initializationVectorCrc32c!,
-    if (name != null) 'name': name!,
-    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-    if (tagLength != null) 'tagLength': tagLength!,
-    if (verifiedAdditionalAuthenticatedDataCrc32c != null)
+  core.Map<core.String, core.dynamic> toJson() {
+    final ciphertext = this.ciphertext;
+    final ciphertextCrc32c = this.ciphertextCrc32c;
+    final initializationVector = this.initializationVector;
+    final initializationVectorCrc32c = this.initializationVectorCrc32c;
+    final name = this.name;
+    final protectionLevel = this.protectionLevel;
+    final tagLength = this.tagLength;
+    final verifiedAdditionalAuthenticatedDataCrc32c =
+        this.verifiedAdditionalAuthenticatedDataCrc32c;
+    final verifiedInitializationVectorCrc32c =
+        this.verifiedInitializationVectorCrc32c;
+    final verifiedPlaintextCrc32c = this.verifiedPlaintextCrc32c;
+    return {
+      'ciphertext': ?ciphertext,
+      'ciphertextCrc32c': ?ciphertextCrc32c,
+      'initializationVector': ?initializationVector,
+      'initializationVectorCrc32c': ?initializationVectorCrc32c,
+      'name': ?name,
+      'protectionLevel': ?protectionLevel,
+      'tagLength': ?tagLength,
       'verifiedAdditionalAuthenticatedDataCrc32c':
-          verifiedAdditionalAuthenticatedDataCrc32c!,
-    if (verifiedInitializationVectorCrc32c != null)
-      'verifiedInitializationVectorCrc32c': verifiedInitializationVectorCrc32c!,
-    if (verifiedPlaintextCrc32c != null)
-      'verifiedPlaintextCrc32c': verifiedPlaintextCrc32c!,
-  };
+          ?verifiedAdditionalAuthenticatedDataCrc32c,
+      'verifiedInitializationVectorCrc32c': ?verifiedInitializationVectorCrc32c,
+      'verifiedPlaintextCrc32c': ?verifiedPlaintextCrc32c,
+    };
+  }
 }
 
 /// Refreshes the SingleTenantHsmInstance.
@@ -8598,18 +8834,19 @@ class RegisterTwoFactorAuthKeys {
   RegisterTwoFactorAuthKeys.fromJson(core.Map json_)
     : this(
         requiredApproverCount: json_['requiredApproverCount'] as core.int?,
-        twoFactorPublicKeyPems:
-            (json_['twoFactorPublicKeyPems'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        twoFactorPublicKeyPems: (json_['twoFactorPublicKeyPems'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requiredApproverCount != null)
-      'requiredApproverCount': requiredApproverCount!,
-    if (twoFactorPublicKeyPems != null)
-      'twoFactorPublicKeyPems': twoFactorPublicKeyPems!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final requiredApproverCount = this.requiredApproverCount;
+    final twoFactorPublicKeyPems = this.twoFactorPublicKeyPems;
+    return {
+      'requiredApproverCount': ?requiredApproverCount,
+      'twoFactorPublicKeyPems': ?twoFactorPublicKeyPems,
+    };
+  }
 }
 
 /// Remove a quorum member from the SingleTenantHsmInstance.
@@ -8632,10 +8869,10 @@ class RemoveQuorumMember {
         twoFactorPublicKeyPem: json_['twoFactorPublicKeyPem'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (twoFactorPublicKeyPem != null)
-      'twoFactorPublicKeyPem': twoFactorPublicKeyPem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final twoFactorPublicKeyPem = this.twoFactorPublicKeyPem;
+    return {'twoFactorPublicKeyPem': ?twoFactorPublicKeyPem};
+  }
 }
 
 /// Parameters for an approval that has both required challenges and a quorum.
@@ -8682,33 +8919,35 @@ class RequiredActionQuorumParameters {
             (json_['approvedTwoFactorPublicKeyPems'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        quorumChallenges:
-            (json_['quorumChallenges'] as core.List?)
-                ?.map(
-                  (value) => Challenge.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        quorumChallenges: (json_['quorumChallenges'] as core.List?)
+            ?.map(
+              (value) => Challenge.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         requiredApproverCount: json_['requiredApproverCount'] as core.int?,
-        requiredChallenges:
-            (json_['requiredChallenges'] as core.List?)
-                ?.map(
-                  (value) => Challenge.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        requiredChallenges: (json_['requiredChallenges'] as core.List?)
+            ?.map(
+              (value) => Challenge.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (approvedTwoFactorPublicKeyPems != null)
-      'approvedTwoFactorPublicKeyPems': approvedTwoFactorPublicKeyPems!,
-    if (quorumChallenges != null) 'quorumChallenges': quorumChallenges!,
-    if (requiredApproverCount != null)
-      'requiredApproverCount': requiredApproverCount!,
-    if (requiredChallenges != null) 'requiredChallenges': requiredChallenges!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final approvedTwoFactorPublicKeyPems = this.approvedTwoFactorPublicKeyPems;
+    final quorumChallenges = this.quorumChallenges;
+    final requiredApproverCount = this.requiredApproverCount;
+    final requiredChallenges = this.requiredChallenges;
+    return {
+      'approvedTwoFactorPublicKeyPems': ?approvedTwoFactorPublicKeyPems,
+      'quorumChallenges': ?quorumChallenges,
+      'requiredApproverCount': ?requiredApproverCount,
+      'requiredChallenges': ?requiredChallenges,
+    };
+  }
 }
 
 /// The reply to RequiredActionQuorumParameters for approving the proposal.
@@ -8736,14 +8975,13 @@ class RequiredActionQuorumReply {
 
   RequiredActionQuorumReply.fromJson(core.Map json_)
     : this(
-        quorumChallengeReplies:
-            (json_['quorumChallengeReplies'] as core.List?)
-                ?.map(
-                  (value) => ChallengeReply.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        quorumChallengeReplies: (json_['quorumChallengeReplies'] as core.List?)
+            ?.map(
+              (value) => ChallengeReply.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         requiredChallengeReplies:
             (json_['requiredChallengeReplies'] as core.List?)
                 ?.map(
@@ -8754,12 +8992,14 @@ class RequiredActionQuorumReply {
                 .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (quorumChallengeReplies != null)
-      'quorumChallengeReplies': quorumChallengeReplies!,
-    if (requiredChallengeReplies != null)
-      'requiredChallengeReplies': requiredChallengeReplies!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final quorumChallengeReplies = this.quorumChallengeReplies;
+    final requiredChallengeReplies = this.requiredChallengeReplies;
+    return {
+      'quorumChallengeReplies': ?quorumChallengeReplies,
+      'requiredChallengeReplies': ?requiredChallengeReplies,
+    };
+  }
 }
 
 /// Request message for KeyManagementService.RestoreCryptoKeyVersion.
@@ -8809,25 +9049,29 @@ class ServiceResolver {
     : this(
         endpointFilter: json_['endpointFilter'] as core.String?,
         hostname: json_['hostname'] as core.String?,
-        serverCertificates:
-            (json_['serverCertificates'] as core.List?)
-                ?.map(
-                  (value) => Certificate.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        serverCertificates: (json_['serverCertificates'] as core.List?)
+            ?.map(
+              (value) => Certificate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         serviceDirectoryService:
             json_['serviceDirectoryService'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endpointFilter != null) 'endpointFilter': endpointFilter!,
-    if (hostname != null) 'hostname': hostname!,
-    if (serverCertificates != null) 'serverCertificates': serverCertificates!,
-    if (serviceDirectoryService != null)
-      'serviceDirectoryService': serviceDirectoryService!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endpointFilter = this.endpointFilter;
+    final hostname = this.hostname;
+    final serverCertificates = this.serverCertificates;
+    final serviceDirectoryService = this.serviceDirectoryService;
+    return {
+      'endpointFilter': ?endpointFilter,
+      'hostname': ?hostname,
+      'serverCertificates': ?serverCertificates,
+      'serviceDirectoryService': ?serviceDirectoryService,
+    };
+  }
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -8849,19 +9093,19 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map json_)
     : this(
-        policy:
-            json_.containsKey('policy')
-                ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateMask: json_['updateMask'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final updateMask = this.updateMask;
+    return {'policy': ?policy, 'updateMask': ?updateMask};
+  }
 }
 
 /// Response message for ShowEffectiveAutokeyConfig.
@@ -8875,9 +9119,10 @@ class ShowEffectiveAutokeyConfigResponse {
   ShowEffectiveAutokeyConfigResponse.fromJson(core.Map json_)
     : this(keyProject: json_['keyProject'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyProject != null) 'keyProject': keyProject!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyProject = this.keyProject;
+    return {'keyProject': ?keyProject};
+  }
 }
 
 /// Response message for
@@ -8901,34 +9146,33 @@ class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
   ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse.fromJson(
     core.Map json_,
   ) : this(
-        externalConfig:
-            json_.containsKey('externalConfig')
-                ? KeyAccessJustificationsEnrollmentConfig.fromJson(
-                  json_['externalConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        hardwareConfig:
-            json_.containsKey('hardwareConfig')
-                ? KeyAccessJustificationsEnrollmentConfig.fromJson(
-                  json_['hardwareConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        softwareConfig:
-            json_.containsKey('softwareConfig')
-                ? KeyAccessJustificationsEnrollmentConfig.fromJson(
-                  json_['softwareConfig']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        externalConfig: json_.containsKey('externalConfig')
+            ? KeyAccessJustificationsEnrollmentConfig.fromJson(
+                json_['externalConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        hardwareConfig: json_.containsKey('hardwareConfig')
+            ? KeyAccessJustificationsEnrollmentConfig.fromJson(
+                json_['hardwareConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        softwareConfig: json_.containsKey('softwareConfig')
+            ? KeyAccessJustificationsEnrollmentConfig.fromJson(
+                json_['softwareConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalConfig != null) 'externalConfig': externalConfig!,
-    if (hardwareConfig != null) 'hardwareConfig': hardwareConfig!,
-    if (softwareConfig != null) 'softwareConfig': softwareConfig!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalConfig = this.externalConfig;
+    final hardwareConfig = this.hardwareConfig;
+    final softwareConfig = this.softwareConfig;
+    return {
+      'externalConfig': ?externalConfig,
+      'hardwareConfig': ?hardwareConfig,
+      'softwareConfig': ?softwareConfig,
+    };
+  }
 }
 
 /// Response message for
@@ -8944,18 +9188,18 @@ class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse {
   ShowEffectiveKeyAccessJustificationsPolicyConfigResponse.fromJson(
     core.Map json_,
   ) : this(
-        effectiveKajPolicy:
-            json_.containsKey('effectiveKajPolicy')
-                ? KeyAccessJustificationsPolicyConfig.fromJson(
-                  json_['effectiveKajPolicy']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        effectiveKajPolicy: json_.containsKey('effectiveKajPolicy')
+            ? KeyAccessJustificationsPolicyConfig.fromJson(
+                json_['effectiveKajPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effectiveKajPolicy != null) 'effectiveKajPolicy': effectiveKajPolicy!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final effectiveKajPolicy = this.effectiveKajPolicy;
+    return {'effectiveKajPolicy': ?effectiveKajPolicy};
+  }
 }
 
 /// A SingleTenantHsmInstance represents a single-tenant HSM instance.
@@ -9042,27 +9286,35 @@ class SingleTenantHsmInstance {
         deleteTime: json_['deleteTime'] as core.String?,
         disableTime: json_['disableTime'] as core.String?,
         name: json_['name'] as core.String?,
-        quorumAuth:
-            json_.containsKey('quorumAuth')
-                ? QuorumAuth.fromJson(
-                  json_['quorumAuth'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        quorumAuth: json_.containsKey('quorumAuth')
+            ? QuorumAuth.fromJson(
+                json_['quorumAuth'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         unrefreshedDurationUntilDisable:
             json_['unrefreshedDurationUntilDisable'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (disableTime != null) 'disableTime': disableTime!,
-    if (name != null) 'name': name!,
-    if (quorumAuth != null) 'quorumAuth': quorumAuth!,
-    if (state != null) 'state': state!,
-    if (unrefreshedDurationUntilDisable != null)
-      'unrefreshedDurationUntilDisable': unrefreshedDurationUntilDisable!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final disableTime = this.disableTime;
+    final name = this.name;
+    final quorumAuth = this.quorumAuth;
+    final state = this.state;
+    final unrefreshedDurationUntilDisable =
+        this.unrefreshedDurationUntilDisable;
+    return {
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'disableTime': ?disableTime,
+      'name': ?name,
+      'quorumAuth': ?quorumAuth,
+      'state': ?state,
+      'unrefreshedDurationUntilDisable': ?unrefreshedDurationUntilDisable,
+    };
+  }
 }
 
 /// A SingleTenantHsmInstanceProposal represents a proposal to perform an
@@ -9208,104 +9460,113 @@ class SingleTenantHsmInstanceProposal {
 
   SingleTenantHsmInstanceProposal.fromJson(core.Map json_)
     : this(
-        addQuorumMember:
-            json_.containsKey('addQuorumMember')
-                ? AddQuorumMember.fromJson(
-                  json_['addQuorumMember']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        addQuorumMember: json_.containsKey('addQuorumMember')
+            ? AddQuorumMember.fromJson(
+                json_['addQuorumMember'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         deleteSingleTenantHsmInstance:
             json_.containsKey('deleteSingleTenantHsmInstance')
-                ? DeleteSingleTenantHsmInstance.fromJson(
-                  json_['deleteSingleTenantHsmInstance']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? DeleteSingleTenantHsmInstance.fromJson(
+                json_['deleteSingleTenantHsmInstance']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deleteTime: json_['deleteTime'] as core.String?,
         disableSingleTenantHsmInstance:
             json_.containsKey('disableSingleTenantHsmInstance')
-                ? DisableSingleTenantHsmInstance.fromJson(
-                  json_['disableSingleTenantHsmInstance']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? DisableSingleTenantHsmInstance.fromJson(
+                json_['disableSingleTenantHsmInstance']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableSingleTenantHsmInstance:
             json_.containsKey('enableSingleTenantHsmInstance')
-                ? EnableSingleTenantHsmInstance.fromJson(
-                  json_['enableSingleTenantHsmInstance']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? EnableSingleTenantHsmInstance.fromJson(
+                json_['enableSingleTenantHsmInstance']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         expireTime: json_['expireTime'] as core.String?,
         failureReason: json_['failureReason'] as core.String?,
         name: json_['name'] as core.String?,
         purgeTime: json_['purgeTime'] as core.String?,
-        quorumParameters:
-            json_.containsKey('quorumParameters')
-                ? QuorumParameters.fromJson(
-                  json_['quorumParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        quorumParameters: json_.containsKey('quorumParameters')
+            ? QuorumParameters.fromJson(
+                json_['quorumParameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         refreshSingleTenantHsmInstance:
             json_.containsKey('refreshSingleTenantHsmInstance')
-                ? RefreshSingleTenantHsmInstance.fromJson(
-                  json_['refreshSingleTenantHsmInstance']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? RefreshSingleTenantHsmInstance.fromJson(
+                json_['refreshSingleTenantHsmInstance']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         registerTwoFactorAuthKeys:
             json_.containsKey('registerTwoFactorAuthKeys')
-                ? RegisterTwoFactorAuthKeys.fromJson(
-                  json_['registerTwoFactorAuthKeys']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        removeQuorumMember:
-            json_.containsKey('removeQuorumMember')
-                ? RemoveQuorumMember.fromJson(
-                  json_['removeQuorumMember']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? RegisterTwoFactorAuthKeys.fromJson(
+                json_['registerTwoFactorAuthKeys']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        removeQuorumMember: json_.containsKey('removeQuorumMember')
+            ? RemoveQuorumMember.fromJson(
+                json_['removeQuorumMember']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requiredActionQuorumParameters:
             json_.containsKey('requiredActionQuorumParameters')
-                ? RequiredActionQuorumParameters.fromJson(
-                  json_['requiredActionQuorumParameters']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+            ? RequiredActionQuorumParameters.fromJson(
+                json_['requiredActionQuorumParameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         ttl: json_['ttl'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addQuorumMember != null) 'addQuorumMember': addQuorumMember!,
-    if (createTime != null) 'createTime': createTime!,
-    if (deleteSingleTenantHsmInstance != null)
-      'deleteSingleTenantHsmInstance': deleteSingleTenantHsmInstance!,
-    if (deleteTime != null) 'deleteTime': deleteTime!,
-    if (disableSingleTenantHsmInstance != null)
-      'disableSingleTenantHsmInstance': disableSingleTenantHsmInstance!,
-    if (enableSingleTenantHsmInstance != null)
-      'enableSingleTenantHsmInstance': enableSingleTenantHsmInstance!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (failureReason != null) 'failureReason': failureReason!,
-    if (name != null) 'name': name!,
-    if (purgeTime != null) 'purgeTime': purgeTime!,
-    if (quorumParameters != null) 'quorumParameters': quorumParameters!,
-    if (refreshSingleTenantHsmInstance != null)
-      'refreshSingleTenantHsmInstance': refreshSingleTenantHsmInstance!,
-    if (registerTwoFactorAuthKeys != null)
-      'registerTwoFactorAuthKeys': registerTwoFactorAuthKeys!,
-    if (removeQuorumMember != null) 'removeQuorumMember': removeQuorumMember!,
-    if (requiredActionQuorumParameters != null)
-      'requiredActionQuorumParameters': requiredActionQuorumParameters!,
-    if (state != null) 'state': state!,
-    if (ttl != null) 'ttl': ttl!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final addQuorumMember = this.addQuorumMember;
+    final createTime = this.createTime;
+    final deleteSingleTenantHsmInstance = this.deleteSingleTenantHsmInstance;
+    final deleteTime = this.deleteTime;
+    final disableSingleTenantHsmInstance = this.disableSingleTenantHsmInstance;
+    final enableSingleTenantHsmInstance = this.enableSingleTenantHsmInstance;
+    final expireTime = this.expireTime;
+    final failureReason = this.failureReason;
+    final name = this.name;
+    final purgeTime = this.purgeTime;
+    final quorumParameters = this.quorumParameters;
+    final refreshSingleTenantHsmInstance = this.refreshSingleTenantHsmInstance;
+    final registerTwoFactorAuthKeys = this.registerTwoFactorAuthKeys;
+    final removeQuorumMember = this.removeQuorumMember;
+    final requiredActionQuorumParameters = this.requiredActionQuorumParameters;
+    final state = this.state;
+    final ttl = this.ttl;
+    return {
+      'addQuorumMember': ?addQuorumMember,
+      'createTime': ?createTime,
+      'deleteSingleTenantHsmInstance': ?deleteSingleTenantHsmInstance,
+      'deleteTime': ?deleteTime,
+      'disableSingleTenantHsmInstance': ?disableSingleTenantHsmInstance,
+      'enableSingleTenantHsmInstance': ?enableSingleTenantHsmInstance,
+      'expireTime': ?expireTime,
+      'failureReason': ?failureReason,
+      'name': ?name,
+      'purgeTime': ?purgeTime,
+      'quorumParameters': ?quorumParameters,
+      'refreshSingleTenantHsmInstance': ?refreshSingleTenantHsmInstance,
+      'registerTwoFactorAuthKeys': ?registerTwoFactorAuthKeys,
+      'removeQuorumMember': ?removeQuorumMember,
+      'requiredActionQuorumParameters': ?requiredActionQuorumParameters,
+      'state': ?state,
+      'ttl': ?ttl,
+    };
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -9335,9 +9596,10 @@ class UpdateCryptoKeyPrimaryVersionRequest {
   UpdateCryptoKeyPrimaryVersionRequest.fromJson(core.Map json_)
     : this(cryptoKeyVersionId: json_['cryptoKeyVersionId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cryptoKeyVersionId != null) 'cryptoKeyVersionId': cryptoKeyVersionId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final cryptoKeyVersionId = this.cryptoKeyVersionId;
+    return {'cryptoKeyVersionId': ?cryptoKeyVersionId};
+  }
 }
 
 /// Response message for EkmService.VerifyConnectivity.
@@ -9362,7 +9624,8 @@ class WrappingPublicKey {
   WrappingPublicKey.fromJson(core.Map json_)
     : this(pem: json_['pem'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pem != null) 'pem': pem!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final pem = this.pem;
+    return {'pem': ?pem};
+  }
 }

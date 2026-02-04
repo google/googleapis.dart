@@ -1470,10 +1470,10 @@ void main() {
         final o =
             buildGoogleCloudOsconfigV2OrchestrationScopeLocationSelector();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOsconfigV2OrchestrationScopeLocationSelector.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOsconfigV2OrchestrationScopeLocationSelector.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOsconfigV2OrchestrationScopeLocationSelector(od);
       });
     },
@@ -1486,10 +1486,10 @@ void main() {
         final o =
             buildGoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector(
           od,
         );
@@ -1517,10 +1517,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudOsconfigV2PolicyOrchestratorIterationState();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOsconfigV2PolicyOrchestratorIterationState.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOsconfigV2PolicyOrchestratorIterationState.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOsconfigV2PolicyOrchestratorIterationState(od);
       });
     },
@@ -1533,10 +1533,10 @@ void main() {
         final o =
             buildGoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState(od);
       });
     },
@@ -1548,10 +1548,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudOsconfigV2ListPolicyOrchestratorsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudOsconfigV2ListPolicyOrchestratorsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudOsconfigV2ListPolicyOrchestratorsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudOsconfigV2ListPolicyOrchestratorsResponse(od);
       });
     },
@@ -1913,10 +1913,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildOSPolicyResourceRepositoryResourceZypperRepository();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .OSPolicyResourceRepositoryResourceZypperRepository.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.OSPolicyResourceRepositoryResourceZypperRepository.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkOSPolicyResourceRepositoryResourceZypperRepository(od);
       });
     },
@@ -1947,8 +1947,9 @@ void main() {
   unittest.group('resource-FoldersLocationsGlobalPolicyOrchestratorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).folders.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).folders.locations.global.policyOrchestrators;
       final arg_request = buildGoogleCloudOsconfigV2PolicyOrchestrator();
       final arg_parent = 'foo';
       final arg_policyOrchestratorId = 'foo';
@@ -2023,8 +2024,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).folders.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).folders.locations.global.policyOrchestrators;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -2089,8 +2091,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).folders.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).folders.locations.global.policyOrchestrators;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2147,8 +2150,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).folders.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).folders.locations.global.policyOrchestrators;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2232,8 +2236,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).folders.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).folders.locations.global.policyOrchestrators;
       final arg_request = buildGoogleCloudOsconfigV2PolicyOrchestrator();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -2555,10 +2560,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsGlobalPolicyOrchestratorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(
-            mock,
-          ).organizations.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).organizations.locations.global.policyOrchestrators;
       final arg_request = buildGoogleCloudOsconfigV2PolicyOrchestrator();
       final arg_parent = 'foo';
       final arg_policyOrchestratorId = 'foo';
@@ -2633,10 +2637,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(
-            mock,
-          ).organizations.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).organizations.locations.global.policyOrchestrators;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -2701,10 +2704,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(
-            mock,
-          ).organizations.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).organizations.locations.global.policyOrchestrators;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2761,10 +2763,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(
-            mock,
-          ).organizations.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).organizations.locations.global.policyOrchestrators;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -2848,10 +2849,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(
-            mock,
-          ).organizations.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).organizations.locations.global.policyOrchestrators;
       final arg_request = buildGoogleCloudOsconfigV2PolicyOrchestrator();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3173,8 +3173,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalPolicyOrchestratorsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).projects.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).projects.locations.global.policyOrchestrators;
       final arg_request = buildGoogleCloudOsconfigV2PolicyOrchestrator();
       final arg_parent = 'foo';
       final arg_policyOrchestratorId = 'foo';
@@ -3249,8 +3250,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).projects.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).projects.locations.global.policyOrchestrators;
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_requestId = 'foo';
@@ -3315,8 +3317,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).projects.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).projects.locations.global.policyOrchestrators;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3373,8 +3376,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).projects.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).projects.locations.global.policyOrchestrators;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -3458,8 +3462,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.OSConfigApi(mock).projects.locations.global.policyOrchestrators;
+      final res = api.OSConfigApi(
+        mock,
+      ).projects.locations.global.policyOrchestrators;
       final arg_request = buildGoogleCloudOsconfigV2PolicyOrchestrator();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';

@@ -615,10 +615,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudWebriskV1ComputeThreatListDiffResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudWebriskV1ComputeThreatListDiffResponse(od);
       });
     },
@@ -631,10 +631,10 @@ void main() {
         final o =
             buildGoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum(od);
       });
     },
@@ -690,10 +690,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleCloudWebriskV1SearchHashesResponseThreatHash();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleCloudWebriskV1SearchHashesResponseThreatHash(od);
       });
     },

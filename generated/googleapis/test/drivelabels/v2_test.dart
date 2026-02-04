@@ -2778,10 +2778,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(od);
       });
     },
@@ -2794,10 +2794,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(od);
       });
     },
@@ -2810,10 +2810,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(od);
       });
     },
@@ -2836,10 +2836,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(od);
       });
     },
@@ -2866,10 +2866,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest(
           od,
         );
@@ -2884,10 +2884,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest(
           od,
         );
@@ -2902,10 +2902,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest(
           od,
         );
@@ -2920,10 +2920,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest(
           od,
         );
@@ -2938,10 +2938,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest(
           od,
         );
@@ -2956,10 +2956,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest(
           od,
         );
@@ -2974,10 +2974,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest(
           od,
         );
@@ -2992,10 +2992,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest(
           od,
         );
@@ -3009,10 +3009,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(od);
       });
     },
@@ -3025,10 +3025,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest(
           od,
         );
@@ -3043,10 +3043,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest(
           od,
         );
@@ -3061,10 +3061,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest(
           od,
         );
@@ -3079,10 +3079,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest(
           od,
         );
@@ -3111,10 +3111,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse(
           od,
         );
@@ -3129,10 +3129,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse(
           od,
         );
@@ -3147,10 +3147,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse(
           od,
         );
@@ -3165,10 +3165,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse(
           od,
         );
@@ -3183,10 +3183,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse(
           od,
         );
@@ -3201,10 +3201,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse(
           od,
         );
@@ -3219,10 +3219,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse(
           od,
         );
@@ -3237,10 +3237,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse(
           od,
         );
@@ -3255,10 +3255,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(od);
       });
     },
@@ -3271,10 +3271,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse(
           od,
         );
@@ -3289,10 +3289,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse(
           od,
         );
@@ -3307,10 +3307,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse(
           od,
         );
@@ -3325,10 +3325,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse(
           od,
         );
@@ -3480,10 +3480,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(od);
       });
     },
@@ -3496,10 +3496,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities(
           od,
         );
@@ -3514,10 +3514,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints(od);
       });
     },
@@ -3530,10 +3530,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties(od);
       });
     },
@@ -3546,10 +3546,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities(
           od,
         );
@@ -3661,10 +3661,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(od);
       });
     },
@@ -3784,10 +3784,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsDriveLabelsV2ListLabelPermissionsResponse();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2ListLabelPermissionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(od);
       });
     },
@@ -3876,10 +3876,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest(od);
       });
     },
@@ -3892,10 +3892,10 @@ void main() {
         final o =
             buildGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(od);
       });
     },
@@ -3907,10 +3907,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(od);
       });
     },
@@ -4144,10 +4144,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest(obj);
 
           final path = req.url.path;
@@ -4583,10 +4583,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest(obj);
 
           final path = req.url.path;
@@ -4650,10 +4650,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(obj);
 
           final path = req.url.path;
@@ -4866,10 +4866,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(obj);
 
           final path = req.url.path;
@@ -4931,10 +4931,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(obj);
 
           final path = req.url.path;
@@ -5365,10 +5365,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(obj);
 
           final path = req.url.path;
@@ -5430,10 +5430,10 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api
-              .GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
+          final obj =
+              api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
           checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(obj);
 
           final path = req.url.path;

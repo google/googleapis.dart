@@ -393,7 +393,7 @@ class AccessTypeResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accessType:check';
@@ -444,7 +444,7 @@ class ArchiveJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
@@ -485,7 +485,7 @@ class ArchiveJobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -528,7 +528,7 @@ class ArchiveJobsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':retry';
@@ -577,7 +577,7 @@ class AuthorizationResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/authorization:reset';
@@ -619,7 +619,7 @@ class PortabilityArchiveResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/portabilityArchive:initiate';
@@ -661,20 +661,22 @@ class CheckAccessTypeResponse {
 
   CheckAccessTypeResponse.fromJson(core.Map json_)
     : this(
-        oneTimeResources:
-            (json_['oneTimeResources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        timeBasedResources:
-            (json_['timeBasedResources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        oneTimeResources: (json_['oneTimeResources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        timeBasedResources: (json_['timeBasedResources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (oneTimeResources != null) 'oneTimeResources': oneTimeResources!,
-    if (timeBasedResources != null) 'timeBasedResources': timeBasedResources!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final oneTimeResources = this.oneTimeResources;
+    final timeBasedResources = this.timeBasedResources;
+    return {
+      'oneTimeResources': ?oneTimeResources,
+      'timeBasedResources': ?timeBasedResources,
+    };
+  }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -720,18 +722,22 @@ class InitiatePortabilityArchiveRequest {
   InitiatePortabilityArchiveRequest.fromJson(core.Map json_)
     : this(
         endTime: json_['endTime'] as core.String?,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        resources: (json_['resources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         startTime: json_['startTime'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (resources != null) 'resources': resources!,
-    if (startTime != null) 'startTime': startTime!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final resources = this.resources;
+    final startTime = this.startTime;
+    return {
+      'endTime': ?endTime,
+      'resources': ?resources,
+      'startTime': ?startTime,
+    };
+  }
 }
 
 /// Response from initiating an Archive job.
@@ -757,10 +763,11 @@ class InitiatePortabilityArchiveResponse {
         archiveJobId: json_['archiveJobId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessType != null) 'accessType': accessType!,
-    if (archiveJobId != null) 'archiveJobId': archiveJobId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessType = this.accessType;
+    final archiveJobId = this.archiveJobId;
+    return {'accessType': ?accessType, 'archiveJobId': ?archiveJobId};
+  }
 }
 
 /// Resource that contains the state of an Archive job.
@@ -813,19 +820,25 @@ class PortabilityArchiveState {
         name: json_['name'] as core.String?,
         startTime: json_['startTime'] as core.String?,
         state: json_['state'] as core.String?,
-        urls:
-            (json_['urls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        urls: (json_['urls'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exportTime != null) 'exportTime': exportTime!,
-    if (name != null) 'name': name!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-    if (urls != null) 'urls': urls!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final exportTime = this.exportTime;
+    final name = this.name;
+    final startTime = this.startTime;
+    final state = this.state;
+    final urls = this.urls;
+    return {
+      'exportTime': ?exportTime,
+      'name': ?name,
+      'startTime': ?startTime,
+      'state': ?state,
+      'urls': ?urls,
+    };
+  }
 }
 
 /// Request to reset exhausted OAuth scopes.
@@ -846,7 +859,8 @@ class RetryPortabilityArchiveResponse {
   RetryPortabilityArchiveResponse.fromJson(core.Map json_)
     : this(archiveJobId: json_['archiveJobId'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (archiveJobId != null) 'archiveJobId': archiveJobId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final archiveJobId = this.archiveJobId;
+    return {'archiveJobId': ?archiveJobId};
+  }
 }

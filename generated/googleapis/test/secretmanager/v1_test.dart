@@ -2477,8 +2477,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsSecretsVersionsResource', () {
     unittest.test('method--access', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecretManagerApi(mock).projects.locations.secrets.versions;
+      final res = api.SecretManagerApi(
+        mock,
+      ).projects.locations.secrets.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2533,8 +2534,9 @@ void main() {
 
     unittest.test('method--destroy', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecretManagerApi(mock).projects.locations.secrets.versions;
+      final res = api.SecretManagerApi(
+        mock,
+      ).projects.locations.secrets.versions;
       final arg_request = buildDestroySecretVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2597,8 +2599,9 @@ void main() {
 
     unittest.test('method--disable', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecretManagerApi(mock).projects.locations.secrets.versions;
+      final res = api.SecretManagerApi(
+        mock,
+      ).projects.locations.secrets.versions;
       final arg_request = buildDisableSecretVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2661,8 +2664,9 @@ void main() {
 
     unittest.test('method--enable', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecretManagerApi(mock).projects.locations.secrets.versions;
+      final res = api.SecretManagerApi(
+        mock,
+      ).projects.locations.secrets.versions;
       final arg_request = buildEnableSecretVersionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -2725,8 +2729,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecretManagerApi(mock).projects.locations.secrets.versions;
+      final res = api.SecretManagerApi(
+        mock,
+      ).projects.locations.secrets.versions;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2779,8 +2784,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.SecretManagerApi(mock).projects.locations.secrets.versions;
+      final res = api.SecretManagerApi(
+        mock,
+      ).projects.locations.secrets.versions;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;

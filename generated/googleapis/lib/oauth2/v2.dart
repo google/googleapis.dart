@@ -88,9 +88,9 @@ class Oauth2Api {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (accessToken != null) 'access_token': [accessToken],
-      if (idToken != null) 'id_token': [idToken],
-      if ($fields != null) 'fields': [$fields],
+      'access_token': ?accessToken == null ? null : [accessToken],
+      'id_token': ?idToken == null ? null : [idToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'oauth2/v2/tokeninfo';
@@ -125,7 +125,7 @@ class UserinfoResource {
   /// this method will complete with the same error.
   async.Future<Userinfo> get({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'oauth2/v2/userinfo';
@@ -166,7 +166,7 @@ class UserinfoV2MeResource {
   /// this method will complete with the same error.
   async.Future<Userinfo> get({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'userinfo/v2/me';
@@ -231,15 +231,24 @@ class Tokeninfo {
         verifiedEmail: json_['verified_email'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audience != null) 'audience': audience!,
-    if (email != null) 'email': email!,
-    if (expiresIn != null) 'expires_in': expiresIn!,
-    if (issuedTo != null) 'issued_to': issuedTo!,
-    if (scope != null) 'scope': scope!,
-    if (userId != null) 'user_id': userId!,
-    if (verifiedEmail != null) 'verified_email': verifiedEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final audience = this.audience;
+    final email = this.email;
+    final expiresIn = this.expiresIn;
+    final issuedTo = this.issuedTo;
+    final scope = this.scope;
+    final userId = this.userId;
+    final verifiedEmail = this.verifiedEmail;
+    return {
+      'audience': ?audience,
+      'email': ?email,
+      'expires_in': ?expiresIn,
+      'issued_to': ?issuedTo,
+      'scope': ?scope,
+      'user_id': ?userId,
+      'verified_email': ?verifiedEmail,
+    };
+  }
 }
 
 class Userinfo {
@@ -307,17 +316,30 @@ class Userinfo {
         verifiedEmail: json_['verified_email'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (familyName != null) 'family_name': familyName!,
-    if (gender != null) 'gender': gender!,
-    if (givenName != null) 'given_name': givenName!,
-    if (hd != null) 'hd': hd!,
-    if (id != null) 'id': id!,
-    if (link != null) 'link': link!,
-    if (locale != null) 'locale': locale!,
-    if (name != null) 'name': name!,
-    if (picture != null) 'picture': picture!,
-    if (verifiedEmail != null) 'verified_email': verifiedEmail!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final familyName = this.familyName;
+    final gender = this.gender;
+    final givenName = this.givenName;
+    final hd = this.hd;
+    final id = this.id;
+    final link = this.link;
+    final locale = this.locale;
+    final name = this.name;
+    final picture = this.picture;
+    final verifiedEmail = this.verifiedEmail;
+    return {
+      'email': ?email,
+      'family_name': ?familyName,
+      'gender': ?gender,
+      'given_name': ?givenName,
+      'hd': ?hd,
+      'id': ?id,
+      'link': ?link,
+      'locale': ?locale,
+      'name': ?name,
+      'picture': ?picture,
+      'verified_email': ?verifiedEmail,
+    };
+  }
 }

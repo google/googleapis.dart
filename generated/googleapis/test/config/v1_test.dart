@@ -3895,10 +3895,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConfigApi(
-              mock,
-            ).projects.locations.deployments.revisions.resources;
+        final res = api.ConfigApi(
+          mock,
+        ).projects.locations.deployments.revisions.resources;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -3951,10 +3950,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.ConfigApi(
-              mock,
-            ).projects.locations.deployments.revisions.resources;
+        final res = api.ConfigApi(
+          mock,
+        ).projects.locations.deployments.revisions.resources;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -4625,8 +4623,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPreviewsResourceChangesResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConfigApi(mock).projects.locations.previews.resourceChanges;
+      final res = api.ConfigApi(
+        mock,
+      ).projects.locations.previews.resourceChanges;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4679,8 +4678,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConfigApi(mock).projects.locations.previews.resourceChanges;
+      final res = api.ConfigApi(
+        mock,
+      ).projects.locations.previews.resourceChanges;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4764,8 +4764,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsPreviewsResourceDriftsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConfigApi(mock).projects.locations.previews.resourceDrifts;
+      final res = api.ConfigApi(
+        mock,
+      ).projects.locations.previews.resourceDrifts;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4818,8 +4819,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.ConfigApi(mock).projects.locations.previews.resourceDrifts;
+      final res = api.ConfigApi(
+        mock,
+      ).projects.locations.previews.resourceDrifts;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';

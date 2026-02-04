@@ -103,7 +103,7 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name');
@@ -149,9 +149,9 @@ class AccountsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/accounts';
@@ -205,9 +205,9 @@ class AccountsAdUnitsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/adUnits';
@@ -261,9 +261,9 @@ class AccountsAppsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apps';
@@ -316,7 +316,7 @@ class AccountsMediationReportResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -375,7 +375,7 @@ class AccountsNetworkReportResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -455,24 +455,31 @@ class AdUnit {
   AdUnit.fromJson(core.Map json_)
     : this(
         adFormat: json_['adFormat'] as core.String?,
-        adTypes:
-            (json_['adTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        adTypes: (json_['adTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         adUnitId: json_['adUnitId'] as core.String?,
         appId: json_['appId'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         name: json_['name'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adFormat != null) 'adFormat': adFormat!,
-    if (adTypes != null) 'adTypes': adTypes!,
-    if (adUnitId != null) 'adUnitId': adUnitId!,
-    if (appId != null) 'appId': appId!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adFormat = this.adFormat;
+    final adTypes = this.adTypes;
+    final adUnitId = this.adUnitId;
+    final appId = this.appId;
+    final displayName = this.displayName;
+    final name = this.name;
+    return {
+      'adFormat': ?adFormat,
+      'adTypes': ?adTypes,
+      'adUnitId': ?adUnitId,
+      'appId': ?appId,
+      'displayName': ?displayName,
+      'name': ?name,
+    };
+  }
 }
 
 /// Describes an AdMob app for a specific platform (For example: Android or
@@ -537,30 +544,36 @@ class App {
     : this(
         appApprovalState: json_['appApprovalState'] as core.String?,
         appId: json_['appId'] as core.String?,
-        linkedAppInfo:
-            json_.containsKey('linkedAppInfo')
-                ? AppLinkedAppInfo.fromJson(
-                  json_['linkedAppInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        manualAppInfo:
-            json_.containsKey('manualAppInfo')
-                ? AppManualAppInfo.fromJson(
-                  json_['manualAppInfo'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        linkedAppInfo: json_.containsKey('linkedAppInfo')
+            ? AppLinkedAppInfo.fromJson(
+                json_['linkedAppInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        manualAppInfo: json_.containsKey('manualAppInfo')
+            ? AppManualAppInfo.fromJson(
+                json_['manualAppInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         platform: json_['platform'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appApprovalState != null) 'appApprovalState': appApprovalState!,
-    if (appId != null) 'appId': appId!,
-    if (linkedAppInfo != null) 'linkedAppInfo': linkedAppInfo!,
-    if (manualAppInfo != null) 'manualAppInfo': manualAppInfo!,
-    if (name != null) 'name': name!,
-    if (platform != null) 'platform': platform!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appApprovalState = this.appApprovalState;
+    final appId = this.appId;
+    final linkedAppInfo = this.linkedAppInfo;
+    final manualAppInfo = this.manualAppInfo;
+    final name = this.name;
+    final platform = this.platform;
+    return {
+      'appApprovalState': ?appApprovalState,
+      'appId': ?appId,
+      'linkedAppInfo': ?linkedAppInfo,
+      'manualAppInfo': ?manualAppInfo,
+      'name': ?name,
+      'platform': ?platform,
+    };
+  }
 }
 
 /// Information from the app store if the app is linked to an app store.
@@ -592,10 +605,11 @@ class AppLinkedAppInfo {
         displayName: json_['displayName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appStoreId != null) 'appStoreId': appStoreId!,
-    if (displayName != null) 'displayName': displayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final appStoreId = this.appStoreId;
+    final displayName = this.displayName;
+    return {'appStoreId': ?appStoreId, 'displayName': ?displayName};
+  }
 }
 
 /// Information provided for manual apps which are not linked to an application
@@ -612,9 +626,10 @@ class AppManualAppInfo {
   AppManualAppInfo.fromJson(core.Map json_)
     : this(displayName: json_['displayName'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    return {'displayName': ?displayName};
+  }
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -647,24 +662,23 @@ class DateRange {
 
   DateRange.fromJson(core.Map json_)
     : this(
-        endDate:
-            json_.containsKey('endDate')
-                ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        startDate:
-            json_.containsKey('startDate')
-                ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        endDate: json_.containsKey('endDate')
+            ? Date.fromJson(
+                json_['endDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startDate: json_.containsKey('startDate')
+            ? Date.fromJson(
+                json_['startDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endDate != null) 'endDate': endDate!,
-    if (startDate != null) 'startDate': startDate!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final endDate = this.endDate;
+    final startDate = this.startDate;
+    return {'endDate': ?endDate, 'startDate': ?startDate};
+  }
 }
 
 /// Request to generate an AdMob Mediation report.
@@ -676,17 +690,17 @@ class GenerateMediationReportRequest {
 
   GenerateMediationReportRequest.fromJson(core.Map json_)
     : this(
-        reportSpec:
-            json_.containsKey('reportSpec')
-                ? MediationReportSpec.fromJson(
-                  json_['reportSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        reportSpec: json_.containsKey('reportSpec')
+            ? MediationReportSpec.fromJson(
+                json_['reportSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reportSpec != null) 'reportSpec': reportSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final reportSpec = this.reportSpec;
+    return {'reportSpec': ?reportSpec};
+  }
 }
 
 class GenerateMediationReportResponseElement {
@@ -705,31 +719,29 @@ class GenerateMediationReportResponseElement {
 
   GenerateMediationReportResponseElement.fromJson(core.Map json_)
     : this(
-        footer:
-            json_.containsKey('footer')
-                ? ReportFooter.fromJson(
-                  json_['footer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        header:
-            json_.containsKey('header')
-                ? ReportHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        row:
-            json_.containsKey('row')
-                ? ReportRow.fromJson(
-                  json_['row'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        footer: json_.containsKey('footer')
+            ? ReportFooter.fromJson(
+                json_['footer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        header: json_.containsKey('header')
+            ? ReportHeader.fromJson(
+                json_['header'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        row: json_.containsKey('row')
+            ? ReportRow.fromJson(
+                json_['row'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (footer != null) 'footer': footer!,
-    if (header != null) 'header': header!,
-    if (row != null) 'row': row!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final footer = this.footer;
+    final header = this.header;
+    final row = this.row;
+    return {'footer': ?footer, 'header': ?header, 'row': ?row};
+  }
 }
 
 /// The streaming response for the AdMob Mediation report where the first
@@ -756,17 +768,17 @@ class GenerateNetworkReportRequest {
 
   GenerateNetworkReportRequest.fromJson(core.Map json_)
     : this(
-        reportSpec:
-            json_.containsKey('reportSpec')
-                ? NetworkReportSpec.fromJson(
-                  json_['reportSpec'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        reportSpec: json_.containsKey('reportSpec')
+            ? NetworkReportSpec.fromJson(
+                json_['reportSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reportSpec != null) 'reportSpec': reportSpec!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final reportSpec = this.reportSpec;
+    return {'reportSpec': ?reportSpec};
+  }
 }
 
 class GenerateNetworkReportResponseElement {
@@ -785,31 +797,29 @@ class GenerateNetworkReportResponseElement {
 
   GenerateNetworkReportResponseElement.fromJson(core.Map json_)
     : this(
-        footer:
-            json_.containsKey('footer')
-                ? ReportFooter.fromJson(
-                  json_['footer'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        header:
-            json_.containsKey('header')
-                ? ReportHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        row:
-            json_.containsKey('row')
-                ? ReportRow.fromJson(
-                  json_['row'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        footer: json_.containsKey('footer')
+            ? ReportFooter.fromJson(
+                json_['footer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        header: json_.containsKey('header')
+            ? ReportHeader.fromJson(
+                json_['header'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        row: json_.containsKey('row')
+            ? ReportRow.fromJson(
+                json_['row'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (footer != null) 'footer': footer!,
-    if (header != null) 'header': header!,
-    if (row != null) 'row': row!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final footer = this.footer;
+    final header = this.header;
+    final row = this.row;
+    return {'footer': ?footer, 'header': ?header, 'row': ?row};
+  }
 }
 
 /// The streaming response for the AdMob Network report where the first response
@@ -839,21 +849,20 @@ class ListAdUnitsResponse {
 
   ListAdUnitsResponse.fromJson(core.Map json_)
     : this(
-        adUnits:
-            (json_['adUnits'] as core.List?)
-                ?.map(
-                  (value) => AdUnit.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        adUnits: (json_['adUnits'] as core.List?)
+            ?.map(
+              (value) =>
+                  AdUnit.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adUnits != null) 'adUnits': adUnits!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final adUnits = this.adUnits;
+    final nextPageToken = this.nextPageToken;
+    return {'adUnits': ?adUnits, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for the apps list request.
@@ -869,21 +878,20 @@ class ListAppsResponse {
 
   ListAppsResponse.fromJson(core.Map json_)
     : this(
-        apps:
-            (json_['apps'] as core.List?)
-                ?.map(
-                  (value) => App.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        apps: (json_['apps'] as core.List?)
+            ?.map(
+              (value) =>
+                  App.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apps != null) 'apps': apps!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final apps = this.apps;
+    final nextPageToken = this.nextPageToken;
+    return {'apps': ?apps, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Response for the publisher account list request.
@@ -899,21 +907,21 @@ class ListPublisherAccountsResponse {
 
   ListPublisherAccountsResponse.fromJson(core.Map json_)
     : this(
-        account:
-            (json_['account'] as core.List?)
-                ?.map(
-                  (value) => PublisherAccount.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        account: (json_['account'] as core.List?)
+            ?.map(
+              (value) => PublisherAccount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (account != null) 'account': account!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final account = this.account;
+    final nextPageToken = this.nextPageToken;
+    return {'account': ?account, 'nextPageToken': ?nextPageToken};
+  }
 }
 
 /// Localization settings for reports, such as currency and language.
@@ -942,10 +950,11 @@ class LocalizationSettings {
         languageCode: json_['languageCode'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currencyCode = this.currencyCode;
+    final languageCode = this.languageCode;
+    return {'currencyCode': ?currencyCode, 'languageCode': ?languageCode};
+  }
 }
 
 /// The specification for generating an AdMob Mediation report.
@@ -1020,58 +1029,61 @@ class MediationReportSpec {
 
   MediationReportSpec.fromJson(core.Map json_)
     : this(
-        dateRange:
-            json_.containsKey('dateRange')
-                ? DateRange.fromJson(
-                  json_['dateRange'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dimensionFilters:
-            (json_['dimensionFilters'] as core.List?)
-                ?.map(
-                  (value) => MediationReportSpecDimensionFilter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        dimensions:
-            (json_['dimensions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        localizationSettings:
-            json_.containsKey('localizationSettings')
-                ? LocalizationSettings.fromJson(
-                  json_['localizationSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dateRange: json_.containsKey('dateRange')
+            ? DateRange.fromJson(
+                json_['dateRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dimensionFilters: (json_['dimensionFilters'] as core.List?)
+            ?.map(
+              (value) => MediationReportSpecDimensionFilter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        dimensions: (json_['dimensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        localizationSettings: json_.containsKey('localizationSettings')
+            ? LocalizationSettings.fromJson(
+                json_['localizationSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxReportRows: json_['maxReportRows'] as core.int?,
-        metrics:
-            (json_['metrics'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        sortConditions:
-            (json_['sortConditions'] as core.List?)
-                ?.map(
-                  (value) => MediationReportSpecSortCondition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        metrics: (json_['metrics'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        sortConditions: (json_['sortConditions'] as core.List?)
+            ?.map(
+              (value) => MediationReportSpecSortCondition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         timeZone: json_['timeZone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dateRange != null) 'dateRange': dateRange!,
-    if (dimensionFilters != null) 'dimensionFilters': dimensionFilters!,
-    if (dimensions != null) 'dimensions': dimensions!,
-    if (localizationSettings != null)
-      'localizationSettings': localizationSettings!,
-    if (maxReportRows != null) 'maxReportRows': maxReportRows!,
-    if (metrics != null) 'metrics': metrics!,
-    if (sortConditions != null) 'sortConditions': sortConditions!,
-    if (timeZone != null) 'timeZone': timeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dateRange = this.dateRange;
+    final dimensionFilters = this.dimensionFilters;
+    final dimensions = this.dimensions;
+    final localizationSettings = this.localizationSettings;
+    final maxReportRows = this.maxReportRows;
+    final metrics = this.metrics;
+    final sortConditions = this.sortConditions;
+    final timeZone = this.timeZone;
+    return {
+      'dateRange': ?dateRange,
+      'dimensionFilters': ?dimensionFilters,
+      'dimensions': ?dimensions,
+      'localizationSettings': ?localizationSettings,
+      'maxReportRows': ?maxReportRows,
+      'metrics': ?metrics,
+      'sortConditions': ?sortConditions,
+      'timeZone': ?timeZone,
+    };
+  }
 }
 
 /// Describes which report rows to match based on their dimension values.
@@ -1122,18 +1134,18 @@ class MediationReportSpecDimensionFilter {
   MediationReportSpecDimensionFilter.fromJson(core.Map json_)
     : this(
         dimension: json_['dimension'] as core.String?,
-        matchesAny:
-            json_.containsKey('matchesAny')
-                ? StringList.fromJson(
-                  json_['matchesAny'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        matchesAny: json_.containsKey('matchesAny')
+            ? StringList.fromJson(
+                json_['matchesAny'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dimension != null) 'dimension': dimension!,
-    if (matchesAny != null) 'matchesAny': matchesAny!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dimension = this.dimension;
+    final matchesAny = this.matchesAny;
+    return {'dimension': ?dimension, 'matchesAny': ?matchesAny};
+  }
 }
 
 /// Sorting direction to be applied on a dimension or a metric.
@@ -1221,11 +1233,12 @@ class MediationReportSpecSortCondition {
         order: json_['order'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dimension != null) 'dimension': dimension!,
-    if (metric != null) 'metric': metric!,
-    if (order != null) 'order': order!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dimension = this.dimension;
+    final metric = this.metric;
+    final order = this.order;
+    return {'dimension': ?dimension, 'metric': ?metric, 'order': ?order};
+  }
 }
 
 /// The specification for generating an AdMob Network report.
@@ -1301,58 +1314,61 @@ class NetworkReportSpec {
 
   NetworkReportSpec.fromJson(core.Map json_)
     : this(
-        dateRange:
-            json_.containsKey('dateRange')
-                ? DateRange.fromJson(
-                  json_['dateRange'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        dimensionFilters:
-            (json_['dimensionFilters'] as core.List?)
-                ?.map(
-                  (value) => NetworkReportSpecDimensionFilter.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        dimensions:
-            (json_['dimensions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        localizationSettings:
-            json_.containsKey('localizationSettings')
-                ? LocalizationSettings.fromJson(
-                  json_['localizationSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dateRange: json_.containsKey('dateRange')
+            ? DateRange.fromJson(
+                json_['dateRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dimensionFilters: (json_['dimensionFilters'] as core.List?)
+            ?.map(
+              (value) => NetworkReportSpecDimensionFilter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        dimensions: (json_['dimensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        localizationSettings: json_.containsKey('localizationSettings')
+            ? LocalizationSettings.fromJson(
+                json_['localizationSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxReportRows: json_['maxReportRows'] as core.int?,
-        metrics:
-            (json_['metrics'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        sortConditions:
-            (json_['sortConditions'] as core.List?)
-                ?.map(
-                  (value) => NetworkReportSpecSortCondition.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        metrics: (json_['metrics'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        sortConditions: (json_['sortConditions'] as core.List?)
+            ?.map(
+              (value) => NetworkReportSpecSortCondition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         timeZone: json_['timeZone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dateRange != null) 'dateRange': dateRange!,
-    if (dimensionFilters != null) 'dimensionFilters': dimensionFilters!,
-    if (dimensions != null) 'dimensions': dimensions!,
-    if (localizationSettings != null)
-      'localizationSettings': localizationSettings!,
-    if (maxReportRows != null) 'maxReportRows': maxReportRows!,
-    if (metrics != null) 'metrics': metrics!,
-    if (sortConditions != null) 'sortConditions': sortConditions!,
-    if (timeZone != null) 'timeZone': timeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dateRange = this.dateRange;
+    final dimensionFilters = this.dimensionFilters;
+    final dimensions = this.dimensions;
+    final localizationSettings = this.localizationSettings;
+    final maxReportRows = this.maxReportRows;
+    final metrics = this.metrics;
+    final sortConditions = this.sortConditions;
+    final timeZone = this.timeZone;
+    return {
+      'dateRange': ?dateRange,
+      'dimensionFilters': ?dimensionFilters,
+      'dimensions': ?dimensions,
+      'localizationSettings': ?localizationSettings,
+      'maxReportRows': ?maxReportRows,
+      'metrics': ?metrics,
+      'sortConditions': ?sortConditions,
+      'timeZone': ?timeZone,
+    };
+  }
 }
 
 /// Describes which report rows to match based on their dimension values.
@@ -1401,18 +1417,18 @@ class NetworkReportSpecDimensionFilter {
   NetworkReportSpecDimensionFilter.fromJson(core.Map json_)
     : this(
         dimension: json_['dimension'] as core.String?,
-        matchesAny:
-            json_.containsKey('matchesAny')
-                ? StringList.fromJson(
-                  json_['matchesAny'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        matchesAny: json_.containsKey('matchesAny')
+            ? StringList.fromJson(
+                json_['matchesAny'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dimension != null) 'dimension': dimension!,
-    if (matchesAny != null) 'matchesAny': matchesAny!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dimension = this.dimension;
+    final matchesAny = this.matchesAny;
+    return {'dimension': ?dimension, 'matchesAny': ?matchesAny};
+  }
 }
 
 /// Sorting direction to be applied on a dimension or a metric.
@@ -1499,11 +1515,12 @@ class NetworkReportSpecSortCondition {
         order: json_['order'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dimension != null) 'dimension': dimension!,
-    if (metric != null) 'metric': metric!,
-    if (order != null) 'order': order!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dimension = this.dimension;
+    final metric = this.metric;
+    final order = this.order;
+    return {'dimension': ?dimension, 'metric': ?metric, 'order': ?order};
+  }
 }
 
 /// A publisher account contains information relevant to the use of this API,
@@ -1545,12 +1562,18 @@ class PublisherAccount {
         reportingTimeZone: json_['reportingTimeZone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (name != null) 'name': name!,
-    if (publisherId != null) 'publisherId': publisherId!,
-    if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final currencyCode = this.currencyCode;
+    final name = this.name;
+    final publisherId = this.publisherId;
+    final reportingTimeZone = this.reportingTimeZone;
+    return {
+      'currencyCode': ?currencyCode,
+      'name': ?name,
+      'publisherId': ?publisherId,
+      'reportingTimeZone': ?reportingTimeZone,
+    };
+  }
 }
 
 /// Groups data available after report generation, for example, warnings and row
@@ -1572,20 +1595,20 @@ class ReportFooter {
   ReportFooter.fromJson(core.Map json_)
     : this(
         matchingRowCount: json_['matchingRowCount'] as core.String?,
-        warnings:
-            (json_['warnings'] as core.List?)
-                ?.map(
-                  (value) => ReportWarning.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        warnings: (json_['warnings'] as core.List?)
+            ?.map(
+              (value) => ReportWarning.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (matchingRowCount != null) 'matchingRowCount': matchingRowCount!,
-    if (warnings != null) 'warnings': warnings!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final matchingRowCount = this.matchingRowCount;
+    final warnings = this.warnings;
+    return {'matchingRowCount': ?matchingRowCount, 'warnings': ?warnings};
+  }
 }
 
 /// Groups data helps to treat the generated report.
@@ -1616,28 +1639,30 @@ class ReportHeader {
 
   ReportHeader.fromJson(core.Map json_)
     : this(
-        dateRange:
-            json_.containsKey('dateRange')
-                ? DateRange.fromJson(
-                  json_['dateRange'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        localizationSettings:
-            json_.containsKey('localizationSettings')
-                ? LocalizationSettings.fromJson(
-                  json_['localizationSettings']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
+        dateRange: json_.containsKey('dateRange')
+            ? DateRange.fromJson(
+                json_['dateRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizationSettings: json_.containsKey('localizationSettings')
+            ? LocalizationSettings.fromJson(
+                json_['localizationSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         reportingTimeZone: json_['reportingTimeZone'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dateRange != null) 'dateRange': dateRange!,
-    if (localizationSettings != null)
-      'localizationSettings': localizationSettings!,
-    if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dateRange = this.dateRange;
+    final localizationSettings = this.localizationSettings;
+    final reportingTimeZone = this.reportingTimeZone;
+    return {
+      'dateRange': ?dateRange,
+      'localizationSettings': ?localizationSettings,
+      'reportingTimeZone': ?reportingTimeZone,
+    };
+  }
 }
 
 /// A row of the returning report.
@@ -1656,32 +1681,33 @@ class ReportRow {
 
   ReportRow.fromJson(core.Map json_)
     : this(
-        dimensionValues: (json_['dimensionValues']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                ReportRowDimensionValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        dimensionValues:
+            (json_['dimensionValues'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ReportRowDimensionValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-        metricValues: (json_['metricValues']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map(
-              (key, value) => core.MapEntry(
-                key,
-                ReportRowMetricValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
+        metricValues:
+            (json_['metricValues'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ReportRowMetricValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
                 ),
-              ),
-            ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dimensionValues != null) 'dimensionValues': dimensionValues!,
-    if (metricValues != null) 'metricValues': metricValues!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final dimensionValues = this.dimensionValues;
+    final metricValues = this.metricValues;
+    return {'dimensionValues': ?dimensionValues, 'metricValues': ?metricValues};
+  }
 }
 
 /// Representation of a dimension value.
@@ -1703,10 +1729,11 @@ class ReportRowDimensionValue {
         value: json_['value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayLabel != null) 'displayLabel': displayLabel!,
-    if (value != null) 'value': value!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayLabel = this.displayLabel;
+    final value = this.value;
+    return {'displayLabel': ?displayLabel, 'value': ?value};
+  }
 }
 
 /// Representation of a metric value.
@@ -1735,11 +1762,16 @@ class ReportRowMetricValue {
         microsValue: json_['microsValue'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (doubleValue != null) 'doubleValue': doubleValue!,
-    if (integerValue != null) 'integerValue': integerValue!,
-    if (microsValue != null) 'microsValue': microsValue!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final doubleValue = this.doubleValue;
+    final integerValue = this.integerValue;
+    final microsValue = this.microsValue;
+    return {
+      'doubleValue': ?doubleValue,
+      'integerValue': ?integerValue,
+      'microsValue': ?microsValue,
+    };
+  }
 }
 
 /// Warnings associated with generation of the report.
@@ -1775,10 +1807,11 @@ class ReportWarning {
         type: json_['type'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (type != null) 'type': type!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final type = this.type;
+    return {'description': ?description, 'type': ?type};
+  }
 }
 
 /// List of string values.
@@ -1790,13 +1823,13 @@ class StringList {
 
   StringList.fromJson(core.Map json_)
     : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
 }

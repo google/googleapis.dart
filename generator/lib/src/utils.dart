@@ -10,12 +10,11 @@ extension RestDescriptionExtension on RestDescription {
 
     String betterKey(String key) =>
         const {'parameters', 'resources', 'schemas'}.contains(key)
-            ? '2-$key'
-            : '1-$key';
+        ? '2-$key'
+        : '1-$key';
 
-    final pairs =
-        output.entries.toList()
-          ..sort((a, b) => betterKey(a.key).compareTo(betterKey(b.key)));
+    final pairs = output.entries.toList()
+      ..sort((a, b) => betterKey(a.key).compareTo(betterKey(b.key)));
 
     return {for (var p in pairs) p.key: p.value};
   }

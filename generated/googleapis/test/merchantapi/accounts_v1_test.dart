@@ -7158,8 +7158,9 @@ void main() {
   unittest.group('resource-AccountsOmnichannelSettingsLfpProvidersResource', () {
     unittest.test('method--find', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MerchantApi(mock).accounts.omnichannelSettings.lfpProviders;
+      final res = api.MerchantApi(
+        mock,
+      ).accounts.omnichannelSettings.lfpProviders;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7227,8 +7228,9 @@ void main() {
 
     unittest.test('method--linkLfpProvider', () async {
       final mock = HttpServerMock();
-      final res =
-          api.MerchantApi(mock).accounts.omnichannelSettings.lfpProviders;
+      final res = api.MerchantApi(
+        mock,
+      ).accounts.omnichannelSettings.lfpProviders;
       final arg_request = buildLinkLfpProviderRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';

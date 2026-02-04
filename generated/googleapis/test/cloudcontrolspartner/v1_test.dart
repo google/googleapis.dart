@@ -1089,8 +1089,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsResource', () {
     unittest.test('method--getPartner', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(mock).organizations.locations;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1145,10 +1146,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsCustomersResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(
-            mock,
-          ).organizations.locations.customers;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations.customers;
       final arg_request = buildCustomer();
       final arg_parent = 'foo';
       final arg_customerId = 'foo';
@@ -1217,10 +1217,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(
-            mock,
-          ).organizations.locations.customers;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations.customers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1273,10 +1272,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(
-            mock,
-          ).organizations.locations.customers;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations.customers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1329,10 +1327,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(
-            mock,
-          ).organizations.locations.customers;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations.customers;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -1412,10 +1409,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(
-            mock,
-          ).organizations.locations.customers;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations.customers;
       final arg_request = buildCustomer();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -1486,10 +1482,9 @@ void main() {
   unittest.group('resource-OrganizationsLocationsCustomersWorkloadsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(
-            mock,
-          ).organizations.locations.customers.workloads;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations.customers.workloads;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1542,10 +1537,9 @@ void main() {
 
     unittest.test('method--getEkmConnections', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(
-            mock,
-          ).organizations.locations.customers.workloads;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations.customers.workloads;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1601,10 +1595,9 @@ void main() {
 
     unittest.test('method--getPartnerPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(
-            mock,
-          ).organizations.locations.customers.workloads;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations.customers.workloads;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1660,10 +1653,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.CloudControlsPartnerServiceApi(
-            mock,
-          ).organizations.locations.customers.workloads;
+      final res = api.CloudControlsPartnerServiceApi(
+        mock,
+      ).organizations.locations.customers.workloads;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -1747,13 +1739,9 @@ void main() {
     () {
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudControlsPartnerServiceApi(mock)
-                .organizations
-                .locations
-                .customers
-                .workloads
-                .accessApprovalRequests;
+        final res = api.CloudControlsPartnerServiceApi(
+          mock,
+        ).organizations.locations.customers.workloads.accessApprovalRequests;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_orderBy = 'foo';
@@ -1842,10 +1830,9 @@ void main() {
     () {
       unittest.test('method--get', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudControlsPartnerServiceApi(
-              mock,
-            ).organizations.locations.customers.workloads.violations;
+        final res = api.CloudControlsPartnerServiceApi(
+          mock,
+        ).organizations.locations.customers.workloads.violations;
         final arg_name = 'foo';
         final arg_$fields = 'foo';
         mock.register(
@@ -1898,10 +1885,9 @@ void main() {
 
       unittest.test('method--list', () async {
         final mock = HttpServerMock();
-        final res =
-            api.CloudControlsPartnerServiceApi(
-              mock,
-            ).organizations.locations.customers.workloads.violations;
+        final res = api.CloudControlsPartnerServiceApi(
+          mock,
+        ).organizations.locations.customers.workloads.violations;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
         final arg_interval_endTime = 'foo';

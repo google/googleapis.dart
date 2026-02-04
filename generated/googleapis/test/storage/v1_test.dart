@@ -2705,10 +2705,10 @@ void main() {
         final o =
             buildBucketEncryptionCustomerManagedEncryptionEnforcementConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .BucketEncryptionCustomerManagedEncryptionEnforcementConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.BucketEncryptionCustomerManagedEncryptionEnforcementConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkBucketEncryptionCustomerManagedEncryptionEnforcementConfig(od);
       });
     },
@@ -2721,10 +2721,10 @@ void main() {
         final o =
             buildBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig(od);
       });
     },
@@ -2737,10 +2737,10 @@ void main() {
         final o =
             buildBucketEncryptionGoogleManagedEncryptionEnforcementConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .BucketEncryptionGoogleManagedEncryptionEnforcementConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.BucketEncryptionGoogleManagedEncryptionEnforcementConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkBucketEncryptionGoogleManagedEncryptionEnforcementConfig(od);
       });
     },
@@ -3396,10 +3396,10 @@ void main() {
       unittest.test('to-json--from-json', () async {
         final o = buildRelocateBucketRequestDestinationCustomPlacementConfig();
         final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api
-            .RelocateBucketRequestDestinationCustomPlacementConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
+        final od =
+            api.RelocateBucketRequestDestinationCustomPlacementConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
         checkRelocateBucketRequestDestinationCustomPlacementConfig(od);
       });
     },

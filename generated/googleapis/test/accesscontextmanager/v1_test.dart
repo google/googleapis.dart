@@ -3425,8 +3425,9 @@ void main() {
   unittest.group('resource-AccessPoliciesAuthorizedOrgsDescsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.authorizedOrgsDescs;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.authorizedOrgsDescs;
       final arg_request = buildAuthorizedOrgsDesc();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -3489,8 +3490,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.authorizedOrgsDescs;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.authorizedOrgsDescs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3543,8 +3545,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.authorizedOrgsDescs;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.authorizedOrgsDescs;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3597,8 +3600,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.authorizedOrgsDescs;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.authorizedOrgsDescs;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3670,8 +3674,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.authorizedOrgsDescs;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.authorizedOrgsDescs;
       final arg_request = buildAuthorizedOrgsDesc();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -3742,8 +3747,9 @@ void main() {
   unittest.group('resource-AccessPoliciesServicePerimetersResource', () {
     unittest.test('method--commit', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.servicePerimeters;
       final arg_request = buildCommitServicePerimetersRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -3806,8 +3812,9 @@ void main() {
 
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.servicePerimeters;
       final arg_request = buildServicePerimeter();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -3870,8 +3877,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.servicePerimeters;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3924,8 +3932,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.servicePerimeters;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3978,8 +3987,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.servicePerimeters;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4051,8 +4061,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.servicePerimeters;
       final arg_request = buildServicePerimeter();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
@@ -4121,8 +4132,9 @@ void main() {
 
     unittest.test('method--replaceAll', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.servicePerimeters;
       final arg_request = buildReplaceServicePerimetersRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -4185,8 +4197,9 @@ void main() {
 
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).accessPolicies.servicePerimeters;
       final arg_request = buildTestIamPermissionsRequest();
       final arg_resource = 'foo';
       final arg_$fields = 'foo';
@@ -4504,8 +4517,9 @@ void main() {
   unittest.group('resource-OrganizationsGcpUserAccessBindingsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).organizations.gcpUserAccessBindings;
       final arg_request = buildGcpUserAccessBinding();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -4568,8 +4582,9 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).organizations.gcpUserAccessBindings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4622,8 +4637,9 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).organizations.gcpUserAccessBindings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -4676,8 +4692,9 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).organizations.gcpUserAccessBindings;
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4749,8 +4766,9 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
+      final res = api.AccessContextManagerApi(
+        mock,
+      ).organizations.gcpUserAccessBindings;
       final arg_request = buildGcpUserAccessBinding();
       final arg_name = 'foo';
       final arg_append = true;

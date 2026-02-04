@@ -92,7 +92,7 @@ class CustomerLicenseResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -141,7 +141,7 @@ class UserLicenseResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
+      'fields': ?$fields == null ? null : [$fields],
     };
 
     final url_ =
@@ -202,27 +202,34 @@ class CustomerLicense {
     : this(
         applicationId: json_['applicationId'] as core.String?,
         customerId: json_['customerId'] as core.String?,
-        editions:
-            (json_['editions'] as core.List?)
-                ?.map(
-                  (value) => Editions.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
+        editions: (json_['editions'] as core.List?)
+            ?.map(
+              (value) => Editions.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applicationId != null) 'applicationId': applicationId!,
-    if (customerId != null) 'customerId': customerId!,
-    if (editions != null) 'editions': editions!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (state != null) 'state': state!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final applicationId = this.applicationId;
+    final customerId = this.customerId;
+    final editions = this.editions;
+    final id = this.id;
+    final kind = this.kind;
+    final state = this.state;
+    return {
+      'applicationId': ?applicationId,
+      'customerId': ?customerId,
+      'editions': ?editions,
+      'id': ?id,
+      'kind': ?kind,
+      'state': ?state,
+    };
+  }
 }
 
 class Editions {
@@ -253,11 +260,16 @@ class Editions {
         seatCount: json_['seatCount'] as core.int?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assignedSeats != null) 'assignedSeats': assignedSeats!,
-    if (editionId != null) 'editionId': editionId!,
-    if (seatCount != null) 'seatCount': seatCount!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final assignedSeats = this.assignedSeats;
+    final editionId = this.editionId;
+    final seatCount = this.seatCount;
+    return {
+      'assignedSeats': ?assignedSeats,
+      'editionId': ?editionId,
+      'seatCount': ?seatCount,
+    };
+  }
 }
 
 class UserLicense {
@@ -319,14 +331,24 @@ class UserLicense {
         userId: json_['userId'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applicationId != null) 'applicationId': applicationId!,
-    if (customerId != null) 'customerId': customerId!,
-    if (editionId != null) 'editionId': editionId!,
-    if (enabled != null) 'enabled': enabled!,
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (state != null) 'state': state!,
-    if (userId != null) 'userId': userId!,
-  };
+  core.Map<core.String, core.dynamic> toJson() {
+    final applicationId = this.applicationId;
+    final customerId = this.customerId;
+    final editionId = this.editionId;
+    final enabled = this.enabled;
+    final id = this.id;
+    final kind = this.kind;
+    final state = this.state;
+    final userId = this.userId;
+    return {
+      'applicationId': ?applicationId,
+      'customerId': ?customerId,
+      'editionId': ?editionId,
+      'enabled': ?enabled,
+      'id': ?id,
+      'kind': ?kind,
+      'state': ?state,
+      'userId': ?userId,
+    };
+  }
 }
