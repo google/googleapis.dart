@@ -125,7 +125,7 @@ class Comment {
     var start = 0;
     int endOfFirstSentence;
     for (;;) {
-      endOfFirstSentence = raw!.indexOf('. ', start);
+      endOfFirstSentence = raw.indexOf('. ', start);
       if (endOfFirstSentence < 0) {
         // No sentence end!
         break;
