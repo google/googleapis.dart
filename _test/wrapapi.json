@@ -41,7 +41,8 @@
     "age": {
      "type": "integer",
      "default": "1000",
-     "format": "int32"
+     "format": "int32",
+     "description": "Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event."
     }
    }
   }
