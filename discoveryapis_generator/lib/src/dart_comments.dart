@@ -70,13 +70,24 @@ String _bracketClean(String input) => input.splitMapJoin(
   onNonMatch: markdownEscape,
 );
 
+final _codeRegExp = RegExp(r'{@code ([a-zA-Z_]+)}');
+
+String _rewriteCodeTags(String? input) {
+  if (input == null || input.isEmpty) {
+    return '';
+  }
+  return input.replaceAllMapped(_codeRegExp, (match) => '`${match[1]}`');
+}
+
 /// Represents a comment of a dart element (e.g. class, method, ...)
 class Comment {
   static final empty = Comment('');
   final String rawComment;
 
   Comment(String? raw)
-    : rawComment = (raw != null && raw.isNotEmpty) ? raw.trimRight() : '';
+    : rawComment = (raw != null && raw.isNotEmpty)
+          ? _rewriteCodeTags(raw).trimRight()
+          : '';
 
   factory Comment.header(String? raw, bool clean) {
     if (raw == null) return Comment(raw);
@@ -99,9 +110,12 @@ class Comment {
       }
     } while (match != null);
 
+    // clean before we replace code tags
     if (clean) {
       raw = bracketClean(raw);
     }
+
+    raw = _rewriteCodeTags(raw);
 
     // Very annoying. Sometimes we have first sentences like
     //
@@ -111,7 +125,7 @@ class Comment {
     var start = 0;
     int endOfFirstSentence;
     for (;;) {
-      endOfFirstSentence = raw!.indexOf('. ', start);
+      endOfFirstSentence = raw.indexOf('. ', start);
       if (endOfFirstSentence < 0) {
         // No sentence end!
         break;

@@ -9228,8 +9228,8 @@ class EnterpriseCrmEventbusProtoSuspensionExpiration {
   }
 }
 
-/// Message to be used to configure alerting in the {@code TaskConfig} protos
-/// for tasks in an event.
+/// Message to be used to configure alerting in the `TaskConfig` protos for
+/// tasks in an event.
 class EnterpriseCrmEventbusProtoTaskAlertConfig {
   /// The period over which the metric value should be aggregated and evaluated.
   ///
@@ -10088,8 +10088,8 @@ class EnterpriseCrmEventbusProtoValueType {
   }
 }
 
-/// Message to be used to configure custom alerting in the {@code EventConfig}
-/// protos for an event.
+/// Message to be used to configure custom alerting in the `EventConfig` protos
+/// for an event.
 class EnterpriseCrmEventbusProtoWorkflowAlertConfig {
   /// For an EXPECTED_MIN threshold, this aggregation_period must be lesser than
   /// 24 hours.
@@ -17106,8 +17106,8 @@ class GoogleCloudIntegrationsV1alphaIntegration {
   }
 }
 
-/// Message to be used to configure custom alerting in the {@code EventConfig}
-/// protos for an event.
+/// Message to be used to configure custom alerting in the `EventConfig` protos
+/// for an event.
 class GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
   /// The period over which the metric value should be aggregated and evaluated.
   ///

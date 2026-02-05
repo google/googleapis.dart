@@ -159,4 +159,16 @@ This https://example.com/\[this_is_not\]/''',
       });
     }
   });
+  group('{@code replacement}', () {
+    for (var entry in {
+      '{@code Foo}': '`Foo`',
+      '{@code Foo_Bar}': '`Foo_Bar`',
+      '{@code Foo1}': '{@code Foo1}', // Numbers not supported per spec
+      '{@code foo bar}': '{@code foo bar}', // Spaces not supported
+    }.entries) {
+      test(entry.key, () {
+        expect(Comment(entry.key).rawComment, entry.value);
+      });
+    }
+  });
 }

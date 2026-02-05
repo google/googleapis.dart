@@ -83,6 +83,8 @@ class Empty {
 }
 
 class WrapRequest {
+  /// Message to be used to configure alerting in the `TaskConfig` protos for
+  /// tasks in an event.
   core.int? age;
   core.String? name;
 

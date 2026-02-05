@@ -90084,7 +90084,7 @@ class GoogleCloudAiplatformV1RaySpec {
   ///
   /// Either this or the resource_pool_images is required. Use this field if you
   /// need all the resource pools to have the same Ray image. Otherwise, use the
-  /// {@code resource_pool_images} field.
+  /// `resource_pool_images` field.
   ///
   /// Optional.
   core.String? imageUri;
