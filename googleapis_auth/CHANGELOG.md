@@ -2,6 +2,7 @@
 
 - Require `meta: ^1.0.2`
 - Require `sdk: ^3.9.0`
+- Drop unneeded `args` dependency.
 
 ## 2.0.0
 

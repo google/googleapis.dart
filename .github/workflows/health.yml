@@ -10,6 +10,7 @@ jobs:
     with:
       sdk: stable
       checks: 'license,breaking,leaking,unused-dependencies'
+      ignore_license: 'generated/**,_test_package/**'
       upload_coverage: false
     permissions:
       pull-requests: write
