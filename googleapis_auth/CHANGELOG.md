@@ -3,6 +3,7 @@
 - Require `meta: ^1.0.2`
 - Require `sdk: ^3.9.0`
 - Drop unneeded `args` dependency.
+- Export `RSAPrivateKey` which is exposed by `ServiceAccountCredentials`.
 
 ## 2.0.0
 

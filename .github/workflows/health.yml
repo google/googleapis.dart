@@ -11,6 +11,7 @@ jobs:
       sdk: stable
       checks: 'license,breaking,leaking,unused-dependencies'
       ignore_license: 'generated/**,_test_package/**'
+      ignore_unuseddependencies: 'generated/**'
       upload_coverage: false
     permissions:
       pull-requests: write

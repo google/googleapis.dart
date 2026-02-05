@@ -29,6 +29,7 @@ export 'src/auth_client.dart';
 export 'src/auth_endpoints.dart';
 export 'src/auth_functions.dart';
 export 'src/client_id.dart';
+export 'src/crypto/rsa.dart' show RSAPrivateKey;
 export 'src/exceptions.dart';
 export 'src/response_type.dart';
 export 'src/service_account_credentials.dart';
