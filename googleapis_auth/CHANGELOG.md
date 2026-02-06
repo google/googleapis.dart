@@ -1,9 +1,6 @@
 ## 2.1.0-wip
 - Add `serviceAccountCredentials` getter to AuthClient
 - Added parsing for project_id and universe_domain properties for ServiceAccountCredentials
-
-## 2.0.1-wip
-
 - Require `meta: ^1.0.2`
 - Require `sdk: ^3.9.0`
 - Drop unneeded `args` dependency.
