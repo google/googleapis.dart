@@ -50,7 +50,7 @@ class _FlowClient extends AutoRefreshDelegatingClient {
   final ServiceAccountCredentials? serviceAccountCredentials;
   Client _authClient;
 
-    _FlowClient(
+  _FlowClient(
     super.client,
     this.credentials,
     this._flow, {
