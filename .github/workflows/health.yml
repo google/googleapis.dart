@@ -9,13 +9,13 @@ jobs:
     uses: dart-lang/ecosystem/.github/workflows/health.yaml@main
     with:
       sdk: stable
+      # Drop coverage
+      checks: "changelog,license,breaking,do-not-submit,leaking,unused-dependencies"
       # GENERATED FILES
       ignore_license: 'generated/**,_test_package/**'
       # TOO BIG!
       ignore_changelog: 'generated/**'
       # TOO BIG!
       ignore_unuseddependencies: 'generated/**'
-      # Not enabled for now
-      upload_coverage: false
     permissions:
       pull-requests: write
