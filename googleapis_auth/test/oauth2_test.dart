@@ -64,6 +64,8 @@ void main() {
       'client_email': 'a@b.com',
       'client_id': 'myid',
       'type': 'service_account',
+      'project_id': 'test-project',
+      'universe_domain': 'example.com',
     };
 
     test('from-valid-individual-params', () {
@@ -71,11 +73,14 @@ void main() {
         'email',
         clientId,
         testPrivateKeyString,
+        projectId: 'test-project',
       );
       expect(credentials.email, equals('email'));
       expect(credentials.clientId, equals(clientId));
       expect(credentials.privateKey, equals(testPrivateKeyString));
       expect(credentials.impersonatedUser, isNull);
+      expect(credentials.projectId, 'test-project');
+      expect(credentials.universeDomain, equals('googleapis.com'));
     });
 
     test('from-valid-individual-params-with-user', () {
@@ -84,11 +89,14 @@ void main() {
         clientId,
         testPrivateKeyString,
         impersonatedUser: 'x@y.com',
+        projectId: 'test-project',
       );
       expect(credentials.email, equals('email'));
       expect(credentials.clientId, equals(clientId));
       expect(credentials.privateKey, equals(testPrivateKeyString));
       expect(credentials.impersonatedUser, equals('x@y.com'));
+      expect(credentials.projectId, 'test-project');
+      expect(credentials.universeDomain, equals('googleapis.com'));
     });
 
     test('from-json-string', () {
@@ -100,6 +108,8 @@ void main() {
       expect(credentialsFromJson.clientId.secret, isNull);
       expect(credentialsFromJson.privateKey, equals(testPrivateKeyString));
       expect(credentialsFromJson.impersonatedUser, isNull);
+      expect(credentialsFromJson.projectId, equals('test-project'));
+      expect(credentialsFromJson.universeDomain, equals('example.com'));
     });
 
     test('from-json-string-with-user', () {
@@ -112,6 +122,8 @@ void main() {
       expect(credentialsFromJson.clientId.secret, isNull);
       expect(credentialsFromJson.privateKey, equals(testPrivateKeyString));
       expect(credentialsFromJson.impersonatedUser, equals('x@y.com'));
+      expect(credentialsFromJson.projectId, equals('test-project'));
+      expect(credentialsFromJson.universeDomain, equals('example.com'));
     });
 
     test('from-json-map', () {
@@ -123,6 +135,8 @@ void main() {
       expect(credentialsFromJson.clientId.secret, isNull);
       expect(credentialsFromJson.privateKey, equals(testPrivateKeyString));
       expect(credentialsFromJson.impersonatedUser, isNull);
+      expect(credentialsFromJson.projectId, equals('test-project'));
+      expect(credentialsFromJson.universeDomain, equals('example.com'));
     });
 
     test('from-json-map-with-user', () {
@@ -135,6 +149,8 @@ void main() {
       expect(credentialsFromJson.clientId.secret, isNull);
       expect(credentialsFromJson.privateKey, equals(testPrivateKeyString));
       expect(credentialsFromJson.impersonatedUser, equals('x@y.com'));
+      expect(credentialsFromJson.projectId, equals('test-project'));
+      expect(credentialsFromJson.universeDomain, equals('example.com'));
     });
   });
 

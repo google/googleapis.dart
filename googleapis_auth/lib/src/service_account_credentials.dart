@@ -29,6 +29,16 @@ class ServiceAccountCredentials {
   /// Impersonated user, if any. If not impersonating any user this is `null`.
   final String? impersonatedUser;
 
+  /// The project ID from the service account JSON file, if available.
+  final String? projectId;
+
+  /// The universe domain for this service account.
+  ///
+  /// Defaults to 'googleapis.com' if not specified in the JSON file.
+  /// Used to construct correct API endpoints for non-default universe domains
+  /// (e.g., Government Cloud or other isolated environments).
+  final String universeDomain;
+
   /// Private key as an [RSAPrivateKey].
   final RSAPrivateKey privateRSAKey;
 
@@ -52,6 +62,9 @@ class ServiceAccountCredentials {
     final privateKey = json['private_key'] as String?;
     final email = json['client_email'] as String?;
     final type = json['type'];
+    final projectId = json['project_id'] as String?;
+    final universeDomain =
+        json['universe_domain'] as String? ?? 'googleapis.com';
 
     if (type != 'service_account') {
       throw ArgumentError(
@@ -73,6 +86,8 @@ class ServiceAccountCredentials {
       clientId,
       privateKey,
       impersonatedUser: impersonatedUser,
+      projectId: projectId,
+      universeDomain: universeDomain,
     );
   }
 
@@ -88,10 +103,17 @@ class ServiceAccountCredentials {
   ///
   /// The optional named argument [impersonatedUser] is used to set the user
   /// to impersonate if impersonating a user is needed.
+  ///
+  /// The optional named argument [projectId] is the GCP project ID.
+  ///
+  /// The optional named argument [universeDomain] specifies the universe domain.
+  /// Defaults to 'googleapis.com' if not provided.
   ServiceAccountCredentials(
     this.email,
     this.clientId,
     this.privateKey, {
     this.impersonatedUser,
+    this.projectId,
+    this.universeDomain = 'googleapis.com',
   }) : privateRSAKey = keyFromString(privateKey);
 }
