@@ -106,7 +106,8 @@ class ServiceAccountCredentials {
   ///
   /// The optional named argument [projectId] is the GCP project ID.
   ///
-  /// The optional named argument [universeDomain] specifies the universe domain.
+  /// The optional named argument [universeDomain] specifies the universe
+  /// domain.
   /// Defaults to 'googleapis.com' if not provided.
   ServiceAccountCredentials(
     this.email,
