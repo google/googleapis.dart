@@ -1,3 +1,6 @@
+## 2.1.0-wip
+- Add `serviceAccountCredentials` getter to AuthClient
+
 ## 2.0.1-wip
 
 - Require `meta: ^1.0.2`

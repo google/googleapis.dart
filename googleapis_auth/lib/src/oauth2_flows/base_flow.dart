@@ -4,11 +4,10 @@
 
 import 'package:http/http.dart';
 
-import '../access_credentials.dart';
-import '../auth_client.dart';
 import '../auth_functions.dart';
 import '../auth_http_utils.dart';
 import '../http_client_base.dart';
+import '../service_account_credentials.dart';
 
 /// Base class for "Flows" that provide [AccessCredentials].
 abstract class BaseFlow {
@@ -18,6 +17,7 @@ abstract class BaseFlow {
 Future<AutoRefreshingAuthClient> clientFromFlow(
   BaseFlow Function(Client client) flowFactory, {
   Client? baseClient,
+  ServiceAccountCredentials? serviceAccountCredentials,
 }) async {
   if (baseClient == null) {
     baseClient = Client();
@@ -29,7 +29,12 @@ Future<AutoRefreshingAuthClient> clientFromFlow(
 
   try {
     final credentials = await flow.run();
-    return _FlowClient(baseClient, credentials, flow);
+    return _FlowClient(
+      baseClient,
+      credentials,
+      flow,
+      serviceAccountCredentials: serviceAccountCredentials,
+    );
   } catch (e) {
     baseClient.close();
     rethrow;
@@ -41,10 +46,16 @@ class _FlowClient extends AutoRefreshDelegatingClient {
   final BaseFlow _flow;
   @override
   AccessCredentials credentials;
+  @override
+  final ServiceAccountCredentials? serviceAccountCredentials;
   Client _authClient;
 
-  _FlowClient(super.client, this.credentials, this._flow)
-    : _authClient = authenticatedClient(client, credentials);
+  _FlowClient(
+    super.client,
+    this.credentials,
+    this._flow, {
+    this.serviceAccountCredentials,
+  }) : _authClient = authenticatedClient(client, credentials);
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {

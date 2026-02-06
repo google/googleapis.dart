@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:googleapis_auth/googleapis_auth.dart';
+import 'package:googleapis_auth/auth_io.dart';
 import 'package:googleapis_auth/src/http_client_base.dart';
 import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:googleapis_auth/src/utils.dart';
@@ -434,6 +434,82 @@ void main() {
 
         client.close();
       });
+    });
+
+    group('service-account-credentials-access', () {
+      test('clientViaServiceAccount exposes credentials', () async {
+        final credentials = ServiceAccountCredentials.fromJson({
+          'private_key_id': '301029',
+          'private_key': testPrivateKeyString,
+          'client_email': 'test@test.iam.gserviceaccount.com',
+          'client_id': 'myid',
+          'type': 'service_account',
+        });
+
+        final client = await clientViaServiceAccount(
+          credentials,
+          ['https://www.googleapis.com/auth/cloud-platform'],
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              expect(request.method, equals('POST'));
+              expect(request.url, googleOauth2TokenEndpoint);
+              return Response(
+                jsonEncode({
+                  'access_token': 'test_token',
+                  'token_type': 'Bearer',
+                  'expires_in': 3600,
+                }),
+                200,
+                headers: jsonContentType,
+              );
+            }),
+            expectClose: false,
+          ),
+        );
+
+        // Verify that we can access the service account credentials
+        expect(client.serviceAccountCredentials, isNotNull);
+        expect(
+          client.serviceAccountCredentials!.email,
+          equals('test@test.iam.gserviceaccount.com'),
+        );
+        expect(
+          client.serviceAccountCredentials!.clientId.identifier,
+          equals('myid'),
+        );
+
+        client.close();
+      });
+
+      test('clientViaMetadataServer returns null credentials', () async {
+        final client = await clientViaMetadataServer(
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              final url = request.url.toString();
+              if (url.contains('/token')) {
+                return Response(
+                  jsonEncode({
+                    'access_token': 'test_token',
+                    'token_type': 'Bearer',
+                    'expires_in': 3600,
+                  }),
+                  200,
+                  headers: jsonContentType,
+                );
+              } else if (url.contains('/scopes')) {
+                return Response('s1\ns2', 200);
+              }
+              return Response('Not found', 404);
+            }, count: 2),
+            expectClose: false,
+          ),
+        );
+
+        // Metadata server client should not have service account credentials
+        expect(client.serviceAccountCredentials, isNull);
+
+        client.close();
+      }, testOn: 'vm');
     });
   });
 }
