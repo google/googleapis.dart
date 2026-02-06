@@ -509,7 +509,7 @@ void main() {
         expect(client.serviceAccountCredentials, isNull);
 
         client.close();
-      });
+      }, testOn: 'vm');
     });
   });
 }
