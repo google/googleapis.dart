@@ -6,13 +6,10 @@ import 'dart:async';
 
 import 'package:http/http.dart';
 
-import 'access_credentials.dart';
-import 'auth_client.dart';
 import 'auth_endpoints.dart';
 import 'auth_functions.dart';
-import 'client_id.dart';
-import 'exceptions.dart';
 import 'http_client_base.dart';
+import 'service_account_credentials.dart';
 
 /// Will close the underlying `http.Client` depending on a constructor argument.
 class AuthenticatedClient extends DelegatingClient implements AuthClient {
@@ -26,6 +23,9 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
     this.quotaProject,
     super.closeUnderlyingClient = false,
   });
+
+  @override
+  ServiceAccountCredentials? get serviceAccountCredentials => null;
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
@@ -112,6 +112,9 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
       quotaProject: quotaProject,
     );
   }
+
+  @override
+  ServiceAccountCredentials? get serviceAccountCredentials => null;
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
