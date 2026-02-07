@@ -8,6 +8,7 @@ import 'client_id.dart';
 import 'crypto/pem.dart';
 import 'crypto/rsa.dart';
 import 'crypto/rsa_sign.dart';
+import 'utils.dart';
 
 export 'access_credentials.dart' show AccessCredentials;
 export 'access_token.dart' show AccessToken;
@@ -35,7 +36,7 @@ class ServiceAccountCredentials {
 
   /// The universe domain for this service account.
   ///
-  /// Defaults to 'googleapis.com' if not specified in the JSON file.
+  /// Defaults to [defaultUniverseDomain] if not specified in the JSON file.
   /// Used to construct correct API endpoints for non-default universe domains
   /// (e.g., Government Cloud or other isolated environments).
   final String universeDomain;
@@ -65,7 +66,7 @@ class ServiceAccountCredentials {
     final type = json['type'];
     final projectId = json['project_id'] as String?;
     final universeDomain =
-        json['universe_domain'] as String? ?? 'googleapis.com';
+        json['universe_domain'] as String? ?? defaultUniverseDomain;
 
     if (type != 'service_account') {
       throw ArgumentError(
@@ -109,14 +110,14 @@ class ServiceAccountCredentials {
   ///
   /// The optional named argument [universeDomain] specifies the universe
   /// domain.
-  /// Defaults to 'googleapis.com' if not provided.
+  /// Defaults to [defaultUniverseDomain] if not provided.
   ServiceAccountCredentials(
     this.email,
     this.clientId,
     this.privateKey, {
     this.impersonatedUser,
     this.projectId,
-    this.universeDomain = 'googleapis.com',
+    this.universeDomain = defaultUniverseDomain,
   }) : privateRSAKey = keyFromString(privateKey);
 
   /// Signs the given [data] using RSA-SHA256 with this service account's

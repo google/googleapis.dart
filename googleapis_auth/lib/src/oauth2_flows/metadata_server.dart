@@ -18,12 +18,10 @@ import 'base_flow.dart';
 /// metadata server, looking first for one set in the environment under
 /// `$GCE_METADATA_HOST`.
 class MetadataServerAuthorizationFlow extends BaseFlow {
-  static const _headers = {'Metadata-Flavor': 'Google'};
   static const _serviceAccountUrlInfix =
       'computeMetadata/v1/instance/service-accounts';
+
   // https://cloud.google.com/compute/docs/storing-retrieving-metadata#querying
-  static const _defaultMetadataHost = 'metadata.google.internal';
-  static const _gceMetadataHostEnvVar = 'GCE_METADATA_HOST';
 
   final String email;
   final Uri _scopesUrl;
@@ -37,7 +35,7 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     final encodedEmail = Uri.encodeComponent(email);
 
     final metadataHost =
-        Platform.environment[_gceMetadataHostEnvVar] ?? _defaultMetadataHost;
+        Platform.environment[gceMetadataHostEnvVar] ?? defaultMetadataHost;
     final serviceAccountPrefix =
         'http://$metadataHost/$_serviceAccountUrlInfix';
 
@@ -62,7 +60,7 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   Future<AccessCredentials> run() async {
     final results = await Future.wait([
       _client.requestJson(
-        http.Request('GET', _tokenUrl)..headers.addAll(_headers),
+        http.Request('GET', _tokenUrl)..headers.addAll(metadataFlavorHeader),
         'Failed to obtain access credentials.',
       ),
       _getScopes(),
@@ -80,7 +78,10 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   }
 
   Future<String> _getScopes() async {
-    final response = await _client.get(_scopesUrl, headers: _headers);
+    final response = await _client.get(
+      _scopesUrl,
+      headers: metadataFlavorHeader,
+    );
     return response.body;
   }
 }

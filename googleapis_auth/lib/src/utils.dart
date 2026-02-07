@@ -16,6 +16,14 @@ import 'http_client_base.dart';
 /// will shorten expiry dates by 20 seconds.
 const maxExpectedTimeDiffInSeconds = 20;
 
+// Metadata server constants
+const metadataFlavorHeader = {'Metadata-Flavor': 'Google'};
+const defaultMetadataHost = 'metadata.google.internal';
+const gceMetadataHostEnvVar = 'GCE_METADATA_HOST';
+
+// Universe domain constants
+const defaultUniverseDomain = 'googleapis.com';
+
 AccessToken parseAccessToken(Map<String, dynamic> jsonMap) {
   final tokenType = jsonMap['token_type'];
   final accessToken = jsonMap['access_token'];
