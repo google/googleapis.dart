@@ -49,7 +49,10 @@ void main() {
       final signature = await client.sign(dataToSign);
 
       expect(signature, isNotEmpty);
-      expect(signature.length, equals(256)); // RSA-2048 signature length
+      expect(
+        signature.length,
+        equals(344),
+      ); // RSA-2048 signature base64-encoded length
 
       client.close();
     });
@@ -109,7 +112,7 @@ void main() {
 
       final signature = await impersonated.sign(dataToSign);
 
-      expect(signature, equals([1, 2, 3, 4, 5]));
+      expect(signature, equals(base64Encode([1, 2, 3, 4, 5])));
 
       impersonated.close();
     });
@@ -175,7 +178,7 @@ void main() {
         impersonated,
       ).sign(dataToSign, endpoint: 'https://iamcredentials.example.com');
 
-      expect(signature, equals([5, 6, 7, 8]));
+      expect(signature, equals(base64Encode([5, 6, 7, 8])));
 
       impersonated.close();
     });
@@ -219,7 +222,7 @@ void main() {
 
       final signature = await client.sign(dataToSign);
 
-      expect(signature, equals([10, 20, 30]));
+      expect(signature, equals(base64Encode([10, 20, 30])));
 
       client.close();
     });
@@ -262,7 +265,7 @@ void main() {
         endpoint: 'https://iamcredentials.example.com',
       );
 
-      expect(signature, equals([5, 6, 7]));
+      expect(signature, equals(base64Encode([5, 6, 7])));
 
       client.close();
     });

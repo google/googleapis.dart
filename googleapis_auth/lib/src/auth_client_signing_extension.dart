@@ -61,7 +61,7 @@ extension AuthClientSigningExtension on AuthClient {
   /// domain (e.g., `https://iamcredentials.googleapis.com` for the default
   /// universe, or a custom universe domain from the service account JSON).
   ///
-  /// Returns the signature as a list of bytes.
+  /// Returns the signature as a String (base64-encoded).
   ///
   /// Example:
   /// ```dart
@@ -70,10 +70,9 @@ extension AuthClientSigningExtension on AuthClient {
   /// final client = await clientViaServiceAccount(credentials, scopes);
   /// final data = utf8.encode('data to sign');
   /// final signature = await client.sign(data);
-  /// final signatureBase64 = base64Encode(signature);
-  /// print('Signature: $signatureBase64');
+  /// print('Signature (base64): $signature');
   /// ```
-  Future<List<int>> sign(List<int> data, {String? endpoint}) async {
+  Future<String> sign(List<int> data, {String? endpoint}) async {
     // Check if this is an impersonated client
     if (this is ImpersonatedAuthClient) {
       final impersonated = this as ImpersonatedAuthClient;
@@ -96,7 +95,9 @@ extension AuthClientSigningExtension on AuthClient {
   }
 
   /// Signs data using the IAM Credentials API.
-  Future<List<int>> _signViaIAM(List<int> data, String endpoint) async {
+  ///
+  /// Returns the signature as a String (base64-encoded).
+  Future<String> _signViaIAM(List<int> data, String endpoint) async {
     // Extract universe domain from endpoint
     final uri = Uri.parse(endpoint);
     final host = uri.host;
