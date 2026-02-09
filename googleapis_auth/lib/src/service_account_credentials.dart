@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'client_id.dart';
 import 'crypto/pem.dart';
@@ -122,10 +123,7 @@ class ServiceAccountCredentials {
   /// Signs the given [data] using RSA-SHA256 with this service account's
   /// private key.
   ///
-  /// Returns the signature as a String.
-  ///
   /// This is useful for creating custom signed tokens or signing arbitrary
   /// data with the service account's credentials.
-  String sign(List<int> data) =>
-      base64Encode(RS256Signer(privateRSAKey).sign(data));
+  Uint8List sign(List<int> data) => RS256Signer(privateRSAKey).sign(data);
 }

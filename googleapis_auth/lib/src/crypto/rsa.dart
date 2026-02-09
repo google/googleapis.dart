@@ -59,7 +59,7 @@ abstract final class RSAAlgorithm {
   ///
   /// The [intendedLength] argument specifies the number of bytes in which the
   /// result should be encoded. Zero bytes will be used for padding.
-  static List<int> rawSign(
+  static Uint8List rawSign(
     RSAPrivateKey key,
     List<int> bytes,
     int intendedLength,
@@ -106,7 +106,7 @@ abstract final class RSAAlgorithm {
     return number;
   }
 
-  static List<int> integer2Bytes(BigInt integer, int intendedLength) {
+  static Uint8List integer2Bytes(BigInt integer, int intendedLength) {
     if (integer < BigInt.one) {
       throw ArgumentError('Only positive integers are supported.');
     }
