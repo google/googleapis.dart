@@ -100,17 +100,7 @@ extension AuthClientSigningExtension on AuthClient {
   ///
   /// Returns the signature as a String (base64-encoded).
   Future<String> _signViaIAM(List<int> data, String endpoint) async {
-    // Extract universe domain from endpoint
-    final uri = Uri.parse(endpoint);
-    final host = uri.host;
-    final universeDomain = host.startsWith('iamcredentials.')
-        ? host.substring('iamcredentials.'.length)
-        : defaultUniverseDomain;
-
-    final signer = IAMSigner(
-      this as http.Client,
-      universeDomain: universeDomain,
-    );
+    final signer = IAMSigner(this as http.Client, endpoint: endpoint);
     return signer.sign(data);
   }
 }
