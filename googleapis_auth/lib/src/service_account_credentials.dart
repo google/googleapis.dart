@@ -122,7 +122,7 @@ class ServiceAccountCredentials {
   /// Signs the given [data] using RSA-SHA256 with this service account's
   /// private key.
   ///
-  /// Returns the signature as a list of bytes.
+  /// Returns the signature as a String.
   ///
   /// This is useful for creating custom signed tokens or signing arbitrary
   /// data with the service account's credentials.
