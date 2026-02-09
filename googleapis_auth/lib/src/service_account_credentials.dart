@@ -126,5 +126,6 @@ class ServiceAccountCredentials {
   ///
   /// This is useful for creating custom signed tokens or signing arbitrary
   /// data with the service account's credentials.
-  List<int> sign(List<int> data) => RS256Signer(privateRSAKey).sign(data);
+  String sign(List<int> data) =>
+      base64Encode(RS256Signer(privateRSAKey).sign(data));
 }
