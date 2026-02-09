@@ -1,7 +1,7 @@
 ## 2.1.0-wip
 - Add `serviceAccountCredentials` getter to AuthClient
 - Added parsing for project_id and universe_domain properties for ServiceAccountCredentials
-- Add `sign()` method to ServiceAccountCredentials for RSA-SHA256 signing
+- Add `sign()` method to `ServiceAccountCredentials` for RSA-SHA256 signing
 - Require `meta: ^1.0.2`
 - Require `sdk: ^3.9.0`
 - Drop unneeded `args` dependency.
