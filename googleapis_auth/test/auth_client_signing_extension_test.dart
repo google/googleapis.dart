@@ -114,6 +114,72 @@ void main() {
       impersonated.close();
     });
 
+    test('explicitly calling extension on impersonated client delegates to '
+        'instance method', () async {
+      var requestCount = 0;
+      final baseClient = mockClient(
+        expectAsync1((request) async {
+          requestCount++;
+
+          if (requestCount == 1) {
+            // Initial generateAccessToken for impersonated client
+            final expireTime = DateTime.now().toUtc().add(
+              const Duration(hours: 1),
+            );
+            return http.Response(
+              jsonEncode({
+                'accessToken': 'impersonated-token',
+                'expireTime': expireTime.toIso8601String(),
+              }),
+              200,
+              headers: jsonContentType,
+            );
+          } else {
+            // signBlob request via ImpersonatedAuthClient.sign()
+            expect(request.method, equals('POST'));
+            expect(request.url.toString(), contains(':signBlob'));
+
+            return http.Response(
+              jsonEncode({
+                'signedBlob': base64Encode([5, 6, 7, 8]),
+              }),
+              200,
+              headers: jsonContentType,
+            );
+          }
+        }, count: 2),
+        expectClose: false,
+      );
+
+      final sourceCredentials = AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'source-token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
+      );
+      final sourceClient = authenticatedClient(baseClient, sourceCredentials);
+
+      final impersonated = await clientViaServiceAccountImpersonation(
+        sourceClient: sourceClient,
+        targetServiceAccount: 'target@project.iam.gserviceaccount.com',
+        targetScopes: ['https://www.googleapis.com/auth/cloud-platform'],
+      );
+
+      // Explicitly call the extension method with endpoint parameter
+      // The endpoint is ignored since ImpersonatedAuthClient uses its
+      // configured universe domain
+      final signature = await AuthClientSigningExtension(
+        impersonated,
+      ).sign(dataToSign, endpoint: 'https://iamcredentials.example.com');
+
+      expect(signature, equals([5, 6, 7, 8]));
+
+      impersonated.close();
+    });
+
     test('sign without service account credentials uses IAM API', () async {
       final baseClient = mockClient(
         expectAsync1((request) async {
