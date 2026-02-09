@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'auth_client.dart';
 import 'iam_signer.dart';
@@ -80,18 +82,18 @@ extension AuthClientSigningExtension on AuthClient {
     }
 
     // Check if we have service account credentials for local signing
-    final hasLocalSigningCapability = serviceAccountCredentials != null;
+    final serviceAccountCreds = serviceAccountCredentials;
 
-    // If we're NOT using local signing, use IAM API signing
-    if (!hasLocalSigningCapability) {
-      final universeDomain =
-          serviceAccountCredentials?.universeDomain ?? defaultUniverseDomain;
-      endpoint ??= 'https://iamcredentials.$universeDomain';
-      return _signViaIAM(data, endpoint);
+    if (serviceAccountCreds != null) {
+      // Use local signing with service account credentials
+      return base64Encode(serviceAccountCreds.sign(data));
     }
 
-    // Use local signing with service account credentials
-    return serviceAccountCredentials!.sign(data);
+    // If we're NOT using local signing, use IAM API signing
+    final universeDomain =
+        serviceAccountCreds?.universeDomain ?? defaultUniverseDomain;
+    endpoint ??= 'https://iamcredentials.$universeDomain';
+    return _signViaIAM(data, endpoint);
   }
 
   /// Signs data using the IAM Credentials API.
