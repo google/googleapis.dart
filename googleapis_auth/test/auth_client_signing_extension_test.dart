@@ -225,7 +225,7 @@ void main() {
       expect(signature, equals(base64Encode([10, 20, 30])));
 
       client.close();
-    });
+    }, testOn: 'vm');
 
     test('sign with custom endpoint extracts universe domain', () async {
       final baseClient = mockClient(
@@ -268,6 +268,6 @@ void main() {
       expect(signature, equals(base64Encode([5, 6, 7])));
 
       client.close();
-    });
+    }, testOn: 'vm');
   });
 }
