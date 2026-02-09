@@ -43,7 +43,7 @@ import 'utils.dart';
 class IAMSigner {
   final http.Client _client;
   final String? _serviceAccountEmail;
-  final String _universeDomain;
+  final String _endpoint;
 
   String? _cachedEmail;
 
@@ -55,15 +55,15 @@ class IAMSigner {
   /// [serviceAccountEmail] is the optional service account email to use for
   /// signing. If not provided, it will be fetched from the GCE metadata server.
   ///
-  /// [universeDomain] specifies the universe domain for constructing the IAM
-  /// endpoint. Defaults to [defaultUniverseDomain].
+  /// [endpoint] specifies the IAM Credentials API endpoint.
+  /// Defaults to `https://iamcredentials.googleapis.com`.
   IAMSigner(
     http.Client client, {
     String? serviceAccountEmail,
-    String universeDomain = defaultUniverseDomain,
+    String endpoint = 'https://iamcredentials.$defaultUniverseDomain',
   }) : _client = client,
        _serviceAccountEmail = serviceAccountEmail,
-       _universeDomain = universeDomain;
+       _endpoint = endpoint;
 
   /// Returns the service account email.
   ///
@@ -108,7 +108,7 @@ class IAMSigner {
     final encodedEmail = Uri.encodeComponent(email);
 
     final signBlobUrl = Uri.parse(
-      'https://iamcredentials.$_universeDomain/v1/projects/-/serviceAccounts/$encodedEmail:signBlob',
+      '$_endpoint/v1/projects/-/serviceAccounts/$encodedEmail:signBlob',
     );
 
     final requestBody = jsonEncode({'payload': base64Encode(data)});
