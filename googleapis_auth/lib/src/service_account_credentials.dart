@@ -3,10 +3,12 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'client_id.dart';
 import 'crypto/pem.dart';
 import 'crypto/rsa.dart';
+import 'crypto/rsa_sign.dart';
 
 export 'access_credentials.dart' show AccessCredentials;
 export 'access_token.dart' show AccessToken;
@@ -117,4 +119,11 @@ class ServiceAccountCredentials {
     this.projectId,
     this.universeDomain = 'googleapis.com',
   }) : privateRSAKey = keyFromString(privateKey);
+
+  /// Signs the given [data] using RSA-SHA256 with this service account's
+  /// private key.
+  ///
+  /// This is useful for creating custom signed tokens or signing arbitrary
+  /// data with the service account's credentials.
+  Uint8List sign(List<int> data) => RS256Signer(privateRSAKey).sign(data);
 }

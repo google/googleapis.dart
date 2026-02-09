@@ -35,7 +35,7 @@ class RS256Signer {
 
   RS256Signer(this._rsaKey);
 
-  List<int> sign(List<int> bytes) {
+  Uint8List sign(List<int> bytes) {
     final digest = _digestInfo(sha256.convert(bytes).bytes);
     final modulusLen = (_rsaKey.bitLength + 7) ~/ 8;
 
