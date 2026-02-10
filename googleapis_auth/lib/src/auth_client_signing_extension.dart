@@ -41,9 +41,6 @@ import 'utils.dart';
 extension AuthClientSigningExtension on AuthClient {
   /// Signs some bytes using the credentials from this auth client.
   ///
-  /// This is the Dart equivalent of `GoogleAuth.sign()` from the Node.js
-  /// google-auth-library.
-  ///
   /// The signing behavior depends on the auth client type:
   /// - [ImpersonatedAuthClient]: Uses IAM signBlob API to sign using the
   ///   target principal.
