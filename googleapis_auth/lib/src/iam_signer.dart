@@ -57,15 +57,19 @@ class IAMSigner {
   /// [serviceAccountEmail] is the optional service account email to use for
   /// signing. If not provided, it will be fetched from the GCE metadata server.
   ///
-  /// [endpoint] specifies the IAM Credentials API endpoint.
-  /// Defaults to `https://iamcredentials.googleapis.com`.
+  /// [universeDomain] specifies the universe domain for constructing the IAM
+  /// endpoint. Defaults to [defaultUniverseDomain] (googleapis.com).
+  ///
+  /// [endpoint] specifies a custom IAM Credentials API endpoint URL.
+  /// If provided, takes precedence over [universeDomain].
   IAMSigner(
     http.Client client, {
     String? serviceAccountEmail,
-    String endpoint = 'https://iamcredentials.$defaultUniverseDomain',
+    String? endpoint,
+    String universeDomain = defaultUniverseDomain,
   }) : _client = client,
        _serviceAccountEmail = serviceAccountEmail,
-       _endpoint = endpoint;
+       _endpoint = endpoint ?? 'https://iamcredentials.$universeDomain';
 
   /// Returns the service account email.
   ///

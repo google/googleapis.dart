@@ -128,7 +128,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
          null,
          targetScopes,
        ),
-       super(sourceClient as http.Client, closeUnderlyingClient: false);
+       super(sourceClient, closeUnderlyingClient: false);
 
   /// The email of the target service account being impersonated.
   String get targetServiceAccount => _targetServiceAccount;
@@ -201,7 +201,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
     final signer = IAMSigner(
       _sourceClient,
       serviceAccountEmail: _targetServiceAccount,
-      endpoint: _universeDomain,
+      universeDomain: _universeDomain,
     );
     return signer.sign(data);
   }
