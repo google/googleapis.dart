@@ -161,7 +161,7 @@ void main() {
       expect(signature, equals(base64Encode([99, 88, 77])));
     });
 
-    test('sign with custom endpoint', () async {
+    test('sign with custom universe domain', () async {
       final mockClient = MockClient(
         expectAsync1((request) async {
           if (request.method == 'POST') {
@@ -187,7 +187,7 @@ void main() {
       final signer = IAMSigner(
         mockClient,
         serviceAccountEmail: 'custom@example.iam.gserviceaccount.com',
-        endpoint: 'https://iamcredentials.example.com',
+        universeDomain: 'example.com',
       );
 
       final signature = await signer.sign([5, 6, 7]);

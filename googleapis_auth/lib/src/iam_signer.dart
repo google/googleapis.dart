@@ -17,8 +17,6 @@ import 'utils.dart';
 /// locally. Instead of signing locally, this class uses the IAM service to
 /// perform signing operations.
 ///
-/// Does not close the [http.Client] passed to the constructor.
-///
 /// See: https://docs.cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/signBlob
 ///
 /// Example usage:
@@ -45,7 +43,7 @@ import 'utils.dart';
 class IAMSigner {
   final http.Client _client;
   final String? _serviceAccountEmail;
-  final String _endpoint;
+  final String _universeDomain;
 
   String? _cachedEmail;
 
@@ -57,15 +55,15 @@ class IAMSigner {
   /// [serviceAccountEmail] is the optional service account email to use for
   /// signing. If not provided, it will be fetched from the GCE metadata server.
   ///
-  /// [endpoint] specifies the IAM Credentials API endpoint.
-  /// Defaults to `https://iamcredentials.googleapis.com`.
+  /// [universeDomain] specifies the universe domain for constructing the IAM
+  /// endpoint. Defaults to [defaultUniverseDomain].
   IAMSigner(
     http.Client client, {
     String? serviceAccountEmail,
-    String endpoint = 'https://iamcredentials.$defaultUniverseDomain',
+    String universeDomain = defaultUniverseDomain,
   }) : _client = client,
        _serviceAccountEmail = serviceAccountEmail,
-       _endpoint = endpoint;
+       _universeDomain = universeDomain;
 
   /// Returns the service account email.
   ///
@@ -110,7 +108,7 @@ class IAMSigner {
     final encodedEmail = Uri.encodeComponent(email);
 
     final signBlobUrl = Uri.parse(
-      '$_endpoint/v1/projects/-/serviceAccounts/$encodedEmail:signBlob',
+      'https://iamcredentials.$_universeDomain/v1/projects/-/serviceAccounts/$encodedEmail:signBlob',
     );
 
     final requestBody = jsonEncode({'payload': base64Encode(data)});
@@ -123,12 +121,15 @@ class IAMSigner {
       'Failed to sign blob via IAM.',
     );
 
-    return switch (responseJson) {
-      {'signedBlob': final String signedBlob} => signedBlob,
-      _ => throw ServerRequestFailedException(
+    final signedBlob = responseJson['signedBlob'] as String?;
+
+    if (signedBlob == null) {
+      throw ServerRequestFailedException(
         'IAM signBlob response missing signedBlob field.',
         responseContent: responseJson,
-      ),
-    };
+      );
+    }
+
+    return signedBlob;
   }
 }

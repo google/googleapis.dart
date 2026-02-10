@@ -17,6 +17,7 @@ import 'src/service_account_credentials.dart';
 import 'src/typedefs.dart';
 
 export 'googleapis_auth.dart';
+export 'src/impersonated_auth_client.dart';
 export 'src/metadata_server_client.dart';
 export 'src/oauth2_flows/auth_code.dart'
     show obtainAccessCredentialsViaCodeExchange;
