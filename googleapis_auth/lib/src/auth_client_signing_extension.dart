@@ -4,7 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
 import 'auth_client.dart';
 import 'iam_signer.dart';
 import 'impersonated_auth_client.dart';
