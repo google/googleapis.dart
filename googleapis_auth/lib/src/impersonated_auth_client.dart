@@ -169,15 +169,13 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
       'Failed to generate access token for impersonated service account.',
     );
 
-    final accessToken = responseJson['accessToken'] as String?;
-    final expireTime = responseJson['expireTime'] as String?;
-
-    if (accessToken == null || expireTime == null) {
-      throw ServerRequestFailedException(
+    final (accessToken, expireTime) = switch (responseJson) {
+      {'accessToken': final String t, 'expireTime': final String e} => (t, e),
+      _ => throw ServerRequestFailedException(
         'IAM generateAccessToken response missing required fields.',
         responseContent: responseJson,
-      );
-    }
+      ),
+    };
 
     // Parse RFC 3339 timestamp
     final expiry = DateTime.parse(expireTime);
