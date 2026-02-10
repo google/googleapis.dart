@@ -26,6 +26,7 @@
 library;
 
 export 'src/auth_client.dart';
+export 'src/auth_client_signing_extension.dart';
 export 'src/auth_endpoints.dart';
 export 'src/auth_functions.dart';
 export 'src/client_id.dart';
