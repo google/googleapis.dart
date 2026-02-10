@@ -4,6 +4,7 @@
 - Add `sign()` method to `ServiceAccountCredentials` for RSA-SHA256 signing
 - Add `IAMSigner` class for signing via IAM Credentials API
 - Add `clientViaServiceAccountImpersonation()` function and `ImpersonatedAuthClient` class for service account impersonation via IAM Credentials API
+- Add `AuthClientSigningExtension` extension on `AuthClient` providing a universal `sign()` method that works across all auth contexts (service accounts, ADC, impersonated credentials)
 - Require `meta: ^1.0.2`
 - Require `sdk: ^3.9.0`
 - Drop unneeded `args` dependency.
