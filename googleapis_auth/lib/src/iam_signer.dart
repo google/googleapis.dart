@@ -17,6 +17,8 @@ import 'utils.dart';
 /// locally. Instead of signing locally, this class uses the IAM service to
 /// perform signing operations.
 ///
+/// Does not close the [http.Client] passed to the constructor.
+///
 /// See: https://docs.cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/signBlob
 ///
 /// Example usage:

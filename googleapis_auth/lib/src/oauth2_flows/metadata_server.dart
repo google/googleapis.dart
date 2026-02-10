@@ -21,8 +21,6 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   static const _serviceAccountUrlInfix =
       'computeMetadata/v1/instance/service-accounts';
 
-  // https://cloud.google.com/compute/docs/storing-retrieving-metadata#querying
-
   final String email;
   final Uri _scopesUrl;
   final Uri _tokenUrl;

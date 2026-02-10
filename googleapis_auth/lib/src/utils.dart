@@ -18,6 +18,7 @@ const maxExpectedTimeDiffInSeconds = 20;
 
 // Metadata server constants
 const metadataFlavorHeader = {'Metadata-Flavor': 'Google'};
+// - https://cloud.google.com/compute/docs/storing-retrieving-metadata#querying
 const defaultMetadataHost = 'metadata.google.internal';
 const gceMetadataHostEnvVar = 'GCE_METADATA_HOST';
 
