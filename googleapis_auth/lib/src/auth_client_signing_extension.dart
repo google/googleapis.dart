@@ -20,9 +20,6 @@ import 'utils.dart';
 /// 3. **Other auth clients** (ADC on GCE/Cloud Run): Uses IAM signBlob with
 ///    the default service account from metadata server
 ///
-/// This is the Dart equivalent of `GoogleAuth.sign()` from the Node.js
-/// google-auth-library.
-///
 /// Example usage:
 /// ```dart
 /// // Works with service account credentials
@@ -93,14 +90,6 @@ extension AuthClientSigningExtension on AuthClient {
     final universeDomain =
         serviceAccountCreds?.universeDomain ?? defaultUniverseDomain;
     endpoint ??= 'https://iamcredentials.$universeDomain';
-    return _signViaIAM(data, endpoint);
-  }
-
-  /// Signs data using the IAM Credentials API.
-  ///
-  /// Returns the signature as a String (base64-encoded).
-  Future<String> _signViaIAM(List<int> data, String endpoint) async {
-    final signer = IAMSigner(this as http.Client, endpoint: endpoint);
-    return signer.sign(data);
+    return IAMSigner(this, endpoint: endpoint).sign(data);
   }
 }
