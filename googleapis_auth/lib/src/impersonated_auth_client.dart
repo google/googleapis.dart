@@ -201,7 +201,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
     final signer = IAMSigner(
       _sourceClient,
       serviceAccountEmail: _targetServiceAccount,
-      endpoint: 'https://iamcredentials.$_universeDomain',
+      universeDomain: _universeDomain,
     );
     return signer.sign(data);
   }
