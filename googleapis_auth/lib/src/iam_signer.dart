@@ -121,15 +121,12 @@ class IAMSigner {
       'Failed to sign blob via IAM.',
     );
 
-    final signedBlob = responseJson['signedBlob'] as String?;
-
-    if (signedBlob == null) {
-      throw ServerRequestFailedException(
+    return switch (responseJson) {
+      {'signedBlob': final String signedBlob} => signedBlob,
+      _ => throw ServerRequestFailedException(
         'IAM signBlob response missing signedBlob field.',
         responseContent: responseJson,
-      );
-    }
-
-    return signedBlob;
+      ),
+    };
   }
 }
