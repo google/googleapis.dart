@@ -8706,8 +8706,7 @@ class StorageSource {
   /// Optional.
   /// Possible string values are:
   /// - "SOURCE_FETCHER_UNSPECIFIED" : Unspecified defaults to GSUTIL.
-  /// - "GSUTIL" : Use the "gsutil" tool to download the source file.
-  /// - "GCS_FETCHER" : Use the Cloud Storage Fetcher tool to download the
+  /// - "GCLOUD_STORAGE" : Use the "gcloud storage" tool to download the source file.  /// - "GCS_FETCHER" : Use the Cloud Storage Fetcher tool to download the
   /// source file.
   core.String? sourceFetcher;
 
