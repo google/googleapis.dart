@@ -16,13 +16,15 @@ import 'http_client_base.dart';
 /// will shorten expiry dates by 20 seconds.
 const maxExpectedTimeDiffInSeconds = 20;
 
-// Metadata server constants
-const metadataFlavorHeader = {'Metadata-Flavor': 'Google'};
-// - https://cloud.google.com/compute/docs/storing-retrieving-metadata#querying
-const defaultMetadataHost = 'metadata.google.internal';
-const gceMetadataHostEnvVar = 'GCE_METADATA_HOST';
-
-// Universe domain constants
+/// The default universe domain for Google Cloud services.
+///
+/// The universe domain is the root domain for Google Cloud API endpoints.
+/// The default is `googleapis.com`.
+///
+/// Trusted Partner Cloud (TPC) and Google Distributed Cloud (GDC) environments
+/// may use a different universe domain.
+///
+/// See https://cloud.google.com/apis/design/glossary#universe_domain
 const defaultUniverseDomain = 'googleapis.com';
 
 AccessToken parseAccessToken(Map<String, dynamic> jsonMap) {

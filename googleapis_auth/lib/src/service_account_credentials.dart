@@ -37,7 +37,8 @@ class ServiceAccountCredentials {
 
   /// The universe domain for this service account.
   ///
-  /// Defaults to [defaultUniverseDomain] if not specified in the JSON file.
+  /// Defaults to [defaultUniverseDomain] if not specified in
+  /// the JSON file.
   /// Used to construct correct API endpoints for non-default universe domains
   /// (e.g., Government Cloud or other isolated environments).
   final String universeDomain;
@@ -61,6 +62,7 @@ class ServiceAccountCredentials {
     if (json is! Map) {
       throw ArgumentError('json must be a Map or a String encoding a Map.');
     }
+    // TODO: consider using expressions here
     final identifier = json['client_id'] as String?;
     final privateKey = json['private_key'] as String?;
     final email = json['client_email'] as String?;

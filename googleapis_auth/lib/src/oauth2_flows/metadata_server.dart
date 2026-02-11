@@ -3,8 +3,9 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:io';
 
+import 'package:google_cloud/constants.dart' as cloud_constants;
+import 'package:google_cloud/general.dart';
 import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
@@ -18,9 +19,6 @@ import 'base_flow.dart';
 /// metadata server, looking first for one set in the environment under
 /// `$GCE_METADATA_HOST`.
 class MetadataServerAuthorizationFlow extends BaseFlow {
-  static const _serviceAccountUrlInfix =
-      'computeMetadata/v1/instance/service-accounts';
-
   final String email;
   final Uri _scopesUrl;
   final Uri _tokenUrl;
@@ -31,19 +29,11 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     String email = 'default',
   }) {
     final encodedEmail = Uri.encodeComponent(email);
-
-    final metadataHost =
-        Platform.environment[gceMetadataHostEnvVar] ?? defaultMetadataHost;
-    final serviceAccountPrefix =
-        'http://$metadataHost/$_serviceAccountUrlInfix';
-
-    final scopesUrl = Uri.parse('$serviceAccountPrefix/$encodedEmail/scopes');
-    final tokenUrl = Uri.parse('$serviceAccountPrefix/$encodedEmail/token');
     return MetadataServerAuthorizationFlow._(
       client,
       email,
-      scopesUrl,
-      tokenUrl,
+      gceMetadataUrl('instance/service-accounts/$encodedEmail/scopes'),
+      gceMetadataUrl('instance/service-accounts/$encodedEmail/token'),
     );
   }
 
@@ -56,17 +46,15 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
 
   @override
   Future<AccessCredentials> run() async {
-    final results = await Future.wait([
-      _client.requestJson(
-        http.Request('GET', _tokenUrl)..headers.addAll(metadataFlavorHeader),
-        'Failed to obtain access credentials.',
-      ),
-      _getScopes(),
-    ]);
-    final json = results.first as Map<String, dynamic>;
+    final json = await _client.requestJson(
+      http.Request('GET', _tokenUrl)
+        ..headers.addAll(cloud_constants.metadataFlavorHeaders),
+      'Failed to obtain access credentials.',
+    );
     final accessToken = parseAccessToken(json);
 
-    final scopes = (results.last as String)
+    final scopesString = await _getScopes();
+    final scopes = scopesString
         .replaceAll('\n', ' ')
         .split(' ')
         .where((part) => part.isNotEmpty)
@@ -78,7 +66,7 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   Future<String> _getScopes() async {
     final response = await _client.get(
       _scopesUrl,
-      headers: metadataFlavorHeader,
+      headers: cloud_constants.metadataFlavorHeaders,
     );
     return response.body;
   }

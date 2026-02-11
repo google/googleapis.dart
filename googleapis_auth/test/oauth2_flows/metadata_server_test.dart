@@ -90,7 +90,7 @@ void main() {
             } else {
               return successfulScopes(request);
             }
-          }, count: 2),
+          }),
           expectClose: false,
         ),
       );
@@ -103,13 +103,11 @@ void main() {
         mockClient(
           expectAsync1((request) {
             if (requestNr++ == 0) {
-              // Dart 3 change that can't be fixed while we support Dart 2.x
-              // ignore: avoid_redundant_argument_values
-              return transportFailure.get(Uri.http('failure', ''));
+              return transportFailure.get(Uri.http('failure'));
             } else {
               return successfulScopes(request);
             }
-          }, count: 2),
+          }),
           expectClose: false,
         ),
       );
@@ -124,9 +122,7 @@ void main() {
             if (requestNr++ == 0) {
               return successfulAccessToken(request);
             } else {
-              // Dart 3 change that can't be fixed while we support Dart 2.x
-              // ignore: avoid_redundant_argument_values
-              return transportFailure.get(Uri.http('failure', ''));
+              return transportFailure.get(Uri.http('failure'));
             }
           }, count: 2),
           expectClose: false,

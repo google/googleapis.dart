@@ -415,15 +415,7 @@ void main() {
 
       expect(
         () => impersonated.sign([1, 2, 3]),
-        throwsA(
-          isServerRequestFailedException
-              .having((e) => e.statusCode, 'statusCode', 403)
-              .having(
-                (e) => e.toString(),
-                'message',
-                contains('Failed to sign blob via IAM'),
-              ),
-        ),
+        throwsA(isA<http.ClientException>()),
       );
 
       impersonated.close();
@@ -472,13 +464,7 @@ void main() {
 
       expect(
         () => impersonated.sign([1, 2, 3]),
-        throwsA(
-          isServerRequestFailedException.having(
-            (e) => e.toString(),
-            'message',
-            contains('missing signedBlob field'),
-          ),
-        ),
+        throwsA(isA<http.ClientException>()),
       );
 
       impersonated.close();

@@ -2,12 +2,14 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:convert';
-import 'dart:io';
+/// @docImport 'dart:io';
+library;
 
+import 'dart:convert';
+
+import 'package:google_cloud/general.dart';
 import 'package:http/http.dart' as http;
 
-import 'exceptions.dart';
 import 'utils.dart';
 
 /// Signs data using the IAM Credentials API's signBlob endpoint.
@@ -47,8 +49,6 @@ class IAMSigner {
   final String? _serviceAccountEmail;
   final String _endpoint;
 
-  String? _cachedEmail;
-
   /// Creates an [IAMSigner] instance.
   ///
   /// [client] is used for making HTTP requests to the metadata server and
@@ -58,7 +58,7 @@ class IAMSigner {
   /// signing. If not provided, it will be fetched from the GCE metadata server.
   ///
   /// [universeDomain] specifies the universe domain for constructing the IAM
-  /// endpoint. Defaults to [defaultUniverseDomain] (googleapis.com).
+  /// endpoint. Defaults to [defaultUniverseDomain].
   ///
   /// [endpoint] specifies a custom IAM Credentials API endpoint URL.
   /// If provided, takes precedence over [universeDomain].
@@ -76,41 +76,39 @@ class IAMSigner {
   /// If an email was provided in the constructor, returns that email.
   /// Otherwise, queries the GCE metadata server to retrieve the default
   /// service account email.
-  Future<String> getServiceAccountEmail() async {
+  ///
+  /// The result is cached for the lifetime of the Dart process.
+  /// Subsequent calls return the cached value without performing discovery
+  /// again.
+  ///
+  /// If [refresh] is `true`, the cache is cleared and the value is re-computed.
+  ///
+  /// If the metadata server cannot be contacted, a [SocketException] is
+  /// thrown.
+  ///
+  /// If the metadata server returns a non-200 status code, a [HttpException] is
+  /// thrown.
+  Future<String> getServiceAccountEmail({bool refresh = false}) async {
     if (_serviceAccountEmail != null) {
       return _serviceAccountEmail;
     }
 
-    if (_cachedEmail != null) {
-      return _cachedEmail!;
-    }
-
-    final metadataHost =
-        Platform.environment[gceMetadataHostEnvVar] ?? defaultMetadataHost;
-    final emailUrl = Uri.parse(
-      'http://$metadataHost/computeMetadata/v1/instance/service-accounts/default/email',
+    return serviceAccountEmailFromMetadataServer(
+      client: _client,
+      refresh: refresh,
     );
-
-    final response = await _client.get(emailUrl, headers: metadataFlavorHeader);
-    if (response.statusCode != 200) {
-      throw ServerRequestFailedException(
-        'Failed to get service account email from metadata server.',
-        statusCode: response.statusCode,
-        responseContent: response.body,
-      );
-    }
-
-    _cachedEmail = response.body.trim();
-    return _cachedEmail!;
   }
 
   /// Signs the given [data] using the IAM Credentials API.
   ///
   /// Returns the signature as a String (base64-encoded).
   ///
-  /// Throws a [ServerRequestFailedException] if the signing operation fails.
-  Future<String> sign(List<int> data) async {
-    final email = await getServiceAccountEmail();
+  /// If [refresh] is `true`, the service account email cache is cleared and
+  /// re-computed before signing.
+  ///
+  /// Throws [http.ClientException] if the signing operation fails.
+  Future<String> sign(List<int> data, {bool refresh = false}) async {
+    final email = await getServiceAccountEmail(refresh: refresh);
     final encodedEmail = Uri.encodeComponent(email);
 
     final signBlobUrl = Uri.parse(
@@ -118,20 +116,28 @@ class IAMSigner {
     );
 
     final requestBody = jsonEncode({'payload': base64Encode(data)});
-    final request = http.Request('POST', signBlobUrl)
-      ..headers['Content-Type'] = 'application/json'
-      ..body = requestBody;
-
-    final responseJson = await _client.requestJson(
-      request,
-      'Failed to sign blob via IAM.',
+    final response = await _client.post(
+      signBlobUrl,
+      headers: {'Content-Type': 'application/json'},
+      body: requestBody,
     );
+
+    if (response.statusCode != 200) {
+      throw http.ClientException(
+        'Failed to sign blob via IAM. '
+        'Status: ${response.statusCode}, Body: ${response.body}',
+        signBlobUrl,
+      );
+    }
+
+    final responseJson = jsonDecode(response.body) as Map<String, dynamic>;
 
     return switch (responseJson) {
       {'signedBlob': final String signedBlob} => signedBlob,
-      _ => throw ServerRequestFailedException(
-        'IAM signBlob response missing signedBlob field.',
-        responseContent: responseJson,
+      _ => throw http.ClientException(
+        'IAM signBlob response missing signedBlob field. '
+        'Body: ${response.body}',
+        signBlobUrl,
       ),
     };
   }
