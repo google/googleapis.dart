@@ -47,9 +47,10 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   @override
   Future<AccessCredentials> run() async {
     final json = await _client.requestJson(
-      http.Request('GET', _tokenUrl)
-        ..headers.addAll(cloud_constants.metadataFlavorHeaders),
+      'GET',
+      _tokenUrl,
       'Failed to obtain access credentials.',
+      headers: cloud_constants.metadataFlavorHeaders,
     );
     final accessToken = parseAccessToken(json);
 

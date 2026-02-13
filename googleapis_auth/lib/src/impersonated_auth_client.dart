@@ -160,13 +160,12 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
       'lifetime': '${_lifetime.inSeconds}s',
     });
 
-    final request = http.Request('POST', tokenUrl)
-      ..headers['Content-Type'] = 'application/json'
-      ..body = requestBody;
-
     final responseJson = await _sourceClient.requestJson(
-      request,
+      'POST',
+      tokenUrl,
       'Failed to generate access token for impersonated service account.',
+      headers: {'Content-Type': 'application/json'},
+      body: requestBody,
     );
 
     final (accessToken, expireTime) = switch (responseJson) {
