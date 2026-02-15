@@ -82,11 +82,8 @@ class IAMSigner {
   ///
   /// If [refresh] is `true`, the cache is cleared and the value is re-computed.
   ///
-  /// If the metadata server cannot be contacted, a [SocketException] is
-  /// thrown.
-  ///
-  /// If the metadata server returns a non-200 status code, a [HttpException] is
-  /// thrown.
+  /// If the metadata server cannot be contacted or returns a non-200 status
+  /// code, a [MetadataServerException] is thrown.
   Future<String> getServiceAccountEmail({bool refresh = false}) async =>
       serviceAccountEmail ??
       await serviceAccountEmailFromMetadataServer(

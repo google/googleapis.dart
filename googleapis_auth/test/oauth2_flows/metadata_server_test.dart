@@ -73,7 +73,7 @@ void main() {
         ),
       );
 
-      final credentials = await flow.run();
+      final credentials = await flow.run(refresh: true);
       expect(credentials.accessToken.data, equals('atok'));
       expect(credentials.accessToken.type, equals('Bearer'));
       expect(credentials.scopes, equals(['s1', 's2']));
@@ -94,7 +94,7 @@ void main() {
           expectClose: false,
         ),
       );
-      expect(flow.run(), throwsA(isServerRequestFailedException));
+      expect(flow.run(refresh: true), throwsA(isServerRequestFailedException));
     });
 
     test('token-transport-error', () {
@@ -111,7 +111,7 @@ void main() {
           expectClose: false,
         ),
       );
-      expect(flow.run(), throwsA(isTransportException));
+      expect(flow.run(refresh: true), throwsA(isTransportException));
     });
 
     test('scopes-transport-error', () {
@@ -128,7 +128,7 @@ void main() {
           expectClose: false,
         ),
       );
-      expect(flow.run(), throwsA(isTransportException));
+      expect(flow.run(refresh: true), throwsA(isTransportException));
     });
   });
 }

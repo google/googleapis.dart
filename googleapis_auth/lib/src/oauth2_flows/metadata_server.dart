@@ -20,7 +20,6 @@ import 'base_flow.dart';
 /// `$GCE_METADATA_HOST`.
 class MetadataServerAuthorizationFlow extends BaseFlow {
   final String email;
-  final Uri _scopesUrl;
   final Uri _tokenUrl;
   final http.Client _client;
 
@@ -32,7 +31,6 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     return MetadataServerAuthorizationFlow._(
       client,
       email,
-      gceMetadataUrl('instance/service-accounts/$encodedEmail/scopes'),
       gceMetadataUrl('instance/service-accounts/$encodedEmail/token'),
     );
   }
@@ -40,12 +38,11 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   MetadataServerAuthorizationFlow._(
     this._client,
     this.email,
-    this._scopesUrl,
     this._tokenUrl,
   );
 
   @override
-  Future<AccessCredentials> run() async {
+  Future<AccessCredentials> run({bool refresh = false}) async {
     final json = await _client.requestJson(
       'GET',
       _tokenUrl,
@@ -54,7 +51,7 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     );
     final accessToken = parseAccessToken(json);
 
-    final scopesString = await _getScopes();
+    final scopesString = await _getScopes(refresh: refresh);
     final scopes = scopesString
         .replaceAll('\n', ' ')
         .split(' ')
@@ -64,11 +61,9 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     return AccessCredentials(accessToken, null, scopes);
   }
 
-  Future<String> _getScopes() async {
-    final response = await _client.get(
-      _scopesUrl,
-      headers: cloud_constants.metadataFlavorHeaders,
-    );
-    return response.body;
-  }
+  Future<String> _getScopes({bool refresh = false}) async => getMetadataValue(
+    'instance/service-accounts/$email/scopes',
+    client: _client,
+    refresh: refresh,
+  );
 }

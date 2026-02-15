@@ -7,6 +7,7 @@ library;
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:google_cloud/general.dart';
 import 'package:googleapis_auth/src/iam_signer.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
@@ -69,7 +70,8 @@ void main() {
       );
     });
 
-    test('getServiceAccountEmail throws SocketException on error', () async {
+    test('getServiceAccountEmail throws MetadataServerException on error',
+        () async {
       final client = MockClient((request) async {
         throw const SocketException('Failed to connect');
       });
@@ -78,7 +80,7 @@ void main() {
       await expectLater(
         signer.getServiceAccountEmail(refresh: true),
         throwsA(
-          isA<SocketException>().having(
+          isA<MetadataServerException>().having(
             (e) => e.message,
             'message',
             contains('Could not connect to metadata.google.internal.'),
