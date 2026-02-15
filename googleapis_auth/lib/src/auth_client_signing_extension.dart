@@ -38,6 +38,22 @@ import 'utils.dart';
 /// final signature = await client.sign(utf8.encode('data to sign'));
 /// ```
 extension AuthClientSigningExtension on AuthClient {
+  /// Returns the service account email associated with this client.
+  ///
+  /// If the client was created with explicit [ServiceAccountCredentials],
+  /// returns the email from those credentials.
+  ///
+  /// Otherwise, queries the GCE metadata server to retrieve the default
+  /// service account email.
+  ///
+  /// The result is cached for the lifetime of the Dart process by the
+  /// underlying [IAMSigner].
+  ///
+  /// If [refresh] is `true`, the cache is cleared and the value is re-computed.
+  Future<String> getServiceAccountEmail({bool refresh = false}) async =>
+      serviceAccountCredentials?.email ??
+      await IAMSigner(this).getServiceAccountEmail(refresh: refresh);
+
   /// Signs some bytes using the credentials from this auth client.
   ///
   /// The signing behavior depends on the auth client type:
