@@ -94,6 +94,8 @@ void main() {
           expectClose: false,
         ),
       );
+      // parseAccessToken still throws ServerRequestFailedException if keys are
+      // missing
       expect(flow.run(refresh: true), throwsA(isServerRequestFailedException));
     });
 
@@ -111,6 +113,7 @@ void main() {
           expectClose: false,
         ),
       );
+      // getMetadataValue does not wrap custom TransportException
       expect(flow.run(refresh: true), throwsA(isTransportException));
     });
 
@@ -128,6 +131,7 @@ void main() {
           expectClose: false,
         ),
       );
+      // getMetadataValue does not wrap custom TransportException
       expect(flow.run(refresh: true), throwsA(isTransportException));
     });
   });

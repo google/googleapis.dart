@@ -3,8 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:convert';
 
-import 'package:google_cloud/constants.dart' as cloud_constants;
 import 'package:google_cloud/general.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,35 +20,22 @@ import 'base_flow.dart';
 /// `$GCE_METADATA_HOST`.
 class MetadataServerAuthorizationFlow extends BaseFlow {
   final String email;
-  final Uri _tokenUrl;
   final http.Client _client;
 
-  factory MetadataServerAuthorizationFlow(
-    http.Client client, {
-    String email = 'default',
-  }) {
-    final encodedEmail = Uri.encodeComponent(email);
-    return MetadataServerAuthorizationFlow._(
-      client,
-      email,
-      gceMetadataUrl('instance/service-accounts/$encodedEmail/token'),
-    );
-  }
-
-  MetadataServerAuthorizationFlow._(
-    this._client,
-    this.email,
-    this._tokenUrl,
-  );
+  MetadataServerAuthorizationFlow(
+    this._client, {
+    this.email = 'default',
+  });
 
   @override
   Future<AccessCredentials> run({bool refresh = false}) async {
-    final json = await _client.requestJson(
-      'GET',
-      _tokenUrl,
-      'Failed to obtain access credentials.',
-      headers: cloud_constants.metadataFlavorHeaders,
+    final tokenJsonString = await getMetadataValue(
+      'instance/service-accounts/$email/token',
+      client: _client,
+      refresh: refresh,
+      cache: false,
     );
+    final json = jsonDecode(tokenJsonString) as Map<String, dynamic>;
     final accessToken = parseAccessToken(json);
 
     final scopesString = await _getScopes(refresh: refresh);
