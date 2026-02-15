@@ -29,11 +29,9 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
 
   @override
   Future<AccessCredentials> run({bool refresh = false}) async {
-    final tokenJsonString = await getMetadataValue(
+    final tokenJsonString = await fetchMetadataValue(
       'instance/service-accounts/$email/token',
       client: _client,
-      refresh: refresh,
-      cache: false,
     );
     final json = jsonDecode(tokenJsonString) as Map<String, dynamic>;
     final accessToken = parseAccessToken(json);
