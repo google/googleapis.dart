@@ -263,6 +263,7 @@ void main() {
             return http.Response(
               jsonEncode({
                 'signedBlob': base64Encode([10, 20, 30]),
+                'keyId': 'key-id',
               }),
               200,
               headers: jsonContentType,
@@ -290,7 +291,7 @@ void main() {
       );
 
       final signature = await impersonated.sign([1, 2, 3, 4, 5]);
-      expect(signature, equals(base64Encode([10, 20, 30])));
+      expect(signature.signedBlob, equals(base64Encode([10, 20, 30])));
 
       impersonated.close();
     });

@@ -35,7 +35,10 @@ void main() {
           expect(request.url.toString(), contains('test-email%40example.com'));
           final body = jsonDecode(request.body) as Map<String, dynamic>;
           expect(body['payload'], isNotNull);
-          return Response(jsonEncode({'signedBlob': 'c2lnbmF0dXJl'}), 200);
+          return Response(
+            jsonEncode({'signedBlob': 'c2lnbmF0dXJl', 'keyId': 'key-id'}),
+            200,
+          );
         }
         if (request.url.path.endsWith('/email')) {
           return Response('test-email@example.com', 200);
@@ -45,7 +48,7 @@ void main() {
 
       final signer = IAMSigner(client);
       final signature = await signer.sign([1, 2, 3], refresh: true);
-      expect(signature, 'c2lnbmF0dXJl');
+      expect(signature.signedBlob, 'c2lnbmF0dXJl');
     });
 
     test('sign throws ClientException on error', () async {

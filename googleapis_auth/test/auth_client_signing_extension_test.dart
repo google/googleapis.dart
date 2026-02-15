@@ -49,9 +49,9 @@ void main() {
     // Should use local RSA signing, no HTTP requests to IAM API
     final signature = await client.sign(dataToSign);
 
-    expect(signature, isNotEmpty);
+    expect(signature.signedBlob, isNotEmpty);
     expect(
-      signature.length,
+      signature.signedBlob.length,
       equals(344),
     ); // RSA-2048 signature base64-encoded length
 
@@ -85,6 +85,7 @@ void main() {
           return http.Response(
             jsonEncode({
               'signedBlob': base64Encode([1, 2, 3, 4, 5]),
+              'keyId': 'key-id',
             }),
             200,
             headers: jsonContentType,
@@ -113,7 +114,7 @@ void main() {
 
     final signature = await impersonated.sign(dataToSign);
 
-    expect(signature, equals(base64Encode([1, 2, 3, 4, 5])));
+    expect(signature.signedBlob, equals(base64Encode([1, 2, 3, 4, 5])));
 
     impersonated.close();
   });
@@ -146,6 +147,7 @@ void main() {
           return http.Response(
             jsonEncode({
               'signedBlob': base64Encode([5, 6, 7, 8]),
+              'keyId': 'key-id',
             }),
             200,
             headers: jsonContentType,
@@ -179,7 +181,7 @@ void main() {
       impersonated,
     ).sign(dataToSign, endpoint: 'https://iamcredentials.example.com');
 
-    expect(signature, equals(base64Encode([5, 6, 7, 8])));
+    expect(signature.signedBlob, equals(base64Encode([5, 6, 7, 8])));
 
     impersonated.close();
   });
@@ -209,6 +211,7 @@ void main() {
         return http.Response(
           jsonEncode({
             'signedBlob': base64Encode([10, 20, 30]),
+            'keyId': 'key-id',
           }),
           200,
           headers: jsonContentType,
@@ -230,7 +233,7 @@ void main() {
 
     final signature = await client.sign(dataToSign);
 
-    expect(signature, equals(base64Encode([10, 20, 30])));
+    expect(signature.signedBlob, equals(base64Encode([10, 20, 30])));
 
     client.close();
   }, testOn: 'vm');
@@ -244,6 +247,7 @@ void main() {
         return http.Response(
           jsonEncode({
             'signedBlob': base64Encode([5, 6, 7]),
+            'keyId': 'key-id',
           }),
           200,
           headers: jsonContentType,
@@ -268,7 +272,7 @@ void main() {
       endpoint: 'https://iamcredentials.example.com',
     );
 
-    expect(signature, equals(base64Encode([5, 6, 7])));
+    expect(signature.signedBlob, equals(base64Encode([5, 6, 7])));
 
     client.close();
   }, testOn: 'vm');

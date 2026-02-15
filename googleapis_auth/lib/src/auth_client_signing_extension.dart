@@ -56,7 +56,8 @@ extension AuthClientSigningExtension on AuthClient {
   /// domain (e.g., `https://iamcredentials.googleapis.com` for the default
   /// universe, or a custom universe domain from the service account JSON).
   ///
-  /// Returns the signature as a String (base64-encoded).
+  /// Returns a record containing the signature as a base64-encoded String and
+  /// optionally the key ID used to sign the blob (if available).
   ///
   /// Example:
   /// ```dart
@@ -65,9 +66,12 @@ extension AuthClientSigningExtension on AuthClient {
   /// final client = await clientViaServiceAccount(credentials, scopes);
   /// final data = utf8.encode('data to sign');
   /// final signature = await client.sign(data);
-  /// print('Signature (base64): $signature');
+  /// print('Signature (base64): ${signature.signedBlob}');
   /// ```
-  Future<String> sign(List<int> data, {String? endpoint}) async {
+  Future<({String signedBlob, String? keyId})> sign(
+    List<int> data, {
+    String? endpoint,
+  }) async {
     // Check if this is an impersonated client
     if (this is ImpersonatedAuthClient) {
       final impersonated = this as ImpersonatedAuthClient;
@@ -79,7 +83,10 @@ extension AuthClientSigningExtension on AuthClient {
 
     if (serviceAccountCreds != null) {
       // Use local signing with service account credentials
-      return base64Encode(serviceAccountCreds.sign(data));
+      return (
+        signedBlob: base64Encode(serviceAccountCreds.sign(data)),
+        keyId: null,
+      );
     }
 
     // If we're NOT using local signing, use IAM API signing

@@ -6,7 +6,6 @@
 library;
 
 import 'dart:convert';
-
 import 'package:google_cloud/general.dart';
 import 'package:http/http.dart' as http;
 
@@ -46,8 +45,8 @@ import 'utils.dart';
 /// ```
 class IAMSigner {
   final http.Client _client;
-  final String? _serviceAccountEmail;
-  final String _endpoint;
+  final String? serviceAccountEmail;
+  final String endpoint;
 
   /// Creates an [IAMSigner] instance.
   ///
@@ -64,16 +63,16 @@ class IAMSigner {
   /// If provided, takes precedence over [universeDomain].
   IAMSigner(
     http.Client client, {
-    String? serviceAccountEmail,
+    this.serviceAccountEmail,
     String? endpoint,
     String universeDomain = defaultUniverseDomain,
   }) : _client = client,
-       _serviceAccountEmail = serviceAccountEmail,
-       _endpoint = endpoint ?? 'https://iamcredentials.$universeDomain';
+       endpoint = endpoint ?? 'https://iamcredentials.$universeDomain';
 
   /// Returns the service account email.
   ///
-  /// If an email was provided in the constructor, returns that email.
+  /// If an [serviceAccountEmail] was provided in the constructor, returns that
+  /// email.
   /// Otherwise, queries the GCE metadata server to retrieve the default
   /// service account email.
   ///
@@ -88,34 +87,51 @@ class IAMSigner {
   ///
   /// If the metadata server returns a non-200 status code, a [HttpException] is
   /// thrown.
-  Future<String> getServiceAccountEmail({bool refresh = false}) async {
-    if (_serviceAccountEmail != null) {
-      return _serviceAccountEmail;
-    }
-
-    return serviceAccountEmailFromMetadataServer(
-      client: _client,
-      refresh: refresh,
-    );
-  }
+  Future<String> getServiceAccountEmail({bool refresh = false}) async =>
+      serviceAccountEmail ??
+      await serviceAccountEmailFromMetadataServer(
+        client: _client,
+        refresh: refresh,
+      );
 
   /// Signs the given [data] using the IAM Credentials API.
   ///
-  /// Returns the signature as a String (base64-encoded).
+  /// Returns a record containing the signature as a base64-encoded String and
+  /// the key ID used to sign the blob.
   ///
   /// If [refresh] is `true`, the service account email cache is cleared and
   /// re-computed before signing.
   ///
+  /// [delegates] specifies the sequence of service accounts in a delegation
+  /// chain.
+  ///
+  /// If [serviceAccountEmail] is not set, [getServiceAccountEmail] is called.
+  ///
+  /// Each service account must be granted the `roles/iam.serviceAccountTokenCreator`
+  /// role on its next service account in the chain. The last service account in
+  /// the chain must be granted the `roles/iam.serviceAccountTokenCreator` role
+  /// on the service account that is specified by [serviceAccountEmail] (or the
+  /// discovered service account email).
+  ///
   /// Throws [http.ClientException] if the signing operation fails.
-  Future<String> sign(List<int> data, {bool refresh = false}) async {
-    final email = await getServiceAccountEmail(refresh: refresh);
+  Future<({String signedBlob, String keyId})> sign(
+    List<int> data, {
+    bool refresh = false,
+    List<String>? delegates,
+  }) async {
+    final email =
+        serviceAccountEmail ?? await getServiceAccountEmail(refresh: refresh);
     final encodedEmail = Uri.encodeComponent(email);
 
     final signBlobUrl = Uri.parse(
-      '$_endpoint/v1/projects/-/serviceAccounts/$encodedEmail:signBlob',
+      '$endpoint/v1/projects/-/serviceAccounts/$encodedEmail:signBlob',
     );
 
-    final requestBody = jsonEncode({'payload': base64Encode(data)});
+    final requestBody = jsonEncode({
+      'payload': base64Encode(data),
+      'delegates': ?delegates,
+    });
+
     final response = await _client.post(
       signBlobUrl,
       headers: {'Content-Type': 'application/json'},
@@ -132,13 +148,17 @@ class IAMSigner {
 
     final responseJson = jsonDecode(response.body) as Map<String, dynamic>;
 
-    return switch (responseJson) {
-      {'signedBlob': final String signedBlob} => signedBlob,
-      _ => throw http.ClientException(
-        'IAM signBlob response missing signedBlob field. '
-        'Body: ${response.body}',
-        signBlobUrl,
-      ),
-    };
+    if (responseJson case {
+      'signedBlob': final String signedBlob,
+      'keyId': final String keyId,
+    }) {
+      return (signedBlob: signedBlob, keyId: keyId);
+    }
+
+    throw http.ClientException(
+      'IAM signBlob response missing signedBlob or keyId field. '
+      'Body: ${response.body}',
+      signBlobUrl,
+    );
   }
 }
