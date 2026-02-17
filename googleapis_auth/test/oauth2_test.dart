@@ -80,7 +80,7 @@ void main() {
       expect(credentials.privateKey, equals(testPrivateKeyString));
       expect(credentials.impersonatedUser, isNull);
       expect(credentials.projectId, 'test-project');
-      expect(credentials.universeDomain, equals('googleapis.com'));
+      expect(credentials.universeDomain, equals(defaultUniverseDomain));
     });
 
     test('from-valid-individual-params-with-user', () {
@@ -96,7 +96,7 @@ void main() {
       expect(credentials.privateKey, equals(testPrivateKeyString));
       expect(credentials.impersonatedUser, equals('x@y.com'));
       expect(credentials.projectId, 'test-project');
-      expect(credentials.universeDomain, equals('googleapis.com'));
+      expect(credentials.universeDomain, equals(defaultUniverseDomain));
     });
 
     test('from-json-string', () {

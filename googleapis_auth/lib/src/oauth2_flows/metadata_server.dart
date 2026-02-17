@@ -3,8 +3,9 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:io';
+import 'dart:convert';
 
+import 'package:google_cloud/general.dart';
 import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
@@ -18,68 +19,32 @@ import 'base_flow.dart';
 /// metadata server, looking first for one set in the environment under
 /// `$GCE_METADATA_HOST`.
 class MetadataServerAuthorizationFlow extends BaseFlow {
-  static const _serviceAccountUrlInfix =
-      'computeMetadata/v1/instance/service-accounts';
-
   final String email;
-  final Uri _scopesUrl;
-  final Uri _tokenUrl;
   final http.Client _client;
 
-  factory MetadataServerAuthorizationFlow(
-    http.Client client, {
-    String email = 'default',
-  }) {
-    final encodedEmail = Uri.encodeComponent(email);
-
-    final metadataHost =
-        Platform.environment[gceMetadataHostEnvVar] ?? defaultMetadataHost;
-    final serviceAccountPrefix =
-        'http://$metadataHost/$_serviceAccountUrlInfix';
-
-    final scopesUrl = Uri.parse('$serviceAccountPrefix/$encodedEmail/scopes');
-    final tokenUrl = Uri.parse('$serviceAccountPrefix/$encodedEmail/token');
-    return MetadataServerAuthorizationFlow._(
-      client,
-      email,
-      scopesUrl,
-      tokenUrl,
-    );
-  }
-
-  MetadataServerAuthorizationFlow._(
-    this._client,
-    this.email,
-    this._scopesUrl,
-    this._tokenUrl,
-  );
+  MetadataServerAuthorizationFlow(http.Client client, {this.email = 'default'})
+    : _client = client;
 
   @override
-  Future<AccessCredentials> run() async {
-    final results = await Future.wait([
-      _client.requestJson(
-        http.Request('GET', _tokenUrl)..headers.addAll(metadataFlavorHeader),
-        'Failed to obtain access credentials.',
-      ),
-      _getScopes(),
-    ]);
-    final json = results.first as Map<String, dynamic>;
+  Future<AccessCredentials> run({bool refresh = false}) async {
+    final tokenJsonString = await fetchMetadataValue(
+      'instance/service-accounts/$email/token',
+      client: _client,
+    );
+    final json = jsonDecode(tokenJsonString) as Map<String, dynamic>;
     final accessToken = parseAccessToken(json);
 
-    final scopes = (results.last as String)
+    final scopesString = await getMetadataValue(
+      'instance/service-accounts/$email/scopes',
+      client: _client,
+      refresh: refresh,
+    );
+    final scopes = scopesString
         .replaceAll('\n', ' ')
         .split(' ')
         .where((part) => part.isNotEmpty)
         .toList();
 
     return AccessCredentials(accessToken, null, scopes);
-  }
-
-  Future<String> _getScopes() async {
-    final response = await _client.get(
-      _scopesUrl,
-      headers: metadataFlavorHeader,
-    );
-    return response.body;
   }
 }

@@ -2,11 +2,14 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+/// @docImport 'auth_client.dart';
+library;
+
 import 'dart:convert';
 
-import 'auth_client.dart';
 import 'iam_signer.dart';
 import 'impersonated_auth_client.dart';
+import 'service_account_credentials.dart';
 import 'utils.dart';
 
 /// Extension providing smart signing capabilities for [AuthClient].
@@ -38,6 +41,22 @@ import 'utils.dart';
 /// final signature = await client.sign(utf8.encode('data to sign'));
 /// ```
 extension AuthClientSigningExtension on AuthClient {
+  /// Returns the service account email associated with this client.
+  ///
+  /// If the client was created with explicit [ServiceAccountCredentials],
+  /// returns the email from those credentials.
+  ///
+  /// Otherwise, queries the GCE metadata server to retrieve the default
+  /// service account email.
+  ///
+  /// The result is cached for the lifetime of the Dart process by the
+  /// underlying [IAMSigner].
+  ///
+  /// If [refresh] is `true`, the cache is cleared and the value is re-computed.
+  Future<String> getServiceAccountEmail({bool refresh = false}) async =>
+      serviceAccountCredentials?.email ??
+      await IAMSigner(this).getServiceAccountEmail(refresh: refresh);
+
   /// Signs some bytes using the credentials from this auth client.
   ///
   /// The signing behavior depends on the auth client type:
@@ -65,13 +84,13 @@ extension AuthClientSigningExtension on AuthClient {
   /// final client = await clientViaServiceAccount(credentials, scopes);
   /// final data = utf8.encode('data to sign');
   /// final signature = await client.sign(data);
-  /// print('Signature (base64): $signature');
+  /// print('Signature (base64): ${signature.signedBlob}');
   /// ```
   Future<String> sign(List<int> data, {String? endpoint}) async {
     // Check if this is an impersonated client
     if (this is ImpersonatedAuthClient) {
       final impersonated = this as ImpersonatedAuthClient;
-      return impersonated.sign(data);
+      return (await impersonated.sign(data)).signedBlob;
     }
 
     // Check if we have service account credentials for local signing
@@ -86,6 +105,6 @@ extension AuthClientSigningExtension on AuthClient {
     final universeDomain =
         serviceAccountCreds?.universeDomain ?? defaultUniverseDomain;
     endpoint ??= 'https://iamcredentials.$universeDomain';
-    return IAMSigner(this, endpoint: endpoint).sign(data);
+    return (await IAMSigner(this, endpoint: endpoint).sign(data)).signedBlob;
   }
 }

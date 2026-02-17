@@ -160,13 +160,12 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
       'lifetime': '${_lifetime.inSeconds}s',
     });
 
-    final request = http.Request('POST', tokenUrl)
-      ..headers['Content-Type'] = 'application/json'
-      ..body = requestBody;
-
     final responseJson = await _sourceClient.requestJson(
-      request,
+      'POST',
+      tokenUrl,
       'Failed to generate access token for impersonated service account.',
+      headers: {'Content-Type': 'application/json'},
+      body: requestBody,
     );
 
     final (accessToken, expireTime) = switch (responseJson) {
@@ -192,12 +191,13 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   /// This method calls the IAM Credentials API signBlob endpoint to sign data
   /// as the impersonated service account.
   ///
-  /// Returns the signature as a String
+  /// Returns a record containing the signature as a base64-encoded String and
+  /// the key ID used to sign the blob.
   ///
   /// Throws [ServerRequestFailedException] if the signing operation fails.
   ///
   /// See: https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/signBlob
-  Future<String> sign(List<int> data) {
+  Future<({String signedBlob, String keyId})> sign(List<int> data) {
     final signer = IAMSigner(
       _sourceClient,
       serviceAccountEmail: _targetServiceAccount,

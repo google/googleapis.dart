@@ -31,11 +31,13 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
     );
   }
 
-  if (credentials is Map && credentials['type'] == 'authorized_user') {
-    final clientId = ClientId(
-      credentials['client_id'] as String,
-      credentials['client_secret'] as String?,
-    );
+  if (credentials case {
+    'type': 'authorized_user',
+    'client_id': final String clientIdString,
+    'client_secret': final String? clientSecret,
+    'refresh_token': final String? refreshToken,
+  }) {
+    final clientId = ClientId(clientIdString, clientSecret);
     return AutoRefreshingClient(
       baseClient,
       const GoogleAuthEndpoints(),
@@ -45,7 +47,7 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
         AccessCredentials(
           // Hack: Create empty credentials that have expired.
           AccessToken('Bearer', '', DateTime(0).toUtc()),
-          credentials['refresh_token'] as String?,
+          refreshToken,
           scopes,
         ),
         baseClient,

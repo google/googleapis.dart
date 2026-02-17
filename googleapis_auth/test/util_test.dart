@@ -26,7 +26,7 @@ void main() {
     );
 
     await expectLater(
-      client.requestJson(Request('GET', Uri.parse('localhost:8080')), 'bob'),
+      client.requestJson('GET', Uri.parse('localhost:8080'), 'bob'),
       throwsA(
         isServerRequestFailedException
             .having(
@@ -47,7 +47,7 @@ void main() {
     );
 
     await expectLater(
-      client.requestJson(Request('GET', Uri.parse('localhost:8080')), 'bob'),
+      client.requestJson('GET', Uri.parse('localhost:8080'), 'bob'),
       throwsA(
         isServerRequestFailedException
             .having(
@@ -69,7 +69,7 @@ void main() {
     );
 
     await expectLater(
-      client.requestJson(Request('GET', Uri.parse('localhost:8080')), 'bob'),
+      client.requestJson('GET', Uri.parse('localhost:8080'), 'bob'),
       throwsA(
         isServerRequestFailedException
             .having(
@@ -90,7 +90,7 @@ void main() {
     );
 
     await expectLater(
-      client.requestJson(Request('GET', Uri.parse('localhost:8080')), 'bob'),
+      client.requestJson('GET', Uri.parse('localhost:8080'), 'bob'),
       throwsA(
         isServerRequestFailedException.having(
           (p0) => p0.statusCode,

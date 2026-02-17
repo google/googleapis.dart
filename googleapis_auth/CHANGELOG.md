@@ -1,14 +1,26 @@
-## 2.1.0-beta.1
-- Add `serviceAccountCredentials` getter to AuthClient
-- Added parsing for project_id and universe_domain properties for ServiceAccountCredentials
-- Add `sign()` method to `ServiceAccountCredentials` for RSA-SHA256 signing
-- Add `IAMSigner` class for signing via IAM Credentials API
-- Add `clientViaServiceAccountImpersonation()` function and `ImpersonatedAuthClient` class for service account impersonation via IAM Credentials API
-- Add `AuthClientSigningExtension` extension on `AuthClient` providing a universal `sign()` method that works across all auth contexts (service accounts, ADC, impersonated credentials)
-- Require `meta: ^1.0.2`
-- Require `sdk: ^3.9.0`
-- Drop unneeded `args` dependency.
+## 2.1.0-wip
+
+- `AuthClient`
+  - Added `serviceAccountCredentials` getter.
+  - Added `sign()` method via `AuthClientSigningExtension`.
+- `ServiceAccountCredentials`
+  - Added parsing for `projectId` and `universeDomain` properties.
+  - Added `sign()` method for RSA-SHA256 signing.
+- `IAMSigner`
+  - Now uses the unified metadata cache from `package:google_cloud`.
+- `MetadataServerAuthorizationFlow`
+  - Now uses `getMetadataValue` (caching) and `fetchMetadataValue`
+    (non-caching) from `package:google_cloud`.
+  - Added `refresh` support to `run()`.
+- Added `clientViaServiceAccountImpersonation()` function and
+  `ImpersonatedAuthClient` class for service account impersonation via IAM
+  Credentials API.
 - Export `RSAPrivateKey` which is exposed by `ServiceAccountCredentials`.
+- Modernized code using pattern matching and switch expressions.
+- Require `google_cloud: ^0.3.0`.
+- Require `meta: ^1.15.0`.
+- Require `sdk: ^3.9.0`.
+- Drop unneeded `args` dependency.
 
 ## 2.0.0
 

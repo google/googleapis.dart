@@ -4,51 +4,44 @@
 
 import 'dart:convert';
 
-import 'package:http/http.dart' show BaseRequest, Client, StreamedResponse;
+import 'package:http/http.dart' show Client, Request, StreamedResponse;
 import 'package:http_parser/http_parser.dart';
 
 import 'access_token.dart';
 import 'auth_endpoints.dart';
 import 'exceptions.dart';
-import 'http_client_base.dart';
 
 /// Due to differences of clock speed, network latency, etc. we
 /// will shorten expiry dates by 20 seconds.
 const maxExpectedTimeDiffInSeconds = 20;
 
-// Metadata server constants
-const metadataFlavorHeader = {'Metadata-Flavor': 'Google'};
-// - https://cloud.google.com/compute/docs/storing-retrieving-metadata#querying
-const defaultMetadataHost = 'metadata.google.internal';
-const gceMetadataHostEnvVar = 'GCE_METADATA_HOST';
-
-// Universe domain constants
+/// The default universe domain for Google Cloud services.
+///
+/// The universe domain is the root domain for Google Cloud API endpoints.
+/// The default is `googleapis.com`.
+///
+/// Trusted Partner Cloud (TPC) and Google Distributed Cloud (GDC) environments
+/// may use a different universe domain.
 const defaultUniverseDomain = 'googleapis.com';
 
-AccessToken parseAccessToken(Map<String, dynamic> jsonMap) {
-  final tokenType = jsonMap['token_type'];
-  final accessToken = jsonMap['access_token'];
-  final expiresIn = jsonMap['expires_in'];
-
-  if (accessToken is! String || expiresIn is! int || tokenType != 'Bearer') {
-    throw ServerRequestFailedException(
-      'Failed to exchange authorization code. Invalid server response.',
-      responseContent: jsonMap,
-    );
-  }
-
-  return AccessToken('Bearer', accessToken, expiryDate(expiresIn));
-}
+AccessToken parseAccessToken(Map<String, dynamic> jsonMap) => switch (jsonMap) {
+  {
+    'token_type': 'Bearer',
+    'access_token': final String accessToken,
+    'expires_in': final int expiresIn,
+  } =>
+    AccessToken('Bearer', accessToken, expiryDate(expiresIn)),
+  _ => throw ServerRequestFailedException(
+    'Failed to exchange authorization code. Invalid server response.',
+    responseContent: jsonMap,
+  ),
+};
 
 /// Constructs a [DateTime] which is [seconds] seconds from now with
 /// an offset of [maxExpectedTimeDiffInSeconds]. Result is UTC time.
 DateTime expiryDate(int seconds) => DateTime.now().toUtc().add(
   Duration(seconds: seconds - maxExpectedTimeDiffInSeconds),
 );
-
-/// Constant for the 'application/x-www-form-urlencoded' content type
-const _contentTypeUrlEncoded =
-    'application/x-www-form-urlencoded; charset=utf-8';
 
 Future<Map<String, dynamic>> _readJsonMapFromResponse(
   StreamedResponse response,
@@ -95,9 +88,30 @@ Future<Map<String, dynamic>> _readJsonMapFromResponse(
 
 extension ClientExtensions on Client {
   Future<Map<String, dynamic>> requestJson(
-    BaseRequest request,
-    String errorHeader,
-  ) async {
+    String method,
+    Uri url,
+    String errorHeader, {
+    Map<String, String>? headers,
+    Object? body,
+  }) async {
+    final request = Request(method, url);
+
+    if (headers != null) {
+      request.headers.addAll(headers);
+    }
+    switch (body) {
+      case null:
+        break;
+      case final String body:
+        request.body = body;
+      case final List<int> body:
+        request.bodyBytes = body;
+      case final Map<String, String> body:
+        request.bodyFields = body;
+      case _:
+        throw ArgumentError.value(body, 'body', 'Unsupported body type.');
+    }
+
     final response = await send(request);
     final jsonMap = await _readJsonMapFromResponse(response);
 
@@ -117,19 +131,12 @@ extension ClientExtensions on Client {
   Future<Map<String, dynamic>> oauthTokenRequest(
     Map<String, String> postValues, {
     required AuthEndpoints authEndpoints,
-  }) async {
-    final body = Stream<List<int>>.value(
-      ascii.encode(
-        postValues.entries
-            .map((e) => '${e.key}=${Uri.encodeComponent(e.value)}')
-            .join('&'),
-      ),
-    );
-    final request = RequestImpl('POST', authEndpoints.tokenEndpoint, body)
-      ..headers['content-type'] = _contentTypeUrlEncoded;
-
-    return requestJson(request, 'Failed to obtain access credentials.');
-  }
+  }) async => requestJson(
+    'POST',
+    authEndpoints.tokenEndpoint,
+    'Failed to obtain access credentials.',
+    body: postValues,
+  );
 }
 
 /// Returns an error string for [json] if it contains error data in keys

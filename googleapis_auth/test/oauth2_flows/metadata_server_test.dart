@@ -73,7 +73,7 @@ void main() {
         ),
       );
 
-      final credentials = await flow.run();
+      final credentials = await flow.run(refresh: true);
       expect(credentials.accessToken.data, equals('atok'));
       expect(credentials.accessToken.type, equals('Bearer'));
       expect(credentials.scopes, equals(['s1', 's2']));
@@ -90,11 +90,13 @@ void main() {
             } else {
               return successfulScopes(request);
             }
-          }, count: 2),
+          }),
           expectClose: false,
         ),
       );
-      expect(flow.run(), throwsA(isServerRequestFailedException));
+      // parseAccessToken still throws ServerRequestFailedException if keys are
+      // missing
+      expect(flow.run(refresh: true), throwsA(isServerRequestFailedException));
     });
 
     test('token-transport-error', () {
@@ -103,17 +105,16 @@ void main() {
         mockClient(
           expectAsync1((request) {
             if (requestNr++ == 0) {
-              // Dart 3 change that can't be fixed while we support Dart 2.x
-              // ignore: avoid_redundant_argument_values
-              return transportFailure.get(Uri.http('failure', ''));
+              return transportFailure.get(Uri.http('failure'));
             } else {
               return successfulScopes(request);
             }
-          }, count: 2),
+          }),
           expectClose: false,
         ),
       );
-      expect(flow.run(), throwsA(isTransportException));
+      // getMetadataValue does not wrap custom TransportException
+      expect(flow.run(refresh: true), throwsA(isTransportException));
     });
 
     test('scopes-transport-error', () {
@@ -124,15 +125,14 @@ void main() {
             if (requestNr++ == 0) {
               return successfulAccessToken(request);
             } else {
-              // Dart 3 change that can't be fixed while we support Dart 2.x
-              // ignore: avoid_redundant_argument_values
-              return transportFailure.get(Uri.http('failure', ''));
+              return transportFailure.get(Uri.http('failure'));
             }
           }, count: 2),
           expectClose: false,
         ),
       );
-      expect(flow.run(), throwsA(isTransportException));
+      // getMetadataValue does not wrap custom TransportException
+      expect(flow.run(refresh: true), throwsA(isTransportException));
     });
   });
 }

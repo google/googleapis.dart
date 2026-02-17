@@ -263,6 +263,7 @@ void main() {
             return http.Response(
               jsonEncode({
                 'signedBlob': base64Encode([10, 20, 30]),
+                'keyId': 'key-id',
               }),
               200,
               headers: jsonContentType,
@@ -290,7 +291,7 @@ void main() {
       );
 
       final signature = await impersonated.sign([1, 2, 3, 4, 5]);
-      expect(signature, equals(base64Encode([10, 20, 30])));
+      expect(signature.signedBlob, equals(base64Encode([10, 20, 30])));
 
       impersonated.close();
     });
@@ -415,15 +416,7 @@ void main() {
 
       expect(
         () => impersonated.sign([1, 2, 3]),
-        throwsA(
-          isServerRequestFailedException
-              .having((e) => e.statusCode, 'statusCode', 403)
-              .having(
-                (e) => e.toString(),
-                'message',
-                contains('Failed to sign blob via IAM'),
-              ),
-        ),
+        throwsA(isA<http.ClientException>()),
       );
 
       impersonated.close();
@@ -472,13 +465,7 @@ void main() {
 
       expect(
         () => impersonated.sign([1, 2, 3]),
-        throwsA(
-          isServerRequestFailedException.having(
-            (e) => e.toString(),
-            'message',
-            contains('missing signedBlob field'),
-          ),
-        ),
+        throwsA(isA<http.ClientException>()),
       );
 
       impersonated.close();
