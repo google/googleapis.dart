@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:google_cloud/general.dart';
-
 import 'package:googleapis_auth/src/auth_client_signing_extension.dart';
 import 'package:googleapis_auth/src/auth_functions.dart';
 import 'package:googleapis_auth/src/impersonated_auth_client.dart';
@@ -184,18 +182,6 @@ void main() {
     expect(signature, equals(base64Encode([5, 6, 7, 8])));
 
     impersonated.close();
-  });
-
-  setUp(() async {
-    // Prime the service account email cache to ensure tests are deterministic
-    await serviceAccountEmailFromMetadataServer(
-      client: mockClient(
-        (request) async =>
-            http.Response('test@test.iam.gserviceaccount.com', 200),
-        expectClose: false,
-      ),
-      refresh: true,
-    );
   });
 
   test('sign without service account credentials uses IAM API', () async {
