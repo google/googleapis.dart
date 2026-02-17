@@ -4,11 +4,9 @@
 
 import 'dart:convert';
 
-import 'package:googleapis_auth/src/auth_client_signing_extension.dart';
-import 'package:googleapis_auth/src/auth_functions.dart';
+import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/impersonated_auth_client.dart';
 import 'package:googleapis_auth/src/service_account_client.dart';
-import 'package:googleapis_auth/src/service_account_credentials.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 
@@ -67,8 +65,8 @@ void main() {
 
     expect(signature, isNotEmpty);
     expect(
-      signature.length,
-      equals(344),
+      signature,
+      hasLength(344),
     ); // RSA-2048 signature base64-encoded length
 
     client.close();
@@ -95,7 +93,7 @@ void main() {
         );
       } else {
         // signBlob request via ImpersonatedAuthClient.sign()
-        expect(request.method, equals('POST'));
+        expect(request.method, 'POST');
         expect(request.url.toString(), contains(':signBlob'));
 
         return http.Response(
@@ -128,149 +126,161 @@ void main() {
 
     final signature = await impersonated.sign(dataToSign);
 
-    expect(signature.signedBlob, equals(base64Encode([1, 2, 3, 4, 5])));
+    expect(signature.signedBlob, base64Encode([1, 2, 3, 4, 5]));
 
     impersonated.close();
   });
 
-  test('explicitly calling extension on impersonated client delegates to '
-      'instance method', () async {
-    var requestCount = 0;
-    final baseClient = mockClient((request) async {
-      requestCount++;
+  test(
+    'calling extension on impersonated client delegates to instance method',
+    () async {
+      var requestCount = 0;
+      final baseClient = mockClient((request) async {
+        requestCount++;
 
-      if (requestCount == 1) {
-        // Initial generateAccessToken for impersonated client
-        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
-        return http.Response(
-          jsonEncode({
-            'accessToken': 'impersonated-token',
-            'expireTime': expireTime.toIso8601String(),
-          }),
-          200,
-          headers: jsonContentType,
-        );
-      } else {
-        // signBlob request via ImpersonatedAuthClient.sign()
-        expect(request.method, equals('POST'));
+        if (requestCount == 1) {
+          // Initial generateAccessToken for impersonated client
+          final expireTime = DateTime.now().toUtc().add(
+            const Duration(hours: 1),
+          );
+          return http.Response(
+            jsonEncode({
+              'accessToken': 'impersonated-token',
+              'expireTime': expireTime.toIso8601String(),
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        } else {
+          // signBlob request via ImpersonatedAuthClient.sign()
+          expect(request.method, 'POST');
+          expect(request.url.toString(), contains(':signBlob'));
+
+          return http.Response(
+            jsonEncode({
+              'signedBlob': base64Encode([5, 6, 7, 8]),
+              'keyId': 'key-id',
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }
+      }, expectClose: false);
+
+      final sourceCredentials = AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'source-token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
+      );
+      final sourceClient = authenticatedClient(baseClient, sourceCredentials);
+
+      final impersonated = await clientViaServiceAccountImpersonation(
+        sourceClient: sourceClient,
+        targetServiceAccount: 'target@project.iam.gserviceaccount.com',
+        targetScopes: ['https://www.googleapis.com/auth/cloud-platform'],
+      );
+
+      // Explicitly call the extension method with endpoint parameter
+      // The endpoint is ignored since ImpersonatedAuthClient uses its
+      // configured universe domain
+      final signature = await AuthClientSigningExtension(
+        impersonated,
+      ).sign(dataToSign, endpoint: 'https://iamcredentials.example.com');
+
+      expect(signature, base64Encode([5, 6, 7, 8]));
+
+      impersonated.close();
+    },
+  );
+
+  test(
+    'sign without service account credentials uses IAM API',
+    testOn: 'vm',
+    () async {
+      final baseClient = mockClient((request) async {
+        final metadataResponse = _mockMetadataResponse(request);
+        if (metadataResponse != null) return metadataResponse;
+
+        // IAM signBlob request
+        expect(request.method, 'POST');
         expect(request.url.toString(), contains(':signBlob'));
 
+        final body = jsonDecode(request.body) as Map<String, dynamic>;
+        expect(body['payload'], base64Encode(dataToSign));
+
         return http.Response(
           jsonEncode({
-            'signedBlob': base64Encode([5, 6, 7, 8]),
+            'signedBlob': base64Encode([10, 20, 30]),
             'keyId': 'key-id',
           }),
           200,
           headers: jsonContentType,
         );
-      }
-    }, expectClose: false);
+      }, expectClose: false);
 
-    final sourceCredentials = AccessCredentials(
-      AccessToken(
-        'Bearer',
-        'source-token',
-        DateTime.now().toUtc().add(const Duration(hours: 1)),
-      ),
-      null,
-      [],
-    );
-    final sourceClient = authenticatedClient(baseClient, sourceCredentials);
-
-    final impersonated = await clientViaServiceAccountImpersonation(
-      sourceClient: sourceClient,
-      targetServiceAccount: 'target@project.iam.gserviceaccount.com',
-      targetScopes: ['https://www.googleapis.com/auth/cloud-platform'],
-    );
-
-    // Explicitly call the extension method with endpoint parameter
-    // The endpoint is ignored since ImpersonatedAuthClient uses its
-    // configured universe domain
-    final signature = await AuthClientSigningExtension(
-      impersonated,
-    ).sign(dataToSign, endpoint: 'https://iamcredentials.example.com');
-
-    expect(signature, equals(base64Encode([5, 6, 7, 8])));
-
-    impersonated.close();
-  });
-
-  test('sign without service account credentials uses IAM API', () async {
-    final baseClient = mockClient((request) async {
-      final metadataResponse = _mockMetadataResponse(request);
-      if (metadataResponse != null) return metadataResponse;
-
-      // IAM signBlob request
-      expect(request.method, equals('POST'));
-      expect(request.url.toString(), contains(':signBlob'));
-
-      final body = jsonDecode(request.body) as Map<String, dynamic>;
-      expect(body['payload'], equals(base64Encode(dataToSign)));
-
-      return http.Response(
-        jsonEncode({
-          'signedBlob': base64Encode([10, 20, 30]),
-          'keyId': 'key-id',
-        }),
-        200,
-        headers: jsonContentType,
+      final credentials = AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
       );
-    }, expectClose: false);
+      final client = authenticatedClient(baseClient, credentials);
 
-    final credentials = AccessCredentials(
-      AccessToken(
-        'Bearer',
-        'token',
-        DateTime.now().toUtc().add(const Duration(hours: 1)),
-      ),
-      null,
-      [],
-    );
-    final client = authenticatedClient(baseClient, credentials);
+      final signature = await client.sign(dataToSign);
 
-    final signature = await client.sign(dataToSign);
+      expect(signature, base64Encode([10, 20, 30]));
 
-    expect(signature, equals(base64Encode([10, 20, 30])));
+      client.close();
+    },
+  );
 
-    client.close();
-  }, testOn: 'vm');
+  test(
+    'sign with custom endpoint extracts universe domain',
+    testOn: 'vm',
+    () async {
+      final baseClient = mockClient((request) async {
+        final metadataResponse = _mockMetadataResponse(request);
+        if (metadataResponse != null) return metadataResponse;
 
-  test('sign with custom endpoint extracts universe domain', () async {
-    final baseClient = mockClient((request) async {
-      final metadataResponse = _mockMetadataResponse(request);
-      if (metadataResponse != null) return metadataResponse;
+        // IAM signBlob request - verify custom universe domain is used
+        expect(request.url.host, 'iamcredentials.example.com');
 
-      // IAM signBlob request - verify custom universe domain is used
-      expect(request.url.host, equals('iamcredentials.example.com'));
+        return http.Response(
+          jsonEncode({
+            'signedBlob': base64Encode([5, 6, 7]),
+            'keyId': 'key-id',
+          }),
+          200,
+          headers: jsonContentType,
+        );
+      }, expectClose: false);
 
-      return http.Response(
-        jsonEncode({
-          'signedBlob': base64Encode([5, 6, 7]),
-          'keyId': 'key-id',
-        }),
-        200,
-        headers: jsonContentType,
+      final credentials = AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
       );
-    }, expectClose: false);
+      final client = authenticatedClient(baseClient, credentials);
 
-    final credentials = AccessCredentials(
-      AccessToken(
-        'Bearer',
-        'token',
-        DateTime.now().toUtc().add(const Duration(hours: 1)),
-      ),
-      null,
-      [],
-    );
-    final client = authenticatedClient(baseClient, credentials);
+      final signature = await client.sign(
+        dataToSign,
+        endpoint: 'https://iamcredentials.example.com',
+      );
 
-    final signature = await client.sign(
-      dataToSign,
-      endpoint: 'https://iamcredentials.example.com',
-    );
+      expect(signature, base64Encode([5, 6, 7]));
 
-    expect(signature, equals(base64Encode([5, 6, 7])));
-
-    client.close();
-  }, testOn: 'vm');
+      client.close();
+    },
+  );
 }

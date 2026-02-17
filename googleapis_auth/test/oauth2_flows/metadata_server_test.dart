@@ -22,8 +22,8 @@ void main() {
   const scopesUrl = '$apiUrl/instance/service-accounts/default/scopes';
 
   Future<Response> successfulAccessToken(Request request) async {
-    expect(request.method, equals('GET'));
-    expect(request.url.toString(), equals(tokenUrl));
+    expect(request.method, 'GET');
+    expect(request.url.toString(), tokenUrl);
     expect(request.headers, containsPair(apiHeaderKey, apiHeaderValue));
 
     final body = jsonEncode({
@@ -35,8 +35,8 @@ void main() {
   }
 
   Future<Response> invalidAccessToken(Request request) async {
-    expect(request.method, equals('GET'));
-    expect(request.url.toString(), equals(tokenUrl));
+    expect(request.method, 'GET');
+    expect(request.url.toString(), tokenUrl);
     expect(request.headers, containsPair(apiHeaderKey, apiHeaderValue));
 
     final body = jsonEncode({
@@ -48,91 +48,89 @@ void main() {
   }
 
   Future<Response> successfulScopes(Request request) {
-    expect(request.method, equals('GET'));
-    expect(request.url.toString(), equals(scopesUrl));
+    expect(request.method, 'GET');
+    expect(request.url.toString(), scopesUrl);
     expect(request.headers, containsPair(apiHeaderKey, apiHeaderValue));
 
     return Future.value(Response('s1\ns2', 200));
   }
 
-  group('metadata-server-authorization-flow', () {
-    test('successful', () async {
-      final flow = MetadataServerAuthorizationFlow(
-        mockClient(
-          expectAsync1((request) {
-            final url = request.url.toString();
-            if (url == tokenUrl) {
-              return successfulAccessToken(request);
-            } else if (url == scopesUrl) {
-              return successfulScopes(request);
-            } else {
-              fail('Invalid URL $url (expected: $tokenUrl or $scopesUrl).');
-            }
-          }, count: 2),
-          expectClose: false,
-        ),
-      );
+  test('successful run', () async {
+    final flow = MetadataServerAuthorizationFlow(
+      mockClient(
+        expectAsync1((request) {
+          final url = request.url.toString();
+          if (url == tokenUrl) {
+            return successfulAccessToken(request);
+          } else if (url == scopesUrl) {
+            return successfulScopes(request);
+          } else {
+            fail('Invalid URL $url (expected: $tokenUrl or $scopesUrl).');
+          }
+        }, count: 2),
+        expectClose: false,
+      ),
+    );
 
-      final credentials = await flow.run(refresh: true);
-      expect(credentials.accessToken.data, equals('atok'));
-      expect(credentials.accessToken.type, equals('Bearer'));
-      expect(credentials.scopes, equals(['s1', 's2']));
-      expectExpiryOneHourFromNow(credentials.accessToken);
-    });
+    final credentials = await flow.run(refresh: true);
+    expect(credentials.accessToken.data, 'atok');
+    expect(credentials.accessToken.type, 'Bearer');
+    expect(credentials.scopes, ['s1', 's2']);
+    expectExpiryOneHourFromNow(credentials.accessToken);
+  });
 
-    test('invalid-server-response', () {
-      var requestNr = 0;
-      final flow = MetadataServerAuthorizationFlow(
-        mockClient(
-          expectAsync1((request) {
-            if (requestNr++ == 0) {
-              return invalidAccessToken(request);
-            } else {
-              return successfulScopes(request);
-            }
-          }),
-          expectClose: false,
-        ),
-      );
-      // parseAccessToken still throws ServerRequestFailedException if keys are
-      // missing
-      expect(flow.run(refresh: true), throwsA(isServerRequestFailedException));
-    });
+  test('throws on invalid server response', () {
+    var requestNr = 0;
+    final flow = MetadataServerAuthorizationFlow(
+      mockClient(
+        expectAsync1((request) {
+          if (requestNr++ == 0) {
+            return invalidAccessToken(request);
+          } else {
+            return successfulScopes(request);
+          }
+        }),
+        expectClose: false,
+      ),
+    );
+    // parseAccessToken still throws ServerRequestFailedException if keys are
+    // missing
+    expect(flow.run(refresh: true), throwsA(isServerRequestFailedException));
+  });
 
-    test('token-transport-error', () {
-      var requestNr = 0;
-      final flow = MetadataServerAuthorizationFlow(
-        mockClient(
-          expectAsync1((request) {
-            if (requestNr++ == 0) {
-              return transportFailure.get(Uri.http('failure'));
-            } else {
-              return successfulScopes(request);
-            }
-          }),
-          expectClose: false,
-        ),
-      );
-      // getMetadataValue does not wrap custom TransportException
-      expect(flow.run(refresh: true), throwsA(isTransportException));
-    });
+  test('throws on token transport error', () {
+    var requestNr = 0;
+    final flow = MetadataServerAuthorizationFlow(
+      mockClient(
+        expectAsync1((request) {
+          if (requestNr++ == 0) {
+            return transportFailure.get(Uri.http('failure'));
+          } else {
+            return successfulScopes(request);
+          }
+        }),
+        expectClose: false,
+      ),
+    );
+    // getMetadataValue does not wrap custom TransportException
+    expect(flow.run(refresh: true), throwsA(isTransportException));
+  });
 
-    test('scopes-transport-error', () {
-      var requestNr = 0;
-      final flow = MetadataServerAuthorizationFlow(
-        mockClient(
-          expectAsync1((request) {
-            if (requestNr++ == 0) {
-              return successfulAccessToken(request);
-            } else {
-              return transportFailure.get(Uri.http('failure'));
-            }
-          }, count: 2),
-          expectClose: false,
-        ),
-      );
-      // getMetadataValue does not wrap custom TransportException
-      expect(flow.run(refresh: true), throwsA(isTransportException));
-    });
+  test('throws on scopes transport error', () {
+    var requestNr = 0;
+    final flow = MetadataServerAuthorizationFlow(
+      mockClient(
+        expectAsync1((request) {
+          if (requestNr++ == 0) {
+            return successfulAccessToken(request);
+          } else {
+            return transportFailure.get(Uri.http('failure'));
+          }
+        }, count: 2),
+        expectClose: false,
+      ),
+    );
+    // getMetadataValue does not wrap custom TransportException
+    expect(flow.run(refresh: true), throwsA(isTransportException));
   });
 }

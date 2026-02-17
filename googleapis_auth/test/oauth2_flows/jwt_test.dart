@@ -14,7 +14,7 @@ import '../test_utils.dart';
 
 void main() {
   Future<Response> successfulSignRequest(Request request) async {
-    expect(request.method, equals('POST'));
+    expect(request.method, 'POST');
     expect(request.url, googleOauth2TokenEndpoint);
 
     // We are not asserting what comes after '&assertion=' because this is
@@ -43,64 +43,62 @@ void main() {
     return Response(body, 200, headers: jsonContentType);
   }
 
-  group('jwt-flow', () {
-    const clientEmail = 'a@b.com';
-    final scopes = ['s1', 's2'];
+  const clientEmail = 'a@b.com';
+  final scopes = ['s1', 's2'];
 
-    test('successful', () async {
-      final flow = JwtFlow(
-        clientEmail,
-        testPrivateKey,
-        null,
-        scopes,
-        mockClient(expectAsync1(successfulSignRequest), expectClose: false),
-      );
+  test('successful run', () async {
+    final flow = JwtFlow(
+      clientEmail,
+      testPrivateKey,
+      null,
+      scopes,
+      mockClient(expectAsync1(successfulSignRequest), expectClose: false),
+    );
 
-      final credentials = await flow.run();
-      expect(credentials.accessToken.data, equals('atok'));
-      expect(credentials.accessToken.type, equals('Bearer'));
-      expect(credentials.scopes, equals(['s1', 's2']));
-      expectExpiryOneHourFromNow(credentials.accessToken);
-    });
+    final credentials = await flow.run();
+    expect(credentials.accessToken.data, 'atok');
+    expect(credentials.accessToken.type, 'Bearer');
+    expect(credentials.scopes, ['s1', 's2']);
+    expectExpiryOneHourFromNow(credentials.accessToken);
+  });
 
-    test('successfull-with-user', () async {
-      final flow = JwtFlow(
-        clientEmail,
-        testPrivateKey,
-        'x@y.com',
-        scopes,
-        mockClient(expectAsync1(successfulSignRequest), expectClose: false),
-      );
+  test('successful run with user impersonation', () async {
+    final flow = JwtFlow(
+      clientEmail,
+      testPrivateKey,
+      'x@y.com',
+      scopes,
+      mockClient(expectAsync1(successfulSignRequest), expectClose: false),
+    );
 
-      final credentials = await flow.run();
-      expect(credentials.accessToken.data, equals('atok'));
-      expect(credentials.accessToken.type, equals('Bearer'));
-      expect(credentials.scopes, equals(['s1', 's2']));
-      expectExpiryOneHourFromNow(credentials.accessToken);
-    });
+    final credentials = await flow.run();
+    expect(credentials.accessToken.data, 'atok');
+    expect(credentials.accessToken.type, 'Bearer');
+    expect(credentials.scopes, ['s1', 's2']);
+    expectExpiryOneHourFromNow(credentials.accessToken);
+  });
 
-    test('invalid-server-response', () {
-      final flow = JwtFlow(
-        clientEmail,
-        testPrivateKey,
-        null,
-        scopes,
-        mockClient(expectAsync1(invalidAccessToken), expectClose: false),
-      );
+  test('throws on invalid server response', () async {
+    final flow = JwtFlow(
+      clientEmail,
+      testPrivateKey,
+      null,
+      scopes,
+      mockClient(expectAsync1(invalidAccessToken), expectClose: false),
+    );
 
-      expect(flow.run(), throwsA(isServerRequestFailedException));
-    });
+    await expectLater(flow.run(), throwsA(isServerRequestFailedException));
+  });
 
-    test('transport-failure', () {
-      final flow = JwtFlow(
-        clientEmail,
-        testPrivateKey,
-        null,
-        scopes,
-        transportFailure,
-      );
+  test('throws on transport failure', () async {
+    final flow = JwtFlow(
+      clientEmail,
+      testPrivateKey,
+      null,
+      scopes,
+      transportFailure,
+    );
 
-      expect(flow.run(), throwsA(isTransportException));
-    });
+    await expectLater(flow.run(), throwsA(isTransportException));
   });
 }

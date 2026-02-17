@@ -8,7 +8,7 @@ import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('AccessToken & AccessCredentials', () {
+  test('AccessCredentials round-trip', () {
     final credentials = AccessCredentials(
       AccessToken('type', 'data', DateTime.now().toUtc()),
       'refreshToken',
@@ -32,7 +32,7 @@ void main() {
     expect(jsonEncode(decoded), encoded);
   });
 
-  test('ClientId', () {
+  test('ClientId round-trip', () {
     final clientId = ClientId('identifier', 'secret');
 
     final encoded = jsonEncode(clientId);

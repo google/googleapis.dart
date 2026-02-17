@@ -14,11 +14,11 @@ const jsonContentType = {'content-type': 'application/json'};
 const isServerRequestFailedException =
     TypeMatcher<ServerRequestFailedException>();
 
-const Matcher isUserConsentException = TypeMatcher<UserConsentException>();
+const isUserConsentException = TypeMatcher<UserConsentException>();
 
-const Matcher isAccessDeniedException = TypeMatcher<AccessDeniedException>();
+const isAccessDeniedException = TypeMatcher<AccessDeniedException>();
 
-const Matcher isTransportException = TypeMatcher<TransportException>();
+const isTransportException = TypeMatcher<TransportException>();
 
 class TransportException implements Exception {}
 

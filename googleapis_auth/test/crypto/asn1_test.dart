@@ -25,9 +25,9 @@ void main() {
     });
   }
 
-  group('asn1-parser', () {
-    group('sequence', () {
-      test('empty', () {
+  group('ASN1Parser', () {
+    group('ASN1Sequence', () {
+      test('empty sequence', () {
         final sequenceBytes = [ASN1Parser.sequenceTag, 0];
         final sequence =
             ASN1Parser.parseObject(Uint8List.fromList(sequenceBytes))
@@ -35,7 +35,7 @@ void main() {
         expect(sequence.objects, isEmpty);
       });
 
-      test('one-element', () {
+      test('single element', () {
         final sequenceBytes = [
           ASN1Parser.sequenceTag,
           1,
@@ -49,7 +49,7 @@ void main() {
         expect(sequence.objects[0], isA<ASN1Null>());
       });
 
-      test('many-elements', () {
+      test('many elements', () {
         final sequenceBytes = [
           ASN1Parser.sequenceTag,
           0x82,
@@ -70,8 +70,8 @@ void main() {
       invalidLenTest(ASN1Parser.sequenceTag);
     });
 
-    group('integer', () {
-      test('small', () {
+    group('ASN1Integer', () {
+      test('small integers', () {
         for (var i = 0; i < 256; i++) {
           final integerBytes = [ASN1Parser.integerTag, 1, i];
           final integer =
@@ -81,29 +81,37 @@ void main() {
         }
       });
 
-      test('multi-byte', () {
+      test('multi-byte integers', () {
         final integerBytes = [ASN1Parser.integerTag, 3, 1, 2, 3];
         final integer = ASN1Parser.parseObject(
           Uint8List.fromList(integerBytes),
         );
-        expect(integer, isA<ASN1Integer>());
-        expect((integer as ASN1Integer).integer, BigInt.from(0x010203));
+        expect(
+          integer,
+          isA<ASN1Integer>().having(
+            (e) => e.integer,
+            'integer',
+            BigInt.from(0x010203),
+          ),
+        );
       });
 
       invalidLenTest(ASN1Parser.integerTag);
     });
 
-    group('octet-string', () {
-      test('small', () {
+    group('ASN1OctetString', () {
+      test('small octet string', () {
         final octetStringBytes = [ASN1Parser.octetStringTag, 3, 1, 2, 3];
         final octetString = ASN1Parser.parseObject(
           Uint8List.fromList(octetStringBytes),
         );
-        expect(octetString, isA<ASN1OctetString>());
-        expect((octetString as ASN1OctetString).bytes, equals([1, 2, 3]));
+        expect(
+          octetString,
+          isA<ASN1OctetString>().having((e) => e.bytes, 'bytes', [1, 2, 3]),
+        );
       });
 
-      test('large', () {
+      test('large octet string', () {
         final octetStringBytes = [
           ASN1Parser.octetStringTag,
           0x82,
@@ -118,24 +126,30 @@ void main() {
         expect(octetString, isA<ASN1OctetString>());
         final castedOctetString = octetString as ASN1OctetString;
         for (var i = 0; i < 256; i++) {
-          expect(castedOctetString.bytes[i], equals(i % 256));
+          expect(castedOctetString.bytes[i], i % 256);
         }
       });
 
       invalidLenTest(ASN1Parser.octetStringTag);
     });
 
-    group('oid', () {
+    group('ASN1ObjectIdentifier', () {
       // NOTE: Currently the oid is parsed as normal bytes, so we don't validate
       // the oid structure.
-      test('small', () {
+      test('small OID', () {
         final objIdBytes = [ASN1Parser.objectIdTag, 3, 1, 2, 3];
         final objId = ASN1Parser.parseObject(Uint8List.fromList(objIdBytes));
-        expect(objId, isA<ASN1ObjectIdentifier>());
-        expect((objId as ASN1ObjectIdentifier).bytes, equals([1, 2, 3]));
+        expect(
+          objId,
+          isA<ASN1ObjectIdentifier>().having((e) => e.bytes, 'bytes', [
+            1,
+            2,
+            3,
+          ]),
+        );
       });
 
-      test('large', () {
+      test('large OID', () {
         final objIdBytes = [
           ASN1Parser.objectIdTag,
           0x82,
@@ -148,14 +162,14 @@ void main() {
         expect(objId, isA<ASN1ObjectIdentifier>());
         final castedObjId = objId as ASN1ObjectIdentifier;
         for (var i = 0; i < 256; i++) {
-          expect(castedObjId.bytes[i], equals(i % 256));
+          expect(castedObjId.bytes[i], i % 256);
         }
       });
 
       invalidLenTest(ASN1Parser.objectIdTag);
     });
 
-    test('recursion-limit', () {
+    test('recursion limit throws ArgumentError', () {
       List<int> buildNested(int depth) {
         if (depth == 0) return [ASN1Parser.nullTag, 0x00];
         final inner = buildNested(depth - 1);
@@ -197,7 +211,7 @@ void main() {
     });
   });
 
-  test('null', () {
+  test('ASN1Null', () {
     final objId = ASN1Parser.parseObject(
       Uint8List.fromList([ASN1Parser.nullTag, 0x00]),
     );
