@@ -22,7 +22,8 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   final String email;
   final http.Client _client;
 
-  MetadataServerAuthorizationFlow(this._client, {this.email = 'default'});
+  MetadataServerAuthorizationFlow(http.Client client, {this.email = 'default'})
+    : _client = client;
 
   @override
   Future<AccessCredentials> run({bool refresh = false}) async {
@@ -33,7 +34,11 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     final json = jsonDecode(tokenJsonString) as Map<String, dynamic>;
     final accessToken = parseAccessToken(json);
 
-    final scopesString = await _getScopes(refresh: refresh);
+    final scopesString = await getMetadataValue(
+      'instance/service-accounts/$email/scopes',
+      client: _client,
+      refresh: refresh,
+    );
     final scopes = scopesString
         .replaceAll('\n', ' ')
         .split(' ')
@@ -42,10 +47,4 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
 
     return AccessCredentials(accessToken, null, scopes);
   }
-
-  Future<String> _getScopes({bool refresh = false}) async => getMetadataValue(
-    'instance/service-accounts/$email/scopes',
-    client: _client,
-    refresh: refresh,
-  );
 }
