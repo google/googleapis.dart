@@ -18,7 +18,7 @@ import 'package:test_descriptor/test_descriptor.dart' as d;
 import 'test_utils.dart';
 
 void main() {
-  test('fromApplicationsCredentialsFile', () async {
+  test('authorized_user credentials', () async {
     await d
         .file(
           'creds.json',
@@ -38,15 +38,13 @@ void main() {
       mockClient((Request request) async {
         final url = request.url;
         if (url == googleOauth2TokenEndpoint) {
-          expect(request.method, equals('POST'));
+          expect(request.method, 'POST');
           expect(
             request.body,
-            equals(
-              'client_id=id&'
-              'client_secret=secret&'
-              'refresh_token=refresh&'
-              'grant_type=refresh_token',
-            ),
+            'client_id=id&'
+            'client_secret=secret&'
+            'refresh_token=refresh&'
+            'grant_type=refresh_token',
           );
           final body = jsonEncode({
             'token_type': 'Bearer',
@@ -56,7 +54,7 @@ void main() {
           return Response(body, 200, headers: jsonContentType);
         }
         if (url.toString() == 'https://storage.googleapis.com/b/bucket/o/obj') {
-          expect(request.method, equals('GET'));
+          expect(request.method, 'GET');
           expect(
             request.headers,
             containsPair('Authorization', 'Bearer atoken'),
@@ -67,18 +65,18 @@ void main() {
         return Response('bad', 404);
       }),
     );
-    expect(c.credentials.accessToken.data, equals('atoken'));
+    expect(c.credentials.accessToken.data, 'atoken');
 
     final r = await c.get(
       Uri.https('storage.googleapis.com', '/b/bucket/o/obj'),
     );
-    expect(r.statusCode, equals(200));
-    expect(r.body, equals('hello world'));
+    expect(r.statusCode, 200);
+    expect(r.body, 'hello world');
 
     c.close();
   });
 
-  test('fromApplicationsCredentialsFile w. quota_project_id', () async {
+  test('authorized_user credentials with quota_project_id', () async {
     await d
         .file(
           'creds.json',
@@ -99,15 +97,13 @@ void main() {
       mockClient((Request request) async {
         final url = request.url;
         if (url == googleOauth2TokenEndpoint) {
-          expect(request.method, equals('POST'));
+          expect(request.method, 'POST');
           expect(
             request.body,
-            equals(
-              'client_id=id&'
-              'client_secret=secret&'
-              'refresh_token=refresh&'
-              'grant_type=refresh_token',
-            ),
+            'client_id=id&'
+            'client_secret=secret&'
+            'refresh_token=refresh&'
+            'grant_type=refresh_token',
           );
           final body = jsonEncode({
             'token_type': 'Bearer',
@@ -117,7 +113,7 @@ void main() {
           return Response(body, 200, headers: jsonContentType);
         }
         if (url.toString() == 'https://storage.googleapis.com/b/bucket/o/obj') {
-          expect(request.method, equals('GET'));
+          expect(request.method, 'GET');
           expect(
             request.headers,
             containsPair('Authorization', 'Bearer atoken'),
@@ -131,13 +127,13 @@ void main() {
         return Response('bad', 404);
       }),
     );
-    expect(c.credentials.accessToken.data, equals('atoken'));
+    expect(c.credentials.accessToken.data, 'atoken');
 
     final r = await c.get(
       Uri.https('storage.googleapis.com', '/b/bucket/o/obj'),
     );
-    expect(r.statusCode, equals(200));
-    expect(r.body, equals('hello world'));
+    expect(r.statusCode, 200);
+    expect(r.body, 'hello world');
 
     c.close();
   });

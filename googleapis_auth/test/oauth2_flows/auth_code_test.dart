@@ -30,8 +30,8 @@ final _browserFlowRedirectMatcher = predicate<String>((object) {
     final url = Uri.parse(
       Uri.decodeComponent(object.substring('redirect_uri='.length)),
     );
-    expect(url.scheme, equals('http'));
-    expect(url.host, equals('localhost'));
+    expect(url.scheme, 'http');
+    expect(url.host, 'localhost');
     return true;
   }
   return false;
@@ -48,7 +48,7 @@ void main() {
     required bool manual,
     AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
   }) => (Request request) async {
-    expect(request.method, equals('POST'));
+    expect(request.method, 'POST');
     expect(request.url, authEndpoints.tokenEndpoint);
     expect(
       request.headers,
@@ -102,11 +102,11 @@ void main() {
   // Validation functions for user prompt and access credentials.
 
   void validateAccessCredentials(AccessCredentials credentials) {
-    expect(credentials.accessToken.data, equals('tokendata'));
-    expect(credentials.accessToken.type, equals('Bearer'));
-    expect(credentials.scopes, equals(['s1', 's2']));
-    expect(credentials.refreshToken, equals('my-refresh-token'));
-    expect(credentials.idToken, equals('my-id-token'));
+    expect(credentials.accessToken.data, 'tokendata');
+    expect(credentials.accessToken.type, 'Bearer');
+    expect(credentials.scopes, ['s1', 's2']);
+    expect(credentials.refreshToken, 'my-refresh-token');
+    expect(credentials.idToken, 'my-id-token');
     expectExpiryOneHourFromNow(credentials.accessToken);
   }
 
@@ -128,11 +128,11 @@ void main() {
     final redirectUri = Uri.parse(uri.queryParameters['redirect_uri']!);
 
     if (manual) {
-      expect('$redirectUri', equals('urn:ietf:wg:oauth:2.0:oob'));
+      expect('$redirectUri', 'urn:ietf:wg:oauth:2.0:oob');
     } else {
       expect(uri.queryParameters['state'], isNotNull);
-      expect(redirectUri.scheme, equals('http'));
-      expect(redirectUri.host, equals('localhost'));
+      expect(redirectUri.scheme, 'http');
+      expect(redirectUri.host, 'localhost');
     }
 
     return redirectUri;
@@ -160,18 +160,18 @@ void main() {
     final redirectUri = Uri.parse(uri.queryParameters['redirect_uri']!);
 
     if (manual) {
-      expect('$redirectUri', equals('urn:ietf:wg:oauth:2.0:oob'));
+      expect('$redirectUri', 'urn:ietf:wg:oauth:2.0:oob');
     } else {
       expect(uri.queryParameters['state'], isNotNull);
-      expect(redirectUri.scheme, equals('http'));
-      expect(redirectUri.host, equals('localhost'));
+      expect(redirectUri.scheme, 'http');
+      expect(redirectUri.host, 'localhost');
     }
 
     return redirectUri;
   }
 
-  group('authorization-code-flow', () {
-    group('manual-copy-paste', () {
+  group('Authorization Code Flow', () {
+    group('AuthorizationCodeGrantManualFlow', () {
       Future<String> manualUserPrompt(String url) async {
         validateUserPromptUri(url, manual: true);
         return 'mycode';
@@ -182,7 +182,7 @@ void main() {
         return 'mycode';
       }
 
-      test('successful', () async {
+      test('successful run', () async {
         final flow = AuthorizationCodeGrantManualFlow(
           authEndpoints,
           clientId,
@@ -193,7 +193,7 @@ void main() {
         validateAccessCredentials(await flow.run());
       });
 
-      test('successful (custom endpoints)', () async {
+      test('successful run with custom endpoints', () async {
         final authEndpoints = CustomAuthEndpoints();
         final flow = AuthorizationCodeGrantManualFlow(
           authEndpoints,
@@ -208,7 +208,7 @@ void main() {
         validateAccessCredentials(await flow.run());
       });
 
-      test('user-exception', () async {
+      test('throws on user exception', () async {
         // We use a TransportException here for convenience.
         Future<String> manualUserPromptError(String url) =>
             Future.error(TransportException());
@@ -223,7 +223,7 @@ void main() {
         await expectLater(flow.run(), throwsA(isTransportException));
       });
 
-      test('transport-exception', () async {
+      test('throws on transport exception', () async {
         final flow = AuthorizationCodeGrantManualFlow(
           authEndpoints,
           clientId,
@@ -234,7 +234,7 @@ void main() {
         await expectLater(flow.run(), throwsA(isTransportException));
       });
 
-      test('invalid-server-response', () async {
+      test('throws on invalid server response', () async {
         final flow = AuthorizationCodeGrantManualFlow(
           authEndpoints,
           clientId,
@@ -246,7 +246,7 @@ void main() {
       });
     });
 
-    group('http-server', () {
+    group('AuthorizationCodeGrantServerFlow', () {
       Future<void> callRedirectionEndpoint(Uri authCodeCall) async {
         final ioClient = HttpClient();
 
@@ -332,7 +332,7 @@ void main() {
         callRedirectionEndpoint(authCodeCall);
       }
 
-      test('successful', () async {
+      test('successful run', () async {
         final flow = AuthorizationCodeGrantServerFlow(
           authEndpoints,
           clientId,
@@ -343,7 +343,7 @@ void main() {
         validateAccessCredentials(await flow.run());
       });
 
-      test('transport-exception', () async {
+      test('throws on transport exception', () async {
         final flow = AuthorizationCodeGrantServerFlow(
           authEndpoints,
           clientId,
@@ -354,7 +354,7 @@ void main() {
         await expectLater(flow.run(), throwsA(isTransportException));
       });
 
-      test('non-GET request', () async {
+      test('throws for non-GET request', () async {
         final flow = AuthorizationCodeGrantServerFlow(
           authEndpoints,
           clientId,
@@ -374,7 +374,7 @@ void main() {
         );
       });
 
-      test('request with invalid state parameter', () async {
+      test('throws for request with invalid state parameter', () async {
         final flow = AuthorizationCodeGrantServerFlow(
           authEndpoints,
           clientId,
@@ -394,7 +394,7 @@ void main() {
         );
       });
 
-      test('invalid-server-response', () async {
+      test('throws on invalid server response', () async {
         final flow = AuthorizationCodeGrantServerFlow(
           authEndpoints,
           clientId,
@@ -405,7 +405,7 @@ void main() {
         await expectLater(flow.run(), throwsA(isServerRequestFailedException));
       });
 
-      test('failed-authentication', () async {
+      test('throws on failed authentication', () async {
         final flow = AuthorizationCodeGrantServerFlow(
           authEndpoints,
           clientId,

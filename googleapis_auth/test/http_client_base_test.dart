@@ -24,113 +24,103 @@ final _defaultResponse = Response('', 500);
 Future<Response> _defaultResponseHandler(Request _) async => _defaultResponse;
 
 void main() {
-  group('http-utils', () {
-    group('delegating-client', () {
-      test('not-close-underlying-client', () {
-        final mock = mockClient(_defaultResponseHandler, expectClose: false);
-        DelegatingClientImpl(mock, closeUnderlyingClient: false).close();
-      });
-
-      test('close-underlying-client', () {
-        final mock = mockClient(_defaultResponseHandler);
-        DelegatingClientImpl(mock, closeUnderlyingClient: true).close();
-      });
-
-      test('close-several-times', () {
-        final mock = mockClient(_defaultResponseHandler);
-        final delegate = DelegatingClientImpl(
-          mock,
-          closeUnderlyingClient: true,
-        );
-        delegate.close();
-        expect(delegate.close, throwsA(isStateError));
-      });
-    });
-
-    group('refcounted-client', () {
-      test('not-close-underlying-client', () {
-        final mock = mockClient(_defaultResponseHandler, expectClose: false);
-        final client = RefCountedClient(mock, initialRefCount: 3);
-        client.close();
-        client.close();
-      });
-
-      test('close-underlying-client', () {
-        final mock = mockClient(_defaultResponseHandler);
-        final client = RefCountedClient(mock, initialRefCount: 3);
-        client.close();
-        client.close();
-        client.close();
-      });
-
-      test('acquire-release', () {
-        final mock = mockClient(_defaultResponseHandler);
-        final client = RefCountedClient(mock);
-        client.acquire();
-        client.release();
-        client.acquire();
-        client.release();
-        client.release();
-      });
-
-      test('close-several-times', () {
-        final mock = mockClient(_defaultResponseHandler);
-        final client = RefCountedClient(mock);
-        client.close();
-        expect(client.close, throwsA(isStateError));
-      });
-    });
-
-    group('api-client', () {
-      const key = 'foo%?bar';
-      final keyEncoded = 'key=${Uri.encodeQueryComponent(key)}';
-
-      RequestImpl request(String url) => RequestImpl('GET', Uri.parse(url));
-      Future<Response> responseF() =>
-          Future<Response>.value(Response.bytes([], 200));
-
-      test('no-query-string', () {
-        final mock = mockClient((Request request) {
-          expect('${request.url}', equals('http://localhost/abc?$keyEncoded'));
-          return responseF();
-        });
-
-        final client = ApiKeyClient(mock, key);
-        expect(client.send(request('http://localhost/abc')), completes);
-        client.close();
-      });
-
-      test('with-query-string', () {
-        final mock = mockClient((Request request) {
-          expect(
-            '${request.url}',
-            equals('http://localhost/abc?x&$keyEncoded'),
-          );
-          return responseF();
-        });
-
-        final client = ApiKeyClient(mock, key);
-        expect(client.send(request('http://localhost/abc?x')), completes);
-        client.close();
-      });
-
-      test('with-existing-key', () {
-        final mock = mockClient(
-          expectAsync1(_defaultResponseHandler, count: 0),
-        );
-
-        final client = ApiKeyClient(mock, key);
-        expect(
-          client.send(request('http://localhost/abc?key=a')),
-          throwsArgumentError,
-        );
-        client.close();
-      });
-    });
-
-    test('non-closing-client', () {
+  group('DelegatingClient', () {
+    test('not-close-underlying-client', () {
       final mock = mockClient(_defaultResponseHandler, expectClose: false);
-      nonClosingClient(mock).close();
+      DelegatingClientImpl(mock, closeUnderlyingClient: false).close();
     });
+
+    test('close-underlying-client', () {
+      final mock = mockClient(_defaultResponseHandler);
+      DelegatingClientImpl(mock, closeUnderlyingClient: true).close();
+    });
+
+    test('close-several-times throws StateError', () {
+      final mock = mockClient(_defaultResponseHandler);
+      final delegate = DelegatingClientImpl(mock, closeUnderlyingClient: true);
+      delegate.close();
+      expect(delegate.close, throwsStateError);
+    });
+  });
+
+  group('RefCountedClient', () {
+    test('not-close-underlying-client', () {
+      final mock = mockClient(_defaultResponseHandler, expectClose: false);
+      final client = RefCountedClient(mock, initialRefCount: 3);
+      client.close();
+      client.close();
+    });
+
+    test('close-underlying-client', () {
+      final mock = mockClient(_defaultResponseHandler);
+      final client = RefCountedClient(mock, initialRefCount: 3);
+      client.close();
+      client.close();
+      client.close();
+    });
+
+    test('acquire-release', () {
+      final mock = mockClient(_defaultResponseHandler);
+      final client = RefCountedClient(mock);
+      client.acquire();
+      client.release();
+      client.acquire();
+      client.release();
+      client.release();
+    });
+
+    test('close-several-times throws StateError', () {
+      final mock = mockClient(_defaultResponseHandler);
+      final client = RefCountedClient(mock);
+      client.close();
+      expect(client.close, throwsStateError);
+    });
+  });
+
+  group('ApiKeyClient', () {
+    const key = 'foo%?bar';
+    final keyEncoded = 'key=${Uri.encodeQueryComponent(key)}';
+
+    RequestImpl request(String url) => RequestImpl('GET', Uri.parse(url));
+    Future<Response> responseF() =>
+        Future<Response>.value(Response.bytes([], 200));
+
+    test('no-query-string adds key', () {
+      final mock = mockClient((Request request) {
+        expect('${request.url}', 'http://localhost/abc?$keyEncoded');
+        return responseF();
+      });
+
+      final client = ApiKeyClient(mock, key);
+      expect(client.send(request('http://localhost/abc')), completes);
+      client.close();
+    });
+
+    test('with-query-string adds key', () {
+      final mock = mockClient((Request request) {
+        expect('${request.url}', 'http://localhost/abc?x&$keyEncoded');
+        return responseF();
+      });
+
+      final client = ApiKeyClient(mock, key);
+      expect(client.send(request('http://localhost/abc?x')), completes);
+      client.close();
+    });
+
+    test('with-existing-key throws ArgumentError', () {
+      final mock = mockClient(expectAsync1(_defaultResponseHandler, count: 0));
+
+      final client = ApiKeyClient(mock, key);
+      expect(
+        client.send(request('http://localhost/abc?key=a')),
+        throwsArgumentError,
+      );
+      client.close();
+    });
+  });
+
+  test('nonClosingClient does not close underlying client', () {
+    final mock = mockClient(_defaultResponseHandler, expectClose: false);
+    nonClosingClient(mock).close();
   });
 }
