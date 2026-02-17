@@ -22,8 +22,6 @@ const maxExpectedTimeDiffInSeconds = 20;
 ///
 /// Trusted Partner Cloud (TPC) and Google Distributed Cloud (GDC) environments
 /// may use a different universe domain.
-///
-/// See https://cloud.google.com/apis/design/glossary#universe_domain
 const defaultUniverseDomain = 'googleapis.com';
 
 AccessToken parseAccessToken(Map<String, dynamic> jsonMap) => switch (jsonMap) {
