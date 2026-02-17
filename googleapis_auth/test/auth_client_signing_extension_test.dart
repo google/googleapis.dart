@@ -14,6 +14,24 @@ import 'package:test/test.dart';
 
 import 'test_utils.dart';
 
+http.Response? _mockMetadataResponse(http.Request request) {
+  if (request.url.host == 'metadata.google.internal') {
+    if (request.url.path.contains('universe_domain')) {
+      return http.Response(
+        'googleapis.com',
+        200,
+        headers: {'Metadata-Flavor': 'Google'},
+      );
+    }
+    return http.Response(
+      'test@test.iam.gserviceaccount.com',
+      200,
+      headers: {'Metadata-Flavor': 'Google'},
+    );
+  }
+  return null;
+}
+
 void main() {
   final dataToSign = utf8.encode('data to sign');
 
@@ -58,40 +76,38 @@ void main() {
 
   test('sign with impersonated client uses IAM API', () async {
     var requestCount = 0;
-    final baseClient = mockClient(
-      expectAsync1((request) async {
-        requestCount++;
+    final baseClient = mockClient((request) async {
+      final metadataResponse = _mockMetadataResponse(request);
+      if (metadataResponse != null) return metadataResponse;
 
-        if (requestCount == 1) {
-          // Initial generateAccessToken for impersonated client
-          final expireTime = DateTime.now().toUtc().add(
-            const Duration(hours: 1),
-          );
-          return http.Response(
-            jsonEncode({
-              'accessToken': 'impersonated-token',
-              'expireTime': expireTime.toIso8601String(),
-            }),
-            200,
-            headers: jsonContentType,
-          );
-        } else {
-          // signBlob request via ImpersonatedAuthClient.sign()
-          expect(request.method, equals('POST'));
-          expect(request.url.toString(), contains(':signBlob'));
+      requestCount++;
 
-          return http.Response(
-            jsonEncode({
-              'signedBlob': base64Encode([1, 2, 3, 4, 5]),
-              'keyId': 'key-id',
-            }),
-            200,
-            headers: jsonContentType,
-          );
-        }
-      }, count: 2),
-      expectClose: false,
-    );
+      if (requestCount == 1) {
+        // Initial generateAccessToken for impersonated client
+        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
+        return http.Response(
+          jsonEncode({
+            'accessToken': 'impersonated-token',
+            'expireTime': expireTime.toIso8601String(),
+          }),
+          200,
+          headers: jsonContentType,
+        );
+      } else {
+        // signBlob request via ImpersonatedAuthClient.sign()
+        expect(request.method, equals('POST'));
+        expect(request.url.toString(), contains(':signBlob'));
+
+        return http.Response(
+          jsonEncode({
+            'signedBlob': base64Encode([1, 2, 3, 4, 5]),
+            'keyId': 'key-id',
+          }),
+          200,
+          headers: jsonContentType,
+        );
+      }
+    }, expectClose: false);
 
     final sourceCredentials = AccessCredentials(
       AccessToken(
@@ -120,40 +136,35 @@ void main() {
   test('explicitly calling extension on impersonated client delegates to '
       'instance method', () async {
     var requestCount = 0;
-    final baseClient = mockClient(
-      expectAsync1((request) async {
-        requestCount++;
+    final baseClient = mockClient((request) async {
+      requestCount++;
 
-        if (requestCount == 1) {
-          // Initial generateAccessToken for impersonated client
-          final expireTime = DateTime.now().toUtc().add(
-            const Duration(hours: 1),
-          );
-          return http.Response(
-            jsonEncode({
-              'accessToken': 'impersonated-token',
-              'expireTime': expireTime.toIso8601String(),
-            }),
-            200,
-            headers: jsonContentType,
-          );
-        } else {
-          // signBlob request via ImpersonatedAuthClient.sign()
-          expect(request.method, equals('POST'));
-          expect(request.url.toString(), contains(':signBlob'));
+      if (requestCount == 1) {
+        // Initial generateAccessToken for impersonated client
+        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
+        return http.Response(
+          jsonEncode({
+            'accessToken': 'impersonated-token',
+            'expireTime': expireTime.toIso8601String(),
+          }),
+          200,
+          headers: jsonContentType,
+        );
+      } else {
+        // signBlob request via ImpersonatedAuthClient.sign()
+        expect(request.method, equals('POST'));
+        expect(request.url.toString(), contains(':signBlob'));
 
-          return http.Response(
-            jsonEncode({
-              'signedBlob': base64Encode([5, 6, 7, 8]),
-              'keyId': 'key-id',
-            }),
-            200,
-            headers: jsonContentType,
-          );
-        }
-      }, count: 2),
-      expectClose: false,
-    );
+        return http.Response(
+          jsonEncode({
+            'signedBlob': base64Encode([5, 6, 7, 8]),
+            'keyId': 'key-id',
+          }),
+          200,
+          headers: jsonContentType,
+        );
+      }
+    }, expectClose: false);
 
     final sourceCredentials = AccessCredentials(
       AccessToken(
@@ -185,26 +196,26 @@ void main() {
   });
 
   test('sign without service account credentials uses IAM API', () async {
-    final baseClient = mockClient(
-      expectAsync1((request) async {
-        // IAM signBlob request
-        expect(request.method, equals('POST'));
-        expect(request.url.toString(), contains(':signBlob'));
+    final baseClient = mockClient((request) async {
+      final metadataResponse = _mockMetadataResponse(request);
+      if (metadataResponse != null) return metadataResponse;
 
-        final body = jsonDecode(request.body) as Map<String, dynamic>;
-        expect(body['payload'], equals(base64Encode(dataToSign)));
+      // IAM signBlob request
+      expect(request.method, equals('POST'));
+      expect(request.url.toString(), contains(':signBlob'));
 
-        return http.Response(
-          jsonEncode({
-            'signedBlob': base64Encode([10, 20, 30]),
-            'keyId': 'key-id',
-          }),
-          200,
-          headers: jsonContentType,
-        );
-      }),
-      expectClose: false,
-    );
+      final body = jsonDecode(request.body) as Map<String, dynamic>;
+      expect(body['payload'], equals(base64Encode(dataToSign)));
+
+      return http.Response(
+        jsonEncode({
+          'signedBlob': base64Encode([10, 20, 30]),
+          'keyId': 'key-id',
+        }),
+        200,
+        headers: jsonContentType,
+      );
+    }, expectClose: false);
 
     final credentials = AccessCredentials(
       AccessToken(
@@ -225,22 +236,22 @@ void main() {
   }, testOn: 'vm');
 
   test('sign with custom endpoint extracts universe domain', () async {
-    final baseClient = mockClient(
-      expectAsync1((request) async {
-        // IAM signBlob request - verify custom universe domain is used
-        expect(request.url.host, equals('iamcredentials.example.com'));
+    final baseClient = mockClient((request) async {
+      final metadataResponse = _mockMetadataResponse(request);
+      if (metadataResponse != null) return metadataResponse;
 
-        return http.Response(
-          jsonEncode({
-            'signedBlob': base64Encode([5, 6, 7]),
-            'keyId': 'key-id',
-          }),
-          200,
-          headers: jsonContentType,
-        );
-      }),
-      expectClose: false,
-    );
+      // IAM signBlob request - verify custom universe domain is used
+      expect(request.url.host, equals('iamcredentials.example.com'));
+
+      return http.Response(
+        jsonEncode({
+          'signedBlob': base64Encode([5, 6, 7]),
+          'keyId': 'key-id',
+        }),
+        200,
+        headers: jsonContentType,
+      );
+    }, expectClose: false);
 
     final credentials = AccessCredentials(
       AccessToken(
