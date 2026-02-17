@@ -52,5 +52,4 @@ Future<AutoRefreshingAuthClient> clientViaServiceAccount(
     c,
   ),
   baseClient: baseClient,
-  serviceAccountCredentials: clientCredentials,
 );

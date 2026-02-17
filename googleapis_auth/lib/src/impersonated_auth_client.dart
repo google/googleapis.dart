@@ -83,8 +83,10 @@ Future<ImpersonatedAuthClient> clientViaServiceAccountImpersonation({
 /// - Delegation chains for multi-hop impersonation
 /// - Custom universe domains
 class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
+  /// The email of the target service account being impersonated.
+  final String targetServiceAccount;
+
   final AuthClient _sourceClient;
-  final String _targetServiceAccount;
   final List<String> _targetScopes;
   final List<String>? _delegates;
   final String _universeDomain;
@@ -113,13 +115,12 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   /// to 3600 seconds (1 hour). Maximum is 43200 seconds (12 hours).
   ImpersonatedAuthClient({
     required AuthClient sourceClient,
-    required String targetServiceAccount,
+    required this.targetServiceAccount,
     required List<String> targetScopes,
     List<String>? delegates,
     String universeDomain = defaultUniverseDomain,
     Duration lifetime = const Duration(hours: 1),
   }) : _sourceClient = sourceClient,
-       _targetServiceAccount = targetServiceAccount,
        _targetScopes = List.unmodifiable(targetScopes),
        _delegates = delegates != null ? List.unmodifiable(delegates) : null,
        _universeDomain = universeDomain,
@@ -131,14 +132,8 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
        ),
        super(sourceClient, closeUnderlyingClient: false);
 
-  /// The email of the target service account being impersonated.
-  String get targetServiceAccount => _targetServiceAccount;
-
   @override
   AccessCredentials get credentials => _credentials;
-
-  @override
-  ServiceAccountCredentials? get serviceAccountCredentials => null;
 
   /// Generates a new access token for the impersonated service account.
   ///
@@ -150,7 +145,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   ///
   /// Throws [ServerRequestFailedException] if the request fails.
   Future<AccessCredentials> generateAccessToken() async {
-    final encodedEmail = Uri.encodeComponent(_targetServiceAccount);
+    final encodedEmail = Uri.encodeComponent(targetServiceAccount);
     final tokenUrl = Uri.parse(
       'https://iamcredentials.$_universeDomain/v1/projects/-/serviceAccounts/$encodedEmail:generateAccessToken',
     );
@@ -201,7 +196,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   Future<({String signedBlob, String keyId})> sign(List<int> data) => signBlob(
     _sourceClient,
     data,
-    serviceAccountEmail: _targetServiceAccount,
+    serviceAccountEmail: targetServiceAccount,
     universeDomain: _universeDomain,
   );
 

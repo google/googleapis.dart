@@ -11,7 +11,6 @@ import 'package:google_cloud/general.dart';
 import 'iam_signer.dart';
 import 'impersonated_auth_client.dart';
 import 'service_account_credentials.dart';
-import 'utils.dart';
 
 /// Extension providing smart signing capabilities for [AuthClient].
 ///
@@ -42,19 +41,13 @@ import 'utils.dart';
 /// final signature = await client.sign(utf8.encode('data to sign'));
 /// ```
 extension AuthClientSigningExtension on AuthClient {
-  /// Returns the service account email associated with this client.
-  ///
-  /// If the client was created with explicit [ServiceAccountCredentials],
-  /// returns the email from those credentials.
-  ///
-  /// Otherwise, queries the GCE metadata server to retrieve the default
+  /// Queries the GCE metadata server to retrieve the default
   /// service account email.
   ///
   /// The result is cached for the lifetime of the Dart process.
   ///
   /// If [refresh] is `true`, the cache is cleared and the value is re-computed.
   Future<String> getServiceAccountEmail({bool refresh = false}) async =>
-      serviceAccountCredentials?.email ??
       await serviceAccountEmailFromMetadataServer(
         client: this,
         refresh: refresh,
@@ -70,7 +63,8 @@ extension AuthClientSigningExtension on AuthClient {
   /// - Other auth clients: Uses IAM signBlob API with the default service
   ///   account.
   ///
-  /// [data] is the bytes to be signed.
+  /// [serviceAccountCredentials] can be provided to sign the data locally
+  /// using RSA-SHA256 if the credentials have a private key.
   ///
   /// [endpoint] is an optional custom IAM Credentials API endpoint. This is
   /// useful when working with different universe domains. If not provided,
@@ -86,32 +80,28 @@ extension AuthClientSigningExtension on AuthClient {
   ///
   /// final client = await clientViaServiceAccount(credentials, scopes);
   /// final data = utf8.encode('data to sign');
-  /// final signature = await client.sign(data);
+  /// final signature = await client.sign(
+  ///   data,
+  ///   serviceAccountCredentials: credentials,
+  /// );
   /// print('Signature (base64): ${signature.signedBlob}');
   /// ```
-  Future<String> sign(List<int> data, {String? endpoint}) async {
+  Future<String> sign(
+    List<int> data, {
+    ServiceAccountCredentials? serviceAccountCredentials,
+    String? endpoint,
+  }) async {
     // Check if this is an impersonated client
     if (this is ImpersonatedAuthClient) {
       final impersonated = this as ImpersonatedAuthClient;
       return (await impersonated.sign(data)).signedBlob;
     }
 
-    // Check if we have service account credentials for local signing
-    final serviceAccountCreds = serviceAccountCredentials;
-
-    if (serviceAccountCreds != null) {
+    if (serviceAccountCredentials != null) {
       // Use local signing with service account credentials
-      return base64Encode(serviceAccountCreds.sign(data));
+      return base64Encode(serviceAccountCredentials.sign(data));
     }
 
-    // If we're NOT using local signing, use IAM API signing
-    final universeDomain =
-        serviceAccountCreds?.universeDomain ?? defaultUniverseDomain;
-    return (await signBlob(
-      this,
-      data,
-      endpoint: endpoint,
-      universeDomain: universeDomain,
-    )).signedBlob;
+    return (await signBlob(this, data, endpoint: endpoint)).signedBlob;
   }
 }

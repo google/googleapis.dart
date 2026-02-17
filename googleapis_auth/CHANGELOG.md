@@ -1,13 +1,10 @@
 ## 2.1.0-wip
 
-- `AuthClient`
-  - Added `serviceAccountCredentials` getter.
-  - Added `sign()` method via `AuthClientSigningExtension`.
+- `AuthClientSigningExtension`: Added `sign()` which accepts an optional `serviceAccountCredentials` argument, and `getServiceAccountEmail()` which accepts an optional `email` argument.
 - `ServiceAccountCredentials`
   - Added parsing for `projectId` and `universeDomain` properties.
   - Added `sign()` method for RSA-SHA256 signing.
-- `IAMSigner`
-  - Now uses the unified metadata cache from `package:google_cloud`.
+- Added `signBlob()` function for signing via IAM Credentials API.
 - `MetadataServerAuthorizationFlow`
   - Now uses `getMetadataValue` (caching) and `fetchMetadataValue`
     (non-caching) from `package:google_cloud`.
