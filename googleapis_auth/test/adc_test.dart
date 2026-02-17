@@ -19,12 +19,17 @@ import 'test_utils.dart';
 
 void main() {
   test('fromApplicationsCredentialsFile', () async {
-    await d.file('creds.json', json.encode({
-      'client_id': 'id',
-      'client_secret': 'secret',
-      'refresh_token': 'refresh',
-      'type': 'authorized_user',
-    })).create();
+    await d
+        .file(
+          'creds.json',
+          json.encode({
+            'client_id': 'id',
+            'client_secret': 'secret',
+            'refresh_token': 'refresh',
+            'type': 'authorized_user',
+          }),
+        )
+        .create();
 
     final c = await fromApplicationsCredentialsFile(
       File(d.path('creds.json')),
@@ -50,8 +55,7 @@ void main() {
           });
           return Response(body, 200, headers: jsonContentType);
         }
-        if (url.toString() ==
-            'https://storage.googleapis.com/b/bucket/o/obj') {
+        if (url.toString() == 'https://storage.googleapis.com/b/bucket/o/obj') {
           expect(request.method, equals('GET'));
           expect(
             request.headers,
@@ -75,13 +79,18 @@ void main() {
   });
 
   test('fromApplicationsCredentialsFile w. quota_project_id', () async {
-    await d.file('creds.json', json.encode({
-      'client_id': 'id',
-      'client_secret': 'secret',
-      'refresh_token': 'refresh',
-      'type': 'authorized_user',
-      'quota_project_id': 'project',
-    })).create();
+    await d
+        .file(
+          'creds.json',
+          json.encode({
+            'client_id': 'id',
+            'client_secret': 'secret',
+            'refresh_token': 'refresh',
+            'type': 'authorized_user',
+            'quota_project_id': 'project',
+          }),
+        )
+        .create();
 
     final c = await fromApplicationsCredentialsFile(
       File(d.path('creds.json')),
@@ -107,8 +116,7 @@ void main() {
           });
           return Response(body, 200, headers: jsonContentType);
         }
-        if (url.toString() ==
-            'https://storage.googleapis.com/b/bucket/o/obj') {
+        if (url.toString() == 'https://storage.googleapis.com/b/bucket/o/obj') {
           expect(request.method, equals('GET'));
           expect(
             request.headers,

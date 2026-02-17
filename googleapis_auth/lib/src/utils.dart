@@ -27,17 +27,17 @@ const maxExpectedTimeDiffInSeconds = 20;
 const defaultUniverseDomain = 'googleapis.com';
 
 AccessToken parseAccessToken(Map<String, dynamic> jsonMap) => switch (jsonMap) {
-      {
-        'token_type': 'Bearer',
-        'access_token': final String accessToken,
-        'expires_in': final int expiresIn,
-      } =>
-        AccessToken('Bearer', accessToken, expiryDate(expiresIn)),
-      _ => throw ServerRequestFailedException(
-          'Failed to exchange authorization code. Invalid server response.',
-          responseContent: jsonMap,
-        ),
-    };
+  {
+    'token_type': 'Bearer',
+    'access_token': final String accessToken,
+    'expires_in': final int expiresIn,
+  } =>
+    AccessToken('Bearer', accessToken, expiryDate(expiresIn)),
+  _ => throw ServerRequestFailedException(
+    'Failed to exchange authorization code. Invalid server response.',
+    responseContent: jsonMap,
+  ),
+};
 
 /// Constructs a [DateTime] which is [seconds] seconds from now with
 /// an offset of [maxExpectedTimeDiffInSeconds]. Result is UTC time.

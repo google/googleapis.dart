@@ -70,24 +70,26 @@ void main() {
       );
     });
 
-    test('getServiceAccountEmail throws MetadataServerException on error',
-        () async {
-      final client = MockClient((request) async {
-        throw const SocketException('Failed to connect');
-      });
+    test(
+      'getServiceAccountEmail throws MetadataServerException on error',
+      () async {
+        final client = MockClient((request) async {
+          throw const SocketException('Failed to connect');
+        });
 
-      final signer = IAMSigner(client);
-      await expectLater(
-        signer.getServiceAccountEmail(refresh: true),
-        throwsA(
-          isA<MetadataServerException>().having(
-            (e) => e.message,
-            'message',
-            contains('Could not connect to metadata.google.internal.'),
+        final signer = IAMSigner(client);
+        await expectLater(
+          signer.getServiceAccountEmail(refresh: true),
+          throwsA(
+            isA<MetadataServerException>().having(
+              (e) => e.message,
+              'message',
+              contains('Could not connect to metadata.google.internal.'),
+            ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
 
     test('getServiceAccountEmail caches result by default', () async {
       var hitCount = 0;

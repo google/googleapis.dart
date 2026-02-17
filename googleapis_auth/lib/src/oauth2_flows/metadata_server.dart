@@ -22,10 +22,7 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   final String email;
   final http.Client _client;
 
-  MetadataServerAuthorizationFlow(
-    this._client, {
-    this.email = 'default',
-  });
+  MetadataServerAuthorizationFlow(this._client, {this.email = 'default'});
 
   @override
   Future<AccessCredentials> run({bool refresh = false}) async {
