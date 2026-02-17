@@ -49,9 +49,9 @@ void main() {
     // Should use local RSA signing, no HTTP requests to IAM API
     final signature = await client.sign(dataToSign);
 
-    expect(signature.signedBlob, isNotEmpty);
+    expect(signature, isNotEmpty);
     expect(
-      signature.signedBlob.length,
+      signature.length,
       equals(344),
     ); // RSA-2048 signature base64-encoded length
 
@@ -181,7 +181,7 @@ void main() {
       impersonated,
     ).sign(dataToSign, endpoint: 'https://iamcredentials.example.com');
 
-    expect(signature.signedBlob, equals(base64Encode([5, 6, 7, 8])));
+    expect(signature, equals(base64Encode([5, 6, 7, 8])));
 
     impersonated.close();
   });
@@ -233,7 +233,7 @@ void main() {
 
     final signature = await client.sign(dataToSign);
 
-    expect(signature.signedBlob, equals(base64Encode([10, 20, 30])));
+    expect(signature, equals(base64Encode([10, 20, 30])));
 
     client.close();
   }, testOn: 'vm');
@@ -272,7 +272,7 @@ void main() {
       endpoint: 'https://iamcredentials.example.com',
     );
 
-    expect(signature.signedBlob, equals(base64Encode([5, 6, 7])));
+    expect(signature, equals(base64Encode([5, 6, 7])));
 
     client.close();
   }, testOn: 'vm');

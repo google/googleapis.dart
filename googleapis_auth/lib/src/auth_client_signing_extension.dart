@@ -2,11 +2,14 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+/// @docImport 'auth_client.dart';
+library;
+
 import 'dart:convert';
 
-import 'auth_client.dart';
 import 'iam_signer.dart';
 import 'impersonated_auth_client.dart';
+import 'service_account_credentials.dart';
 import 'utils.dart';
 
 /// Extension providing smart signing capabilities for [AuthClient].
@@ -72,8 +75,7 @@ extension AuthClientSigningExtension on AuthClient {
   /// domain (e.g., `https://iamcredentials.googleapis.com` for the default
   /// universe, or a custom universe domain from the service account JSON).
   ///
-  /// Returns a record containing the signature as a base64-encoded String and
-  /// optionally the key ID used to sign the blob (if available).
+  /// Returns the signature as a String (base64-encoded).
   ///
   /// Example:
   /// ```dart
@@ -84,14 +86,11 @@ extension AuthClientSigningExtension on AuthClient {
   /// final signature = await client.sign(data);
   /// print('Signature (base64): ${signature.signedBlob}');
   /// ```
-  Future<({String signedBlob, String? keyId})> sign(
-    List<int> data, {
-    String? endpoint,
-  }) async {
+  Future<String> sign(List<int> data, {String? endpoint}) async {
     // Check if this is an impersonated client
     if (this is ImpersonatedAuthClient) {
       final impersonated = this as ImpersonatedAuthClient;
-      return impersonated.sign(data);
+      return (await impersonated.sign(data)).signedBlob;
     }
 
     // Check if we have service account credentials for local signing
@@ -99,16 +98,13 @@ extension AuthClientSigningExtension on AuthClient {
 
     if (serviceAccountCreds != null) {
       // Use local signing with service account credentials
-      return (
-        signedBlob: base64Encode(serviceAccountCreds.sign(data)),
-        keyId: null,
-      );
+      return base64Encode(serviceAccountCreds.sign(data));
     }
 
     // If we're NOT using local signing, use IAM API signing
     final universeDomain =
         serviceAccountCreds?.universeDomain ?? defaultUniverseDomain;
     endpoint ??= 'https://iamcredentials.$universeDomain';
-    return IAMSigner(this, endpoint: endpoint).sign(data);
+    return (await IAMSigner(this, endpoint: endpoint).sign(data)).signedBlob;
   }
 }
