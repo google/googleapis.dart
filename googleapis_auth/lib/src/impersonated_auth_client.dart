@@ -19,7 +19,8 @@ import 'utils.dart';
 ///
 /// See: https://cloud.google.com/iam/docs/create-short-lived-credentials-direct
 ///
-/// {@macro googleapis_auth_client_for_creds}
+/// [sourceClient] will be used for making the HTTP requests needed to create
+/// the returned [AccessCredentials].
 ///
 /// The source client must have the `roles/iam.serviceAccountTokenCreator` role
 /// on the target service account.
@@ -197,14 +198,12 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   /// Throws [ServerRequestFailedException] if the signing operation fails.
   ///
   /// See: https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/signBlob
-  Future<({String signedBlob, String keyId})> sign(List<int> data) {
-    final signer = IAMSigner(
-      _sourceClient,
-      serviceAccountEmail: _targetServiceAccount,
-      universeDomain: _universeDomain,
-    );
-    return signer.sign(data);
-  }
+  Future<({String signedBlob, String keyId})> sign(List<int> data) => signBlob(
+    _sourceClient,
+    data,
+    serviceAccountEmail: _targetServiceAccount,
+    universeDomain: _universeDomain,
+  );
 
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {

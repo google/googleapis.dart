@@ -7,6 +7,7 @@ library;
 
 import 'dart:convert';
 
+import 'package:google_cloud/general.dart';
 import 'iam_signer.dart';
 import 'impersonated_auth_client.dart';
 import 'service_account_credentials.dart';
@@ -49,13 +50,15 @@ extension AuthClientSigningExtension on AuthClient {
   /// Otherwise, queries the GCE metadata server to retrieve the default
   /// service account email.
   ///
-  /// The result is cached for the lifetime of the Dart process by the
-  /// underlying [IAMSigner].
+  /// The result is cached for the lifetime of the Dart process.
   ///
   /// If [refresh] is `true`, the cache is cleared and the value is re-computed.
   Future<String> getServiceAccountEmail({bool refresh = false}) async =>
       serviceAccountCredentials?.email ??
-      await IAMSigner(this).getServiceAccountEmail(refresh: refresh);
+      await serviceAccountEmailFromMetadataServer(
+        client: this,
+        refresh: refresh,
+      );
 
   /// Signs some bytes using the credentials from this auth client.
   ///
@@ -104,7 +107,11 @@ extension AuthClientSigningExtension on AuthClient {
     // If we're NOT using local signing, use IAM API signing
     final universeDomain =
         serviceAccountCreds?.universeDomain ?? defaultUniverseDomain;
-    endpoint ??= 'https://iamcredentials.$universeDomain';
-    return (await IAMSigner(this, endpoint: endpoint).sign(data)).signedBlob;
+    return (await signBlob(
+      this,
+      data,
+      endpoint: endpoint,
+      universeDomain: universeDomain,
+    )).signedBlob;
   }
 }

@@ -14,10 +14,7 @@ import 'oauth2_flows/metadata_server.dart';
 /// In case the VM was not configured with access to the requested scopes or an
 /// error occurs the returned future will complete with an `Exception`.
 ///
-/// {@template googleapis_auth_client_for_creds}
-/// [client] will be used for making the HTTP requests needed to create the
-/// returned [AccessCredentials].
-/// {@endtemplate}
+/// {@macro googleapis_auth_client_for_creds}
 ///
 /// No credentials are needed. But this function is only intended to work on a
 /// Google Compute Engine VM with configured access to Google APIs.
