@@ -195,7 +195,8 @@ void main() {
     }
     fullBytes.addAll(seqContent);
 
-    final pem = '''
+    final pem =
+        '''
 -----BEGIN RSA PRIVATE KEY-----
 ${base64Encode(fullBytes)}
 -----END RSA PRIVATE KEY-----''';

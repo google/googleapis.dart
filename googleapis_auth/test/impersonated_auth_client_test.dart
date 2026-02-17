@@ -30,9 +30,7 @@ void main() {
         expect(body['scope'], ['scope1', 'scope2']);
         expect(body['lifetime'], '3600s');
 
-        final expireTime = DateTime.now().toUtc().add(
-          const Duration(hours: 1),
-        );
+        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
         return http.Response(
           jsonEncode({
             'accessToken': 'impersonated-token',
@@ -82,9 +80,7 @@ void main() {
           'delegate1@project.iam.gserviceaccount.com',
         ]);
 
-        final expireTime = DateTime.now().toUtc().add(
-          const Duration(hours: 1),
-        );
+        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
         return http.Response(
           jsonEncode({
             'accessToken': 'impersonated-token',
@@ -127,9 +123,7 @@ void main() {
           'https://iamcredentials.example.com/v1/projects/-/serviceAccounts/target%40project.iam.gserviceaccount.com:generateAccessToken',
         );
 
-        final expireTime = DateTime.now().toUtc().add(
-          const Duration(hours: 1),
-        );
+        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
         return http.Response(
           jsonEncode({
             'accessToken': 'impersonated-token',
@@ -170,9 +164,7 @@ void main() {
         final body = jsonDecode(request.body) as Map<String, dynamic>;
         expect(body['lifetime'], '7200s'); // 2 hours
 
-        final expireTime = DateTime.now().toUtc().add(
-          const Duration(hours: 2),
-        );
+        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 2));
         return http.Response(
           jsonEncode({
             'accessToken': 'impersonated-token',
@@ -354,9 +346,7 @@ void main() {
 
       if (requestCount == 1) {
         // Initial generateAccessToken succeeds
-        final expireTime = DateTime.now().toUtc().add(
-          const Duration(hours: 1),
-        );
+        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
         return http.Response(
           jsonEncode({
             'accessToken': 'impersonated-token',
@@ -407,9 +397,7 @@ void main() {
 
       if (requestCount == 1) {
         // Initial generateAccessToken succeeds
-        final expireTime = DateTime.now().toUtc().add(
-          const Duration(hours: 1),
-        );
+        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
         return http.Response(
           jsonEncode({
             'accessToken': 'impersonated-token',

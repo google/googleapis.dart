@@ -46,10 +46,7 @@ void main() {
 
   test('bytes2BigInt converts byte list to BigInt', () {
     expect(RSAAlgorithm.bytes2BigInt([1]), BigInt.one);
-    expect(
-      RSAAlgorithm.bytes2BigInt([2, 0, 0, 0, 0, 0, 0, 0, 0]),
-      _bigNumber,
-    );
+    expect(RSAAlgorithm.bytes2BigInt([2, 0, 0, 0, 0, 0, 0, 0, 0]), _bigNumber);
   });
 
   test('rawSign performs raw RSA signing', () {
@@ -73,18 +70,7 @@ void main() {
       26, 217, 230, 133, 217, 76,
     ];
     expect(
-      RSAAlgorithm.rawSign(testPrivateKey, [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-      ], 256),
+      RSAAlgorithm.rawSign(testPrivateKey, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 256),
       encryptedData,
     );
   });
