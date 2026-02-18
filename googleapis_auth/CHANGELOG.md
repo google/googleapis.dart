@@ -1,4 +1,4 @@
-## 2.1.0-wip
+## 2.1.0
 
 - `AuthClientSigningExtension`: Added `sign()` which accepts an optional `serviceAccountCredentials` argument, and `getServiceAccountEmail()` which accepts an optional `email` argument.
 - `ServiceAccountCredentials`
