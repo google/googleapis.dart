@@ -552,14 +552,6 @@ void main() {
           ),
         );
 
-        // Verify that we can access the service account credentials
-        expect(client.serviceAccountCredentials, isNotNull);
-        expect(
-          client.serviceAccountCredentials!.email,
-          'test@test.iam.gserviceaccount.com',
-        );
-        expect(client.serviceAccountCredentials!.clientId.identifier, 'myid');
-
         client.close();
       });
 
@@ -586,9 +578,6 @@ void main() {
             expectClose: false,
           ),
         );
-
-        // Metadata server client should not have service account credentials
-        expect(client.serviceAccountCredentials, isNull);
 
         client.close();
       }, testOn: 'vm');

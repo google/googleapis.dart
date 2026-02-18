@@ -61,7 +61,10 @@ void main() {
     );
 
     // Should use local RSA signing, no HTTP requests to IAM API
-    final signature = await client.sign(dataToSign);
+    final signature = await client.sign(
+      dataToSign,
+      serviceAccountCredentials: credentials,
+    );
 
     expect(signature, isNotEmpty);
     expect(

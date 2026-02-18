@@ -5,6 +5,7 @@ This package also provides convenience functionality for:
 - obtaining authenticated HTTP clients
 - automatically refreshing OAuth2 credentials
 
+> [!WARNING]
 > Do _**NOT**_ use this package (`package:googleapis_auth`) with a
 > [Flutter](https://flutter.dev/) application.
 >
@@ -47,11 +48,12 @@ After the Client ID has been created, you can obtain access credentials via
 ```dart
 import 'package:googleapis_auth/auth_browser.dart';
 
-// Initialize the browser oauth2 flow functionality then use it to obtain credentials.
+// Initialize the browser oauth2 flow functionality then use it to obtain
+// credentials.
 Future<AccessCredentials> obtainCredentials() => requestAccessCredentials(
-  clientId: '....apps.googleusercontent.com',
-  scopes: ['scope1', 'scope2'],
-);
+      clientId: '....apps.googleusercontent.com',
+      scopes: ['scope1', 'scope2'],
+    );
 ```
 
 or obtain an authenticated HTTP client via
@@ -207,7 +209,7 @@ Here is an example of getting an HTTP client which uses an API key for making
 HTTP requests.
 
 ```dart
-import "package:googleapis_auth/auth_io.dart";
+import 'package:googleapis_auth/auth_io.dart';
 
 var client = clientViaApiKey('<api-key-from-devconsole>');
 // [client] can now be used to make REST calls to Google APIs.
@@ -240,11 +242,16 @@ class MicrosoftAuthEndpoints extends AuthEndpoints {
 This can then be used to obtain credentials:
 
 ```dart
+final clientId = ClientId('my-client-id', 'my-client-secret');
 final credentials = await obtainAccessCredentialsViaUserConsent(
   clientId,
   ['scope1', 'scope2'],
   client,
-  prompt,
+  (url) {
+    print('Please go to the following URL and grant access:');
+    print('  => $url');
+    print('');
+  },
   authEndpoints: MicrosoftAuthEndpoints(),
 );
 ```

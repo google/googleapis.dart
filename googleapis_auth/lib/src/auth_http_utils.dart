@@ -25,9 +25,6 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
   });
 
   @override
-  ServiceAccountCredentials? get serviceAccountCredentials => null;
-
-  @override
   Future<StreamedResponse> send(BaseRequest request) async {
     // Make new request object and perform the authenticated request.
     final modifiedRequest = RequestImpl(
@@ -112,9 +109,6 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
       quotaProject: quotaProject,
     );
   }
-
-  @override
-  ServiceAccountCredentials? get serviceAccountCredentials => null;
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {

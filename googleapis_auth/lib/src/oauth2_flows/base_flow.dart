@@ -17,7 +17,6 @@ abstract class BaseFlow {
 Future<AutoRefreshingAuthClient> clientFromFlow(
   BaseFlow Function(Client client) flowFactory, {
   Client? baseClient,
-  ServiceAccountCredentials? serviceAccountCredentials,
 }) async {
   if (baseClient == null) {
     baseClient = Client();
@@ -29,12 +28,7 @@ Future<AutoRefreshingAuthClient> clientFromFlow(
 
   try {
     final credentials = await flow.run();
-    return _FlowClient(
-      baseClient,
-      credentials,
-      flow,
-      serviceAccountCredentials: serviceAccountCredentials,
-    );
+    return _FlowClient(baseClient, credentials, flow);
   } catch (e) {
     baseClient.close();
     rethrow;
@@ -46,16 +40,10 @@ class _FlowClient extends AutoRefreshDelegatingClient {
   final BaseFlow _flow;
   @override
   AccessCredentials credentials;
-  @override
-  final ServiceAccountCredentials? serviceAccountCredentials;
   Client _authClient;
 
-  _FlowClient(
-    super.client,
-    this.credentials,
-    this._flow, {
-    this.serviceAccountCredentials,
-  }) : _authClient = authenticatedClient(client, credentials);
+  _FlowClient(super.client, this.credentials, this._flow)
+    : _authClient = authenticatedClient(client, credentials);
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {

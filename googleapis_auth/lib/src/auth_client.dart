@@ -10,13 +10,6 @@ import '../auth_io.dart';
 abstract class AuthClient implements Client {
   /// The credentials currently used for making HTTP requests.
   AccessCredentials get credentials;
-
-  /// The service account credentials used to create this client, if any.
-  ///
-  /// Returns `null` if this client was not created via
-  /// [clientViaServiceAccount] or if the underlying credentials are not
-  /// service account credentials.
-  ServiceAccountCredentials? get serviceAccountCredentials;
 }
 
 /// A auto-refreshing, authenticated HTTP client.
