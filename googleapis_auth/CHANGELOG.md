@@ -1,6 +1,7 @@
 ## 2.1.0
 
-- `AuthClientSigningExtension`: Added `sign()` which accepts an optional `serviceAccountCredentials` argument, and `getServiceAccountEmail()` which accepts an optional `email` argument.
+- `AuthClientSigningExtension`: Added `sign()` which accepts an optional
+  `serviceAccountCredentials` argument, and `getServiceAccountEmail()`.
 - `ServiceAccountCredentials`
   - Added parsing for `projectId` and `universeDomain` properties.
   - Added `sign()` method for RSA-SHA256 signing.
@@ -13,7 +14,6 @@
   `ImpersonatedAuthClient` class for service account impersonation via IAM
   Credentials API.
 - Export `RSAPrivateKey` which is exposed by `ServiceAccountCredentials`.
-- Modernized code using pattern matching and switch expressions.
 - Require `google_cloud: ^0.3.0`.
 - Require `meta: ^1.15.0`.
 - Require `sdk: ^3.9.0`.

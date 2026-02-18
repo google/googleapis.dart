@@ -59,41 +59,36 @@ class ServiceAccountCredentials {
     if (json is String) {
       json = jsonDecode(json);
     }
-    if (json is! Map) {
-      throw ArgumentError('json must be a Map or a String encoding a Map.');
-    }
-    // TODO: consider using expressions here
-    final identifier = json['client_id'] as String?;
-    final privateKey = json['private_key'] as String?;
-    final email = json['client_email'] as String?;
-    final type = json['type'];
-    final projectId = json['project_id'] as String?;
-    final universeDomain =
-        json['universe_domain'] as String? ?? defaultUniverseDomain;
-
-    if (type != 'service_account') {
-      throw ArgumentError(
-        'The given credentials are not of type '
-        'service_account (was: $type).',
-      );
-    }
-
-    if (identifier == null || privateKey == null || email == null) {
-      throw ArgumentError(
+    return switch (json) {
+      final Map map &&
+          {
+            'type': 'service_account',
+            'client_id': final String identifier,
+            'private_key': final String privateKey,
+            'client_email': final String email,
+          } =>
+        ServiceAccountCredentials(
+          email,
+          ClientId(identifier),
+          privateKey,
+          impersonatedUser: impersonatedUser,
+          projectId: map['project_id'] as String?,
+          universeDomain:
+              map['universe_domain'] as String? ?? defaultUniverseDomain,
+        ),
+      final Map map when map['type'] != 'service_account' =>
+        throw ArgumentError(
+          'The given credentials are not of type '
+          'service_account (was: ${map['type']}).',
+        ),
+      Map _ => throw ArgumentError(
         'The given credentials do not contain all the '
         'fields: client_id, private_key and client_email.',
-      );
-    }
-
-    final clientId = ClientId(identifier);
-    return ServiceAccountCredentials(
-      email,
-      clientId,
-      privateKey,
-      impersonatedUser: impersonatedUser,
-      projectId: projectId,
-      universeDomain: universeDomain,
-    );
+      ),
+      _ => throw ArgumentError(
+        'json must be a Map or a String encoding a Map.',
+      ),
+    };
   }
 
   /// Creates a new [ServiceAccountCredentials].

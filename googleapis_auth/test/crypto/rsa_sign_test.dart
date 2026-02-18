@@ -79,4 +79,11 @@ void main() {
       184, 21, 130, 61, 138, 27, 226, 70, 119, 195, 223, 180, 121,
     ]);
   });
+
+  test('different messages generate different signatures', () {
+    final sig1 = signer.sign(ascii.encode('test message A'));
+    final sig2 = signer.sign(ascii.encode('test message B'));
+
+    expect(sig1, isNot(equals(sig2)));
+  });
 }
