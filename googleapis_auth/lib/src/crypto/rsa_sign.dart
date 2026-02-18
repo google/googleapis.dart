@@ -18,13 +18,15 @@ final class RS256Signer {
   //     digest OCTET STRING
   // }
   //
-  // Where AlgorithmIdentifier is for the NIST sha-256 OID (2 16 840 1 101 3 4 2 1)
+  // Where AlgorithmIdentifier is for the NIST sha-256 OID
+  //   (2 16 840 1 101 3 4 2 1)
   // See a reference for the encoding here:
   // http://msdn.microsoft.com/en-us/library/bb540809%28v=vs.85%29.aspx
   // ASN1:
   // SEQUENCE (length: 0x1f + 2 for sequence + length) [0x30, 0x31]
   //   SEQUENCE (length: 0x0d + 2 for sequence + length) [0x30, 0x0d]
-  //     OID 2.16.840.1.101.3.4.2.1 [0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01]
+  //     OID 2.16.840.1.101.3.4.2.1
+  //       [0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01]
   //     NULL [0x05, 0x00]
   //   OCTET STRING (length: 0x20 + 2 for octet string + length) [0x04, 0x20]
   static const _rsaSha256DigestInfoPrefix = [

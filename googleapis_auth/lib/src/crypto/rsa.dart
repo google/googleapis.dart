@@ -8,7 +8,7 @@
 import 'dart:typed_data';
 
 /// Represents integers obtained while creating a Public/Private key pair.
-class RSAPrivateKey {
+final class RSAPrivateKey {
   /// First prime number.
   final BigInt p;
 
@@ -70,32 +70,14 @@ abstract final class RSAAlgorithm {
   }
 
   static BigInt _encryptInteger(RSAPrivateKey key, BigInt x) {
-    // The following is equivalent to `_modPow(x, key.d, key.n) but is much
+    // The following is equivalent to `(x % key.n).modPow(key.d, key.n)` but is much
     // more efficient. It exploits the fact that we have dmp1/dmq1.
-    var xp = _modPow(x % key.p, key.dmp1, key.p);
-    final xq = _modPow(x % key.q, key.dmq1, key.q);
+    var xp = (x % key.p).modPow(key.dmp1, key.p);
+    final xq = (x % key.q).modPow(key.dmq1, key.q);
     while (xp < xq) {
       xp += key.p;
     }
     return ((((xp - xq) * key.coeff) % key.p) * key.q) + xq;
-  }
-
-  static BigInt _modPow(BigInt b, BigInt e, BigInt m) {
-    if (e < BigInt.one) {
-      return BigInt.one;
-    }
-    if (b < BigInt.zero || b > m) {
-      b = b % m;
-    }
-    var r = BigInt.one;
-    while (e > BigInt.zero) {
-      if ((e & BigInt.one) > BigInt.zero) {
-        r = (r * b) % m;
-      }
-      e >>= 1;
-      b = (b * b) % m;
-    }
-    return r;
   }
 
   static BigInt bytes2BigInt(List<int> bytes) {
