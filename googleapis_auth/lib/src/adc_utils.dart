@@ -13,6 +13,7 @@ import 'package:http/http.dart';
 import 'auth_endpoints.dart';
 import 'auth_functions.dart';
 import 'auth_http_utils.dart';
+import 'impersonated_auth_client.dart';
 import 'service_account_client.dart';
 import 'service_account_credentials.dart';
 
@@ -38,8 +39,20 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
       'Failed to parse JSON from credentials file from $fileSource',
     );
   }
-  final quotaProject = credentials['quota_project_id'] as String?;
 
+  return _clientViaApplicationCredentials(
+    credentials as Map<String, dynamic>,
+    scopes,
+    baseClient,
+  );
+}
+
+Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
+  Map<String, dynamic> credentials,
+  List<String> scopes,
+  Client baseClient,
+) async {
+  final quotaProject = credentials['quota_project_id'] as String?;
   if (credentials case {
     'type': 'authorized_user',
     'client_id': final String clientIdString,
@@ -64,6 +77,34 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
       quotaProject: quotaProject,
     );
   }
+
+  if (credentials case {
+    'type': 'impersonated_service_account',
+    'service_account_impersonation_url': final String url,
+    'source_credentials': final Map<String, dynamic> source,
+  }) {
+    final sourceClient = await _clientViaApplicationCredentials(source, [
+      'https://www.googleapis.com/auth/iam',
+    ], baseClient);
+
+    final match = _impersonationUrlRegExp.firstMatch(url);
+    if (match == null) {
+      throw ArgumentError.value(
+        url,
+        'service_account_impersonation_url',
+        'Invalid impersonation URL',
+      );
+    }
+    final targetServiceAccount = match.group(1)!;
+
+    return clientViaServiceAccountImpersonation(
+      sourceClient: sourceClient,
+      targetServiceAccount: targetServiceAccount,
+      targetScopes: scopes,
+      baseClient: baseClient,
+    );
+  }
+
   return await clientViaServiceAccount(
     ServiceAccountCredentials.fromJson(credentials),
     scopes,
@@ -71,3 +112,15 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
     quotaProject: quotaProject,
   );
 }
+
+/// Matches the target service account email from a service account
+/// impersonation URL.
+///
+/// Example URL:
+/// `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/SA_NAME@PROJECT.iam.gserviceaccount.com:generateAccessToken`
+///
+/// See:
+/// https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/generateAccessToken
+final _impersonationUrlRegExp = RegExp(
+  r'serviceAccounts/([^:]+):generateAccessToken',
+);
