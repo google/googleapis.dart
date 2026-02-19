@@ -180,7 +180,7 @@ class DiscoveryPackagesConfiguration {
         for (final path in [
           googleApisPath,
           googleApisBetaPath,
-          skippedApisPath
+          skippedApisPath,
         ]) {
           try {
             final node = editor.parseAt(path);
