@@ -10,6 +10,7 @@ import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 // ignore: implementation_imports
 import 'package:discoveryapis_generator/src/namer.dart';
 import 'package:yaml/yaml.dart';
+import 'package:yaml_edit/yaml_edit.dart';
 
 import '../googleapis_generator.dart';
 import 'fetch_core.dart';
@@ -40,7 +41,7 @@ class Package {
 /// a Discovery Service.
 class DiscoveryPackagesConfiguration {
   String configFile;
-  late final Map yaml;
+  late Map yaml;
   late Map<String, Package> packages;
 
   late final Set<String> excessApis;
@@ -56,7 +57,7 @@ class DiscoveryPackagesConfiguration {
   /// like this:
   ///
   ///     packages:
-  ///     - googleapis:
+  ///       googleapis:
   ///         version: 0.1.0
   ///         repository: https://github.com/dart-lang/googleapis
   ///         readme: resources/README.md
@@ -64,7 +65,7 @@ class DiscoveryPackagesConfiguration {
   ///         apis:
   ///         -  analytics:v3
   ///         -  bigquery:v2
-  ///     - googleapis_beta:
+  ///       googleapis_beta:
   ///         version: 0.1.0
   ///         repository: https://github.com/dart-lang/googleapis
   ///         readme: resources/README.md
@@ -115,6 +116,10 @@ class DiscoveryPackagesConfiguration {
     );
     _initialize(allApis);
 
+    if (updateConfigurationFile()) {
+      _initialize(allApis);
+    }
+
     var count = 0;
     for (var entry in packages.entries) {
       print(' ${++count} of ${packages.length} - ${entry.key}');
@@ -142,6 +147,67 @@ class DiscoveryPackagesConfiguration {
     }
   }
 
+  bool updateConfigurationFile() {
+    final editor = YamlEditor(File(configFile).readAsStringSync());
+
+    var changed = false;
+
+    if (missingApis.isNotEmpty) {
+      for (var apiId in missingApis) {
+        final version = apiId.split(':').last;
+        final isStable =
+            !version.contains('alpha') && !version.contains('beta');
+
+        final path = isStable
+            ? ['packages', 'googleapis', 'apis']
+            : ['skipped_apis'];
+
+        final list = (editor.parseAt(path) as YamlList).cast<String>().toList();
+        list.add(apiId);
+        list.sort();
+        editor.update(path, list);
+        changed = true;
+      }
+    }
+
+    if (excessApis.isNotEmpty) {
+      for (var apiId in excessApis) {
+        // Find which list it's in.
+        final googleApisPath = ['packages', 'googleapis', 'apis'];
+        final googleApisBetaPath = ['packages', 'googleapis_beta', 'apis'];
+        final skippedApisPath = ['skipped_apis'];
+
+        for (final path in [
+          googleApisPath,
+          googleApisBetaPath,
+          skippedApisPath,
+        ]) {
+          try {
+            final node = editor.parseAt(path);
+            if (node is YamlList) {
+              final list = node.cast<String>().toList();
+              if (list.remove(apiId)) {
+                editor.update(path, list);
+                changed = true;
+              }
+            }
+          } catch (_) {
+            // Path might not exist in this config, which is fine.
+          }
+        }
+      }
+    }
+
+    if (changed) {
+      final newContent = editor.toString();
+      File(configFile).writeAsStringSync(newContent);
+      yaml = loadYaml(newContent) as Map;
+      print('Updated $configFile');
+    }
+
+    return changed;
+  }
+
   /// Generate packages from the configuration.
   ///
   /// [discoveryDocsDir] is the directory where all the downloaded discovery
@@ -164,10 +230,8 @@ class DiscoveryPackagesConfiguration {
 
     // Load discovery documents from disc & initialize this object.
     final allApis = <RestDescription>[];
-    for (var package in yaml['packages'] as List) {
-      (package as Map).forEach((name, _) {
-        allApis.addAll(loadDiscoveryDocuments('$discoveryDocsDir/$name'));
-      });
+    for (var name in (yaml['packages'] as Map).keys) {
+      allApis.addAll(loadDiscoveryDocuments('$discoveryDocsDir/$name'));
     }
     _initialize(allApis);
 
@@ -215,7 +279,7 @@ class DiscoveryPackagesConfiguration {
   /// of [RestDescription]s.
   void _initialize(List<RestDescription> allApis) {
     packages = _packagesFromYaml(
-      yaml['packages'] as YamlList,
+      yaml['packages'] as YamlMap,
       configFile,
       allApis,
     );
@@ -305,21 +369,19 @@ package.
   }
 
   static Map<String, Package> _packagesFromYaml(
-    YamlList configPackages,
+    YamlMap configPackages,
     String configFile,
     List<RestDescription?> allApis,
   ) {
     final packages = <String, Package>{};
-    for (var package in configPackages) {
-      (package as Map).forEach((name, values) {
-        packages[name as String] = _packageFromYaml(
-          name,
-          values as YamlMap,
-          configFile,
-          allApis,
-        );
-      });
-    }
+    configPackages.forEach((name, values) {
+      packages[name as String] = _packageFromYaml(
+        name,
+        values as YamlMap,
+        configFile,
+        allApis,
+      );
+    });
 
     return packages;
   }
