@@ -81,7 +81,7 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
     'source_credentials': final Map<String, dynamic> source,
   }) {
     final sourceClient = await _clientViaApplicationCredentials(source, [
-      'https://www.googleapis.com/auth/cloud-platform',
+      'https://www.googleapis.com/auth/iam',
     ], baseClient);
 
     final match = _impersonationUrlRegExp.firstMatch(url);
@@ -106,7 +106,6 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
     ServiceAccountCredentials.fromJson(credentials),
     scopes,
     baseClient: baseClient,
-    quotaProject: credentials['quota_project_id'] as String?,
   );
 }
 
