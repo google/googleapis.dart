@@ -131,6 +131,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -1690,6 +1701,51 @@ class ProjectsLocationsServicesSchemasResource {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// Client caching settings of a connector.
+class ClientCache {
+  /// A field that, if true, means that responses served by this connector will
+  /// include entityIds in GraphQL response extensions.
+  ///
+  /// This helps the client SDK cache responses in an improved way, known as
+  /// "normalized caching", if caching is enabled on the client. Each entityId
+  /// is a stable key based on primary key values. Therefore, this field should
+  /// only be set to true if the primary keys of accessed tables do not contain
+  /// sensitive information.
+  ///
+  /// Optional.
+  core.bool? entityIdIncluded;
+
+  /// A field that, if true, enables stricter validation on the connector source
+  /// code to make sure the operation response shapes are suitable for
+  /// client-side caching.
+  ///
+  /// This can include additional errors and warnings. For example, using the
+  /// same alias for different fields is disallowed, as it may cause conflicts
+  /// or confusion with normalized caching. (This field is off by default for
+  /// compatibility, but enabling it is highly recommended to catch common
+  /// caching pitfalls.)
+  ///
+  /// Optional.
+  core.bool? strictValidationEnabled;
+
+  ClientCache({this.entityIdIncluded, this.strictValidationEnabled});
+
+  ClientCache.fromJson(core.Map json_)
+    : this(
+        entityIdIncluded: json_['entityIdIncluded'] as core.bool?,
+        strictValidationEnabled: json_['strictValidationEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityIdIncluded = this.entityIdIncluded;
+    final strictValidationEnabled = this.strictValidationEnabled;
+    return {
+      'entityIdIncluded': ?entityIdIncluded,
+      'strictValidationEnabled': ?strictValidationEnabled,
+    };
+  }
+}
+
 /// Settings for CloudSQL instance configuration.
 class CloudSqlInstance {
   /// Name of the CloudSQL instance, in the format: ```
@@ -1715,6 +1771,11 @@ class Connector {
   ///
   /// Optional.
   core.Map<core.String, core.String>? annotations;
+
+  /// The client cache settings of the connector.
+  ///
+  /// Optional.
+  ClientCache? clientCache;
 
   /// Create time stamp.
   ///
@@ -1772,6 +1833,7 @@ class Connector {
 
   Connector({
     this.annotations,
+    this.clientCache,
     this.createTime,
     this.displayName,
     this.etag,
@@ -1789,6 +1851,11 @@ class Connector {
             (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(key, value as core.String),
             ),
+        clientCache: json_.containsKey('clientCache')
+            ? ClientCache.fromJson(
+                json_['clientCache'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
@@ -1808,6 +1875,7 @@ class Connector {
 
   core.Map<core.String, core.dynamic> toJson() {
     final annotations = this.annotations;
+    final clientCache = this.clientCache;
     final createTime = this.createTime;
     final displayName = this.displayName;
     final etag = this.etag;
@@ -1819,6 +1887,7 @@ class Connector {
     final updateTime = this.updateTime;
     return {
       'annotations': ?annotations,
+      'clientCache': ?clientCache,
       'createTime': ?createTime,
       'displayName': ?displayName,
       'etag': ?etag,
@@ -1828,6 +1897,62 @@ class Connector {
       'source': ?source,
       'uid': ?uid,
       'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Data Connect specific properties for a path under response.data.
+class DataConnectProperties {
+  /// A single Entity ID.
+  ///
+  /// Set if the path points to a single entity.
+  core.String? entityId;
+
+  /// A list of Entity IDs.
+  ///
+  /// Set if the path points to an array of entities. An ID is present for each
+  /// element of the array at the corresponding index.
+  core.List<core.String>? entityIds;
+
+  /// The server-suggested duration before data under path is considered stale.
+  core.String? maxAge;
+
+  /// The path under response.data where the rest of the fields apply.
+  ///
+  /// Each element may be a string (field name) or number (array index). The
+  /// root of response.data is denoted by the empty list `[]`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? path;
+
+  DataConnectProperties({
+    this.entityId,
+    this.entityIds,
+    this.maxAge,
+    this.path,
+  });
+
+  DataConnectProperties.fromJson(core.Map json_)
+    : this(
+        entityId: json_['entityId'] as core.String?,
+        entityIds: (json_['entityIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        maxAge: json_['maxAge'] as core.String?,
+        path: json_.containsKey('path') ? json_['path'] as core.List : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityId = this.entityId;
+    final entityIds = this.entityIds;
+    final maxAge = this.maxAge;
+    final path = this.path;
+    return {
+      'entityId': ?entityId,
+      'entityIds': ?entityIds,
+      'maxAge': ?maxAge,
+      'path': ?path,
     };
   }
 }
@@ -1885,7 +2010,10 @@ class ExecuteMutationResponse {
   /// Errors of this response.
   core.List<GraphqlError>? errors;
 
-  ExecuteMutationResponse({this.data, this.errors});
+  /// Additional response information.
+  GraphqlResponseExtensions? extensions;
+
+  ExecuteMutationResponse({this.data, this.errors, this.extensions});
 
   ExecuteMutationResponse.fromJson(core.Map json_)
     : this(
@@ -1899,12 +2027,18 @@ class ExecuteMutationResponse {
               ),
             )
             .toList(),
+        extensions: json_.containsKey('extensions')
+            ? GraphqlResponseExtensions.fromJson(
+                json_['extensions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final data = this.data;
     final errors = this.errors;
-    return {'data': ?data, 'errors': ?errors};
+    final extensions = this.extensions;
+    return {'data': ?data, 'errors': ?errors, 'extensions': ?extensions};
   }
 }
 
@@ -1922,7 +2056,10 @@ class ExecuteQueryResponse {
   /// Errors of this response.
   core.List<GraphqlError>? errors;
 
-  ExecuteQueryResponse({this.data, this.errors});
+  /// Additional response information.
+  GraphqlResponseExtensions? extensions;
+
+  ExecuteQueryResponse({this.data, this.errors, this.extensions});
 
   ExecuteQueryResponse.fromJson(core.Map json_)
     : this(
@@ -1936,12 +2073,18 @@ class ExecuteQueryResponse {
               ),
             )
             .toList(),
+        extensions: json_.containsKey('extensions')
+            ? GraphqlResponseExtensions.fromJson(
+                json_['extensions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final data = this.data;
     final errors = this.errors;
-    return {'data': ?data, 'errors': ?errors};
+    final extensions = this.extensions;
+    return {'data': ?data, 'errors': ?errors, 'extensions': ?extensions};
   }
 }
 
@@ -2326,10 +2469,15 @@ class GraphqlResponse {
   /// Errors of this response.
   ///
   /// If the data entry in the response is not present, the errors entry must be
-  /// present. It conforms to https://spec.graphql.org/draft/#sec-Errors.
+  /// present. It conforms to https://spec.graphql.org/draft/#sec-Errors .
   core.List<GraphqlError>? errors;
 
-  GraphqlResponse({this.data, this.errors});
+  /// Additional response information.
+  ///
+  /// It conforms to https://spec.graphql.org/draft/#sec-Extensions .
+  GraphqlResponseExtensions? extensions;
+
+  GraphqlResponse({this.data, this.errors, this.extensions});
 
   GraphqlResponse.fromJson(core.Map json_)
     : this(
@@ -2343,12 +2491,43 @@ class GraphqlResponse {
               ),
             )
             .toList(),
+        extensions: json_.containsKey('extensions')
+            ? GraphqlResponseExtensions.fromJson(
+                json_['extensions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final data = this.data;
     final errors = this.errors;
-    return {'data': ?data, 'errors': ?errors};
+    final extensions = this.extensions;
+    return {'data': ?data, 'errors': ?errors, 'extensions': ?extensions};
+  }
+}
+
+/// GraphqlResponseExtensions contains additional information of
+/// `GraphqlResponse` or `ExecuteQueryResponse`.
+class GraphqlResponseExtensions {
+  /// Data Connect specific GraphQL extension, a list of paths and properties.
+  core.List<DataConnectProperties>? dataConnect;
+
+  GraphqlResponseExtensions({this.dataConnect});
+
+  GraphqlResponseExtensions.fromJson(core.Map json_)
+    : this(
+        dataConnect: (json_['dataConnect'] as core.List?)
+            ?.map(
+              (value) => DataConnectProperties.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataConnect = this.dataConnect;
+    return {'dataConnect': ?dataConnect};
   }
 }
 
@@ -2802,6 +2981,13 @@ class PostgreSql {
   /// Output only.
   core.bool? ephemeral;
 
+  /// User-configured PostgreSQL schema.
+  ///
+  /// Defaults to "public" if not specified.
+  ///
+  /// Optional.
+  core.String? schema;
+
   /// Configure how to perform Postgresql schema migration.
   ///
   /// Optional.
@@ -2848,6 +3034,7 @@ class PostgreSql {
     this.cloudSql,
     this.database,
     this.ephemeral,
+    this.schema,
     this.schemaMigration,
     this.schemaValidation,
     this.unlinked,
@@ -2862,6 +3049,7 @@ class PostgreSql {
             : null,
         database: json_['database'] as core.String?,
         ephemeral: json_['ephemeral'] as core.bool?,
+        schema: json_['schema'] as core.String?,
         schemaMigration: json_['schemaMigration'] as core.String?,
         schemaValidation: json_['schemaValidation'] as core.String?,
         unlinked: json_['unlinked'] as core.bool?,
@@ -2871,6 +3059,7 @@ class PostgreSql {
     final cloudSql = this.cloudSql;
     final database = this.database;
     final ephemeral = this.ephemeral;
+    final schema = this.schema;
     final schemaMigration = this.schemaMigration;
     final schemaValidation = this.schemaValidation;
     final unlinked = this.unlinked;
@@ -2878,6 +3067,7 @@ class PostgreSql {
       'cloudSql': ?cloudSql,
       'database': ?database,
       'ephemeral': ?ephemeral,
+      'schema': ?schema,
       'schemaMigration': ?schemaMigration,
       'schemaValidation': ?schemaValidation,
       'unlinked': ?unlinked,

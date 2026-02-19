@@ -944,6 +944,8 @@ class IssueSeverityPerReportingContext {
   /// [Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).
   /// - "FREE_LISTINGS" :
   /// [Free product listings](https://support.google.com/merchants/answer/9199328).
+  /// - "FREE_LISTINGS_UCP_CHECKOUT" :
+  /// [Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).
   /// - "FREE_LOCAL_LISTINGS" :
   /// [Free local product listings](https://support.google.com/merchants/answer/9825611).
   /// - "FREE_LOCAL_VEHICLE_LISTINGS" :
@@ -1039,7 +1041,9 @@ class ItemIssue {
 class ItemIssueSeverity {
   /// Aggregated severity of the issue for all reporting contexts it affects.
   ///
-  /// **This field can be used for filtering the results.**
+  /// Reporting contexts included in the computation of the aggregated severity
+  /// can be restricted using a filter on the `reporting_context` field. **This
+  /// field can be used for filtering the results.**
   /// Possible string values are:
   /// - "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED" : Not specified.
   /// - "DISAPPROVED" : Issue disapproves the product in at least one reporting
@@ -1050,6 +1054,9 @@ class ItemIssueSeverity {
   core.String? aggregatedSeverity;
 
   /// Issue severity per reporting context.
+  ///
+  /// Reporting contexts included in this list can be restricted using a filter
+  /// on the `reporting_context` field.
   core.List<IssueSeverityPerReportingContext>? severityPerReportingContext;
 
   ItemIssueSeverity({
@@ -1726,6 +1733,16 @@ class ProductPerformanceView {
   /// Segment.
   core.String? productTypeL5;
 
+  /// Store type to which metrics apply.
+  ///
+  /// Can be `ONLINE_STORE` or `LOCAL_STORES`. Segment. For `LOCAL_STORES` store
+  /// type, further segmentation by a specific store is not available.
+  /// Possible string values are:
+  /// - "STORE_TYPE_ENUM_UNSPECIFIED" : Not specified.
+  /// - "ONLINE_STORE" : Online store.
+  /// - "LOCAL_STORES" : Local (physical) stores.
+  core.String? storeType;
+
   /// Title of the product.
   ///
   /// Segment.
@@ -1764,6 +1781,7 @@ class ProductPerformanceView {
     this.productTypeL3,
     this.productTypeL4,
     this.productTypeL5,
+    this.storeType,
     this.title,
     this.week,
   });
@@ -1804,6 +1822,7 @@ class ProductPerformanceView {
         productTypeL3: json_['productTypeL3'] as core.String?,
         productTypeL4: json_['productTypeL4'] as core.String?,
         productTypeL5: json_['productTypeL5'] as core.String?,
+        storeType: json_['storeType'] as core.String?,
         title: json_['title'] as core.String?,
         week: json_.containsKey('week')
             ? Date.fromJson(
@@ -1839,6 +1858,7 @@ class ProductPerformanceView {
     final productTypeL3 = this.productTypeL3;
     final productTypeL4 = this.productTypeL4;
     final productTypeL5 = this.productTypeL5;
+    final storeType = this.storeType;
     final title = this.title;
     final week = this.week;
     return {
@@ -1868,6 +1888,7 @@ class ProductPerformanceView {
       'productTypeL3': ?productTypeL3,
       'productTypeL4': ?productTypeL4,
       'productTypeL5': ?productTypeL5,
+      'storeType': ?storeType,
       'title': ?title,
       'week': ?week,
     };
@@ -1876,15 +1897,20 @@ class ProductPerformanceView {
 
 /// Fields available for query in `product_view` table.
 ///
-/// Products in the current inventory. Products in this table are the same as in
-/// Products sub-API but not all product attributes from Products sub-API are
-/// available for query in this table. In contrast to Products sub-API, this
-/// table allows to filter the returned list of products by product attributes.
-/// To retrieve a single product by `id` or list all products, Products sub-API
-/// should be used. Values are only set for fields requested explicitly in the
-/// request's search query.
+/// Products in the current inventory. Products in this table are the same as a
+/// \[Product resource in Products
+/// sub-API\](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products)
+/// but not all product attributes from Products sub-API are available for query
+/// in this table. In contrast to Products sub-API, this table allows to filter
+/// the returned list of products by product attributes. To retrieve a single
+/// product by `id` or list all products, Products sub-API should be used.
+/// Values are only set for fields requested explicitly in the request's search
+/// query.
 class ProductView {
-  /// Aggregated status.
+  /// Aggregated status across all reporting contexts.
+  ///
+  /// Reporting contexts included in the computation of the aggregated status
+  /// can be restricted using a filter on the `reporting_context` field.
   /// Possible string values are:
   /// - "AGGREGATED_REPORTING_CONTEXT_STATUS_UNSPECIFIED" : Not specified.
   /// - "NOT_ELIGIBLE_OR_DISAPPROVED" : Product is not eligible or is
@@ -2016,10 +2042,65 @@ class ProductView {
   /// [product taxonomy](https://support.google.com/merchants/answer/6324406).
   core.String? productTypeL5;
 
+  /// Reporting context to restrict the query to.
+  ///
+  /// Restricts the reporting contexts returned in
+  /// `status_per_reporting_context` and `item_issues`, and used to compute
+  /// `aggregated_reporting_context_status`. **This field can only be used in
+  /// the `WHERE` clause and cannot be selected in the `SELECT` clause.**
+  /// Possible string values are:
+  /// - "REPORTING_CONTEXT_ENUM_UNSPECIFIED" : Not specified.
+  /// - "SHOPPING_ADS" :
+  /// [Shopping ads](https://support.google.com/merchants/answer/6149970).
+  /// - "DISCOVERY_ADS" : Deprecated: Use `DEMAND_GEN_ADS` instead.
+  /// [Discovery and Demand Gen ads](https://support.google.com/merchants/answer/13389785).
+  /// - "DEMAND_GEN_ADS" :
+  /// [Demand Gen ads](https://support.google.com/merchants/answer/13389785).
+  /// - "DEMAND_GEN_ADS_DISCOVER_SURFACE" :
+  /// [Demand Gen ads on Discover surface](https://support.google.com/merchants/answer/13389785).
+  /// - "VIDEO_ADS" :
+  /// [Video ads](https://support.google.com/google-ads/answer/6340491).
+  /// - "DISPLAY_ADS" :
+  /// [Display ads](https://support.google.com/merchants/answer/6069387).
+  /// - "LOCAL_INVENTORY_ADS" :
+  /// [Local inventory ads](https://support.google.com/merchants/answer/3271956).
+  /// - "VEHICLE_INVENTORY_ADS" :
+  /// [Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).
+  /// - "FREE_LISTINGS" :
+  /// [Free product listings](https://support.google.com/merchants/answer/9199328).
+  /// - "FREE_LISTINGS_UCP_CHECKOUT" :
+  /// [Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).
+  /// - "FREE_LOCAL_LISTINGS" :
+  /// [Free local product listings](https://support.google.com/merchants/answer/9825611).
+  /// - "FREE_LOCAL_VEHICLE_LISTINGS" :
+  /// [Free local vehicle listings](https://support.google.com/merchants/answer/11544533).
+  /// - "YOUTUBE_AFFILIATE" :
+  /// [Youtube Affiliate](https://support.google.com/youtube/answer/13376398).
+  /// - "YOUTUBE_SHOPPING" :
+  /// [YouTube Shopping](https://support.google.com/merchants/answer/13478370).
+  /// - "CLOUD_RETAIL" :
+  /// [Cloud retail](https://cloud.google.com/solutions/retail).
+  /// - "LOCAL_CLOUD_RETAIL" :
+  /// [Local cloud retail](https://cloud.google.com/solutions/retail).
+  /// - "PRODUCT_REVIEWS" :
+  /// [Product Reviews](https://support.google.com/merchants/answer/14620732).
+  /// - "MERCHANT_REVIEWS" :
+  /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
+  /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  core.String? reportingContext;
+
   /// Normalized
   /// [shipping label](https://support.google.com/merchants/answer/6324504)
   /// specified in the data source.
   core.String? shippingLabel;
+
+  /// Detailed product status per reporting context.
+  ///
+  /// Reporting contexts included in this list can be restricted using a filter
+  /// on the `reporting_context` field. Equivalent to
+  /// `ProductStatus.destination_statuses` in Products API. **This field cannot
+  /// be used for sorting or filtering the results.**
+  core.List<StatusPerReportingContext>? statusPerReportingContext;
 
   /// Link to the processed image of the product, hosted on the Google
   /// infrastructure.
@@ -2056,7 +2137,9 @@ class ProductView {
     this.productTypeL3,
     this.productTypeL4,
     this.productTypeL5,
+    this.reportingContext,
     this.shippingLabel,
+    this.statusPerReportingContext,
     this.thumbnailLink,
     this.title,
   });
@@ -2107,7 +2190,16 @@ class ProductView {
         productTypeL3: json_['productTypeL3'] as core.String?,
         productTypeL4: json_['productTypeL4'] as core.String?,
         productTypeL5: json_['productTypeL5'] as core.String?,
+        reportingContext: json_['reportingContext'] as core.String?,
         shippingLabel: json_['shippingLabel'] as core.String?,
+        statusPerReportingContext:
+            (json_['statusPerReportingContext'] as core.List?)
+                ?.map(
+                  (value) => StatusPerReportingContext.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         thumbnailLink: json_['thumbnailLink'] as core.String?,
         title: json_['title'] as core.String?,
       );
@@ -2141,7 +2233,9 @@ class ProductView {
     final productTypeL3 = this.productTypeL3;
     final productTypeL4 = this.productTypeL4;
     final productTypeL5 = this.productTypeL5;
+    final reportingContext = this.reportingContext;
     final shippingLabel = this.shippingLabel;
+    final statusPerReportingContext = this.statusPerReportingContext;
     final thumbnailLink = this.thumbnailLink;
     final title = this.title;
     return {
@@ -2172,7 +2266,9 @@ class ProductView {
       'productTypeL3': ?productTypeL3,
       'productTypeL4': ?productTypeL4,
       'productTypeL5': ?productTypeL5,
+      'reportingContext': ?reportingContext,
       'shippingLabel': ?shippingLabel,
+      'statusPerReportingContext': ?statusPerReportingContext,
       'thumbnailLink': ?thumbnailLink,
       'title': ?title,
     };
@@ -2336,7 +2432,7 @@ class ReportRow {
 class SearchRequest {
   /// Number of `ReportRows` to retrieve in a single page.
   ///
-  /// Defaults to 1000. Values above 5000 are coerced to 5000.
+  /// Defaults to 1000. Values above 100,000 are coerced to 100,000.
   ///
   /// Optional.
   core.int? pageSize;
@@ -2354,8 +2450,7 @@ class SearchRequest {
   ///
   /// For details on how to construct your query, see the \[Query Language
   /// guide\](/merchant/api/guides/reports/query-language). For the full list of
-  /// available tables and fields, see the \[Available
-  /// fields\](/merchant/api/reference/rest/reports_{api_version}/accounts.reports).
+  /// available tables and fields, see the Available fields.
   ///
   /// Required.
   core.String? query;
@@ -2405,5 +2500,101 @@ class SearchResponse {
     final nextPageToken = this.nextPageToken;
     final results = this.results;
     return {'nextPageToken': ?nextPageToken, 'results': ?results};
+  }
+}
+
+/// Status of the product for a specific reporting context.
+///
+/// Equivalent to `DestinationStatus` in Products API.
+class StatusPerReportingContext {
+  /// List of approved countries in the reporting context, represented in
+  /// [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for
+  /// example, `US`.
+  core.List<core.String>? approvedCountries;
+
+  /// List of disapproved countries in the reporting context, represented in
+  /// [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for
+  /// example, `US`.
+  core.List<core.String>? disapprovedCountries;
+
+  /// List of pending countries in the reporting context, represented in
+  /// [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for
+  /// example, `US`.
+  core.List<core.String>? pendingCountries;
+
+  /// Reporting context the status applies to.
+  /// Possible string values are:
+  /// - "REPORTING_CONTEXT_ENUM_UNSPECIFIED" : Not specified.
+  /// - "SHOPPING_ADS" :
+  /// [Shopping ads](https://support.google.com/merchants/answer/6149970).
+  /// - "DISCOVERY_ADS" : Deprecated: Use `DEMAND_GEN_ADS` instead.
+  /// [Discovery and Demand Gen ads](https://support.google.com/merchants/answer/13389785).
+  /// - "DEMAND_GEN_ADS" :
+  /// [Demand Gen ads](https://support.google.com/merchants/answer/13389785).
+  /// - "DEMAND_GEN_ADS_DISCOVER_SURFACE" :
+  /// [Demand Gen ads on Discover surface](https://support.google.com/merchants/answer/13389785).
+  /// - "VIDEO_ADS" :
+  /// [Video ads](https://support.google.com/google-ads/answer/6340491).
+  /// - "DISPLAY_ADS" :
+  /// [Display ads](https://support.google.com/merchants/answer/6069387).
+  /// - "LOCAL_INVENTORY_ADS" :
+  /// [Local inventory ads](https://support.google.com/merchants/answer/3271956).
+  /// - "VEHICLE_INVENTORY_ADS" :
+  /// [Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).
+  /// - "FREE_LISTINGS" :
+  /// [Free product listings](https://support.google.com/merchants/answer/9199328).
+  /// - "FREE_LISTINGS_UCP_CHECKOUT" :
+  /// [Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).
+  /// - "FREE_LOCAL_LISTINGS" :
+  /// [Free local product listings](https://support.google.com/merchants/answer/9825611).
+  /// - "FREE_LOCAL_VEHICLE_LISTINGS" :
+  /// [Free local vehicle listings](https://support.google.com/merchants/answer/11544533).
+  /// - "YOUTUBE_AFFILIATE" :
+  /// [Youtube Affiliate](https://support.google.com/youtube/answer/13376398).
+  /// - "YOUTUBE_SHOPPING" :
+  /// [YouTube Shopping](https://support.google.com/merchants/answer/13478370).
+  /// - "CLOUD_RETAIL" :
+  /// [Cloud retail](https://cloud.google.com/solutions/retail).
+  /// - "LOCAL_CLOUD_RETAIL" :
+  /// [Local cloud retail](https://cloud.google.com/solutions/retail).
+  /// - "PRODUCT_REVIEWS" :
+  /// [Product Reviews](https://support.google.com/merchants/answer/14620732).
+  /// - "MERCHANT_REVIEWS" :
+  /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
+  /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  core.String? reportingContext;
+
+  StatusPerReportingContext({
+    this.approvedCountries,
+    this.disapprovedCountries,
+    this.pendingCountries,
+    this.reportingContext,
+  });
+
+  StatusPerReportingContext.fromJson(core.Map json_)
+    : this(
+        approvedCountries: (json_['approvedCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        disapprovedCountries: (json_['disapprovedCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        pendingCountries: (json_['pendingCountries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        reportingContext: json_['reportingContext'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final approvedCountries = this.approvedCountries;
+    final disapprovedCountries = this.disapprovedCountries;
+    final pendingCountries = this.pendingCountries;
+    final reportingContext = this.reportingContext;
+    return {
+      'approvedCountries': ?approvedCountries,
+      'disapprovedCountries': ?disapprovedCountries,
+      'pendingCountries': ?pendingCountries,
+      'reportingContext': ?reportingContext,
+    };
   }
 }

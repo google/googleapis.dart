@@ -30,6 +30,8 @@
 ///
 /// - [ApplicationsResource]
 ///   - [ApplicationsDeviceTierConfigsResource]
+///   - [ApplicationsTracksResource]
+///     - [ApplicationsTracksReleasesResource]
 /// - [ApprecoveryResource]
 /// - [EditsResource]
 ///   - [EditsApksResource]
@@ -133,6 +135,8 @@ class ApplicationsResource {
 
   ApplicationsDeviceTierConfigsResource get deviceTierConfigs =>
       ApplicationsDeviceTierConfigsResource(_requester);
+  ApplicationsTracksResource get tracks =>
+      ApplicationsTracksResource(_requester);
 
   ApplicationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -330,6 +334,63 @@ class ApplicationsDeviceTierConfigsResource {
       queryParams: queryParams_,
     );
     return ListDeviceTierConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ApplicationsTracksResource {
+  final commons.ApiRequester _requester;
+
+  ApplicationsTracksReleasesResource get releases =>
+      ApplicationsTracksReleasesResource(_requester);
+
+  ApplicationsTracksResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ApplicationsTracksReleasesResource {
+  final commons.ApiRequester _requester;
+
+  ApplicationsTracksReleasesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Returns the list of all releases for a given track.
+  ///
+  /// This excludes any releases that are obsolete.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent track, which owns this collection of
+  /// releases. Format: applications/{package_name}/tracks/{track}
+  /// Value must have pattern `^applications/\[^/\]+/tracks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReleaseSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReleaseSummariesResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/' + core.Uri.encodeFull('$parent') + '/releases';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListReleaseSummariesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -620,6 +681,22 @@ class EditsResource {
   ///
   /// [editId] - Identifier of the edit.
   ///
+  /// [changesInReviewBehavior] - Optional. Specify how the API should behave if
+  /// there are changes currently in review. If this value is not set, it will
+  /// default to "CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in
+  /// review and then send all the changes for publishing.
+  /// Possible string values are:
+  /// - "CHANGES_IN_REVIEW_BEHAVIOR_TYPE_UNSPECIFIED" : Defaults to
+  /// CANCEL_IN_REVIEW_AND_SUBMIT.
+  /// - "CANCEL_IN_REVIEW_AND_SUBMIT" : If there are changes already in review,
+  /// then this will cancel that review first and then send all the changes for
+  /// publishing.
+  /// - "ERROR_IF_IN_REVIEW" : If there are changes in review, then this will
+  /// return an error. Please refer to the error message sample that is returned
+  /// when this happens. Note that this won't invalidate the edit. If there
+  /// aren't any changes in review, then this will continue and send the new
+  /// changes for publishing.
+  ///
   /// [changesNotSentForReview] - When a rejection happens, the parameter will
   /// make sure that the changes in this edit won't be reviewed until they are
   /// explicitly sent for review from within the Google Play Console UI. These
@@ -639,10 +716,14 @@ class EditsResource {
   async.Future<AppEdit> commit(
     core.String packageName,
     core.String editId, {
+    core.String? changesInReviewBehavior,
     core.bool? changesNotSentForReview,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'changesInReviewBehavior': ?changesInReviewBehavior == null
+          ? null
+          : [changesInReviewBehavior],
       'changesNotSentForReview': ?changesNotSentForReview == null
           ? null
           : ['${changesNotSentForReview}'],
@@ -8908,6 +8989,22 @@ class AppVersionRange {
 /// Deprecated: subscription archiving is not supported.
 typedef ArchiveSubscriptionRequest = $Shared00;
 
+/// Summary of an artifact.
+class ArtifactSummary {
+  /// Artifact's version code
+  core.int? versionCode;
+
+  ArtifactSummary({this.versionCode});
+
+  ArtifactSummary.fromJson(core.Map json_)
+    : this(versionCode: json_['versionCode'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final versionCode = this.versionCode;
+    return {'versionCode': ?versionCode};
+  }
+}
+
 /// Metadata of an asset module.
 class AssetModuleMetadata {
   /// Indicates the delivery type for persistent install.
@@ -14193,6 +14290,33 @@ class ListOneTimeProductsResponse {
   }
 }
 
+/// Response listing all releases for a given track that are either ready to be
+/// sent for review, in review, approved, not approved or available.
+class ListReleaseSummariesResponse {
+  /// List of releases for this track.
+  ///
+  /// A maximum of 20 releases can be returned.
+  core.List<ReleaseSummary>? releases;
+
+  ListReleaseSummariesResponse({this.releases});
+
+  ListReleaseSummariesResponse.fromJson(core.Map json_)
+    : this(
+        releases: (json_['releases'] as core.List?)
+            ?.map(
+              (value) => ReleaseSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final releases = this.releases;
+    return {'releases': ?releases};
+  }
+}
+
 /// Response message for ListSubscriptionOffers.
 class ListSubscriptionOffersResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -18062,6 +18186,70 @@ class RegionsVersion {
   }
 }
 
+/// Summary of a release.
+class ReleaseSummary {
+  /// List of active artifacts on this release
+  core.List<ArtifactSummary>? activeArtifacts;
+
+  /// The lifecycle state of a release.
+  /// Possible string values are:
+  /// - "RELEASE_LIFECYCLE_STATE_UNSPECIFIED" : Not specified.
+  /// - "RELEASE_LIFECYCLE_STATE_DRAFT" : The release is not yet ready and can
+  /// still be edited.
+  /// - "RELEASE_LIFECYCLE_STATE_NOT_SENT_FOR_REVIEW" : The release is ready to
+  /// be sent for review and an action is required from developer
+  /// - "RELEASE_LIFECYCLE_STATE_IN_REVIEW" : Submitted and in review
+  /// - "RELEASE_LIFECYCLE_STATE_APPROVED_NOT_PUBLISHED" : Passed review and is
+  /// ready to be published manually by developer
+  /// - "RELEASE_LIFECYCLE_STATE_NOT_APPROVED" : App was rejected in review
+  /// - "RELEASE_LIFECYCLE_STATE_PUBLISHED" : Available to users on the track.
+  /// This includes fully- or partially-rolled out releases and any halted
+  /// release that can be resumed.
+  core.String? releaseLifecycleState;
+
+  /// Name of the release.
+  core.String? releaseName;
+
+  /// Identifier for the track.
+  ///
+  /// [Learn more about track names.](https://developers.google.com/android-publisher/tracks).
+  core.String? track;
+
+  ReleaseSummary({
+    this.activeArtifacts,
+    this.releaseLifecycleState,
+    this.releaseName,
+    this.track,
+  });
+
+  ReleaseSummary.fromJson(core.Map json_)
+    : this(
+        activeArtifacts: (json_['activeArtifacts'] as core.List?)
+            ?.map(
+              (value) => ArtifactSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        releaseLifecycleState: json_['releaseLifecycleState'] as core.String?,
+        releaseName: json_['releaseName'] as core.String?,
+        track: json_['track'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeArtifacts = this.activeArtifacts;
+    final releaseLifecycleState = this.releaseLifecycleState;
+    final releaseName = this.releaseName;
+    final track = this.track;
+    return {
+      'activeArtifacts': ?activeArtifacts,
+      'releaseLifecycleState': ?releaseLifecycleState,
+      'releaseName': ?releaseName,
+      'track': ?track,
+    };
+  }
+}
+
 /// Object representation for Remote in-app update action type.
 class RemoteInAppUpdate {
   /// Set to true if Remote In-App Update action type is needed.
@@ -19109,7 +19297,7 @@ class SubscriptionListing {
 
   /// The description of this subscription in the language of this listing.
   ///
-  /// Maximum length - 80 characters. Plain text.
+  /// Maximum length - 200 characters. Plain text.
   core.String? description;
 
   /// The language of this listing, as defined by BCP-47, e.g. "en-US".

@@ -29,6 +29,8 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsDeploymentGroupsResource]
+///       - [ProjectsLocationsDeploymentGroupsRevisionsResource]
 ///     - [ProjectsLocationsDeploymentsResource]
 ///       - [ProjectsLocationsDeploymentsRevisionsResource]
 ///         - [ProjectsLocationsDeploymentsRevisionsResourcesResource]
@@ -87,6 +89,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDeploymentGroupsResource get deploymentGroups =>
+      ProjectsLocationsDeploymentGroupsResource(_requester);
   ProjectsLocationsDeploymentsResource get deployments =>
       ProjectsLocationsDeploymentsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -170,6 +174,17 @@ class ProjectsLocationsResource {
   }
 
   /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -273,6 +288,532 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDeploymentGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDeploymentGroupsRevisionsResource get revisions =>
+      ProjectsLocationsDeploymentGroupsRevisionsResource(_requester);
+
+  ProjectsLocationsDeploymentGroupsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a DeploymentGroup The newly created DeploymentGroup will be in the
+  /// `CREATING` state and can be retrieved via Get and List calls.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent in whose context the Deployment Group is
+  /// created. The parent value is in the format:
+  /// 'projects/{project_id}/locations/{location}'
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [deploymentGroupId] - Required. The deployment group ID.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    DeploymentGroup request,
+    core.String parent, {
+    core.String? deploymentGroupId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'deploymentGroupId': ?deploymentGroupId == null
+          ? null
+          : [deploymentGroupId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/deploymentGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a DeploymentGroup
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of DeploymentGroup in the format
+  /// projects/{project_id}/locations/{location_id}/deploymentGroups/{deploymentGroup}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentGroups/\[^/\]+$`.
+  ///
+  /// [deploymentReferencePolicy] - Optional. Policy on how to handle referenced
+  /// deployments when deleting the DeploymentGroup. If unspecified, the default
+  /// behavior is to fail the deletion if any deployments currently referenced
+  /// in the `deployment_units` of the DeploymentGroup or in the latest revision
+  /// are not deleted.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_REFERENCE_POLICY_UNSPECIFIED" : The default behavior. If
+  /// unspecified, the system will act as if `FAIL_IF_ANY_REFERENCES_EXIST` is
+  /// specified.
+  /// - "FAIL_IF_ANY_REFERENCES_EXIST" : Fail the deletion if any deployments
+  /// currently referenced in the `deployment_units` of the DeploymentGroup or
+  /// in the latest revision are not deleted.
+  /// - "FAIL_IF_METADATA_REFERENCES_EXIST" : Fail the deletion only if any
+  /// deployments currently referenced in the `deployment_units` of the
+  /// DeploymentGroup are not deleted. The deletion will proceed even if the
+  /// deployments in the latest revision of the DeploymentGroup are not deleted.
+  /// - "IGNORE_DEPLOYMENT_REFERENCES" : Ignore any deployments currently
+  /// referenced in the `deployment_units` of the DeploymentGroup or in the
+  /// latest revision.
+  ///
+  /// [force] - Optional. If set to true, any revisions for this deployment
+  /// group will also be deleted. (Otherwise, the request will only work if the
+  /// deployment group has no revisions.)
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? deploymentReferencePolicy,
+    core.bool? force,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'deploymentReferencePolicy': ?deploymentReferencePolicy == null
+          ? null
+          : [deploymentReferencePolicy],
+      'force': ?force == null ? null : ['${force}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deprovisions a deployment group.
+  ///
+  /// NOTE: As a first step of this operation, Infra Manager will automatically
+  /// delete any Deployments that were part of the *last successful*
+  /// DeploymentGroupRevision but are *no longer* included in the *current*
+  /// DeploymentGroup definition (e.g., following an `UpdateDeploymentGroup`
+  /// call), along with their actuated resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment group to deprovision.
+  /// Format:
+  /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deprovision(
+    DeprovisionDeploymentGroupRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deprovision';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a DeploymentGroup for a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment group to retrieve. Format:
+  /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeploymentGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeploymentGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DeploymentGroup.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// List DeploymentGroups for a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of deployment
+  /// groups. Format: 'projects/{project_id}/locations/{location}'.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists the DeploymentGroups that match the filter
+  /// expression. A filter expression filters the deployment groups listed in
+  /// the response. The expression must be of the form '{field} {operator}
+  /// {value}' where operators: '\<', '\>', '\<=', '\>=', '!=', '=', ':' are
+  /// supported (colon ':' represents a HAS operator which is roughly synonymous
+  /// with equality). {field} can refer to a proto or JSON field, or a synthetic
+  /// field. Field names can be camelCase or snake_case. Examples: - Filter by
+  /// name: name = "projects/foo/locations/us-central1/deploymentGroups/bar" -
+  /// Filter by labels: - Resources that have a key called 'foo' labels.foo:* -
+  /// Resources that have a key called 'foo' whose value is 'bar' labels.foo =
+  /// bar - Filter by state: - DeploymentGroups in CREATING state.
+  /// state=CREATING
+  ///
+  /// [orderBy] - Optional. Field to use to sort the list.
+  ///
+  /// [pageSize] - Optional. When requesting a page of resources, 'page_size'
+  /// specifies number of resources to return. If unspecified, at most 500 will
+  /// be returned. The maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. Token returned by previous call to
+  /// 'ListDeploymentGroups' which specifies the position in the list from where
+  /// to continue listing the deployment groups.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDeploymentGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDeploymentGroupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/deploymentGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDeploymentGroupsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a DeploymentGroup
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the deployment group. Format:
+  /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentGroups/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask used to specify the fields to be
+  /// overwritten in the Deployment Group resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    DeploymentGroup request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Provisions a deployment group.
+  ///
+  /// NOTE: As a first step of this operation, Infra Manager will automatically
+  /// delete any Deployments that were part of the *last successful*
+  /// DeploymentGroupRevision but are *no longer* included in the *current*
+  /// DeploymentGroup definition (e.g., following an `UpdateDeploymentGroup`
+  /// call), along with their actuated resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment group to provision. Format:
+  /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> provision(
+    ProvisionDeploymentGroupRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':provision';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDeploymentGroupsRevisionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDeploymentGroupsRevisionsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets details about a DeploymentGroupRevision.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment group revision to retrieve.
+  /// Format:
+  /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentGroups/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeploymentGroupRevision].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeploymentGroupRevision> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DeploymentGroupRevision.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists DeploymentGroupRevisions in a given DeploymentGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of deployment
+  /// group revisions. Format:
+  /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentGroups/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. When requesting a page of resources, 'page_size'
+  /// specifies number of resources to return. If unspecified, a sensible
+  /// default will be used by the server. The maximum value is 1000; values
+  /// above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. Token returned by previous call to
+  /// 'ListDeploymentGroupRevisions' which specifies the position in the list
+  /// from where to continue listing the deployment group revisions. All other
+  /// parameters provided to `ListDeploymentGroupRevisions` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDeploymentGroupRevisionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDeploymentGroupRevisionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/revisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDeploymentGroupRevisionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2665,6 +3206,378 @@ class Deployment {
   }
 }
 
+/// A DeploymentGroup is a collection of DeploymentUnits that in a DAG-like
+/// structure.
+class DeploymentGroup {
+  /// Arbitrary key-value metadata storage e.g. to help client tools identify
+  /// deployment group during automation.
+  ///
+  /// See https://google.aip.dev/148#annotations for details on format and size
+  /// limitations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Time when the deployment group was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The deployment units of the deployment group in a DAG like structure.
+  ///
+  /// When a deployment group is being provisioned, the deployment units are
+  /// deployed in a DAG order. The provided units must be in a DAG order,
+  /// otherwise an error will be returned.
+  core.List<DeploymentUnit>? deploymentUnits;
+
+  /// User-defined metadata for the deployment group.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the deployment group. Format:
+  /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+  core.String? name;
+
+  /// The error status of the deployment group provisioning or deprovisioning.
+  ///
+  /// Output only.
+  Status? provisioningError;
+
+  /// The provisioning state of the deployment group.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PROVISIONING_STATE_UNSPECIFIED" : Unspecified provisioning state.
+  /// - "PROVISIONING" : The deployment group is being provisioned.
+  /// - "PROVISIONED" : The deployment group is provisioned.
+  /// - "FAILED_TO_PROVISION" : The deployment group failed to be provisioned.
+  /// - "DEPROVISIONING" : The deployment group is being deprovisioned.
+  /// - "DEPROVISIONED" : The deployment group is deprovisioned.
+  /// - "FAILED_TO_DEPROVISION" : The deployment group failed to be
+  /// deprovisioned.
+  core.String? provisioningState;
+
+  /// Additional information regarding the current provisioning state.
+  ///
+  /// Output only.
+  core.String? provisioningStateDescription;
+
+  /// Current state of the deployment group.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
+  /// is omitted.
+  /// - "CREATING" : The deployment group is being created.
+  /// - "ACTIVE" : The deployment group is healthy.
+  /// - "UPDATING" : The deployment group is being updated.
+  /// - "DELETING" : The deployment group is being deleted.
+  /// - "FAILED" : The deployment group has encountered an unexpected error.
+  /// - "SUSPENDED" : The deployment group is no longer being actively
+  /// reconciled. This may be the result of recovering the project after
+  /// deletion.
+  /// - "DELETED" : The deployment group has been deleted.
+  core.String? state;
+
+  /// Additional information regarding the current state.
+  ///
+  /// Output only.
+  core.String? stateDescription;
+
+  /// Time when the deployment group was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  DeploymentGroup({
+    this.annotations,
+    this.createTime,
+    this.deploymentUnits,
+    this.labels,
+    this.name,
+    this.provisioningError,
+    this.provisioningState,
+    this.provisioningStateDescription,
+    this.state,
+    this.stateDescription,
+    this.updateTime,
+  });
+
+  DeploymentGroup.fromJson(core.Map json_)
+    : this(
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        createTime: json_['createTime'] as core.String?,
+        deploymentUnits: (json_['deploymentUnits'] as core.List?)
+            ?.map(
+              (value) => DeploymentUnit.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        provisioningError: json_.containsKey('provisioningError')
+            ? Status.fromJson(
+                json_['provisioningError']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        provisioningState: json_['provisioningState'] as core.String?,
+        provisioningStateDescription:
+            json_['provisioningStateDescription'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDescription: json_['stateDescription'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final createTime = this.createTime;
+    final deploymentUnits = this.deploymentUnits;
+    final labels = this.labels;
+    final name = this.name;
+    final provisioningError = this.provisioningError;
+    final provisioningState = this.provisioningState;
+    final provisioningStateDescription = this.provisioningStateDescription;
+    final state = this.state;
+    final stateDescription = this.stateDescription;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'createTime': ?createTime,
+      'deploymentUnits': ?deploymentUnits,
+      'labels': ?labels,
+      'name': ?name,
+      'provisioningError': ?provisioningError,
+      'provisioningState': ?provisioningState,
+      'provisioningStateDescription': ?provisioningStateDescription,
+      'state': ?state,
+      'stateDescription': ?stateDescription,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// A DeploymentGroupRevision represents a snapshot of a DeploymentGroup at a
+/// given point in time, created when a DeploymentGroup is provisioned or
+/// deprovisioned.
+class DeploymentGroupRevision {
+  /// The alternative IDs of the deployment group revision.
+  ///
+  /// Output only.
+  core.List<core.String>? alternativeIds;
+
+  /// Time when the deployment group revision was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The name of the deployment group revision. Format:
+  /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'.
+  core.String? name;
+
+  /// The snapshot of the deployment group at this revision.
+  ///
+  /// Output only.
+  DeploymentGroup? snapshot;
+
+  DeploymentGroupRevision({
+    this.alternativeIds,
+    this.createTime,
+    this.name,
+    this.snapshot,
+  });
+
+  DeploymentGroupRevision.fromJson(core.Map json_)
+    : this(
+        alternativeIds: (json_['alternativeIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        snapshot: json_.containsKey('snapshot')
+            ? DeploymentGroup.fromJson(
+                json_['snapshot'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alternativeIds = this.alternativeIds;
+    final createTime = this.createTime;
+    final name = this.name;
+    final snapshot = this.snapshot;
+    return {
+      'alternativeIds': ?alternativeIds,
+      'createTime': ?createTime,
+      'name': ?name,
+      'snapshot': ?snapshot,
+    };
+  }
+}
+
+/// Configuration for a value sourced from a Deployment.
+class DeploymentSource {
+  /// The resource name of the source Deployment to import the output from.
+  ///
+  /// Format: projects/{project}/locations/{location}/deployments/{deployment}
+  /// The source deployment must be in the same project and location.
+  ///
+  /// Required.
+  core.String? deployment;
+
+  /// The name of the output variable in the source deployment's latest
+  /// successfully applied revision.
+  ///
+  /// Required.
+  core.String? outputName;
+
+  DeploymentSource({this.deployment, this.outputName});
+
+  DeploymentSource.fromJson(core.Map json_)
+    : this(
+        deployment: json_['deployment'] as core.String?,
+        outputName: json_['outputName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployment = this.deployment;
+    final outputName = this.outputName;
+    return {'deployment': ?deployment, 'outputName': ?outputName};
+  }
+}
+
+/// Spec for a deployment to be created.
+class DeploymentSpec {
+  /// The deployment to be created.
+  ///
+  /// Required.
+  Deployment? deployment;
+
+  /// The id of the deployment to be created which doesn't include the project
+  /// id and location.
+  ///
+  /// Required.
+  core.String? deploymentId;
+
+  DeploymentSpec({this.deployment, this.deploymentId});
+
+  DeploymentSpec.fromJson(core.Map json_)
+    : this(
+        deployment: json_.containsKey('deployment')
+            ? Deployment.fromJson(
+                json_['deployment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deploymentId: json_['deploymentId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployment = this.deployment;
+    final deploymentId = this.deploymentId;
+    return {'deployment': ?deployment, 'deploymentId': ?deploymentId};
+  }
+}
+
+/// A DeploymentUnit is a container for a deployment and its dependencies.
+///
+/// An existing deployment can be provided directly in the unit, or the unit can
+/// act as a placeholder to define the DAG, with the deployment specs supplied
+/// in a `provisionDeploymentRequest`.
+class DeploymentUnit {
+  /// The IDs of the deployment units within the deployment group that this unit
+  /// depends on.
+  ///
+  /// Required.
+  core.List<core.String>? dependencies;
+
+  /// The name of the deployment to be provisioned.
+  ///
+  /// Format:
+  /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'.
+  ///
+  /// Optional.
+  core.String? deployment;
+
+  /// The id of the deployment unit.
+  ///
+  /// Must be unique within the deployment group.
+  core.String? id;
+
+  DeploymentUnit({this.dependencies, this.deployment, this.id});
+
+  DeploymentUnit.fromJson(core.Map json_)
+    : this(
+        dependencies: (json_['dependencies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        deployment: json_['deployment'] as core.String?,
+        id: json_['id'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dependencies = this.dependencies;
+    final deployment = this.deployment;
+    final id = this.id;
+    return {
+      'dependencies': ?dependencies,
+      'deployment': ?deployment,
+      'id': ?id,
+    };
+  }
+}
+
+/// The request message for the DeprovisionDeploymentGroup method.
+class DeprovisionDeploymentGroupRequest {
+  /// Policy on how resources within each deployment should be handled during
+  /// deletion.
+  ///
+  /// This policy is applied globally to the deletion of all deployments in this
+  /// group. This corresponds to the 'delete_policy' field in
+  /// DeleteDeploymentRequest.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DELETE_POLICY_UNSPECIFIED" : Unspecified policy, resources will be
+  /// deleted.
+  /// - "DELETE" : Deletes resources actuated by the deployment.
+  /// - "ABANDON" : Abandons resources and only deletes the deployment and its
+  /// metadata.
+  core.String? deletePolicy;
+
+  /// If set to true, this option is propagated to the deletion of each
+  /// deployment in the group.
+  ///
+  /// This corresponds to the 'force' field in DeleteDeploymentRequest.
+  ///
+  /// Optional.
+  core.bool? force;
+
+  DeprovisionDeploymentGroupRequest({this.deletePolicy, this.force});
+
+  DeprovisionDeploymentGroupRequest.fromJson(core.Map json_)
+    : this(
+        deletePolicy: json_['deletePolicy'] as core.String?,
+        force: json_['force'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deletePolicy = this.deletePolicy;
+    final force = this.force;
+    return {'deletePolicy': ?deletePolicy, 'force': ?force};
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -2748,6 +3661,29 @@ typedef ExportRevisionStatefileRequest = $Empty;
 /// information.
 typedef Expr = $Expr;
 
+/// Configuration for a source of an external value.
+class ExternalValueSource {
+  /// A source from a Deployment.
+  DeploymentSource? deploymentSource;
+
+  ExternalValueSource({this.deploymentSource});
+
+  ExternalValueSource.fromJson(core.Map json_)
+    : this(
+        deploymentSource: json_.containsKey('deploymentSource')
+            ? DeploymentSource.fromJson(
+                json_['deploymentSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deploymentSource = this.deploymentSource;
+    return {'deploymentSource': ?deploymentSource};
+  }
+}
+
 /// A set of files in a Git repository.
 class GitSource {
   /// Subdirectory inside the repository.
@@ -2802,6 +3738,99 @@ class ImportStatefileRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final lockId = this.lockId;
     return {'lockId': ?lockId};
+  }
+}
+
+/// The response message for the ListDeploymentGroupRevisions method.
+class ListDeploymentGroupRevisionsResponse {
+  /// The deployment group revisions from the specified collection.
+  core.List<DeploymentGroupRevision>? deploymentGroupRevisions;
+
+  /// Token to be supplied to the next ListDeploymentGroupRevisions request via
+  /// `page_token` to obtain the next set of results.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListDeploymentGroupRevisionsResponse({
+    this.deploymentGroupRevisions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDeploymentGroupRevisionsResponse.fromJson(core.Map json_)
+    : this(
+        deploymentGroupRevisions:
+            (json_['deploymentGroupRevisions'] as core.List?)
+                ?.map(
+                  (value) => DeploymentGroupRevision.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deploymentGroupRevisions = this.deploymentGroupRevisions;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'deploymentGroupRevisions': ?deploymentGroupRevisions,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// The response message for the ListDeploymentGroups method.
+class ListDeploymentGroupsResponse {
+  /// The deployment groups from the specified collection.
+  core.List<DeploymentGroup>? deploymentGroups;
+
+  /// Token to be supplied to the next ListDeploymentGroups request via
+  /// `page_token` to obtain the next set of results.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListDeploymentGroupsResponse({
+    this.deploymentGroups,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDeploymentGroupsResponse.fromJson(core.Map json_)
+    : this(
+        deploymentGroups: (json_['deploymentGroups'] as core.List?)
+            ?.map(
+              (value) => DeploymentGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deploymentGroups = this.deploymentGroups;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'deploymentGroups': ?deploymentGroups,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
   }
 }
 
@@ -4006,6 +5035,43 @@ class ProviderConfig {
   }
 }
 
+/// The request message for the ProvisionDeploymentGroup method.
+class ProvisionDeploymentGroupRequest {
+  /// The deployment specs of the deployment units to be created within the same
+  /// project and location of the deployment group.
+  ///
+  /// The key is the unit ID, and the value is the `DeploymentSpec`.
+  /// Provisioning will fail if a `deployment_spec` has a `deployment_id` that
+  /// matches an existing deployment in the same project and location. If an
+  /// existing deployment was part of the last successful revision but is no
+  /// longer in the current DeploymentGroup's `deployment_units`, it will be
+  /// recreated if included in `deployment_specs`.
+  ///
+  /// Optional.
+  core.Map<core.String, DeploymentSpec>? deploymentSpecs;
+
+  ProvisionDeploymentGroupRequest({this.deploymentSpecs});
+
+  ProvisionDeploymentGroupRequest.fromJson(core.Map json_)
+    : this(
+        deploymentSpecs:
+            (json_['deploymentSpecs'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    DeploymentSpec.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deploymentSpecs = this.deploymentSpecs;
+    return {'deploymentSpecs': ?deploymentSpecs};
+  }
+}
+
 /// Resource represents a Google Cloud Platform resource actuated by IM.
 ///
 /// Resources are child resources of Revisions.
@@ -4735,6 +5801,12 @@ typedef Status = $Status00;
 /// TerraformBlueprint describes the source of a Terraform root module which
 /// describes the resources and configs to be deployed.
 class TerraformBlueprint {
+  /// Map of input variable names in this blueprint to configurations for
+  /// importing values from external sources.
+  ///
+  /// Optional.
+  core.Map<core.String, ExternalValueSource>? externalValues;
+
   /// URI of an object in Google Cloud Storage.
   ///
   /// Format: `gs://{bucket}/{object}` URI may also specify an object version
@@ -4749,10 +5821,25 @@ class TerraformBlueprint {
   /// Optional.
   core.Map<core.String, TerraformVariable>? inputValues;
 
-  TerraformBlueprint({this.gcsSource, this.gitSource, this.inputValues});
+  TerraformBlueprint({
+    this.externalValues,
+    this.gcsSource,
+    this.gitSource,
+    this.inputValues,
+  });
 
   TerraformBlueprint.fromJson(core.Map json_)
     : this(
+        externalValues:
+            (json_['externalValues'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ExternalValueSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
         gcsSource: json_['gcsSource'] as core.String?,
         gitSource: json_.containsKey('gitSource')
             ? GitSource.fromJson(
@@ -4771,10 +5858,12 @@ class TerraformBlueprint {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final externalValues = this.externalValues;
     final gcsSource = this.gcsSource;
     final gitSource = this.gitSource;
     final inputValues = this.inputValues;
     return {
+      'externalValues': ?externalValues,
       'gcsSource': ?gcsSource,
       'gitSource': ?gitSource,
       'inputValues': ?inputValues,
@@ -4860,25 +5949,7 @@ class TerraformOutput {
 }
 
 /// A Terraform input variable.
-class TerraformVariable {
-  /// Input variable value.
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? inputValue;
-
-  TerraformVariable({this.inputValue});
-
-  TerraformVariable.fromJson(core.Map json_)
-    : this(inputValue: json_['inputValue']);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final inputValue = this.inputValue;
-    return {'inputValue': ?inputValue};
-  }
-}
+typedef TerraformVariable = $TerraformVariable;
 
 /// A TerraformVersion represents the support state the corresponding Terraform
 /// version.

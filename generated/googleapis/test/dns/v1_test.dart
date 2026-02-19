@@ -5106,6 +5106,7 @@ void main() {
       final res = api.DnsApi(mock).resourceRecordSets;
       final arg_project = 'foo';
       final arg_managedZone = 'foo';
+      final arg_filter = 'foo';
       final arg_maxResults = 42;
       final arg_name = 'foo';
       final arg_pageToken = 'foo';
@@ -5168,6 +5169,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
             core.int.parse(queryMap['maxResults']!.first),
             unittest.equals(arg_maxResults),
           );
@@ -5193,6 +5198,7 @@ void main() {
       final response = await res.list(
         arg_project,
         arg_managedZone,
+        filter: arg_filter,
         maxResults: arg_maxResults,
         name: arg_name,
         pageToken: arg_pageToken,

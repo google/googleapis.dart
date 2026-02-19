@@ -2411,6 +2411,8 @@ api.VariableFormatValue buildVariableFormatValue() {
     o.caseConversionType = 'foo';
     o.convertFalseToValue = buildParameter();
     o.convertNullToValue = buildParameter();
+    o.convertToBoolean = true;
+    o.convertToNumber = 'foo';
     o.convertTrueToValue = buildParameter();
     o.convertUndefinedToValue = buildParameter();
   }
@@ -2424,6 +2426,8 @@ void checkVariableFormatValue(api.VariableFormatValue o) {
     unittest.expect(o.caseConversionType!, unittest.equals('foo'));
     checkParameter(o.convertFalseToValue!);
     checkParameter(o.convertNullToValue!);
+    unittest.expect(o.convertToBoolean!, unittest.isTrue);
+    unittest.expect(o.convertToNumber!, unittest.equals('foo'));
     checkParameter(o.convertTrueToValue!);
     checkParameter(o.convertUndefinedToValue!);
   }

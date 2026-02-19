@@ -293,6 +293,93 @@ class ProjectsLocationsConnectionsResource {
     );
   }
 
+  /// Generate toolspec override for the given list of toolNames.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Connection. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateCustomToolspecResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateCustomToolspecResponse>
+  generateConnectionToolspecOverride(
+    GenerateCustomToolspecRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v2/' +
+        core.Uri.encodeFull('$name') +
+        ':generateConnectionToolspecOverride';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenerateCustomToolspecResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists custom tool names.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Connection. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCustomToolNamesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCustomToolNamesResponse> listCustomToolNames(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':listCustomToolNames';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCustomToolNamesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// RefreshAccessToken exchanges the OAuth refresh token (and other necessary
   /// data) for a new access token (and new associated credentials).
   ///
@@ -1128,7 +1215,7 @@ class ProjectsLocationsConnectionsResourcesResource {
   /// [name] - Required. Resource name of the Resource. Format:
   /// projects/{project}/locations/{location}/connections/{connection}/resources/{resource}
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/resources/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/resources/.*$`.
   ///
   /// [executionConfig_headers] - headers to be used for the request. For
   /// example:
@@ -1177,7 +1264,7 @@ class ProjectsLocationsConnectionsResourcesResource {
   /// [name] - Required. Resource name of the Resource. Format:
   /// projects/{project}/locations/{location}/connections/{connection}/resources/{resource}
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/resources/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/resources/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2036,6 +2123,12 @@ class ExecuteToolRequest {
 
 /// Response message for ConnectorAgentService.ExecuteTool
 class ExecuteToolResponse {
+  /// Metadata for the tool execution result.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? P_meta;
+
   /// Metadata like service latency, etc.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -2048,10 +2141,13 @@ class ExecuteToolResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? result;
 
-  ExecuteToolResponse({this.metadata, this.result});
+  ExecuteToolResponse({this.P_meta, this.metadata, this.result});
 
   ExecuteToolResponse.fromJson(core.Map json_)
     : this(
+        P_meta: json_.containsKey('_meta')
+            ? json_['_meta'] as core.Map<core.String, core.dynamic>
+            : null,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -2065,9 +2161,10 @@ class ExecuteToolResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final P_meta = this.P_meta;
     final metadata = this.metadata;
     final result = this.result;
-    return {'metadata': ?metadata, 'result': ?result};
+    return {'_meta': ?P_meta, 'metadata': ?metadata, 'result': ?result};
   }
 }
 
@@ -2234,6 +2331,51 @@ class Field {
   }
 }
 
+class GenerateCustomToolspecRequest {
+  /// list of tools to be generated.
+  core.List<ToolName>? toolNames;
+
+  GenerateCustomToolspecRequest({this.toolNames});
+
+  GenerateCustomToolspecRequest.fromJson(core.Map json_)
+    : this(
+        toolNames: (json_['toolNames'] as core.List?)
+            ?.map(
+              (value) => ToolName.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolNames = this.toolNames;
+    return {'toolNames': ?toolNames};
+  }
+}
+
+class GenerateCustomToolspecResponse {
+  /// tool spec that has tool_defitions array containing the tools for all sted
+  /// tool_names.
+  ToolSpec? toolSpec;
+
+  GenerateCustomToolspecResponse({this.toolSpec});
+
+  GenerateCustomToolspecResponse.fromJson(core.Map json_)
+    : this(
+        toolSpec: json_.containsKey('toolSpec')
+            ? ToolSpec.fromJson(
+                json_['toolSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolSpec = this.toolSpec;
+    return {'toolSpec': ?toolSpec};
+  }
+}
+
 /// Request message for ConnectorAgentService.GetResourcePost
 class GetResourcePostRequest {
   /// execution config for the request.
@@ -2266,6 +2408,12 @@ class GetResourcePostRequest {
 }
 
 class GetResourceResponse {
+  /// Metadata for the resource.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? P_meta;
+
   /// The content of the resource.
   core.String? data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
@@ -2286,10 +2434,13 @@ class GetResourceResponse {
   /// The MIME type of the resource.
   core.String? mimeType;
 
-  GetResourceResponse({this.data, this.metadata, this.mimeType});
+  GetResourceResponse({this.P_meta, this.data, this.metadata, this.mimeType});
 
   GetResourceResponse.fromJson(core.Map json_)
     : this(
+        P_meta: json_.containsKey('_meta')
+            ? json_['_meta'] as core.Map<core.String, core.dynamic>
+            : null,
         data: json_['data'] as core.String?,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map(
@@ -2302,10 +2453,16 @@ class GetResourceResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final P_meta = this.P_meta;
     final data = this.data;
     final metadata = this.metadata;
     final mimeType = this.mimeType;
-    return {'data': ?data, 'metadata': ?metadata, 'mimeType': ?mimeType};
+    return {
+      '_meta': ?P_meta,
+      'data': ?data,
+      'metadata': ?metadata,
+      'mimeType': ?mimeType,
+    };
   }
 }
 
@@ -2462,6 +2619,12 @@ class JsonSchema {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? enum_;
 
+  /// Whether the maximum number value is exclusive.
+  core.bool? exclusiveMaximum;
+
+  /// Whether the minimum number value is exclusive.
+  core.bool? exclusiveMinimum;
+
   /// Format of the value as per
   /// https://json-schema.org/understanding-json-schema/reference/string.html#format
   core.String? format;
@@ -2519,6 +2682,36 @@ class JsonSchema {
   /// - "TIMESTAMP_WITH_TIMEZONE" : Timestamp with timezone type.
   core.String? jdbcType;
 
+  /// Maximum number of items in the array field.
+  core.int? maxItems;
+
+  /// Maximum length of the string field.
+  core.int? maxLength;
+
+  /// Maximum value of the number field.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? maximum;
+
+  /// Minimum number of items in the array field.
+  core.int? minItems;
+
+  /// Minimum length of the string field.
+  core.int? minLength;
+
+  /// Minimum value of the number field.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? minimum;
+
+  /// Regex pattern of the string field.
+  ///
+  /// This is a string value that describes the regular expression that the
+  /// string value should match.
+  core.String? pattern;
+
   /// The child schemas, applicable only if this is of type `object`.
   ///
   /// The key is the name of the property and the value is the json schema that
@@ -2531,17 +2724,30 @@ class JsonSchema {
   /// JSON Schema Validation: A Vocabulary for Structural Validation of JSON
   core.List<core.String>? type;
 
+  /// Whether the items in the array field are unique.
+  core.bool? uniqueItems;
+
   JsonSchema({
     this.additionalDetails,
     this.default_,
     this.description,
     this.enum_,
+    this.exclusiveMaximum,
+    this.exclusiveMinimum,
     this.format,
     this.items,
     this.jdbcType,
+    this.maxItems,
+    this.maxLength,
+    this.maximum,
+    this.minItems,
+    this.minLength,
+    this.minimum,
+    this.pattern,
     this.properties,
     this.required,
     this.type,
+    this.uniqueItems,
   });
 
   JsonSchema.fromJson(core.Map json_)
@@ -2552,6 +2758,8 @@ class JsonSchema {
         default_: json_['default'],
         description: json_['description'] as core.String?,
         enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
+        exclusiveMaximum: json_['exclusiveMaximum'] as core.bool?,
+        exclusiveMinimum: json_['exclusiveMinimum'] as core.bool?,
         format: json_['format'] as core.String?,
         items: json_.containsKey('items')
             ? JsonSchema.fromJson(
@@ -2559,6 +2767,13 @@ class JsonSchema {
               )
             : null,
         jdbcType: json_['jdbcType'] as core.String?,
+        maxItems: json_['maxItems'] as core.int?,
+        maxLength: json_['maxLength'] as core.int?,
+        maximum: json_['maximum'],
+        minItems: json_['minItems'] as core.int?,
+        minLength: json_['minLength'] as core.int?,
+        minimum: json_['minimum'],
+        pattern: json_['pattern'] as core.String?,
         properties:
             (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(
@@ -2574,6 +2789,7 @@ class JsonSchema {
         type: (json_['type'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        uniqueItems: json_['uniqueItems'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -2581,23 +2797,43 @@ class JsonSchema {
     final default_ = this.default_;
     final description = this.description;
     final enum_ = this.enum_;
+    final exclusiveMaximum = this.exclusiveMaximum;
+    final exclusiveMinimum = this.exclusiveMinimum;
     final format = this.format;
     final items = this.items;
     final jdbcType = this.jdbcType;
+    final maxItems = this.maxItems;
+    final maxLength = this.maxLength;
+    final maximum = this.maximum;
+    final minItems = this.minItems;
+    final minLength = this.minLength;
+    final minimum = this.minimum;
+    final pattern = this.pattern;
     final properties = this.properties;
     final required = this.required;
     final type = this.type;
+    final uniqueItems = this.uniqueItems;
     return {
       'additionalDetails': ?additionalDetails,
       'default': ?default_,
       'description': ?description,
       'enum': ?enum_,
+      'exclusiveMaximum': ?exclusiveMaximum,
+      'exclusiveMinimum': ?exclusiveMinimum,
       'format': ?format,
       'items': ?items,
       'jdbcType': ?jdbcType,
+      'maxItems': ?maxItems,
+      'maxLength': ?maxLength,
+      'maximum': ?maximum,
+      'minItems': ?minItems,
+      'minLength': ?minLength,
+      'minimum': ?minimum,
+      'pattern': ?pattern,
       'properties': ?properties,
       'required': ?required,
       'type': ?type,
+      'uniqueItems': ?uniqueItems,
     };
   }
 }
@@ -2660,6 +2896,29 @@ class ListActionsResponse {
       'nextPageToken': ?nextPageToken,
       'unsupportedActionNames': ?unsupportedActionNames,
     };
+  }
+}
+
+class ListCustomToolNamesResponse {
+  /// List of custom tools.
+  core.List<ToolName>? toolNames;
+
+  ListCustomToolNamesResponse({this.toolNames});
+
+  ListCustomToolNamesResponse.fromJson(core.Map json_)
+    : this(
+        toolNames: (json_['toolNames'] as core.List?)
+            ?.map(
+              (value) => ToolName.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolNames = this.toolNames;
+    return {'toolNames': ?toolNames};
   }
 }
 
@@ -3175,6 +3434,12 @@ class RefreshAccessTokenResponse {
 }
 
 class Resource {
+  /// Metadata for the resource.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? P_meta;
+
   /// A description of what this resource represents.
   core.String? description;
 
@@ -3190,10 +3455,20 @@ class Resource {
   /// The URI of this resource.
   core.String? uri;
 
-  Resource({this.description, this.mimeType, this.name, this.size, this.uri});
+  Resource({
+    this.P_meta,
+    this.description,
+    this.mimeType,
+    this.name,
+    this.size,
+    this.uri,
+  });
 
   Resource.fromJson(core.Map json_)
     : this(
+        P_meta: json_.containsKey('_meta')
+            ? json_['_meta'] as core.Map<core.String, core.dynamic>
+            : null,
         description: json_['description'] as core.String?,
         mimeType: json_['mimeType'] as core.String?,
         name: json_['name'] as core.String?,
@@ -3202,12 +3477,14 @@ class Resource {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final P_meta = this.P_meta;
     final description = this.description;
     final mimeType = this.mimeType;
     final name = this.name;
     final size = this.size;
     final uri = this.uri;
     return {
+      '_meta': ?P_meta,
       'description': ?description,
       'mimeType': ?mimeType,
       'name': ?name,
@@ -3331,6 +3608,12 @@ class ResultMetadata {
 
 /// Message representing a single tool.
 class Tool {
+  /// Metadata for the tool.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? P_meta;
+
   /// Annotations for the tool.
   ToolAnnotations? annotations;
 
@@ -3350,6 +3633,7 @@ class Tool {
   JsonSchema? outputSchema;
 
   Tool({
+    this.P_meta,
     this.annotations,
     this.dependsOn,
     this.description,
@@ -3360,6 +3644,9 @@ class Tool {
 
   Tool.fromJson(core.Map json_)
     : this(
+        P_meta: json_.containsKey('_meta')
+            ? json_['_meta'] as core.Map<core.String, core.dynamic>
+            : null,
         annotations: json_.containsKey('annotations')
             ? ToolAnnotations.fromJson(
                 json_['annotations'] as core.Map<core.String, core.dynamic>,
@@ -3383,6 +3670,7 @@ class Tool {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final P_meta = this.P_meta;
     final annotations = this.annotations;
     final dependsOn = this.dependsOn;
     final description = this.description;
@@ -3390,6 +3678,7 @@ class Tool {
     final name = this.name;
     final outputSchema = this.outputSchema;
     return {
+      '_meta': ?P_meta,
       'annotations': ?annotations,
       'dependsOn': ?dependsOn,
       'description': ?description,
@@ -3456,6 +3745,40 @@ class ToolAnnotations {
       'readOnlyHint': ?readOnlyHint,
       'title': ?title,
     };
+  }
+}
+
+class ToolName {
+  /// Entity name for which the tool was generated.
+  core.String? entityName;
+
+  /// Tool name that was generated in the list tools call.
+  core.String? name;
+
+  /// Operation for which the tool was generated.
+  /// Possible string values are:
+  /// - "OPERATION_UNSPECIFIED" : Operation unspecified.
+  /// - "LIST" : LIST entities.
+  /// - "GET" : GET entity.
+  /// - "CREATE" : CREATE entity.
+  /// - "UPDATE" : UPDATE entity.
+  /// - "DELETE" : DELETE entity.
+  core.String? operation;
+
+  ToolName({this.entityName, this.name, this.operation});
+
+  ToolName.fromJson(core.Map json_)
+    : this(
+        entityName: json_['entityName'] as core.String?,
+        name: json_['name'] as core.String?,
+        operation: json_['operation'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityName = this.entityName;
+    final name = this.name;
+    final operation = this.operation;
+    return {'entityName': ?entityName, 'name': ?name, 'operation': ?operation};
   }
 }
 

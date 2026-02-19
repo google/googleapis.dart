@@ -120,20 +120,24 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -874,6 +878,9 @@ class BucketOperation {
   /// - "FAILED" : Terminated due to an unrecoverable failure.
   core.String? state;
 
+  /// Update object custom context.
+  UpdateObjectCustomContext? updateObjectCustomContext;
+
   BucketOperation({
     this.bucketName,
     this.completeTime,
@@ -889,6 +896,7 @@ class BucketOperation {
     this.rewriteObject,
     this.startTime,
     this.state,
+    this.updateObjectCustomContext,
   });
 
   BucketOperation.fromJson(core.Map json_)
@@ -941,6 +949,13 @@ class BucketOperation {
             : null,
         startTime: json_['startTime'] as core.String?,
         state: json_['state'] as core.String?,
+        updateObjectCustomContext:
+            json_.containsKey('updateObjectCustomContext')
+            ? UpdateObjectCustomContext.fromJson(
+                json_['updateObjectCustomContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -958,6 +973,7 @@ class BucketOperation {
     final rewriteObject = this.rewriteObject;
     final startTime = this.startTime;
     final state = this.state;
+    final updateObjectCustomContext = this.updateObjectCustomContext;
     return {
       'bucketName': ?bucketName,
       'completeTime': ?completeTime,
@@ -973,6 +989,7 @@ class BucketOperation {
       'rewriteObject': ?rewriteObject,
       'startTime': ?startTime,
       'state': ?state,
+      'updateObjectCustomContext': ?updateObjectCustomContext,
     };
   }
 }
@@ -1009,10 +1026,35 @@ typedef CancelOperationRequest = $Empty;
 
 /// Describes details about the progress of the job.
 class Counters {
-  /// Number of objects failed.
+  /// The number of objects that failed due to user errors or service errors.
   ///
   /// Output only.
   core.String? failedObjectCount;
+
+  /// Number of object custom contexts created.
+  ///
+  /// This field is only populated for jobs with the UpdateObjectCustomContext
+  /// transformation.
+  ///
+  /// Output only.
+  core.String? objectCustomContextsCreated;
+
+  /// Number of object custom contexts deleted.
+  ///
+  /// This field is only populated for jobs with the UpdateObjectCustomContext
+  /// transformation.
+  ///
+  /// Output only.
+  core.String? objectCustomContextsDeleted;
+
+  /// Number of object custom contexts updated.
+  ///
+  /// This counter tracks custom contexts where the key already existed, but the
+  /// payload was modified. This field is only populated for jobs with the
+  /// UpdateObjectCustomContext transformation.
+  ///
+  /// Output only.
+  core.String? objectCustomContextsUpdated;
 
   /// Number of objects completed.
   ///
@@ -1034,6 +1076,9 @@ class Counters {
 
   Counters({
     this.failedObjectCount,
+    this.objectCustomContextsCreated,
+    this.objectCustomContextsDeleted,
+    this.objectCustomContextsUpdated,
     this.succeededObjectCount,
     this.totalBytesFound,
     this.totalObjectCount,
@@ -1042,6 +1087,12 @@ class Counters {
   Counters.fromJson(core.Map json_)
     : this(
         failedObjectCount: json_['failedObjectCount'] as core.String?,
+        objectCustomContextsCreated:
+            json_['objectCustomContextsCreated'] as core.String?,
+        objectCustomContextsDeleted:
+            json_['objectCustomContextsDeleted'] as core.String?,
+        objectCustomContextsUpdated:
+            json_['objectCustomContextsUpdated'] as core.String?,
         succeededObjectCount: json_['succeededObjectCount'] as core.String?,
         totalBytesFound: json_['totalBytesFound'] as core.String?,
         totalObjectCount: json_['totalObjectCount'] as core.String?,
@@ -1049,15 +1100,61 @@ class Counters {
 
   core.Map<core.String, core.dynamic> toJson() {
     final failedObjectCount = this.failedObjectCount;
+    final objectCustomContextsCreated = this.objectCustomContextsCreated;
+    final objectCustomContextsDeleted = this.objectCustomContextsDeleted;
+    final objectCustomContextsUpdated = this.objectCustomContextsUpdated;
     final succeededObjectCount = this.succeededObjectCount;
     final totalBytesFound = this.totalBytesFound;
     final totalObjectCount = this.totalObjectCount;
     return {
       'failedObjectCount': ?failedObjectCount,
+      'objectCustomContextsCreated': ?objectCustomContextsCreated,
+      'objectCustomContextsDeleted': ?objectCustomContextsDeleted,
+      'objectCustomContextsUpdated': ?objectCustomContextsUpdated,
       'succeededObjectCount': ?succeededObjectCount,
       'totalBytesFound': ?totalBytesFound,
       'totalObjectCount': ?totalObjectCount,
     };
+  }
+}
+
+/// Describes a collection of updates to apply to custom contexts identified by
+/// key.
+class CustomContextUpdates {
+  /// Custom contexts to clear by key.
+  ///
+  /// A key cannot be present in both `updates` and `keys_to_clear`.
+  ///
+  /// Optional.
+  core.List<core.String>? keysToClear;
+
+  /// Insert or update the existing custom contexts.
+  ///
+  /// Optional.
+  core.Map<core.String, ObjectCustomContextPayload>? updates;
+
+  CustomContextUpdates({this.keysToClear, this.updates});
+
+  CustomContextUpdates.fromJson(core.Map json_)
+    : this(
+        keysToClear: (json_['keysToClear'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        updates: (json_['updates'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ObjectCustomContextPayload.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final keysToClear = this.keysToClear;
+    final updates = this.updates;
+    return {'keysToClear': ?keysToClear, 'updates': ?updates};
   }
 }
 
@@ -1300,6 +1397,14 @@ class Job {
   /// Output only.
   core.List<ErrorSummary>? errorSummaries;
 
+  /// If true, this Job operates on multiple buckets.
+  ///
+  /// Multibucket jobs are subject to different quota limits than single-bucket
+  /// jobs.
+  ///
+  /// Output only.
+  core.bool? isMultiBucketJob;
+
   /// Logging configuration.
   ///
   /// Optional.
@@ -1340,7 +1445,11 @@ class Job {
   /// - "SUCCEEDED" : Completed successfully.
   /// - "CANCELED" : Cancelled by the user.
   /// - "FAILED" : Terminated due to an unrecoverable failure.
+  /// - "QUEUED" : Queued but not yet started.
   core.String? state;
+
+  /// Update object custom context.
+  UpdateObjectCustomContext? updateObjectCustomContext;
 
   Job({
     this.bucketList,
@@ -1351,6 +1460,7 @@ class Job {
     this.description,
     this.dryRun,
     this.errorSummaries,
+    this.isMultiBucketJob,
     this.loggingConfig,
     this.name,
     this.putMetadata,
@@ -1358,6 +1468,7 @@ class Job {
     this.rewriteObject,
     this.scheduleTime,
     this.state,
+    this.updateObjectCustomContext,
   });
 
   Job.fromJson(core.Map json_)
@@ -1388,6 +1499,7 @@ class Job {
               ),
             )
             .toList(),
+        isMultiBucketJob: json_['isMultiBucketJob'] as core.bool?,
         loggingConfig: json_.containsKey('loggingConfig')
             ? LoggingConfig.fromJson(
                 json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
@@ -1411,6 +1523,13 @@ class Job {
             : null,
         scheduleTime: json_['scheduleTime'] as core.String?,
         state: json_['state'] as core.String?,
+        updateObjectCustomContext:
+            json_.containsKey('updateObjectCustomContext')
+            ? UpdateObjectCustomContext.fromJson(
+                json_['updateObjectCustomContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -1422,6 +1541,7 @@ class Job {
     final description = this.description;
     final dryRun = this.dryRun;
     final errorSummaries = this.errorSummaries;
+    final isMultiBucketJob = this.isMultiBucketJob;
     final loggingConfig = this.loggingConfig;
     final name = this.name;
     final putMetadata = this.putMetadata;
@@ -1429,6 +1549,7 @@ class Job {
     final rewriteObject = this.rewriteObject;
     final scheduleTime = this.scheduleTime;
     final state = this.state;
+    final updateObjectCustomContext = this.updateObjectCustomContext;
     return {
       'bucketList': ?bucketList,
       'completeTime': ?completeTime,
@@ -1438,6 +1559,7 @@ class Job {
       'description': ?description,
       'dryRun': ?dryRun,
       'errorSummaries': ?errorSummaries,
+      'isMultiBucketJob': ?isMultiBucketJob,
       'loggingConfig': ?loggingConfig,
       'name': ?name,
       'putMetadata': ?putMetadata,
@@ -1445,6 +1567,7 @@ class Job {
       'rewriteObject': ?rewriteObject,
       'scheduleTime': ?scheduleTime,
       'state': ?state,
+      'updateObjectCustomContext': ?updateObjectCustomContext,
     };
   }
 }
@@ -1670,6 +1793,26 @@ class Manifest {
   core.Map<core.String, core.dynamic> toJson() {
     final manifestLocation = this.manifestLocation;
     return {'manifestLocation': ?manifestLocation};
+  }
+}
+
+/// Describes the payload of a user defined object custom context.
+class ObjectCustomContextPayload {
+  /// The value of the object custom context.
+  ///
+  /// If set, `value` must NOT be an empty string since it is a required field
+  /// in custom context. If unset, `value` will be ignored and no changes will
+  /// be made to the `value` field of the custom context payload.
+  core.String? value;
+
+  ObjectCustomContextPayload({this.value});
+
+  ObjectCustomContextPayload.fromJson(core.Map json_)
+    : this(value: json_['value'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
   }
 }
 
@@ -2024,3 +2167,37 @@ class RewriteObject {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// Describes options to update object custom contexts.
+class UpdateObjectCustomContext {
+  /// If set, must be set to true and all existing object custom contexts will
+  /// be deleted.
+  core.bool? clearAll;
+
+  /// A collection of updates to apply to specific custom contexts.
+  ///
+  /// Use this to add, update or delete individual contexts by key.
+  CustomContextUpdates? customContextUpdates;
+
+  UpdateObjectCustomContext({this.clearAll, this.customContextUpdates});
+
+  UpdateObjectCustomContext.fromJson(core.Map json_)
+    : this(
+        clearAll: json_['clearAll'] as core.bool?,
+        customContextUpdates: json_.containsKey('customContextUpdates')
+            ? CustomContextUpdates.fromJson(
+                json_['customContextUpdates']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clearAll = this.clearAll;
+    final customContextUpdates = this.customContextUpdates;
+    return {
+      'clearAll': ?clearAll,
+      'customContextUpdates': ?customContextUpdates,
+    };
+  }
+}

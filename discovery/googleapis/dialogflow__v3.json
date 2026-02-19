@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260119",
+    "revision": "20260323",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -6995,6 +6995,19 @@
             },
             "type": "object"
         },
+        "GoogleCloudDialogflowCxV3FlowTraceMetadata": {
+            "id": "GoogleCloudDialogflowCxV3FlowTraceMetadata",
+            "properties": {
+                "displayName": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "flow": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDialogflowCxV3FlowTransition": {
             "id": "GoogleCloudDialogflowCxV3FlowTransition",
             "properties": {
@@ -7790,6 +7803,9 @@
                     "type": "string"
                 },
                 "displayName": {
+                    "type": "string"
+                },
+                "dtmfPattern": {
                     "type": "string"
                 },
                 "isFallback": {
@@ -8891,6 +8907,19 @@
             },
             "type": "object"
         },
+        "GoogleCloudDialogflowCxV3PlaybookTraceMetadata": {
+            "id": "GoogleCloudDialogflowCxV3PlaybookTraceMetadata",
+            "properties": {
+                "displayName": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "playbook": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDialogflowCxV3PlaybookTransition": {
             "id": "GoogleCloudDialogflowCxV3PlaybookTransition",
             "properties": {
@@ -9103,6 +9132,12 @@
                 },
                 "text": {
                     "type": "string"
+                },
+                "traceBlocks": {
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowCxV3TraceBlock"
+                    },
+                    "type": "array"
                 },
                 "transcript": {
                     "type": "string"
@@ -9792,6 +9827,16 @@
             },
             "type": "object"
         },
+        "GoogleCloudDialogflowCxV3SpeechProcessingMetadata": {
+            "id": "GoogleCloudDialogflowCxV3SpeechProcessingMetadata",
+            "properties": {
+                "displayName": {
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDialogflowCxV3SpeechToTextSettings": {
             "id": "GoogleCloudDialogflowCxV3SpeechToTextSettings",
             "properties": {
@@ -10374,6 +10419,71 @@
                     "$ref": "GoogleCloudDialogflowCxV3Tool"
                 },
                 "updateTime": {
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3TraceBlock": {
+            "id": "GoogleCloudDialogflowCxV3TraceBlock",
+            "properties": {
+                "actions": {
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowCxV3Action"
+                    },
+                    "type": "array"
+                },
+                "completeTime": {
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "endState": {
+                    "enum": [
+                        "OUTPUT_STATE_UNSPECIFIED",
+                        "OUTPUT_STATE_OK",
+                        "OUTPUT_STATE_CANCELLED",
+                        "OUTPUT_STATE_FAILED",
+                        "OUTPUT_STATE_ESCALATED",
+                        "OUTPUT_STATE_PENDING"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "flowTraceMetadata": {
+                    "$ref": "GoogleCloudDialogflowCxV3FlowTraceMetadata"
+                },
+                "inputParameters": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "type": "object"
+                },
+                "outputParameters": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "type": "object"
+                },
+                "playbookTraceMetadata": {
+                    "$ref": "GoogleCloudDialogflowCxV3PlaybookTraceMetadata"
+                },
+                "speechProcessingMetadata": {
+                    "$ref": "GoogleCloudDialogflowCxV3SpeechProcessingMetadata"
+                },
+                "startTime": {
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -12062,6 +12172,9 @@
                     "type": "string"
                 },
                 "displayName": {
+                    "type": "string"
+                },
+                "dtmfPattern": {
                     "type": "string"
                 },
                 "isFallback": {
@@ -15661,6 +15774,15 @@
                 "answerRecord": {
                     "type": "string"
                 },
+                "cesApp": {
+                    "type": "string"
+                },
+                "cesTool": {
+                    "type": "string"
+                },
+                "cesToolset": {
+                    "type": "string"
+                },
                 "createTime": {
                     "format": "google-datetime",
                     "readOnly": true,
@@ -15706,6 +15828,15 @@
                     "type": "string"
                 },
                 "answerRecord": {
+                    "type": "string"
+                },
+                "cesApp": {
+                    "type": "string"
+                },
+                "cesTool": {
+                    "type": "string"
+                },
+                "cesToolset": {
                     "type": "string"
                 },
                 "content": {
@@ -18540,6 +18671,15 @@
                 "answerRecord": {
                     "type": "string"
                 },
+                "cesApp": {
+                    "type": "string"
+                },
+                "cesTool": {
+                    "type": "string"
+                },
+                "cesToolset": {
+                    "type": "string"
+                },
                 "createTime": {
                     "format": "google-datetime",
                     "readOnly": true,
@@ -18585,6 +18725,15 @@
                     "type": "string"
                 },
                 "answerRecord": {
+                    "type": "string"
+                },
+                "cesApp": {
+                    "type": "string"
+                },
+                "cesTool": {
+                    "type": "string"
+                },
+                "cesToolset": {
                     "type": "string"
                 },
                 "content": {

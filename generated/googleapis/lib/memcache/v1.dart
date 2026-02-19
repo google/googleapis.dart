@@ -124,6 +124,12 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -1013,6 +1019,11 @@ class Instance {
   /// If left unspecified, the `default` network will be used.
   core.String? authorizedNetwork;
 
+  /// The available maintenance versions that can be applied to the instance.
+  ///
+  /// Output only.
+  core.List<core.String>? availableMaintenanceVersions;
+
   /// The time the instance was created.
   ///
   /// Output only.
@@ -1028,6 +1039,11 @@ class Instance {
   ///
   /// Cannot be more than 80 characters.
   core.String? displayName;
+
+  /// The effective maintenance version of the instance.
+  ///
+  /// Output only.
+  core.String? effectiveMaintenanceVersion;
 
   /// List of messages that describe the current state of the Memcached
   /// instance.
@@ -1049,6 +1065,14 @@ class Instance {
   ///
   /// Output only.
   MaintenanceSchedule? maintenanceSchedule;
+
+  /// Last self service update maintenance version triggered by the customer.
+  ///
+  /// If it is empty, it means that the maintenance version is not set by the
+  /// user.
+  ///
+  /// Optional.
+  core.String? maintenanceVersion;
 
   /// The full version of memcached server running on this instance.
   ///
@@ -1152,13 +1176,16 @@ class Instance {
 
   Instance({
     this.authorizedNetwork,
+    this.availableMaintenanceVersions,
     this.createTime,
     this.discoveryEndpoint,
     this.displayName,
+    this.effectiveMaintenanceVersion,
     this.instanceMessages,
     this.labels,
     this.maintenancePolicy,
     this.maintenanceSchedule,
+    this.maintenanceVersion,
     this.memcacheFullVersion,
     this.memcacheNodes,
     this.memcacheVersion,
@@ -1177,9 +1204,15 @@ class Instance {
   Instance.fromJson(core.Map json_)
     : this(
         authorizedNetwork: json_['authorizedNetwork'] as core.String?,
+        availableMaintenanceVersions:
+            (json_['availableMaintenanceVersions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         createTime: json_['createTime'] as core.String?,
         discoveryEndpoint: json_['discoveryEndpoint'] as core.String?,
         displayName: json_['displayName'] as core.String?,
+        effectiveMaintenanceVersion:
+            json_['effectiveMaintenanceVersion'] as core.String?,
         instanceMessages: (json_['instanceMessages'] as core.List?)
             ?.map(
               (value) => InstanceMessage.fromJson(
@@ -1202,6 +1235,7 @@ class Instance {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        maintenanceVersion: json_['maintenanceVersion'] as core.String?,
         memcacheFullVersion: json_['memcacheFullVersion'] as core.String?,
         memcacheNodes: (json_['memcacheNodes'] as core.List?)
             ?.map(
@@ -1236,13 +1270,16 @@ class Instance {
 
   core.Map<core.String, core.dynamic> toJson() {
     final authorizedNetwork = this.authorizedNetwork;
+    final availableMaintenanceVersions = this.availableMaintenanceVersions;
     final createTime = this.createTime;
     final discoveryEndpoint = this.discoveryEndpoint;
     final displayName = this.displayName;
+    final effectiveMaintenanceVersion = this.effectiveMaintenanceVersion;
     final instanceMessages = this.instanceMessages;
     final labels = this.labels;
     final maintenancePolicy = this.maintenancePolicy;
     final maintenanceSchedule = this.maintenanceSchedule;
+    final maintenanceVersion = this.maintenanceVersion;
     final memcacheFullVersion = this.memcacheFullVersion;
     final memcacheNodes = this.memcacheNodes;
     final memcacheVersion = this.memcacheVersion;
@@ -1258,13 +1295,16 @@ class Instance {
     final zones = this.zones;
     return {
       'authorizedNetwork': ?authorizedNetwork,
+      'availableMaintenanceVersions': ?availableMaintenanceVersions,
       'createTime': ?createTime,
       'discoveryEndpoint': ?discoveryEndpoint,
       'displayName': ?displayName,
+      'effectiveMaintenanceVersion': ?effectiveMaintenanceVersion,
       'instanceMessages': ?instanceMessages,
       'labels': ?labels,
       'maintenancePolicy': ?maintenancePolicy,
       'maintenanceSchedule': ?maintenanceSchedule,
+      'maintenanceVersion': ?maintenanceVersion,
       'memcacheFullVersion': ?memcacheFullVersion,
       'memcacheNodes': ?memcacheNodes,
       'memcacheVersion': ?memcacheVersion,

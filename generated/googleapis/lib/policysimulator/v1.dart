@@ -1724,7 +1724,7 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /// Reference to the launch that will be used while audit logging and to
   /// control the launch.
   ///
-  /// Should be set only in the alternate policy.
+  /// Set only in the alternate policy.
   core.String? launch;
 
   /// Specify constraint for configurations of Google Cloud resources.
@@ -1755,10 +1755,115 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
 /// By creating a custom constraint, customers can apply policies of this custom
 /// constraint. *Creating a custom constraint itself does NOT apply any policy
 /// enforcement*.
-typedef GoogleCloudOrgpolicyV2CustomConstraint =
-    $GoogleCloudOrgpolicyV2CustomConstraint;
+class GoogleCloudOrgpolicyV2CustomConstraint {
+  /// Allow or deny type.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : This is only used for distinguishing unset
+  /// values, and results in an error if used.
+  /// - "ALLOW" : Allowed action type.
+  /// - "DENY" : Deny action type.
+  core.String? actionType;
 
-/// Defines an organization policy which is used to specify constraints for
+  /// A Common Expression Language (CEL) condition which is used in the
+  /// evaluation of the constraint.
+  ///
+  /// For example:
+  /// `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")` or,
+  /// `resource.management.auto_upgrade == true` The max length of the condition
+  /// is 1000 characters.
+  core.String? condition;
+
+  /// Detailed information about this custom policy constraint.
+  ///
+  /// The max length of the description is 2000 characters.
+  core.String? description;
+
+  /// One line display name for the UI.
+  ///
+  /// The max length of the display_name is 200 characters.
+  core.String? displayName;
+
+  /// All the operations being applied for this constraint.
+  core.List<core.String>? methodTypes;
+
+  /// Name of the constraint.
+  ///
+  /// This is unique within the organization. The name must be of the form: *
+  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
+  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+  /// The max length is 71 characters and the minimum length is 1. Note that the
+  /// prefix `organizations/{organization_id}/customConstraints/custom.` is not
+  /// counted.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The resource instance type on which this policy applies.
+  ///
+  /// Format will be of the form : `/` Example: *
+  /// `compute.googleapis.com/Instance`.
+  ///
+  /// Immutable.
+  core.List<core.String>? resourceTypes;
+
+  /// The last time this custom constraint was updated.
+  ///
+  /// This represents the last time that the `CreateCustomConstraint` or
+  /// `UpdateCustomConstraint` methods were called.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudOrgpolicyV2CustomConstraint({
+    this.actionType,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.methodTypes,
+    this.name,
+    this.resourceTypes,
+    this.updateTime,
+  });
+
+  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
+    : this(
+        actionType: json_['actionType'] as core.String?,
+        condition: json_['condition'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        methodTypes: (json_['methodTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        name: json_['name'] as core.String?,
+        resourceTypes: (json_['resourceTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionType = this.actionType;
+    final condition = this.condition;
+    final description = this.description;
+    final displayName = this.displayName;
+    final methodTypes = this.methodTypes;
+    final name = this.name;
+    final resourceTypes = this.resourceTypes;
+    final updateTime = this.updateTime;
+    return {
+      'actionType': ?actionType,
+      'condition': ?condition,
+      'description': ?description,
+      'displayName': ?displayName,
+      'methodTypes': ?methodTypes,
+      'name': ?name,
+      'resourceTypes': ?resourceTypes,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Defines an organization policy that is used to specify constraints for
 /// configurations of Google Cloud resources.
 class GoogleCloudOrgpolicyV2Policy {
   /// Deprecated.
@@ -1776,9 +1881,9 @@ class GoogleCloudOrgpolicyV2Policy {
   /// An opaque tag indicating the current state of the policy, used for
   /// concurrency control.
   ///
-  /// This 'etag' is computed by the server based on the value of other fields,
-  /// and may be sent on update and delete requests to ensure the client has an
-  /// up-to-date value before proceeding.
+  /// This entity tag (ETag) is computed by the server based on the value of
+  /// other fields, and may be sent on update and delete requests to ensure the
+  /// client has an up-to-date value before proceeding.
   ///
   /// Optional.
   core.String? etag;
@@ -1786,7 +1891,7 @@ class GoogleCloudOrgpolicyV2Policy {
   /// The resource name of the policy.
   ///
   /// Must be one of the following forms, where `constraint_name` is the name of
-  /// the constraint which this policy configures: *
+  /// the constraint that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -1846,7 +1951,7 @@ class GoogleCloudOrgpolicyV2Policy {
   }
 }
 
-/// Defines a Google Cloud policy specification which is used to specify
+/// Defines a Google Cloud policy specification that is used to specify
 /// constraints for configurations of Google Cloud resources.
 class GoogleCloudOrgpolicyV2PolicySpec {
   /// An opaque tag indicating the current version of the policySpec, used for
@@ -1854,9 +1959,9 @@ class GoogleCloudOrgpolicyV2PolicySpec {
   ///
   /// This field is ignored if used in a `CreatePolicy` request. When the policy
   /// is returned from either a `GetPolicy` or a `ListPolicies` request, this
-  /// `etag` indicates the version of the current policySpec to use when
-  /// executing a read-modify-write loop. When the policy is returned from a
-  /// `GetEffectivePolicy` request, the `etag` will be unset.
+  /// entity tag (ETag) indicates the version of the current policySpec to use
+  /// when executing a read-modify-write loop. When the policy is returned from
+  /// a `GetEffectivePolicy` request, the ETag will be unset.
   core.String? etag;
 
   /// Determines the inheritance behavior for this policy.
@@ -1865,7 +1970,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
   /// hierarchy (up to the closest root) are inherited and present in the
   /// effective policy. If it is false, then no rules are inherited, and this
   /// policy becomes the new root for evaluation. This field can be set only for
-  /// policies which configure list constraints.
+  /// policies that configure list constraints.
   core.bool? inheritFromParent;
 
   /// Ignores policies set above this resource and restores the
@@ -1878,7 +1983,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
   core.bool? reset;
 
   /// In policies for boolean constraints, the following requirements apply: -
-  /// There must be one and only one policy rule where condition is unset.
+  /// There must be exactly one policy rule where a condition is unset.
   ///
   /// - Boolean policy rules with conditions must set `enforced` to the opposite
   /// of the policy rule without a condition. - During policy evaluation, policy

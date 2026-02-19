@@ -162,6 +162,59 @@ class AccountsResource {
     return Account.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates a Merchant Center test account.
+  ///
+  /// Test accounts are intended for development and testing purposes, such as
+  /// validating API integrations or new feature behavior. Key characteristics
+  /// and limitations of test accounts: - Immutable Type: A test account cannot
+  /// be converted into a regular (live) Merchant Center account. Likewise, a
+  /// regular account cannot be converted into a test account. - Non-Serving
+  /// Products: Any products, offers, or data created within a test account will
+  /// not be published or made visible to end-users on any Google surfaces. They
+  /// are strictly for testing environments. - Separate Environment: Test
+  /// accounts operate in a sandbox-like manner, isolated from live serving and
+  /// real user traffic.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The account resource name to create the test account
+  /// under. Format: accounts/{account}
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Account].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Account> createTestAccount(
+    Account request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'accounts/v1/' + core.Uri.encodeFull('$parent') + ':createTestAccount';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Account.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes the specified account regardless of its type: standalone, advanced
   /// account or sub-account.
   ///
@@ -889,7 +942,8 @@ class AccountsDeveloperRegistrationResource {
   ///
   /// [name] - Required. The name of the developer registration to be created
   /// for the merchant account that the GCP will be registered with. Format:
-  /// `accounts/{account}/developerRegistration`
+  /// `accounts/{account}/developerRegistration` The {account} used must be the
+  /// same account where user calling this API method is directly added to.
   /// Value must have pattern `^accounts/\[^/\]+/developerRegistration$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3330,8 +3384,7 @@ class AccountsUsersResource {
   /// Deletes a Merchant Center account user.
   ///
   /// Executing this method requires admin access. The user to be deleted can't
-  /// be the last admin user of that account. Also a user is protected from
-  /// deletion if it is managed by Business Manager"
+  /// be the last admin user of that account.
   ///
   /// Request parameters:
   ///
@@ -3658,7 +3711,8 @@ class TermsOfServiceResource {
   /// Possible string values are:
   /// - "TERMS_OF_SERVICE_KIND_UNSPECIFIED" : Default value. This value is
   /// unused.
-  /// - "MERCHANT_CENTER" : Merchant Center application.
+  /// - "MERCHANT_CENTER" : Terms of service for the Merchant Center
+  /// application.
   ///
   /// [regionCode] - Required. Region code as defined by
   /// [CLDR](https://cldr.unicode.org/). This is either a country when the ToS
@@ -3808,7 +3862,8 @@ class Accepted {
   }
 }
 
-/// The `Account` message represents a business's account within Shopping Ads.
+/// The `Account` message represents a business's account within Merchant
+/// Center.
 ///
 /// It's the primary entity for managing product data, settings, and
 /// interactions with Google's services and external providers. Accounts can
@@ -3826,9 +3881,10 @@ class Account {
 
   /// A human-readable name of the account.
   ///
-  /// See [store name](https://support.google.com/merchants/answer/160556) and
-  /// [business name](https://support.google.com/merchants/answer/12159159) for
-  /// more information.
+  /// Don't use punctuation, capitalization, or non-alphanumeric symbols such as
+  /// the "/" or "_" symbols. See
+  /// [Adding a business name](https://support.google.com/merchants/answer/12159159)
+  /// for more information.
   ///
   /// Required.
   core.String? accountName;
@@ -5334,10 +5390,12 @@ class CheckoutSettings {
   /// Output only.
   UriSettings? effectiveUriSettings;
 
+  /// Required for the create operation.
+  ///
   /// The destinations (also known as
   /// [Marketing methods](https://support.google.com/merchants/answer/15130232))
-  /// to which the checkout program applies, valid destination values are
-  /// `SHOPPING_ADS`, `FREE_LISTINGS`
+  /// to which the checkout program applies. Valid destination values are
+  /// `SHOPPING_ADS` and `FREE_LISTINGS`.
   ///
   /// Optional.
   core.List<core.String>? eligibleDestinations;
@@ -5478,7 +5536,7 @@ class CreateAndConfigureAccountRequest {
   /// these needs to be `account_aggregation` and `accounts.createAndConfigure`
   /// method can be used to create a sub-account under an existing advanced
   /// account through this method. Additional `account_management` or
-  /// `product_management` services may be provided.
+  /// `products_management` services may be provided.
   ///
   /// Required.
   core.List<AddAccountService>? service;
@@ -5890,9 +5948,9 @@ class DeveloperRegistration {
 
   /// Identifier.
   ///
-  /// The `name` (ID) of the developer registration. Generated by the Content
-  /// API upon creation of a new `DeveloperRegistration`. The `account`
-  /// represents the merchant ID of the merchant that owns the registration.
+  /// The `name` (ID) of the developer registration. Generated upon creation of
+  /// a new `DeveloperRegistration`. The `account` represents the merchant ID of
+  /// the merchant that owns the registration.
   core.String? name;
 
   DeveloperRegistration({this.gcpIds, this.name});
@@ -6129,7 +6187,7 @@ class GetAccountForGcpRegistrationResponse {
 
 /// The current status of establishing of the service.
 ///
-/// (for example, pending approval or approved).
+/// (for example, pending approval, approved, established).
 class Handshake {
   /// The most recent account to modify the account service's `approval_status`.
   ///
@@ -6148,6 +6206,8 @@ class Handshake {
   /// Possible string values are:
   /// - "APPROVAL_STATE_UNSPECIFIED" : Unspecified approval status.
   /// - "PENDING" : The service was proposed and is waiting to be confirmed.
+  /// - "WAITING" : Indicates that the service proposal has been accepted and
+  /// will be established after a fixed delay set by the service provider.
   /// - "ESTABLISHED" : Both parties have confirmed the service.
   /// - "REJECTED" : The service proposal was rejected.
   core.String? approvalState;
@@ -6404,6 +6464,8 @@ class ImpactedDestination {
   /// [Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).
   /// - "FREE_LISTINGS" :
   /// [Free product listings](https://support.google.com/merchants/answer/9199328).
+  /// - "FREE_LISTINGS_UCP_CHECKOUT" :
+  /// [Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).
   /// - "FREE_LOCAL_LISTINGS" :
   /// [Free local product listings](https://support.google.com/merchants/answer/9825611).
   /// - "FREE_LOCAL_VEHICLE_LISTINGS" :
@@ -7902,7 +7964,8 @@ typedef ProductsManagement = $Empty;
 /// program, which enables products from a business's store to be shown across
 /// Google for free. The following list is the available set of program resource
 /// IDs accessible through the API: * `checkout` * `free-listings` *
-/// `shopping-ads` * `youtube-shopping-checkout`
+/// `product-ratings` * `shopping-ads` * `youtube-affiliate` *
+/// `youtube-shopping-checkout`
 class Program {
   /// The regions in which the account is actively participating in the program.
   ///
@@ -8185,8 +8248,10 @@ class RateGroup {
 /// Represents a geographic region that you can use as a target with both the
 /// `RegionalInventory` and `ShippingSettings` services.
 ///
-/// You can define regions as collections of either postal codes or, in some
-/// countries, using predefined geotargets. For more information, see
+/// You can define regions as collections of either postal codes, radius areas
+/// or, in some countries, using predefined geotargets. A region must be defined
+/// by specifying exactly one of `postal_code_area`, `geotarget_area`, or
+/// `radius_area`. For more information, see
 /// [Set up regions ](https://support.google.com/merchants/answer/7410946#zippy=%2Ccreate-a-new-region)
 /// for more information.
 class Region {
@@ -8284,16 +8349,17 @@ class Region {
 
 /// Request message for the RegisterGCP method.
 class RegisterGcpRequest {
-  /// If the developer email provided is associated with a user in the merchant
-  /// account provided, the user will be updated to have "API developer" access
-  /// type and the email preference corresponding to that user will be updated
-  /// to have the new "API notifications" preference.
+  /// Optional field.
   ///
-  /// If the developer email provided is not associated with any user we will
-  /// just add it as a contact. The email preference corresponding to that
-  /// contact will have the new "API notifications" preference. Make sure the
-  /// email used is associated with a Google Account (Google Workspace account
-  /// or Gmail account) and is not a service account as service accounts can't
+  /// Developer role can be also added by using `users.update` method. If the
+  /// developer email provided is associated with a user in the provided
+  /// merchant account, the user will be updated to have `API_DEVELOPER`
+  /// `access_rights` and the email preference corresponding to that user will
+  /// be updated to have the new API notifications preference. If the developer
+  /// email provided is not associated with any user, it is added as a contact.
+  /// The email preference corresponding to that contact will have the new API
+  /// notifications preference. Make sure the email used is associated with a
+  /// Google Account and is not a service account as service accounts can't
   /// receive emails.
   ///
   /// Immutable.
@@ -9094,7 +9160,8 @@ class TermsOfService {
   /// Possible string values are:
   /// - "TERMS_OF_SERVICE_KIND_UNSPECIFIED" : Default value. This value is
   /// unused.
-  /// - "MERCHANT_CENTER" : Merchant Center application.
+  /// - "MERCHANT_CENTER" : Terms of service for the Merchant Center
+  /// application.
   core.String? kind;
 
   /// Identifier.
@@ -9194,7 +9261,8 @@ class TermsOfServiceAgreementState {
   /// Possible string values are:
   /// - "TERMS_OF_SERVICE_KIND_UNSPECIFIED" : Default value. This value is
   /// unused.
-  /// - "MERCHANT_CENTER" : Merchant Center application.
+  /// - "MERCHANT_CENTER" : Terms of service for the Merchant Center
+  /// application.
   core.String? termsOfServiceKind;
 
   TermsOfServiceAgreementState({

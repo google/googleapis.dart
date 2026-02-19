@@ -1149,6 +1149,7 @@ api.PrivateEnvironmentConfig buildPrivateEnvironmentConfig() {
     o.enablePrivateEnvironment = true;
     o.enablePrivatelyUsedPublicIps = true;
     o.networkingConfig = buildNetworkingConfig();
+    o.networkingType = 'foo';
     o.privateClusterConfig = buildPrivateClusterConfig();
     o.webServerIpv4CidrBlock = 'foo';
     o.webServerIpv4ReservedRange = 'foo';
@@ -1177,6 +1178,7 @@ void checkPrivateEnvironmentConfig(api.PrivateEnvironmentConfig o) {
     unittest.expect(o.enablePrivateEnvironment!, unittest.isTrue);
     unittest.expect(o.enablePrivatelyUsedPublicIps!, unittest.isTrue);
     checkNetworkingConfig(o.networkingConfig!);
+    unittest.expect(o.networkingType!, unittest.equals('foo'));
     checkPrivateClusterConfig(o.privateClusterConfig!);
     unittest.expect(o.webServerIpv4CidrBlock!, unittest.equals('foo'));
     unittest.expect(o.webServerIpv4ReservedRange!, unittest.equals('foo'));

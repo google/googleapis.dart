@@ -31,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260120",
+    "revision": "20260403",
     "rootUrl": "https://serviceusage.googleapis.com/",
     "servicePath": "",
     "title": "Service Usage API",
@@ -640,6 +640,13 @@
                     "description": "The type of this aspect configuration.",
                     "type": "string"
                 },
+                "rules": {
+                    "description": "Optional. Rules of the Configuration.",
+                    "items": {
+                        "$ref": "AspectRule"
+                    },
+                    "type": "array"
+                },
                 "spec": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -647,6 +654,25 @@
                     },
                     "description": "Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`.",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AspectRule": {
+            "description": "Rule-based configuration for an aspect.",
+            "id": "AspectRule",
+            "properties": {
+                "config": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Required. Rules of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`.",
+                    "type": "object"
+                },
+                "selector": {
+                    "description": "Required. Selects the RPC methods to which this rule applies. Refer to selector for syntax details.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -805,7 +831,7 @@
                     "type": "object"
                 },
                 "pathTranslation": {
-                    "description": "no-lint",
+                    "description": "Path translation specifies how to combine the backend address with the request path in order to produce the appropriate forwarding URL for the request. See PathTranslation for more details.",
                     "enum": [
                         "PATH_TRANSLATION_UNSPECIFIED",
                         "CONSTANT_ADDRESS",
@@ -1138,7 +1164,7 @@
                 },
                 "selectiveGapicGeneration": {
                     "$ref": "SelectiveGapicGeneration",
-                    "description": "Configuration for which RPCs should be generated in the GAPIC client."
+                    "description": "Configuration for which RPCs should be generated in the GAPIC client. Note: This field should not be used in most cases."
                 }
             },
             "type": "object"
@@ -1940,7 +1966,7 @@
                     "description": "Additional API documentation."
                 },
                 "endpoints": {
-                    "description": "Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs. WARNING: Defining any entries in the `endpoints` list disables the automatic generation of default endpoint variations (e.g., `{service}.clients6.google.com`, `content-{service}.googleapis.com`, and mTLS variants like `{service}.mtls.googleapis.com`). To retain these default variations, you are required to explicitly include your main service endpoint (e.g., `myservice.googleapis.com`) in this list alongside any other custom endpoints (like REP, GFE, etc.).",
+                    "description": "Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.",
                     "items": {
                         "$ref": "Endpoint"
                     },
@@ -2839,66 +2865,6 @@
             },
             "type": "object"
         },
-        "McpEnableRule": {
-            "description": "McpEnableRule contains MCP enablement related rules.",
-            "id": "McpEnableRule",
-            "properties": {
-                "mcpServices": {
-                    "description": "List of enabled MCP services.",
-                    "items": {
-                        "$ref": "McpService"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "McpPolicy": {
-            "description": "MCP Consumer Policy is a set of rules that define MCP related policy for a cloud resource hierarchy.",
-            "id": "McpPolicy",
-            "properties": {
-                "createTime": {
-                    "description": "Output only. The time the policy was created. For singleton policies (such as the `default` policy), this is the first touch of the policy.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "etag": {
-                    "description": "An opaque tag indicating the current version of the policy, used for concurrency control.",
-                    "type": "string"
-                },
-                "mcpEnableRules": {
-                    "description": "McpEnableRules contains MCP enablement related rules.",
-                    "items": {
-                        "$ref": "McpEnableRule"
-                    },
-                    "type": "array"
-                },
-                "name": {
-                    "description": "Output only. The resource name of the policy. Only the `default` policy is supported. We allow the following formats: `projects/{PROJECT_NUMBER}/mcpPolicies/default`, `projects/{PROJECT_ID}/mcpPolicies/default`, `folders/{FOLDER_ID}/mcpPolicies/default`, `organizations/{ORG_ID}/mcpPolicies/default`.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "updateTime": {
-                    "description": "Output only. The time the policy was last updated.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "McpService": {
-            "description": "McpService contains the service names that are enabled for MCP.",
-            "id": "McpService",
-            "properties": {
-                "service": {
-                    "description": "The names of the services that are enabled for MCP. Example: `services/library-example.googleapis.com`",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "Method": {
             "description": "Method represents a method of an API interface. New usages of this message as an alternative to MethodDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.",
             "id": "Method",
@@ -3661,7 +3627,7 @@
             "type": "object"
         },
         "SelectiveGapicGeneration": {
-            "description": "This message is used to configure the generation of a subset of the RPCs in a service for client libraries.",
+            "description": "This message is used to configure the generation of a subset of the RPCs in a service for client libraries. Note: This feature should not be used in most cases.",
             "id": "SelectiveGapicGeneration",
             "properties": {
                 "generateOmittedAsInternal": {
@@ -3872,12 +3838,6 @@
             "properties": {},
             "type": "object"
         },
-        "UpdateMcpPolicyMetadata": {
-            "description": "Metadata for the `UpdateMcpPolicy` method.",
-            "id": "UpdateMcpPolicyMetadata",
-            "properties": {},
-            "type": "object"
-        },
         "Usage": {
             "description": "Configuration controlling usage of a service.",
             "id": "Usage",
@@ -3908,7 +3868,7 @@
             "id": "UsageRule",
             "properties": {
                 "allowUnregisteredCalls": {
-                    "description": " Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.",
+                    "description": "Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.",
                     "type": "boolean"
                 },
                 "selector": {

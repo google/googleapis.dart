@@ -247,7 +247,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260122",
+    "revision": "20260326",
     "rootUrl": "https://alloydb.googleapis.com/",
     "servicePath": "",
     "title": "AlloyDB API",
@@ -361,7 +361,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "alloydb.projects.locations.list",
@@ -1978,11 +1978,13 @@
                         "POSTGRES_14",
                         "POSTGRES_15",
                         "POSTGRES_16",
-                        "POSTGRES_17"
+                        "POSTGRES_17",
+                        "POSTGRES_18"
                     ],
                     "enumDeprecated": [
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -1994,7 +1996,8 @@
                         "The database version is Postgres 14.",
                         "The database version is Postgres 15.",
                         "The database version is Postgres 16.",
-                        "The database version is Postgres 17."
+                        "The database version is Postgres 17.",
+                        "The database version is Postgres 18."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2375,11 +2378,13 @@
                         "POSTGRES_14",
                         "POSTGRES_15",
                         "POSTGRES_16",
-                        "POSTGRES_17"
+                        "POSTGRES_17",
+                        "POSTGRES_18"
                     ],
                     "enumDeprecated": [
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -2391,7 +2396,8 @@
                         "The database version is Postgres 14.",
                         "The database version is Postgres 15.",
                         "The database version is Postgres 16.",
-                        "The database version is Postgres 17."
+                        "The database version is Postgres 17.",
+                        "The database version is Postgres 18."
                     ],
                     "type": "string"
                 },
@@ -2599,11 +2605,13 @@
                         "POSTGRES_14",
                         "POSTGRES_15",
                         "POSTGRES_16",
-                        "POSTGRES_17"
+                        "POSTGRES_17",
+                        "POSTGRES_18"
                     ],
                     "enumDeprecated": [
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -2615,7 +2623,8 @@
                         "The database version is Postgres 14.",
                         "The database version is Postgres 15.",
                         "The database version is Postgres 16.",
-                        "The database version is Postgres 17."
+                        "The database version is Postgres 17.",
+                        "The database version is Postgres 18."
                     ],
                     "type": "string"
                 },
@@ -3401,7 +3410,7 @@
             "id": "InstanceNetworkConfig",
             "properties": {
                 "allocatedIpRangeOverride": {
-                    "description": "Optional. Name of the allocated IP range for the private IP AlloyDB instance, for example: \"google-managed-services-default\". If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster. The range name must comply with [RFC 1035](http://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.",
+                    "description": "Optional. Name of the allocated IP range for the private IP AlloyDB instance, for example: \"google-managed-services-default\". If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.",
                     "type": "string"
                 },
                 "authorizedExternalNetworks": {
@@ -3781,6 +3790,11 @@
                     "description": "Output only. The private IP address of the VM e.g. \"10.57.0.34\".",
                     "readOnly": true,
                     "type": "string"
+                },
+                "isHotStandby": {
+                    "description": "Output only. Indicates whether the node set up to be configured as a hot standby.",
+                    "readOnly": true,
+                    "type": "boolean"
                 },
                 "state": {
                     "description": "Output only. Determined by state of the compute VM and postgres-service health. Compute VM state can have values listed in https://cloud.google.com/compute/docs/instances/instance-life-cycle and postgres-service health can have values: HEALTHY and UNHEALTHY.",
@@ -4653,7 +4667,10 @@
                         "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS",
                         "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS",
                         "SIGNAL_TYPE_EXTENDED_SUPPORT",
-                        "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+                        "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY",
+                        "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE",
+                        "SIGNAL_TYPE_LAST_BACKUP_OLD",
+                        "SIGNAL_TYPE_NOT_PROTECTED_BY_AUTOMATIC_FAILOVER"
                     ],
                     "enumDescriptions": [
                         "Unspecified signal type.",
@@ -4663,7 +4680,10 @@
                         "Represents if a resource is exposed to public access.",
                         "Represents if a resources requires all incoming connections to use SSL or not.",
                         "Represents if a resource version is in extended support.",
-                        "Represents if a resource has no automated backup policy."
+                        "Represents if a resource has no automated backup policy.",
+                        "Represents if a resource version is nearing end of life.",
+                        "Represents if the last backup of a resource is older than 24 hours.",
+                        "Represents if a resource is not protected by automatic failover."
                     ],
                     "type": "string"
                 }
@@ -4973,7 +4993,8 @@
                         "SIGNAL_TYPE_DATABOOST_DISABLED",
                         "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES",
                         "SIGNAL_TYPE_EXTENDED_SUPPORT",
-                        "SIGNAL_TYPE_PERFORMANCE_KPI_CHANGE"
+                        "SIGNAL_TYPE_PERFORMANCE_KPI_CHANGE",
+                        "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
                     ],
                     "enumDeprecated": [
                         false,
@@ -5075,6 +5096,7 @@
                         false,
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -5189,7 +5211,8 @@
                         "Databoost is disabled.",
                         "Recommended maintenance policy.",
                         "Resource version is in extended support.",
-                        "Change in performance KPIs."
+                        "Change in performance KPIs.",
+                        "Database version nearing end of life."
                     ],
                     "type": "string"
                 },
@@ -5253,7 +5276,7 @@
             "type": "object"
         },
         "StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata": {
-            "description": "Common model for database resource instance metadata. Next ID: 30",
+            "description": "Common model for database resource instance metadata. Next ID: 32",
             "id": "StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata",
             "properties": {
                 "availabilityConfiguration": {
@@ -5285,7 +5308,8 @@
                         "UNHEALTHY",
                         "SUSPENDED",
                         "DELETED",
-                        "STATE_OTHER"
+                        "STATE_OTHER",
+                        "STOPPED"
                     ],
                     "enumDescriptions": [
                         "",
@@ -5293,7 +5317,8 @@
                         "Instance being created, updated, deleted or under maintenance",
                         "When instance is suspended",
                         "Instance is deleted.",
-                        "For rest of the other category"
+                        "For rest of the other category",
+                        "Instance is in STOPPED state."
                     ],
                     "type": "string"
                 },
@@ -5332,7 +5357,8 @@
                         "UNHEALTHY",
                         "SUSPENDED",
                         "DELETED",
-                        "STATE_OTHER"
+                        "STATE_OTHER",
+                        "STOPPED"
                     ],
                     "enumDescriptions": [
                         "",
@@ -5340,7 +5366,8 @@
                         "Instance being created, updated, deleted or under maintenance",
                         "When instance is suspended",
                         "Instance is deleted.",
-                        "For rest of the other category"
+                        "For rest of the other category",
+                        "Instance is in STOPPED state."
                     ],
                     "type": "string"
                 },
@@ -5366,6 +5393,9 @@
                         "SUB_RESOURCE_TYPE_SECONDARY",
                         "SUB_RESOURCE_TYPE_READ_REPLICA",
                         "SUB_RESOURCE_TYPE_EXTERNAL_PRIMARY",
+                        "SUB_RESOURCE_TYPE_READ_POOL",
+                        "SUB_RESOURCE_TYPE_RESERVATION",
+                        "SUB_RESOURCE_TYPE_DATASET",
                         "SUB_RESOURCE_TYPE_OTHER"
                     ],
                     "enumDeprecated": [
@@ -5375,6 +5405,9 @@
                         true,
                         true,
                         true,
+                        false,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -5392,6 +5425,9 @@
                         "A cluster or an instance acting as a secondary.",
                         "An instance acting as a read-replica.",
                         "An instance acting as an external primary.",
+                        "An instance acting as Read Pool.",
+                        "Represents a reservation resource.",
+                        "Represents a dataset resource.",
                         "For rest of the other categories."
                     ],
                     "type": "string"
@@ -5412,6 +5448,23 @@
                     "$ref": "StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo",
                     "description": "Optional. Maintenance info for the resource."
                 },
+                "modes": {
+                    "description": "Optional. The modes of the database resource.",
+                    "items": {
+                        "enum": [
+                            "MODE_UNSPECIFIED",
+                            "MODE_NATIVE",
+                            "MODE_MONGODB_COMPATIBLE"
+                        ],
+                        "enumDescriptions": [
+                            "Default mode.",
+                            "Native mode.",
+                            "MongoDB compatible mode."
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "primaryResourceId": {
                     "$ref": "StorageDatabasecenterPartnerapiV1mainDatabaseResourceId",
                     "description": "Identifier for this resource's immediate parent/primary resource if the current resource is a replica or derived form of another Database resource. Else it would be NULL. REQUIRED if the immediate parent exists when first time resource is getting ingested, otherwise optional."
@@ -5427,6 +5480,13 @@
                 "resourceContainer": {
                     "description": "Closest parent Cloud Resource Manager container of this resource. It must be resource name of a Cloud Resource Manager project with the format of \"/\", such as \"projects/123\". For GCP provided resources, number should be project number.",
                     "type": "string"
+                },
+                "resourceFlags": {
+                    "description": "Optional. List of resource flags for the database resource.",
+                    "items": {
+                        "$ref": "StorageDatabasecenterPartnerapiV1mainResourceFlags"
+                    },
+                    "type": "array"
                 },
                 "resourceName": {
                     "description": "Required. Different from DatabaseResourceId.unique_id, a resource name can be reused over time. That is, after a resource named \"ABC\" is deleted, the name \"ABC\" can be used to to create a new resource within the same source. Resource name to follow CAIS resource_name format as noted here go/condor-common-datamodel",
@@ -5635,7 +5695,8 @@
                         "SIGNAL_TYPE_DATABOOST_DISABLED",
                         "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES",
                         "SIGNAL_TYPE_EXTENDED_SUPPORT",
-                        "SIGNAL_TYPE_PERFORMANCE_KPI_CHANGE"
+                        "SIGNAL_TYPE_PERFORMANCE_KPI_CHANGE",
+                        "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
                     ],
                     "enumDeprecated": [
                         false,
@@ -5737,6 +5798,7 @@
                         false,
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -5851,7 +5913,8 @@
                         "Databoost is disabled.",
                         "Recommended maintenance policy.",
                         "Resource version is in extended support.",
-                        "Change in performance KPIs."
+                        "Change in performance KPIs.",
+                        "Database version nearing end of life."
                     ],
                     "type": "string"
                 }
@@ -5859,9 +5922,14 @@
             "type": "object"
         },
         "StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData": {
-            "description": "Database resource signal data. This is used to send signals to Condor which are based on the DB/Instance/Fleet level configurations. These will be used to send signals for all inventory types. Next ID: 7",
+            "description": "Database resource signal data. This is used to send signals to Condor which are based on the DB/Instance/Fleet level configurations. These will be used to send signals for all inventory types. Next ID: 10",
             "id": "StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData",
             "properties": {
+                "backupRun": {
+                    "$ref": "StorageDatabasecenterPartnerapiV1mainBackupRun",
+                    "deprecated": true,
+                    "description": "Deprecated: Use signal_metadata_list instead."
+                },
                 "fullResourceName": {
                     "description": "Required. Full Resource name of the source resource.",
                     "type": "string"
@@ -5871,13 +5939,25 @@
                     "format": "google-datetime",
                     "type": "string"
                 },
+                "location": {
+                    "description": "Resource location.",
+                    "type": "string"
+                },
                 "resourceId": {
                     "$ref": "StorageDatabasecenterPartnerapiV1mainDatabaseResourceId",
                     "description": "Database resource id."
                 },
                 "signalBoolValue": {
-                    "description": "Signal data for boolean signals.",
+                    "deprecated": true,
+                    "description": "Deprecated: Use signal_metadata_list instead.",
                     "type": "boolean"
+                },
+                "signalMetadataList": {
+                    "description": "This will support array of OneOf signal metadata information for a given signal type.",
+                    "items": {
+                        "$ref": "StorageDatabasecenterPartnerapiV1mainSignalMetadata"
+                    },
+                    "type": "array"
                 },
                 "signalState": {
                     "description": "Required. Output only. Signal state of the signal",
@@ -5906,7 +5986,10 @@
                         "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS",
                         "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS",
                         "SIGNAL_TYPE_EXTENDED_SUPPORT",
-                        "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+                        "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY",
+                        "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE",
+                        "SIGNAL_TYPE_LAST_BACKUP_OLD",
+                        "SIGNAL_TYPE_NOT_PROTECTED_BY_AUTOMATIC_FAILOVER"
                     ],
                     "enumDescriptions": [
                         "Unspecified signal type.",
@@ -5916,7 +5999,10 @@
                         "Represents if a resource is exposed to public access.",
                         "Represents if a resources requires all incoming connections to use SSL or not.",
                         "Represents if a resource version is in extended support.",
-                        "Represents if a resource has no automated backup policy."
+                        "Represents if a resource has no automated backup policy.",
+                        "Represents if a resource version is nearing end of life.",
+                        "Represents if the last backup of a resource is older than 24 hours.",
+                        "Represents if a resource is not protected by automatic failover."
                     ],
                     "type": "string"
                 }
@@ -6143,6 +6229,21 @@
             },
             "type": "object"
         },
+        "StorageDatabasecenterPartnerapiV1mainResourceFlags": {
+            "description": "Message type for storing resource flags.",
+            "id": "StorageDatabasecenterPartnerapiV1mainResourceFlags",
+            "properties": {
+                "key": {
+                    "description": "Optional. Key of the resource flag.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Optional. Value of the resource flag.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule": {
             "description": "Deny maintenance period for the database resource. It specifies the time range during which the maintenance cannot start. This is configured by the customer.",
             "id": "StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule",
@@ -6166,12 +6267,20 @@
             "description": "MaintenanceInfo to capture the maintenance details of database resource.",
             "id": "StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo",
             "properties": {
+                "currentVersionReleaseDate": {
+                    "$ref": "GoogleTypeDate",
+                    "description": "Optional. The date when the current maintenance version was released."
+                },
                 "denyMaintenanceSchedules": {
                     "description": "Optional. List of Deny maintenance period for the database resource.",
                     "items": {
                         "$ref": "StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule"
                     },
                     "type": "array"
+                },
+                "isInstanceStopped": {
+                    "description": "Optional. Whether the instance is in stopped state. This information is temporarily being captured in maintenanceInfo, till STOPPED state is supported by DB Center.",
+                    "type": "boolean"
                 },
                 "maintenanceSchedule": {
                     "$ref": "StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule",
@@ -6304,6 +6413,21 @@
                     "description": "Timestamp based retention period i.e. 2024-05-01T00:00:00Z",
                     "format": "google-datetime",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StorageDatabasecenterPartnerapiV1mainSignalMetadata": {
+            "description": "SignalMetadata contains one of the signal metadata proto messages associated with a SignalType. This proto will be mapped to SignalMetadata message in storage.proto. Next ID: 3",
+            "id": "StorageDatabasecenterPartnerapiV1mainSignalMetadata",
+            "properties": {
+                "backupRun": {
+                    "$ref": "StorageDatabasecenterPartnerapiV1mainBackupRun",
+                    "description": "Signal data for backup runs."
+                },
+                "signalBoolValue": {
+                    "description": "Signal data for boolean signals.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -6588,11 +6712,13 @@
                             "POSTGRES_14",
                             "POSTGRES_15",
                             "POSTGRES_16",
-                            "POSTGRES_17"
+                            "POSTGRES_17",
+                            "POSTGRES_18"
                         ],
                         "enumDeprecated": [
                             false,
                             true,
+                            false,
                             false,
                             false,
                             false,
@@ -6604,7 +6730,8 @@
                             "The database version is Postgres 14.",
                             "The database version is Postgres 15.",
                             "The database version is Postgres 16.",
-                            "The database version is Postgres 17."
+                            "The database version is Postgres 17.",
+                            "The database version is Postgres 18."
                         ],
                         "type": "string"
                     },
@@ -6708,11 +6835,13 @@
                         "POSTGRES_14",
                         "POSTGRES_15",
                         "POSTGRES_16",
-                        "POSTGRES_17"
+                        "POSTGRES_17",
+                        "POSTGRES_18"
                     ],
                     "enumDeprecated": [
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -6724,7 +6853,8 @@
                         "The database version is Postgres 14.",
                         "The database version is Postgres 15.",
                         "The database version is Postgres 16.",
-                        "The database version is Postgres 17."
+                        "The database version is Postgres 17.",
+                        "The database version is Postgres 18."
                     ],
                     "type": "string"
                 }
@@ -6789,11 +6919,13 @@
                         "POSTGRES_14",
                         "POSTGRES_15",
                         "POSTGRES_16",
-                        "POSTGRES_17"
+                        "POSTGRES_17",
+                        "POSTGRES_18"
                     ],
                     "enumDeprecated": [
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -6805,7 +6937,8 @@
                         "The database version is Postgres 14.",
                         "The database version is Postgres 15.",
                         "The database version is Postgres 16.",
-                        "The database version is Postgres 17."
+                        "The database version is Postgres 17.",
+                        "The database version is Postgres 18."
                     ],
                     "type": "string"
                 },
@@ -6848,11 +6981,13 @@
                         "POSTGRES_14",
                         "POSTGRES_15",
                         "POSTGRES_16",
-                        "POSTGRES_17"
+                        "POSTGRES_17",
+                        "POSTGRES_18"
                     ],
                     "enumDeprecated": [
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -6864,7 +6999,8 @@
                         "The database version is Postgres 14.",
                         "The database version is Postgres 15.",
                         "The database version is Postgres 16.",
-                        "The database version is Postgres 17."
+                        "The database version is Postgres 17.",
+                        "The database version is Postgres 18."
                     ],
                     "type": "string"
                 }

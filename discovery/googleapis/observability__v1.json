@@ -15,6 +15,153 @@
     "description": "Provides functionality for configuring the observability scope, which controls the log, metric, and trace data that you can view.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/stackdriver/docs/",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.africa-south1.rep.googleapis.com/",
+            "location": "africa-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-east1.rep.googleapis.com/",
+            "location": "asia-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-east2.rep.googleapis.com/",
+            "location": "asia-east2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-northeast2.rep.googleapis.com/",
+            "location": "asia-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-northeast3.rep.googleapis.com/",
+            "location": "asia-northeast3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-south1.rep.googleapis.com/",
+            "location": "asia-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-south2.rep.googleapis.com/",
+            "location": "asia-south2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-southeast2.rep.googleapis.com/",
+            "location": "asia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-southeast3.rep.googleapis.com/",
+            "location": "asia-southeast3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.australia-southeast2.rep.googleapis.com/",
+            "location": "australia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-north2.rep.googleapis.com/",
+            "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-west1.rep.googleapis.com/",
+            "location": "europe-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-west3.rep.googleapis.com/",
+            "location": "europe-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-west6.rep.googleapis.com/",
+            "location": "europe-west6"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-west8.rep.googleapis.com/",
+            "location": "europe-west8"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.me-central1.rep.googleapis.com/",
+            "location": "me-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.northamerica-northeast2.rep.googleapis.com/",
+            "location": "northamerica-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.northamerica-south1.rep.googleapis.com/",
+            "location": "northamerica-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.southamerica-west1.rep.googleapis.com/",
+            "location": "southamerica-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us-east1.rep.googleapis.com/",
+            "location": "us-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us-east5.rep.googleapis.com/",
+            "location": "us-east5"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us-south1.rep.googleapis.com/",
+            "location": "us-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us-west2.rep.googleapis.com/",
+            "location": "us-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us-west3.rep.googleapis.com/",
+            "location": "us-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us.rep.googleapis.com/",
+            "location": "us"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.eu.rep.googleapis.com/",
+            "location": "eu"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +172,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260129",
+    "revision": "20260409",
     "rootUrl": "https://observability.googleapis.com/",
     "servicePath": "",
     "title": "Observability API",
@@ -138,8 +285,33 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "getSettings": {
+                            "description": "Get Settings",
+                            "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/settings",
+                            "httpMethod": "GET",
+                            "id": "observability.folders.locations.getSettings",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of the settings to retrieve. Name format: \"projects/[PROJECT_ID]/locations/[LOCATION]/settings\" \"folders/[FOLDER_ID]/locations/[LOCATION]/settings\" \"organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings\"",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/locations/[^/]+/settings$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Settings"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/folders/{foldersId}/locations",
                             "httpMethod": "GET",
                             "id": "observability.folders.locations.list",
@@ -180,6 +352,40 @@
                             "path": "v1/{+name}/locations",
                             "response": {
                                 "$ref": "ListLocationsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "updateSettings": {
+                            "description": "Update Settings",
+                            "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/settings",
+                            "httpMethod": "PATCH",
+                            "id": "observability.folders.locations.updateSettings",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Identifier. The resource name of the settings.",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/locations/[^/]+/settings$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "Optional. The field mask specifying which fields of the settings are to be updated.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "Settings"
+                            },
+                            "response": {
+                                "$ref": "Operation"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -348,8 +554,33 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "getSettings": {
+                            "description": "Get Settings",
+                            "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/settings",
+                            "httpMethod": "GET",
+                            "id": "observability.organizations.locations.getSettings",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of the settings to retrieve. Name format: \"projects/[PROJECT_ID]/locations/[LOCATION]/settings\" \"folders/[FOLDER_ID]/locations/[LOCATION]/settings\" \"organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings\"",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/locations/[^/]+/settings$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Settings"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/organizations/{organizationsId}/locations",
                             "httpMethod": "GET",
                             "id": "observability.organizations.locations.list",
@@ -390,6 +621,40 @@
                             "path": "v1/{+name}/locations",
                             "response": {
                                 "$ref": "ListLocationsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "updateSettings": {
+                            "description": "Update Settings",
+                            "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/settings",
+                            "httpMethod": "PATCH",
+                            "id": "observability.organizations.locations.updateSettings",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Identifier. The resource name of the settings.",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/locations/[^/]+/settings$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "Optional. The field mask specifying which fields of the settings are to be updated.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "Settings"
+                            },
+                            "response": {
+                                "$ref": "Operation"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -558,8 +823,33 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "getSettings": {
+                            "description": "Get Settings",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/settings",
+                            "httpMethod": "GET",
+                            "id": "observability.projects.locations.getSettings",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. Name of the settings to retrieve. Name format: \"projects/[PROJECT_ID]/locations/[LOCATION]/settings\" \"folders/[FOLDER_ID]/locations/[LOCATION]/settings\" \"organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings\"",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+/settings$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Settings"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "observability.projects.locations.list",
@@ -600,6 +890,40 @@
                             "path": "v1/{+name}/locations",
                             "response": {
                                 "$ref": "ListLocationsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "updateSettings": {
+                            "description": "Update Settings",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/settings",
+                            "httpMethod": "PATCH",
+                            "id": "observability.projects.locations.updateSettings",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Identifier. The resource name of the settings.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+/settings$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "Optional. The field mask specifying which fields of the settings are to be updated.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "Settings"
+                            },
+                            "response": {
+                                "$ref": "Operation"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -1734,6 +2058,30 @@
                 "updateTime": {
                     "description": "Output only. Update timestamp. Note: The Update timestamp for the default scope is initially unset.",
                     "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Settings": {
+            "description": "Describes the settings associated with a project, organization, or folder.",
+            "id": "Settings",
+            "properties": {
+                "defaultStorageLocation": {
+                    "description": "Optional. The location which should be used when any regional resources are provisioned by Google Cloud.",
+                    "type": "string"
+                },
+                "kmsKeyName": {
+                    "description": "Optional. The resource name for the configured Cloud KMS key. KMS key name format: \"projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]\" For example: `\"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key\"`",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Identifier. The resource name of the settings.",
+                    "type": "string"
+                },
+                "serviceAccountId": {
+                    "description": "Output only. The service account for the given resource container, such as project or folder. This will be used by Cloud Observability to perform actions in the container's project like access KMS keys or create Links. Always the same service account per resource container regardless of region.",
                     "readOnly": true,
                     "type": "string"
                 }

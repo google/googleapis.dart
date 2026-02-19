@@ -211,14 +211,24 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -750,6 +760,58 @@ class ProjectsLocationsApiHubInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1LookupApiHubInstanceResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update an Api Hub instance.
+  ///
+  /// The following fields in the ApiHubInstance can be updated: *
+  /// disable_search * vertex_location * agent_registry_sync_config The
+  /// update_mask should be used to specify the fields being updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Format:
+  /// `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apiHubInstances/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudApihubV1ApiHubInstance request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -5695,6 +5757,26 @@ class GoogleCloudApihubV1AddonConfig {
   }
 }
 
+/// The configuration for Agent Registry sync.
+class GoogleCloudApihubV1AgentRegistrySyncConfig {
+  /// If true, the MCP data sync to the Agent Registry will be disabled.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
+  core.bool? disabled;
+
+  GoogleCloudApihubV1AgentRegistrySyncConfig({this.disabled});
+
+  GoogleCloudApihubV1AgentRegistrySyncConfig.fromJson(core.Map json_)
+    : this(disabled: json_['disabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final disabled = this.disabled;
+    return {'disabled': ?disabled};
+  }
+}
+
 /// Configuration for addons which act on all data in the API hub.
 ///
 /// This is used to specify if the addon is enabled for all data in the API hub.
@@ -6545,13 +6627,9 @@ class GoogleCloudApihubV1ApiOperation {
 /// The view of an API.
 class GoogleCloudApihubV1ApiView {
   /// MCP server view.
-  ///
-  /// Output only.
   GoogleCloudApihubV1FlattenedApiVersionDeploymentView? mcpServerView;
 
   /// MCP tools view.
-  ///
-  /// Output only.
   GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView? mcpToolView;
 
   GoogleCloudApihubV1ApiView({this.mcpServerView, this.mcpToolView});
@@ -7149,6 +7227,12 @@ class GoogleCloudApihubV1CollectApiDataRequest {
 
 /// Available configurations to provision an ApiHub Instance.
 class GoogleCloudApihubV1Config {
+  /// The configuration for syncing MCP data in the API Hub instance to the
+  /// Agent Registry.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1AgentRegistrySyncConfig? agentRegistrySyncConfig;
+
   /// The Customer Managed Encryption Key (CMEK) used for data encryption.
   ///
   /// The CMEK name should follow the format of
@@ -7184,6 +7268,7 @@ class GoogleCloudApihubV1Config {
   core.String? vertexLocation;
 
   GoogleCloudApihubV1Config({
+    this.agentRegistrySyncConfig,
     this.cmekKeyName,
     this.disableSearch,
     this.encryptionType,
@@ -7192,6 +7277,12 @@ class GoogleCloudApihubV1Config {
 
   GoogleCloudApihubV1Config.fromJson(core.Map json_)
     : this(
+        agentRegistrySyncConfig: json_.containsKey('agentRegistrySyncConfig')
+            ? GoogleCloudApihubV1AgentRegistrySyncConfig.fromJson(
+                json_['agentRegistrySyncConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cmekKeyName: json_['cmekKeyName'] as core.String?,
         disableSearch: json_['disableSearch'] as core.bool?,
         encryptionType: json_['encryptionType'] as core.String?,
@@ -7199,11 +7290,13 @@ class GoogleCloudApihubV1Config {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentRegistrySyncConfig = this.agentRegistrySyncConfig;
     final cmekKeyName = this.cmekKeyName;
     final disableSearch = this.disableSearch;
     final encryptionType = this.encryptionType;
     final vertexLocation = this.vertexLocation;
     return {
+      'agentRegistrySyncConfig': ?agentRegistrySyncConfig,
       'cmekKeyName': ?cmekKeyName,
       'disableSearch': ?disableSearch,
       'encryptionType': ?encryptionType,
@@ -9061,12 +9154,18 @@ class GoogleCloudApihubV1FetchAdditionalSpecContentResponse {
 /// A flattened view of an API, its version and one of the linked deployments.
 class GoogleCloudApihubV1FlattenedApiVersionDeploymentView {
   /// The API.
+  ///
+  /// Optional.
   GoogleCloudApihubV1Api? api;
 
   /// The deployment.
+  ///
+  /// Optional.
   GoogleCloudApihubV1Deployment? deployment;
 
   /// The version.
+  ///
+  /// Optional.
   GoogleCloudApihubV1Version? version;
 
   GoogleCloudApihubV1FlattenedApiVersionDeploymentView({
@@ -9109,15 +9208,23 @@ class GoogleCloudApihubV1FlattenedApiVersionDeploymentView {
 /// empty.
 class GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView {
   /// The API.
+  ///
+  /// Optional.
   GoogleCloudApihubV1Api? api;
 
   /// The API operation.
+  ///
+  /// Optional.
   GoogleCloudApihubV1ApiOperation? apiOperation;
 
   /// The deployment.
+  ///
+  /// Optional.
   GoogleCloudApihubV1Deployment? deployment;
 
   /// The version.
+  ///
+  /// Optional.
   GoogleCloudApihubV1Version? version;
 
   GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView({
@@ -11803,6 +11910,8 @@ class GoogleCloudApihubV1ResourceConfig {
 /// The RetrieveApiViews method's response.
 class GoogleCloudApihubV1RetrieveApiViewsResponse {
   /// The list of API views.
+  ///
+  /// Output only.
   core.List<GoogleCloudApihubV1ApiView>? apiViews;
 
   /// Next page token.

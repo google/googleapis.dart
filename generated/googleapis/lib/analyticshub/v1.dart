@@ -2064,6 +2064,79 @@ class BigQueryDatasetSource {
   }
 }
 
+/// Configuration for a Bigtable subscription.
+///
+/// The Pub/Sub message will be written to a Bigtable row as follows: - row key:
+/// subscription name and message ID delimited by #. - columns: message bytes
+/// written to a single column family "data" with an empty-string column
+/// qualifier. - cell timestamp: the message publish timestamp.
+class BigtableConfig {
+  /// The app profile to use for the Bigtable writes.
+  ///
+  /// If not specified, the "default" application profile will be used. The app
+  /// profile must use single-cluster routing.
+  ///
+  /// Optional.
+  core.String? appProfileId;
+
+  /// The service account to use to write to Bigtable.
+  ///
+  /// The subscription creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub \[service
+  /// agent\]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
+  /// The unique name of the table to write messages to.
+  ///
+  /// Values are of the form `projects//instances//tables/`.
+  ///
+  /// Optional.
+  core.String? table;
+
+  /// When true, write the subscription name, message_id, publish_time,
+  /// attributes, and ordering_key to additional columns in the table under the
+  /// pubsub_metadata column family.
+  ///
+  /// The subscription name, message_id, and publish_time fields are put in
+  /// their own columns while all other message properties (other than data) are
+  /// written to a JSON object in the attributes column.
+  ///
+  /// Optional.
+  core.bool? writeMetadata;
+
+  BigtableConfig({
+    this.appProfileId,
+    this.serviceAccountEmail,
+    this.table,
+    this.writeMetadata,
+  });
+
+  BigtableConfig.fromJson(core.Map json_)
+    : this(
+        appProfileId: json_['appProfileId'] as core.String?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        table: json_['table'] as core.String?,
+        writeMetadata: json_['writeMetadata'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final appProfileId = this.appProfileId;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    final table = this.table;
+    final writeMetadata = this.writeMetadata;
+    return {
+      'appProfileId': ?appProfileId,
+      'serviceAccountEmail': ?serviceAccountEmail,
+      'table': ?table,
+      'writeMetadata': ?writeMetadata,
+    };
+  }
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -2952,6 +3025,12 @@ class GooglePubsubV1Subscription {
   /// Optional.
   BigQueryConfig? bigqueryConfig;
 
+  /// If delivery to Bigtable is used with this subscription, this field is used
+  /// to configure it.
+  ///
+  /// Optional.
+  BigtableConfig? bigtableConfig;
+
   /// If delivery to Google Cloud Storage is used with this subscription, this
   /// field is used to configure it.
   ///
@@ -3089,7 +3168,9 @@ class GooglePubsubV1Subscription {
   /// Input only.
   ///
   /// Immutable. Tag keys/values directly bound to this resource. For example:
-  /// "123/environment": "production", "123/costCenter": "marketing"
+  /// "123/environment": "production", "123/costCenter": "marketing" See
+  /// https://{$universe.dns_names.final_documentation_domain}/pubsub/docs/tags
+  /// for more information on using tags with Pub/Sub resources.
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;
@@ -3097,6 +3178,7 @@ class GooglePubsubV1Subscription {
   GooglePubsubV1Subscription({
     this.ackDeadlineSeconds,
     this.bigqueryConfig,
+    this.bigtableConfig,
     this.cloudStorageConfig,
     this.deadLetterPolicy,
     this.detached,
@@ -3120,6 +3202,11 @@ class GooglePubsubV1Subscription {
         bigqueryConfig: json_.containsKey('bigqueryConfig')
             ? BigQueryConfig.fromJson(
                 json_['bigqueryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bigtableConfig: json_.containsKey('bigtableConfig')
+            ? BigtableConfig.fromJson(
+                json_['bigtableConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         cloudStorageConfig: json_.containsKey('cloudStorageConfig')
@@ -3177,6 +3264,7 @@ class GooglePubsubV1Subscription {
   core.Map<core.String, core.dynamic> toJson() {
     final ackDeadlineSeconds = this.ackDeadlineSeconds;
     final bigqueryConfig = this.bigqueryConfig;
+    final bigtableConfig = this.bigtableConfig;
     final cloudStorageConfig = this.cloudStorageConfig;
     final deadLetterPolicy = this.deadLetterPolicy;
     final detached = this.detached;
@@ -3195,6 +3283,7 @@ class GooglePubsubV1Subscription {
     return {
       'ackDeadlineSeconds': ?ackDeadlineSeconds,
       'bigqueryConfig': ?bigqueryConfig,
+      'bigtableConfig': ?bigtableConfig,
       'cloudStorageConfig': ?cloudStorageConfig,
       'deadLetterPolicy': ?deadLetterPolicy,
       'detached': ?detached,

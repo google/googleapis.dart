@@ -124,6 +124,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -404,7 +415,7 @@ class ProjectsLocationsWorkstationClustersResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// review, but do not actually apply it.
+  /// result, but do not actually apply it.
   ///
   /// [workstationClusterId] - Required. ID to use for the workstation cluster.
   ///
@@ -463,7 +474,7 @@ class ProjectsLocationsWorkstationClustersResource {
   /// workstations.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// review, but do not apply it.
+  /// result, but do not apply it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -607,7 +618,7 @@ class ProjectsLocationsWorkstationClustersResource {
   /// workstation cluster should be updated.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// review, but do not actually apply it.
+  /// result, but do not actually apply it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -671,7 +682,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/workstationClusters/\[^/\]+$`.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// review, but do not actually apply it.
+  /// result, but do not actually apply it.
   ///
   /// [workstationConfigId] - Required. ID to use for the workstation
   /// configuration.
@@ -729,7 +740,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
   /// workstation configuration has no workstations.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// review, but do not actually apply it.
+  /// result, but do not actually apply it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -982,7 +993,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsResource {
   /// configuration should be updated.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// review, but do not actually apply it.
+  /// result, but do not actually apply it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1139,7 +1150,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   /// `^projects/\[^/\]+/locations/\[^/\]+/workstationClusters/\[^/\]+/workstationConfigs/\[^/\]+$`.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// review, but do not actually apply it.
+  /// result, but do not actually apply it.
   ///
   /// [workstationId] - Required. ID to use for the workstation.
   ///
@@ -1190,7 +1201,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   /// version of the workstation on the server does not have this ETag.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// review, but do not actually apply it.
+  /// result, but do not actually apply it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1480,15 +1491,14 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workstationClusters/\[^/\]+/workstationConfigs/\[^/\]+/workstations/\[^/\]+$`.
   ///
-  /// [allowMissing] - Optional. If set and the workstation configuration is not
-  /// found, a new workstation configuration is created. In this situation,
-  /// update_mask is ignored.
+  /// [allowMissing] - Optional. If set and the workstation is not found, a new
+  /// workstation is created. In this situation, update_mask is ignored.
   ///
   /// [updateMask] - Required. Mask specifying which fields in the workstation
-  /// configuration should be updated.
+  /// should be updated.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// review, but do not actually apply it.
+  /// result, but do not actually apply it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2720,6 +2730,17 @@ class GcePersistentDisk {
 /// detaches when the session ends. If this field is empty, workstations created
 /// with this configuration do not have a persistent home directory.
 class GceRegionalPersistentDisk {
+  /// Number of seconds to wait after initially creating or subsequently
+  /// shutting down the workstation before converting its disk into a snapshot.
+  ///
+  /// This generally saves costs at the expense of greater startup time on next
+  /// workstation start, as the service will need to create a disk from the
+  /// archival snapshot. A value of `"0s"` indicates that the disk will never be
+  /// archived.
+  ///
+  /// Optional.
+  core.String? archiveTimeout;
+
   /// The
   /// [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types)
   /// for the home directory.
@@ -2769,6 +2790,7 @@ class GceRegionalPersistentDisk {
   core.String? sourceSnapshot;
 
   GceRegionalPersistentDisk({
+    this.archiveTimeout,
     this.diskType,
     this.fsType,
     this.reclaimPolicy,
@@ -2778,6 +2800,7 @@ class GceRegionalPersistentDisk {
 
   GceRegionalPersistentDisk.fromJson(core.Map json_)
     : this(
+        archiveTimeout: json_['archiveTimeout'] as core.String?,
         diskType: json_['diskType'] as core.String?,
         fsType: json_['fsType'] as core.String?,
         reclaimPolicy: json_['reclaimPolicy'] as core.String?,
@@ -2786,12 +2809,14 @@ class GceRegionalPersistentDisk {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final archiveTimeout = this.archiveTimeout;
     final diskType = this.diskType;
     final fsType = this.fsType;
     final reclaimPolicy = this.reclaimPolicy;
     final sizeGb = this.sizeGb;
     final sourceSnapshot = this.sourceSnapshot;
     return {
+      'archiveTimeout': ?archiveTimeout,
       'diskType': ?diskType,
       'fsType': ?fsType,
       'reclaimPolicy': ?reclaimPolicy,
@@ -3695,7 +3720,7 @@ class StartWorkstationRequest {
   /// Optional.
   core.String? etag;
 
-  /// If set, validate the request and preview the review, but do not actually
+  /// If set, validate the request and preview the result, but do not actually
   /// apply it.
   ///
   /// Optional.
@@ -3739,7 +3764,7 @@ class StopWorkstationRequest {
   /// Optional.
   core.String? etag;
 
-  /// If set, validate the request and preview the review, but do not actually
+  /// If set, validate the request and preview the result, but do not actually
   /// apply it.
   ///
   /// Optional.
@@ -4093,6 +4118,30 @@ class WorkstationCluster {
   /// Output only.
   core.String? updateTime;
 
+  /// Specifies the redirect URL for unauthorized requests received by
+  /// workstation VMs in this cluster.
+  ///
+  /// Redirects to this endpoint will send a base64 encoded `state` query param
+  /// containing the target workstation name and original request hostname. The
+  /// endpoint is responsible for retrieving a token using `GenerateAccessToken`
+  /// and redirecting back to the original hostname with the token.
+  ///
+  /// Optional.
+  core.String? workstationAuthorizationUrl;
+
+  /// Specifies the launch URL for workstations in this cluster.
+  ///
+  /// Requests sent to unstarted workstations will be redirected to this URL.
+  /// Requests redirected to the launch endpoint will be sent with a
+  /// `workstation` and `project` query parameter containing the full
+  /// workstation resource name and project ID, respectively. The launch
+  /// endpoint is responsible for starting the workstation, polling it until it
+  /// reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's
+  /// host URL.
+  ///
+  /// Optional.
+  core.String? workstationLaunchUrl;
+
   WorkstationCluster({
     this.annotations,
     this.conditions,
@@ -4113,6 +4162,8 @@ class WorkstationCluster {
     this.tags,
     this.uid,
     this.updateTime,
+    this.workstationAuthorizationUrl,
+    this.workstationLaunchUrl,
   });
 
   WorkstationCluster.fromJson(core.Map json_)
@@ -4161,6 +4212,9 @@ class WorkstationCluster {
         ),
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
+        workstationAuthorizationUrl:
+            json_['workstationAuthorizationUrl'] as core.String?,
+        workstationLaunchUrl: json_['workstationLaunchUrl'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -4183,6 +4237,8 @@ class WorkstationCluster {
     final tags = this.tags;
     final uid = this.uid;
     final updateTime = this.updateTime;
+    final workstationAuthorizationUrl = this.workstationAuthorizationUrl;
+    final workstationLaunchUrl = this.workstationLaunchUrl;
     return {
       'annotations': ?annotations,
       'conditions': ?conditions,
@@ -4203,6 +4259,8 @@ class WorkstationCluster {
       'tags': ?tags,
       'uid': ?uid,
       'updateTime': ?updateTime,
+      'workstationAuthorizationUrl': ?workstationAuthorizationUrl,
+      'workstationLaunchUrl': ?workstationLaunchUrl,
     };
   }
 }

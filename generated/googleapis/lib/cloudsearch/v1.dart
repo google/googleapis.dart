@@ -7610,7 +7610,33 @@ class QuerySource {
 
 /// This field does not contain anything as of now and is just used as an
 /// indicator that the suggest result was a phrase completion.
-typedef QuerySuggestion = $Empty;
+class QuerySuggestion {
+  /// Last query time of the suggestion for query history suggestions.
+  core.String? lastQueryTime;
+
+  /// Source corpus of the suggestion.
+  /// Possible string values are:
+  /// - "SOURCE_CORPUS_UNSPECIFIED" : Source corpus is unspecified.
+  /// - "GMAIL" : Source corpus is Gmail.
+  /// - "DRIVE" : Source corpus is Drive.
+  /// - "CHAT" : Source corpus is Chat.
+  /// - "CALENDAR" : Source corpus is Calendar.
+  core.String? sourceCorpus;
+
+  QuerySuggestion({this.lastQueryTime, this.sourceCorpus});
+
+  QuerySuggestion.fromJson(core.Map json_)
+    : this(
+        lastQueryTime: json_['lastQueryTime'] as core.String?,
+        sourceCorpus: json_['sourceCorpus'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final lastQueryTime = this.lastQueryTime;
+    final sourceCorpus = this.sourceCorpus;
+    return {'lastQueryTime': ?lastQueryTime, 'sourceCorpus': ?sourceCorpus};
+  }
+}
 
 /// Remove Logged Activity Request.
 class RemoveActivityRequest {
@@ -8377,7 +8403,7 @@ class SearchQualityMetadata {
 
 /// The search API request.
 ///
-/// NEXT ID: 24
+/// NEXT ID: 25
 class SearchRequest {
   /// Context attributes for the request which will be used to adjust ranking of
   /// search results.

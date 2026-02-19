@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260119",
+    "revision": "20260326",
     "rootUrl": "https://looker.googleapis.com/",
     "servicePath": "",
     "title": "Looker (Google Cloud core) API",
@@ -139,7 +139,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "looker.projects.locations.list",
@@ -451,34 +451,6 @@
                                     "path": "v1/{+name}:restore",
                                     "request": {
                                         "$ref": "RestoreInstanceRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "undelete": {
-                                    "description": "Undeletes Looker instance.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:undelete",
-                                    "httpMethod": "POST",
-                                    "id": "looker.projects.locations.instances.undelete",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "Required. Format: projects/{project}/locations/{location}/instances/{instance}",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+name}:undelete",
-                                    "request": {
-                                        "$ref": "UndeleteInstanceRequest"
                                     },
                                     "response": {
                                         "$ref": "Operation"
@@ -1005,6 +977,43 @@
             },
             "type": "object"
         },
+        "IngressIpAllowlistConfig": {
+            "description": "Ingress IP allowlist configuration.",
+            "id": "IngressIpAllowlistConfig",
+            "properties": {
+                "allowlistRules": {
+                    "description": "Optional. List of IP range rules to allow ingress traffic.",
+                    "items": {
+                        "$ref": "IngressIpAllowlistRule"
+                    },
+                    "type": "array"
+                },
+                "enabled": {
+                    "description": "Optional. Whether ingress IP allowlist functionality is enabled on the Looker instance.",
+                    "type": "boolean"
+                },
+                "googleServicesEnabled": {
+                    "description": "Optional. Whether google service connections are enabled for the instance.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "IngressIpAllowlistRule": {
+            "description": "Ingress IP allowlist rule.",
+            "id": "IngressIpAllowlistRule",
+            "properties": {
+                "description": {
+                    "description": "Optional. Description for the IP range.",
+                    "type": "string"
+                },
+                "ipRange": {
+                    "description": "Optional. The IP range to allow ingress traffic from.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Instance": {
             "description": "A Looker instance.",
             "id": "Instance",
@@ -1013,8 +1022,8 @@
                     "$ref": "AdminSettings",
                     "description": "Looker Instance Admin settings."
                 },
-                "catalogIntegrationEnabled": {
-                    "description": "Optional. Indicates whether catalog integration is enabled for the Looker instance.",
+                "catalogIntegrationOptOut": {
+                    "description": "Optional. Indicates whether catalog integration is disabled for the Looker instance.",
                     "type": "boolean"
                 },
                 "classType": {
@@ -1073,6 +1082,10 @@
                 "geminiEnabled": {
                     "description": "Optional. Whether Gemini feature is enabled on the Looker instance or not.",
                     "type": "boolean"
+                },
+                "ingressIpAllowlistConfig": {
+                    "$ref": "IngressIpAllowlistConfig",
+                    "description": "Optional. Ingress IP allowlist configuration for the Looker instance."
                 },
                 "ingressPrivateIp": {
                     "description": "Output only. Private Ingress IP (IPv4).",
@@ -1187,23 +1200,6 @@
                     "readOnly": true,
                     "type": "boolean"
                 },
-                "softDeleteReason": {
-                    "description": "Output only. The reason for the instance being in a soft-deleted state.",
-                    "enum": [
-                        "SOFT_DELETE_REASON_UNSPECIFIED",
-                        "BILLING_ACCOUNT_ISSUE",
-                        "TRIAL_EXPIRED",
-                        "CUSTOMER_REQUEST"
-                    ],
-                    "enumDescriptions": [
-                        "Soft delete reason is unspecified. This is the default value.",
-                        "Instance is soft deleted due to billing account issues.",
-                        "Instance is soft deleted due to trial expiration.",
-                        "Instance is soft deleted by the customer."
-                    ],
-                    "readOnly": true,
-                    "type": "string"
-                },
                 "state": {
                     "description": "Output only. The state of the instance.",
                     "enum": [
@@ -1228,12 +1224,6 @@
                         "Instance is being exported.",
                         "Instance is importing data."
                     ],
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "suspendedTime": {
-                    "description": "Output only. The time when the Looker instance was suspended (soft deleted).",
-                    "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -1487,6 +1477,10 @@
                 "clientSecret": {
                     "description": "Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses.",
                     "type": "string"
+                },
+                "sharedOauthClientEnabled": {
+                    "description": "Optional. Whether to use the shared OAuth client. Instances specifying this field do not need to provide client_id and client_secret.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1725,12 +1719,6 @@
                     "type": "integer"
                 }
             },
-            "type": "object"
-        },
-        "UndeleteInstanceRequest": {
-            "description": "Request options for undeleting an instance.",
-            "id": "UndeleteInstanceRequest",
-            "properties": {},
             "type": "object"
         },
         "UserMetadata": {

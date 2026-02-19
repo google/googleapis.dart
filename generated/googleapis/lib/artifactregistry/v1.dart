@@ -235,6 +235,45 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves the project configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the project's logging configuration:
+  /// projects/{project}/locations/{location}/projectConfig
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/projectConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProjectConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProjectConfig> getProjectConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ProjectConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Retrieves the VPCSC Config for the Project.
   ///
   /// Request parameters:
@@ -274,6 +313,17 @@ class ProjectsLocationsResource {
   }
 
   /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -328,6 +378,56 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the project configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the project's configuration. Always of
+  /// the form: projects/{project}/locations/{location}/projectConfig
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/projectConfig$`.
+  ///
+  /// [updateMask] - Optional. Field mask to support partial updates. See
+  /// https://protobuf.dev/reference/protobuf/google.protobuf/#field-mask for
+  /// more details.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProjectConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProjectConfig> updateProjectConfig(
+    ProjectConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ProjectConfig.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -387,6 +487,56 @@ class ProjectsLocationsOperationsResource {
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -3624,6 +3774,9 @@ class Binding {
   }
 }
 
+/// The request message for Operations.CancelOperation.
+typedef CancelOperationRequest = $Empty;
+
 /// Artifact policy configuration for repository cleanup policies.
 class CleanupPolicy {
   /// Policy action.
@@ -4437,6 +4590,7 @@ class Hash {
   /// - "HASH_TYPE_UNSPECIFIED" : Unspecified.
   /// - "SHA256" : SHA256 hash.
   /// - "MD5" : MD5 hash.
+  /// - "DIRSUM_SHA256" : Dirsum SHA256 hash.
   core.String? type;
 
   /// The hash value.
@@ -5411,6 +5565,55 @@ class Package {
   }
 }
 
+/// The platform logs config for a project or a repository.
+class PlatformLogsConfig {
+  /// The state of the platform logs: enabled or disabled.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOGGING_STATE_UNSPECIFIED" : Platform logs settings for the parent
+  /// resource haven't been set. This is the default state or when the user
+  /// clears the settings for the parent.
+  /// - "ENABLED" : Platform logs are enabled.
+  /// - "DISABLED" : Platform logs are disabled.
+  core.String? loggingState;
+
+  /// The severity level for the logs.
+  ///
+  /// Logs will be generated if their severity level is \>= than the value of
+  /// the severity level mentioned here.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SEVERITY_LEVEL_UNSPECIFIED" : No severity level specified, meaning
+  /// everything is being logged.
+  /// - "DEBUG" : Debug or trace information.
+  /// - "INFO" : Routine information, such as ongoing status or performance.
+  /// - "NOTICE" : Normal but significant events, such as start up, shut down,
+  /// or a configuration change.
+  /// - "WARNING" : Warning events that might cause problems.
+  /// - "ERROR" : Error events that are likely to cause problems.
+  /// - "CRITICAL" : Critical events that cause more severe problems or outages.
+  /// - "ALERT" : Alert events that require a person must take an action
+  /// immediately.
+  /// - "EMERGENCY" : One or more systems are unusable.
+  core.String? severityLevel;
+
+  PlatformLogsConfig({this.loggingState, this.severityLevel});
+
+  PlatformLogsConfig.fromJson(core.Map json_)
+    : this(
+        loggingState: json_['loggingState'] as core.String?,
+        severityLevel: json_['severityLevel'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final loggingState = this.loggingState;
+    final severityLevel = this.severityLevel;
+    return {'loggingState': ?loggingState, 'severityLevel': ?severityLevel};
+  }
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -5516,6 +5719,39 @@ class Policy {
     final etag = this.etag;
     final version = this.version;
     return {'bindings': ?bindings, 'etag': ?etag, 'version': ?version};
+  }
+}
+
+/// The Artifact Registry logging configurations that apply to a Project.
+class ProjectConfig {
+  /// Identifier.
+  ///
+  /// The name of the project's configuration. Always of the form:
+  /// projects/{project}/locations/{location}/projectConfig
+  core.String? name;
+
+  /// Configuration for platform logs.
+  ///
+  /// Optional.
+  PlatformLogsConfig? platformLogsConfig;
+
+  ProjectConfig({this.name, this.platformLogsConfig});
+
+  ProjectConfig.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        platformLogsConfig: json_.containsKey('platformLogsConfig')
+            ? PlatformLogsConfig.fromJson(
+                json_['platformLogsConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final platformLogsConfig = this.platformLogsConfig;
+    return {'name': ?name, 'platformLogsConfig': ?platformLogsConfig};
   }
 }
 
@@ -5900,6 +6136,11 @@ class Repository {
   /// For each location in a project, repository names must be unique.
   core.String? name;
 
+  /// Configuration for platform logs.
+  ///
+  /// Optional.
+  PlatformLogsConfig? platformLogsConfig;
+
   /// The repository endpoint, for example: `us-docker.pkg.dev/my-proj/my-repo`.
   ///
   /// Output only.
@@ -5953,6 +6194,7 @@ class Repository {
     this.mavenConfig,
     this.mode,
     this.name,
+    this.platformLogsConfig,
     this.registryUri,
     this.remoteRepositoryConfig,
     this.satisfiesPzi,
@@ -5996,6 +6238,12 @@ class Repository {
             : null,
         mode: json_['mode'] as core.String?,
         name: json_['name'] as core.String?,
+        platformLogsConfig: json_.containsKey('platformLogsConfig')
+            ? PlatformLogsConfig.fromJson(
+                json_['platformLogsConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         registryUri: json_['registryUri'] as core.String?,
         remoteRepositoryConfig: json_.containsKey('remoteRepositoryConfig')
             ? RemoteRepositoryConfig.fromJson(
@@ -6035,6 +6283,7 @@ class Repository {
     final mavenConfig = this.mavenConfig;
     final mode = this.mode;
     final name = this.name;
+    final platformLogsConfig = this.platformLogsConfig;
     final registryUri = this.registryUri;
     final remoteRepositoryConfig = this.remoteRepositoryConfig;
     final satisfiesPzi = this.satisfiesPzi;
@@ -6056,6 +6305,7 @@ class Repository {
       'mavenConfig': ?mavenConfig,
       'mode': ?mode,
       'name': ?name,
+      'platformLogsConfig': ?platformLogsConfig,
       'registryUri': ?registryUri,
       'remoteRepositoryConfig': ?remoteRepositoryConfig,
       'satisfiesPzi': ?satisfiesPzi,

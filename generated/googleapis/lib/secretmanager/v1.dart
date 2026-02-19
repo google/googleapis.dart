@@ -29,7 +29,6 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
-///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsSecretsResource]
 ///       - [ProjectsLocationsSecretsVersionsResource]
 ///   - [ProjectsSecretsResource]
@@ -87,8 +86,6 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResource get operations =>
-      ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsSecretsResource get secrets =>
       ProjectsLocationsSecretsResource(_requester);
 
@@ -128,11 +125,16 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -187,191 +189,6 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsOperationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsOperationsResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
-  /// to `Code.CANCELLED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Gets the latest state of a long-running operation.
-  ///
-  /// Clients can use this method to poll the operation result at intervals as
-  /// recommended by the API service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - The standard list filter.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
-  /// are returned as normal, and those that are unreachable are returned in the
-  /// ListOperationsResponse.unreachable field. This can only be `true` when
-  /// reading across collections. For example, when `parent` is set to
-  /// `"projects/example/locations/-"`. This field is not supported by default
-  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
-  /// documented otherwise in service or product specific documentation.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListOperationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(
-    core.String name, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.bool? returnPartialSuccess,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'filter': ?filter == null ? null : [filter],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListOperationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2238,55 +2055,6 @@ class ListLocationsResponse {
   }
 }
 
-/// The response message for Operations.ListOperations.
-class ListOperationsResponse {
-  /// The standard List next-page token.
-  core.String? nextPageToken;
-
-  /// A list of operations that matches the specified filter in the request.
-  core.List<Operation>? operations;
-
-  /// Unordered list.
-  ///
-  /// Unreachable resources. Populated when the request sets
-  /// `ListOperationsRequest.return_partial_success` and reads across
-  /// collections. For example, when attempting to list all resources across all
-  /// supported locations.
-  core.List<core.String>? unreachable;
-
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-    this.unreachable,
-  });
-
-  ListOperationsResponse.fromJson(core.Map json_)
-    : this(
-        nextPageToken: json_['nextPageToken'] as core.String?,
-        operations: (json_['operations'] as core.List?)
-            ?.map(
-              (value) => Operation.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-        unreachable: (json_['unreachable'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final nextPageToken = this.nextPageToken;
-    final operations = this.operations;
-    final unreachable = this.unreachable;
-    return {
-      'nextPageToken': ?nextPageToken,
-      'operations': ?operations,
-      'unreachable': ?unreachable,
-    };
-  }
-}
-
 /// Response message for SecretManagerService.ListSecretVersions.
 class ListSecretVersionsResponse {
   /// A token to retrieve the next page of results.
@@ -2377,84 +2145,6 @@ class ListSecretsResponse {
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
-
-/// This resource represents a long-running operation that is the result of a
-/// network API call.
-class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  ///
-  /// If `true`, the operation is completed, and either `error` or `response` is
-  /// available.
-  core.bool? done;
-
-  /// The error result of the operation in case of failure or cancellation.
-  Status? error;
-
-  /// Service-specific metadata associated with the operation.
-  ///
-  /// It typically contains progress information and common metadata such as
-  /// create time. Some services might not provide such metadata. Any method
-  /// that returns a long-running operation should document the metadata type,
-  /// if any.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it.
-  ///
-  /// If you use the default HTTP mapping, the `name` should be a resource name
-  /// ending with `operations/{unique_id}`.
-  core.String? name;
-
-  /// The normal, successful response of the operation.
-  ///
-  /// If the original method returns no data on success, such as `Delete`, the
-  /// response is `google.protobuf.Empty`. If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource. For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
-  /// the original method name. For example, if the original method name is
-  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? response;
-
-  Operation({this.done, this.error, this.metadata, this.name, this.response});
-
-  Operation.fromJson(core.Map json_)
-    : this(
-        done: json_['done'] as core.bool?,
-        error: json_.containsKey('error')
-            ? Status.fromJson(
-                json_['error'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        metadata: json_.containsKey('metadata')
-            ? json_['metadata'] as core.Map<core.String, core.dynamic>
-            : null,
-        name: json_['name'] as core.String?,
-        response: json_.containsKey('response')
-            ? json_['response'] as core.Map<core.String, core.dynamic>
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final done = this.done;
-    final error = this.error;
-    final metadata = this.metadata;
-    final name = this.name;
-    final response = this.response;
-    return {
-      'done': ?done,
-      'error': ?error,
-      'metadata': ?metadata,
-      'name': ?name,
-      'response': ?response,
-    };
-  }
-}
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -3197,15 +2887,6 @@ class SetIamPolicyRequest {
     return {'policy': ?policy, 'updateMask': ?updateMask};
   }
 }
-
-/// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs.
-///
-/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
-/// contains three pieces of data: error code, error message, and error details.
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

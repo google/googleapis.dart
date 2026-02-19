@@ -613,7 +613,10 @@ class LocationsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns the specified location.
+  /// Returns the specified location as last set by the merchant.
+  ///
+  /// It may not reflect updates from Google or user-generated content that are
+  /// live on Google Maps.
   ///
   /// Request parameters:
   ///
@@ -653,7 +656,10 @@ class LocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Looks up all the attributes set for a given location.
+  /// Retrieves attributes for a location as last set by the merchant.
+  ///
+  /// It may not reflect updates from Google or user-generated content that are
+  /// live on Google Maps.
   ///
   /// Request parameters:
   ///
@@ -691,7 +697,13 @@ class LocationsResource {
     );
   }
 
-  /// Gets the Google-updated version of the specified location.
+  /// Returns the specified location as it appears live on Google Maps and
+  /// Search.
+  ///
+  /// This consumer-facing view may have been updated by Google or
+  /// user-generated content and may differ from the merchant's version. The
+  /// returned GoogleUpdatedLocation contains masks that indicate which fields
+  /// differ from the merchant's information.
   ///
   /// Request parameters:
   ///
@@ -848,7 +860,11 @@ class LocationsAttributesResource {
   LocationsAttributesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Gets the Google-updated version of the specified location.
+  /// Retrieves attributes for a location as they appear live on Google Maps and
+  /// Search.
+  ///
+  /// This consumer-facing view may have been updated by Google or
+  /// user-generated content and may differ from the merchant's version.
   ///
   /// Request parameters:
   ///
@@ -1448,7 +1464,7 @@ typedef Empty = $Empty;
 /// Represents a free-form service offered by the merchant.
 ///
 /// These are services that are not exposed as part of our structure service
-/// data. The merchant manually enters the names for of such services via a
+/// data. The merchant manually enters the names for such services using a
 /// geomerchant surface.
 class FreeFormServiceItem {
   /// This field represents the category name (i.e. the category's stable ID).
@@ -1463,7 +1479,7 @@ class FreeFormServiceItem {
   ///
   /// We recommend that item names be 140 characters or less, and descriptions
   /// 250 characters or less. This field should only be set if the input is a
-  /// custom service item. Standardized service types should be updated via
+  /// custom service item. Standardized service types should be updated using
   /// service_type_id.
   ///
   /// Required.
@@ -1534,16 +1550,24 @@ class GoogleLocation {
   }
 }
 
-/// Represents a location that was modified by Google.
+/// Represents the view of a location as it appears to consumers, which includes
+/// updates that are currently serving on Google Maps and Search.
 class GoogleUpdatedLocation {
-  /// The fields that Google updated.
+  /// The fields where the values in the view as it appears to consumers are
+  /// different than the merchant's information.
+  ///
+  /// To accept these changes, patch the location. To reject, patch with your
+  /// preferred values.
   core.String? diffMask;
 
   /// The Google-updated version of this location.
   Location? location;
 
-  /// The fields that have pending edits that haven't yet been pushed to Maps
-  /// and Search.
+  /// The fields where the merchant has provided an update that is currently in
+  /// flight and hasn't yet been published to Maps and Search.
+  ///
+  /// This mask only tracks the status of the merchant's own edits, not external
+  /// changes.
   core.String? pendingMask;
 
   GoogleUpdatedLocation({this.diffMask, this.location, this.pendingMask});
@@ -1803,7 +1827,7 @@ class Location {
   /// Describes your business in your own voice and shares with users the unique
   /// story of your business and offerings.
   ///
-  /// This field is required for all categories except lodging categories (e.g.
+  /// This field is required for all categories except lodging categories (e.g.,
   /// hotels, motels, inns).
   ///
   /// Optional.
@@ -2099,7 +2123,7 @@ class Metadata {
   /// that need to be updated or rejected by the client.
   ///
   /// If this boolean is set, you should call the `getGoogleUpdated` method to
-  /// lookup information that's needs to be verified.
+  /// look up information that's needs to be verified.
   ///
   /// Output only.
   core.bool? hasGoogleUpdated;
@@ -2561,7 +2585,7 @@ class RelevantLocation {
   /// example, Costco Pharmacy is a department in Costco Wholesale.
   /// - "INDEPENDENT_ESTABLISHMENT_IN" : This represents the cases where 2
   /// locations are co-located in the same physical location, but from different
-  /// companies (e.g. Starbucks in a Safeway, shops in a mall).
+  /// companies (e.g., Starbucks in a Safeway, shops in a mall).
   core.String? relationType;
 
   RelevantLocation({this.placeId, this.relationType});

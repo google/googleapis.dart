@@ -2125,6 +2125,11 @@ class ConsumerConfig {
   /// to producer.
   core.bool? consumerImportSubnetRoutesWithPublicIp;
 
+  /// If this is true, consumer peering is active.
+  ///
+  /// Output only.
+  core.bool? consumerPeeringActive;
+
   /// Export custom routes flag value for peering from producer to consumer.
   core.bool? producerExportCustomRoutes;
 
@@ -2172,6 +2177,7 @@ class ConsumerConfig {
     this.consumerExportSubnetRoutesWithPublicIp,
     this.consumerImportCustomRoutes,
     this.consumerImportSubnetRoutesWithPublicIp,
+    this.consumerPeeringActive,
     this.producerExportCustomRoutes,
     this.producerExportSubnetRoutesWithPublicIp,
     this.producerImportCustomRoutes,
@@ -2199,6 +2205,7 @@ class ConsumerConfig {
             json_['consumerImportCustomRoutes'] as core.bool?,
         consumerImportSubnetRoutesWithPublicIp:
             json_['consumerImportSubnetRoutesWithPublicIp'] as core.bool?,
+        consumerPeeringActive: json_['consumerPeeringActive'] as core.bool?,
         producerExportCustomRoutes:
             json_['producerExportCustomRoutes'] as core.bool?,
         producerExportSubnetRoutesWithPublicIp:
@@ -2231,6 +2238,7 @@ class ConsumerConfig {
     final consumerImportCustomRoutes = this.consumerImportCustomRoutes;
     final consumerImportSubnetRoutesWithPublicIp =
         this.consumerImportSubnetRoutesWithPublicIp;
+    final consumerPeeringActive = this.consumerPeeringActive;
     final producerExportCustomRoutes = this.producerExportCustomRoutes;
     final producerExportSubnetRoutesWithPublicIp =
         this.producerExportSubnetRoutesWithPublicIp;
@@ -2250,6 +2258,7 @@ class ConsumerConfig {
       'consumerImportCustomRoutes': ?consumerImportCustomRoutes,
       'consumerImportSubnetRoutesWithPublicIp':
           ?consumerImportSubnetRoutesWithPublicIp,
+      'consumerPeeringActive': ?consumerPeeringActive,
       'producerExportCustomRoutes': ?producerExportCustomRoutes,
       'producerExportSubnetRoutesWithPublicIp':
           ?producerExportSubnetRoutesWithPublicIp,

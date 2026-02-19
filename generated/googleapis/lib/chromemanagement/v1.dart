@@ -35,6 +35,7 @@
 ///     - [CustomersAppsWebResource]
 ///   - [CustomersCertificateProvisioningProcessesResource]
 ///     - [CustomersCertificateProvisioningProcessesOperationsResource]
+///   - [CustomersConnectorConfigsResource]
 ///   - [CustomersProfilesResource]
 ///     - [CustomersProfilesCommandsResource]
 ///   - [CustomersReportsResource]
@@ -112,6 +113,8 @@ class CustomersResource {
   CustomersCertificateProvisioningProcessesResource
   get certificateProvisioningProcesses =>
       CustomersCertificateProvisioningProcessesResource(_requester);
+  CustomersConnectorConfigsResource get connectorConfigs =>
+      CustomersConnectorConfigsResource(_requester);
   CustomersProfilesResource get profiles =>
       CustomersProfilesResource(_requester);
   CustomersReportsResource get reports => CustomersReportsResource(_requester);
@@ -769,6 +772,242 @@ class CustomersCertificateProvisioningProcessesOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class CustomersConnectorConfigsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersConnectorConfigsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a connector config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: customers/{customer}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [connectorConfigId] - Optional. ID to use for the connector config, which
+  /// becomes the final component of the connector config's resource name. If
+  /// provided, the ID must be 1-63 characters long, and contain only lowercase
+  /// letters, digits, and hyphens. It must start with a letter, and end with a
+  /// letter or number. If not provided, the connector config will be assigned a
+  /// random UUID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1ConnectorConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ConnectorConfig> create(
+    GoogleChromeManagementVersionsV1ConnectorConfig request,
+    core.String parent, {
+    core.String? connectorConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'connectorConfigId': ?connectorConfigId == null
+          ? null
+          : [connectorConfigId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/connectorConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ConnectorConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a connector config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// customers/{customer}/connectorConfigs/{connector_config}
+  /// Value must have pattern `^customers/\[^/\]+/connectorConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets a connector config with customer ID and config ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// customers/{customer}/connectorConfigs/{connector_config}
+  /// Value must have pattern `^customers/\[^/\]+/connectorConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1ConnectorConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ConnectorConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ConnectorConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists connector configs of a customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: customers/{customer}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of connector configs to return.
+  /// The default page size is 50 if page_size is unspecified, and the maximum
+  /// page size allowed is 100. Values above 100 will be capped at 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListConnectorConfigs` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListConnectorConfigs`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1ListConnectorConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ListConnectorConfigsResponse>
+  list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/connectorConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ListConnectorConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a connector config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Format:
+  /// customers/{customer}/connectorConfigs/{connector_config}
+  /// Value must have pattern `^customers/\[^/\]+/connectorConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The update mask that can be used to specify which
+  /// fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1ConnectorConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ConnectorConfig> patch(
+    GoogleChromeManagementVersionsV1ConnectorConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ConnectorConfig.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2765,6 +3004,14 @@ class GoogleChromeManagementV1AppDetails {
   /// Output only.
   core.String? appId;
 
+  /// The category IDs of the app, which are the same as stored in the Web Store
+  /// item.
+  ///
+  /// It's expected that there is only one category ID.
+  ///
+  /// Output only.
+  core.List<core.String>? categoryIds;
+
   /// Chrome Web Store app information.
   ///
   /// Output only.
@@ -2872,6 +3119,7 @@ class GoogleChromeManagementV1AppDetails {
   GoogleChromeManagementV1AppDetails({
     this.androidAppInfo,
     this.appId,
+    this.categoryIds,
     this.chromeAppInfo,
     this.description,
     this.detailUri,
@@ -2899,6 +3147,9 @@ class GoogleChromeManagementV1AppDetails {
               )
             : null,
         appId: json_['appId'] as core.String?,
+        categoryIds: (json_['categoryIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         chromeAppInfo: json_.containsKey('chromeAppInfo')
             ? GoogleChromeManagementV1ChromeAppInfo.fromJson(
                 json_['chromeAppInfo'] as core.Map<core.String, core.dynamic>,
@@ -2929,6 +3180,7 @@ class GoogleChromeManagementV1AppDetails {
   core.Map<core.String, core.dynamic> toJson() {
     final androidAppInfo = this.androidAppInfo;
     final appId = this.appId;
+    final categoryIds = this.categoryIds;
     final chromeAppInfo = this.chromeAppInfo;
     final description = this.description;
     final detailUri = this.detailUri;
@@ -2949,6 +3201,7 @@ class GoogleChromeManagementV1AppDetails {
     return {
       'androidAppInfo': ?androidAppInfo,
       'appId': ?appId,
+      'categoryIds': ?categoryIds,
       'chromeAppInfo': ?chromeAppInfo,
       'description': ?description,
       'detailUri': ?detailUri,
@@ -10042,6 +10295,406 @@ class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest
 typedef GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse =
     $Empty;
 
+/// A representation of a connector config.
+class GoogleChromeManagementVersionsV1ConnectorConfig {
+  /// The details of the connector config.
+  ///
+  /// Required.
+  GoogleChromeManagementVersionsV1ConnectorConfigDetails? details;
+
+  /// The display name of the config.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// Format: customers/{customer}/connectorConfigs/{connector_config}
+  core.String? name;
+
+  /// The status of the connector config.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1ConnectorConfigStatus? status;
+
+  /// The type of the connector.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CONNECTOR_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "REPORTING" : Reporting connector.
+  /// - "DEVICE_TRUST" : Device trust connector.
+  /// - "XDR" : XDR connector.
+  /// - "IDENTITY_BASED_ENROLLMENT" : Authentication connector.
+  /// - "CERTIFICATE_AUTHORITY" : Certificate authority connector. Not yet
+  /// supported in the API.
+  /// - "ROOT_STORE" : Root certificate connector.
+  core.String? type;
+
+  GoogleChromeManagementVersionsV1ConnectorConfig({
+    this.details,
+    this.displayName,
+    this.name,
+    this.status,
+    this.type,
+  });
+
+  GoogleChromeManagementVersionsV1ConnectorConfig.fromJson(core.Map json_)
+    : this(
+        details: json_.containsKey('details')
+            ? GoogleChromeManagementVersionsV1ConnectorConfigDetails.fromJson(
+                json_['details'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        status: json_.containsKey('status')
+            ? GoogleChromeManagementVersionsV1ConnectorConfigStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final details = this.details;
+    final displayName = this.displayName;
+    final name = this.name;
+    final status = this.status;
+    final type = this.type;
+    return {
+      'details': ?details,
+      'displayName': ?displayName,
+      'name': ?name,
+      'status': ?status,
+      'type': ?type,
+    };
+  }
+}
+
+/// The details of the connector config.
+class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
+  /// CrowdStrike connector config.
+  GoogleChromeManagementVersionsV1CrowdStrikeConfig? crowdStrikeConfig;
+
+  /// CrowdStrike Falcon Next Gen connector config.
+  GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig?
+  crowdStrikeFalconNextGenConfig;
+
+  /// CrowdStrike XDR connector config.
+  GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig? crowdStrikeXdrConfig;
+
+  /// Device trust connector config.
+  GoogleChromeManagementVersionsV1DeviceTrustConfig? deviceTrustConfig;
+
+  /// Google SecOps connector config.
+  GoogleChromeManagementVersionsV1GoogleSecOpsConfig? googleSecOpsConfig;
+
+  /// Palo Alto Networks connector config.
+  GoogleChromeManagementVersionsV1PaloAltoNetworksConfig?
+  paloAltoNetworksConfig;
+
+  /// Pub/Sub connector config.
+  GoogleChromeManagementVersionsV1PubSubConfig? pubSubConfig;
+
+  /// Pub/Sub XDR connector config.
+  GoogleChromeManagementVersionsV1PubSubXdrConfig? pubSubXdrConfig;
+
+  /// Splunk connector config.
+  GoogleChromeManagementVersionsV1SplunkConfig? splunkConfig;
+
+  GoogleChromeManagementVersionsV1ConnectorConfigDetails({
+    this.crowdStrikeConfig,
+    this.crowdStrikeFalconNextGenConfig,
+    this.crowdStrikeXdrConfig,
+    this.deviceTrustConfig,
+    this.googleSecOpsConfig,
+    this.paloAltoNetworksConfig,
+    this.pubSubConfig,
+    this.pubSubXdrConfig,
+    this.splunkConfig,
+  });
+
+  GoogleChromeManagementVersionsV1ConnectorConfigDetails.fromJson(
+    core.Map json_,
+  ) : this(
+        crowdStrikeConfig: json_.containsKey('crowdStrikeConfig')
+            ? GoogleChromeManagementVersionsV1CrowdStrikeConfig.fromJson(
+                json_['crowdStrikeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        crowdStrikeFalconNextGenConfig:
+            json_.containsKey('crowdStrikeFalconNextGenConfig')
+            ? GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig.fromJson(
+                json_['crowdStrikeFalconNextGenConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        crowdStrikeXdrConfig: json_.containsKey('crowdStrikeXdrConfig')
+            ? GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig.fromJson(
+                json_['crowdStrikeXdrConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deviceTrustConfig: json_.containsKey('deviceTrustConfig')
+            ? GoogleChromeManagementVersionsV1DeviceTrustConfig.fromJson(
+                json_['deviceTrustConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleSecOpsConfig: json_.containsKey('googleSecOpsConfig')
+            ? GoogleChromeManagementVersionsV1GoogleSecOpsConfig.fromJson(
+                json_['googleSecOpsConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        paloAltoNetworksConfig: json_.containsKey('paloAltoNetworksConfig')
+            ? GoogleChromeManagementVersionsV1PaloAltoNetworksConfig.fromJson(
+                json_['paloAltoNetworksConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pubSubConfig: json_.containsKey('pubSubConfig')
+            ? GoogleChromeManagementVersionsV1PubSubConfig.fromJson(
+                json_['pubSubConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pubSubXdrConfig: json_.containsKey('pubSubXdrConfig')
+            ? GoogleChromeManagementVersionsV1PubSubXdrConfig.fromJson(
+                json_['pubSubXdrConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        splunkConfig: json_.containsKey('splunkConfig')
+            ? GoogleChromeManagementVersionsV1SplunkConfig.fromJson(
+                json_['splunkConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final crowdStrikeConfig = this.crowdStrikeConfig;
+    final crowdStrikeFalconNextGenConfig = this.crowdStrikeFalconNextGenConfig;
+    final crowdStrikeXdrConfig = this.crowdStrikeXdrConfig;
+    final deviceTrustConfig = this.deviceTrustConfig;
+    final googleSecOpsConfig = this.googleSecOpsConfig;
+    final paloAltoNetworksConfig = this.paloAltoNetworksConfig;
+    final pubSubConfig = this.pubSubConfig;
+    final pubSubXdrConfig = this.pubSubXdrConfig;
+    final splunkConfig = this.splunkConfig;
+    return {
+      'crowdStrikeConfig': ?crowdStrikeConfig,
+      'crowdStrikeFalconNextGenConfig': ?crowdStrikeFalconNextGenConfig,
+      'crowdStrikeXdrConfig': ?crowdStrikeXdrConfig,
+      'deviceTrustConfig': ?deviceTrustConfig,
+      'googleSecOpsConfig': ?googleSecOpsConfig,
+      'paloAltoNetworksConfig': ?paloAltoNetworksConfig,
+      'pubSubConfig': ?pubSubConfig,
+      'pubSubXdrConfig': ?pubSubXdrConfig,
+      'splunkConfig': ?splunkConfig,
+    };
+  }
+}
+
+/// The status of the connector config.
+class GoogleChromeManagementVersionsV1ConnectorConfigStatus {
+  /// Field recording time of the earliest failure since the last success event.
+  ///
+  /// This field is only set when the state is `DISABLED_BY_FAILURES`.
+  ///
+  /// Output only.
+  core.String? failureStartTime;
+
+  /// The state of the connector config.
+  ///
+  /// The connector state is disabled if the connector has not successfully sent
+  /// an event in the last 24 hours.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONFIG_STATE_UNKNOWN" : Default value.
+  /// - "ENABLED" : The connector config is enabled.
+  /// - "DISABLED_BY_FAILURES" : The connector config is transiently disabled
+  /// due to failures.
+  core.String? state;
+
+  /// Field recording time of most recent modification of the status.
+  ///
+  /// For `ENABLED`, this is the time the status was changed to `ENABLED`. For
+  /// `DISABLED_BY_FAILURES`, this is the time of the most recent failed attempt
+  /// to send an event to this config.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleChromeManagementVersionsV1ConnectorConfigStatus({
+    this.failureStartTime,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleChromeManagementVersionsV1ConnectorConfigStatus.fromJson(core.Map json_)
+    : this(
+        failureStartTime: json_['failureStartTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final failureStartTime = this.failureStartTime;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'failureStartTime': ?failureStartTime,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// CrowdStrike connector config.
+class GoogleChromeManagementVersionsV1CrowdStrikeConfig {
+  /// Input only.
+  ///
+  /// API key to use on the ingestion API.
+  ///
+  /// Required.
+  core.String? apiKey;
+
+  /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Required.
+  core.String? host;
+
+  /// The reporting settings for the CrowdStrike config.
+  ///
+  /// Required.
+  GoogleChromeManagementVersionsV1ReportingSettings? reportingSettings;
+
+  GoogleChromeManagementVersionsV1CrowdStrikeConfig({
+    this.apiKey,
+    this.host,
+    this.reportingSettings,
+  });
+
+  GoogleChromeManagementVersionsV1CrowdStrikeConfig.fromJson(core.Map json_)
+    : this(
+        apiKey: json_['apiKey'] as core.String?,
+        host: json_['host'] as core.String?,
+        reportingSettings: json_.containsKey('reportingSettings')
+            ? GoogleChromeManagementVersionsV1ReportingSettings.fromJson(
+                json_['reportingSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKey = this.apiKey;
+    final host = this.host;
+    final reportingSettings = this.reportingSettings;
+    return {
+      'apiKey': ?apiKey,
+      'host': ?host,
+      'reportingSettings': ?reportingSettings,
+    };
+  }
+}
+
+/// CrowdStrike Falcon Next Gen connector config.
+class GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig {
+  /// Input only.
+  ///
+  /// API key to use on the ingestion API.
+  ///
+  /// Required.
+  core.String? apiKey;
+
+  /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Required.
+  core.String? host;
+
+  /// The reporting settings for the CrowdStrike Falcon Next Gen config.
+  ///
+  /// Required.
+  GoogleChromeManagementVersionsV1ReportingSettings? reportingSettings;
+
+  GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig({
+    this.apiKey,
+    this.host,
+    this.reportingSettings,
+  });
+
+  GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        apiKey: json_['apiKey'] as core.String?,
+        host: json_['host'] as core.String?,
+        reportingSettings: json_.containsKey('reportingSettings')
+            ? GoogleChromeManagementVersionsV1ReportingSettings.fromJson(
+                json_['reportingSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKey = this.apiKey;
+    final host = this.host;
+    final reportingSettings = this.reportingSettings;
+    return {
+      'apiKey': ?apiKey,
+      'host': ?host,
+      'reportingSettings': ?reportingSettings,
+    };
+  }
+}
+
+/// CrowdStrike XDR connector config.
+class GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig {
+  /// Input only.
+  ///
+  /// API key to use on the ingestion API.
+  ///
+  /// Required.
+  core.String? apiKey;
+
+  /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Required.
+  core.String? host;
+
+  /// The XDR settings for the CrowdStrike XDR config.
+  ///
+  /// Required.
+  GoogleChromeManagementVersionsV1XdrSettings? xdrSettings;
+
+  GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig({
+    this.apiKey,
+    this.host,
+    this.xdrSettings,
+  });
+
+  GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig.fromJson(core.Map json_)
+    : this(
+        apiKey: json_['apiKey'] as core.String?,
+        host: json_['host'] as core.String?,
+        xdrSettings: json_.containsKey('xdrSettings')
+            ? GoogleChromeManagementVersionsV1XdrSettings.fromJson(
+                json_['xdrSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKey = this.apiKey;
+    final host = this.host;
+    final xdrSettings = this.xdrSettings;
+    return {'apiKey': ?apiKey, 'host': ?host, 'xdrSettings': ?xdrSettings};
+  }
+}
+
 /// Information of a device that runs a Chrome browser profile.
 class GoogleChromeManagementVersionsV1DeviceInfo {
   /// Device ID that identifies the affiliated device on which the profile
@@ -10104,6 +10757,86 @@ class GoogleChromeManagementVersionsV1DeviceInfo {
   }
 }
 
+/// Device trust config for device trust connectors.
+class GoogleChromeManagementVersionsV1DeviceTrustConfig {
+  /// The scope at which this configuration will be applied.
+  ///
+  /// Note that this only applies to Chrome browser, as in ChromeOS it's always
+  /// applied.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "BROWSER_ENFORCEMENT_SCOPE_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  /// - "BROWSERS_ONLY" : Only browsers are enforced.
+  /// - "PROFILES_ONLY" : Only profiles are enforced.
+  /// - "BROWSERS_AND_PROFILES" : Both browsers and profiles are enforced.
+  core.String? scope;
+
+  /// A list of email addresses of the service accounts which are allowed to
+  /// call the Verified Access API with full access.
+  ///
+  /// Required.
+  core.List<core.String>? serviceAccounts;
+
+  /// The service provider for the device trust connector.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SERVICE_PROVIDER_UNSPECIFIED" : Default value.
+  /// - "UNIVERSAL_DEVICE_TRUST" : Universal device trust connector.
+  /// - "OKTA" : Okta service provider.
+  /// - "PING_IDENTITY" : Ping Identity service provider.
+  /// - "ONELOGIN" : OneLogin service provider.
+  /// - "DUO" : Duo service provider.
+  /// - "ZSCALER" : Zscaler service provider.
+  /// - "OMNISSA" : Omnissa service provider.
+  /// - "JUMPCLOUD" : JumpCloud service provider.
+  core.String? serviceProvider;
+
+  /// List of URLs allowed to be part of the attestation flow to get the set of
+  /// signals from the machine.
+  ///
+  /// URLs must have HTTPS scheme, e.g. "https://example.com". Wildcards, *, are
+  /// allowed. For detailed information on valid URL patterns, please see
+  /// https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns.
+  ///
+  /// Required.
+  core.List<core.String>? urlMatchers;
+
+  GoogleChromeManagementVersionsV1DeviceTrustConfig({
+    this.scope,
+    this.serviceAccounts,
+    this.serviceProvider,
+    this.urlMatchers,
+  });
+
+  GoogleChromeManagementVersionsV1DeviceTrustConfig.fromJson(core.Map json_)
+    : this(
+        scope: json_['scope'] as core.String?,
+        serviceAccounts: (json_['serviceAccounts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        serviceProvider: json_['serviceProvider'] as core.String?,
+        urlMatchers: (json_['urlMatchers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final scope = this.scope;
+    final serviceAccounts = this.serviceAccounts;
+    final serviceProvider = this.serviceProvider;
+    final urlMatchers = this.urlMatchers;
+    return {
+      'scope': ?scope,
+      'serviceAccounts': ?serviceAccounts,
+      'serviceProvider': ?serviceProvider,
+      'urlMatchers': ?urlMatchers,
+    };
+  }
+}
+
 /// Describes a generic Certificate Authority Connection.
 typedef GoogleChromeManagementVersionsV1GenericCaConnection = $CaConnection;
 
@@ -10128,6 +10861,58 @@ class GoogleChromeManagementVersionsV1GenericProfile {
   core.Map<core.String, core.dynamic> toJson() {
     final profileAdapterConfigReference = this.profileAdapterConfigReference;
     return {'profileAdapterConfigReference': ?profileAdapterConfigReference};
+  }
+}
+
+/// Google SecOps connector config.
+class GoogleChromeManagementVersionsV1GoogleSecOpsConfig {
+  /// Input only.
+  ///
+  /// API key to use on the ingestion API.
+  ///
+  /// Required.
+  core.String? apiKey;
+
+  /// Host of ingestion API endpoint.
+  ///
+  /// Allows customer to upload events to servers in specific geographical
+  /// regions. Existing configs that don't have this setting default to US.
+  ///
+  /// Required.
+  core.String? host;
+
+  /// The reporting settings for the Google SecOps config.
+  ///
+  /// Required.
+  GoogleChromeManagementVersionsV1ReportingSettings? reportingSettings;
+
+  GoogleChromeManagementVersionsV1GoogleSecOpsConfig({
+    this.apiKey,
+    this.host,
+    this.reportingSettings,
+  });
+
+  GoogleChromeManagementVersionsV1GoogleSecOpsConfig.fromJson(core.Map json_)
+    : this(
+        apiKey: json_['apiKey'] as core.String?,
+        host: json_['host'] as core.String?,
+        reportingSettings: json_.containsKey('reportingSettings')
+            ? GoogleChromeManagementVersionsV1ReportingSettings.fromJson(
+                json_['reportingSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKey = this.apiKey;
+    final host = this.host;
+    final reportingSettings = this.reportingSettings;
+    return {
+      'apiKey': ?apiKey,
+      'host': ?host,
+      'reportingSettings': ?reportingSettings,
+    };
   }
 }
 
@@ -10224,6 +11009,45 @@ class GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse {
   }
 }
 
+/// Response to ListConnectorConfigs method.
+class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse {
+  /// The list of connector configs returned.
+  core.List<GoogleChromeManagementVersionsV1ConnectorConfig>? connectorConfigs;
+
+  /// The page token used to retrieve the next page of the listing request.
+  ///
+  /// If the token is empty, there are no more pages to retrieve.
+  core.String? nextPageToken;
+
+  GoogleChromeManagementVersionsV1ListConnectorConfigsResponse({
+    this.connectorConfigs,
+    this.nextPageToken,
+  });
+
+  GoogleChromeManagementVersionsV1ListConnectorConfigsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        connectorConfigs: (json_['connectorConfigs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleChromeManagementVersionsV1ConnectorConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectorConfigs = this.connectorConfigs;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'connectorConfigs': ?connectorConfigs,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
 /// Request to MoveThirdPartyProfileUser method.
 class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest {
   /// Destination organizational unit where the third party chrome profile user
@@ -10271,6 +11095,128 @@ class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final thirdPartyProfileUser = this.thirdPartyProfileUser;
     return {'thirdPartyProfileUser': ?thirdPartyProfileUser};
+  }
+}
+
+/// Palo Alto Networks connector config.
+class GoogleChromeManagementVersionsV1PaloAltoNetworksConfig {
+  /// Input only.
+  ///
+  /// API key to use on the ingestion API.
+  ///
+  /// Required.
+  core.String? apiKey;
+
+  /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Required.
+  core.String? host;
+
+  /// The reporting settings for the Palo Alto Networks config.
+  ///
+  /// Required.
+  GoogleChromeManagementVersionsV1ReportingSettings? reportingSettings;
+
+  GoogleChromeManagementVersionsV1PaloAltoNetworksConfig({
+    this.apiKey,
+    this.host,
+    this.reportingSettings,
+  });
+
+  GoogleChromeManagementVersionsV1PaloAltoNetworksConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        apiKey: json_['apiKey'] as core.String?,
+        host: json_['host'] as core.String?,
+        reportingSettings: json_.containsKey('reportingSettings')
+            ? GoogleChromeManagementVersionsV1ReportingSettings.fromJson(
+                json_['reportingSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKey = this.apiKey;
+    final host = this.host;
+    final reportingSettings = this.reportingSettings;
+    return {
+      'apiKey': ?apiKey,
+      'host': ?host,
+      'reportingSettings': ?reportingSettings,
+    };
+  }
+}
+
+/// Pub/Sub connector config.
+class GoogleChromeManagementVersionsV1PubSubConfig {
+  /// The reporting settings for the Pub/Sub config.
+  ///
+  /// Required.
+  GoogleChromeManagementVersionsV1ReportingSettings? reportingSettings;
+
+  /// The full path to the topic to send the event to.
+  ///
+  /// Required.
+  core.String? topicFullPath;
+
+  GoogleChromeManagementVersionsV1PubSubConfig({
+    this.reportingSettings,
+    this.topicFullPath,
+  });
+
+  GoogleChromeManagementVersionsV1PubSubConfig.fromJson(core.Map json_)
+    : this(
+        reportingSettings: json_.containsKey('reportingSettings')
+            ? GoogleChromeManagementVersionsV1ReportingSettings.fromJson(
+                json_['reportingSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        topicFullPath: json_['topicFullPath'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reportingSettings = this.reportingSettings;
+    final topicFullPath = this.topicFullPath;
+    return {
+      'reportingSettings': ?reportingSettings,
+      'topicFullPath': ?topicFullPath,
+    };
+  }
+}
+
+/// Pub/Sub XDR connector config.
+class GoogleChromeManagementVersionsV1PubSubXdrConfig {
+  /// The full path to the topic to send the event to.
+  ///
+  /// Required.
+  core.String? topicFullPath;
+
+  /// The XDR settings for the Pub/Sub XDR config.
+  ///
+  /// Required.
+  GoogleChromeManagementVersionsV1XdrSettings? xdrSettings;
+
+  GoogleChromeManagementVersionsV1PubSubXdrConfig({
+    this.topicFullPath,
+    this.xdrSettings,
+  });
+
+  GoogleChromeManagementVersionsV1PubSubXdrConfig.fromJson(core.Map json_)
+    : this(
+        topicFullPath: json_['topicFullPath'] as core.String?,
+        xdrSettings: json_.containsKey('xdrSettings')
+            ? GoogleChromeManagementVersionsV1XdrSettings.fromJson(
+                json_['xdrSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final topicFullPath = this.topicFullPath;
+    final xdrSettings = this.xdrSettings;
+    return {'topicFullPath': ?topicFullPath, 'xdrSettings': ?xdrSettings};
   }
 }
 
@@ -10664,6 +11610,63 @@ class GoogleChromeManagementVersionsV1ReportingDataPolicyData {
   }
 }
 
+/// Reporting settings for connector configs.
+class GoogleChromeManagementVersionsV1ReportingSettings {
+  /// The list of user and browser events that are enabled for this connector.
+  ///
+  /// An empty list disables all default events, and using `ALL_DEFAULT_EVENTS`
+  /// will enable all default events.
+  ///
+  /// Optional.
+  core.List<core.String>? enabledDefaultEvents;
+
+  /// The list of device events that are enabled for this config.
+  ///
+  /// An empty list disables all device events, and using `ALL_DEVICE_EVENTS`
+  /// will enable all device events.
+  ///
+  /// Optional.
+  core.List<core.String>? enabledDeviceEvents;
+
+  /// The list of opt-in events that are enabled for this config.
+  ///
+  /// An empty list disables all opt-in events, and using `ALL_OPT_IN_EVENTS`
+  /// will enable all opt-in events.
+  ///
+  /// Optional.
+  core.List<core.String>? enabledOptInEvents;
+
+  GoogleChromeManagementVersionsV1ReportingSettings({
+    this.enabledDefaultEvents,
+    this.enabledDeviceEvents,
+    this.enabledOptInEvents,
+  });
+
+  GoogleChromeManagementVersionsV1ReportingSettings.fromJson(core.Map json_)
+    : this(
+        enabledDefaultEvents: (json_['enabledDefaultEvents'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        enabledDeviceEvents: (json_['enabledDeviceEvents'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        enabledOptInEvents: (json_['enabledOptInEvents'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabledDefaultEvents = this.enabledDefaultEvents;
+    final enabledDeviceEvents = this.enabledDeviceEvents;
+    final enabledOptInEvents = this.enabledOptInEvents;
+    return {
+      'enabledDefaultEvents': ?enabledDefaultEvents,
+      'enabledDeviceEvents': ?enabledDeviceEvents,
+      'enabledOptInEvents': ?enabledOptInEvents,
+    };
+  }
+}
+
 /// Describes a SCEP Certificate Authority Connection.
 typedef GoogleChromeManagementVersionsV1ScepCaConnection = $CaConnection;
 
@@ -10851,6 +11854,88 @@ class GoogleChromeManagementVersionsV1SignDataRequest {
   }
 }
 
+/// Splunk connector config.
+class GoogleChromeManagementVersionsV1SplunkConfig {
+  /// Input only.
+  ///
+  /// The data input's HTTP Event Collector token to use as an Authorization
+  /// header.
+  ///
+  /// Required.
+  core.String? hecToken;
+
+  /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Required.
+  core.String? host;
+
+  /// The port number to use.
+  ///
+  /// If not set, the default Splunk port is used.
+  ///
+  /// Optional.
+  core.int? portNumber;
+
+  /// The reporting settings for the Splunk config.
+  ///
+  /// Required.
+  GoogleChromeManagementVersionsV1ReportingSettings? reportingSettings;
+
+  /// Optional source name to override the default one set in the Splunk admin
+  /// console.
+  ///
+  /// Optional.
+  core.String? source;
+
+  /// Whether to use an unsecure HTTP scheme.
+  ///
+  /// Defaults to false (HTTPS).
+  ///
+  /// Optional.
+  core.bool? unsecureScheme;
+
+  GoogleChromeManagementVersionsV1SplunkConfig({
+    this.hecToken,
+    this.host,
+    this.portNumber,
+    this.reportingSettings,
+    this.source,
+    this.unsecureScheme,
+  });
+
+  GoogleChromeManagementVersionsV1SplunkConfig.fromJson(core.Map json_)
+    : this(
+        hecToken: json_['hecToken'] as core.String?,
+        host: json_['host'] as core.String?,
+        portNumber: json_['portNumber'] as core.int?,
+        reportingSettings: json_.containsKey('reportingSettings')
+            ? GoogleChromeManagementVersionsV1ReportingSettings.fromJson(
+                json_['reportingSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        source: json_['source'] as core.String?,
+        unsecureScheme: json_['unsecureScheme'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final hecToken = this.hecToken;
+    final host = this.host;
+    final portNumber = this.portNumber;
+    final reportingSettings = this.reportingSettings;
+    final source = this.source;
+    final unsecureScheme = this.unsecureScheme;
+    return {
+      'hecToken': ?hecToken,
+      'host': ?host,
+      'portNumber': ?portNumber,
+      'reportingSettings': ?reportingSettings,
+      'source': ?source,
+      'unsecureScheme': ?unsecureScheme,
+    };
+  }
+}
+
 /// Describes a subject alternative name.
 class GoogleChromeManagementVersionsV1SubjectAltName {
   /// The type of the SubjectAltName extension.
@@ -10946,6 +12031,24 @@ class GoogleChromeManagementVersionsV1UploadCertificateRequest {
 /// Response message for publishing an issued certificate for a certificate
 /// provisioning process.
 typedef GoogleChromeManagementVersionsV1UploadCertificateResponse = $Empty;
+
+/// XDR settings for connector configs.
+class GoogleChromeManagementVersionsV1XdrSettings {
+  /// Whether to enable all XDR events.
+  ///
+  /// Required.
+  core.bool? enableAllXdrEvents;
+
+  GoogleChromeManagementVersionsV1XdrSettings({this.enableAllXdrEvents});
+
+  GoogleChromeManagementVersionsV1XdrSettings.fromJson(core.Map json_)
+    : this(enableAllXdrEvents: json_['enableAllXdrEvents'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableAllXdrEvents = this.enableAllXdrEvents;
+    return {'enableAllXdrEvents': ?enableAllXdrEvents};
+  }
+}
 
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;

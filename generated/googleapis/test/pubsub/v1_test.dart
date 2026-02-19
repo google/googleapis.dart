@@ -257,6 +257,33 @@ void checkBigQueryConfig(api.BigQueryConfig o) {
   buildCounterBigQueryConfig--;
 }
 
+core.int buildCounterBigtableConfig = 0;
+api.BigtableConfig buildBigtableConfig() {
+  final o = api.BigtableConfig();
+  buildCounterBigtableConfig++;
+  if (buildCounterBigtableConfig < 3) {
+    o.appProfileId = 'foo';
+    o.serviceAccountEmail = 'foo';
+    o.state = 'foo';
+    o.table = 'foo';
+    o.writeMetadata = true;
+  }
+  buildCounterBigtableConfig--;
+  return o;
+}
+
+void checkBigtableConfig(api.BigtableConfig o) {
+  buildCounterBigtableConfig++;
+  if (buildCounterBigtableConfig < 3) {
+    unittest.expect(o.appProfileId!, unittest.equals('foo'));
+    unittest.expect(o.serviceAccountEmail!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.table!, unittest.equals('foo'));
+    unittest.expect(o.writeMetadata!, unittest.isTrue);
+  }
+  buildCounterBigtableConfig--;
+}
+
 core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
 
 void checkUnnamed1(core.List<core.String> o) {
@@ -1434,6 +1461,7 @@ api.Subscription buildSubscription() {
     o.ackDeadlineSeconds = 42;
     o.analyticsHubSubscriptionInfo = buildAnalyticsHubSubscriptionInfo();
     o.bigqueryConfig = buildBigQueryConfig();
+    o.bigtableConfig = buildBigtableConfig();
     o.cloudStorageConfig = buildCloudStorageConfig();
     o.deadLetterPolicy = buildDeadLetterPolicy();
     o.detached = true;
@@ -1463,6 +1491,7 @@ void checkSubscription(api.Subscription o) {
     unittest.expect(o.ackDeadlineSeconds!, unittest.equals(42));
     checkAnalyticsHubSubscriptionInfo(o.analyticsHubSubscriptionInfo!);
     checkBigQueryConfig(o.bigqueryConfig!);
+    checkBigtableConfig(o.bigtableConfig!);
     checkCloudStorageConfig(o.cloudStorageConfig!);
     checkDeadLetterPolicy(o.deadLetterPolicy!);
     unittest.expect(o.detached!, unittest.isTrue);
@@ -1919,6 +1948,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkBigQueryConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-BigtableConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBigtableConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BigtableConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBigtableConfig(od);
     });
   });
 

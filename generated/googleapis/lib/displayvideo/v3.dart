@@ -61,7 +61,6 @@
 /// - [GuaranteedOrdersResource]
 /// - [InventorySourceGroupsResource]
 ///   - [InventorySourceGroupsAssignedInventorySourcesResource]
-/// - [InventorySourcesResource]
 /// - [MediaResource]
 /// - [PartnersResource]
 ///   - [PartnersChannelsResource]
@@ -137,8 +136,6 @@ class DisplayVideoApi {
       GuaranteedOrdersResource(_requester);
   InventorySourceGroupsResource get inventorySourceGroups =>
       InventorySourceGroupsResource(_requester);
-  InventorySourcesResource get inventorySources =>
-      InventorySourcesResource(_requester);
   MediaResource get media => MediaResource(_requester);
   PartnersResource get partners => PartnersResource(_requester);
   SdfdownloadtasksResource get sdfdownloadtasks =>
@@ -622,6 +619,102 @@ class AdvertisersAdGroupAdsResource {
   AdvertisersAdGroupAdsResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Creates an ad group ad.
+  ///
+  /// This method is only supported for Demand Gen ads. Retrieval and management
+  /// of Demand Gen resources is currently in beta. This method is only
+  /// available to allowlisted users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Output only. The unique ID of the advertiser the ad
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdGroupAd].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdGroupAd> create(
+    AdGroupAd request,
+    core.String advertiserId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v3/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroupAds';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdGroupAd.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an ad group ad.
+  ///
+  /// This method is only supported for Demand Gen ads. Retrieval and management
+  /// of Demand Gen resources is currently in beta. This method is only
+  /// available to allowlisted users.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the ad belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adGroupAdId] - Required. The ID of the ad to delete. Only Demand Gen ads
+  /// are supported.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String adGroupAdId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v3/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroupAds/' +
+        core.Uri.encodeFull('$adGroupAdId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets an ad group ad.
   ///
   /// Request parameters:
@@ -742,6 +835,64 @@ class AdvertisersAdGroupAdsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Updates an ad group ad.
+  ///
+  /// This method is only supported for Demand Gen ads. Retrieval and management
+  /// of Demand Gen resources is currently in beta. This method is only
+  /// available to allowlisted users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Output only. The unique ID of the advertiser the ad
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adGroupAdId] - Output only. The unique ID of the ad. Assigned by the
+  /// system.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdGroupAd].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdGroupAd> patch(
+    AdGroupAd request,
+    core.String advertiserId,
+    core.String adGroupAdId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v3/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroupAds/' +
+        core.Uri.encodeFull('$adGroupAdId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdGroupAd.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class AdvertisersAdGroupsResource {
@@ -752,6 +903,63 @@ class AdvertisersAdGroupsResource {
 
   AdvertisersAdGroupsResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Bulk edits targeting options for multiple ad groups.
+  ///
+  /// The same set of delete and create requests will be applied to all
+  /// specified ad groups. Specifically, the operation will delete the assigned
+  /// targeting options provided in
+  /// BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each
+  /// ad group, and then create the assigned targeting options provided in
+  /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This
+  /// method is only supported for Demand Gen ad groups. Retrieval and
+  /// management of Demand Gen resources is currently in beta. This method is
+  /// only available to allowlisted users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the ad groups belong
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BulkEditAdGroupAssignedTargetingOptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BulkEditAdGroupAssignedTargetingOptionsResponse>
+  bulkEditAssignedTargetingOptions(
+    BulkEditAdGroupAssignedTargetingOptionsRequest request,
+    core.String advertiserId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v3/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroups:bulkEditAssignedTargetingOptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BulkEditAdGroupAssignedTargetingOptionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Lists assigned targeting options for multiple ad groups across targeting
   /// types.
@@ -837,6 +1045,102 @@ class AdvertisersAdGroupsResource {
     return BulkListAdGroupAssignedTargetingOptionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Creates a new ad group.
+  ///
+  /// Returns the newly created ad group if successful. This method is only
+  /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen
+  /// resources is currently in beta. This method is only available to
+  /// allowlisted users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Output only. The unique ID of the advertiser the ad group
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdGroup> create(
+    AdGroup request,
+    core.String advertiserId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v3/advertisers/' + core.Uri.encodeFull('$advertiserId') + '/adGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdGroup.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a AdGroup.
+  ///
+  /// Returns error code `NOT_FOUND` if the ad group does not exist. This method
+  /// is only supported for Demand Gen ad groups. Retrieval and management of
+  /// Demand Gen resources is currently in beta. This method is only available
+  /// to allowlisted users.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser this ad group belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adGroupId] - Required. The ID of the ad group to delete.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String adGroupId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v3/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroups/' +
+        core.Uri.encodeFull('$adGroupId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an ad group.
@@ -959,6 +1263,64 @@ class AdvertisersAdGroupsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Updates an existing ad group.
+  ///
+  /// Returns the updated ad group if successful. This method is only supported
+  /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources
+  /// is currently in beta. This method is only available to allowlisted users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Output only. The unique ID of the advertiser the ad group
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adGroupId] - Output only. The unique ID of the ad group. Assigned by the
+  /// system.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdGroup> patch(
+    AdGroup request,
+    core.String advertiserId,
+    core.String adGroupId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v3/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroups/' +
+        core.Uri.encodeFull('$adGroupId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdGroup.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class AdvertisersAdGroupsTargetingTypesResource {
@@ -981,6 +1343,377 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
+  /// Assigns a targeting option to an ad group.
+  ///
+  /// Returns the assigned targeting option if successful. This method is only
+  /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen
+  /// resources is currently in beta. This method is only available to
+  /// allowlisted users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the ad group belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adGroupId] - Required. The ID of the ad group the assigned targeting
+  /// option will belong to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [targetingType] - Required. Identifies the type of this assigned targeting
+  /// option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO`
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
+  /// or is unknown in this version.
+  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
+  /// websites or apps).
+  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
+  /// education or puzzle games).
+  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
+  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
+  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
+  /// on a specific day.
+  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
+  /// example, 18-24).
+  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
+  /// regions on a regional location list.
+  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
+  /// points of interest on a proximity location list.
+  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
+  /// female or male).
+  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
+  /// for video ads.
+  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
+  /// for video ads.
+  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
+  /// status (for example, parent or not a parent).
+  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
+  /// in a specific content instream position (for example, pre-roll, mid-roll,
+  /// or post-roll).
+  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
+  /// content outstream position.
+  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
+  /// example, tablet or connected TV).
+  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
+  /// audiences. Singleton field, at most one can exist on a single Lineitem at
+  /// a time.
+  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
+  /// example, Chrome).
+  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
+  /// income range (for example, top 10%).
+  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
+  /// position.
+  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
+  /// party verification (for example, IAS or DoubleVerify).
+  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
+  /// specific digital content label ratings (for example, DL-MA: suitable only
+  /// for mature audiences).
+  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
+  /// by sensitive categories (for example, adult).
+  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
+  /// example, web or app).
+  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
+  /// carrier or internet service provider (ISP) (for example, Comcast or
+  /// Orange).
+  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
+  /// system (for example, macOS).
+  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
+  /// make or model (for example, Roku or Samsung).
+  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
+  /// example, dog or retriever).
+  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
+  /// negative keyword list.
+  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
+  /// example, 80% viewable).
+  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
+  /// (for example, arts & entertainment).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
+  /// deals and auction packages.
+  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
+  /// example, English or Japanese).
+  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
+  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
+  /// (for example, a city or state).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
+  /// group of deals and auction packages.
+  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
+  /// exchanges.
+  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
+  /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
+  /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
+  /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AssignedTargetingOption].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AssignedTargetingOption> create(
+    AssignedTargetingOption request,
+    core.String advertiserId,
+    core.String adGroupId,
+    core.String targetingType, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v3/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroups/' +
+        core.Uri.encodeFull('$adGroupId') +
+        '/targetingTypes/' +
+        core.Uri.encodeFull('$targetingType') +
+        '/assignedTargetingOptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AssignedTargetingOption.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes an assigned targeting option from an ad group.
+  ///
+  /// This method is only supported for Demand Gen ad groups with the
+  /// AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of
+  /// Demand Gen resources is currently in beta. This method is only available
+  /// to allowlisted users.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser the ad group belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adGroupId] - Required. The ID of the ad group the assigned targeting
+  /// option belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [targetingType] - Required. Identifies the type of this assigned targeting
+  /// option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` *
+  /// `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` *
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
+  /// or is unknown in this version.
+  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
+  /// websites or apps).
+  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
+  /// education or puzzle games).
+  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
+  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
+  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
+  /// on a specific day.
+  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
+  /// example, 18-24).
+  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
+  /// regions on a regional location list.
+  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
+  /// points of interest on a proximity location list.
+  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
+  /// female or male).
+  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
+  /// for video ads.
+  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
+  /// for video ads.
+  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
+  /// status (for example, parent or not a parent).
+  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
+  /// in a specific content instream position (for example, pre-roll, mid-roll,
+  /// or post-roll).
+  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
+  /// content outstream position.
+  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
+  /// example, tablet or connected TV).
+  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
+  /// audiences. Singleton field, at most one can exist on a single Lineitem at
+  /// a time.
+  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
+  /// example, Chrome).
+  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
+  /// income range (for example, top 10%).
+  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
+  /// position.
+  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
+  /// party verification (for example, IAS or DoubleVerify).
+  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
+  /// specific digital content label ratings (for example, DL-MA: suitable only
+  /// for mature audiences).
+  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
+  /// by sensitive categories (for example, adult).
+  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
+  /// example, web or app).
+  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
+  /// carrier or internet service provider (ISP) (for example, Comcast or
+  /// Orange).
+  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
+  /// system (for example, macOS).
+  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
+  /// make or model (for example, Roku or Samsung).
+  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
+  /// example, dog or retriever).
+  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
+  /// negative keyword list.
+  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
+  /// example, 80% viewable).
+  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
+  /// (for example, arts & entertainment).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
+  /// deals and auction packages.
+  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
+  /// example, English or Japanese).
+  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
+  /// authorized sellers. If no targeting option of this type is assigned, the
+  /// resource uses the "Authorized Direct Sellers and Resellers" option by
+  /// default.
+  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
+  /// (for example, a city or state).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
+  /// group of deals and auction packages.
+  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
+  /// exchanges.
+  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
+  /// sub-exchanges.
+  /// - "TARGETING_TYPE_POI" : Target ads around a specific point of interest,
+  /// such as a notable building, a street address, or latitude/longitude
+  /// coordinates.
+  /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
+  /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
+  /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
+  /// native content position.
+  /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
+  /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
+  /// - "TARGETING_TYPE_YOUTUBE_VIDEO" : Target ads to a specific YouTube video.
+  /// Targeting of this type cannot be created or updated using the API.
+  /// Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL" : Target ads to a specific YouTube
+  /// channel. Targeting of this type cannot be created or updated using the
+  /// API. Although this targeting is inherited by child resources, **inherited
+  /// targeting of this type will not be retrieveable**.
+  /// - "TARGETING_TYPE_SESSION_POSITION" : Target ads to a serve it in a
+  /// certain position of a session. Only supported for Ad Group resources under
+  /// YouTube Programmatic Reservation line items. Targeting of this type cannot
+  /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
+  ///
+  /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
+  /// option to delete.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String adGroupId,
+    core.String targetingType,
+    core.String assignedTargetingOptionId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v3/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adGroups/' +
+        core.Uri.encodeFull('$adGroupId') +
+        '/targetingTypes/' +
+        core.Uri.encodeFull('$targetingType') +
+        '/assignedTargetingOptions/' +
+        core.Uri.encodeFull('$assignedTargetingOptionId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a single targeting option assigned to an ad group.
   ///
   /// Inherited assigned targeting options are not included.
@@ -999,8 +1732,9 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
   /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
   /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` *
-  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` *
-  /// `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_PARENTAL_STATUS` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` *
   /// `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` *
   /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
   /// Value must have pattern `^\[^/\]+$`.
@@ -1184,7 +1918,8 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` *
   /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
   /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
-  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` *
+  /// `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
   /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` *
   /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
   /// `TARGETING_TYPE_YOUTUBE_VIDEO`
@@ -4028,8 +4763,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
   /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
   /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` *
-  /// `TARGETING_TYPE_INVENTORY_MODE` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only
-  /// for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
   /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
   /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
   /// Value must have pattern `^\[^/\]+$`.
@@ -4234,8 +4969,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
   /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
   /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` *
-  /// `TARGETING_TYPE_INVENTORY_MODE` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only
-  /// for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
   /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
   /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
   /// Value must have pattern `^\[^/\]+$`.
@@ -5510,8 +6245,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
-  /// `TARGETING_TYPE_INVENTORY_MODE`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -5677,8 +6411,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
-  /// `TARGETING_TYPE_INVENTORY_MODE`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -8713,299 +9446,6 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
   }
 }
 
-class InventorySourcesResource {
-  final commons.ApiRequester _requester;
-
-  InventorySourcesResource(commons.ApiRequester client) : _requester = client;
-
-  /// Creates a new inventory source.
-  ///
-  /// Returns the newly created inventory source if successful.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [advertiserId] - The ID of the advertiser that the request is being made
-  /// within.
-  ///
-  /// [partnerId] - The ID of the partner that the request is being made within.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [InventorySource].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<InventorySource> create(
-    InventorySource request, {
-    core.String? advertiserId,
-    core.String? partnerId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'advertiserId': ?advertiserId == null ? null : [advertiserId],
-      'partnerId': ?partnerId == null ? null : [partnerId],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'v3/inventorySources';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return InventorySource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Edits read/write accessors of an inventory source.
-  ///
-  /// Returns the updated read_write_accessors for the inventory source.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [inventorySourceId] - Required. The ID of inventory source to update.
-  /// Value must have pattern `^\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [InventorySourceAccessors].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<InventorySourceAccessors> editInventorySourceReadWriteAccessors(
-    EditInventorySourceReadWriteAccessorsRequest request,
-    core.String inventorySourceId, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v3/inventorySources/' +
-        core.Uri.encodeFull('$inventorySourceId') +
-        ':editInventorySourceReadWriteAccessors';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return InventorySourceAccessors.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Gets an inventory source.
-  ///
-  /// Request parameters:
-  ///
-  /// [inventorySourceId] - Required. The ID of the inventory source to fetch.
-  /// Value must have pattern `^\[^/\]+$`.
-  ///
-  /// [advertiserId] - Optional. The ID of the DV360 advertiser to which the
-  /// fetched inventory source is permissioned. If the user only has access to
-  /// the advertiser and not the parent partner, use this field to specify the
-  /// relevant advertiser.
-  ///
-  /// [partnerId] - Required. The ID of the DV360 partner to which the fetched
-  /// inventory source is permissioned.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [InventorySource].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<InventorySource> get(
-    core.String inventorySourceId, {
-    core.String? advertiserId,
-    core.String? partnerId,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'advertiserId': ?advertiserId == null ? null : [advertiserId],
-      'partnerId': ?partnerId == null ? null : [partnerId],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v3/inventorySources/' + core.Uri.encodeFull('$inventorySourceId');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return InventorySource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Lists inventory sources that are accessible to the current user.
-  ///
-  /// The order is defined by the order_by parameter. If a filter by
-  /// entity_status is not specified, inventory sources with entity status
-  /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.
-  ///
-  /// Request parameters:
-  ///
-  /// [advertiserId] - The ID of the advertiser that has access to the inventory
-  /// source.
-  ///
-  /// [filter] - Allows filtering by inventory source fields. Supported syntax:
-  /// * Filter expressions are made up of one or more restrictions. *
-  /// Restrictions can be combined by `AND` or `OR` logical operators. A
-  /// sequence of restrictions implicitly uses `AND`. * A restriction has the
-  /// form of `{field} {operator} {value}`. * All fields must use the `EQUALS
-  /// (=)` operator. Supported fields: * `status.entityStatus` * `commitment` *
-  /// `deliveryMethod` * `rateDetails.rateType` * `exchange` Examples: * All
-  /// active inventory sources: `status.entityStatus="ENTITY_STATUS_ACTIVE"` *
-  /// Inventory sources belonging to Google Ad Manager or Rubicon exchanges:
-  /// `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The
-  /// length of this field should be no more than 500 characters. Reference our
-  /// \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
-  /// guide for more information.
-  ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `displayName` (default) The default sorting order is ascending. To specify
-  /// descending order for a field, a suffix "desc" should be added to the field
-  /// name. For example, `displayName desc`.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `200`. If
-  /// unspecified will default to `100`.
-  ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListInventorySources` method. If not specified, the
-  /// first page of results will be returned.
-  ///
-  /// [partnerId] - The ID of the partner that has access to the inventory
-  /// source.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListInventorySourcesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListInventorySourcesResponse> list({
-    core.String? advertiserId,
-    core.String? filter,
-    core.String? orderBy,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? partnerId,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'advertiserId': ?advertiserId == null ? null : [advertiserId],
-      'filter': ?filter == null ? null : [filter],
-      'orderBy': ?orderBy == null ? null : [orderBy],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'partnerId': ?partnerId == null ? null : [partnerId],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'v3/inventorySources';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListInventorySourcesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Updates an existing inventory source.
-  ///
-  /// Returns the updated inventory source if successful.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [inventorySourceId] - Output only. The unique ID of the inventory source.
-  /// Assigned by the system.
-  /// Value must have pattern `^\[^/\]+$`.
-  ///
-  /// [advertiserId] - The ID of the advertiser that the request is being made
-  /// within.
-  ///
-  /// [partnerId] - The ID of the partner that the request is being made within.
-  ///
-  /// [updateMask] - Required. The mask to control which fields to update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [InventorySource].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<InventorySource> patch(
-    InventorySource request,
-    core.String inventorySourceId, {
-    core.String? advertiserId,
-    core.String? partnerId,
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'advertiserId': ?advertiserId == null ? null : [advertiserId],
-      'partnerId': ?partnerId == null ? null : [partnerId],
-      'updateMask': ?updateMask == null ? null : [updateMask],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v3/inventorySources/' + core.Uri.encodeFull('$inventorySourceId');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return InventorySource.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
 class MediaResource {
   final commons.ApiRequester _requester;
 
@@ -11539,6 +11979,8 @@ typedef ActiveViewVideoViewabilityMetricConfig =
 /// A single ad group associated with a line item.
 class AdGroup {
   /// The format of the ads in the ad group.
+  ///
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "AD_GROUP_FORMAT_UNSPECIFIED" : Format value is not specified or is
   /// unknown in this version.
@@ -11553,24 +11995,43 @@ class AdGroup {
   /// including in-stream and bumper ads.
   /// - "AD_GROUP_FORMAT_MASTHEAD" : Masthead Ad that is surfaced on the top
   /// slot on the YouTube homepage.
+  /// - "AD_GROUP_FORMAT_DEMAND_GEN" : Demand Gen ads. Retrieval and management
+  /// of Demand Gen resources is currently in beta. This enum value is only
+  /// available to allowlisted users.
   core.String? adGroupFormat;
 
   /// The unique ID of the ad group.
   ///
   /// Assigned by the system.
+  ///
+  /// Output only.
   core.String? adGroupId;
 
+  /// Required for Demand Gen ad groups.
+  ///
+  /// Specifies the inventory control of the ad group.
+  ///
+  /// Optional.
+  AdGroupInventoryControl? adGroupInventoryControl;
+
   /// The unique ID of the advertiser the ad group belongs to.
+  ///
+  /// Output only.
   core.String? advertiserId;
 
   /// The bidding strategy used by the ad group.
   ///
-  /// Only the youtubeAndPartnersBid field can be used in the bidding strategy.
+  /// Only the youtubeAndPartnersBid and demandGenBid field can be used in the
+  /// bidding strategy.
+  ///
+  /// Optional.
   BiddingStrategy? bidStrategy;
 
   /// The display name of the ad group.
   ///
   /// Must be UTF-8 encoded with a maximum size of 255 bytes.
+  ///
+  /// Required.
   core.String? displayName;
 
   /// Controls whether or not the ad group can spend its budget and bid on
@@ -11578,6 +12039,8 @@ class AdGroup {
   ///
   /// If the ad group's parent line item is not active, the ad group can't spend
   /// its budget even if its own status is `ENTITY_STATUS_ACTIVE`.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "ENTITY_STATUS_UNSPECIFIED" : Default value when status is not specified
   /// or is unknown in this version.
@@ -11594,22 +12057,33 @@ class AdGroup {
   core.String? entityStatus;
 
   /// The unique ID of the line item that the ad group belongs to.
+  ///
+  /// Required. Immutable.
   core.String? lineItemId;
 
+  /// Identifier.
+  ///
   /// The resource name of the ad group.
+  ///
+  /// Output only.
   core.String? name;
 
   /// The settings of the product feed in this ad group.
+  ///
+  /// Optional.
   ProductFeedData? productFeedData;
 
   /// The \[optimized
   /// targeting\](//support.google.com/displayvideo/answer/12060859) settings of
   /// the ad group.
+  ///
+  /// Optional.
   TargetingExpansionConfig? targetingExpansion;
 
   AdGroup({
     this.adGroupFormat,
     this.adGroupId,
+    this.adGroupInventoryControl,
     this.advertiserId,
     this.bidStrategy,
     this.displayName,
@@ -11624,6 +12098,12 @@ class AdGroup {
     : this(
         adGroupFormat: json_['adGroupFormat'] as core.String?,
         adGroupId: json_['adGroupId'] as core.String?,
+        adGroupInventoryControl: json_.containsKey('adGroupInventoryControl')
+            ? AdGroupInventoryControl.fromJson(
+                json_['adGroupInventoryControl']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         advertiserId: json_['advertiserId'] as core.String?,
         bidStrategy: json_.containsKey('bidStrategy')
             ? BiddingStrategy.fromJson(
@@ -11650,6 +12130,7 @@ class AdGroup {
   core.Map<core.String, core.dynamic> toJson() {
     final adGroupFormat = this.adGroupFormat;
     final adGroupId = this.adGroupId;
+    final adGroupInventoryControl = this.adGroupInventoryControl;
     final advertiserId = this.advertiserId;
     final bidStrategy = this.bidStrategy;
     final displayName = this.displayName;
@@ -11661,6 +12142,7 @@ class AdGroup {
     return {
       'adGroupFormat': ?adGroupFormat,
       'adGroupId': ?adGroupId,
+      'adGroupInventoryControl': ?adGroupInventoryControl,
       'advertiserId': ?advertiserId,
       'bidStrategy': ?bidStrategy,
       'displayName': ?displayName,
@@ -11684,10 +12166,7 @@ class AdGroupAd {
 
   /// The unique ID of the ad group that the ad belongs to.
   ///
-  /// *Caution*: Parent ad groups for Demand Gen ads are not currently
-  /// retrieveable using `advertisers.adGroups.list` or
-  /// `advertisers.adGroups.get`. Demand Gen ads can be identified by the
-  /// absence of the `ad_details` union field.
+  /// Required. Immutable.
   core.String? adGroupId;
 
   /// The policy approval status of the ad.
@@ -11696,6 +12175,8 @@ class AdGroupAd {
   AdPolicy? adPolicy;
 
   /// List of URLs used by the ad.
+  ///
+  /// Output only.
   core.List<AdUrl>? adUrls;
 
   /// The unique ID of the advertiser the ad belongs to.
@@ -11706,22 +12187,69 @@ class AdGroupAd {
   /// Details of an \[audio
   /// ad\](//support.google.com/displayvideo/answer/6274216) used for reach
   /// marketing objectives.
+  ///
+  /// Output only.
   AudioAd? audioAd;
 
   /// Details of a \[non-skippable short video
   /// ad\](//support.google.com/displayvideo/answer/6274216), equal to or less
   /// than 6 seconds, used for reach.
+  ///
+  /// Output only.
   BumperAd? bumperAd;
+
+  /// The DCM tracking ad info.
+  ///
+  /// Only valid for Demand Gen ads. To remove the DCM tracking ad info, please
+  /// leave this field empty. Retrieval and management of Demand Gen resources
+  /// is currently in beta. This field is only available to allowlisted users.
+  ///
+  /// Optional.
+  DcmTrackingInfo? dcmTrackingInfo;
+
+  /// Details of a \[Demand Gen carousel
+  /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#CarouselAd).
+  ///
+  /// Retrieval and management of Demand Gen resources is currently in beta.
+  /// This field is only available to allowlisted users.
+  DemandGenCarouselAd? demandGenCarouselAd;
+
+  /// Details of a \[Demand Gen image
+  /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#ImageAd).
+  ///
+  /// Retrieval and management of Demand Gen resources is currently in beta.
+  /// This field is only available to allowlisted users.
+  DemandGenImageAd? demandGenImageAd;
+
+  /// Details of a \[Demand Gen product
+  /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#Product-onlyAd).
+  ///
+  /// Retrieval and management of Demand Gen resources is currently in beta.
+  /// This field is only available to allowlisted users.
+  DemandGenProductAd? demandGenProductAd;
+
+  /// Details of a \[Demand Gen video
+  /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#VideoAd).
+  ///
+  /// Retrieval and management of Demand Gen resources is currently in beta.
+  /// This field is only available to allowlisted users.
+  DemandGenVideoAd? demandGenVideoAd;
 
   /// The display name of the ad.
   ///
   /// Must be UTF-8 encoded with a maximum size of 255 bytes.
+  ///
+  /// Required.
   core.String? displayName;
 
   /// Details of an ad sourced from a Display & Video 360 creative.
+  ///
+  /// Output only.
   DisplayVideoSourceAd? displayVideoSourceAd;
 
   /// The entity status of the ad.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "ENTITY_STATUS_UNSPECIFIED" : Default value when status is not specified
   /// or is unknown in this version.
@@ -11740,10 +12268,14 @@ class AdGroupAd {
   /// Details of an \[in-stream ad skippable after 5
   /// seconds\](//support.google.com/displayvideo/answer/6274216), used for
   /// brand awareness or reach marketing objectives.
+  ///
+  /// Output only.
   InStreamAd? inStreamAd;
 
   /// Details of an \[ad served on the YouTube Home
   /// feed\](//support.google.com/google-ads/answer/9709826).
+  ///
+  /// Output only.
   MastheadAd? mastheadAd;
 
   /// The resource name of the ad.
@@ -11754,16 +12286,22 @@ class AdGroupAd {
   /// Details of a \[non-skippable short in-stream video
   /// ad\](//support.google.com/displayvideo/answer/6274216), between 6 and 15
   /// seconds, used for reach marketing objectives.
+  ///
+  /// Output only.
   NonSkippableAd? nonSkippableAd;
 
   /// Details of an \[ad promoting a
   /// video\](//support.google.com/displayvideo/answer/6274216) that shows in
   /// places of discovery.
+  ///
+  /// Output only.
   VideoDiscoveryAd? videoDiscoverAd;
 
   /// Details of an \[ad used in a video action
   /// campaign\](//support.google.com/google-ads/answer/10147229) to drive
   /// actions to the business, service or product.
+  ///
+  /// Output only.
   VideoPerformanceAd? videoPerformanceAd;
 
   AdGroupAd({
@@ -11774,6 +12312,11 @@ class AdGroupAd {
     this.advertiserId,
     this.audioAd,
     this.bumperAd,
+    this.dcmTrackingInfo,
+    this.demandGenCarouselAd,
+    this.demandGenImageAd,
+    this.demandGenProductAd,
+    this.demandGenVideoAd,
     this.displayName,
     this.displayVideoSourceAd,
     this.entityStatus,
@@ -11809,6 +12352,35 @@ class AdGroupAd {
         bumperAd: json_.containsKey('bumperAd')
             ? BumperAd.fromJson(
                 json_['bumperAd'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dcmTrackingInfo: json_.containsKey('dcmTrackingInfo')
+            ? DcmTrackingInfo.fromJson(
+                json_['dcmTrackingInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        demandGenCarouselAd: json_.containsKey('demandGenCarouselAd')
+            ? DemandGenCarouselAd.fromJson(
+                json_['demandGenCarouselAd']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        demandGenImageAd: json_.containsKey('demandGenImageAd')
+            ? DemandGenImageAd.fromJson(
+                json_['demandGenImageAd']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        demandGenProductAd: json_.containsKey('demandGenProductAd')
+            ? DemandGenProductAd.fromJson(
+                json_['demandGenProductAd']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        demandGenVideoAd: json_.containsKey('demandGenVideoAd')
+            ? DemandGenVideoAd.fromJson(
+                json_['demandGenVideoAd']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         displayName: json_['displayName'] as core.String?,
@@ -11856,6 +12428,11 @@ class AdGroupAd {
     final advertiserId = this.advertiserId;
     final audioAd = this.audioAd;
     final bumperAd = this.bumperAd;
+    final dcmTrackingInfo = this.dcmTrackingInfo;
+    final demandGenCarouselAd = this.demandGenCarouselAd;
+    final demandGenImageAd = this.demandGenImageAd;
+    final demandGenProductAd = this.demandGenProductAd;
+    final demandGenVideoAd = this.demandGenVideoAd;
     final displayName = this.displayName;
     final displayVideoSourceAd = this.displayVideoSourceAd;
     final entityStatus = this.entityStatus;
@@ -11873,6 +12450,11 @@ class AdGroupAd {
       'advertiserId': ?advertiserId,
       'audioAd': ?audioAd,
       'bumperAd': ?bumperAd,
+      'dcmTrackingInfo': ?dcmTrackingInfo,
+      'demandGenCarouselAd': ?demandGenCarouselAd,
+      'demandGenImageAd': ?demandGenImageAd,
+      'demandGenProductAd': ?demandGenProductAd,
+      'demandGenVideoAd': ?demandGenVideoAd,
       'displayName': ?displayName,
       'displayVideoSourceAd': ?displayVideoSourceAd,
       'entityStatus': ?entityStatus,
@@ -11917,6 +12499,47 @@ class AdGroupAssignedTargetingOption {
     return {
       'adGroupId': ?adGroupId,
       'assignedTargetingOption': ?assignedTargetingOption,
+    };
+  }
+}
+
+/// The inventory control of the ad group.
+class AdGroupInventoryControl {
+  /// The inventory strategy.
+  /// Possible string values are:
+  /// - "AD_GROUP_INVENTORY_STRATEGY_UNSPECIFIED" : Not specified or unknown.
+  /// - "AD_GROUP_INVENTORY_STRATEGY_ALL_GOOGLE_AND_DISPLAY_NETWORK_INVENTORY" :
+  /// The ad group is opted-in to all Google and Display Network inventory.
+  /// - "AD_GROUP_INVENTORY_STRATEGY_ALL_GOOGLE_INVENTORY" : The ad group is
+  /// opted-in to all Google inventory.
+  core.String? adGroupInventoryStrategy;
+
+  /// The selected inventories.
+  SelectedInventories? selectedInventories;
+
+  AdGroupInventoryControl({
+    this.adGroupInventoryStrategy,
+    this.selectedInventories,
+  });
+
+  AdGroupInventoryControl.fromJson(core.Map json_)
+    : this(
+        adGroupInventoryStrategy:
+            json_['adGroupInventoryStrategy'] as core.String?,
+        selectedInventories: json_.containsKey('selectedInventories')
+            ? SelectedInventories.fromJson(
+                json_['selectedInventories']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adGroupInventoryStrategy = this.adGroupInventoryStrategy;
+    final selectedInventories = this.selectedInventories;
+    return {
+      'adGroupInventoryStrategy': ?adGroupInventoryStrategy,
+      'selectedInventories': ?selectedInventories,
     };
   }
 }
@@ -14308,16 +14931,26 @@ typedef AuthorizedSellerStatusTargetingOptionDetails =
 ///
 /// Bid strategy determines the bid price.
 class BiddingStrategy {
+  /// A bid strategy used by Demand Gen resources.
+  ///
+  /// It can only be used for a Demand Gen line item or ad group entity.
+  DemandGenBiddingStrategy? demandGenBid;
+
   /// A strategy that uses a fixed bid price.
   FixedBidStrategy? fixedBid;
 
-  /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`,
+  /// A strategy that automatically adjusts the bid to optimize to your
+  /// performance goal while spending the full budget.
+  ///
+  /// At insertion order level, the markup_type of line items cannot be set to
+  /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`. In addition, the
+  /// performance_goal_type value assigned to an insertion order determines the
+  /// possible line_item_type values available for line items under that
+  /// insertion order: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`,
   /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, and
   /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` only allow for
   /// `LINE_ITEM_TYPE_DISPLAY_DEFAULT` or `LINE_ITEM_TYPE_VIDEO_DEFAULT` line
-  /// items.
-  ///
-  /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` and
+  /// items. * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` and
   /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` only allow for
   /// `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. *
   /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH` only allows for
@@ -14337,6 +14970,7 @@ class BiddingStrategy {
   YoutubeAndPartnersBiddingStrategy? youtubeAndPartnersBid;
 
   BiddingStrategy({
+    this.demandGenBid,
     this.fixedBid,
     this.maximizeSpendAutoBid,
     this.performanceGoalAutoBid,
@@ -14345,6 +14979,11 @@ class BiddingStrategy {
 
   BiddingStrategy.fromJson(core.Map json_)
     : this(
+        demandGenBid: json_.containsKey('demandGenBid')
+            ? DemandGenBiddingStrategy.fromJson(
+                json_['demandGenBid'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fixedBid: json_.containsKey('fixedBid')
             ? FixedBidStrategy.fromJson(
                 json_['fixedBid'] as core.Map<core.String, core.dynamic>,
@@ -14371,11 +15010,13 @@ class BiddingStrategy {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final demandGenBid = this.demandGenBid;
     final fixedBid = this.fixedBid;
     final maximizeSpendAutoBid = this.maximizeSpendAutoBid;
     final performanceGoalAutoBid = this.performanceGoalAutoBid;
     final youtubeAndPartnersBid = this.youtubeAndPartnersBid;
     return {
+      'demandGenBid': ?demandGenBid,
       'fixedBid': ?fixedBid,
       'maximizeSpendAutoBid': ?maximizeSpendAutoBid,
       'performanceGoalAutoBid': ?performanceGoalAutoBid,
@@ -14469,6 +15110,135 @@ class BudgetSummary {
   }
 }
 
+/// Request message for BulkEditAdGroupAssignedTargetingOptions.
+class BulkEditAdGroupAssignedTargetingOptionsRequest {
+  /// The IDs of the ad groups the assigned targeting options will belong to.
+  ///
+  /// A maximum of 25 ad group IDs can be specified.
+  ///
+  /// Required.
+  core.List<core.String>? adGroupIds;
+
+  /// The assigned targeting options to create in batch, specified as a list of
+  /// `CreateAssignedTargetingOptionRequest`.
+  ///
+  /// Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO`
+  ///
+  /// Optional.
+  core.List<CreateAssignedTargetingOptionsRequest>? createRequests;
+
+  /// The assigned targeting options to delete in batch, specified as a list of
+  /// `DeleteAssignedTargetingOptionsRequest`.
+  ///
+  /// Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` *
+  /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` *
+  /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO`
+  ///
+  /// Optional.
+  core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
+
+  BulkEditAdGroupAssignedTargetingOptionsRequest({
+    this.adGroupIds,
+    this.createRequests,
+    this.deleteRequests,
+  });
+
+  BulkEditAdGroupAssignedTargetingOptionsRequest.fromJson(core.Map json_)
+    : this(
+        adGroupIds: (json_['adGroupIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        createRequests: (json_['createRequests'] as core.List?)
+            ?.map(
+              (value) => CreateAssignedTargetingOptionsRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        deleteRequests: (json_['deleteRequests'] as core.List?)
+            ?.map(
+              (value) => DeleteAssignedTargetingOptionsRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adGroupIds = this.adGroupIds;
+    final createRequests = this.createRequests;
+    final deleteRequests = this.deleteRequests;
+    return {
+      'adGroupIds': ?adGroupIds,
+      'createRequests': ?createRequests,
+      'deleteRequests': ?deleteRequests,
+    };
+  }
+}
+
+/// Response message for BulkEditAssignedTargetingOptions.
+class BulkEditAdGroupAssignedTargetingOptionsResponse {
+  /// The error information for each ad group that failed to update.
+  ///
+  /// Output only.
+  core.List<Status>? errors;
+
+  /// The IDs of the ad groups which failed to update.
+  ///
+  /// Output only.
+  core.List<core.String>? failedAdGroupIds;
+
+  /// The IDs of the ad groups which were successfully updated.
+  ///
+  /// Output only.
+  core.List<core.String>? updatedAdGroupIds;
+
+  BulkEditAdGroupAssignedTargetingOptionsResponse({
+    this.errors,
+    this.failedAdGroupIds,
+    this.updatedAdGroupIds,
+  });
+
+  BulkEditAdGroupAssignedTargetingOptionsResponse.fromJson(core.Map json_)
+    : this(
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) =>
+                  Status.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        failedAdGroupIds: (json_['failedAdGroupIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        updatedAdGroupIds: (json_['updatedAdGroupIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    final failedAdGroupIds = this.failedAdGroupIds;
+    final updatedAdGroupIds = this.updatedAdGroupIds;
+    return {
+      'errors': ?errors,
+      'failedAdGroupIds': ?failedAdGroupIds,
+      'updatedAdGroupIds': ?updatedAdGroupIds,
+    };
+  }
+}
+
 /// Request message for BulkEditAdvertiserAssignedTargetingOptions.
 class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /// The assigned targeting options to create in batch, specified as a list of
@@ -14476,8 +15246,7 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
-  /// `TARGETING_TYPE_INVENTORY_MODE`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   core.List<CreateAssignedTargetingOptionsRequest>? createRequests;
 
   /// The assigned targeting options to delete in batch, specified as a list of
@@ -14485,8 +15254,7 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
-  /// `TARGETING_TYPE_INVENTORY_MODE`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
   BulkEditAdvertiserAssignedTargetingOptionsRequest({
@@ -15818,6 +16586,102 @@ class CampaignGoal {
   }
 }
 
+/// Details for a Demand Gen carousel card.
+class CarouselCard {
+  /// The text on the call-to-action button shown on the card.
+  ///
+  /// Must use 10 characters or less.
+  ///
+  /// Required.
+  core.String? callToAction;
+
+  /// The URL address of the webpage that people reach after they click the card
+  /// on a mobile device.
+  ///
+  /// Optional.
+  core.String? finalMobileUrl;
+
+  /// The URL address of the webpage that people reach after they click the
+  /// card.
+  ///
+  /// Required.
+  core.String? finalUrl;
+
+  /// The headline of the card.
+  ///
+  /// Required.
+  core.String? headline;
+
+  /// The marketing image shown on the card.
+  ///
+  /// Optional.
+  ImageAsset? marketingImage;
+
+  /// The portrait marketing image shown on the card.
+  ///
+  /// Optional.
+  ImageAsset? portraitMarketingImage;
+
+  /// The square marketing image shown on the card.
+  ///
+  /// Optional.
+  ImageAsset? squareMarketingImage;
+
+  CarouselCard({
+    this.callToAction,
+    this.finalMobileUrl,
+    this.finalUrl,
+    this.headline,
+    this.marketingImage,
+    this.portraitMarketingImage,
+    this.squareMarketingImage,
+  });
+
+  CarouselCard.fromJson(core.Map json_)
+    : this(
+        callToAction: json_['callToAction'] as core.String?,
+        finalMobileUrl: json_['finalMobileUrl'] as core.String?,
+        finalUrl: json_['finalUrl'] as core.String?,
+        headline: json_['headline'] as core.String?,
+        marketingImage: json_.containsKey('marketingImage')
+            ? ImageAsset.fromJson(
+                json_['marketingImage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        portraitMarketingImage: json_.containsKey('portraitMarketingImage')
+            ? ImageAsset.fromJson(
+                json_['portraitMarketingImage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        squareMarketingImage: json_.containsKey('squareMarketingImage')
+            ? ImageAsset.fromJson(
+                json_['squareMarketingImage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final callToAction = this.callToAction;
+    final finalMobileUrl = this.finalMobileUrl;
+    final finalUrl = this.finalUrl;
+    final headline = this.headline;
+    final marketingImage = this.marketingImage;
+    final portraitMarketingImage = this.portraitMarketingImage;
+    final squareMarketingImage = this.squareMarketingImage;
+    return {
+      'callToAction': ?callToAction,
+      'finalMobileUrl': ?finalMobileUrl,
+      'finalUrl': ?finalUrl,
+      'headline': ?headline,
+      'marketingImage': ?marketingImage,
+      'portraitMarketingImage': ?portraitMarketingImage,
+      'squareMarketingImage': ?squareMarketingImage,
+    };
+  }
+}
+
 /// Details for assigned carrier and ISP targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
@@ -16137,9 +17001,22 @@ class ConversionCountingConfig {
   /// post-click conversions, set a value of 50000.
   core.String? postViewCountPercentageMillis;
 
+  /// The attribution model to use for conversion measurement.
+  ///
+  /// This attribution model will determine how conversions are counted. The
+  /// Primary model can be set by you for a floodlight config or group. More
+  /// details [here](https://support.google.com/displayvideo/answer/7409983).
+  /// Only applicable to Demand Gen line items. Retrieval and management of
+  /// Demand Gen resources is currently in beta. This field is only available to
+  /// allowlisted users.
+  ///
+  /// Optional.
+  core.String? primaryAttributionModelId;
+
   ConversionCountingConfig({
     this.floodlightActivityConfigs,
     this.postViewCountPercentageMillis,
+    this.primaryAttributionModelId,
   });
 
   ConversionCountingConfig.fromJson(core.Map json_)
@@ -16154,14 +17031,18 @@ class ConversionCountingConfig {
                 .toList(),
         postViewCountPercentageMillis:
             json_['postViewCountPercentageMillis'] as core.String?,
+        primaryAttributionModelId:
+            json_['primaryAttributionModelId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final floodlightActivityConfigs = this.floodlightActivityConfigs;
     final postViewCountPercentageMillis = this.postViewCountPercentageMillis;
+    final primaryAttributionModelId = this.primaryAttributionModelId;
     return {
       'floodlightActivityConfigs': ?floodlightActivityConfigs,
       'postViewCountPercentageMillis': ?postViewCountPercentageMillis,
+      'primaryAttributionModelId': ?primaryAttributionModelId,
     };
   }
 }
@@ -17253,104 +18134,6 @@ class Creative {
   }
 }
 
-/// Creative requirements configuration for the inventory source.
-class CreativeConfig {
-  /// The type of creative that can be assigned to the inventory source.
-  ///
-  /// Only the following types are supported: * `CREATIVE_TYPE_STANDARD` *
-  /// `CREATIVE_TYPE_VIDEO`
-  /// Possible string values are:
-  /// - "CREATIVE_TYPE_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
-  /// - "CREATIVE_TYPE_STANDARD" : Standard display creative. Create and update
-  /// methods are supported for this creative type if the hosting_source is one
-  /// of the following: * `HOSTING_SOURCE_HOSTED` * `HOSTING_SOURCE_THIRD_PARTY`
-  /// - "CREATIVE_TYPE_EXPANDABLE" : Expandable creative. Create and update
-  /// methods are supported for this creative type if the hosting_source is
-  /// `HOSTING_SOURCE_THIRD_PARTY`
-  /// - "CREATIVE_TYPE_VIDEO" : Video creative. Create and update methods are
-  /// supported for this creative type if the hosting_source is one of the
-  /// following: * `HOSTING_SOURCE_HOSTED` * `HOSTING_SOURCE_THIRD_PARTY`
-  /// - "CREATIVE_TYPE_NATIVE" : Native creative rendered by publishers with
-  /// assets from advertiser. Create and update methods are supported for this
-  /// creative type if the hosting_source is `HOSTING_SOURCE_HOSTED`
-  /// - "CREATIVE_TYPE_TEMPLATED_APP_INSTALL" : Templated app install mobile
-  /// creative (banner). Create and update methods are **not** supported for
-  /// this creative type.
-  /// - "CREATIVE_TYPE_NATIVE_SITE_SQUARE" : Square native creative. Create and
-  /// update methods are supported for this creative type if the hosting_source
-  /// is `HOSTING_SOURCE_HOSTED`
-  /// - "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_INTERSTITIAL" : Interstitial
-  /// creative including both display and video. Create and update methods are
-  /// **not** supported for this creative type.
-  /// - "CREATIVE_TYPE_LIGHTBOX" : Responsive and expandable Lightbox creative.
-  /// Create and update methods are **not** supported for this creative type.
-  /// - "CREATIVE_TYPE_NATIVE_APP_INSTALL" : Native app install creative. Create
-  /// and update methods are **not** supported for this creative type.
-  /// - "CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE" : Square native app install
-  /// creative. Create and update methods are **not** supported for this
-  /// creative type.
-  /// - "CREATIVE_TYPE_AUDIO" : Audio creative. Create and update methods are
-  /// supported for this creative type if the hosting_source is
-  /// `HOSTING_SOURCE_HOSTED`
-  /// - "CREATIVE_TYPE_PUBLISHER_HOSTED" : Publisher hosted creative. Create and
-  /// update methods are **not** supported for this creative type.
-  /// - "CREATIVE_TYPE_NATIVE_VIDEO" : Native video creative. Create and update
-  /// methods are supported for this creative type if the hosting_source is
-  /// `HOSTING_SOURCE_HOSTED`
-  /// - "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO" : Templated app install
-  /// mobile video creative. Create and update methods are **not** supported for
-  /// this creative type.
-  /// - "CREATIVE_TYPE_ASSET_BASED_CREATIVE" : Asset-based creative. Create and
-  /// update methods are supported for this creative type if the hosting_source
-  /// is `HOSTING_SOURCE_HOSTED`.
-  core.String? creativeType;
-
-  /// The configuration for display creatives.
-  ///
-  /// Applicable when creative_type is `CREATIVE_TYPE_STANDARD`.
-  InventorySourceDisplayCreativeConfig? displayCreativeConfig;
-
-  /// The configuration for video creatives.
-  ///
-  /// Applicable when creative_type is `CREATIVE_TYPE_VIDEO`.
-  InventorySourceVideoCreativeConfig? videoCreativeConfig;
-
-  CreativeConfig({
-    this.creativeType,
-    this.displayCreativeConfig,
-    this.videoCreativeConfig,
-  });
-
-  CreativeConfig.fromJson(core.Map json_)
-    : this(
-        creativeType: json_['creativeType'] as core.String?,
-        displayCreativeConfig: json_.containsKey('displayCreativeConfig')
-            ? InventorySourceDisplayCreativeConfig.fromJson(
-                json_['displayCreativeConfig']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        videoCreativeConfig: json_.containsKey('videoCreativeConfig')
-            ? InventorySourceVideoCreativeConfig.fromJson(
-                json_['videoCreativeConfig']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final creativeType = this.creativeType;
-    final displayCreativeConfig = this.displayCreativeConfig;
-    final videoCreativeConfig = this.videoCreativeConfig;
-    return {
-      'creativeType': ?creativeType,
-      'displayCreativeConfig': ?displayCreativeConfig,
-      'videoCreativeConfig': ?videoCreativeConfig,
-    };
-  }
-}
-
 /// A single custom bidding algorithm.
 class CustomBiddingAlgorithm {
   /// The unique ID of the advertiser that owns the custom bidding algorithm.
@@ -17824,10 +18607,716 @@ class DateRange {
 typedef DayAndTimeAssignedTargetingOptionDetails =
     $DayAndTimeAssignedTargetingOptionDetails;
 
+/// Details on the DCM tracking.
+typedef DcmTrackingInfo = $DcmTrackingInfo;
+
 /// A request listing which assigned targeting options of a given targeting type
 /// should be deleted.
 typedef DeleteAssignedTargetingOptionsRequest =
     $DeleteAssignedTargetingOptionsRequest;
+
+/// Settings that control the bid strategy for Demand Gen resources.
+typedef DemandGenBiddingStrategy = $DemandGenBiddingStrategy;
+
+/// Details for a Demand Gen carousel ad.
+class DemandGenCarouselAd {
+  /// The business name shown on the ad.
+  ///
+  /// Required.
+  core.String? businessName;
+
+  /// The list of cards shown on the ad.
+  ///
+  /// Required.
+  core.List<CarouselCard>? cards;
+
+  /// The custom parameters and accompanying values to add to the tracking URL.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? customParameters;
+
+  /// The description of the ad.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// The URL address of the webpage that people reach after they click the ad.
+  ///
+  /// Required.
+  core.String? finalUrl;
+
+  /// The suffix to append to landing page URLs.
+  ///
+  /// Optional.
+  core.String? finalUrlSuffix;
+
+  /// The headline of the ad.
+  ///
+  /// Required.
+  core.String? headline;
+
+  /// The logo image used by this ad.
+  ///
+  /// Required.
+  ImageAsset? logo;
+
+  /// The URL address loaded in the background for tracking purposes.
+  ///
+  /// Output only.
+  core.String? trackingUrl;
+
+  /// The tracking URL specified by the user manually.
+  ///
+  /// Optional.
+  core.String? userSpecifiedTrackingUrl;
+
+  DemandGenCarouselAd({
+    this.businessName,
+    this.cards,
+    this.customParameters,
+    this.description,
+    this.finalUrl,
+    this.finalUrlSuffix,
+    this.headline,
+    this.logo,
+    this.trackingUrl,
+    this.userSpecifiedTrackingUrl,
+  });
+
+  DemandGenCarouselAd.fromJson(core.Map json_)
+    : this(
+        businessName: json_['businessName'] as core.String?,
+        cards: (json_['cards'] as core.List?)
+            ?.map(
+              (value) => CarouselCard.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        customParameters:
+            (json_['customParameters'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        description: json_['description'] as core.String?,
+        finalUrl: json_['finalUrl'] as core.String?,
+        finalUrlSuffix: json_['finalUrlSuffix'] as core.String?,
+        headline: json_['headline'] as core.String?,
+        logo: json_.containsKey('logo')
+            ? ImageAsset.fromJson(
+                json_['logo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        trackingUrl: json_['trackingUrl'] as core.String?,
+        userSpecifiedTrackingUrl:
+            json_['userSpecifiedTrackingUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessName = this.businessName;
+    final cards = this.cards;
+    final customParameters = this.customParameters;
+    final description = this.description;
+    final finalUrl = this.finalUrl;
+    final finalUrlSuffix = this.finalUrlSuffix;
+    final headline = this.headline;
+    final logo = this.logo;
+    final trackingUrl = this.trackingUrl;
+    final userSpecifiedTrackingUrl = this.userSpecifiedTrackingUrl;
+    return {
+      'businessName': ?businessName,
+      'cards': ?cards,
+      'customParameters': ?customParameters,
+      'description': ?description,
+      'finalUrl': ?finalUrl,
+      'finalUrlSuffix': ?finalUrlSuffix,
+      'headline': ?headline,
+      'logo': ?logo,
+      'trackingUrl': ?trackingUrl,
+      'userSpecifiedTrackingUrl': ?userSpecifiedTrackingUrl,
+    };
+  }
+}
+
+/// Details for a Demand Gen image ad.
+class DemandGenImageAd {
+  /// The business name shown on the ad.
+  ///
+  /// Required.
+  core.String? businessName;
+
+  /// The call-to-action button shown on the ad.
+  ///
+  /// Required.
+  core.String? callToAction;
+
+  /// The custom parameters and accompanying values to add to the tracking URL.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? customParameters;
+
+  /// The list of descriptions shown on the ad.
+  ///
+  /// Required.
+  core.List<core.String>? descriptions;
+
+  /// The URL address of the webpage that people reach after they click the ad
+  /// on a mobile device.
+  ///
+  /// Optional.
+  core.String? finalMobileUrl;
+
+  /// The URL address of the webpage that people reach after they click the ad.
+  ///
+  /// Required.
+  core.String? finalUrl;
+
+  /// The suffix to append to landing page URLs.
+  ///
+  /// Optional.
+  core.String? finalUrlSuffix;
+
+  /// The list of headlines shown on the ad.
+  ///
+  /// Required.
+  core.List<core.String>? headlines;
+
+  /// The list of logo images shown on the ad.
+  core.List<ImageAsset>? logoImages;
+
+  /// The list of marketing images shown on the ad.
+  core.List<ImageAsset>? marketingImages;
+
+  /// The list of portrait marketing images shown on the ad.
+  core.List<ImageAsset>? portraitMarketingImages;
+
+  /// The list of square marketing images shown on the ad.
+  core.List<ImageAsset>? squareMarketingImages;
+
+  /// The URL address loaded in the background for tracking purposes.
+  ///
+  /// Output only.
+  core.String? trackingUrl;
+
+  /// The tracking URL specified by the user manually.
+  ///
+  /// Optional.
+  core.String? userSpecifiedTrackingUrl;
+
+  DemandGenImageAd({
+    this.businessName,
+    this.callToAction,
+    this.customParameters,
+    this.descriptions,
+    this.finalMobileUrl,
+    this.finalUrl,
+    this.finalUrlSuffix,
+    this.headlines,
+    this.logoImages,
+    this.marketingImages,
+    this.portraitMarketingImages,
+    this.squareMarketingImages,
+    this.trackingUrl,
+    this.userSpecifiedTrackingUrl,
+  });
+
+  DemandGenImageAd.fromJson(core.Map json_)
+    : this(
+        businessName: json_['businessName'] as core.String?,
+        callToAction: json_['callToAction'] as core.String?,
+        customParameters:
+            (json_['customParameters'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        descriptions: (json_['descriptions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        finalMobileUrl: json_['finalMobileUrl'] as core.String?,
+        finalUrl: json_['finalUrl'] as core.String?,
+        finalUrlSuffix: json_['finalUrlSuffix'] as core.String?,
+        headlines: (json_['headlines'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        logoImages: (json_['logoImages'] as core.List?)
+            ?.map(
+              (value) => ImageAsset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        marketingImages: (json_['marketingImages'] as core.List?)
+            ?.map(
+              (value) => ImageAsset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        portraitMarketingImages:
+            (json_['portraitMarketingImages'] as core.List?)
+                ?.map(
+                  (value) => ImageAsset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        squareMarketingImages: (json_['squareMarketingImages'] as core.List?)
+            ?.map(
+              (value) => ImageAsset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        trackingUrl: json_['trackingUrl'] as core.String?,
+        userSpecifiedTrackingUrl:
+            json_['userSpecifiedTrackingUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessName = this.businessName;
+    final callToAction = this.callToAction;
+    final customParameters = this.customParameters;
+    final descriptions = this.descriptions;
+    final finalMobileUrl = this.finalMobileUrl;
+    final finalUrl = this.finalUrl;
+    final finalUrlSuffix = this.finalUrlSuffix;
+    final headlines = this.headlines;
+    final logoImages = this.logoImages;
+    final marketingImages = this.marketingImages;
+    final portraitMarketingImages = this.portraitMarketingImages;
+    final squareMarketingImages = this.squareMarketingImages;
+    final trackingUrl = this.trackingUrl;
+    final userSpecifiedTrackingUrl = this.userSpecifiedTrackingUrl;
+    return {
+      'businessName': ?businessName,
+      'callToAction': ?callToAction,
+      'customParameters': ?customParameters,
+      'descriptions': ?descriptions,
+      'finalMobileUrl': ?finalMobileUrl,
+      'finalUrl': ?finalUrl,
+      'finalUrlSuffix': ?finalUrlSuffix,
+      'headlines': ?headlines,
+      'logoImages': ?logoImages,
+      'marketingImages': ?marketingImages,
+      'portraitMarketingImages': ?portraitMarketingImages,
+      'squareMarketingImages': ?squareMarketingImages,
+      'trackingUrl': ?trackingUrl,
+      'userSpecifiedTrackingUrl': ?userSpecifiedTrackingUrl,
+    };
+  }
+}
+
+/// Details for a Demand Gen product ad.
+class DemandGenProductAd {
+  /// The business name shown on the ad.
+  ///
+  /// Required.
+  core.String? businessName;
+
+  /// The call-to-action button shown on the ad.
+  ///
+  /// The supported values are: * `AUTOMATED` * `APPLY_NOW` * `BOOK_NOW` *
+  /// `CONTACT_US` * `DOWNLOAD` * `GET_QUOTE` * `LEARN_MORE` * `SHOP_NOW` *
+  /// `SIGN_UP` * `SUBSCRIBE`
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CALL_TO_ACTION_UNSPECIFIED" : Not specified or unknown.
+  /// - "AUTOMATED" : Automated.
+  /// - "LEARN_MORE" : Learn more.
+  /// - "GET_QUOTE" : Get quote.
+  /// - "APPLY_NOW" : Apply now.
+  /// - "SIGN_UP" : Sign up.
+  /// - "CONTACT_US" : Contact us.
+  /// - "SUBSCRIBE" : Subscribe.
+  /// - "DOWNLOAD" : Download.
+  /// - "BOOK_NOW" : Book now.
+  /// - "SHOP_NOW" : Shop now.
+  /// - "BUY_NOW" : Buy now.
+  /// - "DONATE_NOW" : Donate now.
+  /// - "ORDER_NOW" : Order now.
+  /// - "PLAY_NOW" : Play now.
+  /// - "SEE_MORE" : See more.
+  /// - "START_NOW" : Start now.
+  /// - "VISIT_SITE" : Visit site.
+  /// - "WATCH_NOW" : Watch now.
+  core.String? callToAction;
+
+  /// The custom parameters and accompanying values to add to the tracking URL.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? customParameters;
+
+  /// The description of the ad.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// The first piece after the domain in the display URL.
+  ///
+  /// Optional.
+  core.String? displayUrlBreadcrumb1;
+
+  /// The second piece after the domain in the display URL.
+  ///
+  /// Optional.
+  core.String? displayUrlBreadcrumb2;
+
+  /// The URL address of the webpage that people reach after they click the ad.
+  ///
+  /// Required.
+  core.String? finalUrl;
+
+  /// The suffix to append to landing page URLs.
+  ///
+  /// Optional.
+  core.String? finalUrlSuffix;
+
+  /// The headline of the ad.
+  ///
+  /// Required.
+  core.String? headline;
+
+  /// The logo image used by this ad.
+  ///
+  /// Required.
+  ImageAsset? logo;
+
+  /// The URL address loaded in the background for tracking purposes.
+  ///
+  /// Output only.
+  core.String? trackingUrl;
+
+  /// The tracking URL specified by the user manually.
+  ///
+  /// Optional.
+  core.String? userSpecifiedTrackingUrl;
+
+  DemandGenProductAd({
+    this.businessName,
+    this.callToAction,
+    this.customParameters,
+    this.description,
+    this.displayUrlBreadcrumb1,
+    this.displayUrlBreadcrumb2,
+    this.finalUrl,
+    this.finalUrlSuffix,
+    this.headline,
+    this.logo,
+    this.trackingUrl,
+    this.userSpecifiedTrackingUrl,
+  });
+
+  DemandGenProductAd.fromJson(core.Map json_)
+    : this(
+        businessName: json_['businessName'] as core.String?,
+        callToAction: json_['callToAction'] as core.String?,
+        customParameters:
+            (json_['customParameters'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        description: json_['description'] as core.String?,
+        displayUrlBreadcrumb1: json_['displayUrlBreadcrumb1'] as core.String?,
+        displayUrlBreadcrumb2: json_['displayUrlBreadcrumb2'] as core.String?,
+        finalUrl: json_['finalUrl'] as core.String?,
+        finalUrlSuffix: json_['finalUrlSuffix'] as core.String?,
+        headline: json_['headline'] as core.String?,
+        logo: json_.containsKey('logo')
+            ? ImageAsset.fromJson(
+                json_['logo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        trackingUrl: json_['trackingUrl'] as core.String?,
+        userSpecifiedTrackingUrl:
+            json_['userSpecifiedTrackingUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessName = this.businessName;
+    final callToAction = this.callToAction;
+    final customParameters = this.customParameters;
+    final description = this.description;
+    final displayUrlBreadcrumb1 = this.displayUrlBreadcrumb1;
+    final displayUrlBreadcrumb2 = this.displayUrlBreadcrumb2;
+    final finalUrl = this.finalUrl;
+    final finalUrlSuffix = this.finalUrlSuffix;
+    final headline = this.headline;
+    final logo = this.logo;
+    final trackingUrl = this.trackingUrl;
+    final userSpecifiedTrackingUrl = this.userSpecifiedTrackingUrl;
+    return {
+      'businessName': ?businessName,
+      'callToAction': ?callToAction,
+      'customParameters': ?customParameters,
+      'description': ?description,
+      'displayUrlBreadcrumb1': ?displayUrlBreadcrumb1,
+      'displayUrlBreadcrumb2': ?displayUrlBreadcrumb2,
+      'finalUrl': ?finalUrl,
+      'finalUrlSuffix': ?finalUrlSuffix,
+      'headline': ?headline,
+      'logo': ?logo,
+      'trackingUrl': ?trackingUrl,
+      'userSpecifiedTrackingUrl': ?userSpecifiedTrackingUrl,
+    };
+  }
+}
+
+/// Settings for Demand Gen line items.
+class DemandGenSettings {
+  /// Whether location and language targeting can be set at the line item level.
+  ///
+  /// Otherwise, relevant targeting types must be assigned directly to ad
+  /// groups.
+  ///
+  /// Optional. Immutable.
+  core.bool? geoLanguageTargetingEnabled;
+
+  /// The ID of the Merchant Center account used to provide a product feed.
+  ///
+  /// This Merchant Center account must already be linked to the advertiser.
+  ///
+  /// Optional.
+  core.String? linkedMerchantId;
+
+  /// The third party measurement settings for the Demand Gen line item.
+  ///
+  /// Optional.
+  ThirdPartyMeasurementConfigs? thirdPartyMeasurementConfigs;
+
+  DemandGenSettings({
+    this.geoLanguageTargetingEnabled,
+    this.linkedMerchantId,
+    this.thirdPartyMeasurementConfigs,
+  });
+
+  DemandGenSettings.fromJson(core.Map json_)
+    : this(
+        geoLanguageTargetingEnabled:
+            json_['geoLanguageTargetingEnabled'] as core.bool?,
+        linkedMerchantId: json_['linkedMerchantId'] as core.String?,
+        thirdPartyMeasurementConfigs:
+            json_.containsKey('thirdPartyMeasurementConfigs')
+            ? ThirdPartyMeasurementConfigs.fromJson(
+                json_['thirdPartyMeasurementConfigs']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final geoLanguageTargetingEnabled = this.geoLanguageTargetingEnabled;
+    final linkedMerchantId = this.linkedMerchantId;
+    final thirdPartyMeasurementConfigs = this.thirdPartyMeasurementConfigs;
+    return {
+      'geoLanguageTargetingEnabled': ?geoLanguageTargetingEnabled,
+      'linkedMerchantId': ?linkedMerchantId,
+      'thirdPartyMeasurementConfigs': ?thirdPartyMeasurementConfigs,
+    };
+  }
+}
+
+/// Details for a Demand Gen video ad.
+class DemandGenVideoAd {
+  /// The business name shown on the ad.
+  ///
+  /// Required.
+  core.String? businessName;
+
+  /// The call-to-action button shown on the ad.
+  ///
+  /// The supported values are: * `AUTOMATED` * `LEARN_MORE` * `GET_QUOTE` *
+  /// `APPLY_NOW` * `SIGN_UP` * `CONTACT_US` * `SUBSCRIBE` * `DOWNLOAD` *
+  /// `BOOK_NOW` * `SHOP_NOW` * `BUY_NOW` * `DONATE_NOW` * `ORDER_NOW` *
+  /// `PLAY_NOW` * `SEE_MORE` * `START_NOW` * `VISIT_SITE` * `WATCH_NOW`
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CALL_TO_ACTION_UNSPECIFIED" : Not specified or unknown.
+  /// - "AUTOMATED" : Automated.
+  /// - "LEARN_MORE" : Learn more.
+  /// - "GET_QUOTE" : Get quote.
+  /// - "APPLY_NOW" : Apply now.
+  /// - "SIGN_UP" : Sign up.
+  /// - "CONTACT_US" : Contact us.
+  /// - "SUBSCRIBE" : Subscribe.
+  /// - "DOWNLOAD" : Download.
+  /// - "BOOK_NOW" : Book now.
+  /// - "SHOP_NOW" : Shop now.
+  /// - "BUY_NOW" : Buy now.
+  /// - "DONATE_NOW" : Donate now.
+  /// - "ORDER_NOW" : Order now.
+  /// - "PLAY_NOW" : Play now.
+  /// - "SEE_MORE" : See more.
+  /// - "START_NOW" : Start now.
+  /// - "VISIT_SITE" : Visit site.
+  /// - "WATCH_NOW" : Watch now.
+  core.String? callToAction;
+
+  /// The companion banner used by this ad.
+  ///
+  /// Optional.
+  ImageAsset? companionBanner;
+
+  /// The custom parameters and accompanying values to add to the tracking URL.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? customParameters;
+
+  /// The list of descriptions shown on the ad.
+  ///
+  /// Required.
+  core.List<core.String>? descriptions;
+
+  /// The first piece after the domain in the display URL.
+  ///
+  /// Optional.
+  core.String? displayUrlBreadcrumb1;
+
+  /// The second piece after the domain in the display URL.
+  ///
+  /// Optional.
+  core.String? displayUrlBreadcrumb2;
+
+  /// The URL address of the webpage that people reach after they click the ad
+  /// on a mobile device.
+  ///
+  /// Optional.
+  core.String? finalMobileUrl;
+
+  /// The URL address of the webpage that people reach after they click the ad.
+  ///
+  /// Required.
+  core.String? finalUrl;
+
+  /// The suffix to append to landing page URLs.
+  ///
+  /// Optional.
+  core.String? finalUrlSuffix;
+
+  /// The list of headlines shown on the ad.
+  ///
+  /// Required.
+  core.List<core.String>? headlines;
+
+  /// The logo image used by this ad.
+  ///
+  /// Required.
+  ImageAsset? logo;
+
+  /// The list of long headlines shown on the ad.
+  ///
+  /// Required.
+  core.List<core.String>? longHeadlines;
+
+  /// The URL address loaded in the background for tracking purposes.
+  ///
+  /// Output only.
+  core.String? trackingUrl;
+
+  /// The tracking URL specified by the user manually.
+  ///
+  /// Optional.
+  core.String? userSpecifiedTrackingUrl;
+
+  /// The list of YouTube video assets used by this ad.
+  ///
+  /// Required.
+  core.List<YoutubeVideoDetails>? videos;
+
+  DemandGenVideoAd({
+    this.businessName,
+    this.callToAction,
+    this.companionBanner,
+    this.customParameters,
+    this.descriptions,
+    this.displayUrlBreadcrumb1,
+    this.displayUrlBreadcrumb2,
+    this.finalMobileUrl,
+    this.finalUrl,
+    this.finalUrlSuffix,
+    this.headlines,
+    this.logo,
+    this.longHeadlines,
+    this.trackingUrl,
+    this.userSpecifiedTrackingUrl,
+    this.videos,
+  });
+
+  DemandGenVideoAd.fromJson(core.Map json_)
+    : this(
+        businessName: json_['businessName'] as core.String?,
+        callToAction: json_['callToAction'] as core.String?,
+        companionBanner: json_.containsKey('companionBanner')
+            ? ImageAsset.fromJson(
+                json_['companionBanner'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customParameters:
+            (json_['customParameters'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        descriptions: (json_['descriptions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        displayUrlBreadcrumb1: json_['displayUrlBreadcrumb1'] as core.String?,
+        displayUrlBreadcrumb2: json_['displayUrlBreadcrumb2'] as core.String?,
+        finalMobileUrl: json_['finalMobileUrl'] as core.String?,
+        finalUrl: json_['finalUrl'] as core.String?,
+        finalUrlSuffix: json_['finalUrlSuffix'] as core.String?,
+        headlines: (json_['headlines'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        logo: json_.containsKey('logo')
+            ? ImageAsset.fromJson(
+                json_['logo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        longHeadlines: (json_['longHeadlines'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        trackingUrl: json_['trackingUrl'] as core.String?,
+        userSpecifiedTrackingUrl:
+            json_['userSpecifiedTrackingUrl'] as core.String?,
+        videos: (json_['videos'] as core.List?)
+            ?.map(
+              (value) => YoutubeVideoDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessName = this.businessName;
+    final callToAction = this.callToAction;
+    final companionBanner = this.companionBanner;
+    final customParameters = this.customParameters;
+    final descriptions = this.descriptions;
+    final displayUrlBreadcrumb1 = this.displayUrlBreadcrumb1;
+    final displayUrlBreadcrumb2 = this.displayUrlBreadcrumb2;
+    final finalMobileUrl = this.finalMobileUrl;
+    final finalUrl = this.finalUrl;
+    final finalUrlSuffix = this.finalUrlSuffix;
+    final headlines = this.headlines;
+    final logo = this.logo;
+    final longHeadlines = this.longHeadlines;
+    final trackingUrl = this.trackingUrl;
+    final userSpecifiedTrackingUrl = this.userSpecifiedTrackingUrl;
+    final videos = this.videos;
+    return {
+      'businessName': ?businessName,
+      'callToAction': ?callToAction,
+      'companionBanner': ?companionBanner,
+      'customParameters': ?customParameters,
+      'descriptions': ?descriptions,
+      'displayUrlBreadcrumb1': ?displayUrlBreadcrumb1,
+      'displayUrlBreadcrumb2': ?displayUrlBreadcrumb2,
+      'finalMobileUrl': ?finalMobileUrl,
+      'finalUrl': ?finalUrl,
+      'finalUrlSuffix': ?finalUrlSuffix,
+      'headlines': ?headlines,
+      'logo': ?logo,
+      'longHeadlines': ?longHeadlines,
+      'trackingUrl': ?trackingUrl,
+      'userSpecifiedTrackingUrl': ?userSpecifiedTrackingUrl,
+      'videos': ?videos,
+    };
+  }
+}
 
 /// Assigned device make and model targeting option details.
 ///
@@ -18100,61 +19589,6 @@ typedef EditGuaranteedOrderReadAccessorsRequest =
     $EditGuaranteedOrderReadAccessorsRequest;
 typedef EditGuaranteedOrderReadAccessorsResponse =
     $EditGuaranteedOrderReadAccessorsResponse;
-
-/// Request message for
-/// InventorySourceService.EditInventorySourceReadWriteAccessors.
-class EditInventorySourceReadWriteAccessorsRequest {
-  /// The advertisers to add or remove from the list of advertisers that have
-  /// read/write access to the inventory source.
-  ///
-  /// This change will remove an existing partner read/write accessor.
-  EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate?
-  advertisersUpdate;
-
-  /// Set the partner context as read/write accessor of the inventory source.
-  ///
-  /// This will remove all other current read/write advertiser accessors.
-  core.bool? assignPartner;
-
-  /// The partner context by which the accessors change is being made.
-  ///
-  /// Required.
-  core.String? partnerId;
-
-  EditInventorySourceReadWriteAccessorsRequest({
-    this.advertisersUpdate,
-    this.assignPartner,
-    this.partnerId,
-  });
-
-  EditInventorySourceReadWriteAccessorsRequest.fromJson(core.Map json_)
-    : this(
-        advertisersUpdate: json_.containsKey('advertisersUpdate')
-            ? EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate.fromJson(
-                json_['advertisersUpdate']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        assignPartner: json_['assignPartner'] as core.bool?,
-        partnerId: json_['partnerId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final advertisersUpdate = this.advertisersUpdate;
-    final assignPartner = this.assignPartner;
-    final partnerId = this.partnerId;
-    return {
-      'advertisersUpdate': ?advertisersUpdate,
-      'assignPartner': ?assignPartner,
-      'partnerId': ?partnerId,
-    };
-  }
-}
-
-/// Update to the list of advertisers with read/write access to the inventory
-/// source.
-typedef EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate =
-    $EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -19178,19 +20612,31 @@ typedef IdFilter = $IdFilter;
 
 /// Meta data of an image asset.
 class ImageAsset {
+  /// The unique ID of the asset.
+  ///
+  /// Required.
+  core.String? assetId;
+
   /// File size of the image asset in bytes.
+  ///
+  /// Output only.
   core.String? fileSize;
 
   /// Metadata for this image at its original size.
+  ///
+  /// Output only.
   Dimensions? fullSize;
 
   /// MIME type of the image asset.
+  ///
+  /// Output only.
   core.String? mimeType;
 
-  ImageAsset({this.fileSize, this.fullSize, this.mimeType});
+  ImageAsset({this.assetId, this.fileSize, this.fullSize, this.mimeType});
 
   ImageAsset.fromJson(core.Map json_)
     : this(
+        assetId: json_['assetId'] as core.String?,
         fileSize: json_['fileSize'] as core.String?,
         fullSize: json_.containsKey('fullSize')
             ? Dimensions.fromJson(
@@ -19201,10 +20647,12 @@ class ImageAsset {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final assetId = this.assetId;
     final fileSize = this.fileSize;
     final fullSize = this.fullSize;
     final mimeType = this.mimeType;
     return {
+      'assetId': ?assetId,
       'fileSize': ?fileSize,
       'fullSize': ?fullSize,
       'mimeType': ?mimeType,
@@ -19217,7 +20665,7 @@ class InStreamAd {
   /// Common ad attributes.
   CommonInStreamAttribute? commonInStreamAttribute;
 
-  /// The custom parameters to pass custom values to tracking URL template.
+  /// The custom parameters and accompanying values to add to the tracking URL.
   core.Map<core.String, core.String>? customParameters;
 
   InStreamAd({this.commonInStreamAttribute, this.customParameters});
@@ -19254,7 +20702,12 @@ class InsertionOrder {
 
   /// The bidding strategy of the insertion order.
   ///
-  /// By default, fixed_bid is set.
+  /// By default, fixed_bid is set. If the budget field automationType is set to
+  /// `INSERTION_ORDER_AUTOMATION_TYPE_BUDGET` or
+  /// `INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET`, the insertion order will
+  /// impose this bidding strategy on its line items. If an imposed bidding
+  /// strategy is not compatible with a line item's enableOptimizedTargeting
+  /// setting, the optimized targeting setting will be updated.
   ///
   /// Optional.
   BiddingStrategy? bidStrategy;
@@ -19532,7 +20985,7 @@ class InsertionOrderBudget {
   /// the line item level.
   /// - "INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET" : Allow the system to
   /// automatically adjust bids and shift budget to owning line items to
-  /// optimize performance defined by kpi.
+  /// optimize performance defined by bid_strategy.
   core.String? automationType;
 
   /// The list of budget segments.
@@ -19659,441 +21112,12 @@ typedef IntegralAdScience = $IntegralAdScience;
 /// Integration details of an entry.
 typedef IntegrationDetails = $IntegrationDetails;
 
-/// An inventory source.
-///
-/// Next ID: 22
-class InventorySource {
-  /// Whether the inventory source has a guaranteed or non-guaranteed delivery.
-  /// Possible string values are:
-  /// - "INVENTORY_SOURCE_COMMITMENT_UNSPECIFIED" : The commitment is not
-  /// specified or is unknown in this version.
-  /// - "INVENTORY_SOURCE_COMMITMENT_GUARANTEED" : The commitment is guaranteed
-  /// delivery.
-  /// - "INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED" : The commitment is
-  /// non-guaranteed delivery.
-  core.String? commitment;
-
-  /// The creative requirements of the inventory source.
-  ///
-  /// Not applicable for auction packages.
-  core.List<CreativeConfig>? creativeConfigs;
-
-  /// The ID in the exchange space that uniquely identifies the inventory
-  /// source.
-  ///
-  /// Must be unique across buyers within each exchange but not necessarily
-  /// unique across exchanges.
-  core.String? dealId;
-
-  /// The delivery method of the inventory source.
-  ///
-  /// * For non-guaranteed inventory sources, the only acceptable value is
-  /// `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`. * For guaranteed
-  /// inventory sources, acceptable values are
-  /// `INVENTORY_SOURCE_DELIVERY_METHOD_TAG` and
-  /// `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`.
-  /// Possible string values are:
-  /// - "INVENTORY_SOURCE_DELIVERY_METHOD_UNSPECIFIED" : The delivery method is
-  /// not specified or is unknown in this version.
-  /// - "INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC" : The delivery method is
-  /// programmatic.
-  /// - "INVENTORY_SOURCE_DELIVERY_METHOD_TAG" : The delivery method is tag.
-  core.String? deliveryMethod;
-
-  /// The display name of the inventory source.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
-  core.String? displayName;
-
-  /// The exchange to which the inventory source belongs.
-  /// Possible string values are:
-  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
-  /// version.
-  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
-  /// - "EXCHANGE_APPNEXUS" : AppNexus.
-  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
-  /// - "EXCHANGE_ADFORM" : Adform.
-  /// - "EXCHANGE_ADMETA" : Admeta.
-  /// - "EXCHANGE_ADMIXER" : Admixer.
-  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
-  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
-  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
-  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
-  /// Yahoo!.
-  /// - "EXCHANGE_CADREON" : Cadreon.
-  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
-  /// - "EXCHANGE_FIVE" : Five.
-  /// - "EXCHANGE_FLUCT" : Fluct.
-  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
-  /// - "EXCHANGE_GENIEE" : Geniee.
-  /// - "EXCHANGE_GUMGUM" : GumGum.
-  /// - "EXCHANGE_IMOBILE" : i-mobile.
-  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
-  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
-  /// - "EXCHANGE_INDEX" : Index Exchange.
-  /// - "EXCHANGE_KARGO" : Kargo.
-  /// - "EXCHANGE_MICROAD" : MicroAd.
-  /// - "EXCHANGE_MOPUB" : MoPub.
-  /// - "EXCHANGE_NEND" : Nend.
-  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
-  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
-  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
-  /// - "EXCHANGE_OOYALA" : Ooyala.
-  /// - "EXCHANGE_OPENX" : OpenX.
-  /// - "EXCHANGE_PERMODO" : Permodo.
-  /// - "EXCHANGE_PLATFORMONE" : Platform One.
-  /// - "EXCHANGE_PLATFORMID" : PlatformId.
-  /// - "EXCHANGE_PUBMATIC" : PubMatic.
-  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
-  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
-  /// - "EXCHANGE_RUBICON" : Rubicon.
-  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
-  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
-  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
-  /// - "EXCHANGE_SOVRN" : Sovrn.
-  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
-  /// - "EXCHANGE_STROER" : Ströer SSP.
-  /// - "EXCHANGE_TEADSTV" : TeadsTv.
-  /// - "EXCHANGE_TELARIA" : Telaria.
-  /// - "EXCHANGE_TVN" : TVN.
-  /// - "EXCHANGE_UNITED" : United.
-  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
-  /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX.
-  /// - "EXCHANGE_OPEN8" : Open8.
-  /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
-  /// - "EXCHANGE_TABOOLA" : Taboola.
-  /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato.
-  /// - "EXCHANGE_AJA" : Aja.
-  /// - "EXCHANGE_SUPERSHIP" : Supership.
-  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
-  /// - "EXCHANGE_WAZE" : Waze.
-  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
-  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
-  /// - "EXCHANGE_FYBER" : Fyber.
-  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
-  /// - "EXCHANGE_MEDIANET" : Media.net.
-  /// - "EXCHANGE_TAPJOY" : Tapjoy.
-  /// - "EXCHANGE_VISTAR" : Vistar.
-  /// - "EXCHANGE_DAX" : DAX.
-  /// - "EXCHANGE_JCD" : JCD.
-  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
-  /// - "EXCHANGE_APPLOVIN" : AppLovin.
-  /// - "EXCHANGE_CONNATIX" : Connatix.
-  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
-  /// - "EXCHANGE_HIVESTACK" : Hivestack.
-  /// - "EXCHANGE_DRAX" : Drax.
-  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
-  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
-  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
-  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
-  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
-  /// - "EXCHANGE_TOPON_GBID" : TopOn.
-  /// - "EXCHANGE_NETFLIX" : Netflix.
-  /// - "EXCHANGE_CORE" : Core.
-  /// - "EXCHANGE_COMMERCE_GRID" : Commerce Grid.
-  /// - "EXCHANGE_SPOTIFY" : Spotify.
-  /// - "EXCHANGE_TUBI" : Tubi.
-  /// - "EXCHANGE_SNAP" : Snap.
-  /// - "EXCHANGE_CADENT" : Cadent.
-  core.String? exchange;
-
-  /// The ID of the guaranteed order that this inventory source belongs to.
-  ///
-  /// Only applicable when commitment is
-  /// `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`.
-  ///
-  /// Immutable.
-  core.String? guaranteedOrderId;
-
-  /// The unique ID of the inventory source.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? inventorySourceId;
-
-  /// The product type of the inventory source, denoting the way through which
-  /// it sells inventory.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "INVENTORY_SOURCE_PRODUCT_TYPE_UNSPECIFIED" : The product type is not
-  /// specified or is unknown in this version. Modifying inventory sources of
-  /// this product type are not supported via API.
-  /// - "PREFERRED_DEAL" : The inventory source sells inventory through
-  /// Preferred Deal.
-  /// - "PRIVATE_AUCTION" : The inventory source sells inventory through Private
-  /// Auction.
-  /// - "PROGRAMMATIC_GUARANTEED" : The inventory source sells inventory through
-  /// Programmatic Guaranteed.
-  /// - "TAG_GUARANTEED" : The inventory source sells inventory through Tag
-  /// Guaranteed.
-  /// - "YOUTUBE_RESERVE" : The inventory source sells inventory through YouTube
-  /// Reserve.
-  /// - "INSTANT_RESERVE" : The inventory source sells inventory through Instant
-  /// Reserve. Modifying inventory sources of this product type are not
-  /// supported via API.
-  /// - "GUARANTEED_PACKAGE" : The inventory source sells inventory through
-  /// Guaranteed Package. Modifying inventory sources of this product type are
-  /// not supported via API.
-  /// - "PROGRAMMATIC_TV" : The inventory source sells inventory through
-  /// Programmtic TV. Modifying inventory sources of this product type are not
-  /// supported via API.
-  /// - "AUCTION_PACKAGE" : The inventory source sells inventory through Auction
-  /// Package. Modifying inventory sources of this product type are not
-  /// supported via API.
-  core.String? inventorySourceProductType;
-
-  /// Denotes the type of the inventory source.
-  /// Possible string values are:
-  /// - "INVENTORY_SOURCE_TYPE_UNSPECIFIED" : The inventory source type is not
-  /// specified or is unknown in this version.
-  /// - "INVENTORY_SOURCE_TYPE_PRIVATE" : Private inventory source.
-  /// - "INVENTORY_SOURCE_TYPE_AUCTION_PACKAGE" : Auction package.
-  core.String? inventorySourceType;
-
-  /// The resource name of the inventory source.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The publisher/seller name of the inventory source.
-  core.String? publisherName;
-
-  /// The rate details of the inventory source.
-  ///
-  /// Required.
-  RateDetails? rateDetails;
-
-  /// The IDs of advertisers with read-only access to the inventory source.
-  ///
-  /// Output only.
-  core.List<core.String>? readAdvertiserIds;
-
-  /// The IDs of partners with read-only access to the inventory source.
-  ///
-  /// All advertisers of partners in this field inherit read-only access to the
-  /// inventory source.
-  ///
-  /// Output only.
-  core.List<core.String>? readPartnerIds;
-
-  /// The partner or advertisers that have read/write access to the inventory
-  /// source.
-  ///
-  /// Output only when commitment is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`,
-  /// in which case the read/write accessors are inherited from the parent
-  /// guaranteed order. Required when commitment is
-  /// `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED`. If commitment is
-  /// `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED` and a partner is set in this
-  /// field, all advertisers under this partner will automatically have
-  /// read-only access to the inventory source. These advertisers will not be
-  /// included in read_advertiser_ids.
-  InventorySourceAccessors? readWriteAccessors;
-
-  /// The status settings of the inventory source.
-  InventorySourceStatus? status;
-
-  /// The time range when this inventory source starts and stops serving.
-  TimeRange? timeRange;
-
-  /// The timestamp when the inventory source was last updated.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  InventorySource({
-    this.commitment,
-    this.creativeConfigs,
-    this.dealId,
-    this.deliveryMethod,
-    this.displayName,
-    this.exchange,
-    this.guaranteedOrderId,
-    this.inventorySourceId,
-    this.inventorySourceProductType,
-    this.inventorySourceType,
-    this.name,
-    this.publisherName,
-    this.rateDetails,
-    this.readAdvertiserIds,
-    this.readPartnerIds,
-    this.readWriteAccessors,
-    this.status,
-    this.timeRange,
-    this.updateTime,
-  });
-
-  InventorySource.fromJson(core.Map json_)
-    : this(
-        commitment: json_['commitment'] as core.String?,
-        creativeConfigs: (json_['creativeConfigs'] as core.List?)
-            ?.map(
-              (value) => CreativeConfig.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-        dealId: json_['dealId'] as core.String?,
-        deliveryMethod: json_['deliveryMethod'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        exchange: json_['exchange'] as core.String?,
-        guaranteedOrderId: json_['guaranteedOrderId'] as core.String?,
-        inventorySourceId: json_['inventorySourceId'] as core.String?,
-        inventorySourceProductType:
-            json_['inventorySourceProductType'] as core.String?,
-        inventorySourceType: json_['inventorySourceType'] as core.String?,
-        name: json_['name'] as core.String?,
-        publisherName: json_['publisherName'] as core.String?,
-        rateDetails: json_.containsKey('rateDetails')
-            ? RateDetails.fromJson(
-                json_['rateDetails'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        readAdvertiserIds: (json_['readAdvertiserIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        readPartnerIds: (json_['readPartnerIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        readWriteAccessors: json_.containsKey('readWriteAccessors')
-            ? InventorySourceAccessors.fromJson(
-                json_['readWriteAccessors']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        status: json_.containsKey('status')
-            ? InventorySourceStatus.fromJson(
-                json_['status'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        timeRange: json_.containsKey('timeRange')
-            ? TimeRange.fromJson(
-                json_['timeRange'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final commitment = this.commitment;
-    final creativeConfigs = this.creativeConfigs;
-    final dealId = this.dealId;
-    final deliveryMethod = this.deliveryMethod;
-    final displayName = this.displayName;
-    final exchange = this.exchange;
-    final guaranteedOrderId = this.guaranteedOrderId;
-    final inventorySourceId = this.inventorySourceId;
-    final inventorySourceProductType = this.inventorySourceProductType;
-    final inventorySourceType = this.inventorySourceType;
-    final name = this.name;
-    final publisherName = this.publisherName;
-    final rateDetails = this.rateDetails;
-    final readAdvertiserIds = this.readAdvertiserIds;
-    final readPartnerIds = this.readPartnerIds;
-    final readWriteAccessors = this.readWriteAccessors;
-    final status = this.status;
-    final timeRange = this.timeRange;
-    final updateTime = this.updateTime;
-    return {
-      'commitment': ?commitment,
-      'creativeConfigs': ?creativeConfigs,
-      'dealId': ?dealId,
-      'deliveryMethod': ?deliveryMethod,
-      'displayName': ?displayName,
-      'exchange': ?exchange,
-      'guaranteedOrderId': ?guaranteedOrderId,
-      'inventorySourceId': ?inventorySourceId,
-      'inventorySourceProductType': ?inventorySourceProductType,
-      'inventorySourceType': ?inventorySourceType,
-      'name': ?name,
-      'publisherName': ?publisherName,
-      'rateDetails': ?rateDetails,
-      'readAdvertiserIds': ?readAdvertiserIds,
-      'readPartnerIds': ?readPartnerIds,
-      'readWriteAccessors': ?readWriteAccessors,
-      'status': ?status,
-      'timeRange': ?timeRange,
-      'updateTime': ?updateTime,
-    };
-  }
-}
-
-/// The partner or advertisers with access to the inventory source.
-class InventorySourceAccessors {
-  /// The advertisers with access to the inventory source.
-  ///
-  /// All advertisers must belong to the same partner.
-  InventorySourceAccessorsAdvertiserAccessors? advertisers;
-
-  /// The partner with access to the inventory source.
-  InventorySourceAccessorsPartnerAccessor? partner;
-
-  InventorySourceAccessors({this.advertisers, this.partner});
-
-  InventorySourceAccessors.fromJson(core.Map json_)
-    : this(
-        advertisers: json_.containsKey('advertisers')
-            ? InventorySourceAccessorsAdvertiserAccessors.fromJson(
-                json_['advertisers'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        partner: json_.containsKey('partner')
-            ? InventorySourceAccessorsPartnerAccessor.fromJson(
-                json_['partner'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final advertisers = this.advertisers;
-    final partner = this.partner;
-    return {'advertisers': ?advertisers, 'partner': ?partner};
-  }
-}
-
-/// The advertisers with access to the inventory source.
-typedef InventorySourceAccessorsAdvertiserAccessors =
-    $InventorySourceAccessorsAdvertiserAccessors;
-
-/// The partner with access to the inventory source.
-typedef InventorySourceAccessorsPartnerAccessor =
-    $InventorySourceAccessorsPartnerAccessor;
-
 /// Targeting details for inventory source.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE`.
 typedef InventorySourceAssignedTargetingOptionDetails =
     $InventorySourceAssignedTargetingOptionDetails;
-
-/// The configuration for display creatives.
-class InventorySourceDisplayCreativeConfig {
-  /// The size requirements for display creatives that can be assigned to the
-  /// inventory source.
-  Dimensions? creativeSize;
-
-  InventorySourceDisplayCreativeConfig({this.creativeSize});
-
-  InventorySourceDisplayCreativeConfig.fromJson(core.Map json_)
-    : this(
-        creativeSize: json_.containsKey('creativeSize')
-            ? Dimensions.fromJson(
-                json_['creativeSize'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final creativeSize = this.creativeSize;
-    return {'creativeSize': ?creativeSize};
-  }
-}
 
 /// A filtering option for filtering on Inventory Source entities.
 typedef InventorySourceFilter = $InventorySourceFilter;
@@ -20107,13 +21131,6 @@ typedef InventorySourceGroup = $InventorySourceGroup;
 /// when targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`.
 typedef InventorySourceGroupAssignedTargetingOptionDetails =
     $InventorySourceGroupAssignedTargetingOptionDetails;
-
-/// The status related settings of the inventory source.
-typedef InventorySourceStatus = $InventorySourceStatus;
-
-/// The configuration for video creatives.
-typedef InventorySourceVideoCreativeConfig =
-    $InventorySourceVideoCreativeConfig;
 
 /// A single invoice.
 class Invoice {
@@ -20406,6 +21423,15 @@ class LineItem {
   /// The IDs of the creatives associated with the line item.
   core.List<core.String>? creativeIds;
 
+  /// Settings specific to Demand Gen line items.
+  ///
+  /// Only applicable to Demand Gen line items. Retrieval and management of
+  /// Demand Gen resources is currently in beta. This field is only available to
+  /// allowlisted users.
+  ///
+  /// Optional.
+  DemandGenSettings? demandGenSettings;
+
   /// The display name of the line item.
   ///
   /// Must be UTF-8 encoded with a maximum size of 240 bytes.
@@ -20450,12 +21476,13 @@ class LineItem {
   /// Required.
   LineItemFlight? flight;
 
-  /// The impression frequency cap settings of the line item.
+  /// Required if the line item type is not `LINE_ITEM_TYPE_DEMAND_GEN`.
   ///
-  /// The max_impressions field in this settings object must be used if
-  /// assigning a limited cap.
+  /// The impression frequency cap settings of the line item. The
+  /// max_impressions field in this settings object must be used if assigning a
+  /// limited cap.
   ///
-  /// Required.
+  /// Optional.
   FrequencyCap? frequencyCap;
 
   /// The unique ID of the insertion order that the line item belongs to.
@@ -20544,6 +21571,9 @@ class LineItem {
   /// - "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME" : Video ads served on
   /// digital-out-of-home inventory. Line items of this type and their targeting
   /// cannot be created or updated using the API.
+  /// - "LINE_ITEM_TYPE_DEMAND_GEN" : Demand Gen ads. Retrieval and management
+  /// of Demand Gen resources is currently in beta. This enum value is only
+  /// available to allowlisted users.
   core.String? lineItemType;
 
   /// The mobile app promoted by the line item.
@@ -20557,6 +21587,18 @@ class LineItem {
   ///
   /// Output only.
   core.String? name;
+
+  /// Whether to enable DV360's bid optimization for fixed bid line items.
+  ///
+  /// By default, DV360 optimizes your fixed bid by automatically lowering bids
+  /// for impressions that are less likely to perform well. This optimization is
+  /// enabled by default (value is true). When this field is set to `false`,
+  /// this optimization is disabled, and the bid will not be lowered for any
+  /// reason. This setting only applies to line items with a `bidding_strategy`
+  /// of type `FIXED_BID`.
+  ///
+  /// Optional.
+  core.bool? optimizeFixedBidding;
 
   /// The budget spending speed setting of the line item.
   ///
@@ -20628,6 +21670,7 @@ class LineItem {
     this.containsEuPoliticalAds,
     this.conversionCounting,
     this.creativeIds,
+    this.demandGenSettings,
     this.displayName,
     this.entityStatus,
     this.excludeNewExchanges,
@@ -20639,6 +21682,7 @@ class LineItem {
     this.lineItemType,
     this.mobileApp,
     this.name,
+    this.optimizeFixedBidding,
     this.pacing,
     this.partnerCosts,
     this.partnerRevenueModel,
@@ -20673,6 +21717,12 @@ class LineItem {
         creativeIds: (json_['creativeIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        demandGenSettings: json_.containsKey('demandGenSettings')
+            ? DemandGenSettings.fromJson(
+                json_['demandGenSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
         entityStatus: json_['entityStatus'] as core.String?,
         excludeNewExchanges: json_['excludeNewExchanges'] as core.bool?,
@@ -20701,6 +21751,7 @@ class LineItem {
               )
             : null,
         name: json_['name'] as core.String?,
+        optimizeFixedBidding: json_['optimizeFixedBidding'] as core.bool?,
         pacing: json_.containsKey('pacing')
             ? Pacing.fromJson(
                 json_['pacing'] as core.Map<core.String, core.dynamic>,
@@ -20747,6 +21798,7 @@ class LineItem {
     final containsEuPoliticalAds = this.containsEuPoliticalAds;
     final conversionCounting = this.conversionCounting;
     final creativeIds = this.creativeIds;
+    final demandGenSettings = this.demandGenSettings;
     final displayName = this.displayName;
     final entityStatus = this.entityStatus;
     final excludeNewExchanges = this.excludeNewExchanges;
@@ -20758,6 +21810,7 @@ class LineItem {
     final lineItemType = this.lineItemType;
     final mobileApp = this.mobileApp;
     final name = this.name;
+    final optimizeFixedBidding = this.optimizeFixedBidding;
     final pacing = this.pacing;
     final partnerCosts = this.partnerCosts;
     final partnerRevenueModel = this.partnerRevenueModel;
@@ -20774,6 +21827,7 @@ class LineItem {
       'containsEuPoliticalAds': ?containsEuPoliticalAds,
       'conversionCounting': ?conversionCounting,
       'creativeIds': ?creativeIds,
+      'demandGenSettings': ?demandGenSettings,
       'displayName': ?displayName,
       'entityStatus': ?entityStatus,
       'excludeNewExchanges': ?excludeNewExchanges,
@@ -20785,6 +21839,7 @@ class LineItem {
       'lineItemType': ?lineItemType,
       'mobileApp': ?mobileApp,
       'name': ?name,
+      'optimizeFixedBidding': ?optimizeFixedBidding,
       'pacing': ?pacing,
       'partnerCosts': ?partnerCosts,
       'partnerRevenueModel': ?partnerRevenueModel,
@@ -21662,42 +22717,6 @@ class ListInventorySourceGroupsResponse {
   }
 }
 
-class ListInventorySourcesResponse {
-  /// The list of inventory sources.
-  ///
-  /// This list will be absent if empty.
-  core.List<InventorySource>? inventorySources;
-
-  /// A token to retrieve the next page of results.
-  ///
-  /// Pass this value in the page_token field in the subsequent call to
-  /// `ListInventorySources` method to retrieve the next page of results.
-  core.String? nextPageToken;
-
-  ListInventorySourcesResponse({this.inventorySources, this.nextPageToken});
-
-  ListInventorySourcesResponse.fromJson(core.Map json_)
-    : this(
-        inventorySources: (json_['inventorySources'] as core.List?)
-            ?.map(
-              (value) => InventorySource.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-        nextPageToken: json_['nextPageToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final inventorySources = this.inventorySources;
-    final nextPageToken = this.nextPageToken;
-    return {
-      'inventorySources': ?inventorySources,
-      'nextPageToken': ?nextPageToken,
-    };
-  }
-}
-
 class ListInvoicesResponse {
   /// The list of invoices.
   ///
@@ -22266,9 +23285,6 @@ class MobileDeviceIdList {
   }
 }
 
-/// Represents an amount of money with its currency type.
-typedef Money = $Money;
-
 /// Details for native content position assigned targeting option.
 ///
 /// This will be populated in the native_content_position_details field when
@@ -22303,7 +23319,7 @@ class NonSkippableAd {
   /// Common ad attributes.
   CommonInStreamAttribute? commonInStreamAttribute;
 
-  /// The custom parameters to pass custom values to tracking URL template.
+  /// The custom parameters and accompanying values to add to the tracking URL.
   core.Map<core.String, core.String>? customParameters;
 
   NonSkippableAd({this.commonInStreamAttribute, this.customParameters});
@@ -23091,77 +24107,6 @@ typedef ProximityLocationListAssignedTargetingOptionDetails =
 /// Publisher review status for the creative.
 typedef PublisherReviewStatus = $PublisherReviewStatus;
 
-/// The rate related settings of the inventory source.
-class RateDetails {
-  /// The rate type.
-  ///
-  /// Acceptable values are `INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED`,
-  /// `INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR`, and
-  /// `INVENTORY_SOURCE_RATE_TYPE_CPD`.
-  /// Possible string values are:
-  /// - "INVENTORY_SOURCE_RATE_TYPE_UNSPECIFIED" : The rate type is not
-  /// specified or is unknown in this version.
-  /// - "INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED" : The rate type is CPM (Fixed).
-  /// - "INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR" : The rate type is CPM (Floor).
-  /// - "INVENTORY_SOURCE_RATE_TYPE_CPD" : The rate type is Cost per Day.
-  /// - "INVENTORY_SOURCE_RATE_TYPE_CPH" : The rate type is Cost per Hour.
-  /// - "INVENTORY_SOURCE_RATE_TYPE_FLAT" : The rate type is Flat.
-  core.String? inventorySourceRateType;
-
-  /// The amount that the buyer has committed to spending on the inventory
-  /// source up front.
-  ///
-  /// Only applicable for guaranteed inventory sources.
-  ///
-  /// Output only.
-  Money? minimumSpend;
-
-  /// The rate for the inventory source.
-  Money? rate;
-
-  /// Required for guaranteed inventory sources.
-  ///
-  /// The number of impressions guaranteed by the seller.
-  core.String? unitsPurchased;
-
-  RateDetails({
-    this.inventorySourceRateType,
-    this.minimumSpend,
-    this.rate,
-    this.unitsPurchased,
-  });
-
-  RateDetails.fromJson(core.Map json_)
-    : this(
-        inventorySourceRateType:
-            json_['inventorySourceRateType'] as core.String?,
-        minimumSpend: json_.containsKey('minimumSpend')
-            ? Money.fromJson(
-                json_['minimumSpend'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        rate: json_.containsKey('rate')
-            ? Money.fromJson(
-                json_['rate'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        unitsPurchased: json_['unitsPurchased'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final inventorySourceRateType = this.inventorySourceRateType;
-    final minimumSpend = this.minimumSpend;
-    final rate = this.rate;
-    final unitsPurchased = this.unitsPurchased;
-    return {
-      'inventorySourceRateType': ?inventorySourceRateType,
-      'minimumSpend': ?minimumSpend,
-      'rate': ?rate,
-      'unitsPurchased': ?unitsPurchased,
-    };
-  }
-}
-
 /// Targeting details for regional location list.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
@@ -23508,6 +24453,9 @@ class SearchTargetingOptionsResponse {
     };
   }
 }
+
+/// The inventory control of the ad group.
+typedef SelectedInventories = $SelectedInventories;
 
 /// Targeting details for sensitive category.
 ///
@@ -24141,9 +25089,8 @@ class ThirdPartyMeasurementConfigs {
   ///
   /// The following third-party vendors are applicable: *
   /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` *
-  /// `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` *
-  /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_INTAGE` *
-  /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
+  /// `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_NIELSEN` *
+  /// `THIRD_PARTY_VENDOR_MACROMILL`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? brandLiftVendorConfigs;
@@ -24151,9 +25098,8 @@ class ThirdPartyMeasurementConfigs {
   /// The third-party vendors measuring brand safety.
   ///
   /// The following third-party vendors are applicable: *
-  /// `THIRD_PARTY_VENDOR_ZERF` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` *
-  /// `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
-  /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_ZEFR`
+  /// `THIRD_PARTY_VENDOR_ZEFR` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` *
+  /// `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? brandSafetyVendorConfigs;
@@ -24162,11 +25108,10 @@ class ThirdPartyMeasurementConfigs {
   ///
   /// The following third-party vendors are applicable: *
   /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` *
-  /// `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` *
-  /// `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` *
-  /// `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` *
-  /// `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` *
-  /// `THIRD_PARTY_VENDOR_ISPOT_TV`
+  /// `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` *
+  /// `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` *
+  /// `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV` *
+  /// `THIRD_PARTY_VENDOR_GEMIUS`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? reachVendorConfigs;
@@ -24176,8 +25121,7 @@ class ThirdPartyMeasurementConfigs {
   /// The following third-party vendors are applicable: *
   /// `THIRD_PARTY_VENDOR_MOAT` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` *
   /// `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_COMSCORE` *
-  /// `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS` *
-  /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL`
+  /// `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? viewabilityVendorConfigs;
@@ -24298,9 +25242,6 @@ class ThirdPartyVerifierAssignedTargetingOptionDetails {
     };
   }
 }
-
-/// A time range.
-typedef TimeRange = $TimeRange;
 
 /// Timer event of the creative.
 typedef TimerEvent = $TimerEvent;
@@ -24625,7 +25566,7 @@ class VideoPerformanceAd {
   /// The list of companion banners used by this ad.
   core.List<ImageAsset>? companionBanners;
 
-  /// The custom parameters to pass custom values to tracking URL template.
+  /// The custom parameters and accompanying values to add to the tracking URL.
   core.Map<core.String, core.String>? customParameters;
 
   /// The list of descriptions shown on the call-to-action banner.
@@ -24646,7 +25587,7 @@ class VideoPerformanceAd {
   /// The list of headlines shown on the call-to-action banner.
   core.List<core.String>? headlines;
 
-  /// The list of lone headlines shown on the call-to-action banner.
+  /// The list of long headlines shown on the call-to-action banner.
   core.List<core.String>? longHeadlines;
 
   /// The URL address loaded in the background for tracking purposes.
@@ -24829,7 +25770,9 @@ class YoutubeAndPartnersSettings {
   /// Optional.
   core.String? leadFormId;
 
-  /// The ID of the merchant which is linked to the line item for product feed.
+  /// The ID of the Merchant Center account used to provide a product feed.
+  ///
+  /// This Merchant Center account must already be linked to the advertiser.
   ///
   /// Optional.
   core.String? linkedMerchantId;

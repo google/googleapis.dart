@@ -3087,14 +3087,20 @@ core.int buildCounterQuerySuggestion = 0;
 api.QuerySuggestion buildQuerySuggestion() {
   final o = api.QuerySuggestion();
   buildCounterQuerySuggestion++;
-  if (buildCounterQuerySuggestion < 3) {}
+  if (buildCounterQuerySuggestion < 3) {
+    o.lastQueryTime = 'foo';
+    o.sourceCorpus = 'foo';
+  }
   buildCounterQuerySuggestion--;
   return o;
 }
 
 void checkQuerySuggestion(api.QuerySuggestion o) {
   buildCounterQuerySuggestion++;
-  if (buildCounterQuerySuggestion < 3) {}
+  if (buildCounterQuerySuggestion < 3) {
+    unittest.expect(o.lastQueryTime!, unittest.equals('foo'));
+    unittest.expect(o.sourceCorpus!, unittest.equals('foo'));
+  }
   buildCounterQuerySuggestion--;
 }
 

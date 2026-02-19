@@ -8847,15 +8847,74 @@ class GoogleCloudDocumentaiV1DocumentRevision {
 }
 
 /// Human Review information of the document.
-typedef GoogleCloudDocumentaiV1DocumentRevisionHumanReview =
-    $GoogleCloudDocumentaiV1DocumentRevisionHumanReview;
+class GoogleCloudDocumentaiV1DocumentRevisionHumanReview {
+  /// Human review state.
+  ///
+  /// e.g. `requested`, `succeeded`, `rejected`.
+  core.String? state;
+
+  /// A message providing more details about the current state of processing.
+  ///
+  /// For example, the rejection reason when the state is `rejected`.
+  core.String? stateMessage;
+
+  GoogleCloudDocumentaiV1DocumentRevisionHumanReview({
+    this.state,
+    this.stateMessage,
+  });
+
+  GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(core.Map json_)
+    : this(
+        state: json_['state'] as core.String?,
+        stateMessage: json_['stateMessage'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    final stateMessage = this.stateMessage;
+    return {'state': ?state, 'stateMessage': ?stateMessage};
+  }
+}
 
 /// For a large document, sharding may be performed to produce several document
 /// shards.
 ///
 /// Each document shard contains this field to detail which shard it is.
-typedef GoogleCloudDocumentaiV1DocumentShardInfo =
-    $GoogleCloudDocumentaiV1DocumentShardInfo;
+class GoogleCloudDocumentaiV1DocumentShardInfo {
+  /// Total number of shards.
+  core.String? shardCount;
+
+  /// The 0-based index of this shard.
+  core.String? shardIndex;
+
+  /// The index of the first character in Document.text in the overall document
+  /// global text.
+  core.String? textOffset;
+
+  GoogleCloudDocumentaiV1DocumentShardInfo({
+    this.shardCount,
+    this.shardIndex,
+    this.textOffset,
+  });
+
+  GoogleCloudDocumentaiV1DocumentShardInfo.fromJson(core.Map json_)
+    : this(
+        shardCount: json_['shardCount'] as core.String?,
+        shardIndex: json_['shardIndex'] as core.String?,
+        textOffset: json_['textOffset'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final shardCount = this.shardCount;
+    final shardIndex = this.shardIndex;
+    final textOffset = this.textOffset;
+    return {
+      'shardCount': ?shardCount,
+      'shardIndex': ?shardIndex,
+      'textOffset': ?textOffset,
+    };
+  }
+}
 
 /// Annotation for common text style attributes.
 ///

@@ -277,9 +277,9 @@ class ServicesResource {
   /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results returned by this
-  /// request. Currently, the default maximum is set to 1000. If `page_size`
-  /// isn't provided or the size provided is a number larger than 1000, it's
-  /// automatically set to 1000.
+  /// request. Currently, the default maximum is set to 256. If `page_size` \<=
+  /// 256, the request proceeds. Else, the request fails with an
+  /// `TU_INVALID_PAGE_SIZE` error.
   ///
   /// [pageToken] - Optional. The continuation token, which is used to page
   /// through large result sets. To get the next page of results, set this

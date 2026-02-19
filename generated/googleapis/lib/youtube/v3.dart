@@ -42,6 +42,7 @@
 /// - [LiveChatMessagesResource]
 /// - [LiveChatModeratorsResource]
 /// - [LiveStreamsResource]
+/// - [MediaResource]
 /// - [MembersResource]
 /// - [MembershipsLevelsResource]
 /// - [PlaylistImagesResource]
@@ -60,6 +61,7 @@
 /// - [WatermarksResource]
 /// - [YoutubeResource]
 ///   - [YoutubeV3Resource]
+///     - [YoutubeV3AudiotracksResource]
 ///     - [YoutubeV3LiveChatResource]
 ///       - [YoutubeV3LiveChatMessagesResource]
 library;
@@ -141,6 +143,7 @@ class YouTubeApi {
   LiveChatModeratorsResource get liveChatModerators =>
       LiveChatModeratorsResource(_requester);
   LiveStreamsResource get liveStreams => LiveStreamsResource(_requester);
+  MediaResource get media => MediaResource(_requester);
   MembersResource get members => MembersResource(_requester);
   MembershipsLevelsResource get membershipsLevels =>
       MembershipsLevelsResource(_requester);
@@ -3228,6 +3231,82 @@ class LiveStreamsResource {
   }
 }
 
+class MediaResource {
+  final commons.ApiRequester _requester;
+
+  MediaResource(commons.ApiRequester client) : _requester = client;
+
+  /// Inserts a new AudioTrack for a video.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [language] - Required. The BCP-47 language code of the AudioTrack (e.g.,
+  /// "es-ES").
+  ///
+  /// [part] - Optional. The `part` parameter specifies the `AudioTrack`
+  /// resource parts that the API response will include. The `part` names that
+  /// you can include in the parameter value are `id` and `snippet`.
+  ///
+  /// [videoId] - Required. The external YouTube video ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [AudioTrack].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AudioTrack> upload(
+    AudioTrack request, {
+    core.String? language,
+    core.List<core.String>? part,
+    core.String? videoId,
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'language': ?language == null ? null : [language],
+      'part': ?part,
+      'videoId': ?videoId == null ? null : [videoId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'youtube/v3/audiotracks';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ = '/resumable/upload/youtube/v3/audiotracks';
+    } else {
+      url_ = '/upload/youtube/v3/audiotracks';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return AudioTrack.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class MembersResource {
   final commons.ApiRequester _requester;
 
@@ -4820,6 +4899,8 @@ class TestsResource {
   ///
   /// [externalChannelId] - null
   ///
+  /// [onBehalfOfContentOwnerChannel] - null
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4834,6 +4915,7 @@ class TestsResource {
     TestItem request,
     core.List<core.String> part, {
     core.String? externalChannelId,
+    core.String? onBehalfOfContentOwnerChannel,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -4845,6 +4927,9 @@ class TestsResource {
       'externalChannelId': ?externalChannelId == null
           ? null
           : [externalChannelId],
+      'onBehalfOfContentOwnerChannel': ?onBehalfOfContentOwnerChannel == null
+          ? null
+          : [onBehalfOfContentOwnerChannel],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -5980,10 +6065,56 @@ class YoutubeResource {
 class YoutubeV3Resource {
   final commons.ApiRequester _requester;
 
+  YoutubeV3AudiotracksResource get audiotracks =>
+      YoutubeV3AudiotracksResource(_requester);
   YoutubeV3LiveChatResource get liveChat =>
       YoutubeV3LiveChatResource(_requester);
 
   YoutubeV3Resource(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes one or more AudioTracks from a video.
+  ///
+  /// Request parameters:
+  ///
+  /// [audioTrackId] - Required. The audio track ID of the AudioTrack to be
+  /// deleted (e.g., "v1234567890").
+  ///
+  /// [part] - Optional. The `part` parameter specifies the `AudioTrack`
+  /// resource parts that the API response will include. The `part` names that
+  /// you can include in the parameter value are `id` and `snippet`.
+  ///
+  /// [videoId] - Required. The external YouTube video ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> deleteAudiotracks({
+    core.String? audioTrackId,
+    core.List<core.String>? part,
+    core.String? videoId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'audioTrackId': ?audioTrackId == null ? null : [audioTrackId],
+      'part': ?part,
+      'videoId': ?videoId == null ? null : [videoId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'youtube/v3/audiotracks';
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
 
   /// Updates an existing resource.
   ///
@@ -6026,6 +6157,61 @@ class YoutubeV3Resource {
       queryParams: queryParams_,
     );
     return CommentThread.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class YoutubeV3AudiotracksResource {
+  final commons.ApiRequester _requester;
+
+  YoutubeV3AudiotracksResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Retrieves a list of AudioTracks for a video.
+  ///
+  /// Request parameters:
+  ///
+  /// [language] - Required. Filter by specific BCP-47 language codes.
+  ///
+  /// [part] - Optional. The `part` parameter specifies a comma-separated list
+  /// of one or more `AudioTrack` resource parts that the API response will
+  /// include. The `part` names that you can include in the parameter value are
+  /// `id` and `snippet`.
+  ///
+  /// [videoId] - Required. The external YouTube video ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAudioTracksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAudioTracksResponse> list({
+    core.List<core.String>? language,
+    core.List<core.String>? part,
+    core.String? videoId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'language': ?language,
+      'part': ?part,
+      'videoId': ?videoId == null ? null : [videoId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'youtube/v3/audiotracks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAudioTracksResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -7044,6 +7230,112 @@ class ActivitySnippet {
       'thumbnails': ?thumbnails,
       'title': ?title,
       'type': ?type,
+    };
+  }
+}
+
+/// Represents an AudioTrack for a YouTube video.
+class AudioTrack {
+  /// Etag of this resource.
+  core.String? etag;
+
+  /// The ID that YouTube uses to uniquely identify the AudioTrack.
+  ///
+  /// This could be a generated AudioTrack ID.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string youtube#audiotrack.
+  core.String? kind;
+
+  /// The `snippet` object contains basic details about the AudioTrack.
+  AudioTrackSnippet? snippet;
+
+  AudioTrack({this.etag, this.id, this.kind, this.snippet});
+
+  AudioTrack.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        snippet: json_.containsKey('snippet')
+            ? AudioTrackSnippet.fromJson(
+                json_['snippet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final snippet = this.snippet;
+    return {'etag': ?etag, 'id': ?id, 'kind': ?kind, 'snippet': ?snippet};
+  }
+}
+
+/// Basic details about an AudioTrack, such as its video, language, and status.
+class AudioTrackSnippet {
+  /// The content type of the audio (e.g., "dubbed", "descriptive").
+  core.String? contentType;
+
+  /// If the status is "FAILED", this provides a reason for the failure.
+  core.String? failureReason;
+
+  /// The BCP-47 language code of this AudioTrack.
+  core.String? language;
+
+  /// The current status of this AudioTrack.
+  /// Possible string values are:
+  /// - "audioTrackStatusUnspecified"
+  /// - "processing"
+  /// - "succeeded"
+  /// - "failed"
+  /// - "rejected"
+  core.String? status;
+
+  /// Timestamp of the last update.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The external YouTube video ID this AudioTrack belongs to.
+  core.String? videoId;
+
+  AudioTrackSnippet({
+    this.contentType,
+    this.failureReason,
+    this.language,
+    this.status,
+    this.updateTime,
+    this.videoId,
+  });
+
+  AudioTrackSnippet.fromJson(core.Map json_)
+    : this(
+        contentType: json_['contentType'] as core.String?,
+        failureReason: json_['failureReason'] as core.String?,
+        language: json_['language'] as core.String?,
+        status: json_['status'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        videoId: json_['videoId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentType = this.contentType;
+    final failureReason = this.failureReason;
+    final language = this.language;
+    final status = this.status;
+    final updateTime = this.updateTime;
+    final videoId = this.videoId;
+    return {
+      'contentType': ?contentType,
+      'failureReason': ?failureReason,
+      'language': ?language,
+      'status': ?status,
+      'updateTime': ?updateTime,
+      'videoId': ?videoId,
     };
   }
 }
@@ -11629,6 +11921,48 @@ class LevelDetails {
   }
 }
 
+/// Response for listing AudioTracks.
+class ListAudioTracksResponse {
+  /// A list of AudioTracks that match the request criteria.
+  ///
+  /// Output only.
+  core.List<AudioTrack>? audioTracks;
+
+  /// Etag of this response.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string youtube#audiotrackList.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  ListAudioTracksResponse({this.audioTracks, this.etag, this.kind});
+
+  ListAudioTracksResponse.fromJson(core.Map json_)
+    : this(
+        audioTracks: (json_['audioTracks'] as core.List?)
+            ?.map(
+              (value) => AudioTrack.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final audioTracks = this.audioTracks;
+    final etag = this.etag;
+    final kind = this.kind;
+    return {'audioTracks': ?audioTracks, 'etag': ?etag, 'kind': ?kind};
+  }
+}
+
 /// A *liveBroadcast* resource represents an event that will be streamed, via
 /// live video, on YouTube.
 class LiveBroadcast {
@@ -12472,6 +12806,77 @@ class LiveChatFanFundingEventDetails {
   }
 }
 
+/// Details about the gift event, this is only set if the type is 'giftEvent'.
+class LiveChatGiftDetails {
+  /// The alternative text to be used for accessibility.
+  core.String? altText;
+
+  /// The number of times the gift has been sent in a row.
+  core.int? comboCount;
+
+  /// The duration of the gift.
+  core.String? giftDuration;
+
+  /// The name of the gift.
+  core.String? giftName;
+
+  /// The URL of the gift image.
+  core.String? giftUrl;
+
+  /// Whether the gift involves a visual effect.
+  core.bool? hasVisualEffect;
+
+  /// The value of the gift in jewels.
+  core.int? jewelsAmount;
+
+  /// The BCP-47 language code of the gift.
+  core.String? language;
+
+  LiveChatGiftDetails({
+    this.altText,
+    this.comboCount,
+    this.giftDuration,
+    this.giftName,
+    this.giftUrl,
+    this.hasVisualEffect,
+    this.jewelsAmount,
+    this.language,
+  });
+
+  LiveChatGiftDetails.fromJson(core.Map json_)
+    : this(
+        altText: json_['altText'] as core.String?,
+        comboCount: json_['comboCount'] as core.int?,
+        giftDuration: json_['giftDuration'] as core.String?,
+        giftName: json_['giftName'] as core.String?,
+        giftUrl: json_['giftUrl'] as core.String?,
+        hasVisualEffect: json_['hasVisualEffect'] as core.bool?,
+        jewelsAmount: json_['jewelsAmount'] as core.int?,
+        language: json_['language'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final altText = this.altText;
+    final comboCount = this.comboCount;
+    final giftDuration = this.giftDuration;
+    final giftName = this.giftName;
+    final giftUrl = this.giftUrl;
+    final hasVisualEffect = this.hasVisualEffect;
+    final jewelsAmount = this.jewelsAmount;
+    final language = this.language;
+    return {
+      'altText': ?altText,
+      'comboCount': ?comboCount,
+      'giftDuration': ?giftDuration,
+      'giftName': ?giftName,
+      'giftUrl': ?giftUrl,
+      'hasVisualEffect': ?hasVisualEffect,
+      'jewelsAmount': ?jewelsAmount,
+      'language': ?language,
+    };
+  }
+}
+
 class LiveChatGiftMembershipReceivedDetails {
   /// The ID of the membership gifting message that is related to this gift
   /// membership.
@@ -12874,7 +13279,7 @@ class LiveChatMessageRetractedDetails {
   }
 }
 
-/// Next ID: 34
+/// Next ID: 35
 class LiveChatMessageSnippet {
   /// The ID of the user that authored this message, this field is not always
   /// filled.
@@ -12903,6 +13308,9 @@ class LiveChatMessageSnippet {
     'Not supported. Member documentation may have more information.',
   )
   LiveChatFanFundingEventDetails? fanFundingEventDetails;
+
+  /// Details about the gift event, this is only set if the type is 'giftEvent'.
+  LiveChatGiftDetails? giftDetails;
 
   /// Details about the Gift Membership Received event, this is only set if the
   /// type is 'giftMembershipReceivedEvent'.
@@ -12966,6 +13374,7 @@ class LiveChatMessageSnippet {
   /// - "superChatEvent"
   /// - "superStickerEvent"
   /// - "pollEvent"
+  /// - "giftEvent" : A virtual gift sent by a viewer to support a creator.
   core.String? type;
   LiveChatUserBannedMessageDetails? userBannedDetails;
 
@@ -12973,6 +13382,7 @@ class LiveChatMessageSnippet {
     this.authorChannelId,
     this.displayMessage,
     this.fanFundingEventDetails,
+    this.giftDetails,
     this.giftMembershipReceivedDetails,
     this.hasDisplayContent,
     this.liveChatId,
@@ -12998,6 +13408,11 @@ class LiveChatMessageSnippet {
             ? LiveChatFanFundingEventDetails.fromJson(
                 json_['fanFundingEventDetails']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        giftDetails: json_.containsKey('giftDetails')
+            ? LiveChatGiftDetails.fromJson(
+                json_['giftDetails'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         giftMembershipReceivedDetails:
@@ -13079,6 +13494,7 @@ class LiveChatMessageSnippet {
     final authorChannelId = this.authorChannelId;
     final displayMessage = this.displayMessage;
     final fanFundingEventDetails = this.fanFundingEventDetails;
+    final giftDetails = this.giftDetails;
     final giftMembershipReceivedDetails = this.giftMembershipReceivedDetails;
     final hasDisplayContent = this.hasDisplayContent;
     final liveChatId = this.liveChatId;
@@ -13098,6 +13514,7 @@ class LiveChatMessageSnippet {
       'authorChannelId': ?authorChannelId,
       'displayMessage': ?displayMessage,
       'fanFundingEventDetails': ?fanFundingEventDetails,
+      'giftDetails': ?giftDetails,
       'giftMembershipReceivedDetails': ?giftMembershipReceivedDetails,
       'hasDisplayContent': ?hasDisplayContent,
       'liveChatId': ?liveChatId,

@@ -824,9 +824,8 @@ class BiddersPretargetingConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Name of the pretargeting configuration that must
-  /// follow the pattern
-  /// `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`
+  /// [name] - Output only. Name of the pretargeting config that must follow the
+  /// pattern `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`
   /// Value must have pattern `^bidders/\[^/\]+/pretargetingConfigs/\[^/\]+$`.
   ///
   /// [updateMask] - Field mask to use for partial in-place updates.
@@ -2660,14 +2659,20 @@ class Creative {
   /// A native creative.
   NativeContent? native;
 
-  /// Experimental field that can be used during the \[FLEDGE Origin
-  /// Trial\](/authorized-buyers/rtb/fledge-origin-trial).
+  /// Deprecated: FLEDGE is no longer supported.
   ///
-  /// The URL to fetch an interest group ad used in \[TURTLEDOVE on-device
+  /// See:
+  /// https://privacysandbox.google.com/blog/update-on-plans-for-privacy-sandbox-technologies
+  /// Experimental field that can be used during the \[FLEDGE Origin
+  /// Trial\](/authorized-buyers/rtb/fledge-origin-trial). The URL to fetch an
+  /// interest group ad used in \[TURTLEDOVE on-device
   /// auction\](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#1-browsers-record-interest-groups").
   /// This should be unique among all creatives for a given `accountId`. This
   /// URL should be the same as the URL returned by
   /// \[generateBid()\](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#32-on-device-bidding).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? renderUrl;
 
   /// All restricted categories for the ads that may be shown from this
@@ -3999,10 +4004,10 @@ class NativeContent {
 /// included and excluded numeric IDs used in app, user list, geo, and vertical
 /// id targeting.
 class NumericTargetingDimension {
-  /// The IDs excluded in a configuration.
+  /// The IDs excluded in a config.
   core.List<core.String>? excludedIds;
 
-  /// The IDs included in a configuration.
+  /// The IDs included in a config.
   core.List<core.String>? includedIds;
 
   NumericTargetingDimension({this.excludedIds, this.includedIds});
@@ -4227,12 +4232,12 @@ class PolicyTopicEvidence {
   }
 }
 
-/// Pretargeting configuration: a set of targeting dimensions applied at the
+/// Pretargeting config: a set of targeting dimensions applied at the
 /// pretargeting stage of the RTB funnel.
 ///
 /// These control which inventory a bidder will receive bid requests for.
 class PretargetingConfig {
-  /// Targeting modes included by this configuration.
+  /// Targeting modes included by this config.
   ///
   /// A bid request must allow all the specified targeting modes. An unset value
   /// allows all bid requests to be sent, regardless of which targeting modes
@@ -4250,23 +4255,22 @@ class PretargetingConfig {
   /// dimension).
   AppTargeting? appTargeting;
 
-  /// The identifier that corresponds to this pretargeting configuration that
-  /// helps buyers track and attribute their spend across their own arbitrary
+  /// The identifier that corresponds to this pretargeting config that helps
+  /// buyers track and attribute their spend across their own arbitrary
   /// divisions.
   ///
-  /// If a bid request matches more than one configuration, the buyer chooses
-  /// which billing_id to attribute each of their bids.
+  /// If a bid request matches more than one config, the buyer chooses which
+  /// billing_id to attribute each of their bids.
   ///
   /// Output only.
   core.String? billingId;
 
-  /// The diplay name associated with this configuration.
+  /// The diplay name associated with this config.
   ///
-  /// This name must be unique among all the pretargeting configurations a
-  /// bidder has.
+  /// This name must be unique among all the pretargeting configs a bidder has.
   core.String? displayName;
 
-  /// The sensitive content category label IDs excluded in this configuration.
+  /// The sensitive content category label IDs excluded in this config.
   ///
   /// Bid requests for inventory with any of the specified content label IDs
   /// will not be sent. Refer to this file
@@ -4274,11 +4278,11 @@ class PretargetingConfig {
   /// category IDs.
   core.List<core.String>? excludedContentLabelIds;
 
-  /// The geos included or excluded in this configuration defined in
+  /// The geos included or excluded in this config defined in
   /// https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv
   NumericTargetingDimension? geoTargeting;
 
-  /// Creative dimensions included by this configuration.
+  /// Creative dimensions included by this config.
   ///
   /// Only bid requests eligible for at least one of the specified creative
   /// dimensions will be sent. An unset value allows all bid requests to be
@@ -4293,36 +4297,35 @@ class PretargetingConfig {
   /// environments.
   core.List<core.String>? includedEnvironments;
 
-  /// Creative formats included by this configuration.
+  /// Creative formats included by this config.
   ///
   /// Only bid requests eligible for at least one of the specified creative
   /// formats will be sent. An unset value will allow all bid requests to be
   /// sent, regardless of format.
   core.List<core.String>? includedFormats;
 
-  /// The languages included in this configuration, represented by their
-  /// language code.
+  /// The languages included in this config, represented by their language code.
   ///
   /// See https://developers.google.com/adwords/api/docs/appendix/languagecodes.
   core.List<core.String>? includedLanguages;
 
-  /// The mobile operating systems included in this configuration as defined in
+  /// The mobile operating systems included in this config as defined in
   /// https://storage.googleapis.com/adx-rtb-dictionaries/mobile-os.csv
   core.List<core.String>? includedMobileOperatingSystemIds;
 
-  /// The platforms included by this configration.
+  /// The platforms included by this config.
   ///
   /// Bid requests for devices with the specified platform types will be sent.
   /// An unset value allows all bid requests to be sent, regardless of platform.
   core.List<core.String>? includedPlatforms;
 
-  /// User identifier types included in this configuration.
+  /// User identifier types included in this config.
   ///
   /// At least one of the user identifier types specified in this list must be
   /// available for the bid request to be sent.
   core.List<core.String>? includedUserIdTypes;
 
-  /// The interstitial targeting specified for this configuration.
+  /// The interstitial targeting specified for this config.
   ///
   /// The unset value will allow bid requests to be sent regardless of whether
   /// they are for interstitials or not.
@@ -4342,23 +4345,23 @@ class PretargetingConfig {
   /// Output only.
   core.List<core.String>? invalidGeoIds;
 
-  /// The maximum QPS threshold for this configuration.
+  /// The maximum QPS threshold for this config.
   ///
   /// The bidder should receive no more than this number of bid requests
-  /// matching this configuration per second across all their bidding endpoints
-  /// among all trading locations. Further information available at
+  /// matching this config per second across all their bidding endpoints among
+  /// all trading locations. Further information available at
   /// https://developers.google.com/authorized-buyers/rtb/peer-guide
   core.String? maximumQps;
 
   /// The targeted minimum viewability decile, ranging in values \[0, 10\].
   ///
-  /// A value of 5 means that the configuration will only match adslots for
-  /// which we predict at least 50% viewability. Values \> 10 will be rounded
-  /// down to 10. An unset value or a value of 0 indicates that bid requests
-  /// will be sent regardless of viewability.
+  /// A value of 5 means that the config will only match adslots for which we
+  /// predict at least 50% viewability. Values \> 10 will be rounded down to 10.
+  /// An unset value or a value of 0 indicates that bid requests will be sent
+  /// regardless of viewability.
   core.int? minimumViewabilityDecile;
 
-  /// Name of the pretargeting configuration that must follow the pattern
+  /// Name of the pretargeting config that must follow the pattern
   /// `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`
   ///
   /// Output only.
@@ -4380,22 +4383,22 @@ class PretargetingConfig {
   /// Publisher IDs will be returned in the order that they were entered.
   StringTargetingDimension? publisherTargeting;
 
-  /// The state of this pretargeting configuration.
+  /// The state of this pretargeting config.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Placeholder for undefined state.
-  /// - "ACTIVE" : This pretargeting configuration is actively being used to
-  /// filter bid requests.
-  /// - "SUSPENDED" : This pretargeting configuration is suspended and not used
-  /// in serving.
+  /// - "ACTIVE" : This pretargeting config is actively being used to filter bid
+  /// requests.
+  /// - "SUSPENDED" : This pretargeting config is suspended and not used in
+  /// serving.
   core.String? state;
 
-  /// The remarketing lists included or excluded in this configuration as
-  /// defined in UserList.
+  /// The remarketing lists included or excluded in this config as defined in
+  /// UserList.
   NumericTargetingDimension? userListTargeting;
 
-  /// The verticals included or excluded in this configuration as defined in
+  /// The verticals included or excluded in this config as defined in
   /// https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals
   NumericTargetingDimension? verticalTargeting;
 
@@ -4407,7 +4410,7 @@ class PretargetingConfig {
   /// be targeting positively (bid requests will be sent only if the destination
   /// site is listed in the targeting dimension) or negatively (bid requests
   /// will be sent only if the destination site is not listed in the
-  /// pretargeting configuration).
+  /// pretargeting config).
   StringTargetingDimension? webTargeting;
 
   PretargetingConfig({

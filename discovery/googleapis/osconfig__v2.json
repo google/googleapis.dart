@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260108",
+    "revision": "20260325",
     "rootUrl": "https://osconfig.googleapis.com/",
     "servicePath": "",
     "title": "OS Config API",
@@ -1574,7 +1574,7 @@
                     "readOnly": true
                 },
                 "reconciling": {
-                    "description": "Output only. Set to true, if the there are ongoing changes being applied by the orchestrator.",
+                    "description": "Output only. Set to true, if there are ongoing changes being applied by the orchestrator.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -2085,7 +2085,7 @@
             "id": "OSPolicyResourceFileResource",
             "properties": {
                 "content": {
-                    "description": "A a file with this content. The size of the content is limited to 32KiB.",
+                    "description": "A file with this content. The size of the content is limited to 32KiB.",
                     "type": "string"
                 },
                 "file": {

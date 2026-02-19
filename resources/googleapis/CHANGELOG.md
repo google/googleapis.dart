@@ -1,3 +1,13 @@
+## 17.0.0-wip
+
+### APIs
+
+- `ces` - new
+- `developerknowledge` - new
+- `gmailpostmastertools` - added `v2`
+- `health` - new
+- `saasservicemgmt` - new
+
 ## 16.0.0
 
 - Require `sdk: ^3.9.0`
@@ -281,7 +291,7 @@
 
 ### API changes
 
-- `adexchangebuyer` - **removed**  
+- `adexchangebuyer` - **removed**
 - `contactcenterinsights` - new!
 - `mybusinessbusinessinformation` - new!
 - `mybusinessnotifications` - new!

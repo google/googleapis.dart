@@ -3597,6 +3597,14 @@ class ArtifactObjects {
 /// Artifacts produced by a build that should be uploaded upon successful
 /// completion of all build steps.
 class Artifacts {
+  /// A list of generic artifacts to be uploaded to Artifact Registry upon
+  /// successful completion of all build steps.
+  ///
+  /// If any artifacts fail to be pushed, the build is marked FAILURE.
+  ///
+  /// Optional.
+  core.List<GenericArtifact>? genericArtifacts;
+
   /// A list of Go modules to be uploaded to Artifact Registry upon successful
   /// completion of all build steps.
   ///
@@ -3642,6 +3650,16 @@ class Artifacts {
   /// pushed, the build is marked FAILURE.
   ArtifactObjects? objects;
 
+  /// A list of OCI images to be uploaded to Artifact Registry upon successful
+  /// completion of all build steps.
+  ///
+  /// OCI images in the specified paths will be uploaded to the specified
+  /// Artifact Registry repository using the builder service account's
+  /// credentials. If any images fail to be pushed, the build is marked FAILURE.
+  ///
+  /// Optional.
+  core.List<Oci>? oci;
+
   /// A list of Python packages to be uploaded to Artifact Registry upon
   /// successful completion of all build steps.
   ///
@@ -3650,16 +3668,25 @@ class Artifacts {
   core.List<PythonPackage>? pythonPackages;
 
   Artifacts({
+    this.genericArtifacts,
     this.goModules,
     this.images,
     this.mavenArtifacts,
     this.npmPackages,
     this.objects,
+    this.oci,
     this.pythonPackages,
   });
 
   Artifacts.fromJson(core.Map json_)
     : this(
+        genericArtifacts: (json_['genericArtifacts'] as core.List?)
+            ?.map(
+              (value) => GenericArtifact.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         goModules: (json_['goModules'] as core.List?)
             ?.map(
               (value) => GoModule.fromJson(
@@ -3689,6 +3716,12 @@ class Artifacts {
                 json_['objects'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        oci: (json_['oci'] as core.List?)
+            ?.map(
+              (value) =>
+                  Oci.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
         pythonPackages: (json_['pythonPackages'] as core.List?)
             ?.map(
               (value) => PythonPackage.fromJson(
@@ -3699,18 +3732,22 @@ class Artifacts {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final genericArtifacts = this.genericArtifacts;
     final goModules = this.goModules;
     final images = this.images;
     final mavenArtifacts = this.mavenArtifacts;
     final npmPackages = this.npmPackages;
     final objects = this.objects;
+    final oci = this.oci;
     final pythonPackages = this.pythonPackages;
     return {
+      'genericArtifacts': ?genericArtifacts,
       'goModules': ?goModules,
       'images': ?images,
       'mavenArtifacts': ?mavenArtifacts,
       'npmPackages': ?npmPackages,
       'objects': ?objects,
+      'oci': ?oci,
       'pythonPackages': ?pythonPackages,
     };
   }
@@ -5510,6 +5547,19 @@ class BuiltImage {
   /// presented to `docker push`.
   core.String? name;
 
+  /// The OCI media type of the artifact.
+  ///
+  /// Non-OCI images, such as Docker images, will have an unspecified value.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "OCI_MEDIA_TYPE_UNSPECIFIED" : Default value.
+  /// - "IMAGE_MANIFEST" : The artifact is an image manifest, which represents a
+  /// single image with all its layers.
+  /// - "IMAGE_INDEX" : The artifact is an image index, which can contain a list
+  /// of image manifests.
+  core.String? ociMediaType;
+
   /// Stores timing information for pushing the specified image.
   ///
   /// Output only.
@@ -5519,6 +5569,7 @@ class BuiltImage {
     this.artifactRegistryPackage,
     this.digest,
     this.name,
+    this.ociMediaType,
     this.pushTiming,
   });
 
@@ -5528,6 +5579,7 @@ class BuiltImage {
             json_['artifactRegistryPackage'] as core.String?,
         digest: json_['digest'] as core.String?,
         name: json_['name'] as core.String?,
+        ociMediaType: json_['ociMediaType'] as core.String?,
         pushTiming: json_.containsKey('pushTiming')
             ? TimeSpan.fromJson(
                 json_['pushTiming'] as core.Map<core.String, core.dynamic>,
@@ -5539,11 +5591,13 @@ class BuiltImage {
     final artifactRegistryPackage = this.artifactRegistryPackage;
     final digest = this.digest;
     final name = this.name;
+    final ociMediaType = this.ociMediaType;
     final pushTiming = this.pushTiming;
     return {
       'artifactRegistryPackage': ?artifactRegistryPackage,
       'digest': ?digest,
       'name': ?name,
+      'ociMediaType': ?ociMediaType,
       'pushTiming': ?pushTiming,
     };
   }
@@ -5748,14 +5802,22 @@ class Dependency {
   /// source as well).
   core.bool? empty;
 
+  /// Represents a generic artifact as a build dependency.
+  GenericArtifactDependency? genericArtifact;
+
   /// Represents a git repository as a build dependency.
   GitSourceDependency? gitSource;
 
-  Dependency({this.empty, this.gitSource});
+  Dependency({this.empty, this.genericArtifact, this.gitSource});
 
   Dependency.fromJson(core.Map json_)
     : this(
         empty: json_['empty'] as core.bool?,
+        genericArtifact: json_.containsKey('genericArtifact')
+            ? GenericArtifactDependency.fromJson(
+                json_['genericArtifact'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gitSource: json_.containsKey('gitSource')
             ? GitSourceDependency.fromJson(
                 json_['gitSource'] as core.Map<core.String, core.dynamic>,
@@ -5765,8 +5827,13 @@ class Dependency {
 
   core.Map<core.String, core.dynamic> toJson() {
     final empty = this.empty;
+    final genericArtifact = this.genericArtifact;
     final gitSource = this.gitSource;
-    return {'empty': ?empty, 'gitSource': ?gitSource};
+    return {
+      'empty': ?empty,
+      'genericArtifact': ?genericArtifact,
+      'gitSource': ?gitSource,
+    };
   }
 }
 
@@ -5899,6 +5966,65 @@ class FileHashes {
   core.Map<core.String, core.dynamic> toJson() {
     final fileHash = this.fileHash;
     return {'fileHash': ?fileHash};
+  }
+}
+
+/// Generic artifact to upload to Artifact Registry upon successful completion
+/// of all build steps.
+class GenericArtifact {
+  /// Path to the generic artifact in the build's workspace to be uploaded to
+  /// Artifact Registry.
+  ///
+  /// Required.
+  core.String? folder;
+
+  /// Registry path to upload the generic artifact to, in the form
+  /// projects/$PROJECT/locations/$LOCATION/repositories/$REPO/packages/$PACKAGE/versions/$VERSION
+  ///
+  /// Required.
+  core.String? registryPath;
+
+  GenericArtifact({this.folder, this.registryPath});
+
+  GenericArtifact.fromJson(core.Map json_)
+    : this(
+        folder: json_['folder'] as core.String?,
+        registryPath: json_['registryPath'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final folder = this.folder;
+    final registryPath = this.registryPath;
+    return {'folder': ?folder, 'registryPath': ?registryPath};
+  }
+}
+
+/// Represents a generic artifact as a build dependency.
+class GenericArtifactDependency {
+  /// Where the artifact files should be placed on the worker.
+  ///
+  /// Required.
+  core.String? destPath;
+
+  /// The location to download the artifact files from.
+  ///
+  /// Ex: projects/p1/locations/us/repositories/r1/packages/p1/versions/v1
+  ///
+  /// Required.
+  core.String? resource;
+
+  GenericArtifactDependency({this.destPath, this.resource});
+
+  GenericArtifactDependency.fromJson(core.Map json_)
+    : this(
+        destPath: json_['destPath'] as core.String?,
+        resource: json_['resource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destPath = this.destPath;
+    final resource = this.resource;
+    return {'destPath': ?destPath, 'resource': ?resource};
   }
 }
 
@@ -6996,6 +7122,7 @@ class Hash {
   /// - "GO_MODULE_H1" : Dirhash of a Go module's source code which is then
   /// hex-encoded.
   /// - "SHA512" : Use a sha512 hash.
+  /// - "DIRSUM_SHA256" : Use a dirsum_sha256 hash.
   core.String? type;
 
   /// The hash value.
@@ -7522,6 +7649,49 @@ class NpmPackage {
     final packagePath = this.packagePath;
     final repository = this.repository;
     return {'packagePath': ?packagePath, 'repository': ?repository};
+  }
+}
+
+/// OCI image to upload to Artifact Registry upon successful completion of all
+/// build steps.
+class Oci {
+  /// Path on the local file system where to find the container to upload.
+  ///
+  /// e.g. /workspace/my-image.tar
+  ///
+  /// Required.
+  core.String? file;
+
+  /// Registry path to upload the container to.
+  ///
+  /// e.g. us-east1-docker.pkg.dev/my-project/my-repo/my-image
+  ///
+  /// Required.
+  core.String? registryPath;
+
+  /// Tags to apply to the uploaded image.
+  ///
+  /// e.g. latest, 1.0.0
+  ///
+  /// Optional.
+  core.List<core.String>? tags;
+
+  Oci({this.file, this.registryPath, this.tags});
+
+  Oci.fromJson(core.Map json_)
+    : this(
+        file: json_['file'] as core.String?,
+        registryPath: json_['registryPath'] as core.String?,
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final file = this.file;
+    final registryPath = this.registryPath;
+    final tags = this.tags;
+    return {'file': ?file, 'registryPath': ?registryPath, 'tags': ?tags};
   }
 }
 
@@ -8163,6 +8333,11 @@ class Results {
   /// read-only and can't be substituted.
   core.List<core.String>? buildStepOutputs;
 
+  /// Generic artifacts uploaded to Artifact Registry at the end of the build.
+  ///
+  /// Output only.
+  core.List<UploadedGenericArtifact>? genericArtifacts;
+
   /// Go module artifacts uploaded to Artifact Registry at the end of the build.
   ///
   /// Optional.
@@ -8190,6 +8365,7 @@ class Results {
     this.artifactTiming,
     this.buildStepImages,
     this.buildStepOutputs,
+    this.genericArtifacts,
     this.goModules,
     this.images,
     this.mavenArtifacts,
@@ -8211,6 +8387,13 @@ class Results {
             .toList(),
         buildStepOutputs: (json_['buildStepOutputs'] as core.List?)
             ?.map((value) => value as core.String)
+            .toList(),
+        genericArtifacts: (json_['genericArtifacts'] as core.List?)
+            ?.map(
+              (value) => UploadedGenericArtifact.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
             .toList(),
         goModules: (json_['goModules'] as core.List?)
             ?.map(
@@ -8255,6 +8438,7 @@ class Results {
     final artifactTiming = this.artifactTiming;
     final buildStepImages = this.buildStepImages;
     final buildStepOutputs = this.buildStepOutputs;
+    final genericArtifacts = this.genericArtifacts;
     final goModules = this.goModules;
     final images = this.images;
     final mavenArtifacts = this.mavenArtifacts;
@@ -8266,6 +8450,7 @@ class Results {
       'artifactTiming': ?artifactTiming,
       'buildStepImages': ?buildStepImages,
       'buildStepOutputs': ?buildStepOutputs,
+      'genericArtifacts': ?genericArtifacts,
       'goModules': ?goModules,
       'images': ?images,
       'mavenArtifacts': ?mavenArtifacts,
@@ -8806,6 +8991,87 @@ class TimeSpan {
     final endTime = this.endTime;
     final startTime = this.startTime;
     return {'endTime': ?endTime, 'startTime': ?startTime};
+  }
+}
+
+/// A generic artifact uploaded to Artifact Registry using the GenericArtifact
+/// directive.
+class UploadedGenericArtifact {
+  /// The hash of the whole artifact.
+  ///
+  /// Output only.
+  FileHashes? artifactFingerprint;
+
+  /// Path to the artifact in Artifact Registry.
+  ///
+  /// Output only.
+  core.String? artifactRegistryPackage;
+
+  /// The file hashes that make up the generic artifact.
+  ///
+  /// Output only.
+  core.Map<core.String, FileHashes>? fileHashes;
+
+  /// Stores timing information for pushing the specified artifact.
+  ///
+  /// Output only.
+  TimeSpan? pushTiming;
+
+  /// URI of the uploaded artifact.
+  ///
+  /// Ex: projects/p1/locations/us/repositories/r1/packages/p1/versions/v1
+  ///
+  /// Output only.
+  core.String? uri;
+
+  UploadedGenericArtifact({
+    this.artifactFingerprint,
+    this.artifactRegistryPackage,
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
+
+  UploadedGenericArtifact.fromJson(core.Map json_)
+    : this(
+        artifactFingerprint: json_.containsKey('artifactFingerprint')
+            ? FileHashes.fromJson(
+                json_['artifactFingerprint']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        artifactRegistryPackage:
+            json_['artifactRegistryPackage'] as core.String?,
+        fileHashes:
+            (json_['fileHashes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                FileHashes.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        pushTiming: json_.containsKey('pushTiming')
+            ? TimeSpan.fromJson(
+                json_['pushTiming'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifactFingerprint = this.artifactFingerprint;
+    final artifactRegistryPackage = this.artifactRegistryPackage;
+    final fileHashes = this.fileHashes;
+    final pushTiming = this.pushTiming;
+    final uri = this.uri;
+    return {
+      'artifactFingerprint': ?artifactFingerprint,
+      'artifactRegistryPackage': ?artifactRegistryPackage,
+      'fileHashes': ?fileHashes,
+      'pushTiming': ?pushTiming,
+      'uri': ?uri,
+    };
   }
 }
 

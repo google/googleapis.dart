@@ -379,8 +379,7 @@ class CoursesResource {
   /// Request parameters:
   ///
   /// [courseStates] - Restricts returned courses to those in one of the
-  /// specified states The default value is ACTIVE, ARCHIVED, PROVISIONED,
-  /// DECLINED.
+  /// specified states. If unspecified, Courses in any state are returned.
   ///
   /// [pageSize] - Maximum number of items to return. Zero or unspecified
   /// indicates that the server may assign a maximum. The server may return
@@ -394,12 +393,14 @@ class CoursesResource {
   /// [studentId] - Restricts returned courses to those having a student with
   /// the specified identifier. The identifier can be one of the following: *
   /// the numeric identifier for the user * the email address of the user * the
-  /// string literal `"me"`, indicating the requesting user
+  /// string literal `"me"`, indicating the requesting user If specified,
+  /// `teacher_id` must be empty.
   ///
   /// [teacherId] - Restricts returned courses to those having a teacher with
   /// the specified identifier. The identifier can be one of the following: *
   /// the numeric identifier for the user * the email address of the user * the
-  /// string literal `"me"`, indicating the requesting user
+  /// string literal `"me"`, indicating the requesting user If specified,
+  /// `student_id` must be empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6878,23 +6879,33 @@ class AddOnAttachmentStudentSubmission {
   /// - "RECLAIMED_BY_STUDENT" : Student chose to "unsubmit" the assignment.
   core.String? postSubmissionState;
 
+  /// Identifier for the student that owns this submission.
+  ///
+  /// Requires the user to be a teacher in the course and have permission to
+  /// read student submissions. Read-only.
+  core.String? userId;
+
   AddOnAttachmentStudentSubmission({
     this.pointsEarned,
     this.postSubmissionState,
+    this.userId,
   });
 
   AddOnAttachmentStudentSubmission.fromJson(core.Map json_)
     : this(
         pointsEarned: (json_['pointsEarned'] as core.num?)?.toDouble(),
         postSubmissionState: json_['postSubmissionState'] as core.String?,
+        userId: json_['userId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final pointsEarned = this.pointsEarned;
     final postSubmissionState = this.postSubmissionState;
+    final userId = this.userId;
     return {
       'pointsEarned': ?pointsEarned,
       'postSubmissionState': ?postSubmissionState,
+      'userId': ?userId,
     };
   }
 }

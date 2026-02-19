@@ -104,12 +104,12 @@ class AccountSummariesResource {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of AccountSummary resources to return. The
-  /// service may return fewer than this value, even if there are additional
-  /// pages. If unspecified, at most 50 resources will be returned. The maximum
-  /// value is 200; (higher values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of AccountSummary resources to
+  /// return. The service may return fewer than this value, even if there are
+  /// additional pages. If unspecified, at most 50 resources will be returned.
+  /// The maximum value is 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListAccountSummaries` call. Provide this to retrieve the subsequent page.
   /// When paginating, all other parameters provided to `ListAccountSummaries`
   /// must match the call that provided the page token.
@@ -283,15 +283,15 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of resources to return. The service may
-  /// return fewer than this value, even if there are additional pages. If
-  /// unspecified, at most 50 resources will be returned. The maximum value is
-  /// 200; (higher values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. The
+  /// service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 resources will be returned. The maximum
+  /// value is 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous `ListAccounts` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListAccounts` must match the call that provided
-  /// the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAccounts` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListAccounts` must match the
+  /// call that provided the page token.
   ///
   /// [showDeleted] - Whether to include soft-deleted (ie: "trashed") Accounts
   /// in the results. Accounts can be inspected to determine whether they are
@@ -338,7 +338,7 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this account. Format:
+  /// [name] - Identifier. Resource name of this account. Format:
   /// accounts/{account} Example: "accounts/100"
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
@@ -792,15 +792,15 @@ class PropertiesResource {
   /// firebase_project:project-id | The firebase project with id: project-id. |
   /// | firebase_project:123 | The firebase project with number: 123. | ```
   ///
-  /// [pageSize] - The maximum number of resources to return. The service may
-  /// return fewer than this value, even if there are additional pages. If
-  /// unspecified, at most 50 resources will be returned. The maximum value is
-  /// 200; (higher values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. The
+  /// service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 resources will be returned. The maximum
+  /// value is 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous `ListProperties`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListProperties` must match the call that
-  /// provided the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListProperties` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListProperties` must match
+  /// the call that provided the page token.
   ///
   /// [showDeleted] - Whether to include soft-deleted (ie: "trashed") Properties
   /// in the results. Properties can be inspected to determine whether they are
@@ -849,7 +849,7 @@ class PropertiesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this property. Format:
+  /// [name] - Identifier. Resource name of this property. Format:
   /// properties/{property_id} Example: "properties/1000"
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
@@ -965,8 +965,8 @@ class PropertiesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name for this DataRetentionSetting
-  /// resource. Format: properties/{property}/dataRetentionSettings
+  /// [name] - Identifier. Resource name for this DataRetentionSetting resource.
+  /// Format: properties/{property}/dataRetentionSettings
   /// Value must have pattern `^properties/\[^/\]+/dataRetentionSettings$`.
   ///
   /// [updateMask] - Required. The list of fields to be updated. Field names
@@ -1168,11 +1168,11 @@ class PropertiesConversionEventsResource {
   /// 'properties/123'
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 50 resources will be returned. The maximum value is 200; (higher
-  /// values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 50 resources will be returned. The maximum value is
+  /// 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListConversionEvents` call. Provide this to retrieve the subsequent page.
   /// When paginating, all other parameters provided to `ListConversionEvents`
   /// must match the call that provided the page token.
@@ -1223,7 +1223,7 @@ class PropertiesConversionEventsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this conversion event. Format:
+  /// [name] - Identifier. Resource name of this conversion event. Format:
   /// properties/{property}/conversionEvents/{conversion_event}
   /// Value must have pattern `^properties/\[^/\]+/conversionEvents/\[^/\]+$`.
   ///
@@ -1408,11 +1408,11 @@ class PropertiesCustomDimensionsResource {
   /// [parent] - Required. Example format: properties/1234
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 50 resources will be returned. The maximum value is 200 (higher
-  /// values will be coerced to the maximum).
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 50 resources will be returned. The maximum value is
+  /// 200 (higher values will be coerced to the maximum).
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListCustomDimensions` call. Provide this to retrieve the subsequent page.
   /// When paginating, all other parameters provided to `ListCustomDimensions`
   /// must match the call that provided the page token.
@@ -1458,7 +1458,7 @@ class PropertiesCustomDimensionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name for this CustomDimension resource.
+  /// [name] - Identifier. Resource name for this CustomDimension resource.
   /// Format: properties/{property}/customDimensions/{customDimension}
   /// Value must have pattern `^properties/\[^/\]+/customDimensions/\[^/\]+$`.
   ///
@@ -1687,8 +1687,8 @@ class PropertiesCustomMetricsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name for this CustomMetric resource.
-  /// Format: properties/{property}/customMetrics/{customMetric}
+  /// [name] - Identifier. Resource name for this CustomMetric resource. Format:
+  /// properties/{property}/customMetrics/{customMetric}
   /// Value must have pattern `^properties/\[^/\]+/customMetrics/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The list of fields to be updated. Omitted fields
@@ -1915,7 +1915,7 @@ class PropertiesDataStreamsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this Data Stream. Format:
+  /// [name] - Identifier. Resource name of this Data Stream. Format:
   /// properties/{property_id}/dataStreams/{stream_id} Example:
   /// "properties/1000/dataStreams/2000"
   /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
@@ -2102,11 +2102,11 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
   /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets
   /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 10 resources will be returned. The maximum value is 10. Higher values
-  /// will be coerced to the maximum.
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 10 resources will be returned. The maximum value is
+  /// 10. Higher values will be coerced to the maximum.
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListMeasurementProtocolSecrets` call. Provide this to retrieve the
   /// subsequent page. When paginating, all other parameters provided to
   /// `ListMeasurementProtocolSecrets` must match the call that provided the
@@ -2157,7 +2157,7 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this secret. This secret may be a
+  /// [name] - Identifier. Resource name of this secret. This secret may be a
   /// child of any type of stream. Format:
   /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
   /// Value must have pattern
@@ -2302,15 +2302,15 @@ class PropertiesFirebaseLinksResource {
   /// `properties/1234`
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. The service may
-  /// return fewer than this value, even if there are additional pages. If
-  /// unspecified, at most 50 resources will be returned. The maximum value is
-  /// 200; (higher values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. The
+  /// service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 resources will be returned. The maximum
+  /// value is 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous `ListFirebaseLinks`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListFirebaseLinks` must match the call that
-  /// provided the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListFirebaseLinks` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListFirebaseLinks` must
+  /// match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2439,14 +2439,14 @@ class PropertiesGoogleAdsLinksResource {
   /// [parent] - Required. Example format: properties/1234
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 50 resources will be returned. The maximum value is 200 (higher
-  /// values will be coerced to the maximum).
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 50 resources will be returned. The maximum value is
+  /// 200 (higher values will be coerced to the maximum).
   ///
-  /// [pageToken] - A page token, received from a previous `ListGoogleAdsLinks`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListGoogleAdsLinks` must match the call that
-  /// provided the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListGoogleAdsLinks`
+  /// must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2488,7 +2488,7 @@ class PropertiesGoogleAdsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Format:
+  /// [name] - Identifier. Format:
   /// properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note:
   /// googleAdsLinkId is not the Google Ads customer ID.
   /// Value must have pattern `^properties/\[^/\]+/googleAdsLinks/\[^/\]+$`.
@@ -2671,14 +2671,14 @@ class PropertiesKeyEventsResource {
   /// 'properties/123'
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 50 resources will be returned. The maximum value is 200; (higher
-  /// values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 50 resources will be returned. The maximum value is
+  /// 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous `ListKeyEvents` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListKeyEvents` must match the call that provided
-  /// the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListKeyEvents` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListKeyEvents` must match
+  /// the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3229,9 +3229,10 @@ class GoogleAnalyticsAdminV1betaAccountSummary {
   /// Display name for the account referred to in this account summary.
   core.String? displayName;
 
-  /// Resource name for this account summary.
+  /// Identifier.
   ///
-  /// Format: accountSummaries/{account_id} Example: "accountSummaries/1000"
+  /// Resource name for this account summary. Format:
+  /// accountSummaries/{account_id} Example: "accountSummaries/1000"
   core.String? name;
 
   /// List of summaries for child accounts of this account.
@@ -3589,11 +3590,10 @@ class GoogleAnalyticsAdminV1betaConversionEvent {
   /// Immutable.
   core.String? eventName;
 
-  /// Resource name of this conversion event.
+  /// Identifier.
   ///
-  /// Format: properties/{property}/conversionEvents/{conversion_event}
-  ///
-  /// Output only.
+  /// Resource name of this conversion event. Format:
+  /// properties/{property}/conversionEvents/{conversion_event}
   core.String? name;
 
   GoogleAnalyticsAdminV1betaConversionEvent({
@@ -3688,12 +3688,11 @@ class GoogleAnalyticsAdminV1betaDataStream {
   /// Must be populated if type is IOS_APP_DATA_STREAM.
   GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData? iosAppStreamData;
 
-  /// Resource name of this Data Stream.
+  /// Identifier.
   ///
-  /// Format: properties/{property_id}/dataStreams/{stream_id} Example:
+  /// Resource name of this Data Stream. Format:
+  /// properties/{property_id}/dataStreams/{stream_id} Example:
   /// "properties/1000/dataStreams/2000"
-  ///
-  /// Output only.
   core.String? name;
 
   /// The type of this DataStream resource.

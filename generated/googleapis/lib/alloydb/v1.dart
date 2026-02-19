@@ -155,6 +155,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -2552,6 +2563,7 @@ class Backup {
   /// - "POSTGRES_15" : The database version is Postgres 15.
   /// - "POSTGRES_16" : The database version is Postgres 16.
   /// - "POSTGRES_17" : The database version is Postgres 17.
+  /// - "POSTGRES_18" : The database version is Postgres 18.
   core.String? databaseVersion;
 
   /// Delete time stamp
@@ -3186,6 +3198,7 @@ class Cluster {
   /// - "POSTGRES_15" : The database version is Postgres 15.
   /// - "POSTGRES_16" : The database version is Postgres 16.
   /// - "POSTGRES_17" : The database version is Postgres 17.
+  /// - "POSTGRES_18" : The database version is Postgres 18.
   core.String? databaseVersion;
 
   /// Configuration for Dataplex integration.
@@ -4891,7 +4904,7 @@ class InstanceNetworkConfig {
   ///
   /// If set, the instance IPs will be created from this allocated range and
   /// will override the IP range used by the parent cluster. The range name must
-  /// comply with [RFC 1035](http://datatracker.ietf.org/doc/html/rfc1035).
+  /// comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035).
   /// Specifically, the name must be 1-63 characters long and match the regular
   /// expression \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
   ///
@@ -5460,6 +5473,11 @@ class Node {
   /// Output only.
   core.String? ip;
 
+  /// Indicates whether the node set up to be configured as a hot standby.
+  ///
+  /// Output only.
+  core.bool? isHotStandby;
+
   /// Determined by state of the compute VM and postgres-service health.
   ///
   /// Compute VM state can have values listed in
@@ -5474,12 +5492,13 @@ class Node {
   /// Output only.
   core.String? zoneId;
 
-  Node({this.id, this.ip, this.state, this.zoneId});
+  Node({this.id, this.ip, this.isHotStandby, this.state, this.zoneId});
 
   Node.fromJson(core.Map json_)
     : this(
         id: json_['id'] as core.String?,
         ip: json_['ip'] as core.String?,
+        isHotStandby: json_['isHotStandby'] as core.bool?,
         state: json_['state'] as core.String?,
         zoneId: json_['zoneId'] as core.String?,
       );
@@ -5487,9 +5506,16 @@ class Node {
   core.Map<core.String, core.dynamic> toJson() {
     final id = this.id;
     final ip = this.ip;
+    final isHotStandby = this.isHotStandby;
     final state = this.state;
     final zoneId = this.zoneId;
-    return {'id': ?id, 'ip': ?ip, 'state': ?state, 'zoneId': ?zoneId};
+    return {
+      'id': ?id,
+      'ip': ?ip,
+      'isHotStandby': ?isHotStandby,
+      'state': ?state,
+      'zoneId': ?zoneId,
+    };
   }
 }
 
@@ -6721,6 +6747,7 @@ class UpgradeClusterRequest {
   /// - "POSTGRES_15" : The database version is Postgres 15.
   /// - "POSTGRES_16" : The database version is Postgres 16.
   /// - "POSTGRES_17" : The database version is Postgres 17.
+  /// - "POSTGRES_18" : The database version is Postgres 18.
   core.String? version;
 
   UpgradeClusterRequest({

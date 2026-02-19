@@ -677,6 +677,7 @@ api.LoggingConfig buildLoggingConfig() {
   final o = api.LoggingConfig();
   buildCounterLoggingConfig++;
   if (buildCounterLoggingConfig < 3) {
+    o.enableInstanceV2Logs = true;
     o.instanceCloudLoggingDisabled = true;
   }
   buildCounterLoggingConfig--;
@@ -686,6 +687,7 @@ api.LoggingConfig buildLoggingConfig() {
 void checkLoggingConfig(api.LoggingConfig o) {
   buildCounterLoggingConfig++;
   if (buildCounterLoggingConfig < 3) {
+    unittest.expect(o.enableInstanceV2Logs!, unittest.isTrue);
     unittest.expect(o.instanceCloudLoggingDisabled!, unittest.isTrue);
   }
   buildCounterLoggingConfig--;

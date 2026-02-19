@@ -59,6 +59,25 @@ void checkAcceleratorConfig(api.AcceleratorConfig o) {
   buildCounterAcceleratorConfig--;
 }
 
+core.int buildCounterAccurateTimeConfig = 0;
+api.AccurateTimeConfig buildAccurateTimeConfig() {
+  final o = api.AccurateTimeConfig();
+  buildCounterAccurateTimeConfig++;
+  if (buildCounterAccurateTimeConfig < 3) {
+    o.enablePtpKvmTimeSync = true;
+  }
+  buildCounterAccurateTimeConfig--;
+  return o;
+}
+
+void checkAccurateTimeConfig(api.AccurateTimeConfig o) {
+  buildCounterAccurateTimeConfig++;
+  if (buildCounterAccurateTimeConfig < 3) {
+    unittest.expect(o.enablePtpKvmTimeSync!, unittest.isTrue);
+  }
+  buildCounterAccurateTimeConfig--;
+}
+
 core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
 
 void checkUnnamed0(core.List<core.String> o) {
@@ -196,8 +215,10 @@ api.AddonsConfig buildAddonsConfig() {
     o.lustreCsiDriverConfig = buildLustreCsiDriverConfig();
     o.networkPolicyConfig = buildNetworkPolicyConfig();
     o.parallelstoreCsiDriverConfig = buildParallelstoreCsiDriverConfig();
+    o.podSnapshotConfig = buildPodSnapshotConfig();
     o.rayOperatorConfig = buildRayOperatorConfig();
     o.sliceControllerConfig = buildSliceControllerConfig();
+    o.slurmOperatorConfig = buildSlurmOperatorConfig();
     o.statefulHaConfig = buildStatefulHAConfig();
   }
   buildCounterAddonsConfig--;
@@ -221,8 +242,10 @@ void checkAddonsConfig(api.AddonsConfig o) {
     checkLustreCsiDriverConfig(o.lustreCsiDriverConfig!);
     checkNetworkPolicyConfig(o.networkPolicyConfig!);
     checkParallelstoreCsiDriverConfig(o.parallelstoreCsiDriverConfig!);
+    checkPodSnapshotConfig(o.podSnapshotConfig!);
     checkRayOperatorConfig(o.rayOperatorConfig!);
     checkSliceControllerConfig(o.sliceControllerConfig!);
+    checkSlurmOperatorConfig(o.slurmOperatorConfig!);
     checkStatefulHAConfig(o.statefulHaConfig!);
   }
   buildCounterAddonsConfig--;
@@ -381,6 +404,7 @@ api.Autopilot buildAutopilot() {
   final o = api.Autopilot();
   buildCounterAutopilot++;
   if (buildCounterAutopilot < 3) {
+    o.clusterPolicyConfig = buildClusterPolicyConfig();
     o.enabled = true;
     o.privilegedAdmissionConfig = buildPrivilegedAdmissionConfig();
     o.workloadPolicyConfig = buildWorkloadPolicyConfig();
@@ -392,6 +416,7 @@ api.Autopilot buildAutopilot() {
 void checkAutopilot(api.Autopilot o) {
   buildCounterAutopilot++;
   if (buildCounterAutopilot < 3) {
+    checkClusterPolicyConfig(o.clusterPolicyConfig!);
     unittest.expect(o.enabled!, unittest.isTrue);
     checkPrivilegedAdmissionConfig(o.privilegedAdmissionConfig!);
     checkWorkloadPolicyConfig(o.workloadPolicyConfig!);
@@ -958,6 +983,7 @@ api.Cluster buildCluster() {
     o.compliancePostureConfig = buildCompliancePostureConfig();
     o.conditions = buildUnnamed10();
     o.confidentialNodes = buildConfidentialNodes();
+    o.controlPlaneEgress = buildControlPlaneEgress();
     o.controlPlaneEndpointsConfig = buildControlPlaneEndpointsConfig();
     o.costManagementConfig = buildCostManagementConfig();
     o.createTime = 'foo';
@@ -989,6 +1015,8 @@ api.Cluster buildCluster() {
     o.loggingConfig = buildLoggingConfig();
     o.loggingService = 'foo';
     o.maintenancePolicy = buildMaintenancePolicy();
+    o.managedMachineLearningDiagnosticsConfig =
+        buildManagedMachineLearningDiagnosticsConfig();
     o.managedOpentelemetryConfig = buildManagedOpenTelemetryConfig();
     o.masterAuth = buildMasterAuth();
     o.masterAuthorizedNetworksConfig = buildMasterAuthorizedNetworksConfig();
@@ -1014,7 +1042,9 @@ api.Cluster buildCluster() {
     o.resourceUsageExportConfig = buildResourceUsageExportConfig();
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
+    o.scheduleUpgradeConfig = buildScheduleUpgradeConfig();
     o.secretManagerConfig = buildSecretManagerConfig();
+    o.secretSyncConfig = buildSecretSyncConfig();
     o.securityPostureConfig = buildSecurityPostureConfig();
     o.selfLink = 'foo';
     o.servicesIpv4Cidr = 'foo';
@@ -1046,6 +1076,7 @@ void checkCluster(api.Cluster o) {
     checkCompliancePostureConfig(o.compliancePostureConfig!);
     checkUnnamed10(o.conditions!);
     checkConfidentialNodes(o.confidentialNodes!);
+    checkControlPlaneEgress(o.controlPlaneEgress!);
     checkControlPlaneEndpointsConfig(o.controlPlaneEndpointsConfig!);
     checkCostManagementConfig(o.costManagementConfig!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
@@ -1077,6 +1108,9 @@ void checkCluster(api.Cluster o) {
     checkLoggingConfig(o.loggingConfig!);
     unittest.expect(o.loggingService!, unittest.equals('foo'));
     checkMaintenancePolicy(o.maintenancePolicy!);
+    checkManagedMachineLearningDiagnosticsConfig(
+      o.managedMachineLearningDiagnosticsConfig!,
+    );
     checkManagedOpenTelemetryConfig(o.managedOpentelemetryConfig!);
     checkMasterAuth(o.masterAuth!);
     checkMasterAuthorizedNetworksConfig(o.masterAuthorizedNetworksConfig!);
@@ -1102,7 +1136,9 @@ void checkCluster(api.Cluster o) {
     checkResourceUsageExportConfig(o.resourceUsageExportConfig!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
+    checkScheduleUpgradeConfig(o.scheduleUpgradeConfig!);
     checkSecretManagerConfig(o.secretManagerConfig!);
+    checkSecretSyncConfig(o.secretSyncConfig!);
     checkSecurityPostureConfig(o.securityPostureConfig!);
     unittest.expect(o.selfLink!, unittest.equals('foo'));
     unittest.expect(o.servicesIpv4Cidr!, unittest.equals('foo'));
@@ -1191,6 +1227,31 @@ void checkClusterNetworkPerformanceConfig(
   buildCounterClusterNetworkPerformanceConfig--;
 }
 
+core.int buildCounterClusterPolicyConfig = 0;
+api.ClusterPolicyConfig buildClusterPolicyConfig() {
+  final o = api.ClusterPolicyConfig();
+  buildCounterClusterPolicyConfig++;
+  if (buildCounterClusterPolicyConfig < 3) {
+    o.noStandardNodePools = true;
+    o.noSystemImpersonation = true;
+    o.noSystemMutation = true;
+    o.noUnsafeWebhooks = true;
+  }
+  buildCounterClusterPolicyConfig--;
+  return o;
+}
+
+void checkClusterPolicyConfig(api.ClusterPolicyConfig o) {
+  buildCounterClusterPolicyConfig++;
+  if (buildCounterClusterPolicyConfig < 3) {
+    unittest.expect(o.noStandardNodePools!, unittest.isTrue);
+    unittest.expect(o.noSystemImpersonation!, unittest.isTrue);
+    unittest.expect(o.noSystemMutation!, unittest.isTrue);
+    unittest.expect(o.noUnsafeWebhooks!, unittest.isTrue);
+  }
+  buildCounterClusterPolicyConfig--;
+}
+
 core.List<core.String> buildUnnamed17() => ['foo', 'foo'];
 
 void checkUnnamed17(core.List<core.String> o) {
@@ -1211,11 +1272,13 @@ api.ClusterUpdate buildClusterUpdate() {
         buildAnonymousAuthenticationConfig();
     o.desiredAuthenticatorGroupsConfig = buildAuthenticatorGroupsConfig();
     o.desiredAutoIpamConfig = buildAutoIpamConfig();
+    o.desiredAutopilotClusterPolicyConfig = buildClusterPolicyConfig();
     o.desiredAutopilotWorkloadPolicyConfig = buildWorkloadPolicyConfig();
     o.desiredBinaryAuthorization = buildBinaryAuthorization();
     o.desiredClusterAutoscaling = buildClusterAutoscaling();
     o.desiredCompliancePostureConfig = buildCompliancePostureConfig();
     o.desiredContainerdConfig = buildContainerdConfig();
+    o.desiredControlPlaneEgress = buildControlPlaneEgress();
     o.desiredControlPlaneEndpointsConfig = buildControlPlaneEndpointsConfig();
     o.desiredCostManagementConfig = buildCostManagementConfig();
     o.desiredDatabaseEncryption = buildDatabaseEncryption();
@@ -1241,6 +1304,8 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredLocations = buildUnnamed17();
     o.desiredLoggingConfig = buildLoggingConfig();
     o.desiredLoggingService = 'foo';
+    o.desiredManagedMachineLearningDiagnosticsConfig =
+        buildManagedMachineLearningDiagnosticsConfig();
     o.desiredManagedOpentelemetryConfig = buildManagedOpenTelemetryConfig();
     o.desiredMasterAuthorizedNetworksConfig =
         buildMasterAuthorizedNetworksConfig();
@@ -1269,6 +1334,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredReleaseChannel = buildReleaseChannel();
     o.desiredResourceUsageExportConfig = buildResourceUsageExportConfig();
     o.desiredSecretManagerConfig = buildSecretManagerConfig();
+    o.desiredSecretSyncConfig = buildSecretSyncConfig();
     o.desiredSecurityPostureConfig = buildSecurityPostureConfig();
     o.desiredServiceExternalIpsConfig = buildServiceExternalIPsConfig();
     o.desiredShieldedNodes = buildShieldedNodes();
@@ -1295,11 +1361,13 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     checkAnonymousAuthenticationConfig(o.desiredAnonymousAuthenticationConfig!);
     checkAuthenticatorGroupsConfig(o.desiredAuthenticatorGroupsConfig!);
     checkAutoIpamConfig(o.desiredAutoIpamConfig!);
+    checkClusterPolicyConfig(o.desiredAutopilotClusterPolicyConfig!);
     checkWorkloadPolicyConfig(o.desiredAutopilotWorkloadPolicyConfig!);
     checkBinaryAuthorization(o.desiredBinaryAuthorization!);
     checkClusterAutoscaling(o.desiredClusterAutoscaling!);
     checkCompliancePostureConfig(o.desiredCompliancePostureConfig!);
     checkContainerdConfig(o.desiredContainerdConfig!);
+    checkControlPlaneEgress(o.desiredControlPlaneEgress!);
     checkControlPlaneEndpointsConfig(o.desiredControlPlaneEndpointsConfig!);
     checkCostManagementConfig(o.desiredCostManagementConfig!);
     checkDatabaseEncryption(o.desiredDatabaseEncryption!);
@@ -1334,6 +1402,9 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     checkUnnamed17(o.desiredLocations!);
     checkLoggingConfig(o.desiredLoggingConfig!);
     unittest.expect(o.desiredLoggingService!, unittest.equals('foo'));
+    checkManagedMachineLearningDiagnosticsConfig(
+      o.desiredManagedMachineLearningDiagnosticsConfig!,
+    );
     checkManagedOpenTelemetryConfig(o.desiredManagedOpentelemetryConfig!);
     checkMasterAuthorizedNetworksConfig(
       o.desiredMasterAuthorizedNetworksConfig!,
@@ -1363,6 +1434,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     checkReleaseChannel(o.desiredReleaseChannel!);
     checkResourceUsageExportConfig(o.desiredResourceUsageExportConfig!);
     checkSecretManagerConfig(o.desiredSecretManagerConfig!);
+    checkSecretSyncConfig(o.desiredSecretSyncConfig!);
     checkSecurityPostureConfig(o.desiredSecurityPostureConfig!);
     checkServiceExternalIPsConfig(o.desiredServiceExternalIpsConfig!);
     checkShieldedNodes(o.desiredShieldedNodes!);
@@ -1621,6 +1693,25 @@ void checkContainerdConfig(api.ContainerdConfig o) {
   buildCounterContainerdConfig--;
 }
 
+core.int buildCounterControlPlaneEgress = 0;
+api.ControlPlaneEgress buildControlPlaneEgress() {
+  final o = api.ControlPlaneEgress();
+  buildCounterControlPlaneEgress++;
+  if (buildCounterControlPlaneEgress < 3) {
+    o.mode = 'foo';
+  }
+  buildCounterControlPlaneEgress--;
+  return o;
+}
+
+void checkControlPlaneEgress(api.ControlPlaneEgress o) {
+  buildCounterControlPlaneEgress++;
+  if (buildCounterControlPlaneEgress < 3) {
+    unittest.expect(o.mode!, unittest.equals('foo'));
+  }
+  buildCounterControlPlaneEgress--;
+}
+
 core.int buildCounterControlPlaneEndpointsConfig = 0;
 api.ControlPlaneEndpointsConfig buildControlPlaneEndpointsConfig() {
   final o = api.ControlPlaneEndpointsConfig();
@@ -1659,6 +1750,25 @@ void checkCostManagementConfig(api.CostManagementConfig o) {
     unittest.expect(o.enabled!, unittest.isTrue);
   }
   buildCounterCostManagementConfig--;
+}
+
+core.int buildCounterCrashLoopBackOffConfig = 0;
+api.CrashLoopBackOffConfig buildCrashLoopBackOffConfig() {
+  final o = api.CrashLoopBackOffConfig();
+  buildCounterCrashLoopBackOffConfig++;
+  if (buildCounterCrashLoopBackOffConfig < 3) {
+    o.maxContainerRestartPeriod = 'foo';
+  }
+  buildCounterCrashLoopBackOffConfig--;
+  return o;
+}
+
+void checkCrashLoopBackOffConfig(api.CrashLoopBackOffConfig o) {
+  buildCounterCrashLoopBackOffConfig++;
+  if (buildCounterCrashLoopBackOffConfig < 3) {
+    unittest.expect(o.maxContainerRestartPeriod!, unittest.equals('foo'));
+  }
+  buildCounterCrashLoopBackOffConfig--;
 }
 
 core.int buildCounterCreateClusterRequest = 0;
@@ -1936,6 +2046,31 @@ void checkDesiredEnterpriseConfig(api.DesiredEnterpriseConfig o) {
     unittest.expect(o.desiredTier!, unittest.equals('foo'));
   }
   buildCounterDesiredEnterpriseConfig--;
+}
+
+core.int buildCounterDisruptionBudget = 0;
+api.DisruptionBudget buildDisruptionBudget() {
+  final o = api.DisruptionBudget();
+  buildCounterDisruptionBudget++;
+  if (buildCounterDisruptionBudget < 3) {
+    o.lastDisruptionTime = 'foo';
+    o.lastMinorVersionDisruptionTime = 'foo';
+    o.minorVersionDisruptionInterval = 'foo';
+    o.patchVersionDisruptionInterval = 'foo';
+  }
+  buildCounterDisruptionBudget--;
+  return o;
+}
+
+void checkDisruptionBudget(api.DisruptionBudget o) {
+  buildCounterDisruptionBudget++;
+  if (buildCounterDisruptionBudget < 3) {
+    unittest.expect(o.lastDisruptionTime!, unittest.equals('foo'));
+    unittest.expect(o.lastMinorVersionDisruptionTime!, unittest.equals('foo'));
+    unittest.expect(o.minorVersionDisruptionInterval!, unittest.equals('foo'));
+    unittest.expect(o.patchVersionDisruptionInterval!, unittest.equals('foo'));
+  }
+  buildCounterDisruptionBudget--;
 }
 
 core.int buildCounterDnsCacheConfig = 0;
@@ -2977,6 +3112,7 @@ api.LinuxNodeConfig buildLinuxNodeConfig() {
   final o = api.LinuxNodeConfig();
   buildCounterLinuxNodeConfig++;
   if (buildCounterLinuxNodeConfig < 3) {
+    o.accurateTimeConfig = buildAccurateTimeConfig();
     o.cgroupMode = 'foo';
     o.hugepages = buildHugepagesConfig();
     o.nodeKernelModuleLoading = buildNodeKernelModuleLoading();
@@ -2992,6 +3128,7 @@ api.LinuxNodeConfig buildLinuxNodeConfig() {
 void checkLinuxNodeConfig(api.LinuxNodeConfig o) {
   buildCounterLinuxNodeConfig++;
   if (buildCounterLinuxNodeConfig < 3) {
+    checkAccurateTimeConfig(o.accurateTimeConfig!);
     unittest.expect(o.cgroupMode!, unittest.equals('foo'));
     checkHugepagesConfig(o.hugepages!);
     checkNodeKernelModuleLoading(o.nodeKernelModuleLoading!);
@@ -3228,6 +3365,7 @@ api.LustreCsiDriverConfig buildLustreCsiDriverConfig() {
   final o = api.LustreCsiDriverConfig();
   buildCounterLustreCsiDriverConfig++;
   if (buildCounterLustreCsiDriverConfig < 3) {
+    o.disableMultiNic = true;
     o.enableLegacyLustrePort = true;
     o.enabled = true;
   }
@@ -3238,6 +3376,7 @@ api.LustreCsiDriverConfig buildLustreCsiDriverConfig() {
 void checkLustreCsiDriverConfig(api.LustreCsiDriverConfig o) {
   buildCounterLustreCsiDriverConfig++;
   if (buildCounterLustreCsiDriverConfig < 3) {
+    unittest.expect(o.disableMultiNic!, unittest.isTrue);
     unittest.expect(o.enableLegacyLustrePort!, unittest.isTrue);
     unittest.expect(o.enabled!, unittest.isTrue);
   }
@@ -3270,6 +3409,7 @@ api.MaintenancePolicy buildMaintenancePolicy() {
   final o = api.MaintenancePolicy();
   buildCounterMaintenancePolicy++;
   if (buildCounterMaintenancePolicy < 3) {
+    o.disruptionBudget = buildDisruptionBudget();
     o.resourceVersion = 'foo';
     o.window = buildMaintenanceWindow();
   }
@@ -3280,6 +3420,7 @@ api.MaintenancePolicy buildMaintenancePolicy() {
 void checkMaintenancePolicy(api.MaintenancePolicy o) {
   buildCounterMaintenancePolicy++;
   if (buildCounterMaintenancePolicy < 3) {
+    checkDisruptionBudget(o.disruptionBudget!);
     unittest.expect(o.resourceVersion!, unittest.equals('foo'));
     checkMaintenanceWindow(o.window!);
   }
@@ -3318,6 +3459,28 @@ void checkMaintenanceWindow(api.MaintenanceWindow o) {
     checkRecurringTimeWindow(o.recurringWindow!);
   }
   buildCounterMaintenanceWindow--;
+}
+
+core.int buildCounterManagedMachineLearningDiagnosticsConfig = 0;
+api.ManagedMachineLearningDiagnosticsConfig
+buildManagedMachineLearningDiagnosticsConfig() {
+  final o = api.ManagedMachineLearningDiagnosticsConfig();
+  buildCounterManagedMachineLearningDiagnosticsConfig++;
+  if (buildCounterManagedMachineLearningDiagnosticsConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterManagedMachineLearningDiagnosticsConfig--;
+  return o;
+}
+
+void checkManagedMachineLearningDiagnosticsConfig(
+  api.ManagedMachineLearningDiagnosticsConfig o,
+) {
+  buildCounterManagedMachineLearningDiagnosticsConfig++;
+  if (buildCounterManagedMachineLearningDiagnosticsConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterManagedMachineLearningDiagnosticsConfig--;
 }
 
 core.int buildCounterManagedOpenTelemetryConfig = 0;
@@ -3877,6 +4040,7 @@ api.NodeConfig buildNodeConfig() {
     o.spot = true;
     o.storagePools = buildUnnamed58();
     o.tags = buildUnnamed59();
+    o.taintConfig = buildTaintConfig();
     o.taints = buildUnnamed60();
     o.windowsNodeConfig = buildWindowsNodeConfig();
     o.workloadMetadataConfig = buildWorkloadMetadataConfig();
@@ -3932,6 +4096,7 @@ void checkNodeConfig(api.NodeConfig o) {
     unittest.expect(o.spot!, unittest.isTrue);
     checkUnnamed58(o.storagePools!);
     checkUnnamed59(o.tags!);
+    checkTaintConfig(o.taintConfig!);
     checkUnnamed60(o.taints!);
     checkWindowsNodeConfig(o.windowsNodeConfig!);
     checkWorkloadMetadataConfig(o.workloadMetadataConfig!);
@@ -4021,6 +4186,7 @@ api.NodeKubeletConfig buildNodeKubeletConfig() {
     o.cpuCfsQuota = true;
     o.cpuCfsQuotaPeriod = 'foo';
     o.cpuManagerPolicy = 'foo';
+    o.crashLoopBackOff = buildCrashLoopBackOffConfig();
     o.evictionMaxPodGracePeriodSeconds = 42;
     o.evictionMinimumReclaim = buildEvictionMinimumReclaim();
     o.evictionSoft = buildEvictionSignals();
@@ -4033,6 +4199,8 @@ api.NodeKubeletConfig buildNodeKubeletConfig() {
     o.maxParallelImagePulls = 42;
     o.memoryManager = buildMemoryManager();
     o.podPidsLimit = 'foo';
+    o.shutdownGracePeriodCriticalPodsSeconds = 42;
+    o.shutdownGracePeriodSeconds = 42;
     o.singleProcessOomKill = true;
     o.topologyManager = buildTopologyManager();
   }
@@ -4049,6 +4217,7 @@ void checkNodeKubeletConfig(api.NodeKubeletConfig o) {
     unittest.expect(o.cpuCfsQuota!, unittest.isTrue);
     unittest.expect(o.cpuCfsQuotaPeriod!, unittest.equals('foo'));
     unittest.expect(o.cpuManagerPolicy!, unittest.equals('foo'));
+    checkCrashLoopBackOffConfig(o.crashLoopBackOff!);
     unittest.expect(o.evictionMaxPodGracePeriodSeconds!, unittest.equals(42));
     checkEvictionMinimumReclaim(o.evictionMinimumReclaim!);
     checkEvictionSignals(o.evictionSoft!);
@@ -4061,6 +4230,11 @@ void checkNodeKubeletConfig(api.NodeKubeletConfig o) {
     unittest.expect(o.maxParallelImagePulls!, unittest.equals(42));
     checkMemoryManager(o.memoryManager!);
     unittest.expect(o.podPidsLimit!, unittest.equals('foo'));
+    unittest.expect(
+      o.shutdownGracePeriodCriticalPodsSeconds!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.shutdownGracePeriodSeconds!, unittest.equals(42));
     unittest.expect(o.singleProcessOomKill!, unittest.isTrue);
     checkTopologyManager(o.topologyManager!);
   }
@@ -4144,6 +4318,7 @@ api.NodeNetworkConfig buildNodeNetworkConfig() {
   final o = api.NodeNetworkConfig();
   buildCounterNodeNetworkConfig++;
   if (buildCounterNodeNetworkConfig < 3) {
+    o.acceleratorNetworkProfile = 'foo';
     o.additionalNodeNetworkConfigs = buildUnnamed63();
     o.additionalPodNetworkConfigs = buildUnnamed64();
     o.createPodRange = true;
@@ -4163,6 +4338,7 @@ api.NodeNetworkConfig buildNodeNetworkConfig() {
 void checkNodeNetworkConfig(api.NodeNetworkConfig o) {
   buildCounterNodeNetworkConfig++;
   if (buildCounterNodeNetworkConfig < 3) {
+    unittest.expect(o.acceleratorNetworkProfile!, unittest.equals('foo'));
     checkUnnamed63(o.additionalNodeNetworkConfigs!);
     checkUnnamed64(o.additionalPodNetworkConfigs!);
     unittest.expect(o.createPodRange!, unittest.isTrue);
@@ -4735,6 +4911,25 @@ void checkPodCIDROverprovisionConfig(api.PodCIDROverprovisionConfig o) {
     unittest.expect(o.disable!, unittest.isTrue);
   }
   buildCounterPodCIDROverprovisionConfig--;
+}
+
+core.int buildCounterPodSnapshotConfig = 0;
+api.PodSnapshotConfig buildPodSnapshotConfig() {
+  final o = api.PodSnapshotConfig();
+  buildCounterPodSnapshotConfig++;
+  if (buildCounterPodSnapshotConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterPodSnapshotConfig--;
+  return o;
+}
+
+void checkPodSnapshotConfig(api.PodSnapshotConfig o) {
+  buildCounterPodSnapshotConfig++;
+  if (buildCounterPodSnapshotConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterPodSnapshotConfig--;
 }
 
 core.int buildCounterPrivateClusterConfig = 0;
@@ -5336,6 +5531,25 @@ void checkSandboxConfig(api.SandboxConfig o) {
   buildCounterSandboxConfig--;
 }
 
+core.int buildCounterScheduleUpgradeConfig = 0;
+api.ScheduleUpgradeConfig buildScheduleUpgradeConfig() {
+  final o = api.ScheduleUpgradeConfig();
+  buildCounterScheduleUpgradeConfig++;
+  if (buildCounterScheduleUpgradeConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterScheduleUpgradeConfig--;
+  return o;
+}
+
+void checkScheduleUpgradeConfig(api.ScheduleUpgradeConfig o) {
+  buildCounterScheduleUpgradeConfig++;
+  if (buildCounterScheduleUpgradeConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterScheduleUpgradeConfig--;
+}
+
 core.int buildCounterSecondaryBootDisk = 0;
 api.SecondaryBootDisk buildSecondaryBootDisk() {
   final o = api.SecondaryBootDisk();
@@ -5393,6 +5607,27 @@ void checkSecretManagerConfig(api.SecretManagerConfig o) {
     checkRotationConfig(o.rotationConfig!);
   }
   buildCounterSecretManagerConfig--;
+}
+
+core.int buildCounterSecretSyncConfig = 0;
+api.SecretSyncConfig buildSecretSyncConfig() {
+  final o = api.SecretSyncConfig();
+  buildCounterSecretSyncConfig++;
+  if (buildCounterSecretSyncConfig < 3) {
+    o.enabled = true;
+    o.rotationConfig = buildSyncRotationConfig();
+  }
+  buildCounterSecretSyncConfig--;
+  return o;
+}
+
+void checkSecretSyncConfig(api.SecretSyncConfig o) {
+  buildCounterSecretSyncConfig++;
+  if (buildCounterSecretSyncConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    checkSyncRotationConfig(o.rotationConfig!);
+  }
+  buildCounterSecretSyncConfig--;
 }
 
 core.int buildCounterSecurityPostureConfig = 0;
@@ -5908,6 +6143,25 @@ void checkSliceControllerConfig(api.SliceControllerConfig o) {
   buildCounterSliceControllerConfig--;
 }
 
+core.int buildCounterSlurmOperatorConfig = 0;
+api.SlurmOperatorConfig buildSlurmOperatorConfig() {
+  final o = api.SlurmOperatorConfig();
+  buildCounterSlurmOperatorConfig++;
+  if (buildCounterSlurmOperatorConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterSlurmOperatorConfig--;
+  return o;
+}
+
+void checkSlurmOperatorConfig(api.SlurmOperatorConfig o) {
+  buildCounterSlurmOperatorConfig++;
+  if (buildCounterSlurmOperatorConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterSlurmOperatorConfig--;
+}
+
 core.List<api.NodeAffinity> buildUnnamed91() => [
   buildNodeAffinity(),
   buildNodeAffinity(),
@@ -6118,6 +6372,46 @@ void checkSwapConfig(api.SwapConfig o) {
     checkEphemeralLocalSsdProfile(o.ephemeralLocalSsdProfile!);
   }
   buildCounterSwapConfig--;
+}
+
+core.int buildCounterSyncRotationConfig = 0;
+api.SyncRotationConfig buildSyncRotationConfig() {
+  final o = api.SyncRotationConfig();
+  buildCounterSyncRotationConfig++;
+  if (buildCounterSyncRotationConfig < 3) {
+    o.enabled = true;
+    o.rotationInterval = 'foo';
+  }
+  buildCounterSyncRotationConfig--;
+  return o;
+}
+
+void checkSyncRotationConfig(api.SyncRotationConfig o) {
+  buildCounterSyncRotationConfig++;
+  if (buildCounterSyncRotationConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(o.rotationInterval!, unittest.equals('foo'));
+  }
+  buildCounterSyncRotationConfig--;
+}
+
+core.int buildCounterTaintConfig = 0;
+api.TaintConfig buildTaintConfig() {
+  final o = api.TaintConfig();
+  buildCounterTaintConfig++;
+  if (buildCounterTaintConfig < 3) {
+    o.architectureTaintBehavior = 'foo';
+  }
+  buildCounterTaintConfig--;
+  return o;
+}
+
+void checkTaintConfig(api.TaintConfig o) {
+  buildCounterTaintConfig++;
+  if (buildCounterTaintConfig < 3) {
+    unittest.expect(o.architectureTaintBehavior!, unittest.equals('foo'));
+  }
+  buildCounterTaintConfig--;
 }
 
 core.int buildCounterTimeWindow = 0;
@@ -6676,6 +6970,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AccurateTimeConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAccurateTimeConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccurateTimeConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAccurateTimeConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-AdditionalIPRangesConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAdditionalIPRangesConfig();
@@ -7061,6 +7366,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ClusterPolicyConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildClusterPolicyConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClusterPolicyConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkClusterPolicyConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-ClusterUpdate', () {
     unittest.test('to-json--from-json', () async {
       final o = buildClusterUpdate();
@@ -7171,6 +7487,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ControlPlaneEgress', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildControlPlaneEgress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ControlPlaneEgress.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkControlPlaneEgress(od);
+    });
+  });
+
   unittest.group('obj-schema-ControlPlaneEndpointsConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildControlPlaneEndpointsConfig();
@@ -7190,6 +7517,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCostManagementConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-CrashLoopBackOffConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCrashLoopBackOffConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CrashLoopBackOffConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCrashLoopBackOffConfig(od);
     });
   });
 
@@ -7311,6 +7649,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDesiredEnterpriseConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-DisruptionBudget', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDisruptionBudget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DisruptionBudget.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDisruptionBudget(od);
     });
   });
 
@@ -7895,6 +8244,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ManagedMachineLearningDiagnosticsConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildManagedMachineLearningDiagnosticsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ManagedMachineLearningDiagnosticsConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkManagedMachineLearningDiagnosticsConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-ManagedOpenTelemetryConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildManagedOpenTelemetryConfig();
@@ -8357,6 +8717,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PodSnapshotConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPodSnapshotConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PodSnapshotConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPodSnapshotConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-PrivateClusterConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPrivateClusterConfig();
@@ -8621,6 +8992,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ScheduleUpgradeConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildScheduleUpgradeConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ScheduleUpgradeConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkScheduleUpgradeConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-SecondaryBootDisk', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSecondaryBootDisk();
@@ -8651,6 +9033,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSecretManagerConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SecretSyncConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSecretSyncConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SecretSyncConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSecretSyncConfig(od);
     });
   });
 
@@ -8852,6 +9245,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SlurmOperatorConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSlurmOperatorConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SlurmOperatorConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSlurmOperatorConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-SoleTenantConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSoleTenantConfig();
@@ -8926,6 +9330,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSwapConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SyncRotationConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSyncRotationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SyncRotationConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSyncRotationConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-TaintConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTaintConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TaintConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTaintConfig(od);
     });
   });
 

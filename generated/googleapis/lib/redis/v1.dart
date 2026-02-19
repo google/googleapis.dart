@@ -28,9 +28,12 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAclPoliciesResource]
 ///     - [ProjectsLocationsBackupCollectionsResource]
 ///       - [ProjectsLocationsBackupCollectionsBackupsResource]
 ///     - [ProjectsLocationsClustersResource]
+///       - [ProjectsLocationsClustersTokenAuthUsersResource]
+///         - [ProjectsLocationsClustersTokenAuthUsersAuthTokensResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsOperationsResource]
 library;
@@ -54,6 +57,16 @@ class CloudRedisApi {
   /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
+
+  /// See your Google Cloud Memorystore for Redis data and the email address of
+  /// your Google Account
+  static const redisReadOnlyScope =
+      'https://www.googleapis.com/auth/redis.read-only';
+
+  /// See, edit, configure, and delete your Google Cloud Memorystore for Redis
+  /// data and see the email address for your Google Account
+  static const redisReadWriteScope =
+      'https://www.googleapis.com/auth/redis.read-write';
 
   final commons.ApiRequester _requester;
 
@@ -83,6 +96,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAclPoliciesResource get aclPolicies =>
+      ProjectsLocationsAclPoliciesResource(_requester);
   ProjectsLocationsBackupCollectionsResource get backupCollections =>
       ProjectsLocationsBackupCollectionsResource(_requester);
   ProjectsLocationsClustersResource get clusters =>
@@ -126,7 +141,61 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the details of regional certificate authority information for Redis
+  /// cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Regional certificate authority resource name using the
+  /// form:
+  /// `projects/{project_id}/locations/{location_id}/sharedRegionalCertificateAuthority`
+  /// where `location_id` refers to a Google Cloud region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sharedRegionalCertificateAuthority$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SharedRegionalCertificateAuthority].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SharedRegionalCertificateAuthority>
+  getSharedRegionalCertificateAuthority(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SharedRegionalCertificateAuthority.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -183,6 +252,273 @@ class ProjectsLocationsResource {
     return ListLocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+}
+
+class ProjectsLocationsAclPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAclPoliciesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates an ACL Policy.
+  ///
+  /// The creation is executed synchronously and the policy is available for use
+  /// immediately after the RPC returns.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the cluster location using the
+  /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
+  /// refers to a Google Cloud region.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [aclPolicyId] - Required. The logical name of the ACL Policy in the
+  /// customer project with the following restrictions: * Must contain only
+  /// lowercase letters, numbers, and hyphens. * Must start with a letter. *
+  /// Must be between 1-63 characters. * Must end with a number or a letter. *
+  /// Must be unique within the customer project / location
+  ///
+  /// [requestId] - Optional. Idempotent request UUID. .
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AclPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AclPolicy> create(
+    AclPolicy request,
+    core.String parent, {
+    core.String? aclPolicyId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'aclPolicyId': ?aclPolicyId == null ? null : [aclPolicyId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/aclPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AclPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a specific Acl Policy.
+  ///
+  /// This action will delete the Acl Policy and all the rules associated with
+  /// it. An ACL policy cannot be deleted if it is attached to a cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis ACL Policy resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aclPolicies/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. Etag of the ACL policy. If this is different from the
+  /// server's etag, the request will fail with an ABORTED error.
+  ///
+  /// [requestId] - Optional. Idempotent request UUID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a specific Redis Cluster ACL Policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis ACL Policy resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aclPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AclPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AclPolicy> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AclPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all ACL Policies owned by a project in either the specified location
+  /// (region) or all locations.
+  ///
+  /// The location should have the following format: *
+  /// `projects/{project_id}/locations/{location_id}` If `location_id` is
+  /// specified as `-` (wildcard), then all regions available to the project are
+  /// queried, and the results are aggregated.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the cluster location using the
+  /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
+  /// refers to a Google Cloud region.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If not
+  /// specified, a default value of 1000 will be used by the service. Regardless
+  /// of the page_size value, the response may include a partial list and a
+  /// caller should only rely on response's `next_page_token` to determine if
+  /// there are more ACL policies left to be queried. The maximum value is 1000;
+  /// values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. The `next_page_token` value returned from a
+  /// previous `ListAclPolicies` request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAclPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAclPoliciesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/aclPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAclPoliciesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the ACL policy.
+  ///
+  /// The operation applies the updated ACL policy to all of the linked
+  /// clusters. If Memorystore can apply the policy to all clusters, then the
+  /// operation returns a SUCCESS status. If Memorystore can't apply the policy
+  /// to all clusters, then to ensure eventual consistency, Memorystore uses
+  /// reconciliation to apply the policy to the failed clusters. Completed
+  /// longrunning.Operation will contain the new ACL Policy object in the
+  /// response field.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Full resource path of the ACL policy.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aclPolicies/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. Idempotent request UUID.
+  ///
+  /// [updateMask] - Optional. Mask of fields to be updated. At least one path
+  /// must be supplied in this field. The elements of the repeated paths field
+  /// may only include these fields from `AclPolicy`: * `rules`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AclPolicy request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -472,8 +808,54 @@ class ProjectsLocationsBackupCollectionsBackupsResource {
 class ProjectsLocationsClustersResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsClustersTokenAuthUsersResource get tokenAuthUsers =>
+      ProjectsLocationsClustersTokenAuthUsersResource(_requester);
+
   ProjectsLocationsClustersResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Adds a token auth user for a token based auth enabled cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [cluster] - Required. The cluster resource that this token auth user will
+  /// be added for. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addTokenAuthUser(
+    AddTokenAuthUserRequest request,
+    core.String cluster, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$cluster') + ':addTokenAuthUser';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Backup Redis Cluster.
   ///
@@ -733,7 +1115,7 @@ class ProjectsLocationsClustersResource {
   /// more clusters left to be queried.
   ///
   /// [pageToken] - The `next_page_token` value returned from a previous
-  /// ListClusters request, if any.
+  /// `ListClusters` request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -869,6 +1251,362 @@ class ProjectsLocationsClustersResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsClustersTokenAuthUsersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsClustersTokenAuthUsersAuthTokensResource get authTokens =>
+      ProjectsLocationsClustersTokenAuthUsersAuthTokensResource(_requester);
+
+  ProjectsLocationsClustersTokenAuthUsersResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Adds a auth token for a user of a token based auth enabled cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tokenAuthUser] - Required. The name of the token auth user resource that
+  /// this auth token will be added for. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/tokenAuthUsers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addAuthToken(
+    AddAuthTokenRequest request,
+    core.String tokenAuthUser, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$tokenAuthUser') + ':addAuthToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a token auth user for a token based auth enabled cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the token auth user to delete. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/tokenAuthUsers/\[^/\]+$`.
+  ///
+  /// [force] - Optional. If set to true, any child auth tokens of this user
+  /// will also be deleted. Otherwise, the request will only work if the user
+  /// has no auth tokens.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'force': ?force == null ? null : ['${force}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific token auth user for a basic auth enabled cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of token auth user for a token based auth
+  /// enabled cluster. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/tokenAuthUsers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TokenAuthUser].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TokenAuthUser> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TokenAuthUser.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all the token auth users for a token based auth enabled cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource that this token based auth user
+  /// will be listed for. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Expression for filtering results.
+  ///
+  /// [orderBy] - Optional. Sort results by a defined order.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If not
+  /// specified, a default value of 1000 will be used by the service. Regardless
+  /// of the page_size value, the response may include a partial list and a
+  /// caller should only rely on response's The maximum value is 1000; values
+  /// above 1000 will be coerced to 1000. `next_page_token` to determine if
+  /// there are more clusters left to be queried.
+  ///
+  /// [pageToken] - Optional. The `next_page_token` value returned from a
+  /// previous \[ListTokenAuthUsers\] request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTokenAuthUsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTokenAuthUsersResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tokenAuthUsers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTokenAuthUsersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsClustersTokenAuthUsersAuthTokensResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsClustersTokenAuthUsersAuthTokensResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Removes a auth token for a user of a token based auth enabled instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the token auth user resource that this auth
+  /// token will be deleted from. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/tokenAuthUsers/\[^/\]+/authTokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a specific auth token for a specific token auth user.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of auth token for a token based auth enabled
+  /// cluster. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/tokenAuthUsers/\[^/\]+/authTokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuthToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuthToken> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuthToken.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the auth tokens for a specific token auth user.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource that this auth token will be
+  /// listed for. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/tokenAuthUsers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Expression for filtering results.
+  ///
+  /// [orderBy] - Optional. Sort results by a defined order.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. The maximum
+  /// value is 1000; values above 1000 will be coerced to 1000. If not
+  /// specified, a default value of 1000 will be used by the service. Regardless
+  /// of the page_size value, the response may include a partial list and a
+  /// caller should only rely on response's `next_page_token` to determine if
+  /// there are more clusters left to be queried.
+  ///
+  /// [pageToken] - Optional. The `next_page_token` value returned from a
+  /// previous \[ListTokenAuthUsers\] request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuthTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuthTokensResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/authTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuthTokensResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1612,6 +2350,202 @@ class AOFConfig {
   }
 }
 
+/// The ACL policy resource.
+class AclPolicy {
+  /// Etag for the ACL policy.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// Full resource path of the ACL policy.
+  core.String? name;
+
+  /// The ACL rules within the ACL policy.
+  ///
+  /// Required.
+  core.List<AclRule>? rules;
+
+  /// The state of the ACL policy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "ACTIVE" : ACL Policy has been created and is fully usable. Since ACL
+  /// Policy creation is synchronous and not an LRO, there is no CREATING state.
+  /// - "UPDATING" : ACL Policy is being updated.
+  /// - "DELETING" : ACL Policy is being deleted.
+  core.String? state;
+
+  /// The version of the ACL policy.
+  ///
+  /// Used in drift resolution.
+  ///
+  /// Output only.
+  core.String? version;
+
+  AclPolicy({this.etag, this.name, this.rules, this.state, this.version});
+
+  AclPolicy.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => AclRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        state: json_['state'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final name = this.name;
+    final rules = this.rules;
+    final state = this.state;
+    final version = this.version;
+    return {
+      'etag': ?etag,
+      'name': ?name,
+      'rules': ?rules,
+      'state': ?state,
+      'version': ?version,
+    };
+  }
+}
+
+/// A single ACL rule which defines the policy for a user.
+class AclRule {
+  /// The rule to be applied to the username.
+  ///
+  /// Ex: "on \>password123 ~* +@all" The format of the rule is defined by Redis
+  /// OSS:
+  /// https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+  ///
+  /// Required.
+  core.String? rule;
+
+  /// Specifies the IAM user or service account to be added to the ACL policy.
+  ///
+  /// This username will be directly set on the Redis OSS.
+  ///
+  /// Required.
+  core.String? username;
+
+  AclRule({this.rule, this.username});
+
+  AclRule.fromJson(core.Map json_)
+    : this(
+        rule: json_['rule'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rule = this.rule;
+    final username = this.username;
+    return {'rule': ?rule, 'username': ?username};
+  }
+}
+
+/// Request message for AddAuthToken.
+class AddAuthTokenRequest {
+  /// The auth token to add.
+  ///
+  /// Required.
+  AuthToken? authToken;
+
+  AddAuthTokenRequest({this.authToken});
+
+  AddAuthTokenRequest.fromJson(core.Map json_)
+    : this(
+        authToken: json_.containsKey('authToken')
+            ? AuthToken.fromJson(
+                json_['authToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authToken = this.authToken;
+    return {'authToken': ?authToken};
+  }
+}
+
+/// Request message for AddTokenAuthUser.
+class AddTokenAuthUserRequest {
+  /// The id of the token auth user to add.
+  ///
+  /// Required.
+  core.String? tokenAuthUser;
+
+  AddTokenAuthUserRequest({this.tokenAuthUser});
+
+  AddTokenAuthUserRequest.fromJson(core.Map json_)
+    : this(tokenAuthUser: json_['tokenAuthUser'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final tokenAuthUser = this.tokenAuthUser;
+    return {'tokenAuthUser': ?tokenAuthUser};
+  }
+}
+
+/// Auth token for the cluster.
+class AuthToken {
+  /// Create time of the auth token.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// Name of the auth token. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token}
+  core.String? name;
+
+  /// State of the auth token.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "ACTIVE" : The auth token is active.
+  /// - "CREATING" : The auth token is being created.
+  /// - "DELETING" : The auth token is being deleted.
+  core.String? state;
+
+  /// The service generated authentication token used to connect to the Redis
+  /// cluster.
+  ///
+  /// Output only.
+  core.String? token;
+
+  AuthToken({this.createTime, this.name, this.state, this.token});
+
+  AuthToken.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        token: json_['token'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final name = this.name;
+    final state = this.state;
+    final token = this.token;
+    return {
+      'createTime': ?createTime,
+      'name': ?name,
+      'state': ?state,
+      'token': ?token,
+    };
+  }
+}
+
 /// The automated backup config for a cluster.
 class AutomatedBackupConfig {
   /// The automated backup mode.
@@ -1731,6 +2665,9 @@ class Backup {
   /// - "REDIS_HIGHMEM_MEDIUM" : Redis highmem medium node_type.
   /// - "REDIS_HIGHMEM_XLARGE" : Redis highmem xlarge node_type.
   /// - "REDIS_STANDARD_SMALL" : Redis standard small node_type.
+  /// - "REDIS_HIGHCPU_MEDIUM" : Redis highcpu medium node_type.
+  /// - "REDIS_STANDARD_LARGE" : Redis standard large node_type.
+  /// - "REDIS_HIGHMEM_2XLARGE" : Redis highmem 2xlarge node_type.
   core.String? nodeType;
 
   /// Number of replicas for the cluster.
@@ -1848,7 +2785,7 @@ class Backup {
   }
 }
 
-/// Request for \[BackupCluster\].
+/// Request for `BackupCluster`.
 class BackupClusterRequest {
   /// The id of the backup to be created.
   ///
@@ -2051,6 +2988,19 @@ class CertificateAuthority {
 
 /// A cluster instance.
 class Cluster {
+  /// The ACL policy to be applied to the cluster.
+  ///
+  /// Optional.
+  core.String? aclPolicy;
+
+  /// Indicates whether the ACL rules applied to the cluster are in sync with
+  /// the latest ACL policy rules.
+  ///
+  /// This field is only applicable if the ACL policy is set for the cluster.
+  ///
+  /// Optional. Output only.
+  core.bool? aclPolicyInSync;
+
   /// Deprecated, do not use.
   ///
   /// Optional. Immutable.
@@ -2077,6 +3027,7 @@ class Cluster {
   /// - "AUTH_MODE_UNSPECIFIED" : Not set.
   /// - "AUTH_MODE_IAM_AUTH" : IAM basic authorization mode
   /// - "AUTH_MODE_DISABLED" : Authorization disabled mode
+  /// - "AUTH_MODE_TOKEN_AUTH" : Token based authorization mode
   core.String? authorizationMode;
 
   /// The automated backup config for the cluster.
@@ -2198,6 +3149,9 @@ class Cluster {
   /// - "REDIS_HIGHMEM_MEDIUM" : Redis highmem medium node_type.
   /// - "REDIS_HIGHMEM_XLARGE" : Redis highmem xlarge node_type.
   /// - "REDIS_STANDARD_SMALL" : Redis standard small node_type.
+  /// - "REDIS_HIGHCPU_MEDIUM" : Redis highcpu medium node_type.
+  /// - "REDIS_STANDARD_LARGE" : Redis standard large node_type.
+  /// - "REDIS_HIGHMEM_2XLARGE" : Redis highmem 2xlarge node_type.
   core.String? nodeType;
 
   /// Input only.
@@ -2251,6 +3205,13 @@ class Cluster {
   /// Optional.
   core.int? replicaCount;
 
+  /// Input only.
+  ///
+  /// Rotate the server certificates.
+  ///
+  /// Optional.
+  core.bool? rotateServerCertificate;
+
   /// Reserved for future use.
   ///
   /// Optional. Output only.
@@ -2260,6 +3221,28 @@ class Cluster {
   ///
   /// Optional. Output only.
   core.bool? satisfiesPzs;
+
+  /// Server CA mode for the cluster.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SERVER_CA_MODE_UNSPECIFIED" : Server CA mode not specified.
+  /// - "SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA" : Each cluster has its
+  /// own Google managed CA.
+  /// - "SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA" : The cluster uses Google
+  /// managed shared CA in the region.
+  /// - "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA" : The cluster uses customer
+  /// managed CA from CAS.
+  core.String? serverCaMode;
+
+  /// Customer-managed CA pool for the cluster.
+  ///
+  /// Only applicable for BYOCA i.e. if server_ca_mode is
+  /// SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA. Format:
+  /// "projects/{project}/locations/{region}/caPools/{ca_pool}".
+  ///
+  /// Optional.
+  core.String? serverCaPool;
 
   /// Number of shards for the Redis cluster.
   ///
@@ -2321,6 +3304,8 @@ class Cluster {
   ZoneDistributionConfig? zoneDistributionConfig;
 
   Cluster({
+    this.aclPolicy,
+    this.aclPolicyInSync,
     this.allowFewerZonesDeployment,
     this.asyncClusterEndpointsDeletionEnabled,
     this.authorizationMode,
@@ -2351,8 +3336,11 @@ class Cluster {
     this.pscServiceAttachments,
     this.redisConfigs,
     this.replicaCount,
+    this.rotateServerCertificate,
     this.satisfiesPzi,
     this.satisfiesPzs,
+    this.serverCaMode,
+    this.serverCaPool,
     this.shardCount,
     this.simulateMaintenanceEvent,
     this.sizeGb,
@@ -2365,6 +3353,8 @@ class Cluster {
 
   Cluster.fromJson(core.Map json_)
     : this(
+        aclPolicy: json_['aclPolicy'] as core.String?,
+        aclPolicyInSync: json_['aclPolicyInSync'] as core.bool?,
         allowFewerZonesDeployment:
             json_['allowFewerZonesDeployment'] as core.bool?,
         asyncClusterEndpointsDeletionEnabled:
@@ -2475,8 +3465,11 @@ class Cluster {
             (json_['redisConfigs'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
         replicaCount: json_['replicaCount'] as core.int?,
+        rotateServerCertificate: json_['rotateServerCertificate'] as core.bool?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        serverCaMode: json_['serverCaMode'] as core.String?,
+        serverCaPool: json_['serverCaPool'] as core.String?,
         shardCount: json_['shardCount'] as core.int?,
         simulateMaintenanceEvent:
             json_['simulateMaintenanceEvent'] as core.bool?,
@@ -2498,6 +3491,8 @@ class Cluster {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final aclPolicy = this.aclPolicy;
+    final aclPolicyInSync = this.aclPolicyInSync;
     final allowFewerZonesDeployment = this.allowFewerZonesDeployment;
     final asyncClusterEndpointsDeletionEnabled =
         this.asyncClusterEndpointsDeletionEnabled;
@@ -2529,8 +3524,11 @@ class Cluster {
     final pscServiceAttachments = this.pscServiceAttachments;
     final redisConfigs = this.redisConfigs;
     final replicaCount = this.replicaCount;
+    final rotateServerCertificate = this.rotateServerCertificate;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
+    final serverCaMode = this.serverCaMode;
+    final serverCaPool = this.serverCaPool;
     final shardCount = this.shardCount;
     final simulateMaintenanceEvent = this.simulateMaintenanceEvent;
     final sizeGb = this.sizeGb;
@@ -2540,6 +3538,8 @@ class Cluster {
     final uid = this.uid;
     final zoneDistributionConfig = this.zoneDistributionConfig;
     return {
+      'aclPolicy': ?aclPolicy,
+      'aclPolicyInSync': ?aclPolicyInSync,
       'allowFewerZonesDeployment': ?allowFewerZonesDeployment,
       'asyncClusterEndpointsDeletionEnabled':
           ?asyncClusterEndpointsDeletionEnabled,
@@ -2571,8 +3571,11 @@ class Cluster {
       'pscServiceAttachments': ?pscServiceAttachments,
       'redisConfigs': ?redisConfigs,
       'replicaCount': ?replicaCount,
+      'rotateServerCertificate': ?rotateServerCertificate,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
+      'serverCaMode': ?serverCaMode,
+      'serverCaPool': ?serverCaPool,
       'shardCount': ?shardCount,
       'simulateMaintenanceEvent': ?simulateMaintenanceEvent,
       'sizeGb': ?sizeGb,
@@ -3047,7 +4050,7 @@ class EncryptionInfo {
   }
 }
 
-/// Request for \[ExportBackup\].
+/// Request for `ExportBackup`.
 class ExportBackupRequest {
   /// Google Cloud Storage bucket, like "my-bucket".
   core.String? gcsBucket;
@@ -3437,7 +4440,7 @@ class Instance {
   core.String? readReplicasMode;
 
   /// Redis configuration parameters, according to
-  /// http://redis.io/topics/config.
+  /// [Redis configuration](https://redis.io/docs/latest/operate/oss_and_stack/management/config/).
   ///
   /// Currently, the only supported parameters are: Redis version 3.2 and newer:
   /// * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: *
@@ -3786,7 +4789,103 @@ class InstanceAuthString {
   }
 }
 
-/// Response for \[ListBackupCollections\].
+/// Response for `ListAclPolicies`.
+class ListAclPoliciesResponse {
+  /// A list of ACL policies in the project in the specified location, or across
+  /// all locations.
+  ///
+  /// If the `location_id` in the parent field of the request is "-", all
+  /// regions available to the project are queried, and the results aggregated.
+  core.List<AclPolicy>? aclPolicies;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAclPoliciesResponse({
+    this.aclPolicies,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAclPoliciesResponse.fromJson(core.Map json_)
+    : this(
+        aclPolicies: (json_['aclPolicies'] as core.List?)
+            ?.map(
+              (value) => AclPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aclPolicies = this.aclPolicies;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'aclPolicies': ?aclPolicies,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response message for ListAuthTokens.
+class ListAuthTokensResponse {
+  /// A list of auth tokens in the project.
+  core.List<AuthToken>? authTokens;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Auth tokens that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAuthTokensResponse({
+    this.authTokens,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAuthTokensResponse.fromJson(core.Map json_)
+    : this(
+        authTokens: (json_['authTokens'] as core.List?)
+            ?.map(
+              (value) => AuthToken.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authTokens = this.authTokens;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'authTokens': ?authTokens,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response for `ListBackupCollections`.
 class ListBackupCollectionsResponse {
   /// A list of backupCollections in the project.
   ///
@@ -3840,7 +4939,7 @@ class ListBackupCollectionsResponse {
   }
 }
 
-/// Response for \[ListBackups\].
+/// Response for `ListBackups`.
 class ListBackupsResponse {
   /// A list of backups in the project.
   core.List<Backup>? backups;
@@ -3880,7 +4979,7 @@ class ListBackupsResponse {
   }
 }
 
-/// Response for ListClusters.
+/// Response for `ListClusters`.
 class ListClustersResponse {
   /// A list of Redis clusters in the project in the specified location, or
   /// across all locations.
@@ -4055,6 +5154,53 @@ class ListOperationsResponse {
     return {
       'nextPageToken': ?nextPageToken,
       'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response message for ListTokenAuthUsers.
+class ListTokenAuthUsersResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// A list of token auth users in the project.
+  core.List<TokenAuthUser>? tokenAuthUsers;
+
+  /// Unordered list.
+  ///
+  /// Token auth users that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListTokenAuthUsersResponse({
+    this.nextPageToken,
+    this.tokenAuthUsers,
+    this.unreachable,
+  });
+
+  ListTokenAuthUsersResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tokenAuthUsers: (json_['tokenAuthUsers'] as core.List?)
+            ?.map(
+              (value) => TokenAuthUser.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final tokenAuthUsers = this.tokenAuthUsers;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'tokenAuthUsers': ?tokenAuthUsers,
       'unreachable': ?unreachable,
     };
   }
@@ -4876,6 +6022,34 @@ class RDBConfig {
   }
 }
 
+/// The certificates that form the CA chain, from leaf to root order.
+typedef RegionalCertChain = $CertChain;
+
+/// CA certificate chains for redis managed server authentication.
+class RegionalManagedCertificateAuthority {
+  /// The PEM encoded CA certificate chains for redis managed server
+  /// authentication
+  core.List<RegionalCertChain>? caCerts;
+
+  RegionalManagedCertificateAuthority({this.caCerts});
+
+  RegionalManagedCertificateAuthority.fromJson(core.Map json_)
+    : this(
+        caCerts: (json_['caCerts'] as core.List?)
+            ?.map(
+              (value) => RegionalCertChain.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final caCerts = this.caCerts;
+    return {'caCerts': ?caCerts};
+  }
+}
+
 /// Details of the remote cluster associated with this cluster in a cross
 /// cluster replication setup.
 class RemoteCluster {
@@ -4977,6 +6151,37 @@ class RescheduleMaintenanceRequest {
   }
 }
 
+/// Shared regional certificate authority
+class SharedRegionalCertificateAuthority {
+  /// CA certificate chains for redis managed server authentication.
+  RegionalManagedCertificateAuthority? managedServerCa;
+
+  /// Identifier.
+  ///
+  /// Unique name of the resource in this scope including project and location
+  /// using the form:
+  /// `projects/{project}/locations/{location}/sharedRegionalCertificateAuthority`
+  core.String? name;
+
+  SharedRegionalCertificateAuthority({this.managedServerCa, this.name});
+
+  SharedRegionalCertificateAuthority.fromJson(core.Map json_)
+    : this(
+        managedServerCa: json_.containsKey('managedServerCa')
+            ? RegionalManagedCertificateAuthority.fromJson(
+                json_['managedServerCa'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final managedServerCa = this.managedServerCa;
+    final name = this.name;
+    return {'managedServerCa': ?managedServerCa, 'name': ?name};
+  }
+}
+
 /// Represents additional information about the state of the cluster.
 class StateInfo {
   /// Describes ongoing update on the cluster when cluster state is UPDATING.
@@ -5073,6 +6278,40 @@ class TlsCertificate {
   }
 }
 
+/// Represents a token based auth user for the cluster.
+class TokenAuthUser {
+  /// Identifier.
+  ///
+  /// The resource name of the token based auth user. Format:
+  /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+  core.String? name;
+
+  /// The state of the token based auth user.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "ACTIVE" : The auth user is active.
+  /// - "CREATING" : The auth user is being created.
+  /// - "UPDATING" : The auth user is being updated.
+  /// - "DELETING" : The auth user is being deleted.
+  core.String? state;
+
+  TokenAuthUser({this.name, this.state});
+
+  TokenAuthUser.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final state = this.state;
+    return {'name': ?name, 'state': ?state};
+  }
+}
+
 /// Represents information about an updating cluster.
 class UpdateInfo {
   /// Target node type for redis cluster.
@@ -5082,6 +6321,9 @@ class UpdateInfo {
   /// - "REDIS_HIGHMEM_MEDIUM" : Redis highmem medium node_type.
   /// - "REDIS_HIGHMEM_XLARGE" : Redis highmem xlarge node_type.
   /// - "REDIS_STANDARD_SMALL" : Redis standard small node_type.
+  /// - "REDIS_HIGHCPU_MEDIUM" : Redis highcpu medium node_type.
+  /// - "REDIS_STANDARD_LARGE" : Redis standard large node_type.
+  /// - "REDIS_HIGHMEM_2XLARGE" : Redis highmem 2xlarge node_type.
   core.String? targetNodeType;
 
   /// Target number of replica nodes per shard.

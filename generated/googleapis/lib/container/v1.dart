@@ -1306,12 +1306,12 @@ class ProjectsLocationsClustersNodePoolsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Fetch upgrade information of a specific nodepool.
+  /// Fetch upgrade information of a specific node pool.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name (project, location, cluster, nodepool) of the
-  /// nodepool to get. Specified in the format `projects / * /locations / *
+  /// [name] - Required. The name (project, location, cluster, node pool) of the
+  /// node pool to get. Specified in the format `projects / * /locations / *
   /// /clusters / * /nodePools / * ` or `projects / * /zones / * /clusters / *
   /// /nodePools / * `.
   /// Value must have pattern
@@ -3213,12 +3213,12 @@ class ProjectsZonesClustersNodePoolsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Fetch upgrade information of a specific nodepool.
+  /// Fetch upgrade information of a specific node pool.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name (project, location, cluster, nodepool) of the
-  /// nodepool to get. Specified in the format `projects / * /locations / *
+  /// [name] - Required. The name (project, location, cluster, node pool) of the
+  /// node pool to get. Specified in the format `projects / * /locations / *
   /// /clusters / * /nodePools / * ` or `projects / * /zones / * /clusters / *
   /// /nodePools / * `.
   /// Value must have pattern
@@ -3891,6 +3891,23 @@ class AcceleratorConfig {
   }
 }
 
+/// AccurateTimeConfig contains configuration for the accurate time
+/// synchronization feature.
+class AccurateTimeConfig {
+  /// Enables enhanced time synchronization using PTP-KVM.
+  core.bool? enablePtpKvmTimeSync;
+
+  AccurateTimeConfig({this.enablePtpKvmTimeSync});
+
+  AccurateTimeConfig.fromJson(core.Map json_)
+    : this(enablePtpKvmTimeSync: json_['enablePtpKvmTimeSync'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enablePtpKvmTimeSync = this.enablePtpKvmTimeSync;
+    return {'enablePtpKvmTimeSync': ?enablePtpKvmTimeSync};
+  }
+}
+
 /// AdditionalIPRangesConfig is the configuration for individual additional
 /// subnetwork attached to the cluster
 class AdditionalIPRangesConfig {
@@ -4113,6 +4130,11 @@ class AddonsConfig {
   /// Configuration for the Cloud Storage Parallelstore CSI driver.
   ParallelstoreCsiDriverConfig? parallelstoreCsiDriverConfig;
 
+  /// Configuration for the Pod Snapshot feature.
+  ///
+  /// Optional.
+  PodSnapshotConfig? podSnapshotConfig;
+
   /// Configuration for Ray Operator addon.
   ///
   /// Optional.
@@ -4122,6 +4144,9 @@ class AddonsConfig {
   ///
   /// Optional.
   SliceControllerConfig? sliceControllerConfig;
+
+  /// Configuration for the Slurm Operator.
+  SlurmOperatorConfig? slurmOperatorConfig;
 
   /// Configuration for the StatefulHA add-on.
   ///
@@ -4143,8 +4168,10 @@ class AddonsConfig {
     this.lustreCsiDriverConfig,
     this.networkPolicyConfig,
     this.parallelstoreCsiDriverConfig,
+    this.podSnapshotConfig,
     this.rayOperatorConfig,
     this.sliceControllerConfig,
+    this.slurmOperatorConfig,
     this.statefulHaConfig,
   });
 
@@ -4236,6 +4263,12 @@ class AddonsConfig {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        podSnapshotConfig: json_.containsKey('podSnapshotConfig')
+            ? PodSnapshotConfig.fromJson(
+                json_['podSnapshotConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         rayOperatorConfig: json_.containsKey('rayOperatorConfig')
             ? RayOperatorConfig.fromJson(
                 json_['rayOperatorConfig']
@@ -4245,6 +4278,12 @@ class AddonsConfig {
         sliceControllerConfig: json_.containsKey('sliceControllerConfig')
             ? SliceControllerConfig.fromJson(
                 json_['sliceControllerConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        slurmOperatorConfig: json_.containsKey('slurmOperatorConfig')
+            ? SlurmOperatorConfig.fromJson(
+                json_['slurmOperatorConfig']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -4272,8 +4311,10 @@ class AddonsConfig {
     final lustreCsiDriverConfig = this.lustreCsiDriverConfig;
     final networkPolicyConfig = this.networkPolicyConfig;
     final parallelstoreCsiDriverConfig = this.parallelstoreCsiDriverConfig;
+    final podSnapshotConfig = this.podSnapshotConfig;
     final rayOperatorConfig = this.rayOperatorConfig;
     final sliceControllerConfig = this.sliceControllerConfig;
+    final slurmOperatorConfig = this.slurmOperatorConfig;
     final statefulHaConfig = this.statefulHaConfig;
     return {
       'cloudRunConfig': ?cloudRunConfig,
@@ -4290,8 +4331,10 @@ class AddonsConfig {
       'lustreCsiDriverConfig': ?lustreCsiDriverConfig,
       'networkPolicyConfig': ?networkPolicyConfig,
       'parallelstoreCsiDriverConfig': ?parallelstoreCsiDriverConfig,
+      'podSnapshotConfig': ?podSnapshotConfig,
       'rayOperatorConfig': ?rayOperatorConfig,
       'sliceControllerConfig': ?sliceControllerConfig,
+      'slurmOperatorConfig': ?slurmOperatorConfig,
       'statefulHaConfig': ?statefulHaConfig,
     };
   }
@@ -4510,6 +4553,10 @@ class AutoUpgradeOptions {
 
 /// Autopilot is the configuration for Autopilot settings on the cluster.
 class Autopilot {
+  /// ClusterPolicyConfig denotes cluster level policies that are enforced for
+  /// the cluster.
+  ClusterPolicyConfig? clusterPolicyConfig;
+
   /// Enable Autopilot
   core.bool? enabled;
 
@@ -4521,6 +4568,7 @@ class Autopilot {
   WorkloadPolicyConfig? workloadPolicyConfig;
 
   Autopilot({
+    this.clusterPolicyConfig,
     this.enabled,
     this.privilegedAdmissionConfig,
     this.workloadPolicyConfig,
@@ -4528,6 +4576,12 @@ class Autopilot {
 
   Autopilot.fromJson(core.Map json_)
     : this(
+        clusterPolicyConfig: json_.containsKey('clusterPolicyConfig')
+            ? ClusterPolicyConfig.fromJson(
+                json_['clusterPolicyConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enabled: json_['enabled'] as core.bool?,
         privilegedAdmissionConfig:
             json_.containsKey('privilegedAdmissionConfig')
@@ -4545,10 +4599,12 @@ class Autopilot {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final clusterPolicyConfig = this.clusterPolicyConfig;
     final enabled = this.enabled;
     final privilegedAdmissionConfig = this.privilegedAdmissionConfig;
     final workloadPolicyConfig = this.workloadPolicyConfig;
     return {
+      'clusterPolicyConfig': ?clusterPolicyConfig,
       'enabled': ?enabled,
       'privilegedAdmissionConfig': ?privilegedAdmissionConfig,
       'workloadPolicyConfig': ?workloadPolicyConfig,
@@ -4625,8 +4681,8 @@ class AutopilotCompatibilityIssue {
   }
 }
 
-/// AutopilotConfig contains configuration of autopilot feature for this
-/// nodepool.
+/// AutopilotConfig contains configuration of autopilot feature for this node
+/// pool.
 class AutopilotConfig {
   /// Denotes that nodes belonging to this node pool are Autopilot nodes.
   core.bool? enabled;
@@ -5003,7 +5059,7 @@ class BlueGreenSettings {
   }
 }
 
-/// BootDisk specifies the boot disk configuration for nodepools.
+/// BootDisk specifies the boot disk configuration for node pools.
 class BootDisk {
   /// Disk type of the boot disk.
   ///
@@ -5149,7 +5205,7 @@ class CertificateAuthorityDomainConfig {
   /// List of fully qualified domain names (FQDN).
   ///
   /// Specifying port is supported. Wildcards are NOT supported. Examples: -
-  /// my.customdomain.com - 10.0.1.2:5000
+  /// `my.customdomain.com` - `10.0.1.2:5000`
   core.List<core.String>? fqdns;
 
   /// Secret Manager certificate configuration.
@@ -5380,7 +5436,16 @@ class Cluster {
   /// `10.0.0.0/8`.
   core.String? clusterIpv4Cidr;
 
+  /// Deprecated: Compliance Posture is no longer supported.
+  ///
+  /// For more details, see
+  /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
   /// Enable/Disable Compliance Posture features for the cluster.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   CompliancePostureConfig? compliancePostureConfig;
 
   /// Which conditions caused the current cluster state.
@@ -5390,6 +5455,9 @@ class Cluster {
   ///
   /// All the nodes in the cluster will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
+
+  /// Configuration for control plane egress control.
+  ControlPlaneEgress? controlPlaneEgress;
 
   /// Configuration for all cluster's control plane endpoints.
   ControlPlaneEndpointsConfig? controlPlaneEndpointsConfig;
@@ -5590,6 +5658,10 @@ class Cluster {
   /// Configure the maintenance policy for this cluster.
   MaintenancePolicy? maintenancePolicy;
 
+  /// Configuration for Managed Machine Learning Diagnostics.
+  ManagedMachineLearningDiagnosticsConfig?
+  managedMachineLearningDiagnosticsConfig;
+
   /// Configuration for Managed OpenTelemetry pipeline.
   ManagedOpenTelemetryConfig? managedOpentelemetryConfig;
 
@@ -5736,10 +5808,20 @@ class Cluster {
   /// Output only.
   core.bool? satisfiesPzs;
 
+  /// Configuration for scheduled upgrades.
+  ///
+  /// Optional.
+  ScheduleUpgradeConfig? scheduleUpgradeConfig;
+
   /// Secret CSI driver configuration.
   SecretManagerConfig? secretManagerConfig;
 
+  /// Configuration for sync Secret Manager secrets as k8s secrets.
+  SecretSyncConfig? secretSyncConfig;
+
   /// Enable/Disable Security Posture API features for the cluster.
+  ///
+  /// Optional.
   SecurityPostureConfig? securityPostureConfig;
 
   /// Server-defined URL for the resource.
@@ -5842,6 +5924,7 @@ class Cluster {
     this.compliancePostureConfig,
     this.conditions,
     this.confidentialNodes,
+    this.controlPlaneEgress,
     this.controlPlaneEndpointsConfig,
     this.costManagementConfig,
     this.createTime,
@@ -5873,6 +5956,7 @@ class Cluster {
     this.loggingConfig,
     this.loggingService,
     this.maintenancePolicy,
+    this.managedMachineLearningDiagnosticsConfig,
     this.managedOpentelemetryConfig,
     this.masterAuth,
     this.masterAuthorizedNetworksConfig,
@@ -5898,7 +5982,9 @@ class Cluster {
     this.resourceUsageExportConfig,
     this.satisfiesPzi,
     this.satisfiesPzs,
+    this.scheduleUpgradeConfig,
     this.secretManagerConfig,
+    this.secretSyncConfig,
     this.securityPostureConfig,
     this.selfLink,
     this.servicesIpv4Cidr,
@@ -5971,6 +6057,12 @@ class Cluster {
         confidentialNodes: json_.containsKey('confidentialNodes')
             ? ConfidentialNodes.fromJson(
                 json_['confidentialNodes']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        controlPlaneEgress: json_.containsKey('controlPlaneEgress')
+            ? ControlPlaneEgress.fromJson(
+                json_['controlPlaneEgress']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -6069,6 +6161,13 @@ class Cluster {
         maintenancePolicy: json_.containsKey('maintenancePolicy')
             ? MaintenancePolicy.fromJson(
                 json_['maintenancePolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        managedMachineLearningDiagnosticsConfig:
+            json_.containsKey('managedMachineLearningDiagnosticsConfig')
+            ? ManagedMachineLearningDiagnosticsConfig.fromJson(
+                json_['managedMachineLearningDiagnosticsConfig']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -6187,9 +6286,21 @@ class Cluster {
             : null,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        scheduleUpgradeConfig: json_.containsKey('scheduleUpgradeConfig')
+            ? ScheduleUpgradeConfig.fromJson(
+                json_['scheduleUpgradeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         secretManagerConfig: json_.containsKey('secretManagerConfig')
             ? SecretManagerConfig.fromJson(
                 json_['secretManagerConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        secretSyncConfig: json_.containsKey('secretSyncConfig')
+            ? SecretSyncConfig.fromJson(
+                json_['secretSyncConfig']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -6243,6 +6354,7 @@ class Cluster {
     final compliancePostureConfig = this.compliancePostureConfig;
     final conditions = this.conditions;
     final confidentialNodes = this.confidentialNodes;
+    final controlPlaneEgress = this.controlPlaneEgress;
     final controlPlaneEndpointsConfig = this.controlPlaneEndpointsConfig;
     final costManagementConfig = this.costManagementConfig;
     final createTime = this.createTime;
@@ -6274,6 +6386,8 @@ class Cluster {
     final loggingConfig = this.loggingConfig;
     final loggingService = this.loggingService;
     final maintenancePolicy = this.maintenancePolicy;
+    final managedMachineLearningDiagnosticsConfig =
+        this.managedMachineLearningDiagnosticsConfig;
     final managedOpentelemetryConfig = this.managedOpentelemetryConfig;
     final masterAuth = this.masterAuth;
     final masterAuthorizedNetworksConfig = this.masterAuthorizedNetworksConfig;
@@ -6299,7 +6413,9 @@ class Cluster {
     final resourceUsageExportConfig = this.resourceUsageExportConfig;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
+    final scheduleUpgradeConfig = this.scheduleUpgradeConfig;
     final secretManagerConfig = this.secretManagerConfig;
+    final secretSyncConfig = this.secretSyncConfig;
     final securityPostureConfig = this.securityPostureConfig;
     final selfLink = this.selfLink;
     final servicesIpv4Cidr = this.servicesIpv4Cidr;
@@ -6324,6 +6440,7 @@ class Cluster {
       'compliancePostureConfig': ?compliancePostureConfig,
       'conditions': ?conditions,
       'confidentialNodes': ?confidentialNodes,
+      'controlPlaneEgress': ?controlPlaneEgress,
       'controlPlaneEndpointsConfig': ?controlPlaneEndpointsConfig,
       'costManagementConfig': ?costManagementConfig,
       'createTime': ?createTime,
@@ -6355,6 +6472,8 @@ class Cluster {
       'loggingConfig': ?loggingConfig,
       'loggingService': ?loggingService,
       'maintenancePolicy': ?maintenancePolicy,
+      'managedMachineLearningDiagnosticsConfig':
+          ?managedMachineLearningDiagnosticsConfig,
       'managedOpentelemetryConfig': ?managedOpentelemetryConfig,
       'masterAuth': ?masterAuth,
       'masterAuthorizedNetworksConfig': ?masterAuthorizedNetworksConfig,
@@ -6380,7 +6499,9 @@ class Cluster {
       'resourceUsageExportConfig': ?resourceUsageExportConfig,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
+      'scheduleUpgradeConfig': ?scheduleUpgradeConfig,
       'secretManagerConfig': ?secretManagerConfig,
+      'secretSyncConfig': ?secretSyncConfig,
       'securityPostureConfig': ?securityPostureConfig,
       'selfLink': ?selfLink,
       'servicesIpv4Cidr': ?servicesIpv4Cidr,
@@ -6406,6 +6527,7 @@ class ClusterAutoscaling {
   /// Possible string values are:
   /// - "AUTOPILOT_GENERAL_PROFILE_UNSPECIFIED" : Use default configuration.
   /// - "NO_PERFORMANCE" : Avoid extra IP consumption.
+  /// - "NONE" : Use default configuration.
   core.String? autopilotGeneralProfile;
 
   /// The list of Google Compute Engine
@@ -6521,6 +6643,51 @@ class ClusterNetworkPerformanceConfig {
   }
 }
 
+/// ClusterPolicyConfig stores the configuration for cluster wide policies.
+class ClusterPolicyConfig {
+  /// Denotes preventing standard node pools and requiring only autopilot node
+  /// pools.
+  core.bool? noStandardNodePools;
+
+  /// Denotes preventing impersonation and CSRs for GKE System users.
+  core.bool? noSystemImpersonation;
+
+  /// Denotes that preventing creation and mutation of resources in GKE managed
+  /// namespaces and cluster-scoped GKE managed resources .
+  core.bool? noSystemMutation;
+
+  /// Denotes preventing unsafe webhooks.
+  core.bool? noUnsafeWebhooks;
+
+  ClusterPolicyConfig({
+    this.noStandardNodePools,
+    this.noSystemImpersonation,
+    this.noSystemMutation,
+    this.noUnsafeWebhooks,
+  });
+
+  ClusterPolicyConfig.fromJson(core.Map json_)
+    : this(
+        noStandardNodePools: json_['noStandardNodePools'] as core.bool?,
+        noSystemImpersonation: json_['noSystemImpersonation'] as core.bool?,
+        noSystemMutation: json_['noSystemMutation'] as core.bool?,
+        noUnsafeWebhooks: json_['noUnsafeWebhooks'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final noStandardNodePools = this.noStandardNodePools;
+    final noSystemImpersonation = this.noSystemImpersonation;
+    final noSystemMutation = this.noSystemMutation;
+    final noUnsafeWebhooks = this.noUnsafeWebhooks;
+    return {
+      'noStandardNodePools': ?noStandardNodePools,
+      'noSystemImpersonation': ?noSystemImpersonation,
+      'noSystemMutation': ?noSystemMutation,
+      'noUnsafeWebhooks': ?noUnsafeWebhooks,
+    };
+  }
+}
+
 /// ClusterUpdate describes an update to the cluster.
 ///
 /// Exactly one update can be applied to a cluster with each request, so at most
@@ -6547,6 +6714,9 @@ class ClusterUpdate {
   /// AutoIpamConfig contains all information related to Auto IPAM
   AutoIpamConfig? desiredAutoIpamConfig;
 
+  /// The desired autopilot cluster policies that to be enforced in the cluster.
+  ClusterPolicyConfig? desiredAutopilotClusterPolicyConfig;
+
   /// WorkloadPolicyConfig is the configuration related to GCW workload policy
   WorkloadPolicyConfig? desiredAutopilotWorkloadPolicyConfig;
 
@@ -6556,11 +6726,21 @@ class ClusterUpdate {
   /// Cluster-level autoscaling configuration.
   ClusterAutoscaling? desiredClusterAutoscaling;
 
+  /// Deprecated: Compliance Posture is no longer supported.
+  ///
+  /// For more details, see
+  /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
   /// Enable/Disable Compliance Posture features for the cluster.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   CompliancePostureConfig? desiredCompliancePostureConfig;
 
   /// The desired containerd config for the cluster.
   ContainerdConfig? desiredContainerdConfig;
+
+  /// The desired control plane egress control config for the cluster.
+  ControlPlaneEgress? desiredControlPlaneEgress;
 
   /// Control plane endpoints configuration.
   ControlPlaneEndpointsConfig? desiredControlPlaneEndpointsConfig;
@@ -6681,6 +6861,10 @@ class ClusterUpdate {
   /// will be used for GKE 1.14+ or `logging.googleapis.com` for earlier
   /// versions.
   core.String? desiredLoggingService;
+
+  /// The desired managed machine learning diagnostics configuration.
+  ManagedMachineLearningDiagnosticsConfig?
+  desiredManagedMachineLearningDiagnosticsConfig;
 
   /// The desired managed open telemetry configuration.
   ManagedOpenTelemetryConfig? desiredManagedOpentelemetryConfig;
@@ -6826,6 +7010,9 @@ class ClusterUpdate {
   /// Enable/Disable Secret Manager Config.
   SecretManagerConfig? desiredSecretManagerConfig;
 
+  /// Configuration for sync Secret Manager secrets as k8s secrets.
+  SecretSyncConfig? desiredSecretSyncConfig;
+
   /// Enable/Disable Security Posture API features for the cluster.
   SecurityPostureConfig? desiredSecurityPostureConfig;
 
@@ -6891,11 +7078,13 @@ class ClusterUpdate {
     this.desiredAnonymousAuthenticationConfig,
     this.desiredAuthenticatorGroupsConfig,
     this.desiredAutoIpamConfig,
+    this.desiredAutopilotClusterPolicyConfig,
     this.desiredAutopilotWorkloadPolicyConfig,
     this.desiredBinaryAuthorization,
     this.desiredClusterAutoscaling,
     this.desiredCompliancePostureConfig,
     this.desiredContainerdConfig,
+    this.desiredControlPlaneEgress,
     this.desiredControlPlaneEndpointsConfig,
     this.desiredCostManagementConfig,
     this.desiredDatabaseEncryption,
@@ -6921,6 +7110,7 @@ class ClusterUpdate {
     this.desiredLocations,
     this.desiredLoggingConfig,
     this.desiredLoggingService,
+    this.desiredManagedMachineLearningDiagnosticsConfig,
     this.desiredManagedOpentelemetryConfig,
     this.desiredMasterAuthorizedNetworksConfig,
     this.desiredMasterVersion,
@@ -6948,6 +7138,7 @@ class ClusterUpdate {
     this.desiredReleaseChannel,
     this.desiredResourceUsageExportConfig,
     this.desiredSecretManagerConfig,
+    this.desiredSecretSyncConfig,
     this.desiredSecurityPostureConfig,
     this.desiredServiceExternalIpsConfig,
     this.desiredShieldedNodes,
@@ -7004,6 +7195,13 @@ class ClusterUpdate {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        desiredAutopilotClusterPolicyConfig:
+            json_.containsKey('desiredAutopilotClusterPolicyConfig')
+            ? ClusterPolicyConfig.fromJson(
+                json_['desiredAutopilotClusterPolicyConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         desiredAutopilotWorkloadPolicyConfig:
             json_.containsKey('desiredAutopilotWorkloadPolicyConfig')
             ? WorkloadPolicyConfig.fromJson(
@@ -7035,6 +7233,13 @@ class ClusterUpdate {
         desiredContainerdConfig: json_.containsKey('desiredContainerdConfig')
             ? ContainerdConfig.fromJson(
                 json_['desiredContainerdConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        desiredControlPlaneEgress:
+            json_.containsKey('desiredControlPlaneEgress')
+            ? ControlPlaneEgress.fromJson(
+                json_['desiredControlPlaneEgress']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -7148,6 +7353,13 @@ class ClusterUpdate {
               )
             : null,
         desiredLoggingService: json_['desiredLoggingService'] as core.String?,
+        desiredManagedMachineLearningDiagnosticsConfig:
+            json_.containsKey('desiredManagedMachineLearningDiagnosticsConfig')
+            ? ManagedMachineLearningDiagnosticsConfig.fromJson(
+                json_['desiredManagedMachineLearningDiagnosticsConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         desiredManagedOpentelemetryConfig:
             json_.containsKey('desiredManagedOpentelemetryConfig')
             ? ManagedOpenTelemetryConfig.fromJson(
@@ -7302,6 +7514,12 @@ class ClusterUpdate {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        desiredSecretSyncConfig: json_.containsKey('desiredSecretSyncConfig')
+            ? SecretSyncConfig.fromJson(
+                json_['desiredSecretSyncConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         desiredSecurityPostureConfig:
             json_.containsKey('desiredSecurityPostureConfig')
             ? SecurityPostureConfig.fromJson(
@@ -7382,12 +7600,15 @@ class ClusterUpdate {
     final desiredAuthenticatorGroupsConfig =
         this.desiredAuthenticatorGroupsConfig;
     final desiredAutoIpamConfig = this.desiredAutoIpamConfig;
+    final desiredAutopilotClusterPolicyConfig =
+        this.desiredAutopilotClusterPolicyConfig;
     final desiredAutopilotWorkloadPolicyConfig =
         this.desiredAutopilotWorkloadPolicyConfig;
     final desiredBinaryAuthorization = this.desiredBinaryAuthorization;
     final desiredClusterAutoscaling = this.desiredClusterAutoscaling;
     final desiredCompliancePostureConfig = this.desiredCompliancePostureConfig;
     final desiredContainerdConfig = this.desiredContainerdConfig;
+    final desiredControlPlaneEgress = this.desiredControlPlaneEgress;
     final desiredControlPlaneEndpointsConfig =
         this.desiredControlPlaneEndpointsConfig;
     final desiredCostManagementConfig = this.desiredCostManagementConfig;
@@ -7419,6 +7640,8 @@ class ClusterUpdate {
     final desiredLocations = this.desiredLocations;
     final desiredLoggingConfig = this.desiredLoggingConfig;
     final desiredLoggingService = this.desiredLoggingService;
+    final desiredManagedMachineLearningDiagnosticsConfig =
+        this.desiredManagedMachineLearningDiagnosticsConfig;
     final desiredManagedOpentelemetryConfig =
         this.desiredManagedOpentelemetryConfig;
     final desiredMasterAuthorizedNetworksConfig =
@@ -7455,6 +7678,7 @@ class ClusterUpdate {
     final desiredResourceUsageExportConfig =
         this.desiredResourceUsageExportConfig;
     final desiredSecretManagerConfig = this.desiredSecretManagerConfig;
+    final desiredSecretSyncConfig = this.desiredSecretSyncConfig;
     final desiredSecurityPostureConfig = this.desiredSecurityPostureConfig;
     final desiredServiceExternalIpsConfig =
         this.desiredServiceExternalIpsConfig;
@@ -7477,12 +7701,15 @@ class ClusterUpdate {
           ?desiredAnonymousAuthenticationConfig,
       'desiredAuthenticatorGroupsConfig': ?desiredAuthenticatorGroupsConfig,
       'desiredAutoIpamConfig': ?desiredAutoIpamConfig,
+      'desiredAutopilotClusterPolicyConfig':
+          ?desiredAutopilotClusterPolicyConfig,
       'desiredAutopilotWorkloadPolicyConfig':
           ?desiredAutopilotWorkloadPolicyConfig,
       'desiredBinaryAuthorization': ?desiredBinaryAuthorization,
       'desiredClusterAutoscaling': ?desiredClusterAutoscaling,
       'desiredCompliancePostureConfig': ?desiredCompliancePostureConfig,
       'desiredContainerdConfig': ?desiredContainerdConfig,
+      'desiredControlPlaneEgress': ?desiredControlPlaneEgress,
       'desiredControlPlaneEndpointsConfig': ?desiredControlPlaneEndpointsConfig,
       'desiredCostManagementConfig': ?desiredCostManagementConfig,
       'desiredDatabaseEncryption': ?desiredDatabaseEncryption,
@@ -7510,6 +7737,8 @@ class ClusterUpdate {
       'desiredLocations': ?desiredLocations,
       'desiredLoggingConfig': ?desiredLoggingConfig,
       'desiredLoggingService': ?desiredLoggingService,
+      'desiredManagedMachineLearningDiagnosticsConfig':
+          ?desiredManagedMachineLearningDiagnosticsConfig,
       'desiredManagedOpentelemetryConfig': ?desiredManagedOpentelemetryConfig,
       'desiredMasterAuthorizedNetworksConfig':
           ?desiredMasterAuthorizedNetworksConfig,
@@ -7542,6 +7771,7 @@ class ClusterUpdate {
       'desiredReleaseChannel': ?desiredReleaseChannel,
       'desiredResourceUsageExportConfig': ?desiredResourceUsageExportConfig,
       'desiredSecretManagerConfig': ?desiredSecretManagerConfig,
+      'desiredSecretSyncConfig': ?desiredSecretSyncConfig,
       'desiredSecurityPostureConfig': ?desiredSecurityPostureConfig,
       'desiredServiceExternalIpsConfig': ?desiredServiceExternalIpsConfig,
       'desiredShieldedNodes': ?desiredShieldedNodes,
@@ -7708,6 +7938,10 @@ class CompleteIPRotationRequest {
 /// upgrade.
 typedef CompleteNodePoolUpgradeRequest = $Empty;
 
+/// Deprecated: Compliance Posture is no longer supported.
+///
+/// For more details, see
+/// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
 /// CompliancePostureConfig defines the settings needed to enable/disable
 /// features for the Compliance Posture.
 class CompliancePostureConfig {
@@ -7872,6 +8106,29 @@ class ContainerdConfig {
   }
 }
 
+/// ControlPlaneEgress defines the settings needed to enable control plane
+/// egress control.
+class ControlPlaneEgress {
+  /// Defines the mode of control plane egress.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "VIA_CONTROL_PLANE" : Control plane has public IP and no restriction on
+  /// egress.
+  /// - "NONE" : No public IP on control plane and only internal allowlisted
+  /// egress.
+  core.String? mode;
+
+  ControlPlaneEgress({this.mode});
+
+  ControlPlaneEgress.fromJson(core.Map json_)
+    : this(mode: json_['mode'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mode = this.mode;
+    return {'mode': ?mode};
+  }
+}
+
 /// Configuration for all of the cluster's control plane endpoints.
 class ControlPlaneEndpointsConfig {
   /// DNS endpoint configuration.
@@ -7921,6 +8178,36 @@ class CostManagementConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final enabled = this.enabled;
     return {'enabled': ?enabled};
+  }
+}
+
+/// Contains config to modify node-level parameters for container restart
+/// behavior.
+class CrashLoopBackOffConfig {
+  /// The maximum duration the backoff delay can accrue to for container
+  /// restarts, minimum 1 second, maximum 300 seconds.
+  ///
+  /// If not set, defaults to the internal crashloopbackoff maximum. The string
+  /// must be a sequence of decimal numbers, each with optional fraction and a
+  /// unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"),
+  /// "ms", "s", "m", "h". See
+  /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-container-restart-delay
+  /// for more details.
+  ///
+  /// Optional.
+  core.String? maxContainerRestartPeriod;
+
+  CrashLoopBackOffConfig({this.maxContainerRestartPeriod});
+
+  CrashLoopBackOffConfig.fromJson(core.Map json_)
+    : this(
+        maxContainerRestartPeriod:
+            json_['maxContainerRestartPeriod'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxContainerRestartPeriod = this.maxContainerRestartPeriod;
+    return {'maxContainerRestartPeriod': ?maxContainerRestartPeriod};
   }
 }
 
@@ -8231,6 +8518,13 @@ class DatabaseEncryption {
   /// in etcd is in progress.
   /// - "CURRENT_STATE_DECRYPTION_ERROR" : De-crypting Secrets to plain text in
   /// etcd encountered an error.
+  /// - "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_ENABLED" : Encryption of all
+  /// objects in the storage is enabled. It does not guarantee that all objects
+  /// in the storage are encrypted, but eventually they will be.
+  /// - "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_PENDING" : Enablement of the
+  /// encryption of all objects in storage is pending.
+  /// - "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_ERROR" : Enabling encryption of
+  /// all objects in storage encountered an error.
   core.String? currentState;
 
   /// Keys in use by the cluster for decrypting existing objects, in addition to
@@ -8258,6 +8552,9 @@ class DatabaseEncryption {
   /// - "ENCRYPTED" : Secrets in etcd are encrypted.
   /// - "DECRYPTED" : Secrets in etcd are stored in plain text (at etcd level) -
   /// this is unrelated to Compute Engine level full disk encryption.
+  /// - "ALL_OBJECTS_ENCRYPTION_ENABLED" : Encryption of all objects in the
+  /// storage is enabled. There is no guarantee that all objects in the storage
+  /// are encrypted, but eventually they will be.
   core.String? state;
 
   DatabaseEncryption({
@@ -8398,6 +8695,63 @@ class DesiredEnterpriseConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final desiredTier = this.desiredTier;
     return {'desiredTier': ?desiredTier};
+  }
+}
+
+/// DisruptionBudget defines the upgrade disruption budget for the cluster
+/// control plane.
+class DisruptionBudget {
+  /// The last time a disruption was performed on the control plane.
+  ///
+  /// Output only.
+  core.String? lastDisruptionTime;
+
+  /// The last time a minor version upgrade was performed on the control plane.
+  ///
+  /// Output only.
+  core.String? lastMinorVersionDisruptionTime;
+
+  /// The minimum duration between two minor version upgrades of the control
+  /// plane.
+  ///
+  /// Optional.
+  core.String? minorVersionDisruptionInterval;
+
+  /// The minimum duration between two patch version upgrades of the control
+  /// plane.
+  ///
+  /// Optional.
+  core.String? patchVersionDisruptionInterval;
+
+  DisruptionBudget({
+    this.lastDisruptionTime,
+    this.lastMinorVersionDisruptionTime,
+    this.minorVersionDisruptionInterval,
+    this.patchVersionDisruptionInterval,
+  });
+
+  DisruptionBudget.fromJson(core.Map json_)
+    : this(
+        lastDisruptionTime: json_['lastDisruptionTime'] as core.String?,
+        lastMinorVersionDisruptionTime:
+            json_['lastMinorVersionDisruptionTime'] as core.String?,
+        minorVersionDisruptionInterval:
+            json_['minorVersionDisruptionInterval'] as core.String?,
+        patchVersionDisruptionInterval:
+            json_['patchVersionDisruptionInterval'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final lastDisruptionTime = this.lastDisruptionTime;
+    final lastMinorVersionDisruptionTime = this.lastMinorVersionDisruptionTime;
+    final minorVersionDisruptionInterval = this.minorVersionDisruptionInterval;
+    final patchVersionDisruptionInterval = this.patchVersionDisruptionInterval;
+    return {
+      'lastDisruptionTime': ?lastDisruptionTime,
+      'lastMinorVersionDisruptionTime': ?lastMinorVersionDisruptionTime,
+      'minorVersionDisruptionInterval': ?minorVersionDisruptionInterval,
+      'patchVersionDisruptionInterval': ?patchVersionDisruptionInterval,
+    };
   }
 }
 
@@ -9347,9 +9701,10 @@ class HostConfig {
 
   /// Host configures the registry host/mirror.
   ///
-  /// It supports fully qualified domain names (FQDN) and IP addresses:
-  /// Specifying port is supported. Wildcards are NOT supported. Examples: -
-  /// my.customdomain.com - 10.0.1.2:5000
+  /// It supports fully qualified domain names (FQDNs) and IP addresses.
+  /// Specifying scheme, port or path is supported. Scheme can only be http or
+  /// https. Wildcards are NOT supported. Examples: - `my.customdomain.com` -
+  /// `https://my.customdomain.com/path` - `10.0.1.2:5000`
   core.String? host;
 
   /// OverridePath is used to indicate the host's API root endpoint is defined
@@ -10100,6 +10455,11 @@ class LegacyAbac {
 
 /// Parameters that can be configured on Linux nodes.
 class LinuxNodeConfig {
+  /// The accurate time configuration for the node pool.
+  ///
+  /// Optional.
+  AccurateTimeConfig? accurateTimeConfig;
+
   /// cgroup_mode specifies the cgroup mode to be used on the node.
   /// Possible string values are:
   /// - "CGROUP_MODE_UNSPECIFIED" : CGROUP_MODE_UNSPECIFIED is when unspecified
@@ -10209,6 +10569,7 @@ class LinuxNodeConfig {
   core.String? transparentHugepageEnabled;
 
   LinuxNodeConfig({
+    this.accurateTimeConfig,
     this.cgroupMode,
     this.hugepages,
     this.nodeKernelModuleLoading,
@@ -10220,6 +10581,12 @@ class LinuxNodeConfig {
 
   LinuxNodeConfig.fromJson(core.Map json_)
     : this(
+        accurateTimeConfig: json_.containsKey('accurateTimeConfig')
+            ? AccurateTimeConfig.fromJson(
+                json_['accurateTimeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cgroupMode: json_['cgroupMode'] as core.String?,
         hugepages: json_.containsKey('hugepages')
             ? HugepagesConfig.fromJson(
@@ -10246,6 +10613,7 @@ class LinuxNodeConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final accurateTimeConfig = this.accurateTimeConfig;
     final cgroupMode = this.cgroupMode;
     final hugepages = this.hugepages;
     final nodeKernelModuleLoading = this.nodeKernelModuleLoading;
@@ -10254,6 +10622,7 @@ class LinuxNodeConfig {
     final transparentHugepageDefrag = this.transparentHugepageDefrag;
     final transparentHugepageEnabled = this.transparentHugepageEnabled;
     return {
+      'accurateTimeConfig': ?accurateTimeConfig,
       'cgroupMode': ?cgroupMode,
       'hugepages': ?hugepages,
       'nodeKernelModuleLoading': ?nodeKernelModuleLoading,
@@ -10486,6 +10855,14 @@ class LoggingVariantConfig {
 
 /// Configuration for the Lustre CSI driver.
 class LustreCsiDriverConfig {
+  /// When set to true, this disables multi-NIC support for the Lustre CSI
+  /// driver.
+  ///
+  /// By default, GKE enables multi-NIC support, which allows the Lustre CSI
+  /// driver to automatically detect and configure all suitable network
+  /// interfaces on a node to maximize I/O performance for demanding workloads.
+  core.bool? disableMultiNic;
+
   /// If set to true, the Lustre CSI driver will install Lustre kernel modules
   /// using port 6988.
   ///
@@ -10504,18 +10881,25 @@ class LustreCsiDriverConfig {
   /// Whether the Lustre CSI driver is enabled for this cluster.
   core.bool? enabled;
 
-  LustreCsiDriverConfig({this.enableLegacyLustrePort, this.enabled});
+  LustreCsiDriverConfig({
+    this.disableMultiNic,
+    this.enableLegacyLustrePort,
+    this.enabled,
+  });
 
   LustreCsiDriverConfig.fromJson(core.Map json_)
     : this(
+        disableMultiNic: json_['disableMultiNic'] as core.bool?,
         enableLegacyLustrePort: json_['enableLegacyLustrePort'] as core.bool?,
         enabled: json_['enabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final disableMultiNic = this.disableMultiNic;
     final enableLegacyLustrePort = this.enableLegacyLustrePort;
     final enabled = this.enabled;
     return {
+      'disableMultiNic': ?disableMultiNic,
       'enableLegacyLustrePort': ?enableLegacyLustrePort,
       'enabled': ?enabled,
     };
@@ -10563,6 +10947,11 @@ class MaintenanceExclusionOptions {
 
 /// MaintenancePolicy defines the maintenance policy to be used for the cluster.
 class MaintenancePolicy {
+  /// The upgrade disruption budget for the cluster control plane.
+  ///
+  /// Optional.
+  DisruptionBudget? disruptionBudget;
+
   /// A hash identifying the version of this policy, so that updates to fields
   /// of the policy won't accidentally undo intermediate changes (and so that
   /// users of the API unaware of some fields won't accidentally remove other
@@ -10575,10 +10964,16 @@ class MaintenancePolicy {
   /// Specifies the maintenance window in which maintenance may be performed.
   MaintenanceWindow? window;
 
-  MaintenancePolicy({this.resourceVersion, this.window});
+  MaintenancePolicy({this.disruptionBudget, this.resourceVersion, this.window});
 
   MaintenancePolicy.fromJson(core.Map json_)
     : this(
+        disruptionBudget: json_.containsKey('disruptionBudget')
+            ? DisruptionBudget.fromJson(
+                json_['disruptionBudget']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         resourceVersion: json_['resourceVersion'] as core.String?,
         window: json_.containsKey('window')
             ? MaintenanceWindow.fromJson(
@@ -10588,9 +10983,14 @@ class MaintenancePolicy {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final disruptionBudget = this.disruptionBudget;
     final resourceVersion = this.resourceVersion;
     final window = this.window;
-    return {'resourceVersion': ?resourceVersion, 'window': ?window};
+    return {
+      'disruptionBudget': ?disruptionBudget,
+      'resourceVersion': ?resourceVersion,
+      'window': ?window,
+    };
   }
 }
 
@@ -10652,6 +11052,23 @@ class MaintenanceWindow {
       'maintenanceExclusions': ?maintenanceExclusions,
       'recurringWindow': ?recurringWindow,
     };
+  }
+}
+
+/// ManagedMachineLearningDiagnosticsConfig is the configuration for the GKE
+/// Managed Machine Learning Diagnostics pipeline.
+class ManagedMachineLearningDiagnosticsConfig {
+  /// Enable/Disable Managed Machine Learning Diagnostics.
+  core.bool? enabled;
+
+  ManagedMachineLearningDiagnosticsConfig({this.enabled});
+
+  ManagedMachineLearningDiagnosticsConfig.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
   }
 }
 
@@ -11517,14 +11934,19 @@ class NodeConfig {
   /// Node kubelet configs.
   NodeKubeletConfig? kubeletConfig;
 
-  /// The map of Kubernetes labels (key/value pairs) to be applied to each node.
+  /// The Kubernetes labels (key/value pairs) to apply to each node.
   ///
-  /// These will added in addition to any default label(s) that Kubernetes may
-  /// apply to the node. In case of conflict in label keys, the applied set may
-  /// differ depending on the Kubernetes version -- it's best to assume the
-  /// behavior is undefined and conflicts should be avoided. For more
-  /// information, including usage and the valid values, see:
-  /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+  /// The values in this field are added to the set of default labels Kubernetes
+  /// applies to nodes. This field has the following restrictions: * Labels must
+  /// use a valid Kubernetes syntax and character set, as defined in
+  /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set.
+  /// * This field supports up to 1,024 total characters in a single request.
+  /// Depending on the Kubernetes version, keys in this field might conflict
+  /// with the keys of the default labels, which might change which of your
+  /// labels are applied to the nodes. Assume that the behavior is unpredictable
+  /// and avoid label key conflicts. For more information about the default
+  /// labels, see:
+  /// https://kubernetes.io/docs/reference/labels-annotations-taints/
   core.Map<core.String, core.String>? labels;
 
   /// Parameters that can be configured on Linux nodes.
@@ -11670,6 +12092,11 @@ class NodeConfig {
   /// tag within the list must comply with RFC1035.
   core.List<core.String>? tags;
 
+  /// The taint configuration for the node pool.
+  ///
+  /// Optional.
+  TaintConfig? taintConfig;
+
   /// List of kubernetes taints to be applied to each node.
   ///
   /// For more information, including usage and the valid values, see:
@@ -11727,6 +12154,7 @@ class NodeConfig {
     this.spot,
     this.storagePools,
     this.tags,
+    this.taintConfig,
     this.taints,
     this.windowsNodeConfig,
     this.workloadMetadataConfig,
@@ -11890,6 +12318,11 @@ class NodeConfig {
         tags: (json_['tags'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        taintConfig: json_.containsKey('taintConfig')
+            ? TaintConfig.fromJson(
+                json_['taintConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         taints: (json_['taints'] as core.List?)
             ?.map(
               (value) => NodeTaint.fromJson(
@@ -11957,6 +12390,7 @@ class NodeConfig {
     final spot = this.spot;
     final storagePools = this.storagePools;
     final tags = this.tags;
+    final taintConfig = this.taintConfig;
     final taints = this.taints;
     final windowsNodeConfig = this.windowsNodeConfig;
     final workloadMetadataConfig = this.workloadMetadataConfig;
@@ -12005,6 +12439,7 @@ class NodeConfig {
       'spot': ?spot,
       'storagePools': ?storagePools,
       'tags': ?tags,
+      'taintConfig': ?taintConfig,
       'taints': ?taints,
       'windowsNodeConfig': ?windowsNodeConfig,
       'workloadMetadataConfig': ?workloadMetadataConfig,
@@ -12075,8 +12510,8 @@ class NodeConfigDefaults {
   }
 }
 
-/// NodeDrainConfig contains the node drain related configurations for this
-/// nodepool.
+/// NodeDrainConfig contains the node drain related configurations for this node
+/// pool.
 class NodeDrainConfig {
   /// Whether to respect PDB during node pool deletion.
   core.bool? respectPdbDuringNodePoolDeletion;
@@ -12196,6 +12631,12 @@ class NodeKubeletConfig {
   /// exclusivity on the node. The default value is 'none' if unspecified.
   core.String? cpuManagerPolicy;
 
+  /// Contains configuration options to modify node-level parameters for
+  /// container restart behavior.
+  ///
+  /// Optional.
+  CrashLoopBackOffConfig? crashLoopBackOff;
+
   /// eviction_max_pod_grace_period_seconds is the maximum allowed grace period
   /// (in seconds) to use when terminating pods in response to a soft eviction
   /// threshold being met.
@@ -12307,6 +12748,32 @@ class NodeKubeletConfig {
   /// value must be greater than or equal to 1024 and less than 4194304.
   core.String? podPidsLimit;
 
+  /// shutdown_grace_period_critical_pods_seconds is the maximum allowed grace
+  /// period (in seconds) used to terminate critical pods during a node
+  /// shutdown.
+  ///
+  /// This value should be \<= shutdown_grace_period_seconds, and is only valid
+  /// if shutdown_grace_period_seconds is set.
+  /// https://kubernetes.io/docs/concepts/cluster-administration/node-shutdown/
+  /// Range: \[0, 120\].
+  ///
+  /// Optional.
+  core.int? shutdownGracePeriodCriticalPodsSeconds;
+
+  /// shutdown_grace_period_seconds is the maximum allowed grace period (in
+  /// seconds) the total duration that the node should delay the shutdown during
+  /// a graceful shutdown.
+  ///
+  /// This is the total grace period for pod termination for both regular and
+  /// critical pods.
+  /// https://kubernetes.io/docs/concepts/cluster-administration/node-shutdown/
+  /// If set to 0, node will not enable the graceful node shutdown
+  /// functionality. This field is only valid for Spot VMs. Allowed values: 0,
+  /// 30, 120.
+  ///
+  /// Optional.
+  core.int? shutdownGracePeriodSeconds;
+
   /// Defines whether to enable single process OOM killer.
   ///
   /// If true, will prevent the memory.oom.group flag from being set for
@@ -12331,6 +12798,7 @@ class NodeKubeletConfig {
     this.cpuCfsQuota,
     this.cpuCfsQuotaPeriod,
     this.cpuManagerPolicy,
+    this.crashLoopBackOff,
     this.evictionMaxPodGracePeriodSeconds,
     this.evictionMinimumReclaim,
     this.evictionSoft,
@@ -12343,6 +12811,8 @@ class NodeKubeletConfig {
     this.maxParallelImagePulls,
     this.memoryManager,
     this.podPidsLimit,
+    this.shutdownGracePeriodCriticalPodsSeconds,
+    this.shutdownGracePeriodSeconds,
     this.singleProcessOomKill,
     this.topologyManager,
   });
@@ -12357,6 +12827,12 @@ class NodeKubeletConfig {
         cpuCfsQuota: json_['cpuCfsQuota'] as core.bool?,
         cpuCfsQuotaPeriod: json_['cpuCfsQuotaPeriod'] as core.String?,
         cpuManagerPolicy: json_['cpuManagerPolicy'] as core.String?,
+        crashLoopBackOff: json_.containsKey('crashLoopBackOff')
+            ? CrashLoopBackOffConfig.fromJson(
+                json_['crashLoopBackOff']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         evictionMaxPodGracePeriodSeconds:
             json_['evictionMaxPodGracePeriodSeconds'] as core.int?,
         evictionMinimumReclaim: json_.containsKey('evictionMinimumReclaim')
@@ -12391,6 +12867,10 @@ class NodeKubeletConfig {
               )
             : null,
         podPidsLimit: json_['podPidsLimit'] as core.String?,
+        shutdownGracePeriodCriticalPodsSeconds:
+            json_['shutdownGracePeriodCriticalPodsSeconds'] as core.int?,
+        shutdownGracePeriodSeconds:
+            json_['shutdownGracePeriodSeconds'] as core.int?,
         singleProcessOomKill: json_['singleProcessOomKill'] as core.bool?,
         topologyManager: json_.containsKey('topologyManager')
             ? TopologyManager.fromJson(
@@ -12406,6 +12886,7 @@ class NodeKubeletConfig {
     final cpuCfsQuota = this.cpuCfsQuota;
     final cpuCfsQuotaPeriod = this.cpuCfsQuotaPeriod;
     final cpuManagerPolicy = this.cpuManagerPolicy;
+    final crashLoopBackOff = this.crashLoopBackOff;
     final evictionMaxPodGracePeriodSeconds =
         this.evictionMaxPodGracePeriodSeconds;
     final evictionMinimumReclaim = this.evictionMinimumReclaim;
@@ -12420,6 +12901,9 @@ class NodeKubeletConfig {
     final maxParallelImagePulls = this.maxParallelImagePulls;
     final memoryManager = this.memoryManager;
     final podPidsLimit = this.podPidsLimit;
+    final shutdownGracePeriodCriticalPodsSeconds =
+        this.shutdownGracePeriodCriticalPodsSeconds;
+    final shutdownGracePeriodSeconds = this.shutdownGracePeriodSeconds;
     final singleProcessOomKill = this.singleProcessOomKill;
     final topologyManager = this.topologyManager;
     return {
@@ -12429,6 +12913,7 @@ class NodeKubeletConfig {
       'cpuCfsQuota': ?cpuCfsQuota,
       'cpuCfsQuotaPeriod': ?cpuCfsQuotaPeriod,
       'cpuManagerPolicy': ?cpuManagerPolicy,
+      'crashLoopBackOff': ?crashLoopBackOff,
       'evictionMaxPodGracePeriodSeconds': ?evictionMaxPodGracePeriodSeconds,
       'evictionMinimumReclaim': ?evictionMinimumReclaim,
       'evictionSoft': ?evictionSoft,
@@ -12441,6 +12926,9 @@ class NodeKubeletConfig {
       'maxParallelImagePulls': ?maxParallelImagePulls,
       'memoryManager': ?memoryManager,
       'podPidsLimit': ?podPidsLimit,
+      'shutdownGracePeriodCriticalPodsSeconds':
+          ?shutdownGracePeriodCriticalPodsSeconds,
+      'shutdownGracePeriodSeconds': ?shutdownGracePeriodSeconds,
       'singleProcessOomKill': ?singleProcessOomKill,
       'topologyManager': ?topologyManager,
     };
@@ -12499,6 +12987,15 @@ class NodeManagement {
 
 /// Parameters for node pool-level network config.
 class NodeNetworkConfig {
+  /// The accelerator network profile for the node pool.
+  ///
+  /// For now the only valid value is "auto". If specified, the network
+  /// configuration of the nodes in this node pool will be managed by this
+  /// profile for the supported machine types, zone, etc.
+  ///
+  /// Immutable.
+  core.String? acceleratorNetworkProfile;
+
   /// We specify the additional node networks for this node pool using this
   /// list.
   ///
@@ -12536,7 +13033,7 @@ class NodeNetworkConfig {
   /// Output only.
   NetworkTierConfig? networkTierConfig;
 
-  /// \[PRIVATE FIELD\] Pod CIDR size overprovisioning config for the nodepool.
+  /// \[PRIVATE FIELD\] Pod CIDR size overprovisioning config for the node pool.
   ///
   /// Pod CIDR size per node depends on max_pods_per_node. By default, the value
   /// of max_pods_per_node is rounded off to next power of 2 and we then double
@@ -12578,16 +13075,19 @@ class NodeNetworkConfig {
   ///
   /// Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} If
   /// the cluster is associated with multiple subnetworks, the subnetwork can be
-  /// either: 1. A user supplied subnetwork name/full path during node pool
-  /// creation. Example1: my-subnet Example2:
-  /// projects/gke-project/regions/us-central1/subnetworks/my-subnet 2. A
-  /// subnetwork path picked based on the IP utilization during node pool
+  /// either: - A user supplied subnetwork name during node pool creation (e.g.,
+  /// `my-subnet`). The name must be between 1 and 63 characters long, start
+  /// with a letter, contain only letters, numbers, and hyphens, and end with a
+  /// letter or a number. - A full subnetwork path during node pool creation,
+  /// such as `projects/gke-project/regions/us-central1/subnetworks/my-subnet` -
+  /// A subnetwork path picked based on the IP utilization during node pool
   /// creation and is immutable.
   ///
   /// Optional.
   core.String? subnetwork;
 
   NodeNetworkConfig({
+    this.acceleratorNetworkProfile,
     this.additionalNodeNetworkConfigs,
     this.additionalPodNetworkConfigs,
     this.createPodRange,
@@ -12603,6 +13103,8 @@ class NodeNetworkConfig {
 
   NodeNetworkConfig.fromJson(core.Map json_)
     : this(
+        acceleratorNetworkProfile:
+            json_['acceleratorNetworkProfile'] as core.String?,
         additionalNodeNetworkConfigs:
             (json_['additionalNodeNetworkConfigs'] as core.List?)
                 ?.map(
@@ -12648,6 +13150,7 @@ class NodeNetworkConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final acceleratorNetworkProfile = this.acceleratorNetworkProfile;
     final additionalNodeNetworkConfigs = this.additionalNodeNetworkConfigs;
     final additionalPodNetworkConfigs = this.additionalPodNetworkConfigs;
     final createPodRange = this.createPodRange;
@@ -12660,6 +13163,7 @@ class NodeNetworkConfig {
     final podRange = this.podRange;
     final subnetwork = this.subnetwork;
     return {
+      'acceleratorNetworkProfile': ?acceleratorNetworkProfile,
       'additionalNodeNetworkConfigs': ?additionalNodeNetworkConfigs,
       'additionalPodNetworkConfigs': ?additionalPodNetworkConfigs,
       'createPodRange': ?createPodRange,
@@ -13062,7 +13566,7 @@ class NodePoolAutoscaling {
   /// Is autoscaling enabled for this node pool.
   core.bool? enabled;
 
-  /// Location policy used when scaling up a nodepool.
+  /// Location policy used when scaling up a node pool.
   /// Possible string values are:
   /// - "LOCATION_POLICY_UNSPECIFIED" : Not set.
   /// - "BALANCED" : BALANCED is a best effort policy that aims to balance the
@@ -13160,7 +13664,7 @@ class NodePoolDefaults {
   }
 }
 
-/// NodePoolLoggingConfig specifies logging configuration for nodepools.
+/// NodePoolLoggingConfig specifies logging configuration for node pools.
 class NodePoolLoggingConfig {
   /// Logging variant configuration.
   LoggingVariantConfig? variantConfig;
@@ -13182,15 +13686,15 @@ class NodePoolLoggingConfig {
   }
 }
 
-/// NodePoolUpgradeInfo contains the upgrade information of a nodepool.
+/// NodePoolUpgradeInfo contains the upgrade information of a node pool.
 class NodePoolUpgradeInfo {
   /// The auto upgrade status.
   core.List<core.String>? autoUpgradeStatus;
 
-  /// The nodepool's current minor version's end of extended support timestamp.
+  /// The node pool's current minor version's end of extended support timestamp.
   core.String? endOfExtendedSupportTimestamp;
 
-  /// The nodepool's current minor version's end of standard support timestamp.
+  /// The node pool's current minor version's end of standard support timestamp.
   core.String? endOfStandardSupportTimestamp;
 
   /// minor_target_version indicates the target version for minor upgrade.
@@ -13856,6 +14360,22 @@ class PodCIDROverprovisionConfig {
   }
 }
 
+/// PodSnapshotConfig is the configuration for GKE Pod Snapshots feature.
+class PodSnapshotConfig {
+  /// Whether or not the Pod Snapshots feature is enabled.
+  core.bool? enabled;
+
+  PodSnapshotConfig({this.enabled});
+
+  PodSnapshotConfig.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
+}
+
 /// Configuration options for private clusters.
 class PrivateClusterConfig {
   /// Whether the master's internal IP address is used as the cluster endpoint.
@@ -14107,7 +14627,7 @@ class PubSub {
 
 /// QueuedProvisioning defines the queued provisioning used by the node pool.
 class QueuedProvisioning {
-  /// Denotes that this nodepool is QRM specific, meaning nodes can be only
+  /// Denotes that this node pool is QRM specific, meaning nodes can be only
   /// obtained through queuing via the Cluster Autoscaler ProvisioningRequest
   /// API.
   core.bool? enabled;
@@ -14357,8 +14877,9 @@ class RegistryHostConfig {
   /// configuration file as /etc/containerd/hosts.d//hosts.toml.
   ///
   /// It supports fully qualified domain names (FQDN) and IP addresses:
-  /// Specifying port is supported. Wildcards are NOT supported. Examples: -
-  /// my.customdomain.com - 10.0.1.2:5000
+  /// Specifying port is supported, while scheme and path are NOT supported.
+  /// Wildcards are NOT supported. Examples: - `my.customdomain.com` -
+  /// `10.0.1.2:5000`
   core.String? server;
 
   RegistryHostConfig({this.hosts, this.server});
@@ -14738,29 +15259,7 @@ class RollbackNodePoolUpgradeRequest {
 }
 
 /// RotationConfig is config for secret manager auto rotation.
-class RotationConfig {
-  /// Whether the rotation is enabled.
-  core.bool? enabled;
-
-  /// The interval between two consecutive rotations.
-  ///
-  /// Default rotation interval is 2 minutes.
-  core.String? rotationInterval;
-
-  RotationConfig({this.enabled, this.rotationInterval});
-
-  RotationConfig.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        rotationInterval: json_['rotationInterval'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final enabled = this.enabled;
-    final rotationInterval = this.rotationInterval;
-    return {'enabled': ?enabled, 'rotationInterval': ?rotationInterval};
-  }
-}
+typedef RotationConfig = $RotationConfig;
 
 /// SandboxConfig contains configurations of the sandbox to use for the node.
 class SandboxConfig {
@@ -14778,6 +15277,24 @@ class SandboxConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final type = this.type;
     return {'type': ?type};
+  }
+}
+
+/// Configuration for scheduled upgrades on the cluster.
+class ScheduleUpgradeConfig {
+  /// Whether or not scheduled upgrades are enabled.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  ScheduleUpgradeConfig({this.enabled});
+
+  ScheduleUpgradeConfig.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
   }
 }
 
@@ -14828,6 +15345,33 @@ class SecretManagerConfig {
         enabled: json_['enabled'] as core.bool?,
         rotationConfig: json_.containsKey('rotationConfig')
             ? RotationConfig.fromJson(
+                json_['rotationConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final rotationConfig = this.rotationConfig;
+    return {'enabled': ?enabled, 'rotationConfig': ?rotationConfig};
+  }
+}
+
+/// Configuration for sync Secret Manager secrets as k8s secrets.
+class SecretSyncConfig {
+  /// Enable/Disable Secret Sync Config.
+  core.bool? enabled;
+
+  /// Rotation config for secret manager.
+  SyncRotationConfig? rotationConfig;
+
+  SecretSyncConfig({this.enabled, this.rotationConfig});
+
+  SecretSyncConfig.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        rotationConfig: json_.containsKey('rotationConfig')
+            ? SyncRotationConfig.fromJson(
                 json_['rotationConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -16065,6 +16609,23 @@ class SliceControllerConfig {
   }
 }
 
+/// Configuration for the Slurm Operator.
+class SlurmOperatorConfig {
+  /// When enabled, it runs a Slurm Operator that manages the set of compute
+  /// pods for Slurm Cluster.
+  core.bool? enabled;
+
+  SlurmOperatorConfig({this.enabled});
+
+  SlurmOperatorConfig.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
+}
+
 /// SoleTenantConfig contains the NodeAffinities to specify what shared sole
 /// tenant node groups should back the node pool.
 class SoleTenantConfig {
@@ -16448,6 +17009,36 @@ class SwapConfig {
       'encryptionConfig': ?encryptionConfig,
       'ephemeralLocalSsdProfile': ?ephemeralLocalSsdProfile,
     };
+  }
+}
+
+/// SyncRotationConfig is config for secret manager auto rotation.
+typedef SyncRotationConfig = $RotationConfig;
+
+/// TaintConfig contains the configuration for the taints of the node pool.
+class TaintConfig {
+  /// Controls architecture tainting behavior.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ARCHITECTURE_TAINT_BEHAVIOR_UNSPECIFIED" : Specifies that the behavior
+  /// is unspecified, defaults to ARM.
+  /// - "NONE" : Disables default architecture taints on the node pool.
+  /// - "ARM" : Taints all the nodes in the node pool with the default ARM
+  /// taint.
+  core.String? architectureTaintBehavior;
+
+  TaintConfig({this.architectureTaintBehavior});
+
+  TaintConfig.fromJson(core.Map json_)
+    : this(
+        architectureTaintBehavior:
+            json_['architectureTaintBehavior'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final architectureTaintBehavior = this.architectureTaintBehavior;
+    return {'architectureTaintBehavior': ?architectureTaintBehavior};
   }
 }
 
@@ -17339,7 +17930,7 @@ class UpgradeSettings {
   /// - "SURGE" : SURGE is the traditional way of upgrade a node pool. max_surge
   /// and max_unavailable determines the level of upgrade parallelism.
   /// - "SHORT_LIVED" : SHORT_LIVED is the dedicated upgrade strategy for
-  /// QueuedProvisioning and flex start nodepools scaled up only by enqueueing
+  /// QueuedProvisioning and flex start node pools scaled up only by enqueueing
   /// to the Dynamic Workload Scheduler (DWS).
   core.String? strategy;
 

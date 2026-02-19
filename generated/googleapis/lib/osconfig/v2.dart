@@ -2128,7 +2128,7 @@ class GoogleCloudOsconfigV2PolicyOrchestrator {
   /// Output only.
   GoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState? orchestrationState;
 
-  /// Set to true, if the there are ongoing changes being applied by the
+  /// Set to true, if there are ongoing changes being applied by the
   /// orchestrator.
   ///
   /// Output only.
@@ -2936,7 +2936,7 @@ typedef OSPolicyResourceFileRemote = $OSPolicyResourceFileRemote;
 
 /// A resource that manages the state of a file.
 class OSPolicyResourceFileResource {
-  /// A a file with this content.
+  /// A file with this content.
   ///
   /// The size of the content is limited to 32KiB.
   core.String? content;

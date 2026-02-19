@@ -65,6 +65,15 @@ class DataprocApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Dataproc data and see
+  /// the email address for your Google Account
+  static const dataprocScope = 'https://www.googleapis.com/auth/dataproc';
+
+  /// See your Google Cloud Dataproc data and the email address of your Google
+  /// Account
+  static const dataprocReadOnlyScope =
+      'https://www.googleapis.com/auth/dataproc.read-only';
+
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -570,11 +579,10 @@ class ProjectsLocationsBatchesResource {
   /// characters. Valid characters are /\[a-z\]\[0-9\]-/.
   ///
   /// [requestId] - Optional. A unique ID used to identify the request. If the
-  /// service receives two CreateBatchRequest
-  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s
-  /// with the same request_id, the second request is ignored and the Operation
-  /// that corresponds to the first Batch created and stored in the backend is
-  /// returned.Recommendation: Set this value to a UUID
+  /// service receives two CreateBatchRequests with the same request_id, the
+  /// second request is ignored and the operation that corresponds to the first
+  /// Batch created and stored in the backend is returned.Recommendation: Set
+  /// this value to a UUID
   /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value
   /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
@@ -5143,9 +5151,12 @@ class ProjectsRegionsClustersResource {
   /// operator.Example filter:status.state = ACTIVE AND clusterName = mycluster
   /// AND labels.env = staging AND labels.starred = *
   ///
-  /// [pageSize] - Optional. The standard List page size.
+  /// [pageSize] - Optional. The maximum number of clusters to return in each
+  /// response. The service may return fewer than this value. If unspecified,
+  /// the default value is 200. The maximum value is 1000.
   ///
-  /// [pageToken] - Optional. The standard List page token.
+  /// [pageToken] - Optional. A page token received from a previous ListClusters
+  /// call. Provide this token to retrieve the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5969,12 +5980,14 @@ class ProjectsRegionsJobsResource {
   ///
   /// [filter] - Optional. A filter constraining the jobs to list. Filters are
   /// case-sensitive and have the following syntax:field = value AND field =
-  /// value ...where field is status.state or labels.\[KEY\], and \[KEY\] is a
-  /// label key. value can be * to match all values. status.state can be either
-  /// ACTIVE or NON_ACTIVE. Only the logical AND operator is supported;
-  /// space-separated items are treated as having an implicit AND
-  /// operator.Example filter:status.state = ACTIVE AND labels.env = staging AND
-  /// labels.starred = *
+  /// value ...where field is status.state or insertTime, or labels.\[KEY\], and
+  /// \[KEY\] is a label key. value can be * to match all values. status.state
+  /// can be either ACTIVE or NON_ACTIVE. Allows insertTime to be a timestamp in
+  /// RFC 3339 format in double quotes, such as 2025-01-01T00:00:00Z. Only the
+  /// logical AND operator is supported; space-separated items are treated as
+  /// having an implicit AND operator.Example filter:status.state = ACTIVE AND
+  /// labels.env = staging AND labels.starred = * AND insertTime \<=
+  /// "2025-01-01T00:00:00Z"
   ///
   /// [jobStateMatcher] - Optional. Specifies enumerated categories of jobs to
   /// list. (default = match ALL jobs).If filter is provided, jobStateMatcher
@@ -7847,6 +7860,71 @@ class ApplicationInfo {
   }
 }
 
+/// Specifies the config of attached disk options for single VM instance.
+class AttachedDiskConfig {
+  /// Disk size in GB.
+  ///
+  /// Optional.
+  core.int? diskSizeGb;
+
+  /// Disk type.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DISK_TYPE_UNSPECIFIED" : Required unspecified disk type.
+  /// - "HYPERDISK_BALANCED" : Hyperdisk Balanced disk type.
+  /// - "HYPERDISK_EXTREME" : Hyperdisk Extreme disk type.
+  /// - "HYPERDISK_ML" : Hyperdisk ML disk type.
+  /// - "HYPERDISK_THROUGHPUT" : Hyperdisk Throughput disk type.
+  core.String? diskType;
+
+  /// Indicates how many IOPS to provision for the attached disk.
+  ///
+  /// This sets the number of I/O operations per second that the disk can
+  /// handle. See
+  /// https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features
+  ///
+  /// Optional.
+  core.String? provisionedIops;
+
+  /// Indicates how much throughput to provision for the attached disk.
+  ///
+  /// This sets the number of throughput mb per second that the disk can handle.
+  /// See
+  /// https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features
+  ///
+  /// Optional.
+  core.String? provisionedThroughput;
+
+  AttachedDiskConfig({
+    this.diskSizeGb,
+    this.diskType,
+    this.provisionedIops,
+    this.provisionedThroughput,
+  });
+
+  AttachedDiskConfig.fromJson(core.Map json_)
+    : this(
+        diskSizeGb: json_['diskSizeGb'] as core.int?,
+        diskType: json_['diskType'] as core.String?,
+        provisionedIops: json_['provisionedIops'] as core.String?,
+        provisionedThroughput: json_['provisionedThroughput'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final diskSizeGb = this.diskSizeGb;
+    final diskType = this.diskType;
+    final provisionedIops = this.provisionedIops;
+    final provisionedThroughput = this.provisionedThroughput;
+    return {
+      'diskSizeGb': ?diskSizeGb,
+      'diskType': ?diskType,
+      'provisionedIops': ?provisionedIops,
+      'provisionedThroughput': ?provisionedThroughput,
+    };
+  }
+}
+
 /// Authentication configuration for a workload is used to set the default
 /// identity for the workload execution.
 ///
@@ -8310,6 +8388,11 @@ class Batch {
   /// Optional.
   PySparkBatch? pysparkBatch;
 
+  /// PySpark notebook batch config.
+  ///
+  /// Optional.
+  PySparkNotebookBatch? pysparkNotebookBatch;
+
   /// Runtime configuration for the batch execution.
   ///
   /// Optional.
@@ -8378,6 +8461,7 @@ class Batch {
     this.name,
     this.operation,
     this.pysparkBatch,
+    this.pysparkNotebookBatch,
     this.runtimeConfig,
     this.runtimeInfo,
     this.sparkBatch,
@@ -8408,6 +8492,12 @@ class Batch {
         pysparkBatch: json_.containsKey('pysparkBatch')
             ? PySparkBatch.fromJson(
                 json_['pysparkBatch'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pysparkNotebookBatch: json_.containsKey('pysparkNotebookBatch')
+            ? PySparkNotebookBatch.fromJson(
+                json_['pysparkNotebookBatch']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         runtimeConfig: json_.containsKey('runtimeConfig')
@@ -8456,6 +8546,7 @@ class Batch {
     final name = this.name;
     final operation = this.operation;
     final pysparkBatch = this.pysparkBatch;
+    final pysparkNotebookBatch = this.pysparkNotebookBatch;
     final runtimeConfig = this.runtimeConfig;
     final runtimeInfo = this.runtimeInfo;
     final sparkBatch = this.sparkBatch;
@@ -8474,6 +8565,7 @@ class Batch {
       'name': ?name,
       'operation': ?operation,
       'pysparkBatch': ?pysparkBatch,
+      'pysparkNotebookBatch': ?pysparkNotebookBatch,
       'runtimeConfig': ?runtimeConfig,
       'runtimeInfo': ?runtimeInfo,
       'sparkBatch': ?sparkBatch,
@@ -8846,6 +8938,16 @@ class ClusterConfig {
   /// Optional.
   EndpointConfig? endpointConfig;
 
+  /// The cluster engine.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENGINE_UNSPECIFIED" : The engine is not specified. Works the same as
+  /// ENGINE_DEFAULT.
+  /// - "DEFAULT" : The cluster is a default engine cluster.
+  /// - "LIGHTNING" : The cluster is a lightning engine cluster.
+  core.String? engine;
+
   /// The shared Compute Engine config settings for all instances in a cluster.
   ///
   /// Optional.
@@ -8940,6 +9042,7 @@ class ClusterConfig {
     this.diagnosticBucket,
     this.encryptionConfig,
     this.endpointConfig,
+    this.engine,
     this.gceClusterConfig,
     this.gkeClusterConfig,
     this.initializationActions,
@@ -8989,6 +9092,7 @@ class ClusterConfig {
                 json_['endpointConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        engine: json_['engine'] as core.String?,
         gceClusterConfig: json_.containsKey('gceClusterConfig')
             ? GceClusterConfig.fromJson(
                 json_['gceClusterConfig']
@@ -9057,6 +9161,7 @@ class ClusterConfig {
     final diagnosticBucket = this.diagnosticBucket;
     final encryptionConfig = this.encryptionConfig;
     final endpointConfig = this.endpointConfig;
+    final engine = this.engine;
     final gceClusterConfig = this.gceClusterConfig;
     final gkeClusterConfig = this.gkeClusterConfig;
     final initializationActions = this.initializationActions;
@@ -9078,6 +9183,7 @@ class ClusterConfig {
       'diagnosticBucket': ?diagnosticBucket,
       'encryptionConfig': ?encryptionConfig,
       'endpointConfig': ?endpointConfig,
+      'engine': ?engine,
       'gceClusterConfig': ?gceClusterConfig,
       'gkeClusterConfig': ?gkeClusterConfig,
       'initializationActions': ?initializationActions,
@@ -9255,6 +9361,37 @@ class ClusterToRepair {
   core.Map<core.String, core.dynamic> toJson() {
     final clusterRepairAction = this.clusterRepairAction;
     return {'clusterRepairAction': ?clusterRepairAction};
+  }
+}
+
+/// Information about the cohort that the workload belongs to.
+class CohortInfo {
+  /// Final cohort that was used to tune the workload.
+  ///
+  /// Output only.
+  core.String? cohort;
+
+  /// Source of the cohort.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COHORT_SOURCE_UNSPECIFIED" : Cohort source is unspecified.
+  /// - "USER_PROVIDED" : Indicates that the cohort was explicitly provided.
+  /// - "AIRFLOW" : Composed from the labels coming from Airflow/Composer.
+  core.String? cohortSource;
+
+  CohortInfo({this.cohort, this.cohortSource});
+
+  CohortInfo.fromJson(core.Map json_)
+    : this(
+        cohort: json_['cohort'] as core.String?,
+        cohortSource: json_['cohortSource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cohort = this.cohort;
+    final cohortSource = this.cohortSource;
+    return {'cohort': ?cohort, 'cohortSource': ?cohortSource};
   }
 }
 
@@ -9506,6 +9643,11 @@ class DiagnoseClusterRequest {
 /// Specifies the config of boot disk and attached disk options for a group of
 /// VM instances.
 class DiskConfig {
+  /// A list of attached disk configs for a group of VM instances.
+  ///
+  /// Optional.
+  core.List<AttachedDiskConfig>? attachedDiskConfigs;
+
   /// Indicates how many IOPS to provision for the disk.
   ///
   /// This sets the number of I/O operations per second that the disk can
@@ -9561,6 +9703,7 @@ class DiskConfig {
   core.int? numLocalSsds;
 
   DiskConfig({
+    this.attachedDiskConfigs,
     this.bootDiskProvisionedIops,
     this.bootDiskProvisionedThroughput,
     this.bootDiskSizeGb,
@@ -9571,6 +9714,13 @@ class DiskConfig {
 
   DiskConfig.fromJson(core.Map json_)
     : this(
+        attachedDiskConfigs: (json_['attachedDiskConfigs'] as core.List?)
+            ?.map(
+              (value) => AttachedDiskConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         bootDiskProvisionedIops:
             json_['bootDiskProvisionedIops'] as core.String?,
         bootDiskProvisionedThroughput:
@@ -9582,6 +9732,7 @@ class DiskConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final attachedDiskConfigs = this.attachedDiskConfigs;
     final bootDiskProvisionedIops = this.bootDiskProvisionedIops;
     final bootDiskProvisionedThroughput = this.bootDiskProvisionedThroughput;
     final bootDiskSizeGb = this.bootDiskSizeGb;
@@ -9589,6 +9740,7 @@ class DiskConfig {
     final localSsdInterface = this.localSsdInterface;
     final numLocalSsds = this.numLocalSsds;
     return {
+      'attachedDiskConfigs': ?attachedDiskConfigs,
       'bootDiskProvisionedIops': ?bootDiskProvisionedIops,
       'bootDiskProvisionedThroughput': ?bootDiskProvisionedThroughput,
       'bootDiskSizeGb': ?bootDiskSizeGb,
@@ -11546,6 +11698,15 @@ class InputQuantileMetrics {
 /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning
 /// models.
 class InstanceFlexibilityPolicy {
+  /// A map of instance short name to machine type.
+  ///
+  /// The key is the short name of the Compute Engine instance, and the value is
+  /// the full machine-type name (e.g., 'n1-standard-16'). See Machine types for
+  /// more information on valid machine type strings.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? instanceMachineTypes;
+
   /// List of instance selection options that the group will use when creating
   /// new VMs.
   ///
@@ -11564,6 +11725,7 @@ class InstanceFlexibilityPolicy {
   ProvisioningModelMix? provisioningModelMix;
 
   InstanceFlexibilityPolicy({
+    this.instanceMachineTypes,
     this.instanceSelectionList,
     this.instanceSelectionResults,
     this.provisioningModelMix,
@@ -11571,6 +11733,10 @@ class InstanceFlexibilityPolicy {
 
   InstanceFlexibilityPolicy.fromJson(core.Map json_)
     : this(
+        instanceMachineTypes:
+            (json_['instanceMachineTypes']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         instanceSelectionList: (json_['instanceSelectionList'] as core.List?)
             ?.map(
               (value) => InstanceSelection.fromJson(
@@ -11595,10 +11761,12 @@ class InstanceFlexibilityPolicy {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final instanceMachineTypes = this.instanceMachineTypes;
     final instanceSelectionList = this.instanceSelectionList;
     final instanceSelectionResults = this.instanceSelectionResults;
     final provisioningModelMix = this.provisioningModelMix;
     return {
+      'instanceMachineTypes': ?instanceMachineTypes,
       'instanceSelectionList': ?instanceSelectionList,
       'instanceSelectionResults': ?instanceSelectionResults,
       'provisioningModelMix': ?provisioningModelMix,
@@ -15212,6 +15380,88 @@ class PySparkJob {
   }
 }
 
+/// A configuration for running a PySpark Notebook batch workload.
+class PySparkNotebookBatch {
+  /// HCFS URIs of archives to be extracted into the working directory of each
+  /// executor.
+  ///
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  ///
+  /// Optional.
+  core.List<core.String>? archiveUris;
+
+  /// HCFS URIs of files to be placed in the working directory of each executor
+  ///
+  /// Optional.
+  core.List<core.String>? fileUris;
+
+  /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+  ///
+  /// Optional.
+  core.List<core.String>? jarFileUris;
+
+  /// The HCFS URI of the notebook file to execute.
+  ///
+  /// Required.
+  core.String? notebookFileUri;
+
+  /// The parameters to pass to the notebook.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? params;
+
+  /// HCFS URIs of Python files to pass to the PySpark framework.
+  ///
+  /// Optional.
+  core.List<core.String>? pythonFileUris;
+
+  PySparkNotebookBatch({
+    this.archiveUris,
+    this.fileUris,
+    this.jarFileUris,
+    this.notebookFileUri,
+    this.params,
+    this.pythonFileUris,
+  });
+
+  PySparkNotebookBatch.fromJson(core.Map json_)
+    : this(
+        archiveUris: (json_['archiveUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        fileUris: (json_['fileUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        jarFileUris: (json_['jarFileUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        notebookFileUri: json_['notebookFileUri'] as core.String?,
+        params: (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        pythonFileUris: (json_['pythonFileUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final archiveUris = this.archiveUris;
+    final fileUris = this.fileUris;
+    final jarFileUris = this.jarFileUris;
+    final notebookFileUri = this.notebookFileUri;
+    final params = this.params;
+    final pythonFileUris = this.pythonFileUris;
+    return {
+      'archiveUris': ?archiveUris,
+      'fileUris': ?fileUris,
+      'jarFileUris': ?jarFileUris,
+      'notebookFileUri': ?notebookFileUri,
+      'params': ?params,
+      'pythonFileUris': ?pythonFileUris,
+    };
+  }
+}
+
 /// Quantile metrics data related to Tasks.
 ///
 /// Units can be seconds, bytes, milliseconds, etc depending on the message
@@ -16169,6 +16419,11 @@ class RuntimeInfo {
   /// Output only.
   UsageMetrics? approximateUsage;
 
+  /// Information about the cohort that the workload belongs to.
+  ///
+  /// Output only.
+  CohortInfo? cohortInfo;
+
   /// Snapshot of current workload resource usage.
   ///
   /// Output only.
@@ -16197,6 +16452,7 @@ class RuntimeInfo {
 
   RuntimeInfo({
     this.approximateUsage,
+    this.cohortInfo,
     this.currentUsage,
     this.diagnosticOutputUri,
     this.endpoints,
@@ -16210,6 +16466,11 @@ class RuntimeInfo {
             ? UsageMetrics.fromJson(
                 json_['approximateUsage']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cohortInfo: json_.containsKey('cohortInfo')
+            ? CohortInfo.fromJson(
+                json_['cohortInfo'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         currentUsage: json_.containsKey('currentUsage')
@@ -16230,6 +16491,7 @@ class RuntimeInfo {
 
   core.Map<core.String, core.dynamic> toJson() {
     final approximateUsage = this.approximateUsage;
+    final cohortInfo = this.cohortInfo;
     final currentUsage = this.currentUsage;
     final diagnosticOutputUri = this.diagnosticOutputUri;
     final endpoints = this.endpoints;
@@ -16237,6 +16499,7 @@ class RuntimeInfo {
     final propertiesInfo = this.propertiesInfo;
     return {
       'approximateUsage': ?approximateUsage,
+      'cohortInfo': ?cohortInfo,
       'currentUsage': ?currentUsage,
       'diagnosticOutputUri': ?diagnosticOutputUri,
       'endpoints': ?endpoints,
@@ -18356,6 +18619,11 @@ class SparkPlanGraph {
 /// Represents a tree of spark plan.
 class SparkPlanGraphCluster {
   core.String? desc;
+
+  /// Additional metadata for the spark plan graph cluster.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? metadata;
   core.List<SqlPlanMetric>? metrics;
   core.String? name;
   core.List<SparkPlanGraphNodeWrapper>? nodes;
@@ -18363,6 +18631,7 @@ class SparkPlanGraphCluster {
 
   SparkPlanGraphCluster({
     this.desc,
+    this.metadata,
     this.metrics,
     this.name,
     this.nodes,
@@ -18372,6 +18641,8 @@ class SparkPlanGraphCluster {
   SparkPlanGraphCluster.fromJson(core.Map json_)
     : this(
         desc: json_['desc'] as core.String?,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
         metrics: (json_['metrics'] as core.List?)
             ?.map(
               (value) => SqlPlanMetric.fromJson(
@@ -18393,12 +18664,14 @@ class SparkPlanGraphCluster {
 
   core.Map<core.String, core.dynamic> toJson() {
     final desc = this.desc;
+    final metadata = this.metadata;
     final metrics = this.metrics;
     final name = this.name;
     final nodes = this.nodes;
     final sparkPlanGraphClusterId = this.sparkPlanGraphClusterId;
     return {
       'desc': ?desc,
+      'metadata': ?metadata,
       'metrics': ?metrics,
       'name': ?name,
       'nodes': ?nodes,
@@ -18430,12 +18703,18 @@ class SparkPlanGraphEdge {
 /// Represents a node in the spark plan tree.
 class SparkPlanGraphNode {
   core.String? desc;
+
+  /// Additional metadata for the spark plan graph cluster.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? metadata;
   core.List<SqlPlanMetric>? metrics;
   core.String? name;
   core.String? sparkPlanGraphNodeId;
 
   SparkPlanGraphNode({
     this.desc,
+    this.metadata,
     this.metrics,
     this.name,
     this.sparkPlanGraphNodeId,
@@ -18444,6 +18723,8 @@ class SparkPlanGraphNode {
   SparkPlanGraphNode.fromJson(core.Map json_)
     : this(
         desc: json_['desc'] as core.String?,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
         metrics: (json_['metrics'] as core.List?)
             ?.map(
               (value) => SqlPlanMetric.fromJson(
@@ -18457,11 +18738,13 @@ class SparkPlanGraphNode {
 
   core.Map<core.String, core.dynamic> toJson() {
     final desc = this.desc;
+    final metadata = this.metadata;
     final metrics = this.metrics;
     final name = this.name;
     final sparkPlanGraphNodeId = this.sparkPlanGraphNodeId;
     return {
       'desc': ?desc,
+      'metadata': ?metadata,
       'metrics': ?metrics,
       'name': ?name,
       'sparkPlanGraphNodeId': ?sparkPlanGraphNodeId,

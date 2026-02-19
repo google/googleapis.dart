@@ -2976,12 +2976,6 @@ class GoogleCloudRecommenderV1Impact {
   /// Use with CategoryType.COST
   GoogleCloudRecommenderV1CostProjection? costProjection;
 
-  /// If populated, the impact contains multiple components.
-  ///
-  /// In this case, the top-level impact contains aggregated values and each
-  /// component contains per-service details.
-  core.List<GoogleCloudRecommenderV1Impact>? impactComponents;
-
   /// Use with CategoryType.RELIABILITY
   GoogleCloudRecommenderV1ReliabilityProjection? reliabilityProjection;
 
@@ -2997,7 +2991,6 @@ class GoogleCloudRecommenderV1Impact {
   GoogleCloudRecommenderV1Impact({
     this.category,
     this.costProjection,
-    this.impactComponents,
     this.reliabilityProjection,
     this.securityProjection,
     this.service,
@@ -3012,13 +3005,6 @@ class GoogleCloudRecommenderV1Impact {
                 json_['costProjection'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        impactComponents: (json_['impactComponents'] as core.List?)
-            ?.map(
-              (value) => GoogleCloudRecommenderV1Impact.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
         reliabilityProjection: json_.containsKey('reliabilityProjection')
             ? GoogleCloudRecommenderV1ReliabilityProjection.fromJson(
                 json_['reliabilityProjection']
@@ -3043,7 +3029,6 @@ class GoogleCloudRecommenderV1Impact {
   core.Map<core.String, core.dynamic> toJson() {
     final category = this.category;
     final costProjection = this.costProjection;
-    final impactComponents = this.impactComponents;
     final reliabilityProjection = this.reliabilityProjection;
     final securityProjection = this.securityProjection;
     final service = this.service;
@@ -3051,7 +3036,6 @@ class GoogleCloudRecommenderV1Impact {
     return {
       'category': ?category,
       'costProjection': ?costProjection,
-      'impactComponents': ?impactComponents,
       'reliabilityProjection': ?reliabilityProjection,
       'securityProjection': ?securityProjection,
       'service': ?service,

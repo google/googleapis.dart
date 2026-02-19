@@ -27,6 +27,15 @@
 ///
 /// Create an instance of [DataManagerApi] to access these resources:
 ///
+/// - [AccountTypesResource]
+///   - [AccountTypesAccountsResource]
+///     - [AccountTypesAccountsInsightsResource]
+///     - [AccountTypesAccountsPartnerLinksResource]
+///     - [AccountTypesAccountsUserListDirectLicensesResource]
+///     - [AccountTypesAccountsUserListGlobalLicensesResource]
+/// -
+/// [AccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosResource]
+///     - [AccountTypesAccountsUserListsResource]
 /// - [AudienceMembersResource]
 /// - [EventsResource]
 /// - [RequestStatusResource]
@@ -53,8 +62,15 @@ class DataManagerApi {
   /// Video 360), and Google Analytics
   static const datamanagerScope = 'https://www.googleapis.com/auth/datamanager';
 
+  /// View, create, or delete your partner links in Google Ads, Marketing
+  /// Platform (Campaign Manager 360, Search Ads 360, Display & Video 360), and
+  /// Analytics
+  static const datamanagerPartnerlinkScope =
+      'https://www.googleapis.com/auth/datamanager.partnerlink';
+
   final commons.ApiRequester _requester;
 
+  AccountTypesResource get accountTypes => AccountTypesResource(_requester);
   AudienceMembersResource get audienceMembers =>
       AudienceMembersResource(_requester);
   EventsResource get events => EventsResource(_requester);
@@ -70,6 +86,1083 @@ class DataManagerApi {
          servicePath,
          requestHeaders,
        );
+}
+
+class AccountTypesResource {
+  final commons.ApiRequester _requester;
+
+  AccountTypesAccountsResource get accounts =>
+      AccountTypesAccountsResource(_requester);
+
+  AccountTypesResource(commons.ApiRequester client) : _requester = client;
+}
+
+class AccountTypesAccountsResource {
+  final commons.ApiRequester _requester;
+
+  AccountTypesAccountsInsightsResource get insights =>
+      AccountTypesAccountsInsightsResource(_requester);
+  AccountTypesAccountsPartnerLinksResource get partnerLinks =>
+      AccountTypesAccountsPartnerLinksResource(_requester);
+  AccountTypesAccountsUserListDirectLicensesResource
+  get userListDirectLicenses =>
+      AccountTypesAccountsUserListDirectLicensesResource(_requester);
+  AccountTypesAccountsUserListGlobalLicensesResource
+  get userListGlobalLicenses =>
+      AccountTypesAccountsUserListGlobalLicensesResource(_requester);
+  AccountTypesAccountsUserListsResource get userLists =>
+      AccountTypesAccountsUserListsResource(_requester);
+
+  AccountTypesAccountsResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class AccountTypesAccountsInsightsResource {
+  final commons.ApiRequester _requester;
+
+  AccountTypesAccountsInsightsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Retrieves marketing data insights for a given user list.
+  ///
+  /// This feature is only available to data partners. Authorization Headers:
+  /// This method supports the following optional headers to define how the API
+  /// authorizes access for the request: * `login-account`: (Optional) The
+  /// resource name of the account where the Google Account of the credentials
+  /// is a user. If not set, defaults to the account of the request. Format:
+  /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
+  /// `linked-account`: (Optional) The resource name of the account with an
+  /// established product link to the `login-account`. Format:
+  /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent account that owns the user list. Format:
+  /// `accountTypes/{account_type}/accounts/{account}`
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrieveInsightsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrieveInsightsResponse> retrieve(
+    RetrieveInsightsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/insights:retrieve';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RetrieveInsightsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AccountTypesAccountsPartnerLinksResource {
+  final commons.ApiRequester _requester;
+
+  AccountTypesAccountsPartnerLinksResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a partner link for the given account.
+  ///
+  /// Authorization Headers: This method supports the following optional headers
+  /// to define how the API authorizes access for the request: *
+  /// `login-account`: (Optional) The resource name of the account where the
+  /// Google Account of the credentials is a user. If not set, defaults to the
+  /// account of the request. Format:
+  /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of partner
+  /// links. Format: accountTypes/{account_type}/accounts/{account}
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PartnerLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PartnerLink> create(
+    PartnerLink request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/partnerLinks';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PartnerLink.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a partner link for the given account.
+  ///
+  /// Authorization Headers: This method supports the following optional headers
+  /// to define how the API authorizes access for the request: *
+  /// `login-account`: (Optional) The resource name of the account where the
+  /// Google Account of the credentials is a user. If not set, defaults to the
+  /// account of the request. Format:
+  /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the partner link to delete.
+  /// Format:
+  /// accountTypes/{account_type}/accounts/{account}/partnerLinks/{partner_link}
+  /// Value must have pattern
+  /// `^accountTypes/\[^/\]+/accounts/\[^/\]+/partnerLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Searches for all partner links to and from a given account.
+  ///
+  /// Authorization Headers: This method supports the following optional headers
+  /// to define how the API authorizes access for the request: *
+  /// `login-account`: (Optional) The resource name of the account where the
+  /// Google Account of the credentials is a user. If not set, defaults to the
+  /// account of the request. Format:
+  /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Account to search for partner links. If no `filter`
+  /// is specified, all partner links where this account is either the
+  /// `owning_account` or `partner_account` are returned. Format:
+  /// `accountTypes/{account_type}/accounts/{account}`
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A [filter string](https://google.aip.dev/160). All
+  /// fields need to be on the left hand side of each condition (for example:
+  /// `partner_link_id = 123456789`). Fields must be specified using either all
+  /// [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
+  /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a
+  /// combination of camel case and snake case. Supported operations: - `AND` -
+  /// `=` - `!=` Supported fields: - `partner_link_id` -
+  /// `owning_account.account_type` - `owning_account.account_id` -
+  /// `partner_account.account_type` - `partner_account.account_id` Example:
+  /// `owning_account.account_type = "GOOGLE_ADS" AND partner_account.account_id
+  /// = 987654321`
+  ///
+  /// [pageSize] - The maximum number of partner links to return. The service
+  /// may return fewer than this value. If unspecified, at most 10 partner links
+  /// will be returned. The maximum value is 100; values above 100 will be
+  /// coerced to 100.
+  ///
+  /// [pageToken] - A page token, received from a previous `SearchPartnerLinks`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `SearchPartnerLinks` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchPartnerLinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchPartnerLinksResponse> search(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/partnerLinks:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchPartnerLinksResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AccountTypesAccountsUserListDirectLicensesResource {
+  final commons.ApiRequester _requester;
+
+  AccountTypesAccountsUserListDirectLicensesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a user list direct license.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The account that owns the user list being licensed.
+  /// Should be in the format accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserListDirectLicense].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserListDirectLicense> create(
+    UserListDirectLicense request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/userListDirectLicenses';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserListDirectLicense.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves a user list direct license.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the user list direct license.
+  /// Value must have pattern
+  /// `^accountTypes/\[^/\]+/accounts/\[^/\]+/userListDirectLicenses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserListDirectLicense].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserListDirectLicense> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return UserListDirectLicense.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all user list direct licenses owned by the parent account.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The account whose licenses are being queried. Should
+  /// be in the format accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A [filter string](https://google.aip.dev/160) to
+  /// apply to the list request. All fields need to be on the left hand side of
+  /// each condition (for example: `user_list_id = 123`). Fields must be
+  /// specified using either all
+  /// [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
+  /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a
+  /// combination of camel case and snake case. **Supported Operations:** -
+  /// `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **Unsupported Fields:** -
+  /// `name` (use get method instead) - `historical_pricings` and all its
+  /// subfields - `pricing.start_time` - `pricing.end_time`
+  ///
+  /// [pageSize] - Optional. The maximum number of licenses to return per page.
+  /// The service may return fewer than this value. If unspecified, at most 50
+  /// licenses will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListUserListDirectLicense` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListUserListDirectLicense` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUserListDirectLicensesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUserListDirectLicensesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/userListDirectLicenses';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUserListDirectLicensesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a user list direct license.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the user list direct license.
+  /// Value must have pattern
+  /// `^accountTypes/\[^/\]+/accounts/\[^/\]+/userListDirectLicenses/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. The special
+  /// character `*` is not supported and an `INVALID_UPDATE_MASK` error will be
+  /// thrown if used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserListDirectLicense].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserListDirectLicense> patch(
+    UserListDirectLicense request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserListDirectLicense.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AccountTypesAccountsUserListGlobalLicensesResource {
+  final commons.ApiRequester _requester;
+
+  AccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosResource
+  get userListGlobalLicenseCustomerInfos =>
+      AccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosResource(
+        _requester,
+      );
+
+  AccountTypesAccountsUserListGlobalLicensesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a user list global license.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The account that owns the user list being licensed.
+  /// Should be in the format accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserListGlobalLicense].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserListGlobalLicense> create(
+    UserListGlobalLicense request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/userListGlobalLicenses';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserListGlobalLicense.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves a user list global license.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the user list global license.
+  /// Value must have pattern
+  /// `^accountTypes/\[^/\]+/accounts/\[^/\]+/userListGlobalLicenses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserListGlobalLicense].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserListGlobalLicense> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return UserListGlobalLicense.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all user list global licenses owned by the parent account.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The account whose licenses are being queried. Should
+  /// be in the format accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A [filter string](https://google.aip.dev/160) to
+  /// apply to the list request. All fields need to be on the left hand side of
+  /// each condition (for example: `user_list_id = 123`). Fields must be
+  /// specified using either all
+  /// [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
+  /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a
+  /// combination of camel case and snake case. **Supported Operations:** -
+  /// `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **Unsupported Fields:** -
+  /// `name` (use get method instead) - `historical_pricings` and all its
+  /// subfields - `pricing.start_time` - `pricing.end_time`
+  ///
+  /// [pageSize] - Optional. The maximum number of licenses to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// licenses will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListUserListGlobalLicense` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListUserListDirectLicense` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUserListGlobalLicensesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUserListGlobalLicensesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/userListGlobalLicenses';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUserListGlobalLicensesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a user list global license.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the user list global license.
+  /// Value must have pattern
+  /// `^accountTypes/\[^/\]+/accounts/\[^/\]+/userListGlobalLicenses/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. The special
+  /// character `*` is not supported and an `INVALID_UPDATE_MASK` error will be
+  /// thrown if used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserListGlobalLicense].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserListGlobalLicense> patch(
+    UserListGlobalLicense request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserListGlobalLicense.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosResource {
+  final commons.ApiRequester _requester;
+
+  AccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists all customer info for a user list global license.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The global license whose customer info are being
+  /// queried. Should be in the format
+  /// `accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}/userListGlobalLicenses/{USER_LIST_GLOBAL_LICENSE_ID}`.
+  /// To list all global license customer info under an account, replace the
+  /// user list global license id with a '-' (for example,
+  /// `accountTypes/DATA_PARTNER/accounts/123/userListGlobalLicenses/-`)
+  /// Value must have pattern
+  /// `^accountTypes/\[^/\]+/accounts/\[^/\]+/userListGlobalLicenses/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A [filter string](https://google.aip.dev/160) to
+  /// apply to the list request. All fields need to be on the left hand side of
+  /// each condition (for example: `user_list_id = 123`). Fields must be
+  /// specified using either all
+  /// [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
+  /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a
+  /// combination of camel case and snake case. **Supported Operations:** -
+  /// `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **Unsupported Fields:** -
+  /// `name` (use get method instead) - `historical_pricings` and all its
+  /// subfields - `pricing.start_time` - `pricing.end_time`
+  ///
+  /// [pageSize] - Optional. The maximum number of licenses to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// licenses will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListUserListDirectLicense` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListUserListDirectLicense` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUserListGlobalLicenseCustomerInfosResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUserListGlobalLicenseCustomerInfosResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/userListGlobalLicenseCustomerInfos';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUserListGlobalLicenseCustomerInfosResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AccountTypesAccountsUserListsResource {
+  final commons.ApiRequester _requester;
+
+  AccountTypesAccountsUserListsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a UserList.
+  ///
+  /// Authorization Headers: This method supports the following optional headers
+  /// to define how the API authorizes access for the request: *
+  /// `login-account`: (Optional) The resource name of the account where the
+  /// Google Account of the credentials is a user. If not set, defaults to the
+  /// account of the request. Format:
+  /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
+  /// `linked-account`: (Optional) The resource name of the account with an
+  /// established product link to the `login-account`. Format:
+  /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent account where this user list will be
+  /// created. Format: accountTypes/{account_type}/accounts/{account}
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [validateOnly] - Optional. If true, the request is validated but not
+  /// executed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserList> create(
+    UserList request,
+    core.String parent, {
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/userLists';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserList.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a UserList.
+  ///
+  /// Authorization Headers: This method supports the following optional headers
+  /// to define how the API authorizes access for the request: *
+  /// `login-account`: (Optional) The resource name of the account where the
+  /// Google Account of the credentials is a user. If not set, defaults to the
+  /// account of the request. Format:
+  /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
+  /// `linked-account`: (Optional) The resource name of the account with an
+  /// established product link to the `login-account`. Format:
+  /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the user list to delete. Format:
+  /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
+  /// Value must have pattern
+  /// `^accountTypes/\[^/\]+/accounts/\[^/\]+/userLists/\[^/\]+$`.
+  ///
+  /// [validateOnly] - Optional. If true, the request is validated but not
+  /// executed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a UserList.
+  ///
+  /// Authorization Headers: This method supports the following optional headers
+  /// to define how the API authorizes access for the request: *
+  /// `login-account`: (Optional) The resource name of the account where the
+  /// Google Account of the credentials is a user. If not set, defaults to the
+  /// account of the request. Format:
+  /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
+  /// `linked-account`: (Optional) The resource name of the account with an
+  /// established product link to the `login-account`. Format:
+  /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the UserList to retrieve. Format:
+  /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
+  /// Value must have pattern
+  /// `^accountTypes/\[^/\]+/accounts/\[^/\]+/userLists/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserList> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return UserList.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists UserLists.
+  ///
+  /// Authorization Headers: This method supports the following optional headers
+  /// to define how the API authorizes access for the request: *
+  /// `login-account`: (Optional) The resource name of the account where the
+  /// Google Account of the credentials is a user. If not set, defaults to the
+  /// account of the request. Format:
+  /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
+  /// `linked-account`: (Optional) The resource name of the account with an
+  /// established product link to the `login-account`. Format:
+  /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent account which owns this collection of user
+  /// lists. Format: accountTypes/{account_type}/accounts/{account}
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A [filter string](https://google.aip.dev/160). All
+  /// fields need to be on the left hand side of each condition (for example:
+  /// `display_name = "list 1"`). Fields must be specified using either all
+  /// [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
+  /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a
+  /// combination of camel case and snake case. Supported operations: - `AND` -
+  /// `=` - `!=` - `>` - `>=` - `<` - `<=` - `:` (has) Supported fields: - `id`
+  /// - `display_name` - `description` - `membership_status` -
+  /// `integration_code` - `access_reason` -
+  /// `ingested_user_list_info.upload_key_types`
+  ///
+  /// [pageSize] - Optional. The maximum number of user lists to return. The
+  /// service may return fewer than this value. If unspecified, at most 50 user
+  /// lists will be returned. The maximum value is 1000; values above 1000 will
+  /// be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListUserLists` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListUserLists` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUserListsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUserListsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/userLists';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUserListsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a UserList.
+  ///
+  /// Authorization Headers: This method supports the following optional headers
+  /// to define how the API authorizes access for the request: *
+  /// `login-account`: (Optional) The resource name of the account where the
+  /// Google Account of the credentials is a user. If not set, defaults to the
+  /// account of the request. Format:
+  /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
+  /// `linked-account`: (Optional) The resource name of the account with an
+  /// established product link to the `login-account`. Format:
+  /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the user list. Format:
+  /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
+  /// Value must have pattern
+  /// `^accountTypes/\[^/\]+/accounts/\[^/\]+/userLists/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [validateOnly] - Optional. If true, the request is validated but not
+  /// executed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserList> patch(
+    UserList request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UserList.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class AudienceMembersResource {
@@ -381,17 +1474,30 @@ class AudienceMember {
 
   /// \[Publisher Advertiser Identity Reconciliation (PAIR)
   /// IDs\](//support.google.com/admanager/answer/15067908).
+  ///
+  /// This feature is only available to data partners.
   PairData? pairData;
+
+  /// Data related to publisher provided identifiers.
+  ///
+  /// This feature is only available to data partners.
+  PpidData? ppidData;
 
   /// User-provided data that identifies the user.
   UserData? userData;
+
+  /// Data related to unique identifiers for a user, as defined by the
+  /// advertiser.
+  UserIdData? userIdData;
 
   AudienceMember({
     this.consent,
     this.destinationReferences,
     this.mobileData,
     this.pairData,
+    this.ppidData,
     this.userData,
+    this.userIdData,
   });
 
   AudienceMember.fromJson(core.Map json_)
@@ -414,9 +1520,19 @@ class AudienceMember {
                 json_['pairData'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        ppidData: json_.containsKey('ppidData')
+            ? PpidData.fromJson(
+                json_['ppidData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         userData: json_.containsKey('userData')
             ? UserData.fromJson(
                 json_['userData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userIdData: json_.containsKey('userIdData')
+            ? UserIdData.fromJson(
+                json_['userIdData'] as core.Map<core.String, core.dynamic>,
               )
             : null,
       );
@@ -426,13 +1542,17 @@ class AudienceMember {
     final destinationReferences = this.destinationReferences;
     final mobileData = this.mobileData;
     final pairData = this.pairData;
+    final ppidData = this.ppidData;
     final userData = this.userData;
+    final userIdData = this.userIdData;
     return {
       'consent': ?consent,
       'destinationReferences': ?destinationReferences,
       'mobileData': ?mobileData,
       'pairData': ?pairData,
+      'ppidData': ?ppidData,
       'userData': ?userData,
+      'userIdData': ?userIdData,
     };
   }
 }
@@ -495,6 +1615,41 @@ class AwsWrappedKeyInfo {
       'kekUri': ?kekUri,
       'keyType': ?keyType,
       'roleArn': ?roleArn,
+    };
+  }
+}
+
+/// Baseline criteria against which insights are compared.
+class Baseline {
+  /// The baseline location of the request.
+  ///
+  /// Baseline location is an OR-list of the requested regions.
+  Location? baselineLocation;
+
+  /// If set to true, the service will try to automatically detect the baseline
+  /// location for insights.
+  core.bool? locationAutoDetectionEnabled;
+
+  Baseline({this.baselineLocation, this.locationAutoDetectionEnabled});
+
+  Baseline.fromJson(core.Map json_)
+    : this(
+        baselineLocation: json_.containsKey('baselineLocation')
+            ? Location.fromJson(
+                json_['baselineLocation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locationAutoDetectionEnabled:
+            json_['locationAutoDetectionEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final baselineLocation = this.baselineLocation;
+    final locationAutoDetectionEnabled = this.locationAutoDetectionEnabled;
+    return {
+      'baselineLocation': ?baselineLocation,
+      'locationAutoDetectionEnabled': ?locationAutoDetectionEnabled,
     };
   }
 }
@@ -600,6 +1755,45 @@ class Consent {
     final adPersonalization = this.adPersonalization;
     final adUserData = this.adUserData;
     return {'adPersonalization': ?adPersonalization, 'adUserData': ?adUserData};
+  }
+}
+
+/// Additional information when `CONTACT_ID` is one of the `upload_key_types`.
+class ContactIdInfo {
+  /// Source of the upload data
+  ///
+  /// Optional. Immutable.
+  /// Possible string values are:
+  /// - "DATA_SOURCE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "DATA_SOURCE_TYPE_FIRST_PARTY" : The uploaded data is first-party data.
+  /// - "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU" : The uploaded data is from
+  /// a third-party credit bureau.
+  /// - "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE" : The uploaded data is from a
+  /// third-party voter file.
+  /// - "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA" : The uploaded data is third
+  /// party partner data.
+  core.String? dataSourceType;
+
+  /// Match rate for customer match user lists.
+  ///
+  /// Output only.
+  core.int? matchRatePercentage;
+
+  ContactIdInfo({this.dataSourceType, this.matchRatePercentage});
+
+  ContactIdInfo.fromJson(core.Map json_)
+    : this(
+        dataSourceType: json_['dataSourceType'] as core.String?,
+        matchRatePercentage: json_['matchRatePercentage'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataSourceType = this.dataSourceType;
+    final matchRatePercentage = this.matchRatePercentage;
+    return {
+      'dataSourceType': ?dataSourceType,
+      'matchRatePercentage': ?matchRatePercentage,
+    };
   }
 }
 
@@ -777,6 +1971,14 @@ class DeviceInfo {
   }
 }
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
 /// Encryption information for the data being ingested.
 class EncryptionInfo {
   /// Amazon Web Services wrapped key information.
@@ -873,6 +2075,9 @@ class ErrorCount {
   /// - "PROCESSING_ERROR_OPERATING_ACCOUNT_MISMATCH_FOR_AD_IDENTIFIER" : The
   /// user attempted to ingest events with an ad identifier that isn't from the
   /// operating account's ads.
+  /// -
+  /// "PROCESSING_ERROR_REASON_ONE_PER_CLICK_CONVERSION_ACTION_NOT_PERMITTED_WITH_BRAID"
+  /// : One-per-click conversion actions cannot be used with BRAIDs.
   core.String? reason;
 
   /// The count of records that failed to upload for a given reason.
@@ -1397,7 +2602,7 @@ class IngestAudienceMembersRequest {
 }
 
 /// Response from the IngestAudienceMembersRequest.
-typedef IngestAudienceMembersResponse = $Response00;
+typedef IngestAudienceMembersResponse = $Response01;
 
 /// The status of the ingest audience members request.
 class IngestAudienceMembersStatus {
@@ -1407,13 +2612,21 @@ class IngestAudienceMembersStatus {
   /// The status of the pair data ingestion to the destination.
   IngestPairDataStatus? pairDataIngestionStatus;
 
+  /// The status of the ppid data ingestion to the destination.
+  IngestPpidDataStatus? ppidDataIngestionStatus;
+
   /// The status of the user data ingestion to the destination.
   IngestUserDataStatus? userDataIngestionStatus;
+
+  /// The status of the user id data ingestion to the destination.
+  IngestUserIdDataStatus? userIdDataIngestionStatus;
 
   IngestAudienceMembersStatus({
     this.mobileDataIngestionStatus,
     this.pairDataIngestionStatus,
+    this.ppidDataIngestionStatus,
     this.userDataIngestionStatus,
+    this.userIdDataIngestionStatus,
   });
 
   IngestAudienceMembersStatus.fromJson(core.Map json_)
@@ -1431,9 +2644,22 @@ class IngestAudienceMembersStatus {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        ppidDataIngestionStatus: json_.containsKey('ppidDataIngestionStatus')
+            ? IngestPpidDataStatus.fromJson(
+                json_['ppidDataIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         userDataIngestionStatus: json_.containsKey('userDataIngestionStatus')
             ? IngestUserDataStatus.fromJson(
                 json_['userDataIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userIdDataIngestionStatus:
+            json_.containsKey('userIdDataIngestionStatus')
+            ? IngestUserIdDataStatus.fromJson(
+                json_['userIdDataIngestionStatus']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -1442,11 +2668,15 @@ class IngestAudienceMembersStatus {
   core.Map<core.String, core.dynamic> toJson() {
     final mobileDataIngestionStatus = this.mobileDataIngestionStatus;
     final pairDataIngestionStatus = this.pairDataIngestionStatus;
+    final ppidDataIngestionStatus = this.ppidDataIngestionStatus;
     final userDataIngestionStatus = this.userDataIngestionStatus;
+    final userIdDataIngestionStatus = this.userIdDataIngestionStatus;
     return {
       'mobileDataIngestionStatus': ?mobileDataIngestionStatus,
       'pairDataIngestionStatus': ?pairDataIngestionStatus,
+      'ppidDataIngestionStatus': ?ppidDataIngestionStatus,
       'userDataIngestionStatus': ?userDataIngestionStatus,
+      'userIdDataIngestionStatus': ?userIdDataIngestionStatus,
     };
   }
 }
@@ -1565,7 +2795,7 @@ class IngestEventsRequest {
 }
 
 /// Response from the IngestEventsRequest.
-typedef IngestEventsResponse = $Response00;
+typedef IngestEventsResponse = $Response01;
 
 /// The status of the events ingestion to the destination.
 class IngestEventsStatus {
@@ -1650,6 +2880,37 @@ class IngestPairDataStatus {
   }
 }
 
+/// The status of the ppid data ingestion to the destination containing stats
+/// related to the ingestion.
+class IngestPpidDataStatus {
+  /// The total count of ppids sent in the upload request for the destination.
+  ///
+  /// Includes all ppids in the request, regardless of whether they were
+  /// successfully ingested or not.
+  core.String? ppidCount;
+
+  /// The total count of audience members sent in the upload request for the
+  /// destination.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully ingested or not.
+  core.String? recordCount;
+
+  IngestPpidDataStatus({this.ppidCount, this.recordCount});
+
+  IngestPpidDataStatus.fromJson(core.Map json_)
+    : this(
+        ppidCount: json_['ppidCount'] as core.String?,
+        recordCount: json_['recordCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ppidCount = this.ppidCount;
+    final recordCount = this.recordCount;
+    return {'ppidCount': ?ppidCount, 'recordCount': ?recordCount};
+  }
+}
+
 /// The status of the user data ingestion to the destination containing stats
 /// related to the ingestion.
 class IngestUserDataStatus {
@@ -1712,6 +2973,149 @@ class IngestUserDataStatus {
       'recordCount': ?recordCount,
       'uploadMatchRateRange': ?uploadMatchRateRange,
       'userIdentifierCount': ?userIdentifierCount,
+    };
+  }
+}
+
+/// The status of the user id data ingestion to the destination containing stats
+/// related to the ingestion.
+class IngestUserIdDataStatus {
+  /// The total count of audience members sent in the upload request for the
+  /// destination.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully ingested or not.
+  core.String? recordCount;
+
+  /// The total count of user ids sent in the upload request for the
+  /// destination.
+  ///
+  /// Includes all user ids in the request, regardless of whether they were
+  /// successfully ingested or not.
+  core.String? userIdCount;
+
+  IngestUserIdDataStatus({this.recordCount, this.userIdCount});
+
+  IngestUserIdDataStatus.fromJson(core.Map json_)
+    : this(
+        recordCount: json_['recordCount'] as core.String?,
+        userIdCount: json_['userIdCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final recordCount = this.recordCount;
+    final userIdCount = this.userIdCount;
+    return {'recordCount': ?recordCount, 'userIdCount': ?userIdCount};
+  }
+}
+
+/// Represents a user list that is populated by user provided data.
+class IngestedUserListInfo {
+  /// Additional information when `CONTACT_ID` is one of the `upload_key_types`.
+  ///
+  /// Optional.
+  ContactIdInfo? contactIdInfo;
+
+  /// Additional information when `MOBILE_ID` is one of the `upload_key_types`.
+  ///
+  /// Optional.
+  MobileIdInfo? mobileIdInfo;
+
+  /// Additional information when `PAIR_ID` is one of the `upload_key_types`.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// Optional.
+  PairIdInfo? pairIdInfo;
+
+  /// Additional information for partner audiences.
+  ///
+  /// This feature is only available to data partners.
+  ///
+  /// Optional.
+  PartnerAudienceInfo? partnerAudienceInfo;
+
+  /// Additional information for `PSEUDONYMOUS_ID` is one of the
+  /// `upload_key_types`.
+  ///
+  /// Optional.
+  PseudonymousIdInfo? pseudonymousIdInfo;
+
+  /// Upload key types of this user list.
+  ///
+  /// Required. Immutable.
+  core.List<core.String>? uploadKeyTypes;
+
+  /// Additional information when `USER_ID` is one of the `upload_key_types`.
+  ///
+  /// Optional.
+  UserIdInfo? userIdInfo;
+
+  IngestedUserListInfo({
+    this.contactIdInfo,
+    this.mobileIdInfo,
+    this.pairIdInfo,
+    this.partnerAudienceInfo,
+    this.pseudonymousIdInfo,
+    this.uploadKeyTypes,
+    this.userIdInfo,
+  });
+
+  IngestedUserListInfo.fromJson(core.Map json_)
+    : this(
+        contactIdInfo: json_.containsKey('contactIdInfo')
+            ? ContactIdInfo.fromJson(
+                json_['contactIdInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mobileIdInfo: json_.containsKey('mobileIdInfo')
+            ? MobileIdInfo.fromJson(
+                json_['mobileIdInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pairIdInfo: json_.containsKey('pairIdInfo')
+            ? PairIdInfo.fromJson(
+                json_['pairIdInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        partnerAudienceInfo: json_.containsKey('partnerAudienceInfo')
+            ? PartnerAudienceInfo.fromJson(
+                json_['partnerAudienceInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pseudonymousIdInfo: json_.containsKey('pseudonymousIdInfo')
+            ? PseudonymousIdInfo.fromJson(
+                json_['pseudonymousIdInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uploadKeyTypes: (json_['uploadKeyTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        userIdInfo: json_.containsKey('userIdInfo')
+            ? UserIdInfo.fromJson(
+                json_['userIdInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contactIdInfo = this.contactIdInfo;
+    final mobileIdInfo = this.mobileIdInfo;
+    final pairIdInfo = this.pairIdInfo;
+    final partnerAudienceInfo = this.partnerAudienceInfo;
+    final pseudonymousIdInfo = this.pseudonymousIdInfo;
+    final uploadKeyTypes = this.uploadKeyTypes;
+    final userIdInfo = this.userIdInfo;
+    return {
+      'contactIdInfo': ?contactIdInfo,
+      'mobileIdInfo': ?mobileIdInfo,
+      'pairIdInfo': ?pairIdInfo,
+      'partnerAudienceInfo': ?partnerAudienceInfo,
+      'pseudonymousIdInfo': ?pseudonymousIdInfo,
+      'uploadKeyTypes': ?uploadKeyTypes,
+      'userIdInfo': ?userIdInfo,
     };
   }
 }
@@ -1793,6 +3197,273 @@ class Item {
 /// structured fields.
 typedef ItemParameter = $Parameter;
 
+/// Response from the ListUserListDirectLicensesRequest.
+class ListUserListDirectLicensesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The licenses for the given user list in the request.
+  core.List<UserListDirectLicense>? userListDirectLicenses;
+
+  ListUserListDirectLicensesResponse({
+    this.nextPageToken,
+    this.userListDirectLicenses,
+  });
+
+  ListUserListDirectLicensesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        userListDirectLicenses: (json_['userListDirectLicenses'] as core.List?)
+            ?.map(
+              (value) => UserListDirectLicense.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final userListDirectLicenses = this.userListDirectLicenses;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'userListDirectLicenses': ?userListDirectLicenses,
+    };
+  }
+}
+
+/// Response from the ListUserListGlobalLicensesCustomerInfoRequest.
+class ListUserListGlobalLicenseCustomerInfosResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The customer information for the given license in the request.
+  core.List<UserListGlobalLicenseCustomerInfo>?
+  userListGlobalLicenseCustomerInfos;
+
+  ListUserListGlobalLicenseCustomerInfosResponse({
+    this.nextPageToken,
+    this.userListGlobalLicenseCustomerInfos,
+  });
+
+  ListUserListGlobalLicenseCustomerInfosResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        userListGlobalLicenseCustomerInfos:
+            (json_['userListGlobalLicenseCustomerInfos'] as core.List?)
+                ?.map(
+                  (value) => UserListGlobalLicenseCustomerInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final userListGlobalLicenseCustomerInfos =
+        this.userListGlobalLicenseCustomerInfos;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'userListGlobalLicenseCustomerInfos': ?userListGlobalLicenseCustomerInfos,
+    };
+  }
+}
+
+/// Response from the ListUserListGlobalLicensesRequest.
+class ListUserListGlobalLicensesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The licenses for the given user list in the request.
+  core.List<UserListGlobalLicense>? userListGlobalLicenses;
+
+  ListUserListGlobalLicensesResponse({
+    this.nextPageToken,
+    this.userListGlobalLicenses,
+  });
+
+  ListUserListGlobalLicensesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        userListGlobalLicenses: (json_['userListGlobalLicenses'] as core.List?)
+            ?.map(
+              (value) => UserListGlobalLicense.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final userListGlobalLicenses = this.userListGlobalLicenses;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'userListGlobalLicenses': ?userListGlobalLicenses,
+    };
+  }
+}
+
+/// Response message for ListUserLists.
+class ListUserListsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The user lists from the specified account.
+  core.List<UserList>? userLists;
+
+  ListUserListsResponse({this.nextPageToken, this.userLists});
+
+  ListUserListsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        userLists: (json_['userLists'] as core.List?)
+            ?.map(
+              (value) => UserList.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final userLists = this.userLists;
+    return {'nextPageToken': ?nextPageToken, 'userLists': ?userLists};
+  }
+}
+
+/// The baseline location of the request.
+///
+/// Baseline location is on OR-list of ISO 3166-1 alpha-2 region codes of the
+/// requested regions.
+class Location {
+  /// List of ISO 3166-1 alpha-2 region codes.
+  core.List<core.String>? regionCodes;
+
+  Location({this.regionCodes});
+
+  Location.fromJson(core.Map json_)
+    : this(
+        regionCodes: (json_['regionCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final regionCodes = this.regionCodes;
+    return {'regionCodes': ?regionCodes};
+  }
+}
+
+/// Insights for marketing data.
+///
+/// This feature is only available to data partners.
+class MarketingDataInsight {
+  /// Insights for values of a given dimension.
+  core.List<MarketingDataInsightsAttribute>? attributes;
+
+  /// The dimension to which the insight belongs.
+  /// Possible string values are:
+  /// - "AUDIENCE_INSIGHTS_DIMENSION_UNSPECIFIED" : Not specified.
+  /// - "AUDIENCE_INSIGHTS_DIMENSION_UNKNOWN" : The value is unknown in this
+  /// version.
+  /// - "AFFINITY_USER_INTEREST" : An Affinity UserInterest.
+  /// - "IN_MARKET_USER_INTEREST" : An In-Market UserInterest.
+  /// - "AGE_RANGE" : An age range.
+  /// - "GENDER" : A gender.
+  core.String? dimension;
+
+  MarketingDataInsight({this.attributes, this.dimension});
+
+  MarketingDataInsight.fromJson(core.Map json_)
+    : this(
+        attributes: (json_['attributes'] as core.List?)
+            ?.map(
+              (value) => MarketingDataInsightsAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        dimension: json_['dimension'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final dimension = this.dimension;
+    return {'attributes': ?attributes, 'dimension': ?dimension};
+  }
+}
+
+/// Insights for a collection of related attributes of the same dimension.
+class MarketingDataInsightsAttribute {
+  /// Age range of the audience for which the lift is provided.
+  /// Possible string values are:
+  /// - "AGE_RANGE_UNSPECIFIED" : Not specified.
+  /// - "AGE_RANGE_UNKNOWN" : Unknown.
+  /// - "AGE_RANGE_18_24" : Between 18 and 24 years old.
+  /// - "AGE_RANGE_25_34" : Between 25 and 34 years old.
+  /// - "AGE_RANGE_35_44" : Between 35 and 44 years old.
+  /// - "AGE_RANGE_45_54" : Between 45 and 54 years old.
+  /// - "AGE_RANGE_55_64" : Between 55 and 64 years old.
+  /// - "AGE_RANGE_65_UP" : 65 years old and beyond.
+  core.String? ageRange;
+
+  /// Gender of the audience for which the lift is provided.
+  /// Possible string values are:
+  /// - "GENDER_UNSPECIFIED" : Not specified.
+  /// - "GENDER_UNKNOWN" : Unknown.
+  /// - "GENDER_MALE" : Male.
+  /// - "GENDER_FEMALE" : Female.
+  core.String? gender;
+
+  /// Measure of lift that the audience has for the attribute value as compared
+  /// to the baseline.
+  ///
+  /// Range \[0-1\].
+  core.double? lift;
+
+  /// The user interest ID.
+  core.String? userInterestId;
+
+  MarketingDataInsightsAttribute({
+    this.ageRange,
+    this.gender,
+    this.lift,
+    this.userInterestId,
+  });
+
+  MarketingDataInsightsAttribute.fromJson(core.Map json_)
+    : this(
+        ageRange: json_['ageRange'] as core.String?,
+        gender: json_['gender'] as core.String?,
+        lift: (json_['lift'] as core.num?)?.toDouble(),
+        userInterestId: json_['userInterestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ageRange = this.ageRange;
+    final gender = this.gender;
+    final lift = this.lift;
+    final userInterestId = this.userInterestId;
+    return {
+      'ageRange': ?ageRange,
+      'gender': ?gender,
+      'lift': ?lift,
+      'userInterestId': ?userInterestId,
+    };
+  }
+}
+
 /// Mobile IDs for the audience.
 ///
 /// At least one mobile ID is required.
@@ -1819,10 +3490,63 @@ class MobileData {
   }
 }
 
+/// Additional information when `MOBILE_ID` is one of the `upload_key_types`.
+class MobileIdInfo {
+  /// A string that uniquely identifies a mobile application from which the data
+  /// was collected.
+  ///
+  /// Required. Immutable.
+  core.String? appId;
+
+  /// Source of the upload data.
+  ///
+  /// Optional. Immutable.
+  /// Possible string values are:
+  /// - "DATA_SOURCE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "DATA_SOURCE_TYPE_FIRST_PARTY" : The uploaded data is first-party data.
+  /// - "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU" : The uploaded data is from
+  /// a third-party credit bureau.
+  /// - "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE" : The uploaded data is from a
+  /// third-party voter file.
+  /// - "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA" : The uploaded data is third
+  /// party partner data.
+  core.String? dataSourceType;
+
+  /// The key space of mobile IDs.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "KEY_SPACE_UNSPECIFIED" : Not specified.
+  /// - "IOS" : The iOS keyspace.
+  /// - "ANDROID" : The Android keyspace.
+  core.String? keySpace;
+
+  MobileIdInfo({this.appId, this.dataSourceType, this.keySpace});
+
+  MobileIdInfo.fromJson(core.Map json_)
+    : this(
+        appId: json_['appId'] as core.String?,
+        dataSourceType: json_['dataSourceType'] as core.String?,
+        keySpace: json_['keySpace'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final appId = this.appId;
+    final dataSourceType = this.dataSourceType;
+    final keySpace = this.keySpace;
+    return {
+      'appId': ?appId,
+      'dataSourceType': ?dataSourceType,
+      'keySpace': ?keySpace,
+    };
+  }
+}
+
 /// \[PAIR\](//support.google.com/admanager/answer/15067908) IDs for the
 /// audience.
 ///
-/// At least one PAIR ID is required.
+/// At least one PAIR ID is required. This feature is only available to data
+/// partners.
 class PairData {
   /// Cleanroom-provided PII data, hashed with SHA256, and encrypted with an EC
   /// commutative cipher using publisher key for the
@@ -1848,6 +3572,207 @@ class PairData {
   }
 }
 
+/// Additional information when `PAIR_ID` is one of the `upload_key_types`.
+///
+/// This feature is only available to data partners.
+class PairIdInfo {
+  /// The count of the advertiser's first party data records that have been
+  /// uploaded to a clean room provider.
+  ///
+  /// This does not signify the size of a PAIR user list.
+  ///
+  /// Optional.
+  core.String? advertiserIdentifierCount;
+
+  /// Identifies a unique advertiser to publisher relationship with one clean
+  /// room provider or across multiple clean room providers.
+  ///
+  /// Required. Immutable.
+  core.String? cleanRoomIdentifier;
+
+  /// This field denotes the percentage of membership match of this user list
+  /// with the corresponding publisher's first party data.
+  ///
+  /// Must be between 0 and 100 inclusive.
+  ///
+  /// Required.
+  core.int? matchRatePercentage;
+
+  /// Identifies the publisher that the Publisher Advertiser Identity
+  /// Reconciliation user list is reconciled with.
+  ///
+  /// This field is provided by the cleanroom provider and is only unique in the
+  /// scope of that cleanroom. This cannot be used as a global identifier across
+  /// multiple cleanrooms.
+  ///
+  /// Required. Immutable.
+  core.String? publisherId;
+
+  /// Descriptive name of the publisher to be displayed in the UI for a better
+  /// targeting experience.
+  ///
+  /// Required.
+  core.String? publisherName;
+
+  PairIdInfo({
+    this.advertiserIdentifierCount,
+    this.cleanRoomIdentifier,
+    this.matchRatePercentage,
+    this.publisherId,
+    this.publisherName,
+  });
+
+  PairIdInfo.fromJson(core.Map json_)
+    : this(
+        advertiserIdentifierCount:
+            json_['advertiserIdentifierCount'] as core.String?,
+        cleanRoomIdentifier: json_['cleanRoomIdentifier'] as core.String?,
+        matchRatePercentage: json_['matchRatePercentage'] as core.int?,
+        publisherId: json_['publisherId'] as core.String?,
+        publisherName: json_['publisherName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final advertiserIdentifierCount = this.advertiserIdentifierCount;
+    final cleanRoomIdentifier = this.cleanRoomIdentifier;
+    final matchRatePercentage = this.matchRatePercentage;
+    final publisherId = this.publisherId;
+    final publisherName = this.publisherName;
+    return {
+      'advertiserIdentifierCount': ?advertiserIdentifierCount,
+      'cleanRoomIdentifier': ?cleanRoomIdentifier,
+      'matchRatePercentage': ?matchRatePercentage,
+      'publisherId': ?publisherId,
+      'publisherName': ?publisherName,
+    };
+  }
+}
+
+/// Additional information for partner audiences.
+///
+/// This feature is only available to data partners.
+class PartnerAudienceInfo {
+  /// The commerce partner name.
+  ///
+  /// Only allowed if `partner_audience_source` is `COMMERCE_AUDIENCE`.
+  ///
+  /// Optional.
+  core.String? commercePartner;
+
+  /// The source of the partner audience.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "PARTNER_AUDIENCE_SOURCE_UNSPECIFIED" : Not specified.
+  /// - "COMMERCE_AUDIENCE" : Partner Audience source is commerce audience.
+  /// - "LINEAR_TV_AUDIENCE" : Partner Audience source is linear TV audience.
+  /// - "AGENCY_PROVIDER_AUDIENCE" : Partner Audience source is agency/provider
+  /// audience.
+  core.String? partnerAudienceSource;
+
+  PartnerAudienceInfo({this.commercePartner, this.partnerAudienceSource});
+
+  PartnerAudienceInfo.fromJson(core.Map json_)
+    : this(
+        commercePartner: json_['commercePartner'] as core.String?,
+        partnerAudienceSource: json_['partnerAudienceSource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commercePartner = this.commercePartner;
+    final partnerAudienceSource = this.partnerAudienceSource;
+    return {
+      'commercePartner': ?commercePartner,
+      'partnerAudienceSource': ?partnerAudienceSource,
+    };
+  }
+}
+
+/// A partner link between an owning account and a partner account.
+class PartnerLink {
+  /// Identifier.
+  ///
+  /// The name of the partner link. Format:
+  /// accountTypes/{account_type}/accounts/{account}/partnerLinks/{partner_link}
+  core.String? name;
+
+  /// The owning account granting access to the partner account.
+  ///
+  /// Required.
+  ProductAccount? owningAccount;
+
+  /// The partner account granted access by the owning account.
+  ///
+  /// Required.
+  ProductAccount? partnerAccount;
+
+  /// The partner link ID.
+  ///
+  /// Output only.
+  core.String? partnerLinkId;
+
+  PartnerLink({
+    this.name,
+    this.owningAccount,
+    this.partnerAccount,
+    this.partnerLinkId,
+  });
+
+  PartnerLink.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        owningAccount: json_.containsKey('owningAccount')
+            ? ProductAccount.fromJson(
+                json_['owningAccount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        partnerAccount: json_.containsKey('partnerAccount')
+            ? ProductAccount.fromJson(
+                json_['partnerAccount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        partnerLinkId: json_['partnerLinkId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final owningAccount = this.owningAccount;
+    final partnerAccount = this.partnerAccount;
+    final partnerLinkId = this.partnerLinkId;
+    return {
+      'name': ?name,
+      'owningAccount': ?owningAccount,
+      'partnerAccount': ?partnerAccount,
+      'partnerLinkId': ?partnerLinkId,
+    };
+  }
+}
+
+/// Publisher provided identifiers data holding the ppids.
+///
+/// At least one ppid is required. This feature is only available to data
+/// partners.
+class PpidData {
+  /// The list of publisher provided identifiers for a user.
+  ///
+  /// Required.
+  core.List<core.String>? ppids;
+
+  PpidData({this.ppids});
+
+  PpidData.fromJson(core.Map json_)
+    : this(
+        ppids: (json_['ppids'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ppids = this.ppids;
+    return {'ppids': ?ppids};
+  }
+}
+
 /// Represents a specific account.
 class ProductAccount {
   /// The ID of the account.
@@ -1870,6 +3795,7 @@ class ProductAccount {
   /// - "DISPLAY_VIDEO_ADVERTISER" : Display & Video 360 advertiser.
   /// - "DATA_PARTNER" : Data Partner.
   /// - "GOOGLE_ANALYTICS_PROPERTY" : Google Analytics.
+  /// - "GOOGLE_AD_MANAGER_AUDIENCE_LINK" : Google Ad Manager audience link.
   core.String? accountType;
 
   /// Use `account_type` instead.
@@ -1903,6 +3829,46 @@ class ProductAccount {
       'accountId': ?accountId,
       'accountType': ?accountType,
       'product': ?product,
+    };
+  }
+}
+
+/// Additional information when `PSEUDONYMOUS_ID` is one of the
+/// `upload_key_types`.
+class PseudonymousIdInfo {
+  /// The number of billable records (e.g. uploaded or matched).
+  ///
+  /// Optional. Immutable.
+  core.String? billableRecordCount;
+
+  /// Sync status of the user list.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SYNC_STATUS_UNSPECIFIED" : Not specified.
+  /// - "CREATED" : The user list has been created as a placeholder. List
+  /// contents and/or metadata are still being synced. The user list is not
+  /// ready for use.
+  /// - "READY_FOR_USE" : The user list is ready for use. Contents and cookies
+  /// have been synced correctly.
+  /// - "FAILED" : An error has occurred syncing user list contents and/or
+  /// metadata. The user list cannot be used.
+  core.String? syncStatus;
+
+  PseudonymousIdInfo({this.billableRecordCount, this.syncStatus});
+
+  PseudonymousIdInfo.fromJson(core.Map json_)
+    : this(
+        billableRecordCount: json_['billableRecordCount'] as core.String?,
+        syncStatus: json_['syncStatus'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final billableRecordCount = this.billableRecordCount;
+    final syncStatus = this.syncStatus;
+    return {
+      'billableRecordCount': ?billableRecordCount,
+      'syncStatus': ?syncStatus,
     };
   }
 }
@@ -2001,7 +3967,7 @@ class RemoveAudienceMembersRequest {
 }
 
 /// Response from the RemoveAudienceMembersRequest.
-typedef RemoveAudienceMembersResponse = $Response00;
+typedef RemoveAudienceMembersResponse = $Response01;
 
 /// The status of the remove audience members request.
 class RemoveAudienceMembersStatus {
@@ -2011,13 +3977,21 @@ class RemoveAudienceMembersStatus {
   /// The status of the pair data removal from the destination.
   RemovePairDataStatus? pairDataRemovalStatus;
 
+  /// The status of the ppid data removal from the destination.
+  RemovePpidDataStatus? ppidDataRemovalStatus;
+
   /// The status of the user data removal from the destination.
   RemoveUserDataStatus? userDataRemovalStatus;
+
+  /// The status of the user id data removal from the destination.
+  RemoveUserIdDataStatus? userIdDataRemovalStatus;
 
   RemoveAudienceMembersStatus({
     this.mobileDataRemovalStatus,
     this.pairDataRemovalStatus,
+    this.ppidDataRemovalStatus,
     this.userDataRemovalStatus,
+    this.userIdDataRemovalStatus,
   });
 
   RemoveAudienceMembersStatus.fromJson(core.Map json_)
@@ -2034,9 +4008,21 @@ class RemoveAudienceMembersStatus {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        ppidDataRemovalStatus: json_.containsKey('ppidDataRemovalStatus')
+            ? RemovePpidDataStatus.fromJson(
+                json_['ppidDataRemovalStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         userDataRemovalStatus: json_.containsKey('userDataRemovalStatus')
             ? RemoveUserDataStatus.fromJson(
                 json_['userDataRemovalStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userIdDataRemovalStatus: json_.containsKey('userIdDataRemovalStatus')
+            ? RemoveUserIdDataStatus.fromJson(
+                json_['userIdDataRemovalStatus']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -2045,11 +4031,15 @@ class RemoveAudienceMembersStatus {
   core.Map<core.String, core.dynamic> toJson() {
     final mobileDataRemovalStatus = this.mobileDataRemovalStatus;
     final pairDataRemovalStatus = this.pairDataRemovalStatus;
+    final ppidDataRemovalStatus = this.ppidDataRemovalStatus;
     final userDataRemovalStatus = this.userDataRemovalStatus;
+    final userIdDataRemovalStatus = this.userIdDataRemovalStatus;
     return {
       'mobileDataRemovalStatus': ?mobileDataRemovalStatus,
       'pairDataRemovalStatus': ?pairDataRemovalStatus,
+      'ppidDataRemovalStatus': ?ppidDataRemovalStatus,
       'userDataRemovalStatus': ?userDataRemovalStatus,
+      'userIdDataRemovalStatus': ?userIdDataRemovalStatus,
     };
   }
 }
@@ -2112,6 +4102,35 @@ class RemovePairDataStatus {
   }
 }
 
+/// The status of the ppid data removal from the destination.
+class RemovePpidDataStatus {
+  /// The total count of ppids sent in the removal request.
+  ///
+  /// Includes all ppids in the request, regardless of whether they were
+  /// successfully removed or not.
+  core.String? ppidCount;
+
+  /// The total count of audience members sent in the removal request.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully removed or not.
+  core.String? recordCount;
+
+  RemovePpidDataStatus({this.ppidCount, this.recordCount});
+
+  RemovePpidDataStatus.fromJson(core.Map json_)
+    : this(
+        ppidCount: json_['ppidCount'] as core.String?,
+        recordCount: json_['recordCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ppidCount = this.ppidCount;
+    final recordCount = this.recordCount;
+    return {'ppidCount': ?ppidCount, 'recordCount': ?recordCount};
+  }
+}
+
 /// The status of the user data removal from the destination.
 class RemoveUserDataStatus {
   /// The total count of audience members sent in the removal request.
@@ -2141,6 +4160,35 @@ class RemoveUserDataStatus {
       'recordCount': ?recordCount,
       'userIdentifierCount': ?userIdentifierCount,
     };
+  }
+}
+
+/// The status of the user id data removal from the destination.
+class RemoveUserIdDataStatus {
+  /// The total count of audience members sent in the removal request.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully removed or not.
+  core.String? recordCount;
+
+  /// The total count of user ids sent in the removal request.
+  ///
+  /// Includes all user ids in the request, regardless of whether they were
+  /// successfully removed or not.
+  core.String? userIdCount;
+
+  RemoveUserIdDataStatus({this.recordCount, this.userIdCount});
+
+  RemoveUserIdDataStatus.fromJson(core.Map json_)
+    : this(
+        recordCount: json_['recordCount'] as core.String?,
+        userIdCount: json_['userIdCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final recordCount = this.recordCount;
+    final userIdCount = this.userIdCount;
+    return {'recordCount': ?recordCount, 'userIdCount': ?userIdCount};
   }
 }
 
@@ -2245,6 +4293,61 @@ class RequestStatusPerDestination {
   }
 }
 
+/// Request message for DM API MarketingDataInsightsService.RetrieveInsights
+class RetrieveInsightsRequest {
+  /// Baseline for the insights requested.
+  ///
+  /// Required.
+  Baseline? baseline;
+
+  /// The user list ID for which insights are requested.
+  ///
+  /// Required.
+  core.String? userListId;
+
+  RetrieveInsightsRequest({this.baseline, this.userListId});
+
+  RetrieveInsightsRequest.fromJson(core.Map json_)
+    : this(
+        baseline: json_.containsKey('baseline')
+            ? Baseline.fromJson(
+                json_['baseline'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userListId: json_['userListId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final baseline = this.baseline;
+    final userListId = this.userListId;
+    return {'baseline': ?baseline, 'userListId': ?userListId};
+  }
+}
+
+/// Response message for DM API MarketingDataInsightsService.RetrieveInsights
+class RetrieveInsightsResponse {
+  /// Contains the insights for the marketing data.
+  core.List<MarketingDataInsight>? marketingDataInsights;
+
+  RetrieveInsightsResponse({this.marketingDataInsights});
+
+  RetrieveInsightsResponse.fromJson(core.Map json_)
+    : this(
+        marketingDataInsights: (json_['marketingDataInsights'] as core.List?)
+            ?.map(
+              (value) => MarketingDataInsight.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final marketingDataInsights = this.marketingDataInsights;
+    return {'marketingDataInsights': ?marketingDataInsights};
+  }
+}
+
 /// Response from the RetrieveRequestStatusRequest.
 class RetrieveRequestStatusResponse {
   /// A list of request statuses per destination.
@@ -2270,6 +4373,102 @@ class RetrieveRequestStatusResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final requestStatusPerDestination = this.requestStatusPerDestination;
     return {'requestStatusPerDestination': ?requestStatusPerDestination};
+  }
+}
+
+/// Response from the SearchPartnerLinksRequest.
+class SearchPartnerLinksResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The partner links for the given account.
+  core.List<PartnerLink>? partnerLinks;
+
+  SearchPartnerLinksResponse({this.nextPageToken, this.partnerLinks});
+
+  SearchPartnerLinksResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        partnerLinks: (json_['partnerLinks'] as core.List?)
+            ?.map(
+              (value) => PartnerLink.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final partnerLinks = this.partnerLinks;
+    return {'nextPageToken': ?nextPageToken, 'partnerLinks': ?partnerLinks};
+  }
+}
+
+/// Estimated number of members in this user list in different target networks.
+class SizeInfo {
+  /// Estimated number of members in this user list, on the Google Display
+  /// Network.
+  ///
+  /// Output only.
+  core.String? displayNetworkMembersCount;
+
+  /// Estimated number of members in this user list in the google.com domain.
+  ///
+  /// These are the members available for targeting in Search campaigns.
+  ///
+  /// Output only.
+  core.String? searchNetworkMembersCount;
+
+  SizeInfo({this.displayNetworkMembersCount, this.searchNetworkMembersCount});
+
+  SizeInfo.fromJson(core.Map json_)
+    : this(
+        displayNetworkMembersCount:
+            json_['displayNetworkMembersCount'] as core.String?,
+        searchNetworkMembersCount:
+            json_['searchNetworkMembersCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayNetworkMembersCount = this.displayNetworkMembersCount;
+    final searchNetworkMembersCount = this.searchNetworkMembersCount;
+    return {
+      'displayNetworkMembersCount': ?displayNetworkMembersCount,
+      'searchNetworkMembersCount': ?searchNetworkMembersCount,
+    };
+  }
+}
+
+/// Eligibility information for different target networks.
+class TargetNetworkInfo {
+  /// Indicates this user list is eligible for Google Display Network.
+  ///
+  /// Output only.
+  core.bool? eligibleForDisplay;
+
+  /// Indicates if this user list is eligible for Google Search Network.
+  ///
+  /// Optional.
+  core.bool? eligibleForSearch;
+
+  TargetNetworkInfo({this.eligibleForDisplay, this.eligibleForSearch});
+
+  TargetNetworkInfo.fromJson(core.Map json_)
+    : this(
+        eligibleForDisplay: json_['eligibleForDisplay'] as core.bool?,
+        eligibleForSearch: json_['eligibleForSearch'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final eligibleForDisplay = this.eligibleForDisplay;
+    final eligibleForSearch = this.eligibleForSearch;
+    return {
+      'eligibleForDisplay': ?eligibleForDisplay,
+      'eligibleForSearch': ?eligibleForSearch,
+    };
   }
 }
 
@@ -2340,6 +4539,51 @@ class UserData {
   }
 }
 
+/// User id data holding the user id.
+class UserIdData {
+  /// A unique identifier for a user, as defined by the advertiser.
+  ///
+  /// Required.
+  core.String? userId;
+
+  UserIdData({this.userId});
+
+  UserIdData.fromJson(core.Map json_)
+    : this(userId: json_['userId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final userId = this.userId;
+    return {'userId': ?userId};
+  }
+}
+
+/// Additional information when `USER_ID` is one of the `upload_key_types`.
+class UserIdInfo {
+  /// Source of the upload data.
+  ///
+  /// Optional. Immutable.
+  /// Possible string values are:
+  /// - "DATA_SOURCE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "DATA_SOURCE_TYPE_FIRST_PARTY" : The uploaded data is first-party data.
+  /// - "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU" : The uploaded data is from
+  /// a third-party credit bureau.
+  /// - "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE" : The uploaded data is from a
+  /// third-party voter file.
+  /// - "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA" : The uploaded data is third
+  /// party partner data.
+  core.String? dataSourceType;
+
+  UserIdInfo({this.dataSourceType});
+
+  UserIdInfo.fromJson(core.Map json_)
+    : this(dataSourceType: json_['dataSourceType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataSourceType = this.dataSourceType;
+    return {'dataSourceType': ?dataSourceType};
+  }
+}
+
 /// A single identifier for the user.
 class UserIdentifier {
   /// The known components of a user's address.
@@ -2375,6 +4619,812 @@ class UserIdentifier {
       'address': ?address,
       'emailAddress': ?emailAddress,
       'phoneNumber': ?phoneNumber,
+    };
+  }
+}
+
+/// A user list resource.
+class UserList {
+  /// The reason this account has been granted access to the list.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACCESS_REASON_UNSPECIFIED" : Not specified.
+  /// - "OWNED" : The resource is owned by the user.
+  /// - "SHARED" : The resource is shared to the user.
+  /// - "LICENSED" : The resource is licensed to the user.
+  /// - "SUBSCRIBED" : The user subscribed to the resource.
+  /// - "AFFILIATED" : The resource is accessible to the user.
+  core.String? accessReason;
+
+  /// Indicates if this share is still enabled.
+  ///
+  /// When a user list is shared with the account this field is set to
+  /// `ENABLED`. Later the user list owner can decide to revoke the share and
+  /// make it `DISABLED`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ACCESS_STATUS_UNSPECIFIED" : Not specified.
+  /// - "ENABLED" : The access is enabled.
+  /// - "DISABLED" : The access is disabled.
+  core.String? accountAccessStatus;
+
+  /// The reason why this user list membership status is closed.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLOSING_REASON_UNSPECIFIED" : Not specified.
+  /// - "UNUSED" : The user list was closed because it has not been used in
+  /// targeting recently. See
+  /// https://support.google.com/google-ads/answer/2472738 for details.
+  core.String? closingReason;
+
+  /// A description of the user list.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The display name of the user list.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The unique ID of the user list.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Represents a user list that is populated by user ingested data.
+  ///
+  /// Optional.
+  IngestedUserListInfo? ingestedUserListInfo;
+
+  /// An ID from external system.
+  ///
+  /// It is used by user list sellers to correlate IDs on their systems.
+  ///
+  /// Optional.
+  core.String? integrationCode;
+
+  /// The duration a user remains in the user list.
+  ///
+  /// Valid durations are exact multiples of 24 hours (86400 seconds). Providing
+  /// a value that is not an exact multiple of 24 hours will result in an
+  /// INVALID_ARGUMENT error.
+  ///
+  /// Optional.
+  core.String? membershipDuration;
+
+  /// Membership status of this user list.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MEMBERSHIP_STATUS_UNSPECIFIED" : Not specified.
+  /// - "OPEN" : Open status - User list is accruing members and can be targeted
+  /// to.
+  /// - "CLOSED" : Closed status - No new members being added.
+  core.String? membershipStatus;
+
+  /// Identifier.
+  ///
+  /// The resource name of the user list. Format:
+  /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
+  core.String? name;
+
+  /// An option that indicates if a user may edit a list.
+  ///
+  /// Output only.
+  core.bool? readOnly;
+
+  /// Estimated number of members in this user list in different target
+  /// networks.
+  ///
+  /// Output only.
+  SizeInfo? sizeInfo;
+
+  /// Eligibility information for different target networks.
+  ///
+  /// Optional.
+  TargetNetworkInfo? targetNetworkInfo;
+
+  UserList({
+    this.accessReason,
+    this.accountAccessStatus,
+    this.closingReason,
+    this.description,
+    this.displayName,
+    this.id,
+    this.ingestedUserListInfo,
+    this.integrationCode,
+    this.membershipDuration,
+    this.membershipStatus,
+    this.name,
+    this.readOnly,
+    this.sizeInfo,
+    this.targetNetworkInfo,
+  });
+
+  UserList.fromJson(core.Map json_)
+    : this(
+        accessReason: json_['accessReason'] as core.String?,
+        accountAccessStatus: json_['accountAccessStatus'] as core.String?,
+        closingReason: json_['closingReason'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        ingestedUserListInfo: json_.containsKey('ingestedUserListInfo')
+            ? IngestedUserListInfo.fromJson(
+                json_['ingestedUserListInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        integrationCode: json_['integrationCode'] as core.String?,
+        membershipDuration: json_['membershipDuration'] as core.String?,
+        membershipStatus: json_['membershipStatus'] as core.String?,
+        name: json_['name'] as core.String?,
+        readOnly: json_['readOnly'] as core.bool?,
+        sizeInfo: json_.containsKey('sizeInfo')
+            ? SizeInfo.fromJson(
+                json_['sizeInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        targetNetworkInfo: json_.containsKey('targetNetworkInfo')
+            ? TargetNetworkInfo.fromJson(
+                json_['targetNetworkInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessReason = this.accessReason;
+    final accountAccessStatus = this.accountAccessStatus;
+    final closingReason = this.closingReason;
+    final description = this.description;
+    final displayName = this.displayName;
+    final id = this.id;
+    final ingestedUserListInfo = this.ingestedUserListInfo;
+    final integrationCode = this.integrationCode;
+    final membershipDuration = this.membershipDuration;
+    final membershipStatus = this.membershipStatus;
+    final name = this.name;
+    final readOnly = this.readOnly;
+    final sizeInfo = this.sizeInfo;
+    final targetNetworkInfo = this.targetNetworkInfo;
+    return {
+      'accessReason': ?accessReason,
+      'accountAccessStatus': ?accountAccessStatus,
+      'closingReason': ?closingReason,
+      'description': ?description,
+      'displayName': ?displayName,
+      'id': ?id,
+      'ingestedUserListInfo': ?ingestedUserListInfo,
+      'integrationCode': ?integrationCode,
+      'membershipDuration': ?membershipDuration,
+      'membershipStatus': ?membershipStatus,
+      'name': ?name,
+      'readOnly': ?readOnly,
+      'sizeInfo': ?sizeInfo,
+      'targetNetworkInfo': ?targetNetworkInfo,
+    };
+  }
+}
+
+/// A user list direct license.
+///
+/// This feature is only available to data partners.
+class UserListDirectLicense {
+  /// Name of client customer which the user list is being licensed to.
+  ///
+  /// This field is read-only.
+  ///
+  /// Output only.
+  core.String? clientAccountDisplayName;
+
+  /// ID of client customer which the user list is being licensed to.
+  ///
+  /// Immutable.
+  core.String? clientAccountId;
+
+  /// Account type of client customer which the user list is being licensed to.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_UNKNOWN" : Unknown.
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_ADS" : Google Ads
+  /// customer.
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_PARTNER" : Display
+  /// & Video 360 partner.
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_ADVERTISER" :
+  /// Display & Video 360 advertiser.
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK"
+  /// : Google Ad Manager audience link.
+  core.String? clientAccountType;
+
+  /// Pricing history of this user list license.
+  ///
+  /// This field is read-only.
+  ///
+  /// Output only.
+  core.List<UserListLicensePricing>? historicalPricings;
+
+  /// Metrics related to this license This field is read-only and only populated
+  /// if the start and end dates are set in the ListUserListDirectLicenses call
+  ///
+  /// Output only.
+  UserListLicenseMetrics? metrics;
+
+  /// Identifier.
+  ///
+  /// The resource name of the user list direct license.
+  core.String? name;
+
+  /// UserListDirectLicense pricing.
+  ///
+  /// Optional.
+  UserListLicensePricing? pricing;
+
+  /// Status of UserListDirectLicense - ENABLED or DISABLED.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "USER_LIST_LICENSE_STATUS_UNSPECIFIED" : Unknown.
+  /// - "USER_LIST_LICENSE_STATUS_ENABLED" : Active status - user list is still
+  /// being licensed.
+  /// - "USER_LIST_LICENSE_STATUS_DISABLED" : Inactive status - user list is no
+  /// longer being licensed.
+  core.String? status;
+
+  /// Name of the user list being licensed.
+  ///
+  /// This field is read-only.
+  ///
+  /// Output only.
+  core.String? userListDisplayName;
+
+  /// ID of the user list being licensed.
+  ///
+  /// Immutable.
+  core.String? userListId;
+
+  UserListDirectLicense({
+    this.clientAccountDisplayName,
+    this.clientAccountId,
+    this.clientAccountType,
+    this.historicalPricings,
+    this.metrics,
+    this.name,
+    this.pricing,
+    this.status,
+    this.userListDisplayName,
+    this.userListId,
+  });
+
+  UserListDirectLicense.fromJson(core.Map json_)
+    : this(
+        clientAccountDisplayName:
+            json_['clientAccountDisplayName'] as core.String?,
+        clientAccountId: json_['clientAccountId'] as core.String?,
+        clientAccountType: json_['clientAccountType'] as core.String?,
+        historicalPricings: (json_['historicalPricings'] as core.List?)
+            ?.map(
+              (value) => UserListLicensePricing.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metrics: json_.containsKey('metrics')
+            ? UserListLicenseMetrics.fromJson(
+                json_['metrics'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        pricing: json_.containsKey('pricing')
+            ? UserListLicensePricing.fromJson(
+                json_['pricing'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_['status'] as core.String?,
+        userListDisplayName: json_['userListDisplayName'] as core.String?,
+        userListId: json_['userListId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientAccountDisplayName = this.clientAccountDisplayName;
+    final clientAccountId = this.clientAccountId;
+    final clientAccountType = this.clientAccountType;
+    final historicalPricings = this.historicalPricings;
+    final metrics = this.metrics;
+    final name = this.name;
+    final pricing = this.pricing;
+    final status = this.status;
+    final userListDisplayName = this.userListDisplayName;
+    final userListId = this.userListId;
+    return {
+      'clientAccountDisplayName': ?clientAccountDisplayName,
+      'clientAccountId': ?clientAccountId,
+      'clientAccountType': ?clientAccountType,
+      'historicalPricings': ?historicalPricings,
+      'metrics': ?metrics,
+      'name': ?name,
+      'pricing': ?pricing,
+      'status': ?status,
+      'userListDisplayName': ?userListDisplayName,
+      'userListId': ?userListId,
+    };
+  }
+}
+
+/// A user list global license.
+///
+/// This feature is only available to data partners.
+class UserListGlobalLicense {
+  /// Pricing history of this user list license.
+  ///
+  /// This field is read-only.
+  ///
+  /// Output only.
+  core.List<UserListLicensePricing>? historicalPricings;
+
+  /// Product type of client customer which the user list is being licensed to.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "USER_LIST_GLOBAL_LICENSE_TYPE_UNSPECIFIED" : UNSPECIFIED.
+  /// - "USER_LIST_GLOBAL_LICENSE_TYPE_RESELLER" : Reseller license.
+  /// - "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_SELL_SIDE" : DataMart Sell Side
+  /// license.
+  /// - "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE" : DataMart Buy Side
+  /// license.
+  core.String? licenseType;
+
+  /// Metrics related to this license This field is read-only and only populated
+  /// if the start and end dates are set in the ListUserListGlobalLicenses call
+  ///
+  /// Output only.
+  UserListLicenseMetrics? metrics;
+
+  /// Identifier.
+  ///
+  /// The resource name of the user list global license.
+  core.String? name;
+
+  /// UserListGlobalLicense pricing.
+  ///
+  /// Optional.
+  UserListLicensePricing? pricing;
+
+  /// Status of UserListGlobalLicense - ENABLED or DISABLED.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "USER_LIST_LICENSE_STATUS_UNSPECIFIED" : Unknown.
+  /// - "USER_LIST_LICENSE_STATUS_ENABLED" : Active status - user list is still
+  /// being licensed.
+  /// - "USER_LIST_LICENSE_STATUS_DISABLED" : Inactive status - user list is no
+  /// longer being licensed.
+  core.String? status;
+
+  /// Name of the user list being licensed.
+  ///
+  /// This field is read-only.
+  ///
+  /// Output only.
+  core.String? userListDisplayName;
+
+  /// ID of the user list being licensed.
+  ///
+  /// Immutable.
+  core.String? userListId;
+
+  UserListGlobalLicense({
+    this.historicalPricings,
+    this.licenseType,
+    this.metrics,
+    this.name,
+    this.pricing,
+    this.status,
+    this.userListDisplayName,
+    this.userListId,
+  });
+
+  UserListGlobalLicense.fromJson(core.Map json_)
+    : this(
+        historicalPricings: (json_['historicalPricings'] as core.List?)
+            ?.map(
+              (value) => UserListLicensePricing.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        licenseType: json_['licenseType'] as core.String?,
+        metrics: json_.containsKey('metrics')
+            ? UserListLicenseMetrics.fromJson(
+                json_['metrics'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        pricing: json_.containsKey('pricing')
+            ? UserListLicensePricing.fromJson(
+                json_['pricing'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_['status'] as core.String?,
+        userListDisplayName: json_['userListDisplayName'] as core.String?,
+        userListId: json_['userListId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final historicalPricings = this.historicalPricings;
+    final licenseType = this.licenseType;
+    final metrics = this.metrics;
+    final name = this.name;
+    final pricing = this.pricing;
+    final status = this.status;
+    final userListDisplayName = this.userListDisplayName;
+    final userListId = this.userListId;
+    return {
+      'historicalPricings': ?historicalPricings,
+      'licenseType': ?licenseType,
+      'metrics': ?metrics,
+      'name': ?name,
+      'pricing': ?pricing,
+      'status': ?status,
+      'userListDisplayName': ?userListDisplayName,
+      'userListId': ?userListId,
+    };
+  }
+}
+
+/// Information about a customer of a user list global license.
+///
+/// This will automatically be created by the system when a customer purchases a
+/// global license.
+class UserListGlobalLicenseCustomerInfo {
+  /// Name of client customer which the user list is being licensed to.
+  ///
+  /// Output only.
+  core.String? clientAccountDisplayName;
+
+  /// ID of client customer which the user list is being licensed to.
+  ///
+  /// Output only.
+  core.String? clientAccountId;
+
+  /// Product type of client customer which the user list is being licensed to.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_UNKNOWN" : Unknown.
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_ADS" : Google Ads
+  /// customer.
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_PARTNER" : Display
+  /// & Video 360 partner.
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_ADVERTISER" :
+  /// Display & Video 360 advertiser.
+  /// - "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK"
+  /// : Google Ad Manager audience link.
+  core.String? clientAccountType;
+
+  /// Pricing history of this user list license.
+  ///
+  /// Output only.
+  core.List<UserListLicensePricing>? historicalPricings;
+
+  /// Product type of client customer which the user list is being licensed to.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "USER_LIST_GLOBAL_LICENSE_TYPE_UNSPECIFIED" : UNSPECIFIED.
+  /// - "USER_LIST_GLOBAL_LICENSE_TYPE_RESELLER" : Reseller license.
+  /// - "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_SELL_SIDE" : DataMart Sell Side
+  /// license.
+  /// - "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE" : DataMart Buy Side
+  /// license.
+  core.String? licenseType;
+
+  /// Metrics related to this license This field is only populated if the start
+  /// and end dates are set in the ListUserListGlobalLicenseCustomerInfos call.
+  ///
+  /// Output only.
+  UserListLicenseMetrics? metrics;
+
+  /// Identifier.
+  ///
+  /// The resource name of the user list global license customer.
+  core.String? name;
+
+  /// UserListDirectLicense pricing.
+  ///
+  /// Output only.
+  UserListLicensePricing? pricing;
+
+  /// Status of UserListDirectLicense - ENABLED or DISABLED.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "USER_LIST_LICENSE_STATUS_UNSPECIFIED" : Unknown.
+  /// - "USER_LIST_LICENSE_STATUS_ENABLED" : Active status - user list is still
+  /// being licensed.
+  /// - "USER_LIST_LICENSE_STATUS_DISABLED" : Inactive status - user list is no
+  /// longer being licensed.
+  core.String? status;
+
+  /// Name of the user list being licensed.
+  ///
+  /// Output only.
+  core.String? userListDisplayName;
+
+  /// ID of the user list being licensed.
+  ///
+  /// Output only.
+  core.String? userListId;
+
+  UserListGlobalLicenseCustomerInfo({
+    this.clientAccountDisplayName,
+    this.clientAccountId,
+    this.clientAccountType,
+    this.historicalPricings,
+    this.licenseType,
+    this.metrics,
+    this.name,
+    this.pricing,
+    this.status,
+    this.userListDisplayName,
+    this.userListId,
+  });
+
+  UserListGlobalLicenseCustomerInfo.fromJson(core.Map json_)
+    : this(
+        clientAccountDisplayName:
+            json_['clientAccountDisplayName'] as core.String?,
+        clientAccountId: json_['clientAccountId'] as core.String?,
+        clientAccountType: json_['clientAccountType'] as core.String?,
+        historicalPricings: (json_['historicalPricings'] as core.List?)
+            ?.map(
+              (value) => UserListLicensePricing.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        licenseType: json_['licenseType'] as core.String?,
+        metrics: json_.containsKey('metrics')
+            ? UserListLicenseMetrics.fromJson(
+                json_['metrics'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        pricing: json_.containsKey('pricing')
+            ? UserListLicensePricing.fromJson(
+                json_['pricing'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_['status'] as core.String?,
+        userListDisplayName: json_['userListDisplayName'] as core.String?,
+        userListId: json_['userListId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientAccountDisplayName = this.clientAccountDisplayName;
+    final clientAccountId = this.clientAccountId;
+    final clientAccountType = this.clientAccountType;
+    final historicalPricings = this.historicalPricings;
+    final licenseType = this.licenseType;
+    final metrics = this.metrics;
+    final name = this.name;
+    final pricing = this.pricing;
+    final status = this.status;
+    final userListDisplayName = this.userListDisplayName;
+    final userListId = this.userListId;
+    return {
+      'clientAccountDisplayName': ?clientAccountDisplayName,
+      'clientAccountId': ?clientAccountId,
+      'clientAccountType': ?clientAccountType,
+      'historicalPricings': ?historicalPricings,
+      'licenseType': ?licenseType,
+      'metrics': ?metrics,
+      'name': ?name,
+      'pricing': ?pricing,
+      'status': ?status,
+      'userListDisplayName': ?userListDisplayName,
+      'userListId': ?userListId,
+    };
+  }
+}
+
+/// Metrics related to a user list license.
+class UserListLicenseMetrics {
+  /// The number of clicks for the user list license.
+  ///
+  /// Output only.
+  core.String? clickCount;
+
+  /// The end date (inclusive) of the metrics in the format YYYYMMDD.
+  ///
+  /// For example, 20260102 represents January 2, 2026. If `start_date` is used
+  /// in the filter, `end_date` is also required. If neither `start_date` nor
+  /// `end_date` are included in the filter, the UserListLicenseMetrics fields
+  /// will not be populated in the response.
+  ///
+  /// Output only.
+  core.String? endDate;
+
+  /// The number of impressions for the user list license.
+  ///
+  /// Output only.
+  core.String? impressionCount;
+
+  /// The revenue for the user list license in USD micros.
+  ///
+  /// Output only.
+  core.String? revenueUsdMicros;
+
+  /// The start date (inclusive) of the metrics in the format YYYYMMDD.
+  ///
+  /// For example, 20260102 represents January 2, 2026. If `end_date` is used in
+  /// the filter, `start_date` is also required. If neither `start_date` nor
+  /// `end_date` are included in the filter, the UserListLicenseMetrics fields
+  /// will not be populated in the response.
+  ///
+  /// Output only.
+  core.String? startDate;
+
+  UserListLicenseMetrics({
+    this.clickCount,
+    this.endDate,
+    this.impressionCount,
+    this.revenueUsdMicros,
+    this.startDate,
+  });
+
+  UserListLicenseMetrics.fromJson(core.Map json_)
+    : this(
+        clickCount: json_['clickCount'] as core.String?,
+        endDate: json_['endDate'] as core.String?,
+        impressionCount: json_['impressionCount'] as core.String?,
+        revenueUsdMicros: json_['revenueUsdMicros'] as core.String?,
+        startDate: json_['startDate'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clickCount = this.clickCount;
+    final endDate = this.endDate;
+    final impressionCount = this.impressionCount;
+    final revenueUsdMicros = this.revenueUsdMicros;
+    final startDate = this.startDate;
+    return {
+      'clickCount': ?clickCount,
+      'endDate': ?endDate,
+      'impressionCount': ?impressionCount,
+      'revenueUsdMicros': ?revenueUsdMicros,
+      'startDate': ?startDate,
+    };
+  }
+}
+
+/// A user list license pricing.
+class UserListLicensePricing {
+  /// The buyer approval state of this pricing.
+  ///
+  /// This field is read-only.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "USER_LIST_PRICING_BUYER_APPROVAL_STATE_UNSPECIFIED" : UNSPECIFIED.
+  /// - "PENDING" : User list client has not yet accepted the pricing terms set
+  /// by the user list owner.
+  /// - "APPROVED" : User list client has accepted the pricing terms set by the
+  /// user list owner.
+  /// - "REJECTED" : User list client has rejected the pricing terms set by the
+  /// user list owner.
+  core.String? buyerApprovalState;
+
+  /// The cost associated with the model, in micro units (10^-6), in the
+  /// currency specified by the currency_code field.
+  ///
+  /// For example, 2000000 means $2 if `currency_code` is `USD`.
+  ///
+  /// Optional.
+  core.String? costMicros;
+
+  /// The cost type of this pricing.
+  ///
+  /// Can be set only in the `create` operation. Can't be updated for an
+  /// existing license.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "USER_LIST_PRICING_COST_TYPE_UNSPECIFIED" : Unspecified.
+  /// - "CPC" : Cost per click.
+  /// - "CPM" : Cost per mille (thousand impressions).
+  /// - "MEDIA_SHARE" : Media share.
+  core.String? costType;
+
+  /// The currency in which cost and max_cost is specified.
+  ///
+  /// Must be a three-letter currency code defined in ISO 4217.
+  ///
+  /// Optional.
+  core.String? currencyCode;
+
+  /// End time of the pricing.
+  ///
+  /// Optional.
+  core.String? endTime;
+
+  /// The maximum CPM a commerce audience can be charged when the MEDIA_SHARE
+  /// cost type is used.
+  ///
+  /// The value is in micro units (10^-6) and in the currency specified by the
+  /// currency_code field. For example, 2000000 means $2 if `currency_code` is
+  /// `USD`. This is only relevant when cost_type is MEDIA_SHARE. When cost_type
+  /// is not MEDIA_SHARE, and this field is set, a MAX_COST_NOT_ALLOWED error
+  /// will be returned. If not set or set to`0`, there is no cap.
+  ///
+  /// Optional.
+  core.String? maxCostMicros;
+
+  /// Whether this pricing is active.
+  ///
+  /// Output only.
+  core.bool? pricingActive;
+
+  /// The ID of this pricing.
+  ///
+  /// Output only.
+  core.String? pricingId;
+
+  /// Start time of the pricing.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  UserListLicensePricing({
+    this.buyerApprovalState,
+    this.costMicros,
+    this.costType,
+    this.currencyCode,
+    this.endTime,
+    this.maxCostMicros,
+    this.pricingActive,
+    this.pricingId,
+    this.startTime,
+  });
+
+  UserListLicensePricing.fromJson(core.Map json_)
+    : this(
+        buyerApprovalState: json_['buyerApprovalState'] as core.String?,
+        costMicros: json_['costMicros'] as core.String?,
+        costType: json_['costType'] as core.String?,
+        currencyCode: json_['currencyCode'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        maxCostMicros: json_['maxCostMicros'] as core.String?,
+        pricingActive: json_['pricingActive'] as core.bool?,
+        pricingId: json_['pricingId'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final buyerApprovalState = this.buyerApprovalState;
+    final costMicros = this.costMicros;
+    final costType = this.costType;
+    final currencyCode = this.currencyCode;
+    final endTime = this.endTime;
+    final maxCostMicros = this.maxCostMicros;
+    final pricingActive = this.pricingActive;
+    final pricingId = this.pricingId;
+    final startTime = this.startTime;
+    return {
+      'buyerApprovalState': ?buyerApprovalState,
+      'costMicros': ?costMicros,
+      'costType': ?costType,
+      'currencyCode': ?currencyCode,
+      'endTime': ?endTime,
+      'maxCostMicros': ?maxCostMicros,
+      'pricingActive': ?pricingActive,
+      'pricingId': ?pricingId,
+      'startTime': ?startTime,
     };
   }
 }

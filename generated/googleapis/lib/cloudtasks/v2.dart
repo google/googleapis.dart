@@ -163,6 +163,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -222,7 +233,7 @@ class ProjectsLocationsResource {
 
   /// Creates or Updates a CMEK config.
   ///
-  /// Updates the Customer Managed Encryption Key assotiated with the Cloud
+  /// Updates the Customer Managed Encryption Key associated with the Cloud
   /// Tasks location (Creates if the key does not already exist). All new tasks
   /// created in the location will be encrypted at-rest with the KMS-key
   /// provided in the config.
@@ -2638,15 +2649,18 @@ class RateLimits {
   /// holds tokens, up to the maximum specified by `max_burst_size`. Each time a
   /// task is dispatched, a token is removed from the bucket. Tasks will be
   /// dispatched until the queue's bucket runs out of tokens. The bucket will be
-  /// continuously refilled with new tokens based on max_dispatches_per_second.
-  /// Cloud Tasks will pick the value of `max_burst_size` based on the value of
-  /// max_dispatches_per_second. For queues that were created or updated using
-  /// `queue.yaml/xml`, `max_burst_size` is equal to
+  /// continuously refilled with new tokens based on
+  /// `max_dispatches_per_second`. Cloud Tasks automatically sets an appropriate
+  /// `max_burst_size` based on the value of `max_dispatches_per_second`. The
+  /// value is dynamically optimized to ensure queue stability and throughput.
+  /// It is generally at least equal to `max_dispatches_per_second` but might be
+  /// higher to accommodate bursts of traffic. For queues that were created or
+  /// updated using `queue.yaml/xml`, `max_burst_size` is equal to
   /// [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size).
   /// Since `max_burst_size` is output only, if UpdateQueue is called on a queue
   /// created by `queue.yaml/xml`, `max_burst_size` will be reset based on the
-  /// value of max_dispatches_per_second, regardless of whether
-  /// max_dispatches_per_second is updated.
+  /// value of `max_dispatches_per_second`, regardless of whether
+  /// `max_dispatches_per_second` is updated.
   ///
   /// Output only.
   core.int? maxBurstSize;

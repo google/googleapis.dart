@@ -1358,8 +1358,9 @@ class DrivesResource {
   ///  Lists the user's shared drives.
   ///
   /// This method accepts the `q` parameter, which is a search query combining
-  /// one or more search terms. For more information, see the \[Search for
-  /// shared drives\](/workspace/drive/api/guides/search-shareddrives) guide.
+  /// one or more search terms. For more information, see the
+  /// [Search for shared drives](https://developers.google.com/workspace/drive/api/guides/search-shareddrives)
+  /// guide.
   ///
   /// Request parameters:
   ///
@@ -1761,6 +1762,52 @@ class FilesResource {
     }
   }
 
+  /// Generates a CSE token which can be used to create or update CSE files.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file for which the JWT should be generated. If
+  /// not provided, an id will be generated.
+  ///
+  /// [parent] - The ID of the expected parent of the file. Used when generating
+  /// a JWT for a new CSE file. If specified, the parent will be fetched, and if
+  /// the parent is a shared drive item, the shared drive's policy will be used
+  /// to determine the KACLS that should be used. It is invalid to specify both
+  /// file_id and parent in a single request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateCseTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateCseTokenResponse> generateCseToken({
+    core.String? fileId,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fileId': ?fileId == null ? null : [fileId],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'files/generateCseToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GenerateCseTokenResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Generates a set of file IDs which can be provided in insert or copy
   /// requests.
   ///
@@ -1817,9 +1864,9 @@ class FilesResource {
   /// the file contents in the response body. Downloading content with
   /// `alt=media` only works if the file is stored in Drive. To download Google
   /// Docs, Sheets, and Slides use
-  /// \[`files.export`\](/workspace/drive/api/reference/rest/v2/files/export)
+  /// \[`files.export`\](https://developers.google.com/workspace/drive/api/reference/rest/v2/files/export)
   /// instead. For more information, see \[Download & export
-  /// files\](/workspace/drive/api/guides/manage-downloads).
+  /// files\](https://developers.google.com/workspace/drive/api/guides/manage-downloads).
   ///
   /// Request parameters:
   ///
@@ -1928,9 +1975,9 @@ class FilesResource {
   /// Media MIME types:*`* / * ` Note: Specify a valid MIME type, rather than
   /// the literal `* / * ` value. The literal `* / * ` is only used to indicate
   /// that any valid MIME type can be uploaded. For more information on
-  /// uploading files, see \[Upload file
-  /// data\](/workspace/drive/api/guides/manage-uploads). Apps creating
-  /// shortcuts with `files.insert` must specify the MIME type
+  /// uploading files, see
+  /// [Upload file data](https://developers.google.com/workspace/drive/api/guides/manage-uploads).
+  /// Apps creating shortcuts with `files.insert` must specify the MIME type
   /// `application/vnd.google-apps.shortcut`. Apps should specify a file
   /// extension in the `title` property when inserting files with the API. For
   /// example, an operation to insert a JPEG file should specify something like
@@ -2077,12 +2124,13 @@ class FilesResource {
 
   ///  Lists the user's files.
   ///
-  /// For more information, see \[Search for files and
-  /// folders\](/workspace/drive/api/guides/search-files). This method accepts
-  /// the `q` parameter, which is a search query combining one or more search
-  /// terms. This method returns *all* files by default, including trashed
-  /// files. If you don't want trashed files to appear in the list, use the
-  /// `trashed=false` query parameter to remove trashed files from the results.
+  /// For more information, see
+  /// [Search for files and folders](https://developers.google.com/workspace/drive/api/guides/search-files).
+  /// This method accepts the `q` parameter, which is a search query combining
+  /// one or more search terms. This method returns *all* files by default,
+  /// including trashed files. If you don't want trashed files to appear in the
+  /// list, use the `trashed=false` query parameter to remove trashed files from
+  /// the results.
   ///
   /// Request parameters:
   ///
@@ -2668,10 +2716,10 @@ class FilesResource {
   /// - *Accepted Media MIME types:* `* / * ` (Specify a valid MIME type, rather
   /// than the literal `* / * ` value. The literal `* / * ` is only used to
   /// indicate that any valid MIME type can be uploaded. For more information,
-  /// see \[Google Workspace and Google Drive supported MIME
-  /// types\](/workspace/drive/api/guides/mime-types).) For more information on
-  /// uploading files, see \[Upload file
-  /// data\](/workspace/drive/api/guides/manage-uploads).
+  /// see
+  /// [Google Workspace and Google Drive supported MIME types](https://developers.google.com/workspace/drive/api/guides/mime-types).)
+  /// For more information on uploading files, see
+  /// [Upload file data](https://developers.google.com/workspace/drive/api/guides/manage-uploads).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3153,7 +3201,7 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID for the permission.
   ///
-  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// [enforceExpansiveAccess] - Deprecated: All requests use the expansive
   /// access rules.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
@@ -3328,7 +3376,7 @@ class PermissionsResource {
   /// [emailMessage] - A plain text custom message to include in notification
   /// emails.
   ///
-  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// [enforceExpansiveAccess] - Deprecated: All requests use the expansive
   /// access rules.
   ///
   /// [enforceSingleParent] - Deprecated: See `moveToNewOwnersRoot` for details.
@@ -3508,7 +3556,7 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID for the permission.
   ///
-  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// [enforceExpansiveAccess] - Deprecated: All requests use the expansive
   /// access rules.
   ///
   /// [removeExpiration] - Whether to remove the expiration date.
@@ -3602,7 +3650,7 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID for the permission.
   ///
-  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// [enforceExpansiveAccess] - Deprecated: All requests use the expansive
   /// access rules.
   ///
   /// [removeExpiration] - Whether to remove the expiration date.
@@ -4989,10 +5037,18 @@ class About {
   )
   core.bool? canCreateTeamDrives;
 
-  /// The domain sharing policy for the current user.
+  /// Deprecated: Does not granularly represent allowlisted domains or Trust
+  /// Rules.
   ///
-  /// Possible values are: * `allowed` * `allowedWithWarning` * `incomingOnly` *
-  /// `disallowed`
+  /// The domain sharing policy for the current user. Possible values are: *
+  /// `allowed` * `allowedWithWarning` * `incomingOnly` * `disallowed` Note that
+  /// if the user is enrolled in Trust Rules, `disallowed` will always be
+  /// returned. If sharing is restricted to allowlisted domains, either
+  /// `incomingOnly` or `allowedWithWarning` will be returned, depending on
+  /// whether receiving files from outside the allowlisted domains is permitted.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? domainSharingPolicy;
 
   /// A list of themes that are supported for shared drives.
@@ -5910,6 +5966,39 @@ class ChildReference {
   }
 }
 
+/// Details about the client-side encryption applied to the file.
+class ClientEncryptionDetails {
+  /// The metadata used for client-side operations.
+  DecryptionMetadata? decryptionMetadata;
+
+  /// The encryption state of the file.
+  ///
+  /// The values expected here are: - encrypted - unencrypted
+  core.String? encryptionState;
+
+  ClientEncryptionDetails({this.decryptionMetadata, this.encryptionState});
+
+  ClientEncryptionDetails.fromJson(core.Map json_)
+    : this(
+        decryptionMetadata: json_.containsKey('decryptionMetadata')
+            ? DecryptionMetadata.fromJson(
+                json_['decryptionMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        encryptionState: json_['encryptionState'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final decryptionMetadata = this.decryptionMetadata;
+    final encryptionState = this.encryptionState;
+    return {
+      'decryptionMetadata': ?decryptionMetadata,
+      'encryptionState': ?encryptionState,
+    };
+  }
+}
+
 /// Context of a file which is being commented on.
 class CommentContext {
   /// The MIME type of the context snippet.
@@ -6405,6 +6494,9 @@ class ContentRestriction {
     };
   }
 }
+
+/// Representation of the CSE DecryptionMetadata.
+typedef DecryptionMetadata = $DecryptionMetadata;
 
 /// An image file and cropping parameters from which a background image for this
 /// shared drive is set.
@@ -8043,6 +8135,14 @@ class File {
   /// Output only.
   FileCapabilities? capabilities;
 
+  /// Client Side Encryption related details.
+  ///
+  /// Contains details about the encryption state of the file and details
+  /// regarding the encryption mechanism that clients need to use when
+  /// decrypting the contents of this item. This will only be present on files
+  /// and not on folders or shortcuts.
+  ClientEncryptionDetails? clientEncryptionDetails;
+
   /// Restrictions for accessing the content of the file.
   ///
   /// Only populated if such a restriction exists.
@@ -8496,6 +8596,7 @@ class File {
     this.canComment,
     this.canReadRevisions,
     this.capabilities,
+    this.clientEncryptionDetails,
     this.contentRestrictions,
     this.copyRequiresWriterPermission,
     this.copyable,
@@ -8578,6 +8679,12 @@ class File {
         capabilities: json_.containsKey('capabilities')
             ? FileCapabilities.fromJson(
                 json_['capabilities'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        clientEncryptionDetails: json_.containsKey('clientEncryptionDetails')
+            ? ClientEncryptionDetails.fromJson(
+                json_['clientEncryptionDetails']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         contentRestrictions: (json_['contentRestrictions'] as core.List?)
@@ -8767,6 +8874,7 @@ class File {
     final canComment = this.canComment;
     final canReadRevisions = this.canReadRevisions;
     final capabilities = this.capabilities;
+    final clientEncryptionDetails = this.clientEncryptionDetails;
     final contentRestrictions = this.contentRestrictions;
     final copyRequiresWriterPermission = this.copyRequiresWriterPermission;
     final copyable = this.copyable;
@@ -8844,6 +8952,7 @@ class File {
       'canComment': ?canComment,
       'canReadRevisions': ?canReadRevisions,
       'capabilities': ?capabilities,
+      'clientEncryptionDetails': ?clientEncryptionDetails,
       'contentRestrictions': ?contentRestrictions,
       'copyRequiresWriterPermission': ?copyRequiresWriterPermission,
       'copyable': ?copyable,
@@ -9000,6 +9109,9 @@ class FileList {
     };
   }
 }
+
+/// JWT and associated metadata used to generate CSE files.
+typedef GenerateCseTokenResponse = $GenerateCseTokenResponse;
 
 /// A list of generated IDs which can be provided in insert requests
 class GeneratedIds {

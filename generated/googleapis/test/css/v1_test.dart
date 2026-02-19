@@ -219,6 +219,8 @@ api.Attributes buildAttributes() {
     o.itemGroupId = 'foo';
     o.lowPrice = buildPrice();
     o.material = 'foo';
+    o.maxRating = 'foo';
+    o.minRating = 'foo';
     o.mpn = 'foo';
     o.multipack = 'foo';
     o.numberOfOffers = 'foo';
@@ -231,6 +233,8 @@ api.Attributes buildAttributes() {
     o.productTypes = buildUnnamed8();
     o.productWeight = buildProductWeight();
     o.productWidth = buildProductDimension();
+    o.rating = 42.0;
+    o.reviewCount = 'foo';
     o.size = 'foo';
     o.sizeSystem = 'foo';
     o.sizeTypes = buildUnnamed9();
@@ -277,6 +281,8 @@ void checkAttributes(api.Attributes o) {
     unittest.expect(o.itemGroupId!, unittest.equals('foo'));
     checkPrice(o.lowPrice!);
     unittest.expect(o.material!, unittest.equals('foo'));
+    unittest.expect(o.maxRating!, unittest.equals('foo'));
+    unittest.expect(o.minRating!, unittest.equals('foo'));
     unittest.expect(o.mpn!, unittest.equals('foo'));
     unittest.expect(o.multipack!, unittest.equals('foo'));
     unittest.expect(o.numberOfOffers!, unittest.equals('foo'));
@@ -289,6 +295,8 @@ void checkAttributes(api.Attributes o) {
     checkUnnamed8(o.productTypes!);
     checkProductWeight(o.productWeight!);
     checkProductDimension(o.productWidth!);
+    unittest.expect(o.rating!, unittest.equals(42.0));
+    unittest.expect(o.reviewCount!, unittest.equals('foo'));
     unittest.expect(o.size!, unittest.equals('foo'));
     unittest.expect(o.sizeSystem!, unittest.equals('foo'));
     checkUnnamed9(o.sizeTypes!);

@@ -73,14 +73,17 @@ class CustomerLicenseResource {
 
   CustomerLicenseResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the status of a license for a customer to determine if they have
-  /// access for a given app.
+  /// Gets the customer's licensing status to determine if they have access to a
+  /// given app.
+  ///
+  /// For more information, see
+  /// [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
   ///
   /// Request parameters:
   ///
-  /// [applicationId] - Application Id
+  /// [applicationId] - The ID of the application.
   ///
-  /// [customerId] - Customer Id
+  /// [customerId] - The ID of the customer.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -123,13 +126,17 @@ class UserLicenseResource {
 
   UserLicenseResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the user's licensing status for their permission to use a given app.
+  /// Gets the user's licensing status to determine if they have permission to
+  /// use a given app.
+  ///
+  /// For more information, see
+  /// [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
   ///
   /// Request parameters:
   ///
-  /// [applicationId] - Application Id
+  /// [applicationId] - The ID of the application.
   ///
-  /// [userId] - User Id
+  /// [userId] - The ID of the user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -185,14 +192,14 @@ class CustomerLicense {
 
   /// The type of API resource.
   ///
-  /// This is always appsmarket#customerLicense.
+  /// This is always `appsmarket#customerLicense`.
   core.String? kind;
 
   /// The customer's license status.
   ///
   /// One of: - `ACTIVE`: The customer has a valid license. - `UNLICENSED`:
-  /// There is no license: either this customer has never installed your
-  /// application, or else has deleted it.
+  /// There is no license. Either this customer has never installed your
+  /// application or has deleted it.
   core.String? state;
 
   CustomerLicense({
@@ -294,12 +301,12 @@ class UserLicense {
   /// The domain administrator has activated the application for this domain.
   core.bool? enabled;
 
-  /// The ID of user license.
+  /// The ID of the user license.
   core.String? id;
 
   /// The type of API resource.
   ///
-  /// This is always appsmarket#userLicense.
+  /// This is always `appsmarket#userLicense`.
   core.String? kind;
 
   /// The user's licensing status.

@@ -36,6 +36,8 @@
 ///     - [SpacesMessagesReactionsResource]
 ///   - [SpacesSpaceEventsResource]
 /// - [UsersResource]
+///   - [UsersSectionsResource]
+///     - [UsersSectionsItemsResource]
 ///   - [UsersSpacesResource]
 ///     - [UsersSpacesSpaceNotificationSettingResource]
 ///     - [UsersSpacesThreadsResource]
@@ -99,6 +101,11 @@ class HangoutsChatApi {
   static const chatAppMembershipsScope =
       'https://www.googleapis.com/auth/chat.app.memberships';
 
+  /// On their own behalf, apps in Google Chat can see members of conversations
+  /// and spaces
+  static const chatAppMembershipsReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.memberships.readonly';
+
   /// On their own behalf, apps in Google Chat can see all messages and their
   /// associated reactions and message content
   static const chatAppMessagesReadonlyScope =
@@ -114,6 +121,11 @@ class HangoutsChatApi {
   /// spaces
   static const chatAppSpacesCreateScope =
       'https://www.googleapis.com/auth/chat.app.spaces.create';
+
+  /// On their own behalf, apps in Google Chat can see conversations and spaces
+  /// and their metadata (including history settings and access settings)
+  static const chatAppSpacesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.spaces.readonly';
 
   /// Private Service: https://www.googleapis.com/auth/chat.bot
   static const chatBotScope = 'https://www.googleapis.com/auth/chat.bot';
@@ -192,6 +204,15 @@ class HangoutsChatApi {
   /// View last read time for Google Chat conversations
   static const chatUsersReadstateReadonlyScope =
       'https://www.googleapis.com/auth/chat.users.readstate.readonly';
+
+  /// View, create, update, and delete your sections in Google Chat; move and
+  /// list your section items in Google Chat
+  static const chatUsersSectionsScope =
+      'https://www.googleapis.com/auth/chat.users.sections';
+
+  /// View your sections and their section items in Google Chat
+  static const chatUsersSectionsReadonlyScope =
+      'https://www.googleapis.com/auth/chat.users.sections.readonly';
 
   /// Read and update your space settings
   static const chatUsersSpacesettingsScope =
@@ -852,6 +873,105 @@ class SpacesResource {
       queryParams: queryParams_,
     );
     return Space.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
+  /// Returns all spaces with `spaceType == GROUP_CHAT`, whose human memberships
+  /// contain exactly the calling user, and the users specified in
+  /// `FindGroupChatsRequest.users`.
+  ///
+  /// Only members that have joined the conversation are supported. For an
+  /// example, see
+  /// [Find group chats](https://developers.google.com/workspace/chat/find-group-chats).
+  /// If the calling user blocks, or is blocked by, some users, and no spaces
+  /// with the entire specified set of users are found, this method returns
+  /// spaces that don't include the blocked or blocking users. The specified set
+  /// of users must contain only human (non-app) memberships. A request that
+  /// contains non-human users doesn't return any spaces. Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.memberships.readonly` -
+  /// `https://www.googleapis.com/auth/chat.memberships`
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - Optional. The maximum number of spaces to return. The service
+  /// might return fewer than this value. If unspecified, at most 10 spaces are
+  /// returned. The maximum value is 30. If you use a value more than 30, it's
+  /// automatically changed to 30. Negative values return an `INVALID_ARGUMENT`
+  /// error.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call to
+  /// find group chats. Provide this parameter to retrieve the subsequent page.
+  /// When paginating, all other parameters provided should match the call that
+  /// provided the token. Passing different values may lead to unexpected
+  /// results.
+  ///
+  /// [spaceView] - Requested space view type. If unset, defaults to
+  /// `SPACE_VIEW_RESOURCE_NAME_ONLY`. Requests that specify
+  /// `SPACE_VIEW_EXPANDED` must include scopes that allow reading space data,
+  /// for example, https://www.googleapis.com/auth/chat.spaces or
+  /// https://www.googleapis.com/auth/chat.spaces.readonly.
+  /// Possible string values are:
+  /// - "SPACE_VIEW_UNSPECIFIED" : The default / unset value.
+  /// - "SPACE_VIEW_RESOURCE_NAME_ONLY" : Populates only the Space resource
+  /// name.
+  /// - "SPACE_VIEW_EXPANDED" : Populates Space resource fields. Note: the
+  /// `permissionSettings` field will not be populated. Requests that specify
+  /// SPACE_VIEW_EXPANDED must include scopes that allow reading space data, for
+  /// example, https://www.googleapis.com/auth/chat.spaces or
+  /// https://www.googleapis.com/auth/chat.spaces.readonly.
+  ///
+  /// [users] - Optional. Resource names of all human users in group chat with
+  /// the calling user. Chat apps can't be included in the request. The maximum
+  /// number of users that can be specified in a single request is `49`. Format:
+  /// `users/{user}`, where `{user}` is either the `id` for the
+  /// [person](https://developers.google.com/people/api/rest/v1/people) from the
+  /// People API, or the `id` for the
+  /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
+  /// in the Directory API. For example, to find all group chats with the
+  /// calling user and two other users, with People API profile IDs `123456789`
+  /// and `987654321`, you can use `users/123456789` and `users/987654321`. You
+  /// can also use the email as an alias for `{user}`. For example,
+  /// `users/example@gmail.com` where `example@gmail.com` is the email of the
+  /// Google Chat user.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FindGroupChatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FindGroupChatsResponse> findGroupChats({
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? spaceView,
+    core.List<core.String>? users,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'spaceView': ?spaceView == null ? null : [spaceView],
+      'users': ?users,
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/spaces:findGroupChats';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FindGroupChatsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns details about a space.
@@ -2007,9 +2127,7 @@ class SpacesMessagesResource {
   /// [slash commands](https://developers.google.com/workspace/chat/slash-commands)
   /// that invoke the Chat app. -
   /// `https://www.googleapis.com/auth/chat.app.messages.readonly` with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth)
-  /// (available in
-  /// [Developer Preview](https://developers.google.com/workspace/preview)).
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth).
   /// When using this authentication scope, this method returns details about a
   /// public message in a space. -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
@@ -2065,9 +2183,8 @@ class SpacesMessagesResource {
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-  /// [Developer Preview](https://developers.google.com/workspace/preview) with
-  /// the authorization scope: -
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth)
+  /// with the authorization scope: -
   /// `https://www.googleapis.com/auth/chat.app.messages.readonly`. When using
   /// this authentication scope, this method only returns public messages in a
   /// space. It doesn't include private messages. -
@@ -2601,12 +2718,13 @@ class SpacesSpaceEventsResource {
   /// appropriate for reading the requested data: -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-  /// [Developer Preview](https://developers.google.com/workspace/preview) with
-  /// one of the following authorization scopes: -
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth)
+  /// with one of the following authorization scopes: -
   /// `https://www.googleapis.com/auth/chat.app.spaces` -
+  /// `https://www.googleapis.com/auth/chat.app.spaces.readonly` -
   /// `https://www.googleapis.com/auth/chat.app.messages.readonly` -
   /// `https://www.googleapis.com/auth/chat.app.memberships` -
+  /// `https://www.googleapis.com/auth/chat.app.memberships.readonly` -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
   /// with one of the following authorization scopes: -
   /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
@@ -2668,12 +2786,13 @@ class SpacesSpaceEventsResource {
   /// appropriate for reading the requested data: -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-  /// [Developer Preview](https://developers.google.com/workspace/preview) with
-  /// one of the following authorization scopes: -
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth)
+  /// with one of the following authorization scopes: -
   /// `https://www.googleapis.com/auth/chat.app.spaces` -
+  /// `https://www.googleapis.com/auth/chat.app.spaces.readonly` -
   /// `https://www.googleapis.com/auth/chat.app.messages.readonly` -
   /// `https://www.googleapis.com/auth/chat.app.memberships` -
+  /// `https://www.googleapis.com/auth/chat.app.memberships.readonly` -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
   /// with one of the following authorization scopes: -
   /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
@@ -2774,9 +2893,423 @@ class SpacesSpaceEventsResource {
 class UsersResource {
   final commons.ApiRequester _requester;
 
+  UsersSectionsResource get sections => UsersSectionsResource(_requester);
   UsersSpacesResource get spaces => UsersSpacesResource(_requester);
 
   UsersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class UsersSectionsResource {
+  final commons.ApiRequester _requester;
+
+  UsersSectionsItemsResource get items =>
+      UsersSectionsItemsResource(_requester);
+
+  UsersSectionsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a section in Google Chat.
+  ///
+  /// Sections help users group conversations and customize the list of spaces
+  /// displayed in Chat navigation panel. Only sections of type `CUSTOM_SECTION`
+  /// can be created. For details, see
+  /// [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.sections`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name where the section is
+  /// created. Format: `users/{user}`
+  /// Value must have pattern `^users/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChatV1Section].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChatV1Section> create(
+    GoogleChatV1Section request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sections';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChatV1Section.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a section of type `CUSTOM_SECTION`.
+  ///
+  /// If the section contains items, such as spaces, the items are moved to
+  /// Google Chat's default sections and are not deleted. For details, see
+  /// [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.sections`
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the section to delete. Format:
+  /// `users/{user}/sections/{section}`
+  /// Value must have pattern `^users/\[^/\]+/sections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists sections available to the Chat user.
+  ///
+  /// Sections help users group their conversations and customize the list of
+  /// spaces displayed in Chat navigation panel. For details, see
+  /// [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.sections` -
+  /// `https://www.googleapis.com/auth/chat.users.sections.readonly`
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which is the user resource name that owns
+  /// this collection of sections. Only supports listing sections for the
+  /// calling user. To refer to the calling user, set one of the following: -
+  /// The `me` alias. For example, `users/me`. - Their Workspace email address.
+  /// For example, `users/user@example.com`. - Their user id. For example,
+  /// `users/123456789`. Format: `users/{user}`
+  /// Value must have pattern `^users/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of sections to return. The
+  /// service may return fewer than this value. If unspecified, at most 10
+  /// sections will be returned. The maximum value is 100. If you use a value
+  /// more than 100, it's automatically changed to 100. Negative values return
+  /// an `INVALID_ARGUMENT` error.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous list
+  /// sections call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided should match the call that
+  /// provided the page token. Passing different values to the other parameters
+  /// might lead to unexpected results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSectionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sections';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSectionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a section.
+  ///
+  /// Only sections of type `CUSTOM_SECTION` can be updated. For details, see
+  /// [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.sections`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the section. For system sections,
+  /// the section ID is a constant string: - DEFAULT_DIRECT_MESSAGES:
+  /// `users/{user}/sections/default-direct-messages` - DEFAULT_SPACES:
+  /// `users/{user}/sections/default-spaces` - DEFAULT_APPS:
+  /// `users/{user}/sections/default-apps` Format:
+  /// `users/{user}/sections/{section}`
+  /// Value must have pattern `^users/\[^/\]+/sections/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to specify which fields to update.
+  /// Currently supported field paths: - `display_name`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChatV1Section].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChatV1Section> patch(
+    GoogleChatV1Section request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChatV1Section.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Changes the sort order of a section.
+  ///
+  /// For details, see
+  /// [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.sections`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the section to position. Format:
+  /// `users/{user}/sections/{section}`
+  /// Value must have pattern `^users/\[^/\]+/sections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PositionSectionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PositionSectionResponse> position(
+    PositionSectionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':position';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PositionSectionResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class UsersSectionsItemsResource {
+  final commons.ApiRequester _requester;
+
+  UsersSectionsItemsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists items in a section.
+  ///
+  /// Only spaces can be section items. For details, see
+  /// [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.sections` -
+  /// `https://www.googleapis.com/auth/chat.users.sections.readonly`
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which is the section resource name that
+  /// owns this collection of section items. Only supports listing section items
+  /// for the calling user. When you're filtering by space, use the wildcard `-`
+  /// to search across all sections. For example, `users/{user}/sections/-`.
+  /// Format: `users/{user}/sections/{section}`
+  /// Value must have pattern `^users/\[^/\]+/sections/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A query filter. Currently only supports filtering by
+  /// space. For example, `space = spaces/{space}`. Invalid queries are rejected
+  /// with an `INVALID_ARGUMENT` error.
+  ///
+  /// [pageSize] - Optional. The maximum number of section items to return. The
+  /// service may return fewer than this value. If unspecified, at most 10
+  /// section items will be returned. The maximum value is 100. If you use a
+  /// value more than 100, it's automatically changed to 100. Negative values
+  /// return an `INVALID_ARGUMENT` error.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous list
+  /// section items call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided should match the call that
+  /// provided the page token. Passing different values to the other parameters
+  /// might lead to unexpected results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSectionItemsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSectionItemsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/items';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSectionItemsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Moves an item from one section to another.
+  ///
+  /// For example, if a section contains spaces, this method can be used to move
+  /// a space to a different section. For details, see
+  /// [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.sections`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the section item to move. Format:
+  /// `users/{user}/sections/{section}/items/{item}`
+  /// Value must have pattern `^users/\[^/\]+/sections/\[^/\]+/items/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MoveSectionItemResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MoveSectionItemResponse> move(
+    MoveSectionItemRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return MoveSectionItemResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class UsersSpacesResource {
@@ -3820,9 +4353,16 @@ class CardHeader {
 /// [card](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards)
 /// in a Google Chat message.
 ///
-/// Only Chat apps can create cards. If your Chat app
+/// Chat apps can create cards with
+/// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+/// As part of the
+/// [Developer Preview Program](https://developers.google.com/workspace/preview),
+/// if your Chat app
 /// [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
-/// the message can't contain cards.
+/// it can create card messages. If your Chat app is not part of Developer
+/// Preview Program, it can't create cards with user authentication. To learn
+/// how to create a message that contains cards, see
+/// [Send a message](https://developers.google.com/workspace/chat/create-messages).
 /// [Card builder](https://addons.gsuite.google.com/uikit/builder)
 class CardWithId {
   /// A card.
@@ -4346,6 +4886,40 @@ class EmojiReactionSummary {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// A response containing group chat spaces with exactly the calling user and
+/// the requested users.
+///
+/// [Developer Preview](https://developers.google.com/workspace/preview):
+class FindGroupChatsResponse {
+  /// A token that you can send as `pageToken` to retrieve the next page of
+  /// results.
+  ///
+  /// If empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of spaces in the requested (or first) page.
+  core.List<Space>? spaces;
+
+  FindGroupChatsResponse({this.nextPageToken, this.spaces});
+
+  FindGroupChatsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        spaces: (json_['spaces'] as core.List?)
+            ?.map(
+              (value) =>
+                  Space.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final spaces = this.spaces;
+    return {'nextPageToken': ?nextPageToken, 'spaces': ?spaces};
+  }
+}
+
 /// A form action describes the behavior when the form is submitted.
 ///
 /// For example, you can invoke Apps Script to handle the form.
@@ -4782,7 +5356,8 @@ class GoogleAppsCardV1ButtonList {
 /// [Design the components of a card or dialog](https://developers.google.com/workspace/chat/design-components-card-dialog).
 /// * For Google Workspace add-ons, see \[Card-based
 /// interfaces\](https://developers.google.com/apps-script/add-ons/concepts/cards).
-/// Note: You can add up to 100 widgets per card. Any widgets beyond this limit
+/// Note: You can add up to 100 widgets per card. If a section's widgets push
+/// the total count above 100, that entire section and all following sections
 /// are ignored. This limit applies to both card messages and dialogs in Google
 /// Chat apps, and to cards in Google Workspace add-ons. **Example: Card message
 /// for a Google Chat app**
@@ -5565,6 +6140,10 @@ class GoogleAppsCardV1Condition {
 /// Available for Google Chat apps and Google Workspace add-ons that extend
 /// Google Workspace Studio.
 class GoogleAppsCardV1DataSourceConfig {
+  /// The minimum number of characters the user must enter before this data
+  /// provider is triggered (i.e., before it starts returning results).
+  core.int? minCharactersTrigger;
+
   /// The data is from a Google Workspace application.
   GoogleAppsCardV1PlatformDataSource? platformDataSource;
 
@@ -5572,12 +6151,14 @@ class GoogleAppsCardV1DataSourceConfig {
   GoogleAppsCardV1Action? remoteDataSource;
 
   GoogleAppsCardV1DataSourceConfig({
+    this.minCharactersTrigger,
     this.platformDataSource,
     this.remoteDataSource,
   });
 
   GoogleAppsCardV1DataSourceConfig.fromJson(core.Map json_)
     : this(
+        minCharactersTrigger: json_['minCharactersTrigger'] as core.int?,
         platformDataSource: json_.containsKey('platformDataSource')
             ? GoogleAppsCardV1PlatformDataSource.fromJson(
                 json_['platformDataSource']
@@ -5593,9 +6174,11 @@ class GoogleAppsCardV1DataSourceConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final minCharactersTrigger = this.minCharactersTrigger;
     final platformDataSource = this.platformDataSource;
     final remoteDataSource = this.remoteDataSource;
     return {
+      'minCharactersTrigger': ?minCharactersTrigger,
       'platformDataSource': ?platformDataSource,
       'remoteDataSource': ?remoteDataSource,
     };
@@ -6957,11 +7540,9 @@ class GoogleAppsCardV1SelectionInput {
   /// `multi_select_min_query_length` field, `external_data_source` field and
   /// `platform_data_source` field are ignored. Available for Google Workspace
   /// add-ons that extend Google Workspace Studio. Available for the `Dropdown
-  /// widget` in Google Chat apps as part of the
-  /// [Developer Preview Program](https://developers.google.com/workspace/preview).
-  /// For the `Dropdown` widget in Google Chat apps, only one `DataSourceConfig`
-  /// is supported. If multiple `DataSourceConfig`s are set, only the first one
-  /// is used.
+  /// widget` in Google Chat apps. For the `Dropdown` widget in Google Chat
+  /// apps, only one `DataSourceConfig` is supported. If multiple
+  /// `DataSourceConfig`s are set, only the first one is used.
   ///
   /// Optional.
   core.List<GoogleAppsCardV1DataSourceConfig>? dataSourceConfigs;
@@ -7038,17 +7619,15 @@ class GoogleAppsCardV1SelectionInput {
   /// button.
   /// - "SWITCH" : A set of switches. Users can turn on one or more switches.
   /// - "DROPDOWN" : A dropdown menu. Users can select one item from the menu.
-  /// For Google Chat apps, as part of the
-  /// [Developer Preview Program](https://developers.google.com/workspace/preview),
-  /// you can populate items using a dynamic data source and autosuggest items
-  /// as users type in the menu. For example, users can start typing the name of
-  /// a Google Chat space and the widget autosuggests the space. To dynamically
-  /// populate items for a dropdown menu, use one of the following types of data
-  /// sources: * Google Workspace data: Items are populated using data from
-  /// Google Workspace, such as Google Workspace users or Google Chat spaces. *
-  /// External data: Items are populated from an external data source outside of
-  /// Google Workspace. For examples of how to implement dropdown menus for Chat
-  /// apps, see
+  /// For Google Chat apps, you can populate items using a dynamic data source
+  /// and autosuggest items as users type in the menu. For example, users can
+  /// start typing the name of a Google Chat space and the widget autosuggests
+  /// the space. To dynamically populate items for a dropdown menu, use one of
+  /// the following types of data sources: * Google Workspace data: Items are
+  /// populated using data from Google Workspace, such as Google Workspace users
+  /// or Google Chat spaces. * External data: Items are populated from an
+  /// external data source outside of Google Workspace. For examples of how to
+  /// implement dropdown menus for Chat apps, see
   /// [Add a dropdown menu](https://developers.google.com/workspace/chat/design-interactive-card-dialog#dropdown-menu)
   /// and \[Dynamically populate drop-down
   /// menus\](https://developers.google.com/workspace/chat/design-interactive-card-dialog#dynamic-dropdown-menu).
@@ -8062,6 +8641,86 @@ class GoogleAppsCardV1Widgets {
   }
 }
 
+/// Represents a [section](https://support.google.com/chat/answer/16059854) in
+/// Google Chat.
+///
+/// Sections help users organize their spaces. There are two types of sections:
+/// 1. **System Sections:** These are predefined sections managed by Google
+/// Chat. Their resource names are fixed, and they cannot be created, deleted,
+/// or have their `display_name` modified. Examples include: *
+/// `users/{user}/sections/default-direct-messages` *
+/// `users/{user}/sections/default-spaces` *
+/// `users/{user}/sections/default-apps` 2. **Custom Sections:** These are
+/// sections created and managed by the user. Creating a custom section using
+/// `CreateSection` **requires** a `display_name`. Custom sections can be
+/// updated using `UpdateSection` and deleted using `DeleteSection`.
+class GoogleChatV1Section {
+  /// The section's display name.
+  ///
+  /// Only populated for sections of type `CUSTOM_SECTION`. Supports up to 80
+  /// characters. Required when creating a `CUSTOM_SECTION`.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// Resource name of the section. For system sections, the section ID is a
+  /// constant string: - DEFAULT_DIRECT_MESSAGES:
+  /// `users/{user}/sections/default-direct-messages` - DEFAULT_SPACES:
+  /// `users/{user}/sections/default-spaces` - DEFAULT_APPS:
+  /// `users/{user}/sections/default-apps` Format:
+  /// `users/{user}/sections/{section}`
+  core.String? name;
+
+  /// The order of the section in relation to other sections.
+  ///
+  /// Sections with a lower `sort_order` value appear before sections with a
+  /// higher value.
+  ///
+  /// Output only.
+  core.int? sortOrder;
+
+  /// The type of the section.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
+  /// - "CUSTOM_SECTION" : Custom section.
+  /// - "DEFAULT_DIRECT_MESSAGES" : Default section containing
+  /// [DIRECT_MESSAGE](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces#spacetype)
+  /// between two human users or
+  /// [GROUP_CHAT](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces#spacetype)
+  /// spaces that don't belong to any custom section.
+  /// - "DEFAULT_SPACES" : Default spaces that don't belong to any custom
+  /// section.
+  /// - "DEFAULT_APPS" : Default section containing a user's installed apps.
+  core.String? type;
+
+  GoogleChatV1Section({this.displayName, this.name, this.sortOrder, this.type});
+
+  GoogleChatV1Section.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        sortOrder: json_['sortOrder'] as core.int?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final name = this.name;
+    final sortOrder = this.sortOrder;
+    final type = this.type;
+    return {
+      'displayName': ?displayName,
+      'name': ?name,
+      'sortOrder': ?sortOrder,
+      'type': ?type,
+    };
+  }
+}
+
 /// A Google Group in Google Chat.
 class Group {
   /// Resource name for a Google Group.
@@ -8494,6 +9153,68 @@ class ListReactionsResponse {
     final nextPageToken = this.nextPageToken;
     final reactions = this.reactions;
     return {'nextPageToken': ?nextPageToken, 'reactions': ?reactions};
+  }
+}
+
+/// Response message for listing section items.
+class ListSectionItemsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The section items from the specified section.
+  core.List<SectionItem>? sectionItems;
+
+  ListSectionItemsResponse({this.nextPageToken, this.sectionItems});
+
+  ListSectionItemsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        sectionItems: (json_['sectionItems'] as core.List?)
+            ?.map(
+              (value) => SectionItem.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sectionItems = this.sectionItems;
+    return {'nextPageToken': ?nextPageToken, 'sectionItems': ?sectionItems};
+  }
+}
+
+/// Response message for listing sections.
+class ListSectionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The sections from the specified user.
+  core.List<GoogleChatV1Section>? sections;
+
+  ListSectionsResponse({this.nextPageToken, this.sections});
+
+  ListSectionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        sections: (json_['sections'] as core.List?)
+            ?.map(
+              (value) => GoogleChatV1Section.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sections = this.sections;
+    return {'nextPageToken': ?nextPageToken, 'sections': ?sections};
   }
 }
 
@@ -9018,10 +9739,15 @@ class Message {
   /// An array of
   /// [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards).
   ///
-  /// Only Chat apps can create cards. If your Chat app
+  /// Chat apps can create cards with
+  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// As part of the
+  /// [Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// if your Chat app
   /// [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
-  /// the messages can't contain cards. To learn how to create a message that
-  /// contains cards, see
+  /// it can create card messages. If your Chat app is not part of Developer
+  /// Preview Program, it can't create cards with user authentication. To learn
+  /// how to create a message that contains cards, see
   /// [Send a message](https://developers.google.com/workspace/chat/create-messages).
   /// [Card builder](https://addons.gsuite.google.com/uikit/builder)
   ///
@@ -9079,8 +9805,8 @@ class Message {
   /// This field might not capture all formatting visible in the UI, but
   /// includes the following: *
   /// [Markup syntax](https://developers.google.com/workspace/chat/format-messages)
-  /// for bold, italic, strikethrough, monospace, monospace block, and bulleted
-  /// list. *
+  /// for bold, italic, strikethrough, monospace, monospace block, bulleted
+  /// list, and block quote. *
   /// [User mentions](https://developers.google.com/workspace/chat/format-messages#messages-@mention)
   /// using the format ``. * Custom hyperlinks using the format
   /// `<{url}|{rendered_text}>` where the first string is the URL and the second
@@ -9100,7 +9826,8 @@ class Message {
   /// Output only.
   core.String? lastUpdateTime;
 
-  /// A URL in `spaces.messages.text` that matches a link preview pattern.
+  /// A URL in the Chat message `text` field that matches a link preview
+  /// pattern.
   ///
   /// For more information, see
   /// [Preview links](https://developers.google.com/workspace/chat/preview-links).
@@ -9551,6 +10278,48 @@ class MessageUpdatedEventData {
   }
 }
 
+/// Request message for moving a section item across sections.
+class MoveSectionItemRequest {
+  /// The resource name of the section to move the section item to.
+  ///
+  /// Format: `users/{user}/sections/{section}`
+  ///
+  /// Required.
+  core.String? targetSection;
+
+  MoveSectionItemRequest({this.targetSection});
+
+  MoveSectionItemRequest.fromJson(core.Map json_)
+    : this(targetSection: json_['targetSection'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final targetSection = this.targetSection;
+    return {'targetSection': ?targetSection};
+  }
+}
+
+/// Response message for moving a section item.
+class MoveSectionItemResponse {
+  /// The updated section item.
+  SectionItem? sectionItem;
+
+  MoveSectionItemResponse({this.sectionItem});
+
+  MoveSectionItemResponse.fromJson(core.Map json_)
+    : this(
+        sectionItem: json_.containsKey('sectionItem')
+            ? SectionItem.fromJson(
+                json_['sectionItem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sectionItem = this.sectionItem;
+    return {'sectionItem': ?sectionItem};
+  }
+}
+
 /// An `onclick` action (for example, open a link).
 class OnClick {
   /// A form action is triggered by this `onclick` action if specified.
@@ -9762,6 +10531,65 @@ class PermissionSettings {
       'toggleHistory': ?toggleHistory,
       'useAtMentionAll': ?useAtMentionAll,
     };
+  }
+}
+
+/// Request message for positioning a section.
+class PositionSectionRequest {
+  /// The relative position of the section in the list of sections.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POSITION_UNSPECIFIED" : Unspecified position.
+  /// - "START" : Start of the list of sections.
+  /// - "END" : End of the list of sections.
+  core.String? relativePosition;
+
+  /// The absolute position of the section in the list of sections.
+  ///
+  /// The position must be greater than 0. If the position is greater than the
+  /// number of sections, the section will be appended to the end of the list.
+  /// This operation inserts the section at the given position and shifts the
+  /// original section at that position, and those below it, to the next
+  /// position.
+  ///
+  /// Optional.
+  core.int? sortOrder;
+
+  PositionSectionRequest({this.relativePosition, this.sortOrder});
+
+  PositionSectionRequest.fromJson(core.Map json_)
+    : this(
+        relativePosition: json_['relativePosition'] as core.String?,
+        sortOrder: json_['sortOrder'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final relativePosition = this.relativePosition;
+    final sortOrder = this.sortOrder;
+    return {'relativePosition': ?relativePosition, 'sortOrder': ?sortOrder};
+  }
+}
+
+/// Response message for positioning a section.
+class PositionSectionResponse {
+  /// The updated section.
+  GoogleChatV1Section? section;
+
+  PositionSectionResponse({this.section});
+
+  PositionSectionResponse.fromJson(core.Map json_)
+    : this(
+        section: json_.containsKey('section')
+            ? GoogleChatV1Section.fromJson(
+                json_['section'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final section = this.section;
+    return {'section': ?section};
   }
 }
 
@@ -10254,6 +11082,39 @@ class Section {
     final header = this.header;
     final widgets = this.widgets;
     return {'header': ?header, 'widgets': ?widgets};
+  }
+}
+
+/// A user's defined section item.
+///
+/// This is used to represent section items, such as spaces, grouped under a
+/// section.
+class SectionItem {
+  /// Identifier.
+  ///
+  /// The resource name of the section item. Format:
+  /// `users/{user}/sections/{section}/items/{item}`
+  core.String? name;
+
+  /// The space resource name.
+  ///
+  /// Format: `spaces/{space}`
+  ///
+  /// Optional.
+  core.String? space;
+
+  SectionItem({this.name, this.space});
+
+  SectionItem.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        space: json_['space'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final space = this.space;
+    return {'name': ?name, 'space': ?space};
   }
 }
 

@@ -120,6 +120,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -561,48 +572,6 @@ class ProjectsLocationsInstancesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Undeletes Looker instance.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Format:
-  /// projects/{project}/locations/{location}/instances/{instance}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> undelete(
-    UndeleteInstanceRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final response_ = await _requester.request(
       url_,
@@ -1266,15 +1235,91 @@ class ImportInstanceRequest {
   }
 }
 
+/// Ingress IP allowlist configuration.
+class IngressIpAllowlistConfig {
+  /// List of IP range rules to allow ingress traffic.
+  ///
+  /// Optional.
+  core.List<IngressIpAllowlistRule>? allowlistRules;
+
+  /// Whether ingress IP allowlist functionality is enabled on the Looker
+  /// instance.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// Whether google service connections are enabled for the instance.
+  ///
+  /// Optional.
+  core.bool? googleServicesEnabled;
+
+  IngressIpAllowlistConfig({
+    this.allowlistRules,
+    this.enabled,
+    this.googleServicesEnabled,
+  });
+
+  IngressIpAllowlistConfig.fromJson(core.Map json_)
+    : this(
+        allowlistRules: (json_['allowlistRules'] as core.List?)
+            ?.map(
+              (value) => IngressIpAllowlistRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        enabled: json_['enabled'] as core.bool?,
+        googleServicesEnabled: json_['googleServicesEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowlistRules = this.allowlistRules;
+    final enabled = this.enabled;
+    final googleServicesEnabled = this.googleServicesEnabled;
+    return {
+      'allowlistRules': ?allowlistRules,
+      'enabled': ?enabled,
+      'googleServicesEnabled': ?googleServicesEnabled,
+    };
+  }
+}
+
+/// Ingress IP allowlist rule.
+class IngressIpAllowlistRule {
+  /// Description for the IP range.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The IP range to allow ingress traffic from.
+  ///
+  /// Optional.
+  core.String? ipRange;
+
+  IngressIpAllowlistRule({this.description, this.ipRange});
+
+  IngressIpAllowlistRule.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        ipRange: json_['ipRange'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final ipRange = this.ipRange;
+    return {'description': ?description, 'ipRange': ?ipRange};
+  }
+}
+
 /// A Looker instance.
 class Instance {
   /// Looker Instance Admin settings.
   AdminSettings? adminSettings;
 
-  /// Indicates whether catalog integration is enabled for the Looker instance.
+  /// Indicates whether catalog integration is disabled for the Looker instance.
   ///
   /// Optional.
-  core.bool? catalogIntegrationEnabled;
+  core.bool? catalogIntegrationOptOut;
 
   /// Storage class of the instance.
   ///
@@ -1332,6 +1377,11 @@ class Instance {
   ///
   /// Optional.
   core.bool? geminiEnabled;
+
+  /// Ingress IP allowlist configuration for the Looker instance.
+  ///
+  /// Optional.
+  IngressIpAllowlistConfig? ingressIpAllowlistConfig;
 
   /// Private Ingress IP (IPv4).
   ///
@@ -1435,18 +1485,6 @@ class Instance {
   /// Output only.
   core.bool? satisfiesPzs;
 
-  /// The reason for the instance being in a soft-deleted state.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "SOFT_DELETE_REASON_UNSPECIFIED" : Soft delete reason is unspecified.
-  /// This is the default value.
-  /// - "BILLING_ACCOUNT_ISSUE" : Instance is soft deleted due to billing
-  /// account issues.
-  /// - "TRIAL_EXPIRED" : Instance is soft deleted due to trial expiration.
-  /// - "CUSTOMER_REQUEST" : Instance is soft deleted by the customer.
-  core.String? softDeleteReason;
-
   /// The state of the instance.
   ///
   /// Output only.
@@ -1462,11 +1500,6 @@ class Instance {
   /// - "IMPORTING" : Instance is importing data.
   core.String? state;
 
-  /// The time when the Looker instance was suspended (soft deleted).
-  ///
-  /// Output only.
-  core.String? suspendedTime;
-
   /// The time when the Looker instance was last updated.
   ///
   /// Output only.
@@ -1479,7 +1512,7 @@ class Instance {
 
   Instance({
     this.adminSettings,
-    this.catalogIntegrationEnabled,
+    this.catalogIntegrationOptOut,
     this.classType,
     this.consumerNetwork,
     this.controlledEgressConfig,
@@ -1491,6 +1524,7 @@ class Instance {
     this.encryptionConfig,
     this.fipsEnabled,
     this.geminiEnabled,
+    this.ingressIpAllowlistConfig,
     this.ingressPrivateIp,
     this.ingressPublicIp,
     this.lastDenyMaintenancePeriod,
@@ -1510,9 +1544,7 @@ class Instance {
     this.reservedRange,
     this.satisfiesPzi,
     this.satisfiesPzs,
-    this.softDeleteReason,
     this.state,
-    this.suspendedTime,
     this.updateTime,
     this.userMetadata,
   });
@@ -1524,8 +1556,8 @@ class Instance {
                 json_['adminSettings'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        catalogIntegrationEnabled:
-            json_['catalogIntegrationEnabled'] as core.bool?,
+        catalogIntegrationOptOut:
+            json_['catalogIntegrationOptOut'] as core.bool?,
         classType: json_['classType'] as core.String?,
         consumerNetwork: json_['consumerNetwork'] as core.String?,
         controlledEgressConfig: json_.containsKey('controlledEgressConfig')
@@ -1556,6 +1588,12 @@ class Instance {
             : null,
         fipsEnabled: json_['fipsEnabled'] as core.bool?,
         geminiEnabled: json_['geminiEnabled'] as core.bool?,
+        ingressIpAllowlistConfig: json_.containsKey('ingressIpAllowlistConfig')
+            ? IngressIpAllowlistConfig.fromJson(
+                json_['ingressIpAllowlistConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         ingressPrivateIp: json_['ingressPrivateIp'] as core.String?,
         ingressPublicIp: json_['ingressPublicIp'] as core.String?,
         lastDenyMaintenancePeriod:
@@ -1604,9 +1642,7 @@ class Instance {
         reservedRange: json_['reservedRange'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-        softDeleteReason: json_['softDeleteReason'] as core.String?,
         state: json_['state'] as core.String?,
-        suspendedTime: json_['suspendedTime'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         userMetadata: json_.containsKey('userMetadata')
             ? UserMetadata.fromJson(
@@ -1617,7 +1653,7 @@ class Instance {
 
   core.Map<core.String, core.dynamic> toJson() {
     final adminSettings = this.adminSettings;
-    final catalogIntegrationEnabled = this.catalogIntegrationEnabled;
+    final catalogIntegrationOptOut = this.catalogIntegrationOptOut;
     final classType = this.classType;
     final consumerNetwork = this.consumerNetwork;
     final controlledEgressConfig = this.controlledEgressConfig;
@@ -1629,6 +1665,7 @@ class Instance {
     final encryptionConfig = this.encryptionConfig;
     final fipsEnabled = this.fipsEnabled;
     final geminiEnabled = this.geminiEnabled;
+    final ingressIpAllowlistConfig = this.ingressIpAllowlistConfig;
     final ingressPrivateIp = this.ingressPrivateIp;
     final ingressPublicIp = this.ingressPublicIp;
     final lastDenyMaintenancePeriod = this.lastDenyMaintenancePeriod;
@@ -1648,14 +1685,12 @@ class Instance {
     final reservedRange = this.reservedRange;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
-    final softDeleteReason = this.softDeleteReason;
     final state = this.state;
-    final suspendedTime = this.suspendedTime;
     final updateTime = this.updateTime;
     final userMetadata = this.userMetadata;
     return {
       'adminSettings': ?adminSettings,
-      'catalogIntegrationEnabled': ?catalogIntegrationEnabled,
+      'catalogIntegrationOptOut': ?catalogIntegrationOptOut,
       'classType': ?classType,
       'consumerNetwork': ?consumerNetwork,
       'controlledEgressConfig': ?controlledEgressConfig,
@@ -1667,6 +1702,7 @@ class Instance {
       'encryptionConfig': ?encryptionConfig,
       'fipsEnabled': ?fipsEnabled,
       'geminiEnabled': ?geminiEnabled,
+      'ingressIpAllowlistConfig': ?ingressIpAllowlistConfig,
       'ingressPrivateIp': ?ingressPrivateIp,
       'ingressPublicIp': ?ingressPublicIp,
       'lastDenyMaintenancePeriod': ?lastDenyMaintenancePeriod,
@@ -1686,9 +1722,7 @@ class Instance {
       'reservedRange': ?reservedRange,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
-      'softDeleteReason': ?softDeleteReason,
       'state': ?state,
-      'suspendedTime': ?suspendedTime,
       'updateTime': ?updateTime,
       'userMetadata': ?userMetadata,
     };
@@ -2018,18 +2052,37 @@ class OAuthConfig {
   /// field, and thus will not be set in any responses.
   core.String? clientSecret;
 
-  OAuthConfig({this.clientId, this.clientSecret});
+  /// Whether to use the shared OAuth client.
+  ///
+  /// Instances specifying this field do not need to provide client_id and
+  /// client_secret.
+  ///
+  /// Optional.
+  core.bool? sharedOauthClientEnabled;
+
+  OAuthConfig({
+    this.clientId,
+    this.clientSecret,
+    this.sharedOauthClientEnabled,
+  });
 
   OAuthConfig.fromJson(core.Map json_)
     : this(
         clientId: json_['clientId'] as core.String?,
         clientSecret: json_['clientSecret'] as core.String?,
+        sharedOauthClientEnabled:
+            json_['sharedOauthClientEnabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final clientId = this.clientId;
     final clientSecret = this.clientSecret;
-    return {'clientId': ?clientId, 'clientSecret': ?clientSecret};
+    final sharedOauthClientEnabled = this.sharedOauthClientEnabled;
+    return {
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+      'sharedOauthClientEnabled': ?sharedOauthClientEnabled,
+    };
   }
 }
 
@@ -2326,9 +2379,6 @@ typedef Status = $Status00;
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
 typedef TimeOfDay = $TimeOfDay;
-
-/// Request options for undeleting an instance.
-typedef UndeleteInstanceRequest = $Empty;
 
 /// Metadata about users for a Looker instance.
 class UserMetadata {

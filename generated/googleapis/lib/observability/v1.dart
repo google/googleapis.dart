@@ -132,13 +132,56 @@ class FoldersLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get Settings
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the settings to retrieve. Name format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/settings"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION\]/settings"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION\]/settings"
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -195,6 +238,51 @@ class FoldersLocationsResource {
     return ListLocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Update Settings
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the settings.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [updateMask] - Optional. The field mask specifying which fields of the
+  /// settings are to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateSettings(
+    Settings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -441,13 +529,57 @@ class OrganizationsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get Settings
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the settings to retrieve. Name format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/settings"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION\]/settings"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION\]/settings"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -504,6 +636,52 @@ class OrganizationsLocationsResource {
     return ListLocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Update Settings
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the settings.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [updateMask] - Optional. The field mask specifying which fields of the
+  /// settings are to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateSettings(
+    Settings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -755,13 +933,56 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get Settings
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the settings to retrieve. Name format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/settings"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION\]/settings"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION\]/settings"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -818,6 +1039,51 @@ class ProjectsLocationsResource {
     return ListLocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Update Settings
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the settings.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [updateMask] - Optional. The field mask specifying which fields of the
+  /// settings are to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateSettings(
+    Settings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2507,6 +2773,68 @@ class Scope {
       'name': ?name,
       'traceScope': ?traceScope,
       'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Describes the settings associated with a project, organization, or folder.
+class Settings {
+  /// The location which should be used when any regional resources are
+  /// provisioned by Google Cloud.
+  ///
+  /// Optional.
+  core.String? defaultStorageLocation;
+
+  /// The resource name for the configured Cloud KMS key.
+  ///
+  /// KMS key name format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[KEYRING\]/cryptoKeys/\[KEY\]"
+  /// For example:
+  /// `"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"`
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  /// Identifier.
+  ///
+  /// The resource name of the settings.
+  core.String? name;
+
+  /// The service account for the given resource container, such as project or
+  /// folder.
+  ///
+  /// This will be used by Cloud Observability to perform actions in the
+  /// container's project like access KMS keys or create Links. Always the same
+  /// service account per resource container regardless of region.
+  ///
+  /// Output only.
+  core.String? serviceAccountId;
+
+  Settings({
+    this.defaultStorageLocation,
+    this.kmsKeyName,
+    this.name,
+    this.serviceAccountId,
+  });
+
+  Settings.fromJson(core.Map json_)
+    : this(
+        defaultStorageLocation: json_['defaultStorageLocation'] as core.String?,
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        name: json_['name'] as core.String?,
+        serviceAccountId: json_['serviceAccountId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultStorageLocation = this.defaultStorageLocation;
+    final kmsKeyName = this.kmsKeyName;
+    final name = this.name;
+    final serviceAccountId = this.serviceAccountId;
+    return {
+      'defaultStorageLocation': ?defaultStorageLocation,
+      'kmsKeyName': ?kmsKeyName,
+      'name': ?name,
+      'serviceAccountId': ?serviceAccountId,
     };
   }
 }

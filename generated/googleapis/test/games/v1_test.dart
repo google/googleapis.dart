@@ -37,6 +37,7 @@ api.AchievementDefinition buildAchievementDefinition() {
   final o = api.AchievementDefinition();
   buildCounterAchievementDefinition++;
   if (buildCounterAchievementDefinition < 3) {
+    o.achievementLifecycleState = 'foo';
     o.achievementType = 'foo';
     o.description = 'foo';
     o.experiencePoints = 'foo';
@@ -58,6 +59,7 @@ api.AchievementDefinition buildAchievementDefinition() {
 void checkAchievementDefinition(api.AchievementDefinition o) {
   buildCounterAchievementDefinition++;
   if (buildCounterAchievementDefinition < 3) {
+    unittest.expect(o.achievementLifecycleState!, unittest.equals('foo'));
     unittest.expect(o.achievementType!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.experiencePoints!, unittest.equals('foo'));

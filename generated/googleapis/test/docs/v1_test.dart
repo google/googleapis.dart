@@ -2179,6 +2179,29 @@ void checkInsertPersonRequest(api.InsertPersonRequest o) {
   buildCounterInsertPersonRequest--;
 }
 
+core.int buildCounterInsertRichLinkRequest = 0;
+api.InsertRichLinkRequest buildInsertRichLinkRequest() {
+  final o = api.InsertRichLinkRequest();
+  buildCounterInsertRichLinkRequest++;
+  if (buildCounterInsertRichLinkRequest < 3) {
+    o.endOfSegmentLocation = buildEndOfSegmentLocation();
+    o.location = buildLocation();
+    o.richLinkProperties = buildRichLinkProperties();
+  }
+  buildCounterInsertRichLinkRequest--;
+  return o;
+}
+
+void checkInsertRichLinkRequest(api.InsertRichLinkRequest o) {
+  buildCounterInsertRichLinkRequest++;
+  if (buildCounterInsertRichLinkRequest < 3) {
+    checkEndOfSegmentLocation(o.endOfSegmentLocation!);
+    checkLocation(o.location!);
+    checkRichLinkProperties(o.richLinkProperties!);
+  }
+  buildCounterInsertRichLinkRequest--;
+}
+
 core.int buildCounterInsertSectionBreakRequest = 0;
 api.InsertSectionBreakRequest buildInsertSectionBreakRequest() {
   final o = api.InsertSectionBreakRequest();
@@ -3510,6 +3533,7 @@ api.Request buildRequest() {
     o.insertInlineImage = buildInsertInlineImageRequest();
     o.insertPageBreak = buildInsertPageBreakRequest();
     o.insertPerson = buildInsertPersonRequest();
+    o.insertRichLink = buildInsertRichLinkRequest();
     o.insertSectionBreak = buildInsertSectionBreakRequest();
     o.insertTable = buildInsertTableRequest();
     o.insertTableColumn = buildInsertTableColumnRequest();
@@ -3523,6 +3547,7 @@ api.Request buildRequest() {
     o.unmergeTableCells = buildUnmergeTableCellsRequest();
     o.updateDocumentStyle = buildUpdateDocumentStyleRequest();
     o.updateDocumentTabProperties = buildUpdateDocumentTabPropertiesRequest();
+    o.updateNamedStyle = buildUpdateNamedStyleRequest();
     o.updateParagraphStyle = buildUpdateParagraphStyleRequest();
     o.updateSectionStyle = buildUpdateSectionStyleRequest();
     o.updateTableCellStyle = buildUpdateTableCellStyleRequest();
@@ -3556,6 +3581,7 @@ void checkRequest(api.Request o) {
     checkInsertInlineImageRequest(o.insertInlineImage!);
     checkInsertPageBreakRequest(o.insertPageBreak!);
     checkInsertPersonRequest(o.insertPerson!);
+    checkInsertRichLinkRequest(o.insertRichLink!);
     checkInsertSectionBreakRequest(o.insertSectionBreak!);
     checkInsertTableRequest(o.insertTable!);
     checkInsertTableColumnRequest(o.insertTableColumn!);
@@ -3569,6 +3595,7 @@ void checkRequest(api.Request o) {
     checkUnmergeTableCellsRequest(o.unmergeTableCells!);
     checkUpdateDocumentStyleRequest(o.updateDocumentStyle!);
     checkUpdateDocumentTabPropertiesRequest(o.updateDocumentTabProperties!);
+    checkUpdateNamedStyleRequest(o.updateNamedStyle!);
     checkUpdateParagraphStyleRequest(o.updateParagraphStyle!);
     checkUpdateSectionStyleRequest(o.updateSectionStyle!);
     checkUpdateTableCellStyleRequest(o.updateTableCellStyle!);
@@ -5053,6 +5080,29 @@ void checkUpdateDocumentTabPropertiesRequest(
   buildCounterUpdateDocumentTabPropertiesRequest--;
 }
 
+core.int buildCounterUpdateNamedStyleRequest = 0;
+api.UpdateNamedStyleRequest buildUpdateNamedStyleRequest() {
+  final o = api.UpdateNamedStyleRequest();
+  buildCounterUpdateNamedStyleRequest++;
+  if (buildCounterUpdateNamedStyleRequest < 3) {
+    o.fields = 'foo';
+    o.namedStyle = buildNamedStyle();
+    o.tabId = 'foo';
+  }
+  buildCounterUpdateNamedStyleRequest--;
+  return o;
+}
+
+void checkUpdateNamedStyleRequest(api.UpdateNamedStyleRequest o) {
+  buildCounterUpdateNamedStyleRequest++;
+  if (buildCounterUpdateNamedStyleRequest < 3) {
+    unittest.expect(o.fields!, unittest.equals('foo'));
+    checkNamedStyle(o.namedStyle!);
+    unittest.expect(o.tabId!, unittest.equals('foo'));
+  }
+  buildCounterUpdateNamedStyleRequest--;
+}
+
 core.int buildCounterUpdateParagraphStyleRequest = 0;
 api.UpdateParagraphStyleRequest buildUpdateParagraphStyleRequest() {
   final o = api.UpdateParagraphStyleRequest();
@@ -6004,6 +6054,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkInsertPersonRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-InsertRichLinkRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInsertRichLinkRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertRichLinkRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkInsertRichLinkRequest(od);
     });
   });
 
@@ -7014,6 +7075,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkUpdateDocumentTabPropertiesRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpdateNamedStyleRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpdateNamedStyleRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateNamedStyleRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUpdateNamedStyleRequest(od);
     });
   });
 

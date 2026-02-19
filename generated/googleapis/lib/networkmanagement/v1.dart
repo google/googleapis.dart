@@ -132,20 +132,24 @@ class OrganizationsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -719,20 +723,24 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1955,6 +1963,8 @@ class AbortInfo {
   /// - "GKE_POD_UNKNOWN_ENDPOINT_LOCATION" : Aborted because selected GKE Pod
   /// endpoint location is unknown. This is often the case for "Pending" Pods,
   /// which don't have assigned IP addresses yet.
+  /// - "RESPONSE_TOO_LARGE" : Aborted because the response size exceeds the
+  /// limit.
   core.String? cause;
 
   /// IP address that caused the abort.
@@ -3044,9 +3054,12 @@ class DropInfo {
   /// route matched within this hybrid subnet.
   /// - "HYBRID_SUBNET_NO_ROUTE" : Packet is dropped because no matching route
   /// was found in the hybrid subnet.
+  /// - "GKE_NETWORK_POLICY" : Packet is dropped by GKE Network Policy.
   /// - "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION" : Packet is
   /// dropped because there is no valid matching route from the network of the
   /// Google-managed service to the destination.
+  /// - "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE" : Packet is dropped due to no
+  /// running instance found for private connection.
   core.String? cause;
 
   /// Geolocation (region code) of the destination IP address (if relevant).
@@ -4031,6 +4044,87 @@ class GKEMasterInfo {
       'externalIp': ?externalIp,
       'internalIp': ?internalIp,
     };
+  }
+}
+
+/// For display only.
+///
+/// Metadata associated with a GKE Network Policy.
+class GkeNetworkPolicyInfo {
+  /// Possible values: ALLOW, DENY
+  core.String? action;
+
+  /// Possible values: INGRESS, EGRESS
+  core.String? direction;
+
+  /// The name of the Network Policy.
+  core.String? displayName;
+
+  /// The URI of the Network Policy.
+  ///
+  /// Format for a Network Policy in a zonal cluster:
+  /// `projects//zones//clusters//k8s/namespaces//networking.k8s.io/networkpolicies/`
+  /// Format for a Network Policy in a regional cluster:
+  /// `projects//locations//clusters//k8s/namespaces//networking.k8s.io/networkpolicies/`
+  core.String? uri;
+
+  GkeNetworkPolicyInfo({
+    this.action,
+    this.direction,
+    this.displayName,
+    this.uri,
+  });
+
+  GkeNetworkPolicyInfo.fromJson(core.Map json_)
+    : this(
+        action: json_['action'] as core.String?,
+        direction: json_['direction'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final direction = this.direction;
+    final displayName = this.displayName;
+    final uri = this.uri;
+    return {
+      'action': ?action,
+      'direction': ?direction,
+      'displayName': ?displayName,
+      'uri': ?uri,
+    };
+  }
+}
+
+/// For display only.
+///
+/// Contains information about why GKE Network Policy evaluation was skipped.
+class GkeNetworkPolicySkippedInfo {
+  /// Reason why Network Policy evaluation was skipped.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Unused default value.
+  /// - "NETWORK_POLICY_DISABLED" : Network Policy is disabled on the cluster.
+  /// - "INGRESS_SOURCE_ON_SAME_NODE" : Ingress traffic to a Pod from a source
+  /// on the same Node is always allowed.
+  /// - "EGRESS_FROM_NODE_NETWORK_NAMESPACE_POD" : Egress traffic from a Pod
+  /// that uses the Node's network namespace is not subject to Network Policy.
+  /// - "NETWORK_POLICY_NOT_APPLIED_TO_RESPONSE_TRAFFIC" : Network Policy is not
+  /// applied to response traffic. This is because GKE Network Policy evaluation
+  /// is stateful in both GKE Dataplane V2 (eBPF) and legacy (iptables)
+  /// implementations.
+  /// - "NETWORK_POLICY_ANALYSIS_UNSUPPORTED" : Network Policy evaluation is
+  /// currently not supported for clusters with FQDN Network Policies enabled.
+  core.String? reason;
+
+  GkeNetworkPolicySkippedInfo({this.reason});
+
+  GkeNetworkPolicySkippedInfo.fromJson(core.Map json_)
+    : this(reason: json_['reason'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    return {'reason': ?reason};
   }
 }
 
@@ -5070,6 +5164,28 @@ class NetworkInfo {
   }
 }
 
+/// For display only.
+///
+/// Metadata associated with a layer 7 packet inspection by the firewall.
+class NgfwPacketInspectionInfo {
+  /// URI of the security profile group associated with this firewall packet
+  /// inspection.
+  core.String? securityProfileGroupUri;
+
+  NgfwPacketInspectionInfo({this.securityProfileGroupUri});
+
+  NgfwPacketInspectionInfo.fromJson(core.Map json_)
+    : this(
+        securityProfileGroupUri:
+            json_['securityProfileGroupUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final securityProfileGroupUri = this.securityProfileGroupUri;
+    return {'securityProfileGroupUri': ?securityProfileGroupUri};
+  }
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -5269,6 +5385,25 @@ class Policy {
       'etag': ?etag,
       'version': ?version,
     };
+  }
+}
+
+/// For display only.
+///
+/// Metadata associated with a Private Connection.
+class PrivateConnectionInfo {
+  /// URI of the Private Connection in format
+  /// "projects/{project_id}/locations/{location}/privateConnections/{private_connection_id}"
+  core.String? uri;
+
+  PrivateConnectionInfo({this.uri});
+
+  PrivateConnectionInfo.fromJson(core.Map json_)
+    : this(uri: json_['uri'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final uri = this.uri;
+    return {'uri': ?uri};
   }
 }
 
@@ -5871,7 +6006,9 @@ class RouteInfo {
   ///
   /// DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set
   /// for POLICY_BASED route, this is a region of VLAN attachments for Cloud
-  /// Interconnect the route applies to.
+  /// Interconnect the route applies to. If set to "all" for POLICY_BASED route,
+  /// the route applies to VLAN attachments of Cloud Interconnect in all
+  /// regions.
   core.String? region;
 
   /// Indicates where route is applicable.
@@ -6273,6 +6410,9 @@ class Step {
   /// Display information of a Cloud SQL instance.
   CloudSQLInstanceInfo? cloudSqlInstance;
 
+  /// Display information of a Datastream Private Connection.
+  PrivateConnectionInfo? datastreamPrivateConnection;
+
   /// Display information of the final state "deliver" and reason.
   DeliverInfo? deliver;
 
@@ -6283,6 +6423,9 @@ class Step {
 
   /// Display information of a serverless direct VPC egress connection.
   DirectVpcEgressConnectionInfo? directVpcEgressConnection;
+
+  /// Display information of a DMS Private Connection.
+  PrivateConnectionInfo? dmsPrivateConnection;
 
   /// Display information of the final state "drop" and reason.
   DropInfo? drop;
@@ -6305,6 +6448,13 @@ class Step {
 
   /// Display information of a Google Kubernetes Engine cluster master.
   GKEMasterInfo? gkeMaster;
+
+  /// Display information of a GKE Network Policy.
+  GkeNetworkPolicyInfo? gkeNetworkPolicy;
+
+  /// Display information of the reason why GKE Network Policy evaluation was
+  /// skipped.
+  GkeNetworkPolicySkippedInfo? gkeNetworkPolicySkipped;
 
   /// Display information of a Google Kubernetes Engine Pod.
   GkePodInfo? gkePod;
@@ -6341,6 +6491,9 @@ class Step {
 
   /// Display information of a Google Cloud network.
   NetworkInfo? network;
+
+  /// Display information of a layer 7 packet inspection by the firewall.
+  NgfwPacketInspectionInfo? ngfwPacketInspection;
 
   /// Project ID that contains the configuration this step is validating.
   core.String? projectId;
@@ -6412,6 +6565,10 @@ class Step {
   /// - "START_FROM_SERVERLESS_NEG" : Initial state: packet originating from a
   /// serverless network endpoint group backend. Used only for return traces.
   /// The serverless_neg information is populated.
+  /// - "START_FROM_DMS_PRIVATE_CONNECTION" : Initial state: packet originating
+  /// from a DMS Private Connection.
+  /// - "START_FROM_DATASTREAM_PRIVATE_CONNECTION" : Initial state: packet
+  /// originating from a Datastream Private Connection.
   /// - "APPLY_INGRESS_FIREWALL_RULE" : Config checking state: verify ingress
   /// firewall rule.
   /// - "APPLY_EGRESS_FIREWALL_RULE" : Config checking state: verify egress
@@ -6438,17 +6595,30 @@ class Step {
   /// interconnect attachment.
   /// - "ARRIVE_AT_VPC_CONNECTOR" : Forwarding state: arriving at a VPC
   /// connector.
+  /// - "ARRIVE_AT_GKE_POD" : Forwarding state: arriving at a GKE Pod.
   /// - "DIRECT_VPC_EGRESS_CONNECTION" : Forwarding state: for packets
   /// originating from a serverless endpoint forwarded through Direct VPC
   /// egress.
   /// - "SERVERLESS_EXTERNAL_CONNECTION" : Forwarding state: for packets
   /// originating from a serverless endpoint forwarded through public (external)
   /// connectivity.
+  /// - "NGFW_PACKET_INSPECTION" : Forwarding state: Layer 7 packet inspection
+  /// by the firewall endpoint based on the configured security profile group.
   /// - "NAT" : Transition state: packet header translated. The `nat` field is
   /// populated with the translation information.
   /// - "SKIP_GKE_POD_IP_MASQUERADING" : Transition state: GKE Pod IP
   /// masquerading is skipped. The `ip_masquerading_skipped` field is populated
   /// with the reason.
+  /// - "SKIP_GKE_INGRESS_NETWORK_POLICY" : Transition state: GKE Ingress
+  /// Network Policy is skipped. The `gke_network_policy_skipped` field is
+  /// populated with the reason.
+  /// - "SKIP_GKE_EGRESS_NETWORK_POLICY" : Transition state: GKE Egress Network
+  /// Policy is skipped. The `gke_network_policy_skipped` field is populated
+  /// with the reason.
+  /// - "APPLY_INGRESS_GKE_NETWORK_POLICY" : Config checking state: verify
+  /// ingress GKE network policy.
+  /// - "APPLY_EGRESS_GKE_NETWORK_POLICY" : Config checking state: verify egress
+  /// GKE network policy.
   /// - "PROXY_CONNECTION" : Transition state: original connection is terminated
   /// and a new proxied connection is initiated.
   /// - "DELIVER" : Final state: packet could be delivered.
@@ -6481,15 +6651,19 @@ class Step {
     this.cloudFunction,
     this.cloudRunRevision,
     this.cloudSqlInstance,
+    this.datastreamPrivateConnection,
     this.deliver,
     this.description,
     this.directVpcEgressConnection,
+    this.dmsPrivateConnection,
     this.drop,
     this.endpoint,
     this.firewall,
     this.forward,
     this.forwardingRule,
     this.gkeMaster,
+    this.gkeNetworkPolicy,
+    this.gkeNetworkPolicySkipped,
     this.gkePod,
     this.googleService,
     this.hybridSubnet,
@@ -6500,6 +6674,7 @@ class Step {
     this.loadBalancerBackendInfo,
     this.nat,
     this.network,
+    this.ngfwPacketInspection,
     this.projectId,
     this.proxyConnection,
     this.redisCluster,
@@ -6545,6 +6720,13 @@ class Step {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        datastreamPrivateConnection:
+            json_.containsKey('datastreamPrivateConnection')
+            ? PrivateConnectionInfo.fromJson(
+                json_['datastreamPrivateConnection']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deliver: json_.containsKey('deliver')
             ? DeliverInfo.fromJson(
                 json_['deliver'] as core.Map<core.String, core.dynamic>,
@@ -6555,6 +6737,12 @@ class Step {
             json_.containsKey('directVpcEgressConnection')
             ? DirectVpcEgressConnectionInfo.fromJson(
                 json_['directVpcEgressConnection']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dmsPrivateConnection: json_.containsKey('dmsPrivateConnection')
+            ? PrivateConnectionInfo.fromJson(
+                json_['dmsPrivateConnection']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -6586,6 +6774,18 @@ class Step {
         gkeMaster: json_.containsKey('gkeMaster')
             ? GKEMasterInfo.fromJson(
                 json_['gkeMaster'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gkeNetworkPolicy: json_.containsKey('gkeNetworkPolicy')
+            ? GkeNetworkPolicyInfo.fromJson(
+                json_['gkeNetworkPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gkeNetworkPolicySkipped: json_.containsKey('gkeNetworkPolicySkipped')
+            ? GkeNetworkPolicySkippedInfo.fromJson(
+                json_['gkeNetworkPolicySkipped']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         gkePod: json_.containsKey('gkePod')
@@ -6639,6 +6839,12 @@ class Step {
         network: json_.containsKey('network')
             ? NetworkInfo.fromJson(
                 json_['network'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ngfwPacketInspection: json_.containsKey('ngfwPacketInspection')
+            ? NgfwPacketInspectionInfo.fromJson(
+                json_['ngfwPacketInspection']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         projectId: json_['projectId'] as core.String?,
@@ -6704,15 +6910,19 @@ class Step {
     final cloudFunction = this.cloudFunction;
     final cloudRunRevision = this.cloudRunRevision;
     final cloudSqlInstance = this.cloudSqlInstance;
+    final datastreamPrivateConnection = this.datastreamPrivateConnection;
     final deliver = this.deliver;
     final description = this.description;
     final directVpcEgressConnection = this.directVpcEgressConnection;
+    final dmsPrivateConnection = this.dmsPrivateConnection;
     final drop = this.drop;
     final endpoint = this.endpoint;
     final firewall = this.firewall;
     final forward = this.forward;
     final forwardingRule = this.forwardingRule;
     final gkeMaster = this.gkeMaster;
+    final gkeNetworkPolicy = this.gkeNetworkPolicy;
+    final gkeNetworkPolicySkipped = this.gkeNetworkPolicySkipped;
     final gkePod = this.gkePod;
     final googleService = this.googleService;
     final hybridSubnet = this.hybridSubnet;
@@ -6723,6 +6933,7 @@ class Step {
     final loadBalancerBackendInfo = this.loadBalancerBackendInfo;
     final nat = this.nat;
     final network = this.network;
+    final ngfwPacketInspection = this.ngfwPacketInspection;
     final projectId = this.projectId;
     final proxyConnection = this.proxyConnection;
     final redisCluster = this.redisCluster;
@@ -6742,15 +6953,19 @@ class Step {
       'cloudFunction': ?cloudFunction,
       'cloudRunRevision': ?cloudRunRevision,
       'cloudSqlInstance': ?cloudSqlInstance,
+      'datastreamPrivateConnection': ?datastreamPrivateConnection,
       'deliver': ?deliver,
       'description': ?description,
       'directVpcEgressConnection': ?directVpcEgressConnection,
+      'dmsPrivateConnection': ?dmsPrivateConnection,
       'drop': ?drop,
       'endpoint': ?endpoint,
       'firewall': ?firewall,
       'forward': ?forward,
       'forwardingRule': ?forwardingRule,
       'gkeMaster': ?gkeMaster,
+      'gkeNetworkPolicy': ?gkeNetworkPolicy,
+      'gkeNetworkPolicySkipped': ?gkeNetworkPolicySkipped,
       'gkePod': ?gkePod,
       'googleService': ?googleService,
       'hybridSubnet': ?hybridSubnet,
@@ -6761,6 +6976,7 @@ class Step {
       'loadBalancerBackendInfo': ?loadBalancerBackendInfo,
       'nat': ?nat,
       'network': ?network,
+      'ngfwPacketInspection': ?ngfwPacketInspection,
       'projectId': ?projectId,
       'proxyConnection': ?proxyConnection,
       'redisCluster': ?redisCluster,

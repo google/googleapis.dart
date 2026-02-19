@@ -30,6 +30,7 @@
 ///   - [ConferenceRecordsParticipantsResource]
 ///     - [ConferenceRecordsParticipantsParticipantSessionsResource]
 ///   - [ConferenceRecordsRecordingsResource]
+///   - [ConferenceRecordsSmartNotesResource]
 ///   - [ConferenceRecordsTranscriptsResource]
 ///     - [ConferenceRecordsTranscriptsEntriesResource]
 /// - [SpacesResource]
@@ -88,6 +89,8 @@ class ConferenceRecordsResource {
       ConferenceRecordsParticipantsResource(_requester);
   ConferenceRecordsRecordingsResource get recordings =>
       ConferenceRecordsRecordingsResource(_requester);
+  ConferenceRecordsSmartNotesResource get smartNotes =>
+      ConferenceRecordsSmartNotesResource(_requester);
   ConferenceRecordsTranscriptsResource get transcripts =>
       ConferenceRecordsTranscriptsResource(_requester);
 
@@ -491,6 +494,96 @@ class ConferenceRecordsRecordingsResource {
       queryParams: queryParams_,
     );
     return ListRecordingsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ConferenceRecordsSmartNotesResource {
+  final commons.ApiRequester _requester;
+
+  ConferenceRecordsSmartNotesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets smart notes by smart note ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the smart note. Format:
+  /// conferenceRecords/{conference_record}/smartNotes/{smart_note}
+  /// Value must have pattern `^conferenceRecords/\[^/\]+/smartNotes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SmartNote].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SmartNote> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SmartNote.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the set of smart notes from the conference record.
+  ///
+  /// By default, ordered by start time and in ascending order.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: `conferenceRecords/{conference_record}`
+  /// Value must have pattern `^conferenceRecords/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of smart notes to return. The
+  /// service might return fewer than this value. If unspecified, at most 10
+  /// smart notes are returned. The maximum value is 100; values above 100 are
+  /// coerced to 100. Maximum might change in the future.
+  ///
+  /// [pageToken] - Optional. Page token returned from previous List Call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSmartNotesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSmartNotesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/smartNotes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSmartNotesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1123,6 +1216,37 @@ typedef Empty = $Empty;
 /// Request to end an ongoing conference of a space.
 typedef EndActiveConferenceRequest = $Empty;
 
+/// Details how to join the conference through a SIP gateway.
+class GatewaySipAccess {
+  /// The permanent numeric code for manual entry on specially configured
+  /// devices.
+  core.String? sipAccessCode;
+
+  /// The Session Initiation Protocol (SIP) URI the conference can be reached
+  /// through.
+  ///
+  /// The string is in one of these formats: * "sip:USER_ID@GATEWAY_ADDRESS" *
+  /// "sips:USER_ID@GATEWAY_ADDRESS" where USER_ID is the 13-digit universal pin
+  /// (with the future option to support using a Meet meeting code as well), and
+  /// GATEWAY_ADDRESS is a valid address to be resolved using a DNS SRV lookup,
+  /// or a dotted quad.
+  core.String? uri;
+
+  GatewaySipAccess({this.sipAccessCode, this.uri});
+
+  GatewaySipAccess.fromJson(core.Map json_)
+    : this(
+        sipAccessCode: json_['sipAccessCode'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sipAccessCode = this.sipAccessCode;
+    final uri = this.uri;
+    return {'sipAccessCode': ?sipAccessCode, 'uri': ?uri};
+  }
+}
+
 /// Response of ListConferenceRecords method.
 class ListConferenceRecordsResponse {
   /// List of conferences in one page.
@@ -1275,6 +1399,38 @@ class ListRecordingsResponse {
     final nextPageToken = this.nextPageToken;
     final recordings = this.recordings;
     return {'nextPageToken': ?nextPageToken, 'recordings': ?recordings};
+  }
+}
+
+/// Response for ListSmartNotes method.
+class ListSmartNotesResponse {
+  /// Token to be circulated back for further List call if current List doesn't
+  /// include all the smart notes.
+  ///
+  /// Unset if all smart notes are returned.
+  core.String? nextPageToken;
+
+  /// List of smart notes in one page.
+  core.List<SmartNote>? smartNotes;
+
+  ListSmartNotesResponse({this.nextPageToken, this.smartNotes});
+
+  ListSmartNotesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        smartNotes: (json_['smartNotes'] as core.List?)
+            ?.map(
+              (value) => SmartNote.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final smartNotes = this.smartNotes;
+    return {'nextPageToken': ?nextPageToken, 'smartNotes': ?smartNotes};
   }
 }
 
@@ -1530,6 +1686,56 @@ class ParticipantSession {
   }
 }
 
+/// Phone access contains information required to dial into a conference using a
+/// regional phone number and a PIN that is specific to that phone number.
+class PhoneAccess {
+  /// The BCP 47/LDML language code for the language associated with this phone
+  /// access.
+  ///
+  /// To be parsed by the i18n LanguageCode utility. Examples: "es-419" for
+  /// Latin American Spanish, "fr-CA" for Canadian French.
+  core.String? languageCode;
+
+  /// The phone number to dial for this meeting space in E.164 format.
+  ///
+  /// Full phone number with a leading '+' character.
+  core.String? phoneNumber;
+
+  /// The PIN that users must enter after dialing the given number.
+  ///
+  /// The PIN consists of only decimal digits and the length may vary.
+  core.String? pin;
+
+  /// The CLDR/ISO 3166 region code for the country associated with this phone
+  /// access.
+  ///
+  /// To be parsed by the i18n RegionCode utility. Example: "SE" for Sweden.
+  core.String? regionCode;
+
+  PhoneAccess({this.languageCode, this.phoneNumber, this.pin, this.regionCode});
+
+  PhoneAccess.fromJson(core.Map json_)
+    : this(
+        languageCode: json_['languageCode'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        pin: json_['pin'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final languageCode = this.languageCode;
+    final phoneNumber = this.phoneNumber;
+    final pin = this.pin;
+    final regionCode = this.regionCode;
+    return {
+      'languageCode': ?languageCode,
+      'phoneNumber': ?phoneNumber,
+      'pin': ?pin,
+      'regionCode': ?regionCode,
+    };
+  }
+}
+
 /// User dialing in from a phone where the user's identity is unknown because
 /// they haven't signed in with a Google Account.
 class PhoneUser {
@@ -1687,6 +1893,84 @@ class SignedinUser {
   }
 }
 
+/// Metadata for a smart note generated from a conference.
+///
+/// It refers to the notes generated from Take Notes with Gemini during the
+/// conference.
+class SmartNote {
+  /// The Google Doc destination where the smart notes are saved.
+  ///
+  /// Output only.
+  DocsDestination? docsDestination;
+
+  /// Timestamp when the smart notes stopped.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Identifier.
+  ///
+  /// Resource name of the smart notes. Format:
+  /// `conferenceRecords/{conference_record}/smartNotes/{smart_note}`, where
+  /// `{smart_note}` is a 1:1 mapping to each unique smart notes session of the
+  /// conference.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Timestamp when the smart notes started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// Current state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default, never used.
+  /// - "STARTED" : An active smart notes session has started.
+  /// - "ENDED" : This smart notes session has ended, but the smart notes file
+  /// hasn't been generated yet.
+  /// - "FILE_GENERATED" : Smart notes file is generated and ready to download.
+  core.String? state;
+
+  SmartNote({
+    this.docsDestination,
+    this.endTime,
+    this.name,
+    this.startTime,
+    this.state,
+  });
+
+  SmartNote.fromJson(core.Map json_)
+    : this(
+        docsDestination: json_.containsKey('docsDestination')
+            ? DocsDestination.fromJson(
+                json_['docsDestination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final docsDestination = this.docsDestination;
+    final endTime = this.endTime;
+    final name = this.name;
+    final startTime = this.startTime;
+    final state = this.state;
+    return {
+      'docsDestination': ?docsDestination,
+      'endTime': ?endTime,
+      'name': ?name,
+      'startTime': ?startTime,
+      'state': ?state,
+    };
+  }
+}
+
 /// Configuration related to smart notes in a meeting space.
 ///
 /// For more information about smart notes, see \["Take notes for me" in Google
@@ -1726,6 +2010,13 @@ class Space {
   /// Configuration pertaining to the meeting space.
   SpaceConfig? config;
 
+  /// The SIP-based access methods that can be used to join the conference.
+  ///
+  /// Can be empty.
+  ///
+  /// Output only.
+  core.List<GatewaySipAccess>? gatewaySipAccess;
+
   /// Type friendly unique string used to join the meeting.
   ///
   /// Format: `[a-z]+-[a-z]+-[a-z]+`. For example, `abc-mnop-xyz`. The maximum
@@ -1753,12 +2044,21 @@ class Space {
   /// Immutable.
   core.String? name;
 
+  /// All regional phone access methods for this meeting space.
+  ///
+  /// Can be empty.
+  ///
+  /// Output only.
+  core.List<PhoneAccess>? phoneAccess;
+
   Space({
     this.activeConference,
     this.config,
+    this.gatewaySipAccess,
     this.meetingCode,
     this.meetingUri,
     this.name,
+    this.phoneAccess,
   });
 
   Space.fromJson(core.Map json_)
@@ -1774,23 +2074,41 @@ class Space {
                 json_['config'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        gatewaySipAccess: (json_['gatewaySipAccess'] as core.List?)
+            ?.map(
+              (value) => GatewaySipAccess.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         meetingCode: json_['meetingCode'] as core.String?,
         meetingUri: json_['meetingUri'] as core.String?,
         name: json_['name'] as core.String?,
+        phoneAccess: (json_['phoneAccess'] as core.List?)
+            ?.map(
+              (value) => PhoneAccess.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final activeConference = this.activeConference;
     final config = this.config;
+    final gatewaySipAccess = this.gatewaySipAccess;
     final meetingCode = this.meetingCode;
     final meetingUri = this.meetingUri;
     final name = this.name;
+    final phoneAccess = this.phoneAccess;
     return {
       'activeConference': ?activeConference,
       'config': ?config,
+      'gatewaySipAccess': ?gatewaySipAccess,
       'meetingCode': ?meetingCode,
       'meetingUri': ?meetingUri,
       'name': ?name,
+      'phoneAccess': ?phoneAccess,
     };
   }
 }

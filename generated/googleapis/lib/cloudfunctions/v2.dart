@@ -92,20 +92,24 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1556,6 +1560,53 @@ typedef Date = $Date;
 /// Request for the `DetachFunction` method.
 typedef DetachFunctionRequest = $Empty;
 
+/// The Direct VPC network interface.
+///
+/// This is mutually exclusive with VPC Connector.
+class DirectVpcNetworkInterface {
+  /// The name of the VPC network to which the function will be connected.
+  ///
+  /// Specify either a VPC network or a subnet, or both. If you specify only a
+  /// network, the subnet uses the same name as the network.
+  ///
+  /// Optional.
+  core.String? network;
+
+  /// The name of the VPC subnetwork that the Cloud Function resource will get
+  /// IPs from.
+  ///
+  /// Specify either a VPC network or a subnet, or both. If both network and
+  /// subnetwork are specified, the given VPC subnetwork must belong to the
+  /// given VPC network. If subnetwork is not specified, the subnetwork with the
+  /// same name with the network will be used.
+  ///
+  /// Optional.
+  core.String? subnetwork;
+
+  /// Network tags applied to this Cloud Function resource.
+  ///
+  /// Optional.
+  core.List<core.String>? tags;
+
+  DirectVpcNetworkInterface({this.network, this.subnetwork, this.tags});
+
+  DirectVpcNetworkInterface.fromJson(core.Map json_)
+    : this(
+        network: json_['network'] as core.String?,
+        subnetwork: json_['subnetwork'] as core.String?,
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final network = this.network;
+    final subnetwork = this.subnetwork;
+    final tags = this.tags;
+    return {'network': ?network, 'subnetwork': ?subnetwork, 'tags': ?tags};
+  }
+}
+
 /// Filters events based on exact matches on the CloudEvents attributes.
 class EventFilter {
   /// The name of a CloudEvents attribute.
@@ -2770,6 +2821,26 @@ class ServiceConfig {
   /// Optional.
   core.String? binaryAuthorizationPolicy;
 
+  /// Egress settings for direct VPC.
+  ///
+  /// If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DIRECT_VPC_EGRESS_UNSPECIFIED" : Unspecified.
+  /// - "VPC_EGRESS_PRIVATE_RANGES_ONLY" : Sends only traffic to internal
+  /// addresses through the VPC network.
+  /// - "VPC_EGRESS_ALL_TRAFFIC" : Sends all outbound traffic through the VPC
+  /// network.
+  core.String? directVpcEgress;
+
+  /// The Direct VPC network interface for the Cloud Function.
+  ///
+  /// Currently only a single Direct VPC is supported.
+  ///
+  /// Optional.
+  core.List<DirectVpcNetworkInterface>? directVpcNetworkInterface;
+
   /// Environment variables that shall be available during function execution.
   core.Map<core.String, core.String>? environmentVariables;
 
@@ -2886,6 +2957,8 @@ class ServiceConfig {
     this.availableCpu,
     this.availableMemory,
     this.binaryAuthorizationPolicy,
+    this.directVpcEgress,
+    this.directVpcNetworkInterface,
     this.environmentVariables,
     this.ingressSettings,
     this.maxInstanceCount,
@@ -2911,6 +2984,15 @@ class ServiceConfig {
         availableMemory: json_['availableMemory'] as core.String?,
         binaryAuthorizationPolicy:
             json_['binaryAuthorizationPolicy'] as core.String?,
+        directVpcEgress: json_['directVpcEgress'] as core.String?,
+        directVpcNetworkInterface:
+            (json_['directVpcNetworkInterface'] as core.List?)
+                ?.map(
+                  (value) => DirectVpcNetworkInterface.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         environmentVariables:
             (json_['environmentVariables']
                     as core.Map<core.String, core.dynamic>?)
@@ -2951,6 +3033,8 @@ class ServiceConfig {
     final availableCpu = this.availableCpu;
     final availableMemory = this.availableMemory;
     final binaryAuthorizationPolicy = this.binaryAuthorizationPolicy;
+    final directVpcEgress = this.directVpcEgress;
+    final directVpcNetworkInterface = this.directVpcNetworkInterface;
     final environmentVariables = this.environmentVariables;
     final ingressSettings = this.ingressSettings;
     final maxInstanceCount = this.maxInstanceCount;
@@ -2971,6 +3055,8 @@ class ServiceConfig {
       'availableCpu': ?availableCpu,
       'availableMemory': ?availableMemory,
       'binaryAuthorizationPolicy': ?binaryAuthorizationPolicy,
+      'directVpcEgress': ?directVpcEgress,
+      'directVpcNetworkInterface': ?directVpcNetworkInterface,
       'environmentVariables': ?environmentVariables,
       'ingressSettings': ?ingressSettings,
       'maxInstanceCount': ?maxInstanceCount,
@@ -3309,9 +3395,11 @@ class UpgradeInfo {
   /// un-successful and 1st gen function might have broken.
   /// - "COMMIT_FUNCTION_UPGRADE_ERROR_ROLLBACK_SAFE" : CommitFunctionUpgrade
   /// API was un-successful but safe to rollback traffic or abort.
-  /// - "COMMIT_FUNCTION_UPGRADE_AS_GEN2_SUCCESSFUL" : Indicates that the
-  /// `CommitFunctionUpgradeAsGen2` API call succeeded and the function was
-  /// successfully migrated to the 2nd Gen stack.
+  /// - "COMMIT_FUNCTION_UPGRADE_AS_GEN2_SUCCESSFUL" : Deprecated: This state is
+  /// no longer returned by the backend. Clients should not rely on polling for
+  /// this specific state. A successful upgrade is now indicated by the
+  /// long-running operation completing successfully with a Function resource in
+  /// the response.
   /// - "COMMIT_FUNCTION_UPGRADE_AS_GEN2_ERROR" : CommitFunctionUpgradeAsGen2
   /// API was un-successful and 1st gen function might have broken.
   core.String? upgradeState;

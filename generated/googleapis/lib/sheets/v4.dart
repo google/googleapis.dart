@@ -262,17 +262,18 @@ class SpreadsheetsResource {
 
   /// Returns the spreadsheet at the given ID.
   ///
-  /// The caller must specify the spreadsheet ID. This method differs from
-  /// GetSpreadsheet in that it allows selecting which subsets of spreadsheet
-  /// data to return by specifying a dataFilters parameter. Multiple DataFilters
-  /// can be specified. Specifying one or more data filters returns the portions
-  /// of the spreadsheet that intersect ranges matched by any of the filters. By
-  /// default, data within grids is not returned. You can include grid data one
-  /// of 2 ways: * Specify a
+  /// The caller must specify the spreadsheet ID. For more information, see
+  /// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
+  /// This method differs from GetSpreadsheet in that it allows selecting which
+  /// subsets of spreadsheet data to return by specifying a dataFilters
+  /// parameter. Multiple DataFilters can be specified. Specifying one or more
+  /// data filters returns the portions of the spreadsheet that intersect ranges
+  /// matched by any of the filters. By default, data within grids is not
+  /// returned. You can include grid data in one of two ways: * Specify a
   /// [field mask](https://developers.google.com/workspace/sheets/api/guides/field-masks)
-  /// listing your desired fields using the `fields` URL parameter in HTTP * Set
-  /// the includeGridData parameter to true. If a field mask is set, the
-  /// `includeGridData` parameter is ignored For large spreadsheets, as a best
+  /// listing your desired fields using the `fields` URL parameter in HTTP. *
+  /// Set the includeGridData parameter to `true`. If a field mask is set, the
+  /// `includeGridData` parameter is ignored. For large spreadsheets, as a best
   /// practice, retrieve only the specific spreadsheet fields that you want.
   ///
   /// [request] - The metadata request object.
@@ -327,7 +328,8 @@ class SpreadsheetsDeveloperMetadataResource {
   /// Returns the developer metadata with the specified ID.
   ///
   /// The caller must specify the spreadsheet ID and the developer metadata's
-  /// unique metadataId.
+  /// unique metadataId. For more information, see
+  /// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
   ///
   /// Request parameters:
   ///
@@ -372,6 +374,8 @@ class SpreadsheetsDeveloperMetadataResource {
 
   /// Returns all developer metadata matching the specified DataFilter.
   ///
+  /// For more information, see
+  /// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
   /// If the provided DataFilter represents a DeveloperMetadataLookup object,
   /// this will return all DeveloperMetadata entries selected by it. If the
   /// DataFilter represents a location in a spreadsheet, this will return all
@@ -670,10 +674,12 @@ class SpreadsheetsValuesResource {
 
   /// Clears one or more ranges of values from a spreadsheet.
   ///
+  /// For more information, see
+  /// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
   /// The caller must specify the spreadsheet ID and one or more DataFilters.
   /// Ranges matching any of the specified data filters will be cleared. Only
   /// values are cleared -- all other properties of the cell (such as
-  /// formatting, data validation, etc..) are kept.
+  /// formatting, data validation, etc.) are kept.
   ///
   /// [request] - The metadata request object.
   ///
@@ -822,6 +828,8 @@ class SpreadsheetsValuesResource {
   /// Returns one or more ranges of values that match the specified data
   /// filters.
   ///
+  /// For more information, see
+  /// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
   /// The caller must specify the spreadsheet ID and one or more DataFilters.
   /// Ranges that match any of the data filters in the request will be returned.
   ///
@@ -916,6 +924,8 @@ class SpreadsheetsValuesResource {
 
   /// Sets values in one or more ranges of a spreadsheet.
   ///
+  /// For more information, see
+  /// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
   /// The caller must specify the spreadsheet ID, a valueInputOption, and one or
   /// more DataFilterValueRanges.
   ///
@@ -1490,7 +1500,7 @@ class AddDimensionGroupResponse {
 class AddFilterViewRequest {
   /// The filter to add.
   ///
-  /// The filterViewId field is optional; if one is not set, an id will be
+  /// The filterViewId field is optional. If one is not set, an ID will be
   /// randomly generated. (It is an error to specify the ID of a filter that
   /// already exists.)
   FilterView? filter;
@@ -2810,6 +2820,9 @@ class BasicChartSpec {
 }
 
 /// The default filter associated with a sheet.
+///
+/// For more information, see
+/// [Manage data visibility with filters](https://developers.google.com/workspace/sheets/api/guides/filters).
 class BasicFilter {
   /// The criteria for showing/hiding values per column.
   ///
@@ -2995,7 +3008,7 @@ class BatchClearValuesByDataFilterResponse {
   /// The ranges that were cleared, in
   /// [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell).
   ///
-  /// If the requests are for an unbounded range or a ranger larger than the
+  /// If the requests are for an unbounded range or a range larger than the
   /// bounds of the sheet, this is the actual ranges that were cleared, bounded
   /// to the sheet's limits.
   core.List<core.String>? clearedRanges;
@@ -3048,7 +3061,7 @@ class BatchClearValuesRequest {
 class BatchClearValuesResponse {
   /// The ranges that were cleared, in A1 notation.
   ///
-  /// If the requests are for an unbounded range or a ranger larger than the
+  /// If the requests are for an unbounded range or a range larger than the
   /// bounds of the sheet, this is the actual ranges that were cleared, bounded
   /// to the sheet's limits.
   core.List<core.String>? clearedRanges;
@@ -5628,7 +5641,7 @@ typedef ClearValuesRequest = $Empty;
 class ClearValuesResponse {
   /// The range (in A1 notation) that was cleared.
   ///
-  /// (If the request was for an unbounded range or a ranger larger than the
+  /// (If the request was for an unbounded range or a range larger than the
   /// bounds of the sheet, this will be the actual range that was cleared,
   /// bounded to the sheet's limits.)
   core.String? clearedRange;
@@ -6116,6 +6129,9 @@ class DataExecutionStatus {
 
 /// Filter that describes what data should be selected or returned from a
 /// request.
+///
+/// For more information, see
+/// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
 class DataFilter {
   /// Selects data that matches the specified A1 range.
   core.String? a1Range;
@@ -7516,13 +7532,15 @@ class DeleteTableRequest {
 
 /// Developer metadata associated with a location or object in a spreadsheet.
 ///
+/// For more information, see
+/// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
 /// Developer metadata may be used to associate arbitrary data with various
-/// parts of a spreadsheet and will remain associated at those locations as they
-/// move around and the spreadsheet is edited. For example, if developer
+/// parts of a spreadsheet and it will remain associated at those locations as
+/// they move around and the spreadsheet is edited. For example, if developer
 /// metadata is associated with row 5 and another row is then subsequently
-/// inserted above row 5, that original metadata will still be associated with
-/// the row it was first associated with (what is now row 6). If the associated
-/// object is deleted its metadata is deleted too.
+/// inserted above row 5, that original metadata is still associated with the
+/// row it was first associated with (what is now row 6). If the associated
+/// object is deleted then its metadata is deleted too.
 class DeveloperMetadata {
   /// The location where the metadata is associated.
   DeveloperMetadataLocation? location;
@@ -7544,7 +7562,7 @@ class DeveloperMetadata {
 
   /// The metadata visibility.
   ///
-  /// Developer metadata must always have a visibility specified.
+  /// Developer metadata must always have visibility specified.
   /// Possible string values are:
   /// - "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED" : Default value.
   /// - "DOCUMENT" : Document-visible metadata is accessible from any developer
@@ -7594,7 +7612,7 @@ class DeveloperMetadata {
 class DeveloperMetadataLocation {
   /// Represents the row or column when metadata is associated with a dimension.
   ///
-  /// The specified DimensionRange must represent a single row or column; it
+  /// The specified DimensionRange must represent a single row or column. It
   /// cannot be unbounded or span multiple rows or columns.
   DimensionRange? dimensionRange;
 
@@ -7656,8 +7674,8 @@ class DeveloperMetadataLocation {
 /// visibility, and location type are all specified, this considers all
 /// developer metadata with that key and visibility that are associated with a
 /// location of that type. In general, this selects all DeveloperMetadata that
-/// matches the intersection of all the specified fields; any field or
-/// combination of fields may be specified.
+/// match the intersection of all the specified fields; any field or combination
+/// of fields may be specified.
 class DeveloperMetadataLookup {
   /// Determines how this lookup matches the location.
   ///
@@ -7691,7 +7709,7 @@ class DeveloperMetadataLookup {
   /// unspecified, all location types are considered. This field cannot be
   /// specified as SPREADSHEET when the locationMatchingStrategy is specified as
   /// INTERSECTING or when the metadataLocation is specified as a
-  /// non-spreadsheet location: spreadsheet metadata cannot intersect any other
+  /// non-spreadsheet location. Spreadsheet metadata cannot intersect any other
   /// developer metadata location. This field also must be left unspecified when
   /// the locationMatchingStrategy is specified as EXACT.
   /// Possible string values are:
@@ -8322,9 +8340,9 @@ class ExtendedValue {
   }
 }
 
-/// Criteria for showing/hiding rows in a filter or filter view.
+/// Criteria for showing or hiding rows in a filter or filter view.
 class FilterCriteria {
-  /// A condition that must be true for values to be shown.
+  /// A condition that must be `true` for values to be shown.
   ///
   /// (This does not override hidden_values -- if a value is listed there, it
   /// will still be hidden.)
@@ -8481,6 +8499,9 @@ class FilterSpec {
 }
 
 /// A filter view.
+///
+/// For more information, see
+/// [Manage data visibility with filters](https://developers.google.com/workspace/sheets/api/guides/filters).
 class FilterView {
   /// The criteria for showing/hiding values per column.
   ///
@@ -8491,7 +8512,7 @@ class FilterView {
   )
   core.Map<core.String, FilterCriteria>? criteria;
 
-  /// The filter criteria for showing/hiding values per column.
+  /// The filter criteria for showing or hiding values per column.
   ///
   /// Both criteria and filter_specs are populated in responses. If both fields
   /// are specified in an update request, this field takes precedence.
@@ -8502,12 +8523,12 @@ class FilterView {
 
   /// The named range this filter view is backed by, if any.
   ///
-  /// When writing, only one of range or named_range_id or table_id may be set.
+  /// When writing, only one of range, named_range_id, or table_id may be set.
   core.String? namedRangeId;
 
   /// The range this filter view covers.
   ///
-  /// When writing, only one of range or named_range_id or table_id may be set.
+  /// When writing, only one of range, named_range_id, or table_id may be set.
   GridRange? range;
 
   /// The sort order per column.
@@ -8518,7 +8539,7 @@ class FilterView {
 
   /// The table this filter view is backed by, if any.
   ///
-  /// When writing, only one of range or named_range_id or table_id may be set.
+  /// When writing, only one of range, named_range_id, or table_id may be set.
   core.String? tableId;
 
   /// The name of the filter view.

@@ -952,69 +952,99 @@ void checkGoogleCloudRunV2ImageExportStatus(
   buildCounterGoogleCloudRunV2ImageExportStatus--;
 }
 
-core.Map<core.String, core.String> buildUnnamed19() => {'x': 'foo', 'y': 'foo'};
+core.List<api.GoogleCloudRunV2SourceFile> buildUnnamed19() => [
+  buildGoogleCloudRunV2SourceFile(),
+  buildGoogleCloudRunV2SourceFile(),
+];
 
-void checkUnnamed19(core.Map<core.String, core.String> o) {
+void checkUnnamed19(core.List<api.GoogleCloudRunV2SourceFile> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudRunV2SourceFile(o[0]);
+  checkGoogleCloudRunV2SourceFile(o[1]);
+}
+
+core.int buildCounterGoogleCloudRunV2InlinedSource = 0;
+api.GoogleCloudRunV2InlinedSource buildGoogleCloudRunV2InlinedSource() {
+  final o = api.GoogleCloudRunV2InlinedSource();
+  buildCounterGoogleCloudRunV2InlinedSource++;
+  if (buildCounterGoogleCloudRunV2InlinedSource < 3) {
+    o.sources = buildUnnamed19();
+  }
+  buildCounterGoogleCloudRunV2InlinedSource--;
+  return o;
+}
+
+void checkGoogleCloudRunV2InlinedSource(api.GoogleCloudRunV2InlinedSource o) {
+  buildCounterGoogleCloudRunV2InlinedSource++;
+  if (buildCounterGoogleCloudRunV2InlinedSource < 3) {
+    checkUnnamed19(o.sources!);
+  }
+  buildCounterGoogleCloudRunV2InlinedSource--;
+}
+
+core.Map<core.String, core.String> buildUnnamed20() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed20(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Condition> buildUnnamed20() => [
+core.List<api.GoogleCloudRunV2Condition> buildUnnamed21() => [
   buildGoogleCloudRunV2Condition(),
   buildGoogleCloudRunV2Condition(),
 ];
 
-void checkUnnamed20(core.List<api.GoogleCloudRunV2Condition> o) {
+void checkUnnamed21(core.List<api.GoogleCloudRunV2Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Condition(o[0]);
   checkGoogleCloudRunV2Condition(o[1]);
 }
 
-core.List<api.GoogleCloudRunV2ContainerStatus> buildUnnamed21() => [
+core.List<api.GoogleCloudRunV2ContainerStatus> buildUnnamed22() => [
   buildGoogleCloudRunV2ContainerStatus(),
   buildGoogleCloudRunV2ContainerStatus(),
 ];
 
-void checkUnnamed21(core.List<api.GoogleCloudRunV2ContainerStatus> o) {
+void checkUnnamed22(core.List<api.GoogleCloudRunV2ContainerStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2ContainerStatus(o[0]);
   checkGoogleCloudRunV2ContainerStatus(o[1]);
 }
 
-core.List<api.GoogleCloudRunV2Container> buildUnnamed22() => [
+core.List<api.GoogleCloudRunV2Container> buildUnnamed23() => [
   buildGoogleCloudRunV2Container(),
   buildGoogleCloudRunV2Container(),
 ];
 
-void checkUnnamed22(core.List<api.GoogleCloudRunV2Container> o) {
+void checkUnnamed23(core.List<api.GoogleCloudRunV2Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Container(o[0]);
   checkGoogleCloudRunV2Container(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed23() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed24() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed23(core.Map<core.String, core.String> o) {
+void checkUnnamed24(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
 
-void checkUnnamed24(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Volume> buildUnnamed25() => [
+core.List<api.GoogleCloudRunV2Volume> buildUnnamed26() => [
   buildGoogleCloudRunV2Volume(),
   buildGoogleCloudRunV2Volume(),
 ];
 
-void checkUnnamed25(core.List<api.GoogleCloudRunV2Volume> o) {
+void checkUnnamed26(core.List<api.GoogleCloudRunV2Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Volume(o[0]);
   checkGoogleCloudRunV2Volume(o[1]);
@@ -1025,13 +1055,13 @@ api.GoogleCloudRunV2Instance buildGoogleCloudRunV2Instance() {
   final o = api.GoogleCloudRunV2Instance();
   buildCounterGoogleCloudRunV2Instance++;
   if (buildCounterGoogleCloudRunV2Instance < 3) {
-    o.annotations = buildUnnamed19();
+    o.annotations = buildUnnamed20();
     o.binaryAuthorization = buildGoogleCloudRunV2BinaryAuthorization();
     o.client = 'foo';
     o.clientVersion = 'foo';
-    o.conditions = buildUnnamed20();
-    o.containerStatuses = buildUnnamed21();
-    o.containers = buildUnnamed22();
+    o.conditions = buildUnnamed21();
+    o.containerStatuses = buildUnnamed22();
+    o.containers = buildUnnamed23();
     o.createTime = 'foo';
     o.creator = 'foo';
     o.deleteTime = 'foo';
@@ -1046,7 +1076,7 @@ api.GoogleCloudRunV2Instance buildGoogleCloudRunV2Instance() {
     o.iapEnabled = true;
     o.ingress = 'foo';
     o.invokerIamDisabled = true;
-    o.labels = buildUnnamed23();
+    o.labels = buildUnnamed24();
     o.lastModifier = 'foo';
     o.launchStage = 'foo';
     o.logUri = 'foo';
@@ -1057,10 +1087,11 @@ api.GoogleCloudRunV2Instance buildGoogleCloudRunV2Instance() {
     o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
     o.terminalCondition = buildGoogleCloudRunV2Condition();
+    o.timeout = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
-    o.urls = buildUnnamed24();
-    o.volumes = buildUnnamed25();
+    o.urls = buildUnnamed25();
+    o.volumes = buildUnnamed26();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
   }
   buildCounterGoogleCloudRunV2Instance--;
@@ -1070,13 +1101,13 @@ api.GoogleCloudRunV2Instance buildGoogleCloudRunV2Instance() {
 void checkGoogleCloudRunV2Instance(api.GoogleCloudRunV2Instance o) {
   buildCounterGoogleCloudRunV2Instance++;
   if (buildCounterGoogleCloudRunV2Instance < 3) {
-    checkUnnamed19(o.annotations!);
+    checkUnnamed20(o.annotations!);
     checkGoogleCloudRunV2BinaryAuthorization(o.binaryAuthorization!);
     unittest.expect(o.client!, unittest.equals('foo'));
     unittest.expect(o.clientVersion!, unittest.equals('foo'));
-    checkUnnamed20(o.conditions!);
-    checkUnnamed21(o.containerStatuses!);
-    checkUnnamed22(o.containers!);
+    checkUnnamed21(o.conditions!);
+    checkUnnamed22(o.containerStatuses!);
+    checkUnnamed23(o.containers!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.creator!, unittest.equals('foo'));
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
@@ -1091,7 +1122,7 @@ void checkGoogleCloudRunV2Instance(api.GoogleCloudRunV2Instance o) {
     unittest.expect(o.iapEnabled!, unittest.isTrue);
     unittest.expect(o.ingress!, unittest.equals('foo'));
     unittest.expect(o.invokerIamDisabled!, unittest.isTrue);
-    checkUnnamed23(o.labels!);
+    checkUnnamed24(o.labels!);
     unittest.expect(o.lastModifier!, unittest.equals('foo'));
     unittest.expect(o.launchStage!, unittest.equals('foo'));
     unittest.expect(o.logUri!, unittest.equals('foo'));
@@ -1102,10 +1133,11 @@ void checkGoogleCloudRunV2Instance(api.GoogleCloudRunV2Instance o) {
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     checkGoogleCloudRunV2Condition(o.terminalCondition!);
+    unittest.expect(o.timeout!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
-    checkUnnamed24(o.urls!);
-    checkUnnamed25(o.volumes!);
+    checkUnnamed25(o.urls!);
+    checkUnnamed26(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
   }
   buildCounterGoogleCloudRunV2Instance--;
@@ -1160,28 +1192,28 @@ void checkGoogleCloudRunV2InstanceSplitStatus(
   buildCounterGoogleCloudRunV2InstanceSplitStatus--;
 }
 
-core.Map<core.String, core.String> buildUnnamed26() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed27() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed26(core.Map<core.String, core.String> o) {
+void checkUnnamed27(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Condition> buildUnnamed27() => [
+core.List<api.GoogleCloudRunV2Condition> buildUnnamed28() => [
   buildGoogleCloudRunV2Condition(),
   buildGoogleCloudRunV2Condition(),
 ];
 
-void checkUnnamed27(core.List<api.GoogleCloudRunV2Condition> o) {
+void checkUnnamed28(core.List<api.GoogleCloudRunV2Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Condition(o[0]);
   checkGoogleCloudRunV2Condition(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed28() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed29() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed28(core.Map<core.String, core.String> o) {
+void checkUnnamed29(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1192,11 +1224,11 @@ api.GoogleCloudRunV2Job buildGoogleCloudRunV2Job() {
   final o = api.GoogleCloudRunV2Job();
   buildCounterGoogleCloudRunV2Job++;
   if (buildCounterGoogleCloudRunV2Job < 3) {
-    o.annotations = buildUnnamed26();
+    o.annotations = buildUnnamed27();
     o.binaryAuthorization = buildGoogleCloudRunV2BinaryAuthorization();
     o.client = 'foo';
     o.clientVersion = 'foo';
-    o.conditions = buildUnnamed27();
+    o.conditions = buildUnnamed28();
     o.createTime = 'foo';
     o.creator = 'foo';
     o.deleteTime = 'foo';
@@ -1204,7 +1236,7 @@ api.GoogleCloudRunV2Job buildGoogleCloudRunV2Job() {
     o.executionCount = 42;
     o.expireTime = 'foo';
     o.generation = 'foo';
-    o.labels = buildUnnamed28();
+    o.labels = buildUnnamed29();
     o.lastModifier = 'foo';
     o.latestCreatedExecution = buildGoogleCloudRunV2ExecutionReference();
     o.launchStage = 'foo';
@@ -1226,11 +1258,11 @@ api.GoogleCloudRunV2Job buildGoogleCloudRunV2Job() {
 void checkGoogleCloudRunV2Job(api.GoogleCloudRunV2Job o) {
   buildCounterGoogleCloudRunV2Job++;
   if (buildCounterGoogleCloudRunV2Job < 3) {
-    checkUnnamed26(o.annotations!);
+    checkUnnamed27(o.annotations!);
     checkGoogleCloudRunV2BinaryAuthorization(o.binaryAuthorization!);
     unittest.expect(o.client!, unittest.equals('foo'));
     unittest.expect(o.clientVersion!, unittest.equals('foo'));
-    checkUnnamed27(o.conditions!);
+    checkUnnamed28(o.conditions!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.creator!, unittest.equals('foo'));
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
@@ -1238,7 +1270,7 @@ void checkGoogleCloudRunV2Job(api.GoogleCloudRunV2Job o) {
     unittest.expect(o.executionCount!, unittest.equals(42));
     unittest.expect(o.expireTime!, unittest.equals('foo'));
     unittest.expect(o.generation!, unittest.equals('foo'));
-    checkUnnamed28(o.labels!);
+    checkUnnamed29(o.labels!);
     unittest.expect(o.lastModifier!, unittest.equals('foo'));
     checkGoogleCloudRunV2ExecutionReference(o.latestCreatedExecution!);
     unittest.expect(o.launchStage!, unittest.equals('foo'));
@@ -1256,12 +1288,12 @@ void checkGoogleCloudRunV2Job(api.GoogleCloudRunV2Job o) {
   buildCounterGoogleCloudRunV2Job--;
 }
 
-core.List<api.GoogleCloudRunV2Execution> buildUnnamed29() => [
+core.List<api.GoogleCloudRunV2Execution> buildUnnamed30() => [
   buildGoogleCloudRunV2Execution(),
   buildGoogleCloudRunV2Execution(),
 ];
 
-void checkUnnamed29(core.List<api.GoogleCloudRunV2Execution> o) {
+void checkUnnamed30(core.List<api.GoogleCloudRunV2Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Execution(o[0]);
   checkGoogleCloudRunV2Execution(o[1]);
@@ -1273,7 +1305,7 @@ buildGoogleCloudRunV2ListExecutionsResponse() {
   final o = api.GoogleCloudRunV2ListExecutionsResponse();
   buildCounterGoogleCloudRunV2ListExecutionsResponse++;
   if (buildCounterGoogleCloudRunV2ListExecutionsResponse < 3) {
-    o.executions = buildUnnamed29();
+    o.executions = buildUnnamed30();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudRunV2ListExecutionsResponse--;
@@ -1285,18 +1317,18 @@ void checkGoogleCloudRunV2ListExecutionsResponse(
 ) {
   buildCounterGoogleCloudRunV2ListExecutionsResponse++;
   if (buildCounterGoogleCloudRunV2ListExecutionsResponse < 3) {
-    checkUnnamed29(o.executions!);
+    checkUnnamed30(o.executions!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRunV2ListExecutionsResponse--;
 }
 
-core.List<api.GoogleCloudRunV2Instance> buildUnnamed30() => [
+core.List<api.GoogleCloudRunV2Instance> buildUnnamed31() => [
   buildGoogleCloudRunV2Instance(),
   buildGoogleCloudRunV2Instance(),
 ];
 
-void checkUnnamed30(core.List<api.GoogleCloudRunV2Instance> o) {
+void checkUnnamed31(core.List<api.GoogleCloudRunV2Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Instance(o[0]);
   checkGoogleCloudRunV2Instance(o[1]);
@@ -1308,7 +1340,7 @@ buildGoogleCloudRunV2ListInstancesResponse() {
   final o = api.GoogleCloudRunV2ListInstancesResponse();
   buildCounterGoogleCloudRunV2ListInstancesResponse++;
   if (buildCounterGoogleCloudRunV2ListInstancesResponse < 3) {
-    o.instances = buildUnnamed30();
+    o.instances = buildUnnamed31();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudRunV2ListInstancesResponse--;
@@ -1320,18 +1352,18 @@ void checkGoogleCloudRunV2ListInstancesResponse(
 ) {
   buildCounterGoogleCloudRunV2ListInstancesResponse++;
   if (buildCounterGoogleCloudRunV2ListInstancesResponse < 3) {
-    checkUnnamed30(o.instances!);
+    checkUnnamed31(o.instances!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRunV2ListInstancesResponse--;
 }
 
-core.List<api.GoogleCloudRunV2Job> buildUnnamed31() => [
+core.List<api.GoogleCloudRunV2Job> buildUnnamed32() => [
   buildGoogleCloudRunV2Job(),
   buildGoogleCloudRunV2Job(),
 ];
 
-void checkUnnamed31(core.List<api.GoogleCloudRunV2Job> o) {
+void checkUnnamed32(core.List<api.GoogleCloudRunV2Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Job(o[0]);
   checkGoogleCloudRunV2Job(o[1]);
@@ -1342,7 +1374,7 @@ api.GoogleCloudRunV2ListJobsResponse buildGoogleCloudRunV2ListJobsResponse() {
   final o = api.GoogleCloudRunV2ListJobsResponse();
   buildCounterGoogleCloudRunV2ListJobsResponse++;
   if (buildCounterGoogleCloudRunV2ListJobsResponse < 3) {
-    o.jobs = buildUnnamed31();
+    o.jobs = buildUnnamed32();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudRunV2ListJobsResponse--;
@@ -1354,18 +1386,18 @@ void checkGoogleCloudRunV2ListJobsResponse(
 ) {
   buildCounterGoogleCloudRunV2ListJobsResponse++;
   if (buildCounterGoogleCloudRunV2ListJobsResponse < 3) {
-    checkUnnamed31(o.jobs!);
+    checkUnnamed32(o.jobs!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRunV2ListJobsResponse--;
 }
 
-core.List<api.GoogleCloudRunV2Revision> buildUnnamed32() => [
+core.List<api.GoogleCloudRunV2Revision> buildUnnamed33() => [
   buildGoogleCloudRunV2Revision(),
   buildGoogleCloudRunV2Revision(),
 ];
 
-void checkUnnamed32(core.List<api.GoogleCloudRunV2Revision> o) {
+void checkUnnamed33(core.List<api.GoogleCloudRunV2Revision> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Revision(o[0]);
   checkGoogleCloudRunV2Revision(o[1]);
@@ -1378,7 +1410,7 @@ buildGoogleCloudRunV2ListRevisionsResponse() {
   buildCounterGoogleCloudRunV2ListRevisionsResponse++;
   if (buildCounterGoogleCloudRunV2ListRevisionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.revisions = buildUnnamed32();
+    o.revisions = buildUnnamed33();
   }
   buildCounterGoogleCloudRunV2ListRevisionsResponse--;
   return o;
@@ -1390,25 +1422,25 @@ void checkGoogleCloudRunV2ListRevisionsResponse(
   buildCounterGoogleCloudRunV2ListRevisionsResponse++;
   if (buildCounterGoogleCloudRunV2ListRevisionsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed32(o.revisions!);
+    checkUnnamed33(o.revisions!);
   }
   buildCounterGoogleCloudRunV2ListRevisionsResponse--;
 }
 
-core.List<api.GoogleCloudRunV2Service> buildUnnamed33() => [
+core.List<api.GoogleCloudRunV2Service> buildUnnamed34() => [
   buildGoogleCloudRunV2Service(),
   buildGoogleCloudRunV2Service(),
 ];
 
-void checkUnnamed33(core.List<api.GoogleCloudRunV2Service> o) {
+void checkUnnamed34(core.List<api.GoogleCloudRunV2Service> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Service(o[0]);
   checkGoogleCloudRunV2Service(o[1]);
 }
 
-core.List<core.String> buildUnnamed34() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed35() => ['foo', 'foo'];
 
-void checkUnnamed34(core.List<core.String> o) {
+void checkUnnamed35(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1421,8 +1453,8 @@ buildGoogleCloudRunV2ListServicesResponse() {
   buildCounterGoogleCloudRunV2ListServicesResponse++;
   if (buildCounterGoogleCloudRunV2ListServicesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.services = buildUnnamed33();
-    o.unreachable = buildUnnamed34();
+    o.services = buildUnnamed34();
+    o.unreachable = buildUnnamed35();
   }
   buildCounterGoogleCloudRunV2ListServicesResponse--;
   return o;
@@ -1434,18 +1466,18 @@ void checkGoogleCloudRunV2ListServicesResponse(
   buildCounterGoogleCloudRunV2ListServicesResponse++;
   if (buildCounterGoogleCloudRunV2ListServicesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed33(o.services!);
-    checkUnnamed34(o.unreachable!);
+    checkUnnamed34(o.services!);
+    checkUnnamed35(o.unreachable!);
   }
   buildCounterGoogleCloudRunV2ListServicesResponse--;
 }
 
-core.List<api.GoogleCloudRunV2Task> buildUnnamed35() => [
+core.List<api.GoogleCloudRunV2Task> buildUnnamed36() => [
   buildGoogleCloudRunV2Task(),
   buildGoogleCloudRunV2Task(),
 ];
 
-void checkUnnamed35(core.List<api.GoogleCloudRunV2Task> o) {
+void checkUnnamed36(core.List<api.GoogleCloudRunV2Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Task(o[0]);
   checkGoogleCloudRunV2Task(o[1]);
@@ -1457,7 +1489,7 @@ api.GoogleCloudRunV2ListTasksResponse buildGoogleCloudRunV2ListTasksResponse() {
   buildCounterGoogleCloudRunV2ListTasksResponse++;
   if (buildCounterGoogleCloudRunV2ListTasksResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tasks = buildUnnamed35();
+    o.tasks = buildUnnamed36();
   }
   buildCounterGoogleCloudRunV2ListTasksResponse--;
   return o;
@@ -1469,17 +1501,17 @@ void checkGoogleCloudRunV2ListTasksResponse(
   buildCounterGoogleCloudRunV2ListTasksResponse++;
   if (buildCounterGoogleCloudRunV2ListTasksResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed35(o.tasks!);
+    checkUnnamed36(o.tasks!);
   }
   buildCounterGoogleCloudRunV2ListTasksResponse--;
 }
 
-core.List<api.GoogleCloudRunV2WorkerPool> buildUnnamed36() => [
+core.List<api.GoogleCloudRunV2WorkerPool> buildUnnamed37() => [
   buildGoogleCloudRunV2WorkerPool(),
   buildGoogleCloudRunV2WorkerPool(),
 ];
 
-void checkUnnamed36(core.List<api.GoogleCloudRunV2WorkerPool> o) {
+void checkUnnamed37(core.List<api.GoogleCloudRunV2WorkerPool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2WorkerPool(o[0]);
   checkGoogleCloudRunV2WorkerPool(o[1]);
@@ -1492,7 +1524,7 @@ buildGoogleCloudRunV2ListWorkerPoolsResponse() {
   buildCounterGoogleCloudRunV2ListWorkerPoolsResponse++;
   if (buildCounterGoogleCloudRunV2ListWorkerPoolsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.workerPools = buildUnnamed36();
+    o.workerPools = buildUnnamed37();
   }
   buildCounterGoogleCloudRunV2ListWorkerPoolsResponse--;
   return o;
@@ -1504,7 +1536,7 @@ void checkGoogleCloudRunV2ListWorkerPoolsResponse(
   buildCounterGoogleCloudRunV2ListWorkerPoolsResponse++;
   if (buildCounterGoogleCloudRunV2ListWorkerPoolsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed36(o.workerPools!);
+    checkUnnamed37(o.workerPools!);
   }
   buildCounterGoogleCloudRunV2ListWorkerPoolsResponse--;
 }
@@ -1528,9 +1560,9 @@ void checkGoogleCloudRunV2Metadata(api.GoogleCloudRunV2Metadata o) {
   buildCounterGoogleCloudRunV2Metadata--;
 }
 
-core.List<core.String> buildUnnamed37() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed38() => ['foo', 'foo'];
 
-void checkUnnamed37(core.List<core.String> o) {
+void checkUnnamed38(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1543,7 +1575,7 @@ buildGoogleCloudRunV2MultiRegionSettings() {
   buildCounterGoogleCloudRunV2MultiRegionSettings++;
   if (buildCounterGoogleCloudRunV2MultiRegionSettings < 3) {
     o.multiRegionId = 'foo';
-    o.regions = buildUnnamed37();
+    o.regions = buildUnnamed38();
   }
   buildCounterGoogleCloudRunV2MultiRegionSettings--;
   return o;
@@ -1555,7 +1587,7 @@ void checkGoogleCloudRunV2MultiRegionSettings(
   buildCounterGoogleCloudRunV2MultiRegionSettings++;
   if (buildCounterGoogleCloudRunV2MultiRegionSettings < 3) {
     unittest.expect(o.multiRegionId!, unittest.equals('foo'));
-    checkUnnamed37(o.regions!);
+    checkUnnamed38(o.regions!);
   }
   buildCounterGoogleCloudRunV2MultiRegionSettings--;
 }
@@ -1585,9 +1617,9 @@ void checkGoogleCloudRunV2NFSVolumeSource(
   buildCounterGoogleCloudRunV2NFSVolumeSource--;
 }
 
-core.List<core.String> buildUnnamed38() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed39() => ['foo', 'foo'];
 
-void checkUnnamed38(core.List<core.String> o) {
+void checkUnnamed39(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1600,7 +1632,7 @@ api.GoogleCloudRunV2NetworkInterface buildGoogleCloudRunV2NetworkInterface() {
   if (buildCounterGoogleCloudRunV2NetworkInterface < 3) {
     o.network = 'foo';
     o.subnetwork = 'foo';
-    o.tags = buildUnnamed38();
+    o.tags = buildUnnamed39();
   }
   buildCounterGoogleCloudRunV2NetworkInterface--;
   return o;
@@ -1613,7 +1645,7 @@ void checkGoogleCloudRunV2NetworkInterface(
   if (buildCounterGoogleCloudRunV2NetworkInterface < 3) {
     unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.subnetwork!, unittest.equals('foo'));
-    checkUnnamed38(o.tags!);
+    checkUnnamed39(o.tags!);
   }
   buildCounterGoogleCloudRunV2NetworkInterface--;
 }
@@ -1637,12 +1669,12 @@ void checkGoogleCloudRunV2NodeSelector(api.GoogleCloudRunV2NodeSelector o) {
   buildCounterGoogleCloudRunV2NodeSelector--;
 }
 
-core.List<api.GoogleCloudRunV2ContainerOverride> buildUnnamed39() => [
+core.List<api.GoogleCloudRunV2ContainerOverride> buildUnnamed40() => [
   buildGoogleCloudRunV2ContainerOverride(),
   buildGoogleCloudRunV2ContainerOverride(),
 ];
 
-void checkUnnamed39(core.List<api.GoogleCloudRunV2ContainerOverride> o) {
+void checkUnnamed40(core.List<api.GoogleCloudRunV2ContainerOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2ContainerOverride(o[0]);
   checkGoogleCloudRunV2ContainerOverride(o[1]);
@@ -1653,7 +1685,7 @@ api.GoogleCloudRunV2Overrides buildGoogleCloudRunV2Overrides() {
   final o = api.GoogleCloudRunV2Overrides();
   buildCounterGoogleCloudRunV2Overrides++;
   if (buildCounterGoogleCloudRunV2Overrides < 3) {
-    o.containerOverrides = buildUnnamed39();
+    o.containerOverrides = buildUnnamed40();
     o.taskCount = 42;
     o.timeout = 'foo';
   }
@@ -1664,7 +1696,7 @@ api.GoogleCloudRunV2Overrides buildGoogleCloudRunV2Overrides() {
 void checkGoogleCloudRunV2Overrides(api.GoogleCloudRunV2Overrides o) {
   buildCounterGoogleCloudRunV2Overrides++;
   if (buildCounterGoogleCloudRunV2Overrides < 3) {
-    checkUnnamed39(o.containerOverrides!);
+    checkUnnamed40(o.containerOverrides!);
     unittest.expect(o.taskCount!, unittest.equals(42));
     unittest.expect(o.timeout!, unittest.equals('foo'));
   }
@@ -1702,9 +1734,9 @@ void checkGoogleCloudRunV2Probe(api.GoogleCloudRunV2Probe o) {
   buildCounterGoogleCloudRunV2Probe--;
 }
 
-core.Map<core.String, core.String> buildUnnamed40() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed41() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed40(core.Map<core.String, core.String> o) {
+void checkUnnamed41(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1717,7 +1749,7 @@ buildGoogleCloudRunV2ResourceRequirements() {
   buildCounterGoogleCloudRunV2ResourceRequirements++;
   if (buildCounterGoogleCloudRunV2ResourceRequirements < 3) {
     o.cpuIdle = true;
-    o.limits = buildUnnamed40();
+    o.limits = buildUnnamed41();
     o.startupCpuBoost = true;
   }
   buildCounterGoogleCloudRunV2ResourceRequirements--;
@@ -1730,56 +1762,56 @@ void checkGoogleCloudRunV2ResourceRequirements(
   buildCounterGoogleCloudRunV2ResourceRequirements++;
   if (buildCounterGoogleCloudRunV2ResourceRequirements < 3) {
     unittest.expect(o.cpuIdle!, unittest.isTrue);
-    checkUnnamed40(o.limits!);
+    checkUnnamed41(o.limits!);
     unittest.expect(o.startupCpuBoost!, unittest.isTrue);
   }
   buildCounterGoogleCloudRunV2ResourceRequirements--;
 }
 
-core.Map<core.String, core.String> buildUnnamed41() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed42() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed41(core.Map<core.String, core.String> o) {
+void checkUnnamed42(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Condition> buildUnnamed42() => [
+core.List<api.GoogleCloudRunV2Condition> buildUnnamed43() => [
   buildGoogleCloudRunV2Condition(),
   buildGoogleCloudRunV2Condition(),
 ];
 
-void checkUnnamed42(core.List<api.GoogleCloudRunV2Condition> o) {
+void checkUnnamed43(core.List<api.GoogleCloudRunV2Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Condition(o[0]);
   checkGoogleCloudRunV2Condition(o[1]);
 }
 
-core.List<api.GoogleCloudRunV2Container> buildUnnamed43() => [
+core.List<api.GoogleCloudRunV2Container> buildUnnamed44() => [
   buildGoogleCloudRunV2Container(),
   buildGoogleCloudRunV2Container(),
 ];
 
-void checkUnnamed43(core.List<api.GoogleCloudRunV2Container> o) {
+void checkUnnamed44(core.List<api.GoogleCloudRunV2Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Container(o[0]);
   checkGoogleCloudRunV2Container(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed44() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed45() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed44(core.Map<core.String, core.String> o) {
+void checkUnnamed45(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Volume> buildUnnamed45() => [
+core.List<api.GoogleCloudRunV2Volume> buildUnnamed46() => [
   buildGoogleCloudRunV2Volume(),
   buildGoogleCloudRunV2Volume(),
 ];
 
-void checkUnnamed45(core.List<api.GoogleCloudRunV2Volume> o) {
+void checkUnnamed46(core.List<api.GoogleCloudRunV2Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Volume(o[0]);
   checkGoogleCloudRunV2Volume(o[1]);
@@ -1790,11 +1822,11 @@ api.GoogleCloudRunV2Revision buildGoogleCloudRunV2Revision() {
   final o = api.GoogleCloudRunV2Revision();
   buildCounterGoogleCloudRunV2Revision++;
   if (buildCounterGoogleCloudRunV2Revision < 3) {
-    o.annotations = buildUnnamed41();
+    o.annotations = buildUnnamed42();
     o.client = 'foo';
     o.clientVersion = 'foo';
-    o.conditions = buildUnnamed42();
-    o.containers = buildUnnamed43();
+    o.conditions = buildUnnamed43();
+    o.containers = buildUnnamed44();
     o.createTime = 'foo';
     o.creator = 'foo';
     o.deleteTime = 'foo';
@@ -1806,7 +1838,7 @@ api.GoogleCloudRunV2Revision buildGoogleCloudRunV2Revision() {
     o.expireTime = 'foo';
     o.generation = 'foo';
     o.gpuZonalRedundancyDisabled = true;
-    o.labels = buildUnnamed44();
+    o.labels = buildUnnamed45();
     o.launchStage = 'foo';
     o.logUri = 'foo';
     o.maxInstanceRequestConcurrency = 42;
@@ -1824,7 +1856,7 @@ api.GoogleCloudRunV2Revision buildGoogleCloudRunV2Revision() {
     o.timeout = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
-    o.volumes = buildUnnamed45();
+    o.volumes = buildUnnamed46();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
   }
   buildCounterGoogleCloudRunV2Revision--;
@@ -1834,11 +1866,11 @@ api.GoogleCloudRunV2Revision buildGoogleCloudRunV2Revision() {
 void checkGoogleCloudRunV2Revision(api.GoogleCloudRunV2Revision o) {
   buildCounterGoogleCloudRunV2Revision++;
   if (buildCounterGoogleCloudRunV2Revision < 3) {
-    checkUnnamed41(o.annotations!);
+    checkUnnamed42(o.annotations!);
     unittest.expect(o.client!, unittest.equals('foo'));
     unittest.expect(o.clientVersion!, unittest.equals('foo'));
-    checkUnnamed42(o.conditions!);
-    checkUnnamed43(o.containers!);
+    checkUnnamed43(o.conditions!);
+    checkUnnamed44(o.containers!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.creator!, unittest.equals('foo'));
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
@@ -1850,7 +1882,7 @@ void checkGoogleCloudRunV2Revision(api.GoogleCloudRunV2Revision o) {
     unittest.expect(o.expireTime!, unittest.equals('foo'));
     unittest.expect(o.generation!, unittest.equals('foo'));
     unittest.expect(o.gpuZonalRedundancyDisabled!, unittest.isTrue);
-    checkUnnamed44(o.labels!);
+    checkUnnamed45(o.labels!);
     unittest.expect(o.launchStage!, unittest.equals('foo'));
     unittest.expect(o.logUri!, unittest.equals('foo'));
     unittest.expect(o.maxInstanceRequestConcurrency!, unittest.equals(42));
@@ -1868,7 +1900,7 @@ void checkGoogleCloudRunV2Revision(api.GoogleCloudRunV2Revision o) {
     unittest.expect(o.timeout!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
-    checkUnnamed45(o.volumes!);
+    checkUnnamed46(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
   }
   buildCounterGoogleCloudRunV2Revision--;
@@ -1879,6 +1911,8 @@ api.GoogleCloudRunV2RevisionScaling buildGoogleCloudRunV2RevisionScaling() {
   final o = api.GoogleCloudRunV2RevisionScaling();
   buildCounterGoogleCloudRunV2RevisionScaling++;
   if (buildCounterGoogleCloudRunV2RevisionScaling < 3) {
+    o.concurrencyUtilization = 42.0;
+    o.cpuUtilization = 42.0;
     o.maxInstanceCount = 42;
     o.minInstanceCount = 42;
   }
@@ -1891,6 +1925,8 @@ void checkGoogleCloudRunV2RevisionScaling(
 ) {
   buildCounterGoogleCloudRunV2RevisionScaling++;
   if (buildCounterGoogleCloudRunV2RevisionScaling < 3) {
+    unittest.expect(o.concurrencyUtilization!, unittest.equals(42.0));
+    unittest.expect(o.cpuUtilization!, unittest.equals(42.0));
     unittest.expect(o.maxInstanceCount!, unittest.equals(42));
     unittest.expect(o.minInstanceCount!, unittest.equals(42));
   }
@@ -1919,39 +1955,39 @@ void checkGoogleCloudRunV2RevisionScalingStatus(
   buildCounterGoogleCloudRunV2RevisionScalingStatus--;
 }
 
-core.Map<core.String, core.String> buildUnnamed46() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed47() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed46(core.Map<core.String, core.String> o) {
+void checkUnnamed47(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Container> buildUnnamed47() => [
+core.List<api.GoogleCloudRunV2Container> buildUnnamed48() => [
   buildGoogleCloudRunV2Container(),
   buildGoogleCloudRunV2Container(),
 ];
 
-void checkUnnamed47(core.List<api.GoogleCloudRunV2Container> o) {
+void checkUnnamed48(core.List<api.GoogleCloudRunV2Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Container(o[0]);
   checkGoogleCloudRunV2Container(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed48() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed49() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed48(core.Map<core.String, core.String> o) {
+void checkUnnamed49(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Volume> buildUnnamed49() => [
+core.List<api.GoogleCloudRunV2Volume> buildUnnamed50() => [
   buildGoogleCloudRunV2Volume(),
   buildGoogleCloudRunV2Volume(),
 ];
 
-void checkUnnamed49(core.List<api.GoogleCloudRunV2Volume> o) {
+void checkUnnamed50(core.List<api.GoogleCloudRunV2Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Volume(o[0]);
   checkGoogleCloudRunV2Volume(o[1]);
@@ -1962,17 +1998,17 @@ api.GoogleCloudRunV2RevisionTemplate buildGoogleCloudRunV2RevisionTemplate() {
   final o = api.GoogleCloudRunV2RevisionTemplate();
   buildCounterGoogleCloudRunV2RevisionTemplate++;
   if (buildCounterGoogleCloudRunV2RevisionTemplate < 3) {
-    o.annotations = buildUnnamed46();
+    o.annotations = buildUnnamed47();
     o.client = 'foo';
     o.clientVersion = 'foo';
-    o.containers = buildUnnamed47();
+    o.containers = buildUnnamed48();
     o.encryptionKey = 'foo';
     o.encryptionKeyRevocationAction = 'foo';
     o.encryptionKeyShutdownDuration = 'foo';
     o.executionEnvironment = 'foo';
     o.gpuZonalRedundancyDisabled = true;
     o.healthCheckDisabled = true;
-    o.labels = buildUnnamed48();
+    o.labels = buildUnnamed49();
     o.maxInstanceRequestConcurrency = 42;
     o.nodeSelector = buildGoogleCloudRunV2NodeSelector();
     o.revision = 'foo';
@@ -1981,7 +2017,7 @@ api.GoogleCloudRunV2RevisionTemplate buildGoogleCloudRunV2RevisionTemplate() {
     o.serviceMesh = buildGoogleCloudRunV2ServiceMesh();
     o.sessionAffinity = true;
     o.timeout = 'foo';
-    o.volumes = buildUnnamed49();
+    o.volumes = buildUnnamed50();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
   }
   buildCounterGoogleCloudRunV2RevisionTemplate--;
@@ -1993,17 +2029,17 @@ void checkGoogleCloudRunV2RevisionTemplate(
 ) {
   buildCounterGoogleCloudRunV2RevisionTemplate++;
   if (buildCounterGoogleCloudRunV2RevisionTemplate < 3) {
-    checkUnnamed46(o.annotations!);
+    checkUnnamed47(o.annotations!);
     unittest.expect(o.client!, unittest.equals('foo'));
     unittest.expect(o.clientVersion!, unittest.equals('foo'));
-    checkUnnamed47(o.containers!);
+    checkUnnamed48(o.containers!);
     unittest.expect(o.encryptionKey!, unittest.equals('foo'));
     unittest.expect(o.encryptionKeyRevocationAction!, unittest.equals('foo'));
     unittest.expect(o.encryptionKeyShutdownDuration!, unittest.equals('foo'));
     unittest.expect(o.executionEnvironment!, unittest.equals('foo'));
     unittest.expect(o.gpuZonalRedundancyDisabled!, unittest.isTrue);
     unittest.expect(o.healthCheckDisabled!, unittest.isTrue);
-    checkUnnamed48(o.labels!);
+    checkUnnamed49(o.labels!);
     unittest.expect(o.maxInstanceRequestConcurrency!, unittest.equals(42));
     checkGoogleCloudRunV2NodeSelector(o.nodeSelector!);
     unittest.expect(o.revision!, unittest.equals('foo'));
@@ -2012,7 +2048,7 @@ void checkGoogleCloudRunV2RevisionTemplate(
     checkGoogleCloudRunV2ServiceMesh(o.serviceMesh!);
     unittest.expect(o.sessionAffinity!, unittest.isTrue);
     unittest.expect(o.timeout!, unittest.equals('foo'));
-    checkUnnamed49(o.volumes!);
+    checkUnnamed50(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
   }
   buildCounterGoogleCloudRunV2RevisionTemplate--;
@@ -2064,12 +2100,12 @@ void checkGoogleCloudRunV2SecretKeySelector(
   buildCounterGoogleCloudRunV2SecretKeySelector--;
 }
 
-core.List<api.GoogleCloudRunV2VersionToPath> buildUnnamed50() => [
+core.List<api.GoogleCloudRunV2VersionToPath> buildUnnamed51() => [
   buildGoogleCloudRunV2VersionToPath(),
   buildGoogleCloudRunV2VersionToPath(),
 ];
 
-void checkUnnamed50(core.List<api.GoogleCloudRunV2VersionToPath> o) {
+void checkUnnamed51(core.List<api.GoogleCloudRunV2VersionToPath> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2VersionToPath(o[0]);
   checkGoogleCloudRunV2VersionToPath(o[1]);
@@ -2082,7 +2118,7 @@ buildGoogleCloudRunV2SecretVolumeSource() {
   buildCounterGoogleCloudRunV2SecretVolumeSource++;
   if (buildCounterGoogleCloudRunV2SecretVolumeSource < 3) {
     o.defaultMode = 42;
-    o.items = buildUnnamed50();
+    o.items = buildUnnamed51();
     o.secret = 'foo';
   }
   buildCounterGoogleCloudRunV2SecretVolumeSource--;
@@ -2095,72 +2131,72 @@ void checkGoogleCloudRunV2SecretVolumeSource(
   buildCounterGoogleCloudRunV2SecretVolumeSource++;
   if (buildCounterGoogleCloudRunV2SecretVolumeSource < 3) {
     unittest.expect(o.defaultMode!, unittest.equals(42));
-    checkUnnamed50(o.items!);
+    checkUnnamed51(o.items!);
     unittest.expect(o.secret!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRunV2SecretVolumeSource--;
 }
 
-core.Map<core.String, core.String> buildUnnamed51() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed52() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed51(core.Map<core.String, core.String> o) {
+void checkUnnamed52(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Condition> buildUnnamed52() => [
+core.List<api.GoogleCloudRunV2Condition> buildUnnamed53() => [
   buildGoogleCloudRunV2Condition(),
   buildGoogleCloudRunV2Condition(),
 ];
 
-void checkUnnamed52(core.List<api.GoogleCloudRunV2Condition> o) {
+void checkUnnamed53(core.List<api.GoogleCloudRunV2Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Condition(o[0]);
   checkGoogleCloudRunV2Condition(o[1]);
 }
 
-core.List<core.String> buildUnnamed53() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed54() => ['foo', 'foo'];
 
-void checkUnnamed53(core.List<core.String> o) {
+void checkUnnamed54(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed54() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed55() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed54(core.Map<core.String, core.String> o) {
+void checkUnnamed55(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2TrafficTarget> buildUnnamed55() => [
+core.List<api.GoogleCloudRunV2TrafficTarget> buildUnnamed56() => [
   buildGoogleCloudRunV2TrafficTarget(),
   buildGoogleCloudRunV2TrafficTarget(),
 ];
 
-void checkUnnamed55(core.List<api.GoogleCloudRunV2TrafficTarget> o) {
+void checkUnnamed56(core.List<api.GoogleCloudRunV2TrafficTarget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2TrafficTarget(o[0]);
   checkGoogleCloudRunV2TrafficTarget(o[1]);
 }
 
-core.List<api.GoogleCloudRunV2TrafficTargetStatus> buildUnnamed56() => [
+core.List<api.GoogleCloudRunV2TrafficTargetStatus> buildUnnamed57() => [
   buildGoogleCloudRunV2TrafficTargetStatus(),
   buildGoogleCloudRunV2TrafficTargetStatus(),
 ];
 
-void checkUnnamed56(core.List<api.GoogleCloudRunV2TrafficTargetStatus> o) {
+void checkUnnamed57(core.List<api.GoogleCloudRunV2TrafficTargetStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2TrafficTargetStatus(o[0]);
   checkGoogleCloudRunV2TrafficTargetStatus(o[1]);
 }
 
-core.List<core.String> buildUnnamed57() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed58() => ['foo', 'foo'];
 
-void checkUnnamed57(core.List<core.String> o) {
+void checkUnnamed58(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2171,15 +2207,15 @@ api.GoogleCloudRunV2Service buildGoogleCloudRunV2Service() {
   final o = api.GoogleCloudRunV2Service();
   buildCounterGoogleCloudRunV2Service++;
   if (buildCounterGoogleCloudRunV2Service < 3) {
-    o.annotations = buildUnnamed51();
+    o.annotations = buildUnnamed52();
     o.binaryAuthorization = buildGoogleCloudRunV2BinaryAuthorization();
     o.buildConfig = buildGoogleCloudRunV2BuildConfig();
     o.client = 'foo';
     o.clientVersion = 'foo';
-    o.conditions = buildUnnamed52();
+    o.conditions = buildUnnamed53();
     o.createTime = 'foo';
     o.creator = 'foo';
-    o.customAudiences = buildUnnamed53();
+    o.customAudiences = buildUnnamed54();
     o.defaultUriDisabled = true;
     o.deleteTime = 'foo';
     o.description = 'foo';
@@ -2189,7 +2225,7 @@ api.GoogleCloudRunV2Service buildGoogleCloudRunV2Service() {
     o.iapEnabled = true;
     o.ingress = 'foo';
     o.invokerIamDisabled = true;
-    o.labels = buildUnnamed54();
+    o.labels = buildUnnamed55();
     o.lastModifier = 'foo';
     o.latestCreatedRevision = 'foo';
     o.latestReadyRevision = 'foo';
@@ -2203,12 +2239,12 @@ api.GoogleCloudRunV2Service buildGoogleCloudRunV2Service() {
     o.template = buildGoogleCloudRunV2RevisionTemplate();
     o.terminalCondition = buildGoogleCloudRunV2Condition();
     o.threatDetectionEnabled = true;
-    o.traffic = buildUnnamed55();
-    o.trafficStatuses = buildUnnamed56();
+    o.traffic = buildUnnamed56();
+    o.trafficStatuses = buildUnnamed57();
     o.uid = 'foo';
     o.updateTime = 'foo';
     o.uri = 'foo';
-    o.urls = buildUnnamed57();
+    o.urls = buildUnnamed58();
   }
   buildCounterGoogleCloudRunV2Service--;
   return o;
@@ -2217,15 +2253,15 @@ api.GoogleCloudRunV2Service buildGoogleCloudRunV2Service() {
 void checkGoogleCloudRunV2Service(api.GoogleCloudRunV2Service o) {
   buildCounterGoogleCloudRunV2Service++;
   if (buildCounterGoogleCloudRunV2Service < 3) {
-    checkUnnamed51(o.annotations!);
+    checkUnnamed52(o.annotations!);
     checkGoogleCloudRunV2BinaryAuthorization(o.binaryAuthorization!);
     checkGoogleCloudRunV2BuildConfig(o.buildConfig!);
     unittest.expect(o.client!, unittest.equals('foo'));
     unittest.expect(o.clientVersion!, unittest.equals('foo'));
-    checkUnnamed52(o.conditions!);
+    checkUnnamed53(o.conditions!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.creator!, unittest.equals('foo'));
-    checkUnnamed53(o.customAudiences!);
+    checkUnnamed54(o.customAudiences!);
     unittest.expect(o.defaultUriDisabled!, unittest.isTrue);
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
@@ -2235,7 +2271,7 @@ void checkGoogleCloudRunV2Service(api.GoogleCloudRunV2Service o) {
     unittest.expect(o.iapEnabled!, unittest.isTrue);
     unittest.expect(o.ingress!, unittest.equals('foo'));
     unittest.expect(o.invokerIamDisabled!, unittest.isTrue);
-    checkUnnamed54(o.labels!);
+    checkUnnamed55(o.labels!);
     unittest.expect(o.lastModifier!, unittest.equals('foo'));
     unittest.expect(o.latestCreatedRevision!, unittest.equals('foo'));
     unittest.expect(o.latestReadyRevision!, unittest.equals('foo'));
@@ -2249,12 +2285,12 @@ void checkGoogleCloudRunV2Service(api.GoogleCloudRunV2Service o) {
     checkGoogleCloudRunV2RevisionTemplate(o.template!);
     checkGoogleCloudRunV2Condition(o.terminalCondition!);
     unittest.expect(o.threatDetectionEnabled!, unittest.isTrue);
-    checkUnnamed55(o.traffic!);
-    checkUnnamed56(o.trafficStatuses!);
+    checkUnnamed56(o.traffic!);
+    checkUnnamed57(o.trafficStatuses!);
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     unittest.expect(o.uri!, unittest.equals('foo'));
-    checkUnnamed57(o.urls!);
+    checkUnnamed58(o.urls!);
   }
   buildCounterGoogleCloudRunV2Service--;
 }
@@ -2309,6 +2345,7 @@ api.GoogleCloudRunV2SourceCode buildGoogleCloudRunV2SourceCode() {
   buildCounterGoogleCloudRunV2SourceCode++;
   if (buildCounterGoogleCloudRunV2SourceCode < 3) {
     o.cloudStorageSource = buildGoogleCloudRunV2CloudStorageSource();
+    o.inlinedSource = buildGoogleCloudRunV2InlinedSource();
   }
   buildCounterGoogleCloudRunV2SourceCode--;
   return o;
@@ -2318,8 +2355,30 @@ void checkGoogleCloudRunV2SourceCode(api.GoogleCloudRunV2SourceCode o) {
   buildCounterGoogleCloudRunV2SourceCode++;
   if (buildCounterGoogleCloudRunV2SourceCode < 3) {
     checkGoogleCloudRunV2CloudStorageSource(o.cloudStorageSource!);
+    checkGoogleCloudRunV2InlinedSource(o.inlinedSource!);
   }
   buildCounterGoogleCloudRunV2SourceCode--;
+}
+
+core.int buildCounterGoogleCloudRunV2SourceFile = 0;
+api.GoogleCloudRunV2SourceFile buildGoogleCloudRunV2SourceFile() {
+  final o = api.GoogleCloudRunV2SourceFile();
+  buildCounterGoogleCloudRunV2SourceFile++;
+  if (buildCounterGoogleCloudRunV2SourceFile < 3) {
+    o.content = 'foo';
+    o.filename = 'foo';
+  }
+  buildCounterGoogleCloudRunV2SourceFile--;
+  return o;
+}
+
+void checkGoogleCloudRunV2SourceFile(api.GoogleCloudRunV2SourceFile o) {
+  buildCounterGoogleCloudRunV2SourceFile++;
+  if (buildCounterGoogleCloudRunV2SourceFile < 3) {
+    unittest.expect(o.content!, unittest.equals('foo'));
+    unittest.expect(o.filename!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudRunV2SourceFile--;
 }
 
 core.int buildCounterGoogleCloudRunV2StartInstanceRequest = 0;
@@ -2393,9 +2452,9 @@ void checkGoogleCloudRunV2StorageSource(api.GoogleCloudRunV2StorageSource o) {
   buildCounterGoogleCloudRunV2StorageSource--;
 }
 
-core.List<core.String> buildUnnamed58() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed59() => ['foo', 'foo'];
 
-void checkUnnamed58(core.List<core.String> o) {
+void checkUnnamed59(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2415,7 +2474,7 @@ buildGoogleCloudRunV2SubmitBuildRequest() {
     o.releaseTrack = 'foo';
     o.serviceAccount = 'foo';
     o.storageSource = buildGoogleCloudRunV2StorageSource();
-    o.tags = buildUnnamed58();
+    o.tags = buildUnnamed59();
     o.workerPool = 'foo';
   }
   buildCounterGoogleCloudRunV2SubmitBuildRequest--;
@@ -2435,7 +2494,7 @@ void checkGoogleCloudRunV2SubmitBuildRequest(
     unittest.expect(o.releaseTrack!, unittest.equals('foo'));
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     checkGoogleCloudRunV2StorageSource(o.storageSource!);
-    checkUnnamed58(o.tags!);
+    checkUnnamed59(o.tags!);
     unittest.expect(o.workerPool!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRunV2SubmitBuildRequest--;
@@ -2488,50 +2547,50 @@ void checkGoogleCloudRunV2TCPSocketAction(
   buildCounterGoogleCloudRunV2TCPSocketAction--;
 }
 
-core.Map<core.String, core.String> buildUnnamed59() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed60() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed59(core.Map<core.String, core.String> o) {
+void checkUnnamed60(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Condition> buildUnnamed60() => [
+core.List<api.GoogleCloudRunV2Condition> buildUnnamed61() => [
   buildGoogleCloudRunV2Condition(),
   buildGoogleCloudRunV2Condition(),
 ];
 
-void checkUnnamed60(core.List<api.GoogleCloudRunV2Condition> o) {
+void checkUnnamed61(core.List<api.GoogleCloudRunV2Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Condition(o[0]);
   checkGoogleCloudRunV2Condition(o[1]);
 }
 
-core.List<api.GoogleCloudRunV2Container> buildUnnamed61() => [
+core.List<api.GoogleCloudRunV2Container> buildUnnamed62() => [
   buildGoogleCloudRunV2Container(),
   buildGoogleCloudRunV2Container(),
 ];
 
-void checkUnnamed61(core.List<api.GoogleCloudRunV2Container> o) {
+void checkUnnamed62(core.List<api.GoogleCloudRunV2Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Container(o[0]);
   checkGoogleCloudRunV2Container(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed62() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed63() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed62(core.Map<core.String, core.String> o) {
+void checkUnnamed63(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Volume> buildUnnamed63() => [
+core.List<api.GoogleCloudRunV2Volume> buildUnnamed64() => [
   buildGoogleCloudRunV2Volume(),
   buildGoogleCloudRunV2Volume(),
 ];
 
-void checkUnnamed63(core.List<api.GoogleCloudRunV2Volume> o) {
+void checkUnnamed64(core.List<api.GoogleCloudRunV2Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Volume(o[0]);
   checkGoogleCloudRunV2Volume(o[1]);
@@ -2542,10 +2601,10 @@ api.GoogleCloudRunV2Task buildGoogleCloudRunV2Task() {
   final o = api.GoogleCloudRunV2Task();
   buildCounterGoogleCloudRunV2Task++;
   if (buildCounterGoogleCloudRunV2Task < 3) {
-    o.annotations = buildUnnamed59();
+    o.annotations = buildUnnamed60();
     o.completionTime = 'foo';
-    o.conditions = buildUnnamed60();
-    o.containers = buildUnnamed61();
+    o.conditions = buildUnnamed61();
+    o.containers = buildUnnamed62();
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.encryptionKey = 'foo';
@@ -2557,7 +2616,7 @@ api.GoogleCloudRunV2Task buildGoogleCloudRunV2Task() {
     o.gpuZonalRedundancyDisabled = true;
     o.index = 42;
     o.job = 'foo';
-    o.labels = buildUnnamed62();
+    o.labels = buildUnnamed63();
     o.lastAttemptResult = buildGoogleCloudRunV2TaskAttemptResult();
     o.logUri = 'foo';
     o.maxRetries = 42;
@@ -2573,7 +2632,7 @@ api.GoogleCloudRunV2Task buildGoogleCloudRunV2Task() {
     o.timeout = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
-    o.volumes = buildUnnamed63();
+    o.volumes = buildUnnamed64();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
   }
   buildCounterGoogleCloudRunV2Task--;
@@ -2583,10 +2642,10 @@ api.GoogleCloudRunV2Task buildGoogleCloudRunV2Task() {
 void checkGoogleCloudRunV2Task(api.GoogleCloudRunV2Task o) {
   buildCounterGoogleCloudRunV2Task++;
   if (buildCounterGoogleCloudRunV2Task < 3) {
-    checkUnnamed59(o.annotations!);
+    checkUnnamed60(o.annotations!);
     unittest.expect(o.completionTime!, unittest.equals('foo'));
-    checkUnnamed60(o.conditions!);
-    checkUnnamed61(o.containers!);
+    checkUnnamed61(o.conditions!);
+    checkUnnamed62(o.containers!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     unittest.expect(o.encryptionKey!, unittest.equals('foo'));
@@ -2598,7 +2657,7 @@ void checkGoogleCloudRunV2Task(api.GoogleCloudRunV2Task o) {
     unittest.expect(o.gpuZonalRedundancyDisabled!, unittest.isTrue);
     unittest.expect(o.index!, unittest.equals(42));
     unittest.expect(o.job!, unittest.equals('foo'));
-    checkUnnamed62(o.labels!);
+    checkUnnamed63(o.labels!);
     checkGoogleCloudRunV2TaskAttemptResult(o.lastAttemptResult!);
     unittest.expect(o.logUri!, unittest.equals('foo'));
     unittest.expect(o.maxRetries!, unittest.equals(42));
@@ -2614,7 +2673,7 @@ void checkGoogleCloudRunV2Task(api.GoogleCloudRunV2Task o) {
     unittest.expect(o.timeout!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
-    checkUnnamed63(o.volumes!);
+    checkUnnamed64(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
   }
   buildCounterGoogleCloudRunV2Task--;
@@ -2645,23 +2704,23 @@ void checkGoogleCloudRunV2TaskAttemptResult(
   buildCounterGoogleCloudRunV2TaskAttemptResult--;
 }
 
-core.List<api.GoogleCloudRunV2Container> buildUnnamed64() => [
+core.List<api.GoogleCloudRunV2Container> buildUnnamed65() => [
   buildGoogleCloudRunV2Container(),
   buildGoogleCloudRunV2Container(),
 ];
 
-void checkUnnamed64(core.List<api.GoogleCloudRunV2Container> o) {
+void checkUnnamed65(core.List<api.GoogleCloudRunV2Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Container(o[0]);
   checkGoogleCloudRunV2Container(o[1]);
 }
 
-core.List<api.GoogleCloudRunV2Volume> buildUnnamed65() => [
+core.List<api.GoogleCloudRunV2Volume> buildUnnamed66() => [
   buildGoogleCloudRunV2Volume(),
   buildGoogleCloudRunV2Volume(),
 ];
 
-void checkUnnamed65(core.List<api.GoogleCloudRunV2Volume> o) {
+void checkUnnamed66(core.List<api.GoogleCloudRunV2Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Volume(o[0]);
   checkGoogleCloudRunV2Volume(o[1]);
@@ -2672,7 +2731,7 @@ api.GoogleCloudRunV2TaskTemplate buildGoogleCloudRunV2TaskTemplate() {
   final o = api.GoogleCloudRunV2TaskTemplate();
   buildCounterGoogleCloudRunV2TaskTemplate++;
   if (buildCounterGoogleCloudRunV2TaskTemplate < 3) {
-    o.containers = buildUnnamed64();
+    o.containers = buildUnnamed65();
     o.encryptionKey = 'foo';
     o.executionEnvironment = 'foo';
     o.gpuZonalRedundancyDisabled = true;
@@ -2680,7 +2739,7 @@ api.GoogleCloudRunV2TaskTemplate buildGoogleCloudRunV2TaskTemplate() {
     o.nodeSelector = buildGoogleCloudRunV2NodeSelector();
     o.serviceAccount = 'foo';
     o.timeout = 'foo';
-    o.volumes = buildUnnamed65();
+    o.volumes = buildUnnamed66();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
   }
   buildCounterGoogleCloudRunV2TaskTemplate--;
@@ -2690,7 +2749,7 @@ api.GoogleCloudRunV2TaskTemplate buildGoogleCloudRunV2TaskTemplate() {
 void checkGoogleCloudRunV2TaskTemplate(api.GoogleCloudRunV2TaskTemplate o) {
   buildCounterGoogleCloudRunV2TaskTemplate++;
   if (buildCounterGoogleCloudRunV2TaskTemplate < 3) {
-    checkUnnamed64(o.containers!);
+    checkUnnamed65(o.containers!);
     unittest.expect(o.encryptionKey!, unittest.equals('foo'));
     unittest.expect(o.executionEnvironment!, unittest.equals('foo'));
     unittest.expect(o.gpuZonalRedundancyDisabled!, unittest.isTrue);
@@ -2698,7 +2757,7 @@ void checkGoogleCloudRunV2TaskTemplate(api.GoogleCloudRunV2TaskTemplate o) {
     checkGoogleCloudRunV2NodeSelector(o.nodeSelector!);
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     unittest.expect(o.timeout!, unittest.equals('foo'));
-    checkUnnamed65(o.volumes!);
+    checkUnnamed66(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
   }
   buildCounterGoogleCloudRunV2TaskTemplate--;
@@ -2834,12 +2893,12 @@ void checkGoogleCloudRunV2VolumeMount(api.GoogleCloudRunV2VolumeMount o) {
   buildCounterGoogleCloudRunV2VolumeMount--;
 }
 
-core.List<api.GoogleCloudRunV2NetworkInterface> buildUnnamed66() => [
+core.List<api.GoogleCloudRunV2NetworkInterface> buildUnnamed67() => [
   buildGoogleCloudRunV2NetworkInterface(),
   buildGoogleCloudRunV2NetworkInterface(),
 ];
 
-void checkUnnamed66(core.List<api.GoogleCloudRunV2NetworkInterface> o) {
+void checkUnnamed67(core.List<api.GoogleCloudRunV2NetworkInterface> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2NetworkInterface(o[0]);
   checkGoogleCloudRunV2NetworkInterface(o[1]);
@@ -2852,7 +2911,7 @@ api.GoogleCloudRunV2VpcAccess buildGoogleCloudRunV2VpcAccess() {
   if (buildCounterGoogleCloudRunV2VpcAccess < 3) {
     o.connector = 'foo';
     o.egress = 'foo';
-    o.networkInterfaces = buildUnnamed66();
+    o.networkInterfaces = buildUnnamed67();
   }
   buildCounterGoogleCloudRunV2VpcAccess--;
   return o;
@@ -2863,63 +2922,63 @@ void checkGoogleCloudRunV2VpcAccess(api.GoogleCloudRunV2VpcAccess o) {
   if (buildCounterGoogleCloudRunV2VpcAccess < 3) {
     unittest.expect(o.connector!, unittest.equals('foo'));
     unittest.expect(o.egress!, unittest.equals('foo'));
-    checkUnnamed66(o.networkInterfaces!);
+    checkUnnamed67(o.networkInterfaces!);
   }
   buildCounterGoogleCloudRunV2VpcAccess--;
 }
 
-core.Map<core.String, core.String> buildUnnamed67() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed68() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed67(core.Map<core.String, core.String> o) {
+void checkUnnamed68(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Condition> buildUnnamed68() => [
+core.List<api.GoogleCloudRunV2Condition> buildUnnamed69() => [
   buildGoogleCloudRunV2Condition(),
   buildGoogleCloudRunV2Condition(),
 ];
 
-void checkUnnamed68(core.List<api.GoogleCloudRunV2Condition> o) {
+void checkUnnamed69(core.List<api.GoogleCloudRunV2Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Condition(o[0]);
   checkGoogleCloudRunV2Condition(o[1]);
 }
 
-core.List<core.String> buildUnnamed69() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed70() => ['foo', 'foo'];
 
-void checkUnnamed69(core.List<core.String> o) {
+void checkUnnamed70(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2InstanceSplitStatus> buildUnnamed70() => [
+core.List<api.GoogleCloudRunV2InstanceSplitStatus> buildUnnamed71() => [
   buildGoogleCloudRunV2InstanceSplitStatus(),
   buildGoogleCloudRunV2InstanceSplitStatus(),
 ];
 
-void checkUnnamed70(core.List<api.GoogleCloudRunV2InstanceSplitStatus> o) {
+void checkUnnamed71(core.List<api.GoogleCloudRunV2InstanceSplitStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2InstanceSplitStatus(o[0]);
   checkGoogleCloudRunV2InstanceSplitStatus(o[1]);
 }
 
-core.List<api.GoogleCloudRunV2InstanceSplit> buildUnnamed71() => [
+core.List<api.GoogleCloudRunV2InstanceSplit> buildUnnamed72() => [
   buildGoogleCloudRunV2InstanceSplit(),
   buildGoogleCloudRunV2InstanceSplit(),
 ];
 
-void checkUnnamed71(core.List<api.GoogleCloudRunV2InstanceSplit> o) {
+void checkUnnamed72(core.List<api.GoogleCloudRunV2InstanceSplit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2InstanceSplit(o[0]);
   checkGoogleCloudRunV2InstanceSplit(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed72() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed73() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed72(core.Map<core.String, core.String> o) {
+void checkUnnamed73(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -2930,22 +2989,22 @@ api.GoogleCloudRunV2WorkerPool buildGoogleCloudRunV2WorkerPool() {
   final o = api.GoogleCloudRunV2WorkerPool();
   buildCounterGoogleCloudRunV2WorkerPool++;
   if (buildCounterGoogleCloudRunV2WorkerPool < 3) {
-    o.annotations = buildUnnamed67();
+    o.annotations = buildUnnamed68();
     o.binaryAuthorization = buildGoogleCloudRunV2BinaryAuthorization();
     o.client = 'foo';
     o.clientVersion = 'foo';
-    o.conditions = buildUnnamed68();
+    o.conditions = buildUnnamed69();
     o.createTime = 'foo';
     o.creator = 'foo';
-    o.customAudiences = buildUnnamed69();
+    o.customAudiences = buildUnnamed70();
     o.deleteTime = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
     o.expireTime = 'foo';
     o.generation = 'foo';
-    o.instanceSplitStatuses = buildUnnamed70();
-    o.instanceSplits = buildUnnamed71();
-    o.labels = buildUnnamed72();
+    o.instanceSplitStatuses = buildUnnamed71();
+    o.instanceSplits = buildUnnamed72();
+    o.labels = buildUnnamed73();
     o.lastModifier = 'foo';
     o.latestCreatedRevision = 'foo';
     o.latestReadyRevision = 'foo';
@@ -2968,22 +3027,22 @@ api.GoogleCloudRunV2WorkerPool buildGoogleCloudRunV2WorkerPool() {
 void checkGoogleCloudRunV2WorkerPool(api.GoogleCloudRunV2WorkerPool o) {
   buildCounterGoogleCloudRunV2WorkerPool++;
   if (buildCounterGoogleCloudRunV2WorkerPool < 3) {
-    checkUnnamed67(o.annotations!);
+    checkUnnamed68(o.annotations!);
     checkGoogleCloudRunV2BinaryAuthorization(o.binaryAuthorization!);
     unittest.expect(o.client!, unittest.equals('foo'));
     unittest.expect(o.clientVersion!, unittest.equals('foo'));
-    checkUnnamed68(o.conditions!);
+    checkUnnamed69(o.conditions!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.creator!, unittest.equals('foo'));
-    checkUnnamed69(o.customAudiences!);
+    checkUnnamed70(o.customAudiences!);
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.expireTime!, unittest.equals('foo'));
     unittest.expect(o.generation!, unittest.equals('foo'));
-    checkUnnamed70(o.instanceSplitStatuses!);
-    checkUnnamed71(o.instanceSplits!);
-    checkUnnamed72(o.labels!);
+    checkUnnamed71(o.instanceSplitStatuses!);
+    checkUnnamed72(o.instanceSplits!);
+    checkUnnamed73(o.labels!);
     unittest.expect(o.lastModifier!, unittest.equals('foo'));
     unittest.expect(o.latestCreatedRevision!, unittest.equals('foo'));
     unittest.expect(o.latestReadyRevision!, unittest.equals('foo'));
@@ -3002,39 +3061,39 @@ void checkGoogleCloudRunV2WorkerPool(api.GoogleCloudRunV2WorkerPool o) {
   buildCounterGoogleCloudRunV2WorkerPool--;
 }
 
-core.Map<core.String, core.String> buildUnnamed73() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed74() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed73(core.Map<core.String, core.String> o) {
+void checkUnnamed74(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Container> buildUnnamed74() => [
+core.List<api.GoogleCloudRunV2Container> buildUnnamed75() => [
   buildGoogleCloudRunV2Container(),
   buildGoogleCloudRunV2Container(),
 ];
 
-void checkUnnamed74(core.List<api.GoogleCloudRunV2Container> o) {
+void checkUnnamed75(core.List<api.GoogleCloudRunV2Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Container(o[0]);
   checkGoogleCloudRunV2Container(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed75() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed76() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed75(core.Map<core.String, core.String> o) {
+void checkUnnamed76(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudRunV2Volume> buildUnnamed76() => [
+core.List<api.GoogleCloudRunV2Volume> buildUnnamed77() => [
   buildGoogleCloudRunV2Volume(),
   buildGoogleCloudRunV2Volume(),
 ];
 
-void checkUnnamed76(core.List<api.GoogleCloudRunV2Volume> o) {
+void checkUnnamed77(core.List<api.GoogleCloudRunV2Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRunV2Volume(o[0]);
   checkGoogleCloudRunV2Volume(o[1]);
@@ -3046,20 +3105,20 @@ buildGoogleCloudRunV2WorkerPoolRevisionTemplate() {
   final o = api.GoogleCloudRunV2WorkerPoolRevisionTemplate();
   buildCounterGoogleCloudRunV2WorkerPoolRevisionTemplate++;
   if (buildCounterGoogleCloudRunV2WorkerPoolRevisionTemplate < 3) {
-    o.annotations = buildUnnamed73();
+    o.annotations = buildUnnamed74();
     o.client = 'foo';
     o.clientVersion = 'foo';
-    o.containers = buildUnnamed74();
+    o.containers = buildUnnamed75();
     o.encryptionKey = 'foo';
     o.encryptionKeyRevocationAction = 'foo';
     o.encryptionKeyShutdownDuration = 'foo';
     o.gpuZonalRedundancyDisabled = true;
-    o.labels = buildUnnamed75();
+    o.labels = buildUnnamed76();
     o.nodeSelector = buildGoogleCloudRunV2NodeSelector();
     o.revision = 'foo';
     o.serviceAccount = 'foo';
     o.serviceMesh = buildGoogleCloudRunV2ServiceMesh();
-    o.volumes = buildUnnamed76();
+    o.volumes = buildUnnamed77();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
   }
   buildCounterGoogleCloudRunV2WorkerPoolRevisionTemplate--;
@@ -3071,20 +3130,20 @@ void checkGoogleCloudRunV2WorkerPoolRevisionTemplate(
 ) {
   buildCounterGoogleCloudRunV2WorkerPoolRevisionTemplate++;
   if (buildCounterGoogleCloudRunV2WorkerPoolRevisionTemplate < 3) {
-    checkUnnamed73(o.annotations!);
+    checkUnnamed74(o.annotations!);
     unittest.expect(o.client!, unittest.equals('foo'));
     unittest.expect(o.clientVersion!, unittest.equals('foo'));
-    checkUnnamed74(o.containers!);
+    checkUnnamed75(o.containers!);
     unittest.expect(o.encryptionKey!, unittest.equals('foo'));
     unittest.expect(o.encryptionKeyRevocationAction!, unittest.equals('foo'));
     unittest.expect(o.encryptionKeyShutdownDuration!, unittest.equals('foo'));
     unittest.expect(o.gpuZonalRedundancyDisabled!, unittest.isTrue);
-    checkUnnamed75(o.labels!);
+    checkUnnamed76(o.labels!);
     checkGoogleCloudRunV2NodeSelector(o.nodeSelector!);
     unittest.expect(o.revision!, unittest.equals('foo'));
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     checkGoogleCloudRunV2ServiceMesh(o.serviceMesh!);
-    checkUnnamed76(o.volumes!);
+    checkUnnamed77(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
   }
   buildCounterGoogleCloudRunV2WorkerPoolRevisionTemplate--;
@@ -3111,12 +3170,12 @@ void checkGoogleCloudRunV2WorkerPoolScaling(
   buildCounterGoogleCloudRunV2WorkerPoolScaling--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed77() => [
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed78() => [
   buildGoogleIamV1AuditLogConfig(),
   buildGoogleIamV1AuditLogConfig(),
 ];
 
-void checkUnnamed77(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed78(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -3127,7 +3186,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed77();
+    o.auditLogConfigs = buildUnnamed78();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -3137,15 +3196,15 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed77(o.auditLogConfigs!);
+    checkUnnamed78(o.auditLogConfigs!);
     unittest.expect(o.service!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed78() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed79() => ['foo', 'foo'];
 
-void checkUnnamed78(core.List<core.String> o) {
+void checkUnnamed79(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3156,7 +3215,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed78();
+    o.exemptedMembers = buildUnnamed79();
     o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -3166,15 +3225,15 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed78(o.exemptedMembers!);
+    checkUnnamed79(o.exemptedMembers!);
     unittest.expect(o.logType!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed79() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed80() => ['foo', 'foo'];
 
-void checkUnnamed79(core.List<core.String> o) {
+void checkUnnamed80(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3186,7 +3245,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed79();
+    o.members = buildUnnamed80();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -3197,29 +3256,29 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed79(o.members!);
+    checkUnnamed80(o.members!);
     unittest.expect(o.role!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed80() => [
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed81() => [
   buildGoogleIamV1AuditConfig(),
   buildGoogleIamV1AuditConfig(),
 ];
 
-void checkUnnamed80(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed81(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed81() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed82() => [
   buildGoogleIamV1Binding(),
   buildGoogleIamV1Binding(),
 ];
 
-void checkUnnamed81(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed82(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -3230,8 +3289,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed80();
-    o.bindings = buildUnnamed81();
+    o.auditConfigs = buildUnnamed81();
+    o.bindings = buildUnnamed82();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -3242,8 +3301,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed80(o.auditConfigs!);
-    checkUnnamed81(o.bindings!);
+    checkUnnamed81(o.auditConfigs!);
+    checkUnnamed82(o.bindings!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals(42));
   }
@@ -3271,9 +3330,9 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed82() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed83() => ['foo', 'foo'];
 
-void checkUnnamed82(core.List<core.String> o) {
+void checkUnnamed83(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3285,7 +3344,7 @@ buildGoogleIamV1TestIamPermissionsRequest() {
   final o = api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed82();
+    o.permissions = buildUnnamed83();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -3296,14 +3355,14 @@ void checkGoogleIamV1TestIamPermissionsRequest(
 ) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed82(o.permissions!);
+    checkUnnamed83(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed83() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed84() => ['foo', 'foo'];
 
-void checkUnnamed83(core.List<core.String> o) {
+void checkUnnamed84(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3315,7 +3374,7 @@ buildGoogleIamV1TestIamPermissionsResponse() {
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed83();
+    o.permissions = buildUnnamed84();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -3326,25 +3385,25 @@ void checkGoogleIamV1TestIamPermissionsResponse(
 ) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed83(o.permissions!);
+    checkUnnamed84(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed84() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed85() => [
   buildGoogleLongrunningOperation(),
   buildGoogleLongrunningOperation(),
 ];
 
-void checkUnnamed84(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed85(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
 }
 
-core.List<core.String> buildUnnamed85() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed86() => ['foo', 'foo'];
 
-void checkUnnamed85(core.List<core.String> o) {
+void checkUnnamed86(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3357,8 +3416,8 @@ buildGoogleLongrunningListOperationsResponse() {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed84();
-    o.unreachable = buildUnnamed85();
+    o.operations = buildUnnamed85();
+    o.unreachable = buildUnnamed86();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -3370,37 +3429,10 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed84(o.operations!);
-    checkUnnamed85(o.unreachable!);
+    checkUnnamed85(o.operations!);
+    checkUnnamed86(o.unreachable!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed86() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed86(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']!) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']!) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object?> buildUnnamed87() => {
@@ -3417,6 +3449,33 @@ core.Map<core.String, core.Object?> buildUnnamed87() => {
 };
 
 void checkUnnamed87(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object?> buildUnnamed88() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed88(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -3437,9 +3496,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed86();
+    o.metadata = buildUnnamed87();
     o.name = 'foo';
-    o.response = buildUnnamed87();
+    o.response = buildUnnamed88();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -3450,9 +3509,9 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed86(o.metadata!);
+    checkUnnamed87(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed87(o.response!);
+    checkUnnamed88(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -3494,7 +3553,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed88() => {
+core.Map<core.String, core.Object?> buildUnnamed89() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -3507,7 +3566,7 @@ core.Map<core.String, core.Object?> buildUnnamed88() => {
   },
 };
 
-void checkUnnamed88(core.Map<core.String, core.Object?> o) {
+void checkUnnamed89(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3521,15 +3580,15 @@ void checkUnnamed88(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed89() => [
-  buildUnnamed88(),
-  buildUnnamed88(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed90() => [
+  buildUnnamed89(),
+  buildUnnamed89(),
 ];
 
-void checkUnnamed89(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed90(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed88(o[0]);
-  checkUnnamed88(o[1]);
+  checkUnnamed89(o[0]);
+  checkUnnamed89(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -3538,7 +3597,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed89();
+    o.details = buildUnnamed90();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -3549,7 +3608,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed89(o.details!);
+    checkUnnamed90(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -3920,6 +3979,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudRunV2InlinedSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRunV2InlinedSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRunV2InlinedSource.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudRunV2InlinedSource(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudRunV2Instance', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudRunV2Instance();
@@ -4247,6 +4317,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkGoogleCloudRunV2SourceCode(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRunV2SourceFile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRunV2SourceFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRunV2SourceFile.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudRunV2SourceFile(od);
     });
   });
 
@@ -5189,6 +5270,89 @@ void main() {
       );
       checkGoogleCloudRunV2ListInstancesResponse(
         response as api.GoogleCloudRunV2ListInstancesResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudRunApi(mock).projects.locations.instances;
+      final arg_request = buildGoogleCloudRunV2Instance();
+      final arg_name = 'foo';
+      final arg_allowMissing = true;
+      final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudRunV2Instance.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRunV2Instance(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['allowMissing']!.first,
+            unittest.equals('$arg_allowMissing'),
+          );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        allowMissing: arg_allowMissing,
+        updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
       );
     });
 
@@ -6998,6 +7162,7 @@ void main() {
       final arg_request = buildGoogleCloudRunV2Service();
       final arg_name = 'foo';
       final arg_allowMissing = true;
+      final arg_forceNewRevision = true;
       final arg_updateMask = 'foo';
       final arg_validateOnly = true;
       final arg_$fields = 'foo';
@@ -7044,6 +7209,10 @@ void main() {
             unittest.equals('$arg_allowMissing'),
           );
           unittest.expect(
+            queryMap['forceNewRevision']!.first,
+            unittest.equals('$arg_forceNewRevision'),
+          );
+          unittest.expect(
             queryMap['updateMask']!.first,
             unittest.equals(arg_updateMask),
           );
@@ -7066,6 +7235,7 @@ void main() {
         arg_request,
         arg_name,
         allowMissing: arg_allowMissing,
+        forceNewRevision: arg_forceNewRevision,
         updateMask: arg_updateMask,
         validateOnly: arg_validateOnly,
         $fields: arg_$fields,

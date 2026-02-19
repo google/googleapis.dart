@@ -368,6 +368,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -452,11 +463,11 @@ class ProjectsLocationsAppConnectionsResource {
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
   /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// same request ID, the server can check if the original operation with the
+  /// same request ID was received, and if so, will ignore the second request.
+  /// This prevents clients from accidentally creating duplicate commitments.
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
   ///
   /// [validateOnly] - Optional. If set, validates request by executing a
   /// dry-run which would not alter the resource in any way.
@@ -515,11 +526,11 @@ class ProjectsLocationsAppConnectionsResource {
   /// The server will guarantee that for at least 60 minutes after the first
   /// request. For example, consider a situation where you make an initial
   /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// same request ID, the server can check if the original operation with the
+  /// same request ID was received, and if so, will ignore the second request.
+  /// This prevents clients from accidentally creating duplicate commitments.
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
   ///
   /// [validateOnly] - Optional. If set, validates request by executing a
   /// dry-run which would not alter the resource in any way.
@@ -740,11 +751,11 @@ class ProjectsLocationsAppConnectionsResource {
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
   /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// same request ID, the server can check if the original operation with the
+  /// same request ID was received, and if so, will ignore the second request.
+  /// This prevents clients from accidentally creating duplicate commitments.
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field. The elements of the repeated paths field may
@@ -2589,8 +2600,8 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore request if it has already been completed. The
-  /// server will guarantee that for at least 60 minutes since the first
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
   /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3221,7 +3232,7 @@ typedef Empty = $Empty;
 /// AppConnection to a remote application.
 ///
 /// It creates all the necessary GCP components needed for creating a BeyondCorp
-/// protected AppConnection. Multiple connectors can be authorised for a single
+/// protected AppConnection. Multiple connectors can be authorized for a single
 /// AppConnection.
 class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
   /// Address of the remote application endpoint for the BeyondCorp
@@ -3232,7 +3243,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
   applicationEndpoint;
 
   /// List of \[google.cloud.beyondcorp.v1main.Connector.name\] that are
-  /// authorised to be associated with this AppConnection.
+  /// authorized to be associated with this AppConnection.
   ///
   /// Optional.
   core.List<core.String>? connectors;
@@ -4061,10 +4072,12 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse {
   }
 }
 
-/// ResourceInfo represents the information/status of an app connector resource.
+/// ResourceInfo represents the information or status of an app connector
+/// resource component that's used to report on various parts of the system.
 ///
-/// Such as: - remote_agent - container - runtime - appgateway - appconnector -
-/// appconnection - tunnel - logagent
+/// For example, ResourceInfo can be used to convey the status of a
+/// remote_agent, including the status of an appgateway for an runtime
+/// environment in a container instance.
 class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
   /// Unique Id for the resource.
   ///
@@ -4744,6 +4757,9 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
   }
 }
 
+/// Configuration for Cloud Logging.
+typedef GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig = $Empty;
+
 /// The configuration for the proxy.
 class GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
   /// List of the allowed client header names.
@@ -4856,6 +4872,13 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   /// Optional.
   core.Map<core.String, GoogleCloudBeyondcorpSecuritygatewaysV1Hub>? hubs;
 
+  /// Configuration for Cloud Logging.
+  ///
+  /// If this field is present, the logging will be enabled.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig? logging;
+
   /// Identifier.
   ///
   /// Name of the resource.
@@ -4897,6 +4920,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
     this.displayName,
     this.externalIps,
     this.hubs,
+    this.logging,
     this.name,
     this.proxyProtocolConfig,
     this.serviceDiscovery,
@@ -4922,6 +4946,11 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
             ),
           ),
         ),
+        logging: json_.containsKey('logging')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig.fromJson(
+                json_['logging'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         proxyProtocolConfig: json_.containsKey('proxyProtocolConfig')
             ? GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
@@ -4945,6 +4974,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
     final displayName = this.displayName;
     final externalIps = this.externalIps;
     final hubs = this.hubs;
+    final logging = this.logging;
     final name = this.name;
     final proxyProtocolConfig = this.proxyProtocolConfig;
     final serviceDiscovery = this.serviceDiscovery;
@@ -4956,6 +4986,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
       'displayName': ?displayName,
       'externalIps': ?externalIps,
       'hubs': ?hubs,
+      'logging': ?logging,
       'name': ?name,
       'proxyProtocolConfig': ?proxyProtocolConfig,
       'serviceDiscovery': ?serviceDiscovery,
@@ -4969,7 +5000,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
 class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery {
   /// External API configuration.
   ///
-  /// Required.
+  /// Optional.
   GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway? apiGateway;
 
   GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery({this.apiGateway});
@@ -4995,7 +5026,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway {
   /// Enables fetching resource model updates to alter service behavior per
   /// Chrome profile.
   ///
-  /// Required.
+  /// Optional.
   GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor?
   resourceOverride;
 
@@ -5024,7 +5055,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway {
 class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor {
   /// Contains the URI path fragment where HTTP request is sent.
   ///
-  /// Required.
+  /// Optional.
   core.String? path;
 
   GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor({

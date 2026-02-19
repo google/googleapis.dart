@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20251208",
+    "revision": "20260406",
     "rootUrl": "https://servicemanagement.googleapis.com/",
     "servicePath": "",
     "title": "Service Management API",
@@ -916,6 +916,13 @@
                     "description": "The type of this aspect configuration.",
                     "type": "string"
                 },
+                "rules": {
+                    "description": "Optional. Rules of the Configuration.",
+                    "items": {
+                        "$ref": "AspectRule"
+                    },
+                    "type": "array"
+                },
                 "spec": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -923,6 +930,25 @@
                     },
                     "description": "Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`.",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AspectRule": {
+            "description": "Rule-based configuration for an aspect.",
+            "id": "AspectRule",
+            "properties": {
+                "config": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Required. Rules of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`.",
+                    "type": "object"
+                },
+                "selector": {
+                    "description": "Required. Selects the RPC methods to which this rule applies. Refer to selector for syntax details.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1129,7 +1155,7 @@
                     "type": "object"
                 },
                 "pathTranslation": {
-                    "description": "no-lint",
+                    "description": "Path translation specifies how to combine the backend address with the request path in order to produce the appropriate forwarding URL for the request. See PathTranslation for more details.",
                     "enum": [
                         "PATH_TRANSLATION_UNSPECIFIED",
                         "CONSTANT_ADDRESS",
@@ -1415,7 +1441,7 @@
                 },
                 "selectiveGapicGeneration": {
                     "$ref": "SelectiveGapicGeneration",
-                    "description": "Configuration for which RPCs should be generated in the GAPIC client."
+                    "description": "Configuration for which RPCs should be generated in the GAPIC client. Note: This field should not be used in most cases."
                 }
             },
             "type": "object"
@@ -3349,7 +3375,7 @@
             "type": "object"
         },
         "SelectiveGapicGeneration": {
-            "description": "This message is used to configure the generation of a subset of the RPCs in a service for client libraries.",
+            "description": "This message is used to configure the generation of a subset of the RPCs in a service for client libraries. Note: This feature should not be used in most cases.",
             "id": "SelectiveGapicGeneration",
             "properties": {
                 "generateOmittedAsInternal": {
@@ -3458,7 +3484,7 @@
                     "type": "array"
                 },
                 "monitoredResources": {
-                    "description": "Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.",
+                    "description": "Defines the monitored resources used by this service. This is required by the `Service.monitoring` and `Service.logging` configurations.",
                     "items": {
                         "$ref": "MonitoredResourceDescriptor"
                     },
@@ -3835,7 +3861,7 @@
             "id": "UsageRule",
             "properties": {
                 "allowUnregisteredCalls": {
-                    "description": " Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.",
+                    "description": "Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.",
                     "type": "boolean"
                 },
                 "selector": {

@@ -41,6 +41,7 @@ api.Assignment buildAssignment() {
     o.enableGeminiInBigquery = true;
     o.jobType = 'foo';
     o.name = 'foo';
+    o.principal = 'foo';
     o.schedulingPolicy = buildSchedulingPolicy();
     o.state = 'foo';
   }
@@ -55,6 +56,7 @@ void checkAssignment(api.Assignment o) {
     unittest.expect(o.enableGeminiInBigquery!, unittest.isTrue);
     unittest.expect(o.jobType!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.principal!, unittest.equals('foo'));
     checkSchedulingPolicy(o.schedulingPolicy!);
     unittest.expect(o.state!, unittest.equals('foo'));
   }

@@ -132,7 +132,7 @@ class ProjectsResource {
   /// in an FTL-own storage project. Except for in rare cases, calling this
   /// method in parallel from multiple clients will only create a single bucket.
   /// In order to avoid unnecessary storage charges, the bucket is configured to
-  /// automatically delete objects older than 90 days. The bucket is created
+  /// automatically delete objects older than 60 days. The bucket is created
   /// with the following permissions: - Owner access for owners of central
   /// storage project (FTL-owned) - Writer access for owners/editors of customer
   /// project - Reader access for viewers of customer project The default ACL on
@@ -2854,11 +2854,12 @@ class FailureDetail {
 class FileReference {
   /// The URI of a file stored in Google Cloud Storage.
   ///
-  /// For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in
-  /// gsutil format: gs://mybucket/path/to/test.xml with version-specific info,
-  /// gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error
-  /// will be returned if the URI format is not supported. - In response: always
-  /// set - In create/update request: always set
+  /// For example: `http://storage.googleapis.com/mybucket/path/to/test.xml` or
+  /// in Cloud Storage URI format: `gs://mybucket/path/to/test.xml` with
+  /// version-specific info, `gs://mybucket/path/to/test.xml#1360383693690000`
+  /// An INVALID_ARGUMENT error will be returned if the URI format is not
+  /// supported. - In response: always set - In create/update request: always
+  /// set
   core.String? fileUri;
 
   FileReference({this.fileUri});
@@ -4517,10 +4518,15 @@ class SkippedDetail {
   /// If the requested OS version doesn't run on the specific device model.
   core.bool? incompatibleDevice;
 
+  /// Indicates that the test could not be scheduled in the requested time
+  /// because no suitable device was available.
+  core.bool? pendingTimeout;
+
   SkippedDetail({
     this.incompatibleAppVersion,
     this.incompatibleArchitecture,
     this.incompatibleDevice,
+    this.pendingTimeout,
   });
 
   SkippedDetail.fromJson(core.Map json_)
@@ -4529,16 +4535,19 @@ class SkippedDetail {
         incompatibleArchitecture:
             json_['incompatibleArchitecture'] as core.bool?,
         incompatibleDevice: json_['incompatibleDevice'] as core.bool?,
+        pendingTimeout: json_['pendingTimeout'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final incompatibleAppVersion = this.incompatibleAppVersion;
     final incompatibleArchitecture = this.incompatibleArchitecture;
     final incompatibleDevice = this.incompatibleDevice;
+    final pendingTimeout = this.pendingTimeout;
     return {
       'incompatibleAppVersion': ?incompatibleAppVersion,
       'incompatibleArchitecture': ?incompatibleArchitecture,
       'incompatibleDevice': ?incompatibleDevice,
+      'pendingTimeout': ?pendingTimeout,
     };
   }
 }

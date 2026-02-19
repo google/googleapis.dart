@@ -91,6 +91,7 @@ api.AddOnAttachmentStudentSubmission buildAddOnAttachmentStudentSubmission() {
   if (buildCounterAddOnAttachmentStudentSubmission < 3) {
     o.pointsEarned = 42.0;
     o.postSubmissionState = 'foo';
+    o.userId = 'foo';
   }
   buildCounterAddOnAttachmentStudentSubmission--;
   return o;
@@ -103,6 +104,7 @@ void checkAddOnAttachmentStudentSubmission(
   if (buildCounterAddOnAttachmentStudentSubmission < 3) {
     unittest.expect(o.pointsEarned!, unittest.equals(42.0));
     unittest.expect(o.postSubmissionState!, unittest.equals('foo'));
+    unittest.expect(o.userId!, unittest.equals('foo'));
   }
   buildCounterAddOnAttachmentStudentSubmission--;
 }

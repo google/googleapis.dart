@@ -121,14 +121,24 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -236,6 +246,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -251,12 +269,16 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'filter': ?filter == null ? null : [filter],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1837,9 +1859,16 @@ class ConfigureManagementSettingsRequest {
   /// Required.
   core.String? updateMask;
 
+  /// If set, validates the request without actually updating the management
+  /// settings.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
   ConfigureManagementSettingsRequest({
     this.managementSettings,
     this.updateMask,
+    this.validateOnly,
   });
 
   ConfigureManagementSettingsRequest.fromJson(core.Map json_)
@@ -1851,14 +1880,17 @@ class ConfigureManagementSettingsRequest {
               )
             : null,
         updateMask: json_['updateMask'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final managementSettings = this.managementSettings;
     final updateMask = this.updateMask;
+    final validateOnly = this.validateOnly;
     return {
       'managementSettings': ?managementSettings,
       'updateMask': ?updateMask,
+      'validateOnly': ?validateOnly,
     };
   }
 }
@@ -2728,7 +2760,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2740,12 +2784,20 @@ class ListOperationsResponse {
               ),
             )
             .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final nextPageToken = this.nextPageToken;
     final operations = this.operations;
-    return {'nextPageToken': ?nextPageToken, 'operations': ?operations};
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
   }
 }
 

@@ -307,6 +307,27 @@ void checkEventDrivenSchedule(api.EventDrivenSchedule o) {
   buildCounterEventDrivenSchedule--;
 }
 
+core.int buildCounterHierarchyDetail = 0;
+api.HierarchyDetail buildHierarchyDetail() {
+  final o = api.HierarchyDetail();
+  buildCounterHierarchyDetail++;
+  if (buildCounterHierarchyDetail < 3) {
+    o.partitionDetail = buildPartitionDetail();
+    o.tableDetail = buildTableDetail();
+  }
+  buildCounterHierarchyDetail--;
+  return o;
+}
+
+void checkHierarchyDetail(api.HierarchyDetail o) {
+  buildCounterHierarchyDetail++;
+  if (buildCounterHierarchyDetail < 3) {
+    checkPartitionDetail(o.partitionDetail!);
+    checkTableDetail(o.tableDetail!);
+  }
+  buildCounterHierarchyDetail--;
+}
+
 core.List<api.DataSource> buildUnnamed5() => [
   buildDataSource(),
   buildDataSource(),
@@ -432,12 +453,44 @@ void checkListTransferLogsResponse(api.ListTransferLogsResponse o) {
   buildCounterListTransferLogsResponse--;
 }
 
-core.List<api.TransferRun> buildUnnamed9() => [
+core.List<api.TransferResource> buildUnnamed9() => [
+  buildTransferResource(),
+  buildTransferResource(),
+];
+
+void checkUnnamed9(core.List<api.TransferResource> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTransferResource(o[0]);
+  checkTransferResource(o[1]);
+}
+
+core.int buildCounterListTransferResourcesResponse = 0;
+api.ListTransferResourcesResponse buildListTransferResourcesResponse() {
+  final o = api.ListTransferResourcesResponse();
+  buildCounterListTransferResourcesResponse++;
+  if (buildCounterListTransferResourcesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.transferResources = buildUnnamed9();
+  }
+  buildCounterListTransferResourcesResponse--;
+  return o;
+}
+
+void checkListTransferResourcesResponse(api.ListTransferResourcesResponse o) {
+  buildCounterListTransferResourcesResponse++;
+  if (buildCounterListTransferResourcesResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed9(o.transferResources!);
+  }
+  buildCounterListTransferResourcesResponse--;
+}
+
+core.List<api.TransferRun> buildUnnamed10() => [
   buildTransferRun(),
   buildTransferRun(),
 ];
 
-void checkUnnamed9(core.List<api.TransferRun> o) {
+void checkUnnamed10(core.List<api.TransferRun> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransferRun(o[0]);
   checkTransferRun(o[1]);
@@ -449,7 +502,7 @@ api.ListTransferRunsResponse buildListTransferRunsResponse() {
   buildCounterListTransferRunsResponse++;
   if (buildCounterListTransferRunsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.transferRuns = buildUnnamed9();
+    o.transferRuns = buildUnnamed10();
   }
   buildCounterListTransferRunsResponse--;
   return o;
@@ -459,20 +512,20 @@ void checkListTransferRunsResponse(api.ListTransferRunsResponse o) {
   buildCounterListTransferRunsResponse++;
   if (buildCounterListTransferRunsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed9(o.transferRuns!);
+    checkUnnamed10(o.transferRuns!);
   }
   buildCounterListTransferRunsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed10() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed11() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed10(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed11() => {
+core.Map<core.String, core.Object?> buildUnnamed12() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -485,7 +538,7 @@ core.Map<core.String, core.Object?> buildUnnamed11() => {
   },
 };
 
-void checkUnnamed11(core.Map<core.String, core.Object?> o) {
+void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -505,9 +558,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed10();
+    o.labels = buildUnnamed11();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed11();
+    o.metadata = buildUnnamed12();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -518,9 +571,9 @@ void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed10(o.labels!);
+    checkUnnamed11(o.labels!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
-    checkUnnamed11(o.metadata!);
+    checkUnnamed12(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterLocation--;
@@ -539,6 +592,25 @@ void checkManualSchedule(api.ManualSchedule o) {
   buildCounterManualSchedule++;
   if (buildCounterManualSchedule < 3) {}
   buildCounterManualSchedule--;
+}
+
+core.int buildCounterPartitionDetail = 0;
+api.PartitionDetail buildPartitionDetail() {
+  final o = api.PartitionDetail();
+  buildCounterPartitionDetail++;
+  if (buildCounterPartitionDetail < 3) {
+    o.table = 'foo';
+  }
+  buildCounterPartitionDetail--;
+  return o;
+}
+
+void checkPartitionDetail(api.PartitionDetail o) {
+  buildCounterPartitionDetail++;
+  if (buildCounterPartitionDetail < 3) {
+    unittest.expect(o.table!, unittest.equals('foo'));
+  }
+  buildCounterPartitionDetail--;
 }
 
 core.int buildCounterScheduleOptions = 0;
@@ -608,12 +680,12 @@ void checkScheduleTransferRunsRequest(api.ScheduleTransferRunsRequest o) {
   buildCounterScheduleTransferRunsRequest--;
 }
 
-core.List<api.TransferRun> buildUnnamed12() => [
+core.List<api.TransferRun> buildUnnamed13() => [
   buildTransferRun(),
   buildTransferRun(),
 ];
 
-void checkUnnamed12(core.List<api.TransferRun> o) {
+void checkUnnamed13(core.List<api.TransferRun> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransferRun(o[0]);
   checkTransferRun(o[1]);
@@ -624,7 +696,7 @@ api.ScheduleTransferRunsResponse buildScheduleTransferRunsResponse() {
   final o = api.ScheduleTransferRunsResponse();
   buildCounterScheduleTransferRunsResponse++;
   if (buildCounterScheduleTransferRunsResponse < 3) {
-    o.runs = buildUnnamed12();
+    o.runs = buildUnnamed13();
   }
   buildCounterScheduleTransferRunsResponse--;
   return o;
@@ -633,7 +705,7 @@ api.ScheduleTransferRunsResponse buildScheduleTransferRunsResponse() {
 void checkScheduleTransferRunsResponse(api.ScheduleTransferRunsResponse o) {
   buildCounterScheduleTransferRunsResponse++;
   if (buildCounterScheduleTransferRunsResponse < 3) {
-    checkUnnamed12(o.runs!);
+    checkUnnamed13(o.runs!);
   }
   buildCounterScheduleTransferRunsResponse--;
 }
@@ -659,12 +731,12 @@ void checkStartManualTransferRunsRequest(api.StartManualTransferRunsRequest o) {
   buildCounterStartManualTransferRunsRequest--;
 }
 
-core.List<api.TransferRun> buildUnnamed13() => [
+core.List<api.TransferRun> buildUnnamed14() => [
   buildTransferRun(),
   buildTransferRun(),
 ];
 
-void checkUnnamed13(core.List<api.TransferRun> o) {
+void checkUnnamed14(core.List<api.TransferRun> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransferRun(o[0]);
   checkTransferRun(o[1]);
@@ -675,7 +747,7 @@ api.StartManualTransferRunsResponse buildStartManualTransferRunsResponse() {
   final o = api.StartManualTransferRunsResponse();
   buildCounterStartManualTransferRunsResponse++;
   if (buildCounterStartManualTransferRunsResponse < 3) {
-    o.runs = buildUnnamed13();
+    o.runs = buildUnnamed14();
   }
   buildCounterStartManualTransferRunsResponse--;
   return o;
@@ -686,12 +758,12 @@ void checkStartManualTransferRunsResponse(
 ) {
   buildCounterStartManualTransferRunsResponse++;
   if (buildCounterStartManualTransferRunsResponse < 3) {
-    checkUnnamed13(o.runs!);
+    checkUnnamed14(o.runs!);
   }
   buildCounterStartManualTransferRunsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed14() => {
+core.Map<core.String, core.Object?> buildUnnamed15() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -704,7 +776,7 @@ core.Map<core.String, core.Object?> buildUnnamed14() => {
   },
 };
 
-void checkUnnamed14(core.Map<core.String, core.Object?> o) {
+void checkUnnamed15(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -718,15 +790,15 @@ void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed15() => [
-  buildUnnamed14(),
-  buildUnnamed14(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed16() => [
+  buildUnnamed15(),
+  buildUnnamed15(),
 ];
 
-void checkUnnamed15(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed16(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed14(o[0]);
-  checkUnnamed14(o[1]);
+  checkUnnamed15(o[0]);
+  checkUnnamed15(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -735,7 +807,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed15();
+    o.details = buildUnnamed16();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -746,10 +818,29 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed15(o.details!);
+    checkUnnamed16(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
+}
+
+core.int buildCounterTableDetail = 0;
+api.TableDetail buildTableDetail() {
+  final o = api.TableDetail();
+  buildCounterTableDetail++;
+  if (buildCounterTableDetail < 3) {
+    o.partitionCount = 'foo';
+  }
+  buildCounterTableDetail--;
+  return o;
+}
+
+void checkTableDetail(api.TableDetail o) {
+  buildCounterTableDetail++;
+  if (buildCounterTableDetail < 3) {
+    unittest.expect(o.partitionCount!, unittest.equals('foo'));
+  }
+  buildCounterTableDetail--;
 }
 
 core.int buildCounterTimeBasedSchedule = 0;
@@ -796,7 +887,7 @@ void checkTimeRange(api.TimeRange o) {
   buildCounterTimeRange--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed16() => {
+core.Map<core.String, core.Object?> buildUnnamed17() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -809,7 +900,7 @@ core.Map<core.String, core.Object?> buildUnnamed16() => {
   },
 };
 
-void checkUnnamed16(core.Map<core.String, core.Object?> o) {
+void checkUnnamed17(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -842,7 +933,7 @@ api.TransferConfig buildTransferConfig() {
     o.nextRunTime = 'foo';
     o.notificationPubsubTopic = 'foo';
     o.ownerInfo = buildUserInfo();
-    o.params = buildUnnamed16();
+    o.params = buildUnnamed17();
     o.schedule = 'foo';
     o.scheduleOptions = buildScheduleOptions();
     o.scheduleOptionsV2 = buildScheduleOptionsV2();
@@ -871,7 +962,7 @@ void checkTransferConfig(api.TransferConfig o) {
     unittest.expect(o.nextRunTime!, unittest.equals('foo'));
     unittest.expect(o.notificationPubsubTopic!, unittest.equals('foo'));
     checkUserInfo(o.ownerInfo!);
-    checkUnnamed16(o.params!);
+    checkUnnamed17(o.params!);
     unittest.expect(o.schedule!, unittest.equals('foo'));
     checkScheduleOptions(o.scheduleOptions!);
     checkScheduleOptionsV2(o.scheduleOptionsV2!);
@@ -905,7 +996,65 @@ void checkTransferMessage(api.TransferMessage o) {
   buildCounterTransferMessage--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed17() => {
+core.int buildCounterTransferResource = 0;
+api.TransferResource buildTransferResource() {
+  final o = api.TransferResource();
+  buildCounterTransferResource++;
+  if (buildCounterTransferResource < 3) {
+    o.destination = 'foo';
+    o.hierarchyDetail = buildHierarchyDetail();
+    o.lastSuccessfulRun = buildTransferRunBrief();
+    o.latestRun = buildTransferRunBrief();
+    o.latestStatusDetail = buildTransferResourceStatusDetail();
+    o.name = 'foo';
+    o.type = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterTransferResource--;
+  return o;
+}
+
+void checkTransferResource(api.TransferResource o) {
+  buildCounterTransferResource++;
+  if (buildCounterTransferResource < 3) {
+    unittest.expect(o.destination!, unittest.equals('foo'));
+    checkHierarchyDetail(o.hierarchyDetail!);
+    checkTransferRunBrief(o.lastSuccessfulRun!);
+    checkTransferRunBrief(o.latestRun!);
+    checkTransferResourceStatusDetail(o.latestStatusDetail!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterTransferResource--;
+}
+
+core.int buildCounterTransferResourceStatusDetail = 0;
+api.TransferResourceStatusDetail buildTransferResourceStatusDetail() {
+  final o = api.TransferResourceStatusDetail();
+  buildCounterTransferResourceStatusDetail++;
+  if (buildCounterTransferResourceStatusDetail < 3) {
+    o.completedPercentage = 42.0;
+    o.error = buildStatus();
+    o.state = 'foo';
+    o.summary = buildTransferStatusSummary();
+  }
+  buildCounterTransferResourceStatusDetail--;
+  return o;
+}
+
+void checkTransferResourceStatusDetail(api.TransferResourceStatusDetail o) {
+  buildCounterTransferResourceStatusDetail++;
+  if (buildCounterTransferResourceStatusDetail < 3) {
+    unittest.expect(o.completedPercentage!, unittest.equals(42.0));
+    checkStatus(o.error!);
+    unittest.expect(o.state!, unittest.equals('foo'));
+    checkTransferStatusSummary(o.summary!);
+  }
+  buildCounterTransferResourceStatusDetail--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed18() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -918,7 +1067,7 @@ core.Map<core.String, core.Object?> buildUnnamed17() => {
   },
 };
 
-void checkUnnamed17(core.Map<core.String, core.Object?> o) {
+void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -944,7 +1093,7 @@ api.TransferRun buildTransferRun() {
     o.errorStatus = buildStatus();
     o.name = 'foo';
     o.notificationPubsubTopic = 'foo';
-    o.params = buildUnnamed17();
+    o.params = buildUnnamed18();
     o.runTime = 'foo';
     o.schedule = 'foo';
     o.scheduleTime = 'foo';
@@ -967,7 +1116,7 @@ void checkTransferRun(api.TransferRun o) {
     checkStatus(o.errorStatus!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.notificationPubsubTopic!, unittest.equals('foo'));
-    checkUnnamed17(o.params!);
+    checkUnnamed18(o.params!);
     unittest.expect(o.runTime!, unittest.equals('foo'));
     unittest.expect(o.schedule!, unittest.equals('foo'));
     unittest.expect(o.scheduleTime!, unittest.equals('foo'));
@@ -979,9 +1128,89 @@ void checkTransferRun(api.TransferRun o) {
   buildCounterTransferRun--;
 }
 
-core.List<core.String> buildUnnamed18() => ['foo', 'foo'];
+core.int buildCounterTransferRunBrief = 0;
+api.TransferRunBrief buildTransferRunBrief() {
+  final o = api.TransferRunBrief();
+  buildCounterTransferRunBrief++;
+  if (buildCounterTransferRunBrief < 3) {
+    o.run = 'foo';
+    o.startTime = 'foo';
+  }
+  buildCounterTransferRunBrief--;
+  return o;
+}
 
-void checkUnnamed18(core.List<core.String> o) {
+void checkTransferRunBrief(api.TransferRunBrief o) {
+  buildCounterTransferRunBrief++;
+  if (buildCounterTransferRunBrief < 3) {
+    unittest.expect(o.run!, unittest.equals('foo'));
+    unittest.expect(o.startTime!, unittest.equals('foo'));
+  }
+  buildCounterTransferRunBrief--;
+}
+
+core.int buildCounterTransferStatusMetric = 0;
+api.TransferStatusMetric buildTransferStatusMetric() {
+  final o = api.TransferStatusMetric();
+  buildCounterTransferStatusMetric++;
+  if (buildCounterTransferStatusMetric < 3) {
+    o.completed = 'foo';
+    o.failed = 'foo';
+    o.pending = 'foo';
+    o.total = 'foo';
+    o.unit = 'foo';
+  }
+  buildCounterTransferStatusMetric--;
+  return o;
+}
+
+void checkTransferStatusMetric(api.TransferStatusMetric o) {
+  buildCounterTransferStatusMetric++;
+  if (buildCounterTransferStatusMetric < 3) {
+    unittest.expect(o.completed!, unittest.equals('foo'));
+    unittest.expect(o.failed!, unittest.equals('foo'));
+    unittest.expect(o.pending!, unittest.equals('foo'));
+    unittest.expect(o.total!, unittest.equals('foo'));
+    unittest.expect(o.unit!, unittest.equals('foo'));
+  }
+  buildCounterTransferStatusMetric--;
+}
+
+core.List<api.TransferStatusMetric> buildUnnamed19() => [
+  buildTransferStatusMetric(),
+  buildTransferStatusMetric(),
+];
+
+void checkUnnamed19(core.List<api.TransferStatusMetric> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTransferStatusMetric(o[0]);
+  checkTransferStatusMetric(o[1]);
+}
+
+core.int buildCounterTransferStatusSummary = 0;
+api.TransferStatusSummary buildTransferStatusSummary() {
+  final o = api.TransferStatusSummary();
+  buildCounterTransferStatusSummary++;
+  if (buildCounterTransferStatusSummary < 3) {
+    o.metrics = buildUnnamed19();
+    o.progressUnit = 'foo';
+  }
+  buildCounterTransferStatusSummary--;
+  return o;
+}
+
+void checkTransferStatusSummary(api.TransferStatusSummary o) {
+  buildCounterTransferStatusSummary++;
+  if (buildCounterTransferStatusSummary < 3) {
+    checkUnnamed19(o.metrics!);
+    unittest.expect(o.progressUnit!, unittest.equals('foo'));
+  }
+  buildCounterTransferStatusSummary--;
+}
+
+core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
+
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -992,7 +1221,7 @@ api.UnenrollDataSourcesRequest buildUnenrollDataSourcesRequest() {
   final o = api.UnenrollDataSourcesRequest();
   buildCounterUnenrollDataSourcesRequest++;
   if (buildCounterUnenrollDataSourcesRequest < 3) {
-    o.dataSourceIds = buildUnnamed18();
+    o.dataSourceIds = buildUnnamed20();
   }
   buildCounterUnenrollDataSourcesRequest--;
   return o;
@@ -1001,7 +1230,7 @@ api.UnenrollDataSourcesRequest buildUnenrollDataSourcesRequest() {
 void checkUnenrollDataSourcesRequest(api.UnenrollDataSourcesRequest o) {
   buildCounterUnenrollDataSourcesRequest++;
   if (buildCounterUnenrollDataSourcesRequest < 3) {
-    checkUnnamed18(o.dataSourceIds!);
+    checkUnnamed20(o.dataSourceIds!);
   }
   buildCounterUnenrollDataSourcesRequest--;
 }
@@ -1023,22 +1252,6 @@ void checkUserInfo(api.UserInfo o) {
     unittest.expect(o.email!, unittest.equals('foo'));
   }
   buildCounterUserInfo--;
-}
-
-core.List<core.String> buildUnnamed19() => ['foo', 'foo'];
-
-void checkUnnamed19(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
-
-void checkUnnamed20(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed21() => ['foo', 'foo'];
@@ -1076,6 +1289,22 @@ void checkUnnamed24(core.List<core.String> o) {
 core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
 
 void checkUnnamed25(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed26() => ['foo', 'foo'];
+
+void checkUnnamed26(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed27() => ['foo', 'foo'];
+
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1181,6 +1410,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-HierarchyDetail', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHierarchyDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HierarchyDetail.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkHierarchyDetail(od);
+    });
+  });
+
   unittest.group('obj-schema-ListDataSourcesResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListDataSourcesResponse();
@@ -1225,6 +1465,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListTransferResourcesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListTransferResourcesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListTransferResourcesResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListTransferResourcesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListTransferRunsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListTransferRunsResponse();
@@ -1255,6 +1506,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkManualSchedule(od);
+    });
+  });
+
+  unittest.group('obj-schema-PartitionDetail', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPartitionDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PartitionDetail.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPartitionDetail(od);
     });
   });
 
@@ -1335,6 +1597,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-TableDetail', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTableDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableDetail.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTableDetail(od);
+    });
+  });
+
   unittest.group('obj-schema-TimeBasedSchedule', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTimeBasedSchedule();
@@ -1379,6 +1652,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-TransferResource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTransferResource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransferResource.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTransferResource(od);
+    });
+  });
+
+  unittest.group('obj-schema-TransferResourceStatusDetail', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTransferResourceStatusDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransferResourceStatusDetail.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTransferResourceStatusDetail(od);
+    });
+  });
+
   unittest.group('obj-schema-TransferRun', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTransferRun();
@@ -1387,6 +1682,39 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkTransferRun(od);
+    });
+  });
+
+  unittest.group('obj-schema-TransferRunBrief', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTransferRunBrief();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransferRunBrief.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTransferRunBrief(od);
+    });
+  });
+
+  unittest.group('obj-schema-TransferStatusMetric', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTransferStatusMetric();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransferStatusMetric.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTransferStatusMetric(od);
+    });
+  });
+
+  unittest.group('obj-schema-TransferStatusSummary', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTransferStatusSummary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransferStatusSummary.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTransferStatusSummary(od);
     });
   });
 
@@ -1784,7 +2112,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.BigQueryDataTransferApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed19();
+      final arg_extraLocationTypes = buildUnnamed21();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -2316,7 +2644,7 @@ void main() {
         mock,
       ).projects.locations.transferConfigs;
       final arg_parent = 'foo';
-      final arg_dataSourceIds = buildUnnamed20();
+      final arg_dataSourceIds = buildUnnamed22();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -2734,7 +3062,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_runAttempt = 'foo';
-      final arg_states = buildUnnamed21();
+      final arg_states = buildUnnamed23();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2814,7 +3142,7 @@ void main() {
           mock,
         ).projects.locations.transferConfigs.runs.transferLogs;
         final arg_parent = 'foo';
-        final arg_messageTypes = buildUnnamed22();
+        final arg_messageTypes = buildUnnamed24();
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
         final arg_$fields = 'foo';
@@ -2882,6 +3210,146 @@ void main() {
           $fields: arg_$fields,
         );
         checkListTransferLogsResponse(response as api.ListTransferLogsResponse);
+      });
+    },
+  );
+
+  unittest.group(
+    'resource-ProjectsLocationsTransferConfigsTransferResourcesResource',
+    () {
+      unittest.test('method--get', () async {
+        final mock = HttpServerMock();
+        final res = api.BigQueryDataTransferApi(
+          mock,
+        ).projects.locations.transferConfigs.transferResources;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildTransferResource());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.get(arg_name, $fields: arg_$fields);
+        checkTransferResource(response as api.TransferResource);
+      });
+
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res = api.BigQueryDataTransferApi(
+          mock,
+        ).projects.locations.transferConfigs.transferResources;
+        final arg_parent = 'foo';
+        final arg_filter = 'foo';
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['filter']!.first,
+              unittest.equals(arg_filter),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildListTransferResourcesResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields,
+        );
+        checkListTransferResourcesResponse(
+          response as api.ListTransferResourcesResponse,
+        );
       });
     },
   );
@@ -3078,7 +3546,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       final arg_parent = 'foo';
-      final arg_dataSourceIds = buildUnnamed23();
+      final arg_dataSourceIds = buildUnnamed25();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3490,7 +3958,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_runAttempt = 'foo';
-      final arg_states = buildUnnamed24();
+      final arg_states = buildUnnamed26();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3568,7 +4036,7 @@ void main() {
         mock,
       ).projects.transferConfigs.runs.transferLogs;
       final arg_parent = 'foo';
-      final arg_messageTypes = buildUnnamed25();
+      final arg_messageTypes = buildUnnamed27();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3636,6 +4104,143 @@ void main() {
         $fields: arg_$fields,
       );
       checkListTransferLogsResponse(response as api.ListTransferLogsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsTransferConfigsTransferResourcesResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.transferConfigs.transferResources;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTransferResource());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTransferResource(response as api.TransferResource);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.BigQueryDataTransferApi(
+        mock,
+      ).projects.transferConfigs.transferResources;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListTransferResourcesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListTransferResourcesResponse(
+        response as api.ListTransferResourcesResponse,
+      );
     });
   });
 }

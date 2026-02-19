@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260102",
+    "revision": "20260417",
     "rootUrl": "https://cloudasset.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Asset API",
@@ -1838,7 +1838,7 @@
             "id": "GcsDestination",
             "properties": {
                 "uri": {
-                    "description": "The URI of the Cloud Storage object. It's the same URI that is used by gsutil. Example: \"gs://bucket_name/object_name\". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. If the specified Cloud Storage object already exists and there is no [hold](https://cloud.google.com/storage/docs/object-holds), it will be overwritten with the exported result.",
+                    "description": "The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example: \"gs://bucket_name/object_name\". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. If the specified Cloud Storage object already exists and there is no [hold](https://cloud.google.com/storage/docs/object-holds), it will be overwritten with the exported result.",
                     "type": "string"
                 },
                 "uriPrefix": {
@@ -2165,7 +2165,7 @@
             "id": "GoogleCloudAssetV1GcsDestination",
             "properties": {
                 "uri": {
-                    "description": "Required. The URI of the Cloud Storage object. It's the same URI that is used by gsutil. Example: \"gs://bucket_name/object_name\". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. If the specified Cloud Storage object already exists and there is no [hold](https://cloud.google.com/storage/docs/object-holds), it will be overwritten with the analysis result.",
+                    "description": "Required. The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example: \"gs://bucket_name/object_name\". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. If the specified Cloud Storage object already exists and there is no [hold](https://cloud.google.com/storage/docs/object-holds), it will be overwritten with the analysis result.",
                     "type": "string"
                 }
             },
@@ -2846,7 +2846,7 @@
             "id": "GoogleIdentityAccesscontextmanagerV1EgressFrom",
             "properties": {
                 "identities": {
-                    "description": "A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For third-party identity, only single identities are supported and other identity types are not supported. The `v1` identities that have the prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.",
+                    "description": "A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, third-party identity, or agent identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.",
                     "items": {
                         "type": "string"
                     },
@@ -2966,7 +2966,7 @@
             "id": "GoogleIdentityAccesscontextmanagerV1IngressFrom",
             "properties": {
                 "identities": {
-                    "description": "A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For third-party identity, only single identities are supported and other identity types are not supported. The `v1` identities that have the prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.",
+                    "description": "A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user, service account, Google group, third-party identity, or agent identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.",
                     "items": {
                         "type": "string"
                     },

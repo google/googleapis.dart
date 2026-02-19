@@ -813,6 +813,44 @@ void checkDeleteFile(api.DeleteFile o) {
   buildCounterDeleteFile--;
 }
 
+core.int buildCounterDeleteFolderTreeRequest = 0;
+api.DeleteFolderTreeRequest buildDeleteFolderTreeRequest() {
+  final o = api.DeleteFolderTreeRequest();
+  buildCounterDeleteFolderTreeRequest++;
+  if (buildCounterDeleteFolderTreeRequest < 3) {
+    o.force = true;
+  }
+  buildCounterDeleteFolderTreeRequest--;
+  return o;
+}
+
+void checkDeleteFolderTreeRequest(api.DeleteFolderTreeRequest o) {
+  buildCounterDeleteFolderTreeRequest++;
+  if (buildCounterDeleteFolderTreeRequest < 3) {
+    unittest.expect(o.force!, unittest.isTrue);
+  }
+  buildCounterDeleteFolderTreeRequest--;
+}
+
+core.int buildCounterDeleteTeamFolderTreeRequest = 0;
+api.DeleteTeamFolderTreeRequest buildDeleteTeamFolderTreeRequest() {
+  final o = api.DeleteTeamFolderTreeRequest();
+  buildCounterDeleteTeamFolderTreeRequest++;
+  if (buildCounterDeleteTeamFolderTreeRequest < 3) {
+    o.force = true;
+  }
+  buildCounterDeleteTeamFolderTreeRequest--;
+  return o;
+}
+
+void checkDeleteTeamFolderTreeRequest(api.DeleteTeamFolderTreeRequest o) {
+  buildCounterDeleteTeamFolderTreeRequest++;
+  if (buildCounterDeleteTeamFolderTreeRequest < 3) {
+    unittest.expect(o.force!, unittest.isTrue);
+  }
+  buildCounterDeleteTeamFolderTreeRequest--;
+}
+
 core.int buildCounterDirectoryEntry = 0;
 api.DirectoryEntry buildDirectoryEntry() {
   final o = api.DirectoryEntry();
@@ -820,6 +858,7 @@ api.DirectoryEntry buildDirectoryEntry() {
   if (buildCounterDirectoryEntry < 3) {
     o.directory = 'foo';
     o.file = 'foo';
+    o.metadata = buildFilesystemEntryMetadata();
   }
   buildCounterDirectoryEntry--;
   return o;
@@ -830,6 +869,7 @@ void checkDirectoryEntry(api.DirectoryEntry o) {
   if (buildCounterDirectoryEntry < 3) {
     unittest.expect(o.directory!, unittest.equals('foo'));
     unittest.expect(o.file!, unittest.equals('foo'));
+    checkFilesystemEntryMetadata(o.metadata!);
   }
   buildCounterDirectoryEntry--;
 }
@@ -1081,6 +1121,81 @@ void checkFileSearchResult(api.FileSearchResult o) {
     unittest.expect(o.path!, unittest.equals('foo'));
   }
   buildCounterFileSearchResult--;
+}
+
+core.int buildCounterFilesystemEntryMetadata = 0;
+api.FilesystemEntryMetadata buildFilesystemEntryMetadata() {
+  final o = api.FilesystemEntryMetadata();
+  buildCounterFilesystemEntryMetadata++;
+  if (buildCounterFilesystemEntryMetadata < 3) {
+    o.sizeBytes = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterFilesystemEntryMetadata--;
+  return o;
+}
+
+void checkFilesystemEntryMetadata(api.FilesystemEntryMetadata o) {
+  buildCounterFilesystemEntryMetadata++;
+  if (buildCounterFilesystemEntryMetadata < 3) {
+    unittest.expect(o.sizeBytes!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterFilesystemEntryMetadata--;
+}
+
+core.int buildCounterFolder = 0;
+api.Folder buildFolder() {
+  final o = api.Folder();
+  buildCounterFolder++;
+  if (buildCounterFolder < 3) {
+    o.containingFolder = 'foo';
+    o.createTime = 'foo';
+    o.creatorIamPrincipal = 'foo';
+    o.displayName = 'foo';
+    o.internalMetadata = 'foo';
+    o.name = 'foo';
+    o.teamFolderName = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterFolder--;
+  return o;
+}
+
+void checkFolder(api.Folder o) {
+  buildCounterFolder++;
+  if (buildCounterFolder < 3) {
+    unittest.expect(o.containingFolder!, unittest.equals('foo'));
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.creatorIamPrincipal!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.internalMetadata!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.teamFolderName!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterFolder--;
+}
+
+core.int buildCounterFolderContentsEntry = 0;
+api.FolderContentsEntry buildFolderContentsEntry() {
+  final o = api.FolderContentsEntry();
+  buildCounterFolderContentsEntry++;
+  if (buildCounterFolderContentsEntry < 3) {
+    o.folder = buildFolder();
+    o.repository = buildRepository();
+  }
+  buildCounterFolderContentsEntry--;
+  return o;
+}
+
+void checkFolderContentsEntry(api.FolderContentsEntry o) {
+  buildCounterFolderContentsEntry++;
+  if (buildCounterFolderContentsEntry < 3) {
+    checkFolder(o.folder!);
+    checkRepository(o.repository!);
+  }
+  buildCounterFolderContentsEntry--;
 }
 
 core.int buildCounterGitRemoteSettings = 0;
@@ -1801,6 +1916,44 @@ void checkMoveFileResponse(api.MoveFileResponse o) {
   buildCounterMoveFileResponse--;
 }
 
+core.int buildCounterMoveFolderRequest = 0;
+api.MoveFolderRequest buildMoveFolderRequest() {
+  final o = api.MoveFolderRequest();
+  buildCounterMoveFolderRequest++;
+  if (buildCounterMoveFolderRequest < 3) {
+    o.destinationContainingFolder = 'foo';
+  }
+  buildCounterMoveFolderRequest--;
+  return o;
+}
+
+void checkMoveFolderRequest(api.MoveFolderRequest o) {
+  buildCounterMoveFolderRequest++;
+  if (buildCounterMoveFolderRequest < 3) {
+    unittest.expect(o.destinationContainingFolder!, unittest.equals('foo'));
+  }
+  buildCounterMoveFolderRequest--;
+}
+
+core.int buildCounterMoveRepositoryRequest = 0;
+api.MoveRepositoryRequest buildMoveRepositoryRequest() {
+  final o = api.MoveRepositoryRequest();
+  buildCounterMoveRepositoryRequest++;
+  if (buildCounterMoveRepositoryRequest < 3) {
+    o.destinationContainingFolder = 'foo';
+  }
+  buildCounterMoveRepositoryRequest--;
+  return o;
+}
+
+void checkMoveRepositoryRequest(api.MoveRepositoryRequest o) {
+  buildCounterMoveRepositoryRequest++;
+  if (buildCounterMoveRepositoryRequest < 3) {
+    unittest.expect(o.destinationContainingFolder!, unittest.equals('foo'));
+  }
+  buildCounterMoveRepositoryRequest--;
+}
+
 core.List<api.Target> buildUnnamed36() => [buildTarget(), buildTarget()];
 
 void checkUnnamed36(core.List<api.Target> o) {
@@ -2208,12 +2361,44 @@ void checkQueryDirectoryContentsResponse(api.QueryDirectoryContentsResponse o) {
   buildCounterQueryDirectoryContentsResponse--;
 }
 
-core.List<api.DirectoryEntry> buildUnnamed46() => [
+core.List<api.FolderContentsEntry> buildUnnamed46() => [
+  buildFolderContentsEntry(),
+  buildFolderContentsEntry(),
+];
+
+void checkUnnamed46(core.List<api.FolderContentsEntry> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFolderContentsEntry(o[0]);
+  checkFolderContentsEntry(o[1]);
+}
+
+core.int buildCounterQueryFolderContentsResponse = 0;
+api.QueryFolderContentsResponse buildQueryFolderContentsResponse() {
+  final o = api.QueryFolderContentsResponse();
+  buildCounterQueryFolderContentsResponse++;
+  if (buildCounterQueryFolderContentsResponse < 3) {
+    o.entries = buildUnnamed46();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterQueryFolderContentsResponse--;
+  return o;
+}
+
+void checkQueryFolderContentsResponse(api.QueryFolderContentsResponse o) {
+  buildCounterQueryFolderContentsResponse++;
+  if (buildCounterQueryFolderContentsResponse < 3) {
+    checkUnnamed46(o.entries!);
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+  }
+  buildCounterQueryFolderContentsResponse--;
+}
+
+core.List<api.DirectoryEntry> buildUnnamed47() => [
   buildDirectoryEntry(),
   buildDirectoryEntry(),
 ];
 
-void checkUnnamed46(core.List<api.DirectoryEntry> o) {
+void checkUnnamed47(core.List<api.DirectoryEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDirectoryEntry(o[0]);
   checkDirectoryEntry(o[1]);
@@ -2225,7 +2410,7 @@ buildQueryRepositoryDirectoryContentsResponse() {
   final o = api.QueryRepositoryDirectoryContentsResponse();
   buildCounterQueryRepositoryDirectoryContentsResponse++;
   if (buildCounterQueryRepositoryDirectoryContentsResponse < 3) {
-    o.directoryEntries = buildUnnamed46();
+    o.directoryEntries = buildUnnamed47();
     o.nextPageToken = 'foo';
   }
   buildCounterQueryRepositoryDirectoryContentsResponse--;
@@ -2237,18 +2422,84 @@ void checkQueryRepositoryDirectoryContentsResponse(
 ) {
   buildCounterQueryRepositoryDirectoryContentsResponse++;
   if (buildCounterQueryRepositoryDirectoryContentsResponse < 3) {
-    checkUnnamed46(o.directoryEntries!);
+    checkUnnamed47(o.directoryEntries!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterQueryRepositoryDirectoryContentsResponse--;
 }
 
-core.List<api.WorkflowInvocationAction> buildUnnamed47() => [
+core.List<api.TeamFolderContentsEntry> buildUnnamed48() => [
+  buildTeamFolderContentsEntry(),
+  buildTeamFolderContentsEntry(),
+];
+
+void checkUnnamed48(core.List<api.TeamFolderContentsEntry> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTeamFolderContentsEntry(o[0]);
+  checkTeamFolderContentsEntry(o[1]);
+}
+
+core.int buildCounterQueryTeamFolderContentsResponse = 0;
+api.QueryTeamFolderContentsResponse buildQueryTeamFolderContentsResponse() {
+  final o = api.QueryTeamFolderContentsResponse();
+  buildCounterQueryTeamFolderContentsResponse++;
+  if (buildCounterQueryTeamFolderContentsResponse < 3) {
+    o.entries = buildUnnamed48();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterQueryTeamFolderContentsResponse--;
+  return o;
+}
+
+void checkQueryTeamFolderContentsResponse(
+  api.QueryTeamFolderContentsResponse o,
+) {
+  buildCounterQueryTeamFolderContentsResponse++;
+  if (buildCounterQueryTeamFolderContentsResponse < 3) {
+    checkUnnamed48(o.entries!);
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+  }
+  buildCounterQueryTeamFolderContentsResponse--;
+}
+
+core.List<api.RootContentsEntry> buildUnnamed49() => [
+  buildRootContentsEntry(),
+  buildRootContentsEntry(),
+];
+
+void checkUnnamed49(core.List<api.RootContentsEntry> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRootContentsEntry(o[0]);
+  checkRootContentsEntry(o[1]);
+}
+
+core.int buildCounterQueryUserRootContentsResponse = 0;
+api.QueryUserRootContentsResponse buildQueryUserRootContentsResponse() {
+  final o = api.QueryUserRootContentsResponse();
+  buildCounterQueryUserRootContentsResponse++;
+  if (buildCounterQueryUserRootContentsResponse < 3) {
+    o.entries = buildUnnamed49();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterQueryUserRootContentsResponse--;
+  return o;
+}
+
+void checkQueryUserRootContentsResponse(api.QueryUserRootContentsResponse o) {
+  buildCounterQueryUserRootContentsResponse++;
+  if (buildCounterQueryUserRootContentsResponse < 3) {
+    checkUnnamed49(o.entries!);
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+  }
+  buildCounterQueryUserRootContentsResponse--;
+}
+
+core.List<api.WorkflowInvocationAction> buildUnnamed50() => [
   buildWorkflowInvocationAction(),
   buildWorkflowInvocationAction(),
 ];
 
-void checkUnnamed47(core.List<api.WorkflowInvocationAction> o) {
+void checkUnnamed50(core.List<api.WorkflowInvocationAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWorkflowInvocationAction(o[0]);
   checkWorkflowInvocationAction(o[1]);
@@ -2261,7 +2512,7 @@ buildQueryWorkflowInvocationActionsResponse() {
   buildCounterQueryWorkflowInvocationActionsResponse++;
   if (buildCounterQueryWorkflowInvocationActionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.workflowInvocationActions = buildUnnamed47();
+    o.workflowInvocationActions = buildUnnamed50();
   }
   buildCounterQueryWorkflowInvocationActionsResponse--;
   return o;
@@ -2273,7 +2524,7 @@ void checkQueryWorkflowInvocationActionsResponse(
   buildCounterQueryWorkflowInvocationActionsResponse++;
   if (buildCounterQueryWorkflowInvocationActionsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed47(o.workflowInvocationActions!);
+    checkUnnamed50(o.workflowInvocationActions!);
   }
   buildCounterQueryWorkflowInvocationActionsResponse--;
 }
@@ -2316,36 +2567,12 @@ void checkReadRepositoryFileResponse(api.ReadRepositoryFileResponse o) {
   buildCounterReadRepositoryFileResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed48() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed51() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed48(core.Map<core.String, core.String> o) {
+void checkUnnamed51(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed49() => ['foo', 'foo'];
-
-void checkUnnamed49(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<api.Target> buildUnnamed50() => [buildTarget(), buildTarget()];
-
-void checkUnnamed50(core.List<api.Target> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkTarget(o[0]);
-  checkTarget(o[1]);
-}
-
-core.List<core.String> buildUnnamed51() => ['foo', 'foo'];
-
-void checkUnnamed51(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed52() => ['foo', 'foo'];
@@ -2356,9 +2583,33 @@ void checkUnnamed52(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed53() => ['foo', 'foo'];
+core.List<api.Target> buildUnnamed53() => [buildTarget(), buildTarget()];
 
-void checkUnnamed53(core.List<core.String> o) {
+void checkUnnamed53(core.List<api.Target> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTarget(o[0]);
+  checkTarget(o[1]);
+}
+
+core.List<core.String> buildUnnamed54() => ['foo', 'foo'];
+
+void checkUnnamed54(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed55() => ['foo', 'foo'];
+
+void checkUnnamed55(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed56() => ['foo', 'foo'];
+
+void checkUnnamed56(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2369,24 +2620,24 @@ api.Relation buildRelation() {
   final o = api.Relation();
   buildCounterRelation++;
   if (buildCounterRelation < 3) {
-    o.additionalOptions = buildUnnamed48();
-    o.clusterExpressions = buildUnnamed49();
+    o.additionalOptions = buildUnnamed51();
+    o.clusterExpressions = buildUnnamed52();
     o.connection = 'foo';
-    o.dependencyTargets = buildUnnamed50();
+    o.dependencyTargets = buildUnnamed53();
     o.disabled = true;
     o.fileFormat = 'foo';
     o.incrementalTableConfig = buildIncrementalTableConfig();
     o.partitionExpirationDays = 42;
     o.partitionExpression = 'foo';
-    o.postOperations = buildUnnamed51();
-    o.preOperations = buildUnnamed52();
+    o.postOperations = buildUnnamed54();
+    o.preOperations = buildUnnamed55();
     o.relationDescriptor = buildRelationDescriptor();
     o.relationType = 'foo';
     o.requirePartitionFilter = true;
     o.selectQuery = 'foo';
     o.storageUri = 'foo';
     o.tableFormat = 'foo';
-    o.tags = buildUnnamed53();
+    o.tags = buildUnnamed56();
   }
   buildCounterRelation--;
   return o;
@@ -2395,42 +2646,42 @@ api.Relation buildRelation() {
 void checkRelation(api.Relation o) {
   buildCounterRelation++;
   if (buildCounterRelation < 3) {
-    checkUnnamed48(o.additionalOptions!);
-    checkUnnamed49(o.clusterExpressions!);
+    checkUnnamed51(o.additionalOptions!);
+    checkUnnamed52(o.clusterExpressions!);
     unittest.expect(o.connection!, unittest.equals('foo'));
-    checkUnnamed50(o.dependencyTargets!);
+    checkUnnamed53(o.dependencyTargets!);
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(o.fileFormat!, unittest.equals('foo'));
     checkIncrementalTableConfig(o.incrementalTableConfig!);
     unittest.expect(o.partitionExpirationDays!, unittest.equals(42));
     unittest.expect(o.partitionExpression!, unittest.equals('foo'));
-    checkUnnamed51(o.postOperations!);
-    checkUnnamed52(o.preOperations!);
+    checkUnnamed54(o.postOperations!);
+    checkUnnamed55(o.preOperations!);
     checkRelationDescriptor(o.relationDescriptor!);
     unittest.expect(o.relationType!, unittest.equals('foo'));
     unittest.expect(o.requirePartitionFilter!, unittest.isTrue);
     unittest.expect(o.selectQuery!, unittest.equals('foo'));
     unittest.expect(o.storageUri!, unittest.equals('foo'));
     unittest.expect(o.tableFormat!, unittest.equals('foo'));
-    checkUnnamed53(o.tags!);
+    checkUnnamed56(o.tags!);
   }
   buildCounterRelation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed54() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed57() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed54(core.Map<core.String, core.String> o) {
+void checkUnnamed57(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.ColumnDescriptor> buildUnnamed55() => [
+core.List<api.ColumnDescriptor> buildUnnamed58() => [
   buildColumnDescriptor(),
   buildColumnDescriptor(),
 ];
 
-void checkUnnamed55(core.List<api.ColumnDescriptor> o) {
+void checkUnnamed58(core.List<api.ColumnDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumnDescriptor(o[0]);
   checkColumnDescriptor(o[1]);
@@ -2441,8 +2692,8 @@ api.RelationDescriptor buildRelationDescriptor() {
   final o = api.RelationDescriptor();
   buildCounterRelationDescriptor++;
   if (buildCounterRelationDescriptor < 3) {
-    o.bigqueryLabels = buildUnnamed54();
-    o.columns = buildUnnamed55();
+    o.bigqueryLabels = buildUnnamed57();
+    o.columns = buildUnnamed58();
     o.description = 'foo';
   }
   buildCounterRelationDescriptor--;
@@ -2452,19 +2703,19 @@ api.RelationDescriptor buildRelationDescriptor() {
 void checkRelationDescriptor(api.RelationDescriptor o) {
   buildCounterRelationDescriptor++;
   if (buildCounterRelationDescriptor < 3) {
-    checkUnnamed54(o.bigqueryLabels!);
-    checkUnnamed55(o.columns!);
+    checkUnnamed57(o.bigqueryLabels!);
+    checkUnnamed58(o.columns!);
     unittest.expect(o.description!, unittest.equals('foo'));
   }
   buildCounterRelationDescriptor--;
 }
 
-core.List<api.ScheduledReleaseRecord> buildUnnamed56() => [
+core.List<api.ScheduledReleaseRecord> buildUnnamed59() => [
   buildScheduledReleaseRecord(),
   buildScheduledReleaseRecord(),
 ];
 
-void checkUnnamed56(core.List<api.ScheduledReleaseRecord> o) {
+void checkUnnamed59(core.List<api.ScheduledReleaseRecord> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScheduledReleaseRecord(o[0]);
   checkScheduledReleaseRecord(o[1]);
@@ -2481,7 +2732,7 @@ api.ReleaseConfig buildReleaseConfig() {
     o.gitCommitish = 'foo';
     o.internalMetadata = 'foo';
     o.name = 'foo';
-    o.recentScheduledReleaseRecords = buildUnnamed56();
+    o.recentScheduledReleaseRecords = buildUnnamed59();
     o.releaseCompilationResult = 'foo';
     o.timeZone = 'foo';
   }
@@ -2498,7 +2749,7 @@ void checkReleaseConfig(api.ReleaseConfig o) {
     unittest.expect(o.gitCommitish!, unittest.equals('foo'));
     unittest.expect(o.internalMetadata!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed56(o.recentScheduledReleaseRecords!);
+    checkUnnamed59(o.recentScheduledReleaseRecords!);
     unittest.expect(o.releaseCompilationResult!, unittest.equals('foo'));
     unittest.expect(o.timeZone!, unittest.equals('foo'));
   }
@@ -2573,9 +2824,9 @@ void checkRemoveFileResponse(api.RemoveFileResponse o) {
   buildCounterRemoveFileResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed57() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed60() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed57(core.Map<core.String, core.String> o) {
+void checkUnnamed60(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -2586,17 +2837,19 @@ api.Repository buildRepository() {
   final o = api.Repository();
   buildCounterRepository++;
   if (buildCounterRepository < 3) {
+    o.containingFolder = 'foo';
     o.createTime = 'foo';
     o.dataEncryptionState = buildDataEncryptionState();
     o.displayName = 'foo';
     o.gitRemoteSettings = buildGitRemoteSettings();
     o.internalMetadata = 'foo';
     o.kmsKeyName = 'foo';
-    o.labels = buildUnnamed57();
+    o.labels = buildUnnamed60();
     o.name = 'foo';
     o.npmrcEnvironmentVariablesSecretVersion = 'foo';
     o.serviceAccount = 'foo';
     o.setAuthenticatedUserAdmin = true;
+    o.teamFolderName = 'foo';
     o.workspaceCompilationOverrides = buildWorkspaceCompilationOverrides();
   }
   buildCounterRepository--;
@@ -2606,13 +2859,14 @@ api.Repository buildRepository() {
 void checkRepository(api.Repository o) {
   buildCounterRepository++;
   if (buildCounterRepository < 3) {
+    unittest.expect(o.containingFolder!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkDataEncryptionState(o.dataEncryptionState!);
     unittest.expect(o.displayName!, unittest.equals('foo'));
     checkGitRemoteSettings(o.gitRemoteSettings!);
     unittest.expect(o.internalMetadata!, unittest.equals('foo'));
     unittest.expect(o.kmsKeyName!, unittest.equals('foo'));
-    checkUnnamed57(o.labels!);
+    checkUnnamed60(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(
       o.npmrcEnvironmentVariablesSecretVersion!,
@@ -2620,14 +2874,15 @@ void checkRepository(api.Repository o) {
     );
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     unittest.expect(o.setAuthenticatedUserAdmin!, unittest.isTrue);
+    unittest.expect(o.teamFolderName!, unittest.equals('foo'));
     checkWorkspaceCompilationOverrides(o.workspaceCompilationOverrides!);
   }
   buildCounterRepository--;
 }
 
-core.List<core.String> buildUnnamed58() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed61() => ['foo', 'foo'];
 
-void checkUnnamed58(core.List<core.String> o) {
+void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2639,7 +2894,7 @@ api.ResetWorkspaceChangesRequest buildResetWorkspaceChangesRequest() {
   buildCounterResetWorkspaceChangesRequest++;
   if (buildCounterResetWorkspaceChangesRequest < 3) {
     o.clean = true;
-    o.paths = buildUnnamed58();
+    o.paths = buildUnnamed61();
   }
   buildCounterResetWorkspaceChangesRequest--;
   return o;
@@ -2649,7 +2904,7 @@ void checkResetWorkspaceChangesRequest(api.ResetWorkspaceChangesRequest o) {
   buildCounterResetWorkspaceChangesRequest++;
   if (buildCounterResetWorkspaceChangesRequest < 3) {
     unittest.expect(o.clean!, unittest.isTrue);
-    checkUnnamed58(o.paths!);
+    checkUnnamed61(o.paths!);
   }
   buildCounterResetWorkspaceChangesRequest--;
 }
@@ -2667,6 +2922,27 @@ void checkResetWorkspaceChangesResponse(api.ResetWorkspaceChangesResponse o) {
   buildCounterResetWorkspaceChangesResponse++;
   if (buildCounterResetWorkspaceChangesResponse < 3) {}
   buildCounterResetWorkspaceChangesResponse--;
+}
+
+core.int buildCounterRootContentsEntry = 0;
+api.RootContentsEntry buildRootContentsEntry() {
+  final o = api.RootContentsEntry();
+  buildCounterRootContentsEntry++;
+  if (buildCounterRootContentsEntry < 3) {
+    o.folder = buildFolder();
+    o.repository = buildRepository();
+  }
+  buildCounterRootContentsEntry--;
+  return o;
+}
+
+void checkRootContentsEntry(api.RootContentsEntry o) {
+  buildCounterRootContentsEntry++;
+  if (buildCounterRootContentsEntry < 3) {
+    checkFolder(o.folder!);
+    checkRepository(o.repository!);
+  }
+  buildCounterRootContentsEntry--;
 }
 
 core.int buildCounterScheduledExecutionRecord = 0;
@@ -2715,12 +2991,12 @@ void checkScheduledReleaseRecord(api.ScheduledReleaseRecord o) {
   buildCounterScheduledReleaseRecord--;
 }
 
-core.List<api.SearchResult> buildUnnamed59() => [
+core.List<api.SearchResult> buildUnnamed62() => [
   buildSearchResult(),
   buildSearchResult(),
 ];
 
-void checkUnnamed59(core.List<api.SearchResult> o) {
+void checkUnnamed62(core.List<api.SearchResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSearchResult(o[0]);
   checkSearchResult(o[1]);
@@ -2732,7 +3008,7 @@ api.SearchFilesResponse buildSearchFilesResponse() {
   buildCounterSearchFilesResponse++;
   if (buildCounterSearchFilesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.searchResults = buildUnnamed59();
+    o.searchResults = buildUnnamed62();
   }
   buildCounterSearchFilesResponse--;
   return o;
@@ -2742,7 +3018,7 @@ void checkSearchFilesResponse(api.SearchFilesResponse o) {
   buildCounterSearchFilesResponse++;
   if (buildCounterSearchFilesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed59(o.searchResults!);
+    checkUnnamed62(o.searchResults!);
   }
   buildCounterSearchFilesResponse--;
 }
@@ -2766,6 +3042,38 @@ void checkSearchResult(api.SearchResult o) {
     checkFileSearchResult(o.file!);
   }
   buildCounterSearchResult--;
+}
+
+core.List<api.TeamFolderSearchResult> buildUnnamed63() => [
+  buildTeamFolderSearchResult(),
+  buildTeamFolderSearchResult(),
+];
+
+void checkUnnamed63(core.List<api.TeamFolderSearchResult> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTeamFolderSearchResult(o[0]);
+  checkTeamFolderSearchResult(o[1]);
+}
+
+core.int buildCounterSearchTeamFoldersResponse = 0;
+api.SearchTeamFoldersResponse buildSearchTeamFoldersResponse() {
+  final o = api.SearchTeamFoldersResponse();
+  buildCounterSearchTeamFoldersResponse++;
+  if (buildCounterSearchTeamFoldersResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.results = buildUnnamed63();
+  }
+  buildCounterSearchTeamFoldersResponse--;
+  return o;
+}
+
+void checkSearchTeamFoldersResponse(api.SearchTeamFoldersResponse o) {
+  buildCounterSearchTeamFoldersResponse++;
+  if (buildCounterSearchTeamFoldersResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed63(o.results!);
+  }
+  buildCounterSearchTeamFoldersResponse--;
 }
 
 core.int buildCounterSetIamPolicyRequest = 0;
@@ -2846,7 +3154,7 @@ void checkSshAuthenticationConfig(api.SshAuthenticationConfig o) {
   buildCounterSshAuthenticationConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed60() => {
+core.Map<core.String, core.Object?> buildUnnamed64() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -2859,7 +3167,7 @@ core.Map<core.String, core.Object?> buildUnnamed60() => {
   },
 };
 
-void checkUnnamed60(core.Map<core.String, core.Object?> o) {
+void checkUnnamed64(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2873,15 +3181,15 @@ void checkUnnamed60(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed61() => [
-  buildUnnamed60(),
-  buildUnnamed60(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed65() => [
+  buildUnnamed64(),
+  buildUnnamed64(),
 ];
 
-void checkUnnamed61(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed65(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed60(o[0]);
-  checkUnnamed60(o[1]);
+  checkUnnamed64(o[0]);
+  checkUnnamed64(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2890,7 +3198,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed61();
+    o.details = buildUnnamed65();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2901,7 +3209,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed61(o.details!);
+    checkUnnamed65(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -2930,9 +3238,78 @@ void checkTarget(api.Target o) {
   buildCounterTarget--;
 }
 
-core.List<core.String> buildUnnamed62() => ['foo', 'foo'];
+core.int buildCounterTeamFolder = 0;
+api.TeamFolder buildTeamFolder() {
+  final o = api.TeamFolder();
+  buildCounterTeamFolder++;
+  if (buildCounterTeamFolder < 3) {
+    o.createTime = 'foo';
+    o.creatorIamPrincipal = 'foo';
+    o.displayName = 'foo';
+    o.internalMetadata = 'foo';
+    o.name = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterTeamFolder--;
+  return o;
+}
 
-void checkUnnamed62(core.List<core.String> o) {
+void checkTeamFolder(api.TeamFolder o) {
+  buildCounterTeamFolder++;
+  if (buildCounterTeamFolder < 3) {
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.creatorIamPrincipal!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.internalMetadata!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterTeamFolder--;
+}
+
+core.int buildCounterTeamFolderContentsEntry = 0;
+api.TeamFolderContentsEntry buildTeamFolderContentsEntry() {
+  final o = api.TeamFolderContentsEntry();
+  buildCounterTeamFolderContentsEntry++;
+  if (buildCounterTeamFolderContentsEntry < 3) {
+    o.folder = buildFolder();
+    o.repository = buildRepository();
+  }
+  buildCounterTeamFolderContentsEntry--;
+  return o;
+}
+
+void checkTeamFolderContentsEntry(api.TeamFolderContentsEntry o) {
+  buildCounterTeamFolderContentsEntry++;
+  if (buildCounterTeamFolderContentsEntry < 3) {
+    checkFolder(o.folder!);
+    checkRepository(o.repository!);
+  }
+  buildCounterTeamFolderContentsEntry--;
+}
+
+core.int buildCounterTeamFolderSearchResult = 0;
+api.TeamFolderSearchResult buildTeamFolderSearchResult() {
+  final o = api.TeamFolderSearchResult();
+  buildCounterTeamFolderSearchResult++;
+  if (buildCounterTeamFolderSearchResult < 3) {
+    o.teamFolder = buildTeamFolder();
+  }
+  buildCounterTeamFolderSearchResult--;
+  return o;
+}
+
+void checkTeamFolderSearchResult(api.TeamFolderSearchResult o) {
+  buildCounterTeamFolderSearchResult++;
+  if (buildCounterTeamFolderSearchResult < 3) {
+    checkTeamFolder(o.teamFolder!);
+  }
+  buildCounterTeamFolderSearchResult--;
+}
+
+core.List<core.String> buildUnnamed66() => ['foo', 'foo'];
+
+void checkUnnamed66(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2943,7 +3320,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed62();
+    o.permissions = buildUnnamed66();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -2952,14 +3329,14 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed62(o.permissions!);
+    checkUnnamed66(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed63() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed67() => ['foo', 'foo'];
 
-void checkUnnamed63(core.List<core.String> o) {
+void checkUnnamed67(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2970,7 +3347,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed63();
+    o.permissions = buildUnnamed67();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -2979,7 +3356,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed63(o.permissions!);
+    checkUnnamed67(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -3005,12 +3382,12 @@ void checkUncommittedFileChange(api.UncommittedFileChange o) {
   buildCounterUncommittedFileChange--;
 }
 
-core.List<api.ScheduledExecutionRecord> buildUnnamed64() => [
+core.List<api.ScheduledExecutionRecord> buildUnnamed68() => [
   buildScheduledExecutionRecord(),
   buildScheduledExecutionRecord(),
 ];
 
-void checkUnnamed64(core.List<api.ScheduledExecutionRecord> o) {
+void checkUnnamed68(core.List<api.ScheduledExecutionRecord> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScheduledExecutionRecord(o[0]);
   checkScheduledExecutionRecord(o[1]);
@@ -3027,7 +3404,7 @@ api.WorkflowConfig buildWorkflowConfig() {
     o.internalMetadata = 'foo';
     o.invocationConfig = buildInvocationConfig();
     o.name = 'foo';
-    o.recentScheduledExecutionRecords = buildUnnamed64();
+    o.recentScheduledExecutionRecords = buildUnnamed68();
     o.releaseConfig = 'foo';
     o.timeZone = 'foo';
     o.updateTime = 'foo';
@@ -3045,7 +3422,7 @@ void checkWorkflowConfig(api.WorkflowConfig o) {
     unittest.expect(o.internalMetadata!, unittest.equals('foo'));
     checkInvocationConfig(o.invocationConfig!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed64(o.recentScheduledExecutionRecords!);
+    checkUnnamed68(o.recentScheduledExecutionRecords!);
     unittest.expect(o.releaseConfig!, unittest.equals('foo'));
     unittest.expect(o.timeZone!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -3132,6 +3509,7 @@ api.Workspace buildWorkspace() {
   if (buildCounterWorkspace < 3) {
     o.createTime = 'foo';
     o.dataEncryptionState = buildDataEncryptionState();
+    o.disableMoves = true;
     o.internalMetadata = 'foo';
     o.name = 'foo';
     o.privateResourceMetadata = buildPrivateResourceMetadata();
@@ -3145,6 +3523,7 @@ void checkWorkspace(api.Workspace o) {
   if (buildCounterWorkspace < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkDataEncryptionState(o.dataEncryptionState!);
+    unittest.expect(o.disableMoves!, unittest.isTrue);
     unittest.expect(o.internalMetadata!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkPrivateResourceMetadata(o.privateResourceMetadata!);
@@ -3230,9 +3609,9 @@ void checkWriteFileResponse(api.WriteFileResponse o) {
   buildCounterWriteFileResponse--;
 }
 
-core.List<core.String> buildUnnamed65() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed69() => ['foo', 'foo'];
 
-void checkUnnamed65(core.List<core.String> o) {
+void checkUnnamed69(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3569,6 +3948,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DeleteFolderTreeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeleteFolderTreeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteFolderTreeRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDeleteFolderTreeRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DeleteTeamFolderTreeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeleteTeamFolderTreeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteTeamFolderTreeRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDeleteTeamFolderTreeRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-DirectoryEntry', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDirectoryEntry();
@@ -3698,6 +4099,39 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFileSearchResult(od);
+    });
+  });
+
+  unittest.group('obj-schema-FilesystemEntryMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFilesystemEntryMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FilesystemEntryMetadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFilesystemEntryMetadata(od);
+    });
+  });
+
+  unittest.group('obj-schema-Folder', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFolder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Folder.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFolder(od);
+    });
+  });
+
+  unittest.group('obj-schema-FolderContentsEntry', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFolderContentsEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FolderContentsEntry.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFolderContentsEntry(od);
     });
   });
 
@@ -3954,6 +4388,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MoveFolderRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMoveFolderRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MoveFolderRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMoveFolderRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-MoveRepositoryRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMoveRepositoryRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MoveRepositoryRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMoveRepositoryRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-Notebook', () {
     unittest.test('to-json--from-json', () async {
       final o = buildNotebook();
@@ -4097,6 +4553,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-QueryFolderContentsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQueryFolderContentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QueryFolderContentsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkQueryFolderContentsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-QueryRepositoryDirectoryContentsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildQueryRepositoryDirectoryContentsResponse();
@@ -4105,6 +4572,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkQueryRepositoryDirectoryContentsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-QueryTeamFolderContentsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQueryTeamFolderContentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QueryTeamFolderContentsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkQueryTeamFolderContentsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-QueryUserRootContentsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQueryUserRootContentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QueryUserRootContentsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkQueryUserRootContentsResponse(od);
     });
   });
 
@@ -4251,6 +4740,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RootContentsEntry', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRootContentsEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RootContentsEntry.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRootContentsEntry(od);
+    });
+  });
+
   unittest.group('obj-schema-ScheduledExecutionRecord', () {
     unittest.test('to-json--from-json', () async {
       final o = buildScheduledExecutionRecord();
@@ -4292,6 +4792,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSearchResult(od);
+    });
+  });
+
+  unittest.group('obj-schema-SearchTeamFoldersResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSearchTeamFoldersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SearchTeamFoldersResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSearchTeamFoldersResponse(od);
     });
   });
 
@@ -4358,6 +4869,39 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkTarget(od);
+    });
+  });
+
+  unittest.group('obj-schema-TeamFolder', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTeamFolder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TeamFolder.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTeamFolder(od);
+    });
+  });
+
+  unittest.group('obj-schema-TeamFolderContentsEntry', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTeamFolderContentsEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TeamFolderContentsEntry.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTeamFolderContentsEntry(od);
+    });
+  });
+
+  unittest.group('obj-schema-TeamFolderSearchResult', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTeamFolderSearchResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TeamFolderSearchResult.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTeamFolderSearchResult(od);
     });
   });
 
@@ -4593,7 +5137,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DataformApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed65();
+      final arg_extraLocationTypes = buildUnnamed69();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4669,6 +5213,90 @@ void main() {
       checkListLocationsResponse(response as api.ListLocationsResponse);
     });
 
+    unittest.test('method--queryUserRootContents', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations;
+      final arg_location = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildQueryUserRootContentsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.queryUserRootContents(
+        arg_location,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkQueryUserRootContentsResponse(
+        response as api.QueryUserRootContentsResponse,
+      );
+    });
+
     unittest.test('method--updateConfig', () async {
       final mock = HttpServerMock();
       final res = api.DataformApi(mock).projects.locations;
@@ -4740,6 +5368,238 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsFoldersResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.folders;
+      final arg_request = buildFolder();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Folder.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkFolder(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildFolder());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkFolder(response as api.Folder);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.folders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--deleteTree', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.folders;
+      final arg_request = buildDeleteFolderTreeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.DeleteFolderTreeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkDeleteFolderTreeRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.deleteTree(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.folders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildFolder());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkFolder(response as api.Folder);
+    });
+
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
       final res = api.DataformApi(mock).projects.locations.folders;
@@ -4800,6 +5660,220 @@ void main() {
         $fields: arg_$fields,
       );
       checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--move', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.folders;
+      final arg_request = buildMoveFolderRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.MoveFolderRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkMoveFolderRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.move(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.folders;
+      final arg_request = buildFolder();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Folder.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkFolder(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildFolder());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkFolder(response as api.Folder);
+    });
+
+    unittest.test('method--queryFolderContents', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.folders;
+      final arg_folder = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildQueryFolderContentsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.queryFolderContents(
+        arg_folder,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkQueryFolderContentsResponse(
+        response as api.QueryFolderContentsResponse,
+      );
     });
 
     unittest.test('method--setIamPolicy', () async {
@@ -5764,6 +6838,69 @@ void main() {
         $fields: arg_$fields,
       );
       checkListRepositoriesResponse(response as api.ListRepositoriesResponse);
+    });
+
+    unittest.test('method--move', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.repositories;
+      final arg_request = buildMoveRepositoryRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.MoveRepositoryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkMoveRepositoryRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.move(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
     });
 
     unittest.test('method--patch', () async {
@@ -8446,6 +9583,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_path = 'foo';
+      final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8489,6 +9627,7 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(queryMap['path']!.first, unittest.equals(arg_path));
+          unittest.expect(queryMap['view']!.first, unittest.equals(arg_view));
           unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
@@ -8507,6 +9646,7 @@ void main() {
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
         path: arg_path,
+        view: arg_view,
         $fields: arg_$fields,
       );
       checkQueryDirectoryContentsResponse(
@@ -9055,6 +10195,238 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsTeamFoldersResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.teamFolders;
+      final arg_request = buildTeamFolder();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TeamFolder.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTeamFolder(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTeamFolder());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkTeamFolder(response as api.TeamFolder);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.teamFolders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--deleteTree', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.teamFolders;
+      final arg_request = buildDeleteTeamFolderTreeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.DeleteTeamFolderTreeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkDeleteTeamFolderTreeRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.deleteTree(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.teamFolders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTeamFolder());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTeamFolder(response as api.TeamFolder);
+    });
+
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
       final res = api.DataformApi(mock).projects.locations.teamFolders;
@@ -9115,6 +10487,239 @@ void main() {
         $fields: arg_$fields,
       );
       checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.teamFolders;
+      final arg_request = buildTeamFolder();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TeamFolder.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTeamFolder(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTeamFolder());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkTeamFolder(response as api.TeamFolder);
+    });
+
+    unittest.test('method--queryContents', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.teamFolders;
+      final arg_teamFolder = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildQueryTeamFolderContentsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.queryContents(
+        arg_teamFolder,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkQueryTeamFolderContentsResponse(
+        response as api.QueryTeamFolderContentsResponse,
+      );
+    });
+
+    unittest.test('method--search', () async {
+      final mock = HttpServerMock();
+      final res = api.DataformApi(mock).projects.locations.teamFolders;
+      final arg_location = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSearchTeamFoldersResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.search(
+        arg_location,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkSearchTeamFoldersResponse(response as api.SearchTeamFoldersResponse);
     });
 
     unittest.test('method--setIamPolicy', () async {

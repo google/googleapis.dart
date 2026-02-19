@@ -154,11 +154,16 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -5260,10 +5265,10 @@ class ConnectCluster {
   /// Required.
   CapacityConfig? capacityConfig;
 
-  /// Configurations for the worker that are overridden from the defaults.
+  /// Reserved for future use.
   ///
-  /// The key of the map is a Kafka Connect worker property name, for example:
-  /// `exactly.once.source.support`.
+  /// This field is meant for worker config overrides, but is unsupported for
+  /// now.
   ///
   /// Optional.
   core.Map<core.String, core.String>? config;

@@ -175,9 +175,10 @@ class BillingAccountsResource {
   /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// folders in the Google Cloud organization.See Configure CMEK for Cloud
+  /// Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -225,7 +226,7 @@ class BillingAccountsResource {
   /// Gets the settings for the given resource.Note: Settings can be retrieved
   /// for Google Cloud projects, folders, organizations, and billing
   /// accounts.See View default resource settings for Logging
-  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings)
   /// for more information.
   ///
   /// Request parameters:
@@ -559,7 +560,18 @@ class BillingAccountsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists information about the supported locations for this service.
+  /// Lists information about the supported locations for this service.This
+  /// method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: Global locations: If name is empty, the
+  /// method lists the public locations available to all projects.
+  ///
+  /// Project-specific locations: If name follows the format projects/{project},
+  /// the method lists locations visible to that specific project. This includes
+  /// public, private, or other project-specific locations enabled for the
+  /// project.For gRPC and client library implementations, the resource name is
+  /// passed as the name field. For direct service calls, the resource name is
+  /// incorporated into the request path based on the specific service
+  /// implementation and version.
   ///
   /// Request parameters:
   ///
@@ -1996,7 +2008,7 @@ class BillingAccountsLocationsSavedQueriesResource {
   /// [name] - Output only. Resource name of the saved query.In the format:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
   /// For a list of supported locations, see Supported Regions
-  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// (https://docs.cloud.google.com/logging/docs/region-support#bucket-regions)After
   /// the saved query is created, the location cannot be changed.If the user
   /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
   /// Value must have pattern
@@ -2205,7 +2217,7 @@ class BillingAccountsSinksResource {
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
   /// service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// used by the sinks with the same parent. For more information, see
   /// writer_identity in LogSink.
   ///
@@ -2428,7 +2440,7 @@ class BillingAccountsSinksResource {
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
   /// changed to a service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// owned by Cloud Logging. It is an error if the old value is true and the
   /// new value is set to false or defaulted to false.
   ///
@@ -2517,7 +2529,7 @@ class BillingAccountsSinksResource {
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
   /// changed to a service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// owned by Cloud Logging. It is an error if the old value is true and the
   /// new value is set to false or defaulted to false.
   ///
@@ -2618,8 +2630,8 @@ class EntriesResource {
   ///
   /// Use this method to retrieve log entries that originated from a
   /// project/folder/organization/billing account. For ways to export log
-  /// entries, see Exporting Logs
-  /// (https://cloud.google.com/logging/docs/export).
+  /// entries, see Routing overview
+  /// (https://docs.cloud.google.com/logging/docs/routing/overview).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2963,9 +2975,10 @@ class FoldersResource {
   /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// folders in the Google Cloud organization.See Configure CMEK for Cloud
+  /// Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -3013,7 +3026,7 @@ class FoldersResource {
   /// Gets the settings for the given resource.Note: Settings can be retrieved
   /// for Google Cloud projects, folders, organizations, and billing
   /// accounts.See View default resource settings for Logging
-  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings)
   /// for more information.
   ///
   /// Request parameters:
@@ -3066,7 +3079,7 @@ class FoldersResource {
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.
   /// Access to the key is disabled.See Configure default settings for
   /// organizations and folders
-  /// (https://cloud.google.com/logging/docs/default-settings) for more
+  /// (https://docs.cloud.google.com/logging/docs/default-settings) for more
   /// information.
   ///
   /// [request] - The metadata request object.
@@ -3409,7 +3422,18 @@ class FoldersLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists information about the supported locations for this service.
+  /// Lists information about the supported locations for this service.This
+  /// method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: Global locations: If name is empty, the
+  /// method lists the public locations available to all projects.
+  ///
+  /// Project-specific locations: If name follows the format projects/{project},
+  /// the method lists locations visible to that specific project. This includes
+  /// public, private, or other project-specific locations enabled for the
+  /// project.For gRPC and client library implementations, the resource name is
+  /// passed as the name field. For direct service calls, the resource name is
+  /// incorporated into the request path based on the specific service
+  /// implementation and version.
   ///
   /// Request parameters:
   ///
@@ -5227,7 +5251,7 @@ class FoldersLocationsSavedQueriesResource {
   /// [name] - Output only. Resource name of the saved query.In the format:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
   /// For a list of supported locations, see Supported Regions
-  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// (https://docs.cloud.google.com/logging/docs/region-support#bucket-regions)After
   /// the saved query is created, the location cannot be changed.If the user
   /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
   /// Value must have pattern
@@ -5434,7 +5458,7 @@ class FoldersSinksResource {
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
   /// service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// used by the sinks with the same parent. For more information, see
   /// writer_identity in LogSink.
   ///
@@ -5657,7 +5681,7 @@ class FoldersSinksResource {
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
   /// changed to a service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// owned by Cloud Logging. It is an error if the old value is true and the
   /// new value is set to false or defaulted to false.
   ///
@@ -5746,7 +5770,7 @@ class FoldersSinksResource {
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
   /// changed to a service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// owned by Cloud Logging. It is an error if the old value is true and the
   /// new value is set to false or defaulted to false.
   ///
@@ -5843,7 +5867,18 @@ class LocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists information about the supported locations for this service.
+  /// Lists information about the supported locations for this service.This
+  /// method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: Global locations: If name is empty, the
+  /// method lists the public locations available to all projects.
+  ///
+  /// Project-specific locations: If name follows the format projects/{project},
+  /// the method lists locations visible to that specific project. This includes
+  /// public, private, or other project-specific locations enabled for the
+  /// project.For gRPC and client library implementations, the resource name is
+  /// passed as the name field. For direct service calls, the resource name is
+  /// incorporated into the request path based on the specific service
+  /// implementation and version.
   ///
   /// Request parameters:
   ///
@@ -7243,9 +7278,10 @@ class OrganizationsResource {
   /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// folders in the Google Cloud organization.See Configure CMEK for Cloud
+  /// Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -7293,7 +7329,7 @@ class OrganizationsResource {
   /// Gets the settings for the given resource.Note: Settings can be retrieved
   /// for Google Cloud projects, folders, organizations, and billing
   /// accounts.See View default resource settings for Logging
-  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings)
   /// for more information.
   ///
   /// Request parameters:
@@ -7343,10 +7379,10 @@ class OrganizationsResource {
   /// Cloud organization.UpdateCmekSettings fails when any of the following are
   /// true: The value of kms_key_name is invalid. The associated service account
   /// doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
-  /// assigned for the key. Access to the key is disabled.See Enabling CMEK for
-  /// Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// assigned for the key. Access to the key is disabled.See Configure CMEK for
+  /// Cloud Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7414,7 +7450,7 @@ class OrganizationsResource {
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.
   /// Access to the key is disabled.See Configure default settings for
   /// organizations and folders
-  /// (https://cloud.google.com/logging/docs/default-settings) for more
+  /// (https://docs.cloud.google.com/logging/docs/default-settings) for more
   /// information.
   ///
   /// [request] - The metadata request object.
@@ -7759,7 +7795,18 @@ class OrganizationsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists information about the supported locations for this service.
+  /// Lists information about the supported locations for this service.This
+  /// method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: Global locations: If name is empty, the
+  /// method lists the public locations available to all projects.
+  ///
+  /// Project-specific locations: If name follows the format projects/{project},
+  /// the method lists locations visible to that specific project. This includes
+  /// public, private, or other project-specific locations enabled for the
+  /// project.For gRPC and client library implementations, the resource name is
+  /// passed as the name field. For direct service calls, the resource name is
+  /// incorporated into the request path based on the specific service
+  /// implementation and version.
   ///
   /// Request parameters:
   ///
@@ -9577,7 +9624,7 @@ class OrganizationsLocationsSavedQueriesResource {
   /// [name] - Output only. Resource name of the saved query.In the format:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
   /// For a list of supported locations, see Supported Regions
-  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// (https://docs.cloud.google.com/logging/docs/region-support#bucket-regions)After
   /// the saved query is created, the location cannot be changed.If the user
   /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
   /// Value must have pattern
@@ -9784,7 +9831,7 @@ class OrganizationsSinksResource {
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
   /// service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// used by the sinks with the same parent. For more information, see
   /// writer_identity in LogSink.
   ///
@@ -10007,7 +10054,7 @@ class OrganizationsSinksResource {
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
   /// changed to a service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// owned by Cloud Logging. It is an error if the old value is true and the
   /// new value is set to false or defaulted to false.
   ///
@@ -10096,7 +10143,7 @@ class OrganizationsSinksResource {
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
   /// changed to a service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// owned by Cloud Logging. It is an error if the old value is true and the
   /// new value is set to false or defaulted to false.
   ///
@@ -10170,9 +10217,10 @@ class ProjectsResource {
   /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// folders in the Google Cloud organization.See Configure CMEK for Cloud
+  /// Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -10220,7 +10268,7 @@ class ProjectsResource {
   /// Gets the settings for the given resource.Note: Settings can be retrieved
   /// for Google Cloud projects, folders, organizations, and billing
   /// accounts.See View default resource settings for Logging
-  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings)
   /// for more information.
   ///
   /// Request parameters:
@@ -10554,7 +10602,18 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists information about the supported locations for this service.
+  /// Lists information about the supported locations for this service.This
+  /// method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: Global locations: If name is empty, the
+  /// method lists the public locations available to all projects.
+  ///
+  /// Project-specific locations: If name follows the format projects/{project},
+  /// the method lists locations visible to that specific project. This includes
+  /// public, private, or other project-specific locations enabled for the
+  /// project.For gRPC and client library implementations, the resource name is
+  /// passed as the name field. For direct service calls, the resource name is
+  /// incorporated into the request path based on the specific service
+  /// implementation and version.
   ///
   /// Request parameters:
   ///
@@ -12372,7 +12431,7 @@ class ProjectsLocationsSavedQueriesResource {
   /// [name] - Output only. Resource name of the saved query.In the format:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
   /// For a list of supported locations, see Supported Regions
-  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// (https://docs.cloud.google.com/logging/docs/region-support#bucket-regions)After
   /// the saved query is created, the location cannot be changed.If the user
   /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
   /// Value must have pattern
@@ -12794,7 +12853,7 @@ class ProjectsSinksResource {
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
   /// service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// used by the sinks with the same parent. For more information, see
   /// writer_identity in LogSink.
   ///
@@ -13017,7 +13076,7 @@ class ProjectsSinksResource {
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
   /// changed to a service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// owned by Cloud Logging. It is an error if the old value is true and the
   /// new value is set to false or defaulted to false.
   ///
@@ -13106,7 +13165,7 @@ class ProjectsSinksResource {
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
   /// changed to a service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// owned by Cloud Logging. It is an error if the old value is true and the
   /// new value is set to false or defaulted to false.
   ///
@@ -13199,7 +13258,7 @@ class SinksResource {
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
   /// service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// used by the sinks with the same parent. For more information, see
   /// writer_identity in LogSink.
   ///
@@ -13422,7 +13481,7 @@ class SinksResource {
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
   /// changed to a service agent
-  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// (https://docs.cloud.google.com/iam/docs/service-account-types#service-agents)
   /// owned by Cloud Logging. It is an error if the old value is true and the
   /// new value is set to false or defaulted to false.
   ///
@@ -13488,9 +13547,10 @@ class V2Resource {
   /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// folders in the Google Cloud organization.See Configure CMEK for Cloud
+  /// Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -13538,7 +13598,7 @@ class V2Resource {
   /// Gets the settings for the given resource.Note: Settings can be retrieved
   /// for Google Cloud projects, folders, organizations, and billing
   /// accounts.See View default resource settings for Logging
-  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings)
   /// for more information.
   ///
   /// Request parameters:
@@ -13588,10 +13648,10 @@ class V2Resource {
   /// Cloud organization.UpdateCmekSettings fails when any of the following are
   /// true: The value of kms_key_name is invalid. The associated service account
   /// doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
-  /// assigned for the key. Access to the key is disabled.See Enabling CMEK for
-  /// Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// assigned for the key. Access to the key is disabled.See Configure CMEK for
+  /// Cloud Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -13659,7 +13719,7 @@ class V2Resource {
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.
   /// Access to the key is disabled.See Configure default settings for
   /// organizations and folders
-  /// (https://cloud.google.com/logging/docs/default-settings) for more
+  /// (https://docs.cloud.google.com/logging/docs/default-settings) for more
   /// information.
   ///
   /// [request] - The metadata request object.
@@ -13887,13 +13947,13 @@ class BigQueryDataset {
 /// Options that change functionality of a sink exporting data to BigQuery.
 class BigQueryOptions {
   /// Whether to use BigQuery's partition tables
-  /// (https://cloud.google.com/bigquery/docs/partitioned-tables).
+  /// (https://docs.cloud.google.com/bigquery/docs/partitioned-tables).
   ///
   /// By default, Cloud Logging creates dated tables based on the log entries'
   /// timestamps, e.g. syslog_20170523. With partitioned tables the date suffix
   /// is no longer present and special query syntax
-  /// (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has
-  /// to be used instead. In both cases, tables are sharded based on UTC
+  /// (https://docs.cloud.google.com/bigquery/docs/querying-partitioned-tables)
+  /// has to be used instead. In both cases, tables are sharded based on UTC
   /// timezone.
   ///
   /// Optional.
@@ -14107,9 +14167,9 @@ typedef CancelOperationRequest = $Empty;
 /// Google Cloud organizations.
 ///
 /// Once configured, it applies to all projects and folders in the Google Cloud
-/// organization.See Enabling CMEK for Log Router
-/// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more
-/// information.
+/// organization.See Configure CMEK for Cloud Logging
+/// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for
+/// more information.
 class CmekSettings {
   /// The resource name for the configured Cloud KMS key.KMS key name format:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[KEYRING\]/cryptoKeys/\[KEY\]"
@@ -14126,9 +14186,9 @@ class CmekSettings {
   /// that was in use when they started. Decryption operations will be completed
   /// using the key that was used at the time of encryption unless access to
   /// that key has been revoked.To disable CMEK for the Log Router, set this
-  /// field to an empty string.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// field to an empty string.See Configure CMEK for Cloud Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// Optional.
   core.String? kmsKeyName;
@@ -14158,10 +14218,10 @@ class CmekSettings {
   /// the cloudkms.cryptoKeyEncrypterDecrypter role to the service account that
   /// the Log Router will use to access your Cloud KMS key.
   ///
-  /// Use GetCmekSettings to obtain the service account ID.See Enabling CMEK for
-  /// Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Use GetCmekSettings to obtain the service account ID.See Configure CMEK
+  /// for Cloud Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// Output only.
   core.String? serviceAccountId;
@@ -14246,7 +14306,7 @@ class DefaultSinkConfig {
   core.List<LogExclusion>? exclusions;
 
   /// An advanced logs filter
-  /// (https://cloud.google.com/logging/docs/view/advanced-queries).
+  /// (https://docs.cloud.google.com/logging/docs/view/building-queries#queries-by-expression).
   ///
   /// The only exported log entries are those that are in the resource owning
   /// the sink and that match the filter.For
@@ -14343,6 +14403,291 @@ typedef Exponential = $Exponential;
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// A source that can be used to represent a field within various parts of a
+/// structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+class FieldSource {
+  /// The alias name for a field that has already been aliased within a
+  /// different ProjectedField type elsewhere in the query model.
+  ///
+  /// The alias must be defined in the QueryBuilderConfig's field_sources list,
+  /// otherwise the model is invalid.
+  core.String? aliasRef;
+
+  /// The type of the selected field.
+  ///
+  /// This comes from the schema. Can be one of the BigQuery data types: -
+  /// STRING - INT64 - FLOAT64 - BOOL - TIMESTAMP - DATE - RECORD - JSON
+  core.String? columnType;
+
+  /// The fully qualified, dot-delimited path to the selected atomic field (the
+  /// leaf value).
+  ///
+  /// This path is used for primary selection and actions like drill-down or
+  /// projection.The path components should match the exact field names or keys
+  /// as they appear in the underlying data schema. For JSON fields, this means
+  /// respecting the original casing (e.g., camelCase or snake_case as present
+  /// in the JSON).To reference field names containing special characters (e.g.,
+  /// hyphens, spaces), enclose the individual path segment in backticks
+  /// (\`).Examples: * json_payload.labels.message * json_payload.request_id *
+  /// httpRequest.status * json_payload.\my-custom-field\`.value
+  /// *jsonPayload.\`my key with spaces\`.data\`
+  core.String? field;
+
+  /// Whether the field is a JSON field, or has a parent that is a JSON field.
+  ///
+  /// This value is used to determine JSON extractions in generated SQL queries.
+  /// Note that this is_json flag may be true when the column_type is not JSON
+  /// if the parent is a JSON field. Ex: - A json_payload.message field might
+  /// have is_json=true, since the 'json_payload' parent is of type JSON, and
+  /// columnType='STRING' if the 'message' field is of type STRING.
+  core.bool? isJson;
+
+  /// The dot-delimited path of the parent container that holds the target
+  /// field.This path defines the structural hierarchy and is essential for
+  /// correctly generating SQL when field keys contain special characters (e.g.,
+  /// dots or brackets).Example: json_payload.labels (This points to the
+  /// 'labels' object).
+  ///
+  /// This is an empty string if the target field is at the root level.
+  core.String? parentPath;
+
+  /// A projected field option for when a user wants to use a field with some
+  /// additional transformations such as casting or extractions.
+  ProjectedField? projectedField;
+
+  FieldSource({
+    this.aliasRef,
+    this.columnType,
+    this.field,
+    this.isJson,
+    this.parentPath,
+    this.projectedField,
+  });
+
+  FieldSource.fromJson(core.Map json_)
+    : this(
+        aliasRef: json_['aliasRef'] as core.String?,
+        columnType: json_['columnType'] as core.String?,
+        field: json_['field'] as core.String?,
+        isJson: json_['isJson'] as core.bool?,
+        parentPath: json_['parentPath'] as core.String?,
+        projectedField: json_.containsKey('projectedField')
+            ? ProjectedField.fromJson(
+                json_['projectedField'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aliasRef = this.aliasRef;
+    final columnType = this.columnType;
+    final field = this.field;
+    final isJson = this.isJson;
+    final parentPath = this.parentPath;
+    final projectedField = this.projectedField;
+    return {
+      'aliasRef': ?aliasRef,
+      'columnType': ?columnType,
+      'field': ?field,
+      'isJson': ?isJson,
+      'parentPath': ?parentPath,
+      'projectedField': ?projectedField,
+    };
+  }
+}
+
+/// This is a leaf of the FilterPredicate.
+///
+/// Ex: { field: json_payload.message.error_code, filter_value: {numeric_value:
+/// 400}, comparator: EQUAL_TO} The field will be schema field that is selected
+/// using the . annotation to display the drill down value. The value will be
+/// the user inputted text that the filter is comparing against.
+class FilterExpression {
+  /// The comparison type to use for the filter.
+  /// Possible string values are:
+  /// - "COMPARATOR_UNSPECIFIED" : Invalid value, do not use.
+  /// - "EQUALS" : The value is equal to the inputted value.
+  /// - "MATCHES_REGEXP" : The value is equal to the inputted regex value.
+  /// - "GREATER_THAN" : The value is greater than the inputted value.
+  /// - "LESS_THAN" : The value is less than the inputted value.
+  /// - "GREATER_THAN_EQUALS" : The value is greater than or equal to the
+  /// inputted value.
+  /// - "LESS_THAN_EQUALS" : The value is less than or equal to the inputted
+  /// value.
+  /// - "IS_NULL" : Requires the filter_value to be a Value type with null_value
+  /// set to true.
+  /// - "IN" : The value is in the inputted array value.
+  /// - "LIKE" : The value is like the inputted value.
+  core.String? comparator;
+
+  /// Can be one of the FieldSource types: field name, alias ref, variable ref,
+  /// or a literal value.
+  FieldSource? fieldSource;
+
+  /// The field.
+  ///
+  /// This will be the field that is set as the Right Hand Side of the filter.
+  FieldSource? fieldSourceValue;
+
+  /// Determines if the NOT flag should be added to the comparator.
+  core.bool? isNegation;
+
+  /// The Value will be used to hold user defined constants set as the Right
+  /// Hand Side of the filter.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? literalValue;
+
+  FilterExpression({
+    this.comparator,
+    this.fieldSource,
+    this.fieldSourceValue,
+    this.isNegation,
+    this.literalValue,
+  });
+
+  FilterExpression.fromJson(core.Map json_)
+    : this(
+        comparator: json_['comparator'] as core.String?,
+        fieldSource: json_.containsKey('fieldSource')
+            ? FieldSource.fromJson(
+                json_['fieldSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fieldSourceValue: json_.containsKey('fieldSourceValue')
+            ? FieldSource.fromJson(
+                json_['fieldSourceValue']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        isNegation: json_['isNegation'] as core.bool?,
+        literalValue: json_['literalValue'],
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final comparator = this.comparator;
+    final fieldSource = this.fieldSource;
+    final fieldSourceValue = this.fieldSourceValue;
+    final isNegation = this.isNegation;
+    final literalValue = this.literalValue;
+    return {
+      'comparator': ?comparator,
+      'fieldSource': ?fieldSource,
+      'fieldSourceValue': ?fieldSourceValue,
+      'isNegation': ?isNegation,
+      'literalValue': ?literalValue,
+    };
+  }
+}
+
+/// A filter for a query.
+///
+/// This equates to the WHERE clause in SQL.
+class FilterPredicate {
+  /// The children of the filter predicate.
+  ///
+  /// This equates to the branches of the filter predicate that could contain
+  /// further nested leaves.
+  core.List<FilterPredicate>? childPredicates;
+
+  /// The leaves of the filter predicate.
+  ///
+  /// This equates to the last leaves of the filter predicate associated with an
+  /// operator.
+  FilterExpression? leafPredicate;
+
+  /// The operator type for the filter.
+  ///
+  /// Currently there is no support for multiple levels of nesting, so this will
+  /// be a single value with no joining of different operator types
+  /// Possible string values are:
+  /// - "OPERATOR_TYPE_UNSPECIFIED" : Invalid value, do not use.
+  /// - "AND" : AND will be the default operator type.
+  /// - "OR" : OR operator type.
+  /// - "LEAF" : LEAF operator type.
+  core.String? operatorType;
+
+  FilterPredicate({
+    this.childPredicates,
+    this.leafPredicate,
+    this.operatorType,
+  });
+
+  FilterPredicate.fromJson(core.Map json_)
+    : this(
+        childPredicates: (json_['childPredicates'] as core.List?)
+            ?.map(
+              (value) => FilterPredicate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        leafPredicate: json_.containsKey('leafPredicate')
+            ? FilterExpression.fromJson(
+                json_['leafPredicate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        operatorType: json_['operatorType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final childPredicates = this.childPredicates;
+    final leafPredicate = this.leafPredicate;
+    final operatorType = this.operatorType;
+    return {
+      'childPredicates': ?childPredicates,
+      'leafPredicate': ?leafPredicate,
+      'operatorType': ?operatorType,
+    };
+  }
+}
+
+/// Defines the aggregation function to apply to this field.
+///
+/// This message is used only when operation is set to AGGREGATE.
+class FunctionApplication {
+  /// Parameters to be applied to the aggregation.
+  ///
+  /// Aggregations that support or require parameters are listed above.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? parameters;
+
+  /// Specifies the aggregation function.
+  ///
+  /// Use one of the following string identifiers: "average": Computes the
+  /// average (AVG). Applies only to numeric values. "count": Counts the number
+  /// of values (COUNT). "count-distinct": Counts the number of distinct values
+  /// (COUNT DISTINCT). "count-distinct-approx": Approximates the count of
+  /// distinct values (APPROX_COUNT_DISTINCT). "max": Finds the maximum value
+  /// (MAX). Applies only to numeric values. "min": Finds the minimum value
+  /// (MIN). Applies only to numeric values. "sum": Computes the sum (SUM).
+  /// Applies only to numeric values.
+  ///
+  /// Required.
+  core.String? type;
+
+  FunctionApplication({this.parameters, this.type});
+
+  FunctionApplication.fromJson(core.Map json_)
+    : this(
+        parameters: json_.containsKey('parameters')
+            ? json_['parameters'] as core.List
+            : null,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parameters = this.parameters;
+    final type = this.type;
+    return {'parameters': ?parameters, 'type': ?type};
+  }
+}
 
 /// Request message for GetIamPolicy method.
 class GetIamPolicyRequest {
@@ -14538,7 +14883,7 @@ class IndexConfig {
   /// indexed, and other paths are not eligible for indexing.
   ///
   /// See indexing documentation(
-  /// https://cloud.google.com/logging/docs/analyze/custom-index) for
+  /// https://docs.cloud.google.com/logging/docs/analyze/custom-index) for
   /// details.For example: jsonPayload.request.status
   ///
   /// Required.
@@ -14805,14 +15150,14 @@ class ListLogEntriesRequest {
   /// A filter that chooses which log entries to return.
   ///
   /// For more information, see Logging query language
-  /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language).Only
+  /// (https://docs.cloud.google.com/logging/docs/view/logging-query-language).Only
   /// log entries that match the filter are returned. An empty filter matches
   /// all log entries in the resources listed in resource_names. Referencing a
   /// parent resource that is not listed in resource_names will cause the filter
   /// to return no results. The maximum length of a filter is 20,000
   /// characters.To make queries faster, you can make the filter more selective
   /// by using restrictions on indexed fields
-  /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language#indexed-fields)
+  /// (https://docs.cloud.google.com/logging/docs/view/logging-query-language#indexed-fields)
   /// as well as limit the time range of the query by adding range restrictions
   /// on the timestamp field.
   ///
@@ -15401,9 +15746,9 @@ class LogBucket {
   /// The resource name of the bucket.For
   /// example:projects/my-project/locations/global/buckets/my-bucketFor a list
   /// of supported locations, see Supported Regions
-  /// (https://cloud.google.com/logging/docs/region-support)For the location of
-  /// global it is unspecified where log entries are actually stored.After a
-  /// bucket has been created, the location cannot be changed.
+  /// (https://docs.cloud.google.com/logging/docs/region-support)For the
+  /// location of global it is unspecified where log entries are actually
+  /// stored.After a bucket has been created, the location cannot be changed.
   ///
   /// Output only.
   core.String? name;
@@ -15619,6 +15964,19 @@ class LogEntry {
   /// Optional.
   LogEntryOperation? operation;
 
+  /// The structured OpenTelemetry protocol payload.
+  ///
+  /// Contains the OpenTelemetry Resource, Instrumentation Scope, and Entities
+  /// attributes for this log as they are defined in the OTLP specification, and
+  /// any other fields that do not have a direct analog in the LogEntry. See
+  /// https://opentelemetry.io/docs/specs/otel/logs/data-model/
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? otel;
+
   /// The log entry payload, represented as a protocol buffer.
   ///
   /// Some Google Cloud Platform services use this field for their log entry
@@ -15705,11 +16063,7 @@ class LogEntry {
   /// retention period. If this field is omitted in a new log entry, then
   /// Logging assigns it the current time. Timestamps have nanosecond accuracy,
   /// but trailing zeros in the fractional seconds might be omitted when the
-  /// timestamp is displayed.Incoming log entries must have timestamps that
-  /// don't exceed the logs retention period
-  /// (https://cloud.google.com/logging/quotas#logs_retention_periods) in the
-  /// past, and that don't exceed 24 hours in the future. Log entries outside
-  /// those time boundaries are rejected by Logging.
+  /// timestamp is displayed.
   ///
   /// Optional.
   core.String? timestamp;
@@ -15753,6 +16107,7 @@ class LogEntry {
     this.logName,
     this.metadata,
     this.operation,
+    this.otel,
     this.protoPayload,
     this.receiveTimestamp,
     this.resource,
@@ -15814,6 +16169,9 @@ class LogEntry {
                 json_['operation'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        otel: json_.containsKey('otel')
+            ? json_['otel'] as core.Map<core.String, core.dynamic>
+            : null,
         protoPayload: json_.containsKey('protoPayload')
             ? json_['protoPayload'] as core.Map<core.String, core.dynamic>
             : null,
@@ -15853,6 +16211,7 @@ class LogEntry {
     final logName = this.logName;
     final metadata = this.metadata;
     final operation = this.operation;
+    final otel = this.otel;
     final protoPayload = this.protoPayload;
     final receiveTimestamp = this.receiveTimestamp;
     final resource = this.resource;
@@ -15876,6 +16235,7 @@ class LogEntry {
       'logName': ?logName,
       'metadata': ?metadata,
       'operation': ?operation,
+      'otel': ?otel,
       'protoPayload': ?protoPayload,
       'receiveTimestamp': ?receiveTimestamp,
       'resource': ?resource,
@@ -16037,15 +16397,15 @@ class LogExclusion {
   core.bool? disabled;
 
   /// An advanced logs filter
-  /// (https://cloud.google.com/logging/docs/view/advanced-queries) that matches
-  /// the log entries to be excluded.
+  /// (https://docs.cloud.google.com/logging/docs/view/building-queries#queries-by-expression)
+  /// that matches the log entries to be excluded.
   ///
   /// By using the sample function
-  /// (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you
-  /// can exclude less than 100% of the matching log entries.For example, the
-  /// following query matches 99% of low-severity log entries from Google Cloud
-  /// Storage buckets:resource.type=gcs_bucket severity\<ERROR sample(insertId,
-  /// 0.99)
+  /// (https://docs.cloud.google.com/logging/docs/view/logging-query-language#sample),
+  /// you can exclude less than 100% of the matching log entries.For example,
+  /// the following query matches 99% of low-severity log entries from Google
+  /// Cloud Storage buckets:resource.type=gcs_bucket severity\<ERROR
+  /// sample(insertId, 0.99)
   ///
   /// Required.
   core.String? filter;
@@ -16432,8 +16792,8 @@ class LogSink {
   /// permission to write to the destination or else the log entries are not
   /// exported.
   ///
-  /// For more information, see Exporting Logs with Sinks
-  /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+  /// For more information, see Route logs to supported destinations
+  /// (https://docs.cloud.google.com/logging/docs/export/configure_export_v2).
   ///
   /// Required.
   core.String? destination;
@@ -16452,7 +16812,7 @@ class LogSink {
   core.List<LogExclusion>? exclusions;
 
   /// An advanced logs filter
-  /// (https://cloud.google.com/logging/docs/view/advanced-queries).
+  /// (https://docs.cloud.google.com/logging/docs/view/building-queries#queries-by-expression).
   ///
   /// The only exported log entries are those that are in the resource owning
   /// the sink and that match the filter.For
@@ -16538,8 +16898,9 @@ class LogSink {
   /// automatically by sinks.create and sinks.update based on the value of
   /// unique_writer_identity in those methods.Until you grant this identity
   /// write-access to the destination, log entry exports from this sink will
-  /// fail. For more information, see Granting Access for a Resource
-  /// (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource).
+  /// fail. For more information, see Manage access to projects, folders, and
+  /// organizations
+  /// (https://docs.cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource).
   /// Consult the destination service's documentation to determine the
   /// appropriate IAM roles to assign to the identity.Sinks that have a
   /// destination that is a log bucket in the same project as the sink cannot
@@ -16740,7 +17101,7 @@ class LogView {
 /// association with analysis of query results.
 class LoggingQuery {
   /// An advanced query using the Logging Query Language
-  /// (https://cloud.google.com/logging/docs/view/logging-query-language).
+  /// (https://docs.cloud.google.com/logging/docs/view/logging-query-language).
   ///
   /// The maximum length of the filter is 20000 characters.
   ///
@@ -17301,24 +17662,42 @@ class Operation {
   }
 }
 
-/// Describes an analytics query that can be run in the Log Analytics page of
-/// Google Cloud console.Preview: This is a preview feature and may be subject
-/// to change before final release.
+/// Describes a query that can be run in Log Analytics.
 class OpsAnalyticsQuery {
-  /// A logs analytics SQL query, which generally follows BigQuery format.This
-  /// is the SQL query that appears in the Log Analytics UI's query editor.
+  /// A query builder configuration used in Log Analytics.If both query_builder
+  /// and sql_query_text fields are set, then the sql_query_text will be used,
+  /// if its non-empty.
   ///
-  /// Required.
+  /// At least one of the two fields must be set.
+  ///
+  /// Optional.
+  QueryBuilderConfig? queryBuilder;
+
+  /// A Log Analytics SQL query in text format.If both sql_query_text and
+  /// query_builder fields are set, then the sql_query_text will be used, if its
+  /// non-empty.
+  ///
+  /// At least one of the two fields must be set.
+  ///
+  /// Optional.
   core.String? sqlQueryText;
 
-  OpsAnalyticsQuery({this.sqlQueryText});
+  OpsAnalyticsQuery({this.queryBuilder, this.sqlQueryText});
 
   OpsAnalyticsQuery.fromJson(core.Map json_)
-    : this(sqlQueryText: json_['sqlQueryText'] as core.String?);
+    : this(
+        queryBuilder: json_.containsKey('queryBuilder')
+            ? QueryBuilderConfig.fromJson(
+                json_['queryBuilder'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sqlQueryText: json_['sqlQueryText'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final queryBuilder = this.queryBuilder;
     final sqlQueryText = this.sqlQueryText;
-    return {'sqlQueryText': ?sqlQueryText};
+    return {'queryBuilder': ?queryBuilder, 'sqlQueryText': ?sqlQueryText};
   }
 }
 
@@ -17428,6 +17807,223 @@ class Policy {
   }
 }
 
+/// Represents a field selected in the query, analogous to an item in a SQL
+/// SELECT clause.
+///
+/// It specifies the source field and optionally applies transformations like
+/// aggregation, casting, regex extraction, or assigns an alias. Use
+/// ProjectedField when you need more than just the raw source field name (for
+/// which you might use FieldSource directly in QueryBuilderConfig's
+/// field_sources list if no transformations or specific operation type are
+/// needed).
+class ProjectedField {
+  /// The alias name for the field.
+  ///
+  /// Valid alias examples are: - single word alias: TestAlias - numbers in an
+  /// alias: Alias123 - multi word alias should be enclosed in quotes: "Test
+  /// Alias" Invalid alias examples are: - alias containing keywords: WHERE,
+  /// SELECT, FROM, etc. - alias starting with a number: 1stAlias
+  core.String? alias;
+
+  /// The cast for the field.
+  ///
+  /// This can any SQL cast type. Examples: - STRING - CHAR - DATE - TIMESTAMP -
+  /// DATETIME - INT - FLOAT
+  core.String? cast;
+
+  /// The field name.
+  ///
+  /// This will be the field that is selected using the dot notation to display
+  /// the drill down value.
+  core.String? field;
+
+  /// Specifies the role of this field (direct selection, grouping, or
+  /// aggregation).
+  /// Possible string values are:
+  /// - "FIELD_OPERATION_UNSPECIFIED" : Invalid value. Operation must be
+  /// specified.
+  /// - "NO_SETTING" : Select the field directly without grouping or
+  /// aggregation. Corresponds to including the raw field (potentially with
+  /// cast, regex, or alias) in the SELECT list.
+  /// - "GROUP_BY" : Group the query results by the distinct values of this
+  /// field. Corresponds to including the field (potentially truncated) in the
+  /// GROUP BY clause.
+  /// - "AGGREGATE" : Apply an aggregation function to this field across grouped
+  /// results. Corresponds to applying a function like COUNT, SUM, AVG in the
+  /// SELECT list. Requires sql_aggregation_function to be set.
+  core.String? operation;
+
+  /// The re2 extraction for the field.
+  ///
+  /// This will be used to extract the value from the field using
+  /// REGEXP_EXTRACT. More information on re2 can be found here:
+  /// https://github.com/google/re2/wiki/Syntax. Meta characters like +?()| will
+  /// need to be escaped. Examples: - ".(autoscaler.*)$" will be converted to
+  /// REGEXP_EXTRACT(JSON_VALUE(field),"request(.*(autoscaler.*)$)")in SQL. -
+  /// "\(test_value\)$" will be converted to
+  /// REGEXP_EXTRACT(JSON_VALUE(field),"request(\(test_value\)$)") in SQL.
+  core.String? regexExtraction;
+
+  /// The function to apply to the field.
+  FunctionApplication? sqlAggregationFunction;
+
+  /// The truncation granularity when grouping by a time/date field.
+  ///
+  /// This will be used to truncate the field to the granularity specified. This
+  /// can be either a date or a time granularity found at
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_trunc_granularity_date
+  /// and
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_trunc_granularity_time
+  /// respectively.
+  core.String? truncationGranularity;
+
+  ProjectedField({
+    this.alias,
+    this.cast,
+    this.field,
+    this.operation,
+    this.regexExtraction,
+    this.sqlAggregationFunction,
+    this.truncationGranularity,
+  });
+
+  ProjectedField.fromJson(core.Map json_)
+    : this(
+        alias: json_['alias'] as core.String?,
+        cast: json_['cast'] as core.String?,
+        field: json_['field'] as core.String?,
+        operation: json_['operation'] as core.String?,
+        regexExtraction: json_['regexExtraction'] as core.String?,
+        sqlAggregationFunction: json_.containsKey('sqlAggregationFunction')
+            ? FunctionApplication.fromJson(
+                json_['sqlAggregationFunction']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        truncationGranularity: json_['truncationGranularity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alias = this.alias;
+    final cast = this.cast;
+    final field = this.field;
+    final operation = this.operation;
+    final regexExtraction = this.regexExtraction;
+    final sqlAggregationFunction = this.sqlAggregationFunction;
+    final truncationGranularity = this.truncationGranularity;
+    return {
+      'alias': ?alias,
+      'cast': ?cast,
+      'field': ?field,
+      'operation': ?operation,
+      'regexExtraction': ?regexExtraction,
+      'sqlAggregationFunction': ?sqlAggregationFunction,
+      'truncationGranularity': ?truncationGranularity,
+    };
+  }
+}
+
+/// Defines a structured query configuration that can be used instead of writing
+/// raw SQL.
+///
+/// This configuration represents the components of a SQL query (FROM, SELECT,
+/// WHERE, ORDER BY, LIMIT) and is typically converted into an executable query
+/// (e.g., BigQuery SQL) by the backend service to retrieve data for analysis or
+/// visualization.
+class QueryBuilderConfig {
+  /// Defines the items to include in the query result, analogous to a SQL
+  /// SELECT clause.
+  core.List<FieldSource>? fieldSources;
+
+  /// The filter to use for the query.
+  ///
+  /// This equates to the WHERE clause in SQL.
+  FilterPredicate? filter;
+
+  /// The limit to use for the query.
+  ///
+  /// This equates to the LIMIT clause in SQL. A limit of 0 will be treated as
+  /// not enabled.
+  core.String? limit;
+
+  /// The sort orders to use for the query.
+  ///
+  /// This equates to the ORDER BY clause in SQL.
+  core.List<SortOrderParameter>? orderBys;
+
+  /// The view/resource to query.
+  ///
+  /// For now only a single view/resource will be sent, but there are plans to
+  /// allow multiple views in the future. Marking as repeated for that purpose.
+  /// Example: - "projects/123/locations/global/buckets/456/views/_Default" -
+  /// "projects/123/locations/global/metricBuckets/456/views/_Default"
+  ///
+  /// Required.
+  core.List<core.String>? resourceNames;
+
+  /// The plain text search to use for the query.
+  ///
+  /// There is no support for multiple search terms. This uses the SEARCH
+  /// functionality in BigQuery. For example, a search_term = 'ERROR' would
+  /// result in the following SQL:SELECT * FROM resource WHERE SEARCH(resource,
+  /// 'ERROR') LIMIT 100
+  core.String? searchTerm;
+
+  QueryBuilderConfig({
+    this.fieldSources,
+    this.filter,
+    this.limit,
+    this.orderBys,
+    this.resourceNames,
+    this.searchTerm,
+  });
+
+  QueryBuilderConfig.fromJson(core.Map json_)
+    : this(
+        fieldSources: (json_['fieldSources'] as core.List?)
+            ?.map(
+              (value) => FieldSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        filter: json_.containsKey('filter')
+            ? FilterPredicate.fromJson(
+                json_['filter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        limit: json_['limit'] as core.String?,
+        orderBys: (json_['orderBys'] as core.List?)
+            ?.map(
+              (value) => SortOrderParameter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        resourceNames: (json_['resourceNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        searchTerm: json_['searchTerm'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldSources = this.fieldSources;
+    final filter = this.filter;
+    final limit = this.limit;
+    final orderBys = this.orderBys;
+    final resourceNames = this.resourceNames;
+    final searchTerm = this.searchTerm;
+    return {
+      'fieldSources': ?fieldSources,
+      'filter': ?filter,
+      'limit': ?limit,
+      'orderBys': ?orderBys,
+      'resourceNames': ?resourceNames,
+      'searchTerm': ?searchTerm,
+    };
+  }
+}
+
 /// Describes a recent query executed on the Logs Explorer or Log Analytics page
 /// within the last ~ 30 days.
 class RecentQuery {
@@ -17442,8 +18038,8 @@ class RecentQuery {
   /// Resource name of the recent query.In the format:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/recentQueries/\[QUERY_ID\]"
   /// For a list of supported locations, see Supported Regions
-  /// (https://cloud.google.com/logging/docs/region-support)The QUERY_ID is a
-  /// system generated alphanumeric ID.
+  /// (https://docs.cloud.google.com/logging/docs/region-support)The QUERY_ID is
+  /// a system generated alphanumeric ID.
   ///
   /// Output only.
   core.String? name;
@@ -17512,7 +18108,7 @@ class SavedQuery {
   /// Resource name of the saved query.In the format:
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
   /// For a list of supported locations, see Supported Regions
-  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// (https://docs.cloud.google.com/logging/docs/region-support#bucket-regions)After
   /// the saved query is created, the location cannot be changed.If the user
   /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
   ///
@@ -17652,9 +18248,9 @@ class Settings {
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The
   /// Cloud KMS key used by the Log Router can be updated by changing the
   /// kms_key_name to a new valid key name.To disable CMEK for the Log Router,
-  /// set this field to an empty string.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// set this field to an empty string.See Configure CMEK for Cloud Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
+  /// for more information.
   ///
   /// Optional.
   core.String? kmsKeyName;
@@ -17664,8 +18260,9 @@ class Settings {
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter to the service account that
   /// will be used to access your Cloud KMS key.
   ///
-  /// Use GetSettings to obtain the service account ID.See Enabling CMEK for Log
-  /// Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
+  /// Use GetSettings to obtain the service account ID.See Configure CMEK for
+  /// Cloud Logging
+  /// (https://docs.cloud.google.com/logging/docs/routing/managed-encryption)
   /// for more information.
   ///
   /// Output only.
@@ -17742,6 +18339,46 @@ class Settings {
   }
 }
 
+/// A sort order for a query based on a column.
+class SortOrderParameter {
+  /// The field to sort on.
+  ///
+  /// Can be one of the FieldSource types: field name, alias ref, variable ref,
+  /// or a literal value.
+  FieldSource? fieldSource;
+
+  /// The sort order to use for the query.
+  /// Possible string values are:
+  /// - "SORT_ORDER_UNSPECIFIED" : Invalid value, do not use.
+  /// - "SORT_ORDER_NONE" : No sorting will be applied. This is used to
+  /// determine if the query is in pass thru mode. To correctly chart a query in
+  /// pass thru mode, NONE will need to be sent
+  /// - "SORT_ORDER_ASCENDING" : The lowest-valued entries will be selected.
+  /// - "SORT_ORDER_DESCENDING" : The highest-valued entries will be selected.
+  core.String? sortOrderDirection;
+
+  SortOrderParameter({this.fieldSource, this.sortOrderDirection});
+
+  SortOrderParameter.fromJson(core.Map json_)
+    : this(
+        fieldSource: json_.containsKey('fieldSource')
+            ? FieldSource.fromJson(
+                json_['fieldSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sortOrderDirection: json_['sortOrderDirection'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldSource = this.fieldSource;
+    final sortOrderDirection = this.sortOrderDirection;
+    return {
+      'fieldSource': ?fieldSource,
+      'sortOrderDirection': ?sortOrderDirection,
+    };
+  }
+}
+
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs.
 ///
@@ -17752,7 +18389,7 @@ class Settings {
 typedef Status = $Status00;
 
 /// A field from the LogEntry that is added to the summary line
-/// (https://cloud.google.com/logging/docs/view/logs-explorer-interface#add-summary-fields)
+/// (https://docs.cloud.google.com/logging/docs/view/logs-explorer-interface#preferences)
 /// for a query in the Logs Explorer.
 class SummaryField {
   /// The field from the LogEntry to include in the summary line, for example
@@ -17804,13 +18441,13 @@ class WriteLogEntriesRequest {
   /// supply their own values, the entries earlier in the list will sort before
   /// the entries later in the list. See the entries.list method.Log entries
   /// with timestamps that are more than the logs retention period
-  /// (https://cloud.google.com/logging/quotas) in the past or more than 24
+  /// (https://docs.cloud.google.com/logging/quotas) in the past or more than 24
   /// hours in the future will not be available when calling entries.list.
   /// However, those log entries can still be exported with LogSinks
-  /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).To
-  /// improve throughput and to avoid exceeding the quota limit
-  /// (https://cloud.google.com/logging/quotas) for calls to entries.write, you
-  /// should try to include several log entries in this list, rather than
+  /// (https://docs.cloud.google.com/logging/docs/routing/overview).To improve
+  /// throughput and to avoid exceeding the quota limit
+  /// (https://docs.cloud.google.com/logging/quotas) for calls to entries.write,
+  /// you should try to include several log entries in this list, rather than
   /// calling this method for each individual log entry.
   ///
   /// Required.

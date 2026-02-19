@@ -1150,24 +1150,177 @@ class ProjectsRelatedaccountgroupsMembershipsResource {
 
 /// Account defender risk assessment.
 class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
+  /// Account takeover risk assessment for this request.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict?
+  accountTakeoverVerdict;
+
   /// Labels for this request.
   ///
   /// Output only.
   core.List<core.String>? labels;
 
-  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment({this.labels});
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment({
+    this.accountTakeoverVerdict,
+    this.labels,
+  });
 
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment.fromJson(
     core.Map json_,
   ) : this(
+        accountTakeoverVerdict: json_.containsKey('accountTakeoverVerdict')
+            ? GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict.fromJson(
+                json_['accountTakeoverVerdict']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final accountTakeoverVerdict = this.accountTakeoverVerdict;
     final labels = this.labels;
-    return {'labels': ?labels};
+    return {
+      'accountTakeoverVerdict': ?accountTakeoverVerdict,
+      'labels': ?labels,
+    };
+  }
+}
+
+/// Risk explainability reasons for account defender.
+class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason {
+  /// A risk reason associated with this request.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RISK_REASON_UNSPECIFIED" : Default unspecified type.
+  /// - "CLIENT_HISTORICAL_BOT_ACTIVITY" : The client has been observed sending
+  /// bot-like traffic to this site in the past. This reason incorporates
+  /// historical reputation and indicates that the client is known to use bots,
+  /// even if the current request is being made by a human.
+  /// - "ACCOUNT_IN_LARGE_RELATED_GROUP" : The account is part of a large group
+  /// of related accounts, indicating that it may be part of a fraudulent
+  /// network. Related accounts are identified based on having similar traffic
+  /// patterns and request characteristics.
+  /// - "CLIENT_ACCESSED_MANY_ACCOUNTS" : The client has been observed accessing
+  /// many accounts on this site.
+  core.String? reason;
+
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason({
+    this.reason,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason.fromJson(
+    core.Map json_,
+  ) : this(reason: json_['reason'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    return {'reason': ?reason};
+  }
+}
+
+/// Account takeover risk assessment.
+class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict {
+  /// Account takeover attempt probability.
+  ///
+  /// Values are from 0.0 (lowest risk) to 1.0 (highest risk).
+  ///
+  /// Output only.
+  core.double? risk;
+
+  /// Unordered list.
+  ///
+  /// Reasons why the request appears risky. Risk reasons can be returned even
+  /// if the risk is low, as trustworthy requests can still have some risk
+  /// signals.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason
+  >?
+  riskReasons;
+
+  /// Unordered list.
+  ///
+  /// Reasons why the request appears trustworthy. Trust reasons can be returned
+  /// even if the risk is high, as risky requests can still have some trust
+  /// signals.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason
+  >?
+  trustReasons;
+
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict({
+    this.risk,
+    this.riskReasons,
+    this.trustReasons,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict.fromJson(
+    core.Map json_,
+  ) : this(
+        risk: (json_['risk'] as core.num?)?.toDouble(),
+        riskReasons: (json_['riskReasons'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        trustReasons: (json_['trustReasons'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final risk = this.risk;
+    final riskReasons = this.riskReasons;
+    final trustReasons = this.trustReasons;
+    return {
+      'risk': ?risk,
+      'riskReasons': ?riskReasons,
+      'trustReasons': ?trustReasons,
+    };
+  }
+}
+
+/// Trust explainability reasons for account defender.
+class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason {
+  /// A trust reason associated with this request.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TRUST_REASON_UNSPECIFIED" : Default unspecified type.
+  /// - "PROFILE_MATCH" : The request matches a trusted profile associated with
+  /// this account. Equivalent to `AccountDefenderLabel.PROFILE_MATCH`.
+  /// - "ACCOUNT_HISTORY_REPUTABLE" : The account's historical activity is
+  /// reputable. It is unlikely that the account has been compromised in the
+  /// past.
+  core.String? reason;
+
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason({
+    this.reason,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason.fromJson(
+    core.Map json_,
+  ) : this(reason: json_['reason'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    return {'reason': ?reason};
   }
 }
 
@@ -3550,9 +3703,10 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   /// deemed suspicious.
   core.String? challenge;
 
-  /// Extended verdict reasons to be used for experimentation only.
+  /// Additional reasons contributing to the risk analysis verdict.
   ///
-  /// The set of possible reasons is subject to change.
+  /// These reasons are available to Enterprise tier projects only. Contact
+  /// sales for more information. The set of reasons is subject to change.
   ///
   /// Output only.
   core.List<core.String>? extendedVerdictReasons;
@@ -3929,6 +4083,11 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// the following are true: - your `site_key` has the POLICY_BASED_CHALLENGE
   /// integration type - you set an action score threshold higher than 0.0 - you
   /// provided a non-empty `expected_action`
+  /// - "KEY_MISMATCH" : The key used to generate the token does not match the
+  /// `site_key`.
+  /// - "DOMAIN_MISMATCH" : The domain of the page on which the token was
+  /// generated does not match the `allowed_domains` configured in the
+  /// `site_key`.
   core.String? invalidReason;
 
   /// The ID of the iOS bundle with which the token was generated (iOS keys

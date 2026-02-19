@@ -5408,7 +5408,7 @@ class FlexTemplateRuntimeEnvironment {
 
   /// The machine type to use for launching the job.
   ///
-  /// The default is n1-standard-1.
+  /// If not set, Dataflow will select a default machine type.
   core.String? launcherMachineType;
 
   /// The machine type to use for the job.
@@ -5845,20 +5845,30 @@ class GetTemplateResponse {
 
 /// Request to get worker stacktraces from debug capture.
 class GetWorkerStacktracesRequest {
+  /// The end time for the stacktrace query.
+  ///
+  /// The returned stacktraces will be a recent stack trace at or shortly before
+  /// this time.
+  core.String? endTime;
+
   /// The worker for which to get stacktraces.
   ///
   /// The returned stacktraces will be for the SDK harness running on this
   /// worker.
   core.String? workerId;
 
-  GetWorkerStacktracesRequest({this.workerId});
+  GetWorkerStacktracesRequest({this.endTime, this.workerId});
 
   GetWorkerStacktracesRequest.fromJson(core.Map json_)
-    : this(workerId: json_['workerId'] as core.String?);
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        workerId: json_['workerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
     final workerId = this.workerId;
-    return {'workerId': ?workerId};
+    return {'endTime': ?endTime, 'workerId': ?workerId};
   }
 }
 
@@ -6344,6 +6354,11 @@ class Job {
   /// Optional.
   core.String? name;
 
+  /// Indicates whether the job can be paused.
+  ///
+  /// Output only.
+  core.bool? pausable;
+
   /// Preliminary field: The format of this data may change at any time.
   ///
   /// A description of the user pipeline and stages through which it is
@@ -6514,6 +6529,7 @@ class Job {
     this.labels,
     this.location,
     this.name,
+    this.pausable,
     this.pipelineDescription,
     this.projectId,
     this.replaceJobId,
@@ -6560,6 +6576,7 @@ class Job {
         ),
         location: json_['location'] as core.String?,
         name: json_['name'] as core.String?,
+        pausable: json_['pausable'] as core.bool?,
         pipelineDescription: json_.containsKey('pipelineDescription')
             ? PipelineDescription.fromJson(
                 json_['pipelineDescription']
@@ -6622,6 +6639,7 @@ class Job {
     final labels = this.labels;
     final location = this.location;
     final name = this.name;
+    final pausable = this.pausable;
     final pipelineDescription = this.pipelineDescription;
     final projectId = this.projectId;
     final replaceJobId = this.replaceJobId;
@@ -6651,6 +6669,7 @@ class Job {
       'labels': ?labels,
       'location': ?location,
       'name': ?name,
+      'pausable': ?pausable,
       'pipelineDescription': ?pipelineDescription,
       'projectId': ?projectId,
       'replaceJobId': ?replaceJobId,
@@ -9633,12 +9652,34 @@ class RuntimeMetadata {
 ///
 /// These fields have no effect when specified during job creation.
 class RuntimeUpdatableParams {
-  /// The backlog threshold duration in seconds for autoscaling.
+  /// Deprecated: Use `latency_tier` instead.
   ///
-  /// Value must be non-negative.
+  /// The backlog threshold duration in seconds for autoscaling. Value must be
+  /// non-negative.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? acceptableBacklogDuration;
+
+  /// Deprecated: Use `latency_tier` instead.
+  ///
+  /// The backlog threshold tier for autoscaling. Value must be one of
+  /// "low-latency", "medium-latency", or "high-latency".
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? autoscalingTier;
+
+  /// The backlog threshold tier for autoscaling.
+  ///
+  /// Value must be one of "low-latency", "medium-latency", or "high-latency".
+  ///
+  /// Optional.
+  core.String? latencyTier;
 
   /// The maximum number of workers to cap autoscaling at.
   ///
@@ -9660,6 +9701,8 @@ class RuntimeUpdatableParams {
 
   RuntimeUpdatableParams({
     this.acceptableBacklogDuration,
+    this.autoscalingTier,
+    this.latencyTier,
     this.maxNumWorkers,
     this.minNumWorkers,
     this.workerUtilizationHint,
@@ -9669,6 +9712,8 @@ class RuntimeUpdatableParams {
     : this(
         acceptableBacklogDuration:
             json_['acceptableBacklogDuration'] as core.String?,
+        autoscalingTier: json_['autoscalingTier'] as core.String?,
+        latencyTier: json_['latencyTier'] as core.String?,
         maxNumWorkers: json_['maxNumWorkers'] as core.int?,
         minNumWorkers: json_['minNumWorkers'] as core.int?,
         workerUtilizationHint: (json_['workerUtilizationHint'] as core.num?)
@@ -9677,11 +9722,15 @@ class RuntimeUpdatableParams {
 
   core.Map<core.String, core.dynamic> toJson() {
     final acceptableBacklogDuration = this.acceptableBacklogDuration;
+    final autoscalingTier = this.autoscalingTier;
+    final latencyTier = this.latencyTier;
     final maxNumWorkers = this.maxNumWorkers;
     final minNumWorkers = this.minNumWorkers;
     final workerUtilizationHint = this.workerUtilizationHint;
     return {
       'acceptableBacklogDuration': ?acceptableBacklogDuration,
+      'autoscalingTier': ?autoscalingTier,
+      'latencyTier': ?latencyTier,
       'maxNumWorkers': ?maxNumWorkers,
       'minNumWorkers': ?minNumWorkers,
       'workerUtilizationHint': ?workerUtilizationHint,
@@ -13715,6 +13764,16 @@ class WorkerPool {
   /// workers written in Python.
   core.String? defaultPackageSet;
 
+  /// IOPS provisioned for the root disk for VMs.
+  ///
+  /// Optional.
+  core.String? diskProvisionedIops;
+
+  /// Throughput provisioned for the root disk for VMs.
+  ///
+  /// Optional.
+  core.String? diskProvisionedThroughputMibps;
+
   /// Size of root disk for VMs, in GB.
   ///
   /// If zero or unspecified, the service will attempt to choose a reasonable
@@ -13840,6 +13899,8 @@ class WorkerPool {
     this.autoscalingSettings,
     this.dataDisks,
     this.defaultPackageSet,
+    this.diskProvisionedIops,
+    this.diskProvisionedThroughputMibps,
     this.diskSizeGb,
     this.diskSourceImage,
     this.diskType,
@@ -13876,6 +13937,9 @@ class WorkerPool {
             )
             .toList(),
         defaultPackageSet: json_['defaultPackageSet'] as core.String?,
+        diskProvisionedIops: json_['diskProvisionedIops'] as core.String?,
+        diskProvisionedThroughputMibps:
+            json_['diskProvisionedThroughputMibps'] as core.String?,
         diskSizeGb: json_['diskSizeGb'] as core.int?,
         diskSourceImage: json_['diskSourceImage'] as core.String?,
         diskType: json_['diskType'] as core.String?,
@@ -13923,6 +13987,8 @@ class WorkerPool {
     final autoscalingSettings = this.autoscalingSettings;
     final dataDisks = this.dataDisks;
     final defaultPackageSet = this.defaultPackageSet;
+    final diskProvisionedIops = this.diskProvisionedIops;
+    final diskProvisionedThroughputMibps = this.diskProvisionedThroughputMibps;
     final diskSizeGb = this.diskSizeGb;
     final diskSourceImage = this.diskSourceImage;
     final diskType = this.diskType;
@@ -13946,6 +14012,8 @@ class WorkerPool {
       'autoscalingSettings': ?autoscalingSettings,
       'dataDisks': ?dataDisks,
       'defaultPackageSet': ?defaultPackageSet,
+      'diskProvisionedIops': ?diskProvisionedIops,
+      'diskProvisionedThroughputMibps': ?diskProvisionedThroughputMibps,
       'diskSizeGb': ?diskSizeGb,
       'diskSourceImage': ?diskSourceImage,
       'diskType': ?diskType,

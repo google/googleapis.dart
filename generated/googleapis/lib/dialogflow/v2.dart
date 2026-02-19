@@ -13690,6 +13690,70 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
   }
 }
 
+class GoogleCloudDialogflowV2CesAppSpec {
+  core.String? cesApp;
+
+  ///
+  /// Possible string values are:
+  /// - "CONFIRMATION_REQUIREMENT_UNSPECIFIED"
+  /// - "REQUIRED"
+  /// - "NOT_REQUIRED"
+  core.String? confirmationRequirement;
+
+  GoogleCloudDialogflowV2CesAppSpec({
+    this.cesApp,
+    this.confirmationRequirement,
+  });
+
+  GoogleCloudDialogflowV2CesAppSpec.fromJson(core.Map json_)
+    : this(
+        cesApp: json_['cesApp'] as core.String?,
+        confirmationRequirement:
+            json_['confirmationRequirement'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cesApp = this.cesApp;
+    final confirmationRequirement = this.confirmationRequirement;
+    return {
+      'cesApp': ?cesApp,
+      'confirmationRequirement': ?confirmationRequirement,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2CesToolSpec {
+  core.String? cesTool;
+
+  ///
+  /// Possible string values are:
+  /// - "CONFIRMATION_REQUIREMENT_UNSPECIFIED"
+  /// - "REQUIRED"
+  /// - "NOT_REQUIRED"
+  core.String? confirmationRequirement;
+
+  GoogleCloudDialogflowV2CesToolSpec({
+    this.cesTool,
+    this.confirmationRequirement,
+  });
+
+  GoogleCloudDialogflowV2CesToolSpec.fromJson(core.Map json_)
+    : this(
+        cesTool: json_['cesTool'] as core.String?,
+        confirmationRequirement:
+            json_['confirmationRequirement'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cesTool = this.cesTool;
+    final confirmationRequirement = this.confirmationRequirement;
+    return {
+      'cesTool': ?cesTool,
+      'confirmationRequirement': ?confirmationRequirement,
+    };
+  }
+}
+
 class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
   ///
   /// Possible string values are:
@@ -13866,6 +13930,9 @@ class GoogleCloudDialogflowV2Conversation {
   core.String? endTime;
   core.Map<core.String, GoogleCloudDialogflowV2ConversationContextReference>?
   ingestedContextReferences;
+  GoogleCloudDialogflowV2ConversationProfile? initialConversationProfile;
+  core.Map<core.String, GoogleCloudDialogflowV2ConversationGeneratorContext>?
+  initialGeneratorContexts;
 
   ///
   /// Possible string values are:
@@ -13884,6 +13951,8 @@ class GoogleCloudDialogflowV2Conversation {
     this.conversationStage,
     this.endTime,
     this.ingestedContextReferences,
+    this.initialConversationProfile,
+    this.initialGeneratorContexts,
     this.lifecycleState,
     this.name,
     this.phoneNumber,
@@ -13903,6 +13972,24 @@ class GoogleCloudDialogflowV2Conversation {
                   (key, value) => core.MapEntry(
                     key,
                     GoogleCloudDialogflowV2ConversationContextReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        initialConversationProfile:
+            json_.containsKey('initialConversationProfile')
+            ? GoogleCloudDialogflowV2ConversationProfile.fromJson(
+                json_['initialConversationProfile']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        initialGeneratorContexts:
+            (json_['initialGeneratorContexts']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDialogflowV2ConversationGeneratorContext.fromJson(
                       value as core.Map<core.String, core.dynamic>,
                     ),
                   ),
@@ -13928,6 +14015,8 @@ class GoogleCloudDialogflowV2Conversation {
     final conversationStage = this.conversationStage;
     final endTime = this.endTime;
     final ingestedContextReferences = this.ingestedContextReferences;
+    final initialConversationProfile = this.initialConversationProfile;
+    final initialGeneratorContexts = this.initialGeneratorContexts;
     final lifecycleState = this.lifecycleState;
     final name = this.name;
     final phoneNumber = this.phoneNumber;
@@ -13938,6 +14027,8 @@ class GoogleCloudDialogflowV2Conversation {
       'conversationStage': ?conversationStage,
       'endTime': ?endTime,
       'ingestedContextReferences': ?ingestedContextReferences,
+      'initialConversationProfile': ?initialConversationProfile,
+      'initialGeneratorContexts': ?initialGeneratorContexts,
       'lifecycleState': ?lifecycleState,
       'name': ?name,
       'phoneNumber': ?phoneNumber,
@@ -14126,6 +14217,29 @@ class GoogleCloudDialogflowV2ConversationDataset {
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
     };
+  }
+}
+
+class GoogleCloudDialogflowV2ConversationGeneratorContext {
+  ///
+  /// Possible string values are:
+  /// - "GENERATOR_TYPE_UNSPECIFIED"
+  /// - "FREE_FORM"
+  /// - "AGENT_COACHING"
+  /// - "SUMMARIZATION"
+  /// - "TRANSLATION"
+  /// - "AGENT_FEEDBACK"
+  /// - "CUSTOMER_MESSAGE_GENERATION"
+  core.String? generatorType;
+
+  GoogleCloudDialogflowV2ConversationGeneratorContext({this.generatorType});
+
+  GoogleCloudDialogflowV2ConversationGeneratorContext.fromJson(core.Map json_)
+    : this(generatorType: json_['generatorType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final generatorType = this.generatorType;
+    return {'generatorType': ?generatorType};
   }
 }
 
@@ -15866,6 +15980,8 @@ class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswe
 
 class GoogleCloudDialogflowV2Generator {
   GoogleCloudDialogflowV2AgentCoachingContext? agentCoachingContext;
+  core.List<GoogleCloudDialogflowV2CesAppSpec>? cesAppSpecs;
+  core.List<GoogleCloudDialogflowV2CesToolSpec>? cesToolSpecs;
   core.String? createTime;
   core.String? description;
   GoogleCloudDialogflowV2FreeFormContext? freeFormContext;
@@ -15875,6 +15991,7 @@ class GoogleCloudDialogflowV2Generator {
   GoogleCloudDialogflowV2SuggestionDedupingConfig? suggestionDedupingConfig;
   GoogleCloudDialogflowV2SummarizationContext? summarizationContext;
   core.List<core.String>? tools;
+  core.List<GoogleCloudDialogflowV2ToolsetTool>? toolsetTools;
 
   ///
   /// Possible string values are:
@@ -15888,6 +16005,8 @@ class GoogleCloudDialogflowV2Generator {
 
   GoogleCloudDialogflowV2Generator({
     this.agentCoachingContext,
+    this.cesAppSpecs,
+    this.cesToolSpecs,
     this.createTime,
     this.description,
     this.freeFormContext,
@@ -15897,6 +16016,7 @@ class GoogleCloudDialogflowV2Generator {
     this.suggestionDedupingConfig,
     this.summarizationContext,
     this.tools,
+    this.toolsetTools,
     this.triggerEvent,
     this.updateTime,
   });
@@ -15909,6 +16029,20 @@ class GoogleCloudDialogflowV2Generator {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        cesAppSpecs: (json_['cesAppSpecs'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2CesAppSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        cesToolSpecs: (json_['cesToolSpecs'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2CesToolSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         freeFormContext: json_.containsKey('freeFormContext')
@@ -15939,12 +16073,21 @@ class GoogleCloudDialogflowV2Generator {
         tools: (json_['tools'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        toolsetTools: (json_['toolsetTools'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ToolsetTool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         triggerEvent: json_['triggerEvent'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final agentCoachingContext = this.agentCoachingContext;
+    final cesAppSpecs = this.cesAppSpecs;
+    final cesToolSpecs = this.cesToolSpecs;
     final createTime = this.createTime;
     final description = this.description;
     final freeFormContext = this.freeFormContext;
@@ -15954,10 +16097,13 @@ class GoogleCloudDialogflowV2Generator {
     final suggestionDedupingConfig = this.suggestionDedupingConfig;
     final summarizationContext = this.summarizationContext;
     final tools = this.tools;
+    final toolsetTools = this.toolsetTools;
     final triggerEvent = this.triggerEvent;
     final updateTime = this.updateTime;
     return {
       'agentCoachingContext': ?agentCoachingContext,
+      'cesAppSpecs': ?cesAppSpecs,
+      'cesToolSpecs': ?cesToolSpecs,
       'createTime': ?createTime,
       'description': ?description,
       'freeFormContext': ?freeFormContext,
@@ -15967,6 +16113,7 @@ class GoogleCloudDialogflowV2Generator {
       'suggestionDedupingConfig': ?suggestionDedupingConfig,
       'summarizationContext': ?summarizationContext,
       'tools': ?tools,
+      'toolsetTools': ?toolsetTools,
       'triggerEvent': ?triggerEvent,
       'updateTime': ?updateTime,
     };
@@ -23072,6 +23219,9 @@ typedef GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig =
 class GoogleCloudDialogflowV2ToolCall {
   core.String? action;
   core.String? answerRecord;
+  core.String? cesApp;
+  core.String? cesTool;
+  core.String? cesToolset;
   core.String? createTime;
 
   ///
@@ -23093,6 +23243,9 @@ class GoogleCloudDialogflowV2ToolCall {
   GoogleCloudDialogflowV2ToolCall({
     this.action,
     this.answerRecord,
+    this.cesApp,
+    this.cesTool,
+    this.cesToolset,
     this.createTime,
     this.inputParameters,
     this.state,
@@ -23105,6 +23258,9 @@ class GoogleCloudDialogflowV2ToolCall {
     : this(
         action: json_['action'] as core.String?,
         answerRecord: json_['answerRecord'] as core.String?,
+        cesApp: json_['cesApp'] as core.String?,
+        cesTool: json_['cesTool'] as core.String?,
+        cesToolset: json_['cesToolset'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         inputParameters: json_.containsKey('inputParameters')
             ? json_['inputParameters'] as core.Map<core.String, core.dynamic>
@@ -23118,6 +23274,9 @@ class GoogleCloudDialogflowV2ToolCall {
   core.Map<core.String, core.dynamic> toJson() {
     final action = this.action;
     final answerRecord = this.answerRecord;
+    final cesApp = this.cesApp;
+    final cesTool = this.cesTool;
+    final cesToolset = this.cesToolset;
     final createTime = this.createTime;
     final inputParameters = this.inputParameters;
     final state = this.state;
@@ -23127,6 +23286,9 @@ class GoogleCloudDialogflowV2ToolCall {
     return {
       'action': ?action,
       'answerRecord': ?answerRecord,
+      'cesApp': ?cesApp,
+      'cesTool': ?cesTool,
+      'cesToolset': ?cesToolset,
       'createTime': ?createTime,
       'inputParameters': ?inputParameters,
       'state': ?state,
@@ -23140,6 +23302,9 @@ class GoogleCloudDialogflowV2ToolCall {
 class GoogleCloudDialogflowV2ToolCallResult {
   core.String? action;
   core.String? answerRecord;
+  core.String? cesApp;
+  core.String? cesTool;
+  core.String? cesToolset;
   core.String? content;
   core.String? createTime;
   GoogleCloudDialogflowV2ToolCallResultError? error;
@@ -23159,6 +23324,9 @@ class GoogleCloudDialogflowV2ToolCallResult {
   GoogleCloudDialogflowV2ToolCallResult({
     this.action,
     this.answerRecord,
+    this.cesApp,
+    this.cesTool,
+    this.cesToolset,
     this.content,
     this.createTime,
     this.error,
@@ -23170,6 +23338,9 @@ class GoogleCloudDialogflowV2ToolCallResult {
     : this(
         action: json_['action'] as core.String?,
         answerRecord: json_['answerRecord'] as core.String?,
+        cesApp: json_['cesApp'] as core.String?,
+        cesTool: json_['cesTool'] as core.String?,
+        cesToolset: json_['cesToolset'] as core.String?,
         content: json_['content'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         error: json_.containsKey('error')
@@ -23184,6 +23355,9 @@ class GoogleCloudDialogflowV2ToolCallResult {
   core.Map<core.String, core.dynamic> toJson() {
     final action = this.action;
     final answerRecord = this.answerRecord;
+    final cesApp = this.cesApp;
+    final cesTool = this.cesTool;
+    final cesToolset = this.cesToolset;
     final content = this.content;
     final createTime = this.createTime;
     final error = this.error;
@@ -23192,6 +23366,9 @@ class GoogleCloudDialogflowV2ToolCallResult {
     return {
       'action': ?action,
       'answerRecord': ?answerRecord,
+      'cesApp': ?cesApp,
+      'cesTool': ?cesTool,
+      'cesToolset': ?cesToolset,
       'content': ?content,
       'createTime': ?createTime,
       'error': ?error,
@@ -23433,6 +23610,43 @@ class GoogleCloudDialogflowV2ToolTLSConfig {
 }
 
 typedef GoogleCloudDialogflowV2ToolTLSConfigCACert = $ToolTLSConfigCACert;
+
+class GoogleCloudDialogflowV2ToolsetTool {
+  ///
+  /// Possible string values are:
+  /// - "CONFIRMATION_REQUIREMENT_UNSPECIFIED"
+  /// - "REQUIRED"
+  /// - "NOT_REQUIRED"
+  core.String? confirmationRequirement;
+  core.String? operationId;
+  core.String? toolset;
+
+  GoogleCloudDialogflowV2ToolsetTool({
+    this.confirmationRequirement,
+    this.operationId,
+    this.toolset,
+  });
+
+  GoogleCloudDialogflowV2ToolsetTool.fromJson(core.Map json_)
+    : this(
+        confirmationRequirement:
+            json_['confirmationRequirement'] as core.String?,
+        operationId: json_['operationId'] as core.String?,
+        toolset: json_['toolset'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final confirmationRequirement = this.confirmationRequirement;
+    final operationId = this.operationId;
+    final toolset = this.toolset;
+    return {
+      'confirmationRequirement': ?confirmationRequirement,
+      'operationId': ?operationId,
+      'toolset': ?toolset,
+    };
+  }
+}
+
 typedef GoogleCloudDialogflowV2TrainAgentRequest = $Empty;
 typedef GoogleCloudDialogflowV2UndeployConversationModelRequest = $Empty;
 

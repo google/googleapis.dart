@@ -194,7 +194,8 @@ class BiddersFinalizedDealsResource {
   /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
   /// Supported columns for filtering are: * deal.displayName * deal.dealType *
   /// deal.createTime * deal.updateTime * deal.flightStartTime *
-  /// deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus
+  /// deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus *
+  /// readyToServe
   ///
   /// [orderBy] - An optional query string to sort finalized deals using the
   /// [Cloud API sorting syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
@@ -1289,7 +1290,8 @@ class BuyersFinalizedDealsResource {
   /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
   /// Supported columns for filtering are: * deal.displayName * deal.dealType *
   /// deal.createTime * deal.updateTime * deal.flightStartTime *
-  /// deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus
+  /// deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus *
+  /// readyToServe
   ///
   /// [orderBy] - An optional query string to sort finalized deals using the
   /// [Cloud API sorting syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).

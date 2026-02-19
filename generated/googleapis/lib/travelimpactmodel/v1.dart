@@ -669,11 +669,10 @@ class FlightWithEmissions {
   /// Optional.
   EmissionsGramsPerPax? emissionsGramsPerPax;
 
-  /// Matches the flight identifiers in the request.
+  /// Identifier.
   ///
-  /// Note: all IATA codes are capitalized.
-  ///
-  /// Required.
+  /// Matches the flight identifiers in the request. Note: all IATA codes are
+  /// capitalized.
   Flight? flight;
 
   /// The source of the emissions data.
@@ -805,9 +804,9 @@ class ModelVersion {
 
 /// Scope 3 flight with emission estimates.
 class Scope3FlightEmissions {
-  /// Matches the flight identifiers in the request.
+  /// Identifier.
   ///
-  /// Required.
+  /// Matches the flight identifiers in the request.
   Scope3FlightSegment? flight;
 
   /// The source of the emissions data.
@@ -1022,11 +1021,10 @@ class TypicalFlightEmissions {
   /// Optional.
   EmissionsGramsPerPax? emissionsGramsPerPax;
 
-  /// Matches the flight identifiers in the request.
+  /// Identifier.
   ///
-  /// Note: all IATA codes are capitalized.
-  ///
-  /// Required.
+  /// Matches the flight identifiers in the request. Note: all IATA codes are
+  /// capitalized.
   Market? market;
 
   TypicalFlightEmissions({this.emissionsGramsPerPax, this.market});

@@ -55,6 +55,11 @@ class WorkspaceEventsApi {
   static const chatAppMembershipsScope =
       'https://www.googleapis.com/auth/chat.app.memberships';
 
+  /// On their own behalf, apps in Google Chat can see members of conversations
+  /// and spaces
+  static const chatAppMembershipsReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.memberships.readonly';
+
   /// On their own behalf, apps in Google Chat can see all messages and their
   /// associated reactions and message content
   static const chatAppMessagesReadonlyScope =
@@ -65,6 +70,11 @@ class WorkspaceEventsApi {
   /// access settings)
   static const chatAppSpacesScope =
       'https://www.googleapis.com/auth/chat.app.spaces';
+
+  /// On their own behalf, apps in Google Chat can see conversations and spaces
+  /// and their metadata (including history settings and access settings)
+  static const chatAppSpacesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.spaces.readonly';
 
   /// Private Service: https://www.googleapis.com/auth/chat.bot
   static const chatBotScope = 'https://www.googleapis.com/auth/chat.bot';
@@ -104,6 +114,14 @@ class WorkspaceEventsApi {
   /// View chat and spaces in Google Chat
   static const chatSpacesReadonlyScope =
       'https://www.googleapis.com/auth/chat.spaces.readonly';
+
+  /// View and modify last read time for Google Chat conversations
+  static const chatUsersReadstateScope =
+      'https://www.googleapis.com/auth/chat.users.readstate';
+
+  /// View last read time for Google Chat conversations
+  static const chatUsersReadstateReadonlyScope =
+      'https://www.googleapis.com/auth/chat.users.readstate.readonly';
 
   /// See, edit, create, and delete all of your Google Drive files
   static const driveScope = 'https://www.googleapis.com/auth/drive';
@@ -251,9 +269,7 @@ class SubscriptionsResource {
   /// [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
   /// you can create a subscription as: - A Chat app by specifying an
   /// authorization scope that begins with `chat.app` and getting one-time
-  /// administrator approval
-  /// ([Developer Preview](https://developers.google.com/workspace/preview)). To
-  /// learn more, see
+  /// administrator approval. To learn more, see
   /// [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
   /// - A user by specifying an authorization scope that doesn't include `app`
   /// in its name. To learn more, see
@@ -470,10 +486,8 @@ class SubscriptionsResource {
   /// For a subscription on a
   /// [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
   /// you can update a subscription as: - A Chat app by specifying an
-  /// authorization scope that begins with `chat.app` andgetting one-time
-  /// administrator approval
-  /// ([Developer Preview](https://developers.google.com/workspace/preview)). To
-  /// learn more, see
+  /// authorization scope that begins with `chat.app` and getting one-time
+  /// administrator approval. To learn more, see
   /// [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
   /// - A user by specifying an authorization scope that doesn't include `app`
   /// in its name. To learn more, see
@@ -543,10 +557,8 @@ class SubscriptionsResource {
   /// For a subscription on a
   /// [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
   /// you can reactivate a subscription as: - A Chat app by specifying an
-  /// authorization scope that begins with `chat.app` andgetting one-time
-  /// administrator approval
-  /// ([Developer Preview](https://developers.google.com/workspace/preview)). To
-  /// learn more, see
+  /// authorization scope that begins with `chat.app` and getting one-time
+  /// administrator approval. To learn more, see
   /// [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
   /// - A user by specifying an authorization scope that doesn't include `app`
   /// in its name. To learn more, see
@@ -1786,6 +1798,16 @@ class Subscription {
   /// Output only.
   core.bool? reconciling;
 
+  /// The service account that was used to authorize the creation of the
+  /// subscription.
+  ///
+  /// This service account must be owned by the same Google Cloud project where
+  /// you created this subscription. Format:
+  /// `projects/{project_id}/serviceAccounts/{service_account_id}`
+  ///
+  /// Output only.
+  core.String? serviceAccountAuthority;
+
   /// The state of the subscription.
   ///
   /// Determines whether the subscription can receive events and deliver them to
@@ -1813,9 +1835,14 @@ class Subscription {
   /// or more OAuth scopes. To learn more about authorization for Google
   /// Workspace, see
   /// [Configure the OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent#choose-scopes).
+  /// - "APP_SCOPE_REVOKED" : The domain administrator has revoked the grant of
+  /// one or more OAuth scopes for the app.
   /// - "RESOURCE_DELETED" : The target resource for the subscription no longer
   /// exists.
   /// - "USER_AUTHORIZATION_FAILURE" : The user that authorized the creation of
+  /// the subscription no longer has access to the subscription's target
+  /// resource.
+  /// - "APP_AUTHORIZATION_FAILURE" : The app that authorized the creation of
   /// the subscription no longer has access to the subscription's target
   /// resource.
   /// - "ENDPOINT_PERMISSION_DENIED" : The Google Workspace application doesn't
@@ -1858,6 +1885,16 @@ class Subscription {
   /// Output only.
   core.String? updateTime;
 
+  /// The user who authorized the creation of the subscription.
+  ///
+  /// The user must be able to view the `target_resource`. For Google Workspace
+  /// users, the `{user}` value is the
+  /// \[`user.id`\](https://developers.google.com/workspace/admin/directory/reference/rest/v1/users#User.FIELDS.id)
+  /// field from the Directory API. Format: `users/{user}`
+  ///
+  /// Output only.
+  core.String? userAuthority;
+
   Subscription({
     this.authority,
     this.createTime,
@@ -1868,12 +1905,14 @@ class Subscription {
     this.notificationEndpoint,
     this.payloadOptions,
     this.reconciling,
+    this.serviceAccountAuthority,
     this.state,
     this.suspensionReason,
     this.targetResource,
     this.ttl,
     this.uid,
     this.updateTime,
+    this.userAuthority,
   });
 
   Subscription.fromJson(core.Map json_)
@@ -1898,12 +1937,15 @@ class Subscription {
               )
             : null,
         reconciling: json_['reconciling'] as core.bool?,
+        serviceAccountAuthority:
+            json_['serviceAccountAuthority'] as core.String?,
         state: json_['state'] as core.String?,
         suspensionReason: json_['suspensionReason'] as core.String?,
         targetResource: json_['targetResource'] as core.String?,
         ttl: json_['ttl'] as core.String?,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
+        userAuthority: json_['userAuthority'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -1916,12 +1958,14 @@ class Subscription {
     final notificationEndpoint = this.notificationEndpoint;
     final payloadOptions = this.payloadOptions;
     final reconciling = this.reconciling;
+    final serviceAccountAuthority = this.serviceAccountAuthority;
     final state = this.state;
     final suspensionReason = this.suspensionReason;
     final targetResource = this.targetResource;
     final ttl = this.ttl;
     final uid = this.uid;
     final updateTime = this.updateTime;
+    final userAuthority = this.userAuthority;
     return {
       'authority': ?authority,
       'createTime': ?createTime,
@@ -1932,12 +1976,14 @@ class Subscription {
       'notificationEndpoint': ?notificationEndpoint,
       'payloadOptions': ?payloadOptions,
       'reconciling': ?reconciling,
+      'serviceAccountAuthority': ?serviceAccountAuthority,
       'state': ?state,
       'suspensionReason': ?suspensionReason,
       'targetResource': ?targetResource,
       'ttl': ?ttl,
       'uid': ?uid,
       'updateTime': ?updateTime,
+      'userAuthority': ?userAuthority,
     };
   }
 }

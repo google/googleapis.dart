@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260113",
+    "revision": "20260419",
     "rootUrl": "https://merchantapi.googleapis.com/",
     "servicePath": "",
     "title": "Merchant API",
@@ -128,7 +128,7 @@
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "Required. The name of the product input to delete. Format: `accounts/{account}/productInputs/{productInput}` The {productInput} segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the {productInput} segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{productInput}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{productInput}` segment must be the base64url encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for the product would be `accounts/123/productInputs/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The `{productInput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{productInput}` segment is used to differentiate between the two formats. Note: For calls to the v1beta version, the plain format is `channel~content_language~feed_label~offer_id`, for example: `accounts/123/productinputs/online~en~US~sku123`.",
+                                    "description": "Required. The name of the product input to delete. Format: `accounts/{account}/productInputs/{productInput}` The {productInput} segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the {productInput} segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{productInput}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{productInput}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{productInput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{productInput}` segment is used to differentiate between the two formats.",
                                     "location": "path",
                                     "pattern": "^accounts/[^/]+/productInputs/[^/]+$",
                                     "required": true,
@@ -191,7 +191,7 @@
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "Identifier. The name of the product. Format: `accounts/{account}/productInputs/{productinput}` The {productinput} segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the {productinput} segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{productinput}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{productinput}` segment must be the base64url encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for the product would be `accounts/123/productinputs/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The `{productinput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{productinput}` segment is used to differentiate between the two formats. Note: For calls to the v1beta version, the plain format is `channel~content_language~feed_label~offer_id`, for example: `accounts/123/productinputs/online~en~US~sku123`.",
+                                    "description": "Identifier. The name of the product. Format: `accounts/{account}/productInputs/{productinput}` The {productinput} segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the {productinput} segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{productinput}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{productinput}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{productinput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{productinput}` segment is used to differentiate between the two formats.",
                                     "location": "path",
                                     "pattern": "^accounts/[^/]+/productInputs/[^/]+$",
                                     "required": true,
@@ -229,7 +229,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The name of the product. Format: `accounts/{account}/products/{product}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{product}` segment must be the base64url encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for the product would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. Note: For calls to the v1beta version, the plain format is `channel~content_language~feed_label~offer_id`, for example: `accounts/123/products/online~en~US~sku123`.",
+                                    "description": "Required. The name of the product. Format: `accounts/{account}/products/{product}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. Note: For calls to the v1beta version, the plain format is `channel~content_language~feed_label~offer_id`, for example: `accounts/123/products/online~en~US~sku123`.",
                                     "location": "path",
                                     "pattern": "^accounts/[^/]+/products/[^/]+$",
                                     "required": true,
@@ -656,7 +656,7 @@
             "type": "object"
         },
         "DestinationStatus": {
-            "description": "The destination status of the product status.",
+            "description": "The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API.",
             "id": "DestinationStatus",
             "properties": {
                 "approvedCountries": {
@@ -693,6 +693,7 @@
                         "LOCAL_INVENTORY_ADS",
                         "VEHICLE_INVENTORY_ADS",
                         "FREE_LISTINGS",
+                        "FREE_LISTINGS_UCP_CHECKOUT",
                         "FREE_LOCAL_LISTINGS",
                         "FREE_LOCAL_VEHICLE_LISTINGS",
                         "YOUTUBE_AFFILIATE",
@@ -722,6 +723,7 @@
                         false,
                         false,
                         false,
+                        false,
                         false
                     ],
                     "enumDescriptions": [
@@ -735,6 +737,7 @@
                         "[Local inventory ads](https://support.google.com/merchants/answer/3271956).",
                         "[Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).",
                         "[Free product listings](https://support.google.com/merchants/answer/9199328).",
+                        "[Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).",
                         "[Free local product listings](https://support.google.com/merchants/answer/9825611).",
                         "[Free local vehicle listings](https://support.google.com/merchants/answer/11544533).",
                         "[Youtube Affiliate](https://support.google.com/youtube/answer/13376398).",
@@ -855,6 +858,7 @@
                         "LOCAL_INVENTORY_ADS",
                         "VEHICLE_INVENTORY_ADS",
                         "FREE_LISTINGS",
+                        "FREE_LISTINGS_UCP_CHECKOUT",
                         "FREE_LOCAL_LISTINGS",
                         "FREE_LOCAL_VEHICLE_LISTINGS",
                         "YOUTUBE_AFFILIATE",
@@ -884,6 +888,7 @@
                         false,
                         false,
                         false,
+                        false,
                         false
                     ],
                     "enumDescriptions": [
@@ -897,6 +902,7 @@
                         "[Local inventory ads](https://support.google.com/merchants/answer/3271956).",
                         "[Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).",
                         "[Free product listings](https://support.google.com/merchants/answer/9199328).",
+                        "[Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).",
                         "[Free local product listings](https://support.google.com/merchants/answer/9825611).",
                         "[Free local vehicle listings](https://support.google.com/merchants/answer/11544533).",
                         "[Youtube Affiliate](https://support.google.com/youtube/answer/13376398).",
@@ -1031,6 +1037,11 @@
                     "$ref": "AutomatedDiscounts",
                     "description": "Output only. The automated discounts information for the product.",
                     "readOnly": true
+                },
+                "base64EncodedName": {
+                    "description": "Output only. The **unpadded base64url encoded name** of the product. Format: `accounts/{account}/products/{product}` where the last section `product` is the unpadded base64url encoding of the `content_language~feed_label~offer_id` name. Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw` for the decoded product name `accounts/123/products/en~US~sku/123`. This field can be used directly as input to the API methods that require the product name to be encoded if it contains special characters, for example [`GetProduct`](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products/get).",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "contentLanguage": {
                     "description": "Output only. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the product.",
@@ -1377,7 +1388,7 @@
                     "type": "string"
                 },
                 "gtins": {
-                    "description": "Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. You can provide up to 10 GTINs.",
+                    "description": "Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/6324461)) of the item. You can provide up to 10 GTINs.",
                     "items": {
                         "type": "string"
                     },
@@ -1551,6 +1562,13 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "minimumOrderValues": {
+                    "description": "The [minimum value](https://support.google.com/merchants/answer/16989009) in the cart before a customer can initiate checkout. Supports multiple minimum order values. Different minimum order values can be specified per country, service and surface. Maximum entries: 100.",
+                    "items": {
+                        "$ref": "ProductMinimumOrderValue"
+                    },
+                    "type": "array"
+                },
                 "mobileLink": {
                     "description": "URL for the mobile-optimized version of your item's landing page.",
                     "type": "string"
@@ -1560,7 +1578,7 @@
                     "type": "string"
                 },
                 "mpn": {
-                    "description": "Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/188494#mpn)) of the item.",
+                    "description": "Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/6324482)) of the item.",
                     "type": "string"
                 },
                 "multipack": {
@@ -1678,6 +1696,10 @@
                     },
                     "type": "array"
                 },
+                "returnPolicyLabel": {
+                    "description": "The return label of the product, used to group products in account-level return policies. Max. 100 characters. For more information, see [Return policy label](https://support.google.com/merchants/answer/9445425).",
+                    "type": "string"
+                },
                 "salePrice": {
                     "$ref": "Price",
                     "description": "Advertised sale price of the item."
@@ -1710,7 +1732,7 @@
                     "description": "Height of the item for shipping."
                 },
                 "shippingLabel": {
-                    "description": "The shipping label of the product, used to group product in account-level shipping rules.",
+                    "description": "The shipping label of the product, used to group products in account-level shipping rules. Max. 100 characters. For more information, see [Shipping label](https://support.google.com/merchants/answer/6324504).",
                     "type": "string"
                 },
                 "shippingLength": {
@@ -1835,6 +1857,13 @@
                     "$ref": "UnitPricingMeasure",
                     "description": "The measure and dimension of an item."
                 },
+                "videoLinks": {
+                    "description": "Optional. A list of video URLs for the item. Use this attribute to provide more visuals for your product beyond your image attributes. See the [Help Center article](https://support.google.com/merchants/answer/15216925) for more information.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "virtualModelLink": {
                     "description": "URL of the 3D image of the item. See the [Help Center article](https://support.google.com/merchants/answer/13674896) for more information.",
                     "type": "string"
@@ -1926,6 +1955,7 @@
                         "LOCAL_INVENTORY_ADS",
                         "VEHICLE_INVENTORY_ADS",
                         "FREE_LISTINGS",
+                        "FREE_LISTINGS_UCP_CHECKOUT",
                         "FREE_LOCAL_LISTINGS",
                         "FREE_LOCAL_VEHICLE_LISTINGS",
                         "YOUTUBE_AFFILIATE",
@@ -1955,6 +1985,7 @@
                         false,
                         false,
                         false,
+                        false,
                         false
                     ],
                     "enumDescriptions": [
@@ -1968,6 +1999,7 @@
                         "[Local inventory ads](https://support.google.com/merchants/answer/3271956).",
                         "[Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).",
                         "[Free product listings](https://support.google.com/merchants/answer/9199328).",
+                        "[Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).",
                         "[Free local product listings](https://support.google.com/merchants/answer/9825611).",
                         "[Free local vehicle listings](https://support.google.com/merchants/answer/11544533).",
                         "[Youtube Affiliate](https://support.google.com/youtube/answer/13376398).",
@@ -2022,6 +2054,16 @@
             "description": "This resource represents input data you submit for a product, not the processed product that you see in Merchant Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are combined to create the processed Product. For more information, see [Manage products](/merchant/api/guides/products/overview). Required product input attributes to pass data validation checks are primarily defined in the [Products Data Specification](https://support.google.com/merchants/answer/188494). The following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. All fields in the product input and its sub-messages match the English name of their corresponding attribute in the [Products Data Specification](https://support.google.com/merchants/answer/188494) with [some exceptions](https://support.google.com/merchants/answer/7052112). The following reference documentation lists the field names in the **camelCase** casing style while the Products Data Specification lists the names in the **snake_case** casing style.",
             "id": "ProductInput",
             "properties": {
+                "base64EncodedName": {
+                    "description": "Output only. The **unpadded base64url encoded name** of the product input. Format: `accounts/{account}/productInputs/{productinput}` where the last section `productinput` is the unpadded base64url encoding of the `content_language~feed_label~offer_id` name. Example: `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw` for the decoded product input name `accounts/123/productInputs/en~US~sku/123`. This field can be used directly as input to the API methods that require the product input name to be encoded if it contains special characters, for example [`GetProductInput`](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.productInputs/get).",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "base64EncodedProduct": {
+                    "description": "Output only. The **unpadded base64url encoded name** of the processed product. Format: `accounts/{account}/products/{product}` where the last section `product` is the unpadded base64url encoding of the `content_language~feed_label~offer_id` name. Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw` for the decoded product name `accounts/123/products/en~US~sku/123`. This field can be used directly as input to the API methods that require the product name to be encoded if it contains special characters, for example [`GetProduct`](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products/get).",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "contentLanguage": {
                     "description": "Required. Immutable. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the product.",
                     "type": "string"
@@ -2042,7 +2084,7 @@
                     "type": "boolean"
                 },
                 "name": {
-                    "description": "Identifier. The name of the product. Format: `accounts/{account}/productInputs/{productinput}` The {productinput} segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the {productinput} segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{productinput}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{productinput}` segment must be the base64url encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for the product would be `accounts/123/productinputs/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The `{productinput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{productinput}` segment is used to differentiate between the two formats. Note: For calls to the v1beta version, the plain format is `channel~content_language~feed_label~offer_id`, for example: `accounts/123/productinputs/online~en~US~sku123`.",
+                    "description": "Identifier. The name of the product. Format: `accounts/{account}/productInputs/{productinput}` The {productinput} segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the {productinput} segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{productinput}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{productinput}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{productinput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{productinput}` segment is used to differentiate between the two formats.",
                     "type": "string"
                 },
                 "offerId": {
@@ -2074,6 +2116,11 @@
                     "$ref": "Price",
                     "description": "The amount the buyer has to pay per month."
                 },
+                "annualPercentageRate": {
+                    "description": "Optional. Annual percentage rate for `credit_type` finance",
+                    "format": "double",
+                    "type": "number"
+                },
                 "creditType": {
                     "description": "Type of installment payments.",
                     "enum": [
@@ -2095,6 +2142,41 @@
                 "months": {
                     "description": "The number of installments the buyer has to pay.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductMinimumOrderValue": {
+            "description": "The minimum order value in the cart before the checkout is permitted.",
+            "id": "ProductMinimumOrderValue",
+            "properties": {
+                "country": {
+                    "description": "Required. The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country to which an item will ship.",
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "Price",
+                    "description": "Required. The minimum cart or basket value before the checkout is permitted."
+                },
+                "service": {
+                    "description": "A free-form description of the service class or delivery speed. This should match the service value set for the Shipping attribute. See service.",
+                    "type": "string"
+                },
+                "surface": {
+                    "description": "The surface to which the minimum order value applies. Defaults to `ONLINE_LOCAL` if not configured.",
+                    "enum": [
+                        "SURFACE_UNSPECIFIED",
+                        "ONLINE",
+                        "LOCAL",
+                        "ONLINE_LOCAL"
+                    ],
+                    "enumDescriptions": [
+                        "Surface is unspecified.",
+                        "Surface value to indicate online purchases.",
+                        "Surface value to indicate local purchases.",
+                        "Surface value to indicate online and local purchases."
+                    ],
                     "type": "string"
                 }
             },
@@ -2269,6 +2351,14 @@
                 "locationId": {
                     "description": "The numeric ID of a location that the shipping rate applies to as defined in the [AdWords API](https://developers.google.com/adwords/api/docs/appendix/geotargeting).",
                     "format": "int64",
+                    "type": "string"
+                },
+                "loyaltyProgramLabel": {
+                    "description": "Optional. The label of the [loyalty program](https://support.google.com/merchants/answer/6324484). Must match one of the program labels set in loyalty_programs. When set (in combination with [loyalty_tier_label](https://support.google.com/merchants/answer/6324484)), this shipping option is only applicable to loyalty program members of the specified tier.",
+                    "type": "string"
+                },
+                "loyaltyTierLabel": {
+                    "description": "Optional. The label of the [loyalty tier](https://support.google.com/merchants/answer/6324484) within the loyalty program. Must match one of the tiers set in the loyalty_programs. When set (in combination with [loyalty_program_label](https://support.google.com/merchants/answer/6324484)), this shipping option is only applicable to loyalty program members of the specified tier.",
                     "type": "string"
                 },
                 "maxHandlingTime": {

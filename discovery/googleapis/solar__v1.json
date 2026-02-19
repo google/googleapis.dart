@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260125",
+    "revision": "20260208",
     "rootUrl": "https://solar.googleapis.com/",
     "servicePath": "",
     "title": "Solar API",
@@ -456,7 +456,7 @@
                     "type": "string"
                 },
                 "rgbUrl": {
-                    "description": "The URL for an image of RGB data (aerial photo) of the region.",
+                    "description": "The URL for an image of RGB data (aerial or satellite photo) of the region.",
                     "type": "string"
                 }
             },

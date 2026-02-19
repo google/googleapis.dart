@@ -121,6 +121,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -582,8 +593,10 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Format:
-  /// `parent=projects/{project_id}/locations/{location}`
+  /// [parent] - Required. The parent of the instance. Formats: -
+  /// `projects/{project_id}/locations/{location}` to list instances in a
+  /// specific zone. - `projects/{project_id}/locations/-` to list instances in
+  /// all locations.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. List filter.
@@ -1587,7 +1600,17 @@ class BootDisk {
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
   /// - "PD_EXTREME" : Extreme persistent disk type.
-  /// - "HYPERDISK_BALANCED" : Hyperdisk Balanced persistent disk type.
+  /// - "HYPERDISK_BALANCED" : Represents the Hyperdisk Balanced persistent disk
+  /// type. Can be used as a boot disk or data disk.
+  /// - "HYPERDISK_EXTREME" : Represents the Hyperdisk Extreme persistent disk
+  /// type. Can only be used as a data disk.
+  /// - "HYPERDISK_THROUGHPUT" : Represents the Hyperdisk Throughput persistent
+  /// disk type. Can only be used as a data disk.
+  /// - "HYPERDISK_BALANCED_HIGH_AVAILABILITY" : Represents the Hyperdisk
+  /// Balanced High Availability persistent disk type. Can be used as a boot
+  /// disk or data disk.
+  /// - "HYPERDISK_ML" : Represents the Hyperdisk ML persistent disk type. Can
+  /// be used as a boot disk or data disk.
   core.String? diskType;
 
   /// Input only.
@@ -1692,7 +1715,7 @@ class CheckAuthorizationResponse {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-typedef CheckInstanceUpgradabilityResponse = $Response01;
+typedef CheckInstanceUpgradabilityResponse = $Response02;
 
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfig {
@@ -1850,7 +1873,17 @@ class DataDisk {
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
   /// - "PD_EXTREME" : Extreme persistent disk type.
-  /// - "HYPERDISK_BALANCED" : Hyperdisk Balanced persistent disk type.
+  /// - "HYPERDISK_BALANCED" : Represents the Hyperdisk Balanced persistent disk
+  /// type. Can be used as a boot disk or data disk.
+  /// - "HYPERDISK_EXTREME" : Represents the Hyperdisk Extreme persistent disk
+  /// type. Can only be used as a data disk.
+  /// - "HYPERDISK_THROUGHPUT" : Represents the Hyperdisk Throughput persistent
+  /// disk type. Can only be used as a data disk.
+  /// - "HYPERDISK_BALANCED_HIGH_AVAILABILITY" : Represents the Hyperdisk
+  /// Balanced High Availability persistent disk type. Can be used as a boot
+  /// disk or data disk.
+  /// - "HYPERDISK_ML" : Represents the Hyperdisk ML persistent disk type. Can
+  /// be used as a boot disk or data disk.
   core.String? diskType;
 
   /// Input only.
@@ -2762,9 +2795,11 @@ class ListInstancesResponse {
   /// the next list call.
   core.String? nextPageToken;
 
-  /// Locations that could not be reached.
+  /// Unordered list.
   ///
-  /// For example, \['us-west1-a', 'us-central1-b'\]. A ListInstancesResponse
+  /// Locations that could not be reached. For example,
+  /// \['projects/{project_id}/locations/us-west1-a',
+  /// 'projects/{project_id}/locations/us-central1-b'\]. A ListInstancesResponse
   /// will only contain either instances or unreachables,
   core.List<core.String>? unreachable;
 
@@ -3629,7 +3664,7 @@ class UpgradeHistoryEntry {
 typedef UpgradeInstanceRequest = $Empty;
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request11;
+typedef UpgradeInstanceSystemRequest = $Request12;
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.

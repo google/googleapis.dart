@@ -10134,6 +10134,55 @@ class AffectedResources {
   }
 }
 
+/// Details about a data access attempt made by an agent principal not
+/// authorized under applicable data security policy.
+class AgentDataAccessEvent {
+  /// Unique identifier for data access event.
+  core.String? eventId;
+
+  /// Timestamp of data access event.
+  core.String? eventTime;
+
+  /// The operation performed by the principal to access the data.
+  /// Possible string values are:
+  /// - "OPERATION_UNSPECIFIED" : The operation is unspecified.
+  /// - "READ" : Represents a read operation.
+  /// - "MOVE" : Represents a move operation.
+  /// - "COPY" : Represents a copy operation.
+  core.String? operation;
+
+  /// The agent principal that accessed the data.
+  core.String? principalSubject;
+
+  AgentDataAccessEvent({
+    this.eventId,
+    this.eventTime,
+    this.operation,
+    this.principalSubject,
+  });
+
+  AgentDataAccessEvent.fromJson(core.Map json_)
+    : this(
+        eventId: json_['eventId'] as core.String?,
+        eventTime: json_['eventTime'] as core.String?,
+        operation: json_['operation'] as core.String?,
+        principalSubject: json_['principalSubject'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventId = this.eventId;
+    final eventTime = this.eventTime;
+    final operation = this.operation;
+    final principalSubject = this.principalSubject;
+    return {
+      'eventId': ?eventId,
+      'eventTime': ?eventTime,
+      'operation': ?operation,
+      'principalSubject': ?principalSubject,
+    };
+  }
+}
+
 /// Contains information about the AI model associated with the finding.
 class AiModel {
   /// The platform on which the model is deployed.
@@ -12659,12 +12708,15 @@ class DataRetentionDeletionEvent {
   /// Type of the DRD event.
   /// Possible string values are:
   /// - "EVENT_TYPE_UNSPECIFIED" : Unspecified event type.
-  /// - "EVENT_TYPE_MAX_TTL_EXCEEDED" : The maximum retention time has been
-  /// exceeded.
+  /// - "EVENT_TYPE_MAX_TTL_EXCEEDED" : Deprecated: This field is pending
+  /// removal. Use EVENT_TYPE_MAX_TTL_FROM_CREATION or
+  /// EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION instead.
   /// - "EVENT_TYPE_MAX_TTL_FROM_CREATION" : Max TTL from the asset's creation
   /// time.
   /// - "EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION" : Max TTL from the asset's
   /// last modification time.
+  /// - "EVENT_TYPE_MIN_TTL_FROM_CREATION" : Min TTL from the asset's creation
+  /// time.
   core.String? eventType;
 
   /// Maximum duration of retention allowed from the DRD control.
@@ -12676,11 +12728,18 @@ class DataRetentionDeletionEvent {
   /// Storage bucket, and the max_retention_allowed is 90 days.
   core.String? maxRetentionAllowed;
 
+  /// Min duration of retention allowed from the DSPM retention control.
+  ///
+  /// This field is only populated when event type is set to
+  /// EVENT_TYPE_MIN_TTL_FROM_CREATION.
+  core.String? minRetentionAllowed;
+
   DataRetentionDeletionEvent({
     this.dataObjectCount,
     this.eventDetectionTime,
     this.eventType,
     this.maxRetentionAllowed,
+    this.minRetentionAllowed,
   });
 
   DataRetentionDeletionEvent.fromJson(core.Map json_)
@@ -12689,6 +12748,7 @@ class DataRetentionDeletionEvent {
         eventDetectionTime: json_['eventDetectionTime'] as core.String?,
         eventType: json_['eventType'] as core.String?,
         maxRetentionAllowed: json_['maxRetentionAllowed'] as core.String?,
+        minRetentionAllowed: json_['minRetentionAllowed'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -12696,11 +12756,13 @@ class DataRetentionDeletionEvent {
     final eventDetectionTime = this.eventDetectionTime;
     final eventType = this.eventType;
     final maxRetentionAllowed = this.maxRetentionAllowed;
+    final minRetentionAllowed = this.minRetentionAllowed;
     return {
       'dataObjectCount': ?dataObjectCount,
       'eventDetectionTime': ?eventDetectionTime,
       'eventType': ?eventType,
       'maxRetentionAllowed': ?maxRetentionAllowed,
+      'minRetentionAllowed': ?minRetentionAllowed,
     };
   }
 }
@@ -12863,6 +12925,71 @@ class Detection {
     final binary = this.binary;
     final percentPagesMatched = this.percentPagesMatched;
     return {'binary': ?binary, 'percentPagesMatched': ?percentPagesMatched};
+  }
+}
+
+/// Represents discovered, customer managed workload that is not registered with
+/// the respective GCP service.
+class DiscoveredWorkload {
+  /// The confidence in detection of this workload.
+  /// Possible string values are:
+  /// - "CONFIDENCE_UNSPECIFIED" : Unspecified confidence level.
+  /// - "CONFIDENCE_HIGH" : High confidence in detection of a workload.
+  core.String? confidence;
+
+  /// A boolean flag set to true if associated hardware strongly predicts the
+  /// workload type.
+  core.bool? detectedRelevantHardware;
+
+  /// A boolean flag set to true if associated keywords strongly predict the
+  /// workload type.
+  core.bool? detectedRelevantKeywords;
+
+  /// A boolean flag set to true if installed packages strongly predict the
+  /// workload type.
+  core.bool? detectedRelevantPackages;
+
+  /// The type of workload.
+  /// Possible string values are:
+  /// - "WORKLOAD_TYPE_UNSPECIFIED" : Unspecified workload type
+  /// - "MCP_SERVER" : A workload of type MCP Server
+  /// - "AI_INFERENCE" : A workload of type AI Inference
+  /// - "AGENT" : A workload of type LLM Agent
+  core.String? workloadType;
+
+  DiscoveredWorkload({
+    this.confidence,
+    this.detectedRelevantHardware,
+    this.detectedRelevantKeywords,
+    this.detectedRelevantPackages,
+    this.workloadType,
+  });
+
+  DiscoveredWorkload.fromJson(core.Map json_)
+    : this(
+        confidence: json_['confidence'] as core.String?,
+        detectedRelevantHardware:
+            json_['detectedRelevantHardware'] as core.bool?,
+        detectedRelevantKeywords:
+            json_['detectedRelevantKeywords'] as core.bool?,
+        detectedRelevantPackages:
+            json_['detectedRelevantPackages'] as core.bool?,
+        workloadType: json_['workloadType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidence = this.confidence;
+    final detectedRelevantHardware = this.detectedRelevantHardware;
+    final detectedRelevantKeywords = this.detectedRelevantKeywords;
+    final detectedRelevantPackages = this.detectedRelevantPackages;
+    final workloadType = this.workloadType;
+    return {
+      'confidence': ?confidence,
+      'detectedRelevantHardware': ?detectedRelevantHardware,
+      'detectedRelevantKeywords': ?detectedRelevantKeywords,
+      'detectedRelevantPackages': ?detectedRelevantPackages,
+      'workloadType': ?workloadType,
+    };
   }
 }
 
@@ -13310,6 +13437,115 @@ class Exfiltration {
 /// information.
 typedef Expr = $Expr;
 
+/// Details about the externally exposed resource associated with the finding.
+class ExternalExposure {
+  /// The full resource name of load balancer backend service, for example,
+  /// "//compute.googleapis.com/projects/{project-id}/global/backendServices/{name}".
+  core.String? backendService;
+
+  /// The resource which is running the exposed service, for example,
+  /// "//compute.googleapis.com/projects/{project-id}/zones/{zone}/instances/{instance}.”
+  core.String? exposedEndpoint;
+
+  /// The name and version of the service, for example, "Jupyter Notebook
+  /// 6.14.0".
+  core.String? exposedService;
+
+  /// The full resource name of the forwarding rule, for example,
+  /// "//compute.googleapis.com/projects/{project-id}/global/forwardingRules/{forwarding-rule-name}".
+  core.String? forwardingRule;
+
+  /// The full resource name of the instance group, for example,
+  /// "//compute.googleapis.com/projects/{project-id}/global/instanceGroups/{name}".
+  core.String? instanceGroup;
+
+  /// The full resource name of the load balancer firewall policy, for example,
+  /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{policy-name}".
+  core.String? loadBalancerFirewallPolicy;
+
+  /// The full resource name of the network endpoint group, for example,
+  /// "//compute.googleapis.com/projects/{project-id}/global/networkEndpointGroups/{name}".
+  core.String? networkEndpointGroup;
+
+  /// Private IP address of the exposed endpoint.
+  core.String? privateIpAddress;
+
+  /// Port number associated with private IP address.
+  core.String? privatePort;
+
+  /// Public IP address of the exposed endpoint.
+  core.String? publicIpAddress;
+
+  /// Public port number of the exposed endpoint.
+  core.String? publicPort;
+
+  /// The full resource name of the firewall policy of the exposed service, for
+  /// example,
+  /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{policy-name}".
+  core.String? serviceFirewallPolicy;
+
+  ExternalExposure({
+    this.backendService,
+    this.exposedEndpoint,
+    this.exposedService,
+    this.forwardingRule,
+    this.instanceGroup,
+    this.loadBalancerFirewallPolicy,
+    this.networkEndpointGroup,
+    this.privateIpAddress,
+    this.privatePort,
+    this.publicIpAddress,
+    this.publicPort,
+    this.serviceFirewallPolicy,
+  });
+
+  ExternalExposure.fromJson(core.Map json_)
+    : this(
+        backendService: json_['backendService'] as core.String?,
+        exposedEndpoint: json_['exposedEndpoint'] as core.String?,
+        exposedService: json_['exposedService'] as core.String?,
+        forwardingRule: json_['forwardingRule'] as core.String?,
+        instanceGroup: json_['instanceGroup'] as core.String?,
+        loadBalancerFirewallPolicy:
+            json_['loadBalancerFirewallPolicy'] as core.String?,
+        networkEndpointGroup: json_['networkEndpointGroup'] as core.String?,
+        privateIpAddress: json_['privateIpAddress'] as core.String?,
+        privatePort: json_['privatePort'] as core.String?,
+        publicIpAddress: json_['publicIpAddress'] as core.String?,
+        publicPort: json_['publicPort'] as core.String?,
+        serviceFirewallPolicy: json_['serviceFirewallPolicy'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backendService = this.backendService;
+    final exposedEndpoint = this.exposedEndpoint;
+    final exposedService = this.exposedService;
+    final forwardingRule = this.forwardingRule;
+    final instanceGroup = this.instanceGroup;
+    final loadBalancerFirewallPolicy = this.loadBalancerFirewallPolicy;
+    final networkEndpointGroup = this.networkEndpointGroup;
+    final privateIpAddress = this.privateIpAddress;
+    final privatePort = this.privatePort;
+    final publicIpAddress = this.publicIpAddress;
+    final publicPort = this.publicPort;
+    final serviceFirewallPolicy = this.serviceFirewallPolicy;
+    return {
+      'backendService': ?backendService,
+      'exposedEndpoint': ?exposedEndpoint,
+      'exposedService': ?exposedService,
+      'forwardingRule': ?forwardingRule,
+      'instanceGroup': ?instanceGroup,
+      'loadBalancerFirewallPolicy': ?loadBalancerFirewallPolicy,
+      'networkEndpointGroup': ?networkEndpointGroup,
+      'privateIpAddress': ?privateIpAddress,
+      'privatePort': ?privatePort,
+      'publicIpAddress': ?publicIpAddress,
+      'publicPort': ?publicPort,
+      'serviceFirewallPolicy': ?serviceFirewallPolicy,
+    };
+  }
+}
+
 /// File information about the related binary/library used by an executable, or
 /// the script used by a script interpreter
 class File {
@@ -13449,6 +13685,9 @@ class Finding {
   /// AffectedResources associated with the finding.
   AffectedResources? affectedResources;
 
+  /// Agent data access events associated with the finding.
+  core.List<AgentDataAccessEvent>? agentDataAccessEvents;
+
   /// The AI model associated with the finding.
   AiModel? aiModel;
 
@@ -13542,6 +13781,9 @@ class Finding {
   /// Contains more details about the finding.
   core.String? description;
 
+  /// DiscoveredWorkload associated with the finding.
+  DiscoveredWorkload? discoveredWorkload;
+
   /// Disk associated with the finding.
   Disk? disk;
 
@@ -13557,6 +13799,9 @@ class Finding {
 
   /// Represents exfiltrations associated with the finding.
   Exfiltration? exfiltration;
+
+  /// External exposure associated with the finding.
+  ExternalExposure? externalExposure;
 
   /// Third party SIEM/SOAR fields within SCC, contains external system
   /// information and external system finding fields.
@@ -13596,6 +13841,8 @@ class Finding {
   /// assets that contain sensitive data.
   /// - "CHOKEPOINT" : Describes a resource or resource group where high risk
   /// attack paths converge, based on attack path simulations (APS).
+  /// - "EXTERNAL_EXPOSURE" : Describes a potential security risk due to the
+  /// resource being exposed to the internet.
   core.String? findingClass;
 
   /// Contains details about groups of which this finding is a member.
@@ -13708,6 +13955,9 @@ class Finding {
   /// Output only.
   core.String? parentDisplayName;
 
+  /// PolicyViolationSummary associated with the finding.
+  PolicyViolationSummary? policyViolationSummary;
+
   /// Represents operating system processes associated with the Finding.
   core.List<Process>? processes;
 
@@ -13817,6 +14067,7 @@ class Finding {
   Finding({
     this.access,
     this.affectedResources,
+    this.agentDataAccessEvents,
     this.aiModel,
     this.application,
     this.artifactGuardPolicies,
@@ -13839,9 +14090,11 @@ class Finding {
     this.dataRetentionDeletionEvents,
     this.database,
     this.description,
+    this.discoveredWorkload,
     this.disk,
     this.eventTime,
     this.exfiltration,
+    this.externalExposure,
     this.externalSystems,
     this.externalUri,
     this.files,
@@ -13868,6 +14121,7 @@ class Finding {
     this.orgPolicies,
     this.parent,
     this.parentDisplayName,
+    this.policyViolationSummary,
     this.processes,
     this.resourceName,
     this.secret,
@@ -13894,6 +14148,13 @@ class Finding {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        agentDataAccessEvents: (json_['agentDataAccessEvents'] as core.List?)
+            ?.map(
+              (value) => AgentDataAccessEvent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         aiModel: json_.containsKey('aiModel')
             ? AiModel.fromJson(
                 json_['aiModel'] as core.Map<core.String, core.dynamic>,
@@ -14010,6 +14271,12 @@ class Finding {
               )
             : null,
         description: json_['description'] as core.String?,
+        discoveredWorkload: json_.containsKey('discoveredWorkload')
+            ? DiscoveredWorkload.fromJson(
+                json_['discoveredWorkload']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         disk: json_.containsKey('disk')
             ? Disk.fromJson(
                 json_['disk'] as core.Map<core.String, core.dynamic>,
@@ -14019,6 +14286,12 @@ class Finding {
         exfiltration: json_.containsKey('exfiltration')
             ? Exfiltration.fromJson(
                 json_['exfiltration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        externalExposure: json_.containsKey('externalExposure')
+            ? ExternalExposure.fromJson(
+                json_['externalExposure']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         externalSystems:
@@ -14127,6 +14400,12 @@ class Finding {
             .toList(),
         parent: json_['parent'] as core.String?,
         parentDisplayName: json_['parentDisplayName'] as core.String?,
+        policyViolationSummary: json_.containsKey('policyViolationSummary')
+            ? PolicyViolationSummary.fromJson(
+                json_['policyViolationSummary']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         processes: (json_['processes'] as core.List?)
             ?.map(
               (value) => Process.fromJson(
@@ -14176,6 +14455,7 @@ class Finding {
   core.Map<core.String, core.dynamic> toJson() {
     final access = this.access;
     final affectedResources = this.affectedResources;
+    final agentDataAccessEvents = this.agentDataAccessEvents;
     final aiModel = this.aiModel;
     final application = this.application;
     final artifactGuardPolicies = this.artifactGuardPolicies;
@@ -14198,9 +14478,11 @@ class Finding {
     final dataRetentionDeletionEvents = this.dataRetentionDeletionEvents;
     final database = this.database;
     final description = this.description;
+    final discoveredWorkload = this.discoveredWorkload;
     final disk = this.disk;
     final eventTime = this.eventTime;
     final exfiltration = this.exfiltration;
+    final externalExposure = this.externalExposure;
     final externalSystems = this.externalSystems;
     final externalUri = this.externalUri;
     final files = this.files;
@@ -14227,6 +14509,7 @@ class Finding {
     final orgPolicies = this.orgPolicies;
     final parent = this.parent;
     final parentDisplayName = this.parentDisplayName;
+    final policyViolationSummary = this.policyViolationSummary;
     final processes = this.processes;
     final resourceName = this.resourceName;
     final secret = this.secret;
@@ -14241,6 +14524,7 @@ class Finding {
     return {
       'access': ?access,
       'affectedResources': ?affectedResources,
+      'agentDataAccessEvents': ?agentDataAccessEvents,
       'aiModel': ?aiModel,
       'application': ?application,
       'artifactGuardPolicies': ?artifactGuardPolicies,
@@ -14263,9 +14547,11 @@ class Finding {
       'dataRetentionDeletionEvents': ?dataRetentionDeletionEvents,
       'database': ?database,
       'description': ?description,
+      'discoveredWorkload': ?discoveredWorkload,
       'disk': ?disk,
       'eventTime': ?eventTime,
       'exfiltration': ?exfiltration,
+      'externalExposure': ?externalExposure,
       'externalSystems': ?externalSystems,
       'externalUri': ?externalUri,
       'files': ?files,
@@ -14292,6 +14578,7 @@ class Finding {
       'orgPolicies': ?orgPolicies,
       'parent': ?parent,
       'parentDisplayName': ?parentDisplayName,
+      'policyViolationSummary': ?policyViolationSummary,
       'processes': ?processes,
       'resourceName': ?resourceName,
       'secret': ?secret,
@@ -18238,6 +18525,61 @@ class PolicyDriftDetails {
       'detectedValue': ?detectedValue,
       'expectedValue': ?expectedValue,
       'field': ?field,
+    };
+  }
+}
+
+/// Metadata summarizing policy violations of child resources of the affected
+/// resource.
+///
+/// `finding_category` and `resource` determine the exact semantics of the
+/// counts. For example, when
+/// category=DATA_SECURITY_POSTURE_OBJECT_PUBLIC_ACCESS_VIOLATION and
+/// resource='storage.googleapis.com/buckets/my-bucket-name' then this counts
+/// the number of Cloud Storage objects in my-bucket-name which violate a Public
+/// Access control.
+class PolicyViolationSummary {
+  /// Total number of child resources that conform to the policy.
+  core.String? conformantResourcesCount;
+
+  /// Number of child resources for which errors during evaluation occurred.
+  ///
+  /// The evaluation result for these child resources is effectively "unknown".
+  core.String? evaluationErrorsCount;
+
+  /// Total count of child resources which were not in scope for evaluation.
+  core.String? outOfScopeResourcesCount;
+
+  /// Count of child resources in violation of the policy.
+  core.String? policyViolationsCount;
+
+  PolicyViolationSummary({
+    this.conformantResourcesCount,
+    this.evaluationErrorsCount,
+    this.outOfScopeResourcesCount,
+    this.policyViolationsCount,
+  });
+
+  PolicyViolationSummary.fromJson(core.Map json_)
+    : this(
+        conformantResourcesCount:
+            json_['conformantResourcesCount'] as core.String?,
+        evaluationErrorsCount: json_['evaluationErrorsCount'] as core.String?,
+        outOfScopeResourcesCount:
+            json_['outOfScopeResourcesCount'] as core.String?,
+        policyViolationsCount: json_['policyViolationsCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final conformantResourcesCount = this.conformantResourcesCount;
+    final evaluationErrorsCount = this.evaluationErrorsCount;
+    final outOfScopeResourcesCount = this.outOfScopeResourcesCount;
+    final policyViolationsCount = this.policyViolationsCount;
+    return {
+      'conformantResourcesCount': ?conformantResourcesCount,
+      'evaluationErrorsCount': ?evaluationErrorsCount,
+      'outOfScopeResourcesCount': ?outOfScopeResourcesCount,
+      'policyViolationsCount': ?policyViolationsCount,
     };
   }
 }

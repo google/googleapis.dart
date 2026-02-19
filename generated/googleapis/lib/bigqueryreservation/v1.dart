@@ -1817,6 +1817,24 @@ class Assignment {
   /// Output only.
   core.String? name;
 
+  /// Represents the principal for this assignment.
+  ///
+  /// If not empty, jobs run by this principal will utilize the associated
+  /// reservation. Otherwise, jobs will fall back to using the reservation
+  /// assigned to the project, folder, or organization (in that order). If no
+  /// reservation is assigned at any of these levels, on-demand capacity will be
+  /// used. The supported formats are: *
+  /// `principal://goog/subject/USER_EMAIL_ADDRESS` for users, *
+  /// `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS`
+  /// for service accounts, *
+  /// `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID`
+  /// for workload identity pool identities. * The special value
+  /// `unknown_or_deleted_user` represents principals which cannot be read from
+  /// the user info service, for example deleted users.
+  ///
+  /// Optional.
+  core.String? principal;
+
   /// The scheduling policy to use for jobs and queries of this assignee when
   /// running under the associated reservation.
   ///
@@ -1842,6 +1860,7 @@ class Assignment {
     this.enableGeminiInBigquery,
     this.jobType,
     this.name,
+    this.principal,
     this.schedulingPolicy,
     this.state,
   });
@@ -1852,6 +1871,7 @@ class Assignment {
         enableGeminiInBigquery: json_['enableGeminiInBigquery'] as core.bool?,
         jobType: json_['jobType'] as core.String?,
         name: json_['name'] as core.String?,
+        principal: json_['principal'] as core.String?,
         schedulingPolicy: json_.containsKey('schedulingPolicy')
             ? SchedulingPolicy.fromJson(
                 json_['schedulingPolicy']
@@ -1866,6 +1886,7 @@ class Assignment {
     final enableGeminiInBigquery = this.enableGeminiInBigquery;
     final jobType = this.jobType;
     final name = this.name;
+    final principal = this.principal;
     final schedulingPolicy = this.schedulingPolicy;
     final state = this.state;
     return {
@@ -1873,6 +1894,7 @@ class Assignment {
       'enableGeminiInBigquery': ?enableGeminiInBigquery,
       'jobType': ?jobType,
       'name': ?name,
+      'principal': ?principal,
       'schedulingPolicy': ?schedulingPolicy,
       'state': ?state,
     };
@@ -2982,7 +3004,7 @@ class Reservation {
   /// 1000 idle slots available in other reservations, the reservation will
   /// scale up to 1000 slots with 200 baseline and 800 idle slots. 2. if there
   /// are 500 idle slots available in other reservations, the reservation will
-  /// scale up to 700 slots with 200 baseline and 300 idle slots. Please note,
+  /// scale up to 700 slots with 200 baseline and 500 idle slots. Please note,
   /// in this mode, the reservation might not be able to scale up to max_slots.
   /// Please note, in this mode, the ignore_idle_slots field must be set to
   /// false. Otherwise the request will be rejected with error code

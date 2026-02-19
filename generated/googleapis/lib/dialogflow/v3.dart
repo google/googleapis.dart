@@ -10067,24 +10067,8 @@ class GoogleCloudDialogflowCxV3FlowMultiLanguageSettings {
   }
 }
 
-class GoogleCloudDialogflowCxV3FlowTransition {
-  core.String? displayName;
-  core.String? flow;
-
-  GoogleCloudDialogflowCxV3FlowTransition({this.displayName, this.flow});
-
-  GoogleCloudDialogflowCxV3FlowTransition.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        flow: json_['flow'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final flow = this.flow;
-    return {'displayName': ?displayName, 'flow': ?flow};
-  }
-}
+typedef GoogleCloudDialogflowCxV3FlowTraceMetadata = $Shared21;
+typedef GoogleCloudDialogflowCxV3FlowTransition = $Shared21;
 
 class GoogleCloudDialogflowCxV3FlowValidationResult {
   core.String? name;
@@ -11351,6 +11335,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
 class GoogleCloudDialogflowCxV3Intent {
   core.String? description;
   core.String? displayName;
+  core.String? dtmfPattern;
   core.bool? isFallback;
   core.Map<core.String, core.String>? labels;
   core.String? name;
@@ -11361,6 +11346,7 @@ class GoogleCloudDialogflowCxV3Intent {
   GoogleCloudDialogflowCxV3Intent({
     this.description,
     this.displayName,
+    this.dtmfPattern,
     this.isFallback,
     this.labels,
     this.name,
@@ -11373,6 +11359,7 @@ class GoogleCloudDialogflowCxV3Intent {
     : this(
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
+        dtmfPattern: json_['dtmfPattern'] as core.String?,
         isFallback: json_['isFallback'] as core.bool?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -11398,6 +11385,7 @@ class GoogleCloudDialogflowCxV3Intent {
   core.Map<core.String, core.dynamic> toJson() {
     final description = this.description;
     final displayName = this.displayName;
+    final dtmfPattern = this.dtmfPattern;
     final isFallback = this.isFallback;
     final labels = this.labels;
     final name = this.name;
@@ -11407,6 +11395,7 @@ class GoogleCloudDialogflowCxV3Intent {
     return {
       'description': ?description,
       'displayName': ?displayName,
+      'dtmfPattern': ?dtmfPattern,
       'isFallback': ?isFallback,
       'labels': ?labels,
       'name': ?name,
@@ -13090,27 +13079,8 @@ class GoogleCloudDialogflowCxV3PlaybookStep {
   }
 }
 
-class GoogleCloudDialogflowCxV3PlaybookTransition {
-  core.String? displayName;
-  core.String? playbook;
-
-  GoogleCloudDialogflowCxV3PlaybookTransition({
-    this.displayName,
-    this.playbook,
-  });
-
-  GoogleCloudDialogflowCxV3PlaybookTransition.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        playbook: json_['playbook'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final playbook = this.playbook;
-    return {'displayName': ?displayName, 'playbook': ?playbook};
-  }
-}
+typedef GoogleCloudDialogflowCxV3PlaybookTraceMetadata = $Shared22;
+typedef GoogleCloudDialogflowCxV3PlaybookTransition = $Shared22;
 
 class GoogleCloudDialogflowCxV3PlaybookVersion {
   core.String? description;
@@ -13424,6 +13394,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   core.List<GoogleCloudDialogflowCxV3ResponseMessage>? responseMessages;
   GoogleCloudDialogflowCxV3SentimentAnalysisResult? sentimentAnalysisResult;
   core.String? text;
+  core.List<GoogleCloudDialogflowCxV3TraceBlock>? traceBlocks;
   core.String? transcript;
   core.String? triggerEvent;
   core.String? triggerIntent;
@@ -13451,6 +13422,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
     this.responseMessages,
     this.sentimentAnalysisResult,
     this.text,
+    this.traceBlocks,
     this.transcript,
     this.triggerEvent,
     this.triggerIntent,
@@ -13522,6 +13494,13 @@ class GoogleCloudDialogflowCxV3QueryResult {
               )
             : null,
         text: json_['text'] as core.String?,
+        traceBlocks: (json_['traceBlocks'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowCxV3TraceBlock.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         transcript: json_['transcript'] as core.String?,
         triggerEvent: json_['triggerEvent'] as core.String?,
         triggerIntent: json_['triggerIntent'] as core.String?,
@@ -13553,6 +13532,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
     final responseMessages = this.responseMessages;
     final sentimentAnalysisResult = this.sentimentAnalysisResult;
     final text = this.text;
+    final traceBlocks = this.traceBlocks;
     final transcript = this.transcript;
     final triggerEvent = this.triggerEvent;
     final triggerIntent = this.triggerIntent;
@@ -13574,6 +13554,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
       'responseMessages': ?responseMessages,
       'sentimentAnalysisResult': ?sentimentAnalysisResult,
       'text': ?text,
+      'traceBlocks': ?traceBlocks,
       'transcript': ?transcript,
       'triggerEvent': ?triggerEvent,
       'triggerIntent': ?triggerIntent,
@@ -13742,10 +13723,10 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess = $Shared21;
+typedef GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess = $Shared23;
 typedef GoogleCloudDialogflowCxV3ResponseMessageEndInteraction = $Empty;
 typedef GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard = $Empty;
-typedef GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff = $Shared21;
+typedef GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff = $Shared23;
 
 class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
   core.List<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>?
@@ -14524,6 +14505,20 @@ class GoogleCloudDialogflowCxV3SessionEntityType {
       'entityOverrideMode': ?entityOverrideMode,
       'name': ?name,
     };
+  }
+}
+
+class GoogleCloudDialogflowCxV3SpeechProcessingMetadata {
+  core.String? displayName;
+
+  GoogleCloudDialogflowCxV3SpeechProcessingMetadata({this.displayName});
+
+  GoogleCloudDialogflowCxV3SpeechProcessingMetadata.fromJson(core.Map json_)
+    : this(displayName: json_['displayName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    return {'displayName': ?displayName};
   }
 }
 
@@ -15313,6 +15308,110 @@ class GoogleCloudDialogflowCxV3ToolVersion {
       'name': ?name,
       'tool': ?tool,
       'updateTime': ?updateTime,
+    };
+  }
+}
+
+class GoogleCloudDialogflowCxV3TraceBlock {
+  core.List<GoogleCloudDialogflowCxV3Action>? actions;
+  core.String? completeTime;
+
+  ///
+  /// Possible string values are:
+  /// - "OUTPUT_STATE_UNSPECIFIED"
+  /// - "OUTPUT_STATE_OK"
+  /// - "OUTPUT_STATE_CANCELLED"
+  /// - "OUTPUT_STATE_FAILED"
+  /// - "OUTPUT_STATE_ESCALATED"
+  /// - "OUTPUT_STATE_PENDING"
+  core.String? endState;
+  GoogleCloudDialogflowCxV3FlowTraceMetadata? flowTraceMetadata;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? inputParameters;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? outputParameters;
+  GoogleCloudDialogflowCxV3PlaybookTraceMetadata? playbookTraceMetadata;
+  GoogleCloudDialogflowCxV3SpeechProcessingMetadata? speechProcessingMetadata;
+  core.String? startTime;
+
+  GoogleCloudDialogflowCxV3TraceBlock({
+    this.actions,
+    this.completeTime,
+    this.endState,
+    this.flowTraceMetadata,
+    this.inputParameters,
+    this.outputParameters,
+    this.playbookTraceMetadata,
+    this.speechProcessingMetadata,
+    this.startTime,
+  });
+
+  GoogleCloudDialogflowCxV3TraceBlock.fromJson(core.Map json_)
+    : this(
+        actions: (json_['actions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowCxV3Action.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        completeTime: json_['completeTime'] as core.String?,
+        endState: json_['endState'] as core.String?,
+        flowTraceMetadata: json_.containsKey('flowTraceMetadata')
+            ? GoogleCloudDialogflowCxV3FlowTraceMetadata.fromJson(
+                json_['flowTraceMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inputParameters: json_.containsKey('inputParameters')
+            ? json_['inputParameters'] as core.Map<core.String, core.dynamic>
+            : null,
+        outputParameters: json_.containsKey('outputParameters')
+            ? json_['outputParameters'] as core.Map<core.String, core.dynamic>
+            : null,
+        playbookTraceMetadata: json_.containsKey('playbookTraceMetadata')
+            ? GoogleCloudDialogflowCxV3PlaybookTraceMetadata.fromJson(
+                json_['playbookTraceMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        speechProcessingMetadata: json_.containsKey('speechProcessingMetadata')
+            ? GoogleCloudDialogflowCxV3SpeechProcessingMetadata.fromJson(
+                json_['speechProcessingMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final actions = this.actions;
+    final completeTime = this.completeTime;
+    final endState = this.endState;
+    final flowTraceMetadata = this.flowTraceMetadata;
+    final inputParameters = this.inputParameters;
+    final outputParameters = this.outputParameters;
+    final playbookTraceMetadata = this.playbookTraceMetadata;
+    final speechProcessingMetadata = this.speechProcessingMetadata;
+    final startTime = this.startTime;
+    return {
+      'actions': ?actions,
+      'completeTime': ?completeTime,
+      'endState': ?endState,
+      'flowTraceMetadata': ?flowTraceMetadata,
+      'inputParameters': ?inputParameters,
+      'outputParameters': ?outputParameters,
+      'playbookTraceMetadata': ?playbookTraceMetadata,
+      'speechProcessingMetadata': ?speechProcessingMetadata,
+      'startTime': ?startTime,
     };
   }
 }

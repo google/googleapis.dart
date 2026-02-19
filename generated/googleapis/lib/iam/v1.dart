@@ -1893,54 +1893,6 @@ class LocationsWorkforcePoolsProvidersScimTenantsTokensResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
-
-  /// Gemini Enterprise only.
-  ///
-  /// Undeletes a WorkforcePoolProviderScimToken,that was deleted fewer than 30
-  /// days ago.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Gemini Enterprise only. The name of the SCIM token to
-  /// undelete. Format:
-  /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
-  /// Value must have pattern
-  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+/tokens/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [WorkforcePoolProviderScimToken].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<WorkforcePoolProviderScimToken> undelete(
-    UndeleteWorkforcePoolProviderScimTokenRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return WorkforcePoolProviderScimToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
 }
 
 class LocationsWorkforcePoolsSubjectsResource {
@@ -3111,6 +3063,51 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   ProjectsLocationsWorkloadIdentityPoolsResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// The total attestation rules after addition must not exceed 50.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The resource name of the managed identity or
+  /// namespace resource to add an attestation rule to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addAttestationRule(
+    AddAttestationRuleRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':addAttestationRule';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new WorkloadIdentityPool.
   ///
   /// You cannot reuse the name of a deleted pool until 30 days after deletion.
@@ -3346,6 +3343,66 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     );
   }
 
+  /// List all AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The resource name of the managed identity or
+  /// namespace resource to list attestation rules of.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A query filter. Supports the following function: *
+  /// `container_ids()`: Returns only the AttestationRules under the specific
+  /// container ids. The function expects a comma-delimited list with only
+  /// project numbers and must use the format `projects/`. For example:
+  /// `container_ids(projects/, projects/,...)`.
+  ///
+  /// [pageSize] - Optional. The maximum number of AttestationRules to return.
+  /// If unspecified, at most 50 AttestationRules are returned. The maximum
+  /// value is 100; values above 100 are truncated to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListWorkloadIdentityPoolProviderKeys` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAttestationRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAttestationRulesResponse> listAttestationRules(
+    core.String resource, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':listAttestationRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAttestationRulesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Updates an existing WorkloadIdentityPool.
   ///
   /// [request] - The metadata request object.
@@ -3385,6 +3442,94 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The resource name of the managed identity or
+  /// namespace resource to remove an attestation rule from.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> removeAttestationRule(
+    RemoveAttestationRuleRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':removeAttestationRule';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+  ///
+  /// A maximum of 50 AttestationRules can be set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The resource name of the managed identity or
+  /// namespace resource to add an attestation rule to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setAttestationRules(
+    SetAttestationRulesRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':setAttestationRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -7851,11 +7996,26 @@ class InlineCertificateIssuanceConfig {
   /// Optional.
   core.int? rotationWindowPercentage;
 
+  /// If set to true, the trust domain will utilize the GCP-provisioned default
+  /// CA.
+  ///
+  /// A default CA in the same region as the workload will be selected to issue
+  /// the certificate. Enabling this will clear any existing `ca_pools`
+  /// configuration to provision the certificates. NOTE: This field is mutually
+  /// exclusive with `ca_pools`. If this flag is enabled, certificates will be
+  /// automatically provisioned from the default shared CAs. This flag should
+  /// not be set if you want to use your own CA pools to provision the
+  /// certificates.
+  ///
+  /// Optional.
+  core.bool? useDefaultSharedCa;
+
   InlineCertificateIssuanceConfig({
     this.caPools,
     this.keyAlgorithm,
     this.lifetime,
     this.rotationWindowPercentage,
+    this.useDefaultSharedCa,
   });
 
   InlineCertificateIssuanceConfig.fromJson(core.Map json_)
@@ -7866,6 +8026,7 @@ class InlineCertificateIssuanceConfig {
         lifetime: json_['lifetime'] as core.String?,
         rotationWindowPercentage:
             json_['rotationWindowPercentage'] as core.int?,
+        useDefaultSharedCa: json_['useDefaultSharedCa'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -7873,11 +8034,13 @@ class InlineCertificateIssuanceConfig {
     final keyAlgorithm = this.keyAlgorithm;
     final lifetime = this.lifetime;
     final rotationWindowPercentage = this.rotationWindowPercentage;
+    final useDefaultSharedCa = this.useDefaultSharedCa;
     return {
       'caPools': ?caPools,
       'keyAlgorithm': ?keyAlgorithm,
       'lifetime': ?lifetime,
       'rotationWindowPercentage': ?rotationWindowPercentage,
+      'useDefaultSharedCa': ?useDefaultSharedCa,
     };
   }
 }
@@ -10356,7 +10519,20 @@ class TrustStore {
   /// Required.
   core.List<TrustAnchor>? trustAnchors;
 
-  TrustStore({this.intermediateCas, this.trustAnchors});
+  /// If set to True, the trust bundle will include the private ca managed
+  /// identity regional root public certificates.
+  ///
+  /// Important: `trust_default_shared_ca` is only supported for managed
+  /// identity trust domain resource.
+  ///
+  /// Optional.
+  core.bool? trustDefaultSharedCa;
+
+  TrustStore({
+    this.intermediateCas,
+    this.trustAnchors,
+    this.trustDefaultSharedCa,
+  });
 
   TrustStore.fromJson(core.Map json_)
     : this(
@@ -10374,12 +10550,18 @@ class TrustStore {
               ),
             )
             .toList(),
+        trustDefaultSharedCa: json_['trustDefaultSharedCa'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final intermediateCas = this.intermediateCas;
     final trustAnchors = this.trustAnchors;
-    return {'intermediateCas': ?intermediateCas, 'trustAnchors': ?trustAnchors};
+    final trustDefaultSharedCa = this.trustDefaultSharedCa;
+    return {
+      'intermediateCas': ?intermediateCas,
+      'trustAnchors': ?trustAnchors,
+      'trustDefaultSharedCa': ?trustDefaultSharedCa,
+    };
   }
 }
 
@@ -10444,11 +10626,6 @@ typedef UndeleteWorkforcePoolProviderRequest = $Empty;
 ///
 /// Request message for UndeleteWorkforcePoolProviderScimTenant.
 typedef UndeleteWorkforcePoolProviderScimTenantRequest = $Empty;
-
-/// Gemini Enterprise only.
-///
-/// Request message for UndeleteWorkforcePoolProviderScimToken.
-typedef UndeleteWorkforcePoolProviderScimTokenRequest = $Empty;
 
 /// Request message for UndeleteWorkforcePool.
 typedef UndeleteWorkforcePoolRequest = $Empty;
@@ -10761,12 +10938,13 @@ class WorkforcePoolProvider {
   GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client?
   extendedAttributesOauth2Client;
 
-  /// The configuration for OAuth 2.0 client used to get the additional user
-  /// attributes.
+  /// Defines the configuration for the OAuth 2.0 client that is used to get the
+  /// additional user attributes in a separate backchannel call to the identity
+  /// provider.
   ///
-  /// This should be used when users can't get the desired claims in
-  /// authentication credentials. Currently, this configuration is only
-  /// supported with OIDC protocol.
+  /// This should be used when users can't get the required claims in
+  /// authentication credentials. Currently, the OAuth 2.0 protocol is the only
+  /// supported authorization method for this backchannel call.
   ///
   /// Optional.
   GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client?
@@ -11241,17 +11419,21 @@ class WorkloadIdentityPool {
   /// - "MODE_UNSPECIFIED" : State unspecified. New pools should not use this
   /// mode. Pools with an unspecified mode will operate as if they are in
   /// federation-only mode.
-  /// - "FEDERATION_ONLY" : Federation-only mode. Federation-only pools can only
-  /// be used for federating external workload identities into Google Cloud.
-  /// Unless otherwise noted, no structure or format constraints are applied to
-  /// workload identities in a federation-only pool, and you cannot create any
-  /// resources within the pool besides providers.
-  /// - "TRUST_DOMAIN" : Trust-domain mode. Trust-domain pools can be used to
-  /// assign identities to Google Cloud workloads. All identities within a
-  /// trust-domain pool must consist of a single namespace and individual
-  /// workload identifier. The subject identifier for all identities must
-  /// conform to the following format: `ns//sa/` WorkloadIdentityPoolProviders
-  /// cannot be created within trust-domain pools.
+  /// - "FEDERATION_ONLY" : Federation-only mode. FEDERATION_ONLY mode pools can
+  /// only be used for federating external workload identities into Google
+  /// Cloud. Unless otherwise noted, no structure or format constraints are
+  /// applied to workload identities in a FEDERATION_ONLY mode pool, and you
+  /// cannot create any resources within the pool besides providers.
+  /// - "TRUST_DOMAIN" : Trust-domain mode. TRUST_DOMAIN mode pools can be used
+  /// to assign identities to Google Cloud workloads. Identities within a
+  /// TRUST_DOMAIN mode pool share the same root of trust.
+  /// WorkloadIdentityPoolProviders cannot be created within trust-domain pools.
+  /// - "SYSTEM_TRUST_DOMAIN" : SYSTEM_TRUST_DOMAIN mode pools are managed by
+  /// Google Cloud services. Neither WorkloadIdentityPoolNamespaces nor
+  /// WorkloadIdentityPoolProviders can be created within SYSTEM_TRUST_DOMAIN
+  /// mode pools. All identities within a SYSTEM_TRUST_DOMAIN mode pool are in
+  /// one of the following formats: * `spiffe:///ns//sa/` *
+  /// `spiffe:///resources//`
   core.String? mode;
 
   /// Identifier.

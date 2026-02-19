@@ -385,7 +385,7 @@ class AnywhereCachesResource {
     );
   }
 
-  /// Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.
+  /// Updates the config of an Anywhere Cache instance.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1974,6 +1974,66 @@ class FoldersResource {
       'DELETE',
       queryParams: queryParams_,
       downloadOptions: null,
+    );
+  }
+
+  /// Deletes a folder recursively.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the folder resides.
+  ///
+  /// [folder] - Name of a folder.
+  ///
+  /// [ifMetagenerationMatch] - If set, only deletes the folder if its
+  /// metageneration matches this value.
+  ///
+  /// [ifMetagenerationNotMatch] - If set, only deletes the folder if its
+  /// metageneration does not match this value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> deleteRecursive(
+    core.String bucket,
+    core.String folder, {
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'ifMetagenerationMatch': ?ifMetagenerationMatch == null
+          ? null
+          : [ifMetagenerationMatch],
+      'ifMetagenerationNotMatch': ?ifMetagenerationNotMatch == null
+          ? null
+          : [ifMetagenerationNotMatch],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'b/' +
+        commons.escapeVariable('$bucket') +
+        '/folders/' +
+        commons.escapeVariable('$folder') +
+        '/deleteRecursive';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
     );
   }
 
@@ -5489,6 +5549,9 @@ class AnywhereCache {
   /// anywhere cache ID.
   core.String? id;
 
+  /// Specifies whether objects are ingested into the cache upon write.
+  core.bool? ingestOnWrite;
+
   /// The kind of item this is.
   ///
   /// For Anywhere Cache, this is always storage#anywhereCache.
@@ -5522,6 +5585,7 @@ class AnywhereCache {
     this.bucket,
     this.createTime,
     this.id,
+    this.ingestOnWrite,
     this.kind,
     this.pendingUpdate,
     this.selfLink,
@@ -5540,6 +5604,7 @@ class AnywhereCache {
             ? core.DateTime.parse(json_['createTime'] as core.String)
             : null,
         id: json_['id'] as core.String?,
+        ingestOnWrite: json_['ingestOnWrite'] as core.bool?,
         kind: json_['kind'] as core.String?,
         pendingUpdate: json_['pendingUpdate'] as core.bool?,
         selfLink: json_['selfLink'] as core.String?,
@@ -5557,6 +5622,7 @@ class AnywhereCache {
     final bucket = this.bucket;
     final createTime = this.createTime;
     final id = this.id;
+    final ingestOnWrite = this.ingestOnWrite;
     final kind = this.kind;
     final pendingUpdate = this.pendingUpdate;
     final selfLink = this.selfLink;
@@ -5570,6 +5636,7 @@ class AnywhereCache {
       'bucket': ?bucket,
       'createTime': ?createTime?.toUtc().toIso8601String(),
       'id': ?id,
+      'ingestOnWrite': ?ingestOnWrite,
       'kind': ?kind,
       'pendingUpdate': ?pendingUpdate,
       'selfLink': ?selfLink,

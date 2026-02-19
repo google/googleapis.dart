@@ -202,6 +202,28 @@ void checkGoogleCloudApihubV1AddonConfig(api.GoogleCloudApihubV1AddonConfig o) {
   buildCounterGoogleCloudApihubV1AddonConfig--;
 }
 
+core.int buildCounterGoogleCloudApihubV1AgentRegistrySyncConfig = 0;
+api.GoogleCloudApihubV1AgentRegistrySyncConfig
+buildGoogleCloudApihubV1AgentRegistrySyncConfig() {
+  final o = api.GoogleCloudApihubV1AgentRegistrySyncConfig();
+  buildCounterGoogleCloudApihubV1AgentRegistrySyncConfig++;
+  if (buildCounterGoogleCloudApihubV1AgentRegistrySyncConfig < 3) {
+    o.disabled = true;
+  }
+  buildCounterGoogleCloudApihubV1AgentRegistrySyncConfig--;
+  return o;
+}
+
+void checkGoogleCloudApihubV1AgentRegistrySyncConfig(
+  api.GoogleCloudApihubV1AgentRegistrySyncConfig o,
+) {
+  buildCounterGoogleCloudApihubV1AgentRegistrySyncConfig++;
+  if (buildCounterGoogleCloudApihubV1AgentRegistrySyncConfig < 3) {
+    unittest.expect(o.disabled!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudApihubV1AgentRegistrySyncConfig--;
+}
+
 core.int buildCounterGoogleCloudApihubV1AllDataAddonConfig = 0;
 api.GoogleCloudApihubV1AllDataAddonConfig
 buildGoogleCloudApihubV1AllDataAddonConfig() {
@@ -846,6 +868,8 @@ api.GoogleCloudApihubV1Config buildGoogleCloudApihubV1Config() {
   final o = api.GoogleCloudApihubV1Config();
   buildCounterGoogleCloudApihubV1Config++;
   if (buildCounterGoogleCloudApihubV1Config < 3) {
+    o.agentRegistrySyncConfig =
+        buildGoogleCloudApihubV1AgentRegistrySyncConfig();
     o.cmekKeyName = 'foo';
     o.disableSearch = true;
     o.encryptionType = 'foo';
@@ -858,6 +882,7 @@ api.GoogleCloudApihubV1Config buildGoogleCloudApihubV1Config() {
 void checkGoogleCloudApihubV1Config(api.GoogleCloudApihubV1Config o) {
   buildCounterGoogleCloudApihubV1Config++;
   if (buildCounterGoogleCloudApihubV1Config < 3) {
+    checkGoogleCloudApihubV1AgentRegistrySyncConfig(o.agentRegistrySyncConfig!);
     unittest.expect(o.cmekKeyName!, unittest.equals('foo'));
     unittest.expect(o.disableSearch!, unittest.isTrue);
     unittest.expect(o.encryptionType!, unittest.equals('foo'));
@@ -4786,6 +4811,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudApihubV1AgentRegistrySyncConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudApihubV1AgentRegistrySyncConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApihubV1AgentRegistrySyncConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudApihubV1AgentRegistrySyncConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudApihubV1AllDataAddonConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudApihubV1AllDataAddonConfig();
@@ -7180,6 +7216,77 @@ void main() {
       final response = await res.lookup(arg_parent, $fields: arg_$fields);
       checkGoogleCloudApihubV1LookupApiHubInstanceResponse(
         response as api.GoogleCloudApihubV1LookupApiHubInstanceResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.APIHubApi(mock).projects.locations.apiHubInstances;
+      final arg_request = buildGoogleCloudApihubV1ApiHubInstance();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudApihubV1ApiHubInstance.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudApihubV1ApiHubInstance(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
       );
     });
   });

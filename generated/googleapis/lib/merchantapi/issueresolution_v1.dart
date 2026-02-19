@@ -244,8 +244,8 @@ class IssueresolutionResource {
   /// used if any part of the product identifier (like `offer_id`) contains
   /// characters such as `/`, `%`, or `~`. * Example: To represent the product
   /// ID `en~US~sku/123`, the `{product}` segment must be the base64url encoding
-  /// of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for
-  /// the product would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw`. 2.
+  /// of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for
+  /// the product would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw`. 2.
   /// **Plain Format**: The `{product}` segment is the tilde-separated string
   /// `content_language~feed_label~offer_id`. This format is suitable only when
   /// `content_language`, `feed_label`, and `offer_id` do not contain
@@ -253,9 +253,7 @@ class IssueresolutionResource {
   /// **Encoded Format** for all product IDs to ensure correct parsing,
   /// especially those containing special characters. The presence of tilde
   /// (`~`) characters in the `{product}` segment is used to differentiate
-  /// between the two formats. Note: For calls to the v1beta version, the plain
-  /// format is `channel~content_language~feed_label~offer_id`, for example:
-  /// `accounts/123/products/online~en~US~sku123`.
+  /// between the two formats.
   /// Value must have pattern `^accounts/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [languageCode] - Optional. The \[IETF
@@ -639,6 +637,8 @@ class AggregateProductStatus {
   /// [Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).
   /// - "FREE_LISTINGS" :
   /// [Free product listings](https://support.google.com/merchants/answer/9199328).
+  /// - "FREE_LISTINGS_UCP_CHECKOUT" :
+  /// [Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).
   /// - "FREE_LOCAL_LISTINGS" :
   /// [Free local product listings](https://support.google.com/merchants/answer/9825611).
   /// - "FREE_LOCAL_VEHICLE_LISTINGS" :

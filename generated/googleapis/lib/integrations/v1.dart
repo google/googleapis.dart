@@ -12760,12 +12760,18 @@ typedef GoogleCloudConnectorsV1BillingConfig = $BillingConfig;
 /// or AuthConfig.
 class GoogleCloudConnectorsV1ConfigVariable {
   /// Value is a bool.
+  ///
+  /// Optional.
   core.bool? boolValue;
 
   /// Value is a Encryption Key.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1EncryptionKey? encryptionKeyValue;
 
   /// Value is an integer
+  ///
+  /// Optional.
   core.String? intValue;
 
   /// Key of the config variable.
@@ -12774,9 +12780,13 @@ class GoogleCloudConnectorsV1ConfigVariable {
   core.String? key;
 
   /// Value is a secret.
+  ///
+  /// Optional.
   GoogleCloudConnectorsV1Secret? secretValue;
 
   /// Value is a string.
+  ///
+  /// Optional.
   core.String? stringValue;
 
   GoogleCloudConnectorsV1ConfigVariable({
@@ -13439,9 +13449,13 @@ typedef GoogleCloudConnectorsV1Destination = $Destination;
 /// Define the Connectors target endpoint.
 class GoogleCloudConnectorsV1DestinationConfig {
   /// The destinations for the key.
+  ///
+  /// Optional.
   core.List<GoogleCloudConnectorsV1Destination>? destinations;
 
   /// The key is the destination identifier that is supported by the Connector.
+  ///
+  /// Optional.
   core.String? key;
 
   GoogleCloudConnectorsV1DestinationConfig({this.destinations, this.key});
@@ -13471,12 +13485,17 @@ typedef GoogleCloudConnectorsV1EncryptionKey = $EncryptionKey;
 /// Data enrichment configuration.
 typedef GoogleCloudConnectorsV1EnrichmentConfig = $EnrichmentConfig;
 
-/// Eventing Configuration of a connection next: 19
+/// Eventing Configuration of a connection next: 20
 class GoogleCloudConnectorsV1EventingConfig {
   /// Additional eventing related field values
   ///
   /// Optional.
   core.List<GoogleCloudConnectorsV1ConfigVariable>? additionalVariables;
+
+  /// List of allowed event types for the connection.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedEventTypes;
 
   /// Auth details for the webhook adapter.
   ///
@@ -13502,7 +13521,7 @@ class GoogleCloudConnectorsV1EventingConfig {
   ///
   /// This is used only when private connectivity is enabled.
   ///
-  /// Optional.
+  /// Output only.
   core.String? eventsListenerIngressEndpoint;
 
   /// Auth details for the event listener.
@@ -13538,6 +13557,7 @@ class GoogleCloudConnectorsV1EventingConfig {
 
   GoogleCloudConnectorsV1EventingConfig({
     this.additionalVariables,
+    this.allowedEventTypes,
     this.authConfig,
     this.deadLetterConfig,
     this.enrichmentConfig,
@@ -13559,6 +13579,9 @@ class GoogleCloudConnectorsV1EventingConfig {
                 value as core.Map<core.String, core.dynamic>,
               ),
             )
+            .toList(),
+        allowedEventTypes: (json_['allowedEventTypes'] as core.List?)
+            ?.map((value) => value as core.String)
             .toList(),
         authConfig: json_.containsKey('authConfig')
             ? GoogleCloudConnectorsV1AuthConfig.fromJson(
@@ -13614,6 +13637,7 @@ class GoogleCloudConnectorsV1EventingConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final additionalVariables = this.additionalVariables;
+    final allowedEventTypes = this.allowedEventTypes;
     final authConfig = this.authConfig;
     final deadLetterConfig = this.deadLetterConfig;
     final enrichmentConfig = this.enrichmentConfig;
@@ -13628,6 +13652,7 @@ class GoogleCloudConnectorsV1EventingConfig {
     final sslConfig = this.sslConfig;
     return {
       'additionalVariables': ?additionalVariables,
+      'allowedEventTypes': ?allowedEventTypes,
       'authConfig': ?authConfig,
       'deadLetterConfig': ?deadLetterConfig,
       'enrichmentConfig': ?enrichmentConfig,

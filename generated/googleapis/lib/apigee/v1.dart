@@ -6022,10 +6022,13 @@ class OrganizationsDevelopersAppsResource {
   ///
   /// [expand] - Optional. Specifies whether to expand the results. Set to
   /// `true` to expand the results. This query parameter is not valid if you use
-  /// the `count` or `startKey` query parameters.
+  /// the `count` or `startKey` query parameters. **Note**: If set to `true`,
+  /// the `apigee.developerapps.get` permission is required.
   ///
   /// [shallowExpand] - Optional. Specifies whether to expand the results in
   /// shallow mode. Set to `true` to expand the results in shallow mode.
+  /// **Note**: If set to `true`, the `apigee.developerapps.get` permission is
+  /// required.
   ///
   /// [startKey] - **Note**: Must be used in conjunction with the `count`
   /// parameter. Name of the developer app from which to start displaying the
@@ -16985,6 +16988,14 @@ class OrganizationsSecurityMonitoringConditionsResource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityMonitoringConditions/\[^/\]+$`.
   ///
+  /// [riskAssessmentType] - Optional. The risk assessment type of the security
+  /// monitoring condition. Defaults to ADVANCED_API_SECURITY.
+  /// Possible string values are:
+  /// - "RISK_ASSESSMENT_TYPE_UNSPECIFIED" : Risk assessment type is not
+  /// specified.
+  /// - "APIGEE" : Risk assessment type is Apigee.
+  /// - "API_HUB" : Risk assessment type is API Hub.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -16997,9 +17008,13 @@ class OrganizationsSecurityMonitoringConditionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
+    core.String? riskAssessmentType,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'riskAssessmentType': ?riskAssessmentType == null
+          ? null
+          : [riskAssessmentType],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -17025,6 +17040,14 @@ class OrganizationsSecurityMonitoringConditionsResource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityMonitoringConditions/\[^/\]+$`.
   ///
+  /// [riskAssessmentType] - Optional. The risk assessment type of the security
+  /// monitoring condition. Defaults to ADVANCED_API_SECURITY.
+  /// Possible string values are:
+  /// - "RISK_ASSESSMENT_TYPE_UNSPECIFIED" : Risk assessment type is not
+  /// specified.
+  /// - "APIGEE" : Risk assessment type is Apigee.
+  /// - "API_HUB" : Risk assessment type is API Hub.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -17037,9 +17060,13 @@ class OrganizationsSecurityMonitoringConditionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SecurityMonitoringCondition> get(
     core.String name, {
+    core.String? riskAssessmentType,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'riskAssessmentType': ?riskAssessmentType == null
+          ? null
+          : [riskAssessmentType],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -17063,8 +17090,12 @@ class OrganizationsSecurityMonitoringConditionsResource {
   /// monitoring conditions. Format: `organizations/{org}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filter for the monitoring conditions. For example:
-  /// `profile=profile1 AND scope=env1`
+  /// [filter] - Optional. Filter for the monitoring conditions. When
+  /// RiskAssessmentType is APIGEE, monitoring conditions can be filtered by
+  /// profile and scope. For example: `profile=profile1 AND scope=env1` When
+  /// RiskAssessmentType is API_HUB, monitoring conditions can be filtered by
+  /// profile and api_hub_gateway. For example: `profile=profile1 AND
+  /// api_hub_gateway=gateway1`
   ///
   /// [pageSize] - Optional. The maximum number of monitoring conditions to
   /// return.
@@ -17072,6 +17103,14 @@ class OrganizationsSecurityMonitoringConditionsResource {
   /// [pageToken] - Optional. A page token, received from a previous
   /// `ListSecurityMonitoringConditions` call. Provide this to retrieve the
   /// subsequent page.
+  ///
+  /// [riskAssessmentType] - Optional. The risk assessment type of the security
+  /// monitoring condition. Defaults to ADVANCED_API_SECURITY.
+  /// Possible string values are:
+  /// - "RISK_ASSESSMENT_TYPE_UNSPECIFIED" : Risk assessment type is not
+  /// specified.
+  /// - "APIGEE" : Risk assessment type is Apigee.
+  /// - "API_HUB" : Risk assessment type is API Hub.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -17090,12 +17129,16 @@ class OrganizationsSecurityMonitoringConditionsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? riskAssessmentType,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'filter': ?filter == null ? null : [filter],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
+      'riskAssessmentType': ?riskAssessmentType == null
+          ? null
+          : [riskAssessmentType],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -26144,8 +26187,6 @@ class GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm
 
   /// The name of the header to extract the client ip from.
   ///
-  /// We are currently only supporting the X-Forwarded-For header.
-  ///
   /// Required.
   core.String? ipHeaderName;
 
@@ -32972,7 +33013,7 @@ class GoogleCloudApigeeV1RuntimeConfig {
   }
 }
 
-/// NEXT ID: 8 RuntimeTraceConfig defines the configurations for distributed
+/// NEXT ID: 10 RuntimeTraceConfig defines the configurations for distributed
 /// trace in an environment.
 class GoogleCloudApigeeV1RuntimeTraceConfig {
   /// Endpoint of the exporter.
@@ -32985,13 +33026,35 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
   /// Recorded spans can be exported by registered exporters.
   /// Possible string values are:
   /// - "EXPORTER_UNSPECIFIED" : Exporter unspecified
-  /// - "JAEGER" : Jaeger exporter
-  /// - "CLOUD_TRACE" : Cloudtrace exporter
+  /// - "JAEGER" : Exports events to Jaeger. Compatible with OpenCensus
+  /// protocol.
+  /// - "CLOUD_TRACE" : Exports events to Cloud Trace. Compatible with
+  /// OpenCensus protocol.
+  /// - "OPEN_TELEMETRY_COLLECTOR" : OpenTelemetry Collector. Compatible with
+  /// OpenTelemetry protocol.
+  /// - "OPEN_TELEMETRY_CLOUD_TRACE" : Exports events to Cloud Trace. Compatible
+  /// with OpenTelemetry protocol.
   core.String? exporter;
 
   /// Name of the trace config in the following format:
   /// `organizations/{org}/environment/{env}/traceConfig`
   core.String? name;
+
+  /// If `true`, the runtime uses OpenTelemetry Protocol (OTLP) to send trace
+  /// data.
+  ///
+  /// Configuration Requirements (if `open_telemetry_protocol_enabled` is
+  /// `true`): - Allowed `Exporter`s: `CLOUD_TRACE` or
+  /// `OPEN_TELEMETRY_COLLECTOR`. - If `Exporter` is `OPEN_TELEMETRY_COLLECTOR`:
+  /// - `endpoint` refers to a valid OTLP collector URL. - If `Exporter` is
+  /// `CLOUD_TRACE`: - `endpoint` refers to a valid project ID Deprecated: Use
+  /// trace_protocol instead.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? openTelemetryProtocolEnabled;
 
   /// List of trace configuration overrides for spicific API proxies.
   core.List<GoogleCloudApigeeV1RuntimeTraceConfigOverride>? overrides;
@@ -33006,14 +33069,26 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
   /// Trace configuration for all API proxies in an environment.
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig? samplingConfig;
 
+  /// The trace protocol to use.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRACE_PROTOCOL_UNSPECIFIED" : Protocol unspecified. Defaults to
+  /// OPEN_CENSUS.
+  /// - "OPEN_CENSUS" : Uses OpenCensus protocol.
+  /// - "OTLP" : Uses OpenTelemetry Protocol (OTLP).
+  core.String? traceProtocol;
+
   GoogleCloudApigeeV1RuntimeTraceConfig({
     this.endpoint,
     this.exporter,
     this.name,
+    this.openTelemetryProtocolEnabled,
     this.overrides,
     this.revisionCreateTime,
     this.revisionId,
     this.samplingConfig,
+    this.traceProtocol,
   });
 
   GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(core.Map json_)
@@ -33021,6 +33096,8 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
         endpoint: json_['endpoint'] as core.String?,
         exporter: json_['exporter'] as core.String?,
         name: json_['name'] as core.String?,
+        openTelemetryProtocolEnabled:
+            json_['openTelemetryProtocolEnabled'] as core.bool?,
         overrides: (json_['overrides'] as core.List?)
             ?.map(
               (value) => GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
@@ -33035,29 +33112,34 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
                 json_['samplingConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        traceProtocol: json_['traceProtocol'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final endpoint = this.endpoint;
     final exporter = this.exporter;
     final name = this.name;
+    final openTelemetryProtocolEnabled = this.openTelemetryProtocolEnabled;
     final overrides = this.overrides;
     final revisionCreateTime = this.revisionCreateTime;
     final revisionId = this.revisionId;
     final samplingConfig = this.samplingConfig;
+    final traceProtocol = this.traceProtocol;
     return {
       'endpoint': ?endpoint,
       'exporter': ?exporter,
       'name': ?name,
+      'openTelemetryProtocolEnabled': ?openTelemetryProtocolEnabled,
       'overrides': ?overrides,
       'revisionCreateTime': ?revisionCreateTime,
       'revisionId': ?revisionId,
       'samplingConfig': ?samplingConfig,
+      'traceProtocol': ?traceProtocol,
     };
   }
 }
 
-/// NEXT ID: 7 Trace configuration override for a specific API proxy in an
+/// NEXT ID: 9 Trace configuration override for a specific API proxy in an
 /// environment.
 class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   /// Name of the API proxy that will have its trace configuration overridden
@@ -33067,6 +33149,22 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   /// Name of the trace config override in the following format:
   /// `organizations/{org}/environment/{env}/traceConfig/overrides/{override}`
   core.String? name;
+
+  /// If `true`, the runtime uses OpenTelemetry Protocol (OTLP) to send trace
+  /// data.
+  ///
+  /// Configuration Requirements (if `open_telemetry_protocol_enabled` is
+  /// `true`): - Allowed `Exporter`s: `CLOUD_TRACE` or
+  /// `OPEN_TELEMETRY_COLLECTOR`. - If `Exporter` is `OPEN_TELEMETRY_COLLECTOR`:
+  /// - `endpoint` refers to a valid OTLP collector URL. - If `Exporter` is
+  /// `CLOUD_TRACE`: - `endpoint` refers to a valid project ID Deprecated: Use
+  /// trace_protocol instead.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? openTelemetryProtocolEnabled;
 
   /// The timestamp that the revision was created or updated.
   core.String? revisionCreateTime;
@@ -33078,6 +33176,16 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   /// Trace configuration override for a specific API proxy in an environment.
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig? samplingConfig;
 
+  /// The trace protocol to use.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRACE_PROTOCOL_UNSPECIFIED" : Protocol unspecified. Defaults to
+  /// OPEN_CENSUS.
+  /// - "OPEN_CENSUS" : Uses OpenCensus protocol.
+  /// - "OTLP" : Uses OpenTelemetry Protocol (OTLP).
+  core.String? traceProtocol;
+
   /// Unique ID for the configuration override.
   ///
   /// The ID will only change if the override is deleted and recreated.
@@ -33087,9 +33195,11 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   GoogleCloudApigeeV1RuntimeTraceConfigOverride({
     this.apiProxy,
     this.name,
+    this.openTelemetryProtocolEnabled,
     this.revisionCreateTime,
     this.revisionId,
     this.samplingConfig,
+    this.traceProtocol,
     this.uid,
   });
 
@@ -33097,6 +33207,8 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
     : this(
         apiProxy: json_['apiProxy'] as core.String?,
         name: json_['name'] as core.String?,
+        openTelemetryProtocolEnabled:
+            json_['openTelemetryProtocolEnabled'] as core.bool?,
         revisionCreateTime: json_['revisionCreateTime'] as core.String?,
         revisionId: json_['revisionId'] as core.String?,
         samplingConfig: json_.containsKey('samplingConfig')
@@ -33104,22 +33216,27 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
                 json_['samplingConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        traceProtocol: json_['traceProtocol'] as core.String?,
         uid: json_['uid'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final apiProxy = this.apiProxy;
     final name = this.name;
+    final openTelemetryProtocolEnabled = this.openTelemetryProtocolEnabled;
     final revisionCreateTime = this.revisionCreateTime;
     final revisionId = this.revisionId;
     final samplingConfig = this.samplingConfig;
+    final traceProtocol = this.traceProtocol;
     final uid = this.uid;
     return {
       'apiProxy': ?apiProxy,
       'name': ?name,
+      'openTelemetryProtocolEnabled': ?openTelemetryProtocolEnabled,
       'revisionCreateTime': ?revisionCreateTime,
       'revisionId': ?revisionId,
       'samplingConfig': ?samplingConfig,
+      'traceProtocol': ?traceProtocol,
       'uid': ?uid,
     };
   }
@@ -33996,6 +34113,17 @@ class GoogleCloudApigeeV1SecurityAssessmentResultResource {
   GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails?
   apiHubDeploymentDetails;
 
+  ///
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "API_HUB_GATEWAY_TYPE_UNSPECIFIED" : Gateway type is not specified.
+  /// - "APIGEE_X" : Gateway is Apigee X for API Hub.
+  /// - "APIGEE_HYBRID" : Gateway is Apigee Hybrid for API Hub.
+  /// - "APIGEE_EDGE" : Gateway is Apigee Edge for API Hub.
+  /// - "APIGEE_OPDK" : Gateway is Apigee OPDK for API Hub.
+  core.String? apiHubGatewayType;
+
   /// Name of this resource.
   ///
   /// For an Apigee API Proxy, this should be the id of the API proxy. For an
@@ -34020,6 +34148,7 @@ class GoogleCloudApigeeV1SecurityAssessmentResultResource {
 
   GoogleCloudApigeeV1SecurityAssessmentResultResource({
     this.apiHubDeploymentDetails,
+    this.apiHubGatewayType,
     this.name,
     this.resourceRevisionId,
     this.type,
@@ -34033,6 +34162,7 @@ class GoogleCloudApigeeV1SecurityAssessmentResultResource {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        apiHubGatewayType: json_['apiHubGatewayType'] as core.String?,
         name: json_['name'] as core.String?,
         resourceRevisionId: json_['resourceRevisionId'] as core.String?,
         type: json_['type'] as core.String?,
@@ -34040,11 +34170,13 @@ class GoogleCloudApigeeV1SecurityAssessmentResultResource {
 
   core.Map<core.String, core.dynamic> toJson() {
     final apiHubDeploymentDetails = this.apiHubDeploymentDetails;
+    final apiHubGatewayType = this.apiHubGatewayType;
     final name = this.name;
     final resourceRevisionId = this.resourceRevisionId;
     final type = this.type;
     return {
       'apiHubDeploymentDetails': ?apiHubDeploymentDetails,
+      'apiHubGatewayType': ?apiHubGatewayType,
       'name': ?name,
       'resourceRevisionId': ?resourceRevisionId,
       'type': ?type,
@@ -34590,6 +34722,14 @@ class GoogleCloudApigeeV1SecurityIncident {
 
 /// Security monitoring condition for risk assessment version 2.
 class GoogleCloudApigeeV1SecurityMonitoringCondition {
+  /// The API Hub gateway monitored by the security monitoring condition.
+  ///
+  /// This should only be set if risk_assessment_type is API_HUB. Format:
+  /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
+  ///
+  /// Optional.
+  core.String? apiHubGateway;
+
   /// The time of the security monitoring condition creation.
   ///
   /// Output only.
@@ -34614,9 +34754,23 @@ class GoogleCloudApigeeV1SecurityMonitoringCondition {
   /// Required.
   core.String? profile;
 
+  /// The risk assessment type of the security monitoring condition.
+  ///
+  /// Defaults to ADVANCED_API_SECURITY.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RISK_ASSESSMENT_TYPE_UNSPECIFIED" : Risk assessment type is not
+  /// specified.
+  /// - "APIGEE" : Risk assessment type is Apigee.
+  /// - "API_HUB" : Risk assessment type is API Hub.
+  core.String? riskAssessmentType;
+
   /// Scope of the security monitoring condition.
   ///
-  /// For Apigee, the environment is the scope of the resources.
+  /// When RiskAssessmentType is APIGEE, the scope should be set to the
+  /// environment of the resources. When RiskAssessmentType is API_HUB, the
+  /// scope should not be set.
   ///
   /// Optional.
   core.String? scope;
@@ -34637,11 +34791,13 @@ class GoogleCloudApigeeV1SecurityMonitoringCondition {
   core.String? updateTime;
 
   GoogleCloudApigeeV1SecurityMonitoringCondition({
+    this.apiHubGateway,
     this.createTime,
     this.include,
     this.includeAllResources,
     this.name,
     this.profile,
+    this.riskAssessmentType,
     this.scope,
     this.totalDeployedResources,
     this.totalMonitoredResources,
@@ -34650,6 +34806,7 @@ class GoogleCloudApigeeV1SecurityMonitoringCondition {
 
   GoogleCloudApigeeV1SecurityMonitoringCondition.fromJson(core.Map json_)
     : this(
+        apiHubGateway: json_['apiHubGateway'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         include: json_.containsKey('include')
             ? GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray.fromJson(
@@ -34664,6 +34821,7 @@ class GoogleCloudApigeeV1SecurityMonitoringCondition {
             : null,
         name: json_['name'] as core.String?,
         profile: json_['profile'] as core.String?,
+        riskAssessmentType: json_['riskAssessmentType'] as core.String?,
         scope: json_['scope'] as core.String?,
         totalDeployedResources: json_['totalDeployedResources'] as core.int?,
         totalMonitoredResources: json_['totalMonitoredResources'] as core.int?,
@@ -34671,21 +34829,25 @@ class GoogleCloudApigeeV1SecurityMonitoringCondition {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final apiHubGateway = this.apiHubGateway;
     final createTime = this.createTime;
     final include = this.include;
     final includeAllResources = this.includeAllResources;
     final name = this.name;
     final profile = this.profile;
+    final riskAssessmentType = this.riskAssessmentType;
     final scope = this.scope;
     final totalDeployedResources = this.totalDeployedResources;
     final totalMonitoredResources = this.totalMonitoredResources;
     final updateTime = this.updateTime;
     return {
+      'apiHubGateway': ?apiHubGateway,
       'createTime': ?createTime,
       'include': ?include,
       'includeAllResources': ?includeAllResources,
       'name': ?name,
       'profile': ?profile,
+      'riskAssessmentType': ?riskAssessmentType,
       'scope': ?scope,
       'totalDeployedResources': ?totalDeployedResources,
       'totalMonitoredResources': ?totalMonitoredResources,
@@ -36673,8 +36835,8 @@ class GoogleCloudApigeeV1TraceConfig {
   /// Required.
   core.String? endpoint;
 
-  /// Exporter that is used to view the distributed trace captured using
-  /// OpenCensus.
+  /// Exporter that is used to view the distributed trace captured using the
+  /// chosen trace protocol.
   ///
   /// An exporter sends traces to any backend that is capable of consuming them.
   /// Recorded spans can be exported by registered exporters.
@@ -36682,8 +36844,14 @@ class GoogleCloudApigeeV1TraceConfig {
   /// Required.
   /// Possible string values are:
   /// - "EXPORTER_UNSPECIFIED" : Exporter unspecified
-  /// - "JAEGER" : Jaeger exporter
-  /// - "CLOUD_TRACE" : Cloudtrace exporter
+  /// - "JAEGER" : Exports events to Jaeger. Compatible with OpenCensus
+  /// protocol.
+  /// - "CLOUD_TRACE" : Exports events to Cloud Trace. Compatible with
+  /// OpenCensus protocol.
+  /// - "OPEN_TELEMETRY_COLLECTOR" : OpenTelemetry Collector. Compatible with
+  /// OpenTelemetry protocol.
+  /// - "OPEN_TELEMETRY_CLOUD_TRACE" : Exports events to Cloud Trace. Compatible
+  /// with OpenTelemetry protocol.
   core.String? exporter;
 
   /// Distributed trace configuration for all API proxies in an environment.

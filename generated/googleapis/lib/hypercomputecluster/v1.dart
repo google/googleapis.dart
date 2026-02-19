@@ -20,6 +20,9 @@
 
 /// Cluster Director API - v1
 ///
+/// The Cluster Director API allows you to deploy, manage, and monitor clusters
+/// that run AI, ML, or HPC workloads.
+///
 /// For more information, see
 /// <https://docs.cloud.google.com/cluster-director/docs>
 ///
@@ -44,6 +47,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// The Cluster Director API allows you to deploy, manage, and monitor clusters
+/// that run AI, ML, or HPC workloads.
 class HypercomputeClusterApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -118,6 +123,17 @@ class ProjectsLocationsResource {
   }
 
   /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -703,6 +719,8 @@ class Cluster {
 
   /// User-provided description of the cluster.
   ///
+  /// Maximum of 2048 characters.
+  ///
   /// Optional.
   core.String? description;
 
@@ -722,7 +740,7 @@ class Cluster {
 
   /// Network resources available to the cluster.
   ///
-  /// Must contain at most one value. Keys specify the ID of the network
+  /// Must contain exactly one value. Keys specify the ID of the network
   /// resource by which it can be referenced elsewhere, and must conform to
   /// \[RFC-1034\](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
   /// alphanumeric, and at most 63 characters).
@@ -1394,6 +1412,8 @@ class NetworkResource {
   NetworkResourceConfig? config;
 
   /// Reference to a network in Google Compute Engine.
+  ///
+  /// Output only.
   NetworkReference? network;
 
   NetworkResource({this.config, this.network});
@@ -1818,13 +1838,15 @@ class NewSpotInstancesConfig {
   /// Required. Immutable.
   core.String? machineType;
 
-  /// Specifies the termination action of the instance
+  /// Termination action for the instance.
+  ///
+  /// If not specified, Compute Engine sets the termination action to DELETE.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "TERMINATION_ACTION_UNSPECIFIED" : Unspecified termination action
-  /// - "STOP" : Stop the instance
-  /// - "DELETE" : Delete the instance
+  /// - "TERMINATION_ACTION_UNSPECIFIED" : Not set.
+  /// - "STOP" : Compute Engine stops the Spot VM on preemption.
+  /// - "DELETE" : Compute Engine deletes the Spot VM on preemption.
   core.String? terminationAction;
 
   /// Name of the zone in which VM instances should run, e.g., `us-central1-a`.
@@ -2109,10 +2131,9 @@ class SlurmLoginNodes {
 class SlurmNodeSet {
   /// ID of the compute resource on which this nodeset will run.
   ///
-  /// Must match a key in the cluster's
-  /// \[compute_resources\](Cluster.compute_resources).
+  /// Must match a key in the cluster's compute_resources.
   ///
-  /// Optional.
+  /// Required.
   core.String? computeId;
 
   /// If set, indicates that the nodeset should be backed by Compute Engine
@@ -2229,20 +2250,20 @@ class SlurmOrchestrator {
   /// Required.
   SlurmLoginNodes? loginNodes;
 
-  /// Configuration of Slurm nodesets, which define groups of compute resources
-  /// that can be used by Slurm.
+  /// Compute resource configuration for the Slurm nodesets in your cluster.
   ///
-  /// At least one compute node is required.
+  /// If not specified, the cluster won't create any nodes.
   ///
-  /// Required.
+  /// Optional.
   core.List<SlurmNodeSet>? nodeSets;
 
-  /// Configuration of Slurm partitions, which group one or more nodesets.
+  /// Configuration for the Slurm partitions in your cluster.
   ///
-  /// Acts as a queue against which jobs can be submitted. At least one
-  /// partition is required.
+  /// Each partition can contain one or more nodesets, and you can submit
+  /// separate jobs on each partition. If you don't specify at least one
+  /// partition in your cluster, you can't submit jobs to the cluster.
   ///
-  /// Required.
+  /// Optional.
   core.List<SlurmPartition>? partitions;
 
   /// Slurm [prolog scripts](https://slurm.schedmd.com/prolog_epilog.html),
@@ -2361,7 +2382,7 @@ typedef Status = $Status00;
 /// Description of how a storage resource should be mounted on a VM instance.
 class StorageConfig {
   /// ID of the storage resource to mount, which must match a key in the
-  /// cluster's \[storage_resources\](Cluster.storage_resources).
+  /// cluster's storage_resources.
   ///
   /// Required.
   core.String? id;
@@ -2394,6 +2415,8 @@ class StorageResource {
   ///
   /// Populated if and only if the storage resource was configured to use Google
   /// Cloud Storage.
+  ///
+  /// Output only.
   BucketReference? bucket;
 
   /// Configuration for this storage resource, which describes how it should be
@@ -2410,12 +2433,16 @@ class StorageResource {
   ///
   /// Populated if and only if the storage resource was configured to use
   /// Filestore.
+  ///
+  /// Output only.
   FilestoreReference? filestore;
 
   /// Reference to a Managed Lustre instance.
   ///
   /// Populated if and only if the storage resource was configured to use
   /// Managed Lustre.
+  ///
+  /// Output only.
   LustreReference? lustre;
 
   StorageResource({this.bucket, this.config, this.filestore, this.lustre});

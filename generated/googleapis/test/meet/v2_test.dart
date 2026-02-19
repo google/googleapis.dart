@@ -192,6 +192,27 @@ void checkEndActiveConferenceRequest(api.EndActiveConferenceRequest o) {
   buildCounterEndActiveConferenceRequest--;
 }
 
+core.int buildCounterGatewaySipAccess = 0;
+api.GatewaySipAccess buildGatewaySipAccess() {
+  final o = api.GatewaySipAccess();
+  buildCounterGatewaySipAccess++;
+  if (buildCounterGatewaySipAccess < 3) {
+    o.sipAccessCode = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterGatewaySipAccess--;
+  return o;
+}
+
+void checkGatewaySipAccess(api.GatewaySipAccess o) {
+  buildCounterGatewaySipAccess++;
+  if (buildCounterGatewaySipAccess < 3) {
+    unittest.expect(o.sipAccessCode!, unittest.equals('foo'));
+    unittest.expect(o.uri!, unittest.equals('foo'));
+  }
+  buildCounterGatewaySipAccess--;
+}
+
 core.List<api.ConferenceRecord> buildUnnamed0() => [
   buildConferenceRecord(),
   buildConferenceRecord(),
@@ -324,12 +345,44 @@ void checkListRecordingsResponse(api.ListRecordingsResponse o) {
   buildCounterListRecordingsResponse--;
 }
 
-core.List<api.TranscriptEntry> buildUnnamed4() => [
+core.List<api.SmartNote> buildUnnamed4() => [
+  buildSmartNote(),
+  buildSmartNote(),
+];
+
+void checkUnnamed4(core.List<api.SmartNote> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSmartNote(o[0]);
+  checkSmartNote(o[1]);
+}
+
+core.int buildCounterListSmartNotesResponse = 0;
+api.ListSmartNotesResponse buildListSmartNotesResponse() {
+  final o = api.ListSmartNotesResponse();
+  buildCounterListSmartNotesResponse++;
+  if (buildCounterListSmartNotesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.smartNotes = buildUnnamed4();
+  }
+  buildCounterListSmartNotesResponse--;
+  return o;
+}
+
+void checkListSmartNotesResponse(api.ListSmartNotesResponse o) {
+  buildCounterListSmartNotesResponse++;
+  if (buildCounterListSmartNotesResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed4(o.smartNotes!);
+  }
+  buildCounterListSmartNotesResponse--;
+}
+
+core.List<api.TranscriptEntry> buildUnnamed5() => [
   buildTranscriptEntry(),
   buildTranscriptEntry(),
 ];
 
-void checkUnnamed4(core.List<api.TranscriptEntry> o) {
+void checkUnnamed5(core.List<api.TranscriptEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranscriptEntry(o[0]);
   checkTranscriptEntry(o[1]);
@@ -341,7 +394,7 @@ api.ListTranscriptEntriesResponse buildListTranscriptEntriesResponse() {
   buildCounterListTranscriptEntriesResponse++;
   if (buildCounterListTranscriptEntriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.transcriptEntries = buildUnnamed4();
+    o.transcriptEntries = buildUnnamed5();
   }
   buildCounterListTranscriptEntriesResponse--;
   return o;
@@ -351,17 +404,17 @@ void checkListTranscriptEntriesResponse(api.ListTranscriptEntriesResponse o) {
   buildCounterListTranscriptEntriesResponse++;
   if (buildCounterListTranscriptEntriesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed4(o.transcriptEntries!);
+    checkUnnamed5(o.transcriptEntries!);
   }
   buildCounterListTranscriptEntriesResponse--;
 }
 
-core.List<api.Transcript> buildUnnamed5() => [
+core.List<api.Transcript> buildUnnamed6() => [
   buildTranscript(),
   buildTranscript(),
 ];
 
-void checkUnnamed5(core.List<api.Transcript> o) {
+void checkUnnamed6(core.List<api.Transcript> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranscript(o[0]);
   checkTranscript(o[1]);
@@ -373,7 +426,7 @@ api.ListTranscriptsResponse buildListTranscriptsResponse() {
   buildCounterListTranscriptsResponse++;
   if (buildCounterListTranscriptsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.transcripts = buildUnnamed5();
+    o.transcripts = buildUnnamed6();
   }
   buildCounterListTranscriptsResponse--;
   return o;
@@ -383,7 +436,7 @@ void checkListTranscriptsResponse(api.ListTranscriptsResponse o) {
   buildCounterListTranscriptsResponse++;
   if (buildCounterListTranscriptsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed5(o.transcripts!);
+    checkUnnamed6(o.transcripts!);
   }
   buildCounterListTranscriptsResponse--;
 }
@@ -463,6 +516,31 @@ void checkParticipantSession(api.ParticipantSession o) {
     unittest.expect(o.startTime!, unittest.equals('foo'));
   }
   buildCounterParticipantSession--;
+}
+
+core.int buildCounterPhoneAccess = 0;
+api.PhoneAccess buildPhoneAccess() {
+  final o = api.PhoneAccess();
+  buildCounterPhoneAccess++;
+  if (buildCounterPhoneAccess < 3) {
+    o.languageCode = 'foo';
+    o.phoneNumber = 'foo';
+    o.pin = 'foo';
+    o.regionCode = 'foo';
+  }
+  buildCounterPhoneAccess--;
+  return o;
+}
+
+void checkPhoneAccess(api.PhoneAccess o) {
+  buildCounterPhoneAccess++;
+  if (buildCounterPhoneAccess < 3) {
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(o.phoneNumber!, unittest.equals('foo'));
+    unittest.expect(o.pin!, unittest.equals('foo'));
+    unittest.expect(o.regionCode!, unittest.equals('foo'));
+  }
+  buildCounterPhoneAccess--;
 }
 
 core.int buildCounterPhoneUser = 0;
@@ -551,6 +629,33 @@ void checkSignedinUser(api.SignedinUser o) {
   buildCounterSignedinUser--;
 }
 
+core.int buildCounterSmartNote = 0;
+api.SmartNote buildSmartNote() {
+  final o = api.SmartNote();
+  buildCounterSmartNote++;
+  if (buildCounterSmartNote < 3) {
+    o.docsDestination = buildDocsDestination();
+    o.endTime = 'foo';
+    o.name = 'foo';
+    o.startTime = 'foo';
+    o.state = 'foo';
+  }
+  buildCounterSmartNote--;
+  return o;
+}
+
+void checkSmartNote(api.SmartNote o) {
+  buildCounterSmartNote++;
+  if (buildCounterSmartNote < 3) {
+    checkDocsDestination(o.docsDestination!);
+    unittest.expect(o.endTime!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.startTime!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+  }
+  buildCounterSmartNote--;
+}
+
 core.int buildCounterSmartNotesConfig = 0;
 api.SmartNotesConfig buildSmartNotesConfig() {
   final o = api.SmartNotesConfig();
@@ -570,6 +675,28 @@ void checkSmartNotesConfig(api.SmartNotesConfig o) {
   buildCounterSmartNotesConfig--;
 }
 
+core.List<api.GatewaySipAccess> buildUnnamed7() => [
+  buildGatewaySipAccess(),
+  buildGatewaySipAccess(),
+];
+
+void checkUnnamed7(core.List<api.GatewaySipAccess> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGatewaySipAccess(o[0]);
+  checkGatewaySipAccess(o[1]);
+}
+
+core.List<api.PhoneAccess> buildUnnamed8() => [
+  buildPhoneAccess(),
+  buildPhoneAccess(),
+];
+
+void checkUnnamed8(core.List<api.PhoneAccess> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPhoneAccess(o[0]);
+  checkPhoneAccess(o[1]);
+}
+
 core.int buildCounterSpace = 0;
 api.Space buildSpace() {
   final o = api.Space();
@@ -577,9 +704,11 @@ api.Space buildSpace() {
   if (buildCounterSpace < 3) {
     o.activeConference = buildActiveConference();
     o.config = buildSpaceConfig();
+    o.gatewaySipAccess = buildUnnamed7();
     o.meetingCode = 'foo';
     o.meetingUri = 'foo';
     o.name = 'foo';
+    o.phoneAccess = buildUnnamed8();
   }
   buildCounterSpace--;
   return o;
@@ -590,9 +719,11 @@ void checkSpace(api.Space o) {
   if (buildCounterSpace < 3) {
     checkActiveConference(o.activeConference!);
     checkSpaceConfig(o.config!);
+    checkUnnamed7(o.gatewaySipAccess!);
     unittest.expect(o.meetingCode!, unittest.equals('foo'));
     unittest.expect(o.meetingUri!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkUnnamed8(o.phoneAccess!);
   }
   buildCounterSpace--;
 }
@@ -790,6 +921,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GatewaySipAccess', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGatewaySipAccess();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GatewaySipAccess.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGatewaySipAccess(od);
+    });
+  });
+
   unittest.group('obj-schema-ListConferenceRecordsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListConferenceRecordsResponse();
@@ -831,6 +973,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkListRecordingsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListSmartNotesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListSmartNotesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSmartNotesResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListSmartNotesResponse(od);
     });
   });
 
@@ -889,6 +1042,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PhoneAccess', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPhoneAccess();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PhoneAccess.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPhoneAccess(od);
+    });
+  });
+
   unittest.group('obj-schema-PhoneUser', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPhoneUser();
@@ -930,6 +1094,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSignedinUser(od);
+    });
+  });
+
+  unittest.group('obj-schema-SmartNote', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSmartNote();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SmartNote.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSmartNote(od);
     });
   });
 
@@ -1518,6 +1693,129 @@ void main() {
         $fields: arg_$fields,
       );
       checkListRecordingsResponse(response as api.ListRecordingsResponse);
+    });
+  });
+
+  unittest.group('resource-ConferenceRecordsSmartNotesResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.MeetApi(mock).conferenceRecords.smartNotes;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSmartNote());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSmartNote(response as api.SmartNote);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.MeetApi(mock).conferenceRecords.smartNotes;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListSmartNotesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListSmartNotesResponse(response as api.ListSmartNotesResponse);
     });
   });
 

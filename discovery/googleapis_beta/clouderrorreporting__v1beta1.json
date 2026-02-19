@@ -15,6 +15,13 @@
     "description": "Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors. ",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/error-reporting/",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://clouderrorreporting.us.rep.googleapis.com/",
+            "location": "us"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +32,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240705",
+    "revision": "20260206",
     "rootUrl": "https://clouderrorreporting.googleapis.com/",
     "servicePath": "",
     "title": "Error Reporting API",

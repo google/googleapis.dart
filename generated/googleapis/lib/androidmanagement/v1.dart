@@ -2994,8 +2994,11 @@ class ApplicationPolicy {
   /// won't complete until the app is installed. After installation, users won't
   /// be able to remove the app. You can only set this installType for one app
   /// per policy. When this is present in the policy, status bar will be
-  /// automatically disabled.If there is any app with KIOSK role, then this
-  /// install type cannot be set for any app.
+  /// automatically disabled.On Android 11 and above, when an app has this
+  /// install type, the user control is disallowed for all apps. The IT admin
+  /// can set userControlSettings to USER_CONTROL_ALLOWED to allow user control
+  /// for specific apps.If there is any app with KIOSK role, then this install
+  /// type cannot be set for any app.
   /// - "CUSTOM" : The app can only be installed and updated via AMAPI SDK
   /// command
   /// (https://developers.google.com/android/management/extensibility-sdk-integration).Note:
@@ -3531,8 +3534,7 @@ class ApplicationReportingSettings {
 class ApplicationSigningKeyCert {
   /// The SHA-256 hash value of the signing key certificate of the app.
   ///
-  /// This must be a valid SHA-256 hash value, i.e. 32 bytes. Otherwise, the
-  /// policy is rejected.
+  /// This must be a valid SHA-256 hash value, i.e. 32 bytes.
   ///
   /// Required.
   core.String? signingKeyCertFingerprintSha256;
@@ -5401,6 +5403,11 @@ class DeviceConnectivityManagement {
   /// Optional.
   PreferentialNetworkServiceSettings? preferentialNetworkServiceSettings;
 
+  /// The global private DNS settings.
+  ///
+  /// Optional.
+  PrivateDnsSettings? privateDnsSettings;
+
   /// Controls tethering settings.
   ///
   /// Based on the value set, the user is partially or fully disallowed from
@@ -5471,6 +5478,7 @@ class DeviceConnectivityManagement {
     this.bluetoothSharing,
     this.configureWifi,
     this.preferentialNetworkServiceSettings,
+    this.privateDnsSettings,
     this.tetheringSettings,
     this.usbDataAccess,
     this.wifiDirectSettings,
@@ -5491,6 +5499,12 @@ class DeviceConnectivityManagement {
             json_.containsKey('preferentialNetworkServiceSettings')
             ? PreferentialNetworkServiceSettings.fromJson(
                 json_['preferentialNetworkServiceSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        privateDnsSettings: json_.containsKey('privateDnsSettings')
+            ? PrivateDnsSettings.fromJson(
+                json_['privateDnsSettings']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -5516,6 +5530,7 @@ class DeviceConnectivityManagement {
     final configureWifi = this.configureWifi;
     final preferentialNetworkServiceSettings =
         this.preferentialNetworkServiceSettings;
+    final privateDnsSettings = this.privateDnsSettings;
     final tetheringSettings = this.tetheringSettings;
     final usbDataAccess = this.usbDataAccess;
     final wifiDirectSettings = this.wifiDirectSettings;
@@ -5526,6 +5541,7 @@ class DeviceConnectivityManagement {
       'bluetoothSharing': ?bluetoothSharing,
       'configureWifi': ?configureWifi,
       'preferentialNetworkServiceSettings': ?preferentialNetworkServiceSettings,
+      'privateDnsSettings': ?privateDnsSettings,
       'tetheringSettings': ?tetheringSettings,
       'usbDataAccess': ?usbDataAccess,
       'wifiDirectSettings': ?wifiDirectSettings,
@@ -6593,7 +6609,9 @@ class GoogleAuthenticationSettings {
   /// the Google Admin Console. Google authentication can be used with
   /// signin_url In the case where Google authentication is required and a
   /// signin_url is specified, Google authentication will be launched before
-  /// signin_url.
+  /// signin_url. This value is overridden by
+  /// EnrollmentToken.googleAuthenticationOptions and
+  /// SigninDetail.googleAuthenticationOptions, if they are set.
   ///
   /// Output only.
   /// Possible string values are:
@@ -7992,8 +8010,7 @@ class NetworkInfo {
   /// Provides telephony information associated with each SIM card on the
   /// device.
   ///
-  /// Only supported on fully managed devices starting from Android API level
-  /// 23.
+  /// Only supported on fully managed devices starting from Android 6.
   core.List<TelephonyInfo>? telephonyInfos;
 
   /// Wi-Fi MAC address of the device.
@@ -8965,6 +8982,9 @@ class PersonalUsagePolicies {
   core.String? privateSpacePolicy;
 
   /// If true, screen capture is disabled for all users.
+  ///
+  /// This also blocks Circle to Search
+  /// (https://support.google.com/android/answer/14508957).
   core.bool? screenCaptureDisabled;
 
   PersonalUsagePolicies({
@@ -9136,11 +9156,7 @@ class Policy {
   )
   core.bool? autoTimeRequired;
 
-  /// Whether applications other than the ones configured in applications are
-  /// blocked from being installed.
-  ///
-  /// When set, applications that were installed under a previous policy but no
-  /// longer appear in the policy are automatically uninstalled.
+  /// This field has no effect.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -9225,6 +9241,8 @@ class Policy {
   /// (https://developer.android.com/training/sign-in/passkeys) and this
   /// (https://developer.android.com/reference/androidx/credentials/CredentialManager)
   /// for details. See also credentialProviderPolicy.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CREDENTIAL_PROVIDER_POLICY_DEFAULT_UNSPECIFIED" : Unspecified. Defaults
   /// to CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED.
@@ -9329,8 +9347,7 @@ class Policy {
   /// Optional.
   /// Possible string values are:
   /// - "ENTERPRISE_DISPLAY_NAME_VISIBILITY_UNSPECIFIED" : Unspecified. Defaults
-  /// to displaying the enterprise name that's set at the time of device setup.
-  /// In future, this will default to ENTERPRISE_DISPLAY_NAME_VISIBLE.
+  /// to ENTERPRISE_DISPLAY_NAME_VISIBLE.
   /// - "ENTERPRISE_DISPLAY_NAME_VISIBLE" : The enterprise display name is
   /// visible on the device. Supported on work profiles on Android 7 and above.
   /// Supported on fully managed devices on Android 8 and above. A
@@ -9483,6 +9500,9 @@ class Policy {
   core.bool? networkEscapeHatchEnabled;
 
   /// Whether resetting network settings is disabled.
+  ///
+  /// This applies only on fully managed devices. A NonComplianceDetail with
+  /// MANAGEMENT_MODE is reported for other management modes.
   core.bool? networkResetDisabled;
 
   /// This feature is not generally available.
@@ -9625,6 +9645,9 @@ class Policy {
   core.bool? safeBootDisabled;
 
   /// Whether screen capture is disabled.
+  ///
+  /// This also blocks Circle to Search
+  /// (https://support.google.com/android/answer/14508957).
   core.bool? screenCaptureDisabled;
 
   /// Whether changing the user icon is disabled.
@@ -10695,6 +10718,75 @@ class PreferentialNetworkServiceSettings {
   }
 }
 
+/// Controls the device's private DNS settings.
+class PrivateDnsSettings {
+  /// The hostname of the DNS server.
+  ///
+  /// This must be set if and only if private_dns_mode is set to
+  /// PRIVATE_DNS_SPECIFIED_HOST. Supported on Android 10 and above on fully
+  /// managed devices. A NonComplianceDetail with MANAGEMENT_MODE is reported on
+  /// other management modes. A NonComplianceDetail with API_LEVEL is reported
+  /// if the Android version is less than 10. A NonComplianceDetail with PENDING
+  /// is reported if the device is not connected to a network. A
+  /// NonComplianceDetail with nonComplianceReason INVALID_VALUE and
+  /// specificNonComplianceReason PRIVATE_DNS_HOST_NOT_SERVING is reported if
+  /// the specified host is not a DNS server or not supported on Android. A
+  /// NonComplianceDetail with INVALID_VALUE is reported if applying this
+  /// setting fails for any other reason.
+  ///
+  /// Optional.
+  core.String? privateDnsHost;
+
+  /// The configuration mode for device's global private DNS settings.
+  ///
+  /// If this is set to PRIVATE_DNS_SPECIFIED_HOST, then private_dns_host must
+  /// be set.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRIVATE_DNS_MODE_UNSPECIFIED" : Unspecified. Defaults to
+  /// PRIVATE_DNS_USER_CHOICE.
+  /// - "PRIVATE_DNS_USER_CHOICE" : The user is allowed to configure private
+  /// DNS.
+  /// - "PRIVATE_DNS_AUTOMATIC" : Automatic private DNS mode. The device tries
+  /// to use the network-provided DNS server over an encrypted connection before
+  /// resorting to cleartext. The user is not allowed to modify this setting.
+  /// Supported on Android 10 and above on fully managed devices and work
+  /// profiles on company-owned devices. A NonComplianceDetail with
+  /// MANAGEMENT_MODE is reported on other management modes. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 10. A NonComplianceDetail with INVALID_VALUE is reported if
+  /// setting this fails for any other reason.Note: For work profiles on
+  /// company-owned devices, setting this mode prevents the user from changing
+  /// the setting, but the active private DNS setting is not modified. A
+  /// NonComplianceDetail with MANAGEMENT_MODE is reported in this case.
+  /// - "PRIVATE_DNS_SPECIFIED_HOST" : The device only uses the DNS server
+  /// specified in private_dns_host. The user is not allowed to modify this
+  /// setting. If this is set, then private_dns_host must be set. Supported on
+  /// Android 10 and above on fully managed devices. A NonComplianceDetail with
+  /// MANAGEMENT_MODE is reported on other management modes. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 10.
+  core.String? privateDnsMode;
+
+  PrivateDnsSettings({this.privateDnsHost, this.privateDnsMode});
+
+  PrivateDnsSettings.fromJson(core.Map json_)
+    : this(
+        privateDnsHost: json_['privateDnsHost'] as core.String?,
+        privateDnsMode: json_['privateDnsMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final privateDnsHost = this.privateDnsHost;
+    final privateDnsMode = this.privateDnsMode;
+    return {
+      'privateDnsHost': ?privateDnsHost,
+      'privateDnsMode': ?privateDnsMode,
+    };
+  }
+}
+
 /// Information about a device that is available during setup.
 class ProvisioningInfo {
   /// The API level of the Android platform version running on the device.
@@ -11009,9 +11101,10 @@ class Role {
   /// installed on the device.The app having this role type is set as the
   /// preferred home intent and allowlisted for lock task mode. When there is an
   /// app with this role type, status bar will be automatically disabled.This is
-  /// preferable to setting installType to KIOSK.On Android 11 and above, the
-  /// user control is disallowed but userControlSettings can be set to
-  /// USER_CONTROL_ALLOWED to allow user control for the app with this role.
+  /// preferable to setting installType to KIOSK.On Android 11 and above, when
+  /// an app has this role, the user control is disallowed for all apps. The IT
+  /// admin can set userControlSettings to USER_CONTROL_ALLOWED to allow user
+  /// control for specific apps.
   /// - "MOBILE_THREAT_DEFENSE_ENDPOINT_DETECTION_RESPONSE" : The role type for
   /// Mobile Threat Defense (MTD) / Endpoint Detection & Response (EDR) apps.On
   /// Android 14 and above, the app with this role is exempted from power and
@@ -11828,13 +11921,6 @@ class StopLostModeStatus {
 /// (https://developer.android.com/work/dpc/system-updates#mainline) for further
 /// details.
 class SystemUpdate {
-  /// If this is greater than zero, then this is the number of days after a
-  /// pending update becoming available that a device can remain compliant,
-  /// without taking the update.
-  ///
-  /// Has no effect otherwise.
-  core.int? allowedDaysWithoutUpdate;
-
   /// If the type is WINDOWED, the end of the maintenance window, measured as
   /// the number of minutes after midnight in device's local time.
   ///
@@ -11875,7 +11961,6 @@ class SystemUpdate {
   core.String? type;
 
   SystemUpdate({
-    this.allowedDaysWithoutUpdate,
     this.endMinutes,
     this.freezePeriods,
     this.startMinutes,
@@ -11884,8 +11969,6 @@ class SystemUpdate {
 
   SystemUpdate.fromJson(core.Map json_)
     : this(
-        allowedDaysWithoutUpdate:
-            json_['allowedDaysWithoutUpdate'] as core.int?,
         endMinutes: json_['endMinutes'] as core.int?,
         freezePeriods: (json_['freezePeriods'] as core.List?)
             ?.map(
@@ -11899,13 +11982,11 @@ class SystemUpdate {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final allowedDaysWithoutUpdate = this.allowedDaysWithoutUpdate;
     final endMinutes = this.endMinutes;
     final freezePeriods = this.freezePeriods;
     final startMinutes = this.startMinutes;
     final type = this.type;
     return {
-      'allowedDaysWithoutUpdate': ?allowedDaysWithoutUpdate,
       'endMinutes': ?endMinutes,
       'freezePeriods': ?freezePeriods,
       'startMinutes': ?startMinutes,
@@ -11957,13 +12038,15 @@ class SystemUpdateInfo {
 
 /// Telephony information associated with a given SIM card on the device.
 ///
-/// Only supported on fully managed devices starting from Android API level 23.
+/// This is supported for all SIM cards on fully managed devices on Android 6
+/// and above. In addition, this is supported for admin-added eSIMs on all
+/// devices for Android 15 and above.
 class TelephonyInfo {
   /// Activation state of the SIM card on the device.
   ///
   /// This is applicable for eSIMs only. This is supported on all devices for
-  /// API level 35 and above. This is always ACTIVATION_STATE_UNSPECIFIED for
-  /// physical SIMs and for devices below API level 35.
+  /// Android 15 and above. This is always ACTIVATION_STATE_UNSPECIFIED for
+  /// physical SIMs and for devices below Android 15.
   ///
   /// Output only.
   /// Possible string values are:
@@ -11978,8 +12061,8 @@ class TelephonyInfo {
   /// The configuration mode of the SIM card on the device.
   ///
   /// This is applicable for eSIMs only. This is supported on all devices for
-  /// API level 35 and above. This is always CONFIG_MODE_UNSPECIFIED for
-  /// physical SIMs and for devices below API level 35.
+  /// Android 15 and above. This is always CONFIG_MODE_UNSPECIFIED for physical
+  /// SIMs and for devices below Android 15.
   ///
   /// Output only.
   /// Possible string values are:

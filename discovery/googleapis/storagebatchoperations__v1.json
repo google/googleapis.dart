@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260128",
+    "revision": "20260422",
     "rootUrl": "https://storagebatchoperations.googleapis.com/",
     "servicePath": "",
     "title": "Storage Batch Operations API",
@@ -139,7 +139,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "storagebatchoperations.projects.locations.list",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -694,6 +694,10 @@
                     ],
                     "readOnly": true,
                     "type": "string"
+                },
+                "updateObjectCustomContext": {
+                    "$ref": "UpdateObjectCustomContext",
+                    "description": "Update object custom context."
                 }
             },
             "type": "object"
@@ -726,7 +730,25 @@
             "id": "Counters",
             "properties": {
                 "failedObjectCount": {
-                    "description": "Output only. Number of objects failed.",
+                    "description": "Output only. The number of objects that failed due to user errors or service errors.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "objectCustomContextsCreated": {
+                    "description": "Output only. Number of object custom contexts created. This field is only populated for jobs with the UpdateObjectCustomContext transformation.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "objectCustomContextsDeleted": {
+                    "description": "Output only. Number of object custom contexts deleted. This field is only populated for jobs with the UpdateObjectCustomContext transformation.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "objectCustomContextsUpdated": {
+                    "description": "Output only. Number of object custom contexts updated. This counter tracks custom contexts where the key already existed, but the payload was modified. This field is only populated for jobs with the UpdateObjectCustomContext transformation.",
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
@@ -748,6 +770,27 @@
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CustomContextUpdates": {
+            "description": "Describes a collection of updates to apply to custom contexts identified by key.",
+            "id": "CustomContextUpdates",
+            "properties": {
+                "keysToClear": {
+                    "description": "Optional. Custom contexts to clear by key. A key cannot be present in both `updates` and `keys_to_clear`.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "updates": {
+                    "additionalProperties": {
+                        "$ref": "ObjectCustomContextPayload"
+                    },
+                    "description": "Optional. Insert or update the existing custom contexts.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -895,6 +938,11 @@
                     "readOnly": true,
                     "type": "array"
                 },
+                "isMultiBucketJob": {
+                    "description": "Output only. If true, this Job operates on multiple buckets. Multibucket jobs are subject to different quota limits than single-bucket jobs.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "loggingConfig": {
                     "$ref": "LoggingConfig",
                     "description": "Optional. Logging configuration."
@@ -928,17 +976,23 @@
                         "RUNNING",
                         "SUCCEEDED",
                         "CANCELED",
-                        "FAILED"
+                        "FAILED",
+                        "QUEUED"
                     ],
                     "enumDescriptions": [
                         "Default value. This value is unused.",
                         "In progress.",
                         "Completed successfully.",
                         "Cancelled by the user.",
-                        "Terminated due to an unrecoverable failure."
+                        "Terminated due to an unrecoverable failure.",
+                        "Queued but not yet started."
                     ],
                     "readOnly": true,
                     "type": "string"
+                },
+                "updateObjectCustomContext": {
+                    "$ref": "UpdateObjectCustomContext",
+                    "description": "Update object custom context."
                 }
             },
             "type": "object"
@@ -1115,6 +1169,17 @@
             "properties": {
                 "manifestLocation": {
                     "description": "Required. `manifest_location` must contain the manifest source file that is a CSV file in a Google Cloud Storage bucket. Each row in the file must include the object details i.e. BucketId and Name. Generation may optionally be specified. When it is not specified the live object is acted upon. `manifest_location` should either be 1) An absolute path to the object in the format of `gs://bucket_name/path/file_name.csv`. 2) An absolute path with a single wildcard character in the file name, for example `gs://bucket_name/path/file_name*.csv`. If manifest location is specified with a wildcard, objects in all manifest files matching the pattern will be acted upon.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ObjectCustomContextPayload": {
+            "description": "Describes the payload of a user defined object custom context.",
+            "id": "ObjectCustomContextPayload",
+            "properties": {
+                "value": {
+                    "description": "The value of the object custom context. If set, `value` must NOT be an empty string since it is a required field in custom context. If unset, `value` will be ignored and no changes will be made to the `value` field of the custom context payload.",
                     "type": "string"
                 }
             },
@@ -1344,6 +1409,21 @@
                 "message": {
                     "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateObjectCustomContext": {
+            "description": "Describes options to update object custom contexts.",
+            "id": "UpdateObjectCustomContext",
+            "properties": {
+                "clearAll": {
+                    "description": "If set, must be set to true and all existing object custom contexts will be deleted.",
+                    "type": "boolean"
+                },
+                "customContextUpdates": {
+                    "$ref": "CustomContextUpdates",
+                    "description": "A collection of updates to apply to specific custom contexts. Use this to add, update or delete individual contexts by key."
                 }
             },
             "type": "object"

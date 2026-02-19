@@ -101,7 +101,9 @@ api.AudienceMember buildAudienceMember() {
     o.destinationReferences = buildUnnamed0();
     o.mobileData = buildMobileData();
     o.pairData = buildPairData();
+    o.ppidData = buildPpidData();
     o.userData = buildUserData();
+    o.userIdData = buildUserIdData();
   }
   buildCounterAudienceMember--;
   return o;
@@ -114,7 +116,9 @@ void checkAudienceMember(api.AudienceMember o) {
     checkUnnamed0(o.destinationReferences!);
     checkMobileData(o.mobileData!);
     checkPairData(o.pairData!);
+    checkPpidData(o.ppidData!);
     checkUserData(o.userData!);
+    checkUserIdData(o.userIdData!);
   }
   buildCounterAudienceMember--;
 }
@@ -142,6 +146,27 @@ void checkAwsWrappedKeyInfo(api.AwsWrappedKeyInfo o) {
     unittest.expect(o.roleArn!, unittest.equals('foo'));
   }
   buildCounterAwsWrappedKeyInfo--;
+}
+
+core.int buildCounterBaseline = 0;
+api.Baseline buildBaseline() {
+  final o = api.Baseline();
+  buildCounterBaseline++;
+  if (buildCounterBaseline < 3) {
+    o.baselineLocation = buildLocation();
+    o.locationAutoDetectionEnabled = true;
+  }
+  buildCounterBaseline--;
+  return o;
+}
+
+void checkBaseline(api.Baseline o) {
+  buildCounterBaseline++;
+  if (buildCounterBaseline < 3) {
+    checkLocation(o.baselineLocation!);
+    unittest.expect(o.locationAutoDetectionEnabled!, unittest.isTrue);
+  }
+  buildCounterBaseline--;
 }
 
 core.List<api.Item> buildUnnamed1() => [buildItem(), buildItem()];
@@ -198,6 +223,27 @@ void checkConsent(api.Consent o) {
     unittest.expect(o.adUserData!, unittest.equals('foo'));
   }
   buildCounterConsent--;
+}
+
+core.int buildCounterContactIdInfo = 0;
+api.ContactIdInfo buildContactIdInfo() {
+  final o = api.ContactIdInfo();
+  buildCounterContactIdInfo++;
+  if (buildCounterContactIdInfo < 3) {
+    o.dataSourceType = 'foo';
+    o.matchRatePercentage = 42;
+  }
+  buildCounterContactIdInfo--;
+  return o;
+}
+
+void checkContactIdInfo(api.ContactIdInfo o) {
+  buildCounterContactIdInfo++;
+  if (buildCounterContactIdInfo < 3) {
+    unittest.expect(o.dataSourceType!, unittest.equals('foo'));
+    unittest.expect(o.matchRatePercentage!, unittest.equals(42));
+  }
+  buildCounterContactIdInfo--;
 }
 
 core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
@@ -277,6 +323,21 @@ void checkDeviceInfo(api.DeviceInfo o) {
     unittest.expect(o.userAgent!, unittest.equals('foo'));
   }
   buildCounterDeviceInfo--;
+}
+
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
 }
 
 core.int buildCounterEncryptionInfo = 0;
@@ -593,7 +654,9 @@ api.IngestAudienceMembersStatus buildIngestAudienceMembersStatus() {
   if (buildCounterIngestAudienceMembersStatus < 3) {
     o.mobileDataIngestionStatus = buildIngestMobileDataStatus();
     o.pairDataIngestionStatus = buildIngestPairDataStatus();
+    o.ppidDataIngestionStatus = buildIngestPpidDataStatus();
     o.userDataIngestionStatus = buildIngestUserDataStatus();
+    o.userIdDataIngestionStatus = buildIngestUserIdDataStatus();
   }
   buildCounterIngestAudienceMembersStatus--;
   return o;
@@ -604,7 +667,9 @@ void checkIngestAudienceMembersStatus(api.IngestAudienceMembersStatus o) {
   if (buildCounterIngestAudienceMembersStatus < 3) {
     checkIngestMobileDataStatus(o.mobileDataIngestionStatus!);
     checkIngestPairDataStatus(o.pairDataIngestionStatus!);
+    checkIngestPpidDataStatus(o.ppidDataIngestionStatus!);
     checkIngestUserDataStatus(o.userDataIngestionStatus!);
+    checkIngestUserIdDataStatus(o.userIdDataIngestionStatus!);
   }
   buildCounterIngestAudienceMembersStatus--;
 }
@@ -737,6 +802,27 @@ void checkIngestPairDataStatus(api.IngestPairDataStatus o) {
   buildCounterIngestPairDataStatus--;
 }
 
+core.int buildCounterIngestPpidDataStatus = 0;
+api.IngestPpidDataStatus buildIngestPpidDataStatus() {
+  final o = api.IngestPpidDataStatus();
+  buildCounterIngestPpidDataStatus++;
+  if (buildCounterIngestPpidDataStatus < 3) {
+    o.ppidCount = 'foo';
+    o.recordCount = 'foo';
+  }
+  buildCounterIngestPpidDataStatus--;
+  return o;
+}
+
+void checkIngestPpidDataStatus(api.IngestPpidDataStatus o) {
+  buildCounterIngestPpidDataStatus++;
+  if (buildCounterIngestPpidDataStatus < 3) {
+    unittest.expect(o.ppidCount!, unittest.equals('foo'));
+    unittest.expect(o.recordCount!, unittest.equals('foo'));
+  }
+  buildCounterIngestPpidDataStatus--;
+}
+
 core.int buildCounterIngestUserDataStatus = 0;
 api.IngestUserDataStatus buildIngestUserDataStatus() {
   final o = api.IngestUserDataStatus();
@@ -760,12 +846,72 @@ void checkIngestUserDataStatus(api.IngestUserDataStatus o) {
   buildCounterIngestUserDataStatus--;
 }
 
-core.List<api.ItemParameter> buildUnnamed12() => [
+core.int buildCounterIngestUserIdDataStatus = 0;
+api.IngestUserIdDataStatus buildIngestUserIdDataStatus() {
+  final o = api.IngestUserIdDataStatus();
+  buildCounterIngestUserIdDataStatus++;
+  if (buildCounterIngestUserIdDataStatus < 3) {
+    o.recordCount = 'foo';
+    o.userIdCount = 'foo';
+  }
+  buildCounterIngestUserIdDataStatus--;
+  return o;
+}
+
+void checkIngestUserIdDataStatus(api.IngestUserIdDataStatus o) {
+  buildCounterIngestUserIdDataStatus++;
+  if (buildCounterIngestUserIdDataStatus < 3) {
+    unittest.expect(o.recordCount!, unittest.equals('foo'));
+    unittest.expect(o.userIdCount!, unittest.equals('foo'));
+  }
+  buildCounterIngestUserIdDataStatus--;
+}
+
+core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
+
+void checkUnnamed12(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterIngestedUserListInfo = 0;
+api.IngestedUserListInfo buildIngestedUserListInfo() {
+  final o = api.IngestedUserListInfo();
+  buildCounterIngestedUserListInfo++;
+  if (buildCounterIngestedUserListInfo < 3) {
+    o.contactIdInfo = buildContactIdInfo();
+    o.mobileIdInfo = buildMobileIdInfo();
+    o.pairIdInfo = buildPairIdInfo();
+    o.partnerAudienceInfo = buildPartnerAudienceInfo();
+    o.pseudonymousIdInfo = buildPseudonymousIdInfo();
+    o.uploadKeyTypes = buildUnnamed12();
+    o.userIdInfo = buildUserIdInfo();
+  }
+  buildCounterIngestedUserListInfo--;
+  return o;
+}
+
+void checkIngestedUserListInfo(api.IngestedUserListInfo o) {
+  buildCounterIngestedUserListInfo++;
+  if (buildCounterIngestedUserListInfo < 3) {
+    checkContactIdInfo(o.contactIdInfo!);
+    checkMobileIdInfo(o.mobileIdInfo!);
+    checkPairIdInfo(o.pairIdInfo!);
+    checkPartnerAudienceInfo(o.partnerAudienceInfo!);
+    checkPseudonymousIdInfo(o.pseudonymousIdInfo!);
+    checkUnnamed12(o.uploadKeyTypes!);
+    checkUserIdInfo(o.userIdInfo!);
+  }
+  buildCounterIngestedUserListInfo--;
+}
+
+core.List<api.ItemParameter> buildUnnamed13() => [
   buildItemParameter(),
   buildItemParameter(),
 ];
 
-void checkUnnamed12(core.List<api.ItemParameter> o) {
+void checkUnnamed13(core.List<api.ItemParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkItemParameter(o[0]);
   checkItemParameter(o[1]);
@@ -776,7 +922,7 @@ api.Item buildItem() {
   final o = api.Item();
   buildCounterItem++;
   if (buildCounterItem < 3) {
-    o.additionalItemParameters = buildUnnamed12();
+    o.additionalItemParameters = buildUnnamed13();
     o.itemId = 'foo';
     o.merchantProductId = 'foo';
     o.quantity = 'foo';
@@ -789,7 +935,7 @@ api.Item buildItem() {
 void checkItem(api.Item o) {
   buildCounterItem++;
   if (buildCounterItem < 3) {
-    checkUnnamed12(o.additionalItemParameters!);
+    checkUnnamed13(o.additionalItemParameters!);
     unittest.expect(o.itemId!, unittest.equals('foo'));
     unittest.expect(o.merchantProductId!, unittest.equals('foo'));
     unittest.expect(o.quantity!, unittest.equals('foo'));
@@ -819,9 +965,227 @@ void checkItemParameter(api.ItemParameter o) {
   buildCounterItemParameter--;
 }
 
-core.List<core.String> buildUnnamed13() => ['foo', 'foo'];
+core.List<api.UserListDirectLicense> buildUnnamed14() => [
+  buildUserListDirectLicense(),
+  buildUserListDirectLicense(),
+];
 
-void checkUnnamed13(core.List<core.String> o) {
+void checkUnnamed14(core.List<api.UserListDirectLicense> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserListDirectLicense(o[0]);
+  checkUserListDirectLicense(o[1]);
+}
+
+core.int buildCounterListUserListDirectLicensesResponse = 0;
+api.ListUserListDirectLicensesResponse
+buildListUserListDirectLicensesResponse() {
+  final o = api.ListUserListDirectLicensesResponse();
+  buildCounterListUserListDirectLicensesResponse++;
+  if (buildCounterListUserListDirectLicensesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.userListDirectLicenses = buildUnnamed14();
+  }
+  buildCounterListUserListDirectLicensesResponse--;
+  return o;
+}
+
+void checkListUserListDirectLicensesResponse(
+  api.ListUserListDirectLicensesResponse o,
+) {
+  buildCounterListUserListDirectLicensesResponse++;
+  if (buildCounterListUserListDirectLicensesResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed14(o.userListDirectLicenses!);
+  }
+  buildCounterListUserListDirectLicensesResponse--;
+}
+
+core.List<api.UserListGlobalLicenseCustomerInfo> buildUnnamed15() => [
+  buildUserListGlobalLicenseCustomerInfo(),
+  buildUserListGlobalLicenseCustomerInfo(),
+];
+
+void checkUnnamed15(core.List<api.UserListGlobalLicenseCustomerInfo> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserListGlobalLicenseCustomerInfo(o[0]);
+  checkUserListGlobalLicenseCustomerInfo(o[1]);
+}
+
+core.int buildCounterListUserListGlobalLicenseCustomerInfosResponse = 0;
+api.ListUserListGlobalLicenseCustomerInfosResponse
+buildListUserListGlobalLicenseCustomerInfosResponse() {
+  final o = api.ListUserListGlobalLicenseCustomerInfosResponse();
+  buildCounterListUserListGlobalLicenseCustomerInfosResponse++;
+  if (buildCounterListUserListGlobalLicenseCustomerInfosResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.userListGlobalLicenseCustomerInfos = buildUnnamed15();
+  }
+  buildCounterListUserListGlobalLicenseCustomerInfosResponse--;
+  return o;
+}
+
+void checkListUserListGlobalLicenseCustomerInfosResponse(
+  api.ListUserListGlobalLicenseCustomerInfosResponse o,
+) {
+  buildCounterListUserListGlobalLicenseCustomerInfosResponse++;
+  if (buildCounterListUserListGlobalLicenseCustomerInfosResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed15(o.userListGlobalLicenseCustomerInfos!);
+  }
+  buildCounterListUserListGlobalLicenseCustomerInfosResponse--;
+}
+
+core.List<api.UserListGlobalLicense> buildUnnamed16() => [
+  buildUserListGlobalLicense(),
+  buildUserListGlobalLicense(),
+];
+
+void checkUnnamed16(core.List<api.UserListGlobalLicense> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserListGlobalLicense(o[0]);
+  checkUserListGlobalLicense(o[1]);
+}
+
+core.int buildCounterListUserListGlobalLicensesResponse = 0;
+api.ListUserListGlobalLicensesResponse
+buildListUserListGlobalLicensesResponse() {
+  final o = api.ListUserListGlobalLicensesResponse();
+  buildCounterListUserListGlobalLicensesResponse++;
+  if (buildCounterListUserListGlobalLicensesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.userListGlobalLicenses = buildUnnamed16();
+  }
+  buildCounterListUserListGlobalLicensesResponse--;
+  return o;
+}
+
+void checkListUserListGlobalLicensesResponse(
+  api.ListUserListGlobalLicensesResponse o,
+) {
+  buildCounterListUserListGlobalLicensesResponse++;
+  if (buildCounterListUserListGlobalLicensesResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed16(o.userListGlobalLicenses!);
+  }
+  buildCounterListUserListGlobalLicensesResponse--;
+}
+
+core.List<api.UserList> buildUnnamed17() => [buildUserList(), buildUserList()];
+
+void checkUnnamed17(core.List<api.UserList> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserList(o[0]);
+  checkUserList(o[1]);
+}
+
+core.int buildCounterListUserListsResponse = 0;
+api.ListUserListsResponse buildListUserListsResponse() {
+  final o = api.ListUserListsResponse();
+  buildCounterListUserListsResponse++;
+  if (buildCounterListUserListsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.userLists = buildUnnamed17();
+  }
+  buildCounterListUserListsResponse--;
+  return o;
+}
+
+void checkListUserListsResponse(api.ListUserListsResponse o) {
+  buildCounterListUserListsResponse++;
+  if (buildCounterListUserListsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed17(o.userLists!);
+  }
+  buildCounterListUserListsResponse--;
+}
+
+core.List<core.String> buildUnnamed18() => ['foo', 'foo'];
+
+void checkUnnamed18(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterLocation = 0;
+api.Location buildLocation() {
+  final o = api.Location();
+  buildCounterLocation++;
+  if (buildCounterLocation < 3) {
+    o.regionCodes = buildUnnamed18();
+  }
+  buildCounterLocation--;
+  return o;
+}
+
+void checkLocation(api.Location o) {
+  buildCounterLocation++;
+  if (buildCounterLocation < 3) {
+    checkUnnamed18(o.regionCodes!);
+  }
+  buildCounterLocation--;
+}
+
+core.List<api.MarketingDataInsightsAttribute> buildUnnamed19() => [
+  buildMarketingDataInsightsAttribute(),
+  buildMarketingDataInsightsAttribute(),
+];
+
+void checkUnnamed19(core.List<api.MarketingDataInsightsAttribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMarketingDataInsightsAttribute(o[0]);
+  checkMarketingDataInsightsAttribute(o[1]);
+}
+
+core.int buildCounterMarketingDataInsight = 0;
+api.MarketingDataInsight buildMarketingDataInsight() {
+  final o = api.MarketingDataInsight();
+  buildCounterMarketingDataInsight++;
+  if (buildCounterMarketingDataInsight < 3) {
+    o.attributes = buildUnnamed19();
+    o.dimension = 'foo';
+  }
+  buildCounterMarketingDataInsight--;
+  return o;
+}
+
+void checkMarketingDataInsight(api.MarketingDataInsight o) {
+  buildCounterMarketingDataInsight++;
+  if (buildCounterMarketingDataInsight < 3) {
+    checkUnnamed19(o.attributes!);
+    unittest.expect(o.dimension!, unittest.equals('foo'));
+  }
+  buildCounterMarketingDataInsight--;
+}
+
+core.int buildCounterMarketingDataInsightsAttribute = 0;
+api.MarketingDataInsightsAttribute buildMarketingDataInsightsAttribute() {
+  final o = api.MarketingDataInsightsAttribute();
+  buildCounterMarketingDataInsightsAttribute++;
+  if (buildCounterMarketingDataInsightsAttribute < 3) {
+    o.ageRange = 'foo';
+    o.gender = 'foo';
+    o.lift = 42.0;
+    o.userInterestId = 'foo';
+  }
+  buildCounterMarketingDataInsightsAttribute--;
+  return o;
+}
+
+void checkMarketingDataInsightsAttribute(api.MarketingDataInsightsAttribute o) {
+  buildCounterMarketingDataInsightsAttribute++;
+  if (buildCounterMarketingDataInsightsAttribute < 3) {
+    unittest.expect(o.ageRange!, unittest.equals('foo'));
+    unittest.expect(o.gender!, unittest.equals('foo'));
+    unittest.expect(o.lift!, unittest.equals(42.0));
+    unittest.expect(o.userInterestId!, unittest.equals('foo'));
+  }
+  buildCounterMarketingDataInsightsAttribute--;
+}
+
+core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
+
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -832,7 +1196,7 @@ api.MobileData buildMobileData() {
   final o = api.MobileData();
   buildCounterMobileData++;
   if (buildCounterMobileData < 3) {
-    o.mobileIds = buildUnnamed13();
+    o.mobileIds = buildUnnamed20();
   }
   buildCounterMobileData--;
   return o;
@@ -841,14 +1205,37 @@ api.MobileData buildMobileData() {
 void checkMobileData(api.MobileData o) {
   buildCounterMobileData++;
   if (buildCounterMobileData < 3) {
-    checkUnnamed13(o.mobileIds!);
+    checkUnnamed20(o.mobileIds!);
   }
   buildCounterMobileData--;
 }
 
-core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
+core.int buildCounterMobileIdInfo = 0;
+api.MobileIdInfo buildMobileIdInfo() {
+  final o = api.MobileIdInfo();
+  buildCounterMobileIdInfo++;
+  if (buildCounterMobileIdInfo < 3) {
+    o.appId = 'foo';
+    o.dataSourceType = 'foo';
+    o.keySpace = 'foo';
+  }
+  buildCounterMobileIdInfo--;
+  return o;
+}
 
-void checkUnnamed14(core.List<core.String> o) {
+void checkMobileIdInfo(api.MobileIdInfo o) {
+  buildCounterMobileIdInfo++;
+  if (buildCounterMobileIdInfo < 3) {
+    unittest.expect(o.appId!, unittest.equals('foo'));
+    unittest.expect(o.dataSourceType!, unittest.equals('foo'));
+    unittest.expect(o.keySpace!, unittest.equals('foo'));
+  }
+  buildCounterMobileIdInfo--;
+}
+
+core.List<core.String> buildUnnamed21() => ['foo', 'foo'];
+
+void checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -859,7 +1246,7 @@ api.PairData buildPairData() {
   final o = api.PairData();
   buildCounterPairData++;
   if (buildCounterPairData < 3) {
-    o.pairIds = buildUnnamed14();
+    o.pairIds = buildUnnamed21();
   }
   buildCounterPairData--;
   return o;
@@ -868,9 +1255,109 @@ api.PairData buildPairData() {
 void checkPairData(api.PairData o) {
   buildCounterPairData++;
   if (buildCounterPairData < 3) {
-    checkUnnamed14(o.pairIds!);
+    checkUnnamed21(o.pairIds!);
   }
   buildCounterPairData--;
+}
+
+core.int buildCounterPairIdInfo = 0;
+api.PairIdInfo buildPairIdInfo() {
+  final o = api.PairIdInfo();
+  buildCounterPairIdInfo++;
+  if (buildCounterPairIdInfo < 3) {
+    o.advertiserIdentifierCount = 'foo';
+    o.cleanRoomIdentifier = 'foo';
+    o.matchRatePercentage = 42;
+    o.publisherId = 'foo';
+    o.publisherName = 'foo';
+  }
+  buildCounterPairIdInfo--;
+  return o;
+}
+
+void checkPairIdInfo(api.PairIdInfo o) {
+  buildCounterPairIdInfo++;
+  if (buildCounterPairIdInfo < 3) {
+    unittest.expect(o.advertiserIdentifierCount!, unittest.equals('foo'));
+    unittest.expect(o.cleanRoomIdentifier!, unittest.equals('foo'));
+    unittest.expect(o.matchRatePercentage!, unittest.equals(42));
+    unittest.expect(o.publisherId!, unittest.equals('foo'));
+    unittest.expect(o.publisherName!, unittest.equals('foo'));
+  }
+  buildCounterPairIdInfo--;
+}
+
+core.int buildCounterPartnerAudienceInfo = 0;
+api.PartnerAudienceInfo buildPartnerAudienceInfo() {
+  final o = api.PartnerAudienceInfo();
+  buildCounterPartnerAudienceInfo++;
+  if (buildCounterPartnerAudienceInfo < 3) {
+    o.commercePartner = 'foo';
+    o.partnerAudienceSource = 'foo';
+  }
+  buildCounterPartnerAudienceInfo--;
+  return o;
+}
+
+void checkPartnerAudienceInfo(api.PartnerAudienceInfo o) {
+  buildCounterPartnerAudienceInfo++;
+  if (buildCounterPartnerAudienceInfo < 3) {
+    unittest.expect(o.commercePartner!, unittest.equals('foo'));
+    unittest.expect(o.partnerAudienceSource!, unittest.equals('foo'));
+  }
+  buildCounterPartnerAudienceInfo--;
+}
+
+core.int buildCounterPartnerLink = 0;
+api.PartnerLink buildPartnerLink() {
+  final o = api.PartnerLink();
+  buildCounterPartnerLink++;
+  if (buildCounterPartnerLink < 3) {
+    o.name = 'foo';
+    o.owningAccount = buildProductAccount();
+    o.partnerAccount = buildProductAccount();
+    o.partnerLinkId = 'foo';
+  }
+  buildCounterPartnerLink--;
+  return o;
+}
+
+void checkPartnerLink(api.PartnerLink o) {
+  buildCounterPartnerLink++;
+  if (buildCounterPartnerLink < 3) {
+    unittest.expect(o.name!, unittest.equals('foo'));
+    checkProductAccount(o.owningAccount!);
+    checkProductAccount(o.partnerAccount!);
+    unittest.expect(o.partnerLinkId!, unittest.equals('foo'));
+  }
+  buildCounterPartnerLink--;
+}
+
+core.List<core.String> buildUnnamed22() => ['foo', 'foo'];
+
+void checkUnnamed22(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterPpidData = 0;
+api.PpidData buildPpidData() {
+  final o = api.PpidData();
+  buildCounterPpidData++;
+  if (buildCounterPpidData < 3) {
+    o.ppids = buildUnnamed22();
+  }
+  buildCounterPpidData--;
+  return o;
+}
+
+void checkPpidData(api.PpidData o) {
+  buildCounterPpidData++;
+  if (buildCounterPpidData < 3) {
+    checkUnnamed22(o.ppids!);
+  }
+  buildCounterPpidData--;
 }
 
 core.int buildCounterProductAccount = 0;
@@ -896,23 +1383,44 @@ void checkProductAccount(api.ProductAccount o) {
   buildCounterProductAccount--;
 }
 
-core.List<api.AudienceMember> buildUnnamed15() => [
+core.int buildCounterPseudonymousIdInfo = 0;
+api.PseudonymousIdInfo buildPseudonymousIdInfo() {
+  final o = api.PseudonymousIdInfo();
+  buildCounterPseudonymousIdInfo++;
+  if (buildCounterPseudonymousIdInfo < 3) {
+    o.billableRecordCount = 'foo';
+    o.syncStatus = 'foo';
+  }
+  buildCounterPseudonymousIdInfo--;
+  return o;
+}
+
+void checkPseudonymousIdInfo(api.PseudonymousIdInfo o) {
+  buildCounterPseudonymousIdInfo++;
+  if (buildCounterPseudonymousIdInfo < 3) {
+    unittest.expect(o.billableRecordCount!, unittest.equals('foo'));
+    unittest.expect(o.syncStatus!, unittest.equals('foo'));
+  }
+  buildCounterPseudonymousIdInfo--;
+}
+
+core.List<api.AudienceMember> buildUnnamed23() => [
   buildAudienceMember(),
   buildAudienceMember(),
 ];
 
-void checkUnnamed15(core.List<api.AudienceMember> o) {
+void checkUnnamed23(core.List<api.AudienceMember> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAudienceMember(o[0]);
   checkAudienceMember(o[1]);
 }
 
-core.List<api.Destination> buildUnnamed16() => [
+core.List<api.Destination> buildUnnamed24() => [
   buildDestination(),
   buildDestination(),
 ];
 
-void checkUnnamed16(core.List<api.Destination> o) {
+void checkUnnamed24(core.List<api.Destination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDestination(o[0]);
   checkDestination(o[1]);
@@ -923,8 +1431,8 @@ api.RemoveAudienceMembersRequest buildRemoveAudienceMembersRequest() {
   final o = api.RemoveAudienceMembersRequest();
   buildCounterRemoveAudienceMembersRequest++;
   if (buildCounterRemoveAudienceMembersRequest < 3) {
-    o.audienceMembers = buildUnnamed15();
-    o.destinations = buildUnnamed16();
+    o.audienceMembers = buildUnnamed23();
+    o.destinations = buildUnnamed24();
     o.encoding = 'foo';
     o.encryptionInfo = buildEncryptionInfo();
     o.validateOnly = true;
@@ -936,8 +1444,8 @@ api.RemoveAudienceMembersRequest buildRemoveAudienceMembersRequest() {
 void checkRemoveAudienceMembersRequest(api.RemoveAudienceMembersRequest o) {
   buildCounterRemoveAudienceMembersRequest++;
   if (buildCounterRemoveAudienceMembersRequest < 3) {
-    checkUnnamed15(o.audienceMembers!);
-    checkUnnamed16(o.destinations!);
+    checkUnnamed23(o.audienceMembers!);
+    checkUnnamed24(o.destinations!);
     unittest.expect(o.encoding!, unittest.equals('foo'));
     checkEncryptionInfo(o.encryptionInfo!);
     unittest.expect(o.validateOnly!, unittest.isTrue);
@@ -971,7 +1479,9 @@ api.RemoveAudienceMembersStatus buildRemoveAudienceMembersStatus() {
   if (buildCounterRemoveAudienceMembersStatus < 3) {
     o.mobileDataRemovalStatus = buildRemoveMobileDataStatus();
     o.pairDataRemovalStatus = buildRemovePairDataStatus();
+    o.ppidDataRemovalStatus = buildRemovePpidDataStatus();
     o.userDataRemovalStatus = buildRemoveUserDataStatus();
+    o.userIdDataRemovalStatus = buildRemoveUserIdDataStatus();
   }
   buildCounterRemoveAudienceMembersStatus--;
   return o;
@@ -982,7 +1492,9 @@ void checkRemoveAudienceMembersStatus(api.RemoveAudienceMembersStatus o) {
   if (buildCounterRemoveAudienceMembersStatus < 3) {
     checkRemoveMobileDataStatus(o.mobileDataRemovalStatus!);
     checkRemovePairDataStatus(o.pairDataRemovalStatus!);
+    checkRemovePpidDataStatus(o.ppidDataRemovalStatus!);
     checkRemoveUserDataStatus(o.userDataRemovalStatus!);
+    checkRemoveUserIdDataStatus(o.userIdDataRemovalStatus!);
   }
   buildCounterRemoveAudienceMembersStatus--;
 }
@@ -1029,6 +1541,27 @@ void checkRemovePairDataStatus(api.RemovePairDataStatus o) {
   buildCounterRemovePairDataStatus--;
 }
 
+core.int buildCounterRemovePpidDataStatus = 0;
+api.RemovePpidDataStatus buildRemovePpidDataStatus() {
+  final o = api.RemovePpidDataStatus();
+  buildCounterRemovePpidDataStatus++;
+  if (buildCounterRemovePpidDataStatus < 3) {
+    o.ppidCount = 'foo';
+    o.recordCount = 'foo';
+  }
+  buildCounterRemovePpidDataStatus--;
+  return o;
+}
+
+void checkRemovePpidDataStatus(api.RemovePpidDataStatus o) {
+  buildCounterRemovePpidDataStatus++;
+  if (buildCounterRemovePpidDataStatus < 3) {
+    unittest.expect(o.ppidCount!, unittest.equals('foo'));
+    unittest.expect(o.recordCount!, unittest.equals('foo'));
+  }
+  buildCounterRemovePpidDataStatus--;
+}
+
 core.int buildCounterRemoveUserDataStatus = 0;
 api.RemoveUserDataStatus buildRemoveUserDataStatus() {
   final o = api.RemoveUserDataStatus();
@@ -1048,6 +1581,27 @@ void checkRemoveUserDataStatus(api.RemoveUserDataStatus o) {
     unittest.expect(o.userIdentifierCount!, unittest.equals('foo'));
   }
   buildCounterRemoveUserDataStatus--;
+}
+
+core.int buildCounterRemoveUserIdDataStatus = 0;
+api.RemoveUserIdDataStatus buildRemoveUserIdDataStatus() {
+  final o = api.RemoveUserIdDataStatus();
+  buildCounterRemoveUserIdDataStatus++;
+  if (buildCounterRemoveUserIdDataStatus < 3) {
+    o.recordCount = 'foo';
+    o.userIdCount = 'foo';
+  }
+  buildCounterRemoveUserIdDataStatus--;
+  return o;
+}
+
+void checkRemoveUserIdDataStatus(api.RemoveUserIdDataStatus o) {
+  buildCounterRemoveUserIdDataStatus++;
+  if (buildCounterRemoveUserIdDataStatus < 3) {
+    unittest.expect(o.recordCount!, unittest.equals('foo'));
+    unittest.expect(o.userIdCount!, unittest.equals('foo'));
+  }
+  buildCounterRemoveUserIdDataStatus--;
 }
 
 core.int buildCounterRequestStatusPerDestination = 0;
@@ -1081,12 +1635,63 @@ void checkRequestStatusPerDestination(api.RequestStatusPerDestination o) {
   buildCounterRequestStatusPerDestination--;
 }
 
-core.List<api.RequestStatusPerDestination> buildUnnamed17() => [
+core.int buildCounterRetrieveInsightsRequest = 0;
+api.RetrieveInsightsRequest buildRetrieveInsightsRequest() {
+  final o = api.RetrieveInsightsRequest();
+  buildCounterRetrieveInsightsRequest++;
+  if (buildCounterRetrieveInsightsRequest < 3) {
+    o.baseline = buildBaseline();
+    o.userListId = 'foo';
+  }
+  buildCounterRetrieveInsightsRequest--;
+  return o;
+}
+
+void checkRetrieveInsightsRequest(api.RetrieveInsightsRequest o) {
+  buildCounterRetrieveInsightsRequest++;
+  if (buildCounterRetrieveInsightsRequest < 3) {
+    checkBaseline(o.baseline!);
+    unittest.expect(o.userListId!, unittest.equals('foo'));
+  }
+  buildCounterRetrieveInsightsRequest--;
+}
+
+core.List<api.MarketingDataInsight> buildUnnamed25() => [
+  buildMarketingDataInsight(),
+  buildMarketingDataInsight(),
+];
+
+void checkUnnamed25(core.List<api.MarketingDataInsight> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMarketingDataInsight(o[0]);
+  checkMarketingDataInsight(o[1]);
+}
+
+core.int buildCounterRetrieveInsightsResponse = 0;
+api.RetrieveInsightsResponse buildRetrieveInsightsResponse() {
+  final o = api.RetrieveInsightsResponse();
+  buildCounterRetrieveInsightsResponse++;
+  if (buildCounterRetrieveInsightsResponse < 3) {
+    o.marketingDataInsights = buildUnnamed25();
+  }
+  buildCounterRetrieveInsightsResponse--;
+  return o;
+}
+
+void checkRetrieveInsightsResponse(api.RetrieveInsightsResponse o) {
+  buildCounterRetrieveInsightsResponse++;
+  if (buildCounterRetrieveInsightsResponse < 3) {
+    checkUnnamed25(o.marketingDataInsights!);
+  }
+  buildCounterRetrieveInsightsResponse--;
+}
+
+core.List<api.RequestStatusPerDestination> buildUnnamed26() => [
   buildRequestStatusPerDestination(),
   buildRequestStatusPerDestination(),
 ];
 
-void checkUnnamed17(core.List<api.RequestStatusPerDestination> o) {
+void checkUnnamed26(core.List<api.RequestStatusPerDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRequestStatusPerDestination(o[0]);
   checkRequestStatusPerDestination(o[1]);
@@ -1097,7 +1702,7 @@ api.RetrieveRequestStatusResponse buildRetrieveRequestStatusResponse() {
   final o = api.RetrieveRequestStatusResponse();
   buildCounterRetrieveRequestStatusResponse++;
   if (buildCounterRetrieveRequestStatusResponse < 3) {
-    o.requestStatusPerDestination = buildUnnamed17();
+    o.requestStatusPerDestination = buildUnnamed26();
   }
   buildCounterRetrieveRequestStatusResponse--;
   return o;
@@ -1106,9 +1711,83 @@ api.RetrieveRequestStatusResponse buildRetrieveRequestStatusResponse() {
 void checkRetrieveRequestStatusResponse(api.RetrieveRequestStatusResponse o) {
   buildCounterRetrieveRequestStatusResponse++;
   if (buildCounterRetrieveRequestStatusResponse < 3) {
-    checkUnnamed17(o.requestStatusPerDestination!);
+    checkUnnamed26(o.requestStatusPerDestination!);
   }
   buildCounterRetrieveRequestStatusResponse--;
+}
+
+core.List<api.PartnerLink> buildUnnamed27() => [
+  buildPartnerLink(),
+  buildPartnerLink(),
+];
+
+void checkUnnamed27(core.List<api.PartnerLink> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPartnerLink(o[0]);
+  checkPartnerLink(o[1]);
+}
+
+core.int buildCounterSearchPartnerLinksResponse = 0;
+api.SearchPartnerLinksResponse buildSearchPartnerLinksResponse() {
+  final o = api.SearchPartnerLinksResponse();
+  buildCounterSearchPartnerLinksResponse++;
+  if (buildCounterSearchPartnerLinksResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.partnerLinks = buildUnnamed27();
+  }
+  buildCounterSearchPartnerLinksResponse--;
+  return o;
+}
+
+void checkSearchPartnerLinksResponse(api.SearchPartnerLinksResponse o) {
+  buildCounterSearchPartnerLinksResponse++;
+  if (buildCounterSearchPartnerLinksResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed27(o.partnerLinks!);
+  }
+  buildCounterSearchPartnerLinksResponse--;
+}
+
+core.int buildCounterSizeInfo = 0;
+api.SizeInfo buildSizeInfo() {
+  final o = api.SizeInfo();
+  buildCounterSizeInfo++;
+  if (buildCounterSizeInfo < 3) {
+    o.displayNetworkMembersCount = 'foo';
+    o.searchNetworkMembersCount = 'foo';
+  }
+  buildCounterSizeInfo--;
+  return o;
+}
+
+void checkSizeInfo(api.SizeInfo o) {
+  buildCounterSizeInfo++;
+  if (buildCounterSizeInfo < 3) {
+    unittest.expect(o.displayNetworkMembersCount!, unittest.equals('foo'));
+    unittest.expect(o.searchNetworkMembersCount!, unittest.equals('foo'));
+  }
+  buildCounterSizeInfo--;
+}
+
+core.int buildCounterTargetNetworkInfo = 0;
+api.TargetNetworkInfo buildTargetNetworkInfo() {
+  final o = api.TargetNetworkInfo();
+  buildCounterTargetNetworkInfo++;
+  if (buildCounterTargetNetworkInfo < 3) {
+    o.eligibleForDisplay = true;
+    o.eligibleForSearch = true;
+  }
+  buildCounterTargetNetworkInfo--;
+  return o;
+}
+
+void checkTargetNetworkInfo(api.TargetNetworkInfo o) {
+  buildCounterTargetNetworkInfo++;
+  if (buildCounterTargetNetworkInfo < 3) {
+    unittest.expect(o.eligibleForDisplay!, unittest.isTrue);
+    unittest.expect(o.eligibleForSearch!, unittest.isTrue);
+  }
+  buildCounterTargetNetworkInfo--;
 }
 
 core.int buildCounterTermsOfService = 0;
@@ -1133,12 +1812,12 @@ void checkTermsOfService(api.TermsOfService o) {
   buildCounterTermsOfService--;
 }
 
-core.List<api.UserIdentifier> buildUnnamed18() => [
+core.List<api.UserIdentifier> buildUnnamed28() => [
   buildUserIdentifier(),
   buildUserIdentifier(),
 ];
 
-void checkUnnamed18(core.List<api.UserIdentifier> o) {
+void checkUnnamed28(core.List<api.UserIdentifier> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserIdentifier(o[0]);
   checkUserIdentifier(o[1]);
@@ -1149,7 +1828,7 @@ api.UserData buildUserData() {
   final o = api.UserData();
   buildCounterUserData++;
   if (buildCounterUserData < 3) {
-    o.userIdentifiers = buildUnnamed18();
+    o.userIdentifiers = buildUnnamed28();
   }
   buildCounterUserData--;
   return o;
@@ -1158,9 +1837,47 @@ api.UserData buildUserData() {
 void checkUserData(api.UserData o) {
   buildCounterUserData++;
   if (buildCounterUserData < 3) {
-    checkUnnamed18(o.userIdentifiers!);
+    checkUnnamed28(o.userIdentifiers!);
   }
   buildCounterUserData--;
+}
+
+core.int buildCounterUserIdData = 0;
+api.UserIdData buildUserIdData() {
+  final o = api.UserIdData();
+  buildCounterUserIdData++;
+  if (buildCounterUserIdData < 3) {
+    o.userId = 'foo';
+  }
+  buildCounterUserIdData--;
+  return o;
+}
+
+void checkUserIdData(api.UserIdData o) {
+  buildCounterUserIdData++;
+  if (buildCounterUserIdData < 3) {
+    unittest.expect(o.userId!, unittest.equals('foo'));
+  }
+  buildCounterUserIdData--;
+}
+
+core.int buildCounterUserIdInfo = 0;
+api.UserIdInfo buildUserIdInfo() {
+  final o = api.UserIdInfo();
+  buildCounterUserIdInfo++;
+  if (buildCounterUserIdInfo < 3) {
+    o.dataSourceType = 'foo';
+  }
+  buildCounterUserIdInfo--;
+  return o;
+}
+
+void checkUserIdInfo(api.UserIdInfo o) {
+  buildCounterUserIdInfo++;
+  if (buildCounterUserIdInfo < 3) {
+    unittest.expect(o.dataSourceType!, unittest.equals('foo'));
+  }
+  buildCounterUserIdInfo--;
 }
 
 core.int buildCounterUserIdentifier = 0;
@@ -1186,12 +1903,263 @@ void checkUserIdentifier(api.UserIdentifier o) {
   buildCounterUserIdentifier--;
 }
 
-core.List<api.UserProperty> buildUnnamed19() => [
+core.int buildCounterUserList = 0;
+api.UserList buildUserList() {
+  final o = api.UserList();
+  buildCounterUserList++;
+  if (buildCounterUserList < 3) {
+    o.accessReason = 'foo';
+    o.accountAccessStatus = 'foo';
+    o.closingReason = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.id = 'foo';
+    o.ingestedUserListInfo = buildIngestedUserListInfo();
+    o.integrationCode = 'foo';
+    o.membershipDuration = 'foo';
+    o.membershipStatus = 'foo';
+    o.name = 'foo';
+    o.readOnly = true;
+    o.sizeInfo = buildSizeInfo();
+    o.targetNetworkInfo = buildTargetNetworkInfo();
+  }
+  buildCounterUserList--;
+  return o;
+}
+
+void checkUserList(api.UserList o) {
+  buildCounterUserList++;
+  if (buildCounterUserList < 3) {
+    unittest.expect(o.accessReason!, unittest.equals('foo'));
+    unittest.expect(o.accountAccessStatus!, unittest.equals('foo'));
+    unittest.expect(o.closingReason!, unittest.equals('foo'));
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
+    checkIngestedUserListInfo(o.ingestedUserListInfo!);
+    unittest.expect(o.integrationCode!, unittest.equals('foo'));
+    unittest.expect(o.membershipDuration!, unittest.equals('foo'));
+    unittest.expect(o.membershipStatus!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.readOnly!, unittest.isTrue);
+    checkSizeInfo(o.sizeInfo!);
+    checkTargetNetworkInfo(o.targetNetworkInfo!);
+  }
+  buildCounterUserList--;
+}
+
+core.List<api.UserListLicensePricing> buildUnnamed29() => [
+  buildUserListLicensePricing(),
+  buildUserListLicensePricing(),
+];
+
+void checkUnnamed29(core.List<api.UserListLicensePricing> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserListLicensePricing(o[0]);
+  checkUserListLicensePricing(o[1]);
+}
+
+core.int buildCounterUserListDirectLicense = 0;
+api.UserListDirectLicense buildUserListDirectLicense() {
+  final o = api.UserListDirectLicense();
+  buildCounterUserListDirectLicense++;
+  if (buildCounterUserListDirectLicense < 3) {
+    o.clientAccountDisplayName = 'foo';
+    o.clientAccountId = 'foo';
+    o.clientAccountType = 'foo';
+    o.historicalPricings = buildUnnamed29();
+    o.metrics = buildUserListLicenseMetrics();
+    o.name = 'foo';
+    o.pricing = buildUserListLicensePricing();
+    o.status = 'foo';
+    o.userListDisplayName = 'foo';
+    o.userListId = 'foo';
+  }
+  buildCounterUserListDirectLicense--;
+  return o;
+}
+
+void checkUserListDirectLicense(api.UserListDirectLicense o) {
+  buildCounterUserListDirectLicense++;
+  if (buildCounterUserListDirectLicense < 3) {
+    unittest.expect(o.clientAccountDisplayName!, unittest.equals('foo'));
+    unittest.expect(o.clientAccountId!, unittest.equals('foo'));
+    unittest.expect(o.clientAccountType!, unittest.equals('foo'));
+    checkUnnamed29(o.historicalPricings!);
+    checkUserListLicenseMetrics(o.metrics!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    checkUserListLicensePricing(o.pricing!);
+    unittest.expect(o.status!, unittest.equals('foo'));
+    unittest.expect(o.userListDisplayName!, unittest.equals('foo'));
+    unittest.expect(o.userListId!, unittest.equals('foo'));
+  }
+  buildCounterUserListDirectLicense--;
+}
+
+core.List<api.UserListLicensePricing> buildUnnamed30() => [
+  buildUserListLicensePricing(),
+  buildUserListLicensePricing(),
+];
+
+void checkUnnamed30(core.List<api.UserListLicensePricing> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserListLicensePricing(o[0]);
+  checkUserListLicensePricing(o[1]);
+}
+
+core.int buildCounterUserListGlobalLicense = 0;
+api.UserListGlobalLicense buildUserListGlobalLicense() {
+  final o = api.UserListGlobalLicense();
+  buildCounterUserListGlobalLicense++;
+  if (buildCounterUserListGlobalLicense < 3) {
+    o.historicalPricings = buildUnnamed30();
+    o.licenseType = 'foo';
+    o.metrics = buildUserListLicenseMetrics();
+    o.name = 'foo';
+    o.pricing = buildUserListLicensePricing();
+    o.status = 'foo';
+    o.userListDisplayName = 'foo';
+    o.userListId = 'foo';
+  }
+  buildCounterUserListGlobalLicense--;
+  return o;
+}
+
+void checkUserListGlobalLicense(api.UserListGlobalLicense o) {
+  buildCounterUserListGlobalLicense++;
+  if (buildCounterUserListGlobalLicense < 3) {
+    checkUnnamed30(o.historicalPricings!);
+    unittest.expect(o.licenseType!, unittest.equals('foo'));
+    checkUserListLicenseMetrics(o.metrics!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    checkUserListLicensePricing(o.pricing!);
+    unittest.expect(o.status!, unittest.equals('foo'));
+    unittest.expect(o.userListDisplayName!, unittest.equals('foo'));
+    unittest.expect(o.userListId!, unittest.equals('foo'));
+  }
+  buildCounterUserListGlobalLicense--;
+}
+
+core.List<api.UserListLicensePricing> buildUnnamed31() => [
+  buildUserListLicensePricing(),
+  buildUserListLicensePricing(),
+];
+
+void checkUnnamed31(core.List<api.UserListLicensePricing> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserListLicensePricing(o[0]);
+  checkUserListLicensePricing(o[1]);
+}
+
+core.int buildCounterUserListGlobalLicenseCustomerInfo = 0;
+api.UserListGlobalLicenseCustomerInfo buildUserListGlobalLicenseCustomerInfo() {
+  final o = api.UserListGlobalLicenseCustomerInfo();
+  buildCounterUserListGlobalLicenseCustomerInfo++;
+  if (buildCounterUserListGlobalLicenseCustomerInfo < 3) {
+    o.clientAccountDisplayName = 'foo';
+    o.clientAccountId = 'foo';
+    o.clientAccountType = 'foo';
+    o.historicalPricings = buildUnnamed31();
+    o.licenseType = 'foo';
+    o.metrics = buildUserListLicenseMetrics();
+    o.name = 'foo';
+    o.pricing = buildUserListLicensePricing();
+    o.status = 'foo';
+    o.userListDisplayName = 'foo';
+    o.userListId = 'foo';
+  }
+  buildCounterUserListGlobalLicenseCustomerInfo--;
+  return o;
+}
+
+void checkUserListGlobalLicenseCustomerInfo(
+  api.UserListGlobalLicenseCustomerInfo o,
+) {
+  buildCounterUserListGlobalLicenseCustomerInfo++;
+  if (buildCounterUserListGlobalLicenseCustomerInfo < 3) {
+    unittest.expect(o.clientAccountDisplayName!, unittest.equals('foo'));
+    unittest.expect(o.clientAccountId!, unittest.equals('foo'));
+    unittest.expect(o.clientAccountType!, unittest.equals('foo'));
+    checkUnnamed31(o.historicalPricings!);
+    unittest.expect(o.licenseType!, unittest.equals('foo'));
+    checkUserListLicenseMetrics(o.metrics!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    checkUserListLicensePricing(o.pricing!);
+    unittest.expect(o.status!, unittest.equals('foo'));
+    unittest.expect(o.userListDisplayName!, unittest.equals('foo'));
+    unittest.expect(o.userListId!, unittest.equals('foo'));
+  }
+  buildCounterUserListGlobalLicenseCustomerInfo--;
+}
+
+core.int buildCounterUserListLicenseMetrics = 0;
+api.UserListLicenseMetrics buildUserListLicenseMetrics() {
+  final o = api.UserListLicenseMetrics();
+  buildCounterUserListLicenseMetrics++;
+  if (buildCounterUserListLicenseMetrics < 3) {
+    o.clickCount = 'foo';
+    o.endDate = 'foo';
+    o.impressionCount = 'foo';
+    o.revenueUsdMicros = 'foo';
+    o.startDate = 'foo';
+  }
+  buildCounterUserListLicenseMetrics--;
+  return o;
+}
+
+void checkUserListLicenseMetrics(api.UserListLicenseMetrics o) {
+  buildCounterUserListLicenseMetrics++;
+  if (buildCounterUserListLicenseMetrics < 3) {
+    unittest.expect(o.clickCount!, unittest.equals('foo'));
+    unittest.expect(o.endDate!, unittest.equals('foo'));
+    unittest.expect(o.impressionCount!, unittest.equals('foo'));
+    unittest.expect(o.revenueUsdMicros!, unittest.equals('foo'));
+    unittest.expect(o.startDate!, unittest.equals('foo'));
+  }
+  buildCounterUserListLicenseMetrics--;
+}
+
+core.int buildCounterUserListLicensePricing = 0;
+api.UserListLicensePricing buildUserListLicensePricing() {
+  final o = api.UserListLicensePricing();
+  buildCounterUserListLicensePricing++;
+  if (buildCounterUserListLicensePricing < 3) {
+    o.buyerApprovalState = 'foo';
+    o.costMicros = 'foo';
+    o.costType = 'foo';
+    o.currencyCode = 'foo';
+    o.endTime = 'foo';
+    o.maxCostMicros = 'foo';
+    o.pricingActive = true;
+    o.pricingId = 'foo';
+    o.startTime = 'foo';
+  }
+  buildCounterUserListLicensePricing--;
+  return o;
+}
+
+void checkUserListLicensePricing(api.UserListLicensePricing o) {
+  buildCounterUserListLicensePricing++;
+  if (buildCounterUserListLicensePricing < 3) {
+    unittest.expect(o.buyerApprovalState!, unittest.equals('foo'));
+    unittest.expect(o.costMicros!, unittest.equals('foo'));
+    unittest.expect(o.costType!, unittest.equals('foo'));
+    unittest.expect(o.currencyCode!, unittest.equals('foo'));
+    unittest.expect(o.endTime!, unittest.equals('foo'));
+    unittest.expect(o.maxCostMicros!, unittest.equals('foo'));
+    unittest.expect(o.pricingActive!, unittest.isTrue);
+    unittest.expect(o.pricingId!, unittest.equals('foo'));
+    unittest.expect(o.startTime!, unittest.equals('foo'));
+  }
+  buildCounterUserListLicensePricing--;
+}
+
+core.List<api.UserProperty> buildUnnamed32() => [
   buildUserProperty(),
   buildUserProperty(),
 ];
 
-void checkUnnamed19(core.List<api.UserProperty> o) {
+void checkUnnamed32(core.List<api.UserProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserProperty(o[0]);
   checkUserProperty(o[1]);
@@ -1202,7 +2170,7 @@ api.UserProperties buildUserProperties() {
   final o = api.UserProperties();
   buildCounterUserProperties++;
   if (buildCounterUserProperties < 3) {
-    o.additionalUserProperties = buildUnnamed19();
+    o.additionalUserProperties = buildUnnamed32();
     o.customerType = 'foo';
     o.customerValueBucket = 'foo';
   }
@@ -1213,7 +2181,7 @@ api.UserProperties buildUserProperties() {
 void checkUserProperties(api.UserProperties o) {
   buildCounterUserProperties++;
   if (buildCounterUserProperties < 3) {
-    checkUnnamed19(o.additionalUserProperties!);
+    checkUnnamed32(o.additionalUserProperties!);
     unittest.expect(o.customerType!, unittest.equals('foo'));
     unittest.expect(o.customerValueBucket!, unittest.equals('foo'));
   }
@@ -1262,12 +2230,12 @@ void checkWarningCount(api.WarningCount o) {
   buildCounterWarningCount--;
 }
 
-core.List<api.WarningCount> buildUnnamed20() => [
+core.List<api.WarningCount> buildUnnamed33() => [
   buildWarningCount(),
   buildWarningCount(),
 ];
 
-void checkUnnamed20(core.List<api.WarningCount> o) {
+void checkUnnamed33(core.List<api.WarningCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWarningCount(o[0]);
   checkWarningCount(o[1]);
@@ -1278,7 +2246,7 @@ api.WarningInfo buildWarningInfo() {
   final o = api.WarningInfo();
   buildCounterWarningInfo++;
   if (buildCounterWarningInfo < 3) {
-    o.warningCounts = buildUnnamed20();
+    o.warningCounts = buildUnnamed33();
   }
   buildCounterWarningInfo--;
   return o;
@@ -1287,7 +2255,7 @@ api.WarningInfo buildWarningInfo() {
 void checkWarningInfo(api.WarningInfo o) {
   buildCounterWarningInfo++;
   if (buildCounterWarningInfo < 3) {
-    checkUnnamed20(o.warningCounts!);
+    checkUnnamed33(o.warningCounts!);
   }
   buildCounterWarningInfo--;
 }
@@ -1337,6 +2305,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Baseline', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBaseline();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Baseline.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBaseline(od);
+    });
+  });
+
   unittest.group('obj-schema-CartData', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCartData();
@@ -1356,6 +2335,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkConsent(od);
+    });
+  });
+
+  unittest.group('obj-schema-ContactIdInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildContactIdInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ContactIdInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkContactIdInfo(od);
     });
   });
 
@@ -1389,6 +2379,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDeviceInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Empty.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEmpty(od);
     });
   });
 
@@ -1557,6 +2558,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-IngestPpidDataStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIngestPpidDataStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IngestPpidDataStatus.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkIngestPpidDataStatus(od);
+    });
+  });
+
   unittest.group('obj-schema-IngestUserDataStatus', () {
     unittest.test('to-json--from-json', () async {
       final o = buildIngestUserDataStatus();
@@ -1565,6 +2577,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkIngestUserDataStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-IngestUserIdDataStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIngestUserIdDataStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IngestUserIdDataStatus.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkIngestUserIdDataStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-IngestedUserListInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIngestedUserListInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IngestedUserListInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkIngestedUserListInfo(od);
     });
   });
 
@@ -1590,6 +2624,86 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListUserListDirectLicensesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListUserListDirectLicensesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListUserListDirectLicensesResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListUserListDirectLicensesResponse(od);
+    });
+  });
+
+  unittest.group(
+    'obj-schema-ListUserListGlobalLicenseCustomerInfosResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildListUserListGlobalLicenseCustomerInfosResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.ListUserListGlobalLicenseCustomerInfosResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkListUserListGlobalLicenseCustomerInfosResponse(od);
+      });
+    },
+  );
+
+  unittest.group('obj-schema-ListUserListGlobalLicensesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListUserListGlobalLicensesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListUserListGlobalLicensesResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListUserListGlobalLicensesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListUserListsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListUserListsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListUserListsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListUserListsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-Location', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Location.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-MarketingDataInsight', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMarketingDataInsight();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MarketingDataInsight.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMarketingDataInsight(od);
+    });
+  });
+
+  unittest.group('obj-schema-MarketingDataInsightsAttribute', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMarketingDataInsightsAttribute();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MarketingDataInsightsAttribute.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMarketingDataInsightsAttribute(od);
+    });
+  });
+
   unittest.group('obj-schema-MobileData', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMobileData();
@@ -1598,6 +2712,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkMobileData(od);
+    });
+  });
+
+  unittest.group('obj-schema-MobileIdInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMobileIdInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MobileIdInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMobileIdInfo(od);
     });
   });
 
@@ -1612,6 +2737,50 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PairIdInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPairIdInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PairIdInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPairIdInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-PartnerAudienceInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPartnerAudienceInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PartnerAudienceInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPartnerAudienceInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-PartnerLink', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPartnerLink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PartnerLink.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPartnerLink(od);
+    });
+  });
+
+  unittest.group('obj-schema-PpidData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPpidData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PpidData.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPpidData(od);
+    });
+  });
+
   unittest.group('obj-schema-ProductAccount', () {
     unittest.test('to-json--from-json', () async {
       final o = buildProductAccount();
@@ -1620,6 +2789,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkProductAccount(od);
+    });
+  });
+
+  unittest.group('obj-schema-PseudonymousIdInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPseudonymousIdInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PseudonymousIdInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPseudonymousIdInfo(od);
     });
   });
 
@@ -1678,6 +2858,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RemovePpidDataStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRemovePpidDataStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RemovePpidDataStatus.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRemovePpidDataStatus(od);
+    });
+  });
+
   unittest.group('obj-schema-RemoveUserDataStatus', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRemoveUserDataStatus();
@@ -1686,6 +2877,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkRemoveUserDataStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-RemoveUserIdDataStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRemoveUserIdDataStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RemoveUserIdDataStatus.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRemoveUserIdDataStatus(od);
     });
   });
 
@@ -1700,6 +2902,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RetrieveInsightsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRetrieveInsightsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RetrieveInsightsRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRetrieveInsightsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RetrieveInsightsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRetrieveInsightsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RetrieveInsightsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRetrieveInsightsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-RetrieveRequestStatusResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRetrieveRequestStatusResponse();
@@ -1708,6 +2932,39 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkRetrieveRequestStatusResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SearchPartnerLinksResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSearchPartnerLinksResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SearchPartnerLinksResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSearchPartnerLinksResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SizeInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSizeInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SizeInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSizeInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-TargetNetworkInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTargetNetworkInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TargetNetworkInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTargetNetworkInfo(od);
     });
   });
 
@@ -1733,6 +2990,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UserIdData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserIdData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserIdData.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserIdData(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserIdInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserIdInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserIdInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserIdInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-UserIdentifier', () {
     unittest.test('to-json--from-json', () async {
       final o = buildUserIdentifier();
@@ -1741,6 +3020,72 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkUserIdentifier(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserList', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserList.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserList(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserListDirectLicense', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserListDirectLicense();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserListDirectLicense.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserListDirectLicense(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserListGlobalLicense', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserListGlobalLicense();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserListGlobalLicense.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserListGlobalLicense(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserListGlobalLicenseCustomerInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserListGlobalLicenseCustomerInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserListGlobalLicenseCustomerInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserListGlobalLicenseCustomerInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserListLicenseMetrics', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserListLicenseMetrics();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserListLicenseMetrics.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserListLicenseMetrics(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserListLicensePricing', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserListLicensePricing();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserListLicensePricing.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserListLicensePricing(od);
     });
   });
 
@@ -1785,6 +3130,1233 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkWarningInfo(od);
+    });
+  });
+
+  unittest.group('resource-AccountTypesAccountsInsightsResource', () {
+    unittest.test('method--retrieve', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(mock).accountTypes.accounts.insights;
+      final arg_request = buildRetrieveInsightsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RetrieveInsightsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRetrieveInsightsRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildRetrieveInsightsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.retrieve(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkRetrieveInsightsResponse(response as api.RetrieveInsightsResponse);
+    });
+  });
+
+  unittest.group('resource-AccountTypesAccountsPartnerLinksResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(mock).accountTypes.accounts.partnerLinks;
+      final arg_request = buildPartnerLink();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.PartnerLink.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkPartnerLink(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPartnerLink());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkPartnerLink(response as api.PartnerLink);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(mock).accountTypes.accounts.partnerLinks;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--search', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(mock).accountTypes.accounts.partnerLinks;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSearchPartnerLinksResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.search(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkSearchPartnerLinksResponse(
+        response as api.SearchPartnerLinksResponse,
+      );
+    });
+  });
+
+  unittest.group('resource-AccountTypesAccountsUserListDirectLicensesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(
+        mock,
+      ).accountTypes.accounts.userListDirectLicenses;
+      final arg_request = buildUserListDirectLicense();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UserListDirectLicense.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUserListDirectLicense(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUserListDirectLicense());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkUserListDirectLicense(response as api.UserListDirectLicense);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(
+        mock,
+      ).accountTypes.accounts.userListDirectLicenses;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUserListDirectLicense());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkUserListDirectLicense(response as api.UserListDirectLicense);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(
+        mock,
+      ).accountTypes.accounts.userListDirectLicenses;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListUserListDirectLicensesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListUserListDirectLicensesResponse(
+        response as api.ListUserListDirectLicensesResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(
+        mock,
+      ).accountTypes.accounts.userListDirectLicenses;
+      final arg_request = buildUserListDirectLicense();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UserListDirectLicense.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUserListDirectLicense(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUserListDirectLicense());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkUserListDirectLicense(response as api.UserListDirectLicense);
+    });
+  });
+
+  unittest.group('resource-AccountTypesAccountsUserListGlobalLicensesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(
+        mock,
+      ).accountTypes.accounts.userListGlobalLicenses;
+      final arg_request = buildUserListGlobalLicense();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UserListGlobalLicense.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUserListGlobalLicense(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUserListGlobalLicense());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkUserListGlobalLicense(response as api.UserListGlobalLicense);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(
+        mock,
+      ).accountTypes.accounts.userListGlobalLicenses;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUserListGlobalLicense());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkUserListGlobalLicense(response as api.UserListGlobalLicense);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(
+        mock,
+      ).accountTypes.accounts.userListGlobalLicenses;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListUserListGlobalLicensesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListUserListGlobalLicensesResponse(
+        response as api.ListUserListGlobalLicensesResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(
+        mock,
+      ).accountTypes.accounts.userListGlobalLicenses;
+      final arg_request = buildUserListGlobalLicense();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UserListGlobalLicense.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUserListGlobalLicense(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUserListGlobalLicense());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkUserListGlobalLicense(response as api.UserListGlobalLicense);
+    });
+  });
+
+  unittest.group(
+    'resource-AccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosResource',
+    () {
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res = api.DataManagerApi(mock)
+            .accountTypes
+            .accounts
+            .userListGlobalLicenses
+            .userListGlobalLicenseCustomerInfos;
+        final arg_parent = 'foo';
+        final arg_filter = 'foo';
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['filter']!.first,
+              unittest.equals(arg_filter),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildListUserListGlobalLicenseCustomerInfosResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields,
+        );
+        checkListUserListGlobalLicenseCustomerInfosResponse(
+          response as api.ListUserListGlobalLicenseCustomerInfosResponse,
+        );
+      });
+    },
+  );
+
+  unittest.group('resource-AccountTypesAccountsUserListsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(mock).accountTypes.accounts.userLists;
+      final arg_request = buildUserList();
+      final arg_parent = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UserList.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUserList(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUserList());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        validateOnly: arg_validateOnly,
+        $fields: arg_$fields,
+      );
+      checkUserList(response as api.UserList);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(mock).accountTypes.accounts.userLists;
+      final arg_name = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        validateOnly: arg_validateOnly,
+        $fields: arg_$fields,
+      );
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(mock).accountTypes.accounts.userLists;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUserList());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkUserList(response as api.UserList);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(mock).accountTypes.accounts.userLists;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListUserListsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListUserListsResponse(response as api.ListUserListsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.DataManagerApi(mock).accountTypes.accounts.userLists;
+      final arg_request = buildUserList();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UserList.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUserList(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUserList());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
+        $fields: arg_$fields,
+      );
+      checkUserList(response as api.UserList);
     });
   });
 

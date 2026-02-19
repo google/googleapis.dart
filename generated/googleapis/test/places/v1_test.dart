@@ -219,6 +219,7 @@ buildGoogleMapsPlacesV1AutocompletePlacesRequest() {
   final o = api.GoogleMapsPlacesV1AutocompletePlacesRequest();
   buildCounterGoogleMapsPlacesV1AutocompletePlacesRequest++;
   if (buildCounterGoogleMapsPlacesV1AutocompletePlacesRequest < 3) {
+    o.includeFutureOpeningBusinesses = true;
     o.includePureServiceAreaBusinesses = true;
     o.includeQueryPredictions = true;
     o.includedPrimaryTypes = buildUnnamed3();
@@ -243,6 +244,7 @@ void checkGoogleMapsPlacesV1AutocompletePlacesRequest(
 ) {
   buildCounterGoogleMapsPlacesV1AutocompletePlacesRequest++;
   if (buildCounterGoogleMapsPlacesV1AutocompletePlacesRequest < 3) {
+    unittest.expect(o.includeFutureOpeningBusinesses!, unittest.isTrue);
     unittest.expect(o.includePureServiceAreaBusinesses!, unittest.isTrue);
     unittest.expect(o.includeQueryPredictions!, unittest.isTrue);
     checkUnnamed3(o.includedPrimaryTypes!);
@@ -1184,6 +1186,7 @@ api.GoogleMapsPlacesV1Place buildGoogleMapsPlacesV1Place() {
     o.goodForGroups = true;
     o.goodForWatchingSports = true;
     o.googleMapsLinks = buildGoogleMapsPlacesV1PlaceGoogleMapsLinks();
+    o.googleMapsTypeLabel = buildGoogleTypeLocalizedText();
     o.googleMapsUri = 'foo';
     o.iconBackgroundColor = 'foo';
     o.iconMaskBaseUri = 'foo';
@@ -1197,6 +1200,7 @@ api.GoogleMapsPlacesV1Place buildGoogleMapsPlacesV1Place() {
     o.name = 'foo';
     o.nationalPhoneNumber = 'foo';
     o.neighborhoodSummary = buildGoogleMapsPlacesV1PlaceNeighborhoodSummary();
+    o.openingDate = buildGoogleTypeDate();
     o.outdoorSeating = true;
     o.parkingOptions = buildGoogleMapsPlacesV1PlaceParkingOptions();
     o.paymentOptions = buildGoogleMapsPlacesV1PlacePaymentOptions();
@@ -1269,6 +1273,7 @@ void checkGoogleMapsPlacesV1Place(api.GoogleMapsPlacesV1Place o) {
     unittest.expect(o.goodForGroups!, unittest.isTrue);
     unittest.expect(o.goodForWatchingSports!, unittest.isTrue);
     checkGoogleMapsPlacesV1PlaceGoogleMapsLinks(o.googleMapsLinks!);
+    checkGoogleTypeLocalizedText(o.googleMapsTypeLabel!);
     unittest.expect(o.googleMapsUri!, unittest.equals('foo'));
     unittest.expect(o.iconBackgroundColor!, unittest.equals('foo'));
     unittest.expect(o.iconMaskBaseUri!, unittest.equals('foo'));
@@ -1282,6 +1287,7 @@ void checkGoogleMapsPlacesV1Place(api.GoogleMapsPlacesV1Place o) {
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.nationalPhoneNumber!, unittest.equals('foo'));
     checkGoogleMapsPlacesV1PlaceNeighborhoodSummary(o.neighborhoodSummary!);
+    checkGoogleTypeDate(o.openingDate!);
     unittest.expect(o.outdoorSeating!, unittest.isTrue);
     checkGoogleMapsPlacesV1PlaceParkingOptions(o.parkingOptions!);
     checkGoogleMapsPlacesV1PlacePaymentOptions(o.paymentOptions!);
@@ -2139,6 +2145,7 @@ buildGoogleMapsPlacesV1SearchNearbyRequest() {
   if (buildCounterGoogleMapsPlacesV1SearchNearbyRequest < 3) {
     o.excludedPrimaryTypes = buildUnnamed30();
     o.excludedTypes = buildUnnamed31();
+    o.includeFutureOpeningBusinesses = true;
     o.includedPrimaryTypes = buildUnnamed32();
     o.includedTypes = buildUnnamed33();
     o.languageCode = 'foo';
@@ -2160,6 +2167,7 @@ void checkGoogleMapsPlacesV1SearchNearbyRequest(
   if (buildCounterGoogleMapsPlacesV1SearchNearbyRequest < 3) {
     checkUnnamed30(o.excludedPrimaryTypes!);
     checkUnnamed31(o.excludedTypes!);
+    unittest.expect(o.includeFutureOpeningBusinesses!, unittest.isTrue);
     checkUnnamed32(o.includedPrimaryTypes!);
     checkUnnamed33(o.includedTypes!);
     unittest.expect(o.languageCode!, unittest.equals('foo'));
@@ -2260,6 +2268,7 @@ buildGoogleMapsPlacesV1SearchTextRequest() {
   buildCounterGoogleMapsPlacesV1SearchTextRequest++;
   if (buildCounterGoogleMapsPlacesV1SearchTextRequest < 3) {
     o.evOptions = buildGoogleMapsPlacesV1SearchTextRequestEVOptions();
+    o.includeFutureOpeningBusinesses = true;
     o.includePureServiceAreaBusinesses = true;
     o.includedType = 'foo';
     o.languageCode = 'foo';
@@ -2290,6 +2299,7 @@ void checkGoogleMapsPlacesV1SearchTextRequest(
   buildCounterGoogleMapsPlacesV1SearchTextRequest++;
   if (buildCounterGoogleMapsPlacesV1SearchTextRequest < 3) {
     checkGoogleMapsPlacesV1SearchTextRequestEVOptions(o.evOptions!);
+    unittest.expect(o.includeFutureOpeningBusinesses!, unittest.isTrue);
     unittest.expect(o.includePureServiceAreaBusinesses!, unittest.isTrue);
     unittest.expect(o.includedType!, unittest.equals('foo'));
     unittest.expect(o.languageCode!, unittest.equals('foo'));

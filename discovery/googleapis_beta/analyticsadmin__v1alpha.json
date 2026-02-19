@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250820",
+    "revision": "20260412",
     "rootUrl": "https://analyticsadmin.googleapis.com/",
     "servicePath": "",
     "title": "Google Analytics Admin API",
@@ -128,13 +128,13 @@
                     "parameterOrder": [],
                     "parameters": {
                         "pageSize": {
-                            "description": "The maximum number of AccountSummary resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
+                            "description": "Optional. The maximum number of AccountSummary resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the call that provided the page token.",
+                            "description": "Optional. A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the call that provided the page token.",
                             "location": "query",
                             "type": "string"
                         }
@@ -237,13 +237,13 @@
                     "parameterOrder": [],
                     "parameters": {
                         "pageSize": {
-                            "description": "The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
+                            "description": "Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token.",
+                            "description": "Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token.",
                             "location": "query",
                             "type": "string"
                         },
@@ -272,7 +272,7 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Output only. Resource name of this account. Format: accounts/{account} Example: \"accounts/100\"",
+                            "description": "Identifier. Resource name of this account. Format: accounts/{account} Example: \"accounts/100\"",
                             "location": "path",
                             "pattern": "^accounts/[^/]+$",
                             "required": true,
@@ -860,6 +860,32 @@
                         "https://www.googleapis.com/auth/analytics.readonly"
                     ]
                 },
+                "getUserProvidedDataSettings": {
+                    "description": "Looks up settings related to user-provided data for a property.",
+                    "flatPath": "v1alpha/properties/{propertiesId}/userProvidedDataSettings",
+                    "httpMethod": "GET",
+                    "id": "analyticsadmin.properties.getUserProvidedDataSettings",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "Required. The name of the user provided data settings to retrieve. Format: properties/{property}/userProvidedDataSettings",
+                            "location": "path",
+                            "pattern": "^properties/[^/]+/userProvidedDataSettings$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1alpha/{+name}",
+                    "response": {
+                        "$ref": "GoogleAnalyticsAdminV1alphaUserProvidedDataSettings"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/analytics.edit",
+                        "https://www.googleapis.com/auth/analytics.readonly"
+                    ]
+                },
                 "list": {
                     "description": "Returns child Properties under the specified parent Account. Properties will be excluded if the caller does not have access. Soft-deleted (ie: \"trashed\") properties are excluded by default. Returns an empty list if no relevant properties are found.",
                     "flatPath": "v1alpha/properties",
@@ -873,13 +899,13 @@
                             "type": "string"
                         },
                         "pageSize": {
-                            "description": "The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
+                            "description": "Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "A page token, received from a previous `ListProperties` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProperties` must match the call that provided the page token.",
+                            "description": "Optional. A page token, received from a previous `ListProperties` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProperties` must match the call that provided the page token.",
                             "location": "query",
                             "type": "string"
                         },
@@ -908,7 +934,7 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Output only. Resource name of this property. Format: properties/{property_id} Example: \"properties/1000\"",
+                            "description": "Identifier. Resource name of this property. Format: properties/{property_id} Example: \"properties/1000\"",
                             "location": "path",
                             "pattern": "^properties/[^/]+$",
                             "required": true,
@@ -1051,7 +1077,7 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Output only. Resource name for this DataRetentionSetting resource. Format: properties/{property}/dataRetentionSettings",
+                            "description": "Identifier. Resource name for this DataRetentionSetting resource. Format: properties/{property}/dataRetentionSettings",
                             "location": "path",
                             "pattern": "^properties/[^/]+/dataRetentionSettings$",
                             "required": true,
@@ -1939,7 +1965,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Output only. Resource name for this CalculatedMetric. Format: 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'",
+                                    "description": "Identifier. Resource name for this CalculatedMetric. Format: 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'",
                                     "location": "path",
                                     "pattern": "^properties/[^/]+/calculatedMetrics/[^/]+$",
                                     "required": true,
@@ -2215,13 +2241,13 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
+                                    "description": "Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "A page token, received from a previous `ListConversionEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConversionEvents` must match the call that provided the page token.",
+                                    "description": "Optional. A page token, received from a previous `ListConversionEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConversionEvents` must match the call that provided the page token.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2253,7 +2279,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Output only. Resource name of this conversion event. Format: properties/{property}/conversionEvents/{conversion_event}",
+                                    "description": "Identifier. Resource name of this conversion event. Format: properties/{property}/conversionEvents/{conversion_event}",
                                     "location": "path",
                                     "pattern": "^properties/[^/]+/conversionEvents/[^/]+$",
                                     "required": true,
@@ -2373,13 +2399,13 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).",
+                                    "description": "Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "A page token, received from a previous `ListCustomDimensions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomDimensions` must match the call that provided the page token.",
+                                    "description": "Optional. A page token, received from a previous `ListCustomDimensions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomDimensions` must match the call that provided the page token.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2410,7 +2436,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Output only. Resource name for this CustomDimension resource. Format: properties/{property}/customDimensions/{customDimension}",
+                                    "description": "Identifier. Resource name for this CustomDimension resource. Format: properties/{property}/customDimensions/{customDimension}",
                                     "location": "path",
                                     "pattern": "^properties/[^/]+/customDimensions/[^/]+$",
                                     "required": true,
@@ -2567,7 +2593,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Output only. Resource name for this CustomMetric resource. Format: properties/{property}/customMetrics/{customMetric}",
+                                    "description": "Identifier. Resource name for this CustomMetric resource. Format: properties/{property}/customMetrics/{customMetric}",
                                     "location": "path",
                                     "pattern": "^properties/[^/]+/customMetrics/[^/]+$",
                                     "required": true,
@@ -2799,7 +2825,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id} Example: \"properties/1000/dataStreams/2000\"",
+                                    "description": "Identifier. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id} Example: \"properties/1000/dataStreams/2000\"",
                                     "location": "path",
                                     "pattern": "^properties/[^/]+/dataStreams/[^/]+$",
                                     "required": true,
@@ -3320,13 +3346,13 @@
                                     ],
                                     "parameters": {
                                         "pageSize": {
-                                            "description": "The maximum number of resources to return. If unspecified, at most 10 resources will be returned. The maximum value is 10. Higher values will be coerced to the maximum.",
+                                            "description": "Optional. The maximum number of resources to return. If unspecified, at most 10 resources will be returned. The maximum value is 10. Higher values will be coerced to the maximum.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMeasurementProtocolSecrets` must match the call that provided the page token.",
+                                            "description": "Optional. A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMeasurementProtocolSecrets` must match the call that provided the page token.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -3357,7 +3383,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Output only. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}",
+                                            "description": "Identifier. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}",
                                             "location": "path",
                                             "pattern": "^properties/[^/]+/dataStreams/[^/]+/measurementProtocolSecrets/[^/]+$",
                                             "required": true,
@@ -3474,13 +3500,13 @@
                                     ],
                                     "parameters": {
                                         "pageSize": {
-                                            "description": "The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
+                                            "description": "Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSKAdNetworkConversionValueSchema` must match the call that provided the page token.",
+                                            "description": "Optional. A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSKAdNetworkConversionValueSchema` must match the call that provided the page token.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -3511,7 +3537,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema",
+                                            "description": "Identifier. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema",
                                             "location": "path",
                                             "pattern": "^properties/[^/]+/dataStreams/[^/]+/sKAdNetworkConversionValueSchema/[^/]+$",
                                             "required": true,
@@ -3843,7 +3869,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display & Video 360 Advertiser ID",
+                                    "description": "Identifier. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display & Video 360 Advertiser ID",
                                     "location": "path",
                                     "pattern": "^properties/[^/]+/displayVideo360AdvertiserLinks/[^/]+$",
                                     "required": true,
@@ -4088,13 +4114,13 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
+                                    "description": "Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match the call that provided the page token.",
+                                    "description": "Optional. A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match the call that provided the page token.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -4182,13 +4208,13 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).",
+                                    "description": "Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match the call that provided the page token.",
+                                    "description": "Optional. A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match the call that provided the page token.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -4219,7 +4245,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID.",
+                                    "description": "Identifier. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID.",
                                     "location": "path",
                                     "pattern": "^properties/[^/]+/googleAdsLinks/[^/]+$",
                                     "required": true,
@@ -4336,13 +4362,13 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
+                                    "description": "Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListKeyEvents` must match the call that provided the page token.",
+                                    "description": "Optional. A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListKeyEvents` must match the call that provided the page token.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -4806,7 +4832,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Output only. The resource name for this SearchAds360Link resource. Format: properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is not the Search Ads 360 advertiser ID",
+                                    "description": "Identifier. The resource name for this SearchAds360Link resource. Format: properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is not the Search Ads 360 advertiser ID",
                                     "location": "path",
                                     "pattern": "^properties/[^/]+/searchAds360Links/[^/]+$",
                                     "required": true,
@@ -5507,8 +5533,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name of this account. Format: accounts/{account} Example: \"accounts/100\"",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name of this account. Format: accounts/{account} Example: \"accounts/100\"",
                     "type": "string"
                 },
                 "regionCode": {
@@ -5537,7 +5562,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Resource name for this account summary. Format: accountSummaries/{account_id} Example: \"accountSummaries/1000\"",
+                    "description": "Identifier. Resource name for this account summary. Format: accountSummaries/{account_id} Example: \"accountSummaries/1000\"",
                     "type": "string"
                 },
                 "propertySummaries": {
@@ -6306,8 +6331,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name for this CalculatedMetric. Format: 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name for this CalculatedMetric. Format: 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'",
                     "type": "string"
                 },
                 "restrictedMetricType": {
@@ -6491,6 +6515,10 @@
                 "subpropertySyncConfig": {
                     "$ref": "GoogleAnalyticsAdminV1alphaSubpropertySyncConfig",
                     "description": "A snapshot of a SubpropertySyncConfig resource in change history."
+                },
+                "userProvidedDataSettings": {
+                    "$ref": "GoogleAnalyticsAdminV1alphaUserProvidedDataSettings",
+                    "description": "A snapshot of a UserProvidedDataSettings resource in change history."
                 }
             },
             "type": "object"
@@ -6724,8 +6752,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name of this conversion event. Format: properties/{property}/conversionEvents/{conversion_event}",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name of this conversion event. Format: properties/{property}/conversionEvents/{conversion_event}",
                     "type": "string"
                 }
             },
@@ -6858,8 +6885,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name for this CustomDimension resource. Format: properties/{property}/customDimensions/{customDimension}",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name for this CustomDimension resource. Format: properties/{property}/customDimensions/{customDimension}",
                     "type": "string"
                 },
                 "parameterName": {
@@ -6928,8 +6954,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name for this CustomMetric resource. Format: properties/{property}/customMetrics/{customMetric}",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name for this CustomMetric resource. Format: properties/{property}/customMetrics/{customMetric}",
                     "type": "string"
                 },
                 "parameterName": {
@@ -7020,8 +7045,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name for this DataRetentionSetting resource. Format: properties/{property}/dataRetentionSettings",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name for this DataRetentionSetting resource. Format: properties/{property}/dataRetentionSettings",
                     "type": "string"
                 },
                 "resetUserDataOnNewActivity": {
@@ -7056,8 +7080,7 @@
             "id": "GoogleAnalyticsAdminV1alphaDataSharingSettings",
             "properties": {
                 "name": {
-                    "description": "Output only. Resource name. Format: accounts/{account}/dataSharingSettings Example: \"accounts/1000/dataSharingSettings\"",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name. Format: accounts/{account}/dataSharingSettings Example: \"accounts/1000/dataSharingSettings\"",
                     "type": "string"
                 },
                 "sharingWithGoogleAnySalesEnabled": {
@@ -7107,8 +7130,7 @@
                     "description": "Data specific to iOS app streams. Must be populated if type is IOS_APP_DATA_STREAM."
                 },
                 "name": {
-                    "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id} Example: \"properties/1000/dataStreams/2000\"",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id} Example: \"properties/1000/dataStreams/2000\"",
                     "type": "string"
                 },
                 "type": {
@@ -7230,8 +7252,7 @@
                     "type": "boolean"
                 },
                 "name": {
-                    "description": "Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display & Video 360 Advertiser ID",
-                    "readOnly": true,
+                    "description": "Identifier. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display & Video 360 Advertiser ID",
                     "type": "string"
                 }
             },
@@ -7268,8 +7289,7 @@
                     "readOnly": true
                 },
                 "name": {
-                    "description": "Output only. The resource name for this DisplayVideo360AdvertiserLinkProposal resource. Format: properties/{propertyId}/displayVideo360AdvertiserLinkProposals/{proposalId} Note: proposalId is not the Display & Video 360 Advertiser ID",
-                    "readOnly": true,
+                    "description": "Identifier. The resource name for this DisplayVideo360AdvertiserLinkProposal resource. Format: properties/{propertyId}/displayVideo360AdvertiserLinkProposals/{proposalId} Note: proposalId is not the Display & Video 360 Advertiser ID",
                     "type": "string"
                 },
                 "validationEmail": {
@@ -7585,8 +7605,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Example format: properties/1234/firebaseLinks/5678",
-                    "readOnly": true,
+                    "description": "Identifier. Example format: properties/1234/firebaseLinks/5678",
                     "type": "string"
                 },
                 "project": {
@@ -7601,8 +7620,7 @@
             "id": "GoogleAnalyticsAdminV1alphaGlobalSiteTag",
             "properties": {
                 "name": {
-                    "description": "Output only. Resource name for this GlobalSiteTag resource. Format: properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example: \"properties/123/dataStreams/456/globalSiteTag\"",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name for this GlobalSiteTag resource. Format: properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example: \"properties/123/dataStreams/456/globalSiteTag\"",
                     "type": "string"
                 },
                 "snippet": {
@@ -7641,8 +7659,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID.",
-                    "readOnly": true,
+                    "description": "Identifier. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID.",
                     "type": "string"
                 },
                 "updateTime": {
@@ -8396,8 +8413,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}",
                     "type": "string"
                 },
                 "secretValue": {
@@ -8555,8 +8571,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name of this property. Format: properties/{property_id} Example: \"properties/1000\"",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name of this property. Format: properties/{property_id} Example: \"properties/1000\"",
                     "type": "string"
                 },
                 "parent": {
@@ -8956,8 +8971,7 @@
                     "type": "boolean"
                 },
                 "name": {
-                    "description": "Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema",
-                    "readOnly": true,
+                    "description": "Identifier. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema",
                     "type": "string"
                 },
                 "postbackWindowOne": {
@@ -9001,8 +9015,7 @@
                     "type": "boolean"
                 },
                 "name": {
-                    "description": "Output only. The resource name for this SearchAds360Link resource. Format: properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is not the Search Ads 360 advertiser ID",
-                    "readOnly": true,
+                    "description": "Identifier. The resource name for this SearchAds360Link resource. Format: properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is not the Search Ads 360 advertiser ID",
                     "type": "string"
                 },
                 "siteStatsSharingEnabled": {
@@ -9098,7 +9111,8 @@
                             "CALCULATED_METRIC",
                             "REPORTING_DATA_ANNOTATION",
                             "SUBPROPERTY_SYNC_CONFIG",
-                            "REPORTING_IDENTITY_SETTINGS"
+                            "REPORTING_IDENTITY_SETTINGS",
+                            "USER_PROVIDED_DATA_SETTINGS"
                         ],
                         "enumDescriptions": [
                             "Resource type unknown or not specified.",
@@ -9130,7 +9144,8 @@
                             "CalculatedMetric resource",
                             "ReportingDataAnnotation resource",
                             "SubpropertySyncConfig resource",
-                            "ReportingIdentitySettings resource"
+                            "ReportingIdentitySettings resource",
+                            "UserProvidedDataSettings resource"
                         ],
                         "type": "string"
                     },
@@ -9367,6 +9382,25 @@
                 "accessBinding": {
                     "$ref": "GoogleAnalyticsAdminV1alphaAccessBinding",
                     "description": "Required. The access binding to update."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleAnalyticsAdminV1alphaUserProvidedDataSettings": {
+            "description": "Configuration for user-provided data collection. This is a singleton resource for a Google Analytics property.",
+            "id": "GoogleAnalyticsAdminV1alphaUserProvidedDataSettings",
+            "properties": {
+                "automaticallyDetectedDataCollectionEnabled": {
+                    "description": "Optional. Whether this property allows a Google Tag to automatically collect user-provided data from your website. This setting only takes effect if `user_provided_data_collection_enabled` is also true.",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "Identifier. Resource name of this setting. Format: properties/{property}/userProvidedDataSettings Example: \"properties/1000/userProvidedDataSettings\"",
+                    "type": "string"
+                },
+                "userProvidedDataCollectionEnabled": {
+                    "description": "Optional. Whether this property accepts user-provided data sent to it.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

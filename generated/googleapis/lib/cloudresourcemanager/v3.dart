@@ -4669,15 +4669,19 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
-/// A TagBinding represents a connection between a TagValue and a cloud resource
-/// Once a TagBinding is created, the TagValue is applied to all the descendants
+/// A TagBinding represents a connection between a TagValue and a cloud
+/// resource.
+///
+/// When a TagBinding is created, the TagValue is applied to all the descendants
 /// of the Google Cloud resource.
 class TagBinding {
   /// The name of the TagBinding.
   ///
   /// This is a String of the form:
   /// `tagBindings/{full-resource-name}/{tag-value-name}` (e.g.
-  /// `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
+  /// `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`)
+  /// or `tagBindings/{full-resource-name}/{tag-key-name}` (e.g.
+  /// `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagKeys/123`).
   ///
   /// Output only.
   core.String? name;

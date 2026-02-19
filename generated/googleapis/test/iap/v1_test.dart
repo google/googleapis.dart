@@ -581,6 +581,9 @@ api.OAuthSettings buildOAuthSettings() {
   final o = api.OAuthSettings();
   buildCounterOAuthSettings++;
   if (buildCounterOAuthSettings < 3) {
+    o.clientId = 'foo';
+    o.clientSecret = 'foo';
+    o.clientSecretSha256 = 'foo';
     o.loginHint = 'foo';
     o.programmaticClients = buildUnnamed8();
   }
@@ -591,6 +594,9 @@ api.OAuthSettings buildOAuthSettings() {
 void checkOAuthSettings(api.OAuthSettings o) {
   buildCounterOAuthSettings++;
   if (buildCounterOAuthSettings < 3) {
+    unittest.expect(o.clientId!, unittest.equals('foo'));
+    unittest.expect(o.clientSecret!, unittest.equals('foo'));
+    unittest.expect(o.clientSecretSha256!, unittest.equals('foo'));
     unittest.expect(o.loginHint!, unittest.equals('foo'));
     checkUnnamed8(o.programmaticClients!);
   }

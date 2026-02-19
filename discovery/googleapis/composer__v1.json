@@ -4,6 +4,12 @@
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+                },
+                "https://www.googleapis.com/auth/cloudcomposer": {
+                    "description": "See, edit, configure, and delete your Google Cloud Composer data and see the email address for your Google Account"
+                },
+                "https://www.googleapis.com/auth/cloudcomposer.readonly": {
+                    "description": "See your Google Cloud Composer data and the email address of your Google Account"
                 }
             }
         }
@@ -257,7 +263,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260127",
+    "revision": "20260325",
     "rootUrl": "https://composer.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Composer API",
@@ -372,7 +378,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "create": {
@@ -400,7 +407,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "databaseFailover": {
@@ -428,7 +436,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "delete": {
@@ -453,7 +462,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "executeAirflowCommand": {
@@ -481,7 +491,8 @@
                                         "$ref": "ExecuteAirflowCommandResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "fetchDatabaseProperties": {
@@ -506,7 +517,9 @@
                                         "$ref": "FetchDatabasePropertiesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer",
+                                        "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                     ]
                                 },
                                 "get": {
@@ -531,7 +544,9 @@
                                         "$ref": "Environment"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer",
+                                        "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                     ]
                                 },
                                 "list": {
@@ -567,7 +582,9 @@
                                         "$ref": "ListEnvironmentsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer",
+                                        "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                     ]
                                 },
                                 "loadSnapshot": {
@@ -595,7 +612,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "patch": {
@@ -629,7 +647,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "pollAirflowCommand": {
@@ -657,7 +676,9 @@
                                         "$ref": "PollAirflowCommandResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer",
+                                        "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                     ]
                                 },
                                 "restartWebServer": {
@@ -685,7 +706,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "saveSnapshot": {
@@ -713,7 +735,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "stopAirflowCommand": {
@@ -741,7 +764,8 @@
                                         "$ref": "StopAirflowCommandResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 }
                             },
@@ -773,7 +797,8 @@
                                                 "$ref": "UserWorkloadsConfigMap"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer"
                                             ]
                                         },
                                         "delete": {
@@ -798,7 +823,8 @@
                                                 "$ref": "Empty"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer"
                                             ]
                                         },
                                         "get": {
@@ -823,7 +849,9 @@
                                                 "$ref": "UserWorkloadsConfigMap"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer",
+                                                "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                             ]
                                         },
                                         "list": {
@@ -859,7 +887,9 @@
                                                 "$ref": "ListUserWorkloadsConfigMapsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer",
+                                                "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                             ]
                                         },
                                         "update": {
@@ -887,7 +917,8 @@
                                                 "$ref": "UserWorkloadsConfigMap"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer"
                                             ]
                                         }
                                     }
@@ -919,7 +950,8 @@
                                                 "$ref": "UserWorkloadsSecret"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer"
                                             ]
                                         },
                                         "delete": {
@@ -944,7 +976,8 @@
                                                 "$ref": "Empty"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer"
                                             ]
                                         },
                                         "get": {
@@ -969,7 +1002,9 @@
                                                 "$ref": "UserWorkloadsSecret"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer",
+                                                "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                             ]
                                         },
                                         "list": {
@@ -1005,7 +1040,9 @@
                                                 "$ref": "ListUserWorkloadsSecretsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer",
+                                                "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                             ]
                                         },
                                         "update": {
@@ -1033,7 +1070,8 @@
                                                 "$ref": "UserWorkloadsSecret"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer"
                                             ]
                                         }
                                     }
@@ -1078,7 +1116,9 @@
                                                 "$ref": "ListWorkloadsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloudcomposer",
+                                                "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                             ]
                                         }
                                     }
@@ -1125,7 +1165,9 @@
                                         "$ref": "ListImageVersionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer",
+                                        "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                     ]
                                 }
                             }
@@ -1154,7 +1196,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer"
                                     ]
                                 },
                                 "get": {
@@ -1179,7 +1222,9 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer",
+                                        "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                     ]
                                 },
                                 "list": {
@@ -1225,7 +1270,9 @@
                                         "$ref": "ListOperationsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudcomposer",
+                                        "https://www.googleapis.com/auth/cloudcomposer.readonly"
                                     ]
                                 }
                             }
@@ -2392,6 +2439,20 @@
                 "networkingConfig": {
                     "$ref": "NetworkingConfig",
                     "description": "Optional. Configuration for the network connections configuration in the environment."
+                },
+                "networkingType": {
+                    "description": "Optional. Networking type for the environment, either private or public.",
+                    "enum": [
+                        "NETWORKING_TYPE_UNSPECIFIED",
+                        "PRIVATE",
+                        "PUBLIC"
+                    ],
+                    "enumDescriptions": [
+                        "Default networking type.",
+                        "Private IP Cloud Composer environment with no access to the internet.",
+                        "Cloud Composer environment with access to the internet."
+                    ],
+                    "type": "string"
                 },
                 "privateClusterConfig": {
                     "$ref": "PrivateClusterConfig",

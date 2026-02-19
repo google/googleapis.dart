@@ -1447,6 +1447,7 @@ api.DeviceConnectivityManagement buildDeviceConnectivityManagement() {
     o.configureWifi = 'foo';
     o.preferentialNetworkServiceSettings =
         buildPreferentialNetworkServiceSettings();
+    o.privateDnsSettings = buildPrivateDnsSettings();
     o.tetheringSettings = 'foo';
     o.usbDataAccess = 'foo';
     o.wifiDirectSettings = 'foo';
@@ -1466,6 +1467,7 @@ void checkDeviceConnectivityManagement(api.DeviceConnectivityManagement o) {
     checkPreferentialNetworkServiceSettings(
       o.preferentialNetworkServiceSettings!,
     );
+    checkPrivateDnsSettings(o.privateDnsSettings!);
     unittest.expect(o.tetheringSettings!, unittest.equals('foo'));
     unittest.expect(o.usbDataAccess!, unittest.equals('foo'));
     unittest.expect(o.wifiDirectSettings!, unittest.equals('foo'));
@@ -3799,6 +3801,27 @@ void checkPreferentialNetworkServiceSettings(
   buildCounterPreferentialNetworkServiceSettings--;
 }
 
+core.int buildCounterPrivateDnsSettings = 0;
+api.PrivateDnsSettings buildPrivateDnsSettings() {
+  final o = api.PrivateDnsSettings();
+  buildCounterPrivateDnsSettings++;
+  if (buildCounterPrivateDnsSettings < 3) {
+    o.privateDnsHost = 'foo';
+    o.privateDnsMode = 'foo';
+  }
+  buildCounterPrivateDnsSettings--;
+  return o;
+}
+
+void checkPrivateDnsSettings(api.PrivateDnsSettings o) {
+  buildCounterPrivateDnsSettings++;
+  if (buildCounterPrivateDnsSettings < 3) {
+    unittest.expect(o.privateDnsHost!, unittest.equals('foo'));
+    unittest.expect(o.privateDnsMode!, unittest.equals('foo'));
+  }
+  buildCounterPrivateDnsSettings--;
+}
+
 core.int buildCounterProvisioningInfo = 0;
 api.ProvisioningInfo buildProvisioningInfo() {
   final o = api.ProvisioningInfo();
@@ -4406,7 +4429,6 @@ api.SystemUpdate buildSystemUpdate() {
   final o = api.SystemUpdate();
   buildCounterSystemUpdate++;
   if (buildCounterSystemUpdate < 3) {
-    o.allowedDaysWithoutUpdate = 42;
     o.endMinutes = 42;
     o.freezePeriods = buildUnnamed107();
     o.startMinutes = 42;
@@ -4419,7 +4441,6 @@ api.SystemUpdate buildSystemUpdate() {
 void checkSystemUpdate(api.SystemUpdate o) {
   buildCounterSystemUpdate++;
   if (buildCounterSystemUpdate < 3) {
-    unittest.expect(o.allowedDaysWithoutUpdate!, unittest.equals(42));
     unittest.expect(o.endMinutes!, unittest.equals(42));
     checkUnnamed107(o.freezePeriods!);
     unittest.expect(o.startMinutes!, unittest.equals(42));
@@ -5925,6 +5946,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPreferentialNetworkServiceSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-PrivateDnsSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPrivateDnsSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PrivateDnsSettings.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPrivateDnsSettings(od);
     });
   });
 

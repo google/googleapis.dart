@@ -831,6 +831,50 @@ void checkGKEMasterInfo(api.GKEMasterInfo o) {
   buildCounterGKEMasterInfo--;
 }
 
+core.int buildCounterGkeNetworkPolicyInfo = 0;
+api.GkeNetworkPolicyInfo buildGkeNetworkPolicyInfo() {
+  final o = api.GkeNetworkPolicyInfo();
+  buildCounterGkeNetworkPolicyInfo++;
+  if (buildCounterGkeNetworkPolicyInfo < 3) {
+    o.action = 'foo';
+    o.direction = 'foo';
+    o.displayName = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterGkeNetworkPolicyInfo--;
+  return o;
+}
+
+void checkGkeNetworkPolicyInfo(api.GkeNetworkPolicyInfo o) {
+  buildCounterGkeNetworkPolicyInfo++;
+  if (buildCounterGkeNetworkPolicyInfo < 3) {
+    unittest.expect(o.action!, unittest.equals('foo'));
+    unittest.expect(o.direction!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.uri!, unittest.equals('foo'));
+  }
+  buildCounterGkeNetworkPolicyInfo--;
+}
+
+core.int buildCounterGkeNetworkPolicySkippedInfo = 0;
+api.GkeNetworkPolicySkippedInfo buildGkeNetworkPolicySkippedInfo() {
+  final o = api.GkeNetworkPolicySkippedInfo();
+  buildCounterGkeNetworkPolicySkippedInfo++;
+  if (buildCounterGkeNetworkPolicySkippedInfo < 3) {
+    o.reason = 'foo';
+  }
+  buildCounterGkeNetworkPolicySkippedInfo--;
+  return o;
+}
+
+void checkGkeNetworkPolicySkippedInfo(api.GkeNetworkPolicySkippedInfo o) {
+  buildCounterGkeNetworkPolicySkippedInfo++;
+  if (buildCounterGkeNetworkPolicySkippedInfo < 3) {
+    unittest.expect(o.reason!, unittest.equals('foo'));
+  }
+  buildCounterGkeNetworkPolicySkippedInfo--;
+}
+
 core.int buildCounterGkePodInfo = 0;
 api.GkePodInfo buildGkePodInfo() {
   final o = api.GkePodInfo();
@@ -1455,6 +1499,25 @@ void checkNetworkInfo(api.NetworkInfo o) {
   buildCounterNetworkInfo--;
 }
 
+core.int buildCounterNgfwPacketInspectionInfo = 0;
+api.NgfwPacketInspectionInfo buildNgfwPacketInspectionInfo() {
+  final o = api.NgfwPacketInspectionInfo();
+  buildCounterNgfwPacketInspectionInfo++;
+  if (buildCounterNgfwPacketInspectionInfo < 3) {
+    o.securityProfileGroupUri = 'foo';
+  }
+  buildCounterNgfwPacketInspectionInfo--;
+  return o;
+}
+
+void checkNgfwPacketInspectionInfo(api.NgfwPacketInspectionInfo o) {
+  buildCounterNgfwPacketInspectionInfo++;
+  if (buildCounterNgfwPacketInspectionInfo < 3) {
+    unittest.expect(o.securityProfileGroupUri!, unittest.equals('foo'));
+  }
+  buildCounterNgfwPacketInspectionInfo--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed23() => {
   'x': {
     'list': [1, 2, 3],
@@ -1578,6 +1641,25 @@ void checkPolicy(api.Policy o) {
     unittest.expect(o.version!, unittest.equals(42));
   }
   buildCounterPolicy--;
+}
+
+core.int buildCounterPrivateConnectionInfo = 0;
+api.PrivateConnectionInfo buildPrivateConnectionInfo() {
+  final o = api.PrivateConnectionInfo();
+  buildCounterPrivateConnectionInfo++;
+  if (buildCounterPrivateConnectionInfo < 3) {
+    o.uri = 'foo';
+  }
+  buildCounterPrivateConnectionInfo--;
+  return o;
+}
+
+void checkPrivateConnectionInfo(api.PrivateConnectionInfo o) {
+  buildCounterPrivateConnectionInfo++;
+  if (buildCounterPrivateConnectionInfo < 3) {
+    unittest.expect(o.uri!, unittest.equals('foo'));
+  }
+  buildCounterPrivateConnectionInfo--;
 }
 
 core.List<api.SingleEdgeResponse> buildUnnamed27() => [
@@ -2124,15 +2206,19 @@ api.Step buildStep() {
     o.cloudFunction = buildCloudFunctionInfo();
     o.cloudRunRevision = buildCloudRunRevisionInfo();
     o.cloudSqlInstance = buildCloudSQLInstanceInfo();
+    o.datastreamPrivateConnection = buildPrivateConnectionInfo();
     o.deliver = buildDeliverInfo();
     o.description = 'foo';
     o.directVpcEgressConnection = buildDirectVpcEgressConnectionInfo();
+    o.dmsPrivateConnection = buildPrivateConnectionInfo();
     o.drop = buildDropInfo();
     o.endpoint = buildEndpointInfo();
     o.firewall = buildFirewallInfo();
     o.forward = buildForwardInfo();
     o.forwardingRule = buildForwardingRuleInfo();
     o.gkeMaster = buildGKEMasterInfo();
+    o.gkeNetworkPolicy = buildGkeNetworkPolicyInfo();
+    o.gkeNetworkPolicySkipped = buildGkeNetworkPolicySkippedInfo();
     o.gkePod = buildGkePodInfo();
     o.googleService = buildGoogleServiceInfo();
     o.hybridSubnet = buildHybridSubnetInfo();
@@ -2143,6 +2229,7 @@ api.Step buildStep() {
     o.loadBalancerBackendInfo = buildLoadBalancerBackendInfo();
     o.nat = buildNatInfo();
     o.network = buildNetworkInfo();
+    o.ngfwPacketInspection = buildNgfwPacketInspectionInfo();
     o.projectId = 'foo';
     o.proxyConnection = buildProxyConnectionInfo();
     o.redisCluster = buildRedisClusterInfo();
@@ -2169,15 +2256,19 @@ void checkStep(api.Step o) {
     checkCloudFunctionInfo(o.cloudFunction!);
     checkCloudRunRevisionInfo(o.cloudRunRevision!);
     checkCloudSQLInstanceInfo(o.cloudSqlInstance!);
+    checkPrivateConnectionInfo(o.datastreamPrivateConnection!);
     checkDeliverInfo(o.deliver!);
     unittest.expect(o.description!, unittest.equals('foo'));
     checkDirectVpcEgressConnectionInfo(o.directVpcEgressConnection!);
+    checkPrivateConnectionInfo(o.dmsPrivateConnection!);
     checkDropInfo(o.drop!);
     checkEndpointInfo(o.endpoint!);
     checkFirewallInfo(o.firewall!);
     checkForwardInfo(o.forward!);
     checkForwardingRuleInfo(o.forwardingRule!);
     checkGKEMasterInfo(o.gkeMaster!);
+    checkGkeNetworkPolicyInfo(o.gkeNetworkPolicy!);
+    checkGkeNetworkPolicySkippedInfo(o.gkeNetworkPolicySkipped!);
     checkGkePodInfo(o.gkePod!);
     checkGoogleServiceInfo(o.googleService!);
     checkHybridSubnetInfo(o.hybridSubnet!);
@@ -2188,6 +2279,7 @@ void checkStep(api.Step o) {
     checkLoadBalancerBackendInfo(o.loadBalancerBackendInfo!);
     checkNatInfo(o.nat!);
     checkNetworkInfo(o.network!);
+    checkNgfwPacketInspectionInfo(o.ngfwPacketInspection!);
     unittest.expect(o.projectId!, unittest.equals('foo'));
     checkProxyConnectionInfo(o.proxyConnection!);
     checkRedisClusterInfo(o.redisCluster!);
@@ -2765,6 +2857,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GkeNetworkPolicyInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGkeNetworkPolicyInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GkeNetworkPolicyInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGkeNetworkPolicyInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-GkeNetworkPolicySkippedInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGkeNetworkPolicySkippedInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GkeNetworkPolicySkippedInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGkeNetworkPolicySkippedInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-GkePodInfo', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGkePodInfo();
@@ -2963,6 +3077,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-NgfwPacketInspectionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNgfwPacketInspectionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NgfwPacketInspectionInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkNgfwPacketInspectionInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOperation();
@@ -2982,6 +3107,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-PrivateConnectionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPrivateConnectionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PrivateConnectionInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPrivateConnectionInfo(od);
     });
   });
 
