@@ -114,18 +114,26 @@ Map<String, Set<String>> _parseApis(String yamlContent) {
 
   final apis = <String, Set<String>>{};
 
-  // We need to look for 'packages' key which is a list
-  final packages = doc['packages'] as List;
+  // We need to look for 'packages' key which is a list or a map
+  final packages = doc['packages'];
+  Map? googleapisMap;
 
-  // Find the 'googleapis' entry
-  final googleapisConfig = packages
-      .whereType<Map>()
-      .where((element) => element.containsKey('googleapis'))
-      .firstOrNull;
+  // New format: packages is a map with 'googleapis' key
+  if (packages is Map && packages.containsKey('googleapis')) {
+    googleapisMap = packages['googleapis'] as Map;
+  } else if (packages is List) {
+    // Old format: packages is a list of maps
+    final googleapisConfig = packages
+        .whereType<Map>()
+        .where((element) => element.containsKey('googleapis'))
+        .firstOrNull;
 
-  if (googleapisConfig == null) return apis;
+    if (googleapisConfig != null) {
+      googleapisMap = googleapisConfig['googleapis'] as Map;
+    }
+  }
 
-  final googleapisMap = googleapisConfig['googleapis'] as Map;
+  if (googleapisMap == null) return apis;
   if (!googleapisMap.containsKey('apis')) return apis;
 
   final apiList = googleapisMap['apis'] as List;
