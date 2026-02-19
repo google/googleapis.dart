@@ -39,10 +39,17 @@ Future<AccessCredentials> obtainAccessCredentialsViaServiceAccount(
 ///
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
+///
+/// If [quotaProject] is provided, it will be added to the `X-Goog-User-Project`
+/// header for all requests.
+///
+/// Otherwise, the [ServiceAccountCredentials.quotaProject] property on
+/// [clientCredentials] will be used.
 Future<AutoRefreshingAuthClient> clientViaServiceAccount(
   ServiceAccountCredentials clientCredentials,
   List<String> scopes, {
   Client? baseClient,
+  String? quotaProject,
 }) async => await clientFromFlow(
   (c) => JwtFlow(
     clientCredentials.email,
@@ -52,4 +59,5 @@ Future<AutoRefreshingAuthClient> clientViaServiceAccount(
     c,
   ),
   baseClient: baseClient,
+  quotaProject: quotaProject ?? clientCredentials.quotaProject,
 );

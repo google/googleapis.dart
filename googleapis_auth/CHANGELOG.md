@@ -1,3 +1,12 @@
+## 2.2.0-wip
+
+- `ImpersonatedAuthClient` and `clientViaServiceAccountImpersonation` accept an
+  optional `baseClient` to likely use for the transport handling.
+- Application Default Credentials (ADC) now supports `impersonated_service_account`
+  source files.
+- Application Default Credentials (ADC) now propagate `quota_project_id` for
+  Service Account credentials.
+
 ## 2.1.0
 
 - `AuthClientSigningExtension`: Added `sign()` which accepts an optional

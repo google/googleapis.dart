@@ -11,6 +11,7 @@ import 'package:http/http.dart';
 import 'auth_endpoints.dart';
 import 'auth_functions.dart';
 import 'auth_http_utils.dart';
+import 'impersonated_auth_client.dart';
 import 'service_account_client.dart';
 import 'service_account_credentials.dart';
 
@@ -31,6 +32,24 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
     );
   }
 
+  if (credentials is! Map) {
+    throw Exception(
+      'Failed to parse JSON from credentials file from $fileSource',
+    );
+  }
+
+  return _clientViaApplicationCredentials(
+    credentials as Map<String, dynamic>,
+    scopes,
+    baseClient,
+  );
+}
+
+Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
+  Map<String, dynamic> credentials,
+  List<String> scopes,
+  Client baseClient,
+) async {
   if (credentials case {
     'type': 'authorized_user',
     'client_id': final String clientIdString,
@@ -55,9 +74,42 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
       quotaProject: credentials['quota_project_id'] as String?,
     );
   }
+
+  if (credentials case {
+    'type': 'impersonated_service_account',
+    'service_account_impersonation_url': final String url,
+    'source_credentials': final Map<String, dynamic> source,
+  }) {
+    final sourceClient = await _clientViaApplicationCredentials(source, [
+      'https://www.googleapis.com/auth/cloud-platform',
+    ], baseClient);
+
+    final match = _impersonationUrlRegExp.firstMatch(url);
+    if (match == null) {
+      throw ArgumentError.value(
+        url,
+        'service_account_impersonation_url',
+        'Invalid impersonation URL',
+      );
+    }
+    final targetServiceAccount = match.group(1)!;
+
+    return clientViaServiceAccountImpersonation(
+      sourceClient: sourceClient,
+      targetServiceAccount: targetServiceAccount,
+      targetScopes: scopes,
+      baseClient: baseClient,
+    );
+  }
+
   return await clientViaServiceAccount(
     ServiceAccountCredentials.fromJson(credentials),
     scopes,
     baseClient: baseClient,
+    quotaProject: credentials['quota_project_id'] as String?,
   );
 }
+
+final _impersonationUrlRegExp = RegExp(
+  r'serviceAccounts/([^:]+):generateAccessToken',
+);

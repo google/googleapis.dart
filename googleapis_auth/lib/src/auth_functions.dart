@@ -52,10 +52,14 @@ Client clientViaApiKey(String apiKey, {Client? baseClient}) {
 /// [baseClient].
 ///
 /// {@macro googleapis_auth_not_close_the_baseClient}
+///
+/// If [quotaProject] is provided, it will be added to the `X-Goog-User-Project`
+/// header for all requests.
 AuthClient authenticatedClient(
   Client baseClient,
   AccessCredentials credentials, {
   bool closeUnderlyingClient = false,
+  String? quotaProject,
 }) {
   if (credentials.accessToken.type != 'Bearer') {
     throw ArgumentError('Only Bearer access tokens are accepted.');
@@ -64,6 +68,7 @@ AuthClient authenticatedClient(
     baseClient,
     credentials,
     closeUnderlyingClient: closeUnderlyingClient,
+    quotaProject: quotaProject,
   );
 }
 
