@@ -27,9 +27,9 @@ class Media {
   }
 }
 
-// ignore: avoid_classes_with_only_static_members
 /// Represents options for uploading a [Media].
-class UploadOptions {
+// ignore: avoid_classes_with_only_static_members
+final class UploadOptions {
   /// Use either simple uploads (only media) or multipart for media+metadata
   static const UploadOptions defaultOptions = UploadOptions();
 
@@ -40,7 +40,7 @@ class UploadOptions {
 }
 
 /// Specifies options for resumable uploads.
-class ResumableUploadOptions extends UploadOptions {
+final class ResumableUploadOptions extends UploadOptions {
   static Duration? exponentialBackoff(int failedAttempts) {
     // Do not retry more than 5 times.
     if (failedAttempts > 5) return null;
