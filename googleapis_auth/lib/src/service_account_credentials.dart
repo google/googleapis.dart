@@ -43,6 +43,9 @@ class ServiceAccountCredentials {
   /// (e.g., Government Cloud or other isolated environments).
   final String universeDomain;
 
+  /// The quota project to use for requests.
+  final String? quotaProject;
+
   /// Private key as an [RSAPrivateKey].
   final RSAPrivateKey privateRSAKey;
 
@@ -75,6 +78,7 @@ class ServiceAccountCredentials {
           projectId: map['project_id'] as String?,
           universeDomain:
               map['universe_domain'] as String? ?? defaultUniverseDomain,
+          quotaProject: map['quota_project_id'] as String?,
         ),
       final Map map when map['type'] != 'service_account' =>
         throw ArgumentError(
@@ -109,6 +113,9 @@ class ServiceAccountCredentials {
   /// The optional named argument [universeDomain] specifies the universe
   /// domain.
   /// Defaults to [defaultUniverseDomain] if not provided.
+  ///
+  /// The optional named argument [quotaProject] specifies the quota project
+  /// to use for requests.
   ServiceAccountCredentials(
     this.email,
     this.clientId,
@@ -116,6 +123,7 @@ class ServiceAccountCredentials {
     this.impersonatedUser,
     this.projectId,
     this.universeDomain = defaultUniverseDomain,
+    this.quotaProject,
   }) : privateRSAKey = keyFromString(privateKey);
 
   /// Signs the given [data] using RSA-SHA256 with this service account's

@@ -46,6 +46,10 @@ import 'utils.dart';
 /// // Explicitly generate a new access token
 /// final token = await impersonated.generateAccessToken();
 /// ```
+///
+/// [baseClient] is an optional [http.Client] that will be used for
+/// the returned client's authenticated requests. If not provided, a new
+/// [http.Client] will be instantiated.
 Future<ImpersonatedAuthClient> clientViaServiceAccountImpersonation({
   required AuthClient sourceClient,
   required String targetServiceAccount,
@@ -53,6 +57,7 @@ Future<ImpersonatedAuthClient> clientViaServiceAccountImpersonation({
   List<String>? delegates,
   String universeDomain = defaultUniverseDomain,
   Duration lifetime = const Duration(hours: 1),
+  http.Client? baseClient,
 }) async {
   final impersonatedClient = ImpersonatedAuthClient(
     sourceClient: sourceClient,
@@ -61,6 +66,7 @@ Future<ImpersonatedAuthClient> clientViaServiceAccountImpersonation({
     delegates: delegates,
     universeDomain: universeDomain,
     lifetime: lifetime,
+    baseClient: baseClient,
   );
 
   // Generate initial credentials
@@ -113,6 +119,10 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   ///
   /// [lifetime] specifies how long the access token should be valid. Defaults
   /// to 3600 seconds (1 hour). Maximum is 43200 seconds (12 hours).
+  ///
+  /// [baseClient] is an optional [http.Client] that will be used for
+  /// the returned client's authenticated requests. If not provided, a new
+  /// [http.Client] will be instantiated.
   ImpersonatedAuthClient({
     required AuthClient sourceClient,
     required this.targetServiceAccount,
@@ -120,6 +130,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
     List<String>? delegates,
     String universeDomain = defaultUniverseDomain,
     Duration lifetime = const Duration(hours: 1),
+    http.Client? baseClient,
   }) : _sourceClient = sourceClient,
        _targetScopes = List.unmodifiable(targetScopes),
        _delegates = delegates != null ? List.unmodifiable(delegates) : null,
@@ -130,7 +141,10 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
          null,
          targetScopes,
        ),
-       super(sourceClient, closeUnderlyingClient: false);
+       super(
+         baseClient ?? http.Client(),
+         closeUnderlyingClient: baseClient == null,
+       );
 
   @override
   AccessCredentials get credentials => _credentials;
