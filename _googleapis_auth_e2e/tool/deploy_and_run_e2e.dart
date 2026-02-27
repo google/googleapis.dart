@@ -6,6 +6,8 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' as p;
 import 'package:yaml/yaml.dart';
 
+import 'tool_shared.dart';
+
 void main(List<String> args) async {
   final parser = ArgParser()
     ..addFlag('deploy', defaultsTo: true, help: 'Deploy the service')
@@ -82,19 +84,13 @@ Future<void> _run(_E2EConfig config) async {
 
 Future<void> _runTests(String url, String project) async {
   print('Running tests...');
-  final testResult = await Process.start(
+  await runProcessInheritStdio(
     'dart',
     ['test'],
-    mode: ProcessStartMode.inheritStdio,
     environment: {'E2E_URL': url, 'GOOGLE_CLOUD_PROJECT': project},
+    failureMessage: 'Tests failed.',
   );
-
-  final exitCode = await testResult.exitCode;
-  if (exitCode != 0) {
-    throw StateError('Tests failed with exit code $exitCode.');
-  } else {
-    print('Tests passed!');
-  }
+  print('Tests passed!');
 }
 
 Future<String> _getServiceUrl(
@@ -102,7 +98,7 @@ Future<String> _getServiceUrl(
   String serviceName,
   String region,
 ) async {
-  final result = await Process.run('gcloud', [
+  final result = await runProcess('gcloud', [
     'run',
     'services',
     'describe',
@@ -110,11 +106,7 @@ Future<String> _getServiceUrl(
     '--project=$project',
     '--region=$region',
     '--format=json',
-  ]);
-
-  if (result.exitCode != 0) {
-    throw StateError('Failed to get service URL: ${result.stderr}');
-  }
+  ], failureMessage: 'Failed to get service URL.');
 
   final output = jsonDecode(result.stdout.toString()) as Map<String, dynamic>;
   final status = output['status'] as Map<String, dynamic>;
@@ -146,7 +138,7 @@ Future<(String, String)> _deploySource(_E2EConfig config) async {
 
   Directory(p.dirname(binaryPath)).createSync(recursive: true);
 
-  final buildResult = await Process.run('dart', [
+  await runProcess('dart', [
     'compile',
     'exe',
     'bin/server.dart',
@@ -156,14 +148,7 @@ Future<(String, String)> _deploySource(_E2EConfig config) async {
     'x64',
     '--target-os',
     'linux',
-  ]);
-
-  if (buildResult.exitCode != 0) {
-    stderr
-      ..write(buildResult.stderr)
-      ..write(buildResult.stdout);
-    throw StateError('Failed to build project.');
-  }
+  ], failureMessage: 'Failed to build project.');
 
   // 3. Deploy to Cloud Run
   print('Deploying to Cloud Run ($serviceName in $region)...');
@@ -185,14 +170,11 @@ Future<(String, String)> _deploySource(_E2EConfig config) async {
   ];
 
   print('Running: gcloud ${deployArgs.join(' ')}');
-  final deployResult = await Process.run('gcloud', deployArgs);
-
-  if (deployResult.exitCode != 0) {
-    stderr
-      ..write(deployResult.stderr)
-      ..write(deployResult.stdout);
-    throw StateError('Failed to deploy project.');
-  }
+  final deployResult = await runProcess(
+    'gcloud',
+    deployArgs,
+    failureMessage: 'Failed to deploy project.',
+  );
 
   try {
     final output =

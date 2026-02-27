@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'tool_shared.dart';
+
 Future<void> main() async {
   // 1. Check for credentials
   // TODO: better check?
@@ -35,19 +37,13 @@ Future<void> main() async {
   try {
     // 3. Run tests
     print('Running tests...');
-    final testResult = await Process.start(
+    await runProcessInheritStdio(
       'dart',
       ['test'],
       environment: {'E2E_URL': 'http://localhost:8080'},
-      mode: ProcessStartMode.inheritStdio,
+      failureMessage: 'Tests failed.',
     );
-
-    final exitCode = await testResult.exitCode;
-    if (exitCode != 0) {
-      throw StateError('Tests failed with exit code $exitCode.');
-    } else {
-      print('Tests passed!');
-    }
+    print('Tests passed!');
   } finally {
     // 4. Kill server
     print('Stopping server...');
