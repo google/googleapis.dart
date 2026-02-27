@@ -149,7 +149,7 @@ jobs:
         uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:format-analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:format-analyze_2"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
@@ -755,3 +755,103 @@ jobs:
       - job_001
       - job_002
       - job_003
+  job_018:
+    name: "analyze_format; Dart 3.9.0; PKG: _googleapis_auth_e2e; `dart analyze`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:3.9.0;packages:_googleapis_auth_e2e;commands:analyze_1"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:3.9.0;packages:_googleapis_auth_e2e
+            os:ubuntu-latest;pub-cache-hosted;sdk:3.9.0
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
+        with:
+          sdk: "3.9.0"
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - id: _googleapis_auth_e2e_pub_upgrade
+        name: _googleapis_auth_e2e; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: _googleapis_auth_e2e
+      - name: _googleapis_auth_e2e; dart analyze
+        run: dart analyze
+        if: "always() && steps._googleapis_auth_e2e_pub_upgrade.conclusion == 'success'"
+        working-directory: _googleapis_auth_e2e
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017
+  job_019:
+    name: "analyze_format; Dart dev; PKG: _googleapis_auth_e2e; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_googleapis_auth_e2e;commands:format-analyze_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_googleapis_auth_e2e
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@e51d8e571e22473a2ddebf0ef8a2123f0ab2c02c
+        with:
+          sdk: dev
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - id: _googleapis_auth_e2e_pub_upgrade
+        name: _googleapis_auth_e2e; dart pub upgrade
+        run: dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: _googleapis_auth_e2e
+      - name: "_googleapis_auth_e2e; dart format --output=none --set-exit-if-changed ."
+        run: "dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps._googleapis_auth_e2e_pub_upgrade.conclusion == 'success'"
+        working-directory: _googleapis_auth_e2e
+      - name: "_googleapis_auth_e2e; dart analyze --fatal-infos"
+        run: dart analyze --fatal-infos
+        if: "always() && steps._googleapis_auth_e2e_pub_upgrade.conclusion == 'success'"
+        working-directory: _googleapis_auth_e2e
+    needs:
+      - job_001
+      - job_002
+      - job_003
+      - job_004
+      - job_005
+      - job_006
+      - job_007
+      - job_008
+      - job_009
+      - job_010
+      - job_011
+      - job_012
+      - job_013
+      - job_014
+      - job_015
+      - job_016
+      - job_017

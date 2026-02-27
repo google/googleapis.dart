@@ -5,13 +5,14 @@ publish_to: none
 dev_dependencies:
   dart_flutter_team_lints: ^3.2.0
 workspace:
+- _googleapis_auth_e2e
 - _test
 - _test_package
 - discoveryapis_commons
 - discoveryapis_generator
-- resources/googleapis
 - generated/googleapis
 - generated/googleapis_beta
 - generator
 - googleapis_auth
+- resources/googleapis
 - test_integration
