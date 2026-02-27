@@ -74,6 +74,7 @@ void main() {
       'type': 'service_account',
       'project_id': 'test-project',
       'universe_domain': 'example.com',
+      'quota_project_id': 'test-quota',
     };
 
     test('from valid individual params', () {
@@ -82,6 +83,7 @@ void main() {
         clientId,
         testPrivateKeyString,
         projectId: 'test-project',
+        quotaProject: 'test-quota',
       );
       expect(credentials.email, 'email');
       expect(credentials.clientId, clientId);
@@ -89,6 +91,7 @@ void main() {
       expect(credentials.impersonatedUser, isNull);
       expect(credentials.projectId, 'test-project');
       expect(credentials.universeDomain, defaultUniverseDomain);
+      expect(credentials.quotaProject, 'test-quota');
     });
 
     test('from valid individual params with user', () {
@@ -98,6 +101,7 @@ void main() {
         testPrivateKeyString,
         impersonatedUser: 'x@y.com',
         projectId: 'test-project',
+        quotaProject: 'test-quota',
       );
       expect(credentials.email, 'email');
       expect(credentials.clientId, clientId);
@@ -105,6 +109,7 @@ void main() {
       expect(credentials.impersonatedUser, 'x@y.com');
       expect(credentials.projectId, 'test-project');
       expect(credentials.universeDomain, defaultUniverseDomain);
+      expect(credentials.quotaProject, 'test-quota');
     });
 
     test('from JSON string', () {
@@ -118,6 +123,7 @@ void main() {
       expect(credentialsFromJson.impersonatedUser, isNull);
       expect(credentialsFromJson.projectId, 'test-project');
       expect(credentialsFromJson.universeDomain, 'example.com');
+      expect(credentialsFromJson.quotaProject, 'test-quota');
     });
 
     test('from JSON string with user', () {
@@ -132,6 +138,7 @@ void main() {
       expect(credentialsFromJson.impersonatedUser, 'x@y.com');
       expect(credentialsFromJson.projectId, 'test-project');
       expect(credentialsFromJson.universeDomain, 'example.com');
+      expect(credentialsFromJson.quotaProject, 'test-quota');
     });
 
     test('from JSON map', () {
@@ -145,6 +152,7 @@ void main() {
       expect(credentialsFromJson.impersonatedUser, isNull);
       expect(credentialsFromJson.projectId, 'test-project');
       expect(credentialsFromJson.universeDomain, 'example.com');
+      expect(credentialsFromJson.quotaProject, 'test-quota');
     });
 
     test('from JSON map with user', () {
@@ -159,6 +167,7 @@ void main() {
       expect(credentialsFromJson.impersonatedUser, 'x@y.com');
       expect(credentialsFromJson.projectId, 'test-project');
       expect(credentialsFromJson.universeDomain, 'example.com');
+      expect(credentialsFromJson.quotaProject, 'test-quota');
     });
 
     test('sign data', () {
