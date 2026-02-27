@@ -16,6 +16,7 @@ import 'auth_http_utils.dart';
 import 'impersonated_auth_client.dart';
 import 'service_account_client.dart';
 import 'service_account_credentials.dart';
+import 'sts_auth_client.dart';
 
 Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
   File file,
@@ -103,6 +104,58 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
       targetScopes: scopes,
       baseClient: baseClient,
     );
+  }
+
+  if (credentials case {
+    'type': 'external_account',
+    'audience': final String audience,
+    'subject_token_type': final String subjectTokenType,
+    'token_url': final String tokenUrl,
+    'credential_source': final Map<String, dynamic> credentialSource,
+  }) {
+    final serviceAccountImpersonationUrl =
+        credentials['service_account_impersonation_url'] as String?;
+
+    final stsClient = await clientViaStsTokenExchange(
+      credentialSource: credentialSource,
+      audience: audience,
+      subjectTokenType: subjectTokenType,
+      tokenUrl: tokenUrl,
+      scopes: scopes,
+      quotaProject: credentials['quota_project_id'] as String?,
+      baseClient: baseClient,
+    );
+
+    if (serviceAccountImpersonationUrl != null) {
+      // It's possible for external credentials to specify a service account
+      // to impersonate. This is common in Workload Identity Federation where
+      // the external identity (e.g. AWS, Azure, OIDC) is first exchanged for
+      // an STS token, which is then used to impersonate a specific Google Cloud
+      // service account.
+      //
+      // See: https://cloud.google.com/iam/docs/workload-identity-federation
+      // See also the "service_account_impersonation_url" definition at:
+      // https://google.aip.dev/auth/4117
+      final match = _impersonationUrlRegExp.firstMatch(
+        serviceAccountImpersonationUrl,
+      );
+      if (match == null) {
+        throw ArgumentError.value(
+          serviceAccountImpersonationUrl,
+          'service_account_impersonation_url',
+          'Invalid impersonation URL',
+        );
+      }
+      final targetServiceAccount = match.group(1)!;
+
+      return clientViaServiceAccountImpersonation(
+        sourceClient: stsClient,
+        targetServiceAccount: targetServiceAccount,
+        targetScopes: scopes,
+        baseClient: baseClient,
+      );
+    }
+    return stsClient;
   }
 
   return await clientViaServiceAccount(

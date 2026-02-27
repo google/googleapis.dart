@@ -198,4 +198,141 @@ void main() {
 
     c.close();
   });
+
+  test('external_account credentials (WIF)', () async {
+    await d.file('subject_token.txt', 'my-subject-token').create();
+
+    await d
+        .file(
+          'creds.json',
+          json.encode({
+            'type': 'external_account',
+            'audience': 'my-audience',
+            'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
+            'token_url': 'https://sts.googleapis.com/v1/token',
+            'credential_source': {'file': d.path('subject_token.txt')},
+            'quota_project_id': 'project',
+          }),
+        )
+        .create();
+
+    final c = await fromApplicationsCredentialsFile(
+      File(d.path('creds.json')),
+      'test-credentials-file',
+      ['s1'],
+      mockClient(expectClose: false, (Request request) async {
+        final url = request.url;
+        if (url.toString() == 'https://sts.googleapis.com/v1/token') {
+          expect(request.method, 'POST');
+          final body = jsonDecode(request.body) as Map<String, dynamic>;
+          expect(body['audience'], 'my-audience');
+          expect(body['subjectToken'], 'my-subject-token');
+          return Response(
+            jsonEncode({
+              'token_type': 'Bearer',
+              'access_token': 'atoken',
+              'expires_in': 3600,
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }
+        if (url.toString() == 'https://storage.googleapis.com/b/bucket/o/obj') {
+          expect(request.method, 'GET');
+          expect(
+            request.headers,
+            containsPair('Authorization', 'Bearer atoken'),
+          );
+          expect(
+            request.headers,
+            containsPair('X-Goog-User-Project', 'project'),
+          );
+          return Response('hello world', 200);
+        }
+        return Response('bad', 404);
+      }),
+    );
+    expect(c.credentials.accessToken.data, 'atoken');
+
+    final r = await c.get(
+      Uri.https('storage.googleapis.com', '/b/bucket/o/obj'),
+    );
+    expect(r.statusCode, 200);
+    expect(r.body, 'hello world');
+
+    c.close();
+  });
+
+  test('external_account credentials (WIF) with impersonation', () async {
+    await d.file('subject_token2.txt', 'my-subject-token2').create();
+
+    await d
+        .file(
+          'creds2.json',
+          json.encode({
+            'type': 'external_account',
+            'audience': 'my-audience',
+            'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
+            'service_account_impersonation_url':
+                'https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/foo@bar.iam.gserviceaccount.com:generateAccessToken',
+            'token_url': 'https://sts.googleapis.com/v1/token',
+            'credential_source': {'file': d.path('subject_token2.txt')},
+          }),
+        )
+        .create();
+
+    final c = await fromApplicationsCredentialsFile(
+      File(d.path('creds2.json')),
+      'test-credentials-file',
+      ['s1'],
+      mockClient(expectClose: false, (Request request) async {
+        final url = request.url;
+        if (url.toString() == 'https://sts.googleapis.com/v1/token') {
+          return Response(
+            jsonEncode({
+              'token_type': 'Bearer',
+              'access_token': 'atoken',
+              'expires_in': 3600,
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }
+        if (url.toString() ==
+            'https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/foo%40bar.iam.gserviceaccount.com:generateAccessToken') {
+          expect(request.method, 'POST');
+          expect(
+            request.headers,
+            containsPair('Authorization', 'Bearer atoken'),
+          );
+          return Response(
+            jsonEncode({
+              'accessToken': 'impersonated-token',
+              'expireTime': '2014-10-02T15:01:23.045123456Z',
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }
+        if (url.toString() == 'https://storage.googleapis.com/b/bucket/o/obj') {
+          expect(request.method, 'GET');
+          expect(
+            request.headers,
+            containsPair('Authorization', 'Bearer impersonated-token'),
+          );
+          return Response('hello world', 200);
+        }
+        return Response('bad url: $url', 404);
+      }),
+    );
+    expect(c.credentials.accessToken.data, 'impersonated-token');
+
+    final r = await c.get(
+      Uri.https('storage.googleapis.com', '/b/bucket/o/obj'),
+    );
+    expect(r.statusCode, 200);
+    expect(r.body, 'hello world');
+
+    c.close();
+  });
 }
