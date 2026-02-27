@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'tool_shared.dart';
@@ -25,10 +24,6 @@ Future<void> main() async {
       'PORT': '8080', // google_cloud uses this
     },
   );
-
-  // Pipe server output to stdout/stderr
-  serverProcess.stdout.transform(utf8.decoder).listen(stdout.write);
-  serverProcess.stderr.transform(utf8.decoder).listen(stderr.write);
 
   // Wait for server to start (naive check)
   // In a real scenario, we might want to poll the health check
