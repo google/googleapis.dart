@@ -44,8 +44,7 @@ Future<void> main() async {
 
     final exitCode = await testResult.exitCode;
     if (exitCode != 0) {
-      print('Tests failed.');
-      exit(exitCode);
+      throw StateError('Tests failed with exit code $exitCode.');
     } else {
       print('Tests passed!');
     }
