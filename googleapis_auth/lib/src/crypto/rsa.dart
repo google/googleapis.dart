@@ -48,8 +48,8 @@ final class RSAPrivateKey {
   );
 }
 
-// ignore: avoid_classes_with_only_static_members
 /// Provides a [rawSign] method for signing messages with a [RSAPrivateKey].
+// ignore: avoid_classes_with_only_static_members
 abstract final class RSAAlgorithm {
   /// Performs the private key operation (signing) on [bytes] with the private
   /// [key].

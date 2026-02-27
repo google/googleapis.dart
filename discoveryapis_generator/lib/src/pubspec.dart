@@ -23,10 +23,7 @@ class Pubspec {
     this.repository,
     Map<String, String>? extraDevDependencies,
     this.resolution,
-  }) : devDependencies = {
-         ..._defaultDevDependencies,
-         if (extraDevDependencies != null) ...extraDevDependencies,
-       };
+  }) : devDependencies = {..._defaultDevDependencies, ...?extraDevDependencies};
 
   String get sdkConstraint => targetDartVersionConstraint;
 
