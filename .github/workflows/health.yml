@@ -11,6 +11,7 @@ jobs:
       sdk: stable
       # Drop coverage
       checks: "changelog,license,breaking,do-not-submit,leaking,unused-dependencies"
+      license_header: .github/expected_license_header.txt
       # GENERATED FILES
       ignore_license: 'generated/**,_test_package/**'
       # TOO BIG!

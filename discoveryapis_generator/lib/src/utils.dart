@@ -1,6 +1,8 @@
-// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+// Copyright 2021 Google LLC
+//
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file or at
+// https://developers.google.com/open-source/licenses/bsd
 
 import 'dart:io';
 
@@ -28,8 +30,40 @@ void orderedForEach<K extends Comparable<K>, V>(
   }
 }
 
+String _getYearFromGitSync(String filepath) {
+  try {
+    final result = Process.runSync('git', [
+      'log',
+      '--reverse',
+      '--format=%cd',
+      '--date=format:%Y',
+      '--',
+      filepath,
+    ], runInShell: true);
+    final output = result.stdout.toString().trim();
+    if (output.isNotEmpty) {
+      final lines = output.split('\n');
+      if (lines.isNotEmpty && lines.first.isNotEmpty) {
+        return lines.first.trim();
+      }
+    }
+  } catch (_) {}
+  return '\${DateTime.now().year}';
+}
+
 void writeDartSource(String path, String content) {
-  writeString(path, formatSource(content));
+  final year = _getYearFromGitSync(path);
+  final header = '''// Copyright $year Google LLC
+//
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file or at
+// https://developers.google.com/open-source/licenses/bsd
+
+''';
+
+  // Prepend header before formatting so it's part of the formatted source
+  final sourceWithHeader = header + content;
+  writeString(path, formatSource(sourceWithHeader));
 }
 
 void writeString(String path, String content) {
