@@ -65,7 +65,7 @@ class AuthorizationCodeGrantServerFlow
 
       try {
         if (request.method != 'GET') {
-          throw Exception(
+          throw AuthorizationCallbackException(
             'Invalid response from server '
             '(expected GET request callback, got: ${request.method}).',
           );
@@ -73,7 +73,7 @@ class AuthorizationCodeGrantServerFlow
 
         final returnedState = uri.queryParameters['state'];
         if (state != returnedState) {
-          throw Exception(
+          throw const AuthorizationCallbackException(
             'Invalid response from server (state did not match).',
           );
         }
@@ -87,7 +87,7 @@ class AuthorizationCodeGrantServerFlow
 
         final code = uri.queryParameters['code'];
         if (code == null || code.isEmpty) {
-          throw Exception(
+          throw const AuthorizationCallbackException(
             'Invalid response from server (no auth code transmitted).',
           );
         }

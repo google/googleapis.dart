@@ -15,7 +15,7 @@ import '../test_utils.dart';
 
 void main() {
   test('throws ArgumentError for empty string', () {
-    expect(() => keyFromString(''), throwsArgumentError);
+    expect(() => keyFromString(''), throwsFormatException);
   });
 
   test('keyFromString parses valid RSA private key', () {
@@ -134,7 +134,7 @@ void main() {
 
     expect(
       () => keyFromString(pem),
-      _throwArgumentErrorWithMsg('Unexpected Algorithm Identifier OID'),
+      _throwFormatExceptionWithMsg('Unexpected Algorithm Identifier OID'),
     );
   });
 
@@ -205,10 +205,11 @@ ${base64Encode(fullBytes)}
 
     expect(
       () => keyFromString(pem),
-      _throwArgumentErrorWithMsg('Only 1024 or more bits are supported'),
+      _throwFormatExceptionWithMsg('Only 1024 or more bits are supported'),
     );
   });
 }
 
-Matcher _throwArgumentErrorWithMsg(String msg) =>
-    throwsA(isArgumentError.having((e) => e.message, 'message', contains(msg)));
+Matcher _throwFormatExceptionWithMsg(String msg) => throwsA(
+  isFormatException.having((e) => e.message, 'message', contains(msg)),
+);

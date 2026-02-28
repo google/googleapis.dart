@@ -167,7 +167,7 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
       }
       return token;
     }
-    throw UnsupportedError(
+    throw ArgumentError(
       'Unsupported credential source type. Must provide file or url.',
     );
   }

@@ -367,10 +367,10 @@ void main() {
         await expectLater(
           flow.run,
           throwsA(
-            isA<Exception>().having(
+            isA<AuthorizationCallbackException>().having(
               (e) => e.toString(),
               'message',
-              '''Exception: Invalid response from server (expected GET request callback, got: POST).''',
+              '''AuthorizationCallbackException: Invalid response from server (expected GET request callback, got: POST).''',
             ),
           ),
         );
@@ -387,10 +387,11 @@ void main() {
         await expectLater(
           flow.run,
           throwsA(
-            isA<Exception>().having(
+            isA<AuthorizationCallbackException>().having(
               (e) => e.toString(),
               'message',
-              'Exception: Invalid response from server (state did not match).',
+              'AuthorizationCallbackException: '
+                  'Invalid response from server (state did not match).',
             ),
           ),
         );

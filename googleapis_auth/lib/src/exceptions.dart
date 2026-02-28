@@ -56,3 +56,24 @@ class ServerRequestFailedException implements Exception {
   String toString() =>
       [message, if (statusCode != null) 'Status code: $statusCode'].join(' ');
 }
+
+/// Thrown when an error occurs reading or parsing a credentials file.
+class CredentialsFileException implements Exception {
+  final String message;
+
+  const CredentialsFileException(this.message);
+
+  @override
+  String toString() => 'CredentialsFileException: $message';
+}
+
+/// Thrown when the oauth2 callback request from the authorization server is
+/// invalid or an error occurs during the authorization code grant flow.
+class AuthorizationCallbackException implements Exception {
+  final String message;
+
+  const AuthorizationCallbackException(this.message);
+
+  @override
+  String toString() => 'AuthorizationCallbackException: $message';
+}
