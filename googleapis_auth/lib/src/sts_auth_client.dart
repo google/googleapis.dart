@@ -145,12 +145,21 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
         'type': 'json',
         'subject_token_field_name': final String fieldName,
       }) {
-        final json = jsonDecode(token) as Map<String, dynamic>;
-        if (json[fieldName] case final String subjectToken) {
-          token = subjectToken;
-        } else {
-          throw ArgumentError(
-            'Subject token field "$fieldName" not found in JSON response.',
+        try {
+          final json = jsonDecode(token) as Map<String, dynamic>;
+          if (json[fieldName] case final String subjectToken) {
+            token = subjectToken;
+          } else {
+            throw ArgumentError(
+              'Subject token field "$fieldName" not found in JSON response.',
+            );
+          }
+        } on FormatException {
+          throw ServerRequestFailedException(
+            'Failed to parse subject token from URL: $url. '
+            'Response was not valid JSON.',
+            responseContent: token,
+            statusCode: response.statusCode,
           );
         }
       }
@@ -167,11 +176,7 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
       final newCredentials = await generateAccessToken();
       notifyAboutNewCredentials(newCredentials);
       _credentials = newCredentials;
-      _authClient = AuthenticatedClient(
-        baseClient,
-        _credentials,
-        quotaProject: _quotaProject,
-      );
+      _authClient = null; // Force re-creation of the authenticated client.
     }
 
     _authClient ??= AuthenticatedClient(

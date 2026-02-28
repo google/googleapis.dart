@@ -6,6 +6,7 @@
 
 import 'dart:convert';
 
+import 'package:googleapis_auth/src/exceptions.dart';
 import 'package:googleapis_auth/src/sts_auth_client.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
@@ -80,4 +81,32 @@ void main() {
 
     expect(c.credentials.accessToken.data, 'atoken');
   });
+
+  test(
+    'clientViaStsTokenExchange url credentials invalid json format',
+    () async {
+      expect(
+        () => clientViaStsTokenExchange(
+          credentialSource: {
+            'url': 'http://localhost/token',
+            'format': {
+              'type': 'json',
+              'subject_token_field_name': 'special_token',
+            },
+          },
+          audience: 'my-audience',
+          subjectTokenType: 'my-token-type',
+          tokenUrl: 'https://sts.googleapis.com/v1/token',
+          scopes: ['s1'],
+          baseClient: mockClient(expectClose: false, (Request request) async {
+            if (request.url.toString() == 'http://localhost/token') {
+              return Response('not-valid-json', 200);
+            }
+            return Response('not found', 404);
+          }),
+        ),
+        throwsA(isA<ServerRequestFailedException>()),
+      );
+    },
+  );
 }
