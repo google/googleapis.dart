@@ -150,8 +150,10 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
           if (json[fieldName] case final String subjectToken) {
             token = subjectToken;
           } else {
-            throw ArgumentError(
+            throw ServerRequestFailedException(
               'Subject token field "$fieldName" not found in JSON response.',
+              responseContent: token,
+              statusCode: response.statusCode,
             );
           }
         } on FormatException {

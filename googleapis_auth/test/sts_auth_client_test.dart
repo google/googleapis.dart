@@ -15,7 +15,7 @@ import 'package:test_descriptor/test_descriptor.dart' as d;
 import 'test_utils.dart';
 
 void main() {
-  test('clientViaStsTokenExchange file credentials', () async {
+  test('clientViaStsTokenExchange file credentials', testOn: 'vm', () async {
     await d.file('token.txt', 'my-token').create();
 
     final c = await clientViaStsTokenExchange(
