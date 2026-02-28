@@ -2,6 +2,10 @@
 
 - Added `quotaProject` support to existing credentials classes
   (`ServiceAccountCredentials`, `ClientViaServiceAccount`, `ClientFromFlow`).
+- `clientViaApplicationDefaultCredentials` now extracts `quotaProject` correctly
+  from service account credentials JSON.
+- `clientViaServiceAccountImpersonation` and `ImpersonatedAuthClient` now accept
+  an optional `baseClient`.
 
 ## 2.1.0
 

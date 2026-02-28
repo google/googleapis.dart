@@ -137,4 +137,63 @@ void main() {
 
     c.close();
   });
+
+  test('service_account credentials with quota_project_id', () async {
+    await d
+        .file(
+          'creds.json',
+          json.encode({
+            'private_key_id': 'id',
+            'private_key': testPrivateKeyString,
+            'client_email': 'test@example.com',
+            'client_id': 'client_id',
+            'type': 'service_account',
+            'quota_project_id': 'test-quota-project',
+          }),
+        )
+        .create();
+
+    final c = await fromApplicationsCredentialsFile(
+      File(d.path('creds.json')),
+      'test-credentials-file',
+      ['https://www.googleapis.com/auth/cloud-platform'],
+      mockClient(
+        expectAsync1((Request request) async {
+          final url = request.url;
+          if (url == googleOauth2TokenEndpoint) {
+            expect(request.method, 'POST');
+            return Response(
+              jsonEncode({
+                'access_token': 'atoken',
+                'token_type': 'Bearer',
+                'expires_in': 3600,
+              }),
+              200,
+              headers: jsonContentType,
+            );
+          }
+          if (url.toString() ==
+              'https://storage.googleapis.com/b/bucket/o/obj') {
+            expect(request.method, 'GET');
+            expect(
+              request.headers,
+              containsPair('X-Goog-User-Project', 'test-quota-project'),
+            );
+            return Response('hello world', 200);
+          }
+          return Response('bad', 404);
+        }, count: 2),
+        expectClose: false,
+      ),
+    );
+    expect(c.credentials.accessToken.data, 'atoken');
+
+    final r = await c.get(
+      Uri.https('storage.googleapis.com', '/b/bucket/o/obj'),
+    );
+    expect(r.statusCode, 200);
+    expect(r.body, 'hello world');
+
+    c.close();
+  });
 }

@@ -436,4 +436,56 @@ void main() {
 
     impersonated.close();
   });
+
+  test('uses provided baseClient for authenticated requests', () async {
+    var generateTokenCalled = false;
+    final sourceBaseClient = mockClient((request) async {
+      generateTokenCalled = true;
+      final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
+      return http.Response(
+        jsonEncode({
+          'accessToken': 'impersonated-token',
+          'expireTime': expireTime.toIso8601String(),
+        }),
+        200,
+        headers: jsonContentType,
+      );
+    }, expectClose: false);
+
+    final sourceCredentials = AccessCredentials(
+      AccessToken(
+        'Bearer',
+        'source-token',
+        DateTime.now().toUtc().add(const Duration(hours: 1)),
+      ),
+      null,
+      [],
+    );
+    final sourceClient = authenticatedClient(
+      sourceBaseClient,
+      sourceCredentials,
+    );
+
+    var authenticatedRequestCalled = false;
+    final customBaseClient = mockClient((request) async {
+      authenticatedRequestCalled = true;
+      expect(request.headers['Authorization'], 'Bearer impersonated-token');
+      return http.Response('ok', 200);
+    }, expectClose: false);
+
+    final impersonated = await clientViaServiceAccountImpersonation(
+      sourceClient: sourceClient,
+      targetServiceAccount: 'target@project.iam.gserviceaccount.com',
+      targetScopes: ['scope1'],
+      baseClient: customBaseClient,
+    );
+
+    expect(generateTokenCalled, isTrue);
+
+    final response = await impersonated.get(Uri.parse('https://example.com'));
+    expect(response.statusCode, 200);
+    expect(authenticatedRequestCalled, isTrue);
+
+    impersonated.close();
+  });
 }
