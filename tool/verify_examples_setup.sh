@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export DISCOVERY_OMIT_HEADERS=true
+
 rm _test/*.dart
 
 pushd discoveryapis_generator

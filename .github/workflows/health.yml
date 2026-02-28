@@ -11,6 +11,13 @@ jobs:
       sdk: stable
       # Drop coverage
       checks: "changelog,license,breaking,do-not-submit,leaking,unused-dependencies"
+      license: |
+        // Copyright %YEAR% Google LLC
+        //
+        // Use of this source code is governed by a BSD-style
+        // license that can be found in the LICENSE file or at
+        // https://developers.google.com/open-source/licenses/bsd
+      license_test_string: "Google LLC"
       # GENERATED FILES
       ignore_license: 'generated/**,_test_package/**'
       # TOO BIG!

@@ -1,3 +1,9 @@
+// Copyright 2021 Google LLC
+//
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file or at
+// https://developers.google.com/open-source/licenses/bsd
+
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: deprecated_member_use_from_same_package

@@ -1,6 +1,8 @@
-// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+// Copyright 2021 Google LLC
+//
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file or at
+// https://developers.google.com/open-source/licenses/bsd
 
 import 'dart:convert';
 import 'dart:io';
@@ -8,6 +10,7 @@ import 'dart:io';
 import 'package:discoveryapis_generator/clientstub_generator.dart';
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 import 'package:discoveryapis_generator/src/dart_api_library.dart';
+import 'package:discoveryapis_generator/src/utils.dart';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
@@ -15,6 +18,7 @@ void main() {
   late Directory tmpDir;
 
   setUpAll(() {
+    omitCopyrightHeaders = true;
     tmpDir = Directory.systemTemp.createTempSync();
   });
 
