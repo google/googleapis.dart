@@ -10,6 +10,7 @@ import 'dart:io';
 import 'package:discoveryapis_generator/clientstub_generator.dart';
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 import 'package:discoveryapis_generator/src/dart_api_library.dart';
+import 'package:discoveryapis_generator/src/utils.dart';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
@@ -17,6 +18,7 @@ void main() {
   late Directory tmpDir;
 
   setUpAll(() {
+    omitCopyrightHeaders = true;
     tmpDir = Directory.systemTemp.createTempSync();
   });
 

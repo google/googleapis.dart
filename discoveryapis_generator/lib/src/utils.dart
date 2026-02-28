@@ -18,6 +18,9 @@ final targetDartVersion = Version(3, 9, 0);
 
 final targetDartVersionConstraint = '^$targetDartVersion';
 
+bool omitCopyrightHeaders =
+    Platform.environment['DISCOVERY_OMIT_HEADERS'] == 'true';
+
 String formatSource(String source) => _formatter.format(source);
 
 void orderedForEach<K extends Comparable<K>, V>(
@@ -52,6 +55,11 @@ String _getYearFromGitSync(String filepath) {
 }
 
 void writeDartSource(String path, String content) {
+  if (omitCopyrightHeaders) {
+    writeString(path, formatSource(content));
+    return;
+  }
+
   final year = _getYearFromGitSync(path);
   final header = '''// Copyright $year Google LLC
 //
