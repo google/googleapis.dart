@@ -1,3 +1,8 @@
+## 2.2.0-wip
+
+- Added `quotaProject` support to existing credentials classes
+  (`ServiceAccountCredentials`, `ClientViaServiceAccount`, `ClientFromFlow`).
+
 ## 2.1.0
 
 - `AuthClientSigningExtension`: Added `sign()` which accepts an optional

@@ -74,6 +74,7 @@ void main() {
       'type': 'service_account',
       'project_id': 'test-project',
       'universe_domain': 'example.com',
+      'quota_project_id': 'test-quota',
     };
 
     test('from valid individual params', () {
@@ -82,6 +83,7 @@ void main() {
         clientId,
         testPrivateKeyString,
         projectId: 'test-project',
+        quotaProject: 'test-quota',
       );
       expect(credentials.email, 'email');
       expect(credentials.clientId, clientId);
@@ -89,6 +91,7 @@ void main() {
       expect(credentials.impersonatedUser, isNull);
       expect(credentials.projectId, 'test-project');
       expect(credentials.universeDomain, defaultUniverseDomain);
+      expect(credentials.quotaProject, 'test-quota');
     });
 
     test('from valid individual params with user', () {
@@ -98,6 +101,7 @@ void main() {
         testPrivateKeyString,
         impersonatedUser: 'x@y.com',
         projectId: 'test-project',
+        quotaProject: 'test-quota',
       );
       expect(credentials.email, 'email');
       expect(credentials.clientId, clientId);
@@ -105,6 +109,7 @@ void main() {
       expect(credentials.impersonatedUser, 'x@y.com');
       expect(credentials.projectId, 'test-project');
       expect(credentials.universeDomain, defaultUniverseDomain);
+      expect(credentials.quotaProject, 'test-quota');
     });
 
     test('from JSON string', () {
@@ -118,6 +123,7 @@ void main() {
       expect(credentialsFromJson.impersonatedUser, isNull);
       expect(credentialsFromJson.projectId, 'test-project');
       expect(credentialsFromJson.universeDomain, 'example.com');
+      expect(credentialsFromJson.quotaProject, 'test-quota');
     });
 
     test('from JSON string with user', () {
@@ -132,6 +138,7 @@ void main() {
       expect(credentialsFromJson.impersonatedUser, 'x@y.com');
       expect(credentialsFromJson.projectId, 'test-project');
       expect(credentialsFromJson.universeDomain, 'example.com');
+      expect(credentialsFromJson.quotaProject, 'test-quota');
     });
 
     test('from JSON map', () {
@@ -145,6 +152,7 @@ void main() {
       expect(credentialsFromJson.impersonatedUser, isNull);
       expect(credentialsFromJson.projectId, 'test-project');
       expect(credentialsFromJson.universeDomain, 'example.com');
+      expect(credentialsFromJson.quotaProject, 'test-quota');
     });
 
     test('from JSON map with user', () {
@@ -159,6 +167,7 @@ void main() {
       expect(credentialsFromJson.impersonatedUser, 'x@y.com');
       expect(credentialsFromJson.projectId, 'test-project');
       expect(credentialsFromJson.universeDomain, 'example.com');
+      expect(credentialsFromJson.quotaProject, 'test-quota');
     });
 
     test('sign data', () {
@@ -329,6 +338,35 @@ void main() {
             expectClose: false,
           ),
           credentials,
+        );
+        expect(client.credentials, credentials);
+
+        final response = await client.send(RequestImpl('POST', url));
+        expect(response.statusCode, 204);
+      });
+
+      test('successful request with quotaProject', () async {
+        final client = authenticatedClient(
+          mockClient(
+            expectAsync1((request) async {
+              expect(request.method, 'POST');
+              expect(request.url, url);
+              expect(request.headers, hasLength(2));
+              expect(
+                request.headers,
+                containsPair('Authorization', 'Bearer bar'),
+              );
+              expect(
+                request.headers,
+                containsPair('x-goog-user-project', 'test-quota-project'),
+              );
+
+              return Response('', 204);
+            }),
+            expectClose: false,
+          ),
+          credentials,
+          quotaProject: 'test-quota-project',
         );
         expect(client.credentials, credentials);
 
@@ -551,6 +589,54 @@ void main() {
             expectClose: false,
           ),
         );
+
+        client.close();
+      });
+
+      test('clientViaServiceAccount sends quotaProject header', () async {
+        final credentials = ServiceAccountCredentials.fromJson({
+          'private_key_id': '301029',
+          'private_key': testPrivateKeyString,
+          'client_email': 'test@test.iam.gserviceaccount.com',
+          'client_id': 'myid',
+          'type': 'service_account',
+          'quota_project_id': 'test-quota-project',
+        });
+
+        var callCount = 0;
+        final client = await clientViaServiceAccount(
+          credentials,
+          ['https://www.googleapis.com/auth/cloud-platform'],
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              if (callCount == 0) {
+                expect(request.method, 'POST');
+                expect(request.url, googleOauth2TokenEndpoint);
+                callCount++;
+                return Response(
+                  jsonEncode({
+                    'access_token': 'test_token',
+                    'token_type': 'Bearer',
+                    'expires_in': 3600,
+                  }),
+                  200,
+                  headers: jsonContentType,
+                );
+              } else {
+                expect(
+                  request.headers,
+                  containsPair('x-goog-user-project', 'test-quota-project'),
+                );
+                callCount++;
+                return Response('', 200);
+              }
+            }, count: 2),
+            expectClose: false,
+          ),
+        );
+
+        final response = await client.get(Uri.parse('http://example.com'));
+        expect(response.statusCode, 200);
 
         client.close();
       });

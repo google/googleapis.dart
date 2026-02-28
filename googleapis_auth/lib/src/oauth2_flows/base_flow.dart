@@ -14,9 +14,12 @@ abstract class BaseFlow {
   Future<AccessCredentials> run();
 }
 
+/// If [quotaProject] is provided, it will be added to the `X-Goog-User-Project`
+/// header for all requests.
 Future<AutoRefreshingAuthClient> clientFromFlow(
   BaseFlow Function(Client client) flowFactory, {
   Client? baseClient,
+  String? quotaProject,
 }) async {
   if (baseClient == null) {
     baseClient = Client();
@@ -28,7 +31,7 @@ Future<AutoRefreshingAuthClient> clientFromFlow(
 
   try {
     final credentials = await flow.run();
-    return _FlowClient(baseClient, credentials, flow);
+    return _FlowClient(baseClient, credentials, flow, quotaProject);
   } catch (e) {
     baseClient.close();
     rethrow;
@@ -38,21 +41,29 @@ Future<AutoRefreshingAuthClient> clientFromFlow(
 // Will close the underlying `http.Client`.
 class _FlowClient extends AutoRefreshDelegatingClient {
   final BaseFlow _flow;
-  @override
-  AccessCredentials credentials;
-  Client _authClient;
+  final String? _quotaProject;
 
-  _FlowClient(super.client, this.credentials, this._flow)
-    : _authClient = authenticatedClient(client, credentials);
+  AccessCredentials _credentials;
+  late Client _authClient;
+
+  _FlowClient(super.client, this._credentials, this._flow, this._quotaProject) {
+    _authClient = _recreateClient(_credentials);
+  }
+
+  @override
+  AccessCredentials get credentials => _credentials;
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
-    if (credentials.accessToken.hasExpired) {
+    if (_credentials.accessToken.hasExpired) {
       final newCredentials = await _flow.run();
       notifyAboutNewCredentials(newCredentials);
-      credentials = newCredentials;
-      _authClient = authenticatedClient(baseClient, credentials);
+      _credentials = newCredentials;
+      _authClient = _recreateClient(newCredentials);
     }
     return _authClient.send(request);
   }
+
+  Client _recreateClient(AccessCredentials credentials) =>
+      authenticatedClient(baseClient, credentials, quotaProject: _quotaProject);
 }
