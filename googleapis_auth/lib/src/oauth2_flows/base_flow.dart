@@ -43,29 +43,27 @@ class _FlowClient extends AutoRefreshDelegatingClient {
   final BaseFlow _flow;
   final String? _quotaProject;
 
-  @override
-  AccessCredentials credentials;
-  Client _authClient;
+  AccessCredentials _credentials;
+  late Client _authClient;
 
-  _FlowClient(super.client, this.credentials, this._flow, this._quotaProject)
-    : _authClient = authenticatedClient(
-        client,
-        credentials,
-        quotaProject: _quotaProject,
-      );
+  _FlowClient(super.client, this._credentials, this._flow, this._quotaProject) {
+    _authClient = _recreateClient(_credentials);
+  }
+
+  @override
+  AccessCredentials get credentials => _credentials;
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
-    if (credentials.accessToken.hasExpired) {
+    if (_credentials.accessToken.hasExpired) {
       final newCredentials = await _flow.run();
       notifyAboutNewCredentials(newCredentials);
-      credentials = newCredentials;
-      _authClient = authenticatedClient(
-        baseClient,
-        credentials,
-        quotaProject: _quotaProject,
-      );
+      _credentials = newCredentials;
+      _authClient = _recreateClient(newCredentials);
     }
     return _authClient.send(request);
   }
+
+  Client _recreateClient(AccessCredentials credentials) =>
+      authenticatedClient(baseClient, credentials, quotaProject: _quotaProject);
 }
