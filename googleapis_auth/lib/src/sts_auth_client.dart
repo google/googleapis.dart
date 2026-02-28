@@ -117,37 +117,42 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
   }
 
   Future<String> _getSubjectToken() async {
-    if (_credentialSource.containsKey('file')) {
-      final fileField = _credentialSource['file'] as String;
-      return await File(fileField).readAsString();
-    } else if (_credentialSource.containsKey('url')) {
-      final url = _credentialSource['url'] as String;
-      final headers = _credentialSource['headers'] as Map<String, dynamic>?;
-      final format = _credentialSource['format'] as Map<String, dynamic>?;
+    final source = _credentialSource;
+    if (source case {'file': final String file}) {
+      return await File(file).readAsString();
+    } else if (source case {'url': final String url}) {
+      final headers = switch (source['headers']) {
+        final Map<String, dynamic> h => h.map(
+          (key, value) => MapEntry(key, value.toString()),
+        ),
+        _ => null,
+      };
 
-      final parsedHeaders = headers?.map(
-        (key, value) => MapEntry(key, value.toString()),
-      );
-
-      final response = await baseClient.get(
-        Uri.parse(url),
-        headers: parsedHeaders,
-      );
+      final response = await baseClient.get(Uri.parse(url), headers: headers);
 
       if (response.statusCode != 200) {
-        throw Exception(
+        throw ServerRequestFailedException(
           'Failed to retrieve subject token from URL: $url. '
-          'Status code: ${response.statusCode}, Body: ${response.body}',
+          'Status code: ${response.statusCode}',
+          responseContent: response.body,
+          statusCode: response.statusCode,
         );
       }
 
       var token = response.body;
 
-      if (format != null && format['type'] == 'json') {
+      if (source['format'] case {
+        'type': 'json',
+        'subject_token_field_name': final String fieldName,
+      }) {
         final json = jsonDecode(token) as Map<String, dynamic>;
-        final subjectTokenFieldName =
-            format['subject_token_field_name'] as String;
-        token = json[subjectTokenFieldName] as String;
+        if (json[fieldName] case final String subjectToken) {
+          token = subjectToken;
+        } else {
+          throw ArgumentError(
+            'Subject token field "$fieldName" not found in JSON response.',
+          );
+        }
       }
       return token;
     }
