@@ -31,6 +31,13 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
     );
   }
 
+  if (credentials is! Map) {
+    throw Exception(
+      'Failed to parse JSON from credentials file from $fileSource',
+    );
+  }
+  final quotaProject = credentials['quota_project_id'] as String?;
+
   if (credentials case {
     'type': 'authorized_user',
     'client_id': final String clientIdString,
@@ -52,12 +59,13 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
         ),
         baseClient,
       ),
-      quotaProject: credentials['quota_project_id'] as String?,
+      quotaProject: quotaProject,
     );
   }
   return await clientViaServiceAccount(
     ServiceAccountCredentials.fromJson(credentials),
     scopes,
     baseClient: baseClient,
+    quotaProject: quotaProject,
   );
 }
