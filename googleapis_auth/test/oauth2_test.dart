@@ -345,6 +345,35 @@ void main() {
         expect(response.statusCode, 204);
       });
 
+      test('successful request with quotaProject', () async {
+        final client = authenticatedClient(
+          mockClient(
+            expectAsync1((request) async {
+              expect(request.method, 'POST');
+              expect(request.url, url);
+              expect(request.headers, hasLength(2));
+              expect(
+                request.headers,
+                containsPair('Authorization', 'Bearer bar'),
+              );
+              expect(
+                request.headers,
+                containsPair('x-goog-user-project', 'test-quota-project'),
+              );
+
+              return Response('', 204);
+            }),
+            expectClose: false,
+          ),
+          credentials,
+          quotaProject: 'test-quota-project',
+        );
+        expect(client.credentials, credentials);
+
+        final response = await client.send(RequestImpl('POST', url));
+        expect(response.statusCode, 204);
+      });
+
       test('throws on access denied', () {
         final client = authenticatedClient(
           mockClient(
@@ -560,6 +589,54 @@ void main() {
             expectClose: false,
           ),
         );
+
+        client.close();
+      });
+
+      test('clientViaServiceAccount sends quotaProject header', () async {
+        final credentials = ServiceAccountCredentials.fromJson({
+          'private_key_id': '301029',
+          'private_key': testPrivateKeyString,
+          'client_email': 'test@test.iam.gserviceaccount.com',
+          'client_id': 'myid',
+          'type': 'service_account',
+          'quota_project_id': 'test-quota-project',
+        });
+
+        var callCount = 0;
+        final client = await clientViaServiceAccount(
+          credentials,
+          ['https://www.googleapis.com/auth/cloud-platform'],
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              if (callCount == 0) {
+                expect(request.method, 'POST');
+                expect(request.url, googleOauth2TokenEndpoint);
+                callCount++;
+                return Response(
+                  jsonEncode({
+                    'access_token': 'test_token',
+                    'token_type': 'Bearer',
+                    'expires_in': 3600,
+                  }),
+                  200,
+                  headers: jsonContentType,
+                );
+              } else {
+                expect(
+                  request.headers,
+                  containsPair('x-goog-user-project', 'test-quota-project'),
+                );
+                callCount++;
+                return Response('', 200);
+              }
+            }, count: 2),
+            expectClose: false,
+          ),
+        );
+
+        final response = await client.get(Uri.parse('http://example.com'));
+        expect(response.statusCode, 200);
 
         client.close();
       });
