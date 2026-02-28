@@ -120,6 +120,8 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
       );
     }
     return privateKeyFromSequence(asn);
+  } on FormatException {
+    rethrow;
   } catch (error) {
     throw FormatException(
       'Error while extracting private key from DER bytes: $error',
