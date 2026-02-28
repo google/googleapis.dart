@@ -42,7 +42,7 @@ String _getYearFromGitSync(String filepath) {
       '--date=format:%Y',
       '--',
       filepath,
-    ], runInShell: true);
+    ]);
     final output = result.stdout.toString().trim();
     if (output.isNotEmpty) {
       final lines = output.split('\n');
@@ -51,7 +51,7 @@ String _getYearFromGitSync(String filepath) {
       }
     }
   } catch (_) {}
-  return '\${DateTime.now().year}';
+  return '${DateTime.now().year}';
 }
 
 void writeDartSource(String path, String content) {
