@@ -60,11 +60,15 @@ class ServerRequestFailedException implements Exception {
 /// Thrown when an error occurs reading or parsing a credentials file.
 class CredentialsFileException implements Exception {
   final String message;
+  final Object? innerError;
 
-  const CredentialsFileException(this.message);
+  const CredentialsFileException(this.message, [this.innerError]);
 
   @override
-  String toString() => 'CredentialsFileException: $message';
+  String toString() => [
+    'CredentialsFileException: $message',
+    if (innerError != null) '($innerError)',
+  ].join(' ');
 }
 
 /// Thrown when the oauth2 callback request from the authorization server is
