@@ -6,6 +6,10 @@
   from service account credentials JSON.
 - `clientViaServiceAccountImpersonation` and `ImpersonatedAuthClient` now accept
   an optional `baseClient`.
+- Application Default Credentials (ADC) now supports `impersonated_service_account`
+  source files.
+- Application Default Credentials (ADC) now propagate `quota_project_id` for
+  Service Account credentials.
 
 ## 2.1.0
 
