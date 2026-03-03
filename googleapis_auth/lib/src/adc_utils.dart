@@ -27,16 +27,20 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
   Object? credentials;
   try {
     credentials = json.decode(await file.readAsString());
-  } on IOException {
-    throw Exception('Failed to read credentials file from $fileSource');
-  } on FormatException {
-    throw Exception(
+  } on IOException catch (e) {
+    throw CredentialsFileException(
+      'Failed to read credentials file from $fileSource',
+      e,
+    );
+  } on FormatException catch (e) {
+    throw CredentialsFileException(
       'Failed to parse JSON from credentials file from $fileSource',
+      e,
     );
   }
 
   if (credentials is! Map) {
-    throw Exception(
+    throw CredentialsFileException(
       'Failed to parse JSON from credentials file from $fileSource',
     );
   }

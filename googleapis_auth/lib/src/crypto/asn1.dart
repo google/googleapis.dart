@@ -26,7 +26,7 @@ abstract final class ASN1Parser {
   @visibleForTesting
   static ASN1Object parseObject(Uint8List bytes) {
     Never invalidFormat(String msg) {
-      throw ArgumentError('Invalid DER encoding: $msg');
+      throw FormatException('Invalid DER encoding: $msg');
     }
 
     final data = ByteData.view(bytes.buffer);
@@ -81,7 +81,9 @@ abstract final class ASN1Parser {
 
     ASN1Object decodeObject(int recursion) {
       if (recursion > 128) {
-        throw ArgumentError('Recursion limit for ASN1 messages exceeded.');
+        throw const FormatException(
+          'Recursion limit for ASN1 messages exceeded.',
+        );
       }
 
       checkNBytesAvailable(1);
@@ -120,7 +122,7 @@ abstract final class ASN1Parser {
 
     final obj = decodeObject(0);
     if (offset != bytes.length) {
-      throw ArgumentError('More bytes than expected in ASN1 encoding.');
+      throw const FormatException('More bytes than expected in ASN1 encoding.');
     }
     return obj;
   }

@@ -29,7 +29,7 @@ Uint8List _getBytesFromPEMString(String pemString) {
   if (lines.length < 2 ||
       !lines.first.startsWith('-----BEGIN') ||
       !lines.last.startsWith('-----END')) {
-    throw ArgumentError(
+    throw const FormatException(
       'The given string does not have the correct '
       'begin/end markers expected in a PEM file.',
     );
@@ -59,7 +59,7 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
 
     final version = asnIntegers.first;
     if (version.integer != BigInt.zero) {
-      throw ArgumentError('Expected version 0, got: ${version.integer}.');
+      throw FormatException('Expected version 0, got: ${version.integer}.');
     }
 
     final key = RSAPrivateKey(
@@ -75,7 +75,7 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
 
     final bitLength = key.bitLength;
     if (bitLength < 1024) {
-      throw ArgumentError(
+      throw FormatException(
         'The RSA modulus has a bit length of $bitLength. '
         'Only 1024 or more bits are supported.',
       );
@@ -104,11 +104,13 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
             0x01,
           ];
           if (oid.bytes.length != validOid.length) {
-            throw ArgumentError('Unexpected Algorithm Identifier OID.');
+            throw const FormatException('Unexpected Algorithm Identifier OID.');
           }
           for (var i = 0; i < validOid.length; i++) {
             if (oid.bytes[i] != validOid[i]) {
-              throw ArgumentError('Unexpected Algorithm Identifier OID.');
+              throw const FormatException(
+                'Unexpected Algorithm Identifier OID.',
+              );
             }
           }
         }
@@ -118,8 +120,10 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
       );
     }
     return privateKeyFromSequence(asn);
+  } on FormatException {
+    rethrow;
   } catch (error) {
-    throw ArgumentError(
+    throw FormatException(
       'Error while extracting private key from DER bytes: $error',
     );
   }

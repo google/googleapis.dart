@@ -10,20 +10,20 @@ import 'package:googleapis_auth/src/crypto/asn1.dart';
 import 'package:test/test.dart';
 
 void main() {
-  void expectArgumentError(List<int> bytes) {
+  void expectFormatException(List<int> bytes) {
     expect(
       () => ASN1Parser.parseObject(Uint8List.fromList(bytes)),
-      throwsA(isArgumentError),
+      throwsA(isFormatException),
     );
   }
 
   void invalidLenTest(int tagBytes) {
     test('invalid-len', () {
-      expectArgumentError([tagBytes]);
-      expectArgumentError([tagBytes, 0x07]);
-      expectArgumentError([tagBytes, 0x82]);
-      expectArgumentError([tagBytes, 0x82, 1]);
-      expectArgumentError([tagBytes, 0x01, 1, 2, 3, 4]);
+      expectFormatException([tagBytes]);
+      expectFormatException([tagBytes, 0x07]);
+      expectFormatException([tagBytes, 0x82]);
+      expectFormatException([tagBytes, 0x82, 1]);
+      expectFormatException([tagBytes, 0x01, 1, 2, 3, 4]);
     });
   }
 
@@ -202,7 +202,7 @@ void main() {
       final deeplyNested = buildNested(130);
       expect(
         () => ASN1Parser.parseObject(Uint8List.fromList(deeplyNested)),
-        throwsArgumentError,
+        throwsFormatException,
       );
 
       final okNested = buildNested(100);
@@ -219,7 +219,7 @@ void main() {
     );
     expect(objId, isA<ASN1Null>());
 
-    expectArgumentError([ASN1Parser.nullTag]);
-    expectArgumentError([ASN1Parser.nullTag, 0x01]);
+    expectFormatException([ASN1Parser.nullTag]);
+    expectFormatException([ASN1Parser.nullTag, 0x01]);
   });
 }

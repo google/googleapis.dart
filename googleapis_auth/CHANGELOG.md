@@ -12,6 +12,10 @@
   for Workload Identity Federation using `Google Security Token Service`.
 - Application Default Credentials (ADC) now propagate `quota_project_id` for
   Service Account credentials.
+- Added `CredentialsFileException` and `AuthorizationCallbackException` classes.
+- Replaced generic exception and error throws (such as `Exception`, `ArgumentError`, 
+  and `UnsupportedError`) with more specific exception types throughout the package to
+  improve error handling and debuggability.
 
 ## 2.1.0
 
