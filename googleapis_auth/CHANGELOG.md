@@ -8,6 +8,8 @@
   an optional `baseClient`.
 - Application Default Credentials (ADC) now supports `impersonated_service_account`
   source files.
+- Application Default Credentials (ADC) now supports `external_account` source files
+  for Workload Identity Federation using `Google Security Token Service`.
 - Application Default Credentials (ADC) now propagate `quota_project_id` for
   Service Account credentials.
 
