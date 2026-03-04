@@ -91,6 +91,7 @@ extension AuthClientSigningExtension on AuthClient {
   Future<String> sign(
     List<int> data, {
     ServiceAccountCredentials? serviceAccountCredentials,
+    String? serviceAccountEmail,
     String? endpoint,
   }) async {
     // Check if this is an impersonated client
@@ -104,6 +105,11 @@ extension AuthClientSigningExtension on AuthClient {
       return base64Encode(serviceAccountCredentials.sign(data));
     }
 
-    return (await signBlob(this, data, endpoint: endpoint)).signedBlob;
+    return (await signBlob(
+      this,
+      data,
+      serviceAccountEmail: serviceAccountEmail,
+      endpoint: endpoint,
+    )).signedBlob;
   }
 }
