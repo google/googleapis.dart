@@ -16,6 +16,8 @@
 - Replaced generic exception and error throws (such as `Exception`, `ArgumentError`, 
   and `UnsupportedError`) with more specific exception types throughout the package to
   improve error handling and debuggability.
+- `AuthClientSigningExtension.sign()` now accepts an optional `serviceAccountEmail`
+  parameter that is passed down to `signBlob`.
 
 ## 2.1.0
 
