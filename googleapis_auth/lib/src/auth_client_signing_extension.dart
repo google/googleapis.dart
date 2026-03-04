@@ -57,12 +57,13 @@ extension AuthClientSigningExtension on AuthClient {
 
   /// Signs the given [data] using the credentials from this auth client.
   ///
-  /// This method has three modes of operation depending on the client and parameters:
+  /// This method has three modes of operation depending on the client and
+  /// parameters:
   ///
-  /// 1.  **Impersonated client:** If this client is an [ImpersonatedAuthClient],
-  ///     signing is delegated to its `sign` method. The `serviceAccountCredentials`,
-  ///     `serviceAccountEmail`, and `endpoint` parameters of this extension method
-  ///     are ignored.
+  /// 1.  **Impersonated client:** If this client is an
+  ///     [ImpersonatedAuthClient], signing is delegated to its `sign` method.
+  ///     The `serviceAccountCredentials`, `serviceAccountEmail`, and
+  ///     `endpoint` parameters of this extension method are ignored.
   ///
   /// 2.  **Local signing with private key:** If [serviceAccountCredentials] are
   ///     provided, they are used to sign the data locally using RSA-SHA256 if
@@ -76,9 +77,10 @@ extension AuthClientSigningExtension on AuthClient {
   ///       environment (e.g., GCE metadata server).
   ///     - The [endpoint] is an optional custom IAM Credentials API endpoint.
   ///       This is useful when working with different universe domains. If not
-  ///       provided, the endpoint is automatically determined from the credential's
-  ///       universe domain (e.g., `https://iamcredentials.googleapis.com` for the
-  ///       default universe, or a custom universe domain from the service account JSON).
+  ///       provided, the endpoint is automatically determined from the
+  ///       credential's universe domain (e.g.,
+  ///       `https://iamcredentials.googleapis.com` for the default universe,
+  ///       or a custom universe domain from the service account JSON).
   ///
   /// Returns the signature as a String (base64-encoded).
   ///
