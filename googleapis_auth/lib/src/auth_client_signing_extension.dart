@@ -55,24 +55,30 @@ extension AuthClientSigningExtension on AuthClient {
         refresh: refresh,
       );
 
-  /// Signs some bytes using the credentials from this auth client.
+  /// Signs the given [data] using the credentials from this auth client.
   ///
-  /// The signing behavior depends on the auth client type:
-  /// - [ImpersonatedAuthClient]: Uses IAM signBlob API to sign using the
-  ///   target principal.
-  /// - Auth clients with service account credentials: Signs locally using
-  ///   RSA-SHA256.
-  /// - Other auth clients: Uses IAM signBlob API with the default service
-  ///   account.
+  /// This method has three modes of operation depending on the client and parameters:
   ///
-  /// [serviceAccountCredentials] can be provided to sign the data locally
-  /// using RSA-SHA256 if the credentials have a private key.
+  /// 1.  **Impersonated client:** If this client is an [ImpersonatedAuthClient],
+  ///     signing is delegated to its `sign` method. The `serviceAccountCredentials`,
+  ///     `serviceAccountEmail`, and `endpoint` parameters of this extension method
+  ///     are ignored.
   ///
-  /// [endpoint] is an optional custom IAM Credentials API endpoint. This is
-  /// useful when working with different universe domains. If not provided,
-  /// the endpoint is automatically determined from the credential's universe
-  /// domain (e.g., `https://iamcredentials.googleapis.com` for the default
-  /// universe, or a custom universe domain from the service account JSON).
+  /// 2.  **Local signing with private key:** If [serviceAccountCredentials] are
+  ///     provided, they are used to sign the data locally using RSA-SHA256 if
+  ///     the credentials have a private key. The `serviceAccountEmail`
+  ///     and `endpoint` parameters are ignored.
+  ///
+  /// 3.  **IAM API signing:** Otherwise, this will call the IAM Credentials API
+  ///     `signBlob` endpoint.
+  ///     - The [serviceAccountEmail] can be provided to specify which service
+  ///       account to use. If not provided, it will be inferred from the
+  ///       environment (e.g., GCE metadata server).
+  ///     - The [endpoint] is an optional custom IAM Credentials API endpoint.
+  ///       This is useful when working with different universe domains. If not
+  ///       provided, the endpoint is automatically determined from the credential's
+  ///       universe domain (e.g., `https://iamcredentials.googleapis.com` for the
+  ///       default universe, or a custom universe domain from the service account JSON).
   ///
   /// Returns the signature as a String (base64-encoded).
   ///
