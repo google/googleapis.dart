@@ -1,4 +1,4 @@
-## 2.2.0-wip
+## 2.2.0
 
 - Added `quotaProject` support to existing credentials classes
   (`ServiceAccountCredentials`, `ClientViaServiceAccount`, `ClientFromFlow`).
