@@ -46,9 +46,9 @@ class DiscoveryPackagesConfiguration {
   late Map yaml;
   late Map<String, Package> packages;
 
-  late final Set<String> excessApis;
-  late final List<String> missingApis;
-  late final Set<String> skipTests;
+  late Set<String> excessApis;
+  late List<String> missingApis;
+  late Set<String> skipTests;
   final existingApiRevisions = <String, String>{};
   Map<String?, String>? newRevisions;
   Map<String?, String>? oldRevisions;
