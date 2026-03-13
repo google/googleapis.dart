@@ -7,6 +7,7 @@
 import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
+import 'package:meta/meta.dart';
 
 import 'rsa.dart' as rsa;
 
@@ -14,6 +15,7 @@ import 'rsa.dart' as rsa;
 ///
 /// The implemented algorithm can be seen in
 /// RFC 3447, Section 9.2 EMSA-PKCS1-v1_5.
+@internal
 final class RS256Signer {
   // DigestInfo :== SEQUENCE {
   //     digestAlgorithm AlgorithmIdentifier,
