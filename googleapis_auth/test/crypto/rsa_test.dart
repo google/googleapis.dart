@@ -4,7 +4,7 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
-import 'package:googleapis_auth/src/crypto/rsa.dart';
+import 'package:googleapis_auth/src/crypto/rsa.dart' as rsa;
 import 'package:test/test.dart';
 
 import '../test_utils.dart';
@@ -14,19 +14,9 @@ final _bigNumber = BigInt.parse('20000000000000000', radix: 16);
 
 void main() {
   test('integer2Bytes converts BigInt to byte list', () {
-    expect(RSAAlgorithm.integer2Bytes(BigInt.one, 1), [1]);
-    expect(RSAAlgorithm.integer2Bytes(_bigNumber, 9), [
-      2,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-    ]);
-    expect(RSAAlgorithm.integer2Bytes(_bigNumber, 12), [
+    expect(rsa.integer2Bytes(BigInt.one, 1), [1]);
+    expect(rsa.integer2Bytes(_bigNumber, 9), [2, 0, 0, 0, 0, 0, 0, 0, 0]);
+    expect(rsa.integer2Bytes(_bigNumber, 12), [
       0,
       0,
       0,
@@ -40,15 +30,12 @@ void main() {
       0,
       0,
     ]);
-    expect(
-      () => RSAAlgorithm.integer2Bytes(BigInt.zero, 1),
-      throwsArgumentError,
-    );
+    expect(() => rsa.integer2Bytes(BigInt.zero, 1), throwsArgumentError);
   });
 
   test('bytes2BigInt converts byte list to BigInt', () {
-    expect(RSAAlgorithm.bytes2BigInt([1]), BigInt.one);
-    expect(RSAAlgorithm.bytes2BigInt([2, 0, 0, 0, 0, 0, 0, 0, 0]), _bigNumber);
+    expect(rsa.bytes2BigInt([1]), BigInt.one);
+    expect(rsa.bytes2BigInt([2, 0, 0, 0, 0, 0, 0, 0, 0]), _bigNumber);
   });
 
   test('rawSign performs raw RSA signing', () {
@@ -72,7 +59,7 @@ void main() {
       26, 217, 230, 133, 217, 76,
     ];
     expect(
-      RSAAlgorithm.rawSign(testPrivateKey, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 256),
+      rsa.rawSign(testPrivateKey, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 256),
       encryptedData,
     );
   });

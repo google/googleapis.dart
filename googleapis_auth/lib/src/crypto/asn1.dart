@@ -8,7 +8,7 @@ import 'dart:typed_data';
 
 import 'package:meta/meta.dart';
 
-import 'rsa.dart';
+import 'rsa.dart' as rsa;
 
 // ignore: avoid_classes_with_only_static_members
 abstract final class ASN1Parser {
@@ -91,7 +91,7 @@ abstract final class ASN1Parser {
       switch (tag) {
         case integerTag:
           final size = readEncodedLength();
-          return ASN1Integer._(RSAAlgorithm.bytes2BigInt(readBytes(size)));
+          return ASN1Integer._(rsa.bytes2BigInt(readBytes(size)));
         case octetStringTag:
           final size = readEncodedLength();
           return ASN1OctetString._(readBytes(size));

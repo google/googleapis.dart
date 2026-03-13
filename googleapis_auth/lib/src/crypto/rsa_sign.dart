@@ -8,7 +8,7 @@ import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 
-import 'rsa.dart';
+import 'rsa.dart' as rsa;
 
 /// Used for signing messages with a private RSA key.
 ///
@@ -53,7 +53,7 @@ final class RS256Signer {
     0x20,
   ];
 
-  final RSAPrivateKey _rsaKey;
+  final rsa.RSAPrivateKey _rsaKey;
 
   RS256Signer(this._rsaKey);
 
@@ -74,6 +74,6 @@ final class RS256Signer {
     offset += _rsaSha256DigestInfoPrefix.length;
     block.setAll(offset, digest);
 
-    return RSAAlgorithm.rawSign(_rsaKey, block, modulusLen);
+    return rsa.rawSign(_rsaKey, block, modulusLen);
   }
 }
