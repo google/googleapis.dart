@@ -9,6 +9,8 @@
 
 import 'dart:typed_data';
 
+import 'package:meta/meta.dart';
+
 /// Represents integers obtained while creating a Public/Private key pair.
 final class RSAPrivateKey {
   /// First prime number.
@@ -50,57 +52,52 @@ final class RSAPrivateKey {
   );
 }
 
-/// Provides a [rawSign] method for signing messages with a [RSAPrivateKey].
-// ignore: avoid_classes_with_only_static_members
-abstract final class RSAAlgorithm {
-  /// Performs the private key operation (signing) on [bytes] with the private
-  /// [key].
-  ///
-  /// Others who have access to the public key will be able to verify this
-  /// the result.
-  ///
-  /// The [intendedLength] argument specifies the number of bytes in which the
-  /// result should be encoded. Zero bytes will be used for padding.
-  static Uint8List rawSign(
-    RSAPrivateKey key,
-    List<int> bytes,
-    int intendedLength,
-  ) {
-    final message = bytes2BigInt(bytes);
-    final encryptedMessage = _encryptInteger(key, message);
-    return integer2Bytes(encryptedMessage, intendedLength);
-  }
+/// Performs the private key operation (signing) on [bytes] with the private
+/// [key].
+///
+/// Others who have access to the public key will be able to verify this
+/// the result.
+///
+/// The [intendedLength] argument specifies the number of bytes in which the
+/// result should be encoded. Zero bytes will be used for padding.
+@internal
+Uint8List rawSign(RSAPrivateKey key, List<int> bytes, int intendedLength) {
+  final message = bytes2BigInt(bytes);
+  final encryptedMessage = _encryptInteger(key, message);
+  return integer2Bytes(encryptedMessage, intendedLength);
+}
 
-  static BigInt _encryptInteger(RSAPrivateKey key, BigInt x) {
-    // The following is equivalent to `(x % key.n).modPow(key.d, key.n)` but is
-    // much more efficient. It exploits the fact that we have dmp1/dmq1.
-    var xp = (x % key.p).modPow(key.dmp1, key.p);
-    final xq = (x % key.q).modPow(key.dmq1, key.q);
-    while (xp < xq) {
-      xp += key.p;
-    }
-    return ((((xp - xq) * key.coeff) % key.p) * key.q) + xq;
+BigInt _encryptInteger(RSAPrivateKey key, BigInt x) {
+  // The following is equivalent to `(x % key.n).modPow(key.d, key.n)` but is
+  // much more efficient. It exploits the fact that we have dmp1/dmq1.
+  var xp = (x % key.p).modPow(key.dmp1, key.p);
+  final xq = (x % key.q).modPow(key.dmq1, key.q);
+  while (xp < xq) {
+    xp += key.p;
   }
+  return ((((xp - xq) * key.coeff) % key.p) * key.q) + xq;
+}
 
-  static BigInt bytes2BigInt(List<int> bytes) {
-    var number = BigInt.zero;
-    for (var i = 0; i < bytes.length; i++) {
-      number = (number << 8) | BigInt.from(bytes[i]);
-    }
-    return number;
+@internal
+BigInt bytes2BigInt(List<int> bytes) {
+  var number = BigInt.zero;
+  for (var i = 0; i < bytes.length; i++) {
+    number = (number << 8) | BigInt.from(bytes[i]);
   }
+  return number;
+}
 
-  static Uint8List integer2Bytes(BigInt integer, int intendedLength) {
-    if (integer < BigInt.one) {
-      throw ArgumentError('Only positive integers are supported.');
-    }
-    final bytes = Uint8List(intendedLength);
-    for (var i = bytes.length - 1; i >= 0; i--) {
-      bytes[i] = (integer & _bigIntFF).toInt();
-      integer >>= 8;
-    }
-    return bytes;
+@visibleForTesting
+Uint8List integer2Bytes(BigInt integer, int intendedLength) {
+  if (integer < BigInt.one) {
+    throw ArgumentError('Only positive integers are supported.');
   }
+  final bytes = Uint8List(intendedLength);
+  for (var i = bytes.length - 1; i >= 0; i--) {
+    bytes[i] = (integer & _bigIntFF).toInt();
+    integer >>= 8;
+  }
+  return bytes;
 }
 
 final _bigIntFF = BigInt.from(0xff);
