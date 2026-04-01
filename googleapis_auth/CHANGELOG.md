@@ -1,4 +1,4 @@
-## 2.2.2
+## 2.3.0
 
 - Added `clientViaRefreshToken()` function for creating an
   `AutoRefreshingAuthClient` directly from a refresh token, `ClientId`, and
