@@ -23,11 +23,7 @@ Future<AutoRefreshingAuthClient> clientFromFlow(
   Client? baseClient,
   String? quotaProject,
 }) async {
-  if (baseClient == null) {
-    baseClient = Client();
-  } else {
-    baseClient = nonClosingClient(baseClient);
-  }
+  baseClient = setupBaseClient(baseClient);
 
   final flow = flowFactory(baseClient);
 

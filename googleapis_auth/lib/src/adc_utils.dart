@@ -49,14 +49,16 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
     credentials as Map<String, dynamic>,
     scopes,
     baseClient,
+    fileSource: fileSource,
   );
 }
 
 Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
   Map<String, dynamic> credentials,
   List<String> scopes,
-  Client baseClient,
-) async {
+  Client baseClient, {
+  String? fileSource,
+}) async {
   final quotaProject = credentials['quota_project_id'] as String?;
   if (credentials case {
     'type': 'authorized_user',
@@ -64,6 +66,13 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
     'client_secret': final String? clientSecret,
     'refresh_token': final String? refreshToken,
   }) {
+    if (refreshToken == null) {
+      throw CredentialsFileException(
+        'Failed to parse JSON from credentials file from '
+        '${fileSource ?? 'the provided credentials'}'
+        ': refresh_token is missing.',
+      );
+    }
     final clientId = ClientId(clientIdString, clientSecret);
     return AutoRefreshingClient(
       baseClient,
@@ -72,8 +81,12 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
       await refreshCredentials(
         clientId,
         AccessCredentials(
-          // Hack: Create empty credentials that have expired.
-          AccessToken('Bearer', '', DateTime(0).toUtc()),
+          // Deliberately expired — forces a token exchange immediately.
+          AccessToken(
+            'Bearer',
+            '',
+            DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
+          ),
           refreshToken,
           scopes,
         ),
@@ -88,9 +101,12 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
     'service_account_impersonation_url': final String url,
     'source_credentials': final Map<String, dynamic> source,
   }) {
-    final sourceClient = await _clientViaApplicationCredentials(source, [
-      'https://www.googleapis.com/auth/iam',
-    ], baseClient);
+    final sourceClient = await _clientViaApplicationCredentials(
+      source,
+      ['https://www.googleapis.com/auth/iam'],
+      baseClient,
+      fileSource: fileSource,
+    );
 
     final match = _impersonationUrlRegExp.firstMatch(url);
     if (match == null) {

@@ -564,7 +564,7 @@ void main() {
     group('clientViaRefreshToken', () {
       final url = Uri.parse('http://www.example.com');
 
-      test('always refreshes on first request', () async {
+      test('refreshes during creation', () async {
         var serverInvocation = 0;
 
         final client = await clientViaRefreshToken(
@@ -586,6 +586,8 @@ void main() {
           ),
         );
 
+        expect(client.credentials.accessToken.data, 'atoken');
+
         final request = RequestImpl('POST', url);
         request.headers.addAll({'foo': 'bar'});
 
@@ -594,7 +596,22 @@ void main() {
         client.close();
       });
 
-      test('notifies credentialUpdates after refresh', () async {
+      test('throws on initial refresh failure', () async {
+        await expectLater(
+          clientViaRefreshToken(
+            clientId,
+            'refresh',
+            ['s1'],
+            baseClient: mockClient(
+              expectAsync1(refreshErrorResponse),
+              expectClose: false,
+            ),
+          ),
+          throwsA(isServerRequestFailedException),
+        );
+      });
+
+      test('sends quotaProject header', () async {
         var serverInvocation = 0;
 
         final client = await clientViaRefreshToken(
@@ -605,43 +622,21 @@ void main() {
             expectAsync1((request) async {
               if (serverInvocation++ == 0) {
                 return successfulRefresh(request);
+              } else {
+                expect(
+                  request.headers,
+                  containsPair('X-Goog-User-Project', 'test-project'),
+                );
+                return Response('', 200);
               }
-              return Response('', 200);
             }, count: 2),
             expectClose: false,
           ),
-        );
-
-        var updated = false;
-        client.credentialUpdates.listen(
-          expectAsync1((newCredentials) {
-            expect(newCredentials.accessToken.type, 'Bearer');
-            expect(newCredentials.accessToken.data, 'atoken');
-            updated = true;
-          }),
-          onDone: expectAsync0(() {}),
+          quotaProject: 'test-project',
         );
 
         await client.send(RequestImpl('POST', url));
-        expect(updated, isTrue);
         client.close();
-      });
-
-      test('throws on refresh failure', () async {
-        final client = await clientViaRefreshToken(
-          clientId,
-          'refresh',
-          ['s1'],
-          baseClient: mockClient(
-            expectAsync1(refreshErrorResponse),
-            expectClose: false,
-          ),
-        );
-
-        expect(
-          client.send(RequestImpl('POST', url)),
-          throwsA(isServerRequestFailedException),
-        );
       });
     });
 

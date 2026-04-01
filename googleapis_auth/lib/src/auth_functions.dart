@@ -34,14 +34,8 @@ import 'utils.dart';
 /// {@template googleapis_auth_not_close_the_baseClient}
 /// Closing the returned [Client] will not close [baseClient].
 /// {@endtemplate}
-Client clientViaApiKey(String apiKey, {Client? baseClient}) {
-  if (baseClient == null) {
-    baseClient = Client();
-  } else {
-    baseClient = nonClosingClient(baseClient);
-  }
-  return ApiKeyClient(baseClient, apiKey);
-}
+Client clientViaApiKey(String apiKey, {Client? baseClient}) =>
+    ApiKeyClient(setupBaseClient(baseClient), apiKey);
 
 /// Obtain a [Client] which automatically authenticates requests using
 /// [credentials].
@@ -116,36 +110,56 @@ AutoRefreshingAuthClient autoRefreshingClient(
 ///
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
+///
+/// If [quotaProject] is provided, it will be added to the `X-Goog-User-Project`
+/// header for all requests.
 Future<AutoRefreshingAuthClient> clientViaRefreshToken(
   ClientId clientId,
   String refreshToken,
   List<String> scopes, {
   Client? baseClient,
   AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
+  String? quotaProject,
 }) async {
+  final bool closeUnderlyingClient;
+  final Client setupClient;
   if (baseClient == null) {
-    baseClient = Client();
+    setupClient = Client();
+    closeUnderlyingClient = true;
   } else {
-    baseClient = nonClosingClient(baseClient);
+    setupClient = nonClosingClient(baseClient);
+    closeUnderlyingClient = false;
   }
 
-  final expiredCredentials = AccessCredentials(
-    // Deliberately expired — forces a token exchange on the first request.
-    AccessToken(
-      'Bearer',
-      '',
-      DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
-    ),
-    refreshToken,
-    scopes,
-  );
+  try {
+    final credentials = await refreshCredentials(
+      clientId,
+      AccessCredentials(
+        // Deliberately expired — forces a token exchange immediately.
+        AccessToken(
+          'Bearer',
+          '',
+          DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
+        ),
+        refreshToken,
+        scopes,
+      ),
+      setupClient,
+      authEndpoints: authEndpoints,
+    );
 
-  return AutoRefreshingClient(
-    baseClient,
-    authEndpoints,
-    clientId,
-    expiredCredentials,
-  );
+    return AutoRefreshingClient(
+      setupClient,
+      authEndpoints,
+      clientId,
+      credentials,
+      closeUnderlyingClient: closeUnderlyingClient,
+      quotaProject: quotaProject,
+    );
+  } catch (e) {
+    setupClient.close();
+    rethrow;
+  }
 }
 
 /// Obtains refreshed [AccessCredentials] for [clientId] and [credentials].
