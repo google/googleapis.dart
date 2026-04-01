@@ -9,6 +9,7 @@ import 'dart:async';
 import 'package:http/http.dart';
 
 import 'access_credentials.dart';
+import 'access_token.dart';
 import 'auth_client.dart';
 import 'auth_endpoints.dart';
 import 'auth_http_utils.dart';
@@ -102,6 +103,49 @@ AutoRefreshingAuthClient autoRefreshingClient(
     throw ArgumentError('Refresh token in AccessCredentials was `null`.');
   }
   return AutoRefreshingClient(baseClient, authEndpoints, clientId, credentials);
+}
+
+/// Creates an [AutoRefreshingAuthClient] from a refresh token.
+///
+/// {@macro googleapis_auth_clientId_param}
+///
+/// The [refreshToken] is used to obtain and automatically refresh access
+/// tokens for the given [scopes].
+///
+/// {@macro googleapis_auth_baseClient_param}
+///
+/// {@macro googleapis_auth_close_the_client}
+/// {@macro googleapis_auth_not_close_the_baseClient}
+Future<AutoRefreshingAuthClient> clientViaRefreshToken(
+  ClientId clientId,
+  String refreshToken,
+  List<String> scopes, {
+  Client? baseClient,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
+}) async {
+  if (baseClient == null) {
+    baseClient = Client();
+  } else {
+    baseClient = nonClosingClient(baseClient);
+  }
+
+  final expiredCredentials = AccessCredentials(
+    // Deliberately expired — forces a token exchange on the first request.
+    AccessToken(
+      'Bearer',
+      '',
+      DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
+    ),
+    refreshToken,
+    scopes,
+  );
+
+  return AutoRefreshingClient(
+    baseClient,
+    authEndpoints,
+    clientId,
+    expiredCredentials,
+  );
 }
 
 /// Obtains refreshed [AccessCredentials] for [clientId] and [credentials].

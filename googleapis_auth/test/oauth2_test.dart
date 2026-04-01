@@ -561,6 +561,90 @@ void main() {
       });
     });
 
+    group('clientViaRefreshToken', () {
+      final url = Uri.parse('http://www.example.com');
+
+      test('always refreshes on first request', () async {
+        var serverInvocation = 0;
+
+        final client = await clientViaRefreshToken(
+          clientId,
+          'refresh',
+          ['s1', 's2'],
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              if (serverInvocation++ == 0) {
+                // First call must be a token exchange, not the real request.
+                expect(request.headers, isNot(contains('foo')));
+                return successfulRefresh(request);
+              } else {
+                expect(request.headers, containsPair('foo', 'bar'));
+                return Response('', 200);
+              }
+            }, count: 2),
+            expectClose: false,
+          ),
+        );
+
+        final request = RequestImpl('POST', url);
+        request.headers.addAll({'foo': 'bar'});
+
+        final response = await client.send(request);
+        expect(response.statusCode, 200);
+        client.close();
+      });
+
+      test('notifies credentialUpdates after refresh', () async {
+        var serverInvocation = 0;
+
+        final client = await clientViaRefreshToken(
+          clientId,
+          'refresh',
+          ['s1'],
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              if (serverInvocation++ == 0) {
+                return successfulRefresh(request);
+              }
+              return Response('', 200);
+            }, count: 2),
+            expectClose: false,
+          ),
+        );
+
+        var updated = false;
+        client.credentialUpdates.listen(
+          expectAsync1((newCredentials) {
+            expect(newCredentials.accessToken.type, 'Bearer');
+            expect(newCredentials.accessToken.data, 'atoken');
+            updated = true;
+          }),
+          onDone: expectAsync0(() {}),
+        );
+
+        await client.send(RequestImpl('POST', url));
+        expect(updated, isTrue);
+        client.close();
+      });
+
+      test('throws on refresh failure', () async {
+        final client = await clientViaRefreshToken(
+          clientId,
+          'refresh',
+          ['s1'],
+          baseClient: mockClient(
+            expectAsync1(refreshErrorResponse),
+            expectClose: false,
+          ),
+        );
+
+        expect(
+          client.send(RequestImpl('POST', url)),
+          throwsA(isServerRequestFailedException),
+        );
+      });
+    });
+
     group('Service Account Access', () {
       test('clientViaServiceAccount exposes credentials', () async {
         final credentials = ServiceAccountCredentials.fromJson({

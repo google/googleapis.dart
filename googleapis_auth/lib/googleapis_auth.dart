@@ -18,6 +18,7 @@
 /// {@canonicalFor auth_functions.authenticatedClient}
 /// {@canonicalFor auth_functions.autoRefreshingClient}
 /// {@canonicalFor auth_functions.clientViaApiKey}
+/// {@canonicalFor auth_functions.clientViaRefreshToken}
 /// {@canonicalFor auth_functions.refreshCredentials}
 /// {@canonicalFor client_id.ClientId}
 /// {@canonicalFor exceptions.AccessDeniedException}
