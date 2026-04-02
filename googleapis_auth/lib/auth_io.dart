@@ -50,11 +50,7 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
   required List<String> scopes,
   Client? baseClient,
 }) async {
-  if (baseClient == null) {
-    baseClient = Client();
-  } else {
-    baseClient = nonClosingClient(baseClient);
-  }
+  baseClient = setupBaseClient(baseClient);
 
   // If env var specifies a file to load credentials from we'll do that.
   final credsEnv = Platform.environment['GOOGLE_APPLICATION_CREDENTIALS'];

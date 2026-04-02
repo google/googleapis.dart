@@ -561,6 +561,85 @@ void main() {
       });
     });
 
+    group('clientViaRefreshToken', () {
+      final url = Uri.parse('http://www.example.com');
+
+      test('refreshes during creation', () async {
+        var serverInvocation = 0;
+
+        final client = await clientViaRefreshToken(
+          clientId,
+          'refresh',
+          ['s1', 's2'],
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              if (serverInvocation++ == 0) {
+                // First call must be a token exchange, not the real request.
+                expect(request.headers, isNot(contains('foo')));
+                return successfulRefresh(request);
+              } else {
+                expect(request.headers, containsPair('foo', 'bar'));
+                return Response('', 200);
+              }
+            }, count: 2),
+            expectClose: false,
+          ),
+        );
+
+        expect(client.credentials.accessToken.data, 'atoken');
+
+        final request = RequestImpl('POST', url);
+        request.headers.addAll({'foo': 'bar'});
+
+        final response = await client.send(request);
+        expect(response.statusCode, 200);
+        client.close();
+      });
+
+      test('throws on initial refresh failure', () async {
+        await expectLater(
+          clientViaRefreshToken(
+            clientId,
+            'refresh',
+            ['s1'],
+            baseClient: mockClient(
+              expectAsync1(refreshErrorResponse),
+              expectClose: false,
+            ),
+          ),
+          throwsA(isServerRequestFailedException),
+        );
+      });
+
+      test('sends quotaProject header', () async {
+        var serverInvocation = 0;
+
+        final client = await clientViaRefreshToken(
+          clientId,
+          'refresh',
+          ['s1'],
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              if (serverInvocation++ == 0) {
+                return successfulRefresh(request);
+              } else {
+                expect(
+                  request.headers,
+                  containsPair('X-Goog-User-Project', 'test-project'),
+                );
+                return Response('', 200);
+              }
+            }, count: 2),
+            expectClose: false,
+          ),
+          quotaProject: 'test-project',
+        );
+
+        await client.send(RequestImpl('POST', url));
+        client.close();
+      });
+    });
+
     group('Service Account Access', () {
       test('clientViaServiceAccount exposes credentials', () async {
         final credentials = ServiceAccountCredentials.fromJson({

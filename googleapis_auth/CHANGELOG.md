@@ -1,3 +1,9 @@
+## 2.3.0
+
+- Added `clientViaRefreshToken()` function for creating an
+  `AutoRefreshingAuthClient` directly from a refresh token, `ClientId`, and
+  scopes.
+
 ## 2.2.1
 
 - Require `google_cloud: '>=0.3.0 <0.5.0'`

@@ -90,6 +90,17 @@ class RefCountedClient extends DelegatingClient {
 Client nonClosingClient(Client baseClient) =>
     RefCountedClient(baseClient, initialRefCount: 2);
 
+/// Wraps [baseClient] so that calling [Client.close] on the returned client
+/// will not close [baseClient].
+///
+/// If [baseClient] is `null`, a new [Client] instance will be created.
+Client setupBaseClient(Client? baseClient) {
+  if (baseClient == null) {
+    return Client();
+  }
+  return nonClosingClient(baseClient);
+}
+
 class RequestImpl extends BaseRequest {
   final Stream<List<int>> _stream;
 
