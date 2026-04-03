@@ -638,6 +638,50 @@ void main() {
         await client.send(RequestImpl('POST', url));
         client.close();
       });
+
+      test('works with empty scopes', () async {
+        var serverInvocation = 0;
+
+        final client = await clientViaRefreshToken(
+          clientId,
+          'refresh',
+          [],
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              if (serverInvocation++ == 0) {
+                return successfulRefresh(request);
+              } else {
+                return Response('', 200);
+              }
+            }, count: 2),
+            expectClose: false,
+          ),
+        );
+
+        expect(client.credentials.accessToken.data, 'atoken');
+        expect(client.credentials.scopes, isEmpty);
+
+        final request = RequestImpl('POST', url);
+        final response = await client.send(request);
+        expect(response.statusCode, 200);
+
+        client.close();
+      });
+
+      test('throws on network exception during refresh', () async {
+        await expectLater(
+          clientViaRefreshToken(
+            clientId,
+            'refresh',
+            ['s1'],
+            baseClient: mockClient(
+              expectAsync1((request) async => throw Exception('network error')),
+              expectClose: false,
+            ),
+          ),
+          throwsA(isA<Exception>()),
+        );
+      });
     });
 
     group('Service Account Access', () {
