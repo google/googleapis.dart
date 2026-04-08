@@ -121,15 +121,8 @@ Future<AutoRefreshingAuthClient> clientViaRefreshToken(
   AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
   String? quotaProject,
 }) async {
-  final bool closeUnderlyingClient;
-  final Client setupClient;
-  if (baseClient == null) {
-    setupClient = Client();
-    closeUnderlyingClient = true;
-  } else {
-    setupClient = nonClosingClient(baseClient);
-    closeUnderlyingClient = false;
-  }
+  final setupClient = setupBaseClient(baseClient);
+  final closeUnderlyingClient = baseClient == null;
 
   try {
     final credentials = await refreshCredentials(
