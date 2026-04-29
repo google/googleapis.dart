@@ -89,8 +89,8 @@ class FoldersContactsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the resource to compute contacts for.
-  /// Format: organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// Format: organizations/{organization}, folders/{folder} or
+  /// projects/{project} (where {project} is the project number)
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [notificationCategories] - The categories of notifications to compute
@@ -150,8 +150,8 @@ class FoldersContactsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource to save this contact for. Format:
-  /// organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// organizations/{organization}, folders/{folder} or projects/{project}
+  /// (where {project} is the project number)
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -192,9 +192,10 @@ class FoldersContactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the contact to delete. Format:
-  /// organizations/{organization_id}/contacts/{contact_id},
-  /// folders/{folder_id}/contacts/{contact_id} or
-  /// projects/{project_id}/contacts/{contact_id}
+  /// organizations/{organization}/contacts/{contact},
+  /// folders/{folder}/contacts/{contact} or
+  /// projects/{project}/contacts/{contact} (where {project} is the project
+  /// number)
   /// Value must have pattern `^folders/\[^/\]+/contacts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -232,9 +233,10 @@ class FoldersContactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the contact to retrieve. Format:
-  /// organizations/{organization_id}/contacts/{contact_id},
-  /// folders/{folder_id}/contacts/{contact_id} or
-  /// projects/{project_id}/contacts/{contact_id}
+  /// organizations/{organization}/contacts/{contact},
+  /// folders/{folder}/contacts/{contact} or
+  /// projects/{project}/contacts/{contact} (where {project} is the project
+  /// number)
   /// Value must have pattern `^folders/\[^/\]+/contacts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -272,8 +274,8 @@ class FoldersContactsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name. Format:
-  /// organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// organizations/{organization}, folders/{folder} or projects/{project}
+  /// (where {project} is the project number)
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
@@ -381,8 +383,8 @@ class FoldersContactsResource {
   /// [resource] - Required. The name of the resource to send the test message
   /// for. All contacts must either be set directly on this resource or
   /// inherited from another resource that is an ancestor of this one. Format:
-  /// organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// organizations/{organization}, folders/{folder} or projects/{project}
+  /// (where {project} is the project number)
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -442,8 +444,8 @@ class OrganizationsContactsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the resource to compute contacts for.
-  /// Format: organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// Format: organizations/{organization}, folders/{folder} or
+  /// projects/{project} (where {project} is the project number)
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [notificationCategories] - The categories of notifications to compute
@@ -503,8 +505,8 @@ class OrganizationsContactsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource to save this contact for. Format:
-  /// organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// organizations/{organization}, folders/{folder} or projects/{project}
+  /// (where {project} is the project number)
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -545,9 +547,10 @@ class OrganizationsContactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the contact to delete. Format:
-  /// organizations/{organization_id}/contacts/{contact_id},
-  /// folders/{folder_id}/contacts/{contact_id} or
-  /// projects/{project_id}/contacts/{contact_id}
+  /// organizations/{organization}/contacts/{contact},
+  /// folders/{folder}/contacts/{contact} or
+  /// projects/{project}/contacts/{contact} (where {project} is the project
+  /// number)
   /// Value must have pattern `^organizations/\[^/\]+/contacts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -585,9 +588,10 @@ class OrganizationsContactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the contact to retrieve. Format:
-  /// organizations/{organization_id}/contacts/{contact_id},
-  /// folders/{folder_id}/contacts/{contact_id} or
-  /// projects/{project_id}/contacts/{contact_id}
+  /// organizations/{organization}/contacts/{contact},
+  /// folders/{folder}/contacts/{contact} or
+  /// projects/{project}/contacts/{contact} (where {project} is the project
+  /// number)
   /// Value must have pattern `^organizations/\[^/\]+/contacts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -625,8 +629,8 @@ class OrganizationsContactsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name. Format:
-  /// organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// organizations/{organization}, folders/{folder} or projects/{project}
+  /// (where {project} is the project number)
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
@@ -734,8 +738,8 @@ class OrganizationsContactsResource {
   /// [resource] - Required. The name of the resource to send the test message
   /// for. All contacts must either be set directly on this resource or
   /// inherited from another resource that is an ancestor of this one. Format:
-  /// organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// organizations/{organization}, folders/{folder} or projects/{project}
+  /// (where {project} is the project number)
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -793,8 +797,8 @@ class ProjectsContactsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the resource to compute contacts for.
-  /// Format: organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// Format: organizations/{organization}, folders/{folder} or
+  /// projects/{project} (where {project} is the project number)
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [notificationCategories] - The categories of notifications to compute
@@ -854,8 +858,8 @@ class ProjectsContactsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource to save this contact for. Format:
-  /// organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// organizations/{organization}, folders/{folder} or projects/{project}
+  /// (where {project} is the project number)
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -896,9 +900,10 @@ class ProjectsContactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the contact to delete. Format:
-  /// organizations/{organization_id}/contacts/{contact_id},
-  /// folders/{folder_id}/contacts/{contact_id} or
-  /// projects/{project_id}/contacts/{contact_id}
+  /// organizations/{organization}/contacts/{contact},
+  /// folders/{folder}/contacts/{contact} or
+  /// projects/{project}/contacts/{contact} (where {project} is the project
+  /// number)
   /// Value must have pattern `^projects/\[^/\]+/contacts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -936,9 +941,10 @@ class ProjectsContactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the contact to retrieve. Format:
-  /// organizations/{organization_id}/contacts/{contact_id},
-  /// folders/{folder_id}/contacts/{contact_id} or
-  /// projects/{project_id}/contacts/{contact_id}
+  /// organizations/{organization}/contacts/{contact},
+  /// folders/{folder}/contacts/{contact} or
+  /// projects/{project}/contacts/{contact} (where {project} is the project
+  /// number)
   /// Value must have pattern `^projects/\[^/\]+/contacts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -976,8 +982,8 @@ class ProjectsContactsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name. Format:
-  /// organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// organizations/{organization}, folders/{folder} or projects/{project}
+  /// (where {project} is the project number)
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
@@ -1085,8 +1091,8 @@ class ProjectsContactsResource {
   /// [resource] - Required. The name of the resource to send the test message
   /// for. All contacts must either be set directly on this resource or
   /// inherited from another resource that is an ancestor of this one. Format:
-  /// organizations/{organization_id}, folders/{folder_id} or
-  /// projects/{project_id}
+  /// organizations/{organization}, folders/{folder} or projects/{project}
+  /// (where {project} is the project number)
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1300,9 +1306,10 @@ class GoogleCloudEssentialcontactsV1ListContactsResponse {
 class GoogleCloudEssentialcontactsV1SendTestMessageRequest {
   /// The list of names of the contacts to send a test message to.
   ///
-  /// Format: organizations/{organization_id}/contacts/{contact_id},
-  /// folders/{folder_id}/contacts/{contact_id} or
-  /// projects/{project_id}/contacts/{contact_id}
+  /// Format: organizations/{organization}/contacts/{contact},
+  /// folders/{folder}/contacts/{contact} or
+  /// projects/{project}/contacts/{contact} (where {project} is the project
+  /// number)
   ///
   /// Required.
   core.List<core.String>? contacts;

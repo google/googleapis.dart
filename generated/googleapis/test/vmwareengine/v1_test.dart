@@ -437,7 +437,6 @@ api.DatastoreMountConfig buildDatastoreMountConfig() {
     o.datastoreNetwork = buildDatastoreNetwork();
     o.fileShare = 'foo';
     o.nfsVersion = 'foo';
-    o.securityType = 'foo';
     o.servers = buildUnnamed9();
   }
   buildCounterDatastoreMountConfig--;
@@ -452,7 +451,6 @@ void checkDatastoreMountConfig(api.DatastoreMountConfig o) {
     checkDatastoreNetwork(o.datastoreNetwork!);
     unittest.expect(o.fileShare!, unittest.equals('foo'));
     unittest.expect(o.nfsVersion!, unittest.equals('foo'));
-    unittest.expect(o.securityType!, unittest.equals('foo'));
     checkUnnamed9(o.servers!);
   }
   buildCounterDatastoreMountConfig--;
@@ -1920,6 +1918,7 @@ api.MountDatastoreRequest buildMountDatastoreRequest() {
     o.datastoreMountConfig = buildDatastoreMountConfig();
     o.ignoreColocation = true;
     o.requestId = 'foo';
+    o.validateOnly = true;
   }
   buildCounterMountDatastoreRequest--;
   return o;
@@ -1931,6 +1930,7 @@ void checkMountDatastoreRequest(api.MountDatastoreRequest o) {
     checkDatastoreMountConfig(o.datastoreMountConfig!);
     unittest.expect(o.ignoreColocation!, unittest.isTrue);
     unittest.expect(o.requestId!, unittest.equals('foo'));
+    unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterMountDatastoreRequest--;
 }
@@ -2928,6 +2928,7 @@ api.UnmountDatastoreRequest buildUnmountDatastoreRequest() {
   if (buildCounterUnmountDatastoreRequest < 3) {
     o.datastore = 'foo';
     o.requestId = 'foo';
+    o.validateOnly = true;
   }
   buildCounterUnmountDatastoreRequest--;
   return o;
@@ -2938,6 +2939,7 @@ void checkUnmountDatastoreRequest(api.UnmountDatastoreRequest o) {
   if (buildCounterUnmountDatastoreRequest < 3) {
     unittest.expect(o.datastore!, unittest.equals('foo'));
     unittest.expect(o.requestId!, unittest.equals('foo'));
+    unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterUnmountDatastoreRequest--;
 }
@@ -4977,6 +4979,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_networkPeeringId = 'foo';
       final arg_requestId = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5025,6 +5028,10 @@ void main() {
             unittest.equals(arg_requestId),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -5040,6 +5047,7 @@ void main() {
         arg_parent,
         networkPeeringId: arg_networkPeeringId,
         requestId: arg_requestId,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -5249,6 +5257,7 @@ void main() {
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5297,6 +5306,10 @@ void main() {
             unittest.equals(arg_updateMask),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -5312,6 +5325,7 @@ void main() {
         arg_name,
         requestId: arg_requestId,
         updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -5409,6 +5423,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_networkPolicyId = 'foo';
       final arg_requestId = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5457,6 +5472,10 @@ void main() {
             unittest.equals(arg_requestId),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -5472,6 +5491,7 @@ void main() {
         arg_parent,
         networkPolicyId: arg_networkPolicyId,
         requestId: arg_requestId,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -5753,6 +5773,7 @@ void main() {
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5801,6 +5822,10 @@ void main() {
             unittest.equals(arg_updateMask),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -5816,6 +5841,7 @@ void main() {
         arg_name,
         requestId: arg_requestId,
         updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -5834,6 +5860,7 @@ void main() {
         final arg_parent = 'foo';
         final arg_externalAccessRuleId = 'foo';
         final arg_requestId = 'foo';
+        final arg_validateOnly = true;
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5882,6 +5909,10 @@ void main() {
               unittest.equals(arg_requestId),
             );
             unittest.expect(
+              queryMap['validateOnly']!.first,
+              unittest.equals('$arg_validateOnly'),
+            );
+            unittest.expect(
               queryMap['fields']!.first,
               unittest.equals(arg_$fields),
             );
@@ -5897,6 +5928,7 @@ void main() {
           arg_parent,
           externalAccessRuleId: arg_externalAccessRuleId,
           requestId: arg_requestId,
+          validateOnly: arg_validateOnly,
           $fields: arg_$fields,
         );
         checkOperation(response as api.Operation);
@@ -6116,6 +6148,7 @@ void main() {
         final arg_name = 'foo';
         final arg_requestId = 'foo';
         final arg_updateMask = 'foo';
+        final arg_validateOnly = true;
         final arg_$fields = 'foo';
         mock.register(
           unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6164,6 +6197,10 @@ void main() {
               unittest.equals(arg_updateMask),
             );
             unittest.expect(
+              queryMap['validateOnly']!.first,
+              unittest.equals('$arg_validateOnly'),
+            );
+            unittest.expect(
               queryMap['fields']!.first,
               unittest.equals(arg_$fields),
             );
@@ -6179,6 +6216,7 @@ void main() {
           arg_name,
           requestId: arg_requestId,
           updateMask: arg_updateMask,
+          validateOnly: arg_validateOnly,
           $fields: arg_$fields,
         );
         checkOperation(response as api.Operation);
@@ -6917,6 +6955,7 @@ void main() {
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6965,6 +7004,10 @@ void main() {
             unittest.equals(arg_updateMask),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -6980,6 +7023,7 @@ void main() {
         arg_name,
         requestId: arg_requestId,
         updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -8394,6 +8438,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_externalAddressId = 'foo';
       final arg_requestId = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8442,6 +8487,10 @@ void main() {
             unittest.equals(arg_requestId),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -8457,6 +8506,7 @@ void main() {
         arg_parent,
         externalAddressId: arg_externalAddressId,
         requestId: arg_requestId,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -8676,6 +8726,7 @@ void main() {
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8724,6 +8775,10 @@ void main() {
             unittest.equals(arg_updateMask),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -8739,6 +8794,7 @@ void main() {
         arg_name,
         requestId: arg_requestId,
         updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -10361,6 +10417,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_privateConnectionId = 'foo';
       final arg_requestId = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10409,6 +10466,10 @@ void main() {
             unittest.equals(arg_requestId),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -10424,6 +10485,7 @@ void main() {
         arg_parent,
         privateConnectionId: arg_privateConnectionId,
         requestId: arg_requestId,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -10643,6 +10705,7 @@ void main() {
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10691,6 +10754,10 @@ void main() {
             unittest.equals(arg_updateMask),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -10706,6 +10773,7 @@ void main() {
         arg_name,
         requestId: arg_requestId,
         updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -10800,6 +10868,7 @@ void main() {
       final arg_request = buildVmwareEngineNetwork();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
+      final arg_validateOnly = true;
       final arg_vmwareEngineNetworkId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10845,6 +10914,10 @@ void main() {
             unittest.equals(arg_requestId),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['vmwareEngineNetworkId']!.first,
             unittest.equals(arg_vmwareEngineNetworkId),
           );
@@ -10863,6 +10936,7 @@ void main() {
         arg_request,
         arg_parent,
         requestId: arg_requestId,
+        validateOnly: arg_validateOnly,
         vmwareEngineNetworkId: arg_vmwareEngineNetworkId,
         $fields: arg_$fields,
       );
@@ -11086,6 +11160,7 @@ void main() {
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11134,6 +11209,10 @@ void main() {
             unittest.equals(arg_updateMask),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -11149,6 +11228,7 @@ void main() {
         arg_name,
         requestId: arg_requestId,
         updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);

@@ -653,6 +653,27 @@ void checkChannel(api.Channel o) {
   buildCounterChannel--;
 }
 
+core.int buildCounterClientEncryptionDetails = 0;
+api.ClientEncryptionDetails buildClientEncryptionDetails() {
+  final o = api.ClientEncryptionDetails();
+  buildCounterClientEncryptionDetails++;
+  if (buildCounterClientEncryptionDetails < 3) {
+    o.decryptionMetadata = buildDecryptionMetadata();
+    o.encryptionState = 'foo';
+  }
+  buildCounterClientEncryptionDetails--;
+  return o;
+}
+
+void checkClientEncryptionDetails(api.ClientEncryptionDetails o) {
+  buildCounterClientEncryptionDetails++;
+  if (buildCounterClientEncryptionDetails < 3) {
+    checkDecryptionMetadata(o.decryptionMetadata!);
+    unittest.expect(o.encryptionState!, unittest.equals('foo'));
+  }
+  buildCounterClientEncryptionDetails--;
+}
+
 core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
 
 void checkUnnamed20(core.List<core.String> o) {
@@ -804,6 +825,37 @@ void checkContentRestriction(api.ContentRestriction o) {
     unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterContentRestriction--;
+}
+
+core.int buildCounterDecryptionMetadata = 0;
+api.DecryptionMetadata buildDecryptionMetadata() {
+  final o = api.DecryptionMetadata();
+  buildCounterDecryptionMetadata++;
+  if (buildCounterDecryptionMetadata < 3) {
+    o.aes256GcmChunkSize = 'foo';
+    o.encryptionResourceKeyHash = 'foo';
+    o.jwt = 'foo';
+    o.kaclsId = 'foo';
+    o.kaclsName = 'foo';
+    o.keyFormat = 'foo';
+    o.wrappedKey = 'foo';
+  }
+  buildCounterDecryptionMetadata--;
+  return o;
+}
+
+void checkDecryptionMetadata(api.DecryptionMetadata o) {
+  buildCounterDecryptionMetadata++;
+  if (buildCounterDecryptionMetadata < 3) {
+    unittest.expect(o.aes256GcmChunkSize!, unittest.equals('foo'));
+    unittest.expect(o.encryptionResourceKeyHash!, unittest.equals('foo'));
+    unittest.expect(o.jwt!, unittest.equals('foo'));
+    unittest.expect(o.kaclsId!, unittest.equals('foo'));
+    unittest.expect(o.kaclsName!, unittest.equals('foo'));
+    unittest.expect(o.keyFormat!, unittest.equals('foo'));
+    unittest.expect(o.wrappedKey!, unittest.equals('foo'));
+  }
+  buildCounterDecryptionMetadata--;
 }
 
 core.int buildCounterDownloadRestriction = 0;
@@ -1459,6 +1511,7 @@ api.File buildFile() {
   if (buildCounterFile < 3) {
     o.appProperties = buildUnnamed24();
     o.capabilities = buildFileCapabilities();
+    o.clientEncryptionDetails = buildClientEncryptionDetails();
     o.contentHints = buildFileContentHints();
     o.contentRestrictions = buildUnnamed25();
     o.copyRequiresWriterPermission = true;
@@ -1531,6 +1584,7 @@ void checkFile(api.File o) {
   if (buildCounterFile < 3) {
     checkUnnamed24(o.appProperties!);
     checkFileCapabilities(o.capabilities!);
+    checkClientEncryptionDetails(o.clientEncryptionDetails!);
     checkFileContentHints(o.contentHints!);
     checkUnnamed25(o.contentRestrictions!);
     unittest.expect(o.copyRequiresWriterPermission!, unittest.isTrue);
@@ -1646,6 +1700,33 @@ void checkFileList(api.FileList o) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterFileList--;
+}
+
+core.int buildCounterGenerateCseTokenResponse = 0;
+api.GenerateCseTokenResponse buildGenerateCseTokenResponse() {
+  final o = api.GenerateCseTokenResponse();
+  buildCounterGenerateCseTokenResponse++;
+  if (buildCounterGenerateCseTokenResponse < 3) {
+    o.currentKaclsId = 'foo';
+    o.currentKaclsName = 'foo';
+    o.fileId = 'foo';
+    o.jwt = 'foo';
+    o.kind = 'foo';
+  }
+  buildCounterGenerateCseTokenResponse--;
+  return o;
+}
+
+void checkGenerateCseTokenResponse(api.GenerateCseTokenResponse o) {
+  buildCounterGenerateCseTokenResponse++;
+  if (buildCounterGenerateCseTokenResponse < 3) {
+    unittest.expect(o.currentKaclsId!, unittest.equals('foo'));
+    unittest.expect(o.currentKaclsName!, unittest.equals('foo'));
+    unittest.expect(o.fileId!, unittest.equals('foo'));
+    unittest.expect(o.jwt!, unittest.equals('foo'));
+    unittest.expect(o.kind!, unittest.equals('foo'));
+  }
+  buildCounterGenerateCseTokenResponse--;
 }
 
 core.List<core.String> buildUnnamed35() => ['foo', 'foo'];
@@ -2972,6 +3053,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ClientEncryptionDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildClientEncryptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClientEncryptionDetails.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkClientEncryptionDetails(od);
+    });
+  });
+
   unittest.group('obj-schema-CommentQuotedFileContent', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCommentQuotedFileContent();
@@ -3013,6 +3105,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkContentRestriction(od);
+    });
+  });
+
+  unittest.group('obj-schema-DecryptionMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDecryptionMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DecryptionMetadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDecryptionMetadata(od);
     });
   });
 
@@ -3211,6 +3314,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFileList(od);
+    });
+  });
+
+  unittest.group('obj-schema-GenerateCseTokenResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateCseTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateCseTokenResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGenerateCseTokenResponse(od);
     });
   });
 
@@ -6058,6 +6172,76 @@ void main() {
         true,
       );
       await res.export(arg_fileId, arg_mimeType, $fields: arg_$fields);
+    });
+
+    unittest.test('method--generateCseToken', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveApi(mock).files;
+      final arg_fileId = 'foo';
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('drive/v3/'),
+          );
+          pathOffset += 9;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 22),
+            unittest.equals('files/generateCseToken'),
+          );
+          pathOffset += 22;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fileId']!.first,
+            unittest.equals(arg_fileId),
+          );
+          unittest.expect(
+            queryMap['parent']!.first,
+            unittest.equals(arg_parent),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGenerateCseTokenResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.generateCseToken(
+        fileId: arg_fileId,
+        parent: arg_parent,
+        $fields: arg_$fields,
+      );
+      checkGenerateCseTokenResponse(response as api.GenerateCseTokenResponse);
     });
 
     unittest.test('method--generateIds', () async {

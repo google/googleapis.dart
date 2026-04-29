@@ -770,7 +770,6 @@ class Verification {
   /// The PIN is used to complete verification with Google.
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
-  /// - "VETTED_PARTNER" : This option may not be available for all locations.
   /// - "TRUSTED_PARTNER" : Verify the location via a trusted partner.
   core.String? method;
 
@@ -850,7 +849,6 @@ class VerificationOption {
   /// The PIN is used to complete verification with Google.
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
-  /// - "VETTED_PARTNER" : This option may not be available for all locations.
   /// - "TRUSTED_PARTNER" : Verify the location via a trusted partner.
   core.String? verificationMethod;
 
@@ -987,7 +985,6 @@ class VerifyLocationRequest {
   /// The PIN is used to complete verification with Google.
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
-  /// - "VETTED_PARTNER" : This option may not be available for all locations.
   /// - "TRUSTED_PARTNER" : Verify the location via a trusted partner.
   core.String? method;
 

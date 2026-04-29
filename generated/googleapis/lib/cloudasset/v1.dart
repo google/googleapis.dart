@@ -3441,7 +3441,7 @@ class FeedOutputConfig {
 class GcsDestination {
   /// The URI of the Cloud Storage object.
   ///
-  /// It's the same URI that is used by gsutil. Example:
+  /// It's the same URI that is used by gcloud storage. Example:
   /// "gs://bucket_name/object_name". See
   /// [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
   /// for more information. If the specified Cloud Storage object already exists
@@ -4139,7 +4139,7 @@ class GoogleCloudAssetV1Edge {
 class GoogleCloudAssetV1GcsDestination {
   /// The URI of the Cloud Storage object.
   ///
-  /// It's the same URI that is used by gsutil. Example:
+  /// It's the same URI that is used by gcloud storage. Example:
   /// "gs://bucket_name/object_name". See
   /// [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
   /// for more information. If the specified Cloud Storage object already exists
@@ -5113,11 +5113,10 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
 class GoogleIdentityAccesscontextmanagerV1EgressFrom {
   /// A list of identities that are allowed access through \[EgressPolicy\].
   ///
-  /// Identities can be an individual user, service account, Google group, or
-  /// third-party identity. For third-party identity, only single identities are
-  /// supported and other identity types are not supported. The `v1` identities
-  /// that have the prefix `user`, `group`, `serviceAccount`, and `principal` in
-  /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
+  /// Identities can be an individual user, service account, Google group,
+  /// third-party identity, or agent identity. For the list of supported
+  /// identity types, see
+  /// https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access to outside the
@@ -5347,11 +5346,10 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
 class GoogleIdentityAccesscontextmanagerV1IngressFrom {
   /// A list of identities that are allowed access through \[IngressPolicy\].
   ///
-  /// Identities can be an individual user, service account, Google group, or
-  /// third-party identity. For third-party identity, only single identities are
-  /// supported and other identity types are not supported. The `v1` identities
-  /// that have the prefix `user`, `group`, `serviceAccount`, and `principal` in
-  /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
+  /// Identities can be an individual user, service account, Google group,
+  /// third-party identity, or agent identity. For the list of supported
+  /// identity types, see
+  /// https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access from outside the

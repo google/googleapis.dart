@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
   googleapis:
-    version: 16.0.0
+    version: 17.0.0-wip
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -67,6 +67,7 @@ packages:
       - businessprofileperformance:v1
       - calendar:v3
       - certificatemanager:v1
+      - ces:v1
       - chat:v1
       - chromemanagement:v1
       - chromepolicy:v1
@@ -124,6 +125,7 @@ packages:
       - datastream:v1
       - deploymentmanager:v2
       - developerconnect:v1
+      - developerknowledge:v1
       - dfareporting:v3.5
       - dfareporting:v4
       - dfareporting:v5
@@ -169,8 +171,10 @@ packages:
       - gkeonprem:v1
       - gmail:v1
       - gmailpostmastertools:v1
+      - gmailpostmastertools:v2
       - groupsmigration:v1
       - groupssettings:v1
+      - health:v4
       - healthcare:v1
       - homegraph:v1
       - hypercomputecluster:v1
@@ -267,6 +271,7 @@ packages:
       - run:v1
       - run:v2
       - runtimeconfig:v1
+      - saasservicemgmt:v1
       - safebrowsing:v4
       - safebrowsing:v5
       - script:v1
@@ -368,6 +373,7 @@ skip_tests:
 skipped_apis:
   - admob:v1beta
   - adsenseplatform:v1alpha
+  - agentregistry:v1alpha
   - aiplatform:v1beta1
   - alloydb:v1alpha
   - alloydb:v1beta
@@ -386,6 +392,7 @@ skipped_apis:
   - beyondcorp:v1alpha
   - billingbudgets:v1beta1
   - binaryauthorization:v1beta1
+  - ces:v1beta
   - checks:v1alpha
   - cloudasset:v1beta1
   - cloudasset:v1p1beta1
@@ -420,6 +427,7 @@ skipped_apis:
   - datastore:v1beta3
   - deploymentmanager:alpha
   - deploymentmanager:v2beta
+  - developerknowledge:v1alpha
   - dialogflow:v2beta1
   - dialogflow:v3beta1
   - discoveryengine:v1

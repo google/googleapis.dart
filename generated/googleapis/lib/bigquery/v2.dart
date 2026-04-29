@@ -5217,7 +5217,7 @@ class DataMaskingStatistics {
 /// Data policy option.
 ///
 /// For more information, see
-/// [Mask data by applying data policies to a column](https://cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column/).
+/// [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
 class DataPolicyOption {
   /// Data policy resource name in the form of
   /// projects/project_id/locations/location_id/dataPolicies/data_policy_id.
@@ -5474,6 +5474,12 @@ class Dataset {
   /// Optional.
   core.List<DatasetAccess>? access;
 
+  /// The origin of the dataset, one of: * (Unset) - Native BigQuery Dataset *
+  /// BIGLAKE - Dataset is backed by a namespace stored natively in Biglake
+  ///
+  /// Output only.
+  core.String? catalogSource;
+
   /// The time when this dataset was created, in milliseconds since the epoch.
   ///
   /// Output only.
@@ -5721,13 +5727,16 @@ class Dataset {
   /// The type of the dataset, one of: * DEFAULT - only accessible by owner and
   /// authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked
   /// dataset, * EXTERNAL - dataset with definition in external metadata
-  /// catalog.
+  /// catalog, * BIGLAKE_ICEBERG - a Biglake dataset accessible through the
+  /// Iceberg API, * BIGLAKE_HIVE - a Biglake dataset accessible through the
+  /// Hive API.
   ///
   /// Output only.
   core.String? type;
 
   Dataset({
     this.access,
+    this.catalogSource,
     this.creationTime,
     this.datasetReference,
     this.defaultCollation,
@@ -5768,6 +5777,7 @@ class Dataset {
               ),
             )
             .toList(),
+        catalogSource: json_['catalogSource'] as core.String?,
         creationTime: json_['creationTime'] as core.String?,
         datasetReference: json_.containsKey('datasetReference')
             ? DatasetReference.fromJson(
@@ -5849,6 +5859,7 @@ class Dataset {
 
   core.Map<core.String, core.dynamic> toJson() {
     final access = this.access;
+    final catalogSource = this.catalogSource;
     final creationTime = this.creationTime;
     final datasetReference = this.datasetReference;
     final defaultCollation = this.defaultCollation;
@@ -5880,6 +5891,7 @@ class Dataset {
     final type = this.type;
     return {
       'access': ?access,
+      'catalogSource': ?catalogSource,
       'creationTime': ?creationTime,
       'datasetReference': ?datasetReference,
       'defaultCollation': ?defaultCollation,
@@ -5954,6 +5966,13 @@ class DatasetAccessEntry {
 /// A dataset resource with only a subset of fields, to be returned in a list of
 /// datasets.
 class DatasetListDatasets {
+  /// The origin of the dataset, one of: * (Unset) - Native BigQuery Dataset.
+  ///
+  /// * BIGLAKE - Dataset is backed by a namespace stored natively in Biglake.
+  ///
+  /// Output only.
+  core.String? catalogSource;
+
   /// The dataset reference.
   ///
   /// Use this property to access specific parts of the dataset's ID, such as
@@ -5989,7 +6008,20 @@ class DatasetListDatasets {
   /// The geographic location where the dataset resides.
   core.String? location;
 
+  /// Same as `type` in `Dataset`.
+  ///
+  /// The type of the dataset, one of: * DEFAULT - only accessible by owner and
+  /// authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked
+  /// dataset, * EXTERNAL - dataset with definition in external metadata
+  /// catalog, * BIGLAKE_ICEBERG - a Biglake dataset accessible through the
+  /// Iceberg API, * BIGLAKE_HIVE - a Biglake dataset accessible through the
+  /// Hive API.
+  ///
+  /// Output only.
+  core.String? type;
+
   DatasetListDatasets({
+    this.catalogSource,
     this.datasetReference,
     this.externalDatasetReference,
     this.friendlyName,
@@ -5997,10 +6029,12 @@ class DatasetListDatasets {
     this.kind,
     this.labels,
     this.location,
+    this.type,
   });
 
   DatasetListDatasets.fromJson(core.Map json_)
     : this(
+        catalogSource: json_['catalogSource'] as core.String?,
         datasetReference: json_.containsKey('datasetReference')
             ? DatasetReference.fromJson(
                 json_['datasetReference']
@@ -6020,9 +6054,11 @@ class DatasetListDatasets {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         location: json_['location'] as core.String?,
+        type: json_['type'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final catalogSource = this.catalogSource;
     final datasetReference = this.datasetReference;
     final externalDatasetReference = this.externalDatasetReference;
     final friendlyName = this.friendlyName;
@@ -6030,7 +6066,9 @@ class DatasetListDatasets {
     final kind = this.kind;
     final labels = this.labels;
     final location = this.location;
+    final type = this.type;
     return {
+      'catalogSource': ?catalogSource,
       'datasetReference': ?datasetReference,
       'externalDatasetReference': ?externalDatasetReference,
       'friendlyName': ?friendlyName,
@@ -6038,6 +6076,7 @@ class DatasetListDatasets {
       'kind': ?kind,
       'labels': ?labels,
       'location': ?location,
+      'type': ?type,
     };
   }
 }
@@ -6382,6 +6421,29 @@ class DmlStatistics {
   /// Output only.
   core.String? deletedRowCount;
 
+  /// DML mode used.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DML_MODE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "COARSE_GRAINED_DML" : Coarse-grained DML was used.
+  /// - "FINE_GRAINED_DML" : Fine-grained DML was used.
+  core.String? dmlMode;
+
+  /// Reason for disabling fine-grained DML if applicable.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FINE_GRAINED_DML_UNUSED_REASON_UNSPECIFIED" : Default value. This value
+  /// is unused.
+  /// - "MAX_PARTITION_SIZE_EXCEEDED" : Max partition size threshold exceeded.
+  /// \[Fine-grained DML
+  /// Limitations\](https://docs.cloud.google.com/bigquery/docs/data-manipulation-language#fine-grained-dml-limitations)
+  /// - "TABLE_NOT_ENROLLED" : The table is not enrolled for fine-grained DML.
+  /// - "DML_IN_MULTI_STATEMENT_TRANSACTION" : The DML statement is part of a
+  /// multi-statement transaction.
+  core.String? fineGrainedDmlUnusedReason;
+
   /// Number of inserted Rows.
   ///
   /// Populated by DML INSERT and MERGE statements
@@ -6398,6 +6460,8 @@ class DmlStatistics {
 
   DmlStatistics({
     this.deletedRowCount,
+    this.dmlMode,
+    this.fineGrainedDmlUnusedReason,
     this.insertedRowCount,
     this.updatedRowCount,
   });
@@ -6405,16 +6469,23 @@ class DmlStatistics {
   DmlStatistics.fromJson(core.Map json_)
     : this(
         deletedRowCount: json_['deletedRowCount'] as core.String?,
+        dmlMode: json_['dmlMode'] as core.String?,
+        fineGrainedDmlUnusedReason:
+            json_['fineGrainedDmlUnusedReason'] as core.String?,
         insertedRowCount: json_['insertedRowCount'] as core.String?,
         updatedRowCount: json_['updatedRowCount'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final deletedRowCount = this.deletedRowCount;
+    final dmlMode = this.dmlMode;
+    final fineGrainedDmlUnusedReason = this.fineGrainedDmlUnusedReason;
     final insertedRowCount = this.insertedRowCount;
     final updatedRowCount = this.updatedRowCount;
     return {
       'deletedRowCount': ?deletedRowCount,
+      'dmlMode': ?dmlMode,
+      'fineGrainedDmlUnusedReason': ?fineGrainedDmlUnusedReason,
       'insertedRowCount': ?insertedRowCount,
       'updatedRowCount': ?updatedRowCount,
     };
@@ -7402,7 +7473,7 @@ class ExternalDataConfiguration {
   /// TIMESTAMP types that are allowed to the destination table for
   /// autodetection mode.
   ///
-  /// Available for the formats: CSV. For the CSV Format, Possible values
+  /// Available for the formats: CSV, PARQUET, and AVRO. Possible values
   /// include: Not Specified, \[\], or \[6\]: timestamp(6) for all auto detected
   /// TIMESTAMP columns \[6, 12\]: timestamp(6) for all auto detected TIMESTAMP
   /// columns that have less than 6 digits of subseconds. timestamp(12) for all
@@ -7847,6 +7918,258 @@ class ForeignViewDefinition {
     final dialect = this.dialect;
     final query = this.query;
     return {'dialect': ?dialect, 'query': ?query};
+  }
+}
+
+/// Provides error statistics for the query job across all AI function calls.
+class GenAiErrorStats {
+  /// A list of unique errors at query level (up to 5, truncated to 100 chars)
+  core.List<core.String>? errors;
+
+  GenAiErrorStats({this.errors});
+
+  GenAiErrorStats.fromJson(core.Map json_)
+    : this(
+        errors: (json_['errors'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    return {'errors': ?errors};
+  }
+}
+
+/// Provides cost optimization statistics for a GenAi function call.
+class GenAiFunctionCostOptimizationStats {
+  /// System generated message to provide insights into cost optimization state.
+  core.String? message;
+
+  /// Number of rows inferred via cost optimized workflow.
+  core.String? numCostOptimizedRows;
+
+  GenAiFunctionCostOptimizationStats({this.message, this.numCostOptimizedRows});
+
+  GenAiFunctionCostOptimizationStats.fromJson(core.Map json_)
+    : this(
+        message: json_['message'] as core.String?,
+        numCostOptimizedRows: json_['numCostOptimizedRows'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final numCostOptimizedRows = this.numCostOptimizedRows;
+    return {'message': ?message, 'numCostOptimizedRows': ?numCostOptimizedRows};
+  }
+}
+
+/// Provides error statistics for a GenAi function call.
+class GenAiFunctionErrorStats {
+  /// A list of unique errors at function level (up to 5, truncated to 100
+  /// chars).
+  core.List<core.String>? errors;
+
+  /// Number of failed rows processed by the function
+  core.String? numFailedRows;
+
+  GenAiFunctionErrorStats({this.errors, this.numFailedRows});
+
+  GenAiFunctionErrorStats.fromJson(core.Map json_)
+    : this(
+        errors: (json_['errors'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        numFailedRows: json_['numFailedRows'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    final numFailedRows = this.numFailedRows;
+    return {'errors': ?errors, 'numFailedRows': ?numFailedRows};
+  }
+}
+
+/// Provides statistics for each Ai function call within a query.
+class GenAiFunctionStats {
+  /// Cost optimization stats if applied on the rows processed by the function.
+  GenAiFunctionCostOptimizationStats? costOptimizationStats;
+
+  /// Error stats for the function.
+  GenAiFunctionErrorStats? errorStats;
+
+  /// Name of the function.
+  core.String? functionName;
+
+  /// Number of rows processed by this GenAi function.
+  ///
+  /// This includes all cost_optimized, llm_inferred and failed_rows.
+  core.String? numProcessedRows;
+
+  /// User input prompt of the function (truncated to 20 chars).
+  core.String? prompt;
+
+  GenAiFunctionStats({
+    this.costOptimizationStats,
+    this.errorStats,
+    this.functionName,
+    this.numProcessedRows,
+    this.prompt,
+  });
+
+  GenAiFunctionStats.fromJson(core.Map json_)
+    : this(
+        costOptimizationStats: json_.containsKey('costOptimizationStats')
+            ? GenAiFunctionCostOptimizationStats.fromJson(
+                json_['costOptimizationStats']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        errorStats: json_.containsKey('errorStats')
+            ? GenAiFunctionErrorStats.fromJson(
+                json_['errorStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        functionName: json_['functionName'] as core.String?,
+        numProcessedRows: json_['numProcessedRows'] as core.String?,
+        prompt: json_['prompt'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final costOptimizationStats = this.costOptimizationStats;
+    final errorStats = this.errorStats;
+    final functionName = this.functionName;
+    final numProcessedRows = this.numProcessedRows;
+    final prompt = this.prompt;
+    return {
+      'costOptimizationStats': ?costOptimizationStats,
+      'errorStats': ?errorStats,
+      'functionName': ?functionName,
+      'numProcessedRows': ?numProcessedRows,
+      'prompt': ?prompt,
+    };
+  }
+}
+
+/// GenAi stats for the query job.
+class GenAiStats {
+  /// Job level error stats across all GenAi functions
+  GenAiErrorStats? errorStats;
+
+  /// Function level stats for GenAi Functions.
+  ///
+  /// See https://docs.cloud.google.com/bigquery/docs/generative-ai-overview
+  core.List<GenAiFunctionStats>? functionStats;
+
+  GenAiStats({this.errorStats, this.functionStats});
+
+  GenAiStats.fromJson(core.Map json_)
+    : this(
+        errorStats: json_.containsKey('errorStats')
+            ? GenAiErrorStats.fromJson(
+                json_['errorStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        functionStats: (json_['functionStats'] as core.List?)
+            ?.map(
+              (value) => GenAiFunctionStats.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorStats = this.errorStats;
+    final functionStats = this.functionStats;
+    return {'errorStats': ?errorStats, 'functionStats': ?functionStats};
+  }
+}
+
+/// Definition of how values are generated for the field.
+///
+/// Only valid for top-level schema fields (not nested fields).
+///
+/// Optional.
+class GeneratedColumn {
+  /// Definition of the expression used to generate the field.
+  GeneratedExpressionInfo? generatedExpressionInfo;
+
+  /// Dictates when system generated values are used to populate the field.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GENERATED_MODE_UNSPECIFIED" : Unspecified GeneratedMode will default to
+  /// GENERATED_ALWAYS.
+  /// - "GENERATED_ALWAYS" : Field can only have system generated values. Users
+  /// cannot manually insert values into the field.
+  /// - "GENERATED_BY_DEFAULT" : Use system generated values only if the user
+  /// does not explicitly provide a value.
+  core.String? generatedMode;
+
+  GeneratedColumn({this.generatedExpressionInfo, this.generatedMode});
+
+  GeneratedColumn.fromJson(core.Map json_)
+    : this(
+        generatedExpressionInfo: json_.containsKey('generatedExpressionInfo')
+            ? GeneratedExpressionInfo.fromJson(
+                json_['generatedExpressionInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        generatedMode: json_['generatedMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final generatedExpressionInfo = this.generatedExpressionInfo;
+    final generatedMode = this.generatedMode;
+    return {
+      'generatedExpressionInfo': ?generatedExpressionInfo,
+      'generatedMode': ?generatedMode,
+    };
+  }
+}
+
+/// Definition of the expression used to generate the field.
+class GeneratedExpressionInfo {
+  /// Whether the column generation is done asynchronously.
+  ///
+  /// Optional.
+  core.bool? asynchronous;
+
+  /// The generation expression (e.g. AI.EMBED(...)) used to generated the
+  /// field.
+  ///
+  /// Optional.
+  core.String? generationExpression;
+
+  /// Whether the generated column is stored in the table.
+  ///
+  /// Optional.
+  core.bool? stored;
+
+  GeneratedExpressionInfo({
+    this.asynchronous,
+    this.generationExpression,
+    this.stored,
+  });
+
+  GeneratedExpressionInfo.fromJson(core.Map json_)
+    : this(
+        asynchronous: json_['asynchronous'] as core.bool?,
+        generationExpression: json_['generationExpression'] as core.String?,
+        stored: json_['stored'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final asynchronous = this.asynchronous;
+    final generationExpression = this.generationExpression;
+    final stored = this.stored;
+    return {
+      'asynchronous': ?asynchronous,
+      'generationExpression': ?generationExpression,
+      'stored': ?stored,
+    };
   }
 }
 
@@ -8663,6 +8986,31 @@ class IncrementalResultStats {
   /// supported.
   core.String? disabledReason;
 
+  /// Additional human-readable clarification, if available, for DisabledReason.
+  ///
+  /// Output only.
+  core.String? disabledReasonDetails;
+
+  /// The time at which the first incremental result was written.
+  ///
+  /// If the query needed to restart internally, this only describes the final
+  /// attempt.
+  ///
+  /// Output only.
+  core.String? firstIncrementalRowTime;
+
+  /// Number of rows that were in the latest result set before query completion.
+  ///
+  /// Output only.
+  core.String? incrementalRowCount;
+
+  /// The time at which the last incremental result was written.
+  ///
+  /// Does not include the final result written after query completion.
+  ///
+  /// Output only.
+  core.String? lastIncrementalRowTime;
+
   /// The time at which the result table's contents were modified.
   ///
   /// May be absent if no results have been written or the query has completed.
@@ -8679,6 +9027,10 @@ class IncrementalResultStats {
 
   IncrementalResultStats({
     this.disabledReason,
+    this.disabledReasonDetails,
+    this.firstIncrementalRowTime,
+    this.incrementalRowCount,
+    this.lastIncrementalRowTime,
     this.resultSetLastModifyTime,
     this.resultSetLastReplaceTime,
   });
@@ -8686,6 +9038,11 @@ class IncrementalResultStats {
   IncrementalResultStats.fromJson(core.Map json_)
     : this(
         disabledReason: json_['disabledReason'] as core.String?,
+        disabledReasonDetails: json_['disabledReasonDetails'] as core.String?,
+        firstIncrementalRowTime:
+            json_['firstIncrementalRowTime'] as core.String?,
+        incrementalRowCount: json_['incrementalRowCount'] as core.String?,
+        lastIncrementalRowTime: json_['lastIncrementalRowTime'] as core.String?,
         resultSetLastModifyTime:
             json_['resultSetLastModifyTime'] as core.String?,
         resultSetLastReplaceTime:
@@ -8694,10 +9051,18 @@ class IncrementalResultStats {
 
   core.Map<core.String, core.dynamic> toJson() {
     final disabledReason = this.disabledReason;
+    final disabledReasonDetails = this.disabledReasonDetails;
+    final firstIncrementalRowTime = this.firstIncrementalRowTime;
+    final incrementalRowCount = this.incrementalRowCount;
+    final lastIncrementalRowTime = this.lastIncrementalRowTime;
     final resultSetLastModifyTime = this.resultSetLastModifyTime;
     final resultSetLastReplaceTime = this.resultSetLastReplaceTime;
     return {
       'disabledReason': ?disabledReason,
+      'disabledReasonDetails': ?disabledReasonDetails,
+      'firstIncrementalRowTime': ?firstIncrementalRowTime,
+      'incrementalRowCount': ?incrementalRowCount,
+      'lastIncrementalRowTime': ?lastIncrementalRowTime,
       'resultSetLastModifyTime': ?resultSetLastModifyTime,
       'resultSetLastReplaceTime': ?resultSetLastReplaceTime,
     };
@@ -9948,7 +10313,7 @@ class JobConfigurationLoad {
   /// TIMESTAMP types that are allowed to the destination table for
   /// autodetection mode.
   ///
-  /// Available for the formats: CSV. For the CSV Format, Possible values
+  /// Available for the formats: CSV, PARQUET, and AVRO. Possible values
   /// include: Not Specified, \[\], or \[6\]: timestamp(6) for all auto detected
   /// TIMESTAMP columns \[6, 12\]: timestamp(6) for all auto detected TIMESTAMP
   /// columns that have less than 6 digits of subseconds. timestamp(12) for all
@@ -11518,6 +11883,11 @@ class JobStatistics2 {
   /// Output only.
   core.List<ExternalServiceCost>? externalServiceCosts;
 
+  /// Statistics related to GenAI usage in the query.
+  ///
+  /// Output only.
+  GenAiStats? genAiStats;
+
   /// Statistics related to incremental query results, if enabled for the query.
   ///
   /// This feature is not yet available.
@@ -11575,6 +11945,14 @@ class JobStatistics2 {
   ///
   /// Output only.
   core.List<ExplainQueryStage>? queryPlan;
+
+  /// Referenced property graphs for the job.
+  ///
+  /// Queries that reference more than 50 property graphs will not have a
+  /// complete list.
+  ///
+  /// Output only.
+  core.List<PropertyGraphReference>? referencedPropertyGraphs;
 
   /// Referenced routines for the job.
   ///
@@ -11790,6 +12168,7 @@ class JobStatistics2 {
     this.estimatedBytesProcessed,
     this.exportDataStatistics,
     this.externalServiceCosts,
+    this.genAiStats,
     this.incrementalResultStats,
     this.loadQueryStatistics,
     this.materializedViewStatistics,
@@ -11802,6 +12181,7 @@ class JobStatistics2 {
     this.performanceInsights,
     this.queryInfo,
     this.queryPlan,
+    this.referencedPropertyGraphs,
     this.referencedRoutines,
     this.referencedTables,
     this.reservationUsage,
@@ -11899,6 +12279,11 @@ class JobStatistics2 {
               ),
             )
             .toList(),
+        genAiStats: json_.containsKey('genAiStats')
+            ? GenAiStats.fromJson(
+                json_['genAiStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         incrementalResultStats: json_.containsKey('incrementalResultStats')
             ? IncrementalResultStats.fromJson(
                 json_['incrementalResultStats']
@@ -11957,6 +12342,14 @@ class JobStatistics2 {
               ),
             )
             .toList(),
+        referencedPropertyGraphs:
+            (json_['referencedPropertyGraphs'] as core.List?)
+                ?.map(
+                  (value) => PropertyGraphReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         referencedRoutines: (json_['referencedRoutines'] as core.List?)
             ?.map(
               (value) => RoutineReference.fromJson(
@@ -12046,6 +12439,7 @@ class JobStatistics2 {
     final estimatedBytesProcessed = this.estimatedBytesProcessed;
     final exportDataStatistics = this.exportDataStatistics;
     final externalServiceCosts = this.externalServiceCosts;
+    final genAiStats = this.genAiStats;
     final incrementalResultStats = this.incrementalResultStats;
     final loadQueryStatistics = this.loadQueryStatistics;
     final materializedViewStatistics = this.materializedViewStatistics;
@@ -12059,6 +12453,7 @@ class JobStatistics2 {
     final performanceInsights = this.performanceInsights;
     final queryInfo = this.queryInfo;
     final queryPlan = this.queryPlan;
+    final referencedPropertyGraphs = this.referencedPropertyGraphs;
     final referencedRoutines = this.referencedRoutines;
     final referencedTables = this.referencedTables;
     final reservationUsage = this.reservationUsage;
@@ -12094,6 +12489,7 @@ class JobStatistics2 {
       'estimatedBytesProcessed': ?estimatedBytesProcessed,
       'exportDataStatistics': ?exportDataStatistics,
       'externalServiceCosts': ?externalServiceCosts,
+      'genAiStats': ?genAiStats,
       'incrementalResultStats': ?incrementalResultStats,
       'loadQueryStatistics': ?loadQueryStatistics,
       'materializedViewStatistics': ?materializedViewStatistics,
@@ -12107,6 +12503,7 @@ class JobStatistics2 {
       'performanceInsights': ?performanceInsights,
       'queryInfo': ?queryInfo,
       'queryPlan': ?queryPlan,
+      'referencedPropertyGraphs': ?referencedPropertyGraphs,
       'referencedRoutines': ?referencedRoutines,
       'referencedTables': ?referencedTables,
       'reservationUsage': ?reservationUsage,
@@ -14022,6 +14419,8 @@ class ProjectList {
   core.String? nextPageToken;
 
   /// Projects to which the user has at least READ access.
+  ///
+  /// This field can be omitted if `totalItems` is 0.
   core.List<ProjectListProjects>? projects;
 
   /// The total number of projects in the page.
@@ -14086,6 +14485,51 @@ class ProjectReference {
   core.Map<core.String, core.dynamic> toJson() {
     final projectId = this.projectId;
     return {'projectId': ?projectId};
+  }
+}
+
+/// Id path of a property graph.
+class PropertyGraphReference {
+  /// The ID of the dataset containing this property graph.
+  ///
+  /// Required.
+  core.String? datasetId;
+
+  /// The ID of the project containing this property graph.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  /// The ID of the property graph.
+  ///
+  /// The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+  /// (_). The maximum length is 256 characters.
+  ///
+  /// Required.
+  core.String? propertyGraphId;
+
+  PropertyGraphReference({
+    this.datasetId,
+    this.projectId,
+    this.propertyGraphId,
+  });
+
+  PropertyGraphReference.fromJson(core.Map json_)
+    : this(
+        datasetId: json_['datasetId'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        propertyGraphId: json_['propertyGraphId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final datasetId = this.datasetId;
+    final projectId = this.projectId;
+    final propertyGraphId = this.propertyGraphId;
+    return {
+      'datasetId': ?datasetId,
+      'projectId': ?projectId,
+      'propertyGraphId': ?propertyGraphId,
+    };
   }
 }
 
@@ -15524,6 +15968,14 @@ class Routine {
   /// Optional.
   core.List<Argument>? arguments;
 
+  /// The build status of the routine.
+  ///
+  /// This field is only applicable to Python UDFs.
+  /// [Preview](https://cloud.google.com/products/#product-launch-stages)
+  ///
+  /// Output only.
+  RoutineBuildStatus? buildStatus;
+
   /// The time when this routine was created, in milliseconds since the epoch.
   ///
   /// Output only.
@@ -15706,6 +16158,7 @@ class Routine {
 
   Routine({
     this.arguments,
+    this.buildStatus,
     this.creationTime,
     this.dataGovernanceType,
     this.definitionBody,
@@ -15736,6 +16189,11 @@ class Routine {
               ),
             )
             .toList(),
+        buildStatus: json_.containsKey('buildStatus')
+            ? RoutineBuildStatus.fromJson(
+                json_['buildStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         creationTime: json_['creationTime'] as core.String?,
         dataGovernanceType: json_['dataGovernanceType'] as core.String?,
         definitionBody: json_['definitionBody'] as core.String?,
@@ -15792,6 +16250,7 @@ class Routine {
 
   core.Map<core.String, core.dynamic> toJson() {
     final arguments = this.arguments;
+    final buildStatus = this.buildStatus;
     final creationTime = this.creationTime;
     final dataGovernanceType = this.dataGovernanceType;
     final definitionBody = this.definitionBody;
@@ -15813,6 +16272,7 @@ class Routine {
     final strictMode = this.strictMode;
     return {
       'arguments': ?arguments,
+      'buildStatus': ?buildStatus,
       'creationTime': ?creationTime,
       'dataGovernanceType': ?dataGovernanceType,
       'definitionBody': ?definitionBody,
@@ -15832,6 +16292,79 @@ class Routine {
       'securityMode': ?securityMode,
       'sparkOptions': ?sparkOptions,
       'strictMode': ?strictMode,
+    };
+  }
+}
+
+/// The status of a routine build.
+class RoutineBuildStatus {
+  /// The time taken for the image build.
+  ///
+  /// Populated only after the build succeeds or fails.
+  ///
+  /// Output only.
+  core.String? buildDuration;
+
+  /// The current build state of the routine.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BUILD_STATE_UNSPECIFIED" : Default value.
+  /// - "IN_PROGRESS" : The build is in progress.
+  /// - "SUCCEEDED" : The build has succeeded.
+  /// - "FAILED" : The build has failed.
+  core.String? buildState;
+
+  /// The time when the build state was updated last.
+  ///
+  /// Output only.
+  core.String? buildStateUpdateTime;
+
+  /// A result object that will be present only if the build has failed.
+  ///
+  /// Output only.
+  ErrorProto? errorResult;
+
+  /// The size of the image in bytes.
+  ///
+  /// Populated only after the build succeeds.
+  ///
+  /// Output only.
+  core.String? imageSizeBytes;
+
+  RoutineBuildStatus({
+    this.buildDuration,
+    this.buildState,
+    this.buildStateUpdateTime,
+    this.errorResult,
+    this.imageSizeBytes,
+  });
+
+  RoutineBuildStatus.fromJson(core.Map json_)
+    : this(
+        buildDuration: json_['buildDuration'] as core.String?,
+        buildState: json_['buildState'] as core.String?,
+        buildStateUpdateTime: json_['buildStateUpdateTime'] as core.String?,
+        errorResult: json_.containsKey('errorResult')
+            ? ErrorProto.fromJson(
+                json_['errorResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageSizeBytes: json_['imageSizeBytes'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildDuration = this.buildDuration;
+    final buildState = this.buildState;
+    final buildStateUpdateTime = this.buildStateUpdateTime;
+    final errorResult = this.errorResult;
+    final imageSizeBytes = this.imageSizeBytes;
+    return {
+      'buildDuration': ?buildDuration,
+      'buildState': ?buildState,
+      'buildStateUpdateTime': ?buildStateUpdateTime,
+      'errorResult': ?errorResult,
+      'imageSizeBytes': ?imageSizeBytes,
     };
   }
 }
@@ -18519,6 +19052,13 @@ class TableFieldSchema {
   /// Optional.
   core.String? foreignTypeDefinition;
 
+  /// Definition of how values are generated for the field.
+  ///
+  /// Only valid for top-level schema fields (not nested fields).
+  ///
+  /// Optional.
+  GeneratedColumn? generatedColumn;
+
   /// Maximum length of values of this field for STRINGS or BYTES.
   ///
   /// If max_length is not specified, no maximum length constraint is imposed on
@@ -18629,6 +19169,7 @@ class TableFieldSchema {
     this.description,
     this.fields,
     this.foreignTypeDefinition,
+    this.generatedColumn,
     this.maxLength,
     this.mode,
     this.name,
@@ -18666,6 +19207,11 @@ class TableFieldSchema {
             )
             .toList(),
         foreignTypeDefinition: json_['foreignTypeDefinition'] as core.String?,
+        generatedColumn: json_.containsKey('generatedColumn')
+            ? GeneratedColumn.fromJson(
+                json_['generatedColumn'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxLength: json_['maxLength'] as core.String?,
         mode: json_['mode'] as core.String?,
         name: json_['name'] as core.String?,
@@ -18695,6 +19241,7 @@ class TableFieldSchema {
     final description = this.description;
     final fields = this.fields;
     final foreignTypeDefinition = this.foreignTypeDefinition;
+    final generatedColumn = this.generatedColumn;
     final maxLength = this.maxLength;
     final mode = this.mode;
     final name = this.name;
@@ -18713,6 +19260,7 @@ class TableFieldSchema {
       'description': ?description,
       'fields': ?fields,
       'foreignTypeDefinition': ?foreignTypeDefinition,
+      'generatedColumn': ?generatedColumn,
       'maxLength': ?maxLength,
       'mode': ?mode,
       'name': ?name,

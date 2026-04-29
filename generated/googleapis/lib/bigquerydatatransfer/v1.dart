@@ -34,9 +34,11 @@
 ///     - [ProjectsLocationsTransferConfigsResource]
 ///       - [ProjectsLocationsTransferConfigsRunsResource]
 ///         - [ProjectsLocationsTransferConfigsRunsTransferLogsResource]
+///       - [ProjectsLocationsTransferConfigsTransferResourcesResource]
 ///   - [ProjectsTransferConfigsResource]
 ///     - [ProjectsTransferConfigsRunsResource]
 ///       - [ProjectsTransferConfigsRunsTransferLogsResource]
+///     - [ProjectsTransferConfigsTransferResourcesResource]
 library;
 
 import 'dart:async' as async;
@@ -385,6 +387,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -642,6 +655,9 @@ class ProjectsLocationsTransferConfigsResource {
 
   ProjectsLocationsTransferConfigsRunsResource get runs =>
       ProjectsLocationsTransferConfigsRunsResource(_requester);
+  ProjectsLocationsTransferConfigsTransferResourcesResource
+  get transferResources =>
+      ProjectsLocationsTransferConfigsTransferResourcesResource(_requester);
 
   ProjectsLocationsTransferConfigsResource(commons.ApiRequester client)
     : _requester = client;
@@ -1312,11 +1328,129 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
   }
 }
 
+class ProjectsLocationsTransferConfigsTransferResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTransferConfigsTransferResourcesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Returns a transfer resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the transfer resource in the form of: *
+  /// `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}`
+  /// *
+  /// `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+/transferResources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TransferResource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TransferResource> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TransferResource.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns information about transfer resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of transfer configuration for which transfer
+  /// resources should be retrieved. The name should be in one of the following
+  /// forms: * `projects/{project}/transferConfigs/{transfer_config}` *
+  /// `projects/{project}/locations/{location_id}/transferConfigs/{transfer_config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter for the transfer resources. Currently
+  /// supported filters include: * Resource name: `name` - Wildcard supported *
+  /// Resource type: `type` * Resource destination: `destination` * Latest
+  /// resource state: `latest_status_detail.state` * Last update time:
+  /// `update_time` - RFC-3339 format * Parent table name:
+  /// `hierarchy_detail.partition_detail.table` Multiple filters can be applied
+  /// using the `AND/OR` operator. Examples: * `name="*123" AND (type="TABLE" OR
+  /// latest_status_detail.state="SUCCEEDED")` * `update_time >=
+  /// "2012-04-21T11:30:00-04:00"` * `hierarchy_detail.partition_detail.table =
+  /// "table1"`
+  ///
+  /// [pageSize] - Optional. The maximum number of transfer resources to return.
+  /// The maximum value is 1000; values above 1000 will be coerced to 1000. The
+  /// default page size is the maximum value of 1000 results.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListTransferResources` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListTransferResources` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTransferResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTransferResourcesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transferResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTransferResourcesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsTransferConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsTransferConfigsRunsResource get runs =>
       ProjectsTransferConfigsRunsResource(_requester);
+  ProjectsTransferConfigsTransferResourcesResource get transferResources =>
+      ProjectsTransferConfigsTransferResourcesResource(_requester);
 
   ProjectsTransferConfigsResource(commons.ApiRequester client)
     : _requester = client;
@@ -1980,6 +2114,120 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
   }
 }
 
+class ProjectsTransferConfigsTransferResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsTransferConfigsTransferResourcesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Returns a transfer resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the transfer resource in the form of: *
+  /// `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}`
+  /// *
+  /// `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/transferConfigs/\[^/\]+/transferResources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TransferResource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TransferResource> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TransferResource.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns information about transfer resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of transfer configuration for which transfer
+  /// resources should be retrieved. The name should be in one of the following
+  /// forms: * `projects/{project}/transferConfigs/{transfer_config}` *
+  /// `projects/{project}/locations/{location_id}/transferConfigs/{transfer_config}`
+  /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter for the transfer resources. Currently
+  /// supported filters include: * Resource name: `name` - Wildcard supported *
+  /// Resource type: `type` * Resource destination: `destination` * Latest
+  /// resource state: `latest_status_detail.state` * Last update time:
+  /// `update_time` - RFC-3339 format * Parent table name:
+  /// `hierarchy_detail.partition_detail.table` Multiple filters can be applied
+  /// using the `AND/OR` operator. Examples: * `name="*123" AND (type="TABLE" OR
+  /// latest_status_detail.state="SUCCEEDED")` * `update_time >=
+  /// "2012-04-21T11:30:00-04:00"` * `hierarchy_detail.partition_detail.table =
+  /// "table1"`
+  ///
+  /// [pageSize] - Optional. The maximum number of transfer resources to return.
+  /// The maximum value is 1000; values above 1000 will be coerced to 1000. The
+  /// default page size is the maximum value of 1000 results.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListTransferResources` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListTransferResources` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTransferResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTransferResourcesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transferResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTransferResourcesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// A request to determine whether the user has valid credentials.
 ///
 /// This method is used to limit the number of OAuth popups in the user
@@ -2451,6 +2699,41 @@ class EventDrivenSchedule {
   }
 }
 
+/// Details about the hierarchy.
+class HierarchyDetail {
+  /// Partition details related to hierarchy.
+  ///
+  /// Optional.
+  PartitionDetail? partitionDetail;
+
+  /// Table details related to hierarchy.
+  ///
+  /// Optional.
+  TableDetail? tableDetail;
+
+  HierarchyDetail({this.partitionDetail, this.tableDetail});
+
+  HierarchyDetail.fromJson(core.Map json_)
+    : this(
+        partitionDetail: json_.containsKey('partitionDetail')
+            ? PartitionDetail.fromJson(
+                json_['partitionDetail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tableDetail: json_.containsKey('tableDetail')
+            ? TableDetail.fromJson(
+                json_['tableDetail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final partitionDetail = this.partitionDetail;
+    final tableDetail = this.tableDetail;
+    return {'partitionDetail': ?partitionDetail, 'tableDetail': ?tableDetail};
+  }
+}
+
 /// Returns list of supported data sources and their metadata.
 class ListDataSourcesResponse {
   /// List of supported data sources and their transfer settings.
@@ -2595,6 +2878,44 @@ class ListTransferLogsResponse {
   }
 }
 
+/// Response for the `ListTransferResources` RPC.
+class ListTransferResourcesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// The transfer resources.
+  ///
+  /// Output only.
+  core.List<TransferResource>? transferResources;
+
+  ListTransferResourcesResponse({this.nextPageToken, this.transferResources});
+
+  ListTransferResourcesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        transferResources: (json_['transferResources'] as core.List?)
+            ?.map(
+              (value) => TransferResource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final transferResources = this.transferResources;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'transferResources': ?transferResources,
+    };
+  }
+}
+
 /// The returned list of pipelines in the project.
 class ListTransferRunsResponse {
   /// The next-pagination token.
@@ -2637,6 +2958,24 @@ typedef Location = $Location00;
 
 /// Options customizing manual transfers schedule.
 typedef ManualSchedule = $Empty;
+
+/// Partition details related to hierarchy.
+class PartitionDetail {
+  /// Name of the table which has the partitions.
+  ///
+  /// Optional.
+  core.String? table;
+
+  PartitionDetail({this.table});
+
+  PartitionDetail.fromJson(core.Map json_)
+    : this(table: json_['table'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final table = this.table;
+    return {'table': ?table};
+  }
+}
 
 /// Options customizing the data transfer schedule.
 class ScheduleOptions {
@@ -2875,6 +3214,24 @@ class StartManualTransferRunsResponse {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// Table details related to hierarchy.
+class TableDetail {
+  /// Total number of partitions being tracked within the table.
+  ///
+  /// Optional.
+  core.String? partitionCount;
+
+  TableDetail({this.partitionCount});
+
+  TableDetail.fromJson(core.Map json_)
+    : this(partitionCount: json_['partitionCount'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final partitionCount = this.partitionCount;
+    return {'partitionCount': ?partitionCount};
+  }
+}
 
 /// Options customizing the time based transfer schedule.
 ///
@@ -3277,6 +3634,191 @@ class TransferMessage {
   }
 }
 
+/// Resource (table/partition) that is being transferred.
+class TransferResource {
+  /// Resource destination.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESOURCE_DESTINATION_UNSPECIFIED" : Default value.
+  /// - "RESOURCE_DESTINATION_BIGQUERY" : BigQuery.
+  /// - "RESOURCE_DESTINATION_DATAPROC_METASTORE" : Dataproc Metastore.
+  /// - "RESOURCE_DESTINATION_BIGLAKE_METASTORE" : BigLake Metastore.
+  /// - "RESOURCE_DESTINATION_BIGLAKE_REST_CATALOG" : BigLake REST Catalog.
+  /// - "RESOURCE_DESTINATION_BIGLAKE_HIVE_CATALOG" : BigLake Hive Catalog.
+  core.String? destination;
+
+  /// Details about the hierarchy.
+  ///
+  /// Optional.
+  HierarchyDetail? hierarchyDetail;
+
+  /// Run details for the last successful run.
+  ///
+  /// Output only.
+  TransferRunBrief? lastSuccessfulRun;
+
+  /// Run details for the latest run.
+  ///
+  /// Optional.
+  TransferRunBrief? latestRun;
+
+  /// Status details for the latest run.
+  ///
+  /// Optional.
+  TransferResourceStatusDetail? latestStatusDetail;
+
+  /// Identifier.
+  ///
+  /// Resource name.
+  core.String? name;
+
+  /// Resource type.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESOURCE_TYPE_UNSPECIFIED" : Default value.
+  /// - "RESOURCE_TYPE_TABLE" : Table resource type.
+  /// - "RESOURCE_TYPE_PARTITION" : Partition resource type.
+  core.String? type;
+
+  /// Time when the resource was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  TransferResource({
+    this.destination,
+    this.hierarchyDetail,
+    this.lastSuccessfulRun,
+    this.latestRun,
+    this.latestStatusDetail,
+    this.name,
+    this.type,
+    this.updateTime,
+  });
+
+  TransferResource.fromJson(core.Map json_)
+    : this(
+        destination: json_['destination'] as core.String?,
+        hierarchyDetail: json_.containsKey('hierarchyDetail')
+            ? HierarchyDetail.fromJson(
+                json_['hierarchyDetail'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastSuccessfulRun: json_.containsKey('lastSuccessfulRun')
+            ? TransferRunBrief.fromJson(
+                json_['lastSuccessfulRun']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        latestRun: json_.containsKey('latestRun')
+            ? TransferRunBrief.fromJson(
+                json_['latestRun'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        latestStatusDetail: json_.containsKey('latestStatusDetail')
+            ? TransferResourceStatusDetail.fromJson(
+                json_['latestStatusDetail']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destination = this.destination;
+    final hierarchyDetail = this.hierarchyDetail;
+    final lastSuccessfulRun = this.lastSuccessfulRun;
+    final latestRun = this.latestRun;
+    final latestStatusDetail = this.latestStatusDetail;
+    final name = this.name;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    return {
+      'destination': ?destination,
+      'hierarchyDetail': ?hierarchyDetail,
+      'lastSuccessfulRun': ?lastSuccessfulRun,
+      'latestRun': ?latestRun,
+      'latestStatusDetail': ?latestStatusDetail,
+      'name': ?name,
+      'type': ?type,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Status details of the resource being transferred.
+class TransferResourceStatusDetail {
+  /// Percentage of the transfer completed.
+  ///
+  /// Valid values: 0-100.
+  ///
+  /// Output only.
+  core.double? completedPercentage;
+
+  /// Transfer error details for the resource.
+  ///
+  /// Optional.
+  Status? error;
+
+  /// Transfer state of the resource.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESOURCE_TRANSFER_STATE_UNSPECIFIED" : Default value.
+  /// - "RESOURCE_TRANSFER_PENDING" : Resource is waiting to be transferred.
+  /// - "RESOURCE_TRANSFER_RUNNING" : Resource transfer is running.
+  /// - "RESOURCE_TRANSFER_SUCCEEDED" : Resource transfer is a success.
+  /// - "RESOURCE_TRANSFER_FAILED" : Resource transfer failed.
+  /// - "RESOURCE_TRANSFER_CANCELLED" : Resource transfer was cancelled.
+  core.String? state;
+
+  /// Transfer status summary of the resource.
+  ///
+  /// Optional.
+  TransferStatusSummary? summary;
+
+  TransferResourceStatusDetail({
+    this.completedPercentage,
+    this.error,
+    this.state,
+    this.summary,
+  });
+
+  TransferResourceStatusDetail.fromJson(core.Map json_)
+    : this(
+        completedPercentage: (json_['completedPercentage'] as core.num?)
+            ?.toDouble(),
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        summary: json_.containsKey('summary')
+            ? TransferStatusSummary.fromJson(
+                json_['summary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final completedPercentage = this.completedPercentage;
+    final error = this.error;
+    final state = this.state;
+    final summary = this.summary;
+    return {
+      'completedPercentage': ?completedPercentage,
+      'error': ?error,
+      'state': ?state,
+      'summary': ?summary,
+    };
+  }
+}
+
 /// Represents a data transfer run.
 class TransferRun {
   /// Data source id.
@@ -3464,6 +4006,137 @@ class TransferRun {
       'updateTime': ?updateTime,
       'userId': ?userId,
     };
+  }
+}
+
+/// Basic information about a transfer run.
+class TransferRunBrief {
+  /// Run URI.
+  ///
+  /// The format must be:
+  /// `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/run/{run}`
+  ///
+  /// Optional.
+  core.String? run;
+
+  /// Start time of the transfer run.
+  ///
+  /// Optional.
+  core.String? startTime;
+
+  TransferRunBrief({this.run, this.startTime});
+
+  TransferRunBrief.fromJson(core.Map json_)
+    : this(
+        run: json_['run'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final run = this.run;
+    final startTime = this.startTime;
+    return {'run': ?run, 'startTime': ?startTime};
+  }
+}
+
+/// Metrics for tracking the transfer status.
+class TransferStatusMetric {
+  /// Number of units transferred successfully.
+  ///
+  /// Optional.
+  core.String? completed;
+
+  /// Number of units that failed to transfer.
+  ///
+  /// Optional.
+  core.String? failed;
+
+  /// Number of units pending transfer.
+  ///
+  /// Optional.
+  core.String? pending;
+
+  /// Total number of units for the transfer.
+  ///
+  /// Optional.
+  core.String? total;
+
+  /// Unit for measuring progress (e.g., BYTES).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRANSFER_STATUS_UNIT_UNSPECIFIED" : Default value.
+  /// - "TRANSFER_STATUS_UNIT_BYTES" : Bytes.
+  /// - "TRANSFER_STATUS_UNIT_OBJECTS" : Objects.
+  core.String? unit;
+
+  TransferStatusMetric({
+    this.completed,
+    this.failed,
+    this.pending,
+    this.total,
+    this.unit,
+  });
+
+  TransferStatusMetric.fromJson(core.Map json_)
+    : this(
+        completed: json_['completed'] as core.String?,
+        failed: json_['failed'] as core.String?,
+        pending: json_['pending'] as core.String?,
+        total: json_['total'] as core.String?,
+        unit: json_['unit'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final completed = this.completed;
+    final failed = this.failed;
+    final pending = this.pending;
+    final total = this.total;
+    final unit = this.unit;
+    return {
+      'completed': ?completed,
+      'failed': ?failed,
+      'pending': ?pending,
+      'total': ?total,
+      'unit': ?unit,
+    };
+  }
+}
+
+/// Status summary of the resource being transferred.
+class TransferStatusSummary {
+  /// List of transfer status metrics.
+  ///
+  /// Optional.
+  core.List<TransferStatusMetric>? metrics;
+
+  /// Input only.
+  ///
+  /// Unit based on which transfer status progress should be calculated.
+  /// Possible string values are:
+  /// - "TRANSFER_STATUS_UNIT_UNSPECIFIED" : Default value.
+  /// - "TRANSFER_STATUS_UNIT_BYTES" : Bytes.
+  /// - "TRANSFER_STATUS_UNIT_OBJECTS" : Objects.
+  core.String? progressUnit;
+
+  TransferStatusSummary({this.metrics, this.progressUnit});
+
+  TransferStatusSummary.fromJson(core.Map json_)
+    : this(
+        metrics: (json_['metrics'] as core.List?)
+            ?.map(
+              (value) => TransferStatusMetric.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        progressUnit: json_['progressUnit'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final metrics = this.metrics;
+    final progressUnit = this.progressUnit;
+    return {'metrics': ?metrics, 'progressUnit': ?progressUnit};
   }
 }
 

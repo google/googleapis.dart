@@ -81,6 +81,15 @@ class CloudRunApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Run data and see the
+  /// email address for your Google Account
+  static const runScope = 'https://www.googleapis.com/auth/run';
+
+  /// See your Google Cloud Run data and the email address of your Google
+  /// Account
+  static const runReadonlyScope =
+      'https://www.googleapis.com/auth/run.readonly';
+
   final commons.ApiRequester _requester;
 
   NamespacesResource get namespaces => NamespacesResource(_requester);
@@ -965,6 +974,48 @@ class NamespacesInstancesResource {
     return ListInstancesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Replace an Instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Instance being replaced. Replace
+  /// {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// Value must have pattern `^namespaces/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Instance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Instance> replaceInstance(
+    Instance request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Instance.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Start an Instance which has been stopped.
@@ -2446,6 +2497,17 @@ class ProjectsLocationsResource {
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -6438,6 +6500,11 @@ class InstanceSpec {
   /// Optional.
   core.String? serviceAccountName;
 
+  /// Duration the instance may be active before the system will shut it down.
+  ///
+  /// Optional.
+  core.String? timeout;
+
   /// List of volumes that can be mounted by containers belonging to the
   /// Instance.
   ///
@@ -6448,6 +6515,7 @@ class InstanceSpec {
     this.containers,
     this.nodeSelector,
     this.serviceAccountName,
+    this.timeout,
     this.volumes,
   });
 
@@ -6464,6 +6532,7 @@ class InstanceSpec {
             (json_['nodeSelector'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
         serviceAccountName: json_['serviceAccountName'] as core.String?,
+        timeout: json_['timeout'] as core.String?,
         volumes: (json_['volumes'] as core.List?)
             ?.map(
               (value) =>
@@ -6476,11 +6545,13 @@ class InstanceSpec {
     final containers = this.containers;
     final nodeSelector = this.nodeSelector;
     final serviceAccountName = this.serviceAccountName;
+    final timeout = this.timeout;
     final volumes = this.volumes;
     return {
       'containers': ?containers,
       'nodeSelector': ?nodeSelector,
       'serviceAccountName': ?serviceAccountName,
+      'timeout': ?timeout,
       'volumes': ?volumes,
     };
   }
@@ -6552,7 +6623,17 @@ class InstanceStatus {
   /// Output only.
   core.int? observedGeneration;
 
-  InstanceStatus({this.conditions, this.logUri, this.observedGeneration});
+  /// All URLs serving traffic for this Instance.
+  ///
+  /// Output only.
+  core.List<core.String>? urls;
+
+  InstanceStatus({
+    this.conditions,
+    this.logUri,
+    this.observedGeneration,
+    this.urls,
+  });
 
   InstanceStatus.fromJson(core.Map json_)
     : this(
@@ -6565,16 +6646,21 @@ class InstanceStatus {
             .toList(),
         logUri: json_['logUri'] as core.String?,
         observedGeneration: json_['observedGeneration'] as core.int?,
+        urls: (json_['urls'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final conditions = this.conditions;
     final logUri = this.logUri;
     final observedGeneration = this.observedGeneration;
+    final urls = this.urls;
     return {
       'conditions': ?conditions,
       'logUri': ?logUri,
       'observedGeneration': ?observedGeneration,
+      'urls': ?urls,
     };
   }
 }
@@ -7621,7 +7707,8 @@ class ObjectMeta {
   /// `run.googleapis.com/gc-traffic-tags`: Service. *
   /// `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. *
   /// `run.googleapis.com/health-check-disabled`: Revision. *
-  /// `run.googleapis.com/ingress`: Service. *
+  /// `run.googleapis.com/ingress`: Service, Instance. *
+  /// `run.googleapis.com/invoker-iam-disabled`: Service, Instance. *
   /// `run.googleapis.com/launch-stage`: Service, Job. *
   /// `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`:
   /// Service. * `run.googleapis.com/manualInstanceCount`: Service. *
@@ -7653,7 +7740,11 @@ class ObjectMeta {
   /// Not supported by Cloud Run
   core.List<core.String>? finalizers;
 
-  /// Not supported by Cloud Run
+  /// A prefix for the resource name if not provided in the create request.
+  ///
+  /// Must be less than 31 characters to allow for a random suffix.
+  ///
+  /// Optional.
   core.String? generateName;
 
   /// A system-provided sequence number representing a specific generation of
@@ -7668,11 +7759,11 @@ class ObjectMeta {
 
   /// The name of the resource.
   ///
-  /// Name is required when creating top-level resources (Service, Job), must be
-  /// unique within a Cloud Run project/region, and cannot be changed once
-  /// created.
+  /// A name for creating top-level resources (Service, Job, WorkerPool). Must
+  /// be unique within a Cloud Run project/region, and cannot be changed once
+  /// created. If omitted, a default name will be generated.
   ///
-  /// Required.
+  /// Optional.
   core.String? name;
 
   /// Defines the space within each name must be unique within a Cloud Run
@@ -8208,9 +8299,8 @@ class ResourceRequirements {
 
 /// Revision is an immutable snapshot of code and configuration.
 ///
-/// A revision references a container image. Revisions are created by updates to
-/// a Configuration. See also:
-/// https://github.com/knative/specs/blob/main/specs/serving/overview.md#revision
+/// A revision references one or more container images. Revisions are created by
+/// updates to a Service.
 class Revision {
   /// The API version for this call such as "serving.knative.dev/v1".
   core.String? apiVersion;
@@ -8279,9 +8369,6 @@ class RevisionSpec {
 
   /// Containers holds the list which define the units of execution for this
   /// Revision.
-  ///
-  /// In the context of a Revision, we disallow a number of fields on this
-  /// Container, including: name and lifecycle.
   ///
   /// Required.
   core.List<Container>? containers;
@@ -10000,7 +10087,8 @@ class VolumeMount {
   /// Path within the volume from which the container's volume should be
   /// mounted.
   ///
-  /// Defaults to "" (volume's root).
+  /// Defaults to "" (volume's root). This field is currently rejected in Secret
+  /// volume mounts.
   core.String? subPath;
 
   VolumeMount({this.mountPath, this.name, this.readOnly, this.subPath});

@@ -4148,7 +4148,12 @@ class GrafeasV1FileLocation {
   /// information from the origin layer of the package).
   LayerDetails? layerDetails;
 
-  GrafeasV1FileLocation({this.filePath, this.layerDetails});
+  /// Line number in the file where the package was found.
+  ///
+  /// Optional field that only applies to source repository scanning.
+  core.int? lineNumber;
+
+  GrafeasV1FileLocation({this.filePath, this.layerDetails, this.lineNumber});
 
   GrafeasV1FileLocation.fromJson(core.Map json_)
     : this(
@@ -4158,12 +4163,18 @@ class GrafeasV1FileLocation {
                 json_['layerDetails'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        lineNumber: json_['lineNumber'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final filePath = this.filePath;
     final layerDetails = this.layerDetails;
-    return {'filePath': ?filePath, 'layerDetails': ?layerDetails};
+    final lineNumber = this.lineNumber;
+    return {
+      'filePath': ?filePath,
+      'layerDetails': ?layerDetails,
+      'lineNumber': ?lineNumber,
+    };
   }
 }
 
@@ -4921,9 +4932,6 @@ typedef NonCompliantFile = $NonCompliantFile;
 
 /// A type of analysis that can be done for a resource.
 class Note {
-  /// The timestamp when the advisory was first published by the source feed.
-  core.String? advisoryPublishTime;
-
   /// A note describing an attestation role.
   AttestationNote? attestation;
 
@@ -5026,7 +5034,6 @@ class Note {
   VulnerabilityAssessmentNote? vulnerabilityAssessment;
 
   Note({
-    this.advisoryPublishTime,
     this.attestation,
     this.build,
     this.compliance,
@@ -5053,7 +5060,6 @@ class Note {
 
   Note.fromJson(core.Map json_)
     : this(
-        advisoryPublishTime: json_['advisoryPublishTime'] as core.String?,
         attestation: json_.containsKey('attestation')
             ? AttestationNote.fromJson(
                 json_['attestation'] as core.Map<core.String, core.dynamic>,
@@ -5140,7 +5146,6 @@ class Note {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final advisoryPublishTime = this.advisoryPublishTime;
     final attestation = this.attestation;
     final build = this.build;
     final compliance = this.compliance;
@@ -5164,7 +5169,6 @@ class Note {
     final vulnerability = this.vulnerability;
     final vulnerabilityAssessment = this.vulnerabilityAssessment;
     return {
-      'advisoryPublishTime': ?advisoryPublishTime,
       'attestation': ?attestation,
       'build': ?build,
       'compliance': ?compliance,
@@ -5193,6 +5197,9 @@ class Note {
 
 /// An instance of an analysis type that has been found on a resource.
 class Occurrence {
+  /// The time this advisory was published by the source.
+  core.String? advisoryPublishTime;
+
   /// Describes an attestation of an artifact.
   AttestationOccurrence? attestation;
 
@@ -5293,6 +5300,7 @@ class Occurrence {
   VulnerabilityOccurrence? vulnerability;
 
   Occurrence({
+    this.advisoryPublishTime,
     this.attestation,
     this.build,
     this.compliance,
@@ -5317,6 +5325,7 @@ class Occurrence {
 
   Occurrence.fromJson(core.Map json_)
     : this(
+        advisoryPublishTime: json_['advisoryPublishTime'] as core.String?,
         attestation: json_.containsKey('attestation')
             ? AttestationOccurrence.fromJson(
                 json_['attestation'] as core.Map<core.String, core.dynamic>,
@@ -5392,6 +5401,7 @@ class Occurrence {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final advisoryPublishTime = this.advisoryPublishTime;
     final attestation = this.attestation;
     final build = this.build;
     final compliance = this.compliance;
@@ -5413,6 +5423,7 @@ class Occurrence {
     final upgrade = this.upgrade;
     final vulnerability = this.vulnerability;
     return {
+      'advisoryPublishTime': ?advisoryPublishTime,
       'attestation': ?attestation,
       'build': ?build,
       'compliance': ?compliance,
@@ -7187,6 +7198,9 @@ class VulnerabilityAssessmentNote {
 
 /// A security vulnerability that can be found in resources.
 class VulnerabilityNote {
+  /// The time this advisory was published by the source.
+  core.String? advisoryPublishTime;
+
   /// The CVSS score of this vulnerability.
   ///
   /// CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10
@@ -7234,6 +7248,7 @@ class VulnerabilityNote {
   core.List<WindowsDetail>? windowsDetails;
 
   VulnerabilityNote({
+    this.advisoryPublishTime,
     this.cvssScore,
     this.cvssV2,
     this.cvssV3,
@@ -7246,6 +7261,7 @@ class VulnerabilityNote {
 
   VulnerabilityNote.fromJson(core.Map json_)
     : this(
+        advisoryPublishTime: json_['advisoryPublishTime'] as core.String?,
         cvssScore: (json_['cvssScore'] as core.num?)?.toDouble(),
         cvssV2: json_.containsKey('cvssV2')
             ? CVSS.fromJson(
@@ -7276,6 +7292,7 @@ class VulnerabilityNote {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final advisoryPublishTime = this.advisoryPublishTime;
     final cvssScore = this.cvssScore;
     final cvssV2 = this.cvssV2;
     final cvssV3 = this.cvssV3;
@@ -7285,6 +7302,7 @@ class VulnerabilityNote {
     final sourceUpdateTime = this.sourceUpdateTime;
     final windowsDetails = this.windowsDetails;
     return {
+      'advisoryPublishTime': ?advisoryPublishTime,
       'cvssScore': ?cvssScore,
       'cvssV2': ?cvssV2,
       'cvssV3': ?cvssV3,

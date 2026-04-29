@@ -282,8 +282,10 @@ api.ContentTypeInfo buildContentTypeInfo() {
     o.bestGuess = 'foo';
     o.fromBytes = 'foo';
     o.fromFileName = 'foo';
+    o.fromFusionId = 'foo';
     o.fromHeader = 'foo';
     o.fromUrlPath = 'foo';
+    o.fusionIdDetectionMetadata = 'foo';
   }
   buildCounterContentTypeInfo--;
   return o;
@@ -295,8 +297,10 @@ void checkContentTypeInfo(api.ContentTypeInfo o) {
     unittest.expect(o.bestGuess!, unittest.equals('foo'));
     unittest.expect(o.fromBytes!, unittest.equals('foo'));
     unittest.expect(o.fromFileName!, unittest.equals('foo'));
+    unittest.expect(o.fromFusionId!, unittest.equals('foo'));
     unittest.expect(o.fromHeader!, unittest.equals('foo'));
     unittest.expect(o.fromUrlPath!, unittest.equals('foo'));
+    unittest.expect(o.fusionIdDetectionMetadata!, unittest.equals('foo'));
   }
   buildCounterContentTypeInfo--;
 }

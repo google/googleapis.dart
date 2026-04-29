@@ -435,6 +435,36 @@ class ProjectsLocationsScansVulnerabilitiesResource {
   }
 }
 
+/// AISkillAnalysisOccurrence provides the results of an AI-based skill
+/// analysis.
+class AISkillAnalysisOccurrence {
+  /// Findings produced by the analysis.
+  core.List<Finding>? findings;
+
+  /// Name of the skill that produced this analysis.
+  core.String? skillName;
+
+  AISkillAnalysisOccurrence({this.findings, this.skillName});
+
+  AISkillAnalysisOccurrence.fromJson(core.Map json_)
+    : this(
+        findings: (json_['findings'] as core.List?)
+            ?.map(
+              (value) => Finding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        skillName: json_['skillName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final findings = this.findings;
+    final skillName = this.skillName;
+    return {'findings': ?findings, 'skillName': ?skillName};
+  }
+}
+
 /// An alias to a repo revision.
 typedef AliasContext = $AliasContext;
 
@@ -1288,6 +1318,71 @@ class FileLocation {
   }
 }
 
+/// Finding provides details for a single finding within an
+/// AISkillAnalysisOccurrence.
+class Finding {
+  /// Category of the finding.
+  core.String? category;
+
+  /// Detailed description of the finding.
+  core.String? description;
+
+  /// Path to the file where the finding was detected.
+  core.String? filePath;
+
+  /// Unique identifier of the rule that produced this finding.
+  core.String? ruleId;
+
+  /// Severity of the finding.
+  core.String? severity;
+
+  /// Code snippet relevant to the finding.
+  core.String? snippet;
+
+  /// Title of the finding.
+  core.String? title;
+
+  Finding({
+    this.category,
+    this.description,
+    this.filePath,
+    this.ruleId,
+    this.severity,
+    this.snippet,
+    this.title,
+  });
+
+  Finding.fromJson(core.Map json_)
+    : this(
+        category: json_['category'] as core.String?,
+        description: json_['description'] as core.String?,
+        filePath: json_['filePath'] as core.String?,
+        ruleId: json_['ruleId'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        snippet: json_['snippet'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final description = this.description;
+    final filePath = this.filePath;
+    final ruleId = this.ruleId;
+    final severity = this.severity;
+    final snippet = this.snippet;
+    final title = this.title;
+    return {
+      'category': ?category,
+      'description': ?description,
+      'filePath': ?filePath,
+      'ruleId': ?ruleId,
+      'severity': ?severity,
+      'snippet': ?snippet,
+      'title': ?title,
+    };
+  }
+}
+
 /// A set of properties that uniquely identify a given Docker image.
 typedef Fingerprint = $Fingerprint;
 
@@ -1346,47 +1441,7 @@ class GerritSourceContext {
 typedef GitSourceContext = $GitSourceContext;
 
 /// BaseImage describes a base image of a container image.
-class GrafeasV1BaseImage {
-  /// The number of layers that the base image is composed of.
-  core.int? layerCount;
-
-  /// The name of the base image.
-  core.String? name;
-
-  /// The registry in which the base image is from.
-  core.String? registry;
-
-  /// The repository name in which the base image is from.
-  core.String? repository;
-
-  GrafeasV1BaseImage({
-    this.layerCount,
-    this.name,
-    this.registry,
-    this.repository,
-  });
-
-  GrafeasV1BaseImage.fromJson(core.Map json_)
-    : this(
-        layerCount: json_['layerCount'] as core.int?,
-        name: json_['name'] as core.String?,
-        registry: json_['registry'] as core.String?,
-        repository: json_['repository'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final layerCount = this.layerCount;
-    final name = this.name;
-    final registry = this.registry;
-    final repository = this.repository;
-    return {
-      'layerCount': ?layerCount,
-      'name': ?name,
-      'registry': ?registry,
-      'repository': ?repository,
-    };
-  }
-}
+typedef GrafeasV1BaseImage = $BaseImage;
 
 /// Indicates the location at which a package was found.
 class GrafeasV1FileLocation {
@@ -1398,7 +1453,12 @@ class GrafeasV1FileLocation {
   /// information from the origin layer of the package).
   GrafeasV1LayerDetails? layerDetails;
 
-  GrafeasV1FileLocation({this.filePath, this.layerDetails});
+  /// Line number in the file where the package was found.
+  ///
+  /// Optional field that only applies to source repository scanning.
+  core.int? lineNumber;
+
+  GrafeasV1FileLocation({this.filePath, this.layerDetails, this.lineNumber});
 
   GrafeasV1FileLocation.fromJson(core.Map json_)
     : this(
@@ -1408,12 +1468,18 @@ class GrafeasV1FileLocation {
                 json_['layerDetails'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        lineNumber: json_['lineNumber'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final filePath = this.filePath;
     final layerDetails = this.layerDetails;
-    return {'filePath': ?filePath, 'layerDetails': ?layerDetails};
+    final lineNumber = this.lineNumber;
+    return {
+      'filePath': ?filePath,
+      'layerDetails': ?layerDetails,
+      'lineNumber': ?lineNumber,
+    };
   }
 }
 
@@ -2148,6 +2214,12 @@ typedef NonCompliantFile = $NonCompliantFile;
 
 /// An instance of an analysis type that has been found on a resource.
 class Occurrence {
+  /// The time this advisory was published by the source.
+  core.String? advisoryPublishTime;
+
+  /// Describes an AI skill analysis.
+  AISkillAnalysisOccurrence? aiSkillAnalysis;
+
   /// Describes an attestation of an artifact.
   AttestationOccurrence? attestation;
 
@@ -2200,6 +2272,7 @@ class Occurrence {
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   /// - "SECRET" : This represents a secret.
+  /// - "AI_SKILL_ANALYSIS" : This represents an AI skill analysis.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -2248,6 +2321,8 @@ class Occurrence {
   VulnerabilityOccurrence? vulnerability;
 
   Occurrence({
+    this.advisoryPublishTime,
+    this.aiSkillAnalysis,
     this.attestation,
     this.build,
     this.compliance,
@@ -2272,6 +2347,12 @@ class Occurrence {
 
   Occurrence.fromJson(core.Map json_)
     : this(
+        advisoryPublishTime: json_['advisoryPublishTime'] as core.String?,
+        aiSkillAnalysis: json_.containsKey('aiSkillAnalysis')
+            ? AISkillAnalysisOccurrence.fromJson(
+                json_['aiSkillAnalysis'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         attestation: json_.containsKey('attestation')
             ? AttestationOccurrence.fromJson(
                 json_['attestation'] as core.Map<core.String, core.dynamic>,
@@ -2347,6 +2428,8 @@ class Occurrence {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final advisoryPublishTime = this.advisoryPublishTime;
+    final aiSkillAnalysis = this.aiSkillAnalysis;
     final attestation = this.attestation;
     final build = this.build;
     final compliance = this.compliance;
@@ -2368,6 +2451,8 @@ class Occurrence {
     final upgrade = this.upgrade;
     final vulnerability = this.vulnerability;
     return {
+      'advisoryPublishTime': ?advisoryPublishTime,
+      'aiSkillAnalysis': ?aiSkillAnalysis,
       'attestation': ?attestation,
       'build': ?build,
       'compliance': ?compliance,

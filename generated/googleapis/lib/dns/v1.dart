@@ -1557,19 +1557,29 @@ class ResourceRecordSetsResource {
   /// [managedZone] - Identifies the managed zone addressed by this request. Can
   /// be the managed zone name or ID.
   ///
+  /// [filter] - Specify a filter expression to view records that exactly match
+  /// the specified domain. Both the `name` and `type` parameters are not
+  /// supported and must be omitted when you use `filter`. Your `filter`
+  /// expression must conform to AIP-160 and you must specify a domain in the
+  /// `name` field. Optionally, you can include the `type` field to filter
+  /// records by type. You can also include the `has_suffix` function to view
+  /// records that match by domain suffix. Examples: * `name`="example.com." *
+  /// `name`="example.com." AND type="A" * `name`=`has_suffix`("example.com.") *
+  /// `name`=`has_suffix`("example.com.") AND type="A"
+  ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
   /// unspecified, the server decides how many results to return.
   ///
   /// [name] - Specify a fully qualified domain name to view only those records.
-  /// The name parameter is not supported and must be omitted when you use
-  /// filter.
+  /// The `name` parameter is not supported and must be omitted when you use
+  /// `filter`.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
   ///
   /// [type] - Specify a record type to view only those records. You must also
-  /// specify the name parameter. The type parameter is not supported and must
-  /// be omitted when you use filter.
+  /// specify the `name` parameter. The `type` parameter is not supported and
+  /// must be omitted when you use `filter`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1584,6 +1594,7 @@ class ResourceRecordSetsResource {
   async.Future<ResourceRecordSetsListResponse> list(
     core.String project,
     core.String managedZone, {
+    core.String? filter,
     core.int? maxResults,
     core.String? name,
     core.String? pageToken,
@@ -1591,6 +1602,7 @@ class ResourceRecordSetsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'name': ?name == null ? null : [name],
       'pageToken': ?pageToken == null ? null : [pageToken],

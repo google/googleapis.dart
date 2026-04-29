@@ -574,7 +574,7 @@ class ChromeosdevicesResource {
   /// - "FULL" : Includes all metadata fields
   ///
   /// [query] - Search string in the format given at
-  /// https://developers.google.com/workspace/admin/directory/v1/list-query-operators
+  /// [List query operators](https://developers.google.com/workspace/admin/directory/v1/list-query-operators).
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Must be used with the `orderBy` parameter.
@@ -882,6 +882,63 @@ class CustomerDevicesChromeosResource {
       queryParams: queryParams_,
     );
     return BatchChangeChromeOsDeviceStatusResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Counts ChromeOS devices matching the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [customerId] - Required. Immutable ID of the Google Workspace account.
+  ///
+  /// [filter] - Optional. Search string in the format given at
+  /// [List query operators](https://developers.google.com/workspace/admin/directory/v1/list-query-operators).
+  ///
+  /// [includeChildOrgunits] - Optional. Return devices from all child orgunits,
+  /// as well as the specified org unit. If this is set to true, 'orgUnitPath'
+  /// must be provided.
+  ///
+  /// [orgUnitPath] - Optional. The full path of the organizational unit (minus
+  /// the leading `/`) or its unique ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CountChromeOsDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CountChromeOsDevicesResponse> countChromeOsDevices(
+    core.String customerId, {
+    core.String? filter,
+    core.bool? includeChildOrgunits,
+    core.String? orgUnitPath,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'includeChildOrgunits': ?includeChildOrgunits == null
+          ? null
+          : ['${includeChildOrgunits}'],
+      'orgUnitPath': ?orgUnitPath == null ? null : [orgUnitPath],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'admin/directory/v1/customer/' +
+        commons.escapeVariable('$customerId') +
+        '/devices/chromeos:countChromeOsDevices';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CountChromeOsDevicesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -5512,7 +5569,7 @@ class UsersResource {
   UsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a guest user with access to a
-  /// [subset of Workspace capabilities](https://support.google.com/a/answer/16558545?hl=en).
+  /// [subset of Workspace capabilities](https://support.google.com/a/answer/16558545).
   ///
   /// This feature is currently in Alpha. Please reach out to support if you are
   /// interested in trying this feature.
@@ -9133,6 +9190,22 @@ class ChromeOsMoveDevicesToOu {
   core.Map<core.String, core.dynamic> toJson() {
     final deviceIds = this.deviceIds;
     return {'deviceIds': ?deviceIds};
+  }
+}
+
+/// A response for counting ChromeOS devices.
+class CountChromeOsDevicesResponse {
+  /// The total number of devices matching the request.
+  core.String? count;
+
+  CountChromeOsDevicesResponse({this.count});
+
+  CountChromeOsDevicesResponse.fromJson(core.Map json_)
+    : this(count: json_['count'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    return {'count': ?count};
   }
 }
 

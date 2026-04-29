@@ -92,7 +92,7 @@ class OrganizationsProtectedResourcesResource {
   ///
   /// [scope] - Required. A scope can be an organization or a project. Resources
   /// protected by the crypto key in provided scope will be returned. The
-  /// allowed values are: * organizations/{ORGANIZATION_NUMBER} (e.g.,
+  /// following values are allowed: * organizations/{ORGANIZATION_NUMBER} (e.g.,
   /// "organizations/12345678") * projects/{PROJECT_ID} (e.g.,
   /// "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g.,
   /// "projects/12345678")
@@ -336,7 +336,7 @@ class ProjectsProtectedResourcesResource {
   ///
   /// [scope] - Required. A scope can be an organization or a project. Resources
   /// protected by the crypto key in provided scope will be returned. The
-  /// allowed values are: * organizations/{ORGANIZATION_NUMBER} (e.g.,
+  /// following values are allowed: * organizations/{ORGANIZATION_NUMBER} (e.g.,
   /// "organizations/12345678") * projects/{PROJECT_ID} (e.g.,
   /// "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g.,
   /// "projects/12345678")
@@ -675,8 +675,7 @@ class GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
   }
 }
 
-/// Warning message specifying various states of response data that might
-/// indicate incomplete or partial results.
+/// A warning message that indicates potential problems with the response data.
 class GoogleCloudKmsInventoryV1Warning {
   /// The literal message providing context and details about the warnings.
   core.String? displayMessage;
@@ -686,16 +685,16 @@ class GoogleCloudKmsInventoryV1Warning {
   /// - "WARNING_CODE_UNSPECIFIED" : Default value. This value is unused.
   /// - "INSUFFICIENT_PERMISSIONS_PARTIAL_DATA" : Indicates that the caller or
   /// service agent lacks necessary permissions to view some of the requested
-  /// data. The response may be partial. Examples: - KMS organization service
+  /// data. The response may be partial. Example: - KMS organization service
   /// agent {service_agent_name} lacks the
   /// `cloudasset.assets.searchAllResources` permission on the scope.
   /// - "RESOURCE_LIMIT_EXCEEDED_PARTIAL_DATA" : Indicates that a resource limit
-  /// has been exceeded, resulting in partial data. Examples: - The project has
+  /// has been exceeded, resulting in partial data. Example: - The project has
   /// more than 10,000 assets (resources, crypto keys, key handles, IAM
   /// policies, etc).
-  /// - "ORG_LESS_PROJECT_PARTIAL_DATA" : Indicates that the project is
-  /// org-less. Thus the analysis is only done for the project level data and
-  /// results might be partial.
+  /// - "ORG_LESS_PROJECT_PARTIAL_DATA" : Indicates that the project exists
+  /// outside of an organization resource. Thus the analysis is only done for
+  /// the project level data and results might be partial.
   core.String? warningCode;
 
   GoogleCloudKmsInventoryV1Warning({this.displayMessage, this.warningCode});
@@ -761,6 +760,9 @@ class GoogleCloudKmsV1CryptoKey {
   /// allowed justification codes.
   /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
   /// By default, this field is absent, and all justification codes are allowed.
+  /// If the `key_access_justifications_policy.allowed_access_reasons` is empty
+  /// (zero allowed justification code), all encrypt, decrypt, and sign
+  /// operations will fail.
   ///
   /// Optional.
   GoogleCloudKmsV1KeyAccessJustificationsPolicy? keyAccessJustificationsPolicy;
@@ -1251,7 +1253,9 @@ typedef GoogleCloudKmsV1ExternalProtectionLevelOptions =
     $ExternalProtectionLevelOptions;
 
 /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-/// values for encrypt, decrypt, and sign operations on a CryptoKey.
+/// values for encrypt, decrypt, and sign operations on a CryptoKey or
+/// KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+/// policy).
 typedef GoogleCloudKmsV1KeyAccessJustificationsPolicy =
     $KeyAccessJustificationsPolicy;
 

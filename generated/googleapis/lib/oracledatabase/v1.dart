@@ -184,20 +184,24 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3698,8 +3702,21 @@ class AllConnectionStrings {
 class AutonomousDatabase {
   /// The password for the default ADMIN user.
   ///
+  /// Note: Only one of `admin_password_secret_version` or `admin_password` can
+  /// be populated.
+  ///
   /// Optional. Immutable.
   core.String? adminPassword;
+
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// database admin user's password.
+  ///
+  /// Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only
+  /// one of `admin_password_secret_version` or `admin_password` can be
+  /// populated.
+  ///
+  /// Optional. Immutable.
+  core.String? adminPasswordSecretVersion;
 
   /// The subnet CIDR range for the Autonomous Database.
   ///
@@ -3795,6 +3812,7 @@ class AutonomousDatabase {
 
   AutonomousDatabase({
     this.adminPassword,
+    this.adminPasswordSecretVersion,
     this.cidr,
     this.createTime,
     this.database,
@@ -3814,6 +3832,8 @@ class AutonomousDatabase {
   AutonomousDatabase.fromJson(core.Map json_)
     : this(
         adminPassword: json_['adminPassword'] as core.String?,
+        adminPasswordSecretVersion:
+            json_['adminPasswordSecretVersion'] as core.String?,
         cidr: json_['cidr'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         database: json_['database'] as core.String?,
@@ -3848,6 +3868,7 @@ class AutonomousDatabase {
 
   core.Map<core.String, core.dynamic> toJson() {
     final adminPassword = this.adminPassword;
+    final adminPasswordSecretVersion = this.adminPasswordSecretVersion;
     final cidr = this.cidr;
     final createTime = this.createTime;
     final database = this.database;
@@ -3865,6 +3886,7 @@ class AutonomousDatabase {
     final sourceConfig = this.sourceConfig;
     return {
       'adminPassword': ?adminPassword,
+      'adminPasswordSecretVersion': ?adminPasswordSecretVersion,
       'cidr': ?cidr,
       'createTime': ?createTime,
       'database': ?database,
@@ -4626,10 +4648,15 @@ class AutonomousDatabaseProperties {
   /// Optional. Immutable.
   core.bool? isAutoScalingEnabled;
 
+  /// Deprecated: Please use `local_data_guard_enabled` instead.
+  ///
   /// This field indicates whether the Autonomous Database has local (in-region)
   /// Data Guard enabled.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? isLocalDataGuardEnabled;
 
   /// This field indicates if auto scaling is enabled for the Autonomous
@@ -4652,11 +4679,32 @@ class AutonomousDatabaseProperties {
   /// Output only.
   core.String? lifecycleDetails;
 
+  /// Deprecated: Please use
+  /// `local_adg_auto_failover_max_data_loss_limit_duration` instead.
+  ///
   /// This field indicates the maximum data loss limit for an Autonomous
   /// Database, in seconds.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? localAdgAutoFailoverMaxDataLossLimit;
+
+  /// This field indicates the maximum data loss limit for an Autonomous
+  /// Database, in seconds.
+  ///
+  /// Optional.
+  core.int? localAdgAutoFailoverMaxDataLossLimitDuration;
+
+  /// Indicates whether the Autonomous Database has a local (in-region) standby
+  /// database.
+  ///
+  /// Not applicable to cross-region Data Guard or dedicated Exadata
+  /// infrastructure.
+  ///
+  /// Optional.
+  core.bool? localDataGuardEnabled;
 
   /// This field indicates the local disaster recovery (DR) type of an
   /// Autonomous Database.
@@ -4666,6 +4714,7 @@ class AutonomousDatabaseProperties {
   /// - "LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED" : Default unspecified value.
   /// - "ADG" : Autonomous Data Guard recovery.
   /// - "BACKUP_BASED" : Backup based recovery.
+  /// - "NOT_AVAILABLE" : Local disaster recovery is not available.
   core.String? localDisasterRecoveryType;
 
   /// The details of the Autonomous Data Guard standby database.
@@ -4942,6 +4991,8 @@ class AutonomousDatabaseProperties {
     this.licenseType,
     this.lifecycleDetails,
     this.localAdgAutoFailoverMaxDataLossLimit,
+    this.localAdgAutoFailoverMaxDataLossLimitDuration,
+    this.localDataGuardEnabled,
     this.localDisasterRecoveryType,
     this.localStandbyDb,
     this.maintenanceBeginTime,
@@ -5055,6 +5106,9 @@ class AutonomousDatabaseProperties {
         lifecycleDetails: json_['lifecycleDetails'] as core.String?,
         localAdgAutoFailoverMaxDataLossLimit:
             json_['localAdgAutoFailoverMaxDataLossLimit'] as core.int?,
+        localAdgAutoFailoverMaxDataLossLimitDuration:
+            json_['localAdgAutoFailoverMaxDataLossLimitDuration'] as core.int?,
+        localDataGuardEnabled: json_['localDataGuardEnabled'] as core.bool?,
         localDisasterRecoveryType:
             json_['localDisasterRecoveryType'] as core.String?,
         localStandbyDb: json_.containsKey('localStandbyDb')
@@ -5143,6 +5197,9 @@ class AutonomousDatabaseProperties {
     final lifecycleDetails = this.lifecycleDetails;
     final localAdgAutoFailoverMaxDataLossLimit =
         this.localAdgAutoFailoverMaxDataLossLimit;
+    final localAdgAutoFailoverMaxDataLossLimitDuration =
+        this.localAdgAutoFailoverMaxDataLossLimitDuration;
+    final localDataGuardEnabled = this.localDataGuardEnabled;
     final localDisasterRecoveryType = this.localDisasterRecoveryType;
     final localStandbyDb = this.localStandbyDb;
     final maintenanceBeginTime = this.maintenanceBeginTime;
@@ -5208,6 +5265,9 @@ class AutonomousDatabaseProperties {
       'lifecycleDetails': ?lifecycleDetails,
       'localAdgAutoFailoverMaxDataLossLimit':
           ?localAdgAutoFailoverMaxDataLossLimit,
+      'localAdgAutoFailoverMaxDataLossLimitDuration':
+          ?localAdgAutoFailoverMaxDataLossLimitDuration,
+      'localDataGuardEnabled': ?localDataGuardEnabled,
       'localDisasterRecoveryType': ?localDisasterRecoveryType,
       'localStandbyDb': ?localStandbyDb,
       'maintenanceBeginTime': ?maintenanceBeginTime,
@@ -6613,8 +6673,21 @@ class DataCollectionOptionsDbSystem {
 class Database {
   /// The password for the default ADMIN user.
   ///
-  /// Required.
+  /// Note: Only one of `admin_password_secret_version` or `admin_password` can
+  /// be populated.
+  ///
+  /// Optional.
   core.String? adminPassword;
+
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// database admin user's password.
+  ///
+  /// Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only
+  /// one of `admin_password_secret_version` or `admin_password` can be
+  /// populated.
+  ///
+  /// Optional.
+  core.String? adminPasswordSecretVersion;
 
   /// The character set for the database.
   ///
@@ -6689,6 +6762,21 @@ class Database {
   /// disable.
   core.String? opsInsightsStatus;
 
+  /// The ID of the pluggable database associated with the Database.
+  ///
+  /// The ID must be unique within the project and location.
+  ///
+  /// Optional.
+  core.String? pluggableDatabaseId;
+
+  /// The pluggable database associated with the Database.
+  ///
+  /// The name must begin with an alphabetic character and can contain a maximum
+  /// of thirty alphanumeric characters.
+  ///
+  /// Optional.
+  core.String? pluggableDatabaseName;
+
   /// The properties of the Database.
   ///
   /// Optional.
@@ -6696,11 +6784,25 @@ class Database {
 
   /// The TDE wallet password for the database.
   ///
+  /// Note: Only one of `tde_wallet_password_secret_version` or
+  /// `tde_wallet_password` can be populated.
+  ///
   /// Optional.
   core.String? tdeWalletPassword;
 
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// TDE wallet password for the database.
+  ///
+  /// Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only
+  /// one of `tde_wallet_password_secret_version` or `tde_wallet_password` can
+  /// be populated.
+  ///
+  /// Optional.
+  core.String? tdeWalletPasswordSecretVersion;
+
   Database({
     this.adminPassword,
+    this.adminPasswordSecretVersion,
     this.characterSet,
     this.createTime,
     this.databaseId,
@@ -6712,13 +6814,18 @@ class Database {
     this.ncharacterSet,
     this.ociUrl,
     this.opsInsightsStatus,
+    this.pluggableDatabaseId,
+    this.pluggableDatabaseName,
     this.properties,
     this.tdeWalletPassword,
+    this.tdeWalletPasswordSecretVersion,
   });
 
   Database.fromJson(core.Map json_)
     : this(
         adminPassword: json_['adminPassword'] as core.String?,
+        adminPasswordSecretVersion:
+            json_['adminPasswordSecretVersion'] as core.String?,
         characterSet: json_['characterSet'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         databaseId: json_['databaseId'] as core.String?,
@@ -6730,16 +6837,21 @@ class Database {
         ncharacterSet: json_['ncharacterSet'] as core.String?,
         ociUrl: json_['ociUrl'] as core.String?,
         opsInsightsStatus: json_['opsInsightsStatus'] as core.String?,
+        pluggableDatabaseId: json_['pluggableDatabaseId'] as core.String?,
+        pluggableDatabaseName: json_['pluggableDatabaseName'] as core.String?,
         properties: json_.containsKey('properties')
             ? DatabaseProperties.fromJson(
                 json_['properties'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         tdeWalletPassword: json_['tdeWalletPassword'] as core.String?,
+        tdeWalletPasswordSecretVersion:
+            json_['tdeWalletPasswordSecretVersion'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final adminPassword = this.adminPassword;
+    final adminPasswordSecretVersion = this.adminPasswordSecretVersion;
     final characterSet = this.characterSet;
     final createTime = this.createTime;
     final databaseId = this.databaseId;
@@ -6751,10 +6863,14 @@ class Database {
     final ncharacterSet = this.ncharacterSet;
     final ociUrl = this.ociUrl;
     final opsInsightsStatus = this.opsInsightsStatus;
+    final pluggableDatabaseId = this.pluggableDatabaseId;
+    final pluggableDatabaseName = this.pluggableDatabaseName;
     final properties = this.properties;
     final tdeWalletPassword = this.tdeWalletPassword;
+    final tdeWalletPasswordSecretVersion = this.tdeWalletPasswordSecretVersion;
     return {
       'adminPassword': ?adminPassword,
+      'adminPasswordSecretVersion': ?adminPasswordSecretVersion,
       'characterSet': ?characterSet,
       'createTime': ?createTime,
       'databaseId': ?databaseId,
@@ -6766,8 +6882,11 @@ class Database {
       'ncharacterSet': ?ncharacterSet,
       'ociUrl': ?ociUrl,
       'opsInsightsStatus': ?opsInsightsStatus,
+      'pluggableDatabaseId': ?pluggableDatabaseId,
+      'pluggableDatabaseName': ?pluggableDatabaseName,
       'properties': ?properties,
       'tdeWalletPassword': ?tdeWalletPassword,
+      'tdeWalletPasswordSecretVersion': ?tdeWalletPasswordSecretVersion,
     };
   }
 }
@@ -9361,9 +9480,14 @@ class ListAutonomousDatabasesResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
   ListAutonomousDatabasesResponse({
     this.autonomousDatabases,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListAutonomousDatabasesResponse.fromJson(core.Map json_)
@@ -9376,14 +9500,19 @@ class ListAutonomousDatabasesResponse {
             )
             .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final autonomousDatabases = this.autonomousDatabases;
     final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
     return {
       'autonomousDatabases': ?autonomousDatabases,
       'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
     };
   }
 }
@@ -9431,9 +9560,14 @@ class ListCloudExadataInfrastructuresResponse {
   /// A token for fetching next page of response.
   core.String? nextPageToken;
 
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
   ListCloudExadataInfrastructuresResponse({
     this.cloudExadataInfrastructures,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListCloudExadataInfrastructuresResponse.fromJson(core.Map json_)
@@ -9447,14 +9581,19 @@ class ListCloudExadataInfrastructuresResponse {
                 )
                 .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final cloudExadataInfrastructures = this.cloudExadataInfrastructures;
     final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
     return {
       'cloudExadataInfrastructures': ?cloudExadataInfrastructures,
       'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
     };
   }
 }
@@ -9467,7 +9606,15 @@ class ListCloudVmClustersResponse {
   /// A token to fetch the next page of results.
   core.String? nextPageToken;
 
-  ListCloudVmClustersResponse({this.cloudVmClusters, this.nextPageToken});
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
+  ListCloudVmClustersResponse({
+    this.cloudVmClusters,
+    this.nextPageToken,
+    this.unreachable,
+  });
 
   ListCloudVmClustersResponse.fromJson(core.Map json_)
     : this(
@@ -9479,14 +9626,19 @@ class ListCloudVmClustersResponse {
             )
             .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final cloudVmClusters = this.cloudVmClusters;
     final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
     return {
       'cloudVmClusters': ?cloudVmClusters,
       'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
     };
   }
 }
@@ -9685,7 +9837,11 @@ class ListDbSystemsResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListDbSystemsResponse({this.dbSystems, this.nextPageToken});
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
+  ListDbSystemsResponse({this.dbSystems, this.nextPageToken, this.unreachable});
 
   ListDbSystemsResponse.fromJson(core.Map json_)
     : this(
@@ -9697,12 +9853,20 @@ class ListDbSystemsResponse {
             )
             .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final dbSystems = this.dbSystems;
     final nextPageToken = this.nextPageToken;
-    return {'dbSystems': ?dbSystems, 'nextPageToken': ?nextPageToken};
+    final unreachable = this.unreachable;
+    return {
+      'dbSystems': ?dbSystems,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
   }
 }
 
@@ -9772,7 +9936,15 @@ class ListExadbVmClustersResponse {
   /// A token identifying a page of results the server should return.
   core.String? nextPageToken;
 
-  ListExadbVmClustersResponse({this.exadbVmClusters, this.nextPageToken});
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
+  ListExadbVmClustersResponse({
+    this.exadbVmClusters,
+    this.nextPageToken,
+    this.unreachable,
+  });
 
   ListExadbVmClustersResponse.fromJson(core.Map json_)
     : this(
@@ -9784,14 +9956,19 @@ class ListExadbVmClustersResponse {
             )
             .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final exadbVmClusters = this.exadbVmClusters;
     final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
     return {
       'exadbVmClusters': ?exadbVmClusters,
       'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
     };
   }
 }
@@ -9808,9 +9985,14 @@ class ListExascaleDbStorageVaultsResponse {
   /// are no more pages.
   core.String? nextPageToken;
 
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
   ListExascaleDbStorageVaultsResponse({
     this.exascaleDbStorageVaults,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListExascaleDbStorageVaultsResponse.fromJson(core.Map json_)
@@ -9824,14 +10006,19 @@ class ListExascaleDbStorageVaultsResponse {
                 )
                 .toList(),
         nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final exascaleDbStorageVaults = this.exascaleDbStorageVaults;
     final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
     return {
       'exascaleDbStorageVaults': ?exascaleDbStorageVaults,
       'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
     };
   }
 }

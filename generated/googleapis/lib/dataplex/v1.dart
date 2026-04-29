@@ -35,6 +35,7 @@
 ///     - [ProjectsLocationsAspectTypesResource]
 ///     - [ProjectsLocationsChangeRequestsResource]
 ///     - [ProjectsLocationsDataAttributeBindingsResource]
+///     - [ProjectsLocationsDataDomainsResource]
 ///     - [ProjectsLocationsDataProductsResource]
 ///       - [ProjectsLocationsDataProductsDataAssetsResource]
 ///     - [ProjectsLocationsDataScansResource]
@@ -52,10 +53,6 @@
 ///     - [ProjectsLocationsGovernanceRulesResource]
 ///     - [ProjectsLocationsLakesResource]
 ///       - [ProjectsLocationsLakesActionsResource]
-///       - [ProjectsLocationsLakesContentResource]
-///       - [ProjectsLocationsLakesContentitemsResource]
-///       - [ProjectsLocationsLakesEnvironmentsResource]
-///         - [ProjectsLocationsLakesEnvironmentsSessionsResource]
 ///       - [ProjectsLocationsLakesTasksResource]
 ///         - [ProjectsLocationsLakesTasksJobsResource]
 ///       - [ProjectsLocationsLakesZonesResource]
@@ -67,6 +64,7 @@
 ///     - [ProjectsLocationsMetadataFeedsResource]
 ///     - [ProjectsLocationsMetadataJobsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsPolicyIntentsResource]
 library;
 
 import 'dart:async' as async;
@@ -88,6 +86,21 @@ class CloudDataplexApi {
   /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
+
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
+  static const cloudPlatformReadOnlyScope =
+      'https://www.googleapis.com/auth/cloud-platform.read-only';
+
+  /// See, edit, configure, and delete your Google Cloud Dataplex data and see
+  /// the email address for your Google Account
+  static const dataplexReadWriteScope =
+      'https://www.googleapis.com/auth/dataplex.read-write';
+
+  /// See your Google Cloud Dataplex data and the email address of your Google
+  /// Account
+  static const dataplexReadonlyScope =
+      'https://www.googleapis.com/auth/dataplex.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -762,6 +775,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsChangeRequestsResource(_requester);
   ProjectsLocationsDataAttributeBindingsResource get dataAttributeBindings =>
       ProjectsLocationsDataAttributeBindingsResource(_requester);
+  ProjectsLocationsDataDomainsResource get dataDomains =>
+      ProjectsLocationsDataDomainsResource(_requester);
   ProjectsLocationsDataProductsResource get dataProducts =>
       ProjectsLocationsDataProductsResource(_requester);
   ProjectsLocationsDataScansResource get dataScans =>
@@ -786,6 +801,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsMetadataJobsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsPolicyIntentsResource get policyIntents =>
+      ProjectsLocationsPolicyIntentsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -826,12 +843,18 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Lists information about the supported locations for this service.
+  /// Lists information about the supported locations for this service.This
+  /// method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: Global locations: If name is empty, the
+  /// method lists the public locations available to all projects.
   ///
-  /// This method can be called in two ways: List all public locations: Use the
-  /// path GET /v1/locations. List project-visible locations: Use the path GET
-  /// /v1/projects/{project_id}/locations. This may include public locations as
-  /// well as private or other locations specifically visible to the project.
+  /// Project-specific locations: If name follows the format projects/{project},
+  /// the method lists locations visible to that specific project. This includes
+  /// public, private, or other project-specific locations enabled for the
+  /// project.For gRPC and client library implementations, the resource name is
+  /// passed as the name field. For direct service calls, the resource name is
+  /// incorporated into the request path based on the specific service
+  /// implementation and version.
   ///
   /// Request parameters:
   ///
@@ -890,13 +913,50 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Looks up an entry by name using the permission on the source system.
+  /// Looks up LLM Context for the specified resources.
   ///
-  /// Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
-  /// Metastore metadata that is stored in Dataplex Universal Catalog is
-  /// changing. For more information, see Changes to metadata stored in Dataplex
-  /// Universal Catalog
-  /// (https://cloud.google.com/dataplex/docs/metadata-changes).
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The project to which the request should be attributed
+  /// in the following form: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1LookupContextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1LookupContextResponse> lookupContext(
+    GoogleCloudDataplexV1LookupContextRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':lookupContext';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1LookupContextResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Looks up an entry by name using the permission on the source system.
   ///
   /// Request parameters:
   ///
@@ -956,6 +1016,124 @@ class ProjectsLocationsResource {
     final response_ = await _requester.request(
       url_,
       'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1Entry.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Looks up Entry Links referencing the specified Entry.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The project to which the request should be attributed
+  /// to Format: projects/{project_id_or_number}/locations/{location_id}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [entry] - Required. The resource name of the referred Entry. Format:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
+  /// Entry Links which references this entry will be returned in the response.
+  ///
+  /// [entryLinkTypes_1] - Entry link types to filter the response by. If empty,
+  /// all entry link types will be returned. At most 10 entry link types can be
+  /// specified.
+  ///
+  /// [entryMode] - Mode of entry reference.
+  /// Possible string values are:
+  /// - "ENTRY_MODE_UNSPECIFIED" : Unspecified entry mode. Returns both
+  /// directional and non-directional entry links which references the entry.
+  /// - "SOURCE" : Returns all directed entry links which references the entry
+  /// as source.
+  /// - "TARGET" : Return all directed entry links which references the entry as
+  /// target.
+  ///
+  /// [pageSize] - Maximum number of EntryLinks to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 EntryLinks will
+  /// be returned. The maximum value is 10; values above 10 will be coerced to
+  /// 10.
+  ///
+  /// [pageToken] - Page token received from a previous LookupEntryLinks call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters that are provided to the LookupEntryLinks request must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1LookupEntryLinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1LookupEntryLinksResponse> lookupEntryLinks(
+    core.String name, {
+    core.String? entry,
+    core.List<core.String>? entryLinkTypes_1,
+    core.String? entryMode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'entry': ?entry == null ? null : [entry],
+      'entryLinkTypes': ?entryLinkTypes_1,
+      'entryMode': ?entryMode == null ? null : [entryMode],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':lookupEntryLinks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1LookupEntryLinksResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Modifies an entry using the permission on the source system.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The project to which the request should be attributed
+  /// in the following form: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1Entry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1Entry> modifyEntry(
+    GoogleCloudDataplexV1ModifyEntryRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':modifyEntry';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entry.fromJson(
@@ -2041,6 +2219,174 @@ class ProjectsLocationsDataAttributeBindingsResource {
   /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataAttributeBindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDataDomainsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataDomainsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3339,6 +3685,52 @@ class ProjectsLocationsDataScansJobsResource {
 
   ProjectsLocationsDataScansJobsResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Cancels a running/pending DataScan job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataScanJob:
+  /// projects/{project_id_or_number}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id}
+  /// where project_id_or_number refers to a project_id or project_number and
+  /// location_id refers to a Google Cloud region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1CancelDataScanJobResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1CancelDataScanJobResponse> cancel(
+    GoogleCloudDataplexV1CancelDataScanJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1CancelDataScanJobResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Generates recommended data quality rules based on the results of a data
   /// profiling scan.Use the recommendations to build rules for a data quality
@@ -4919,12 +5311,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
 
   /// Gets an Entry.
   ///
-  /// Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
-  /// Metastore metadata that is stored in Dataplex Universal Catalog is
-  /// changing. For more information, see Changes to metadata stored in Dataplex
-  /// Universal Catalog
-  /// (https://cloud.google.com/dataplex/docs/metadata-changes).
-  ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the Entry:
@@ -4987,12 +5373,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }
 
   /// Lists Entries within an EntryGroup.
-  ///
-  /// Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
-  /// Metastore metadata that is stored in Dataplex Universal Catalog is
-  /// changing. For more information, see Changes to metadata stored in Dataplex
-  /// Universal Catalog
-  /// (https://cloud.google.com/dataplex/docs/metadata-changes).
   ///
   /// Request parameters:
   ///
@@ -5266,6 +5646,64 @@ class ProjectsLocationsEntryGroupsEntryLinksResource {
     final response_ = await _requester.request(
       url_,
       'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1EntryLink.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an Entry Link.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Immutable. Identifier. The relative resource name of
+  /// the Entry Link, of the form:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entryLinks/.*$`.
+  ///
+  /// [allowMissing] - Optional. If set to true and the entry link doesn't
+  /// exist, the service will create it.
+  ///
+  /// [aspectKeys] - Optional. The map keys of the Aspects which the service
+  /// should modify. It should be the aspect type reference in the format
+  /// {project_id_or_number}.{location_id}.{aspect_type_id}.If this field is
+  /// left empty, the service treats it as specifying exactly those Aspects
+  /// present in the request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1EntryLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1EntryLink> patch(
+    GoogleCloudDataplexV1EntryLink request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.List<core.String>? aspectKeys,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'aspectKeys': ?aspectKeys,
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1EntryLink.fromJson(
@@ -7300,12 +7738,6 @@ class ProjectsLocationsLakesResource {
 
   ProjectsLocationsLakesActionsResource get actions =>
       ProjectsLocationsLakesActionsResource(_requester);
-  ProjectsLocationsLakesContentResource get content =>
-      ProjectsLocationsLakesContentResource(_requester);
-  ProjectsLocationsLakesContentitemsResource get contentitems =>
-      ProjectsLocationsLakesContentitemsResource(_requester);
-  ProjectsLocationsLakesEnvironmentsResource get environments =>
-      ProjectsLocationsLakesEnvironmentsResource(_requester);
   ProjectsLocationsLakesTasksResource get tasks =>
       ProjectsLocationsLakesTasksResource(_requester);
   ProjectsLocationsLakesZonesResource get zones =>
@@ -7783,1336 +8215,6 @@ class ProjectsLocationsLakesActionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1ListActionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsLakesContentResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsLakesContentResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Create a content.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent lake:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+$`.
-  ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1Content].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1Content> create(
-    GoogleCloudDataplexV1Content request,
-    core.String parent, {
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/content';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1Content.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Delete a content.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the content:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/content/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Get a content resource.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the content:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/content/.*$`.
-  ///
-  /// [view] - Optional. Specify content view to make a partial request.
-  /// Possible string values are:
-  /// - "CONTENT_VIEW_UNSPECIFIED" : Content view not specified. Defaults to
-  /// BASIC. The API will default to the BASIC view.
-  /// - "BASIC" : Will not return the data_text field.
-  /// - "FULL" : Returns the complete proto.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1Content].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1Content> get(
-    core.String name, {
-    core.String? view,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'view': ?view == null ? null : [view],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1Content.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Gets the access control policy for a contentitem resource.
-  ///
-  /// A NOT_FOUND error is returned if the resource does not exist. An empty
-  /// policy is returned if the resource exists but does not have a policy set
-  /// on it.Caller must have Google IAM dataplex.content.getIamPolicy permission
-  /// on the resource.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/content/.*$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy.Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected.Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset.The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1.To learn which resources support
-  /// conditions in their IAM policies, see the IAM documentation
-  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
-          ? null
-          : ['${options_requestedPolicyVersion}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// List content.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent lake:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+$`.
-  ///
-  /// [filter] - Optional. Filter request. Filters are case-sensitive. The
-  /// following formats are supported:labels.key1 = "value1" labels:key1 type =
-  /// "NOTEBOOK" type = "SQL_SCRIPT"These restrictions can be coinjoined with
-  /// AND, OR and NOT conjunctions.
-  ///
-  /// [pageSize] - Optional. Maximum number of content to return. The service
-  /// may return fewer than this value. If unspecified, at most 10 content will
-  /// be returned. The maximum value is 1000; values above 1000 will be coerced
-  /// to 1000.
-  ///
-  /// [pageToken] - Optional. Page token received from a previous ListContent
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to ListContent must match the call that provided
-  /// the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1ListContentResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1ListContentResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'filter': ?filter == null ? null : [filter],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/content';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1ListContentResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Update a content.
-  ///
-  /// Only supports full resource update.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. The relative resource name of the content, of the
-  /// form:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/content/.*$`.
-  ///
-  /// [updateMask] - Required. Mask of fields to update.
-  ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1Content].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1Content> patch(
-    GoogleCloudDataplexV1Content request,
-    core.String name, {
-    core.String? updateMask,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'updateMask': ?updateMask == null ? null : [updateMask],
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1Content.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Sets the access control policy on the specified contentitem resource.
-  ///
-  /// Replaces any existing policy.Caller must have Google IAM
-  /// dataplex.content.setIamPolicy permission on the resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/content/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> setIamPolicy(
-    GoogleIamV1SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Returns the caller's permissions on a resource.
-  ///
-  /// If the resource does not exist, an empty set of permissions is returned (a
-  /// NOT_FOUND error is not returned).A caller is not required to have Google
-  /// IAM permission to make this request.Note: This operation is designed to be
-  /// used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/content/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
-    GoogleIamV1TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsLakesContentitemsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsLakesContentitemsResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Create a content.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent lake:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+$`.
-  ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1Content].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1Content> create(
-    GoogleCloudDataplexV1Content request,
-    core.String parent, {
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contentitems';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1Content.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Delete a content.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the content:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/contentitems/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Get a content resource.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the content:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/contentitems/.*$`.
-  ///
-  /// [view] - Optional. Specify content view to make a partial request.
-  /// Possible string values are:
-  /// - "CONTENT_VIEW_UNSPECIFIED" : Content view not specified. Defaults to
-  /// BASIC. The API will default to the BASIC view.
-  /// - "BASIC" : Will not return the data_text field.
-  /// - "FULL" : Returns the complete proto.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1Content].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1Content> get(
-    core.String name, {
-    core.String? view,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'view': ?view == null ? null : [view],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1Content.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Gets the access control policy for a contentitem resource.
-  ///
-  /// A NOT_FOUND error is returned if the resource does not exist. An empty
-  /// policy is returned if the resource exists but does not have a policy set
-  /// on it.Caller must have Google IAM dataplex.content.getIamPolicy permission
-  /// on the resource.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/contentitems/.*$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy.Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected.Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset.The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1.To learn which resources support
-  /// conditions in their IAM policies, see the IAM documentation
-  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
-          ? null
-          : ['${options_requestedPolicyVersion}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// List content.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent lake:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+$`.
-  ///
-  /// [filter] - Optional. Filter request. Filters are case-sensitive. The
-  /// following formats are supported:labels.key1 = "value1" labels:key1 type =
-  /// "NOTEBOOK" type = "SQL_SCRIPT"These restrictions can be coinjoined with
-  /// AND, OR and NOT conjunctions.
-  ///
-  /// [pageSize] - Optional. Maximum number of content to return. The service
-  /// may return fewer than this value. If unspecified, at most 10 content will
-  /// be returned. The maximum value is 1000; values above 1000 will be coerced
-  /// to 1000.
-  ///
-  /// [pageToken] - Optional. Page token received from a previous ListContent
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to ListContent must match the call that provided
-  /// the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1ListContentResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1ListContentResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'filter': ?filter == null ? null : [filter],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contentitems';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1ListContentResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Update a content.
-  ///
-  /// Only supports full resource update.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. The relative resource name of the content, of the
-  /// form:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/contentitems/.*$`.
-  ///
-  /// [updateMask] - Required. Mask of fields to update.
-  ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1Content].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1Content> patch(
-    GoogleCloudDataplexV1Content request,
-    core.String name, {
-    core.String? updateMask,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'updateMask': ?updateMask == null ? null : [updateMask],
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1Content.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Sets the access control policy on the specified contentitem resource.
-  ///
-  /// Replaces any existing policy.Caller must have Google IAM
-  /// dataplex.content.setIamPolicy permission on the resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/contentitems/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> setIamPolicy(
-    GoogleIamV1SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Returns the caller's permissions on a resource.
-  ///
-  /// If the resource does not exist, an empty set of permissions is returned (a
-  /// NOT_FOUND error is not returned).A caller is not required to have Google
-  /// IAM permission to make this request.Note: This operation is designed to be
-  /// used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/contentitems/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
-    GoogleIamV1TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsLakesEnvironmentsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsLakesEnvironmentsSessionsResource get sessions =>
-      ProjectsLocationsLakesEnvironmentsSessionsResource(_requester);
-
-  ProjectsLocationsLakesEnvironmentsResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Create an environment resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent lake:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+$`.
-  ///
-  /// [environmentId] - Required. Environment identifier. * Must contain only
-  /// lowercase letters, numbers and hyphens. * Must start with a letter. * Must
-  /// be between 1-63 characters. * Must end with a number or a letter. * Must
-  /// be unique within the lake.
-  ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> create(
-    GoogleCloudDataplexV1Environment request,
-    core.String parent, {
-    core.String? environmentId,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'environmentId': ?environmentId == null ? null : [environmentId],
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/environments';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Delete the environment resource.
-  ///
-  /// All the child resources must have been deleted before environment deletion
-  /// can be initiated.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the environment:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Get environment resource.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the environment:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environments/{environment_id}.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1Environment].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1Environment> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1Environment.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy.Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected.Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset.The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1.To learn which resources support
-  /// conditions in their IAM policies, see the IAM documentation
-  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
-          ? null
-          : ['${options_requestedPolicyVersion}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Lists environments under the given lake.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent lake:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+$`.
-  ///
-  /// [filter] - Optional. Filter request.
-  ///
-  /// [orderBy] - Optional. Order by fields for the result.
-  ///
-  /// [pageSize] - Optional. Maximum number of environments to return. The
-  /// service may return fewer than this value. If unspecified, at most 10
-  /// environments will be returned. The maximum value is 1000; values above
-  /// 1000 will be coerced to 1000.
-  ///
-  /// [pageToken] - Optional. Page token received from a previous
-  /// ListEnvironments call. Provide this to retrieve the subsequent page. When
-  /// paginating, all other parameters provided to ListEnvironments must match
-  /// the call that provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1ListEnvironmentsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1ListEnvironmentsResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.String? orderBy,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'filter': ?filter == null ? null : [filter],
-      'orderBy': ?orderBy == null ? null : [orderBy],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/environments';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1ListEnvironmentsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Update the environment resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. The relative resource name of the environment, of
-  /// the form:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
-  ///
-  /// [updateMask] - Required. Mask of fields to update.
-  ///
-  /// [validateOnly] - Optional. Only validate the request, but do not perform
-  /// mutations. The default is false.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> patch(
-    GoogleCloudDataplexV1Environment request,
-    core.String name, {
-    core.String? updateMask,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'updateMask': ?updateMask == null ? null : [updateMask],
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
-  /// PERMISSION_DENIED errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> setIamPolicy(
-    GoogleIamV1SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
-  /// used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
-    GoogleIamV1TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsLakesEnvironmentsSessionsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsLakesEnvironmentsSessionsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
-
-  /// Lists session resources in an environment.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent environment:
-  /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
-  ///
-  /// [filter] - Optional. Filter request. The following mode filter is
-  /// supported to return only the sessions belonging to the requester when the
-  /// mode is USER and return sessions of all the users when the mode is ADMIN.
-  /// When no filter is sent default to USER mode. NOTE: When the mode is ADMIN,
-  /// the requester should have dataplex.environments.listAllSessions permission
-  /// to list all sessions, in absence of the permission, the request fails.mode
-  /// = ADMIN | USER
-  ///
-  /// [pageSize] - Optional. Maximum number of sessions to return. The service
-  /// may return fewer than this value. If unspecified, at most 10 sessions will
-  /// be returned. The maximum value is 1000; values above 1000 will be coerced
-  /// to 1000.
-  ///
-  /// [pageToken] - Optional. Page token received from a previous ListSessions
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to ListSessions must match the call that
-  /// provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDataplexV1ListSessionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDataplexV1ListSessionsResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'filter': ?filter == null ? null : [filter],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sessions';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDataplexV1ListSessionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -11835,6 +10937,174 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsPolicyIntentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPolicyIntentsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/policyIntents/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/policyIntents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/policyIntents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -12198,7 +11468,7 @@ typedef GoogleCloudDataplexV1ActionMissingResource = $Empty;
 /// access or manage the resource associated with an asset.
 typedef GoogleCloudDataplexV1ActionUnauthorizedResource = $Empty;
 
-/// An aspect is a single piece of metadata describing an entry.
+/// Represents a single piece of metadata describing an entry or entry link.
 class GoogleCloudDataplexV1Aspect {
   /// Information related to the source system of the aspect.
   ///
@@ -13392,171 +12662,17 @@ class GoogleCloudDataplexV1AssetStatus {
   }
 }
 
+/// Request message for the CancelDataScanJob method.
+typedef GoogleCloudDataplexV1CancelDataScanJobRequest = $Empty;
+
+/// Response message for the CancelDataScanJob method.
+typedef GoogleCloudDataplexV1CancelDataScanJobResponse = $Empty;
+
 /// Cancel task jobs.
 typedef GoogleCloudDataplexV1CancelJobRequest = $Empty;
 
 /// Cancel metadata job request.
 typedef GoogleCloudDataplexV1CancelMetadataJobRequest = $Empty;
-
-/// Content represents a user-visible notebook or a sql script
-class GoogleCloudDataplexV1Content {
-  /// Content creation time.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Content data in string format.
-  ///
-  /// Required.
-  core.String? dataText;
-
-  /// Description of the content.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// User defined labels for the content.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? labels;
-
-  /// The relative resource name of the content, of the form:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Notebook related configurations.
-  GoogleCloudDataplexV1ContentNotebook? notebook;
-
-  /// The path for the Content file, represented as directory structure.
-  ///
-  /// Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots
-  /// and slashes.
-  ///
-  /// Required.
-  core.String? path;
-
-  /// Sql Script related configurations.
-  GoogleCloudDataplexV1ContentSqlScript? sqlScript;
-
-  /// System generated globally unique ID for the content.
-  ///
-  /// This ID will be different if the content is deleted and re-created with
-  /// the same name.
-  ///
-  /// Output only.
-  core.String? uid;
-
-  /// The time when the content was last updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleCloudDataplexV1Content({
-    this.createTime,
-    this.dataText,
-    this.description,
-    this.labels,
-    this.name,
-    this.notebook,
-    this.path,
-    this.sqlScript,
-    this.uid,
-    this.updateTime,
-  });
-
-  GoogleCloudDataplexV1Content.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        dataText: json_['dataText'] as core.String?,
-        description: json_['description'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        notebook: json_.containsKey('notebook')
-            ? GoogleCloudDataplexV1ContentNotebook.fromJson(
-                json_['notebook'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        path: json_['path'] as core.String?,
-        sqlScript: json_.containsKey('sqlScript')
-            ? GoogleCloudDataplexV1ContentSqlScript.fromJson(
-                json_['sqlScript'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        uid: json_['uid'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final createTime = this.createTime;
-    final dataText = this.dataText;
-    final description = this.description;
-    final labels = this.labels;
-    final name = this.name;
-    final notebook = this.notebook;
-    final path = this.path;
-    final sqlScript = this.sqlScript;
-    final uid = this.uid;
-    final updateTime = this.updateTime;
-    return {
-      'createTime': ?createTime,
-      'dataText': ?dataText,
-      'description': ?description,
-      'labels': ?labels,
-      'name': ?name,
-      'notebook': ?notebook,
-      'path': ?path,
-      'sqlScript': ?sqlScript,
-      'uid': ?uid,
-      'updateTime': ?updateTime,
-    };
-  }
-}
-
-/// Configuration for Notebook content.
-class GoogleCloudDataplexV1ContentNotebook {
-  /// Kernel Type of the notebook.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "KERNEL_TYPE_UNSPECIFIED" : Kernel Type unspecified.
-  /// - "PYTHON3" : Python 3 Kernel.
-  core.String? kernelType;
-
-  GoogleCloudDataplexV1ContentNotebook({this.kernelType});
-
-  GoogleCloudDataplexV1ContentNotebook.fromJson(core.Map json_)
-    : this(kernelType: json_['kernelType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final kernelType = this.kernelType;
-    return {'kernelType': ?kernelType};
-  }
-}
-
-/// Configuration for the Sql Script content.
-class GoogleCloudDataplexV1ContentSqlScript {
-  /// Query Engine to be used for the Sql Query.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "QUERY_ENGINE_UNSPECIFIED" : Value was unspecified.
-  /// - "SPARK" : Spark SQL Query.
-  core.String? engine;
-
-  GoogleCloudDataplexV1ContentSqlScript({this.engine});
-
-  GoogleCloudDataplexV1ContentSqlScript.fromJson(core.Map json_)
-    : this(engine: json_['engine'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final engine = this.engine;
-    return {'engine': ?engine};
-  }
-}
 
 /// DataAccessSpec holds the access control configuration to be enforced on data
 /// stored within resources (eg: rows, columns in BigQuery Tables).
@@ -14376,11 +13492,18 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
   /// Optional.
   GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions? jsonOptions;
 
+  /// Specifies configuration for unstructured data discovery.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions?
+  unstructuredDataOptions;
+
   GoogleCloudDataplexV1DataDiscoverySpecStorageConfig({
     this.csvOptions,
     this.excludePatterns,
     this.includePatterns,
     this.jsonOptions,
+    this.unstructuredDataOptions,
   });
 
   GoogleCloudDataplexV1DataDiscoverySpecStorageConfig.fromJson(core.Map json_)
@@ -14401,6 +13524,12 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
                 json_['jsonOptions'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        unstructuredDataOptions: json_.containsKey('unstructuredDataOptions')
+            ? GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions.fromJson(
+                json_['unstructuredDataOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -14408,11 +13537,13 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
     final excludePatterns = this.excludePatterns;
     final includePatterns = this.includePatterns;
     final jsonOptions = this.jsonOptions;
+    final unstructuredDataOptions = this.unstructuredDataOptions;
     return {
       'csvOptions': ?csvOptions,
       'excludePatterns': ?excludePatterns,
       'includePatterns': ?includePatterns,
       'jsonOptions': ?jsonOptions,
+      'unstructuredDataOptions': ?unstructuredDataOptions,
     };
   }
 }
@@ -14527,17 +13658,72 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions {
   }
 }
 
+/// Describes options for unstructured data discovery.
+class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions {
+  /// Deprecated: Use semantic_inference_enabled instead.
+  ///
+  /// Specifies whether deeper entity inference over the objects' contents using
+  /// GenAI is enabled.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? entityInferenceEnabled;
+
+  /// Specifies whether deeper semantic inference over the objects' contents
+  /// using GenAI is enabled.
+  ///
+  /// Optional.
+  core.bool? semanticInferenceEnabled;
+
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions({
+    this.entityInferenceEnabled,
+    this.semanticInferenceEnabled,
+  });
+
+  GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions.fromJson(
+    core.Map json_,
+  ) : this(
+        entityInferenceEnabled: json_['entityInferenceEnabled'] as core.bool?,
+        semanticInferenceEnabled:
+            json_['semanticInferenceEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityInferenceEnabled = this.entityInferenceEnabled;
+    final semanticInferenceEnabled = this.semanticInferenceEnabled;
+    return {
+      'entityInferenceEnabled': ?entityInferenceEnabled,
+      'semanticInferenceEnabled': ?semanticInferenceEnabled,
+    };
+  }
+}
+
 /// The output of a DataDocumentation scan.
 class GoogleCloudDataplexV1DataDocumentationResult {
-  /// Table result for insights.
+  /// Insights for a Dataset resource.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDocumentationResultDatasetResult? datasetResult;
+
+  /// Insights for a Table resource.
   ///
   /// Output only.
   GoogleCloudDataplexV1DataDocumentationResultTableResult? tableResult;
 
-  GoogleCloudDataplexV1DataDocumentationResult({this.tableResult});
+  GoogleCloudDataplexV1DataDocumentationResult({
+    this.datasetResult,
+    this.tableResult,
+  });
 
   GoogleCloudDataplexV1DataDocumentationResult.fromJson(core.Map json_)
     : this(
+        datasetResult: json_.containsKey('datasetResult')
+            ? GoogleCloudDataplexV1DataDocumentationResultDatasetResult.fromJson(
+                json_['datasetResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tableResult: json_.containsKey('tableResult')
             ? GoogleCloudDataplexV1DataDocumentationResultTableResult.fromJson(
                 json_['tableResult'] as core.Map<core.String, core.dynamic>,
@@ -14546,8 +13732,68 @@ class GoogleCloudDataplexV1DataDocumentationResult {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final datasetResult = this.datasetResult;
     final tableResult = this.tableResult;
-    return {'tableResult': ?tableResult};
+    return {'datasetResult': ?datasetResult, 'tableResult': ?tableResult};
+  }
+}
+
+/// Insights for a dataset resource.
+class GoogleCloudDataplexV1DataDocumentationResultDatasetResult {
+  /// Generated Dataset description.
+  ///
+  /// Output only.
+  core.String? overview;
+
+  /// Sample SQL queries for the dataset.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataDocumentationResultQuery>? queries;
+
+  /// Relationships suggesting how tables in the dataset are related to each
+  /// other, based on their schema.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship>?
+  schemaRelationships;
+
+  GoogleCloudDataplexV1DataDocumentationResultDatasetResult({
+    this.overview,
+    this.queries,
+    this.schemaRelationships,
+  });
+
+  GoogleCloudDataplexV1DataDocumentationResultDatasetResult.fromJson(
+    core.Map json_,
+  ) : this(
+        overview: json_['overview'] as core.String?,
+        queries: (json_['queries'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDataplexV1DataDocumentationResultQuery.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        schemaRelationships: (json_['schemaRelationships'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final overview = this.overview;
+    final queries = this.queries;
+    final schemaRelationships = this.schemaRelationships;
+    return {
+      'overview': ?overview,
+      'queries': ?queries,
+      'schemaRelationships': ?schemaRelationships,
+    };
   }
 }
 
@@ -14653,7 +13899,121 @@ class GoogleCloudDataplexV1DataDocumentationResultSchema {
   }
 }
 
-/// Generated metadata about the table.
+/// Details of the relationship between the schema of two resources.
+class GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship {
+  /// An ordered list of fields for the join from the first table.
+  ///
+  /// The size of this list must be the same as right_schema_paths. Each field
+  /// at index i in this list must correspond to a field at the same index in
+  /// the right_schema_paths list.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths?
+  leftSchemaPaths;
+
+  /// An ordered list of fields for the join from the second table.
+  ///
+  /// The size of this list must be the same as left_schema_paths. Each field at
+  /// index i in this list must correspond to a field at the same index in the
+  /// left_schema_paths list.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths?
+  rightSchemaPaths;
+
+  /// Sources which generated the schema relation edge.
+  ///
+  /// Output only.
+  core.List<core.String>? sources;
+
+  /// The type of relationship between the schema paths.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : The type of the schema relationship is unspecified.
+  /// - "SCHEMA_JOIN" : Indicates a join relationship between the schema fields.
+  core.String? type;
+
+  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship({
+    this.leftSchemaPaths,
+    this.rightSchemaPaths,
+    this.sources,
+    this.type,
+  });
+
+  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship.fromJson(
+    core.Map json_,
+  ) : this(
+        leftSchemaPaths: json_.containsKey('leftSchemaPaths')
+            ? GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths.fromJson(
+                json_['leftSchemaPaths'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rightSchemaPaths: json_.containsKey('rightSchemaPaths')
+            ? GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths.fromJson(
+                json_['rightSchemaPaths']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sources: (json_['sources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final leftSchemaPaths = this.leftSchemaPaths;
+    final rightSchemaPaths = this.rightSchemaPaths;
+    final sources = this.sources;
+    final type = this.type;
+    return {
+      'leftSchemaPaths': ?leftSchemaPaths,
+      'rightSchemaPaths': ?rightSchemaPaths,
+      'sources': ?sources,
+      'type': ?type,
+    };
+  }
+}
+
+/// Represents an ordered set of paths within a table's schema.
+class GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths {
+  /// An ordered set of Paths to fields within the schema of the table.
+  ///
+  /// For fields nested within a top level field of type record, use '.' to
+  /// separate field names. Examples: Top level field - top_level Nested field -
+  /// top_level.child.sub_field
+  ///
+  /// Output only.
+  core.List<core.String>? paths;
+
+  /// The service-qualified full resource name of the table Ex:
+  /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+  ///
+  /// Output only.
+  core.String? tableFqn;
+
+  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths({
+    this.paths,
+    this.tableFqn,
+  });
+
+  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths.fromJson(
+    core.Map json_,
+  ) : this(
+        paths: (json_['paths'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        tableFqn: json_['tableFqn'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final paths = this.paths;
+    final tableFqn = this.tableFqn;
+    return {'paths': ?paths, 'tableFqn': ?tableFqn};
+  }
+}
+
+/// Insights for a table resource.
 class GoogleCloudDataplexV1DataDocumentationResultTableResult {
   /// The service-qualified full resource name of the cloud resource.
   ///
@@ -15576,6 +14936,20 @@ class GoogleCloudDataplexV1DataProfileSpec {
   /// Optional.
   GoogleCloudDataplexV1DataProfileSpecSelectedFields? includeFields;
 
+  /// The execution mode for the profile scan.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "STANDARD" : Performs standard profiling. The behavior is controlled by
+  /// other fields such as sampling_percent, row_filter, and column filters.
+  /// This mode allows for full scans or custom sampling.
+  /// - "LIGHTWEIGHT" : Specifies lightweight profiling mode. This mode is
+  /// optimized for low-latency low-fidelity profiling.When this mode is
+  /// selected, the following fields must not be set: - sampling_percent -
+  /// row_filter - include_fields - exclude_fields
+  core.String? mode;
+
   /// Actions to take upon job completion..
   ///
   /// Optional.
@@ -15603,6 +14977,7 @@ class GoogleCloudDataplexV1DataProfileSpec {
     this.catalogPublishingEnabled,
     this.excludeFields,
     this.includeFields,
+    this.mode,
     this.postScanActions,
     this.rowFilter,
     this.samplingPercent,
@@ -15622,6 +14997,7 @@ class GoogleCloudDataplexV1DataProfileSpec {
                 json_['includeFields'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        mode: json_['mode'] as core.String?,
         postScanActions: json_.containsKey('postScanActions')
             ? GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromJson(
                 json_['postScanActions'] as core.Map<core.String, core.dynamic>,
@@ -15635,6 +15011,7 @@ class GoogleCloudDataplexV1DataProfileSpec {
     final catalogPublishingEnabled = this.catalogPublishingEnabled;
     final excludeFields = this.excludeFields;
     final includeFields = this.includeFields;
+    final mode = this.mode;
     final postScanActions = this.postScanActions;
     final rowFilter = this.rowFilter;
     final samplingPercent = this.samplingPercent;
@@ -15642,6 +15019,7 @@ class GoogleCloudDataplexV1DataProfileSpec {
       'catalogPublishingEnabled': ?catalogPublishingEnabled,
       'excludeFields': ?excludeFields,
       'includeFields': ?includeFields,
+      'mode': ?mode,
       'postScanActions': ?postScanActions,
       'rowFilter': ?rowFilter,
       'samplingPercent': ?samplingPercent,
@@ -16104,10 +15482,26 @@ typedef GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExpor
 
 /// A rule captures data quality intent about a data source.
 class GoogleCloudDataplexV1DataQualityRule {
+  /// Map of attribute name and value linked to the rule.
+  ///
+  /// The rules to evaluate can be filtered based on attributes provided here
+  /// and a filter expression provided in the DataQualitySpec.filter field.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? attributes;
+
   /// The unnested column which this rule is evaluated against.
   ///
   /// Optional.
   core.String? column;
+
+  /// Specifies the debug queries for this rule.
+  ///
+  /// Currently, only one query is supported, but this may be expanded in the
+  /// future.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDataplexV1DataQualityRuleDebugQuery>? debugQueries;
 
   /// Description of the rule.
   ///
@@ -16122,7 +15516,7 @@ class GoogleCloudDataplexV1DataQualityRule {
   /// is supported with all uppercase letters and maximum length of 30
   /// characters.
   ///
-  /// Required.
+  /// Optional.
   core.String? dimension;
 
   /// Rows with null values will automatically fail a rule, unless ignore_null
@@ -16160,6 +15554,12 @@ class GoogleCloudDataplexV1DataQualityRule {
   GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation?
   rowConditionExpectation;
 
+  /// Contains information about the source of the rule and its relationship
+  /// with the BigQuery table, where applicable.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualityRuleRuleSource? ruleSource;
+
   /// Row-level rule which evaluates whether each column value is contained by a
   /// specified set.
   GoogleCloudDataplexV1DataQualityRuleSetExpectation? setExpectation;
@@ -16187,6 +15587,12 @@ class GoogleCloudDataplexV1DataQualityRule {
   GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation?
   tableConditionExpectation;
 
+  /// Aggregate rule which references a rule template and provides the
+  /// parameters to be substituted in the template.
+  ///
+  /// If any rows are returned, this rule fails.
+  GoogleCloudDataplexV1DataQualityRuleTemplateReference? templateReference;
+
   /// The minimum ratio of passing_rows / total_rows required to pass this rule,
   /// with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field
   /// is only valid for row-level type rules.
@@ -16199,7 +15605,9 @@ class GoogleCloudDataplexV1DataQualityRule {
   uniquenessExpectation;
 
   GoogleCloudDataplexV1DataQualityRule({
+    this.attributes,
     this.column,
+    this.debugQueries,
     this.description,
     this.dimension,
     this.ignoreNull,
@@ -16208,18 +15616,32 @@ class GoogleCloudDataplexV1DataQualityRule {
     this.rangeExpectation,
     this.regexExpectation,
     this.rowConditionExpectation,
+    this.ruleSource,
     this.setExpectation,
     this.sqlAssertion,
     this.statisticRangeExpectation,
     this.suspended,
     this.tableConditionExpectation,
+    this.templateReference,
     this.threshold,
     this.uniquenessExpectation,
   });
 
   GoogleCloudDataplexV1DataQualityRule.fromJson(core.Map json_)
     : this(
+        attributes:
+            (json_['attributes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
         column: json_['column'] as core.String?,
+        debugQueries: (json_['debugQueries'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDataplexV1DataQualityRuleDebugQuery.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         description: json_['description'] as core.String?,
         dimension: json_['dimension'] as core.String?,
         ignoreNull: json_['ignoreNull'] as core.bool?,
@@ -16248,6 +15670,11 @@ class GoogleCloudDataplexV1DataQualityRule {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        ruleSource: json_.containsKey('ruleSource')
+            ? GoogleCloudDataplexV1DataQualityRuleRuleSource.fromJson(
+                json_['ruleSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         setExpectation: json_.containsKey('setExpectation')
             ? GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromJson(
                 json_['setExpectation'] as core.Map<core.String, core.dynamic>,
@@ -16273,6 +15700,12 @@ class GoogleCloudDataplexV1DataQualityRule {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        templateReference: json_.containsKey('templateReference')
+            ? GoogleCloudDataplexV1DataQualityRuleTemplateReference.fromJson(
+                json_['templateReference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         threshold: (json_['threshold'] as core.num?)?.toDouble(),
         uniquenessExpectation: json_.containsKey('uniquenessExpectation')
             ? GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation.fromJson(
@@ -16283,7 +15716,9 @@ class GoogleCloudDataplexV1DataQualityRule {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
     final column = this.column;
+    final debugQueries = this.debugQueries;
     final description = this.description;
     final dimension = this.dimension;
     final ignoreNull = this.ignoreNull;
@@ -16292,15 +15727,19 @@ class GoogleCloudDataplexV1DataQualityRule {
     final rangeExpectation = this.rangeExpectation;
     final regexExpectation = this.regexExpectation;
     final rowConditionExpectation = this.rowConditionExpectation;
+    final ruleSource = this.ruleSource;
     final setExpectation = this.setExpectation;
     final sqlAssertion = this.sqlAssertion;
     final statisticRangeExpectation = this.statisticRangeExpectation;
     final suspended = this.suspended;
     final tableConditionExpectation = this.tableConditionExpectation;
+    final templateReference = this.templateReference;
     final threshold = this.threshold;
     final uniquenessExpectation = this.uniquenessExpectation;
     return {
+      'attributes': ?attributes,
       'column': ?column,
+      'debugQueries': ?debugQueries,
       'description': ?description,
       'dimension': ?dimension,
       'ignoreNull': ?ignoreNull,
@@ -16309,14 +15748,63 @@ class GoogleCloudDataplexV1DataQualityRule {
       'rangeExpectation': ?rangeExpectation,
       'regexExpectation': ?regexExpectation,
       'rowConditionExpectation': ?rowConditionExpectation,
+      'ruleSource': ?ruleSource,
       'setExpectation': ?setExpectation,
       'sqlAssertion': ?sqlAssertion,
       'statisticRangeExpectation': ?statisticRangeExpectation,
       'suspended': ?suspended,
       'tableConditionExpectation': ?tableConditionExpectation,
+      'templateReference': ?templateReference,
       'threshold': ?threshold,
       'uniquenessExpectation': ?uniquenessExpectation,
     };
+  }
+}
+
+/// Specifies a SQL statement that is evaluated to return up to 10 scalar values
+/// that are used to debug rules.
+///
+/// If the rule fails, the values can help diagnose the cause of the failure.The
+/// SQL statement must use GoogleSQL syntax
+/// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax),
+/// and must not contain any semicolons.You can use the data reference parameter
+/// ${data()} to reference the source table with all of its precondition filters
+/// applied. Examples of precondition filters include row filters, incremental
+/// data filters, and sampling. For more information, see Data reference
+/// parameter
+/// (https://cloud.google.com/dataplex/docs/auto-data-quality-overview#data-reference-parameter).You
+/// can also name results with an explicit alias using \[AS\] alias. For more
+/// information, see BigQuery explicit aliases
+/// (https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#explicit_alias_syntax).Example:
+/// SELECT MIN(col1) AS min_col1, MAX(col1) AS max_col1 FROM ${data()}
+class GoogleCloudDataplexV1DataQualityRuleDebugQuery {
+  /// Specifies the description of the debug query.
+  ///
+  /// The maximum length is 1,024 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Specifies the SQL statement to be executed.
+  ///
+  /// Required.
+  core.String? sqlStatement;
+
+  GoogleCloudDataplexV1DataQualityRuleDebugQuery({
+    this.description,
+    this.sqlStatement,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleDebugQuery.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        sqlStatement: json_['sqlStatement'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final sqlStatement = this.sqlStatement;
+    return {'description': ?description, 'sqlStatement': ?sqlStatement};
   }
 }
 
@@ -16411,6 +15899,14 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
   /// Output only.
   core.String? assertionRowCount;
 
+  /// Contains the results of all debug queries for this rule.
+  ///
+  /// The number of result sets will correspond to the number of debug_queries.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>?
+  debugQueriesResultSets;
+
   /// The number of rows a rule was evaluated against.This field is only valid
   /// for row-level type rules.Evaluated count can be configured to either
   /// include all rows (default) - with null rows automatically failing rule
@@ -16455,6 +15951,7 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
 
   GoogleCloudDataplexV1DataQualityRuleResult({
     this.assertionRowCount,
+    this.debugQueriesResultSets,
     this.evaluatedCount,
     this.failingRowsQuery,
     this.nullCount,
@@ -16467,6 +15964,14 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
   GoogleCloudDataplexV1DataQualityRuleResult.fromJson(core.Map json_)
     : this(
         assertionRowCount: json_['assertionRowCount'] as core.String?,
+        debugQueriesResultSets: (json_['debugQueriesResultSets'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         evaluatedCount: json_['evaluatedCount'] as core.String?,
         failingRowsQuery: json_['failingRowsQuery'] as core.String?,
         nullCount: json_['nullCount'] as core.String?,
@@ -16482,6 +15987,7 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
 
   core.Map<core.String, core.dynamic> toJson() {
     final assertionRowCount = this.assertionRowCount;
+    final debugQueriesResultSets = this.debugQueriesResultSets;
     final evaluatedCount = this.evaluatedCount;
     final failingRowsQuery = this.failingRowsQuery;
     final nullCount = this.nullCount;
@@ -16491,6 +15997,7 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
     final rule = this.rule;
     return {
       'assertionRowCount': ?assertionRowCount,
+      'debugQueriesResultSets': ?debugQueriesResultSets,
       'evaluatedCount': ?evaluatedCount,
       'failingRowsQuery': ?failingRowsQuery,
       'nullCount': ?nullCount,
@@ -16502,6 +16009,75 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
   }
 }
 
+/// Contains a single result from the debug query.
+class GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult {
+  /// Specifies the name of the result.
+  ///
+  /// Available if provided with an explicit alias using \[AS\] alias.
+  core.String? name;
+
+  /// Indicates the data type of the result.
+  ///
+  /// For more information, see BigQuery data types
+  /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types).
+  core.String? type;
+
+  /// Represents the value of the result as a string.
+  core.String? value;
+
+  GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult({
+    this.name,
+    this.type,
+    this.value,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult.fromJson(
+    core.Map json_,
+  ) : this(
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final type = this.type;
+    final value = this.value;
+    return {'name': ?name, 'type': ?type, 'value': ?value};
+  }
+}
+
+/// Contains all results from a debug query.
+class GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet {
+  /// Contains all results.
+  ///
+  /// Up to 10 results can be returned.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>?
+  results;
+
+  GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet({this.results});
+
+  GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet.fromJson(
+    core.Map json_,
+  ) : this(
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final results = this.results;
+    return {'results': ?results};
+  }
+}
+
 /// Evaluates whether each row passes the specified condition.The SQL expression
 /// needs to use GoogleSQL syntax
 /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)
@@ -16509,6 +16085,163 @@ class GoogleCloudDataplexV1DataQualityRuleResult {
 /// AND col2 \< 10
 typedef GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation =
     $ConditionExpectation;
+
+/// Represents the rule source information from Catalog.
+class GoogleCloudDataplexV1DataQualityRuleRuleSource {
+  /// Rule path elements represent information about the individual items in the
+  /// relationship path between the scan resource and rule origin in that order.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>?
+  rulePathElements;
+
+  GoogleCloudDataplexV1DataQualityRuleRuleSource({this.rulePathElements});
+
+  GoogleCloudDataplexV1DataQualityRuleRuleSource.fromJson(core.Map json_)
+    : this(
+        rulePathElements: (json_['rulePathElements'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rulePathElements = this.rulePathElements;
+    return {'rulePathElements': ?rulePathElements};
+  }
+}
+
+/// Path Element represents the direct relationship between the rule origin
+/// (aspects) to the BigQuery Entry.
+///
+/// Ordering of the rule relationship will be maintained such that the first
+/// entry in the list is the closest ancestor (BigQuery table itself). A blank
+/// source denotes that the rule is derived directly from the DataScan itself.
+class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement {
+  /// Entry link source represents information about the entry link.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource?
+  entryLinkSource;
+
+  /// Entry source represents information about the related source entry.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource?
+  entrySource;
+
+  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement({
+    this.entryLinkSource,
+    this.entrySource,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement.fromJson(
+    core.Map json_,
+  ) : this(
+        entryLinkSource: json_.containsKey('entryLinkSource')
+            ? GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource.fromJson(
+                json_['entryLinkSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        entrySource: json_.containsKey('entrySource')
+            ? GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource.fromJson(
+                json_['entrySource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entryLinkSource = this.entryLinkSource;
+    final entrySource = this.entrySource;
+    return {'entryLinkSource': ?entryLinkSource, 'entrySource': ?entrySource};
+  }
+}
+
+/// Entry link source represents information about the entry link.
+class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource {
+  /// The entry link name in the form of:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
+  ///
+  /// Output only.
+  core.String? entryLink;
+
+  /// The entry link type to represent the current relationship between the
+  /// entry and the next entry in the path.
+  ///
+  /// In the form of:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryLinkTypes/{entry_link_type_id}
+  ///
+  /// Output only.
+  core.String? entryLinkType;
+
+  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource({
+    this.entryLink,
+    this.entryLinkType,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource.fromJson(
+    core.Map json_,
+  ) : this(
+        entryLink: json_['entryLink'] as core.String?,
+        entryLinkType: json_['entryLinkType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entryLink = this.entryLink;
+    final entryLinkType = this.entryLinkType;
+    return {'entryLink': ?entryLink, 'entryLinkType': ?entryLinkType};
+  }
+}
+
+/// Entry source represents information about the related source entry.
+class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource {
+  /// The display name of the entry.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The entry name in the form of:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+  ///
+  /// Output only.
+  core.String? entry;
+
+  /// The entry type to represent the current characteristics of the entry in
+  /// the form of:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryTypes/{entry-type-id}.
+  ///
+  /// Output only.
+  core.String? entryType;
+
+  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource({
+    this.displayName,
+    this.entry,
+    this.entryType,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource.fromJson(
+    core.Map json_,
+  ) : this(
+        displayName: json_['displayName'] as core.String?,
+        entry: json_['entry'] as core.String?,
+        entryType: json_['entryType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final entry = this.entry;
+    final entryType = this.entryType;
+    return {
+      'displayName': ?displayName,
+      'entry': ?entry,
+      'entryType': ?entryType,
+    };
+  }
+}
 
 /// Evaluates whether each column value is contained by a specified set.
 class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
@@ -16646,6 +16379,257 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
 typedef GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation =
     $ConditionExpectation;
 
+/// DataQualityRuleTemplate represents a template which can be reused across
+/// multiple data quality rules.
+class GoogleCloudDataplexV1DataQualityRuleTemplate {
+  /// A list of features or properties supported by this rule template.
+  ///
+  /// Output only.
+  core.List<core.String>? capabilities;
+
+  /// The dimension a rule template belongs to.
+  ///
+  /// Rule level results are also aggregated at the dimension level.
+  ///
+  /// Output only.
+  core.String? dimension;
+
+  /// Description for input parameters
+  ///
+  /// Output only.
+  core.Map<
+    core.String,
+    GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription
+  >?
+  inputParameters;
+
+  /// The name of the rule template in the format:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Collection of SQLs for data quality rules.
+  ///
+  /// Currently only one SQL is supported.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataQualityRuleTemplateSql>? sqlCollection;
+
+  GoogleCloudDataplexV1DataQualityRuleTemplate({
+    this.capabilities,
+    this.dimension,
+    this.inputParameters,
+    this.name,
+    this.sqlCollection,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleTemplate.fromJson(core.Map json_)
+    : this(
+        capabilities: (json_['capabilities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        dimension: json_['dimension'] as core.String?,
+        inputParameters:
+            (json_['inputParameters'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        name: json_['name'] as core.String?,
+        sqlCollection: (json_['sqlCollection'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDataplexV1DataQualityRuleTemplateSql.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final capabilities = this.capabilities;
+    final dimension = this.dimension;
+    final inputParameters = this.inputParameters;
+    final name = this.name;
+    final sqlCollection = this.sqlCollection;
+    return {
+      'capabilities': ?capabilities,
+      'dimension': ?dimension,
+      'inputParameters': ?inputParameters,
+      'name': ?name,
+      'sqlCollection': ?sqlCollection,
+    };
+  }
+}
+
+/// Description of the input parameter.
+///
+/// It can include the type(s) supported by the parameter and intended usage. It
+/// is for information purposes only and does not affect the behavior of the
+/// rule template.
+class GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription {
+  /// The default value for the parameter if no value is provided.
+  ///
+  /// Output only.
+  core.String? defaultValue;
+
+  /// Description of the input parameter.
+  ///
+  /// It can include the type(s) supported by the parameter and intended usage.
+  /// It is for information purposes only and does not affect the behavior of
+  /// the rule template.
+  ///
+  /// Output only.
+  core.String? description;
+
+  GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription({
+    this.defaultValue,
+    this.description,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription.fromJson(
+    core.Map json_,
+  ) : this(
+        defaultValue: json_['defaultValue'] as core.String?,
+        description: json_['description'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultValue = this.defaultValue;
+    final description = this.description;
+    return {'defaultValue': ?defaultValue, 'description': ?description};
+  }
+}
+
+/// A rule that constructs a SQL statement to evaluate using a rule template and
+/// parameter values.
+///
+/// If the constructed statement returns any rows, this rule fails
+class GoogleCloudDataplexV1DataQualityRuleTemplateReference {
+  /// The template entry name.
+  ///
+  /// Entry must be of EntryType
+  /// projects/dataplex-types/locations/global/entryTypes/data-quality-rule-template
+  /// and contains top-level aspect of AspectType
+  /// projects/dataplex-types/locations/global/aspectTypes/data-quality-rule-template.
+  /// The format is:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The resolved SQL statement generated from the template with parameters
+  /// substituted.
+  ///
+  /// It is only populated in the result.
+  ///
+  /// Output only.
+  core.String? resolvedSql;
+
+  /// The rule template used to resolve the rule.
+  ///
+  /// It is only populated in the result.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualityRuleTemplate? ruleTemplate;
+
+  /// Provides the map of parameter name and value.
+  ///
+  /// The maximum size of the field is 120KB (encoded as UTF-8).
+  ///
+  /// Optional.
+  core.Map<
+    core.String,
+    GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue
+  >?
+  values;
+
+  GoogleCloudDataplexV1DataQualityRuleTemplateReference({
+    this.name,
+    this.resolvedSql,
+    this.ruleTemplate,
+    this.values,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleTemplateReference.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        resolvedSql: json_['resolvedSql'] as core.String?,
+        ruleTemplate: json_.containsKey('ruleTemplate')
+            ? GoogleCloudDataplexV1DataQualityRuleTemplate.fromJson(
+                json_['ruleTemplate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        values: (json_['values'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          ),
+        ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final resolvedSql = this.resolvedSql;
+    final ruleTemplate = this.ruleTemplate;
+    final values = this.values;
+    return {
+      'name': ?name,
+      'resolvedSql': ?resolvedSql,
+      'ruleTemplate': ?ruleTemplate,
+      'values': ?values,
+    };
+  }
+}
+
+/// Represents a parameter value.
+class GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue {
+  /// Represents the string value of the parameter.
+  ///
+  /// Required.
+  core.String? value;
+
+  GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue({
+    this.value,
+  });
+
+  GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue.fromJson(
+    core.Map json_,
+  ) : this(value: json_['value'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
+}
+
+/// Templatized SQL query for data quality rules.
+///
+/// It can have parameters that can be substituted with values when a rule is
+/// created using this template.
+class GoogleCloudDataplexV1DataQualityRuleTemplateSql {
+  /// Templatized SQL query for data quality rules.
+  ///
+  /// Output only.
+  core.String? query;
+
+  GoogleCloudDataplexV1DataQualityRuleTemplateSql({this.query});
+
+  GoogleCloudDataplexV1DataQualityRuleTemplateSql.fromJson(core.Map json_)
+    : this(query: json_['query'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final query = this.query;
+    return {'query': ?query};
+  }
+}
+
 /// Evaluates whether the column has duplicates.
 typedef GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation = $Empty;
 
@@ -16656,6 +16640,35 @@ class GoogleCloudDataplexV1DataQualitySpec {
   ///
   /// Optional.
   core.bool? catalogPublishingEnabled;
+
+  /// If enabled, the data scan will retrieve rules defined in the
+  /// dataplex-types.global.data-rules aspect on all paths of the catalog entry
+  /// corresponding to the BigQuery table resource and all attached glossary
+  /// terms.
+  ///
+  /// The path that data-rules aspect is attached on the table entry defines the
+  /// column that the rule will be evaluated against. For glossary terms, the
+  /// path that the terms are attached on the table entry defines the column
+  /// that the rule will be evaluated against. At the start of scan execution,
+  /// the rules reflect the latest state retrieved from the catalog entry and
+  /// any updates on the rules thereafter are ignored for that execution. The
+  /// updates will be reflected from the next execution. Rules defined in the
+  /// datascan must be empty if this field is enabled.
+  ///
+  /// Optional.
+  core.bool? enableCatalogBasedRules;
+
+  /// Filter for selectively running a subset of rules.
+  ///
+  /// You can filter the request by the name or attribute key-value pairs
+  /// defined on the rule. If not specified, all rules are run. The filter is
+  /// applicable to both, the rules retrieved from catalog and explicitly
+  /// defined rules in the scan. Please see filter syntax
+  /// (https://docs.cloud.google.com/dataplex/docs/auto-data-quality-overview#rule-filtering)
+  /// for more details.
+  ///
+  /// Optional.
+  core.String? filter;
 
   /// Actions to take upon job completion.
   ///
@@ -16691,6 +16704,8 @@ class GoogleCloudDataplexV1DataQualitySpec {
 
   GoogleCloudDataplexV1DataQualitySpec({
     this.catalogPublishingEnabled,
+    this.enableCatalogBasedRules,
+    this.filter,
     this.postScanActions,
     this.rowFilter,
     this.rules,
@@ -16701,6 +16716,8 @@ class GoogleCloudDataplexV1DataQualitySpec {
     : this(
         catalogPublishingEnabled:
             json_['catalogPublishingEnabled'] as core.bool?,
+        enableCatalogBasedRules: json_['enableCatalogBasedRules'] as core.bool?,
+        filter: json_['filter'] as core.String?,
         postScanActions: json_.containsKey('postScanActions')
             ? GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromJson(
                 json_['postScanActions'] as core.Map<core.String, core.dynamic>,
@@ -16719,12 +16736,16 @@ class GoogleCloudDataplexV1DataQualitySpec {
 
   core.Map<core.String, core.dynamic> toJson() {
     final catalogPublishingEnabled = this.catalogPublishingEnabled;
+    final enableCatalogBasedRules = this.enableCatalogBasedRules;
+    final filter = this.filter;
     final postScanActions = this.postScanActions;
     final rowFilter = this.rowFilter;
     final rules = this.rules;
     final samplingPercent = this.samplingPercent;
     return {
       'catalogPublishingEnabled': ?catalogPublishingEnabled,
+      'enableCatalogBasedRules': ?enableCatalogBasedRules,
+      'filter': ?filter,
       'postScanActions': ?postScanActions,
       'rowFilter': ?rowFilter,
       'rules': ?rules,
@@ -16945,9 +16966,10 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
 /// discovery: scans data in Cloud Storage buckets to extract and then catalog
 /// metadata. For more information, see Discover and catalog Cloud Storage data
 /// (https://cloud.google.com/bigquery/docs/automatic-discovery). Data
-/// documentation: analyzes the table details and generates insights including
-/// descriptions and sample SQL queries for the table. For more information, see
-/// Generate data insights in BigQuery
+/// documentation: analyzes the table or dataset metadata and generates
+/// insights. For tables, insights include descriptions and sample SQL queries.
+/// For datasets, insights include descriptions, schema relationships and sample
+/// SQL queries. For more information, see Generate data insights in BigQuery
 /// (https://cloud.google.com/bigquery/docs/data-insights).
 class GoogleCloudDataplexV1DataScan {
   /// The time when the scan was created.
@@ -17005,6 +17027,13 @@ class GoogleCloudDataplexV1DataScan {
   ///
   /// Optional.
   core.String? displayName;
+
+  /// The identity to run the datascan.
+  ///
+  /// If not specified, defaults to the Dataplex Service Agent.
+  ///
+  /// Optional. Immutable.
+  GoogleCloudDataplexV1ExecutionIdentity? executionIdentity;
 
   /// DataScan execution settings.If not specified, the fields in it will use
   /// their default values.
@@ -17080,6 +17109,7 @@ class GoogleCloudDataplexV1DataScan {
     this.dataQualitySpec,
     this.description,
     this.displayName,
+    this.executionIdentity,
     this.executionSpec,
     this.executionStatus,
     this.labels,
@@ -17146,6 +17176,12 @@ class GoogleCloudDataplexV1DataScan {
             : null,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
+        executionIdentity: json_.containsKey('executionIdentity')
+            ? GoogleCloudDataplexV1ExecutionIdentity.fromJson(
+                json_['executionIdentity']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         executionSpec: json_.containsKey('executionSpec')
             ? GoogleCloudDataplexV1DataScanExecutionSpec.fromJson(
                 json_['executionSpec'] as core.Map<core.String, core.dynamic>,
@@ -17179,6 +17215,7 @@ class GoogleCloudDataplexV1DataScan {
     final dataQualitySpec = this.dataQualitySpec;
     final description = this.description;
     final displayName = this.displayName;
+    final executionIdentity = this.executionIdentity;
     final executionSpec = this.executionSpec;
     final executionStatus = this.executionStatus;
     final labels = this.labels;
@@ -17200,6 +17237,7 @@ class GoogleCloudDataplexV1DataScan {
       'dataQualitySpec': ?dataQualitySpec,
       'description': ?description,
       'displayName': ?displayName,
+      'executionIdentity': ?executionIdentity,
       'executionSpec': ?executionSpec,
       'executionStatus': ?executionStatus,
       'labels': ?labels,
@@ -17383,6 +17421,11 @@ class GoogleCloudDataplexV1DataScanJob {
   /// Output only.
   core.String? name;
 
+  /// A message indicating partial failure details.
+  ///
+  /// Output only.
+  core.String? partialFailureMessage;
+
   /// The time when the DataScanJob was started.
   ///
   /// Output only.
@@ -17399,6 +17442,7 @@ class GoogleCloudDataplexV1DataScanJob {
   /// - "SUCCEEDED" : The DataScanJob completed successfully.
   /// - "FAILED" : The DataScanJob is no longer running due to an error.
   /// - "PENDING" : The DataScanJob has been created but not started to run yet.
+  /// - "SUCCEEDED_WITH_ERRORS" : The DataScanJob succeeded with errors.
   core.String? state;
 
   /// The type of the parent DataScan.
@@ -17430,6 +17474,7 @@ class GoogleCloudDataplexV1DataScanJob {
     this.endTime,
     this.message,
     this.name,
+    this.partialFailureMessage,
     this.startTime,
     this.state,
     this.type,
@@ -17488,6 +17533,7 @@ class GoogleCloudDataplexV1DataScanJob {
         endTime: json_['endTime'] as core.String?,
         message: json_['message'] as core.String?,
         name: json_['name'] as core.String?,
+        partialFailureMessage: json_['partialFailureMessage'] as core.String?,
         startTime: json_['startTime'] as core.String?,
         state: json_['state'] as core.String?,
         type: json_['type'] as core.String?,
@@ -17507,6 +17553,7 @@ class GoogleCloudDataplexV1DataScanJob {
     final endTime = this.endTime;
     final message = this.message;
     final name = this.name;
+    final partialFailureMessage = this.partialFailureMessage;
     final startTime = this.startTime;
     final state = this.state;
     final type = this.type;
@@ -17524,6 +17571,7 @@ class GoogleCloudDataplexV1DataScanJob {
       'endTime': ?endTime,
       'message': ?message,
       'name': ?name,
+      'partialFailureMessage': ?partialFailureMessage,
       'startTime': ?startTime,
       'state': ?state,
       'type': ?type,
@@ -17549,6 +17597,8 @@ class GoogleCloudDataplexV1DataSource {
   /// BigQuery table of type "TABLE" for
   /// DataProfileScan/DataQualityScan/DataDocumentationScan Format:
   /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+  /// or BigQuery dataset for DataDocumentationScan only Format:
+  /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID
   ///
   /// Immutable.
   core.String? resource;
@@ -18362,6 +18412,15 @@ class GoogleCloudDataplexV1EntryGroup {
 
 /// EntryLink represents a link between two Entries.
 class GoogleCloudDataplexV1EntryLink {
+  /// The aspects that are attached to the entry link.
+  ///
+  /// The format of the aspect key has to be the following:
+  /// {project_id_or_number}.{location_id}.{aspect_type_id} Currently, only a
+  /// single aspect of a Dataplex-owned Aspect Type is allowed.
+  ///
+  /// Optional.
+  core.Map<core.String, GoogleCloudDataplexV1Aspect>? aspects;
+
   /// The time when the Entry Link was created.
   ///
   /// Output only.
@@ -18384,7 +18443,7 @@ class GoogleCloudDataplexV1EntryLink {
   ///
   /// There should be exactly two entry references.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.List<GoogleCloudDataplexV1EntryLinkEntryReference>? entryReferences;
 
   /// Identifier.
@@ -18401,6 +18460,7 @@ class GoogleCloudDataplexV1EntryLink {
   core.String? updateTime;
 
   GoogleCloudDataplexV1EntryLink({
+    this.aspects,
     this.createTime,
     this.entryLinkType,
     this.entryReferences,
@@ -18410,6 +18470,15 @@ class GoogleCloudDataplexV1EntryLink {
 
   GoogleCloudDataplexV1EntryLink.fromJson(core.Map json_)
     : this(
+        aspects: (json_['aspects'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudDataplexV1Aspect.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
         createTime: json_['createTime'] as core.String?,
         entryLinkType: json_['entryLinkType'] as core.String?,
         entryReferences: (json_['entryReferences'] as core.List?)
@@ -18424,12 +18493,14 @@ class GoogleCloudDataplexV1EntryLink {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final aspects = this.aspects;
     final createTime = this.createTime;
     final entryLinkType = this.entryLinkType;
     final entryReferences = this.entryReferences;
     final name = this.name;
     final updateTime = this.updateTime;
     return {
+      'aspects': ?aspects,
       'createTime': ?createTime,
       'entryLinkType': ?entryLinkType,
       'entryReferences': ?entryReferences,
@@ -18824,398 +18895,93 @@ class GoogleCloudDataplexV1EntryTypeAuthorization {
   }
 }
 
-/// Environment represents a user-visible compute infrastructure for analytics
-/// within a lake.
-class GoogleCloudDataplexV1Environment {
-  /// Environment creation time.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Description of the environment.
+/// The identity to run the datascan.
+class GoogleCloudDataplexV1ExecutionIdentity {
+  /// The Dataplex service agent associated with the user's project.
   ///
   /// Optional.
-  core.String? description;
+  GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent?
+  dataplexServiceAgent;
 
-  /// User friendly display name.
+  /// The provided service account.
   ///
   /// Optional.
-  core.String? displayName;
+  GoogleCloudDataplexV1ExecutionIdentityServiceAccount? serviceAccount;
 
-  /// URI Endpoints to access sessions associated with the Environment.
+  /// The credential of the calling user.
   ///
-  /// Output only.
-  GoogleCloudDataplexV1EnvironmentEndpoints? endpoints;
-
-  /// Infrastructure specification for the Environment.
-  ///
-  /// Required.
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpec? infrastructureSpec;
-
-  /// User defined labels for the environment.
+  /// Supports only ONE_TIME trigger type.
   ///
   /// Optional.
-  core.Map<core.String, core.String>? labels;
+  GoogleCloudDataplexV1ExecutionIdentityUserCredential? userCredential;
 
-  /// The relative resource name of the environment, of the form:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Configuration for sessions created for this environment.
-  ///
-  /// Optional.
-  GoogleCloudDataplexV1EnvironmentSessionSpec? sessionSpec;
-
-  /// Status of sessions created for this environment.
-  ///
-  /// Output only.
-  GoogleCloudDataplexV1EnvironmentSessionStatus? sessionStatus;
-
-  /// Current state of the environment.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State is not specified.
-  /// - "ACTIVE" : Resource is active, i.e., ready to use.
-  /// - "CREATING" : Resource is under creation.
-  /// - "DELETING" : Resource is under deletion.
-  /// - "ACTION_REQUIRED" : Resource is active but has unresolved actions.
-  core.String? state;
-
-  /// System generated globally unique ID for the environment.
-  ///
-  /// This ID will be different if the environment is deleted and re-created
-  /// with the same name.
-  ///
-  /// Output only.
-  core.String? uid;
-
-  /// The time when the environment was last updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleCloudDataplexV1Environment({
-    this.createTime,
-    this.description,
-    this.displayName,
-    this.endpoints,
-    this.infrastructureSpec,
-    this.labels,
-    this.name,
-    this.sessionSpec,
-    this.sessionStatus,
-    this.state,
-    this.uid,
-    this.updateTime,
+  GoogleCloudDataplexV1ExecutionIdentity({
+    this.dataplexServiceAgent,
+    this.serviceAccount,
+    this.userCredential,
   });
 
-  GoogleCloudDataplexV1Environment.fromJson(core.Map json_)
+  GoogleCloudDataplexV1ExecutionIdentity.fromJson(core.Map json_)
     : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        endpoints: json_.containsKey('endpoints')
-            ? GoogleCloudDataplexV1EnvironmentEndpoints.fromJson(
-                json_['endpoints'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        infrastructureSpec: json_.containsKey('infrastructureSpec')
-            ? GoogleCloudDataplexV1EnvironmentInfrastructureSpec.fromJson(
-                json_['infrastructureSpec']
+        dataplexServiceAgent: json_.containsKey('dataplexServiceAgent')
+            ? GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent.fromJson(
+                json_['dataplexServiceAgent']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        sessionSpec: json_.containsKey('sessionSpec')
-            ? GoogleCloudDataplexV1EnvironmentSessionSpec.fromJson(
-                json_['sessionSpec'] as core.Map<core.String, core.dynamic>,
+        serviceAccount: json_.containsKey('serviceAccount')
+            ? GoogleCloudDataplexV1ExecutionIdentityServiceAccount.fromJson(
+                json_['serviceAccount'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        sessionStatus: json_.containsKey('sessionStatus')
-            ? GoogleCloudDataplexV1EnvironmentSessionStatus.fromJson(
-                json_['sessionStatus'] as core.Map<core.String, core.dynamic>,
+        userCredential: json_.containsKey('userCredential')
+            ? GoogleCloudDataplexV1ExecutionIdentityUserCredential.fromJson(
+                json_['userCredential'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        state: json_['state'] as core.String?,
-        uid: json_['uid'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final createTime = this.createTime;
-    final description = this.description;
-    final displayName = this.displayName;
-    final endpoints = this.endpoints;
-    final infrastructureSpec = this.infrastructureSpec;
-    final labels = this.labels;
-    final name = this.name;
-    final sessionSpec = this.sessionSpec;
-    final sessionStatus = this.sessionStatus;
-    final state = this.state;
-    final uid = this.uid;
-    final updateTime = this.updateTime;
+    final dataplexServiceAgent = this.dataplexServiceAgent;
+    final serviceAccount = this.serviceAccount;
+    final userCredential = this.userCredential;
     return {
-      'createTime': ?createTime,
-      'description': ?description,
-      'displayName': ?displayName,
-      'endpoints': ?endpoints,
-      'infrastructureSpec': ?infrastructureSpec,
-      'labels': ?labels,
-      'name': ?name,
-      'sessionSpec': ?sessionSpec,
-      'sessionStatus': ?sessionStatus,
-      'state': ?state,
-      'uid': ?uid,
-      'updateTime': ?updateTime,
+      'dataplexServiceAgent': ?dataplexServiceAgent,
+      'serviceAccount': ?serviceAccount,
+      'userCredential': ?userCredential,
     };
   }
 }
 
-/// URI Endpoints to access sessions associated with the Environment.
-class GoogleCloudDataplexV1EnvironmentEndpoints {
-  /// URI to serve notebook APIs
+/// The Dataplex service agent associated with the user's project.
+typedef GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent = $Empty;
+
+/// The service account
+class GoogleCloudDataplexV1ExecutionIdentityServiceAccount {
+  /// Service account email.
   ///
-  /// Output only.
-  core.String? notebooks;
-
-  /// URI to serve SQL APIs
-  ///
-  /// Output only.
-  core.String? sql;
-
-  GoogleCloudDataplexV1EnvironmentEndpoints({this.notebooks, this.sql});
-
-  GoogleCloudDataplexV1EnvironmentEndpoints.fromJson(core.Map json_)
-    : this(
-        notebooks: json_['notebooks'] as core.String?,
-        sql: json_['sql'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final notebooks = this.notebooks;
-    final sql = this.sql;
-    return {'notebooks': ?notebooks, 'sql': ?sql};
-  }
-}
-
-/// Configuration for the underlying infrastructure used to run workloads.
-class GoogleCloudDataplexV1EnvironmentInfrastructureSpec {
-  /// Compute resources needed for analyze interactive workloads.
-  ///
-  /// Optional.
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources? compute;
-
-  /// Software Runtime Configuration for analyze interactive workloads.
+  /// The datascan will execute with this service account's credentials. The
+  /// user calling this API must have permissions to act as this service
+  /// account. Dataplex service agent must be granted
+  /// iam.serviceAccounts.getAccessToken permission on this service account, for
+  /// example, through the iam.serviceAccountTokenCreator role .
   ///
   /// Required.
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime? osImage;
+  core.String? email;
 
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpec({
-    this.compute,
-    this.osImage,
-  });
+  GoogleCloudDataplexV1ExecutionIdentityServiceAccount({this.email});
 
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpec.fromJson(core.Map json_)
-    : this(
-        compute: json_.containsKey('compute')
-            ? GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromJson(
-                json_['compute'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        osImage: json_.containsKey('osImage')
-            ? GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime.fromJson(
-                json_['osImage'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-      );
+  GoogleCloudDataplexV1ExecutionIdentityServiceAccount.fromJson(core.Map json_)
+    : this(email: json_['email'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
-    final compute = this.compute;
-    final osImage = this.osImage;
-    return {'compute': ?compute, 'osImage': ?osImage};
+    final email = this.email;
+    return {'email': ?email};
   }
 }
 
-/// Compute resources associated with the analyze interactive workloads.
-class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources {
-  /// Size in GB of the disk.
-  ///
-  /// Default is 100 GB.
-  ///
-  /// Optional.
-  core.int? diskSizeGb;
-
-  /// Max configurable nodes.
-  ///
-  /// If max_node_count \> node_count, then auto-scaling is enabled.
-  ///
-  /// Optional.
-  core.int? maxNodeCount;
-
-  /// Total number of nodes in the sessions created for this environment.
-  ///
-  /// Optional.
-  core.int? nodeCount;
-
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources({
-    this.diskSizeGb,
-    this.maxNodeCount,
-    this.nodeCount,
-  });
-
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromJson(
-    core.Map json_,
-  ) : this(
-        diskSizeGb: json_['diskSizeGb'] as core.int?,
-        maxNodeCount: json_['maxNodeCount'] as core.int?,
-        nodeCount: json_['nodeCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final diskSizeGb = this.diskSizeGb;
-    final maxNodeCount = this.maxNodeCount;
-    final nodeCount = this.nodeCount;
-    return {
-      'diskSizeGb': ?diskSizeGb,
-      'maxNodeCount': ?maxNodeCount,
-      'nodeCount': ?nodeCount,
-    };
-  }
-}
-
-/// Software Runtime Configuration to run Analyze.
-class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime {
-  /// Dataplex Universal Catalog Image version.
-  ///
-  /// Required.
-  core.String? imageVersion;
-
-  /// List of Java jars to be included in the runtime environment.
-  ///
-  /// Valid input includes Cloud Storage URIs to Jar binaries. For example,
-  /// gs://bucket-name/my/path/to/file.jar
-  ///
-  /// Optional.
-  core.List<core.String>? javaLibraries;
-
-  /// Spark properties to provide configuration for use in sessions created for
-  /// this environment.
-  ///
-  /// The properties to set on daemon config files. Property keys are specified
-  /// in prefix:property format. The prefix must be "spark".
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? properties;
-
-  /// A list of python packages to be installed.
-  ///
-  /// Valid formats include Cloud Storage URI to a PIP installable library. For
-  /// example, gs://bucket-name/my/path/to/lib.tar.gz
-  ///
-  /// Optional.
-  core.List<core.String>? pythonPackages;
-
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime({
-    this.imageVersion,
-    this.javaLibraries,
-    this.properties,
-    this.pythonPackages,
-  });
-
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime.fromJson(
-    core.Map json_,
-  ) : this(
-        imageVersion: json_['imageVersion'] as core.String?,
-        javaLibraries: (json_['javaLibraries'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        properties:
-            (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
-              (key, value) => core.MapEntry(key, value as core.String),
-            ),
-        pythonPackages: (json_['pythonPackages'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final imageVersion = this.imageVersion;
-    final javaLibraries = this.javaLibraries;
-    final properties = this.properties;
-    final pythonPackages = this.pythonPackages;
-    return {
-      'imageVersion': ?imageVersion,
-      'javaLibraries': ?javaLibraries,
-      'properties': ?properties,
-      'pythonPackages': ?pythonPackages,
-    };
-  }
-}
-
-/// Configuration for sessions created for this environment.
-class GoogleCloudDataplexV1EnvironmentSessionSpec {
-  /// If True, this causes sessions to be pre-created and available for faster
-  /// startup to enable interactive exploration use-cases.
-  ///
-  /// This defaults to False to avoid additional billed charges. These can only
-  /// be set to True for the environment with name set to "default", and with
-  /// default configuration.
-  ///
-  /// Optional.
-  core.bool? enableFastStartup;
-
-  /// The idle time configuration of the session.
-  ///
-  /// The session will be auto-terminated at the end of this period.
-  ///
-  /// Optional.
-  core.String? maxIdleDuration;
-
-  GoogleCloudDataplexV1EnvironmentSessionSpec({
-    this.enableFastStartup,
-    this.maxIdleDuration,
-  });
-
-  GoogleCloudDataplexV1EnvironmentSessionSpec.fromJson(core.Map json_)
-    : this(
-        enableFastStartup: json_['enableFastStartup'] as core.bool?,
-        maxIdleDuration: json_['maxIdleDuration'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final enableFastStartup = this.enableFastStartup;
-    final maxIdleDuration = this.maxIdleDuration;
-    return {
-      'enableFastStartup': ?enableFastStartup,
-      'maxIdleDuration': ?maxIdleDuration,
-    };
-  }
-}
-
-/// Status of sessions created for this environment.
-class GoogleCloudDataplexV1EnvironmentSessionStatus {
-  /// Queries over sessions to mark whether the environment is currently active
-  /// or not
-  ///
-  /// Output only.
-  core.bool? active;
-
-  GoogleCloudDataplexV1EnvironmentSessionStatus({this.active});
-
-  GoogleCloudDataplexV1EnvironmentSessionStatus.fromJson(core.Map json_)
-    : this(active: json_['active'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final active = this.active;
-    return {'active': ?active};
-  }
-}
+/// The credential of the calling user.
+typedef GoogleCloudDataplexV1ExecutionIdentityUserCredential = $Empty;
 
 /// Request details for generating data quality rule recommendations.
 typedef GoogleCloudDataplexV1GenerateDataQualityRulesRequest = $Empty;
@@ -20061,36 +19827,6 @@ class GoogleCloudDataplexV1ListAssetsResponse {
   }
 }
 
-/// List content response.
-class GoogleCloudDataplexV1ListContentResponse {
-  /// Content under the given parent lake.
-  core.List<GoogleCloudDataplexV1Content>? content;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
-  core.String? nextPageToken;
-
-  GoogleCloudDataplexV1ListContentResponse({this.content, this.nextPageToken});
-
-  GoogleCloudDataplexV1ListContentResponse.fromJson(core.Map json_)
-    : this(
-        content: (json_['content'] as core.List?)
-            ?.map(
-              (value) => GoogleCloudDataplexV1Content.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-        nextPageToken: json_['nextPageToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final content = this.content;
-    final nextPageToken = this.nextPageToken;
-    return {'content': ?content, 'nextPageToken': ?nextPageToken};
-  }
-}
-
 /// Response message for listing data assets.
 class GoogleCloudDataplexV1ListDataAssetsResponse {
   /// The data assets for the requested filter criteria.
@@ -20585,39 +20321,6 @@ class GoogleCloudDataplexV1ListEntryTypesResponse {
   }
 }
 
-/// List environments response.
-class GoogleCloudDataplexV1ListEnvironmentsResponse {
-  /// Environments under the given parent lake.
-  core.List<GoogleCloudDataplexV1Environment>? environments;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
-  core.String? nextPageToken;
-
-  GoogleCloudDataplexV1ListEnvironmentsResponse({
-    this.environments,
-    this.nextPageToken,
-  });
-
-  GoogleCloudDataplexV1ListEnvironmentsResponse.fromJson(core.Map json_)
-    : this(
-        environments: (json_['environments'] as core.List?)
-            ?.map(
-              (value) => GoogleCloudDataplexV1Environment.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-        nextPageToken: json_['nextPageToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final environments = this.environments;
-    final nextPageToken = this.nextPageToken;
-    return {'environments': ?environments, 'nextPageToken': ?nextPageToken};
-  }
-}
-
 /// List Glossaries Response
 class GoogleCloudDataplexV1ListGlossariesResponse {
   /// Lists the Glossaries in the specified parent.
@@ -20958,39 +20661,6 @@ class GoogleCloudDataplexV1ListPartitionsResponse {
   }
 }
 
-/// List sessions response.
-class GoogleCloudDataplexV1ListSessionsResponse {
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
-  core.String? nextPageToken;
-
-  /// Sessions under a given environment.
-  core.List<GoogleCloudDataplexV1Session>? sessions;
-
-  GoogleCloudDataplexV1ListSessionsResponse({
-    this.nextPageToken,
-    this.sessions,
-  });
-
-  GoogleCloudDataplexV1ListSessionsResponse.fromJson(core.Map json_)
-    : this(
-        nextPageToken: json_['nextPageToken'] as core.String?,
-        sessions: (json_['sessions'] as core.List?)
-            ?.map(
-              (value) => GoogleCloudDataplexV1Session.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final nextPageToken = this.nextPageToken;
-    final sessions = this.sessions;
-    return {'nextPageToken': ?nextPageToken, 'sessions': ?sessions};
-  }
-}
-
 /// List tasks response.
 class GoogleCloudDataplexV1ListTasksResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -21063,6 +20733,94 @@ class GoogleCloudDataplexV1ListZonesResponse {
     final nextPageToken = this.nextPageToken;
     final zones = this.zones;
     return {'nextPageToken': ?nextPageToken, 'zones': ?zones};
+  }
+}
+
+/// Lookup Context using permissions in the source system.
+class GoogleCloudDataplexV1LookupContextRequest {
+  /// Allows to configure the context.Supported options: format - The format of
+  /// the context (one of yaml, xml, json, default is yaml).
+  ///
+  /// context_budget - If provided, the output will be intelligently truncated
+  /// on a best-effort basis to contain approximately the desired amount of
+  /// characters. There is no guarantee to achieve the specific amount.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? options;
+
+  /// The entry names to look up the context for.
+  ///
+  /// The maximum number of resources for a request is limited to
+  /// 10.Examples:projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}
+  ///
+  /// Required.
+  core.List<core.String>? resources;
+
+  GoogleCloudDataplexV1LookupContextRequest({this.options, this.resources});
+
+  GoogleCloudDataplexV1LookupContextRequest.fromJson(core.Map json_)
+    : this(
+        options: (json_['options'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        resources: (json_['resources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    final resources = this.resources;
+    return {'options': ?options, 'resources': ?resources};
+  }
+}
+
+/// Lookup Context response.
+class GoogleCloudDataplexV1LookupContextResponse {
+  /// Pre-formatted block of text containing the context for the requested
+  /// resources.
+  core.String? context;
+
+  GoogleCloudDataplexV1LookupContextResponse({this.context});
+
+  GoogleCloudDataplexV1LookupContextResponse.fromJson(core.Map json_)
+    : this(context: json_['context'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final context = this.context;
+    return {'context': ?context};
+  }
+}
+
+/// Response message for LookupEntryLinks.
+class GoogleCloudDataplexV1LookupEntryLinksResponse {
+  /// List of entry links that reference the specified entry.
+  core.List<GoogleCloudDataplexV1EntryLink>? entryLinks;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDataplexV1LookupEntryLinksResponse({
+    this.entryLinks,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDataplexV1LookupEntryLinksResponse.fromJson(core.Map json_)
+    : this(
+        entryLinks: (json_['entryLinks'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1EntryLink.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entryLinks = this.entryLinks;
+    final nextPageToken = this.nextPageToken;
+    return {'entryLinks': ?entryLinks, 'nextPageToken': ?nextPageToken};
   }
 }
 
@@ -22022,6 +21780,79 @@ class GoogleCloudDataplexV1MetadataJobStatus {
   }
 }
 
+/// Modify Entry request using permissions in the source system.
+class GoogleCloudDataplexV1ModifyEntryRequest {
+  /// The aspect keys which the service should modify.
+  ///
+  /// It supports the following syntaxes: - matches an aspect of the given type
+  /// and empty path. @path - matches an aspect of the given type and specified
+  /// path. For example, to attach an aspect to a field that is specified by the
+  /// schema aspect, the path should have the format Schema.. @* - matches
+  /// aspects of the given type for all paths. *@path - matches aspects of all
+  /// types on the given path.The service will not remove existing aspects
+  /// matching the syntax unless delete_missing_aspects is set to true.If this
+  /// field is left empty, the service treats it as specifying exactly those
+  /// Aspects present in the request.
+  ///
+  /// Optional.
+  core.List<core.String>? aspectKeys;
+
+  /// If set to true, any aspects not specified in the request will be deleted.
+  ///
+  /// The default is false.
+  ///
+  /// Optional.
+  core.bool? deleteMissingAspects;
+
+  /// The entry to modify.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1Entry? entry;
+
+  /// Mask of fields to update.
+  ///
+  /// To update Aspects, the update_mask must contain the value "aspects".If the
+  /// update_mask is empty, the service will update all modifiable fields
+  /// present in the request.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  GoogleCloudDataplexV1ModifyEntryRequest({
+    this.aspectKeys,
+    this.deleteMissingAspects,
+    this.entry,
+    this.updateMask,
+  });
+
+  GoogleCloudDataplexV1ModifyEntryRequest.fromJson(core.Map json_)
+    : this(
+        aspectKeys: (json_['aspectKeys'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        deleteMissingAspects: json_['deleteMissingAspects'] as core.bool?,
+        entry: json_.containsKey('entry')
+            ? GoogleCloudDataplexV1Entry.fromJson(
+                json_['entry'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aspectKeys = this.aspectKeys;
+    final deleteMissingAspects = this.deleteMissingAspects;
+    final entry = this.entry;
+    final updateMask = this.updateMask;
+    return {
+      'aspectKeys': ?aspectKeys,
+      'deleteMissingAspects': ?deleteMissingAspects,
+      'entry': ?entry,
+      'updateMask': ?updateMask,
+    };
+  }
+}
+
 /// Represents partition metadata contained within entity instances.
 class GoogleCloudDataplexV1Partition {
   /// The etag for this partition.
@@ -22644,64 +22475,6 @@ class GoogleCloudDataplexV1SearchEntriesResultSnippets {
   core.Map<core.String, core.dynamic> toJson() {
     final dataplexEntry = this.dataplexEntry;
     return {'dataplexEntry': ?dataplexEntry};
-  }
-}
-
-/// Represents an active analyze session running for a user.
-class GoogleCloudDataplexV1Session {
-  /// Session start time.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The relative resource name of the content, of the form:
-  /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}/sessions/{session_id}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// State of Session
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State is not specified.
-  /// - "ACTIVE" : Resource is active, i.e., ready to use.
-  /// - "CREATING" : Resource is under creation.
-  /// - "DELETING" : Resource is under deletion.
-  /// - "ACTION_REQUIRED" : Resource is active but has unresolved actions.
-  core.String? state;
-
-  /// Email of user running the session.
-  ///
-  /// Output only.
-  core.String? userId;
-
-  GoogleCloudDataplexV1Session({
-    this.createTime,
-    this.name,
-    this.state,
-    this.userId,
-  });
-
-  GoogleCloudDataplexV1Session.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-        userId: json_['userId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final createTime = this.createTime;
-    final name = this.name;
-    final state = this.state;
-    final userId = this.userId;
-    return {
-      'createTime': ?createTime,
-      'name': ?name,
-      'state': ?state,
-      'userId': ?userId,
-    };
   }
 }
 

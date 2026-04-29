@@ -130,12 +130,12 @@ class AccountSummariesResource {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of AccountSummary resources to return. The
-  /// service may return fewer than this value, even if there are additional
-  /// pages. If unspecified, at most 50 resources will be returned. The maximum
-  /// value is 200; (higher values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of AccountSummary resources to
+  /// return. The service may return fewer than this value, even if there are
+  /// additional pages. If unspecified, at most 50 resources will be returned.
+  /// The maximum value is 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListAccountSummaries` call. Provide this to retrieve the subsequent page.
   /// When paginating, all other parameters provided to `ListAccountSummaries`
   /// must match the call that provided the page token.
@@ -313,15 +313,15 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of resources to return. The service may
-  /// return fewer than this value, even if there are additional pages. If
-  /// unspecified, at most 50 resources will be returned. The maximum value is
-  /// 200; (higher values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. The
+  /// service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 resources will be returned. The maximum
+  /// value is 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous `ListAccounts` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListAccounts` must match the call that provided
-  /// the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAccounts` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListAccounts` must match the
+  /// call that provided the page token.
   ///
   /// [showDeleted] - Whether to include soft-deleted (ie: "trashed") Accounts
   /// in the results. Accounts can be inspected to determine whether they are
@@ -368,7 +368,7 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this account. Format:
+  /// [name] - Identifier. Resource name of this account. Format:
   /// accounts/{account} Example: "accounts/100"
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
@@ -1410,6 +1410,42 @@ class PropertiesResource {
     );
   }
 
+  /// Looks up settings related to user-provided data for a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the user provided data settings to
+  /// retrieve. Format: properties/{property}/userProvidedDataSettings
+  /// Value must have pattern `^properties/\[^/\]+/userProvidedDataSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaUserProvidedDataSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+  getUserProvidedDataSettings(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaUserProvidedDataSettings.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Returns child Properties under the specified parent Account.
   ///
   /// Properties will be excluded if the caller does not have access.
@@ -1430,15 +1466,15 @@ class PropertiesResource {
   /// firebase_project:project-id | The firebase project with id: project-id. |
   /// | firebase_project:123 | The firebase project with number: 123. | ```
   ///
-  /// [pageSize] - The maximum number of resources to return. The service may
-  /// return fewer than this value, even if there are additional pages. If
-  /// unspecified, at most 50 resources will be returned. The maximum value is
-  /// 200; (higher values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. The
+  /// service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 resources will be returned. The maximum
+  /// value is 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous `ListProperties`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListProperties` must match the call that
-  /// provided the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListProperties` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListProperties` must match
+  /// the call that provided the page token.
   ///
   /// [showDeleted] - Whether to include soft-deleted (ie: "trashed") Properties
   /// in the results. Properties can be inspected to determine whether they are
@@ -1487,7 +1523,7 @@ class PropertiesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this property. Format:
+  /// [name] - Identifier. Resource name of this property. Format:
   /// properties/{property_id} Example: "properties/1000"
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
@@ -1740,8 +1776,8 @@ class PropertiesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name for this DataRetentionSetting
-  /// resource. Format: properties/{property}/dataRetentionSettings
+  /// [name] - Identifier. Resource name for this DataRetentionSetting resource.
+  /// Format: properties/{property}/dataRetentionSettings
   /// Value must have pattern `^properties/\[^/\]+/dataRetentionSettings$`.
   ///
   /// [updateMask] - Required. The list of fields to be updated. Field names
@@ -3108,7 +3144,7 @@ class PropertiesCalculatedMetricsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name for this CalculatedMetric. Format:
+  /// [name] - Identifier. Resource name for this CalculatedMetric. Format:
   /// 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'
   /// Value must have pattern `^properties/\[^/\]+/calculatedMetrics/\[^/\]+$`.
   ///
@@ -3536,11 +3572,11 @@ class PropertiesConversionEventsResource {
   /// 'properties/123'
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 50 resources will be returned. The maximum value is 200; (higher
-  /// values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 50 resources will be returned. The maximum value is
+  /// 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListConversionEvents` call. Provide this to retrieve the subsequent page.
   /// When paginating, all other parameters provided to `ListConversionEvents`
   /// must match the call that provided the page token.
@@ -3592,7 +3628,7 @@ class PropertiesConversionEventsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this conversion event. Format:
+  /// [name] - Identifier. Resource name of this conversion event. Format:
   /// properties/{property}/conversionEvents/{conversion_event}
   /// Value must have pattern `^properties/\[^/\]+/conversionEvents/\[^/\]+$`.
   ///
@@ -3777,11 +3813,11 @@ class PropertiesCustomDimensionsResource {
   /// [parent] - Required. Example format: properties/1234
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 50 resources will be returned. The maximum value is 200 (higher
-  /// values will be coerced to the maximum).
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 50 resources will be returned. The maximum value is
+  /// 200 (higher values will be coerced to the maximum).
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListCustomDimensions` call. Provide this to retrieve the subsequent page.
   /// When paginating, all other parameters provided to `ListCustomDimensions`
   /// must match the call that provided the page token.
@@ -3828,7 +3864,7 @@ class PropertiesCustomDimensionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name for this CustomDimension resource.
+  /// [name] - Identifier. Resource name for this CustomDimension resource.
   /// Format: properties/{property}/customDimensions/{customDimension}
   /// Value must have pattern `^properties/\[^/\]+/customDimensions/\[^/\]+$`.
   ///
@@ -4057,8 +4093,8 @@ class PropertiesCustomMetricsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name for this CustomMetric resource.
-  /// Format: properties/{property}/customMetrics/{customMetric}
+  /// [name] - Identifier. Resource name for this CustomMetric resource. Format:
+  /// properties/{property}/customMetrics/{customMetric}
   /// Value must have pattern `^properties/\[^/\]+/customMetrics/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The list of fields to be updated. Omitted fields
@@ -4417,7 +4453,7 @@ class PropertiesDataStreamsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this Data Stream. Format:
+  /// [name] - Identifier. Resource name of this Data Stream. Format:
   /// properties/{property_id}/dataStreams/{stream_id} Example:
   /// "properties/1000/dataStreams/2000"
   /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
@@ -5221,11 +5257,11 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
   /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets
   /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 10 resources will be returned. The maximum value is 10. Higher values
-  /// will be coerced to the maximum.
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 10 resources will be returned. The maximum value is
+  /// 10. Higher values will be coerced to the maximum.
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListMeasurementProtocolSecrets` call. Provide this to retrieve the
   /// subsequent page. When paginating, all other parameters provided to
   /// `ListMeasurementProtocolSecrets` must match the call that provided the
@@ -5278,7 +5314,7 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of this secret. This secret may be a
+  /// [name] - Identifier. Resource name of this secret. This secret may be a
   /// child of any type of stream. Format:
   /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
   /// Value must have pattern
@@ -5470,12 +5506,12 @@ class PropertiesDataStreamsSKAdNetworkConversionValueSchemaResource {
   /// properties/1234/dataStreams/5678
   /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. The service may
-  /// return fewer than this value, even if there are additional pages. If
-  /// unspecified, at most 50 resources will be returned. The maximum value is
-  /// 200; (higher values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. The
+  /// service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 resources will be returned. The maximum
+  /// value is 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListSKAdNetworkConversionValueSchemas` call. Provide this to retrieve the
   /// subsequent page. When paginating, all other parameters provided to
   /// `ListSKAdNetworkConversionValueSchema` must match the call that provided
@@ -5528,7 +5564,7 @@ class PropertiesDataStreamsSKAdNetworkConversionValueSchemaResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the schema. This will be child of
+  /// [name] - Identifier. Resource name of the schema. This will be child of
   /// ONLY an iOS stream, and there can be at most one such child under an iOS
   /// stream. Format:
   /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
@@ -6076,7 +6112,7 @@ class PropertiesDisplayVideo360AdvertiserLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name for this
+  /// [name] - Identifier. The resource name for this
   /// DisplayVideo360AdvertiserLink resource. Format:
   /// properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note:
   /// linkId is not the Display & Video 360 Advertiser ID
@@ -6451,15 +6487,15 @@ class PropertiesFirebaseLinksResource {
   /// `properties/1234`
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. The service may
-  /// return fewer than this value, even if there are additional pages. If
-  /// unspecified, at most 50 resources will be returned. The maximum value is
-  /// 200; (higher values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. The
+  /// service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 resources will be returned. The maximum
+  /// value is 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous `ListFirebaseLinks`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListFirebaseLinks` must match the call that
-  /// provided the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListFirebaseLinks` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListFirebaseLinks` must
+  /// match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6589,14 +6625,14 @@ class PropertiesGoogleAdsLinksResource {
   /// [parent] - Required. Example format: properties/1234
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 50 resources will be returned. The maximum value is 200 (higher
-  /// values will be coerced to the maximum).
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 50 resources will be returned. The maximum value is
+  /// 200 (higher values will be coerced to the maximum).
   ///
-  /// [pageToken] - A page token, received from a previous `ListGoogleAdsLinks`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListGoogleAdsLinks` must match the call that
-  /// provided the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListGoogleAdsLinks`
+  /// must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6639,7 +6675,7 @@ class PropertiesGoogleAdsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Format:
+  /// [name] - Identifier. Format:
   /// properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note:
   /// googleAdsLinkId is not the Google Ads customer ID.
   /// Value must have pattern `^properties/\[^/\]+/googleAdsLinks/\[^/\]+$`.
@@ -6822,14 +6858,14 @@ class PropertiesKeyEventsResource {
   /// 'properties/123'
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 50 resources will be returned. The maximum value is 200; (higher
-  /// values will be coerced to the maximum)
+  /// [pageSize] - Optional. The maximum number of resources to return. If
+  /// unspecified, at most 50 resources will be returned. The maximum value is
+  /// 200; (higher values will be coerced to the maximum)
   ///
-  /// [pageToken] - A page token, received from a previous `ListKeyEvents` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListKeyEvents` must match the call that provided
-  /// the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListKeyEvents` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListKeyEvents` must match
+  /// the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7573,9 +7609,9 @@ class PropertiesSearchAds360LinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name for this SearchAds360Link
-  /// resource. Format: properties/{propertyId}/searchAds360Links/{linkId} Note:
-  /// linkId is not the Search Ads 360 advertiser ID
+  /// [name] - Identifier. The resource name for this SearchAds360Link resource.
+  /// Format: properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is
+  /// not the Search Ads 360 advertiser ID
   /// Value must have pattern `^properties/\[^/\]+/searchAds360Links/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The list of fields to be updated. Omitted fields
@@ -8530,9 +8566,10 @@ class GoogleAnalyticsAdminV1alphaAccountSummary {
   /// Display name for the account referred to in this account summary.
   core.String? displayName;
 
-  /// Resource name for this account summary.
+  /// Identifier.
   ///
-  /// Format: accountSummaries/{account_id} Example: "accountSummaries/1000"
+  /// Resource name for this account summary. Format:
+  /// accountSummaries/{account_id} Example: "accountSummaries/1000"
   core.String? name;
 
   /// List of summaries for child accounts of this account.
@@ -10009,12 +10046,10 @@ class GoogleAnalyticsAdminV1alphaCalculatedMetric {
   /// - "HOURS" : This metric measures hours.
   core.String? metricUnit;
 
-  /// Resource name for this CalculatedMetric.
+  /// Identifier.
   ///
-  /// Format:
+  /// Resource name for this CalculatedMetric. Format:
   /// 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'
-  ///
-  /// Output only.
   core.String? name;
 
   /// Types of restricted data that this metric contains.
@@ -10234,6 +10269,9 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /// A snapshot of a SubpropertySyncConfig resource in change history.
   GoogleAnalyticsAdminV1alphaSubpropertySyncConfig? subpropertySyncConfig;
 
+  /// A snapshot of a UserProvidedDataSettings resource in change history.
+  GoogleAnalyticsAdminV1alphaUserProvidedDataSettings? userProvidedDataSettings;
+
   GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource({
     this.account,
     this.adsenseLink,
@@ -10264,6 +10302,7 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
     this.searchAds360Link,
     this.skadnetworkConversionValueSchema,
     this.subpropertySyncConfig,
+    this.userProvidedDataSettings,
   });
 
   GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource.fromJson(
@@ -10434,6 +10473,12 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        userProvidedDataSettings: json_.containsKey('userProvidedDataSettings')
+            ? GoogleAnalyticsAdminV1alphaUserProvidedDataSettings.fromJson(
+                json_['userProvidedDataSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -10468,6 +10513,7 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
     final skadnetworkConversionValueSchema =
         this.skadnetworkConversionValueSchema;
     final subpropertySyncConfig = this.subpropertySyncConfig;
+    final userProvidedDataSettings = this.userProvidedDataSettings;
     return {
       'account': ?account,
       'adsenseLink': ?adsenseLink,
@@ -10499,6 +10545,7 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
       'searchAds360Link': ?searchAds360Link,
       'skadnetworkConversionValueSchema': ?skadnetworkConversionValueSchema,
       'subpropertySyncConfig': ?subpropertySyncConfig,
+      'userProvidedDataSettings': ?userProvidedDataSettings,
     };
   }
 }
@@ -10939,11 +10986,10 @@ class GoogleAnalyticsAdminV1alphaConversionEvent {
   /// Immutable.
   core.String? eventName;
 
-  /// Resource name of this conversion event.
+  /// Identifier.
   ///
-  /// Format: properties/{property}/conversionEvents/{conversion_event}
-  ///
-  /// Output only.
+  /// Resource name of this conversion event. Format:
+  /// properties/{property}/conversionEvents/{conversion_event}
   core.String? name;
 
   GoogleAnalyticsAdminV1alphaConversionEvent({
@@ -11299,12 +11345,11 @@ class GoogleAnalyticsAdminV1alphaDataStream {
   /// Must be populated if type is IOS_APP_DATA_STREAM.
   GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData? iosAppStreamData;
 
-  /// Resource name of this Data Stream.
+  /// Identifier.
   ///
-  /// Format: properties/{property_id}/dataStreams/{stream_id} Example:
+  /// Resource name of this Data Stream. Format:
+  /// properties/{property_id}/dataStreams/{stream_id} Example:
   /// "properties/1000/dataStreams/2000"
-  ///
-  /// Output only.
   core.String? name;
 
   /// The type of this DataStream resource.
@@ -11454,12 +11499,11 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
   /// Immutable.
   core.bool? costDataSharingEnabled;
 
-  /// The resource name for this DisplayVideo360AdvertiserLink resource.
+  /// Identifier.
   ///
-  /// Format: properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId}
-  /// Note: linkId is not the Display & Video 360 Advertiser ID
-  ///
-  /// Output only.
+  /// The resource name for this DisplayVideo360AdvertiserLink resource. Format:
+  /// properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note:
+  /// linkId is not the Display & Video 360 Advertiser ID
   core.String? name;
 
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink({
@@ -11549,13 +11593,12 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal {
   GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails?
   linkProposalStatusDetails;
 
-  /// The resource name for this DisplayVideo360AdvertiserLinkProposal resource.
+  /// Identifier.
   ///
+  /// The resource name for this DisplayVideo360AdvertiserLinkProposal resource.
   /// Format:
   /// properties/{propertyId}/displayVideo360AdvertiserLinkProposals/{proposalId}
   /// Note: proposalId is not the Display & Video 360 Advertiser ID
-  ///
-  /// Output only.
   core.String? name;
 
   /// Input only.
@@ -12325,12 +12368,11 @@ typedef GoogleAnalyticsAdminV1alphaFirebaseLink = $FirebaseLink;
 ///
 /// Only present for web DataStream resources.
 class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
-  /// Resource name for this GlobalSiteTag resource.
+  /// Identifier.
   ///
-  /// Format: properties/{property_id}/dataStreams/{stream_id}/globalSiteTag
-  /// Example: "properties/123/dataStreams/456/globalSiteTag"
-  ///
-  /// Output only.
+  /// Resource name for this GlobalSiteTag resource. Format:
+  /// properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example:
+  /// "properties/123/dataStreams/456/globalSiteTag"
   core.String? name;
 
   /// JavaScript code snippet to be pasted as the first item into the head tag
@@ -14532,13 +14574,11 @@ class GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema {
   /// also the schema will not be exported to Ads.
   core.bool? applyConversionValues;
 
-  /// Resource name of the schema.
+  /// Identifier.
   ///
-  /// This will be child of ONLY an iOS stream, and there can be at most one
-  /// such child under an iOS stream. Format:
+  /// Resource name of the schema. This will be child of ONLY an iOS stream, and
+  /// there can be at most one such child under an iOS stream. Format:
   /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
-  ///
-  /// Output only.
   core.String? name;
 
   /// The conversion value settings for the first postback window.
@@ -14657,12 +14697,11 @@ class GoogleAnalyticsAdminV1alphaSearchAds360Link {
   /// Immutable.
   core.bool? costDataSharingEnabled;
 
-  /// The resource name for this SearchAds360Link resource.
+  /// Identifier.
   ///
-  /// Format: properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is
-  /// not the Search Ads 360 advertiser ID
-  ///
-  /// Output only.
+  /// The resource name for this SearchAds360Link resource. Format:
+  /// properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is not the
+  /// Search Ads 360 advertiser ID
   core.String? name;
 
   /// Enables export of site stats with this integration.
@@ -15314,6 +15353,61 @@ class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final accessBinding = this.accessBinding;
     return {'accessBinding': ?accessBinding};
+  }
+}
+
+/// Configuration for user-provided data collection.
+///
+/// This is a singleton resource for a Google Analytics property.
+class GoogleAnalyticsAdminV1alphaUserProvidedDataSettings {
+  /// Whether this property allows a Google Tag to automatically collect
+  /// user-provided data from your website.
+  ///
+  /// This setting only takes effect if `user_provided_data_collection_enabled`
+  /// is also true.
+  ///
+  /// Optional.
+  core.bool? automaticallyDetectedDataCollectionEnabled;
+
+  /// Identifier.
+  ///
+  /// Resource name of this setting. Format:
+  /// properties/{property}/userProvidedDataSettings Example:
+  /// "properties/1000/userProvidedDataSettings"
+  core.String? name;
+
+  /// Whether this property accepts user-provided data sent to it.
+  ///
+  /// Optional.
+  core.bool? userProvidedDataCollectionEnabled;
+
+  GoogleAnalyticsAdminV1alphaUserProvidedDataSettings({
+    this.automaticallyDetectedDataCollectionEnabled,
+    this.name,
+    this.userProvidedDataCollectionEnabled,
+  });
+
+  GoogleAnalyticsAdminV1alphaUserProvidedDataSettings.fromJson(core.Map json_)
+    : this(
+        automaticallyDetectedDataCollectionEnabled:
+            json_['automaticallyDetectedDataCollectionEnabled'] as core.bool?,
+        name: json_['name'] as core.String?,
+        userProvidedDataCollectionEnabled:
+            json_['userProvidedDataCollectionEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final automaticallyDetectedDataCollectionEnabled =
+        this.automaticallyDetectedDataCollectionEnabled;
+    final name = this.name;
+    final userProvidedDataCollectionEnabled =
+        this.userProvidedDataCollectionEnabled;
+    return {
+      'automaticallyDetectedDataCollectionEnabled':
+          ?automaticallyDetectedDataCollectionEnabled,
+      'name': ?name,
+      'userProvidedDataCollectionEnabled': ?userProvidedDataCollectionEnabled,
+    };
   }
 }
 

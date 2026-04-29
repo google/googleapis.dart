@@ -1279,12 +1279,18 @@ class AppsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists information about the supported locations for this service.
+  /// Lists information about the supported locations for this service.This
+  /// method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: Global locations: If name is empty, the
+  /// method lists the public locations available to all projects.
   ///
-  /// This method can be called in two ways: List all public locations: Use the
-  /// path GET /v1/locations. List project-visible locations: Use the path GET
-  /// /v1/projects/{project_id}/locations. This may include public locations as
-  /// well as private or other locations specifically visible to the project.
+  /// Project-specific locations: If name follows the format projects/{project},
+  /// the method lists locations visible to that specific project. This includes
+  /// public, private, or other project-specific locations enabled for the
+  /// project.For gRPC and client library implementations, the resource name is
+  /// passed as the name field. For direct service calls, the resource name is
+  /// incorporated into the request path based on the specific service
+  /// implementation and version.
   ///
   /// Request parameters:
   ///
@@ -1761,6 +1767,59 @@ class AppsServicesVersionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Exports a user image to Artifact Registry.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appsId] - Part of `name`. Required. Name of the App Engine version
+  /// resource. Format: apps/{app}/services/{service}/versions/{version}
+  ///
+  /// [servicesId] - Part of `name`. See documentation of `appsId`.
+  ///
+  /// [versionsId] - Part of `name`. See documentation of `appsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> exportAppImage(
+    ExportAppImageRequest request,
+    core.String appsId,
+    core.String servicesId,
+    core.String versionsId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/apps/' +
+        commons.escapeVariable('$appsId') +
+        '/services/' +
+        commons.escapeVariable('$servicesId') +
+        '/versions/' +
+        commons.escapeVariable('$versionsId') +
+        ':exportAppImage';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3235,6 +3294,69 @@ class ProjectsLocationsApplicationsServicesVersionsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Exports a user image to Artifact Registry.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Required. Name of the App Engine version
+  /// resource. Format: apps/{app}/services/{service}/versions/{version}
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [servicesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [versionsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> exportAppImage(
+    ExportAppImageRequest request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String servicesId,
+    core.String versionsId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/services/' +
+        commons.escapeVariable('$servicesId') +
+        '/versions/' +
+        commons.escapeVariable('$versionsId') +
+        ':exportAppImage';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the specified Version resource.
   ///
   /// You can specify the following fields depending on the App Engine
@@ -4637,6 +4759,32 @@ class ErrorHandler {
       'mimeType': ?mimeType,
       'staticFile': ?staticFile,
     };
+  }
+}
+
+/// Request message for Versions.ExportAppImage.
+class ExportAppImageRequest {
+  /// The full resource name of the AR repository to export to.
+  ///
+  /// Format: projects/{project}/locations/{location}/repositories/{repository}
+  /// If not specified, defaults to
+  /// projects/{project}/locations/{location}/repositories/gae-standard in the
+  /// same region as the app. The default repository will be created if it does
+  /// not exist.
+  ///
+  /// Optional.
+  core.String? destinationRepository;
+
+  ExportAppImageRequest({this.destinationRepository});
+
+  ExportAppImageRequest.fromJson(core.Map json_)
+    : this(
+        destinationRepository: json_['destinationRepository'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationRepository = this.destinationRepository;
+    return {'destinationRepository': ?destinationRepository};
   }
 }
 

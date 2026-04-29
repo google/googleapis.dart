@@ -1279,7 +1279,7 @@ class DateElementProperties {
   /// document.
   ///
   /// If unset, the default value is DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED,
-  /// indicating the DateElement will be formatted as `MMM d, y` in `en_US`, or
+  /// indicating the DateElement will be formatted as `MMM d, y` in `en`, or
   /// locale specific equivalent.
   /// Possible string values are:
   /// - "DATE_FORMAT_UNSPECIFIED" : The date format is unspecified.
@@ -1301,10 +1301,17 @@ class DateElementProperties {
   /// Output only.
   core.String? displayText;
 
-  /// The locale of the document, as defined by the Unicode Common Locale Data
-  /// Repository (CLDR) project.
+  /// The language code of the DateElement.
   ///
-  /// For example, `en_US`. If unset, the default locale is `en_US`.
+  /// For example, `en`. If unset, the default locale is `en`. Limited to the
+  /// following locales: `af`, `am`, `ar`, `as`, `az`, `be`, `bg`, `bn`, `ca`,
+  /// `cs`, `da`, `de`, `el`, `en`, `en-CA`, `en-GB`, `es`, `es-419`, `et`,
+  /// `eu`, `fa`, `fi`, `fil`, `fr`, `fr-CA`, `gl`, `gu`, `hi`, `hr`, `hu`,
+  /// `hy`, `id`, `is`, `it`, `iw`, `ja`, `ka`, `kk`, `km`, `kn`, `ko`, `lo`,
+  /// `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `ne`, `nl`, `no`, `or`, `pa`,
+  /// `pl`, `pt-BR`, `pt-PT`, `ro`, `ru`, `si`, `sk`, `sl`, `sq`, `sr`, `sv`,
+  /// `sw`, `ta`, `te`, `th`, `tr`, `uk`, `ur`, `uz`, `vi`, `zh-CN`, `zh-HK`,
+  /// `zh-TW`, `zu`, `cy`, `my`.
   core.String? locale;
 
   /// Determines how the time part of the DateElement will be displayed in the
@@ -1324,7 +1331,7 @@ class DateElementProperties {
   /// The time zone of the DateElement, as defined by the Unicode Common Locale
   /// Data Repository (CLDR) project.
   ///
-  /// For example, `America/New York`. If unset, the default time zone is
+  /// For example, `America/New_York`. If unset, the default time zone is
   /// `etc/UTC`.
   core.String? timeZoneId;
 
@@ -1335,7 +1342,7 @@ class DateElementProperties {
   /// is adjusted according to the time zone. For example, a timestamp of
   /// `18000` with a date format of `DATE_FORMAT_ISO8601` and time format of
   /// `TIME_FORMAT_HOUR_MINUTE` would be displayed as `1970-01-01 5:00 AM`. A
-  /// timestamp of `18000` with date format of `DATE_FORMAT_8SO8601`, time
+  /// timestamp of `18000` with date format of `DATE_FORMAT_ISO8601`, time
   /// format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to
   /// `America/New_York` will instead be `1970-01-01 12:00 AM`.
   core.String? timestamp;
@@ -4109,6 +4116,62 @@ class InsertPersonRequest {
   }
 }
 
+/// Inserts a RichLink at the specified location.
+class InsertRichLinkRequest {
+  /// Inserts the rich link at the end of a header, footer, footnote or the
+  /// document body.
+  EndOfSegmentLocation? endOfSegmentLocation;
+
+  /// Inserts the rich link at a specific index in the document.
+  ///
+  /// The rich link must be inserted inside the bounds of an existing Paragraph.
+  /// For instance, it cannot be inserted at a table's start index (i.e. between
+  /// the table and its preceding paragraph). The rich link cannot be inserted
+  /// inside an equation.
+  Location? location;
+
+  /// The properties of the rich link to insert.
+  RichLinkProperties? richLinkProperties;
+
+  InsertRichLinkRequest({
+    this.endOfSegmentLocation,
+    this.location,
+    this.richLinkProperties,
+  });
+
+  InsertRichLinkRequest.fromJson(core.Map json_)
+    : this(
+        endOfSegmentLocation: json_.containsKey('endOfSegmentLocation')
+            ? EndOfSegmentLocation.fromJson(
+                json_['endOfSegmentLocation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        location: json_.containsKey('location')
+            ? Location.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        richLinkProperties: json_.containsKey('richLinkProperties')
+            ? RichLinkProperties.fromJson(
+                json_['richLinkProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endOfSegmentLocation = this.endOfSegmentLocation;
+    final location = this.location;
+    final richLinkProperties = this.richLinkProperties;
+    return {
+      'endOfSegmentLocation': ?endOfSegmentLocation,
+      'location': ?location,
+      'richLinkProperties': ?richLinkProperties,
+    };
+  }
+}
+
 /// Inserts a section break at the given location.
 ///
 /// A newline character will be inserted before the section break.
@@ -6858,6 +6921,9 @@ class Request {
   /// Inserts a person mention.
   InsertPersonRequest? insertPerson;
 
+  /// Insert a rich link.
+  InsertRichLinkRequest? insertRichLink;
+
   /// Inserts a section break at the specified location.
   InsertSectionBreakRequest? insertSectionBreak;
 
@@ -6897,6 +6963,9 @@ class Request {
   /// Updates the properties of a document tab.
   UpdateDocumentTabPropertiesRequest? updateDocumentTabProperties;
 
+  /// Updates a named style.
+  UpdateNamedStyleRequest? updateNamedStyle;
+
   /// Updates the paragraph style at the specified range.
   UpdateParagraphStyleRequest? updateParagraphStyle;
 
@@ -6935,6 +7004,7 @@ class Request {
     this.insertInlineImage,
     this.insertPageBreak,
     this.insertPerson,
+    this.insertRichLink,
     this.insertSectionBreak,
     this.insertTable,
     this.insertTableColumn,
@@ -6948,6 +7018,7 @@ class Request {
     this.unmergeTableCells,
     this.updateDocumentStyle,
     this.updateDocumentTabProperties,
+    this.updateNamedStyle,
     this.updateParagraphStyle,
     this.updateSectionStyle,
     this.updateTableCellStyle,
@@ -7061,6 +7132,11 @@ class Request {
                 json_['insertPerson'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        insertRichLink: json_.containsKey('insertRichLink')
+            ? InsertRichLinkRequest.fromJson(
+                json_['insertRichLink'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         insertSectionBreak: json_.containsKey('insertSectionBreak')
             ? InsertSectionBreakRequest.fromJson(
                 json_['insertSectionBreak']
@@ -7134,6 +7210,12 @@ class Request {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        updateNamedStyle: json_.containsKey('updateNamedStyle')
+            ? UpdateNamedStyleRequest.fromJson(
+                json_['updateNamedStyle']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateParagraphStyle: json_.containsKey('updateParagraphStyle')
             ? UpdateParagraphStyleRequest.fromJson(
                 json_['updateParagraphStyle']
@@ -7192,6 +7274,7 @@ class Request {
     final insertInlineImage = this.insertInlineImage;
     final insertPageBreak = this.insertPageBreak;
     final insertPerson = this.insertPerson;
+    final insertRichLink = this.insertRichLink;
     final insertSectionBreak = this.insertSectionBreak;
     final insertTable = this.insertTable;
     final insertTableColumn = this.insertTableColumn;
@@ -7205,6 +7288,7 @@ class Request {
     final unmergeTableCells = this.unmergeTableCells;
     final updateDocumentStyle = this.updateDocumentStyle;
     final updateDocumentTabProperties = this.updateDocumentTabProperties;
+    final updateNamedStyle = this.updateNamedStyle;
     final updateParagraphStyle = this.updateParagraphStyle;
     final updateSectionStyle = this.updateSectionStyle;
     final updateTableCellStyle = this.updateTableCellStyle;
@@ -7231,6 +7315,7 @@ class Request {
       'insertInlineImage': ?insertInlineImage,
       'insertPageBreak': ?insertPageBreak,
       'insertPerson': ?insertPerson,
+      'insertRichLink': ?insertRichLink,
       'insertSectionBreak': ?insertSectionBreak,
       'insertTable': ?insertTable,
       'insertTableColumn': ?insertTableColumn,
@@ -7244,6 +7329,7 @@ class Request {
       'unmergeTableCells': ?unmergeTableCells,
       'updateDocumentStyle': ?updateDocumentStyle,
       'updateDocumentTabProperties': ?updateDocumentTabProperties,
+      'updateNamedStyle': ?updateNamedStyle,
       'updateParagraphStyle': ?updateParagraphStyle,
       'updateSectionStyle': ?updateSectionStyle,
       'updateTableCellStyle': ?updateTableCellStyle,
@@ -10103,6 +10189,51 @@ class UpdateDocumentTabPropertiesRequest {
     final fields = this.fields;
     final tabProperties = this.tabProperties;
     return {'fields': ?fields, 'tabProperties': ?tabProperties};
+  }
+}
+
+/// Updates a named style.
+class UpdateNamedStyleRequest {
+  /// The NamedStyle fields that should be updated.
+  ///
+  /// At least \`named_style_type must be specified. The root \`named_style\` is
+  /// implied and should not be specified. A single \`"*"\` can be used as
+  /// short-hand for listing every field. For example, to update the text style
+  /// to bold, set \`fields\` to include \`"text_style"\` and
+  /// \`"text_style.bold"\`. To update the paragraph style's alignment property,
+  /// set \`fields\` to include \`"paragraph_style"\` and
+  /// \`"paragraph_style.alignment"\`. To reset a property to its default value,
+  /// include its field name in the field mask but leave the field itself unset.
+  /// Specifying \`"text_style"\` or \`"paragraph_style"\` with an empty
+  /// TextStyle or ParagraphStyle will reset all of its nested fields.
+  core.String? fields;
+
+  /// The document style to update.
+  NamedStyle? namedStyle;
+
+  /// The document tab to update.
+  ///
+  /// By default, the update is applied to the first tab.
+  core.String? tabId;
+
+  UpdateNamedStyleRequest({this.fields, this.namedStyle, this.tabId});
+
+  UpdateNamedStyleRequest.fromJson(core.Map json_)
+    : this(
+        fields: json_['fields'] as core.String?,
+        namedStyle: json_.containsKey('namedStyle')
+            ? NamedStyle.fromJson(
+                json_['namedStyle'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tabId: json_['tabId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fields = this.fields;
+    final namedStyle = this.namedStyle;
+    final tabId = this.tabId;
+    return {'fields': ?fields, 'namedStyle': ?namedStyle, 'tabId': ?tabId};
   }
 }
 

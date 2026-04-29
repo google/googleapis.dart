@@ -2062,6 +2062,19 @@ class StatsResource {
 
 /// An achievement definition object.
 class AchievementDefinition {
+  /// The lifecycle state of the achievement.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACHIEVEMENT_LIFECYCLE_STATE_UNSPECIFIED" : Default value. Should not be
+  /// used.
+  /// - "ACHIEVEMENT_LIFECYCLE_STATE_ACTIVE" : The achievement is active and
+  /// published, and can be earned by players.
+  /// - "ACHIEVEMENT_LIFECYCLE_STATE_ARCHIVED" : The achievement is archived. It
+  /// cannot be earned by players, and is hidden from players who have not
+  /// already unlocked it. from players who haven't unlocked it.
+  core.String? achievementLifecycleState;
+
   /// The type of the achievement.
   /// Possible string values are:
   /// - "STANDARD" : Achievement is either locked or unlocked.
@@ -2113,6 +2126,7 @@ class AchievementDefinition {
   core.String? unlockedIconUrl;
 
   AchievementDefinition({
+    this.achievementLifecycleState,
     this.achievementType,
     this.description,
     this.experiencePoints,
@@ -2130,6 +2144,8 @@ class AchievementDefinition {
 
   AchievementDefinition.fromJson(core.Map json_)
     : this(
+        achievementLifecycleState:
+            json_['achievementLifecycleState'] as core.String?,
         achievementType: json_['achievementType'] as core.String?,
         description: json_['description'] as core.String?,
         experiencePoints: json_['experiencePoints'] as core.String?,
@@ -2148,6 +2164,7 @@ class AchievementDefinition {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final achievementLifecycleState = this.achievementLifecycleState;
     final achievementType = this.achievementType;
     final description = this.description;
     final experiencePoints = this.experiencePoints;
@@ -2162,6 +2179,7 @@ class AchievementDefinition {
     final totalSteps = this.totalSteps;
     final unlockedIconUrl = this.unlockedIconUrl;
     return {
+      'achievementLifecycleState': ?achievementLifecycleState,
       'achievementType': ?achievementType,
       'description': ?description,
       'experiencePoints': ?experiencePoints,

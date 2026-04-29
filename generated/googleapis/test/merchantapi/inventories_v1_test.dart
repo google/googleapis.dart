@@ -171,6 +171,7 @@ api.LocalInventory buildLocalInventory() {
   buildCounterLocalInventory++;
   if (buildCounterLocalInventory < 3) {
     o.account = 'foo';
+    o.base64EncodedName = 'foo';
     o.localInventoryAttributes = buildLocalInventoryAttributes();
     o.name = 'foo';
     o.storeCode = 'foo';
@@ -183,6 +184,7 @@ void checkLocalInventory(api.LocalInventory o) {
   buildCounterLocalInventory++;
   if (buildCounterLocalInventory < 3) {
     unittest.expect(o.account!, unittest.equals('foo'));
+    unittest.expect(o.base64EncodedName!, unittest.equals('foo'));
     checkLocalInventoryAttributes(o.localInventoryAttributes!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.storeCode!, unittest.equals('foo'));
@@ -263,6 +265,7 @@ api.RegionalInventory buildRegionalInventory() {
   buildCounterRegionalInventory++;
   if (buildCounterRegionalInventory < 3) {
     o.account = 'foo';
+    o.base64EncodedName = 'foo';
     o.name = 'foo';
     o.region = 'foo';
     o.regionalInventoryAttributes = buildRegionalInventoryAttributes();
@@ -275,6 +278,7 @@ void checkRegionalInventory(api.RegionalInventory o) {
   buildCounterRegionalInventory++;
   if (buildCounterRegionalInventory < 3) {
     unittest.expect(o.account!, unittest.equals('foo'));
+    unittest.expect(o.base64EncodedName!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.region!, unittest.equals('foo'));
     checkRegionalInventoryAttributes(o.regionalInventoryAttributes!);

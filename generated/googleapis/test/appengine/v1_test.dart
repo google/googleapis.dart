@@ -668,6 +668,25 @@ void checkErrorHandler(api.ErrorHandler o) {
   buildCounterErrorHandler--;
 }
 
+core.int buildCounterExportAppImageRequest = 0;
+api.ExportAppImageRequest buildExportAppImageRequest() {
+  final o = api.ExportAppImageRequest();
+  buildCounterExportAppImageRequest++;
+  if (buildCounterExportAppImageRequest < 3) {
+    o.destinationRepository = 'foo';
+  }
+  buildCounterExportAppImageRequest--;
+  return o;
+}
+
+void checkExportAppImageRequest(api.ExportAppImageRequest o) {
+  buildCounterExportAppImageRequest++;
+  if (buildCounterExportAppImageRequest < 3) {
+    unittest.expect(o.destinationRepository!, unittest.equals('foo'));
+  }
+  buildCounterExportAppImageRequest--;
+}
+
 core.int buildCounterFeatureSettings = 0;
 api.FeatureSettings buildFeatureSettings() {
   final o = api.FeatureSettings();
@@ -2499,6 +2518,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkErrorHandler(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExportAppImageRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExportAppImageRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExportAppImageRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkExportAppImageRequest(od);
     });
   });
 
@@ -5510,6 +5540,108 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--exportAppImage', () async {
+      final mock = HttpServerMock();
+      final res = api.AppengineApi(mock).apps.services.versions;
+      final arg_request = buildExportAppImageRequest();
+      final arg_appsId = 'foo';
+      final arg_servicesId = 'foo';
+      final arg_versionsId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ExportAppImageRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkExportAppImageRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1/apps/'),
+          );
+          pathOffset += 8;
+          index = path.indexOf('/services/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_appsId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 10),
+            unittest.equals('/services/'),
+          );
+          pathOffset += 10;
+          index = path.indexOf('/versions/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_servicesId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 10),
+            unittest.equals('/versions/'),
+          );
+          pathOffset += 10;
+          index = path.indexOf(':exportAppImage', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_versionsId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 15),
+            unittest.equals(':exportAppImage'),
+          );
+          pathOffset += 15;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.exportAppImage(
+        arg_request,
+        arg_appsId,
+        arg_servicesId,
+        arg_versionsId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.AppengineApi(mock).apps.services.versions;
@@ -7874,6 +8006,138 @@ void main() {
           true,
         );
         final response = await res.delete(
+          arg_projectsId,
+          arg_locationsId,
+          arg_applicationsId,
+          arg_servicesId,
+          arg_versionsId,
+          $fields: arg_$fields,
+        );
+        checkOperation(response as api.Operation);
+      });
+
+      unittest.test('method--exportAppImage', () async {
+        final mock = HttpServerMock();
+        final res = api.AppengineApi(
+          mock,
+        ).projects.locations.applications.services.versions;
+        final arg_request = buildExportAppImageRequest();
+        final arg_projectsId = 'foo';
+        final arg_locationsId = 'foo';
+        final arg_applicationsId = 'foo';
+        final arg_servicesId = 'foo';
+        final arg_versionsId = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj = api.ExportAppImageRequest.fromJson(
+              json as core.Map<core.String, core.dynamic>,
+            );
+            checkExportAppImageRequest(obj);
+
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 12),
+              unittest.equals('v1/projects/'),
+            );
+            pathOffset += 12;
+            index = path.indexOf('/locations/', pathOffset);
+            unittest.expect(index >= 0, unittest.isTrue);
+            subPart = core.Uri.decodeQueryComponent(
+              path.substring(pathOffset, index),
+            );
+            pathOffset = index;
+            unittest.expect(subPart, unittest.equals('$arg_projectsId'));
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 11),
+              unittest.equals('/locations/'),
+            );
+            pathOffset += 11;
+            index = path.indexOf('/applications/', pathOffset);
+            unittest.expect(index >= 0, unittest.isTrue);
+            subPart = core.Uri.decodeQueryComponent(
+              path.substring(pathOffset, index),
+            );
+            pathOffset = index;
+            unittest.expect(subPart, unittest.equals('$arg_locationsId'));
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 14),
+              unittest.equals('/applications/'),
+            );
+            pathOffset += 14;
+            index = path.indexOf('/services/', pathOffset);
+            unittest.expect(index >= 0, unittest.isTrue);
+            subPart = core.Uri.decodeQueryComponent(
+              path.substring(pathOffset, index),
+            );
+            pathOffset = index;
+            unittest.expect(subPart, unittest.equals('$arg_applicationsId'));
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 10),
+              unittest.equals('/services/'),
+            );
+            pathOffset += 10;
+            index = path.indexOf('/versions/', pathOffset);
+            unittest.expect(index >= 0, unittest.isTrue);
+            subPart = core.Uri.decodeQueryComponent(
+              path.substring(pathOffset, index),
+            );
+            pathOffset = index;
+            unittest.expect(subPart, unittest.equals('$arg_servicesId'));
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 10),
+              unittest.equals('/versions/'),
+            );
+            pathOffset += 10;
+            index = path.indexOf(':exportAppImage', pathOffset);
+            unittest.expect(index >= 0, unittest.isTrue);
+            subPart = core.Uri.decodeQueryComponent(
+              path.substring(pathOffset, index),
+            );
+            pathOffset = index;
+            unittest.expect(subPart, unittest.equals('$arg_versionsId'));
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 15),
+              unittest.equals(':exportAppImage'),
+            );
+            pathOffset += 15;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildOperation());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.exportAppImage(
+          arg_request,
           arg_projectsId,
           arg_locationsId,
           arg_applicationsId,

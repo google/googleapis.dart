@@ -9478,6 +9478,8 @@ class NotificationChannelStrategy {
   core.List<core.String>? notificationChannelNames;
 
   /// The frequency at which to send reminder notifications for open incidents.
+  ///
+  /// The value must be between 30 minutes and 24 hours.
   core.String? renotifyInterval;
 
   NotificationChannelStrategy({

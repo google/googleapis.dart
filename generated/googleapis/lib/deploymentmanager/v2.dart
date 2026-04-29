@@ -2092,6 +2092,64 @@ class FirewallPolicyRuleOperationMetadata {
   }
 }
 
+class GetVersionOperationMetadata {
+  GetVersionOperationMetadataSbomInfo? inlineSbomInfo;
+
+  GetVersionOperationMetadata({this.inlineSbomInfo});
+
+  GetVersionOperationMetadata.fromJson(core.Map json_)
+    : this(
+        inlineSbomInfo: json_.containsKey('inlineSbomInfo')
+            ? GetVersionOperationMetadataSbomInfo.fromJson(
+                json_['inlineSbomInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final inlineSbomInfo = this.inlineSbomInfo;
+    return {'inlineSbomInfo': ?inlineSbomInfo};
+  }
+}
+
+class GetVersionOperationMetadataSbomInfo {
+  /// SBOM versions currently applied to the resource.
+  ///
+  /// The key is the component name and the value is the version.
+  core.Map<core.String, core.String>? currentComponentVersions;
+
+  /// SBOM versions scheduled for the next maintenance.
+  ///
+  /// The key is the component name and the value is the version.
+  core.Map<core.String, core.String>? targetComponentVersions;
+
+  GetVersionOperationMetadataSbomInfo({
+    this.currentComponentVersions,
+    this.targetComponentVersions,
+  });
+
+  GetVersionOperationMetadataSbomInfo.fromJson(core.Map json_)
+    : this(
+        currentComponentVersions:
+            (json_['currentComponentVersions']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        targetComponentVersions:
+            (json_['targetComponentVersions']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentComponentVersions = this.currentComponentVersions;
+    final targetComponentVersions = this.targetComponentVersions;
+    return {
+      'currentComponentVersions': ?currentComponentVersions,
+      'targetComponentVersions': ?targetComponentVersions,
+    };
+  }
+}
+
 class GlobalSetPolicyRequest {
   /// Flatten Policy to create a backward compatible wire-format.
   ///
@@ -2772,6 +2830,7 @@ class Operation {
   /// Output only.
   OperationError? error;
   FirewallPolicyRuleOperationMetadata? firewallPolicyRuleOperationMetadata;
+  GetVersionOperationMetadata? getVersionOperationMetadata;
 
   /// If the operation fails, this field contains the HTTP error message that
   /// was returned, such as `NOT FOUND`.
@@ -2925,6 +2984,7 @@ class Operation {
     this.endTime,
     this.error,
     this.firewallPolicyRuleOperationMetadata,
+    this.getVersionOperationMetadata,
     this.httpErrorMessage,
     this.httpErrorStatusCode,
     this.id,
@@ -2965,6 +3025,13 @@ class Operation {
             json_.containsKey('firewallPolicyRuleOperationMetadata')
             ? FirewallPolicyRuleOperationMetadata.fromJson(
                 json_['firewallPolicyRuleOperationMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        getVersionOperationMetadata:
+            json_.containsKey('getVersionOperationMetadata')
+            ? GetVersionOperationMetadata.fromJson(
+                json_['getVersionOperationMetadata']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -3025,6 +3092,7 @@ class Operation {
     final error = this.error;
     final firewallPolicyRuleOperationMetadata =
         this.firewallPolicyRuleOperationMetadata;
+    final getVersionOperationMetadata = this.getVersionOperationMetadata;
     final httpErrorMessage = this.httpErrorMessage;
     final httpErrorStatusCode = this.httpErrorStatusCode;
     final id = this.id;
@@ -3059,6 +3127,7 @@ class Operation {
       'error': ?error,
       'firewallPolicyRuleOperationMetadata':
           ?firewallPolicyRuleOperationMetadata,
+      'getVersionOperationMetadata': ?getVersionOperationMetadata,
       'httpErrorMessage': ?httpErrorMessage,
       'httpErrorStatusCode': ?httpErrorStatusCode,
       'id': ?id,

@@ -1375,6 +1375,14 @@ class ProjectsAppsDebugTokensResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/apps/\[^/\]+/debugTokens/\[^/\]+$`.
   ///
+  /// [etag] - Optional. The checksum to be validated against the current
+  /// DebugToken, to ensure the client has an up-to-date value before
+  /// proceeding. This checksum is computed by the server based on the values of
+  /// fields in the DebugToken object, and can be obtained from the DebugToken
+  /// object received from the last CreateDebugToken, GetDebugToken,
+  /// ListDebugTokens, or UpdateDebugToken call. This etag is strongly validated
+  /// as defined by RFC 7232.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1387,9 +1395,11 @@ class ProjectsAppsDebugTokensResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
+    core.String? etag,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3530,6 +3540,15 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
   /// Required.
   core.String? displayName;
 
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// This etag is strongly validated as defined by RFC 7232.
+  ///
+  /// Optional.
+  core.String? etag;
+
   /// The relative resource name of the debug token, in the format: ```
   /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
   ///
@@ -3554,6 +3573,7 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
 
   GoogleFirebaseAppcheckV1betaDebugToken({
     this.displayName,
+    this.etag,
     this.name,
     this.token,
     this.updateTime,
@@ -3562,6 +3582,7 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
   GoogleFirebaseAppcheckV1betaDebugToken.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
         token: json_['token'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
@@ -3569,11 +3590,13 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
 
   core.Map<core.String, core.dynamic> toJson() {
     final displayName = this.displayName;
+    final etag = this.etag;
     final name = this.name;
     final token = this.token;
     final updateTime = this.updateTime;
     return {
       'displayName': ?displayName,
+      'etag': ?etag,
       'name': ?name,
       'token': ?token,
       'updateTime': ?updateTime,
@@ -4993,36 +5016,40 @@ class GoogleFirebaseAppcheckV1betaResourcePolicy {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "OFF" : Firebase App Check is not enforced for the service, nor are App
-  /// Check metrics collected. Though the service is not protected by App Check
-  /// in this mode, other applicable protections, such as user authorization,
-  /// are still enforced. An unconfigured service is in this mode by default.
-  /// - "UNENFORCED" : Firebase App Check is not enforced for the service. App
-  /// Check metrics are collected to help you decide when to turn on enforcement
-  /// for the service. Though the service is not protected by App Check in this
-  /// mode, other applicable protections, such as user authorization, are still
-  /// enforced. Some services require certain conditions to be met before they
-  /// will work with App Check, such as requiring you to upgrade to a specific
-  /// service tier. Until those requirements are met for a service, this
-  /// `UNENFORCED` setting will have no effect and App Check will not work with
-  /// that service.
-  /// - "ENFORCED" : Firebase App Check is enforced for the service. The service
-  /// will reject any request that attempts to access your project's resources
-  /// if it does not have valid App Check token attached, with some exceptions
-  /// depending on the service; for example, some services will still allow
-  /// requests bearing the developer's privileged service account credentials
-  /// without an App Check token. App Check metrics continue to be collected to
-  /// help you detect issues with your App Check integration and monitor the
-  /// composition of your callers. While the service is protected by App Check,
-  /// other applicable protections, such as user authorization, continue to be
-  /// enforced at the same time. Use caution when choosing to enforce App Check
-  /// on a Firebase service. If your users have not updated to an App Check
-  /// capable version of your app, their apps will no longer be able to use your
-  /// Firebase services that are enforcing App Check. App Check metrics can help
-  /// you decide whether to enforce App Check on your Firebase services. If your
-  /// app has not launched yet, you should enable enforcement immediately, since
-  /// there are no outdated clients in use. Some services require certain
-  /// conditions to be met before they will work with App Check, such as
+  /// - "OFF" : The relevant App Check protection is not enforced for the
+  /// service or resource, nor are App Check metrics collected. Though the
+  /// relevant App Check protection is not applied, other applicable
+  /// protections, such as user authorization, are still enforced. An
+  /// unconfigured protection is in this mode by default.
+  /// - "UNENFORCED" : The relevant App Check protection is not enforced for the
+  /// service or resource. App Check metrics are collected to help you decide
+  /// when to turn on enforcement. These metrics will show the portion of
+  /// traffic that is deemed invalid by the relevant App Check protection, but
+  /// that traffic will not be rejected until you turn on enforcement. Though
+  /// the relevant App Check protection is not enforced, other applicable
+  /// protections, such as user authorization, are still enforced. Some services
+  /// require certain conditions to be met before they will work with App Check,
+  /// such as requiring you to upgrade to a specific service tier. Until those
+  /// requirements are met for a service, this `UNENFORCED` setting will have no
+  /// effect and App Check will not work with that service.
+  /// - "ENFORCED" : The relevant App Check protection is enforced for the
+  /// service or resource. The service or resource will reject any traffic not
+  /// accompanied by an App Check token that is deemded valid by the relevant
+  /// protection. There are some exceptions depending on the service; for
+  /// example, some services will still allow requests bearing the developer's
+  /// privileged service account credentials without an App Check token. App
+  /// Check metrics continue to be collected to help you detect issues with your
+  /// App Check integration and monitor the composition of your callers. While
+  /// the service is protected by App Check, other applicable protections, such
+  /// as user authorization, continue to be enforced at the same time. Use
+  /// caution when choosing to enforce App Check protections. If your users have
+  /// not updated to a version of your app that meets the requirements of the
+  /// relevant App Check protection, their app may stop working. App Check
+  /// metrics can help you decide whether to enforce App Check on your services
+  /// and resources. If your app has not launched yet, you should enable
+  /// enforcement as soon as you verify that your App Check implementation is
+  /// correct, since there are no outdated clients in use. Some services require
+  /// certain conditions to be met before they will work with App Check, such as
   /// requiring you to upgrade to a specific service tier. Until those
   /// requirements are met for a service, this `ENFORCED` setting will have no
   /// effect and App Check will not work with that service.
@@ -5141,36 +5168,40 @@ class GoogleFirebaseAppcheckV1betaService {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "OFF" : Firebase App Check is not enforced for the service, nor are App
-  /// Check metrics collected. Though the service is not protected by App Check
-  /// in this mode, other applicable protections, such as user authorization,
-  /// are still enforced. An unconfigured service is in this mode by default.
-  /// - "UNENFORCED" : Firebase App Check is not enforced for the service. App
-  /// Check metrics are collected to help you decide when to turn on enforcement
-  /// for the service. Though the service is not protected by App Check in this
-  /// mode, other applicable protections, such as user authorization, are still
-  /// enforced. Some services require certain conditions to be met before they
-  /// will work with App Check, such as requiring you to upgrade to a specific
-  /// service tier. Until those requirements are met for a service, this
-  /// `UNENFORCED` setting will have no effect and App Check will not work with
-  /// that service.
-  /// - "ENFORCED" : Firebase App Check is enforced for the service. The service
-  /// will reject any request that attempts to access your project's resources
-  /// if it does not have valid App Check token attached, with some exceptions
-  /// depending on the service; for example, some services will still allow
-  /// requests bearing the developer's privileged service account credentials
-  /// without an App Check token. App Check metrics continue to be collected to
-  /// help you detect issues with your App Check integration and monitor the
-  /// composition of your callers. While the service is protected by App Check,
-  /// other applicable protections, such as user authorization, continue to be
-  /// enforced at the same time. Use caution when choosing to enforce App Check
-  /// on a Firebase service. If your users have not updated to an App Check
-  /// capable version of your app, their apps will no longer be able to use your
-  /// Firebase services that are enforcing App Check. App Check metrics can help
-  /// you decide whether to enforce App Check on your Firebase services. If your
-  /// app has not launched yet, you should enable enforcement immediately, since
-  /// there are no outdated clients in use. Some services require certain
-  /// conditions to be met before they will work with App Check, such as
+  /// - "OFF" : The relevant App Check protection is not enforced for the
+  /// service or resource, nor are App Check metrics collected. Though the
+  /// relevant App Check protection is not applied, other applicable
+  /// protections, such as user authorization, are still enforced. An
+  /// unconfigured protection is in this mode by default.
+  /// - "UNENFORCED" : The relevant App Check protection is not enforced for the
+  /// service or resource. App Check metrics are collected to help you decide
+  /// when to turn on enforcement. These metrics will show the portion of
+  /// traffic that is deemed invalid by the relevant App Check protection, but
+  /// that traffic will not be rejected until you turn on enforcement. Though
+  /// the relevant App Check protection is not enforced, other applicable
+  /// protections, such as user authorization, are still enforced. Some services
+  /// require certain conditions to be met before they will work with App Check,
+  /// such as requiring you to upgrade to a specific service tier. Until those
+  /// requirements are met for a service, this `UNENFORCED` setting will have no
+  /// effect and App Check will not work with that service.
+  /// - "ENFORCED" : The relevant App Check protection is enforced for the
+  /// service or resource. The service or resource will reject any traffic not
+  /// accompanied by an App Check token that is deemded valid by the relevant
+  /// protection. There are some exceptions depending on the service; for
+  /// example, some services will still allow requests bearing the developer's
+  /// privileged service account credentials without an App Check token. App
+  /// Check metrics continue to be collected to help you detect issues with your
+  /// App Check integration and monitor the composition of your callers. While
+  /// the service is protected by App Check, other applicable protections, such
+  /// as user authorization, continue to be enforced at the same time. Use
+  /// caution when choosing to enforce App Check protections. If your users have
+  /// not updated to a version of your app that meets the requirements of the
+  /// relevant App Check protection, their app may stop working. App Check
+  /// metrics can help you decide whether to enforce App Check on your services
+  /// and resources. If your app has not launched yet, you should enable
+  /// enforcement as soon as you verify that your App Check implementation is
+  /// correct, since there are no outdated clients in use. Some services require
+  /// certain conditions to be met before they will work with App Check, such as
   /// requiring you to upgrade to a specific service tier. Until those
   /// requirements are met for a service, this `ENFORCED` setting will have no
   /// effect and App Check will not work with that service.
@@ -5197,6 +5228,59 @@ class GoogleFirebaseAppcheckV1betaService {
   /// Required.
   core.String? name;
 
+  /// The replay protection enforcement mode for this service.
+  ///
+  /// Note that this field cannot be set to a level higher than the overall App
+  /// Check enforcement mode. For example, if the overall App Check enforcement
+  /// mode is set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In
+  /// order to enforce replay protection, you must first enforce App Check. An
+  /// HTTP 400 error will be returned in this case. By default, this field is
+  /// set to `OFF`. Setting this field to `UNENFORCED` or `ENFORCED` is
+  /// considered opting into replay protection. Once opted in, requests to your
+  /// protected services may experience higher latency. To opt out of replay
+  /// protection after opting in, set this field to `OFF`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OFF" : The relevant App Check protection is not enforced for the
+  /// service or resource, nor are App Check metrics collected. Though the
+  /// relevant App Check protection is not applied, other applicable
+  /// protections, such as user authorization, are still enforced. An
+  /// unconfigured protection is in this mode by default.
+  /// - "UNENFORCED" : The relevant App Check protection is not enforced for the
+  /// service or resource. App Check metrics are collected to help you decide
+  /// when to turn on enforcement. These metrics will show the portion of
+  /// traffic that is deemed invalid by the relevant App Check protection, but
+  /// that traffic will not be rejected until you turn on enforcement. Though
+  /// the relevant App Check protection is not enforced, other applicable
+  /// protections, such as user authorization, are still enforced. Some services
+  /// require certain conditions to be met before they will work with App Check,
+  /// such as requiring you to upgrade to a specific service tier. Until those
+  /// requirements are met for a service, this `UNENFORCED` setting will have no
+  /// effect and App Check will not work with that service.
+  /// - "ENFORCED" : The relevant App Check protection is enforced for the
+  /// service or resource. The service or resource will reject any traffic not
+  /// accompanied by an App Check token that is deemded valid by the relevant
+  /// protection. There are some exceptions depending on the service; for
+  /// example, some services will still allow requests bearing the developer's
+  /// privileged service account credentials without an App Check token. App
+  /// Check metrics continue to be collected to help you detect issues with your
+  /// App Check integration and monitor the composition of your callers. While
+  /// the service is protected by App Check, other applicable protections, such
+  /// as user authorization, continue to be enforced at the same time. Use
+  /// caution when choosing to enforce App Check protections. If your users have
+  /// not updated to a version of your app that meets the requirements of the
+  /// relevant App Check protection, their app may stop working. App Check
+  /// metrics can help you decide whether to enforce App Check on your services
+  /// and resources. If your app has not launched yet, you should enable
+  /// enforcement as soon as you verify that your App Check implementation is
+  /// correct, since there are no outdated clients in use. Some services require
+  /// certain conditions to be met before they will work with App Check, such as
+  /// requiring you to upgrade to a specific service tier. Until those
+  /// requirements are met for a service, this `ENFORCED` setting will have no
+  /// effect and App Check will not work with that service.
+  core.String? replayProtection;
+
   /// Timestamp when this service configuration object was most recently
   /// updated.
   ///
@@ -5207,6 +5291,7 @@ class GoogleFirebaseAppcheckV1betaService {
     this.enforcementMode,
     this.etag,
     this.name,
+    this.replayProtection,
     this.updateTime,
   });
 
@@ -5215,6 +5300,7 @@ class GoogleFirebaseAppcheckV1betaService {
         enforcementMode: json_['enforcementMode'] as core.String?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
+        replayProtection: json_['replayProtection'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -5222,11 +5308,13 @@ class GoogleFirebaseAppcheckV1betaService {
     final enforcementMode = this.enforcementMode;
     final etag = this.etag;
     final name = this.name;
+    final replayProtection = this.replayProtection;
     final updateTime = this.updateTime;
     return {
       'enforcementMode': ?enforcementMode,
       'etag': ?etag,
       'name': ?name,
+      'replayProtection': ?replayProtection,
       'updateTime': ?updateTime,
     };
   }

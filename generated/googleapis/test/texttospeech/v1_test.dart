@@ -40,6 +40,7 @@ api.AdvancedVoiceOptions buildAdvancedVoiceOptions() {
     o.enableTextnorm = true;
     o.lowLatencyJourneySynthesis = true;
     o.relaxSafetyFilters = true;
+    o.safetySettings = buildSafetySettings();
   }
   buildCounterAdvancedVoiceOptions--;
   return o;
@@ -51,6 +52,7 @@ void checkAdvancedVoiceOptions(api.AdvancedVoiceOptions o) {
     unittest.expect(o.enableTextnorm!, unittest.isTrue);
     unittest.expect(o.lowLatencyJourneySynthesis!, unittest.isTrue);
     unittest.expect(o.relaxSafetyFilters!, unittest.isTrue);
+    checkSafetySettings(o.safetySettings!);
   }
   buildCounterAdvancedVoiceOptions--;
 }
@@ -424,7 +426,58 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed9() => {
+core.int buildCounterSafetySetting = 0;
+api.SafetySetting buildSafetySetting() {
+  final o = api.SafetySetting();
+  buildCounterSafetySetting++;
+  if (buildCounterSafetySetting < 3) {
+    o.category = 'foo';
+    o.threshold = 'foo';
+  }
+  buildCounterSafetySetting--;
+  return o;
+}
+
+void checkSafetySetting(api.SafetySetting o) {
+  buildCounterSafetySetting++;
+  if (buildCounterSafetySetting < 3) {
+    unittest.expect(o.category!, unittest.equals('foo'));
+    unittest.expect(o.threshold!, unittest.equals('foo'));
+  }
+  buildCounterSafetySetting--;
+}
+
+core.List<api.SafetySetting> buildUnnamed9() => [
+  buildSafetySetting(),
+  buildSafetySetting(),
+];
+
+void checkUnnamed9(core.List<api.SafetySetting> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSafetySetting(o[0]);
+  checkSafetySetting(o[1]);
+}
+
+core.int buildCounterSafetySettings = 0;
+api.SafetySettings buildSafetySettings() {
+  final o = api.SafetySettings();
+  buildCounterSafetySettings++;
+  if (buildCounterSafetySettings < 3) {
+    o.settings = buildUnnamed9();
+  }
+  buildCounterSafetySettings--;
+  return o;
+}
+
+void checkSafetySettings(api.SafetySettings o) {
+  buildCounterSafetySettings++;
+  if (buildCounterSafetySettings < 3) {
+    checkUnnamed9(o.settings!);
+  }
+  buildCounterSafetySettings--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed10() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -437,7 +490,7 @@ core.Map<core.String, core.Object?> buildUnnamed9() => {
   },
 };
 
-void checkUnnamed9(core.Map<core.String, core.Object?> o) {
+void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -451,15 +504,15 @@ void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed10() => [
-  buildUnnamed9(),
-  buildUnnamed9(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed11() => [
+  buildUnnamed10(),
+  buildUnnamed10(),
 ];
 
-void checkUnnamed10(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed11(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed9(o[0]);
-  checkUnnamed9(o[1]);
+  checkUnnamed10(o[0]);
+  checkUnnamed10(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -468,7 +521,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed10();
+    o.details = buildUnnamed11();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -479,7 +532,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed10(o.details!);
+    checkUnnamed11(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -604,9 +657,9 @@ void checkTurn(api.Turn o) {
   buildCounterTurn--;
 }
 
-core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -617,7 +670,7 @@ api.Voice buildVoice() {
   final o = api.Voice();
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    o.languageCodes = buildUnnamed11();
+    o.languageCodes = buildUnnamed12();
     o.name = 'foo';
     o.naturalSampleRateHertz = 42;
     o.ssmlGender = 'foo';
@@ -629,7 +682,7 @@ api.Voice buildVoice() {
 void checkVoice(api.Voice o) {
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    checkUnnamed11(o.languageCodes!);
+    checkUnnamed12(o.languageCodes!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.naturalSampleRateHertz!, unittest.equals(42));
     unittest.expect(o.ssmlGender!, unittest.equals('foo'));
@@ -828,6 +881,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-SafetySetting', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSafetySetting();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SafetySetting.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSafetySetting(od);
+    });
+  });
+
+  unittest.group('obj-schema-SafetySettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSafetySettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SafetySettings.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSafetySettings(od);
     });
   });
 

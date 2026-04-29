@@ -172,7 +172,7 @@ class AndroidConfig {
   /// Message priority.
   ///
   /// Can take "normal" and "high" values. For more information, see
-  /// [Setting the priority of a message](https://goo.gl/GjONJv).
+  /// [Setting the priority of a message](https://firebase.google.com/docs/cloud-messaging/customize-messages/setting-message-priority).
   /// Possible string values are:
   /// - "NORMAL" : Default priority for data messages. Normal priority messages
   /// won't open network connections on a sleeping device, and their delivery
@@ -306,13 +306,6 @@ class AndroidNotification {
   /// See [String Resources](https://goo.gl/NdFZGI) for more information.
   core.String? bodyLocKey;
 
-  /// If set, display notifications delivered to the device will be handled by
-  /// the app instead of the proxy.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.bool? bypassProxyNotification;
-
   /// The
   /// [notification's channel id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)
   /// (new in Android O).
@@ -410,10 +403,13 @@ class AndroidNotification {
   /// Priority is an indication of how much of the user's attention should be
   /// consumed by this notification. Low-priority notifications may be hidden
   /// from the user in certain situations, while the user might be interrupted
-  /// for a higher-priority notification. The effect of setting the same
-  /// priorities may differ slightly on different platforms. Note this priority
-  /// differs from `AndroidMessagePriority`. This priority is processed by the
-  /// client after the message has been delivered, whereas
+  /// for a higher-priority notification. This parameter affects notification
+  /// priority only on devices running Android 7.1 (API level 25) and lower. On
+  /// Android 8.0 (API level 26) and higher, priority is ignored in favor of
+  /// channel
+  /// [importance](https://developer.android.com/develop/ui/views/notifications/channels#importance).
+  /// Note this priority differs from `AndroidMessagePriority`. This priority is
+  /// processed by the client after the message has been delivered, whereas
   /// [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)
   /// is an FCM concept that controls when the message is delivered.
   /// Possible string values are:
@@ -521,7 +517,6 @@ class AndroidNotification {
     this.body,
     this.bodyLocArgs,
     this.bodyLocKey,
-    this.bypassProxyNotification,
     this.channelId,
     this.clickAction,
     this.color,
@@ -554,7 +549,6 @@ class AndroidNotification {
             ?.map((value) => value as core.String)
             .toList(),
         bodyLocKey: json_['bodyLocKey'] as core.String?,
-        bypassProxyNotification: json_['bypassProxyNotification'] as core.bool?,
         channelId: json_['channelId'] as core.String?,
         clickAction: json_['clickAction'] as core.String?,
         color: json_['color'] as core.String?,
@@ -592,7 +586,6 @@ class AndroidNotification {
     final body = this.body;
     final bodyLocArgs = this.bodyLocArgs;
     final bodyLocKey = this.bodyLocKey;
-    final bypassProxyNotification = this.bypassProxyNotification;
     final channelId = this.channelId;
     final clickAction = this.clickAction;
     final color = this.color;
@@ -620,7 +613,6 @@ class AndroidNotification {
       'body': ?body,
       'bodyLocArgs': ?bodyLocArgs,
       'bodyLocKey': ?bodyLocKey,
-      'bypassProxyNotification': ?bypassProxyNotification,
       'channelId': ?channelId,
       'clickAction': ?clickAction,
       'color': ?color,

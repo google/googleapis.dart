@@ -3074,6 +3074,7 @@ api.PostgreSqlConnectionProfile buildPostgreSqlConnectionProfile() {
     o.alloydbClusterId = 'foo';
     o.cloudSqlId = 'foo';
     o.database = 'foo';
+    o.enableIamAuthentication = true;
     o.forwardSshConnectivity = buildForwardSshTunnelConnectivity();
     o.host = 'foo';
     o.networkArchitecture = 'foo';
@@ -3097,6 +3098,7 @@ void checkPostgreSqlConnectionProfile(api.PostgreSqlConnectionProfile o) {
     unittest.expect(o.alloydbClusterId!, unittest.equals('foo'));
     unittest.expect(o.cloudSqlId!, unittest.equals('foo'));
     unittest.expect(o.database!, unittest.equals('foo'));
+    unittest.expect(o.enableIamAuthentication!, unittest.isTrue);
     checkForwardSshTunnelConnectivity(o.forwardSshConnectivity!);
     unittest.expect(o.host!, unittest.equals('foo'));
     unittest.expect(o.networkArchitecture!, unittest.equals('foo'));

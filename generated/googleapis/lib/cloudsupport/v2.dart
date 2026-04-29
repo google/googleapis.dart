@@ -541,20 +541,27 @@ class CasesResource {
   /// unspecified, the first page is retrieved.
   ///
   /// [query] - An expression used to filter cases. Expressions use the
-  /// following fields separated by `AND` and specified with `=`: -
-  /// `organization`: An organization name in the form `organizations/`. -
-  /// `project`: A project name in the form `projects/`. - `state`: Can be
-  /// `OPEN` or `CLOSED`. - `priority`: Can be `P0`, `P1`, `P2`, `P3`, or `P4`.
-  /// You can specify multiple values for priority using the `OR` operator. For
-  /// example, `priority=P1 OR priority=P2`. - `creator.email`: The email
-  /// address of the case creator. You must specify either `organization` or
-  /// `project`. To search across `displayName`, `description`, and comments,
-  /// use a global restriction with no keyword or operator. For example, `"my
-  /// search"`. To search only cases updated after a certain date, use
-  /// `update_time` restricted with that particular date, time, and timezone in
-  /// ISO datetime format. For example,
+  /// following fields separated by `AND` and specified with `=`: - `state`: Can
+  /// be `OPEN` or `CLOSED`. - `priority`: Can be `P0`, `P1`, `P2`, `P3`, or
+  /// `P4`. You can specify multiple values for priority using the `OR`
+  /// operator. For example, `priority=P1 OR priority=P2`. - `creator.email`:
+  /// The email address of the case creator. To search across `displayName`,
+  /// `description`, and comments, use a global restriction with no keyword or
+  /// operator. For example, `"my search"`. To search only cases updated after a
+  /// certain date, use `update_time` restricted with that particular date,
+  /// time, and timezone in ISO datetime format. For example,
   /// `update_time>"2020-01-01T00:00:00-05:00"`. `update_time` only supports the
-  /// greater than operator (`>`). Examples: -
+  /// greater than operator (`>`). If you are using the `v2` version of the API,
+  /// you must specify the case parent in the `parent` field. If you provide an
+  /// empty `query`, all cases under the parent resource will be returned. If
+  /// you are using the `v2beta` version of the API, you must specify the case
+  /// parent in the `query` field using one of the two fields below, which are
+  /// only available for `v2beta`. The `parent` field will be ignored. -
+  /// `organization`: An organization name in the form `organizations/`. -
+  /// `project`: A project name in the form `projects/`. Examples: For `v2`: -
+  /// `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` -
+  /// `state=OPEN AND (priority=P0 OR priority=P1)` -
+  /// `update_time>"2020-01-01T00:00:00-05:00"` For `v2beta`: -
   /// `organization="organizations/123456789"` -
   /// `project="projects/my-project-id"` - `project="projects/123456789"` -
   /// `organization="organizations/123456789" AND state=CLOSED` -
@@ -1643,17 +1650,34 @@ class ContentTypeInfo {
   core.String? fromFileName;
 
   /// # gdata.* are outside protos with mising documentation
+  core.String? fromFusionId;
+
+  /// # gdata.* are outside protos with mising documentation
   core.String? fromHeader;
 
   /// # gdata.* are outside protos with mising documentation
   core.String? fromUrlPath;
 
+  /// # gdata.* are outside protos with mising documentation
+  core.String? fusionIdDetectionMetadata;
+  core.List<core.int> get fusionIdDetectionMetadataAsBytes =>
+      convert.base64.decode(fusionIdDetectionMetadata!);
+
+  set fusionIdDetectionMetadataAsBytes(core.List<core.int> bytes_) {
+    fusionIdDetectionMetadata = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   ContentTypeInfo({
     this.bestGuess,
     this.fromBytes,
     this.fromFileName,
+    this.fromFusionId,
     this.fromHeader,
     this.fromUrlPath,
+    this.fusionIdDetectionMetadata,
   });
 
   ContentTypeInfo.fromJson(core.Map json_)
@@ -1661,22 +1685,29 @@ class ContentTypeInfo {
         bestGuess: json_['bestGuess'] as core.String?,
         fromBytes: json_['fromBytes'] as core.String?,
         fromFileName: json_['fromFileName'] as core.String?,
+        fromFusionId: json_['fromFusionId'] as core.String?,
         fromHeader: json_['fromHeader'] as core.String?,
         fromUrlPath: json_['fromUrlPath'] as core.String?,
+        fusionIdDetectionMetadata:
+            json_['fusionIdDetectionMetadata'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final bestGuess = this.bestGuess;
     final fromBytes = this.fromBytes;
     final fromFileName = this.fromFileName;
+    final fromFusionId = this.fromFusionId;
     final fromHeader = this.fromHeader;
     final fromUrlPath = this.fromUrlPath;
+    final fusionIdDetectionMetadata = this.fusionIdDetectionMetadata;
     return {
       'bestGuess': ?bestGuess,
       'fromBytes': ?fromBytes,
       'fromFileName': ?fromFileName,
+      'fromFusionId': ?fromFusionId,
       'fromHeader': ?fromHeader,
       'fromUrlPath': ?fromUrlPath,
+      'fusionIdDetectionMetadata': ?fusionIdDetectionMetadata,
     };
   }
 }

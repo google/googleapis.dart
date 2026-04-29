@@ -684,6 +684,7 @@ api.InlineCertificateIssuanceConfig buildInlineCertificateIssuanceConfig() {
     o.keyAlgorithm = 'foo';
     o.lifetime = 'foo';
     o.rotationWindowPercentage = 42;
+    o.useDefaultSharedCa = true;
   }
   buildCounterInlineCertificateIssuanceConfig--;
   return o;
@@ -698,6 +699,7 @@ void checkInlineCertificateIssuanceConfig(
     unittest.expect(o.keyAlgorithm!, unittest.equals('foo'));
     unittest.expect(o.lifetime!, unittest.equals('foo'));
     unittest.expect(o.rotationWindowPercentage!, unittest.equals(42));
+    unittest.expect(o.useDefaultSharedCa!, unittest.isTrue);
   }
   buildCounterInlineCertificateIssuanceConfig--;
 }
@@ -2348,6 +2350,7 @@ api.TrustStore buildTrustStore() {
   if (buildCounterTrustStore < 3) {
     o.intermediateCas = buildUnnamed42();
     o.trustAnchors = buildUnnamed43();
+    o.trustDefaultSharedCa = true;
   }
   buildCounterTrustStore--;
   return o;
@@ -2358,6 +2361,7 @@ void checkTrustStore(api.TrustStore o) {
   if (buildCounterTrustStore < 3) {
     checkUnnamed42(o.intermediateCas!);
     checkUnnamed43(o.trustAnchors!);
+    unittest.expect(o.trustDefaultSharedCa!, unittest.isTrue);
   }
   buildCounterTrustStore--;
 }
@@ -2482,24 +2486,6 @@ void checkUndeleteWorkforcePoolProviderScimTenantRequest(
   buildCounterUndeleteWorkforcePoolProviderScimTenantRequest++;
   if (buildCounterUndeleteWorkforcePoolProviderScimTenantRequest < 3) {}
   buildCounterUndeleteWorkforcePoolProviderScimTenantRequest--;
-}
-
-core.int buildCounterUndeleteWorkforcePoolProviderScimTokenRequest = 0;
-api.UndeleteWorkforcePoolProviderScimTokenRequest
-buildUndeleteWorkforcePoolProviderScimTokenRequest() {
-  final o = api.UndeleteWorkforcePoolProviderScimTokenRequest();
-  buildCounterUndeleteWorkforcePoolProviderScimTokenRequest++;
-  if (buildCounterUndeleteWorkforcePoolProviderScimTokenRequest < 3) {}
-  buildCounterUndeleteWorkforcePoolProviderScimTokenRequest--;
-  return o;
-}
-
-void checkUndeleteWorkforcePoolProviderScimTokenRequest(
-  api.UndeleteWorkforcePoolProviderScimTokenRequest o,
-) {
-  buildCounterUndeleteWorkforcePoolProviderScimTokenRequest++;
-  if (buildCounterUndeleteWorkforcePoolProviderScimTokenRequest < 3) {}
-  buildCounterUndeleteWorkforcePoolProviderScimTokenRequest--;
 }
 
 core.int buildCounterUndeleteWorkforcePoolRequest = 0;
@@ -4029,20 +4015,6 @@ void main() {
           oJson as core.Map<core.String, core.dynamic>,
         );
         checkUndeleteWorkforcePoolProviderScimTenantRequest(od);
-      });
-    },
-  );
-
-  unittest.group(
-    'obj-schema-UndeleteWorkforcePoolProviderScimTokenRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildUndeleteWorkforcePoolProviderScimTokenRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od = api.UndeleteWorkforcePoolProviderScimTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>,
-        );
-        checkUndeleteWorkforcePoolProviderScimTokenRequest(od);
       });
     },
   );
@@ -6278,425 +6250,359 @@ void main() {
     });
   });
 
-  unittest.group('resource-LocationsWorkforcePoolsProvidersScimTenantsTokensResource', () {
-    unittest.test('method--create', () async {
-      final mock = HttpServerMock();
-      final res = api.IamApi(
-        mock,
-      ).locations.workforcePools.providers.scimTenants.tokens;
-      final arg_request = buildWorkforcePoolProviderScimToken();
-      final arg_parent = 'foo';
-      final arg_workforcePoolProviderScimTokenId = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.WorkforcePoolProviderScimToken.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkWorkforcePoolProviderScimToken(obj);
+  unittest.group(
+    'resource-LocationsWorkforcePoolsProvidersScimTenantsTokensResource',
+    () {
+      unittest.test('method--create', () async {
+        final mock = HttpServerMock();
+        final res = api.IamApi(
+          mock,
+        ).locations.workforcePools.providers.scimTenants.tokens;
+        final arg_request = buildWorkforcePoolProviderScimToken();
+        final arg_parent = 'foo';
+        final arg_workforcePoolProviderScimTokenId = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj = api.WorkforcePoolProviderScimToken.fromJson(
+              json as core.Map<core.String, core.dynamic>,
+            );
+            checkWorkforcePoolProviderScimToken(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
             }
-          }
-          unittest.expect(
-            queryMap['workforcePoolProviderScimTokenId']!.first,
-            unittest.equals(arg_workforcePoolProviderScimTokenId),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+            unittest.expect(
+              queryMap['workforcePoolProviderScimTokenId']!.first,
+              unittest.equals(arg_workforcePoolProviderScimTokenId),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildWorkforcePoolProviderScimToken(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.create(
-        arg_request,
-        arg_parent,
-        workforcePoolProviderScimTokenId: arg_workforcePoolProviderScimTokenId,
-        $fields: arg_$fields,
-      );
-      checkWorkforcePoolProviderScimToken(
-        response as api.WorkforcePoolProviderScimToken,
-      );
-    });
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildWorkforcePoolProviderScimToken(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.create(
+          arg_request,
+          arg_parent,
+          workforcePoolProviderScimTokenId:
+              arg_workforcePoolProviderScimTokenId,
+          $fields: arg_$fields,
+        );
+        checkWorkforcePoolProviderScimToken(
+          response as api.WorkforcePoolProviderScimToken,
+        );
+      });
 
-    unittest.test('method--delete', () async {
-      final mock = HttpServerMock();
-      final res = api.IamApi(
-        mock,
-      ).locations.workforcePools.providers.scimTenants.tokens;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      unittest.test('method--delete', () async {
+        final mock = HttpServerMock();
+        final res = api.IamApi(
+          mock,
+        ).locations.workforcePools.providers.scimTenants.tokens;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
             }
-          }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildWorkforcePoolProviderScimToken(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.delete(arg_name, $fields: arg_$fields);
-      checkWorkforcePoolProviderScimToken(
-        response as api.WorkforcePoolProviderScimToken,
-      );
-    });
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildWorkforcePoolProviderScimToken(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.delete(arg_name, $fields: arg_$fields);
+        checkWorkforcePoolProviderScimToken(
+          response as api.WorkforcePoolProviderScimToken,
+        );
+      });
 
-    unittest.test('method--get', () async {
-      final mock = HttpServerMock();
-      final res = api.IamApi(
-        mock,
-      ).locations.workforcePools.providers.scimTenants.tokens;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      unittest.test('method--get', () async {
+        final mock = HttpServerMock();
+        final res = api.IamApi(
+          mock,
+        ).locations.workforcePools.providers.scimTenants.tokens;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
             }
-          }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildWorkforcePoolProviderScimToken(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.get(arg_name, $fields: arg_$fields);
-      checkWorkforcePoolProviderScimToken(
-        response as api.WorkforcePoolProviderScimToken,
-      );
-    });
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildWorkforcePoolProviderScimToken(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.get(arg_name, $fields: arg_$fields);
+        checkWorkforcePoolProviderScimToken(
+          response as api.WorkforcePoolProviderScimToken,
+        );
+      });
 
-    unittest.test('method--list', () async {
-      final mock = HttpServerMock();
-      final res = api.IamApi(
-        mock,
-      ).locations.workforcePools.providers.scimTenants.tokens;
-      final arg_parent = 'foo';
-      final arg_pageSize = 42;
-      final arg_pageToken = 'foo';
-      final arg_showDeleted = true;
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res = api.IamApi(
+          mock,
+        ).locations.workforcePools.providers.scimTenants.tokens;
+        final arg_parent = 'foo';
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_showDeleted = true;
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
             }
-          }
-          unittest.expect(
-            core.int.parse(queryMap['pageSize']!.first),
-            unittest.equals(arg_pageSize),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['showDeleted']!.first,
-            unittest.equals('$arg_showDeleted'),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['showDeleted']!.first,
+              unittest.equals('$arg_showDeleted'),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildListWorkforcePoolProviderScimTokensResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.list(
-        arg_parent,
-        pageSize: arg_pageSize,
-        pageToken: arg_pageToken,
-        showDeleted: arg_showDeleted,
-        $fields: arg_$fields,
-      );
-      checkListWorkforcePoolProviderScimTokensResponse(
-        response as api.ListWorkforcePoolProviderScimTokensResponse,
-      );
-    });
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildListWorkforcePoolProviderScimTokensResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          $fields: arg_$fields,
+        );
+        checkListWorkforcePoolProviderScimTokensResponse(
+          response as api.ListWorkforcePoolProviderScimTokensResponse,
+        );
+      });
 
-    unittest.test('method--patch', () async {
-      final mock = HttpServerMock();
-      final res = api.IamApi(
-        mock,
-      ).locations.workforcePools.providers.scimTenants.tokens;
-      final arg_request = buildWorkforcePoolProviderScimToken();
-      final arg_name = 'foo';
-      final arg_updateMask = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.WorkforcePoolProviderScimToken.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkWorkforcePoolProviderScimToken(obj);
+      unittest.test('method--patch', () async {
+        final mock = HttpServerMock();
+        final res = api.IamApi(
+          mock,
+        ).locations.workforcePools.providers.scimTenants.tokens;
+        final arg_request = buildWorkforcePoolProviderScimToken();
+        final arg_name = 'foo';
+        final arg_updateMask = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj = api.WorkforcePoolProviderScimToken.fromJson(
+              json as core.Map<core.String, core.dynamic>,
+            );
+            checkWorkforcePoolProviderScimToken(obj);
 
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
 
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
             }
-          }
-          unittest.expect(
-            queryMap['updateMask']!.first,
-            unittest.equals(arg_updateMask),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
+            unittest.expect(
+              queryMap['updateMask']!.first,
+              unittest.equals(arg_updateMask),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
 
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildWorkforcePoolProviderScimToken(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        updateMask: arg_updateMask,
-        $fields: arg_$fields,
-      );
-      checkWorkforcePoolProviderScimToken(
-        response as api.WorkforcePoolProviderScimToken,
-      );
-    });
-
-    unittest.test('method--undelete', () async {
-      final mock = HttpServerMock();
-      final res = api.IamApi(
-        mock,
-      ).locations.workforcePools.providers.scimTenants.tokens;
-      final arg_request = buildUndeleteWorkforcePoolProviderScimTokenRequest();
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.UndeleteWorkforcePoolProviderScimTokenRequest.fromJson(
-                json as core.Map<core.String, core.dynamic>,
-              );
-          checkUndeleteWorkforcePoolProviderScimTokenRequest(obj);
-
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
-
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
-          }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
-
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildWorkforcePoolProviderScimToken(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.undelete(
-        arg_request,
-        arg_name,
-        $fields: arg_$fields,
-      );
-      checkWorkforcePoolProviderScimToken(
-        response as api.WorkforcePoolProviderScimToken,
-      );
-    });
-  });
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildWorkforcePoolProviderScimToken(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.patch(
+          arg_request,
+          arg_name,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields,
+        );
+        checkWorkforcePoolProviderScimToken(
+          response as api.WorkforcePoolProviderScimToken,
+        );
+      });
+    },
+  );
 
   unittest.group('resource-LocationsWorkforcePoolsSubjectsResource', () {
     unittest.test('method--delete', () async {
@@ -8015,6 +7921,69 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsWorkloadIdentityPoolsResource', () {
+    unittest.test('method--addAttestationRule', () async {
+      final mock = HttpServerMock();
+      final res = api.IamApi(mock).projects.locations.workloadIdentityPools;
+      final arg_request = buildAddAttestationRuleRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.AddAttestationRuleRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkAddAttestationRuleRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.addAttestationRule(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.IamApi(mock).projects.locations.workloadIdentityPools;
@@ -8331,6 +8300,82 @@ void main() {
       );
     });
 
+    unittest.test('method--listAttestationRules', () async {
+      final mock = HttpServerMock();
+      final res = api.IamApi(mock).projects.locations.workloadIdentityPools;
+      final arg_resource = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListAttestationRulesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.listAttestationRules(
+        arg_resource,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListAttestationRulesResponse(
+        response as api.ListAttestationRulesResponse,
+      );
+    });
+
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
       final res = api.IamApi(mock).projects.locations.workloadIdentityPools;
@@ -8395,6 +8440,132 @@ void main() {
         arg_request,
         arg_name,
         updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--removeAttestationRule', () async {
+      final mock = HttpServerMock();
+      final res = api.IamApi(mock).projects.locations.workloadIdentityPools;
+      final arg_request = buildRemoveAttestationRuleRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RemoveAttestationRuleRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRemoveAttestationRuleRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.removeAttestationRule(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--setAttestationRules', () async {
+      final mock = HttpServerMock();
+      final res = api.IamApi(mock).projects.locations.workloadIdentityPools;
+      final arg_request = buildSetAttestationRulesRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SetAttestationRulesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSetAttestationRulesRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.setAttestationRules(
+        arg_request,
+        arg_resource,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);

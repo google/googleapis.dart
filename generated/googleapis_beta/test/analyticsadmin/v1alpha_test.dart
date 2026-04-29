@@ -1872,6 +1872,8 @@ buildGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource() {
         buildGoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema();
     o.subpropertySyncConfig =
         buildGoogleAnalyticsAdminV1alphaSubpropertySyncConfig();
+    o.userProvidedDataSettings =
+        buildGoogleAnalyticsAdminV1alphaUserProvidedDataSettings();
   }
   buildCounterGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource--;
   return o;
@@ -1933,6 +1935,9 @@ void checkGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource(
     );
     checkGoogleAnalyticsAdminV1alphaSubpropertySyncConfig(
       o.subpropertySyncConfig!,
+    );
+    checkGoogleAnalyticsAdminV1alphaUserProvidedDataSettings(
+      o.userProvidedDataSettings!,
     );
   }
   buildCounterGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource--;
@@ -5603,6 +5608,35 @@ void checkGoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest(
   buildCounterGoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest--;
 }
 
+core.int buildCounterGoogleAnalyticsAdminV1alphaUserProvidedDataSettings = 0;
+api.GoogleAnalyticsAdminV1alphaUserProvidedDataSettings
+buildGoogleAnalyticsAdminV1alphaUserProvidedDataSettings() {
+  final o = api.GoogleAnalyticsAdminV1alphaUserProvidedDataSettings();
+  buildCounterGoogleAnalyticsAdminV1alphaUserProvidedDataSettings++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaUserProvidedDataSettings < 3) {
+    o.automaticallyDetectedDataCollectionEnabled = true;
+    o.name = 'foo';
+    o.userProvidedDataCollectionEnabled = true;
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaUserProvidedDataSettings--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1alphaUserProvidedDataSettings(
+  api.GoogleAnalyticsAdminV1alphaUserProvidedDataSettings o,
+) {
+  buildCounterGoogleAnalyticsAdminV1alphaUserProvidedDataSettings++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaUserProvidedDataSettings < 3) {
+    unittest.expect(
+      o.automaticallyDetectedDataCollectionEnabled!,
+      unittest.isTrue,
+    );
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.userProvidedDataCollectionEnabled!, unittest.isTrue);
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaUserProvidedDataSettings--;
+}
+
 core.int buildCounterGoogleProtobufEmpty = 0;
 api.GoogleProtobufEmpty buildGoogleProtobufEmpty() {
   final o = api.GoogleProtobufEmpty();
@@ -8011,6 +8045,21 @@ void main() {
     },
   );
 
+  unittest.group(
+    'obj-schema-GoogleAnalyticsAdminV1alphaUserProvidedDataSettings',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAnalyticsAdminV1alphaUserProvidedDataSettings();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleAnalyticsAdminV1alphaUserProvidedDataSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleAnalyticsAdminV1alphaUserProvidedDataSettings(od);
+      });
+    },
+  );
+
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleProtobufEmpty();
@@ -9768,6 +9817,66 @@ void main() {
       );
       checkGoogleAnalyticsAdminV1alphaReportingIdentitySettings(
         response as api.GoogleAnalyticsAdminV1alphaReportingIdentitySettings,
+      );
+    });
+
+    unittest.test('method--getUserProvidedDataSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('v1alpha/'),
+          );
+          pathOffset += 8;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAnalyticsAdminV1alphaUserProvidedDataSettings(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getUserProvidedDataSettings(
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkGoogleAnalyticsAdminV1alphaUserProvidedDataSettings(
+        response as api.GoogleAnalyticsAdminV1alphaUserProvidedDataSettings,
       );
     });
 

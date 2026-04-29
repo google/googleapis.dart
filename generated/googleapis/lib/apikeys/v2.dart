@@ -198,7 +198,8 @@ class ProjectsLocationsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project in which the API key is created.
+  /// [parent] - Required. The project in which the API key is created. The
+  /// parent field must be in format of "projects//locations/global".
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [keyId] - User specified key id (optional). If specified, it will become
@@ -372,7 +373,8 @@ class ProjectsLocationsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Lists all API keys associated with this project.
+  /// [parent] - Required. Lists all API keys associated with this project. The
+  /// parent field must be in format of "projects//locations/global".
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. Specifies the maximum number of results to be
@@ -429,7 +431,7 @@ class ProjectsLocationsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of the key. The `name` has the
+  /// [name] - Identifier. The resource name of the key. The `name` has the
   /// form: `projects//locations/global/keys/`. For example:
   /// `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2`
   /// NOTE: Key is a global resource; hence the only supported value for
@@ -798,14 +800,13 @@ class V2Key {
   /// Output only.
   core.String? keyString;
 
-  /// The resource name of the key.
+  /// Identifier.
   ///
-  /// The `name` has the form: `projects//locations/global/keys/`. For example:
+  /// The resource name of the key. The `name` has the form:
+  /// `projects//locations/global/keys/`. For example:
   /// `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2`
   /// NOTE: Key is a global resource; hence the only supported value for
   /// location is `global`.
-  ///
-  /// Output only.
   core.String? name;
 
   /// Key restrictions.

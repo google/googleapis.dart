@@ -70,6 +70,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://datastore.asia-southeast3.rep.googleapis.com/",
+            "location": "asia-southeast3"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://datastore.australia-southeast1.rep.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -280,6 +285,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-datastore.asia-southeast3.rep.googleapis.com/",
+            "location": "asia-southeast3"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://batch-datastore.australia-southeast1.rep.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -469,7 +479,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260105",
+    "revision": "20260323",
     "rootUrl": "https://datastore.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Datastore API",

@@ -1327,8 +1327,9 @@ class DrivesResource {
   ///  Lists the user's shared drives.
   ///
   /// This method accepts the `q` parameter, which is a search query combining
-  /// one or more search terms. For more information, see the \[Search for
-  /// shared drives\](/workspace/drive/api/guides/search-shareddrives) guide.
+  /// one or more search terms. For more information, see the
+  /// [Search for shared drives](https://developers.google.com/workspace/drive/api/guides/search-shareddrives)
+  /// guide.
   ///
   /// Request parameters:
   ///
@@ -1574,19 +1575,18 @@ class FilesResource {
 
   ///  Creates a file.
   ///
-  /// For more information, see \[Create and manage
-  /// files\](/workspace/drive/api/guides/create-file). This method supports an
-  /// * / upload* URI and accepts uploaded media with the following
-  /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
-  /// types:* `* / * ` (Specify a valid MIME type, rather than the literal `* /
-  /// * ` value. The literal `* / * ` is only used to indicate that any valid
-  /// MIME type can be uploaded. For more information, see \[Google Workspace
-  /// and Google Drive supported MIME
-  /// types\](/workspace/drive/api/guides/mime-types).) For more information on
-  /// uploading files, see \[Upload file
-  /// data\](/workspace/drive/api/guides/manage-uploads). Apps creating
-  /// shortcuts with the `create` method must specify the MIME type
-  /// `application/vnd.google-apps.shortcut`. Apps should specify a file
+  /// For more information, see
+  /// [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file).
+  /// This method supports an * / upload* URI and accepts uploaded media with
+  /// the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted
+  /// Media MIME types:* `* / * ` (Specify a valid MIME type, rather than the
+  /// literal `* / * ` value. The literal `* / * ` is only used to indicate that
+  /// any valid MIME type can be uploaded. For more information, see
+  /// [Google Workspace and Google Drive supported MIME types](https://developers.google.com/workspace/drive/api/guides/mime-types).)
+  /// For more information on uploading files, see
+  /// [Upload file data](https://developers.google.com/workspace/drive/api/guides/manage-uploads).
+  /// Apps creating shortcuts with the `create` method must specify the MIME
+  /// type `application/vnd.google-apps.shortcut`. Apps should specify a file
   /// extension in the `name` property when inserting files with the API. For
   /// example, an operation to insert a JPEG file should specify something like
   /// `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the
@@ -1923,6 +1923,52 @@ class FilesResource {
     }
   }
 
+  /// Generates a CSE token which can be used to create or update CSE files.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file for which the JWT should be generated. If
+  /// not provided, an id will be generated.
+  ///
+  /// [parent] - The ID of the expected parent of the file. Used when generating
+  /// a JWT for a new CSE file. If specified, the parent will be fetched, and if
+  /// the parent is a shared drive item, the shared drive's policy will be used
+  /// to determine the KACLS that should be used. It is invalid to specify both
+  /// file_id and parent in a single request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateCseTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateCseTokenResponse> generateCseToken({
+    core.String? fileId,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fileId': ?fileId == null ? null : [fileId],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'files/generateCseToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GenerateCseTokenResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Generates a set of file IDs which can be provided in create or copy
   /// requests.
   ///
@@ -1981,14 +2027,15 @@ class FilesResource {
 
   ///  Gets a file's metadata or content by ID.
   ///
-  /// For more information, see \[Search for files and
-  /// folders\](/workspace/drive/api/guides/search-files). If you provide the
-  /// URL parameter `alt=media`, then the response includes the file contents in
-  /// the response body. Downloading content with `alt=media` only works if the
-  /// file is stored in Drive. To download Google Docs, Sheets, and Slides use
-  /// \[`files.export`\](/workspace/drive/api/reference/rest/v3/files/export)
-  /// instead. For more information, see \[Download and export
-  /// files\](/workspace/drive/api/guides/manage-downloads).
+  /// For more information, see
+  /// [Search for files and folders](https://developers.google.com/workspace/drive/api/guides/search-files).
+  /// If you provide the URL parameter `alt=media`, then the response includes
+  /// the file contents in the response body. Downloading content with
+  /// `alt=media` only works if the file is stored in Drive. To download Google
+  /// Docs, Sheets, and Slides use
+  /// \[`files.export`\](https://developers.google.com/workspace/drive/api/reference/rest/v3/files/export)
+  /// instead. For more information, see
+  /// [Download and export files](https://developers.google.com/workspace/drive/api/guides/manage-downloads).
   ///
   /// Request parameters:
   ///
@@ -2072,12 +2119,13 @@ class FilesResource {
 
   ///  Lists the user's files.
   ///
-  /// For more information, see \[Search for files and
-  /// folders\](/workspace/drive/api/guides/search-files). This method accepts
-  /// the `q` parameter, which is a search query combining one or more search
-  /// terms. This method returns *all* files by default, including trashed
-  /// files. If you don't want trashed files to appear in the list, use the
-  /// `trashed=false` query parameter to remove trashed files from the results.
+  /// For more information, see
+  /// [Search for files and folders](https://developers.google.com/workspace/drive/api/guides/search-files).
+  /// This method accepts the `q` parameter, which is a search query combining
+  /// one or more search terms. This method returns *all* files by default,
+  /// including trashed files. If you don't want trashed files to appear in the
+  /// list, use the `trashed=false` query parameter to remove trashed files from
+  /// the results.
   ///
   /// Request parameters:
   ///
@@ -2321,10 +2369,10 @@ class FilesResource {
   /// - *Accepted Media MIME types:* `* / * ` (Specify a valid MIME type, rather
   /// than the literal `* / * ` value. The literal `* / * ` is only used to
   /// indicate that any valid MIME type can be uploaded. For more information,
-  /// see \[Google Workspace and Google Drive supported MIME
-  /// types\](/workspace/drive/api/guides/mime-types).) For more information on
-  /// uploading files, see \[Upload file
-  /// data\](/workspace/drive/api/guides/manage-uploads).
+  /// see
+  /// [Google Workspace and Google Drive supported MIME types](https://developers.google.com/workspace/drive/api/guides/mime-types).)
+  /// For more information on uploading files, see
+  /// [Upload file data](https://developers.google.com/workspace/drive/api/guides/manage-uploads).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2581,7 +2629,7 @@ class PermissionsResource {
   /// [emailMessage] - A plain text custom message to include in the
   /// notification email.
   ///
-  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// [enforceExpansiveAccess] - Deprecated: All requests use the expansive
   /// access rules.
   ///
   /// [enforceSingleParent] - Deprecated: See `moveToNewOwnersRoot` for details.
@@ -2694,7 +2742,7 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID of the permission.
   ///
-  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// [enforceExpansiveAccess] - Deprecated: All requests use the expansive
   /// access rules.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
@@ -2925,7 +2973,7 @@ class PermissionsResource {
   ///
   /// [permissionId] - The ID of the permission.
   ///
-  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// [enforceExpansiveAccess] - Deprecated: All requests use the expansive
   /// access rules.
   ///
   /// [removeExpiration] - Whether to remove the expiration date.
@@ -4434,7 +4482,7 @@ class Approval {
   /// The Approval ID.
   core.String? approvalId;
 
-  /// The time time the approval was completed.
+  /// The time the approval was completed.
   ///
   /// Output only.
   core.String? completeTime;
@@ -4769,6 +4817,39 @@ class ChangeList {
 
 /// A notification channel used to watch for resource changes.
 typedef Channel = $Channel01;
+
+/// Details about the client-side encryption applied to the file.
+class ClientEncryptionDetails {
+  /// The metadata used for client-side operations.
+  DecryptionMetadata? decryptionMetadata;
+
+  /// The encryption state of the file.
+  ///
+  /// The values expected here are: - encrypted - unencrypted
+  core.String? encryptionState;
+
+  ClientEncryptionDetails({this.decryptionMetadata, this.encryptionState});
+
+  ClientEncryptionDetails.fromJson(core.Map json_)
+    : this(
+        decryptionMetadata: json_.containsKey('decryptionMetadata')
+            ? DecryptionMetadata.fromJson(
+                json_['decryptionMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        encryptionState: json_['encryptionState'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final decryptionMetadata = this.decryptionMetadata;
+    final encryptionState = this.encryptionState;
+    return {
+      'decryptionMetadata': ?decryptionMetadata,
+      'encryptionState': ?encryptionState,
+    };
+  }
+}
 
 /// The file content to which the comment refers, typically within the anchor
 /// region.
@@ -5119,6 +5200,9 @@ class ContentRestriction {
     };
   }
 }
+
+/// Representation of the CSE DecryptionMetadata.
+typedef DecryptionMetadata = $DecryptionMetadata;
 
 /// A restriction for copy and download of the file.
 class DownloadRestriction {
@@ -6804,6 +6888,14 @@ class File {
   /// Output only.
   FileCapabilities? capabilities;
 
+  /// Client Side Encryption related details.
+  ///
+  /// Contains details about the encryption state of the file and details
+  /// regarding the encryption mechanism that clients need to use when
+  /// decrypting the contents of this item. This will only be present on files
+  /// and not on folders or shortcuts.
+  ClientEncryptionDetails? clientEncryptionDetails;
+
   /// Additional information about the content of the file.
   ///
   /// These fields are never populated in responses.
@@ -7126,8 +7218,8 @@ class File {
   /// Whether the file has been trashed, either explicitly or from a trashed
   /// parent folder.
   ///
-  /// Only the owner may trash a file, and other users cannot see files in the
-  /// owner's trash.
+  /// Only the owner may trash a file, but other users can still access the file
+  /// in the owner's trash until it's permanently deleted.
   core.bool? trashed;
 
   /// The time that the item was trashed (RFC 3339 date-time).
@@ -7193,6 +7285,7 @@ class File {
   File({
     this.appProperties,
     this.capabilities,
+    this.clientEncryptionDetails,
     this.contentHints,
     this.contentRestrictions,
     this.copyRequiresWriterPermission,
@@ -7267,6 +7360,12 @@ class File {
         capabilities: json_.containsKey('capabilities')
             ? FileCapabilities.fromJson(
                 json_['capabilities'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        clientEncryptionDetails: json_.containsKey('clientEncryptionDetails')
+            ? ClientEncryptionDetails.fromJson(
+                json_['clientEncryptionDetails']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         contentHints: json_.containsKey('contentHints')
@@ -7424,6 +7523,7 @@ class File {
   core.Map<core.String, core.dynamic> toJson() {
     final appProperties = this.appProperties;
     final capabilities = this.capabilities;
+    final clientEncryptionDetails = this.clientEncryptionDetails;
     final contentHints = this.contentHints;
     final contentRestrictions = this.contentRestrictions;
     final copyRequiresWriterPermission = this.copyRequiresWriterPermission;
@@ -7489,6 +7589,7 @@ class File {
     return {
       'appProperties': ?appProperties,
       'capabilities': ?capabilities,
+      'clientEncryptionDetails': ?clientEncryptionDetails,
       'contentHints': ?contentHints,
       'contentRestrictions': ?contentRestrictions,
       'copyRequiresWriterPermission': ?copyRequiresWriterPermission,
@@ -7614,6 +7715,9 @@ class FileList {
     };
   }
 }
+
+/// JWT and associated metadata used to generate CSE files.
+typedef GenerateCseTokenResponse = $GenerateCseTokenResponse;
 
 /// A list of generated file IDs which can be provided in create requests.
 class GeneratedIds {

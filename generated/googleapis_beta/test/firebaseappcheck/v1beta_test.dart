@@ -543,6 +543,7 @@ buildGoogleFirebaseAppcheckV1betaDebugToken() {
   buildCounterGoogleFirebaseAppcheckV1betaDebugToken++;
   if (buildCounterGoogleFirebaseAppcheckV1betaDebugToken < 3) {
     o.displayName = 'foo';
+    o.etag = 'foo';
     o.name = 'foo';
     o.token = 'foo';
     o.updateTime = 'foo';
@@ -557,6 +558,7 @@ void checkGoogleFirebaseAppcheckV1betaDebugToken(
   buildCounterGoogleFirebaseAppcheckV1betaDebugToken++;
   if (buildCounterGoogleFirebaseAppcheckV1betaDebugToken < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.token!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -1473,6 +1475,7 @@ buildGoogleFirebaseAppcheckV1betaService() {
     o.enforcementMode = 'foo';
     o.etag = 'foo';
     o.name = 'foo';
+    o.replayProtection = 'foo';
     o.updateTime = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1betaService--;
@@ -1487,6 +1490,7 @@ void checkGoogleFirebaseAppcheckV1betaService(
     unittest.expect(o.enforcementMode!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.replayProtection!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterGoogleFirebaseAppcheckV1betaService--;
@@ -3972,6 +3976,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirebaseappcheckApi(mock).projects.apps.debugTokens;
       final arg_name = 'foo';
+      final arg_etag = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4006,6 +4011,7 @@ void main() {
               );
             }
           }
+          unittest.expect(queryMap['etag']!.first, unittest.equals(arg_etag));
           unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
@@ -4017,7 +4023,11 @@ void main() {
         }),
         true,
       );
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(
+        arg_name,
+        etag: arg_etag,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 

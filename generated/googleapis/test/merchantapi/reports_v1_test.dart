@@ -581,6 +581,7 @@ api.ProductPerformanceView buildProductPerformanceView() {
     o.productTypeL3 = 'foo';
     o.productTypeL4 = 'foo';
     o.productTypeL5 = 'foo';
+    o.storeType = 'foo';
     o.title = 'foo';
     o.week = buildDate();
   }
@@ -617,6 +618,7 @@ void checkProductPerformanceView(api.ProductPerformanceView o) {
     unittest.expect(o.productTypeL3!, unittest.equals('foo'));
     unittest.expect(o.productTypeL4!, unittest.equals('foo'));
     unittest.expect(o.productTypeL5!, unittest.equals('foo'));
+    unittest.expect(o.storeType!, unittest.equals('foo'));
     unittest.expect(o.title!, unittest.equals('foo'));
     checkDate(o.week!);
   }
@@ -640,6 +642,17 @@ void checkUnnamed5(core.List<api.ItemIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkItemIssue(o[0]);
   checkItemIssue(o[1]);
+}
+
+core.List<api.StatusPerReportingContext> buildUnnamed6() => [
+  buildStatusPerReportingContext(),
+  buildStatusPerReportingContext(),
+];
+
+void checkUnnamed6(core.List<api.StatusPerReportingContext> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStatusPerReportingContext(o[0]);
+  checkStatusPerReportingContext(o[1]);
 }
 
 core.int buildCounterProductView = 0;
@@ -674,7 +687,9 @@ api.ProductView buildProductView() {
     o.productTypeL3 = 'foo';
     o.productTypeL4 = 'foo';
     o.productTypeL5 = 'foo';
+    o.reportingContext = 'foo';
     o.shippingLabel = 'foo';
+    o.statusPerReportingContext = buildUnnamed6();
     o.thumbnailLink = 'foo';
     o.title = 'foo';
   }
@@ -715,7 +730,9 @@ void checkProductView(api.ProductView o) {
     unittest.expect(o.productTypeL3!, unittest.equals('foo'));
     unittest.expect(o.productTypeL4!, unittest.equals('foo'));
     unittest.expect(o.productTypeL5!, unittest.equals('foo'));
+    unittest.expect(o.reportingContext!, unittest.equals('foo'));
     unittest.expect(o.shippingLabel!, unittest.equals('foo'));
+    checkUnnamed6(o.statusPerReportingContext!);
     unittest.expect(o.thumbnailLink!, unittest.equals('foo'));
     unittest.expect(o.title!, unittest.equals('foo'));
   }
@@ -791,12 +808,12 @@ void checkSearchRequest(api.SearchRequest o) {
   buildCounterSearchRequest--;
 }
 
-core.List<api.ReportRow> buildUnnamed6() => [
+core.List<api.ReportRow> buildUnnamed7() => [
   buildReportRow(),
   buildReportRow(),
 ];
 
-void checkUnnamed6(core.List<api.ReportRow> o) {
+void checkUnnamed7(core.List<api.ReportRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRow(o[0]);
   checkReportRow(o[1]);
@@ -808,7 +825,7 @@ api.SearchResponse buildSearchResponse() {
   buildCounterSearchResponse++;
   if (buildCounterSearchResponse < 3) {
     o.nextPageToken = 'foo';
-    o.results = buildUnnamed6();
+    o.results = buildUnnamed7();
   }
   buildCounterSearchResponse--;
   return o;
@@ -818,9 +835,58 @@ void checkSearchResponse(api.SearchResponse o) {
   buildCounterSearchResponse++;
   if (buildCounterSearchResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed6(o.results!);
+    checkUnnamed7(o.results!);
   }
   buildCounterSearchResponse--;
+}
+
+core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
+
+void checkUnnamed8(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
+
+void checkUnnamed9(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
+
+void checkUnnamed10(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterStatusPerReportingContext = 0;
+api.StatusPerReportingContext buildStatusPerReportingContext() {
+  final o = api.StatusPerReportingContext();
+  buildCounterStatusPerReportingContext++;
+  if (buildCounterStatusPerReportingContext < 3) {
+    o.approvedCountries = buildUnnamed8();
+    o.disapprovedCountries = buildUnnamed9();
+    o.pendingCountries = buildUnnamed10();
+    o.reportingContext = 'foo';
+  }
+  buildCounterStatusPerReportingContext--;
+  return o;
+}
+
+void checkStatusPerReportingContext(api.StatusPerReportingContext o) {
+  buildCounterStatusPerReportingContext++;
+  if (buildCounterStatusPerReportingContext < 3) {
+    checkUnnamed8(o.approvedCountries!);
+    checkUnnamed9(o.disapprovedCountries!);
+    checkUnnamed10(o.pendingCountries!);
+    unittest.expect(o.reportingContext!, unittest.equals('foo'));
+  }
+  buildCounterStatusPerReportingContext--;
 }
 
 void main() {
@@ -1030,6 +1096,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSearchResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-StatusPerReportingContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStatusPerReportingContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StatusPerReportingContext.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkStatusPerReportingContext(od);
     });
   });
 

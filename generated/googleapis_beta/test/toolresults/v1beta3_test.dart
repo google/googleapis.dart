@@ -1570,6 +1570,7 @@ api.SkippedDetail buildSkippedDetail() {
     o.incompatibleAppVersion = true;
     o.incompatibleArchitecture = true;
     o.incompatibleDevice = true;
+    o.pendingTimeout = true;
   }
   buildCounterSkippedDetail--;
   return o;
@@ -1581,6 +1582,7 @@ void checkSkippedDetail(api.SkippedDetail o) {
     unittest.expect(o.incompatibleAppVersion!, unittest.isTrue);
     unittest.expect(o.incompatibleArchitecture!, unittest.isTrue);
     unittest.expect(o.incompatibleDevice!, unittest.isTrue);
+    unittest.expect(o.pendingTimeout!, unittest.isTrue);
   }
   buildCounterSkippedDetail--;
 }

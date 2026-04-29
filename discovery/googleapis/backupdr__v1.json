@@ -15,6 +15,243 @@
     "description": "",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/backup-disaster-recovery",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.africa-south1.rep.googleapis.com/",
+            "location": "africa-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.asia-east1.rep.googleapis.com/",
+            "location": "asia-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.asia-east2.rep.googleapis.com/",
+            "location": "asia-east2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.asia-northeast1.rep.googleapis.com/",
+            "location": "asia-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.asia-northeast2.rep.googleapis.com/",
+            "location": "asia-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.asia-northeast3.rep.googleapis.com/",
+            "location": "asia-northeast3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.asia-south1.rep.googleapis.com/",
+            "location": "asia-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.asia-south2.rep.googleapis.com/",
+            "location": "asia-south2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.asia-southeast1.rep.googleapis.com/",
+            "location": "asia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.asia-southeast2.rep.googleapis.com/",
+            "location": "asia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.australia-southeast1.rep.googleapis.com/",
+            "location": "australia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.australia-southeast2.rep.googleapis.com/",
+            "location": "australia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-central2.rep.googleapis.com/",
+            "location": "europe-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-north1.rep.googleapis.com/",
+            "location": "europe-north1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-north2.rep.googleapis.com/",
+            "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-southwest1.rep.googleapis.com/",
+            "location": "europe-southwest1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-west1.rep.googleapis.com/",
+            "location": "europe-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-west2.rep.googleapis.com/",
+            "location": "europe-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-west3.rep.googleapis.com/",
+            "location": "europe-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-west6.rep.googleapis.com/",
+            "location": "europe-west6"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-west8.rep.googleapis.com/",
+            "location": "europe-west8"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-west9.rep.googleapis.com/",
+            "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-west10.rep.googleapis.com/",
+            "location": "europe-west10"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.europe-west12.rep.googleapis.com/",
+            "location": "europe-west12"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.me-central1.rep.googleapis.com/",
+            "location": "me-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.me-central2.rep.googleapis.com/",
+            "location": "me-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.me-west1.rep.googleapis.com/",
+            "location": "me-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.northamerica-northeast1.rep.googleapis.com/",
+            "location": "northamerica-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.northamerica-northeast2.rep.googleapis.com/",
+            "location": "northamerica-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.northamerica-south1.rep.googleapis.com/",
+            "location": "northamerica-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.southamerica-east1.rep.googleapis.com/",
+            "location": "southamerica-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.southamerica-west1.rep.googleapis.com/",
+            "location": "southamerica-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-central2.rep.googleapis.com/",
+            "location": "us-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-east1.rep.googleapis.com/",
+            "location": "us-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-east5.rep.googleapis.com/",
+            "location": "us-east5"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-east7.rep.googleapis.com/",
+            "location": "us-east7"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-south1.rep.googleapis.com/",
+            "location": "us-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-west2.rep.googleapis.com/",
+            "location": "us-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-west3.rep.googleapis.com/",
+            "location": "us-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-west4.rep.googleapis.com/",
+            "location": "us-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us-west8.rep.googleapis.com/",
+            "location": "us-west8"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.us.rep.googleapis.com/",
+            "location": "us"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://backupdr.eu.rep.googleapis.com/",
+            "location": "eu"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +262,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260116",
+    "revision": "20260408",
     "rootUrl": "https://backupdr.googleapis.com/",
     "servicePath": "",
     "title": "Backup and DR Service API",
@@ -164,7 +401,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "backupdr.projects.locations.list",
@@ -2181,7 +2418,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The resource name of the serviceConfig used to initialize the service. Format: `projects/{project_id}/locations/{location}/serviceConfig`.",
+                                            "description": "Required. The resource name of the serviceConfig used to initialize the service. The location must be the location of the BackupVault. Format: `projects/{project_id}/locations/{location}/serviceConfig`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/serviceConfig$",
                                             "required": true,
@@ -2816,6 +3053,11 @@
                     "format": "google-datetime",
                     "type": "string"
                 },
+                "filestoreInstanceBackupProperties": {
+                    "$ref": "FilestoreInstanceBackupProperties",
+                    "description": "Output only. Filestore specific backup properties.",
+                    "readOnly": true
+                },
                 "gcpBackupPlanInfo": {
                     "$ref": "GCPBackupPlanInfo",
                     "description": "Output only. Configuration for a Google Cloud resource.",
@@ -3271,6 +3513,10 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "computeInstanceBackupPlanProperties": {
+                    "$ref": "ComputeInstanceBackupPlanProperties",
+                    "description": "Optional. Defines optional properties specific to backups of disk-based resources, such as Compute Engine. This includes settings like whether to perform a guest flush."
+                },
                 "createTime": {
                     "description": "Output only. When the `BackupPlan` was created.",
                     "format": "google-datetime",
@@ -3280,6 +3526,10 @@
                 "description": {
                     "description": "Optional. The description of the `BackupPlan` resource. The description allows for additional details about `BackupPlan` and its use cases to be provided. An example description is the following: \"This is a backup plan that performs a daily backup at 6pm and retains data for 3 months\". The description must be at most 2048 characters.",
                     "type": "string"
+                },
+                "diskBackupPlanProperties": {
+                    "$ref": "DiskBackupPlanProperties",
+                    "description": "Optional. Defines optional properties specific to backups of disk-based resources, such as Compute Engine Persistent Disks. This includes settings like whether to perform a guest flush."
                 },
                 "etag": {
                     "description": "Optional. `etag` is returned from the service in the response. As a user of the service, you may provide an etag value in this field to prevent stale resources.",
@@ -3834,6 +4084,17 @@
             },
             "type": "object"
         },
+        "ComputeInstanceBackupPlanProperties": {
+            "description": "--- ComputeInstanceBackupPlanProperties Message ---",
+            "id": "ComputeInstanceBackupPlanProperties",
+            "properties": {
+                "guestFlush": {
+                    "description": "Optional. Indicates whether to perform a guest flush operation before taking a compute backup. When set to false, the system will create crash-consistent backups. Default value is false.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "ComputeInstanceBackupProperties": {
             "description": "ComputeInstanceBackupProperties represents Compute Engine instance backup properties.",
             "id": "ComputeInstanceBackupProperties",
@@ -3859,6 +4120,10 @@
                         "$ref": "AcceleratorConfig"
                     },
                     "type": "array"
+                },
+                "guestFlush": {
+                    "description": "Optional. Indicates whether to perform a guest flush operation before taking a compute backup. When set to false, the system will create crash-consistent backups. Default value is false.",
+                    "type": "boolean"
                 },
                 "keyRevocationActionType": {
                     "description": "KeyRevocationActionType of the instance. Supported options are \"STOP\" and \"NONE\". The default value is \"NONE\" if it is not specified.",
@@ -4336,6 +4601,11 @@
                     "$ref": "DiskDataSourceProperties",
                     "description": "DiskDataSourceProperties has a subset of Disk properties that are useful at the Datasource level."
                 },
+                "filestoreInstanceDatasourceProperties": {
+                    "$ref": "FilestoreInstanceDataSourceProperties",
+                    "description": "Output only. FilestoreInstanceDataSourceProperties has a subset of FileStore instance properties that are useful at the Datasource level.",
+                    "readOnly": true
+                },
                 "gcpResourcename": {
                     "description": "Output only. Full resource pathname URL of the source Google Cloud resource.",
                     "readOnly": true,
@@ -4364,6 +4634,11 @@
                 "cloudSqlInstanceProperties": {
                     "$ref": "CloudSqlInstanceDataSourceReferenceProperties",
                     "description": "Output only. The properties of the Cloud SQL instance.",
+                    "readOnly": true
+                },
+                "filestoreInstanceProperties": {
+                    "$ref": "FilestoreInstanceDataSourceReferenceProperties",
+                    "description": "Output only. The properties of the Filestore instance.",
                     "readOnly": true
                 },
                 "gcpResourcename": {
@@ -4443,6 +4718,17 @@
             },
             "type": "object"
         },
+        "DiskBackupPlanProperties": {
+            "description": "--- DiskBackupPlanProperties Message ---",
+            "id": "DiskBackupPlanProperties",
+            "properties": {
+                "guestFlush": {
+                    "description": "Optional. Indicates whether to perform a guest flush operation before taking a disk backup. When set to false, the system will create crash-consistent backups. Default value is false.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "DiskBackupProperties": {
             "description": "DiskBackupProperties represents the properties of a Disk backup.",
             "id": "DiskBackupProperties",
@@ -4471,6 +4757,10 @@
                 },
                 "enableConfidentialCompute": {
                     "description": "Indicates whether the source disk is using confidential compute mode.",
+                    "type": "boolean"
+                },
+                "guestFlush": {
+                    "description": "Optional. Defines if the guest flush is enabled for the source disk. Default value is false.",
                     "type": "boolean"
                 },
                 "guestOsFeature": {
@@ -4936,6 +5226,54 @@
             },
             "type": "object"
         },
+        "FilestoreInstanceBackupProperties": {
+            "description": "FilestoreInstanceBackupProperties represents the properties of a Filestore instance that are backed up by the datasource. .",
+            "id": "FilestoreInstanceBackupProperties",
+            "properties": {
+                "sourceInstance": {
+                    "description": "Output only. The source instance of the backup.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FilestoreInstanceDataSourceProperties": {
+            "description": "FilestoreInstanceDataSourceProperties represents the properties of a Filestore resource that are stored in the DataSource. .",
+            "id": "FilestoreInstanceDataSourceProperties",
+            "properties": {
+                "instanceCreateTime": {
+                    "description": "Output only. The instance creation timestamp.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Name of the Filestore instance backed up by the datasource.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FilestoreInstanceDataSourceReferenceProperties": {
+            "description": "FilestoreInstanceDataSourceReferenceProperties represents the properties of a Filestore resource that are stored in the DataSourceReference. .",
+            "id": "FilestoreInstanceDataSourceReferenceProperties",
+            "properties": {
+                "instanceCreateTime": {
+                    "description": "Output only. The instance creation timestamp.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Name of the Filestore instance backed up by the datasource. Format: projects/{project}/instances/{instance}",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "FinalizeBackupRequest": {
             "description": "Message for finalizing a Backup.",
             "id": "FinalizeBackupRequest",
@@ -5051,6 +5389,58 @@
             },
             "type": "object"
         },
+        "GoogleCloudBackupdrV1OperationMetadata": {
+            "description": "Represents the metadata of the long-running operation.",
+            "id": "GoogleCloudBackupdrV1OperationMetadata",
+            "properties": {
+                "additionalInfo": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Output only. AdditionalInfo contains additional Info related to backup plan association resource.",
+                    "readOnly": true,
+                    "type": "object"
+                },
+                "apiVersion": {
+                    "description": "Output only. API version used to start the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Output only. The time the operation was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Output only. The time the operation finished running.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "requestedCancellation": {
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to 'Code.CANCELLED'.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "statusMessage": {
+                    "description": "Output only. Human-readable status of the operation, if any.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Output only. Server-defined resource path for the target of the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "verb": {
+                    "description": "Output only. Name of the verb executed by the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GuestOsFeature": {
             "description": "Feature type of the Guest OS.",
             "id": "GuestOsFeature",
@@ -5118,6 +5508,10 @@
             "description": "Request message for initializing the service.",
             "id": "InitializeServiceRequest",
             "properties": {
+                "backupPlanLocation": {
+                    "description": "Optional. The location where the BackupPlan will be created. This field is required for multi-region BackupVaults and is optional for regional BackupVaults. It is useful when creating a Backup Vault in a multi-region, allowing the BackupPlan to reside in a specific region within that multi-region. If this field is not provided, the BackupPlan will be created in the same location as specified in the `name` field.",
+                    "type": "string"
+                },
                 "cloudSqlInstanceInitializationConfig": {
                     "$ref": "CloudSqlInstanceInitializationConfig",
                     "description": "Optional. The configuration for initializing a Cloud SQL instance."
@@ -5129,6 +5523,10 @@
                 "resourceType": {
                     "description": "Required. The resource type to which the default service config will be applied. Examples include, \"compute.googleapis.com/Instance\" and \"storage.googleapis.com/Bucket\".",
                     "type": "string"
+                },
+                "validateOnly": {
+                    "description": "Optional. If set, validates the request and returns the result, but does not actually run it.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -5482,17 +5880,36 @@
             "id": "LocationMetadata",
             "properties": {
                 "unsupportedFeatures": {
+                    "description": "List of features that are not supported in the location.",
                     "items": {
                         "enum": [
                             "FEATURE_UNSPECIFIED",
                             "MANAGEMENT_SERVER",
                             "COMPUTE_INSTANCE",
-                            "PROTECTION_SUMMARY"
+                            "PROTECTION_SUMMARY",
+                            "DISK",
+                            "CLOUD_SQL",
+                            "ALLOY_DB",
+                            "FILESTORE",
+                            "BV_AF",
+                            "CEP_MONITORING_COMPUTE_INSTANCE",
+                            "CEP_MONITORING_DISK",
+                            "BV_CUSTOM_PROBERS",
+                            "FT_CUSTOM_PROBERS"
                         ],
                         "enumDescriptions": [
                             "",
                             "",
                             "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "Remove once parity achieved between BV_AF and BV_CUSTOM_PROBERS.",
                             ""
                         ],
                         "type": "string"
@@ -5870,58 +6287,6 @@
             },
             "type": "object"
         },
-        "OperationMetadata": {
-            "description": "Represents the metadata of the long-running operation.",
-            "id": "OperationMetadata",
-            "properties": {
-                "additionalInfo": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Output only. AdditionalInfo contains additional Info related to backup plan association resource.",
-                    "readOnly": true,
-                    "type": "object"
-                },
-                "apiVersion": {
-                    "description": "Output only. API version used to start the operation.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "createTime": {
-                    "description": "Output only. The time the operation was created.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "endTime": {
-                    "description": "Output only. The time the operation finished running.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "requestedCancellation": {
-                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to 'Code.CANCELLED'.",
-                    "readOnly": true,
-                    "type": "boolean"
-                },
-                "statusMessage": {
-                    "description": "Output only. Human-readable status of the operation, if any.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "target": {
-                    "description": "Output only. Server-defined resource path for the target of the operation.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "verb": {
-                    "description": "Output only. Name of the verb executed by the operation.",
-                    "readOnly": true,
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "PitrSettings": {
             "description": "Point in time recovery settings of the backup configuration resource.",
             "id": "PitrSettings",
@@ -6043,14 +6408,16 @@
                         "CLOUD_SQL_INSTANCE",
                         "COMPUTE_ENGINE_VM",
                         "COMPUTE_ENGINE_DISK",
-                        "COMPUTE_ENGINE_REGIONAL_DISK"
+                        "COMPUTE_ENGINE_REGIONAL_DISK",
+                        "FILESTORE_INSTANCE"
                     ],
                     "enumDescriptions": [
                         "Resource type not set.",
                         "Cloud SQL instance.",
                         "Compute Engine VM.",
                         "Compute Engine Disk.",
-                        "Compute Engine Regional Disk."
+                        "Compute Engine Regional Disk.",
+                        "Filestore Instance."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -6061,7 +6428,7 @@
                     "type": "string"
                 },
                 "vaulted": {
-                    "description": "Output only. Whether the target resource is protected by a backup vault. This is true if the backup_configs_details is not empty and any of the ResourceBackupConfig.backup_configs_details has a backup configuration with BackupConfigDetails.backup_vault set. set.",
+                    "description": "Output only. Whether the target resource is protected by a backup vault. This is true if the backup_configs_details is not empty and any of the ResourceBackupConfig.backup_configs_details has a backup configuration with BackupConfigDetails.backup_vault set.",
                     "readOnly": true,
                     "type": "boolean"
                 }

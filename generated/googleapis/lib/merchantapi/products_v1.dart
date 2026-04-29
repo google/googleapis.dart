@@ -102,10 +102,10 @@ class AccountsProductInputsResource {
   /// `content_language~feed_label~offer_id` structure. This encoding MUST be
   /// used if any part of the product identifier (like `offer_id`) contains
   /// characters such as `/`, `%`, or `~`. * Example: To represent the product
-  /// ID `en~US~sku/123`, the `{productInput}` segment must be the base64url
-  /// encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource
-  /// name for the product would be
-  /// `accounts/123/productInputs/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The
+  /// ID `en~US~sku/123`, the `{productInput}` segment must be the unpadded
+  /// base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full
+  /// resource name for the product would be
+  /// `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The
   /// `{productInput}` segment is the tilde-separated string
   /// `content_language~feed_label~offer_id`. This format is suitable only when
   /// `content_language`, `feed_label`, and `offer_id` do not contain
@@ -113,9 +113,7 @@ class AccountsProductInputsResource {
   /// **Encoded Format** for all product IDs to ensure correct parsing,
   /// especially those containing special characters. The presence of tilde
   /// (`~`) characters in the `{productInput}` segment is used to differentiate
-  /// between the two formats. Note: For calls to the v1beta version, the plain
-  /// format is `channel~content_language~feed_label~offer_id`, for example:
-  /// `accounts/123/productinputs/online~en~US~sku123`.
+  /// between the two formats.
   /// Value must have pattern `^accounts/\[^/\]+/productInputs/\[^/\]+$`.
   ///
   /// [dataSource] - Required. The primary or supplemental data source from
@@ -245,10 +243,10 @@ class AccountsProductInputsResource {
   /// `content_language~feed_label~offer_id` structure. This encoding MUST be
   /// used if any part of the product identifier (like `offer_id`) contains
   /// characters such as `/`, `%`, or `~`. * Example: To represent the product
-  /// ID `en~US~sku/123`, the `{productinput}` segment must be the base64url
-  /// encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource
-  /// name for the product would be
-  /// `accounts/123/productinputs/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The
+  /// ID `en~US~sku/123`, the `{productinput}` segment must be the unpadded
+  /// base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full
+  /// resource name for the product would be
+  /// `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The
   /// `{productinput}` segment is the tilde-separated string
   /// `content_language~feed_label~offer_id`. This format is suitable only when
   /// `content_language`, `feed_label`, and `offer_id` do not contain
@@ -256,9 +254,7 @@ class AccountsProductInputsResource {
   /// **Encoded Format** for all product IDs to ensure correct parsing,
   /// especially those containing special characters. The presence of tilde
   /// (`~`) characters in the `{productinput}` segment is used to differentiate
-  /// between the two formats. Note: For calls to the v1beta version, the plain
-  /// format is `channel~content_language~feed_label~offer_id`, for example:
-  /// `accounts/123/productinputs/online~en~US~sku123`.
+  /// between the two formats.
   /// Value must have pattern `^accounts/\[^/\]+/productInputs/\[^/\]+$`.
   ///
   /// [dataSource] - Required. The primary or supplemental product data source
@@ -341,10 +337,10 @@ class AccountsProductsResource {
   /// `content_language~feed_label~offer_id` structure. This encoding MUST be
   /// used if any part of the product identifier (like `offer_id`) contains
   /// characters such as `/`, `%`, or `~`. * Example: To represent the product
-  /// ID `en~US~sku/123`, the `{product}` segment must be the base64url encoding
-  /// of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for
-  /// the product would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw`. 2.
-  /// **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// ID `en~US~sku/123`, the `{product}` segment must be the unpadded base64url
+  /// encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource
+  /// name for the product would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw`.
+  /// 2. **Plain Format**: The `{product}` segment is the tilde-separated string
   /// `content_language~feed_label~offer_id`. This format is suitable only when
   /// `content_language`, `feed_label`, and `offer_id` do not contain
   /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
@@ -946,6 +942,8 @@ class CustomAttribute {
 }
 
 /// The destination status of the product status.
+///
+/// Equivalent to `StatusPerReportingContext` in Reports API.
 class DestinationStatus {
   /// List of country codes (ISO 3166-1 alpha-2) where the offer is approved.
   core.List<core.String>? approvedCountries;
@@ -978,6 +976,8 @@ class DestinationStatus {
   /// [Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).
   /// - "FREE_LISTINGS" :
   /// [Free product listings](https://support.google.com/merchants/answer/9199328).
+  /// - "FREE_LISTINGS_UCP_CHECKOUT" :
+  /// [Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).
   /// - "FREE_LOCAL_LISTINGS" :
   /// [Free local product listings](https://support.google.com/merchants/answer/9825611).
   /// - "FREE_LOCAL_VEHICLE_LISTINGS" :
@@ -1179,6 +1179,8 @@ class ItemLevelIssue {
   /// [Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).
   /// - "FREE_LISTINGS" :
   /// [Free product listings](https://support.google.com/merchants/answer/9199328).
+  /// - "FREE_LISTINGS_UCP_CHECKOUT" :
+  /// [Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).
   /// - "FREE_LOCAL_LISTINGS" :
   /// [Free local product listings](https://support.google.com/merchants/answer/9825611).
   /// - "FREE_LOCAL_VEHICLE_LISTINGS" :
@@ -1448,6 +1450,20 @@ class Product {
   /// Output only.
   AutomatedDiscounts? automatedDiscounts;
 
+  /// The **unpadded base64url encoded name** of the product.
+  ///
+  /// Format: `accounts/{account}/products/{product}` where the last section
+  /// `product` is the unpadded base64url encoding of the
+  /// `content_language~feed_label~offer_id` name. Example:
+  /// `accounts/123/products/ZW5-VVN-c2t1LzEyMw` for the decoded product name
+  /// `accounts/123/products/en~US~sku/123`. This field can be used directly as
+  /// input to the API methods that require the product name to be encoded if it
+  /// contains special characters, for example
+  /// \[`GetProduct`\](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products/get).
+  ///
+  /// Output only.
+  core.String? base64EncodedName;
+
   /// The two-letter \[ISO 639-1\](http://en.wikipedia.org/wiki/ISO_639-1)
   /// language code for the product.
   ///
@@ -1536,6 +1552,7 @@ class Product {
 
   Product({
     this.automatedDiscounts,
+    this.base64EncodedName,
     this.contentLanguage,
     this.customAttributes,
     this.dataSource,
@@ -1556,6 +1573,7 @@ class Product {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        base64EncodedName: json_['base64EncodedName'] as core.String?,
         contentLanguage: json_['contentLanguage'] as core.String?,
         customAttributes: (json_['customAttributes'] as core.List?)
             ?.map(
@@ -1585,6 +1603,7 @@ class Product {
 
   core.Map<core.String, core.dynamic> toJson() {
     final automatedDiscounts = this.automatedDiscounts;
+    final base64EncodedName = this.base64EncodedName;
     final contentLanguage = this.contentLanguage;
     final customAttributes = this.customAttributes;
     final dataSource = this.dataSource;
@@ -1597,6 +1616,7 @@ class Product {
     final versionNumber = this.versionNumber;
     return {
       'automatedDiscounts': ?automatedDiscounts,
+      'base64EncodedName': ?base64EncodedName,
       'contentLanguage': ?contentLanguage,
       'customAttributes': ?customAttributes,
       'dataSource': ?dataSource,
@@ -1825,8 +1845,7 @@ class ProductAttributes {
   core.String? googleProductCategory;
 
   /// Global Trade Item Numbers
-  /// ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the
-  /// item.
+  /// ([GTIN](https://support.google.com/merchants/answer/6324461)) of the item.
   ///
   /// You can provide up to 10 GTINs.
   core.List<core.String>? gtins;
@@ -1944,6 +1963,13 @@ class ProductAttributes {
   /// Minimal product handling time (in business days).
   core.String? minHandlingTime;
 
+  /// The [minimum value](https://support.google.com/merchants/answer/16989009)
+  /// in the cart before a customer can initiate checkout.
+  ///
+  /// Supports multiple minimum order values. Different minimum order values can
+  /// be specified per country, service and surface. Maximum entries: 100.
+  core.List<ProductMinimumOrderValue>? minimumOrderValues;
+
   /// URL for the mobile-optimized version of your item's landing page.
   core.String? mobileLink;
 
@@ -1952,8 +1978,7 @@ class ProductAttributes {
   core.String? mobileLinkTemplate;
 
   /// Manufacturer Part Number
-  /// ([MPN](https://support.google.com/merchants/answer/188494#mpn)) of the
-  /// item.
+  /// ([MPN](https://support.google.com/merchants/answer/6324482)) of the item.
   core.String? mpn;
 
   /// The number of identical products in a business-defined multipack.
@@ -2048,6 +2073,13 @@ class ProductAttributes {
   /// The unique ID of a promotion.
   core.List<core.String>? promotionIds;
 
+  /// The return label of the product, used to group products in account-level
+  /// return policies.
+  ///
+  /// Max. 100 characters. For more information, see
+  /// [Return policy label](https://support.google.com/merchants/answer/9445425).
+  core.String? returnPolicyLabel;
+
   /// Advertised sale price of the item.
   Price? salePrice;
 
@@ -2071,8 +2103,11 @@ class ProductAttributes {
   /// Height of the item for shipping.
   ShippingDimension? shippingHeight;
 
-  /// The shipping label of the product, used to group product in account-level
+  /// The shipping label of the product, used to group products in account-level
   /// shipping rules.
+  ///
+  /// Max. 100 characters. For more information, see
+  /// [Shipping label](https://support.google.com/merchants/answer/6324504).
   core.String? shippingLabel;
 
   /// Length of the item for shipping.
@@ -2156,6 +2191,16 @@ class ProductAttributes {
   /// The measure and dimension of an item.
   UnitPricingMeasure? unitPricingMeasure;
 
+  /// A list of video URLs for the item.
+  ///
+  /// Use this attribute to provide more visuals for your product beyond your
+  /// image attributes. See the
+  /// [Help Center article](https://support.google.com/merchants/answer/15216925)
+  /// for more information.
+  ///
+  /// Optional.
+  core.List<core.String>? videoLinks;
+
   /// URL of the 3D image of the item.
   ///
   /// See the
@@ -2219,6 +2264,7 @@ class ProductAttributes {
     this.maximumRetailPrice,
     this.minEnergyEfficiencyClass,
     this.minHandlingTime,
+    this.minimumOrderValues,
     this.mobileLink,
     this.mobileLinkTemplate,
     this.mpn,
@@ -2236,6 +2282,7 @@ class ProductAttributes {
     this.productWeight,
     this.productWidth,
     this.promotionIds,
+    this.returnPolicyLabel,
     this.salePrice,
     this.salePriceEffectiveDate,
     this.sellOnGoogleQuantity,
@@ -2259,6 +2306,7 @@ class ProductAttributes {
     this.transitTimeLabel,
     this.unitPricingBaseMeasure,
     this.unitPricingMeasure,
+    this.videoLinks,
     this.virtualModelLink,
   });
 
@@ -2394,6 +2442,13 @@ class ProductAttributes {
         minEnergyEfficiencyClass:
             json_['minEnergyEfficiencyClass'] as core.String?,
         minHandlingTime: json_['minHandlingTime'] as core.String?,
+        minimumOrderValues: (json_['minimumOrderValues'] as core.List?)
+            ?.map(
+              (value) => ProductMinimumOrderValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         mobileLink: json_['mobileLink'] as core.String?,
         mobileLinkTemplate: json_['mobileLinkTemplate'] as core.String?,
         mpn: json_['mpn'] as core.String?,
@@ -2443,6 +2498,7 @@ class ProductAttributes {
         promotionIds: (json_['promotionIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        returnPolicyLabel: json_['returnPolicyLabel'] as core.String?,
         salePrice: json_.containsKey('salePrice')
             ? Price.fromJson(
                 json_['salePrice'] as core.Map<core.String, core.dynamic>,
@@ -2547,6 +2603,9 @@ class ProductAttributes {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        videoLinks: (json_['videoLinks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         virtualModelLink: json_['virtualModelLink'] as core.String?,
       );
 
@@ -2607,6 +2666,7 @@ class ProductAttributes {
     final maximumRetailPrice = this.maximumRetailPrice;
     final minEnergyEfficiencyClass = this.minEnergyEfficiencyClass;
     final minHandlingTime = this.minHandlingTime;
+    final minimumOrderValues = this.minimumOrderValues;
     final mobileLink = this.mobileLink;
     final mobileLinkTemplate = this.mobileLinkTemplate;
     final mpn = this.mpn;
@@ -2624,6 +2684,7 @@ class ProductAttributes {
     final productWeight = this.productWeight;
     final productWidth = this.productWidth;
     final promotionIds = this.promotionIds;
+    final returnPolicyLabel = this.returnPolicyLabel;
     final salePrice = this.salePrice;
     final salePriceEffectiveDate = this.salePriceEffectiveDate;
     final sellOnGoogleQuantity = this.sellOnGoogleQuantity;
@@ -2647,6 +2708,7 @@ class ProductAttributes {
     final transitTimeLabel = this.transitTimeLabel;
     final unitPricingBaseMeasure = this.unitPricingBaseMeasure;
     final unitPricingMeasure = this.unitPricingMeasure;
+    final videoLinks = this.videoLinks;
     final virtualModelLink = this.virtualModelLink;
     return {
       'additionalImageLinks': ?additionalImageLinks,
@@ -2704,6 +2766,7 @@ class ProductAttributes {
       'maximumRetailPrice': ?maximumRetailPrice,
       'minEnergyEfficiencyClass': ?minEnergyEfficiencyClass,
       'minHandlingTime': ?minHandlingTime,
+      'minimumOrderValues': ?minimumOrderValues,
       'mobileLink': ?mobileLink,
       'mobileLinkTemplate': ?mobileLinkTemplate,
       'mpn': ?mpn,
@@ -2721,6 +2784,7 @@ class ProductAttributes {
       'productWeight': ?productWeight,
       'productWidth': ?productWidth,
       'promotionIds': ?promotionIds,
+      'returnPolicyLabel': ?returnPolicyLabel,
       'salePrice': ?salePrice,
       'salePriceEffectiveDate': ?salePriceEffectiveDate,
       'sellOnGoogleQuantity': ?sellOnGoogleQuantity,
@@ -2744,6 +2808,7 @@ class ProductAttributes {
       'transitTimeLabel': ?transitTimeLabel,
       'unitPricingBaseMeasure': ?unitPricingBaseMeasure,
       'unitPricingMeasure': ?unitPricingMeasure,
+      'videoLinks': ?videoLinks,
       'virtualModelLink': ?virtualModelLink,
     };
   }
@@ -2843,6 +2908,34 @@ typedef ProductDimension = $ProductDimension;
 /// **camelCase** casing style while the Products Data Specification lists the
 /// names in the **snake_case** casing style.
 class ProductInput {
+  /// The **unpadded base64url encoded name** of the product input.
+  ///
+  /// Format: `accounts/{account}/productInputs/{productinput}` where the last
+  /// section `productinput` is the unpadded base64url encoding of the
+  /// `content_language~feed_label~offer_id` name. Example:
+  /// `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw` for the decoded product
+  /// input name `accounts/123/productInputs/en~US~sku/123`. This field can be
+  /// used directly as input to the API methods that require the product input
+  /// name to be encoded if it contains special characters, for example
+  /// \[`GetProductInput`\](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.productInputs/get).
+  ///
+  /// Output only.
+  core.String? base64EncodedName;
+
+  /// The **unpadded base64url encoded name** of the processed product.
+  ///
+  /// Format: `accounts/{account}/products/{product}` where the last section
+  /// `product` is the unpadded base64url encoding of the
+  /// `content_language~feed_label~offer_id` name. Example:
+  /// `accounts/123/products/ZW5-VVN-c2t1LzEyMw` for the decoded product name
+  /// `accounts/123/products/en~US~sku/123`. This field can be used directly as
+  /// input to the API methods that require the product name to be encoded if it
+  /// contains special characters, for example
+  /// \[`GetProduct`\](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products/get).
+  ///
+  /// Output only.
+  core.String? base64EncodedProduct;
+
   /// The two-letter \[ISO 639-1\](http://en.wikipedia.org/wiki/ISO_639-1)
   /// language code for the product.
   ///
@@ -2901,10 +2994,10 @@ class ProductInput {
   /// `content_language~feed_label~offer_id` structure. This encoding MUST be
   /// used if any part of the product identifier (like `offer_id`) contains
   /// characters such as `/`, `%`, or `~`. * Example: To represent the product
-  /// ID `en~US~sku/123`, the `{productinput}` segment must be the base64url
-  /// encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource
-  /// name for the product would be
-  /// `accounts/123/productinputs/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The
+  /// ID `en~US~sku/123`, the `{productinput}` segment must be the unpadded
+  /// base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full
+  /// resource name for the product would be
+  /// `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The
   /// `{productinput}` segment is the tilde-separated string
   /// `content_language~feed_label~offer_id`. This format is suitable only when
   /// `content_language`, `feed_label`, and `offer_id` do not contain
@@ -2912,9 +3005,7 @@ class ProductInput {
   /// **Encoded Format** for all product IDs to ensure correct parsing,
   /// especially those containing special characters. The presence of tilde
   /// (`~`) characters in the `{productinput}` segment is used to differentiate
-  /// between the two formats. Note: For calls to the v1beta version, the plain
-  /// format is `channel~content_language~feed_label~offer_id`, for example:
-  /// `accounts/123/productinputs/online~en~US~sku123`.
+  /// between the two formats.
   core.String? name;
 
   /// Your unique identifier for the product.
@@ -2956,6 +3047,8 @@ class ProductInput {
   core.String? versionNumber;
 
   ProductInput({
+    this.base64EncodedName,
+    this.base64EncodedProduct,
     this.contentLanguage,
     this.customAttributes,
     this.feedLabel,
@@ -2969,6 +3062,8 @@ class ProductInput {
 
   ProductInput.fromJson(core.Map json_)
     : this(
+        base64EncodedName: json_['base64EncodedName'] as core.String?,
+        base64EncodedProduct: json_['base64EncodedProduct'] as core.String?,
         contentLanguage: json_['contentLanguage'] as core.String?,
         customAttributes: (json_['customAttributes'] as core.List?)
             ?.map(
@@ -2992,6 +3087,8 @@ class ProductInput {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final base64EncodedName = this.base64EncodedName;
+    final base64EncodedProduct = this.base64EncodedProduct;
     final contentLanguage = this.contentLanguage;
     final customAttributes = this.customAttributes;
     final feedLabel = this.feedLabel;
@@ -3002,6 +3099,8 @@ class ProductInput {
     final productAttributes = this.productAttributes;
     final versionNumber = this.versionNumber;
     return {
+      'base64EncodedName': ?base64EncodedName,
+      'base64EncodedProduct': ?base64EncodedProduct,
       'contentLanguage': ?contentLanguage,
       'customAttributes': ?customAttributes,
       'feedLabel': ?feedLabel,
@@ -3020,6 +3119,11 @@ class ProductInstallment {
   /// The amount the buyer has to pay per month.
   Price? amount;
 
+  /// Annual percentage rate for `credit_type` finance
+  ///
+  /// Optional.
+  core.double? annualPercentageRate;
+
   /// Type of installment payments.
   /// Possible string values are:
   /// - "CREDIT_TYPE_UNSPECIFIED" : Default value. This value is unused.
@@ -3035,6 +3139,7 @@ class ProductInstallment {
 
   ProductInstallment({
     this.amount,
+    this.annualPercentageRate,
     this.creditType,
     this.downpayment,
     this.months,
@@ -3047,6 +3152,8 @@ class ProductInstallment {
                 json_['amount'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        annualPercentageRate: (json_['annualPercentageRate'] as core.num?)
+            ?.toDouble(),
         creditType: json_['creditType'] as core.String?,
         downpayment: json_.containsKey('downpayment')
             ? Price.fromJson(
@@ -3058,14 +3165,79 @@ class ProductInstallment {
 
   core.Map<core.String, core.dynamic> toJson() {
     final amount = this.amount;
+    final annualPercentageRate = this.annualPercentageRate;
     final creditType = this.creditType;
     final downpayment = this.downpayment;
     final months = this.months;
     return {
       'amount': ?amount,
+      'annualPercentageRate': ?annualPercentageRate,
       'creditType': ?creditType,
       'downpayment': ?downpayment,
       'months': ?months,
+    };
+  }
+}
+
+/// The minimum order value in the cart before the checkout is permitted.
+class ProductMinimumOrderValue {
+  /// The
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// of the country to which an item will ship.
+  ///
+  /// Required.
+  core.String? country;
+
+  /// The minimum cart or basket value before the checkout is permitted.
+  ///
+  /// Required.
+  Price? price;
+
+  /// A free-form description of the service class or delivery speed.
+  ///
+  /// This should match the service value set for the Shipping attribute. See
+  /// service.
+  core.String? service;
+
+  /// The surface to which the minimum order value applies.
+  ///
+  /// Defaults to `ONLINE_LOCAL` if not configured.
+  /// Possible string values are:
+  /// - "SURFACE_UNSPECIFIED" : Surface is unspecified.
+  /// - "ONLINE" : Surface value to indicate online purchases.
+  /// - "LOCAL" : Surface value to indicate local purchases.
+  /// - "ONLINE_LOCAL" : Surface value to indicate online and local purchases.
+  core.String? surface;
+
+  ProductMinimumOrderValue({
+    this.country,
+    this.price,
+    this.service,
+    this.surface,
+  });
+
+  ProductMinimumOrderValue.fromJson(core.Map json_)
+    : this(
+        country: json_['country'] as core.String?,
+        price: json_.containsKey('price')
+            ? Price.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        service: json_['service'] as core.String?,
+        surface: json_['surface'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final country = this.country;
+    final price = this.price;
+    final service = this.service;
+    final surface = this.surface;
+    return {
+      'country': ?country,
+      'price': ?price,
+      'service': ?service,
+      'surface': ?surface,
     };
   }
 }
@@ -3215,6 +3387,31 @@ class Shipping {
   /// [AdWords API](https://developers.google.com/adwords/api/docs/appendix/geotargeting).
   core.String? locationId;
 
+  /// The label of the
+  /// [loyalty program](https://support.google.com/merchants/answer/6324484).
+  ///
+  /// Must match one of the program labels set in loyalty_programs. When set (in
+  /// combination with
+  /// [loyalty_tier_label](https://support.google.com/merchants/answer/6324484)),
+  /// this shipping option is only applicable to loyalty program members of the
+  /// specified tier.
+  ///
+  /// Optional.
+  core.String? loyaltyProgramLabel;
+
+  /// The label of the
+  /// [loyalty tier](https://support.google.com/merchants/answer/6324484) within
+  /// the loyalty program.
+  ///
+  /// Must match one of the tiers set in the loyalty_programs. When set (in
+  /// combination with
+  /// [loyalty_program_label](https://support.google.com/merchants/answer/6324484)),
+  /// this shipping option is only applicable to loyalty program members of the
+  /// specified tier.
+  ///
+  /// Optional.
+  core.String? loyaltyTierLabel;
+
   /// Maximum handling time (inclusive) between when the order is received and
   /// shipped in business days.
   ///
@@ -3272,6 +3469,8 @@ class Shipping {
     this.handlingCutoffTimezone,
     this.locationGroupName,
     this.locationId,
+    this.loyaltyProgramLabel,
+    this.loyaltyTierLabel,
     this.maxHandlingTime,
     this.maxTransitTime,
     this.minHandlingTime,
@@ -3289,6 +3488,8 @@ class Shipping {
         handlingCutoffTimezone: json_['handlingCutoffTimezone'] as core.String?,
         locationGroupName: json_['locationGroupName'] as core.String?,
         locationId: json_['locationId'] as core.String?,
+        loyaltyProgramLabel: json_['loyaltyProgramLabel'] as core.String?,
+        loyaltyTierLabel: json_['loyaltyTierLabel'] as core.String?,
         maxHandlingTime: json_['maxHandlingTime'] as core.String?,
         maxTransitTime: json_['maxTransitTime'] as core.String?,
         minHandlingTime: json_['minHandlingTime'] as core.String?,
@@ -3309,6 +3510,8 @@ class Shipping {
     final handlingCutoffTimezone = this.handlingCutoffTimezone;
     final locationGroupName = this.locationGroupName;
     final locationId = this.locationId;
+    final loyaltyProgramLabel = this.loyaltyProgramLabel;
+    final loyaltyTierLabel = this.loyaltyTierLabel;
     final maxHandlingTime = this.maxHandlingTime;
     final maxTransitTime = this.maxTransitTime;
     final minHandlingTime = this.minHandlingTime;
@@ -3323,6 +3526,8 @@ class Shipping {
       'handlingCutoffTimezone': ?handlingCutoffTimezone,
       'locationGroupName': ?locationGroupName,
       'locationId': ?locationId,
+      'loyaltyProgramLabel': ?loyaltyProgramLabel,
+      'loyaltyTierLabel': ?loyaltyTierLabel,
       'maxHandlingTime': ?maxHandlingTime,
       'maxTransitTime': ?maxTransitTime,
       'minHandlingTime': ?minHandlingTime,

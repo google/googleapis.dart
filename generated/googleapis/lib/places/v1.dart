@@ -665,6 +665,12 @@ class GoogleMapsPlacesV1AuthorAttribution {
 
 /// Request proto for AutocompletePlaces.
 class GoogleMapsPlacesV1AutocompletePlacesRequest {
+  /// If true, include businesses that are not yet open but will open in the
+  /// future.
+  ///
+  /// Optional.
+  core.bool? includeFutureOpeningBusinesses;
+
   /// Include pure service area businesses if the field is set to true.
   ///
   /// Pure service area business is a business that visits or delivers to
@@ -793,6 +799,7 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
   core.String? sessionToken;
 
   GoogleMapsPlacesV1AutocompletePlacesRequest({
+    this.includeFutureOpeningBusinesses,
     this.includePureServiceAreaBusinesses,
     this.includeQueryPredictions,
     this.includedPrimaryTypes,
@@ -809,6 +816,8 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
 
   GoogleMapsPlacesV1AutocompletePlacesRequest.fromJson(core.Map json_)
     : this(
+        includeFutureOpeningBusinesses:
+            json_['includeFutureOpeningBusinesses'] as core.bool?,
         includePureServiceAreaBusinesses:
             json_['includePureServiceAreaBusinesses'] as core.bool?,
         includeQueryPredictions: json_['includeQueryPredictions'] as core.bool?,
@@ -842,6 +851,7 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final includeFutureOpeningBusinesses = this.includeFutureOpeningBusinesses;
     final includePureServiceAreaBusinesses =
         this.includePureServiceAreaBusinesses;
     final includeQueryPredictions = this.includeQueryPredictions;
@@ -856,6 +866,7 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
     final regionCode = this.regionCode;
     final sessionToken = this.sessionToken;
     return {
+      'includeFutureOpeningBusinesses': ?includeFutureOpeningBusinesses,
       'includePureServiceAreaBusinesses': ?includePureServiceAreaBusinesses,
       'includeQueryPredictions': ?includeQueryPredictions,
       'includedPrimaryTypes': ?includedPrimaryTypes,
@@ -1964,6 +1975,7 @@ class GoogleMapsPlacesV1Place {
   /// now.
   /// - "CLOSED_TEMPORARILY" : The establishment is temporarily closed.
   /// - "CLOSED_PERMANENTLY" : The establishment is permanently closed.
+  /// - "FUTURE_OPENING" : The establishment will open in the future.
   core.String? businessStatus;
 
   /// The consumer alert message for the place when we detect suspicious review
@@ -2043,6 +2055,14 @@ class GoogleMapsPlacesV1Place {
   /// Links to trigger different Google Maps actions.
   GoogleMapsPlacesV1PlaceGoogleMapsLinks? googleMapsLinks;
 
+  /// The type label of the place on Google Maps, localized to the request
+  /// language if applicable, for example, "Restaurant", "Cafe", "Airport", etc.
+  ///
+  /// The type label may be different from the primary type display name and may
+  /// not be a supported type in
+  /// [Places API Place Types table](https://developers.google.com/maps/documentation/places/web-service/place-types).
+  GoogleTypeLocalizedText? googleMapsTypeLabel;
+
   /// A URL providing more information about this place.
   core.String? googleMapsUri;
 
@@ -2095,6 +2115,11 @@ class GoogleMapsPlacesV1Place {
 
   /// A summary of points of interest near the place.
   GoogleMapsPlacesV1PlaceNeighborhoodSummary? neighborhoodSummary;
+
+  /// The date this place will open in the future.
+  ///
+  /// This field is only populated if the business status is FUTURE_OPENING.
+  GoogleTypeDate? openingDate;
 
   /// Place provides outdoor seating.
   core.bool? outdoorSeating;
@@ -2301,6 +2326,7 @@ class GoogleMapsPlacesV1Place {
     this.goodForGroups,
     this.goodForWatchingSports,
     this.googleMapsLinks,
+    this.googleMapsTypeLabel,
     this.googleMapsUri,
     this.iconBackgroundColor,
     this.iconMaskBaseUri,
@@ -2314,6 +2340,7 @@ class GoogleMapsPlacesV1Place {
     this.name,
     this.nationalPhoneNumber,
     this.neighborhoodSummary,
+    this.openingDate,
     this.outdoorSeating,
     this.parkingOptions,
     this.paymentOptions,
@@ -2455,6 +2482,12 @@ class GoogleMapsPlacesV1Place {
                 json_['googleMapsLinks'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        googleMapsTypeLabel: json_.containsKey('googleMapsTypeLabel')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['googleMapsTypeLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         googleMapsUri: json_['googleMapsUri'] as core.String?,
         iconBackgroundColor: json_['iconBackgroundColor'] as core.String?,
         iconMaskBaseUri: json_['iconMaskBaseUri'] as core.String?,
@@ -2476,6 +2509,11 @@ class GoogleMapsPlacesV1Place {
             ? GoogleMapsPlacesV1PlaceNeighborhoodSummary.fromJson(
                 json_['neighborhoodSummary']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        openingDate: json_.containsKey('openingDate')
+            ? GoogleTypeDate.fromJson(
+                json_['openingDate'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         outdoorSeating: json_['outdoorSeating'] as core.bool?,
@@ -2612,6 +2650,7 @@ class GoogleMapsPlacesV1Place {
     final goodForGroups = this.goodForGroups;
     final goodForWatchingSports = this.goodForWatchingSports;
     final googleMapsLinks = this.googleMapsLinks;
+    final googleMapsTypeLabel = this.googleMapsTypeLabel;
     final googleMapsUri = this.googleMapsUri;
     final iconBackgroundColor = this.iconBackgroundColor;
     final iconMaskBaseUri = this.iconMaskBaseUri;
@@ -2625,6 +2664,7 @@ class GoogleMapsPlacesV1Place {
     final name = this.name;
     final nationalPhoneNumber = this.nationalPhoneNumber;
     final neighborhoodSummary = this.neighborhoodSummary;
+    final openingDate = this.openingDate;
     final outdoorSeating = this.outdoorSeating;
     final parkingOptions = this.parkingOptions;
     final paymentOptions = this.paymentOptions;
@@ -2688,6 +2728,7 @@ class GoogleMapsPlacesV1Place {
       'goodForGroups': ?goodForGroups,
       'goodForWatchingSports': ?goodForWatchingSports,
       'googleMapsLinks': ?googleMapsLinks,
+      'googleMapsTypeLabel': ?googleMapsTypeLabel,
       'googleMapsUri': ?googleMapsUri,
       'iconBackgroundColor': ?iconBackgroundColor,
       'iconMaskBaseUri': ?iconMaskBaseUri,
@@ -2701,6 +2742,7 @@ class GoogleMapsPlacesV1Place {
       'name': ?name,
       'nationalPhoneNumber': ?nationalPhoneNumber,
       'neighborhoodSummary': ?neighborhoodSummary,
+      'openingDate': ?openingDate,
       'outdoorSeating': ?outdoorSeating,
       'parkingOptions': ?parkingOptions,
       'paymentOptions': ?paymentOptions,
@@ -4141,6 +4183,12 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
   /// "restaurants".
   core.List<core.String>? excludedTypes;
 
+  /// If true, include businesses that are not yet open but will open in the
+  /// future.
+  ///
+  /// Optional.
+  core.bool? includeFutureOpeningBusinesses;
+
   /// Included primary Place type (e.g. "restaurant" or "gas_station") from
   /// https://developers.google.com/maps/documentation/places/web-service/place-types.
   ///
@@ -4218,6 +4266,7 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
   GoogleMapsPlacesV1SearchNearbyRequest({
     this.excludedPrimaryTypes,
     this.excludedTypes,
+    this.includeFutureOpeningBusinesses,
     this.includedPrimaryTypes,
     this.includedTypes,
     this.languageCode,
@@ -4236,6 +4285,8 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
         excludedTypes: (json_['excludedTypes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        includeFutureOpeningBusinesses:
+            json_['includeFutureOpeningBusinesses'] as core.bool?,
         includedPrimaryTypes: (json_['includedPrimaryTypes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -4263,6 +4314,7 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final excludedPrimaryTypes = this.excludedPrimaryTypes;
     final excludedTypes = this.excludedTypes;
+    final includeFutureOpeningBusinesses = this.includeFutureOpeningBusinesses;
     final includedPrimaryTypes = this.includedPrimaryTypes;
     final includedTypes = this.includedTypes;
     final languageCode = this.languageCode;
@@ -4274,6 +4326,7 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
     return {
       'excludedPrimaryTypes': ?excludedPrimaryTypes,
       'excludedTypes': ?excludedTypes,
+      'includeFutureOpeningBusinesses': ?includeFutureOpeningBusinesses,
       'includedPrimaryTypes': ?includedPrimaryTypes,
       'includedTypes': ?includedTypes,
       'languageCode': ?languageCode,
@@ -4356,6 +4409,12 @@ class GoogleMapsPlacesV1SearchTextRequest {
   ///
   /// Optional.
   GoogleMapsPlacesV1SearchTextRequestEVOptions? evOptions;
+
+  /// If true, include businesses that are not yet open but will open in the
+  /// future.
+  ///
+  /// Optional.
+  core.bool? includeFutureOpeningBusinesses;
 
   /// Include pure service area businesses if the field is set to true.
   ///
@@ -4500,6 +4559,7 @@ class GoogleMapsPlacesV1SearchTextRequest {
 
   GoogleMapsPlacesV1SearchTextRequest({
     this.evOptions,
+    this.includeFutureOpeningBusinesses,
     this.includePureServiceAreaBusinesses,
     this.includedType,
     this.languageCode,
@@ -4526,6 +4586,8 @@ class GoogleMapsPlacesV1SearchTextRequest {
                 json_['evOptions'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        includeFutureOpeningBusinesses:
+            json_['includeFutureOpeningBusinesses'] as core.bool?,
         includePureServiceAreaBusinesses:
             json_['includePureServiceAreaBusinesses'] as core.bool?,
         includedType: json_['includedType'] as core.String?,
@@ -4570,6 +4632,7 @@ class GoogleMapsPlacesV1SearchTextRequest {
 
   core.Map<core.String, core.dynamic> toJson() {
     final evOptions = this.evOptions;
+    final includeFutureOpeningBusinesses = this.includeFutureOpeningBusinesses;
     final includePureServiceAreaBusinesses =
         this.includePureServiceAreaBusinesses;
     final includedType = this.includedType;
@@ -4590,6 +4653,7 @@ class GoogleMapsPlacesV1SearchTextRequest {
     final textQuery = this.textQuery;
     return {
       'evOptions': ?evOptions,
+      'includeFutureOpeningBusinesses': ?includeFutureOpeningBusinesses,
       'includePureServiceAreaBusinesses': ?includePureServiceAreaBusinesses,
       'includedType': ?includedType,
       'languageCode': ?languageCode,

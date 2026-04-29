@@ -811,17 +811,34 @@ class GdataContentTypeInfo {
   core.String? fromFileName;
 
   /// gdata
+  core.String? fromFusionId;
+
+  /// gdata
   core.String? fromHeader;
 
   /// gdata
   core.String? fromUrlPath;
 
+  /// gdata
+  core.String? fusionIdDetectionMetadata;
+  core.List<core.int> get fusionIdDetectionMetadataAsBytes =>
+      convert.base64.decode(fusionIdDetectionMetadata!);
+
+  set fusionIdDetectionMetadataAsBytes(core.List<core.int> bytes_) {
+    fusionIdDetectionMetadata = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   GdataContentTypeInfo({
     this.bestGuess,
     this.fromBytes,
     this.fromFileName,
+    this.fromFusionId,
     this.fromHeader,
     this.fromUrlPath,
+    this.fusionIdDetectionMetadata,
   });
 
   GdataContentTypeInfo.fromJson(core.Map json_)
@@ -829,22 +846,29 @@ class GdataContentTypeInfo {
         bestGuess: json_['bestGuess'] as core.String?,
         fromBytes: json_['fromBytes'] as core.String?,
         fromFileName: json_['fromFileName'] as core.String?,
+        fromFusionId: json_['fromFusionId'] as core.String?,
         fromHeader: json_['fromHeader'] as core.String?,
         fromUrlPath: json_['fromUrlPath'] as core.String?,
+        fusionIdDetectionMetadata:
+            json_['fusionIdDetectionMetadata'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final bestGuess = this.bestGuess;
     final fromBytes = this.fromBytes;
     final fromFileName = this.fromFileName;
+    final fromFusionId = this.fromFusionId;
     final fromHeader = this.fromHeader;
     final fromUrlPath = this.fromUrlPath;
+    final fusionIdDetectionMetadata = this.fusionIdDetectionMetadata;
     return {
       'bestGuess': ?bestGuess,
       'fromBytes': ?fromBytes,
       'fromFileName': ?fromFileName,
+      'fromFusionId': ?fromFusionId,
       'fromHeader': ?fromHeader,
       'fromUrlPath': ?fromUrlPath,
+      'fusionIdDetectionMetadata': ?fusionIdDetectionMetadata,
     };
   }
 }

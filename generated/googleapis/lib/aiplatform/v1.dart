@@ -183,6 +183,7 @@
 ///       - [ProjectsLocationsPipelineJobsOperationsResource]
 ///     - [ProjectsLocationsPublishersResource]
 ///       - [ProjectsLocationsPublishersModelsResource]
+///         - [ProjectsLocationsPublishersModelsInvokeResource]
 ///     - [ProjectsLocationsRagCorporaResource]
 ///       - [ProjectsLocationsRagCorporaOperationsResource]
 ///       - [ProjectsLocationsRagCorporaRagFilesResource]
@@ -194,6 +195,13 @@
 ///         - [ProjectsLocationsReasoningEnginesMemoriesOperationsResource]
 ///         - [ProjectsLocationsReasoningEnginesMemoriesRevisionsResource]
 ///       - [ProjectsLocationsReasoningEnginesOperationsResource]
+///       - [ProjectsLocationsReasoningEnginesRuntimeRevisionsResource]
+/// - [ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsResource]
+/// -
+/// [ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource]
+/// - [ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesResource]
+/// -
+/// [ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsResource]
 ///       - [ProjectsLocationsReasoningEnginesSandboxEnvironmentsResource]
 /// - [ProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsResource]
 ///       - [ProjectsLocationsReasoningEnginesSessionsResource]
@@ -231,6 +239,11 @@
 ///   - [ReasoningEnginesMemoriesResource]
 ///     - [ReasoningEnginesMemoriesOperationsResource]
 ///   - [ReasoningEnginesOperationsResource]
+///   - [ReasoningEnginesRuntimeRevisionsResource]
+///   - [ReasoningEnginesSandboxEnvironmentSnapshotsResource]
+///     - [ReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource]
+///   - [ReasoningEnginesSandboxEnvironmentTemplatesResource]
+///     - [ReasoningEnginesSandboxEnvironmentTemplatesOperationsResource]
 ///   - [ReasoningEnginesSandboxEnvironmentsResource]
 ///     - [ReasoningEnginesSandboxEnvironmentsOperationsResource]
 ///   - [ReasoningEnginesSessionsResource]
@@ -3329,8 +3342,6 @@ class EndpointsResource {
     );
   }
 
-  /// Perform an online prediction.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -10114,6 +10125,95 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Agentic Retrieval Ask API for RAG.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location from which to
+  /// retrieve RagContexts. The users must have permission to make a call in the
+  /// project. Format: `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1AskContextsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1AskContextsResponse> askContexts(
+    GoogleCloudAiplatformV1AskContextsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':askContexts';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1AskContextsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Asynchronous API to retrieves relevant contexts for a query.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location from which to
+  /// retrieve RagContexts. The users must have permission to make a call in the
+  /// project. Format: `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> asyncRetrieveContexts(
+    GoogleCloudAiplatformV1AsyncRetrieveContextsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':asyncRetrieveContexts';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Given an input prompt, it returns augmented prompt from vertex rag store
   /// to guide LLM towards generating grounded responses.
   ///
@@ -10389,14 +10489,16 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Generates synthetic data based on the provided configuration.
+  /// Generates synthetic (artificial) data based on a description
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [location] - Required. The resource name of the Location to run the job.
-  /// Format: `projects/{project}/locations/{location}`
+  /// [location] - Required. The geographic location where the synthetic data
+  /// generation request is processed. This should be in the format
+  /// `projects/{project}/locations/{location}`. For example,
+  /// `projects/my-project/locations/us-central1`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -10512,11 +10614,16 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -15920,8 +16027,6 @@ class ProjectsLocationsEndpointsResource {
     );
   }
 
-  /// Perform an online prediction.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -16662,6 +16767,60 @@ class ProjectsLocationsEndpointsOpenapiResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$endpoint') + '/embeddings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleApiHttpBody.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Forwards arbitrary HTTP requests for both streaming and non-streaming
+  /// cases.
+  ///
+  /// To use this method, invoke_route_prefix must be set to allow the paths
+  /// that will be specified in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [endpoint] - Required. The name of the Endpoint requested to serve the
+  /// prediction. Format:
+  /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/endpoints/openapi$`.
+  ///
+  /// [deployedModelId] - ID of the DeployedModel that serves the invoke
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> responses(
+    GoogleApiHttpBody request,
+    core.String endpoint, {
+    core.String? deployedModelId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'deployedModelId': ?deployedModelId == null ? null : [deployedModelId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$endpoint') + '/responses';
 
     final response_ = await _requester.request(
       url_,
@@ -29143,7 +29302,7 @@ class ProjectsLocationsModelsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the Model.
+  /// [name] - Identifier. The resource name of the Model.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/models/\[^/\]+$`.
   ///
@@ -33779,6 +33938,9 @@ class ProjectsLocationsPublishersResource {
 class ProjectsLocationsPublishersModelsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsPublishersModelsInvokeResource get invoke =>
+      ProjectsLocationsPublishersModelsInvokeResource(_requester);
+
   ProjectsLocationsPublishersModelsResource(commons.ApiRequester client)
     : _requester = client;
 
@@ -34010,8 +34172,6 @@ class ProjectsLocationsPublishersModelsResource {
     );
   }
 
-  /// Perform an online prediction.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -34294,6 +34454,69 @@ class ProjectsLocationsPublishersModelsResource {
   }
 }
 
+class ProjectsLocationsPublishersModelsInvokeResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPublishersModelsInvokeResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Forwards arbitrary HTTP requests for both streaming and non-streaming
+  /// cases.
+  ///
+  /// To use this method, invoke_route_prefix must be set to allow the paths
+  /// that will be specified in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [endpoint] - Required. The name of the Endpoint requested to serve the
+  /// prediction. Format:
+  /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/publishers/\[^/\]+/models/\[^/\]+$`.
+  ///
+  /// [invokeId] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> invoke(
+    GoogleCloudAiplatformV1InvokeRequest request,
+    core.String endpoint,
+    core.String invokeId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$endpoint') +
+        '/invoke/' +
+        core.Uri.encodeFull('$invokeId');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleApiHttpBody.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsRagCorporaResource {
   final commons.ApiRequester _requester;
 
@@ -34440,7 +34663,8 @@ class ProjectsLocationsRagCorporaResource {
   /// the RagCorpora. Format: `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The standard list page size.
+  /// [pageSize] - Optional. The standard list page size. The maximum value is
+  /// 100. If not specified, a default value of 100 will be used.
   ///
   /// [pageToken] - Optional. The standard list page token. Typically obtained
   /// via ListRagCorporaResponse.next_page_token of the previous
@@ -34927,7 +35151,8 @@ class ProjectsLocationsRagCorporaRagFilesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/ragCorpora/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The standard list page size.
+  /// [pageSize] - Optional. The standard list page size. The maximum value is
+  /// 100. If not specified, a default value of 100 will be used.
   ///
   /// [pageToken] - Optional. The standard list page token. Typically obtained
   /// via ListRagFilesResponse.next_page_token of the previous
@@ -35497,6 +35722,19 @@ class ProjectsLocationsReasoningEnginesResource {
       ProjectsLocationsReasoningEnginesMemoriesResource(_requester);
   ProjectsLocationsReasoningEnginesOperationsResource get operations =>
       ProjectsLocationsReasoningEnginesOperationsResource(_requester);
+  ProjectsLocationsReasoningEnginesRuntimeRevisionsResource
+  get runtimeRevisions =>
+      ProjectsLocationsReasoningEnginesRuntimeRevisionsResource(_requester);
+  ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsResource
+  get sandboxEnvironmentSnapshots =>
+      ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsResource(
+        _requester,
+      );
+  ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesResource
+  get sandboxEnvironmentTemplates =>
+      ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesResource(
+        _requester,
+      );
   ProjectsLocationsReasoningEnginesSandboxEnvironmentsResource
   get sandboxEnvironments =>
       ProjectsLocationsReasoningEnginesSandboxEnvironmentsResource(_requester);
@@ -35680,6 +35918,66 @@ class ProjectsLocationsReasoningEnginesResource {
     );
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists reasoning engines in a location.
   ///
   /// Request parameters:
@@ -35824,6 +36122,55 @@ class ProjectsLocationsReasoningEnginesResource {
     );
   }
 
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Streams queries using a reasoning engine.
   ///
   /// [request] - The metadata request object.
@@ -35868,6 +36215,60 @@ class ProjectsLocationsReasoningEnginesResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+$`.
+  ///
+  /// [permissions] - The set of permissions to check for the `resource`.
+  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    core.String resource, {
+    core.List<core.String>? permissions,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'permissions': ?permissions,
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsLocationsReasoningEnginesMemoriesResource {
@@ -35893,6 +36294,12 @@ class ProjectsLocationsReasoningEnginesMemoriesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+$`.
   ///
+  /// [memoryId] - Optional. The user defined ID to use for memory, which will
+  /// become the final component of the memory resource name. If not provided,
+  /// Vertex AI will generate a value for this ID. This value may be up to 63
+  /// characters, and valid characters are `[a-z0-9-]`. The first character must
+  /// be a letter, and the last character must be a letter or number.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -35906,10 +36313,12 @@ class ProjectsLocationsReasoningEnginesMemoriesResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudAiplatformV1Memory request,
     core.String parent, {
+    core.String? memoryId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'memoryId': ?memoryId == null ? null : [memoryId],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -36119,7 +36528,7 @@ class ProjectsLocationsReasoningEnginesMemoriesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. The resource name of the Memory. Format:
+  /// [name] - Identifier. Represents the resource name of the Memory. Format:
   /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/memories/{memory}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/memories/\[^/\]+$`.
@@ -36911,6 +37320,843 @@ class ProjectsLocationsReasoningEnginesOperationsResource {
   }
 }
 
+class ProjectsLocationsReasoningEnginesRuntimeRevisionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsReasoningEnginesRuntimeRevisionsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Queries using a reasoning engine.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ReasoningEngine resource to use.
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/runtimeRevisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1QueryReasoningEngineResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1QueryReasoningEngineResponse> query(
+    GoogleCloudAiplatformV1QueryReasoningEngineRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':query';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1QueryReasoningEngineResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Streams queries using a reasoning engine.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ReasoningEngine resource to use.
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/runtimeRevisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> streamQuery(
+    GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':streamQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleApiHttpBody.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource
+  get operations =>
+      ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource(
+        _requester,
+      );
+
+  ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Deletes the specific SandboxEnvironmentSnapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the SandboxEnvironmentSnapshot to
+  /// delete. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentSnapshots/{sandbox_environment_snapshot}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of the specific SandboxEnvironmentSnapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the sandbox environment snapshot.
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentSnapshots/{sandbox_environment_snapshot}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1SandboxEnvironmentSnapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1SandboxEnvironmentSnapshot> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1SandboxEnvironmentSnapshot.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists SandboxEnvironmentSnapshots in a given reasoning engine.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the reasoning engine to list
+  /// sandbox environments from. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The standard list filter. More detail in
+  /// \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of SandboxEnvironmentSnapshots
+  /// to return. The service may return fewer than this value. If unspecified,
+  /// at most 100 SandboxEnvironmentSnapshots will be returned. Values above 100
+  /// will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. The standard list page token, received from a
+  /// previous `ListSandboxEnvironmentSnapshots` call. Provide this to retrieve
+  /// the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse>
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/sandboxEnvironmentSnapshots';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'timeout': ?timeout == null ? null : [timeout],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsResource
+  get operations =>
+      ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsResource(
+        _requester,
+      );
+
+  ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a SandboxEnvironmentTemplate in a given reasoning engine.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the reasoning engine to create
+  /// the SandboxEnvironmentTemplate in. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudAiplatformV1SandboxEnvironmentTemplate request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/sandboxEnvironmentTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes the specific SandboxEnvironmentTemplate.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the SandboxEnvironmentTemplate to
+  /// delete. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentTemplates/{sandbox_environment_template}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of the specific SandboxEnvironmentTemplate.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the sandbox environment template.
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentTemplates/{sandbox_environment_template}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1SandboxEnvironmentTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1SandboxEnvironmentTemplate> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1SandboxEnvironmentTemplate.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists SandboxEnvironmentTemplates in a given reasoning engine.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the reasoning engine to list
+  /// sandbox environment templates from. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The standard list filter. More detail in
+  /// \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of SandboxEnvironmentTemplates
+  /// to return. The service may return fewer than this value. If unspecified,
+  /// at most 100 SandboxEnvironmentTemplates will be returned.
+  ///
+  /// [pageToken] - Optional. The standard list page token, received from a
+  /// previous `ListSandboxEnvironmentTemplates` call. Provide this to retrieve
+  /// the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse>
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/sandboxEnvironmentTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'timeout': ?timeout == null ? null : [timeout],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsReasoningEnginesSandboxEnvironmentsResource {
   final commons.ApiRequester _requester;
 
@@ -37150,6 +38396,52 @@ class ProjectsLocationsReasoningEnginesSandboxEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAiplatformV1ListSandboxEnvironmentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Snapshots the specific SandboxEnvironment resource and creates a
+  /// SandboxEnvironmentSnapshot resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the sandbox environment to
+  /// snapshot. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> snapshot(
+    GoogleCloudAiplatformV1SandboxEnvironmentSnapshot request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':snapshot';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -37415,6 +38707,12 @@ class ProjectsLocationsReasoningEnginesSessionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+$`.
   ///
+  /// [sessionId] - Optional. The user defined ID to use for session, which will
+  /// become the final component of the session resource name. If not provided,
+  /// Vertex AI will generate a value for this ID. This value may be up to 63
+  /// characters, and valid characters are `[a-z0-9-]`. The first and last
+  /// characters must be a letter or number.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -37428,10 +38726,12 @@ class ProjectsLocationsReasoningEnginesSessionsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudAiplatformV1Session request,
     core.String parent, {
+    core.String? sessionId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'sessionId': ?sessionId == null ? null : [sessionId],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -44071,8 +45371,6 @@ class PublishersModelsResource {
     );
   }
 
-  /// Perform an online prediction.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -44998,6 +46296,14 @@ class ReasoningEnginesResource {
       ReasoningEnginesMemoriesResource(_requester);
   ReasoningEnginesOperationsResource get operations =>
       ReasoningEnginesOperationsResource(_requester);
+  ReasoningEnginesRuntimeRevisionsResource get runtimeRevisions =>
+      ReasoningEnginesRuntimeRevisionsResource(_requester);
+  ReasoningEnginesSandboxEnvironmentSnapshotsResource
+  get sandboxEnvironmentSnapshots =>
+      ReasoningEnginesSandboxEnvironmentSnapshotsResource(_requester);
+  ReasoningEnginesSandboxEnvironmentTemplatesResource
+  get sandboxEnvironmentTemplates =>
+      ReasoningEnginesSandboxEnvironmentTemplatesResource(_requester);
   ReasoningEnginesSandboxEnvironmentsResource get sandboxEnvironments =>
       ReasoningEnginesSandboxEnvironmentsResource(_requester);
   ReasoningEnginesSessionsResource get sessions =>
@@ -45877,6 +47183,835 @@ class ReasoningEnginesOperationsResource {
   }
 }
 
+class ReasoningEnginesRuntimeRevisionsResource {
+  final commons.ApiRequester _requester;
+
+  ReasoningEnginesRuntimeRevisionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Queries using a reasoning engine.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ReasoningEngine resource to use.
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/runtimeRevisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1QueryReasoningEngineResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1QueryReasoningEngineResponse> query(
+    GoogleCloudAiplatformV1QueryReasoningEngineRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':query';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1QueryReasoningEngineResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Streams queries using a reasoning engine.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ReasoningEngine resource to use.
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/runtimeRevisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> streamQuery(
+    GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':streamQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleApiHttpBody.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ReasoningEnginesSandboxEnvironmentSnapshotsResource {
+  final commons.ApiRequester _requester;
+
+  ReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource
+  get operations =>
+      ReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource(_requester);
+
+  ReasoningEnginesSandboxEnvironmentSnapshotsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Deletes the specific SandboxEnvironmentSnapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the SandboxEnvironmentSnapshot to
+  /// delete. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentSnapshots/{sandbox_environment_snapshot}`
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of the specific SandboxEnvironmentSnapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the sandbox environment snapshot.
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentSnapshots/{sandbox_environment_snapshot}`
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1SandboxEnvironmentSnapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1SandboxEnvironmentSnapshot> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1SandboxEnvironmentSnapshot.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists SandboxEnvironmentSnapshots in a given reasoning engine.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the reasoning engine to list
+  /// sandbox environments from. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+  /// Value must have pattern `^reasoningEngines/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The standard list filter. More detail in
+  /// \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of SandboxEnvironmentSnapshots
+  /// to return. The service may return fewer than this value. If unspecified,
+  /// at most 100 SandboxEnvironmentSnapshots will be returned. Values above 100
+  /// will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. The standard list page token, received from a
+  /// previous `ListSandboxEnvironmentSnapshots` call. Provide this to retrieve
+  /// the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse>
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/sandboxEnvironmentSnapshots';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ReasoningEnginesSandboxEnvironmentSnapshotsOperationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentSnapshots/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'timeout': ?timeout == null ? null : [timeout],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ReasoningEnginesSandboxEnvironmentTemplatesResource {
+  final commons.ApiRequester _requester;
+
+  ReasoningEnginesSandboxEnvironmentTemplatesOperationsResource
+  get operations =>
+      ReasoningEnginesSandboxEnvironmentTemplatesOperationsResource(_requester);
+
+  ReasoningEnginesSandboxEnvironmentTemplatesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a SandboxEnvironmentTemplate in a given reasoning engine.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the reasoning engine to create
+  /// the SandboxEnvironmentTemplate in. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`.
+  /// Value must have pattern `^reasoningEngines/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudAiplatformV1SandboxEnvironmentTemplate request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/sandboxEnvironmentTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes the specific SandboxEnvironmentTemplate.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the SandboxEnvironmentTemplate to
+  /// delete. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentTemplates/{sandbox_environment_template}`
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of the specific SandboxEnvironmentTemplate.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the sandbox environment template.
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentTemplates/{sandbox_environment_template}`
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1SandboxEnvironmentTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1SandboxEnvironmentTemplate> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1SandboxEnvironmentTemplate.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists SandboxEnvironmentTemplates in a given reasoning engine.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the reasoning engine to list
+  /// sandbox environment templates from. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+  /// Value must have pattern `^reasoningEngines/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The standard list filter. More detail in
+  /// \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - Optional. The maximum number of SandboxEnvironmentTemplates
+  /// to return. The service may return fewer than this value. If unspecified,
+  /// at most 100 SandboxEnvironmentTemplates will be returned.
+  ///
+  /// [pageToken] - Optional. The standard list page token, received from a
+  /// previous `ListSandboxEnvironmentTemplates` call. Provide this to retrieve
+  /// the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse>
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/sandboxEnvironmentTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ReasoningEnginesSandboxEnvironmentTemplatesOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ReasoningEnginesSandboxEnvironmentTemplatesOperationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironmentTemplates/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'timeout': ?timeout == null ? null : [timeout],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ReasoningEnginesSandboxEnvironmentsResource {
   final commons.ApiRequester _requester;
 
@@ -46110,6 +48245,52 @@ class ReasoningEnginesSandboxEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAiplatformV1ListSandboxEnvironmentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Snapshots the specific SandboxEnvironment resource and creates a
+  /// SandboxEnvironmentSnapshot resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the sandbox environment to
+  /// snapshot. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}`.
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> snapshot(
+    GoogleCloudAiplatformV1SandboxEnvironmentSnapshot request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':snapshot';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -49444,270 +51625,153 @@ class GoogleCloudAiplatformV1AddTrialMeasurementRequest {
   }
 }
 
-/// Represents data specific to multi-turn agent evaluations.
-class GoogleCloudAiplatformV1AgentData {
-  /// The static agent spec.
-  ///
-  /// This map defines the graph structure of the agent system. Key: agent_id
-  /// (matches the `author` field in events). Value: The static configuration of
-  /// the agents.
-  ///
-  /// Optional.
-  core.Map<core.String, GoogleCloudAiplatformV1AgentDataAgentConfig>? agents;
+/// The aggregation result for the entire dataset and all metrics.
+class GoogleCloudAiplatformV1AggregationOutput {
+  /// One AggregationResult per metric.
+  core.List<GoogleCloudAiplatformV1AggregationResult>? aggregationResults;
 
-  /// A chronological list of conversation turns.
-  ///
-  /// Each turn represents a logical execution cycle (e.g., User Input -\> Agent
-  /// Response).
-  ///
-  /// Optional.
-  core.List<GoogleCloudAiplatformV1AgentDataConversationTurn>? turns;
+  /// The dataset used for evaluation & aggregation.
+  GoogleCloudAiplatformV1EvaluationDataset? dataset;
 
-  GoogleCloudAiplatformV1AgentData({this.agents, this.turns});
-
-  GoogleCloudAiplatformV1AgentData.fromJson(core.Map json_)
-    : this(
-        agents: (json_['agents'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(
-            key,
-            GoogleCloudAiplatformV1AgentDataAgentConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>,
-            ),
-          ),
-        ),
-        turns: (json_['turns'] as core.List?)
-            ?.map(
-              (value) =>
-                  GoogleCloudAiplatformV1AgentDataConversationTurn.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-            )
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final agents = this.agents;
-    final turns = this.turns;
-    return {'agents': ?agents, 'turns': ?turns};
-  }
-}
-
-/// Represents configuration for an Agent.
-class GoogleCloudAiplatformV1AgentDataAgentConfig {
-  /// Unique identifier of the agent.
-  ///
-  /// This ID is used to refer to this agent, e.g., in AgentEvent.author, or in
-  /// the `sub_agents` field. It must be unique within the `agents` map.
-  ///
-  /// Required.
-  core.String? agentId;
-
-  /// The type or class of the agent (e.g., "LlmAgent", "RouterAgent",
-  /// "ToolUseAgent").
-  ///
-  /// Useful for the autorater to understand the expected behavior of the agent.
-  ///
-  /// Optional.
-  core.String? agentType;
-
-  /// A high-level description of the agent's role and responsibilities.
-  ///
-  /// Critical for evaluating if the agent is routing tasks correctly.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Instructions from the developer for the agent.
-  ///
-  /// Can be static or a dynamic prompt template used with the
-  /// `AgentEvent.state_delta` field.
-  ///
-  /// Optional.
-  core.String? developerInstruction;
-
-  /// The list of valid agent IDs that this agent can delegate to.
-  ///
-  /// This defines the directed edges in the agent system graph topology.
-  ///
-  /// Optional.
-  core.List<core.String>? subAgents;
-
-  /// The list of tools available to this agent.
-  ///
-  /// Optional.
-  core.List<GoogleCloudAiplatformV1Tool>? tools;
-
-  GoogleCloudAiplatformV1AgentDataAgentConfig({
-    this.agentId,
-    this.agentType,
-    this.description,
-    this.developerInstruction,
-    this.subAgents,
-    this.tools,
+  GoogleCloudAiplatformV1AggregationOutput({
+    this.aggregationResults,
+    this.dataset,
   });
 
-  GoogleCloudAiplatformV1AgentDataAgentConfig.fromJson(core.Map json_)
+  GoogleCloudAiplatformV1AggregationOutput.fromJson(core.Map json_)
     : this(
-        agentId: json_['agentId'] as core.String?,
-        agentType: json_['agentType'] as core.String?,
-        description: json_['description'] as core.String?,
-        developerInstruction: json_['developerInstruction'] as core.String?,
-        subAgents: (json_['subAgents'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        tools: (json_['tools'] as core.List?)
+        aggregationResults: (json_['aggregationResults'] as core.List?)
             ?.map(
-              (value) => GoogleCloudAiplatformV1Tool.fromJson(
+              (value) => GoogleCloudAiplatformV1AggregationResult.fromJson(
                 value as core.Map<core.String, core.dynamic>,
               ),
             )
             .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final agentId = this.agentId;
-    final agentType = this.agentType;
-    final description = this.description;
-    final developerInstruction = this.developerInstruction;
-    final subAgents = this.subAgents;
-    final tools = this.tools;
-    return {
-      'agentId': ?agentId,
-      'agentType': ?agentType,
-      'description': ?description,
-      'developerInstruction': ?developerInstruction,
-      'subAgents': ?subAgents,
-      'tools': ?tools,
-    };
-  }
-}
-
-/// Represents a single event in the execution trace.
-class GoogleCloudAiplatformV1AgentDataAgentEvent {
-  /// The list of tools that were active/available to the agent at the time of
-  /// this event.
-  ///
-  /// This overrides the `AgentConfig.tools` if set.
-  ///
-  /// Optional.
-  core.List<GoogleCloudAiplatformV1Tool>? activeTools;
-
-  /// The ID of the agent or entity that generated this event.
-  ///
-  /// Use "user" to denote events generated by the end-user.
-  ///
-  /// Required.
-  core.String? author;
-
-  /// The content of the event (e.g., text response, tool call, tool response).
-  ///
-  /// Optional.
-  GoogleCloudAiplatformV1Content? content;
-
-  /// The timestamp when the event occurred.
-  ///
-  /// Optional.
-  core.String? eventTime;
-
-  /// The change in the session state caused by this event.
-  ///
-  /// This is a key-value map of fields that were modified or added by the
-  /// event.
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? stateDelta;
-
-  GoogleCloudAiplatformV1AgentDataAgentEvent({
-    this.activeTools,
-    this.author,
-    this.content,
-    this.eventTime,
-    this.stateDelta,
-  });
-
-  GoogleCloudAiplatformV1AgentDataAgentEvent.fromJson(core.Map json_)
-    : this(
-        activeTools: (json_['activeTools'] as core.List?)
-            ?.map(
-              (value) => GoogleCloudAiplatformV1Tool.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-        author: json_['author'] as core.String?,
-        content: json_.containsKey('content')
-            ? GoogleCloudAiplatformV1Content.fromJson(
-                json_['content'] as core.Map<core.String, core.dynamic>,
+        dataset: json_.containsKey('dataset')
+            ? GoogleCloudAiplatformV1EvaluationDataset.fromJson(
+                json_['dataset'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        eventTime: json_['eventTime'] as core.String?,
-        stateDelta: json_.containsKey('stateDelta')
-            ? json_['stateDelta'] as core.Map<core.String, core.dynamic>
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregationResults = this.aggregationResults;
+    final dataset = this.dataset;
+    return {'aggregationResults': ?aggregationResults, 'dataset': ?dataset};
+  }
+}
+
+/// The aggregation result for a single metric.
+class GoogleCloudAiplatformV1AggregationResult {
+  /// Aggregation metric.
+  /// Possible string values are:
+  /// - "AGGREGATION_METRIC_UNSPECIFIED" : Unspecified aggregation metric.
+  /// - "AVERAGE" : Average aggregation metric. Not supported for Pairwise
+  /// metric.
+  /// - "MODE" : Mode aggregation metric.
+  /// - "STANDARD_DEVIATION" : Standard deviation aggregation metric. Not
+  /// supported for pairwise metric.
+  /// - "VARIANCE" : Variance aggregation metric. Not supported for pairwise
+  /// metric.
+  /// - "MINIMUM" : Minimum aggregation metric. Not supported for pairwise
+  /// metric.
+  /// - "MAXIMUM" : Maximum aggregation metric. Not supported for pairwise
+  /// metric.
+  /// - "MEDIAN" : Median aggregation metric. Not supported for pairwise metric.
+  /// - "PERCENTILE_P90" : 90th percentile aggregation metric. Not supported for
+  /// pairwise metric.
+  /// - "PERCENTILE_P95" : 95th percentile aggregation metric. Not supported for
+  /// pairwise metric.
+  /// - "PERCENTILE_P99" : 99th percentile aggregation metric. Not supported for
+  /// pairwise metric.
+  core.String? aggregationMetric;
+
+  /// Results for bleu metric.
+  GoogleCloudAiplatformV1BleuMetricValue? bleuMetricValue;
+
+  /// Result for code execution metric.
+  GoogleCloudAiplatformV1CustomCodeExecutionResult? customCodeExecutionResult;
+
+  /// Results for exact match metric.
+  GoogleCloudAiplatformV1ExactMatchMetricValue? exactMatchMetricValue;
+
+  /// Result for pairwise metric.
+  GoogleCloudAiplatformV1PairwiseMetricResult? pairwiseMetricResult;
+
+  /// Result for pointwise metric.
+  GoogleCloudAiplatformV1PointwiseMetricResult? pointwiseMetricResult;
+
+  /// Results for rouge metric.
+  GoogleCloudAiplatformV1RougeMetricValue? rougeMetricValue;
+
+  GoogleCloudAiplatformV1AggregationResult({
+    this.aggregationMetric,
+    this.bleuMetricValue,
+    this.customCodeExecutionResult,
+    this.exactMatchMetricValue,
+    this.pairwiseMetricResult,
+    this.pointwiseMetricResult,
+    this.rougeMetricValue,
+  });
+
+  GoogleCloudAiplatformV1AggregationResult.fromJson(core.Map json_)
+    : this(
+        aggregationMetric: json_['aggregationMetric'] as core.String?,
+        bleuMetricValue: json_.containsKey('bleuMetricValue')
+            ? GoogleCloudAiplatformV1BleuMetricValue.fromJson(
+                json_['bleuMetricValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customCodeExecutionResult:
+            json_.containsKey('customCodeExecutionResult')
+            ? GoogleCloudAiplatformV1CustomCodeExecutionResult.fromJson(
+                json_['customCodeExecutionResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        exactMatchMetricValue: json_.containsKey('exactMatchMetricValue')
+            ? GoogleCloudAiplatformV1ExactMatchMetricValue.fromJson(
+                json_['exactMatchMetricValue']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pairwiseMetricResult: json_.containsKey('pairwiseMetricResult')
+            ? GoogleCloudAiplatformV1PairwiseMetricResult.fromJson(
+                json_['pairwiseMetricResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pointwiseMetricResult: json_.containsKey('pointwiseMetricResult')
+            ? GoogleCloudAiplatformV1PointwiseMetricResult.fromJson(
+                json_['pointwiseMetricResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rougeMetricValue: json_.containsKey('rougeMetricValue')
+            ? GoogleCloudAiplatformV1RougeMetricValue.fromJson(
+                json_['rougeMetricValue']
+                    as core.Map<core.String, core.dynamic>,
+              )
             : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final activeTools = this.activeTools;
-    final author = this.author;
-    final content = this.content;
-    final eventTime = this.eventTime;
-    final stateDelta = this.stateDelta;
+    final aggregationMetric = this.aggregationMetric;
+    final bleuMetricValue = this.bleuMetricValue;
+    final customCodeExecutionResult = this.customCodeExecutionResult;
+    final exactMatchMetricValue = this.exactMatchMetricValue;
+    final pairwiseMetricResult = this.pairwiseMetricResult;
+    final pointwiseMetricResult = this.pointwiseMetricResult;
+    final rougeMetricValue = this.rougeMetricValue;
     return {
-      'activeTools': ?activeTools,
-      'author': ?author,
-      'content': ?content,
-      'eventTime': ?eventTime,
-      'stateDelta': ?stateDelta,
+      'aggregationMetric': ?aggregationMetric,
+      'bleuMetricValue': ?bleuMetricValue,
+      'customCodeExecutionResult': ?customCodeExecutionResult,
+      'exactMatchMetricValue': ?exactMatchMetricValue,
+      'pairwiseMetricResult': ?pairwiseMetricResult,
+      'pointwiseMetricResult': ?pointwiseMetricResult,
+      'rougeMetricValue': ?rougeMetricValue,
     };
-  }
-}
-
-/// Represents a single turn/invocation in the conversation.
-class GoogleCloudAiplatformV1AgentDataConversationTurn {
-  /// The list of events that occurred during this turn.
-  ///
-  /// Optional.
-  core.List<GoogleCloudAiplatformV1AgentDataAgentEvent>? events;
-
-  /// A unique identifier for the turn.
-  ///
-  /// Useful for referencing specific turns across systems.
-  ///
-  /// Optional.
-  core.String? turnId;
-
-  /// The 0-based index of the turn in the conversation sequence.
-  ///
-  /// Optional.
-  core.int? turnIndex;
-
-  GoogleCloudAiplatformV1AgentDataConversationTurn({
-    this.events,
-    this.turnId,
-    this.turnIndex,
-  });
-
-  GoogleCloudAiplatformV1AgentDataConversationTurn.fromJson(core.Map json_)
-    : this(
-        events: (json_['events'] as core.List?)
-            ?.map(
-              (value) => GoogleCloudAiplatformV1AgentDataAgentEvent.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-        turnId: json_['turnId'] as core.String?,
-        turnIndex: json_['turnIndex'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final events = this.events;
-    final turnId = this.turnId;
-    final turnIndex = this.turnIndex;
-    return {'events': ?events, 'turnId': ?turnId, 'turnIndex': ?turnIndex};
   }
 }
 
@@ -50105,6 +52169,72 @@ class GoogleCloudAiplatformV1Artifact {
   }
 }
 
+/// Agentic Retrieval Ask API for RAG.
+///
+/// Request message for VertexRagService.AskContexts.
+class GoogleCloudAiplatformV1AskContextsRequest {
+  /// Single RAG retrieve query.
+  ///
+  /// Required.
+  GoogleCloudAiplatformV1RagQuery? query;
+
+  /// The tools to use for AskContexts.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAiplatformV1Tool>? tools;
+
+  GoogleCloudAiplatformV1AskContextsRequest({this.query, this.tools});
+
+  GoogleCloudAiplatformV1AskContextsRequest.fromJson(core.Map json_)
+    : this(
+        query: json_.containsKey('query')
+            ? GoogleCloudAiplatformV1RagQuery.fromJson(
+                json_['query'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tools: (json_['tools'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1Tool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final query = this.query;
+    final tools = this.tools;
+    return {'query': ?query, 'tools': ?tools};
+  }
+}
+
+/// Response message for VertexRagService.AskContexts.
+class GoogleCloudAiplatformV1AskContextsResponse {
+  /// The contexts of the query.
+  GoogleCloudAiplatformV1RagContexts? contexts;
+
+  /// The Retrieval Response.
+  core.String? response;
+
+  GoogleCloudAiplatformV1AskContextsResponse({this.contexts, this.response});
+
+  GoogleCloudAiplatformV1AskContextsResponse.fromJson(core.Map json_)
+    : this(
+        contexts: json_.containsKey('contexts')
+            ? GoogleCloudAiplatformV1RagContexts.fromJson(
+                json_['contexts'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        response: json_['response'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contexts = this.contexts;
+    final response = this.response;
+    return {'contexts': ?contexts, 'response': ?response};
+  }
+}
+
 /// Request message for NotebookService.AssignNotebookRuntime.
 class GoogleCloudAiplatformV1AssignNotebookRuntimeRequest {
   /// Provide runtime specific information (e.g. runtime owner, notebook id)
@@ -50151,6 +52281,43 @@ class GoogleCloudAiplatformV1AssignNotebookRuntimeRequest {
       'notebookRuntimeId': ?notebookRuntimeId,
       'notebookRuntimeTemplate': ?notebookRuntimeTemplate,
     };
+  }
+}
+
+/// Request message for VertexRagService.AsyncRetrieveContexts.
+class GoogleCloudAiplatformV1AsyncRetrieveContextsRequest {
+  /// Single RAG retrieve query.
+  ///
+  /// Required.
+  GoogleCloudAiplatformV1RagQuery? query;
+
+  /// The tools to use for AskContexts.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAiplatformV1Tool>? tools;
+
+  GoogleCloudAiplatformV1AsyncRetrieveContextsRequest({this.query, this.tools});
+
+  GoogleCloudAiplatformV1AsyncRetrieveContextsRequest.fromJson(core.Map json_)
+    : this(
+        query: json_.containsKey('query')
+            ? GoogleCloudAiplatformV1RagQuery.fromJson(
+                json_['query'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tools: (json_['tools'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1Tool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final query = this.query;
+    final tools = this.tools;
+    return {'query': ?query, 'tools': ?tools};
   }
 }
 
@@ -53045,19 +55212,15 @@ class GoogleCloudAiplatformV1Candidate {
 
 /// Responses from model or agent.
 class GoogleCloudAiplatformV1CandidateResponse {
-  /// Represents the complete execution trace of a multi-turn conversation,
-  /// which can involve single or multiple agents.
-  ///
-  /// This field is used to provide the full output of an agent's run, including
-  /// all turns and events, for direct evaluation.
-  ///
-  /// Optional.
-  GoogleCloudAiplatformV1AgentData? agentData;
-
   /// The name of the candidate that produced the response.
   ///
   /// Required.
   core.String? candidate;
+
+  /// Error while scraping model or agent.
+  ///
+  /// Output only.
+  GoogleRpcStatus? error;
 
   /// Text response.
   core.String? text;
@@ -53069,32 +55232,32 @@ class GoogleCloudAiplatformV1CandidateResponse {
   core.Object? value;
 
   GoogleCloudAiplatformV1CandidateResponse({
-    this.agentData,
     this.candidate,
+    this.error,
     this.text,
     this.value,
   });
 
   GoogleCloudAiplatformV1CandidateResponse.fromJson(core.Map json_)
     : this(
-        agentData: json_.containsKey('agentData')
-            ? GoogleCloudAiplatformV1AgentData.fromJson(
-                json_['agentData'] as core.Map<core.String, core.dynamic>,
+        candidate: json_['candidate'] as core.String?,
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        candidate: json_['candidate'] as core.String?,
         text: json_['text'] as core.String?,
         value: json_['value'],
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final agentData = this.agentData;
     final candidate = this.candidate;
+    final error = this.error;
     final text = this.text;
     final value = this.value;
     return {
-      'agentData': ?agentData,
       'candidate': ?candidate,
+      'error': ?error,
       'text': ?text,
       'value': ?value,
     };
@@ -53422,10 +55585,9 @@ class GoogleCloudAiplatformV1ClientConnectionConfig {
   }
 }
 
-/// Result of executing the \[ExecutableCode\].
+/// Result of executing the ExecutableCode.
 ///
-/// Only generated when using the \[CodeExecution\] tool, and always follows a
-/// `part` containing the \[ExecutableCode\].
+/// Generated only when the `CodeExecution` tool is used.
 class GoogleCloudAiplatformV1CodeExecutionResult {
   /// Outcome of the code execution.
   ///
@@ -53433,11 +55595,12 @@ class GoogleCloudAiplatformV1CodeExecutionResult {
   /// Possible string values are:
   /// - "OUTCOME_UNSPECIFIED" : Unspecified status. This value should not be
   /// used.
-  /// - "OUTCOME_OK" : Code execution completed successfully.
-  /// - "OUTCOME_FAILED" : Code execution finished but with a failure. `stderr`
-  /// should contain the reason.
+  /// - "OUTCOME_OK" : Code execution completed successfully. `output` contains
+  /// the stdout, if any.
+  /// - "OUTCOME_FAILED" : Code execution failed. `output` contains the stderr
+  /// and stdout, if any.
   /// - "OUTCOME_DEADLINE_EXCEEDED" : Code execution ran for too long, and was
-  /// cancelled. There may or may not be a partial output present.
+  /// cancelled. There may or may not be a partial `output` present.
   core.String? outcome;
 
   /// Contains stdout when code execution is successful, stderr or other
@@ -53797,6 +55960,10 @@ class GoogleCloudAiplatformV1CompletionStats {
     };
   }
 }
+
+/// Specification for a computation based metric.
+typedef GoogleCloudAiplatformV1ComputationBasedMetricSpec =
+    $ComputationBasedMetricSpec;
 
 /// Request message for ComputeTokens RPC call.
 class GoogleCloudAiplatformV1ComputeTokensRequest {
@@ -54909,6 +57076,24 @@ class GoogleCloudAiplatformV1CsvSource {
   core.Map<core.String, core.dynamic> toJson() {
     final gcsSource = this.gcsSource;
     return {'gcsSource': ?gcsSource};
+  }
+}
+
+/// Result for custom code execution metric.
+class GoogleCloudAiplatformV1CustomCodeExecutionResult {
+  /// Custom code execution score.
+  ///
+  /// Output only.
+  core.double? score;
+
+  GoogleCloudAiplatformV1CustomCodeExecutionResult({this.score});
+
+  GoogleCloudAiplatformV1CustomCodeExecutionResult.fromJson(core.Map json_)
+    : this(score: (json_['score'] as core.num?)?.toDouble());
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final score = this.score;
+    return {'score': ?score};
   }
 }
 
@@ -56054,6 +58239,58 @@ class GoogleCloudAiplatformV1Dataset {
       'satisfiesPzs': ?satisfiesPzs,
       'savedQueries': ?savedQueries,
       'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Defines a custom dataset-level aggregation.
+class GoogleCloudAiplatformV1DatasetCustomMetric {
+  /// The Python code string containing the aggregation function.
+  ///
+  /// Expected function signature: `def aggregate(instances: list[dict[str,
+  /// Any]]) -> dict[str, float]:` The `instances` argument is a list of
+  /// dictionaries, where each dictionary represents a single evaluation result
+  /// item. The structure of each dictionary corresponds to the fields in the
+  /// `EvaluationResult` message. This includes: - `"request"`: Contains the
+  /// original input data and model inputs (from
+  /// `EvaluationResult.EvaluationRequest`). - `"candidate_results"`: Contains
+  /// the results of any instance-level metrics (from
+  /// `EvaluationResult.CandidateResults`). Example of a single item in the
+  /// `instances` list: { "request": { "prompt": {"text": "What is the capital
+  /// of France?"}, "golden_response": {"text": "Paris"}, "candidate_responses":
+  /// \[{"candidate": "model-v1", "text": "Paris"}\] }, "candidate_results": \[
+  /// {"metric": "exact_match", "score": 1.0}, {"metric": "bleu", "score": 0.9}
+  /// \] }
+  ///
+  /// Required.
+  core.String? aggregationFunction;
+
+  /// A display name for this custom summary metric.
+  ///
+  /// Used to prefix keys in the output summaryMetrics map. If not provided, a
+  /// default name like "dataset_custom_metric_1", "dataset_custom_metric_2",
+  /// etc., will be generated based on the order in the repeated field.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  GoogleCloudAiplatformV1DatasetCustomMetric({
+    this.aggregationFunction,
+    this.displayName,
+  });
+
+  GoogleCloudAiplatformV1DatasetCustomMetric.fromJson(core.Map json_)
+    : this(
+        aggregationFunction: json_['aggregationFunction'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregationFunction = this.aggregationFunction;
+    final displayName = this.displayName;
+    return {
+      'aggregationFunction': ?aggregationFunction,
+      'displayName': ?displayName,
     };
   }
 }
@@ -58072,20 +60309,143 @@ class GoogleCloudAiplatformV1DynamicRetrievalConfig {
 
 /// Request message for PredictionService.EmbedContent.
 class GoogleCloudAiplatformV1EmbedContentRequest {
+  /// Deprecated: Please use EmbedContentConfig.auto_truncate instead.
+  ///
   /// Whether to silently truncate the input content if it's longer than the
   /// maximum sequence length.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? autoTruncate;
 
-  /// Input content to be embedded.
-  ///
-  /// Required.
+  /// The content to be embedded.
   ///
   /// Required.
   GoogleCloudAiplatformV1Content? content;
 
-  /// Optional reduced dimension for the output embedding.
+  /// Configuration for the EmbedContent request.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1EmbedContentRequestEmbedContentConfig?
+  embedContentConfig;
+
+  /// Deprecated: Please use EmbedContentConfig.output_dimensionality instead.
+  ///
+  /// Reduced dimension for the output embedding. If set, excessive values in
+  /// the output embedding are truncated from the end.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.int? outputDimensionality;
+
+  /// Deprecated: Please use EmbedContentConfig.task_type instead.
+  ///
+  /// The task type of the embedding.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : Unset value, which will default to one of the other enum
+  /// values.
+  /// - "RETRIEVAL_QUERY" : Specifies the given text is a query in a
+  /// search/retrieval setting.
+  /// - "RETRIEVAL_DOCUMENT" : Specifies the given text is a document from the
+  /// corpus being searched.
+  /// - "SEMANTIC_SIMILARITY" : Specifies the given text will be used for STS.
+  /// - "CLASSIFICATION" : Specifies that the given text will be classified.
+  /// - "CLUSTERING" : Specifies that the embeddings will be used for
+  /// clustering.
+  /// - "QUESTION_ANSWERING" : Specifies that the embeddings will be used for
+  /// question answering.
+  /// - "FACT_VERIFICATION" : Specifies that the embeddings will be used for
+  /// fact verification.
+  /// - "CODE_RETRIEVAL_QUERY" : Specifies that the embeddings will be used for
+  /// code retrieval.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? taskType;
+
+  /// Deprecated: Please use EmbedContentConfig.title instead.
+  ///
+  /// The title for the text.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? title;
+
+  GoogleCloudAiplatformV1EmbedContentRequest({
+    this.autoTruncate,
+    this.content,
+    this.embedContentConfig,
+    this.outputDimensionality,
+    this.taskType,
+    this.title,
+  });
+
+  GoogleCloudAiplatformV1EmbedContentRequest.fromJson(core.Map json_)
+    : this(
+        autoTruncate: json_['autoTruncate'] as core.bool?,
+        content: json_.containsKey('content')
+            ? GoogleCloudAiplatformV1Content.fromJson(
+                json_['content'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        embedContentConfig: json_.containsKey('embedContentConfig')
+            ? GoogleCloudAiplatformV1EmbedContentRequestEmbedContentConfig.fromJson(
+                json_['embedContentConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        outputDimensionality: json_['outputDimensionality'] as core.int?,
+        taskType: json_['taskType'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoTruncate = this.autoTruncate;
+    final content = this.content;
+    final embedContentConfig = this.embedContentConfig;
+    final outputDimensionality = this.outputDimensionality;
+    final taskType = this.taskType;
+    final title = this.title;
+    return {
+      'autoTruncate': ?autoTruncate,
+      'content': ?content,
+      'embedContentConfig': ?embedContentConfig,
+      'outputDimensionality': ?outputDimensionality,
+      'taskType': ?taskType,
+      'title': ?title,
+    };
+  }
+}
+
+/// Configurations for the EmbedContent API.
+class GoogleCloudAiplatformV1EmbedContentRequestEmbedContentConfig {
+  /// Whether to extract audio from video content.
+  ///
+  /// Optional.
+  core.bool? audioTrackExtraction;
+
+  /// Whether to silently truncate the input content if it's longer than the
+  /// maximum sequence length.
+  ///
+  /// Only applicable to text-only embedding models.
+  ///
+  /// Optional.
+  core.bool? autoTruncate;
+
+  /// Whether to enable OCR for document content.
+  ///
+  /// Optional.
+  core.bool? documentOcr;
+
+  /// Reduced dimension for the output embedding.
   ///
   /// If set, excessive values in the output embedding are truncated from the
   /// end.
@@ -58094,6 +60454,8 @@ class GoogleCloudAiplatformV1EmbedContentRequest {
   core.int? outputDimensionality;
 
   /// The task type of the embedding.
+  ///
+  /// Only applicable to text-only embedding models.
   ///
   /// Optional.
   /// Possible string values are:
@@ -58115,41 +60477,44 @@ class GoogleCloudAiplatformV1EmbedContentRequest {
   /// code retrieval.
   core.String? taskType;
 
-  /// An optional title for the text.
+  /// The title for the text.
+  ///
+  /// Only applicable to text-only embedding models.
   ///
   /// Optional.
   core.String? title;
 
-  GoogleCloudAiplatformV1EmbedContentRequest({
+  GoogleCloudAiplatformV1EmbedContentRequestEmbedContentConfig({
+    this.audioTrackExtraction,
     this.autoTruncate,
-    this.content,
+    this.documentOcr,
     this.outputDimensionality,
     this.taskType,
     this.title,
   });
 
-  GoogleCloudAiplatformV1EmbedContentRequest.fromJson(core.Map json_)
-    : this(
+  GoogleCloudAiplatformV1EmbedContentRequestEmbedContentConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        audioTrackExtraction: json_['audioTrackExtraction'] as core.bool?,
         autoTruncate: json_['autoTruncate'] as core.bool?,
-        content: json_.containsKey('content')
-            ? GoogleCloudAiplatformV1Content.fromJson(
-                json_['content'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
+        documentOcr: json_['documentOcr'] as core.bool?,
         outputDimensionality: json_['outputDimensionality'] as core.int?,
         taskType: json_['taskType'] as core.String?,
         title: json_['title'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final audioTrackExtraction = this.audioTrackExtraction;
     final autoTruncate = this.autoTruncate;
-    final content = this.content;
+    final documentOcr = this.documentOcr;
     final outputDimensionality = this.outputDimensionality;
     final taskType = this.taskType;
     final title = this.title;
     return {
+      'audioTrackExtraction': ?audioTrackExtraction,
       'autoTruncate': ?autoTruncate,
-      'content': ?content,
+      'documentOcr': ?documentOcr,
       'outputDimensionality': ?outputDimensionality,
       'taskType': ?taskType,
       'title': ?title,
@@ -58165,7 +60530,7 @@ class GoogleCloudAiplatformV1EmbedContentResponse {
   /// Whether the input content was truncated before generating the embedding.
   core.bool? truncated;
 
-  /// Metadata about the response(s).
+  /// Usage metadata about the response(s).
   GoogleCloudAiplatformV1UsageMetadata? usageMetadata;
 
   GoogleCloudAiplatformV1EmbedContentResponse({
@@ -58991,6 +61356,122 @@ class GoogleCloudAiplatformV1EvaluateDatasetRequest {
   }
 }
 
+/// The results from an evaluation run performed by the EvaluationService.
+class GoogleCloudAiplatformV1EvaluateDatasetResponse {
+  /// Aggregation statistics derived from results of EvaluationService.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1AggregationOutput? aggregationOutput;
+
+  /// Output info for EvaluationService.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1OutputInfo? outputInfo;
+
+  GoogleCloudAiplatformV1EvaluateDatasetResponse({
+    this.aggregationOutput,
+    this.outputInfo,
+  });
+
+  GoogleCloudAiplatformV1EvaluateDatasetResponse.fromJson(core.Map json_)
+    : this(
+        aggregationOutput: json_.containsKey('aggregationOutput')
+            ? GoogleCloudAiplatformV1AggregationOutput.fromJson(
+                json_['aggregationOutput']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        outputInfo: json_.containsKey('outputInfo')
+            ? GoogleCloudAiplatformV1OutputInfo.fromJson(
+                json_['outputInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregationOutput = this.aggregationOutput;
+    final outputInfo = this.outputInfo;
+    return {'aggregationOutput': ?aggregationOutput, 'outputInfo': ?outputInfo};
+  }
+}
+
+/// Evaluate Dataset Run Result for Tuning Job.
+class GoogleCloudAiplatformV1EvaluateDatasetRun {
+  /// The checkpoint id used in the evaluation run.
+  ///
+  /// Only populated when evaluating checkpoints.
+  ///
+  /// Output only.
+  core.String? checkpointId;
+
+  /// The error of the evaluation run if any.
+  ///
+  /// Output only.
+  GoogleRpcStatus? error;
+
+  /// Results for EvaluationService.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1EvaluateDatasetResponse? evaluateDatasetResponse;
+
+  /// The resource name of the evaluation run.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run_id}`.
+  ///
+  /// Output only.
+  core.String? evaluationRun;
+
+  /// Deprecated: The updated architecture uses evaluation_run instead.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? operationName;
+
+  GoogleCloudAiplatformV1EvaluateDatasetRun({
+    this.checkpointId,
+    this.error,
+    this.evaluateDatasetResponse,
+    this.evaluationRun,
+    this.operationName,
+  });
+
+  GoogleCloudAiplatformV1EvaluateDatasetRun.fromJson(core.Map json_)
+    : this(
+        checkpointId: json_['checkpointId'] as core.String?,
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        evaluateDatasetResponse: json_.containsKey('evaluateDatasetResponse')
+            ? GoogleCloudAiplatformV1EvaluateDatasetResponse.fromJson(
+                json_['evaluateDatasetResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        evaluationRun: json_['evaluationRun'] as core.String?,
+        operationName: json_['operationName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final checkpointId = this.checkpointId;
+    final error = this.error;
+    final evaluateDatasetResponse = this.evaluateDatasetResponse;
+    final evaluationRun = this.evaluationRun;
+    final operationName = this.operationName;
+    return {
+      'checkpointId': ?checkpointId,
+      'error': ?error,
+      'evaluateDatasetResponse': ?evaluateDatasetResponse,
+      'evaluationRun': ?evaluationRun,
+      'operationName': ?operationName,
+    };
+  }
+}
+
 /// Request message for EvaluationService.EvaluateInstances.
 class GoogleCloudAiplatformV1EvaluateInstancesRequest {
   /// Autorater config used for evaluation.
@@ -59035,6 +61516,14 @@ class GoogleCloudAiplatformV1EvaluateInstancesRequest {
   ///
   /// Required.
   core.String? location;
+
+  /// The metrics (either inline or registered) used for evaluation.
+  ///
+  /// Currently, we only support evaluating a single metric. If multiple metrics
+  /// are provided, only the first one will be evaluated.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAiplatformV1MetricSource>? metricSources;
 
   /// The metrics used for evaluation.
   ///
@@ -59142,6 +61631,7 @@ class GoogleCloudAiplatformV1EvaluateInstancesRequest {
     this.groundednessInput,
     this.instance,
     this.location,
+    this.metricSources,
     this.metrics,
     this.metricxInput,
     this.pairwiseMetricInput,
@@ -59220,6 +61710,13 @@ class GoogleCloudAiplatformV1EvaluateInstancesRequest {
               )
             : null,
         location: json_['location'] as core.String?,
+        metricSources: (json_['metricSources'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1MetricSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         metrics: (json_['metrics'] as core.List?)
             ?.map(
               (value) => GoogleCloudAiplatformV1Metric.fromJson(
@@ -59403,6 +61900,7 @@ class GoogleCloudAiplatformV1EvaluateInstancesRequest {
     final groundednessInput = this.groundednessInput;
     final instance = this.instance;
     final location = this.location;
+    final metricSources = this.metricSources;
     final metrics = this.metrics;
     final metricxInput = this.metricxInput;
     final pairwiseMetricInput = this.pairwiseMetricInput;
@@ -59446,6 +61944,7 @@ class GoogleCloudAiplatformV1EvaluateInstancesRequest {
       'groundednessInput': ?groundednessInput,
       'instance': ?instance,
       'location': ?location,
+      'metricSources': ?metricSources,
       'metrics': ?metrics,
       'metricxInput': ?metricxInput,
       'pairwiseMetricInput': ?pairwiseMetricInput,
@@ -60120,6 +62619,94 @@ class GoogleCloudAiplatformV1EvaluatedAnnotationExplanation {
   }
 }
 
+/// Evaluation Config for Tuning Job.
+class GoogleCloudAiplatformV1EvaluationConfig {
+  /// Autorater config for evaluation.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1AutoraterConfig? autoraterConfig;
+
+  /// Specifications for custom dataset-level aggregations.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAiplatformV1DatasetCustomMetric>? datasetCustomMetrics;
+
+  /// Configuration options for inference generation and outputs.
+  ///
+  /// If not set, default generation parameters are used.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1GenerationConfig? inferenceGenerationConfig;
+
+  /// The metrics used for evaluation.
+  ///
+  /// Required.
+  core.List<GoogleCloudAiplatformV1Metric>? metrics;
+
+  /// Config for evaluation output.
+  ///
+  /// Required.
+  GoogleCloudAiplatformV1OutputConfig? outputConfig;
+
+  GoogleCloudAiplatformV1EvaluationConfig({
+    this.autoraterConfig,
+    this.datasetCustomMetrics,
+    this.inferenceGenerationConfig,
+    this.metrics,
+    this.outputConfig,
+  });
+
+  GoogleCloudAiplatformV1EvaluationConfig.fromJson(core.Map json_)
+    : this(
+        autoraterConfig: json_.containsKey('autoraterConfig')
+            ? GoogleCloudAiplatformV1AutoraterConfig.fromJson(
+                json_['autoraterConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        datasetCustomMetrics: (json_['datasetCustomMetrics'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1DatasetCustomMetric.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        inferenceGenerationConfig:
+            json_.containsKey('inferenceGenerationConfig')
+            ? GoogleCloudAiplatformV1GenerationConfig.fromJson(
+                json_['inferenceGenerationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metrics: (json_['metrics'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1Metric.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        outputConfig: json_.containsKey('outputConfig')
+            ? GoogleCloudAiplatformV1OutputConfig.fromJson(
+                json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoraterConfig = this.autoraterConfig;
+    final datasetCustomMetrics = this.datasetCustomMetrics;
+    final inferenceGenerationConfig = this.inferenceGenerationConfig;
+    final metrics = this.metrics;
+    final outputConfig = this.outputConfig;
+    return {
+      'autoraterConfig': ?autoraterConfig,
+      'datasetCustomMetrics': ?datasetCustomMetrics,
+      'inferenceGenerationConfig': ?inferenceGenerationConfig,
+      'metrics': ?metrics,
+      'outputConfig': ?outputConfig,
+    };
+  }
+}
+
 /// The dataset used for evaluation.
 class GoogleCloudAiplatformV1EvaluationDataset {
   /// BigQuery source holds the dataset.
@@ -60161,12 +62748,20 @@ class GoogleCloudAiplatformV1EvaluationDataset {
 /// Instances are used to specify the input data for evaluation, from simple
 /// string comparisons to complex, multi-turn model evaluations
 class GoogleCloudAiplatformV1EvaluationInstance {
+  /// Deprecated: Use `agent_eval_data` instead.
+  ///
   /// Data used for agent evaluation.
   ///
   /// Optional.
-  GoogleCloudAiplatformV1EvaluationInstanceAgentData? agentData;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentData? agentData;
 
   /// Other data used to populate placeholders based on their key.
+  ///
+  /// If a key conflicts with a field in the EvaluationInstance (e.g. `prompt`),
+  /// the value of the field will take precedence over the value in other_data.
   ///
   /// Optional.
   GoogleCloudAiplatformV1EvaluationInstanceMapInstance? otherData;
@@ -60206,7 +62801,7 @@ class GoogleCloudAiplatformV1EvaluationInstance {
   GoogleCloudAiplatformV1EvaluationInstance.fromJson(core.Map json_)
     : this(
         agentData: json_.containsKey('agentData')
-            ? GoogleCloudAiplatformV1EvaluationInstanceAgentData.fromJson(
+            ? GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentData.fromJson(
                 json_['agentData'] as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -60260,8 +62855,11 @@ class GoogleCloudAiplatformV1EvaluationInstance {
   }
 }
 
+/// Deprecated: Use `google.cloud.aiplatform.master.AgentConfig` in
+/// `agent_eval_data` instead.
+///
 /// Configuration for an Agent.
-class GoogleCloudAiplatformV1EvaluationInstanceAgentConfig {
+class GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig {
   /// Unique identifier of the agent.
   ///
   /// This ID is used to refer to this agent, e.g., in AgentEvent.author, or in
@@ -60301,13 +62899,13 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentConfig {
   core.List<core.String>? subAgents;
 
   /// List of tools.
-  GoogleCloudAiplatformV1EvaluationInstanceAgentConfigTools? tools;
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfigTools? tools;
 
   /// A JSON string containing a list of tools available to an agent with info
   /// such as name, description, parameters and required parameters.
   core.String? toolsText;
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentConfig({
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig({
     this.agentId,
     this.agentType,
     this.description,
@@ -60317,8 +62915,9 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentConfig {
     this.toolsText,
   });
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentConfig.fromJson(core.Map json_)
-    : this(
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig.fromJson(
+    core.Map json_,
+  ) : this(
         agentId: json_['agentId'] as core.String?,
         agentType: json_['agentType'] as core.String?,
         description: json_['description'] as core.String?,
@@ -60332,7 +62931,7 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentConfig {
             ?.map((value) => value as core.String)
             .toList(),
         tools: json_.containsKey('tools')
-            ? GoogleCloudAiplatformV1EvaluationInstanceAgentConfigTools.fromJson(
+            ? GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfigTools.fromJson(
                 json_['tools'] as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -60360,15 +62959,17 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentConfig {
 }
 
 /// Represents a list of tools for an agent.
-class GoogleCloudAiplatformV1EvaluationInstanceAgentConfigTools {
+class GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfigTools {
   /// List of tools: each tool can have multiple function declarations.
   ///
   /// Optional.
   core.List<GoogleCloudAiplatformV1Tool>? tool;
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentConfigTools({this.tool});
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfigTools({
+    this.tool,
+  });
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentConfigTools.fromJson(
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfigTools.fromJson(
     core.Map json_,
   ) : this(
         tool: (json_['tool'] as core.List?)
@@ -60386,12 +62987,16 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentConfigTools {
   }
 }
 
+/// Deprecated: Use `agent_eval_data` instead.
+///
 /// Contains data specific to agent evaluations.
-class GoogleCloudAiplatformV1EvaluationInstanceAgentData {
+class GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentData {
+  /// Deprecated: Use `agent_eval_data` instead.
+  ///
   /// Agent configuration.
   ///
   /// Optional.
-  GoogleCloudAiplatformV1EvaluationInstanceAgentConfig? agentConfig;
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig? agentConfig;
 
   /// The static Agent Configuration.
   ///
@@ -60400,28 +63005,31 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentData {
   /// the agent (tools, instructions, sub-agents).
   ///
   /// Optional.
-  core.Map<core.String, GoogleCloudAiplatformV1EvaluationInstanceAgentConfig>?
+  core.Map<
+    core.String,
+    GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig
+  >?
   agents;
 
-  /// A field containing instructions from the developer for the agent.
-  ///
-  /// Please use `agents.developer_instruction` or
+  /// Deprecated: Use `agents.developer_instruction` or
   /// `turns.events.active_instruction` instead.
   ///
-  /// Optional. Deprecated.
+  /// A field containing instructions from the developer for the agent.
+  ///
+  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   GoogleCloudAiplatformV1EvaluationInstanceInstanceData? developerInstruction;
 
   /// A list of events.
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataEvents? events;
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataEvents? events;
 
   /// List of tools.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataTools? tools;
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataTools? tools;
 
   /// A JSON string containing a list of tools available to an agent with info
   /// such as name, description, parameters and required parameters.
@@ -60436,10 +63044,12 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentData {
   /// Response).
   ///
   /// Optional.
-  core.List<GoogleCloudAiplatformV1EvaluationInstanceAgentDataConversationTurn>?
+  core.List<
+    GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn
+  >?
   turns;
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentData({
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentData({
     this.agentConfig,
     this.agents,
     this.developerInstruction,
@@ -60449,17 +63059,18 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentData {
     this.turns,
   });
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentData.fromJson(core.Map json_)
-    : this(
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentData.fromJson(
+    core.Map json_,
+  ) : this(
         agentConfig: json_.containsKey('agentConfig')
-            ? GoogleCloudAiplatformV1EvaluationInstanceAgentConfig.fromJson(
+            ? GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig.fromJson(
                 json_['agentConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         agents: (json_['agents'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(
             key,
-            GoogleCloudAiplatformV1EvaluationInstanceAgentConfig.fromJson(
+            GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig.fromJson(
               value as core.Map<core.String, core.dynamic>,
             ),
           ),
@@ -60471,12 +63082,12 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentData {
               )
             : null,
         events: json_.containsKey('events')
-            ? GoogleCloudAiplatformV1EvaluationInstanceAgentDataEvents.fromJson(
+            ? GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataEvents.fromJson(
                 json_['events'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         tools: json_.containsKey('tools')
-            ? GoogleCloudAiplatformV1EvaluationInstanceAgentDataTools.fromJson(
+            ? GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataTools.fromJson(
                 json_['tools'] as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -60484,7 +63095,7 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentData {
         turns: (json_['turns'] as core.List?)
             ?.map(
               (value) =>
-                  GoogleCloudAiplatformV1EvaluationInstanceAgentDataConversationTurn.fromJson(
+                  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
             )
@@ -60512,7 +63123,7 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentData {
 }
 
 /// A single event in the execution trace.
-class GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent {
+class GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent {
   /// The list of tools that were active/available to the agent at the time of
   /// this event.
   ///
@@ -60547,7 +63158,7 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? stateDelta;
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent({
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent({
     this.activeTools,
     this.author,
     this.content,
@@ -60555,7 +63166,7 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent {
     this.stateDelta,
   });
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent.fromJson(
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent.fromJson(
     core.Map json_,
   ) : this(
         activeTools: (json_['activeTools'] as core.List?)
@@ -60594,11 +63205,13 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent {
 }
 
 /// Represents a single turn/invocation in the conversation.
-class GoogleCloudAiplatformV1EvaluationInstanceAgentDataConversationTurn {
+class GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn {
   /// The list of events that occurred during this turn.
   ///
   /// Optional.
-  core.List<GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent>?
+  core.List<
+    GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent
+  >?
   events;
 
   /// A unique identifier for the turn.
@@ -60613,19 +63226,19 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentDataConversationTurn {
   /// Required.
   core.int? turnIndex;
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataConversationTurn({
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn({
     this.events,
     this.turnId,
     this.turnIndex,
   });
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataConversationTurn.fromJson(
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn.fromJson(
     core.Map json_,
   ) : this(
         events: (json_['events'] as core.List?)
             ?.map(
               (value) =>
-                  GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent.fromJson(
+                  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
             )
@@ -60643,15 +63256,17 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentDataConversationTurn {
 }
 
 /// Represents a list of events for an agent.
-class GoogleCloudAiplatformV1EvaluationInstanceAgentDataEvents {
+class GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataEvents {
   /// A list of events.
   ///
   /// Optional.
   core.List<GoogleCloudAiplatformV1Content>? event;
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataEvents({this.event});
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataEvents({
+    this.event,
+  });
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataEvents.fromJson(
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataEvents.fromJson(
     core.Map json_,
   ) : this(
         event: (json_['event'] as core.List?)
@@ -60669,10 +63284,10 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentDataEvents {
   }
 }
 
-/// Represents a list of tools for an agent.
+/// Deprecated: Use `agent_eval_data` instead.
 ///
-/// Deprecated.
-class GoogleCloudAiplatformV1EvaluationInstanceAgentDataTools {
+/// Represents a list of tools for an agent.
+class GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataTools {
   /// List of tools: each tool can have multiple function declarations.
   ///
   /// Optional.
@@ -60681,9 +63296,11 @@ class GoogleCloudAiplatformV1EvaluationInstanceAgentDataTools {
   )
   core.List<GoogleCloudAiplatformV1Tool>? tool;
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataTools({this.tool});
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataTools({
+    this.tool,
+  });
 
-  GoogleCloudAiplatformV1EvaluationInstanceAgentDataTools.fromJson(
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataTools.fromJson(
     core.Map json_,
   ) : this(
         tool: (json_['tool'] as core.List?)
@@ -60918,19 +63535,76 @@ class GoogleCloudAiplatformV1EvaluationItem {
   }
 }
 
+/// Config for parsing LLM responses.
+///
+/// It can be used to parse the LLM response to be evaluated, or the LLM
+/// response from LLM-based metrics/Autoraters.
+class GoogleCloudAiplatformV1EvaluationParserConfig {
+  /// Use custom code to parse the LLM response.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1EvaluationParserConfigCustomCodeParserConfig?
+  customCodeParserConfig;
+
+  GoogleCloudAiplatformV1EvaluationParserConfig({this.customCodeParserConfig});
+
+  GoogleCloudAiplatformV1EvaluationParserConfig.fromJson(core.Map json_)
+    : this(
+        customCodeParserConfig: json_.containsKey('customCodeParserConfig')
+            ? GoogleCloudAiplatformV1EvaluationParserConfigCustomCodeParserConfig.fromJson(
+                json_['customCodeParserConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final customCodeParserConfig = this.customCodeParserConfig;
+    return {'customCodeParserConfig': ?customCodeParserConfig};
+  }
+}
+
+/// Configuration for parsing the LLM response using custom code.
+class GoogleCloudAiplatformV1EvaluationParserConfigCustomCodeParserConfig {
+  /// Python function for parsing results.
+  ///
+  /// The function should be defined within this string. The function takes a
+  /// list of strings (LLM responses) and should return either a list of
+  /// dictionaries (for rubrics) or a single dictionary (for a metric result).
+  /// Example function signature: def parse(responses: list\[str\]) -\>
+  /// list\[dict\[str, Any\]\] | dict\[str, Any\]: When parsing rubrics, return
+  /// a list of dictionaries, where each dictionary represents a Rubric. Example
+  /// for rubrics: \[ { "content": {"property": {"description": "The response is
+  /// factual."}}, "type": "FACTUALITY", "importance": "HIGH" }, { "content":
+  /// {"property": {"description": "The response is fluent."}}, "type":
+  /// "FLUENCY", "importance": "MEDIUM" } \] When parsing critique results,
+  /// return a dictionary representing a MetricResult. Example for a metric
+  /// result: { "score": 0.8, "explanation": "The model followed most
+  /// instructions.", "rubric_verdicts": \[...\] } ... code for result
+  /// extraction and aggregation
+  ///
+  /// Required.
+  core.String? parsingFunction;
+
+  GoogleCloudAiplatformV1EvaluationParserConfigCustomCodeParserConfig({
+    this.parsingFunction,
+  });
+
+  GoogleCloudAiplatformV1EvaluationParserConfigCustomCodeParserConfig.fromJson(
+    core.Map json_,
+  ) : this(parsingFunction: json_['parsingFunction'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parsingFunction = this.parsingFunction;
+    return {'parsingFunction': ?parsingFunction};
+  }
+}
+
 /// Prompt to be evaluated.
 ///
 /// This can represent a single-turn prompt or a multi-turn conversation for
 /// agent evaluations.
 class GoogleCloudAiplatformV1EvaluationPrompt {
-  /// Represents the complete execution trace of a multi-turn conversation,
-  /// which can involve single or multiple agents.
-  ///
-  /// This serves as the input context for agent scraping.
-  ///
-  /// Optional.
-  GoogleCloudAiplatformV1AgentData? agentData;
-
   /// Prompt template data.
   GoogleCloudAiplatformV1EvaluationPromptPromptTemplateData? promptTemplateData;
 
@@ -60944,7 +63618,6 @@ class GoogleCloudAiplatformV1EvaluationPrompt {
   core.Object? value;
 
   GoogleCloudAiplatformV1EvaluationPrompt({
-    this.agentData,
     this.promptTemplateData,
     this.text,
     this.value,
@@ -60952,11 +63625,6 @@ class GoogleCloudAiplatformV1EvaluationPrompt {
 
   GoogleCloudAiplatformV1EvaluationPrompt.fromJson(core.Map json_)
     : this(
-        agentData: json_.containsKey('agentData')
-            ? GoogleCloudAiplatformV1AgentData.fromJson(
-                json_['agentData'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
         promptTemplateData: json_.containsKey('promptTemplateData')
             ? GoogleCloudAiplatformV1EvaluationPromptPromptTemplateData.fromJson(
                 json_['promptTemplateData']
@@ -60968,12 +63636,10 @@ class GoogleCloudAiplatformV1EvaluationPrompt {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final agentData = this.agentData;
     final promptTemplateData = this.promptTemplateData;
     final text = this.text;
     final value = this.value;
     return {
-      'agentData': ?agentData,
       'promptTemplateData': ?promptTemplateData,
       'text': ?text,
       'value': ?value,
@@ -61358,6 +64024,8 @@ class GoogleCloudAiplatformV1EvaluationRun {
   /// - "INFERENCE" : The evaluation run is performing inference.
   /// - "GENERATING_RUBRICS" : The evaluation run is performing rubric
   /// generation.
+  /// - "GENERATING_LOSS_CLUSTERS" : The evaluation run is performing loss
+  /// analysis.
   core.String? state;
 
   GoogleCloudAiplatformV1EvaluationRun({
@@ -61499,6 +64167,11 @@ class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
   GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig?
   autoraterConfig;
 
+  /// Specifications for custom dataset-level aggregations.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAiplatformV1DatasetCustomMetric>? datasetCustomMetrics;
+
   /// The metrics to be calculated in the evaluation run.
   ///
   /// Required.
@@ -61532,6 +64205,7 @@ class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
 
   GoogleCloudAiplatformV1EvaluationRunEvaluationConfig({
     this.autoraterConfig,
+    this.datasetCustomMetrics,
     this.metrics,
     this.outputConfig,
     this.promptTemplate,
@@ -61545,6 +64219,13 @@ class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
                 json_['autoraterConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        datasetCustomMetrics: (json_['datasetCustomMetrics'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1DatasetCustomMetric.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         metrics: (json_['metrics'] as core.List?)
             ?.map(
               (value) => GoogleCloudAiplatformV1EvaluationRunMetric.fromJson(
@@ -61573,12 +64254,14 @@ class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final autoraterConfig = this.autoraterConfig;
+    final datasetCustomMetrics = this.datasetCustomMetrics;
     final metrics = this.metrics;
     final outputConfig = this.outputConfig;
     final promptTemplate = this.promptTemplate;
     final rubricConfigs = this.rubricConfigs;
     return {
       'autoraterConfig': ?autoraterConfig,
+      'datasetCustomMetrics': ?datasetCustomMetrics,
       'metrics': ?metrics,
       'outputConfig': ?outputConfig,
       'promptTemplate': ?promptTemplate,
@@ -61715,8 +64398,21 @@ class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigPromptTemplate {
   }
 }
 
-/// An inference config used for model inference during the evaluation run.
+/// Defines the configuration for a candidate model or agent being evaluated.
+///
+/// `InferenceConfig` encapsulates all the necessary information to invoke or
+/// scrape the candidate during the evaluation run. This includes direct model
+/// inference parameters, agent execution settings, and multi-turn scraping
+/// configurations (such as user simulators). It serves as the primary
+/// representation of the candidate across different stages of the evaluation
+/// process.
 class GoogleCloudAiplatformV1EvaluationRunInferenceConfig {
+  /// Agent run config.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig?
+  agentRunConfig;
+
   /// Generation config.
   ///
   /// Optional.
@@ -61724,21 +64420,40 @@ class GoogleCloudAiplatformV1EvaluationRunInferenceConfig {
 
   /// The fully qualified name of the publisher model or endpoint to use.
   ///
-  /// Publisher model format:
+  /// Anthropic and Llama third-party models are also supported through Model
+  /// Garden. Publisher model format:
   /// `projects/{project}/locations/{location}/publishers / * /models / * `
+  /// Third-party model formats:
+  /// `projects/{project}/locations/{location}/publishers/anthropic/models/{model}`
+  /// or
+  /// `projects/{project}/locations/{location}/publishers/llama/models/{model}`
   /// Endpoint format:
   /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
   ///
   /// Optional.
   core.String? model;
 
+  /// The parallelism of the evaluation run for the inference step.
+  ///
+  /// If not specified, the default parallelism will be used.
+  ///
+  /// Optional.
+  core.int? parallelism;
+
   GoogleCloudAiplatformV1EvaluationRunInferenceConfig({
+    this.agentRunConfig,
     this.generationConfig,
     this.model,
+    this.parallelism,
   });
 
   GoogleCloudAiplatformV1EvaluationRunInferenceConfig.fromJson(core.Map json_)
     : this(
+        agentRunConfig: json_.containsKey('agentRunConfig')
+            ? GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig.fromJson(
+                json_['agentRunConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         generationConfig: json_.containsKey('generationConfig')
             ? GoogleCloudAiplatformV1GenerationConfig.fromJson(
                 json_['generationConfig']
@@ -61746,17 +64461,189 @@ class GoogleCloudAiplatformV1EvaluationRunInferenceConfig {
               )
             : null,
         model: json_['model'] as core.String?,
+        parallelism: json_['parallelism'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentRunConfig = this.agentRunConfig;
     final generationConfig = this.generationConfig;
     final model = this.model;
-    return {'generationConfig': ?generationConfig, 'model': ?model};
+    final parallelism = this.parallelism;
+    return {
+      'agentRunConfig': ?agentRunConfig,
+      'generationConfig': ?generationConfig,
+      'model': ?model,
+      'parallelism': ?parallelism,
+    };
+  }
+}
+
+/// Configuration for Agent Run.
+class GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig {
+  /// The resource name of the Agent Engine.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}
+  /// For example: projects/123/locations/us-central1/reasoningEngines/456
+  ///
+  /// Optional.
+  core.String? agentEngine;
+
+  /// The session input to get agent running results.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1EvaluationRunInferenceConfigSessionInput? sessionInput;
+
+  /// The configuration for a user simulator that uses an LLM to generate
+  /// messages on behalf of the user.
+  GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfigUserSimulatorConfig?
+  userSimulatorConfig;
+
+  GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig({
+    this.agentEngine,
+    this.sessionInput,
+    this.userSimulatorConfig,
+  });
+
+  GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        agentEngine: json_['agentEngine'] as core.String?,
+        sessionInput: json_.containsKey('sessionInput')
+            ? GoogleCloudAiplatformV1EvaluationRunInferenceConfigSessionInput.fromJson(
+                json_['sessionInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userSimulatorConfig: json_.containsKey('userSimulatorConfig')
+            ? GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfigUserSimulatorConfig.fromJson(
+                json_['userSimulatorConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentEngine = this.agentEngine;
+    final sessionInput = this.sessionInput;
+    final userSimulatorConfig = this.userSimulatorConfig;
+    return {
+      'agentEngine': ?agentEngine,
+      'sessionInput': ?sessionInput,
+      'userSimulatorConfig': ?userSimulatorConfig,
+    };
+  }
+}
+
+/// Used for multi-turn agent scraping.
+///
+/// Contains configuration for a user simulator that uses an LLM to generate
+/// messages on behalf of the user.
+class GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfigUserSimulatorConfig {
+  /// Maximum number of invocations allowed by the multi-turn agent scraping.
+  ///
+  /// This property allows us to stop a run-off conversation, where the agent
+  /// and the user simulator get into a never ending loop. The initial fixed
+  /// prompt is also counted as an invocation.
+  core.int? maxTurn;
+
+  /// The configuration for the model.
+  GoogleCloudAiplatformV1GenerationConfig? modelConfig;
+
+  /// The model name to use for multi-turn agent scraping to get next user
+  /// message, e.g. "gemini-3-flash-preview".
+  core.String? modelName;
+
+  GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfigUserSimulatorConfig({
+    this.maxTurn,
+    this.modelConfig,
+    this.modelName,
+  });
+
+  GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfigUserSimulatorConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        maxTurn: json_['maxTurn'] as core.int?,
+        modelConfig: json_.containsKey('modelConfig')
+            ? GoogleCloudAiplatformV1GenerationConfig.fromJson(
+                json_['modelConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        modelName: json_['modelName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxTurn = this.maxTurn;
+    final modelConfig = this.modelConfig;
+    final modelName = this.modelName;
+    return {
+      'maxTurn': ?maxTurn,
+      'modelConfig': ?modelConfig,
+      'modelName': ?modelName,
+    };
+  }
+}
+
+/// Session input to run an Agent.
+class GoogleCloudAiplatformV1EvaluationRunInferenceConfigSessionInput {
+  /// Additional parameters for the session, like app_name, etc.
+  ///
+  /// For example, {"app_name": "my-app"}.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? parameters;
+
+  /// Session specific memory which stores key conversation points.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? sessionState;
+
+  /// The user id for the agent session.
+  ///
+  /// The ID can be up to 128 characters long.
+  ///
+  /// Optional.
+  core.String? userId;
+
+  GoogleCloudAiplatformV1EvaluationRunInferenceConfigSessionInput({
+    this.parameters,
+    this.sessionState,
+    this.userId,
+  });
+
+  GoogleCloudAiplatformV1EvaluationRunInferenceConfigSessionInput.fromJson(
+    core.Map json_,
+  ) : this(
+        parameters:
+            (json_['parameters'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        sessionState: json_.containsKey('sessionState')
+            ? json_['sessionState'] as core.Map<core.String, core.dynamic>
+            : null,
+        userId: json_['userId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parameters = this.parameters;
+    final sessionState = this.sessionState;
+    final userId = this.userId;
+    return {
+      'parameters': ?parameters,
+      'sessionState': ?sessionState,
+      'userId': ?userId,
+    };
   }
 }
 
 /// The metric used for evaluation runs.
 class GoogleCloudAiplatformV1EvaluationRunMetric {
+  /// Spec for a computation based metric.
+  GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec?
+  computationBasedMetricSpec;
+
   /// Spec for an LLM based metric.
   GoogleCloudAiplatformV1EvaluationRunMetricLLMBasedMetricSpec?
   llmBasedMetricSpec;
@@ -61769,6 +64656,11 @@ class GoogleCloudAiplatformV1EvaluationRunMetric {
   /// The metric config.
   GoogleCloudAiplatformV1Metric? metricConfig;
 
+  /// The resource name of the metric definition.
+  ///
+  /// Optional.
+  core.String? metricResourceName;
+
   /// Spec for a pre-defined metric.
   GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec?
   predefinedMetricSpec;
@@ -61778,15 +64670,24 @@ class GoogleCloudAiplatformV1EvaluationRunMetric {
   rubricBasedMetricSpec;
 
   GoogleCloudAiplatformV1EvaluationRunMetric({
+    this.computationBasedMetricSpec,
     this.llmBasedMetricSpec,
     this.metric,
     this.metricConfig,
+    this.metricResourceName,
     this.predefinedMetricSpec,
     this.rubricBasedMetricSpec,
   });
 
   GoogleCloudAiplatformV1EvaluationRunMetric.fromJson(core.Map json_)
     : this(
+        computationBasedMetricSpec:
+            json_.containsKey('computationBasedMetricSpec')
+            ? GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec.fromJson(
+                json_['computationBasedMetricSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         llmBasedMetricSpec: json_.containsKey('llmBasedMetricSpec')
             ? GoogleCloudAiplatformV1EvaluationRunMetricLLMBasedMetricSpec.fromJson(
                 json_['llmBasedMetricSpec']
@@ -61799,6 +64700,7 @@ class GoogleCloudAiplatformV1EvaluationRunMetric {
                 json_['metricConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        metricResourceName: json_['metricResourceName'] as core.String?,
         predefinedMetricSpec: json_.containsKey('predefinedMetricSpec')
             ? GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec.fromJson(
                 json_['predefinedMetricSpec']
@@ -61814,20 +64716,28 @@ class GoogleCloudAiplatformV1EvaluationRunMetric {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final computationBasedMetricSpec = this.computationBasedMetricSpec;
     final llmBasedMetricSpec = this.llmBasedMetricSpec;
     final metric = this.metric;
     final metricConfig = this.metricConfig;
+    final metricResourceName = this.metricResourceName;
     final predefinedMetricSpec = this.predefinedMetricSpec;
     final rubricBasedMetricSpec = this.rubricBasedMetricSpec;
     return {
+      'computationBasedMetricSpec': ?computationBasedMetricSpec,
       'llmBasedMetricSpec': ?llmBasedMetricSpec,
       'metric': ?metric,
       'metricConfig': ?metricConfig,
+      'metricResourceName': ?metricResourceName,
       'predefinedMetricSpec': ?predefinedMetricSpec,
       'rubricBasedMetricSpec': ?rubricBasedMetricSpec,
     };
   }
 }
+
+/// Specification for a computation based metric.
+typedef GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec =
+    $ComputationBasedMetricSpec;
 
 /// Specification for an LLM based metric.
 class GoogleCloudAiplatformV1EvaluationRunMetricLLMBasedMetricSpec {
@@ -62072,6 +64982,11 @@ class GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpecRepeatedRub
 
 /// Specification for how rubrics should be generated.
 class GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec {
+  /// Resource name of the metric definition.
+  ///
+  /// Optional.
+  core.String? metricResourceName;
+
   /// Configuration for the model used in rubric generation.
   ///
   /// Configs including sampling count and base model can be specified here.
@@ -62109,6 +65024,7 @@ class GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec {
   core.List<core.String>? rubricTypeOntology;
 
   GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec({
+    this.metricResourceName,
     this.modelConfig,
     this.promptTemplate,
     this.rubricContentType,
@@ -62118,6 +65034,7 @@ class GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec {
   GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec.fromJson(
     core.Map json_,
   ) : this(
+        metricResourceName: json_['metricResourceName'] as core.String?,
         modelConfig: json_.containsKey('modelConfig')
             ? GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig.fromJson(
                 json_['modelConfig'] as core.Map<core.String, core.dynamic>,
@@ -62131,11 +65048,13 @@ class GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final metricResourceName = this.metricResourceName;
     final modelConfig = this.modelConfig;
     final promptTemplate = this.promptTemplate;
     final rubricContentType = this.rubricContentType;
     final rubricTypeOntology = this.rubricTypeOntology;
     return {
+      'metricResourceName': ?metricResourceName,
       'modelConfig': ?modelConfig,
       'promptTemplate': ?promptTemplate,
       'rubricContentType': ?rubricContentType,
@@ -62406,6 +65325,11 @@ class GoogleCloudAiplatformV1EventMetadata {
   /// Optional.
   GoogleCloudAiplatformV1GroundingMetadata? groundingMetadata;
 
+  /// Audio transcription of user input.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1Transcription? inputTranscription;
+
   /// Flag indicating that LLM was interrupted when generating the content.
   ///
   /// Usually it's due to user interruption during a bidi streaming.
@@ -62420,6 +65344,11 @@ class GoogleCloudAiplatformV1EventMetadata {
   ///
   /// Optional.
   core.List<core.String>? longRunningToolIds;
+
+  /// Audio transcription of model output.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1Transcription? outputTranscription;
 
   /// Indicates whether the text content is part of a unfinished text stream.
   ///
@@ -62439,8 +65368,10 @@ class GoogleCloudAiplatformV1EventMetadata {
     this.branch,
     this.customMetadata,
     this.groundingMetadata,
+    this.inputTranscription,
     this.interrupted,
     this.longRunningToolIds,
+    this.outputTranscription,
     this.partial,
     this.turnComplete,
   });
@@ -62457,10 +65388,22 @@ class GoogleCloudAiplatformV1EventMetadata {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        inputTranscription: json_.containsKey('inputTranscription')
+            ? GoogleCloudAiplatformV1Transcription.fromJson(
+                json_['inputTranscription']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         interrupted: json_['interrupted'] as core.bool?,
         longRunningToolIds: (json_['longRunningToolIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        outputTranscription: json_.containsKey('outputTranscription')
+            ? GoogleCloudAiplatformV1Transcription.fromJson(
+                json_['outputTranscription']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         partial: json_['partial'] as core.bool?,
         turnComplete: json_['turnComplete'] as core.bool?,
       );
@@ -62469,16 +65412,20 @@ class GoogleCloudAiplatformV1EventMetadata {
     final branch = this.branch;
     final customMetadata = this.customMetadata;
     final groundingMetadata = this.groundingMetadata;
+    final inputTranscription = this.inputTranscription;
     final interrupted = this.interrupted;
     final longRunningToolIds = this.longRunningToolIds;
+    final outputTranscription = this.outputTranscription;
     final partial = this.partial;
     final turnComplete = this.turnComplete;
     return {
       'branch': ?branch,
       'customMetadata': ?customMetadata,
       'groundingMetadata': ?groundingMetadata,
+      'inputTranscription': ?inputTranscription,
       'interrupted': ?interrupted,
       'longRunningToolIds': ?longRunningToolIds,
+      'outputTranscription': ?outputTranscription,
       'partial': ?partial,
       'turnComplete': ?turnComplete,
     };
@@ -62769,9 +65716,9 @@ class GoogleCloudAiplatformV1ExamplesRestrictionsNamespace {
 /// Code generated by the model that is meant to be executed, and the result
 /// returned to the model.
 ///
-/// Generated when using the \[CodeExecution\] tool, in which the code will be
-/// automatically executed, and a corresponding \[CodeExecutionResult\] will
-/// also be generated.
+/// Generated when using the `CodeExecution` tool, in which the code will be
+/// automatically executed, and a corresponding CodeExecutionResult will also be
+/// generated.
 class GoogleCloudAiplatformV1ExecutableCode {
   /// The code to be executed.
   ///
@@ -68223,13 +71170,13 @@ class GoogleCloudAiplatformV1FulfillmentResult {
 /// Spec for fulfillment metric.
 typedef GoogleCloudAiplatformV1FulfillmentSpec = $Spec;
 
-/// A predicted \[FunctionCall\] returned from the model that contains a string
-/// representing the \[FunctionDeclaration.name\] and a structured JSON object
+/// A predicted FunctionCall returned from the model that contains a string
+/// representing the FunctionDeclaration.name and a structured JSON object
 /// containing the parameters and their values.
 class GoogleCloudAiplatformV1FunctionCall {
   /// The function parameters and values in JSON object format.
   ///
-  /// See \[FunctionDeclaration.parameters\] for parameter details.
+  /// See FunctionDeclaration.parameters for parameter details.
   ///
   /// Optional.
   ///
@@ -68239,7 +71186,7 @@ class GoogleCloudAiplatformV1FunctionCall {
 
   /// The name of the function to call.
   ///
-  /// Matches \[FunctionDeclaration.name\].
+  /// Matches FunctionDeclaration.name.
   ///
   /// Optional.
   core.String? name;
@@ -68302,7 +71249,7 @@ class GoogleCloudAiplatformV1FunctionCallingConfig {
   /// Function names to call.
   ///
   /// Only set when the Mode is ANY. Function names should match
-  /// \[FunctionDeclaration.name\]. With mode set to ANY, model will predict a
+  /// FunctionDeclaration.name. With mode set to ANY, model will predict a
   /// function call from the set of function names provided.
   ///
   /// Optional.
@@ -68322,13 +71269,18 @@ class GoogleCloudAiplatformV1FunctionCallingConfig {
   /// function calls will be any one of the provided "function_declarations".
   /// - "NONE" : Model will not predict any function calls. Model behavior is
   /// same as when not passing any function declarations.
+  /// - "VALIDATED" : Model is constrained to predict either function calls or
+  /// natural language response. If "allowed_function_names" are set, the
+  /// predicted function calls will be limited to any one of
+  /// "allowed_function_names", else the predicted function calls will be any
+  /// one of the provided "function_declarations".
   core.String? mode;
 
   /// When set to true, arguments of a single function call will be streamed out
   /// in multiple parts/contents/responses.
   ///
   /// Partial parameter results will be returned in the
-  /// \[FunctionCall.partial_args\] field.
+  /// `FunctionCall.partial_args` field.
   ///
   /// Optional.
   core.bool? streamFunctionCallArguments;
@@ -68379,7 +71331,8 @@ class GoogleCloudAiplatformV1FunctionDeclaration {
   /// The name of the function to call.
   ///
   /// Must start with a letter or an underscore. Must be a-z, A-Z, 0-9, or
-  /// contain underscores, dots, colons and dashes, with a maximum length of 64.
+  /// contain underscores, dots, colons and dashes, with a maximum length of
+  /// 128.
   ///
   /// Required.
   core.String? name;
@@ -68477,16 +71430,16 @@ class GoogleCloudAiplatformV1FunctionDeclaration {
   }
 }
 
-/// The result output from a \[FunctionCall\] that contains a string
-/// representing the \[FunctionDeclaration.name\] and a structured JSON object
-/// containing any output from the function is used as context to the model.
+/// The result output from a FunctionCall that contains a string representing
+/// the FunctionDeclaration.name and a structured JSON object containing any
+/// output from the function is used as context to the model.
 ///
-/// This should contain the result of a \[FunctionCall\] made based on model
+/// This should contain the result of a `FunctionCall` made based on model
 /// prediction.
 class GoogleCloudAiplatformV1FunctionResponse {
   /// The name of the function to call.
   ///
-  /// Matches \[FunctionDeclaration.name\] and \[FunctionCall.name\].
+  /// Matches FunctionDeclaration.name and FunctionCall.name.
   ///
   /// Required.
   core.String? name;
@@ -68510,10 +71463,27 @@ class GoogleCloudAiplatformV1FunctionResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
+  /// Specifies how the response should be scheduled in the conversation.
+  ///
+  /// Only applicable to NON_BLOCKING function calls, is ignored otherwise.
+  /// Defaults to WHEN_IDLE.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCHEDULING_UNSPECIFIED" : This value is unused.
+  /// - "SILENT" : Only add the result to the conversation context, do not
+  /// interrupt or trigger generation.
+  /// - "WHEN_IDLE" : Add the result to the conversation context, and prompt to
+  /// generate output without interrupting ongoing generation.
+  /// - "INTERRUPT" : Add the result to the conversation context, interrupt
+  /// ongoing generation and prompt to generate output.
+  core.String? scheduling;
+
   GoogleCloudAiplatformV1FunctionResponse({
     this.name,
     this.parts,
     this.response,
+    this.scheduling,
   });
 
   GoogleCloudAiplatformV1FunctionResponse.fromJson(core.Map json_)
@@ -68529,13 +71499,20 @@ class GoogleCloudAiplatformV1FunctionResponse {
         response: json_.containsKey('response')
             ? json_['response'] as core.Map<core.String, core.dynamic>
             : null,
+        scheduling: json_['scheduling'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final name = this.name;
     final parts = this.parts;
     final response = this.response;
-    return {'name': ?name, 'parts': ?parts, 'response': ?response};
+    final scheduling = this.scheduling;
+    return {
+      'name': ?name,
+      'parts': ?parts,
+      'response': ?response,
+      'scheduling': ?scheduling,
+    };
   }
 }
 
@@ -69239,6 +72216,8 @@ class GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata {
   /// Possible string values are:
   /// - "TRAFFIC_TYPE_UNSPECIFIED" : Unspecified request traffic type.
   /// - "ON_DEMAND" : The request was processed using Pay-As-You-Go quota.
+  /// - "ON_DEMAND_PRIORITY" : Type for Priority Pay-As-You-Go traffic.
+  /// - "ON_DEMAND_FLEX" : Type for Flex traffic.
   /// - "PROVISIONED_THROUGHPUT" : Type for Provisioned Throughput traffic.
   core.String? trafficType;
 
@@ -69363,7 +72342,7 @@ class GoogleCloudAiplatformV1GenerateInstanceRubricsRequest {
   /// Agent configuration, required for agent-based rubric generation.
   ///
   /// Optional.
-  GoogleCloudAiplatformV1EvaluationInstanceAgentConfig? agentConfig;
+  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig? agentConfig;
 
   /// The prompt to generate rubrics from.
   ///
@@ -69380,6 +72359,16 @@ class GoogleCloudAiplatformV1GenerateInstanceRubricsRequest {
   ///
   /// Required.
   core.String? location;
+
+  /// The resource name of a registered metric.
+  ///
+  /// Rubric generation using predefined metric spec or LLMBasedMetricSpec is
+  /// supported. If this field is set, the configuration provided in this field
+  /// is used for rubric generation. The `predefined_rubric_generation_spec` and
+  /// `rubric_generation_spec` fields will be ignored.
+  ///
+  /// Optional.
+  core.String? metricResourceName;
 
   /// Specification for using the rubric generation configs of a pre-defined
   /// metric, e.g. "generic_quality_v1" and "instruction_following_v1".
@@ -69400,6 +72389,7 @@ class GoogleCloudAiplatformV1GenerateInstanceRubricsRequest {
     this.agentConfig,
     this.contents,
     this.location,
+    this.metricResourceName,
     this.predefinedRubricGenerationSpec,
     this.rubricGenerationSpec,
   });
@@ -69407,7 +72397,7 @@ class GoogleCloudAiplatformV1GenerateInstanceRubricsRequest {
   GoogleCloudAiplatformV1GenerateInstanceRubricsRequest.fromJson(core.Map json_)
     : this(
         agentConfig: json_.containsKey('agentConfig')
-            ? GoogleCloudAiplatformV1EvaluationInstanceAgentConfig.fromJson(
+            ? GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig.fromJson(
                 json_['agentConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -69419,6 +72409,7 @@ class GoogleCloudAiplatformV1GenerateInstanceRubricsRequest {
             )
             .toList(),
         location: json_['location'] as core.String?,
+        metricResourceName: json_['metricResourceName'] as core.String?,
         predefinedRubricGenerationSpec:
             json_.containsKey('predefinedRubricGenerationSpec')
             ? GoogleCloudAiplatformV1PredefinedMetricSpec.fromJson(
@@ -69438,12 +72429,14 @@ class GoogleCloudAiplatformV1GenerateInstanceRubricsRequest {
     final agentConfig = this.agentConfig;
     final contents = this.contents;
     final location = this.location;
+    final metricResourceName = this.metricResourceName;
     final predefinedRubricGenerationSpec = this.predefinedRubricGenerationSpec;
     final rubricGenerationSpec = this.rubricGenerationSpec;
     return {
       'agentConfig': ?agentConfig,
       'contents': ?contents,
       'location': ?location,
+      'metricResourceName': ?metricResourceName,
       'predefinedRubricGenerationSpec': ?predefinedRubricGenerationSpec,
       'rubricGenerationSpec': ?rubricGenerationSpec,
     };
@@ -69483,6 +72476,11 @@ class GoogleCloudAiplatformV1GenerateInstanceRubricsResponse {
 ///
 /// Maximum size is 8 MB.
 class GoogleCloudAiplatformV1GenerateMemoriesRequest {
+  /// Restricts memory generation to a subset of memory topics.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAiplatformV1MemoryTopicId>? allowedTopics;
+
   /// Defines a direct source of content as the source content from which to
   /// generate memories.
   GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSource?
@@ -69570,6 +72568,7 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequest {
   vertexSessionSource;
 
   GoogleCloudAiplatformV1GenerateMemoriesRequest({
+    this.allowedTopics,
     this.directContentsSource,
     this.directMemoriesSource,
     this.disableConsolidation,
@@ -69585,6 +72584,13 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequest {
 
   GoogleCloudAiplatformV1GenerateMemoriesRequest.fromJson(core.Map json_)
     : this(
+        allowedTopics: (json_['allowedTopics'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1MemoryTopicId.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         directContentsSource: json_.containsKey('directContentsSource')
             ? GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSource.fromJson(
                 json_['directContentsSource']
@@ -69626,6 +72632,7 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final allowedTopics = this.allowedTopics;
     final directContentsSource = this.directContentsSource;
     final directMemoriesSource = this.directMemoriesSource;
     final disableConsolidation = this.disableConsolidation;
@@ -69638,6 +72645,7 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequest {
     final scope = this.scope;
     final vertexSessionSource = this.vertexSessionSource;
     return {
+      'allowedTopics': ?allowedTopics,
       'directContentsSource': ?directContentsSource,
       'directMemoriesSource': ?directMemoriesSource,
       'disableConsolidation': ?disableConsolidation,
@@ -69838,25 +72846,34 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequestVertexSessionSource {
 }
 
 /// Request message for DataFoundryService.GenerateSyntheticData.
+///
+/// It contains the settings and information needed to generate synthetic data.
 class GoogleCloudAiplatformV1GenerateSyntheticDataRequest {
   /// The number of synthetic examples to generate.
   ///
-  /// For this stateless API, the count is limited to a small number.
+  /// For this stateless API, you can generate up to 50 examples in a single
+  /// request.
   ///
   /// Required.
   core.int? count;
 
-  /// A list of few-shot examples to guide the model's output style and format.
+  /// A list of few-shot examples that help the model understand the desired
+  /// style, tone, and format of the generated synthetic data.
+  ///
+  /// Providing these few-shot examples can significantly improve the quality
+  /// and relevance of the output.
   ///
   /// Optional.
   core.List<GoogleCloudAiplatformV1SyntheticExample>? examples;
 
-  /// The schema of the desired output, defined by a list of fields.
+  /// Defines the schema of each synthetic example to be generated, defined by a
+  /// list of fields.
   ///
   /// Required.
   core.List<GoogleCloudAiplatformV1OutputFieldSpec>? outputFieldSpecs;
 
-  /// Generate data from a high-level task description.
+  /// Generates synthetic data based on a high-level description of the task or
+  /// data you want.
   GoogleCloudAiplatformV1TaskDescriptionStrategy? taskDescription;
 
   GoogleCloudAiplatformV1GenerateSyntheticDataRequest({
@@ -69904,9 +72921,11 @@ class GoogleCloudAiplatformV1GenerateSyntheticDataRequest {
   }
 }
 
-/// The response containing the generated data.
+/// The response message for the `GenerateSyntheticData` method, containing the
+/// synthetic examples generated by the Gen AI evaluation service.
 class GoogleCloudAiplatformV1GenerateSyntheticDataResponse {
-  /// A list of generated synthetic examples.
+  /// A list of generated synthetic examples, each containing a complete
+  /// synthetic data instance generated based on your request.
   core.List<GoogleCloudAiplatformV1SyntheticExample>? syntheticExamples;
 
   GoogleCloudAiplatformV1GenerateSyntheticDataResponse({
@@ -70042,7 +73061,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
   /// The model will generate output that conforms to this MIME type. Supported
   /// values include 'text/plain' (default) and 'application/json'. The model
   /// needs to be prompted to output the appropriate response type, otherwise
-  /// the behavior is undefined. This is a preview feature.
+  /// the behavior is undefined.
   ///
   /// Optional.
   core.String? responseMimeType;
@@ -70656,6 +73675,11 @@ typedef GoogleCloudAiplatformV1GroundednessSpec = $Spec;
 /// grounding is enabled, the model returns a `GroundingChunk` that contains a
 /// reference to the source of the information.
 class GoogleCloudAiplatformV1GroundingChunk {
+  /// A grounding chunk from an image search result.
+  ///
+  /// See the `Image` message for details.
+  GoogleCloudAiplatformV1GroundingChunkImage? image;
+
   /// A grounding chunk from Google Maps.
   ///
   /// See the `Maps` message for details.
@@ -70673,6 +73697,7 @@ class GoogleCloudAiplatformV1GroundingChunk {
   GoogleCloudAiplatformV1GroundingChunkWeb? web;
 
   GoogleCloudAiplatformV1GroundingChunk({
+    this.image,
     this.maps,
     this.retrievedContext,
     this.web,
@@ -70680,6 +73705,11 @@ class GoogleCloudAiplatformV1GroundingChunk {
 
   GoogleCloudAiplatformV1GroundingChunk.fromJson(core.Map json_)
     : this(
+        image: json_.containsKey('image')
+            ? GoogleCloudAiplatformV1GroundingChunkImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maps: json_.containsKey('maps')
             ? GoogleCloudAiplatformV1GroundingChunkMaps.fromJson(
                 json_['maps'] as core.Map<core.String, core.dynamic>,
@@ -70699,18 +73729,71 @@ class GoogleCloudAiplatformV1GroundingChunk {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final image = this.image;
     final maps = this.maps;
     final retrievedContext = this.retrievedContext;
     final web = this.web;
-    return {'maps': ?maps, 'retrievedContext': ?retrievedContext, 'web': ?web};
+    return {
+      'image': ?image,
+      'maps': ?maps,
+      'retrievedContext': ?retrievedContext,
+      'web': ?web,
+    };
   }
 }
 
-/// A `Maps` chunk is a piece of evidence that comes from Google Maps.
+/// An `Image` chunk is a piece of evidence that comes from an image search
+/// result.
 ///
-/// It contains information about a place, such as its name, address, and
-/// reviews. This is used to provide the user with rich, location-based
+/// It contains the URI of the image search result and the URI of the image.
+/// This is used to provide the user with a link to the source of the
 /// information.
+class GoogleCloudAiplatformV1GroundingChunkImage {
+  /// The domain of the image search result page.
+  core.String? domain;
+
+  /// The URI of the image.
+  core.String? imageUri;
+
+  /// The URI of the image search result page.
+  core.String? sourceUri;
+
+  /// The title of the image search result page.
+  core.String? title;
+
+  GoogleCloudAiplatformV1GroundingChunkImage({
+    this.domain,
+    this.imageUri,
+    this.sourceUri,
+    this.title,
+  });
+
+  GoogleCloudAiplatformV1GroundingChunkImage.fromJson(core.Map json_)
+    : this(
+        domain: json_['domain'] as core.String?,
+        imageUri: json_['imageUri'] as core.String?,
+        sourceUri: json_['sourceUri'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final domain = this.domain;
+    final imageUri = this.imageUri;
+    final sourceUri = this.sourceUri;
+    final title = this.title;
+    return {
+      'domain': ?domain,
+      'imageUri': ?imageUri,
+      'sourceUri': ?sourceUri,
+      'title': ?title,
+    };
+  }
+}
+
+/// A `Maps` chunk is a piece of evidence that comes from Google Maps,
+/// containing information about places or routes.
+///
+/// This is used to provide the user with rich, location-based information.
 class GoogleCloudAiplatformV1GroundingChunkMaps {
   /// The sources that were used to generate the place answer.
   ///
@@ -70724,6 +73807,11 @@ class GoogleCloudAiplatformV1GroundingChunkMaps {
   /// This can be used to look up the place in the Google Maps API.
   core.String? placeId;
 
+  /// Route information.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1GroundingChunkMapsRoute? route;
+
   /// The text of the place answer.
   core.String? text;
 
@@ -70736,6 +73824,7 @@ class GoogleCloudAiplatformV1GroundingChunkMaps {
   GoogleCloudAiplatformV1GroundingChunkMaps({
     this.placeAnswerSources,
     this.placeId,
+    this.route,
     this.text,
     this.title,
     this.uri,
@@ -70750,6 +73839,11 @@ class GoogleCloudAiplatformV1GroundingChunkMaps {
               )
             : null,
         placeId: json_['placeId'] as core.String?,
+        route: json_.containsKey('route')
+            ? GoogleCloudAiplatformV1GroundingChunkMapsRoute.fromJson(
+                json_['route'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         text: json_['text'] as core.String?,
         title: json_['title'] as core.String?,
         uri: json_['uri'] as core.String?,
@@ -70758,12 +73852,14 @@ class GoogleCloudAiplatformV1GroundingChunkMaps {
   core.Map<core.String, core.dynamic> toJson() {
     final placeAnswerSources = this.placeAnswerSources;
     final placeId = this.placeId;
+    final route = this.route;
     final text = this.text;
     final title = this.title;
     final uri = this.uri;
     return {
       'placeAnswerSources': ?placeAnswerSources,
       'placeId': ?placeId,
+      'route': ?route,
       'text': ?text,
       'title': ?title,
       'uri': ?uri,
@@ -70838,6 +73934,45 @@ class GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet {
       'googleMapsUri': ?googleMapsUri,
       'reviewId': ?reviewId,
       'title': ?title,
+    };
+  }
+}
+
+/// Route information from Google Maps.
+class GoogleCloudAiplatformV1GroundingChunkMapsRoute {
+  /// The total distance of the route, in meters.
+  core.int? distanceMeters;
+
+  /// The total duration of the route.
+  core.String? duration;
+
+  /// An encoded polyline of the route.
+  ///
+  /// See
+  /// https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+  core.String? encodedPolyline;
+
+  GoogleCloudAiplatformV1GroundingChunkMapsRoute({
+    this.distanceMeters,
+    this.duration,
+    this.encodedPolyline,
+  });
+
+  GoogleCloudAiplatformV1GroundingChunkMapsRoute.fromJson(core.Map json_)
+    : this(
+        distanceMeters: json_['distanceMeters'] as core.int?,
+        duration: json_['duration'] as core.String?,
+        encodedPolyline: json_['encodedPolyline'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final distanceMeters = this.distanceMeters;
+    final duration = this.duration;
+    final encodedPolyline = this.encodedPolyline;
+    return {
+      'distanceMeters': ?distanceMeters,
+      'duration': ?duration,
+      'encodedPolyline': ?encodedPolyline,
     };
   }
 }
@@ -70970,6 +74105,14 @@ class GoogleCloudAiplatformV1GroundingMetadata {
   /// Optional.
   core.List<GoogleCloudAiplatformV1GroundingSupport>? groundingSupports;
 
+  /// The image search queries that were used to generate the content.
+  ///
+  /// This field is populated only when the grounding source is Google Search
+  /// with the Image Search search_type enabled.
+  ///
+  /// Optional.
+  core.List<core.String>? imageSearchQueries;
+
   /// Metadata related to the retrieval grounding source.
   ///
   /// Optional. Output only.
@@ -71002,6 +74145,7 @@ class GoogleCloudAiplatformV1GroundingMetadata {
     this.googleMapsWidgetContextToken,
     this.groundingChunks,
     this.groundingSupports,
+    this.imageSearchQueries,
     this.retrievalMetadata,
     this.searchEntryPoint,
     this.sourceFlaggingUris,
@@ -71025,6 +74169,9 @@ class GoogleCloudAiplatformV1GroundingMetadata {
                 value as core.Map<core.String, core.dynamic>,
               ),
             )
+            .toList(),
+        imageSearchQueries: (json_['imageSearchQueries'] as core.List?)
+            ?.map((value) => value as core.String)
             .toList(),
         retrievalMetadata: json_.containsKey('retrievalMetadata')
             ? GoogleCloudAiplatformV1RetrievalMetadata.fromJson(
@@ -71055,6 +74202,7 @@ class GoogleCloudAiplatformV1GroundingMetadata {
     final googleMapsWidgetContextToken = this.googleMapsWidgetContextToken;
     final groundingChunks = this.groundingChunks;
     final groundingSupports = this.groundingSupports;
+    final imageSearchQueries = this.imageSearchQueries;
     final retrievalMetadata = this.retrievalMetadata;
     final searchEntryPoint = this.searchEntryPoint;
     final sourceFlaggingUris = this.sourceFlaggingUris;
@@ -71063,6 +74211,7 @@ class GoogleCloudAiplatformV1GroundingMetadata {
       'googleMapsWidgetContextToken': ?googleMapsWidgetContextToken,
       'groundingChunks': ?groundingChunks,
       'groundingSupports': ?groundingSupports,
+      'imageSearchQueries': ?imageSearchQueries,
       'retrievalMetadata': ?retrievalMetadata,
       'searchEntryPoint': ?searchEntryPoint,
       'sourceFlaggingUris': ?sourceFlaggingUris,
@@ -71100,7 +74249,8 @@ class GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri {
   }
 }
 
-/// A collection of supporting references for a segment of the model's response.
+/// A collection of supporting references for a segment or part of the model's
+/// response.
 class GoogleCloudAiplatformV1GroundingSupport {
   /// The confidence scores for the support references.
   ///
@@ -71120,12 +74270,20 @@ class GoogleCloudAiplatformV1GroundingSupport {
   /// for the claim in the content segment.
   core.List<core.int>? groundingChunkIndices;
 
+  /// Indices into the `rendered_parts` field of the `GroundingMetadata`
+  /// message.
+  ///
+  /// These indices specify which rendered parts are associated with this
+  /// support message.
+  core.List<core.int>? renderedParts;
+
   /// The content segment that this support message applies to.
   GoogleCloudAiplatformV1Segment? segment;
 
   GoogleCloudAiplatformV1GroundingSupport({
     this.confidenceScores,
     this.groundingChunkIndices,
+    this.renderedParts,
     this.segment,
   });
 
@@ -71135,6 +74293,9 @@ class GoogleCloudAiplatformV1GroundingSupport {
             ?.map((value) => (value as core.num).toDouble())
             .toList(),
         groundingChunkIndices: (json_['groundingChunkIndices'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
+        renderedParts: (json_['renderedParts'] as core.List?)
             ?.map((value) => value as core.int)
             .toList(),
         segment: json_.containsKey('segment')
@@ -71147,10 +74308,12 @@ class GoogleCloudAiplatformV1GroundingSupport {
   core.Map<core.String, core.dynamic> toJson() {
     final confidenceScores = this.confidenceScores;
     final groundingChunkIndices = this.groundingChunkIndices;
+    final renderedParts = this.renderedParts;
     final segment = this.segment;
     return {
       'confidenceScores': ?confidenceScores,
       'groundingChunkIndices': ?groundingChunkIndices,
+      'renderedParts': ?renderedParts,
       'segment': ?segment,
     };
   }
@@ -71459,11 +74622,30 @@ class GoogleCloudAiplatformV1ImageConfig {
   /// - "ALLOW_NONE" : Prevents the model from generating images of people.
   core.String? personGeneration;
 
+  /// Controls whether prominent people (celebrities) generation is allowed.
+  ///
+  /// If used with personGeneration, personGeneration enum would take
+  /// precedence. For instance, if ALLOW_NONE is set, all person generation
+  /// would be blocked. If this field is unspecified, the default behavior is to
+  /// allow prominent people.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PROMINENT_PEOPLE_UNSPECIFIED" : Unspecified value. The model will
+  /// proceed with the default behavior, which is to allow generation of
+  /// prominent people.
+  /// - "ALLOW_PROMINENT_PEOPLE" : Allows the model to generate images of
+  /// prominent people.
+  /// - "BLOCK_PROMINENT_PEOPLE" : Prevents the model from generating images of
+  /// prominent people.
+  core.String? prominentPeople;
+
   GoogleCloudAiplatformV1ImageConfig({
     this.aspectRatio,
     this.imageOutputOptions,
     this.imageSize,
     this.personGeneration,
+    this.prominentPeople,
   });
 
   GoogleCloudAiplatformV1ImageConfig.fromJson(core.Map json_)
@@ -71477,6 +74659,7 @@ class GoogleCloudAiplatformV1ImageConfig {
             : null,
         imageSize: json_['imageSize'] as core.String?,
         personGeneration: json_['personGeneration'] as core.String?,
+        prominentPeople: json_['prominentPeople'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -71484,11 +74667,13 @@ class GoogleCloudAiplatformV1ImageConfig {
     final imageOutputOptions = this.imageOutputOptions;
     final imageSize = this.imageSize;
     final personGeneration = this.personGeneration;
+    final prominentPeople = this.prominentPeople;
     return {
       'aspectRatio': ?aspectRatio,
       'imageOutputOptions': ?imageOutputOptions,
       'imageSize': ?imageSize,
       'personGeneration': ?personGeneration,
+      'prominentPeople': ?prominentPeople,
     };
   }
 }
@@ -73125,19 +76310,49 @@ class GoogleCloudAiplatformV1IntegratedGradientsAttribution {
 
 /// An extracted memory that is the intermediate result before consolidation.
 class GoogleCloudAiplatformV1IntermediateExtractedMemory {
-  /// The fact of the extracted memory.
+  /// Represents the explanation of why the information was extracted from the
+  /// source content.
+  ///
+  /// Output only.
+  core.String? context;
+
+  /// Represents the fact of the extracted memory.
   ///
   /// Output only.
   core.String? fact;
 
-  GoogleCloudAiplatformV1IntermediateExtractedMemory({this.fact});
+  /// Represents the structured value of the extracted memory.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? structuredData;
+
+  GoogleCloudAiplatformV1IntermediateExtractedMemory({
+    this.context,
+    this.fact,
+    this.structuredData,
+  });
 
   GoogleCloudAiplatformV1IntermediateExtractedMemory.fromJson(core.Map json_)
-    : this(fact: json_['fact'] as core.String?);
+    : this(
+        context: json_['context'] as core.String?,
+        fact: json_['fact'] as core.String?,
+        structuredData: json_.containsKey('structuredData')
+            ? json_['structuredData'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final context = this.context;
     final fact = this.fact;
-    return {'fact': ?fact};
+    final structuredData = this.structuredData;
+    return {
+      'context': ?context,
+      'fact': ?fact,
+      'structuredData': ?structuredData,
+    };
   }
 }
 
@@ -73268,6 +76483,70 @@ class GoogleCloudAiplatformV1JiraSourceJiraQueries {
   }
 }
 
+/// Represents the configuration for keep-alive probe.
+///
+/// Contains configuration on a specified endpoint that a deployment host should
+/// use to keep the container alive based on the probe settings.
+class GoogleCloudAiplatformV1KeepAliveProbe {
+  /// Specifies the HTTP GET configuration for the probe.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1KeepAliveProbeHttpGet? httpGet;
+
+  /// Specifies the maximum duration (in seconds) to keep the instance alive via
+  /// this probe.
+  ///
+  /// Can be a maximum of 3600 seconds (1 hour).
+  ///
+  /// Optional.
+  core.int? maxSeconds;
+
+  GoogleCloudAiplatformV1KeepAliveProbe({this.httpGet, this.maxSeconds});
+
+  GoogleCloudAiplatformV1KeepAliveProbe.fromJson(core.Map json_)
+    : this(
+        httpGet: json_.containsKey('httpGet')
+            ? GoogleCloudAiplatformV1KeepAliveProbeHttpGet.fromJson(
+                json_['httpGet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        maxSeconds: json_['maxSeconds'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final httpGet = this.httpGet;
+    final maxSeconds = this.maxSeconds;
+    return {'httpGet': ?httpGet, 'maxSeconds': ?maxSeconds};
+  }
+}
+
+/// Specifies the HTTP GET configuration for the probe.
+class GoogleCloudAiplatformV1KeepAliveProbeHttpGet {
+  /// Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
+  ///
+  /// Required.
+  core.String? path;
+
+  /// Specifies the port number on the container to which the request is sent.
+  ///
+  /// Optional.
+  core.int? port;
+
+  GoogleCloudAiplatformV1KeepAliveProbeHttpGet({this.path, this.port});
+
+  GoogleCloudAiplatformV1KeepAliveProbeHttpGet.fromJson(core.Map json_)
+    : this(
+        path: json_['path'] as core.String?,
+        port: json_['port'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    final port = this.port;
+    return {'path': ?path, 'port': ?port};
+  }
+}
+
 /// Specification for an LLM based metric.
 class GoogleCloudAiplatformV1LLMBasedMetricSpec {
   /// Optional additional configuration for the metric.
@@ -73291,6 +76570,11 @@ class GoogleCloudAiplatformV1LLMBasedMetricSpec {
   /// Dynamically generate rubrics using a predefined spec.
   GoogleCloudAiplatformV1PredefinedMetricSpec? predefinedRubricGenerationSpec;
 
+  /// The parser config for the metric result.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1EvaluationParserConfig? resultParserConfig;
+
   /// Dynamically generate rubrics using this specification.
   GoogleCloudAiplatformV1RubricGenerationSpec? rubricGenerationSpec;
 
@@ -73309,6 +76593,7 @@ class GoogleCloudAiplatformV1LLMBasedMetricSpec {
     this.judgeAutoraterConfig,
     this.metricPromptTemplate,
     this.predefinedRubricGenerationSpec,
+    this.resultParserConfig,
     this.rubricGenerationSpec,
     this.rubricGroupKey,
     this.systemInstruction,
@@ -73333,6 +76618,12 @@ class GoogleCloudAiplatformV1LLMBasedMetricSpec {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        resultParserConfig: json_.containsKey('resultParserConfig')
+            ? GoogleCloudAiplatformV1EvaluationParserConfig.fromJson(
+                json_['resultParserConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         rubricGenerationSpec: json_.containsKey('rubricGenerationSpec')
             ? GoogleCloudAiplatformV1RubricGenerationSpec.fromJson(
                 json_['rubricGenerationSpec']
@@ -73348,6 +76639,7 @@ class GoogleCloudAiplatformV1LLMBasedMetricSpec {
     final judgeAutoraterConfig = this.judgeAutoraterConfig;
     final metricPromptTemplate = this.metricPromptTemplate;
     final predefinedRubricGenerationSpec = this.predefinedRubricGenerationSpec;
+    final resultParserConfig = this.resultParserConfig;
     final rubricGenerationSpec = this.rubricGenerationSpec;
     final rubricGroupKey = this.rubricGroupKey;
     final systemInstruction = this.systemInstruction;
@@ -73356,6 +76648,7 @@ class GoogleCloudAiplatformV1LLMBasedMetricSpec {
       'judgeAutoraterConfig': ?judgeAutoraterConfig,
       'metricPromptTemplate': ?metricPromptTemplate,
       'predefinedRubricGenerationSpec': ?predefinedRubricGenerationSpec,
+      'resultParserConfig': ?resultParserConfig,
       'rubricGenerationSpec': ?rubricGenerationSpec,
       'rubricGroupKey': ?rubricGroupKey,
       'systemInstruction': ?systemInstruction,
@@ -75154,6 +78447,94 @@ class GoogleCloudAiplatformV1ListReasoningEnginesResponse {
   }
 }
 
+/// Response message for
+/// SandboxEnvironmentService.ListSandboxEnvironmentSnapshots.
+class GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse {
+  /// A token, which can be sent as
+  /// ListSandboxEnvironmentSnapshotsRequest.page_token to retrieve the next
+  /// page.
+  ///
+  /// Absence of this field indicates there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The SandboxEnvironmentSnapshots matching the request.
+  core.List<GoogleCloudAiplatformV1SandboxEnvironmentSnapshot>?
+  sandboxEnvironmentSnapshots;
+
+  GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse({
+    this.nextPageToken,
+    this.sandboxEnvironmentSnapshots,
+  });
+
+  GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        sandboxEnvironmentSnapshots:
+            (json_['sandboxEnvironmentSnapshots'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAiplatformV1SandboxEnvironmentSnapshot.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sandboxEnvironmentSnapshots = this.sandboxEnvironmentSnapshots;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'sandboxEnvironmentSnapshots': ?sandboxEnvironmentSnapshots,
+    };
+  }
+}
+
+/// Response message for
+/// SandboxEnvironmentService.ListSandboxEnvironmentTemplates.
+class GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse {
+  /// A token, which can be sent as
+  /// ListSandboxEnvironmentTemplatesRequest.page_token to retrieve the next
+  /// page.
+  ///
+  /// Absence of this field indicates there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The SandboxEnvironmentTemplates matching the request.
+  core.List<GoogleCloudAiplatformV1SandboxEnvironmentTemplate>?
+  sandboxEnvironmentTemplates;
+
+  GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse({
+    this.nextPageToken,
+    this.sandboxEnvironmentTemplates,
+  });
+
+  GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        sandboxEnvironmentTemplates:
+            (json_['sandboxEnvironmentTemplates'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAiplatformV1SandboxEnvironmentTemplate.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sandboxEnvironmentTemplates = this.sandboxEnvironmentTemplates;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'sandboxEnvironmentTemplates': ?sandboxEnvironmentTemplates,
+    };
+  }
+}
+
 /// Response message for SandboxEnvironmentService.ListSandboxEnvironments.
 class GoogleCloudAiplatformV1ListSandboxEnvironmentsResponse {
   /// A token, which can be sent as ListSandboxEnvironmentsRequest.page_token to
@@ -76062,29 +79443,29 @@ class GoogleCloudAiplatformV1MeasurementMetric {
 
 /// A memory.
 class GoogleCloudAiplatformV1Memory {
-  /// Timestamp when this Memory was created.
+  /// Represents the timestamp when this Memory was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Description of the Memory.
+  /// Represents the description of the Memory.
   ///
   /// Optional.
   core.String? description;
 
   /// Input only.
   ///
-  /// If true, no revision will be created for this request.
+  /// Indicates whether no revision will be created for this request.
   ///
   /// Optional.
   core.bool? disableMemoryRevisions;
 
-  /// Display name of the Memory.
+  /// Represents the display name of the Memory.
   ///
   /// Optional.
   core.String? displayName;
 
-  /// Timestamp of when this resource is considered expired.
+  /// Represents the timestamp of when this resource is considered expired.
   ///
   /// This is *always* provided on output when `expiration` is set on input,
   /// regardless of whether `expire_time` or `ttl` was provided.
@@ -76092,12 +79473,12 @@ class GoogleCloudAiplatformV1Memory {
   /// Optional.
   core.String? expireTime;
 
-  /// Semantic knowledge extracted from the source content.
+  /// Represents semantic knowledge extracted from the source content.
   ///
-  /// Required.
+  /// Optional.
   core.String? fact;
 
-  /// User-provided metadata for the Memory.
+  /// Represents user-provided metadata for the Memory.
   ///
   /// This information was provided when creating, updating, or generating the
   /// Memory. It was not generated by Memory Bank.
@@ -76107,34 +79488,35 @@ class GoogleCloudAiplatformV1Memory {
 
   /// Identifier.
   ///
-  /// The resource name of the Memory. Format:
+  /// Represents the resource name of the Memory. Format:
   /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/memories/{memory}`
   core.String? name;
 
   /// Input only.
   ///
-  /// Timestamp of when the revision is considered expired. If not set, the
-  /// memory revision will be kept until manually deleted.
+  /// Represents the timestamp of when the revision is considered expired. If
+  /// not set, the memory revision will be kept until manually deleted.
   ///
   /// Optional.
   core.String? revisionExpireTime;
 
   /// Input only.
   ///
-  /// The labels to apply to the Memory Revision created as a result of this
-  /// request.
+  /// Represents the labels to apply to the Memory Revision created as a result
+  /// of this request.
   ///
   /// Optional.
   core.Map<core.String, core.String>? revisionLabels;
 
   /// Input only.
   ///
-  /// The TTL for the revision. The expiration time is computed: now + TTL.
+  /// Represents the TTL for the revision. The expiration time is computed: now
+  /// + TTL.
   ///
   /// Optional.
   core.String? revisionTtl;
 
-  /// The scope of the Memory.
+  /// Represents the scope of the Memory.
   ///
   /// Memories are isolated within their scope. The scope is defined when
   /// creating or generating memories. Scope values cannot contain the wildcard
@@ -76143,19 +79525,20 @@ class GoogleCloudAiplatformV1Memory {
   /// Required. Immutable.
   core.Map<core.String, core.String>? scope;
 
-  /// The Topics of the Memory.
+  /// Represents the Topics of the Memory.
   ///
   /// Optional.
   core.List<GoogleCloudAiplatformV1MemoryTopicId>? topics;
 
   /// Input only.
   ///
-  /// The TTL for this resource. The expiration time is computed: now + TTL.
+  /// Represents the TTL for this resource. The expiration time is computed: now
+  /// + TTL.
   ///
   /// Optional.
   core.String? ttl;
 
-  /// Timestamp when this Memory was most recently updated.
+  /// Represents the timestamp when this Memory was most recently updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -76251,9 +79634,26 @@ class GoogleCloudAiplatformV1Memory {
   }
 }
 
-/// Configuration for organizing memories for a particular scope.
+/// Represents configuration for organizing natural language memories for a
+/// particular scope.
 class GoogleCloudAiplatformV1MemoryBankCustomizationConfig {
-  /// If true, then the memories will be generated in the third person (i.e.
+  /// Represents configuration for customizing how memories are consolidated
+  /// together.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1MemoryBankCustomizationConfigConsolidationConfig?
+  consolidationConfig;
+
+  /// Indicates whether natural language memory generation should be disabled
+  /// for all requests.
+  ///
+  /// By default, natural language memory generation is enabled. Set this to
+  /// `true` when you only want to generate structured memories.
+  ///
+  /// Optional.
+  core.bool? disableNaturalLanguageMemories;
+
+  /// Indicates whether the memories will be generated in the third person (i.e.
   /// "The user generates memories with Memory Bank.").
   ///
   /// By default, the memories will be generated in the first person (i.e. "I
@@ -76262,7 +79662,7 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfig {
   /// Optional.
   core.bool? enableThirdPersonMemories;
 
-  /// Examples of how to generate memories for a particular scope.
+  /// Provides examples of how to generate memories for a particular scope.
   ///
   /// Optional.
   core.List<
@@ -76270,8 +79670,8 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfig {
   >?
   generateMemoriesExamples;
 
-  /// Topics of information that should be extracted from conversations and
-  /// stored as memories.
+  /// Represents topics of information that should be extracted from
+  /// conversations and stored as memories.
   ///
   /// If not set, then Memory Bank's default topics will be used.
   ///
@@ -76279,7 +79679,7 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfig {
   core.List<GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic>?
   memoryTopics;
 
-  /// The scope keys (i.e. 'user_id') for which to use this config.
+  /// Represents the scope keys (i.e. 'user_id') for which to use this config.
   ///
   /// A request's scope must include all of the provided keys for the config to
   /// be used (order does not matter). If empty, then the config will be used
@@ -76290,6 +79690,8 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfig {
   core.List<core.String>? scopeKeys;
 
   GoogleCloudAiplatformV1MemoryBankCustomizationConfig({
+    this.consolidationConfig,
+    this.disableNaturalLanguageMemories,
     this.enableThirdPersonMemories,
     this.generateMemoriesExamples,
     this.memoryTopics,
@@ -76298,6 +79700,14 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfig {
 
   GoogleCloudAiplatformV1MemoryBankCustomizationConfig.fromJson(core.Map json_)
     : this(
+        consolidationConfig: json_.containsKey('consolidationConfig')
+            ? GoogleCloudAiplatformV1MemoryBankCustomizationConfigConsolidationConfig.fromJson(
+                json_['consolidationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        disableNaturalLanguageMemories:
+            json_['disableNaturalLanguageMemories'] as core.bool?,
         enableThirdPersonMemories:
             json_['enableThirdPersonMemories'] as core.bool?,
         generateMemoriesExamples: (json_['generateMemoriesExamples'] as core.List?)
@@ -76322,16 +79732,48 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final consolidationConfig = this.consolidationConfig;
+    final disableNaturalLanguageMemories = this.disableNaturalLanguageMemories;
     final enableThirdPersonMemories = this.enableThirdPersonMemories;
     final generateMemoriesExamples = this.generateMemoriesExamples;
     final memoryTopics = this.memoryTopics;
     final scopeKeys = this.scopeKeys;
     return {
+      'consolidationConfig': ?consolidationConfig,
+      'disableNaturalLanguageMemories': ?disableNaturalLanguageMemories,
       'enableThirdPersonMemories': ?enableThirdPersonMemories,
       'generateMemoriesExamples': ?generateMemoriesExamples,
       'memoryTopics': ?memoryTopics,
       'scopeKeys': ?scopeKeys,
     };
+  }
+}
+
+/// Represents configuration for customizing how memories are consolidated.
+class GoogleCloudAiplatformV1MemoryBankCustomizationConfigConsolidationConfig {
+  /// Represents the maximum number of revisions to consider for each candidate
+  /// memory.
+  ///
+  /// If not set, then the default value (1) will be used, which means that only
+  /// the latest revision will be considered.
+  ///
+  /// Optional.
+  core.int? revisionsPerCandidateCount;
+
+  GoogleCloudAiplatformV1MemoryBankCustomizationConfigConsolidationConfig({
+    this.revisionsPerCandidateCount,
+  });
+
+  GoogleCloudAiplatformV1MemoryBankCustomizationConfigConsolidationConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        revisionsPerCandidateCount:
+            json_['revisionsPerCandidateCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final revisionsPerCandidateCount = this.revisionsPerCandidateCount;
+    return {'revisionsPerCandidateCount': ?revisionsPerCandidateCount};
   }
 }
 
@@ -76341,7 +79783,7 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampl
   GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource?
   conversationSource;
 
-  /// The memories that are expected to be generated from the input
+  /// Represents the memories that are expected to be generated from the input
   /// conversation.
   ///
   /// An empty list indicates that no memories are expected to be generated for
@@ -76391,7 +79833,7 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampl
 ///
 /// This is similar to `DirectContentsSource`.
 class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource {
-  /// The input conversation events for the example.
+  /// Represents the input conversation events for the example.
   ///
   /// Optional.
   core.List<
@@ -76424,7 +79866,7 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampl
 
 /// A single conversation event.
 class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent {
-  /// The content of the event.
+  /// Represents the content of the event.
   ///
   /// Required.
   GoogleCloudAiplatformV1Content? content;
@@ -76451,12 +79893,12 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampl
 
 /// A memory generated by the operation.
 class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory {
-  /// The fact to generate a memory from.
+  /// Represents the fact to generate a memory from.
   ///
   /// Required.
   core.String? fact;
 
-  /// The list of topics that the memory should be associated with.
+  /// Represents the list of topics that the memory should be associated with.
   ///
   /// For example, use `custom_memory_topic_label = "jargon"` if the extracted
   /// memory is an example of memory extraction for the custom topic `jargon`.
@@ -76534,14 +79976,14 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic {
 
 /// A custom memory topic defined by the developer.
 class GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicCustomMemoryTopic {
-  /// Description of the memory topic.
+  /// Represents the description of the memory topic.
   ///
   /// This should explain what information should be extracted for this topic.
   ///
   /// Required.
   core.String? description;
 
-  /// The label of the topic.
+  /// Represents the label of the topic.
   ///
   /// Required.
   core.String? label;
@@ -76567,20 +80009,20 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicCustomMemor
 
 /// A managed memory topic defined by the system.
 class GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicManagedMemoryTopic {
-  /// The managed topic.
+  /// Represents the managed topic.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "MANAGED_TOPIC_ENUM_UNSPECIFIED" : Unspecified topic. This value should
-  /// not be used.
-  /// - "USER_PERSONAL_INFO" : Significant personal information about the User
-  /// like first names, relationships, hobbies, important dates.
-  /// - "USER_PREFERENCES" : Stated or implied likes, dislikes, preferred
-  /// styles, or patterns.
-  /// - "KEY_CONVERSATION_DETAILS" : Important milestones or conclusions within
-  /// the dialogue.
-  /// - "EXPLICIT_INSTRUCTIONS" : Information that the user explicitly requested
-  /// to remember or forget.
+  /// - "MANAGED_TOPIC_ENUM_UNSPECIFIED" : Represents an unspecified topic. This
+  /// value should not be used.
+  /// - "USER_PERSONAL_INFO" : Represents significant personal information about
+  /// the User like first names, relationships, hobbies, important dates.
+  /// - "USER_PREFERENCES" : Represents stated or implied likes, dislikes,
+  /// preferred styles, or patterns.
+  /// - "KEY_CONVERSATION_DETAILS" : Represents important milestones or
+  /// conclusions within the dialogue.
+  /// - "EXPLICIT_INSTRUCTIONS" : Represents information that the user
+  /// explicitly requested to remember or forget.
   core.String? managedTopicEnum;
 
   GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicManagedMemoryTopic({
@@ -76599,7 +80041,7 @@ class GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicManagedMemo
 
 /// A conjunction of filters that will be combined using AND logic.
 class GoogleCloudAiplatformV1MemoryConjunctionFilter {
-  /// Filters that will combined using AND logic.
+  /// Represents filters that will be combined using AND logic.
   core.List<GoogleCloudAiplatformV1MemoryFilter>? filters;
 
   GoogleCloudAiplatformV1MemoryConjunctionFilter({this.filters});
@@ -76623,26 +80065,27 @@ class GoogleCloudAiplatformV1MemoryConjunctionFilter {
 
 /// Filter to apply when retrieving memories.
 class GoogleCloudAiplatformV1MemoryFilter {
-  /// Key of the filter.
+  /// Represents the key of the filter.
   ///
   /// For example, "author" would apply to `metadata` entries with the key
   /// "author".
   core.String? key;
 
-  /// If true, the filter will be negated.
+  /// Indicates whether the filter will be negated.
   core.bool? negate;
 
-  /// Operator to apply to the filter.
+  /// Represents the operator to apply to the filter.
   ///
   /// If not set, then EQUAL will be used.
   /// Possible string values are:
-  /// - "OPERATOR_UNSPECIFIED" : Unspecified operator. Defaults to EQUAL.
+  /// - "OPERATOR_UNSPECIFIED" : Represents an unspecified operator. Defaults to
+  /// EQUAL.
   /// - "EQUAL" : Equal to.
   /// - "GREATER_THAN" : Greater than.
   /// - "LESS_THAN" : Less than.
   core.String? op;
 
-  /// Value to compare to.
+  /// Represents the value to compare to.
   GoogleCloudAiplatformV1MemoryMetadataValue? value;
 
   GoogleCloudAiplatformV1MemoryFilter({
@@ -76673,18 +80116,93 @@ class GoogleCloudAiplatformV1MemoryFilter {
   }
 }
 
+/// Represents configuration for triggering generation.
+class GoogleCloudAiplatformV1MemoryGenerationTriggerConfig {
+  /// Represents the active rule that determines when to flush the buffer.
+  ///
+  /// If not set, then the stream will be force flushed immediately.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1MemoryGenerationTriggerConfigGenerationTriggerRule?
+  generationRule;
+
+  GoogleCloudAiplatformV1MemoryGenerationTriggerConfig({this.generationRule});
+
+  GoogleCloudAiplatformV1MemoryGenerationTriggerConfig.fromJson(core.Map json_)
+    : this(
+        generationRule: json_.containsKey('generationRule')
+            ? GoogleCloudAiplatformV1MemoryGenerationTriggerConfigGenerationTriggerRule.fromJson(
+                json_['generationRule'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final generationRule = this.generationRule;
+    return {'generationRule': ?generationRule};
+  }
+}
+
+/// Represents the active rule that determines when to flush the buffer.
+class GoogleCloudAiplatformV1MemoryGenerationTriggerConfigGenerationTriggerRule {
+  /// Specifies to trigger generation when the event count reaches this limit.
+  ///
+  /// Optional.
+  core.int? eventCount;
+
+  /// Specifies to trigger generation at a fixed interval.
+  ///
+  /// The duration must have a minute-level granularity.
+  ///
+  /// Optional.
+  core.String? fixedInterval;
+
+  /// Specifies to trigger generation if the stream is inactive for the
+  /// specified duration after the most recent event.
+  ///
+  /// The duration must have a minute-level granularity.
+  ///
+  /// Optional.
+  core.String? idleDuration;
+
+  GoogleCloudAiplatformV1MemoryGenerationTriggerConfigGenerationTriggerRule({
+    this.eventCount,
+    this.fixedInterval,
+    this.idleDuration,
+  });
+
+  GoogleCloudAiplatformV1MemoryGenerationTriggerConfigGenerationTriggerRule.fromJson(
+    core.Map json_,
+  ) : this(
+        eventCount: json_['eventCount'] as core.int?,
+        fixedInterval: json_['fixedInterval'] as core.String?,
+        idleDuration: json_['idleDuration'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventCount = this.eventCount;
+    final fixedInterval = this.fixedInterval;
+    final idleDuration = this.idleDuration;
+    return {
+      'eventCount': ?eventCount,
+      'fixedInterval': ?fixedInterval,
+      'idleDuration': ?idleDuration,
+    };
+  }
+}
+
 /// Memory metadata.
 class GoogleCloudAiplatformV1MemoryMetadataValue {
-  /// Boolean value.
+  /// Represents a boolean value.
   core.bool? boolValue;
 
-  /// Double value.
+  /// Represents a double value.
   core.double? doubleValue;
 
-  /// String value.
+  /// Represents a string value.
   core.String? stringValue;
 
-  /// Timestamp value.
+  /// Represents a timestamp value.
   ///
   /// When filtering on timestamp values, only the seconds field will be
   /// compared.
@@ -76721,18 +80239,18 @@ class GoogleCloudAiplatformV1MemoryMetadataValue {
 
 /// A revision of a Memory.
 class GoogleCloudAiplatformV1MemoryRevision {
-  /// Timestamp when this Memory Revision was created.
+  /// Represents the timestamp when this Memory Revision was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Timestamp of when this resource is considered expired.
+  /// Represents the timestamp of when this resource is considered expired.
   ///
   /// Output only.
   core.String? expireTime;
 
-  /// The extracted memories from the source content before consolidation when
-  /// the memory was updated via GenerateMemories.
+  /// Represents the extracted memories from the source content before
+  /// consolidation when the memory was updated via GenerateMemories.
   ///
   /// This information was used to modify an existing Memory via Consolidation.
   ///
@@ -76740,7 +80258,7 @@ class GoogleCloudAiplatformV1MemoryRevision {
   core.List<GoogleCloudAiplatformV1IntermediateExtractedMemory>?
   extractedMemories;
 
-  /// The fact of the Memory Revision.
+  /// Represents the fact of the Memory Revision.
   ///
   /// This corresponds to the `fact` field of the parent Memory at the time of
   /// revision creation.
@@ -76748,7 +80266,7 @@ class GoogleCloudAiplatformV1MemoryRevision {
   /// Output only.
   core.String? fact;
 
-  /// The labels of the Memory Revision.
+  /// Represents the labels of the Memory Revision.
   ///
   /// These labels are applied to the MemoryRevision when it is created based on
   /// `GenerateMemoriesRequest.revision_labels`.
@@ -76758,9 +80276,18 @@ class GoogleCloudAiplatformV1MemoryRevision {
 
   /// Identifier.
   ///
-  /// The resource name of the Memory Revision. Format:
+  /// Represents the resource name of the Memory Revision. Format:
   /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/memories/{memory}/revisions/{memory_revision}`
   core.String? name;
+
+  /// Represents the structured value of the memory at the time of revision
+  /// creation.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? structuredData;
 
   GoogleCloudAiplatformV1MemoryRevision({
     this.createTime,
@@ -76769,6 +80296,7 @@ class GoogleCloudAiplatformV1MemoryRevision {
     this.fact,
     this.labels,
     this.name,
+    this.structuredData,
   });
 
   GoogleCloudAiplatformV1MemoryRevision.fromJson(core.Map json_)
@@ -76788,6 +80316,9 @@ class GoogleCloudAiplatformV1MemoryRevision {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        structuredData: json_.containsKey('structuredData')
+            ? json_['structuredData'] as core.Map<core.String, core.dynamic>
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -76797,6 +80328,7 @@ class GoogleCloudAiplatformV1MemoryRevision {
     final fact = this.fact;
     final labels = this.labels;
     final name = this.name;
+    final structuredData = this.structuredData;
     return {
       'createTime': ?createTime,
       'expireTime': ?expireTime,
@@ -76804,6 +80336,7 @@ class GoogleCloudAiplatformV1MemoryRevision {
       'fact': ?fact,
       'labels': ?labels,
       'name': ?name,
+      'structuredData': ?structuredData,
     };
   }
 }
@@ -76813,25 +80346,25 @@ class GoogleCloudAiplatformV1MemoryRevision {
 /// This will be used to label a Memory and to restrict which topics are
 /// eligible for generation or retrieval.
 class GoogleCloudAiplatformV1MemoryTopicId {
-  /// The custom memory topic label.
+  /// Represents the custom memory topic label.
   ///
   /// Optional.
   core.String? customMemoryTopicLabel;
 
-  /// The managed memory topic.
+  /// Represents the managed memory topic.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "MANAGED_TOPIC_ENUM_UNSPECIFIED" : Unspecified topic. This value should
-  /// not be used.
-  /// - "USER_PERSONAL_INFO" : Significant personal information about the User
-  /// like first names, relationships, hobbies, important dates.
-  /// - "USER_PREFERENCES" : Stated or implied likes, dislikes, preferred
-  /// styles, or patterns.
-  /// - "KEY_CONVERSATION_DETAILS" : Important milestones or conclusions within
-  /// the dialogue.
-  /// - "EXPLICIT_INSTRUCTIONS" : Information that the user explicitly requested
-  /// to remember or forget.
+  /// - "MANAGED_TOPIC_ENUM_UNSPECIFIED" : Represents an unspecified topic. This
+  /// value should not be used.
+  /// - "USER_PERSONAL_INFO" : Represents significant personal information about
+  /// the User like first names, relationships, hobbies, important dates.
+  /// - "USER_PREFERENCES" : Represents stated or implied likes, dislikes,
+  /// preferred styles, or patterns.
+  /// - "KEY_CONVERSATION_DETAILS" : Represents important milestones or
+  /// conclusions within the dialogue.
+  /// - "EXPLICIT_INSTRUCTIONS" : Represents information that the user
+  /// explicitly requested to remember or forget.
   core.String? managedMemoryTopic;
 
   GoogleCloudAiplatformV1MemoryTopicId({
@@ -77139,6 +80672,9 @@ class GoogleCloudAiplatformV1Metric {
   /// Spec for bleu metric.
   GoogleCloudAiplatformV1BleuSpec? bleuSpec;
 
+  /// Spec for a computation based metric.
+  GoogleCloudAiplatformV1ComputationBasedMetricSpec? computationBasedMetricSpec;
+
   /// Spec for Custom Code Execution metric.
   GoogleCloudAiplatformV1CustomCodeExecutionSpec? customCodeExecutionSpec;
 
@@ -77147,6 +80683,11 @@ class GoogleCloudAiplatformV1Metric {
 
   /// Spec for an LLM based metric.
   GoogleCloudAiplatformV1LLMBasedMetricSpec? llmBasedMetricSpec;
+
+  /// Metadata about the metric, used for visualization and organization.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1MetricMetadata? metadata;
 
   /// Spec for pairwise metric.
   GoogleCloudAiplatformV1PairwiseMetricSpec? pairwiseMetricSpec;
@@ -77163,9 +80704,11 @@ class GoogleCloudAiplatformV1Metric {
   GoogleCloudAiplatformV1Metric({
     this.aggregationMetrics,
     this.bleuSpec,
+    this.computationBasedMetricSpec,
     this.customCodeExecutionSpec,
     this.exactMatchSpec,
     this.llmBasedMetricSpec,
+    this.metadata,
     this.pairwiseMetricSpec,
     this.pointwiseMetricSpec,
     this.predefinedMetricSpec,
@@ -77180,6 +80723,13 @@ class GoogleCloudAiplatformV1Metric {
         bleuSpec: json_.containsKey('bleuSpec')
             ? GoogleCloudAiplatformV1BleuSpec.fromJson(
                 json_['bleuSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        computationBasedMetricSpec:
+            json_.containsKey('computationBasedMetricSpec')
+            ? GoogleCloudAiplatformV1ComputationBasedMetricSpec.fromJson(
+                json_['computationBasedMetricSpec']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         customCodeExecutionSpec: json_.containsKey('customCodeExecutionSpec')
@@ -77197,6 +80747,11 @@ class GoogleCloudAiplatformV1Metric {
             ? GoogleCloudAiplatformV1LLMBasedMetricSpec.fromJson(
                 json_['llmBasedMetricSpec']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? GoogleCloudAiplatformV1MetricMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         pairwiseMetricSpec: json_.containsKey('pairwiseMetricSpec')
@@ -77227,9 +80782,11 @@ class GoogleCloudAiplatformV1Metric {
   core.Map<core.String, core.dynamic> toJson() {
     final aggregationMetrics = this.aggregationMetrics;
     final bleuSpec = this.bleuSpec;
+    final computationBasedMetricSpec = this.computationBasedMetricSpec;
     final customCodeExecutionSpec = this.customCodeExecutionSpec;
     final exactMatchSpec = this.exactMatchSpec;
     final llmBasedMetricSpec = this.llmBasedMetricSpec;
+    final metadata = this.metadata;
     final pairwiseMetricSpec = this.pairwiseMetricSpec;
     final pointwiseMetricSpec = this.pointwiseMetricSpec;
     final predefinedMetricSpec = this.predefinedMetricSpec;
@@ -77237,13 +80794,122 @@ class GoogleCloudAiplatformV1Metric {
     return {
       'aggregationMetrics': ?aggregationMetrics,
       'bleuSpec': ?bleuSpec,
+      'computationBasedMetricSpec': ?computationBasedMetricSpec,
       'customCodeExecutionSpec': ?customCodeExecutionSpec,
       'exactMatchSpec': ?exactMatchSpec,
       'llmBasedMetricSpec': ?llmBasedMetricSpec,
+      'metadata': ?metadata,
       'pairwiseMetricSpec': ?pairwiseMetricSpec,
       'pointwiseMetricSpec': ?pointwiseMetricSpec,
       'predefinedMetricSpec': ?predefinedMetricSpec,
       'rougeSpec': ?rougeSpec,
+    };
+  }
+}
+
+/// Metadata about the metric, used for visualization and organization.
+class GoogleCloudAiplatformV1MetricMetadata {
+  /// Flexible metadata for user-defined attributes.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? otherMetadata;
+
+  /// The range of possible scores for this metric, used for plotting.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1MetricMetadataScoreRange? scoreRange;
+
+  /// The user-friendly name for the metric.
+  ///
+  /// If not set for a registered metric, it will default to the metric's
+  /// display name.
+  ///
+  /// Optional.
+  core.String? title;
+
+  GoogleCloudAiplatformV1MetricMetadata({
+    this.otherMetadata,
+    this.scoreRange,
+    this.title,
+  });
+
+  GoogleCloudAiplatformV1MetricMetadata.fromJson(core.Map json_)
+    : this(
+        otherMetadata: json_.containsKey('otherMetadata')
+            ? json_['otherMetadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        scoreRange: json_.containsKey('scoreRange')
+            ? GoogleCloudAiplatformV1MetricMetadataScoreRange.fromJson(
+                json_['scoreRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final otherMetadata = this.otherMetadata;
+    final scoreRange = this.scoreRange;
+    final title = this.title;
+    return {
+      'otherMetadata': ?otherMetadata,
+      'scoreRange': ?scoreRange,
+      'title': ?title,
+    };
+  }
+}
+
+/// The range of possible scores for this metric, used for plotting.
+class GoogleCloudAiplatformV1MetricMetadataScoreRange {
+  /// The description of the score explaining the directionality etc.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The maximum value of the score range (inclusive).
+  ///
+  /// Required.
+  core.double? max;
+
+  /// The minimum value of the score range (inclusive).
+  ///
+  /// Required.
+  core.double? min;
+
+  /// The distance between discrete steps in the range.
+  ///
+  /// If unset, the range is assumed to be continuous.
+  ///
+  /// Optional.
+  core.double? step;
+
+  GoogleCloudAiplatformV1MetricMetadataScoreRange({
+    this.description,
+    this.max,
+    this.min,
+    this.step,
+  });
+
+  GoogleCloudAiplatformV1MetricMetadataScoreRange.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        max: (json_['max'] as core.num?)?.toDouble(),
+        min: (json_['min'] as core.num?)?.toDouble(),
+        step: (json_['step'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final max = this.max;
+    final min = this.min;
+    final step = this.step;
+    return {
+      'description': ?description,
+      'max': ?max,
+      'min': ?min,
+      'step': ?step,
     };
   }
 }
@@ -77308,6 +80974,33 @@ class GoogleCloudAiplatformV1MetricResult {
       'rubricVerdicts': ?rubricVerdicts,
       'score': ?score,
     };
+  }
+}
+
+/// The metric source used for evaluation.
+class GoogleCloudAiplatformV1MetricSource {
+  /// Inline metric config.
+  GoogleCloudAiplatformV1Metric? metric;
+
+  /// Resource name for registered metric.
+  core.String? metricResourceName;
+
+  GoogleCloudAiplatformV1MetricSource({this.metric, this.metricResourceName});
+
+  GoogleCloudAiplatformV1MetricSource.fromJson(core.Map json_)
+    : this(
+        metric: json_.containsKey('metric')
+            ? GoogleCloudAiplatformV1Metric.fromJson(
+                json_['metric'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metricResourceName: json_['metricResourceName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final metric = this.metric;
+    final metricResourceName = this.metricResourceName;
+    return {'metric': ?metric, 'metricResourceName': ?metricResourceName};
   }
 }
 
@@ -77435,9 +81128,14 @@ class GoogleCloudAiplatformV1MigratableResource {
   /// Output only.
   GoogleCloudAiplatformV1MigratableResourceAutomlModel? automlModel;
 
+  /// Deprecated: Data Labeling Dataset migration is no longer supported.
+  ///
   /// Represents one Dataset in datalabeling.googleapis.com.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudAiplatformV1MigratableResourceDataLabelingDataset?
   dataLabelingDataset;
 
@@ -77702,8 +81400,13 @@ class GoogleCloudAiplatformV1MigrateResourceRequest {
   GoogleCloudAiplatformV1MigrateResourceRequestMigrateAutomlModelConfig?
   migrateAutomlModelConfig;
 
+  /// Deprecated: Data labeling service is shut down.
+  ///
   /// Config for migrating Dataset in datalabeling.googleapis.com to Vertex AI's
   /// Dataset.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfig?
   migrateDataLabelingDatasetConfig;
 
@@ -78152,6 +81855,8 @@ class GoogleCloudAiplatformV1Model {
   /// Output only.
   GoogleCloudAiplatformV1ModelSourceInfo? modelSourceInfo;
 
+  /// Identifier.
+  ///
   /// The resource name of the Model.
   core.String? name;
 
@@ -83311,9 +87016,14 @@ class GoogleCloudAiplatformV1OutputConfig {
   }
 }
 
-/// Defines a specification for a single output field.
+/// Specifies the properties of a single field that are included in each
+/// generated synthetic example.
+///
+/// This helps the model understand what kind of data to generate for each
+/// field.
 class GoogleCloudAiplatformV1OutputFieldSpec {
-  /// The name of the output field.
+  /// The name of this field in the generated synthetic data, such as
+  /// "email_subject" or "customer_review".
   ///
   /// Required.
   core.String? fieldName;
@@ -83324,19 +87034,21 @@ class GoogleCloudAiplatformV1OutputFieldSpec {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "FIELD_TYPE_UNSPECIFIED" : Field type is unspecified.
-  /// - "CONTENT" : Arbitrary content field type.
-  /// - "TEXT" : Text field type.
-  /// - "IMAGE" : Image field type.
-  /// - "AUDIO" : Audio field type.
+  /// - "FIELD_TYPE_UNSPECIFIED" : The field type is not specified. Defaults to
+  /// CONTENT.
+  /// - "CONTENT" : The field can contain any type of content, including text,
+  /// images, and audio.
+  /// - "TEXT" : The field contains only text.
+  /// - "IMAGE" : The field contains image data.
+  /// - "AUDIO" : The field contains audio data.
   core.String? fieldType;
 
-  /// Optional, but recommended.
+  /// Specific instructions for the large language model on how to generate
+  /// content for this particular field.
   ///
-  /// Additional guidance specific to this field to provide targeted
-  /// instructions for the LLM to generate the content of a single output field.
   /// While the LLM can sometimes infer content from the field name, providing
-  /// explicit guidance is preferred.
+  /// explicit guidance is preferred. For example, for a field named "review",
+  /// the guidance could be "A positive review about a coffee maker."
   ///
   /// Optional.
   core.String? guidance;
@@ -83363,6 +87075,25 @@ class GoogleCloudAiplatformV1OutputFieldSpec {
       'fieldType': ?fieldType,
       'guidance': ?guidance,
     };
+  }
+}
+
+/// Describes the info for output of EvaluationService.
+class GoogleCloudAiplatformV1OutputInfo {
+  /// The full path of the Cloud Storage directory created, into which the
+  /// evaluation results and aggregation results are written.
+  ///
+  /// Output only.
+  core.String? gcsOutputDirectory;
+
+  GoogleCloudAiplatformV1OutputInfo({this.gcsOutputDirectory});
+
+  GoogleCloudAiplatformV1OutputInfo.fromJson(core.Map json_)
+    : this(gcsOutputDirectory: json_['gcsOutputDirectory'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final gcsOutputDirectory = this.gcsOutputDirectory;
+    return {'gcsOutputDirectory': ?gcsOutputDirectory};
   }
 }
 
@@ -85887,6 +89618,17 @@ class GoogleCloudAiplatformV1PredictLongRunningRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? instances;
 
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// It is used for billing and reporting only. Label keys and values can be no
+  /// longer than 63 characters (Unicode codepoints) and can only contain
+  /// lowercase letters, numeric characters, underscores, and dashes.
+  /// International characters are allowed. Label values are optional. Label
+  /// keys must start with a letter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// The parameters that govern the prediction.
   ///
   /// The schema of the parameters may be specified via Endpoint's
@@ -85900,6 +89642,7 @@ class GoogleCloudAiplatformV1PredictLongRunningRequest {
 
   GoogleCloudAiplatformV1PredictLongRunningRequest({
     this.instances,
+    this.labels,
     this.parameters,
   });
 
@@ -85908,13 +89651,21 @@ class GoogleCloudAiplatformV1PredictLongRunningRequest {
         instances: json_.containsKey('instances')
             ? json_['instances'] as core.List
             : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         parameters: json_['parameters'],
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final instances = this.instances;
+    final labels = this.labels;
     final parameters = this.parameters;
-    return {'instances': ?instances, 'parameters': ?parameters};
+    return {
+      'instances': ?instances,
+      'labels': ?labels,
+      'parameters': ?parameters,
+    };
   }
 }
 
@@ -86992,6 +90743,8 @@ class GoogleCloudAiplatformV1PublisherModel {
   /// available to all customers and ready for production workload.
   core.String? launchStage;
 
+  /// Identifier.
+  ///
   /// The resource name of the PublisherModel.
   ///
   /// Output only.
@@ -87939,6 +91692,19 @@ class GoogleCloudAiplatformV1PurgeMemoriesRequest {
   /// Required.
   core.String? filter;
 
+  /// Metadata filters that will be applied to the memories to be purged.
+  ///
+  /// Filters are defined using disjunctive normal form (OR of ANDs). For
+  /// example: `filter_groups: [{filters: [{key: "author", value: {string_value:
+  /// "agent 123"}, op: EQUAL}]}, {filters: [{key: "label", value:
+  /// {string_value: "travel"}, op: EQUAL}, {key: "author", value:
+  /// {string_value: "agent 321"}, op: EQUAL}]}]` would be equivalent to the
+  /// logical expression: `(metadata.author = "agent 123" OR (metadata.label =
+  /// "travel" AND metadata.author = "agent 321"))`.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAiplatformV1MemoryConjunctionFilter>? filterGroups;
+
   /// If true, the memories will actually be purged.
   ///
   /// If false, the purge request will be validated but not executed.
@@ -87946,18 +91712,31 @@ class GoogleCloudAiplatformV1PurgeMemoriesRequest {
   /// Optional.
   core.bool? force;
 
-  GoogleCloudAiplatformV1PurgeMemoriesRequest({this.filter, this.force});
+  GoogleCloudAiplatformV1PurgeMemoriesRequest({
+    this.filter,
+    this.filterGroups,
+    this.force,
+  });
 
   GoogleCloudAiplatformV1PurgeMemoriesRequest.fromJson(core.Map json_)
     : this(
         filter: json_['filter'] as core.String?,
+        filterGroups: (json_['filterGroups'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudAiplatformV1MemoryConjunctionFilter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         force: json_['force'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final filter = this.filter;
+    final filterGroups = this.filterGroups;
     final force = this.force;
-    return {'filter': ?filter, 'force': ?force};
+    return {'filter': ?filter, 'filterGroups': ?filterGroups, 'force': ?force};
   }
 }
 
@@ -90825,25 +94604,44 @@ class GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfig {
 
 /// Configuration for how to generate memories.
 class GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig {
+  /// Specifies the default trigger configuration for generating memories using
+  /// `IngestEvents`.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1MemoryGenerationTriggerConfig? generationTriggerConfig;
+
   /// The model used to generate memories.
   ///
   /// Format:
   /// `projects/{project}/locations/{location}/publishers/google/models/{model}`.
   ///
-  /// Required.
+  /// Optional.
   core.String? model;
 
   GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig({
+    this.generationTriggerConfig,
     this.model,
   });
 
   GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig.fromJson(
     core.Map json_,
-  ) : this(model: json_['model'] as core.String?);
+  ) : this(
+        generationTriggerConfig: json_.containsKey('generationTriggerConfig')
+            ? GoogleCloudAiplatformV1MemoryGenerationTriggerConfig.fromJson(
+                json_['generationTriggerConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        model: json_['model'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final generationTriggerConfig = this.generationTriggerConfig;
     final model = this.model;
-    return {'model': ?model};
+    return {
+      'generationTriggerConfig': ?generationTriggerConfig,
+      'model': ?model,
+    };
   }
 }
 
@@ -90994,6 +94792,9 @@ class GoogleCloudAiplatformV1ReasoningEngineSpec {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? classMethods;
 
+  /// Deploy from a container image with a defined entrypoint and commands.
+  GoogleCloudAiplatformV1ReasoningEngineSpecContainerSpec? containerSpec;
+
   /// The specification of a Reasoning Engine deployment.
   ///
   /// Optional.
@@ -91057,6 +94858,7 @@ class GoogleCloudAiplatformV1ReasoningEngineSpec {
   GoogleCloudAiplatformV1ReasoningEngineSpec({
     this.agentFramework,
     this.classMethods,
+    this.containerSpec,
     this.deploymentSpec,
     this.effectiveIdentity,
     this.identityType,
@@ -91071,6 +94873,11 @@ class GoogleCloudAiplatformV1ReasoningEngineSpec {
         classMethods: (json_['classMethods'] as core.List?)
             ?.map((value) => value as core.Map<core.String, core.dynamic>)
             .toList(),
+        containerSpec: json_.containsKey('containerSpec')
+            ? GoogleCloudAiplatformV1ReasoningEngineSpecContainerSpec.fromJson(
+                json_['containerSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deploymentSpec: json_.containsKey('deploymentSpec')
             ? GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec.fromJson(
                 json_['deploymentSpec'] as core.Map<core.String, core.dynamic>,
@@ -91094,6 +94901,7 @@ class GoogleCloudAiplatformV1ReasoningEngineSpec {
   core.Map<core.String, core.dynamic> toJson() {
     final agentFramework = this.agentFramework;
     final classMethods = this.classMethods;
+    final containerSpec = this.containerSpec;
     final deploymentSpec = this.deploymentSpec;
     final effectiveIdentity = this.effectiveIdentity;
     final identityType = this.identityType;
@@ -91103,6 +94911,7 @@ class GoogleCloudAiplatformV1ReasoningEngineSpec {
     return {
       'agentFramework': ?agentFramework,
       'classMethods': ?classMethods,
+      'containerSpec': ?containerSpec,
       'deploymentSpec': ?deploymentSpec,
       'effectiveIdentity': ?effectiveIdentity,
       'identityType': ?identityType,
@@ -91112,6 +94921,10 @@ class GoogleCloudAiplatformV1ReasoningEngineSpec {
     };
   }
 }
+
+/// Specification for deploying from a container image.
+typedef GoogleCloudAiplatformV1ReasoningEngineSpecContainerSpec =
+    $ContainerSpec;
 
 /// The specification of a Reasoning Engine deployment.
 class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec {
@@ -91130,6 +94943,14 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec {
   /// Optional.
   core.List<GoogleCloudAiplatformV1EnvVar>? env;
 
+  /// Specifies the configuration for keep-alive probe.
+  ///
+  /// Contains configuration on a specified endpoint that a deployment host
+  /// should use to keep the container alive based on the probe settings.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1KeepAliveProbe? keepAliveProbe;
+
   /// The maximum number of application instances that can be launched to handle
   /// increased traffic.
   ///
@@ -91142,7 +94963,7 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec {
   /// The minimum number of application instances that will be kept running at
   /// all times.
   ///
-  /// Defaults to 1. Range: \[0, 10\].
+  /// Defaults to 1. Range: \[0, 75\].
   ///
   /// Optional.
   core.int? minInstances;
@@ -91177,6 +94998,7 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec {
   GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec({
     this.containerConcurrency,
     this.env,
+    this.keepAliveProbe,
     this.maxInstances,
     this.minInstances,
     this.pscInterfaceConfig,
@@ -91195,6 +95017,11 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec {
               ),
             )
             .toList(),
+        keepAliveProbe: json_.containsKey('keepAliveProbe')
+            ? GoogleCloudAiplatformV1KeepAliveProbe.fromJson(
+                json_['keepAliveProbe'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxInstances: json_['maxInstances'] as core.int?,
         minInstances: json_['minInstances'] as core.int?,
         pscInterfaceConfig: json_.containsKey('pscInterfaceConfig')
@@ -91218,6 +95045,7 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec {
   core.Map<core.String, core.dynamic> toJson() {
     final containerConcurrency = this.containerConcurrency;
     final env = this.env;
+    final keepAliveProbe = this.keepAliveProbe;
     final maxInstances = this.maxInstances;
     final minInstances = this.minInstances;
     final pscInterfaceConfig = this.pscInterfaceConfig;
@@ -91226,6 +95054,7 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec {
     return {
       'containerConcurrency': ?containerConcurrency,
       'env': ?env,
+      'keepAliveProbe': ?keepAliveProbe,
       'maxInstances': ?maxInstances,
       'minInstances': ?minInstances,
       'pscInterfaceConfig': ?pscInterfaceConfig,
@@ -91292,9 +95121,18 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecPackageSpec {
 
 /// Specification for deploying from source code.
 class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec {
+  /// Source code is generated from the agent config.
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSource?
+  agentConfigSource;
+
   /// Source code is in a Git repository managed by Developer Connect.
   GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource?
   developerConnectSource;
+
+  /// Configuration for building an image with custom config file.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec? imageSpec;
 
   /// Source code is provided directly in the request.
   GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecInlineSource?
@@ -91305,7 +95143,9 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec {
   pythonSpec;
 
   GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec({
+    this.agentConfigSource,
     this.developerConnectSource,
+    this.imageSpec,
     this.inlineSource,
     this.pythonSpec,
   });
@@ -91313,10 +95153,21 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec {
   GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec.fromJson(
     core.Map json_,
   ) : this(
+        agentConfigSource: json_.containsKey('agentConfigSource')
+            ? GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSource.fromJson(
+                json_['agentConfigSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         developerConnectSource: json_.containsKey('developerConnectSource')
             ? GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource.fromJson(
                 json_['developerConnectSource']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageSpec: json_.containsKey('imageSpec')
+            ? GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec.fromJson(
+                json_['imageSpec'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         inlineSource: json_.containsKey('inlineSource')
@@ -91332,14 +95183,92 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentConfigSource = this.agentConfigSource;
     final developerConnectSource = this.developerConnectSource;
+    final imageSpec = this.imageSpec;
     final inlineSource = this.inlineSource;
     final pythonSpec = this.pythonSpec;
     return {
+      'agentConfigSource': ?agentConfigSource,
       'developerConnectSource': ?developerConnectSource,
+      'imageSpec': ?imageSpec,
       'inlineSource': ?inlineSource,
       'pythonSpec': ?pythonSpec,
     };
+  }
+}
+
+/// Specification for the deploying from agent config.
+class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSource {
+  /// The ADK configuration.
+  ///
+  /// Required.
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig?
+  adkConfig;
+
+  /// Any additional files needed to interpret the config.
+  ///
+  /// If a `requirements.txt` file is present in the `inline_source`, the
+  /// corresponding packages will be installed. If no `requirements.txt` file is
+  /// present in `inline_source`, then the latest version of `google-adk` will
+  /// be installed for interpreting the ADK config.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecInlineSource?
+  inlineSource;
+
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSource({
+    this.adkConfig,
+    this.inlineSource,
+  });
+
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSource.fromJson(
+    core.Map json_,
+  ) : this(
+        adkConfig: json_.containsKey('adkConfig')
+            ? GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig.fromJson(
+                json_['adkConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inlineSource: json_.containsKey('inlineSource')
+            ? GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecInlineSource.fromJson(
+                json_['inlineSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adkConfig = this.adkConfig;
+    final inlineSource = this.inlineSource;
+    return {'adkConfig': ?adkConfig, 'inlineSource': ?inlineSource};
+  }
+}
+
+/// Configuration for the Agent Development Kit (ADK).
+class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig {
+  /// The value of the ADK config in JSON format.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? jsonConfig;
+
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig({
+    this.jsonConfig,
+  });
+
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        jsonConfig: json_.containsKey('jsonConfig')
+            ? json_['jsonConfig'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final jsonConfig = this.jsonConfig;
+    return {'jsonConfig': ?jsonConfig};
   }
 }
 
@@ -91377,6 +95306,33 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSo
   core.Map<core.String, core.dynamic> toJson() {
     final config = this.config;
     return {'config': ?config};
+  }
+}
+
+/// The image spec for building an image (within a single build step), based on
+/// the config file (i.e. Dockerfile) in the source directory.
+class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec {
+  /// Build arguments to be used.
+  ///
+  /// They will be passed through --build-arg flags.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? buildArgs;
+
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec({
+    this.buildArgs,
+  });
+
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec.fromJson(
+    core.Map json_,
+  ) : this(
+        buildArgs: (json_['buildArgs'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildArgs = this.buildArgs;
+    return {'buildArgs': ?buildArgs};
   }
 }
 
@@ -92201,6 +96157,16 @@ class GoogleCloudAiplatformV1RetrieveMemoriesRequest {
   /// Optional.
   core.List<GoogleCloudAiplatformV1MemoryConjunctionFilter>? filterGroups;
 
+  /// Specifies the types of memories to retrieve.
+  ///
+  /// If this field is empty or not provided, the request will default to
+  /// retrieving only memories of type `NATURAL_LANGUAGE_COLLECTION`. If
+  /// populated, the request will retrieve memories matching any of the
+  /// specified `MemoryType` values.
+  ///
+  /// Optional.
+  core.List<core.String>? memoryTypes;
+
   /// The scope of the memories to retrieve.
   ///
   /// A memory must have exactly the same scope (`Memory.scope`) as the scope
@@ -92221,6 +96187,7 @@ class GoogleCloudAiplatformV1RetrieveMemoriesRequest {
   GoogleCloudAiplatformV1RetrieveMemoriesRequest({
     this.filter,
     this.filterGroups,
+    this.memoryTypes,
     this.scope,
     this.similaritySearchParams,
     this.simpleRetrievalParams,
@@ -92236,6 +96203,9 @@ class GoogleCloudAiplatformV1RetrieveMemoriesRequest {
                     value as core.Map<core.String, core.dynamic>,
                   ),
             )
+            .toList(),
+        memoryTypes: (json_['memoryTypes'] as core.List?)
+            ?.map((value) => value as core.String)
             .toList(),
         scope: (json_['scope'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -92257,12 +96227,14 @@ class GoogleCloudAiplatformV1RetrieveMemoriesRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final filter = this.filter;
     final filterGroups = this.filterGroups;
+    final memoryTypes = this.memoryTypes;
     final scope = this.scope;
     final similaritySearchParams = this.similaritySearchParams;
     final simpleRetrievalParams = this.simpleRetrievalParams;
     return {
       'filter': ?filter,
       'filterGroups': ?filterGroups,
+      'memoryTypes': ?memoryTypes,
       'scope': ?scope,
       'similaritySearchParams': ?similaritySearchParams,
       'simpleRetrievalParams': ?simpleRetrievalParams,
@@ -93402,10 +97374,41 @@ class GoogleCloudAiplatformV1SandboxEnvironment {
   /// Optional.
   core.String? expireTime;
 
+  /// The resource name of the latest snapshot taken for this
+  /// SandboxEnvironment.
+  ///
+  /// Output only.
+  core.String? latestSandboxEnvironmentSnapshot;
+
   /// Identifier.
   ///
   /// The name of the SandboxEnvironment.
   core.String? name;
+
+  /// Owner information for this sandbox environment.
+  ///
+  /// A Sandbox can only be restored from a snapshot that belongs to the same
+  /// owner. If not set, sandbox will be created as the default owner.
+  ///
+  /// Optional.
+  core.String? owner;
+
+  /// The resource name of the SandboxEnvironmentSnapshot to use for creating
+  /// this SandboxEnvironment.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentSnapshots/{sandbox_environment_snapshot}`
+  ///
+  /// Optional.
+  core.String? sandboxEnvironmentSnapshot;
+
+  /// The name of the SandboxEnvironmentTemplate specified in the parent Agent
+  /// Engine resource that this SandboxEnvironment is created from.
+  ///
+  /// Only one of `sandbox_environment_template` and `spec` should be set.
+  ///
+  /// Optional.
+  core.String? sandboxEnvironmentTemplate;
 
   /// The configuration of the SandboxEnvironment.
   ///
@@ -93445,7 +97448,11 @@ class GoogleCloudAiplatformV1SandboxEnvironment {
     this.createTime,
     this.displayName,
     this.expireTime,
+    this.latestSandboxEnvironmentSnapshot,
     this.name,
+    this.owner,
+    this.sandboxEnvironmentSnapshot,
+    this.sandboxEnvironmentTemplate,
     this.spec,
     this.state,
     this.ttl,
@@ -93462,7 +97469,14 @@ class GoogleCloudAiplatformV1SandboxEnvironment {
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
+        latestSandboxEnvironmentSnapshot:
+            json_['latestSandboxEnvironmentSnapshot'] as core.String?,
         name: json_['name'] as core.String?,
+        owner: json_['owner'] as core.String?,
+        sandboxEnvironmentSnapshot:
+            json_['sandboxEnvironmentSnapshot'] as core.String?,
+        sandboxEnvironmentTemplate:
+            json_['sandboxEnvironmentTemplate'] as core.String?,
         spec: json_.containsKey('spec')
             ? GoogleCloudAiplatformV1SandboxEnvironmentSpec.fromJson(
                 json_['spec'] as core.Map<core.String, core.dynamic>,
@@ -93478,7 +97492,12 @@ class GoogleCloudAiplatformV1SandboxEnvironment {
     final createTime = this.createTime;
     final displayName = this.displayName;
     final expireTime = this.expireTime;
+    final latestSandboxEnvironmentSnapshot =
+        this.latestSandboxEnvironmentSnapshot;
     final name = this.name;
+    final owner = this.owner;
+    final sandboxEnvironmentSnapshot = this.sandboxEnvironmentSnapshot;
+    final sandboxEnvironmentTemplate = this.sandboxEnvironmentTemplate;
     final spec = this.spec;
     final state = this.state;
     final ttl = this.ttl;
@@ -93488,7 +97507,11 @@ class GoogleCloudAiplatformV1SandboxEnvironment {
       'createTime': ?createTime,
       'displayName': ?displayName,
       'expireTime': ?expireTime,
+      'latestSandboxEnvironmentSnapshot': ?latestSandboxEnvironmentSnapshot,
       'name': ?name,
+      'owner': ?owner,
+      'sandboxEnvironmentSnapshot': ?sandboxEnvironmentSnapshot,
+      'sandboxEnvironmentTemplate': ?sandboxEnvironmentTemplate,
       'spec': ?spec,
       'state': ?state,
       'ttl': ?ttl,
@@ -93509,6 +97532,16 @@ class GoogleCloudAiplatformV1SandboxEnvironmentConnectionInfo {
   /// Output only.
   core.String? loadBalancerIp;
 
+  /// The routing token for the SandboxEnvironment.
+  ///
+  /// Output only.
+  core.String? routingToken;
+
+  /// The hostname of the SandboxEnvironment.
+  ///
+  /// Output only.
+  core.String? sandboxHostname;
+
   /// The internal IP address of the SandboxEnvironment.
   ///
   /// Output only.
@@ -93517,6 +97550,8 @@ class GoogleCloudAiplatformV1SandboxEnvironmentConnectionInfo {
   GoogleCloudAiplatformV1SandboxEnvironmentConnectionInfo({
     this.loadBalancerHostname,
     this.loadBalancerIp,
+    this.routingToken,
+    this.sandboxHostname,
     this.sandboxInternalIp,
   });
 
@@ -93525,17 +97560,163 @@ class GoogleCloudAiplatformV1SandboxEnvironmentConnectionInfo {
   ) : this(
         loadBalancerHostname: json_['loadBalancerHostname'] as core.String?,
         loadBalancerIp: json_['loadBalancerIp'] as core.String?,
+        routingToken: json_['routingToken'] as core.String?,
+        sandboxHostname: json_['sandboxHostname'] as core.String?,
         sandboxInternalIp: json_['sandboxInternalIp'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final loadBalancerHostname = this.loadBalancerHostname;
     final loadBalancerIp = this.loadBalancerIp;
+    final routingToken = this.routingToken;
+    final sandboxHostname = this.sandboxHostname;
     final sandboxInternalIp = this.sandboxInternalIp;
     return {
       'loadBalancerHostname': ?loadBalancerHostname,
       'loadBalancerIp': ?loadBalancerIp,
+      'routingToken': ?routingToken,
+      'sandboxHostname': ?sandboxHostname,
       'sandboxInternalIp': ?sandboxInternalIp,
+    };
+  }
+}
+
+/// SandboxEnvironmentSnapshot is a snapshot of the SandboxEnvironment.
+class GoogleCloudAiplatformV1SandboxEnvironmentSnapshot {
+  /// The timestamp when this SandboxEnvironmentSnapshot was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The display name of the SandboxEnvironmentSnapshot.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Timestamp in UTC of when this SandboxEnvironmentSnapshot is considered
+  /// expired.
+  ///
+  /// This is *always* provided on output, regardless of what `expiration` was
+  /// sent on input.
+  ///
+  /// Optional.
+  core.String? expireTime;
+
+  /// Identifier.
+  ///
+  /// The resource name of the SandboxEnvironmentSnapshot. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentSnapshots/{sandbox_environment_snapshot}`
+  core.String? name;
+
+  /// Owner information for this sandbox snapshot.
+  ///
+  /// Different owners will have isolations on snapshot storage and identity. If
+  /// not set, snapshot will be created as the default owner.
+  ///
+  /// Optional.
+  core.String? owner;
+
+  /// The resource name of the parent SandboxEnvironmentSnapshot.
+  ///
+  /// Empty if this is a root Snapshot (the first snapshot from a newly created
+  /// sandbox). Can be used to reconstruct the whole ancestry tree of snapshots.
+  ///
+  /// Output only.
+  core.String? parentSnapshot;
+
+  /// Input only.
+  ///
+  /// Action to take on the source SandboxEnvironment after the snapshot is
+  /// taken. This field is only used in CreateSandboxEnvironmentSnapshotRequest
+  /// and it is not stored in the resource.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POST_SNAPSHOT_ACTION_UNSPECIFIED" : The default value. This value is
+  /// unused.
+  /// - "RUNNING" : Sandbox environment will continue to run after snapshot is
+  /// taken.
+  /// - "PAUSE" : Sandbox environment will be paused after snapshot is taken.
+  core.String? postSnapshotAction;
+
+  /// Size of the snapshot data in bytes.
+  ///
+  /// Optional. Output only.
+  core.String? sizeBytes;
+
+  /// The resource name of the source SandboxEnvironment this snapshot was taken
+  /// from.
+  ///
+  /// Required.
+  core.String? sourceSandboxEnvironment;
+
+  /// Input only.
+  ///
+  /// The TTL for the sandbox environment snapshot. The expiration time is
+  /// computed: now + TTL.
+  ///
+  /// Optional.
+  core.String? ttl;
+
+  /// The timestamp when this SandboxEnvironment was most recently updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudAiplatformV1SandboxEnvironmentSnapshot({
+    this.createTime,
+    this.displayName,
+    this.expireTime,
+    this.name,
+    this.owner,
+    this.parentSnapshot,
+    this.postSnapshotAction,
+    this.sizeBytes,
+    this.sourceSandboxEnvironment,
+    this.ttl,
+    this.updateTime,
+  });
+
+  GoogleCloudAiplatformV1SandboxEnvironmentSnapshot.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        owner: json_['owner'] as core.String?,
+        parentSnapshot: json_['parentSnapshot'] as core.String?,
+        postSnapshotAction: json_['postSnapshotAction'] as core.String?,
+        sizeBytes: json_['sizeBytes'] as core.String?,
+        sourceSandboxEnvironment:
+            json_['sourceSandboxEnvironment'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final expireTime = this.expireTime;
+    final name = this.name;
+    final owner = this.owner;
+    final parentSnapshot = this.parentSnapshot;
+    final postSnapshotAction = this.postSnapshotAction;
+    final sizeBytes = this.sizeBytes;
+    final sourceSandboxEnvironment = this.sourceSandboxEnvironment;
+    final ttl = this.ttl;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'expireTime': ?expireTime,
+      'name': ?name,
+      'owner': ?owner,
+      'parentSnapshot': ?parentSnapshot,
+      'postSnapshotAction': ?postSnapshotAction,
+      'sizeBytes': ?sizeBytes,
+      'sourceSandboxEnvironment': ?sourceSandboxEnvironment,
+      'ttl': ?ttl,
+      'updateTime': ?updateTime,
     };
   }
 }
@@ -93601,6 +97782,348 @@ class GoogleCloudAiplatformV1SandboxEnvironmentSpecCodeExecutionEnvironment {
     final codeLanguage = this.codeLanguage;
     final machineConfig = this.machineConfig;
     return {'codeLanguage': ?codeLanguage, 'machineConfig': ?machineConfig};
+  }
+}
+
+/// The specification of a SandboxEnvironmentTemplate.
+///
+/// A SandboxEnvironmentTemplate defines a template for creating
+/// SandboxEnvironments.
+class GoogleCloudAiplatformV1SandboxEnvironmentTemplate {
+  /// The timestamp when this SandboxEnvironmentTemplate was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The sandbox environment for custom container workloads.
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerEnvironment?
+  customContainerEnvironment;
+
+  /// The sandbox environment for default container workloads.
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEnvironment?
+  defaultContainerEnvironment;
+
+  /// The display name of the SandboxEnvironmentTemplate.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The configuration for egress control of this template.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig?
+  egressControlConfig;
+
+  /// Identifier.
+  ///
+  /// The resource name of the SandboxEnvironmentTemplate. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironmentTemplates/{sandbox_environment_template}`
+  core.String? name;
+
+  /// The state of the sandbox environment template.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : The default value. This value is unused.
+  /// - "PROVISIONING" : Runtime resources are being allocated for the sandbox
+  /// environment.
+  /// - "ACTIVE" : Sandbox runtime is ready for serving.
+  /// - "DEPROVISIONING" : Sandbox runtime is halted, performing tear down
+  /// tasks.
+  /// - "DELETED" : Sandbox has terminated with underlying runtime failure.
+  /// - "FAILED" : Sandbox has failed to provision.
+  core.String? state;
+
+  /// The timestamp when this SandboxEnvironmentTemplate was most recently
+  /// updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The configuration for the warm pool of this template.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig?
+  warmPoolConfig;
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplate({
+    this.createTime,
+    this.customContainerEnvironment,
+    this.defaultContainerEnvironment,
+    this.displayName,
+    this.egressControlConfig,
+    this.name,
+    this.state,
+    this.updateTime,
+    this.warmPoolConfig,
+  });
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplate.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        customContainerEnvironment:
+            json_.containsKey('customContainerEnvironment')
+            ? GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerEnvironment.fromJson(
+                json_['customContainerEnvironment']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        defaultContainerEnvironment:
+            json_.containsKey('defaultContainerEnvironment')
+            ? GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEnvironment.fromJson(
+                json_['defaultContainerEnvironment']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        displayName: json_['displayName'] as core.String?,
+        egressControlConfig: json_.containsKey('egressControlConfig')
+            ? GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig.fromJson(
+                json_['egressControlConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        warmPoolConfig: json_.containsKey('warmPoolConfig')
+            ? GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig.fromJson(
+                json_['warmPoolConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final customContainerEnvironment = this.customContainerEnvironment;
+    final defaultContainerEnvironment = this.defaultContainerEnvironment;
+    final displayName = this.displayName;
+    final egressControlConfig = this.egressControlConfig;
+    final name = this.name;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    final warmPoolConfig = this.warmPoolConfig;
+    return {
+      'createTime': ?createTime,
+      'customContainerEnvironment': ?customContainerEnvironment,
+      'defaultContainerEnvironment': ?defaultContainerEnvironment,
+      'displayName': ?displayName,
+      'egressControlConfig': ?egressControlConfig,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'warmPoolConfig': ?warmPoolConfig,
+    };
+  }
+}
+
+/// The customized sandbox runtime environment for BYOC.
+class GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerEnvironment {
+  /// The specification of the custom container environment.
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerSpec?
+  customContainerSpec;
+
+  /// Ports to expose from the container.
+  core.List<GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort>?
+  ports;
+
+  /// Resource requests and limits for the container.
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequirements?
+  resources;
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerEnvironment({
+    this.customContainerSpec,
+    this.ports,
+    this.resources,
+  });
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerEnvironment.fromJson(
+    core.Map json_,
+  ) : this(
+        customContainerSpec: json_.containsKey('customContainerSpec')
+            ? GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerSpec.fromJson(
+                json_['customContainerSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ports: (json_['ports'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        resources: json_.containsKey('resources')
+            ? GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequirements.fromJson(
+                json_['resources'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final customContainerSpec = this.customContainerSpec;
+    final ports = this.ports;
+    final resources = this.resources;
+    return {
+      'customContainerSpec': ?customContainerSpec,
+      'ports': ?ports,
+      'resources': ?resources,
+    };
+  }
+}
+
+/// Specification for deploying from a custom container image.
+typedef GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerSpec =
+    $ContainerSpec;
+
+/// The default sandbox runtime environment for default container workloads.
+class GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEnvironment {
+  /// The category of the default container image.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DEFAULT_CONTAINER_CATEGORY_UNSPECIFIED" : The default value. This value
+  /// is unused.
+  /// - "DEFAULT_CONTAINER_CATEGORY_COMPUTER_USE" : The default container image
+  /// for Computer Use.
+  core.String? defaultContainerCategory;
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEnvironment({
+    this.defaultContainerCategory,
+  });
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEnvironment.fromJson(
+    core.Map json_,
+  ) : this(
+        defaultContainerCategory:
+            json_['defaultContainerCategory'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultContainerCategory = this.defaultContainerCategory;
+    return {'defaultContainerCategory': ?defaultContainerCategory};
+  }
+}
+
+/// Configuration for egress control of sandbox instances.
+class GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig {
+  /// Whether to allow internet access.
+  ///
+  /// Optional.
+  core.bool? internetAccess;
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig({
+    this.internetAccess,
+  });
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig.fromJson(
+    core.Map json_,
+  ) : this(internetAccess: json_['internetAccess'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final internetAccess = this.internetAccess;
+    return {'internetAccess': ?internetAccess};
+  }
+}
+
+/// Represents a network port in a container.
+class GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort {
+  /// Port number to expose.
+  ///
+  /// This must be a valid port number, between 1 and 65535.
+  ///
+  /// Optional.
+  core.int? port;
+
+  /// Protocol for port.
+  ///
+  /// Defaults to TCP if not specified.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PROTOCOL_UNSPECIFIED" : Unspecified protocol. Defaults to TCP.
+  /// - "TCP" : TCP protocol.
+  /// - "UDP" : UDP protocol.
+  core.String? protocol;
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort({
+    this.port,
+    this.protocol,
+  });
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort.fromJson(
+    core.Map json_,
+  ) : this(
+        port: json_['port'] as core.int?,
+        protocol: json_['protocol'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final port = this.port;
+    final protocol = this.protocol;
+    return {'port': ?port, 'protocol': ?protocol};
+  }
+}
+
+/// Message to define resource requests and limits (mirroring Kubernetes) for
+/// each sandbox instance created from this template.
+class GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequirements {
+  /// The maximum amounts of compute resources allowed.
+  ///
+  /// Keys are resource names (e.g., "cpu", "memory"). Values are quantities
+  /// (e.g., "500m", "1Gi").
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? limits;
+
+  /// The requested amounts of compute resources.
+  ///
+  /// Keys are resource names (e.g., "cpu", "memory"). Values are quantities
+  /// (e.g., "250m", "512Mi").
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? requests;
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequirements({
+    this.limits,
+    this.requests,
+  });
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequirements.fromJson(
+    core.Map json_,
+  ) : this(
+        limits: (json_['limits'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        requests: (json_['requests'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final limits = this.limits;
+    final requests = this.requests;
+    return {'limits': ?limits, 'requests': ?requests};
+  }
+}
+
+/// Configuration for a warm pool of sandbox instances.
+class GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig {
+  /// The target number of pre-warmed instances to maintain.
+  ///
+  /// Optional.
+  core.int? targetInstanceCount;
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig({
+    this.targetInstanceCount,
+  });
+
+  GoogleCloudAiplatformV1SandboxEnvironmentTemplateWarmPoolConfig.fromJson(
+    core.Map json_,
+  ) : this(targetInstanceCount: json_['targetInstanceCount'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final targetInstanceCount = this.targetInstanceCount;
+    return {'targetInstanceCount': ?targetInstanceCount};
   }
 }
 
@@ -93826,6 +98349,16 @@ class GoogleCloudAiplatformV1Schedule {
   /// Output only.
   GoogleCloudAiplatformV1ScheduleRunResponse? lastScheduledRunResponse;
 
+  /// Specifies the maximum number of active runs that can be executed
+  /// concurrently for this Schedule.
+  ///
+  /// This limits the number of runs that can be in a non-terminal state at the
+  /// same time. Currently, this field is only supported for requests of type
+  /// CreatePipelineJobRequest.
+  ///
+  /// Optional.
+  core.String? maxConcurrentActiveRunCount;
+
   /// Maximum number of runs that can be started concurrently for this Schedule.
   ///
   /// This is the limit for starting the scheduled requests and not the
@@ -93901,6 +98434,7 @@ class GoogleCloudAiplatformV1Schedule {
     this.lastPauseTime,
     this.lastResumeTime,
     this.lastScheduledRunResponse,
+    this.maxConcurrentActiveRunCount,
     this.maxConcurrentRunCount,
     this.maxRunCount,
     this.name,
@@ -93940,6 +98474,8 @@ class GoogleCloudAiplatformV1Schedule {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        maxConcurrentActiveRunCount:
+            json_['maxConcurrentActiveRunCount'] as core.String?,
         maxConcurrentRunCount: json_['maxConcurrentRunCount'] as core.String?,
         maxRunCount: json_['maxRunCount'] as core.String?,
         name: json_['name'] as core.String?,
@@ -93963,6 +98499,7 @@ class GoogleCloudAiplatformV1Schedule {
     final lastPauseTime = this.lastPauseTime;
     final lastResumeTime = this.lastResumeTime;
     final lastScheduledRunResponse = this.lastScheduledRunResponse;
+    final maxConcurrentActiveRunCount = this.maxConcurrentActiveRunCount;
     final maxConcurrentRunCount = this.maxConcurrentRunCount;
     final maxRunCount = this.maxRunCount;
     final name = this.name;
@@ -93983,6 +98520,7 @@ class GoogleCloudAiplatformV1Schedule {
       'lastPauseTime': ?lastPauseTime,
       'lastResumeTime': ?lastResumeTime,
       'lastScheduledRunResponse': ?lastScheduledRunResponse,
+      'maxConcurrentActiveRunCount': ?maxConcurrentActiveRunCount,
       'maxConcurrentRunCount': ?maxConcurrentRunCount,
       'maxRunCount': ?maxRunCount,
       'name': ?name,
@@ -94142,7 +98680,12 @@ class GoogleCloudAiplatformV1Schema {
   /// Optional.
   core.Map<core.String, GoogleCloudAiplatformV1Schema>? defs;
 
-  /// Description of the schema.
+  /// Describes the data.
+  ///
+  /// The model uses this field to understand the purpose of the schema and how
+  /// to use it. It is a best practice to provide a clear and descriptive
+  /// explanation for the schema and its properties here, rather than in the
+  /// prompt.
   ///
   /// Optional.
   core.String? description;
@@ -95206,6 +99749,14 @@ class GoogleCloudAiplatformV1SessionEvent {
   /// Format:`projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sessions/{session}/events/{event}`.
   core.String? name;
 
+  /// Weakly typed raw event data in proto struct format.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? rawEvent;
+
   /// Timestamp when the event was created on client side.
   ///
   /// Required.
@@ -95220,6 +99771,7 @@ class GoogleCloudAiplatformV1SessionEvent {
     this.eventMetadata,
     this.invocationId,
     this.name,
+    this.rawEvent,
     this.timestamp,
   });
 
@@ -95245,6 +99797,9 @@ class GoogleCloudAiplatformV1SessionEvent {
             : null,
         invocationId: json_['invocationId'] as core.String?,
         name: json_['name'] as core.String?,
+        rawEvent: json_.containsKey('rawEvent')
+            ? json_['rawEvent'] as core.Map<core.String, core.dynamic>
+            : null,
         timestamp: json_['timestamp'] as core.String?,
       );
 
@@ -95257,6 +99812,7 @@ class GoogleCloudAiplatformV1SessionEvent {
     final eventMetadata = this.eventMetadata;
     final invocationId = this.invocationId;
     final name = this.name;
+    final rawEvent = this.rawEvent;
     final timestamp = this.timestamp;
     return {
       'actions': ?actions,
@@ -95267,6 +99823,7 @@ class GoogleCloudAiplatformV1SessionEvent {
       'eventMetadata': ?eventMetadata,
       'invocationId': ?invocationId,
       'name': ?name,
+      'rawEvent': ?rawEvent,
       'timestamp': ?timestamp,
     };
   }
@@ -98116,6 +102673,11 @@ class GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket {
 
 /// Tuning Spec for Supervised Tuning for first party models.
 class GoogleCloudAiplatformV1SupervisedTuningSpec {
+  /// Evaluation Config for Tuning Job.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1EvaluationConfig? evaluationConfig;
+
   /// If set to true, disable intermediate checkpoints for SFT and only the last
   /// checkpoint will be exported.
   ///
@@ -98146,6 +102708,7 @@ class GoogleCloudAiplatformV1SupervisedTuningSpec {
   core.String? validationDatasetUri;
 
   GoogleCloudAiplatformV1SupervisedTuningSpec({
+    this.evaluationConfig,
     this.exportLastCheckpointOnly,
     this.hyperParameters,
     this.trainingDatasetUri,
@@ -98154,6 +102717,12 @@ class GoogleCloudAiplatformV1SupervisedTuningSpec {
 
   GoogleCloudAiplatformV1SupervisedTuningSpec.fromJson(core.Map json_)
     : this(
+        evaluationConfig: json_.containsKey('evaluationConfig')
+            ? GoogleCloudAiplatformV1EvaluationConfig.fromJson(
+                json_['evaluationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         exportLastCheckpointOnly:
             json_['exportLastCheckpointOnly'] as core.bool?,
         hyperParameters: json_.containsKey('hyperParameters')
@@ -98166,11 +102735,13 @@ class GoogleCloudAiplatformV1SupervisedTuningSpec {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final evaluationConfig = this.evaluationConfig;
     final exportLastCheckpointOnly = this.exportLastCheckpointOnly;
     final hyperParameters = this.hyperParameters;
     final trainingDatasetUri = this.trainingDatasetUri;
     final validationDatasetUri = this.validationDatasetUri;
     return {
+      'evaluationConfig': ?evaluationConfig,
       'exportLastCheckpointOnly': ?exportLastCheckpointOnly,
       'hyperParameters': ?hyperParameters,
       'trainingDatasetUri': ?trainingDatasetUri,
@@ -98199,10 +102770,13 @@ class GoogleCloudAiplatformV1SyncFeatureViewResponse {
   }
 }
 
-/// Represents a single synthetic example, composed of multiple fields.
+/// A single instance of generated synthetic data.
 ///
-/// Used for providing few-shot examples in the request and for returning
-/// generated examples in the response.
+/// Each example is made up of one or more named fields, as defined in
+/// `OutputFieldSpec`. These examples are used as few-shot examples to show the
+/// model what you want (in `GenerateSyntheticDataRequest.examples`) and to
+/// return generated examples in the response (in
+/// `GenerateSyntheticDataResponse.synthetic_examples`).
 class GoogleCloudAiplatformV1SyntheticExample {
   /// A list of fields that constitute an example.
   ///
@@ -98228,14 +102802,17 @@ class GoogleCloudAiplatformV1SyntheticExample {
   }
 }
 
-/// Represents a single named field within a SyntheticExample.
+/// Represents a single named field within a synthetic example, consisting of a
+/// name and the actual content.
 class GoogleCloudAiplatformV1SyntheticField {
-  /// The content of the field.
+  /// The actual content or value for this field.
+  ///
+  /// This can be text, images, or other types of data.
   ///
   /// Required.
   GoogleCloudAiplatformV1Content? content;
 
-  /// The name of the field.
+  /// The name of the specific field, such as "product_name" or "review_text".
   ///
   /// Optional.
   core.String? fieldName;
@@ -98283,9 +102860,11 @@ class GoogleCloudAiplatformV1TFRecordDestination {
   }
 }
 
-/// Defines a generation strategy based on a high-level task description.
+/// Defines a generation strategy based on a general task description.
 class GoogleCloudAiplatformV1TaskDescriptionStrategy {
-  /// A high-level description of the synthetic data to be generated.
+  /// A general description of the type of synthetic data you want to generate.
+  ///
+  /// For example, "Generate customer reviews for a new smartphone."
   ///
   /// Required.
   core.String? taskDescription;
@@ -99637,8 +104216,8 @@ typedef GoogleCloudAiplatformV1ToolCallValidSpec = $Empty;
 /// Tool that executes code generated by the model, and automatically returns
 /// the result to the model.
 ///
-/// See also \[ExecutableCode\]and \[CodeExecutionResult\] which are input and
-/// output to this tool.
+/// See also ExecutableCode and CodeExecutionResult, which are input and output
+/// to this tool.
 typedef GoogleCloudAiplatformV1ToolCodeExecution = $Empty;
 
 /// Tool to support computer use.
@@ -99763,9 +104342,17 @@ class GoogleCloudAiplatformV1ToolGoogleSearch {
   /// Optional.
   core.List<core.String>? excludeDomains;
 
+  /// The set of search types to enable.
+  ///
+  /// If not set, web search is enabled by default.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1ToolGoogleSearchSearchTypes? searchTypes;
+
   GoogleCloudAiplatformV1ToolGoogleSearch({
     this.blockingConfidence,
     this.excludeDomains,
+    this.searchTypes,
   });
 
   GoogleCloudAiplatformV1ToolGoogleSearch.fromJson(core.Map json_)
@@ -99774,17 +104361,74 @@ class GoogleCloudAiplatformV1ToolGoogleSearch {
         excludeDomains: (json_['excludeDomains'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        searchTypes: json_.containsKey('searchTypes')
+            ? GoogleCloudAiplatformV1ToolGoogleSearchSearchTypes.fromJson(
+                json_['searchTypes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final blockingConfidence = this.blockingConfidence;
     final excludeDomains = this.excludeDomains;
+    final searchTypes = this.searchTypes;
     return {
       'blockingConfidence': ?blockingConfidence,
       'excludeDomains': ?excludeDomains,
+      'searchTypes': ?searchTypes,
     };
   }
 }
+
+/// Image search for grounding and related configurations.
+typedef GoogleCloudAiplatformV1ToolGoogleSearchImageSearch = $Empty;
+
+/// Different types of search that can be enabled on the GoogleSearch tool.
+class GoogleCloudAiplatformV1ToolGoogleSearchSearchTypes {
+  /// Setting this field enables image search.
+  ///
+  /// Image bytes are returned.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1ToolGoogleSearchImageSearch? imageSearch;
+
+  /// Setting this field enables web search.
+  ///
+  /// Only text results are returned.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1ToolGoogleSearchWebSearch? webSearch;
+
+  GoogleCloudAiplatformV1ToolGoogleSearchSearchTypes({
+    this.imageSearch,
+    this.webSearch,
+  });
+
+  GoogleCloudAiplatformV1ToolGoogleSearchSearchTypes.fromJson(core.Map json_)
+    : this(
+        imageSearch: json_.containsKey('imageSearch')
+            ? GoogleCloudAiplatformV1ToolGoogleSearchImageSearch.fromJson(
+                json_['imageSearch'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        webSearch: json_.containsKey('webSearch')
+            ? GoogleCloudAiplatformV1ToolGoogleSearchWebSearch.fromJson(
+                json_['webSearch'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageSearch = this.imageSearch;
+    final webSearch = this.webSearch;
+    return {'imageSearch': ?imageSearch, 'webSearch': ?webSearch};
+  }
+}
+
+/// Standard web search for grounding and related configurations.
+///
+/// Only text results are returned.
+typedef GoogleCloudAiplatformV1ToolGoogleSearchWebSearch = $Empty;
 
 /// Input for tool name match metric.
 class GoogleCloudAiplatformV1ToolNameMatchInput {
@@ -101293,6 +105937,33 @@ class GoogleCloudAiplatformV1TrajectorySingleToolUseSpec {
   }
 }
 
+/// Audio transcription in Server Content.
+class GoogleCloudAiplatformV1Transcription {
+  /// The bool indicates the end of the transcription.
+  ///
+  /// Optional.
+  core.bool? finished;
+
+  /// Transcription text.
+  ///
+  /// Optional.
+  core.String? text;
+
+  GoogleCloudAiplatformV1Transcription({this.finished, this.text});
+
+  GoogleCloudAiplatformV1Transcription.fromJson(core.Map json_)
+    : this(
+        finished: json_['finished'] as core.bool?,
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final finished = this.finished;
+    final text = this.text;
+    return {'finished': ?finished, 'text': ?text};
+  }
+}
+
 /// A message representing a Trial.
 ///
 /// A Trial contains a unique set of Parameters that has been or will be
@@ -101776,6 +106447,11 @@ class GoogleCloudAiplatformV1TuningJob {
   /// Output only.
   GoogleRpcStatus? error;
 
+  /// Evaluation runs for the Tuning Job.
+  ///
+  /// Output only.
+  core.List<GoogleCloudAiplatformV1EvaluateDatasetRun>? evaluateDatasetRuns;
+
   /// The Experiment associated with this TuningJob.
   ///
   /// Output only.
@@ -101881,6 +106557,7 @@ class GoogleCloudAiplatformV1TuningJob {
     this.encryptionSpec,
     this.endTime,
     this.error,
+    this.evaluateDatasetRuns,
     this.experiment,
     this.labels,
     this.name,
@@ -101912,6 +106589,13 @@ class GoogleCloudAiplatformV1TuningJob {
                 json_['error'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        evaluateDatasetRuns: (json_['evaluateDatasetRuns'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1EvaluateDatasetRun.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         experiment: json_['experiment'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -101959,6 +106643,7 @@ class GoogleCloudAiplatformV1TuningJob {
     final encryptionSpec = this.encryptionSpec;
     final endTime = this.endTime;
     final error = this.error;
+    final evaluateDatasetRuns = this.evaluateDatasetRuns;
     final experiment = this.experiment;
     final labels = this.labels;
     final name = this.name;
@@ -101979,6 +106664,7 @@ class GoogleCloudAiplatformV1TuningJob {
       'encryptionSpec': ?encryptionSpec,
       'endTime': ?endTime,
       'error': ?error,
+      'evaluateDatasetRuns': ?evaluateDatasetRuns,
       'experiment': ?experiment,
       'labels': ?labels,
       'name': ?name,
@@ -102496,6 +107182,8 @@ class GoogleCloudAiplatformV1UsageMetadata {
   /// Possible string values are:
   /// - "TRAFFIC_TYPE_UNSPECIFIED" : Unspecified request traffic type.
   /// - "ON_DEMAND" : Type for Pay-As-You-Go traffic.
+  /// - "ON_DEMAND_PRIORITY" : Type for Priority Pay-As-You-Go traffic.
+  /// - "ON_DEMAND_FLEX" : Type for Flex traffic.
   /// - "PROVISIONED_THROUGHPUT" : Type for Provisioned Throughput traffic.
   core.String? trafficType;
 

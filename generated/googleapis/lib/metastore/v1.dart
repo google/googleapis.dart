@@ -129,7 +129,18 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists information about the supported locations for this service.
+  /// Lists information about the supported locations for this service.This
+  /// method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: Global locations: If name is empty, the
+  /// method lists the public locations available to all projects.
+  ///
+  /// Project-specific locations: If name follows the format projects/{project},
+  /// the method lists locations visible to that specific project. This includes
+  /// public, private, or other project-specific locations enabled for the
+  /// project.For gRPC and client library implementations, the resource name is
+  /// passed as the name field. For direct service calls, the resource name is
+  /// incorporated into the request path based on the specific service
+  /// implementation and version.
   ///
   /// Request parameters:
   ///
@@ -3316,8 +3327,11 @@ class CloudSQLConnectionConfig {
   }
 }
 
-/// Configuration information for migrating from self-managed hive metastore on
-/// Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
+/// Deprecated: Migrations to Dataproc Metastore are no longer supported.
+///
+/// Use BigLake Metastore migration instead. Configuration information for
+/// migrating from self-managed hive metastore on Google Cloud using Cloud SQL
+/// as the backend database to Dataproc Metastore.
 class CloudSQLMigrationConfig {
   /// Configuration information to start the Change Data Capture (CDC) streams
   /// from customer database to backend database of Dataproc Metastore.
@@ -4564,9 +4578,14 @@ class MetadataManagementActivity {
 
 /// The details of a migration execution resource.
 class MigrationExecution {
-  /// Configuration information specific to migrating from self-managed hive
-  /// metastore on Google Cloud using Cloud SQL as the backend database to
-  /// Dataproc Metastore.
+  /// Deprecated: Migrations to Dataproc Metastore are no longer supported.
+  ///
+  /// Use BigLake Metastore migration instead. Configuration information
+  /// specific to migrating from self-managed hive metastore on Google Cloud
+  /// using Cloud SQL as the backend database to Dataproc Metastore.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   CloudSQLMigrationConfig? cloudSqlMigrationConfig;
 
   /// The time when the migration execution was started.
@@ -4586,6 +4605,9 @@ class MigrationExecution {
   /// Output only.
   core.String? name;
 
+  /// Deprecated: Phase was designed for incoming migrations to Dataproc
+  /// Metastore, not applicable when migrating away from it.
+  ///
   /// The current phase of the migration execution.
   ///
   /// Output only.
@@ -4600,6 +4622,9 @@ class MigrationExecution {
   /// Metastore switches to using its own backend database. Migration enters
   /// this phase when customer is done migrating all their clusters/workloads to
   /// Dataproc Metastore and triggers CompleteMigration.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? phase;
 
   /// The current state of the migration execution.

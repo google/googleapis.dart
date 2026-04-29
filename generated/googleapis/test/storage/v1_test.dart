@@ -69,6 +69,7 @@ api.AnywhereCache buildAnywhereCache() {
     o.bucket = 'foo';
     o.createTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.id = 'foo';
+    o.ingestOnWrite = true;
     o.kind = 'foo';
     o.pendingUpdate = true;
     o.selfLink = 'foo';
@@ -92,6 +93,7 @@ void checkAnywhereCache(api.AnywhereCache o) {
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.ingestOnWrite!, unittest.isTrue);
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.pendingUpdate!, unittest.isTrue);
     unittest.expect(o.selfLink!, unittest.equals('foo'));
@@ -6412,6 +6414,106 @@ void main() {
         ifMetagenerationMatch: arg_ifMetagenerationMatch,
         ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
         $fields: arg_$fields,
+      );
+    });
+
+    unittest.test('method--deleteRecursive', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).folders;
+      final arg_bucket = 'foo';
+      final arg_folder = 'foo';
+      final arg_ifMetagenerationMatch = 'foo';
+      final arg_ifMetagenerationNotMatch = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('storage/v1/'),
+          );
+          pathOffset += 11;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 2),
+            unittest.equals('b/'),
+          );
+          pathOffset += 2;
+          index = path.indexOf('/folders/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_bucket'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('/folders/'),
+          );
+          pathOffset += 9;
+          index = path.indexOf('/deleteRecursive', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_folder'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('/deleteRecursive'),
+          );
+          pathOffset += 16;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['ifMetagenerationMatch']!.first,
+            unittest.equals(arg_ifMetagenerationMatch),
+          );
+          unittest.expect(
+            queryMap['ifMetagenerationNotMatch']!.first,
+            unittest.equals(arg_ifMetagenerationNotMatch),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.deleteRecursive(
+        arg_bucket,
+        arg_folder,
+        ifMetagenerationMatch: arg_ifMetagenerationMatch,
+        ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
       );
     });
 

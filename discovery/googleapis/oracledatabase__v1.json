@@ -15,6 +15,38 @@
     "description": "The Oracle Database@Google Cloud API provides a set of APIs to manage Oracle database services, such as Exadata and Autonomous Databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/oracle/database/docs",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://oracledatabase.asia-northeast2.rep.googleapis.com/",
+            "location": "asia-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://oracledatabase.asia-south2.rep.googleapis.com/",
+            "location": "asia-south2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://oracledatabase.asia-south1.rep.googleapis.com/",
+            "location": "asia-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://oracledatabase.australia-southeast2.rep.googleapis.com/",
+            "location": "australia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://oracledatabase.europe-west8.rep.googleapis.com/",
+            "location": "europe-west8"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://oracledatabase.northamerica-northeast2.rep.googleapis.com/",
+            "location": "northamerica-northeast2"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +57,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260127",
+    "revision": "20260427",
     "rootUrl": "https://oracledatabase.googleapis.com/",
     "servicePath": "",
     "title": "Oracle Database@Google Cloud API",
@@ -139,7 +171,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "oracledatabase.projects.locations.list",
@@ -148,7 +180,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -2504,7 +2536,11 @@
             "id": "AutonomousDatabase",
             "properties": {
                 "adminPassword": {
-                    "description": "Optional. Immutable. The password for the default ADMIN user.",
+                    "description": "Optional. Immutable. The password for the default ADMIN user. Note: Only one of `admin_password_secret_version` or `admin_password` can be populated.",
+                    "type": "string"
+                },
+                "adminPasswordSecretVersion": {
+                    "description": "Optional. Immutable. The resource name of a secret version in Secret Manager which contains the database admin user's password. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of `admin_password_secret_version` or `admin_password` can be populated.",
                     "type": "string"
                 },
                 "cidr": {
@@ -3089,7 +3125,8 @@
                     "type": "boolean"
                 },
                 "isLocalDataGuardEnabled": {
-                    "description": "Output only. This field indicates whether the Autonomous Database has local (in-region) Data Guard enabled.",
+                    "deprecated": true,
+                    "description": "Output only. Deprecated: Please use `local_data_guard_enabled` instead. This field indicates whether the Autonomous Database has local (in-region) Data Guard enabled.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -3117,22 +3154,34 @@
                     "type": "string"
                 },
                 "localAdgAutoFailoverMaxDataLossLimit": {
-                    "description": "Output only. This field indicates the maximum data loss limit for an Autonomous Database, in seconds.",
+                    "deprecated": true,
+                    "description": "Output only. Deprecated: Please use `local_adg_auto_failover_max_data_loss_limit_duration` instead. This field indicates the maximum data loss limit for an Autonomous Database, in seconds.",
                     "format": "int32",
                     "readOnly": true,
                     "type": "integer"
+                },
+                "localAdgAutoFailoverMaxDataLossLimitDuration": {
+                    "description": "Optional. This field indicates the maximum data loss limit for an Autonomous Database, in seconds.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "localDataGuardEnabled": {
+                    "description": "Optional. Indicates whether the Autonomous Database has a local (in-region) standby database. Not applicable to cross-region Data Guard or dedicated Exadata infrastructure.",
+                    "type": "boolean"
                 },
                 "localDisasterRecoveryType": {
                     "description": "Output only. This field indicates the local disaster recovery (DR) type of an Autonomous Database.",
                     "enum": [
                         "LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED",
                         "ADG",
-                        "BACKUP_BASED"
+                        "BACKUP_BASED",
+                        "NOT_AVAILABLE"
                     ],
                     "enumDescriptions": [
                         "Default unspecified value.",
                         "Autonomous Data Guard recovery.",
-                        "Backup based recovery."
+                        "Backup based recovery.",
+                        "Local disaster recovery is not available."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -4216,7 +4265,11 @@
             "id": "Database",
             "properties": {
                 "adminPassword": {
-                    "description": "Required. The password for the default ADMIN user.",
+                    "description": "Optional. The password for the default ADMIN user. Note: Only one of `admin_password_secret_version` or `admin_password` can be populated.",
+                    "type": "string"
+                },
+                "adminPasswordSecretVersion": {
+                    "description": "Optional. The resource name of a secret version in Secret Manager which contains the database admin user's password. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of `admin_password_secret_version` or `admin_password` can be populated.",
                     "type": "string"
                 },
                 "characterSet": {
@@ -4286,12 +4339,24 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "pluggableDatabaseId": {
+                    "description": "Optional. The ID of the pluggable database associated with the Database. The ID must be unique within the project and location.",
+                    "type": "string"
+                },
+                "pluggableDatabaseName": {
+                    "description": "Optional. The pluggable database associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.",
+                    "type": "string"
+                },
                 "properties": {
                     "$ref": "DatabaseProperties",
                     "description": "Optional. The properties of the Database."
                 },
                 "tdeWalletPassword": {
-                    "description": "Optional. The TDE wallet password for the database.",
+                    "description": "Optional. The TDE wallet password for the database. Note: Only one of `tde_wallet_password_secret_version` or `tde_wallet_password` can be populated.",
+                    "type": "string"
+                },
+                "tdeWalletPasswordSecretVersion": {
+                    "description": "Optional. The resource name of a secret version in Secret Manager which contains the TDE wallet password for the database. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of `tde_wallet_password_secret_version` or `tde_wallet_password` can be populated.",
                     "type": "string"
                 }
             },
@@ -5925,6 +5990,13 @@
                 "nextPageToken": {
                     "description": "A token identifying a page of results the server should return.",
                     "type": "string"
+                },
+                "unreachable": {
+                    "description": "Unreachable locations when listing resources across all locations using wildcard location '-'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5961,6 +6033,13 @@
                 "nextPageToken": {
                     "description": "A token for fetching next page of response.",
                     "type": "string"
+                },
+                "unreachable": {
+                    "description": "Unreachable locations when listing resources across all locations using wildcard location '-'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5979,6 +6058,13 @@
                 "nextPageToken": {
                     "description": "A token to fetch the next page of results.",
                     "type": "string"
+                },
+                "unreachable": {
+                    "description": "Unreachable locations when listing resources across all locations using wildcard location '-'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -6105,6 +6191,13 @@
                 "nextPageToken": {
                     "description": "A token identifying a page of results the server should return.",
                     "type": "string"
+                },
+                "unreachable": {
+                    "description": "Unreachable locations when listing resources across all locations using wildcard location '-'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -6159,6 +6252,13 @@
                 "nextPageToken": {
                     "description": "A token identifying a page of results the server should return.",
                     "type": "string"
+                },
+                "unreachable": {
+                    "description": "Unreachable locations when listing resources across all locations using wildcard location '-'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -6177,6 +6277,13 @@
                 "nextPageToken": {
                     "description": "A token identifying a page of results the server should return. If present, the next page token can be provided to a subsequent ListExascaleDbStorageVaults call to list the next page. If empty, there are no more pages.",
                     "type": "string"
+                },
+                "unreachable": {
+                    "description": "Unreachable locations when listing resources across all locations using wildcard location '-'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

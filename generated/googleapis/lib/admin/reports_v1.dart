@@ -207,6 +207,11 @@ class ActivitiesResource {
   /// virtual private network (VPN) address. This parameter supports both IPv4
   /// and IPv6 address versions.
   ///
+  /// [applicationInfoFilter] - Optional. Used to filter on the `oAuthClientId`
+  /// field present in \[`ApplicationInfo`\](#applicationinfo) message.
+  /// **Usage** ``` GET...&applicationInfoFilter=oAuthClientId="clientId"
+  /// GET...&applicationInfoFilter=oAuthClientId=%22clientId%22 ```
+  ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
   /// Value must have pattern `C.+|my_customer`.
   ///
@@ -282,6 +287,12 @@ class ActivitiesResource {
   /// [Filter results by Google Group](https://support.google.com/a/answer/11482175)
   /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.
   ///
+  /// [includeSensitiveData] - Optional. When set to `true`, this field allows
+  /// sensitive user-generated content to be included in the returned audit
+  /// logs. This parameter is supported only for Rules (DLP) and Chat
+  /// applications; using it with any other application will result in a
+  /// permission error.
+  ///
   /// [maxResults] - Determines how many activity records are shown on each
   /// response page. For example, if the request sets `maxResults=1` and the
   /// report has two activities, the report has two pages. The response's
@@ -289,6 +300,11 @@ class ActivitiesResource {
   /// `maxResults` query string is optional in the request. The default value is
   /// 1000.
   /// Value must be between "1" and "1000".
+  ///
+  /// [networkInfoFilter] - Optional. Used to filter on the `regionCode` field
+  /// present in \[`NetworkInfo`\](#networkinfo) message. **Usage** ```
+  /// GET...&networkInfoFilter=regionCode="IN"
+  /// GET...&networkInfoFilter=regionCode=%22IN%22 ```
   ///
   /// [orgUnitID] - ID of the organizational unit to report on. Activity records
   /// will be shown only for users who belong to the specified organizational
@@ -354,6 +370,11 @@ class ActivitiesResource {
   /// Value must have pattern
   /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
+  /// [statusFilter] - Optional. Used to filter on the `statusCode` field
+  /// present in \[`Status`\](#status) message. **Usage** ```
+  /// GET...&statusFilter=statusCode="200"
+  /// GET...&statusFilter=statusCode=%22200%22 ```
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -368,32 +389,46 @@ class ActivitiesResource {
     core.String userKey,
     core.String applicationName, {
     core.String? actorIpAddress,
+    core.String? applicationInfoFilter,
     core.String? customerId,
     core.String? endTime,
     core.String? eventName,
     core.String? filters,
     core.String? groupIdFilter,
+    core.bool? includeSensitiveData,
     core.int? maxResults,
+    core.String? networkInfoFilter,
     core.String? orgUnitID,
     core.String? pageToken,
     core.String? resourceDetailsFilter,
     core.String? startTime,
+    core.String? statusFilter,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'actorIpAddress': ?actorIpAddress == null ? null : [actorIpAddress],
+      'applicationInfoFilter': ?applicationInfoFilter == null
+          ? null
+          : [applicationInfoFilter],
       'customerId': ?customerId == null ? null : [customerId],
       'endTime': ?endTime == null ? null : [endTime],
       'eventName': ?eventName == null ? null : [eventName],
       'filters': ?filters == null ? null : [filters],
       'groupIdFilter': ?groupIdFilter == null ? null : [groupIdFilter],
+      'includeSensitiveData': ?includeSensitiveData == null
+          ? null
+          : ['${includeSensitiveData}'],
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'networkInfoFilter': ?networkInfoFilter == null
+          ? null
+          : [networkInfoFilter],
       'orgUnitID': ?orgUnitID == null ? null : [orgUnitID],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'resourceDetailsFilter': ?resourceDetailsFilter == null
           ? null
           : [resourceDetailsFilter],
       'startTime': ?startTime == null ? null : [startTime],
+      'statusFilter': ?statusFilter == null ? null : [statusFilter],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1326,6 +1361,147 @@ class ActivityEventsParameters {
   }
 }
 
+/// Nested parameter value pairs associated with this parameter.
+///
+/// Complex value type for a parameter are returned as a list of parameter
+/// values. For example, the address parameter may have a value as `[{parameter:
+/// [{name: city, value: abc}]}]`
+class ActivityEventsSensitiveParametersMessageValue {
+  /// Parameter values
+  core.List<NestedParameter>? parameter;
+
+  ActivityEventsSensitiveParametersMessageValue({this.parameter});
+
+  ActivityEventsSensitiveParametersMessageValue.fromJson(core.Map json_)
+    : this(
+        parameter: (json_['parameter'] as core.List?)
+            ?.map(
+              (value) => NestedParameter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parameter = this.parameter;
+    return {'parameter': ?parameter};
+  }
+}
+
+class ActivityEventsSensitiveParametersMultiMessageValue {
+  /// Parameter values
+  core.List<NestedParameter>? parameter;
+
+  ActivityEventsSensitiveParametersMultiMessageValue({this.parameter});
+
+  ActivityEventsSensitiveParametersMultiMessageValue.fromJson(core.Map json_)
+    : this(
+        parameter: (json_['parameter'] as core.List?)
+            ?.map(
+              (value) => NestedParameter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parameter = this.parameter;
+    return {'parameter': ?parameter};
+  }
+}
+
+class ActivityEventsSensitiveParameters {
+  /// Boolean value of the parameter.
+  core.bool? boolValue;
+
+  /// Integer value of the parameter.
+  core.String? intValue;
+
+  /// Nested parameter value pairs associated with this parameter.
+  ///
+  /// Complex value type for a parameter are returned as a list of parameter
+  /// values. For example, the address parameter may have a value as
+  /// `[{parameter: [{name: city, value: abc}]}]`
+  ActivityEventsSensitiveParametersMessageValue? messageValue;
+
+  /// Integer values of the parameter.
+  core.List<core.String>? multiIntValue;
+
+  /// List of `messageValue` objects.
+  core.List<ActivityEventsSensitiveParametersMultiMessageValue>?
+  multiMessageValue;
+
+  /// String values of the parameter.
+  core.List<core.String>? multiValue;
+
+  /// The name of the parameter.
+  core.String? name;
+
+  /// String value of the parameter.
+  core.String? value;
+
+  ActivityEventsSensitiveParameters({
+    this.boolValue,
+    this.intValue,
+    this.messageValue,
+    this.multiIntValue,
+    this.multiMessageValue,
+    this.multiValue,
+    this.name,
+    this.value,
+  });
+
+  ActivityEventsSensitiveParameters.fromJson(core.Map json_)
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        intValue: json_['intValue'] as core.String?,
+        messageValue: json_.containsKey('messageValue')
+            ? ActivityEventsSensitiveParametersMessageValue.fromJson(
+                json_['messageValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        multiIntValue: (json_['multiIntValue'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        multiMessageValue: (json_['multiMessageValue'] as core.List?)
+            ?.map(
+              (value) =>
+                  ActivityEventsSensitiveParametersMultiMessageValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        multiValue: (json_['multiValue'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final boolValue = this.boolValue;
+    final intValue = this.intValue;
+    final messageValue = this.messageValue;
+    final multiIntValue = this.multiIntValue;
+    final multiMessageValue = this.multiMessageValue;
+    final multiValue = this.multiValue;
+    final name = this.name;
+    final value = this.value;
+    return {
+      'boolValue': ?boolValue,
+      'intValue': ?intValue,
+      'messageValue': ?messageValue,
+      'multiIntValue': ?multiIntValue,
+      'multiMessageValue': ?multiMessageValue,
+      'multiValue': ?multiValue,
+      'name': ?name,
+      'value': ?value,
+    };
+  }
+}
+
 class ActivityEvents {
   /// Name of the event.
   ///
@@ -1348,6 +1524,14 @@ class ActivityEvents {
   /// Resource ids associated with the event.
   core.List<core.String>? resourceIds;
 
+  /// Includes sensitive parameter value pairs for various applications.
+  core.List<ActivityEventsSensitiveParameters>? sensitiveParameters;
+
+  /// Status of the event.
+  ///
+  /// Note: Not all events have status.
+  ActivityEventsStatus? status;
+
   /// Type of event.
   ///
   /// The Google Workspace service or feature that an administrator changes is
@@ -1357,7 +1541,14 @@ class ActivityEvents {
   /// `applicationName`.
   core.String? type;
 
-  ActivityEvents({this.name, this.parameters, this.resourceIds, this.type});
+  ActivityEvents({
+    this.name,
+    this.parameters,
+    this.resourceIds,
+    this.sensitiveParameters,
+    this.status,
+    this.type,
+  });
 
   ActivityEvents.fromJson(core.Map json_)
     : this(
@@ -1372,6 +1563,18 @@ class ActivityEvents {
         resourceIds: (json_['resourceIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        sensitiveParameters: (json_['sensitiveParameters'] as core.List?)
+            ?.map(
+              (value) => ActivityEventsSensitiveParameters.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        status: json_.containsKey('status')
+            ? ActivityEventsStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
       );
 
@@ -1379,11 +1582,15 @@ class ActivityEvents {
     final name = this.name;
     final parameters = this.parameters;
     final resourceIds = this.resourceIds;
+    final sensitiveParameters = this.sensitiveParameters;
+    final status = this.status;
     final type = this.type;
     return {
       'name': ?name,
       'parameters': ?parameters,
       'resourceIds': ?resourceIds,
+      'sensitiveParameters': ?sensitiveParameters,
+      'status': ?status,
       'type': ?type,
     };
   }
@@ -1548,6 +1755,60 @@ class Activity {
       'networkInfo': ?networkInfo,
       'ownerDomain': ?ownerDomain,
       'resourceDetails': ?resourceDetails,
+    };
+  }
+}
+
+/// Status of the event.
+///
+/// Note: Not all events have status.
+class ActivityEventsStatus {
+  /// Error code of the event.
+  ///
+  /// Note: Field can be empty.
+  core.String? errorCode;
+
+  /// Error message of the event.
+  ///
+  /// Note: Field can be empty.
+  core.String? errorMessage;
+
+  /// Status of the event.
+  ///
+  /// Possible values if not empty: - UNKNOWN_EVENT_STATUS - SUCCEEDED -
+  /// SUCCEEDED_WITH_WARNINGS - FAILED - SKIPPED
+  core.String? eventStatus;
+
+  /// Status code of the event.
+  ///
+  /// Note: Field can be empty.
+  core.int? httpStatusCode;
+
+  ActivityEventsStatus({
+    this.errorCode,
+    this.errorMessage,
+    this.eventStatus,
+    this.httpStatusCode,
+  });
+
+  ActivityEventsStatus.fromJson(core.Map json_)
+    : this(
+        errorCode: json_['errorCode'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        eventStatus: json_['eventStatus'] as core.String?,
+        httpStatusCode: json_['httpStatusCode'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorCode = this.errorCode;
+    final errorMessage = this.errorMessage;
+    final eventStatus = this.eventStatus;
+    final httpStatusCode = this.httpStatusCode;
+    return {
+      'errorCode': ?errorCode,
+      'errorMessage': ?errorMessage,
+      'eventStatus': ?eventStatus,
+      'httpStatusCode': ?httpStatusCode,
     };
   }
 }
@@ -1739,6 +2000,22 @@ class Channel {
       'token': ?token,
       'type': ?type,
     };
+  }
+}
+
+/// Identity of the Google Workspace customer who owns the resource.
+class CustomerIdentity {
+  /// Customer id.
+  core.String? id;
+
+  CustomerIdentity({this.id});
+
+  CustomerIdentity.fromJson(core.Map json_)
+    : this(id: json_['id'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    return {'id': ?id};
   }
 }
 
@@ -1992,6 +2269,29 @@ class FieldValueUserValue {
   }
 }
 
+/// Identity of the group who owns the resource.
+class GroupIdentity {
+  /// Group email.
+  core.String? groupEmail;
+
+  /// Group gaia id.
+  core.String? id;
+
+  GroupIdentity({this.groupEmail, this.id});
+
+  GroupIdentity.fromJson(core.Map json_)
+    : this(
+        groupEmail: json_['groupEmail'] as core.String?,
+        id: json_['id'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupEmail = this.groupEmail;
+    final id = this.id;
+    return {'groupEmail': ?groupEmail, 'id': ?id};
+  }
+}
+
 /// JSON template for a parameter used in various reports.
 class NestedParameter {
   /// Boolean value of the parameter.
@@ -2062,6 +2362,80 @@ class NestedParameter {
   }
 }
 
+/// Details of the owner of the resource.
+class OwnerDetails {
+  /// Identity details of the owner(s) of the resource.
+  core.List<OwnerIdentity>? ownerIdentity;
+
+  /// Type of the owner of the resource.
+  core.String? ownerType;
+
+  OwnerDetails({this.ownerIdentity, this.ownerType});
+
+  OwnerDetails.fromJson(core.Map json_)
+    : this(
+        ownerIdentity: (json_['ownerIdentity'] as core.List?)
+            ?.map(
+              (value) => OwnerIdentity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        ownerType: json_['ownerType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ownerIdentity = this.ownerIdentity;
+    final ownerType = this.ownerType;
+    return {'ownerIdentity': ?ownerIdentity, 'ownerType': ?ownerType};
+  }
+}
+
+/// Identity details of the owner of the resource.
+class OwnerIdentity {
+  /// Identity of the Google Workspace customer who owns the resource.
+  CustomerIdentity? customerIdentity;
+
+  /// Identity of the group who owns the resource.
+  GroupIdentity? groupIdentity;
+
+  /// Identity of the user who owns the resource.
+  UserIdentity? userIdentity;
+
+  OwnerIdentity({this.customerIdentity, this.groupIdentity, this.userIdentity});
+
+  OwnerIdentity.fromJson(core.Map json_)
+    : this(
+        customerIdentity: json_.containsKey('customerIdentity')
+            ? CustomerIdentity.fromJson(
+                json_['customerIdentity']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        groupIdentity: json_.containsKey('groupIdentity')
+            ? GroupIdentity.fromJson(
+                json_['groupIdentity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userIdentity: json_.containsKey('userIdentity')
+            ? UserIdentity.fromJson(
+                json_['userIdentity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final customerIdentity = this.customerIdentity;
+    final groupIdentity = this.groupIdentity;
+    final userIdentity = this.userIdentity;
+    return {
+      'customerIdentity': ?customerIdentity,
+      'groupIdentity': ?groupIdentity,
+      'userIdentity': ?userIdentity,
+    };
+  }
+}
+
 /// The reason why the label/field was applied.
 class Reason {
   /// The type of the reason.
@@ -2083,8 +2457,13 @@ class ResourceDetails {
   /// List of labels applied on the resource
   core.List<AppliedLabel>? appliedLabels;
 
-  /// Identifier of the resource.
+  /// Identifier of the resource, such as a doc_id for a Drive document, a
+  /// conference_id for a Meet conference, or a "gaia_id/rfc2822_message_id" for
+  /// an email.
   core.String? id;
+
+  /// Owner details of the resource.
+  OwnerDetails? ownerDetails;
 
   /// Defines relationship of the resource to the events
   core.String? relation;
@@ -2101,6 +2480,7 @@ class ResourceDetails {
   ResourceDetails({
     this.appliedLabels,
     this.id,
+    this.ownerDetails,
     this.relation,
     this.title,
     this.type,
@@ -2116,6 +2496,11 @@ class ResourceDetails {
             )
             .toList(),
         id: json_['id'] as core.String?,
+        ownerDetails: json_.containsKey('ownerDetails')
+            ? OwnerDetails.fromJson(
+                json_['ownerDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         relation: json_['relation'] as core.String?,
         title: json_['title'] as core.String?,
         type: json_['type'] as core.String?,
@@ -2124,12 +2509,14 @@ class ResourceDetails {
   core.Map<core.String, core.dynamic> toJson() {
     final appliedLabels = this.appliedLabels;
     final id = this.id;
+    final ownerDetails = this.ownerDetails;
     final relation = this.relation;
     final title = this.title;
     final type = this.type;
     return {
       'appliedLabels': ?appliedLabels,
       'id': ?id,
+      'ownerDetails': ?ownerDetails,
       'relation': ?relation,
       'title': ?title,
       'type': ?type,
@@ -2475,5 +2862,28 @@ class UsageReports {
       'usageReports': ?usageReports,
       'warnings': ?warnings,
     };
+  }
+}
+
+/// Identity of the user who owns the resource.
+class UserIdentity {
+  /// User gaia id.
+  core.String? id;
+
+  /// User email.
+  core.String? userEmail;
+
+  UserIdentity({this.id, this.userEmail});
+
+  UserIdentity.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        userEmail: json_['userEmail'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final userEmail = this.userEmail;
+    return {'id': ?id, 'userEmail': ?userEmail};
   }
 }

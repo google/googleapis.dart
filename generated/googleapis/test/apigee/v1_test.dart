@@ -9275,10 +9275,12 @@ buildGoogleCloudApigeeV1RuntimeTraceConfig() {
     o.endpoint = 'foo';
     o.exporter = 'foo';
     o.name = 'foo';
+    o.openTelemetryProtocolEnabled = true;
     o.overrides = buildUnnamed213();
     o.revisionCreateTime = 'foo';
     o.revisionId = 'foo';
     o.samplingConfig = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
+    o.traceProtocol = 'foo';
   }
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfig--;
   return o;
@@ -9292,10 +9294,12 @@ void checkGoogleCloudApigeeV1RuntimeTraceConfig(
     unittest.expect(o.endpoint!, unittest.equals('foo'));
     unittest.expect(o.exporter!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.openTelemetryProtocolEnabled!, unittest.isTrue);
     checkUnnamed213(o.overrides!);
     unittest.expect(o.revisionCreateTime!, unittest.equals('foo'));
     unittest.expect(o.revisionId!, unittest.equals('foo'));
     checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(o.samplingConfig!);
+    unittest.expect(o.traceProtocol!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfig--;
 }
@@ -9308,9 +9312,11 @@ buildGoogleCloudApigeeV1RuntimeTraceConfigOverride() {
   if (buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride < 3) {
     o.apiProxy = 'foo';
     o.name = 'foo';
+    o.openTelemetryProtocolEnabled = true;
     o.revisionCreateTime = 'foo';
     o.revisionId = 'foo';
     o.samplingConfig = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
+    o.traceProtocol = 'foo';
     o.uid = 'foo';
   }
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride--;
@@ -9324,9 +9330,11 @@ void checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(
   if (buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride < 3) {
     unittest.expect(o.apiProxy!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.openTelemetryProtocolEnabled!, unittest.isTrue);
     unittest.expect(o.revisionCreateTime!, unittest.equals('foo'));
     unittest.expect(o.revisionId!, unittest.equals('foo'));
     checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(o.samplingConfig!);
+    unittest.expect(o.traceProtocol!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudApigeeV1RuntimeTraceConfigOverride--;
@@ -10010,6 +10018,7 @@ buildGoogleCloudApigeeV1SecurityAssessmentResultResource() {
   if (buildCounterGoogleCloudApigeeV1SecurityAssessmentResultResource < 3) {
     o.apiHubDeploymentDetails =
         buildGoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails();
+    o.apiHubGatewayType = 'foo';
     o.name = 'foo';
     o.resourceRevisionId = 'foo';
     o.type = 'foo';
@@ -10026,6 +10035,7 @@ void checkGoogleCloudApigeeV1SecurityAssessmentResultResource(
     checkGoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails(
       o.apiHubDeploymentDetails!,
     );
+    unittest.expect(o.apiHubGatewayType!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.resourceRevisionId!, unittest.equals('foo'));
     unittest.expect(o.type!, unittest.equals('foo'));
@@ -10397,6 +10407,7 @@ buildGoogleCloudApigeeV1SecurityMonitoringCondition() {
   final o = api.GoogleCloudApigeeV1SecurityMonitoringCondition();
   buildCounterGoogleCloudApigeeV1SecurityMonitoringCondition++;
   if (buildCounterGoogleCloudApigeeV1SecurityMonitoringCondition < 3) {
+    o.apiHubGateway = 'foo';
     o.createTime = 'foo';
     o.include =
         buildGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray();
@@ -10404,6 +10415,7 @@ buildGoogleCloudApigeeV1SecurityMonitoringCondition() {
         buildGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll();
     o.name = 'foo';
     o.profile = 'foo';
+    o.riskAssessmentType = 'foo';
     o.scope = 'foo';
     o.totalDeployedResources = 42;
     o.totalMonitoredResources = 42;
@@ -10418,6 +10430,7 @@ void checkGoogleCloudApigeeV1SecurityMonitoringCondition(
 ) {
   buildCounterGoogleCloudApigeeV1SecurityMonitoringCondition++;
   if (buildCounterGoogleCloudApigeeV1SecurityMonitoringCondition < 3) {
+    unittest.expect(o.apiHubGateway!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkGoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray(
       o.include!,
@@ -10427,6 +10440,7 @@ void checkGoogleCloudApigeeV1SecurityMonitoringCondition(
     );
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.profile!, unittest.equals('foo'));
+    unittest.expect(o.riskAssessmentType!, unittest.equals('foo'));
     unittest.expect(o.scope!, unittest.equals('foo'));
     unittest.expect(o.totalDeployedResources!, unittest.equals(42));
     unittest.expect(o.totalMonitoredResources!, unittest.equals(42));
@@ -37905,6 +37919,7 @@ void main() {
         mock,
       ).organizations.securityMonitoringConditions;
       final arg_name = 'foo';
+      final arg_riskAssessmentType = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -37939,6 +37954,10 @@ void main() {
               );
             }
           }
+          unittest.expect(
+            queryMap['riskAssessmentType']!.first,
+            unittest.equals(arg_riskAssessmentType),
+          );
           unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
@@ -37950,7 +37969,11 @@ void main() {
         }),
         true,
       );
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(
+        arg_name,
+        riskAssessmentType: arg_riskAssessmentType,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -37960,6 +37983,7 @@ void main() {
         mock,
       ).organizations.securityMonitoringConditions;
       final arg_name = 'foo';
+      final arg_riskAssessmentType = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -37994,6 +38018,10 @@ void main() {
               );
             }
           }
+          unittest.expect(
+            queryMap['riskAssessmentType']!.first,
+            unittest.equals(arg_riskAssessmentType),
+          );
           unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
@@ -38007,7 +38035,11 @@ void main() {
         }),
         true,
       );
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response = await res.get(
+        arg_name,
+        riskAssessmentType: arg_riskAssessmentType,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudApigeeV1SecurityMonitoringCondition(
         response as api.GoogleCloudApigeeV1SecurityMonitoringCondition,
       );
@@ -38022,6 +38054,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_riskAssessmentType = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -38069,6 +38102,10 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
+            queryMap['riskAssessmentType']!.first,
+            unittest.equals(arg_riskAssessmentType),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -38086,6 +38123,7 @@ void main() {
         filter: arg_filter,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
+        riskAssessmentType: arg_riskAssessmentType,
         $fields: arg_$fields,
       );
       checkGoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse(

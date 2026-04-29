@@ -386,11 +386,6 @@ class EnterprisesStructuresRoomsResource {
 /// Device resource represents an instance of enterprise managed device in the
 /// property.
 class GoogleHomeEnterpriseSdmV1Device {
-  /// The GHP device ID of the device.
-  ///
-  /// Output only.
-  core.String? ghpName;
-
   /// The resource name of the device.
   ///
   /// For example: "enterprises/XYZ/devices/123".
@@ -419,7 +414,6 @@ class GoogleHomeEnterpriseSdmV1Device {
   core.String? type;
 
   GoogleHomeEnterpriseSdmV1Device({
-    this.ghpName,
     this.name,
     this.parentRelations,
     this.traits,
@@ -428,7 +422,6 @@ class GoogleHomeEnterpriseSdmV1Device {
 
   GoogleHomeEnterpriseSdmV1Device.fromJson(core.Map json_)
     : this(
-        ghpName: json_['ghpName'] as core.String?,
         name: json_['name'] as core.String?,
         parentRelations: (json_['parentRelations'] as core.List?)
             ?.map(
@@ -444,13 +437,11 @@ class GoogleHomeEnterpriseSdmV1Device {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final ghpName = this.ghpName;
     final name = this.name;
     final parentRelations = this.parentRelations;
     final traits = this.traits;
     final type = this.type;
     return {
-      'ghpName': ?ghpName,
       'name': ?name,
       'parentRelations': ?parentRelations,
       'traits': ?traits,
@@ -595,15 +586,6 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
   /// Output only.
   core.String? displayName;
 
-  /// The GHP name of the relation -- e.g., structure/room where the device is
-  /// assigned to.
-  ///
-  /// For example: "homegraph.googleapis.com/Structure/ABC" or
-  /// "homegraph.googleapis.com/Room/ABC"
-  ///
-  /// Output only.
-  core.String? ghpParent;
-
   /// The name of the relation -- e.g., structure/room where the device is
   /// assigned to.
   ///
@@ -613,28 +595,18 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
   /// Output only.
   core.String? parent;
 
-  GoogleHomeEnterpriseSdmV1ParentRelation({
-    this.displayName,
-    this.ghpParent,
-    this.parent,
-  });
+  GoogleHomeEnterpriseSdmV1ParentRelation({this.displayName, this.parent});
 
   GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
-        ghpParent: json_['ghpParent'] as core.String?,
         parent: json_['parent'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final displayName = this.displayName;
-    final ghpParent = this.ghpParent;
     final parent = this.parent;
-    return {
-      'displayName': ?displayName,
-      'ghpParent': ?ghpParent,
-      'parent': ?parent,
-    };
+    return {'displayName': ?displayName, 'parent': ?parent};
   }
 }
 
@@ -674,13 +646,6 @@ class GoogleHomeEnterpriseSdmV1Room {
 /// Structure resource represents an instance of enterprise managed home or
 /// hotel room.
 class GoogleHomeEnterpriseSdmV1Structure {
-  /// The unique identifier for the structure in Google Home Platform.
-  ///
-  /// Format: homegraph.googleapis.com/Structure/{structure_id}
-  ///
-  /// Output only.
-  core.String? ghpName;
-
   /// The resource name of the structure.
   ///
   /// For example: "enterprises/XYZ/structures/ABC".
@@ -694,11 +659,10 @@ class GoogleHomeEnterpriseSdmV1Structure {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? traits;
 
-  GoogleHomeEnterpriseSdmV1Structure({this.ghpName, this.name, this.traits});
+  GoogleHomeEnterpriseSdmV1Structure({this.name, this.traits});
 
   GoogleHomeEnterpriseSdmV1Structure.fromJson(core.Map json_)
     : this(
-        ghpName: json_['ghpName'] as core.String?,
         name: json_['name'] as core.String?,
         traits: json_.containsKey('traits')
             ? json_['traits'] as core.Map<core.String, core.dynamic>
@@ -706,9 +670,8 @@ class GoogleHomeEnterpriseSdmV1Structure {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final ghpName = this.ghpName;
     final name = this.name;
     final traits = this.traits;
-    return {'ghpName': ?ghpName, 'name': ?name, 'traits': ?traits};
+    return {'name': ?name, 'traits': ?traits};
   }
 }

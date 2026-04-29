@@ -38,6 +38,7 @@
 ///     - [ProjectsLocationsKmsConfigsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsStoragePoolsResource]
+///       - [ProjectsLocationsStoragePoolsOntapResource]
 ///     - [ProjectsLocationsVolumesResource]
 ///       - [ProjectsLocationsVolumesQuotaRulesResource]
 ///       - [ProjectsLocationsVolumesReplicationsResource]
@@ -147,11 +148,16 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -1917,6 +1923,9 @@ class ProjectsLocationsOperationsResource {
 class ProjectsLocationsStoragePoolsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsStoragePoolsOntapResource get ontap =>
+      ProjectsLocationsStoragePoolsOntapResource(_requester);
+
   ProjectsLocationsStoragePoolsResource(commons.ApiRequester client)
     : _requester = client;
 
@@ -2228,6 +2237,191 @@ class ProjectsLocationsStoragePoolsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsStoragePoolsOntapResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsStoragePoolsOntapResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the
+  /// `StoragePool` cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [ontapPath] - Required. The resource path of the ONTAP resource. Format:
+  /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+  /// For example:
+  /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storagePools/\[^/\]+/ontap/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteOntapDeleteResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteOntapDeleteResponse> executeOntapDelete(
+    core.String ontapPath, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$ontapPath');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return ExecuteOntapDeleteResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool`
+  /// cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [ontapPath] - Required. The resource path of the ONTAP resource. Format:
+  /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+  /// For example:
+  /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storagePools/\[^/\]+/ontap/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteOntapGetResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteOntapGetResponse> executeOntapGet(
+    core.String ontapPath, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$ontapPath');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ExecuteOntapGetResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the
+  /// `StoragePool` cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [ontapPath] - Required. The resource path of the ONTAP resource. Format:
+  /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+  /// For example:
+  /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storagePools/\[^/\]+/ontap/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteOntapPatchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteOntapPatchResponse> executeOntapPatch(
+    ExecuteOntapPatchRequest request,
+    core.String ontapPath, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$ontapPath');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecuteOntapPatchResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// `ExecuteOntapPost` dispatches the ONTAP `POST` request to the
+  /// `StoragePool` cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [ontapPath] - Required. The resource path of the ONTAP resource. Format:
+  /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+  /// For example:
+  /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storagePools/\[^/\]+/ontap/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteOntapPostResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteOntapPostResponse> executeOntapPost(
+    ExecuteOntapPostRequest request,
+    core.String ontapPath, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$ontapPath');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecuteOntapPostResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3804,7 +3998,8 @@ class Backup {
 
   /// Volume full name of this backup belongs to.
   ///
-  /// Format: `projects/{projects_id}/locations/{location}/volumes/{volume_id}`
+  /// Either source_volume or ontap_source should be provided. Format:
+  /// `projects/{projects_id}/locations/{location}/volumes/{volume_id}`
   core.String? sourceVolume;
 
   /// The backup state.
@@ -4676,6 +4871,52 @@ class CachePrePopulate {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// Details about a clone volume.
+class CloneDetails {
+  /// Shared space in GiB.
+  ///
+  /// Determined at volume creation time based on size of source snapshot.
+  ///
+  /// Output only.
+  core.String? sharedSpaceGib;
+
+  /// Specifies the full resource name of the source snapshot from which this
+  /// volume was cloned.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot}
+  ///
+  /// Output only.
+  core.String? sourceSnapshot;
+
+  /// Full name of the source volume resource.
+  ///
+  /// Format: projects/{project}/locations/{location}/volumes/{volume}
+  ///
+  /// Output only.
+  core.String? sourceVolume;
+
+  CloneDetails({this.sharedSpaceGib, this.sourceSnapshot, this.sourceVolume});
+
+  CloneDetails.fromJson(core.Map json_)
+    : this(
+        sharedSpaceGib: json_['sharedSpaceGib'] as core.String?,
+        sourceSnapshot: json_['sourceSnapshot'] as core.String?,
+        sourceVolume: json_['sourceVolume'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sharedSpaceGib = this.sharedSpaceGib;
+    final sourceSnapshot = this.sourceSnapshot;
+    final sourceVolume = this.sourceVolume;
+    return {
+      'sharedSpaceGib': ?sharedSpaceGib,
+      'sourceSnapshot': ?sourceSnapshot,
+      'sourceVolume': ?sourceVolume,
+    };
+  }
+}
+
 /// Make a snapshot every day e.g. at 04:00, 05:20, 23:50
 class DailySchedule {
   /// Set the hour to start the snapshot (0-23), defaults to midnight (0).
@@ -4784,6 +5025,24 @@ typedef EstablishPeeringRequest = $PeeringRequest;
 /// EstablishVolumePeeringRequest establishes cluster and svm peerings between
 /// the source and destination clusters.
 typedef EstablishVolumePeeringRequest = $PeeringRequest;
+
+/// Response message for `ExecuteOntapDelete` API.
+typedef ExecuteOntapDeleteResponse = $Response00;
+
+/// Response message for `ExecuteOntapGet` API.
+typedef ExecuteOntapGetResponse = $Response00;
+
+/// Request message for `ExecuteOntapPatch` API.
+typedef ExecuteOntapPatchRequest = $Request11;
+
+/// Response message for `ExecuteOntapPatch` API.
+typedef ExecuteOntapPatchResponse = $Response00;
+
+/// Request message for `ExecuteOntapPost` API.
+typedef ExecuteOntapPostRequest = $Request11;
+
+/// Response message for `ExecuteOntapPost` API.
+typedef ExecuteOntapPostResponse = $Response00;
 
 /// Defines the export policy for the volume.
 class ExportPolicy {
@@ -5290,6 +5549,31 @@ class KmsConfig {
       'state': ?state,
       'stateDetails': ?stateDetails,
     };
+  }
+}
+
+/// Configuration for a Large Capacity Volume.
+///
+/// A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20 PiB, it is
+/// composed of multiple internal constituents, and must be created in a large
+/// capacity pool.
+class LargeCapacityConfig {
+  /// The number of internal constituents (e.g., FlexVols) for this large
+  /// volume.
+  ///
+  /// The minimum number of constituents is 2.
+  ///
+  /// Optional.
+  core.int? constituentCount;
+
+  LargeCapacityConfig({this.constituentCount});
+
+  LargeCapacityConfig.fromJson(core.Map json_)
+    : this(constituentCount: json_['constituentCount'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final constituentCount = this.constituentCount;
+    return {'constituentCount': ?constituentCount};
   }
 }
 
@@ -6458,8 +6742,10 @@ class RestoreBackupFilesRequest {
 class RestoreParameters {
   /// Full name of the backup resource.
   ///
-  /// Format:
+  /// Format for standard backup:
   /// projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}
+  /// Format for BackupDR backup:
+  /// projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup}
   core.String? sourceBackup;
 
   /// Full name of the snapshot resource.
@@ -6954,6 +7240,19 @@ class StoragePool {
   /// Optional.
   core.bool? ldapEnabled;
 
+  /// Mode of the storage pool.
+  ///
+  /// This field is used to control whether the user can perform the ONTAP
+  /// operations on the storage pool using the GCNV ONTAP Mode APIs. If not
+  /// specified during creation, it defaults to `DEFAULT`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : The `Mode` is not specified.
+  /// - "DEFAULT" : The resource is managed by the GCNV APIs.
+  /// - "ONTAP" : The resource is managed by the GCNV ONTAP Mode APIs.
+  core.String? mode;
+
   /// Identifier.
   ///
   /// Name of the storage pool
@@ -6996,6 +7295,19 @@ class StoragePool {
   ///
   /// Output only.
   core.bool? satisfiesPzs;
+
+  /// The scale type of the storage pool.
+  ///
+  /// Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCALE_TYPE_UNSPECIFIED" : Unspecified scale type.
+  /// - "SCALE_TYPE_DEFAULT" : Represents standard capacity and performance
+  /// scale-type. Suitable for general purpose workloads.
+  /// - "SCALE_TYPE_SCALEOUT" : Represents higher capacity and performance
+  /// scale-type. Suitable for more demanding workloads.
+  core.String? scaleType;
 
   /// Service level of the storage pool
   ///
@@ -7041,17 +7353,14 @@ class StoragePool {
   /// Type of the storage pool.
   ///
   /// This field is used to control whether the pool supports `FILE` based
-  /// volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes or
-  /// `UNIFIED_LARGE_CAPACITY` (both `FILE` and `BLOCK`) volumes with large
-  /// capacity. If not specified during creation, it defaults to `FILE`.
+  /// volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes. If not
+  /// specified during creation, it defaults to `FILE`.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "STORAGE_POOL_TYPE_UNSPECIFIED" : Storage pool type is not specified.
   /// - "FILE" : Storage pool type is file.
   /// - "UNIFIED" : Storage pool type is unified.
-  /// - "UNIFIED_LARGE_CAPACITY" : Deprecated: UNIFIED_LARGE_CAPACITY was
-  /// previously tag 3.
   core.String? type;
 
   /// Allocated size of all volumes in GIB in the storage pool
@@ -7086,6 +7395,7 @@ class StoragePool {
     this.kmsConfig,
     this.labels,
     this.ldapEnabled,
+    this.mode,
     this.name,
     this.network,
     this.psaRange,
@@ -7093,6 +7403,7 @@ class StoragePool {
     this.replicaZone,
     this.satisfiesPzi,
     this.satisfiesPzs,
+    this.scaleType,
     this.serviceLevel,
     this.state,
     this.stateDetails,
@@ -7126,6 +7437,7 @@ class StoragePool {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         ldapEnabled: json_['ldapEnabled'] as core.bool?,
+        mode: json_['mode'] as core.String?,
         name: json_['name'] as core.String?,
         network: json_['network'] as core.String?,
         psaRange: json_['psaRange'] as core.String?,
@@ -7133,6 +7445,7 @@ class StoragePool {
         replicaZone: json_['replicaZone'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        scaleType: json_['scaleType'] as core.String?,
         serviceLevel: json_['serviceLevel'] as core.String?,
         state: json_['state'] as core.String?,
         stateDetails: json_['stateDetails'] as core.String?,
@@ -7161,6 +7474,7 @@ class StoragePool {
     final kmsConfig = this.kmsConfig;
     final labels = this.labels;
     final ldapEnabled = this.ldapEnabled;
+    final mode = this.mode;
     final name = this.name;
     final network = this.network;
     final psaRange = this.psaRange;
@@ -7168,6 +7482,7 @@ class StoragePool {
     final replicaZone = this.replicaZone;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
+    final scaleType = this.scaleType;
     final serviceLevel = this.serviceLevel;
     final state = this.state;
     final stateDetails = this.stateDetails;
@@ -7194,6 +7509,7 @@ class StoragePool {
       'kmsConfig': ?kmsConfig,
       'labels': ?labels,
       'ldapEnabled': ?ldapEnabled,
+      'mode': ?mode,
       'name': ?name,
       'network': ?network,
       'psaRange': ?psaRange,
@@ -7201,6 +7517,7 @@ class StoragePool {
       'replicaZone': ?replicaZone,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
+      'scaleType': ?scaleType,
       'serviceLevel': ?serviceLevel,
       'state': ?state,
       'stateDetails': ?stateDetails,
@@ -7463,6 +7780,11 @@ class Volume {
   /// Required.
   core.String? capacityGib;
 
+  /// If this volume is a clone, this field contains details about the clone.
+  ///
+  /// Output only.
+  CloneDetails? cloneDetails;
+
   /// Size of the volume cold tier data rounded down to the nearest GiB.
   ///
   /// Output only.
@@ -7529,8 +7851,22 @@ class Volume {
   /// Flag indicating if the volume will be a large capacity volume or a regular
   /// volume.
   ///
+  /// This field is used for legacy FILE pools. For Unified pools, use the
+  /// `large_capacity_config` field instead. This field and
+  /// `large_capacity_config` are mutually exclusive.
+  ///
   /// Optional.
   core.bool? largeCapacity;
+
+  /// Large capacity config for the volume.
+  ///
+  /// Enables and configures large capacity for volumes in Unified pools with
+  /// File protocols. Not applicable for Block protocols in Unified pools. This
+  /// field and the legacy `large_capacity` boolean field are mutually
+  /// exclusive.
+  ///
+  /// Optional.
+  LargeCapacityConfig? largeCapacityConfig;
 
   /// Flag indicating if the volume is NFS LDAP enabled or not.
   ///
@@ -7704,6 +8040,7 @@ class Volume {
     this.blockDevices,
     this.cacheParameters,
     this.capacityGib,
+    this.cloneDetails,
     this.coldTierSizeGib,
     this.createTime,
     this.description,
@@ -7716,6 +8053,7 @@ class Volume {
     this.kmsConfig,
     this.labels,
     this.largeCapacity,
+    this.largeCapacityConfig,
     this.ldapEnabled,
     this.mountOptions,
     this.multipleEndpoints,
@@ -7764,6 +8102,11 @@ class Volume {
               )
             : null,
         capacityGib: json_['capacityGib'] as core.String?,
+        cloneDetails: json_.containsKey('cloneDetails')
+            ? CloneDetails.fromJson(
+                json_['cloneDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         coldTierSizeGib: json_['coldTierSizeGib'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
@@ -7788,6 +8131,12 @@ class Volume {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         largeCapacity: json_['largeCapacity'] as core.bool?,
+        largeCapacityConfig: json_.containsKey('largeCapacityConfig')
+            ? LargeCapacityConfig.fromJson(
+                json_['largeCapacityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         ldapEnabled: json_['ldapEnabled'] as core.bool?,
         mountOptions: (json_['mountOptions'] as core.List?)
             ?.map(
@@ -7846,6 +8195,7 @@ class Volume {
     final blockDevices = this.blockDevices;
     final cacheParameters = this.cacheParameters;
     final capacityGib = this.capacityGib;
+    final cloneDetails = this.cloneDetails;
     final coldTierSizeGib = this.coldTierSizeGib;
     final createTime = this.createTime;
     final description = this.description;
@@ -7858,6 +8208,7 @@ class Volume {
     final kmsConfig = this.kmsConfig;
     final labels = this.labels;
     final largeCapacity = this.largeCapacity;
+    final largeCapacityConfig = this.largeCapacityConfig;
     final ldapEnabled = this.ldapEnabled;
     final mountOptions = this.mountOptions;
     final multipleEndpoints = this.multipleEndpoints;
@@ -7889,6 +8240,7 @@ class Volume {
       'blockDevices': ?blockDevices,
       'cacheParameters': ?cacheParameters,
       'capacityGib': ?capacityGib,
+      'cloneDetails': ?cloneDetails,
       'coldTierSizeGib': ?coldTierSizeGib,
       'createTime': ?createTime,
       'description': ?description,
@@ -7901,6 +8253,7 @@ class Volume {
       'kmsConfig': ?kmsConfig,
       'labels': ?labels,
       'largeCapacity': ?largeCapacity,
+      'largeCapacityConfig': ?largeCapacityConfig,
       'ldapEnabled': ?ldapEnabled,
       'mountOptions': ?mountOptions,
       'multipleEndpoints': ?multipleEndpoints,

@@ -4,6 +4,12 @@
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+                },
+                "https://www.googleapis.com/auth/dataproc": {
+                    "description": "See, edit, configure, and delete your Google Cloud Dataproc data and see the email address for your Google Account"
+                },
+                "https://www.googleapis.com/auth/dataproc.read-only": {
+                    "description": "See your Google Cloud Dataproc data and the email address of your Google Account"
                 }
             }
         }
@@ -112,7 +118,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260122",
+    "revision": "20260407",
     "rootUrl": "https://dataproc.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Dataproc API",
@@ -226,7 +232,8 @@
                                         "$ref": "AutoscalingPolicy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -251,7 +258,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -276,7 +284,8 @@
                                         "$ref": "AutoscalingPolicy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "getIamPolicy": {
@@ -304,7 +313,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "list": {
@@ -340,7 +350,8 @@
                                         "$ref": "ListAutoscalingPoliciesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "setIamPolicy": {
@@ -368,7 +379,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "testIamPermissions": {
@@ -396,7 +408,8 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "update": {
@@ -424,7 +437,8 @@
                                         "$ref": "AutoscalingPolicy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 }
                             }
@@ -456,7 +470,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "create": {
@@ -481,7 +496,7 @@
                                             "type": "string"
                                         },
                                         "requestId": {
-                                            "description": "Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.",
+                                            "description": "Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequests with the same request_id, the second request is ignored and the operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.",
                                             "location": "query",
                                             "type": "string"
                                         }
@@ -494,7 +509,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -519,7 +535,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -544,7 +561,9 @@
                                         "$ref": "Batch"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "list": {
@@ -590,7 +609,9 @@
                                         "$ref": "ListBatchesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 }
                             },
@@ -624,7 +645,9 @@
                                                 "$ref": "AccessSparkApplicationResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessEnvironmentInfo": {
@@ -654,7 +677,9 @@
                                                 "$ref": "AccessSparkApplicationEnvironmentInfoResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessJob": {
@@ -690,7 +715,9 @@
                                                 "$ref": "AccessSparkApplicationJobResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessSqlPlan": {
@@ -726,7 +753,9 @@
                                                 "$ref": "AccessSparkApplicationSqlSparkPlanGraphResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessSqlQuery": {
@@ -772,7 +801,9 @@
                                                 "$ref": "AccessSparkApplicationSqlQueryResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessStageAttempt": {
@@ -820,7 +851,9 @@
                                                 "$ref": "AccessSparkApplicationStageAttemptResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessStageRddGraph": {
@@ -856,7 +889,9 @@
                                                 "$ref": "AccessSparkApplicationStageRddOperationGraphResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "search": {
@@ -931,7 +966,9 @@
                                                 "$ref": "SearchSparkApplicationsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchExecutorStageSummary": {
@@ -984,7 +1021,9 @@
                                                 "$ref": "SearchSparkApplicationExecutorStageSummaryResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchExecutors": {
@@ -1040,7 +1079,9 @@
                                                 "$ref": "SearchSparkApplicationExecutorsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchJobs": {
@@ -1100,7 +1141,9 @@
                                                 "$ref": "SearchSparkApplicationJobsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchSqlQueries": {
@@ -1151,7 +1194,9 @@
                                                 "$ref": "SearchSparkApplicationSqlQueriesResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchStageAttemptTasks": {
@@ -1230,7 +1275,9 @@
                                                 "$ref": "SearchSparkApplicationStageAttemptTasksResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchStageAttempts": {
@@ -1283,7 +1330,9 @@
                                                 "$ref": "SearchSparkApplicationStageAttemptsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchStages": {
@@ -1351,7 +1400,9 @@
                                                 "$ref": "SearchSparkApplicationStagesResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "summarizeExecutors": {
@@ -1381,7 +1432,9 @@
                                                 "$ref": "SummarizeSparkApplicationExecutorsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "summarizeJobs": {
@@ -1411,7 +1464,9 @@
                                                 "$ref": "SummarizeSparkApplicationJobsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "summarizeStageAttemptTasks": {
@@ -1453,7 +1508,9 @@
                                                 "$ref": "SummarizeSparkApplicationStageAttemptTasksResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "summarizeStages": {
@@ -1483,7 +1540,9 @@
                                                 "$ref": "SummarizeSparkApplicationStagesResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "write": {
@@ -1511,7 +1570,8 @@
                                                 "$ref": "WriteSparkApplicationContextResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc"
                                             ]
                                         }
                                     }
@@ -1542,7 +1602,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -1567,7 +1628,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -1592,7 +1654,9 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "list": {
@@ -1638,7 +1702,9 @@
                                         "$ref": "ListOperationsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 }
                             }
@@ -1670,7 +1736,8 @@
                                         "$ref": "SessionTemplate"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -1695,7 +1762,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -1720,7 +1788,9 @@
                                         "$ref": "SessionTemplate"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "list": {
@@ -1761,7 +1831,9 @@
                                         "$ref": "ListSessionTemplatesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "patch": {
@@ -1789,7 +1861,8 @@
                                         "$ref": "SessionTemplate"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 }
                             }
@@ -1831,7 +1904,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -1861,7 +1935,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -1886,7 +1961,9 @@
                                         "$ref": "Session"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "list": {
@@ -1927,7 +2004,9 @@
                                         "$ref": "ListSessionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "terminate": {
@@ -1955,7 +2034,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 }
                             },
@@ -1989,7 +2069,9 @@
                                                 "$ref": "AccessSessionSparkApplicationResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessEnvironmentInfo": {
@@ -2019,7 +2101,9 @@
                                                 "$ref": "AccessSessionSparkApplicationEnvironmentInfoResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessJob": {
@@ -2055,7 +2139,9 @@
                                                 "$ref": "AccessSessionSparkApplicationJobResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessSqlPlan": {
@@ -2091,7 +2177,9 @@
                                                 "$ref": "AccessSessionSparkApplicationSqlSparkPlanGraphResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessSqlQuery": {
@@ -2137,7 +2225,9 @@
                                                 "$ref": "AccessSessionSparkApplicationSqlQueryResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessStageAttempt": {
@@ -2185,7 +2275,9 @@
                                                 "$ref": "AccessSessionSparkApplicationStageAttemptResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "accessStageRddGraph": {
@@ -2221,7 +2313,9 @@
                                                 "$ref": "AccessSessionSparkApplicationStageRddOperationGraphResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "search": {
@@ -2296,7 +2390,9 @@
                                                 "$ref": "SearchSessionSparkApplicationsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchExecutorStageSummary": {
@@ -2349,7 +2445,9 @@
                                                 "$ref": "SearchSessionSparkApplicationExecutorStageSummaryResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchExecutors": {
@@ -2405,7 +2503,9 @@
                                                 "$ref": "SearchSessionSparkApplicationExecutorsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchJobs": {
@@ -2472,7 +2572,9 @@
                                                 "$ref": "SearchSessionSparkApplicationJobsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchSqlQueries": {
@@ -2529,7 +2631,9 @@
                                                 "$ref": "SearchSessionSparkApplicationSqlQueriesResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchStageAttemptTasks": {
@@ -2608,7 +2712,9 @@
                                                 "$ref": "SearchSessionSparkApplicationStageAttemptTasksResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchStageAttempts": {
@@ -2661,7 +2767,9 @@
                                                 "$ref": "SearchSessionSparkApplicationStageAttemptsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "searchStages": {
@@ -2736,7 +2844,9 @@
                                                 "$ref": "SearchSessionSparkApplicationStagesResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "summarizeExecutors": {
@@ -2766,7 +2876,9 @@
                                                 "$ref": "SummarizeSessionSparkApplicationExecutorsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "summarizeJobs": {
@@ -2803,7 +2915,9 @@
                                                 "$ref": "SummarizeSessionSparkApplicationJobsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "summarizeStageAttemptTasks": {
@@ -2845,7 +2959,9 @@
                                                 "$ref": "SummarizeSessionSparkApplicationStageAttemptTasksResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "summarizeStages": {
@@ -2882,7 +2998,9 @@
                                                 "$ref": "SummarizeSessionSparkApplicationStagesResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "write": {
@@ -2910,7 +3028,8 @@
                                                 "$ref": "WriteSessionSparkApplicationContextResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc"
                                             ]
                                         }
                                     }
@@ -2944,7 +3063,8 @@
                                         "$ref": "WorkflowTemplate"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -2975,7 +3095,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -3006,7 +3127,9 @@
                                         "$ref": "WorkflowTemplate"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "getIamPolicy": {
@@ -3034,7 +3157,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "instantiate": {
@@ -3062,7 +3186,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "instantiateInline": {
@@ -3095,7 +3220,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "list": {
@@ -3131,7 +3257,9 @@
                                         "$ref": "ListWorkflowTemplatesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "setIamPolicy": {
@@ -3159,7 +3287,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "testIamPermissions": {
@@ -3187,7 +3316,8 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "update": {
@@ -3215,7 +3345,8 @@
                                         "$ref": "WorkflowTemplate"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 }
                             }
@@ -3251,7 +3382,8 @@
                                         "$ref": "AutoscalingPolicy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -3276,7 +3408,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -3301,7 +3434,8 @@
                                         "$ref": "AutoscalingPolicy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "getIamPolicy": {
@@ -3329,7 +3463,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "list": {
@@ -3365,7 +3500,8 @@
                                         "$ref": "ListAutoscalingPoliciesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "setIamPolicy": {
@@ -3393,7 +3529,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "testIamPermissions": {
@@ -3421,7 +3558,8 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "update": {
@@ -3449,7 +3587,8 @@
                                         "$ref": "AutoscalingPolicy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 }
                             }
@@ -3507,7 +3646,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -3561,7 +3701,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "diagnose": {
@@ -3602,7 +3743,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -3640,7 +3782,9 @@
                                         "$ref": "Cluster"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "getIamPolicy": {
@@ -3668,7 +3812,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "injectCredentials": {
@@ -3712,7 +3857,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "list": {
@@ -3731,13 +3877,13 @@
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Optional. The standard List page size.",
+                                            "description": "Optional. The maximum number of clusters to return in each response. The service may return fewer than this value. If unspecified, the default value is 200. The maximum value is 1000.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "Optional. The standard List page token.",
+                                            "description": "Optional. A page token received from a previous ListClusters call. Provide this token to retrieve the subsequent page.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -3759,7 +3905,9 @@
                                         "$ref": "ListClustersResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "patch": {
@@ -3817,7 +3965,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "repair": {
@@ -3858,7 +4007,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "setIamPolicy": {
@@ -3886,7 +4036,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "start": {
@@ -3927,7 +4078,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "stop": {
@@ -3968,7 +4120,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "testIamPermissions": {
@@ -3996,7 +4149,8 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 }
                             },
@@ -4043,7 +4197,8 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc"
                                             ]
                                         },
                                         "get": {
@@ -4068,7 +4223,9 @@
                                                 "$ref": "NodeGroup"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc",
+                                                "https://www.googleapis.com/auth/dataproc.read-only"
                                             ]
                                         },
                                         "repair": {
@@ -4096,7 +4253,8 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc"
                                             ]
                                         },
                                         "resize": {
@@ -4124,7 +4282,8 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/dataproc"
                                             ]
                                         }
                                     }
@@ -4171,7 +4330,8 @@
                                         "$ref": "Job"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -4209,7 +4369,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -4247,7 +4408,9 @@
                                         "$ref": "Job"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "getIamPolicy": {
@@ -4275,7 +4438,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "list": {
@@ -4294,7 +4458,7 @@
                                             "type": "string"
                                         },
                                         "filter": {
-                                            "description": "Optional. A filter constraining the jobs to list. Filters are case-sensitive and have the following syntax:field = value AND field = value ...where field is status.state or labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be either ACTIVE or NON_ACTIVE. Only the logical AND operator is supported; space-separated items are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND labels.env = staging AND labels.starred = *",
+                                            "description": "Optional. A filter constraining the jobs to list. Filters are case-sensitive and have the following syntax:field = value AND field = value ...where field is status.state or insertTime, or labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be either ACTIVE or NON_ACTIVE. Allows insertTime to be a timestamp in RFC 3339 format in double quotes, such as 2025-01-01T00:00:00Z. Only the logical AND operator is supported; space-separated items are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND labels.env = staging AND labels.starred = * AND insertTime <= \"2025-01-01T00:00:00Z\"",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -4342,7 +4506,9 @@
                                         "$ref": "ListJobsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "patch": {
@@ -4389,7 +4555,8 @@
                                         "$ref": "Job"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "setIamPolicy": {
@@ -4417,7 +4584,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "submit": {
@@ -4451,7 +4619,8 @@
                                         "$ref": "Job"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "submitAsOperation": {
@@ -4485,7 +4654,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "testIamPermissions": {
@@ -4513,7 +4683,8 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 }
                             }
@@ -4542,7 +4713,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -4567,7 +4739,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -4592,7 +4765,9 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "getIamPolicy": {
@@ -4620,7 +4795,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "list": {
@@ -4666,7 +4842,9 @@
                                         "$ref": "ListOperationsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "setIamPolicy": {
@@ -4694,7 +4872,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "testIamPermissions": {
@@ -4722,7 +4901,8 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 }
                             }
@@ -4754,7 +4934,8 @@
                                         "$ref": "WorkflowTemplate"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "delete": {
@@ -4785,7 +4966,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "get": {
@@ -4816,7 +4998,9 @@
                                         "$ref": "WorkflowTemplate"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "getIamPolicy": {
@@ -4844,7 +5028,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "instantiate": {
@@ -4872,7 +5057,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "instantiateInline": {
@@ -4905,7 +5091,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "list": {
@@ -4941,7 +5128,9 @@
                                         "$ref": "ListWorkflowTemplatesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc",
+                                        "https://www.googleapis.com/auth/dataproc.read-only"
                                     ]
                                 },
                                 "setIamPolicy": {
@@ -4969,7 +5158,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "testIamPermissions": {
@@ -4997,7 +5187,8 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 },
                                 "update": {
@@ -5025,7 +5216,8 @@
                                         "$ref": "WorkflowTemplate"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dataproc"
                                     ]
                                 }
                             }
@@ -5464,6 +5656,46 @@
             },
             "type": "object"
         },
+        "AttachedDiskConfig": {
+            "description": "Specifies the config of attached disk options for single VM instance.",
+            "id": "AttachedDiskConfig",
+            "properties": {
+                "diskSizeGb": {
+                    "description": "Optional. Disk size in GB.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "diskType": {
+                    "description": "Optional. Disk type.",
+                    "enum": [
+                        "DISK_TYPE_UNSPECIFIED",
+                        "HYPERDISK_BALANCED",
+                        "HYPERDISK_EXTREME",
+                        "HYPERDISK_ML",
+                        "HYPERDISK_THROUGHPUT"
+                    ],
+                    "enumDescriptions": [
+                        "Required unspecified disk type.",
+                        "Hyperdisk Balanced disk type.",
+                        "Hyperdisk Extreme disk type.",
+                        "Hyperdisk ML disk type.",
+                        "Hyperdisk Throughput disk type."
+                    ],
+                    "type": "string"
+                },
+                "provisionedIops": {
+                    "description": "Optional. Indicates how many IOPS to provision for the attached disk. This sets the number of I/O operations per second that the disk can handle. See https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "provisionedThroughput": {
+                    "description": "Optional. Indicates how much throughput to provision for the attached disk. This sets the number of throughput mb per second that the disk can handle. See https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "AuthenticationConfig": {
             "description": "Authentication configuration for a workload is used to set the default identity for the workload execution. The config specifies the type of identity (service account or user) that will be used by workloads to access resources on the project(s).",
             "id": "AuthenticationConfig",
@@ -5695,6 +5927,10 @@
                 "pysparkBatch": {
                     "$ref": "PySparkBatch",
                     "description": "Optional. PySpark batch config."
+                },
+                "pysparkNotebookBatch": {
+                    "$ref": "PySparkNotebookBatch",
+                    "description": "Optional. PySpark notebook batch config."
                 },
                 "runtimeConfig": {
                     "$ref": "RuntimeConfig",
@@ -5982,6 +6218,20 @@
                 "endpointConfig": {
                     "$ref": "EndpointConfig",
                     "description": "Optional. Port/endpoint configuration for this cluster"
+                },
+                "engine": {
+                    "description": "Optional. The cluster engine.",
+                    "enum": [
+                        "ENGINE_UNSPECIFIED",
+                        "DEFAULT",
+                        "LIGHTNING"
+                    ],
+                    "enumDescriptions": [
+                        "The engine is not specified. Works the same as ENGINE_DEFAULT.",
+                        "The cluster is a default engine cluster.",
+                        "The cluster is a lightning engine cluster."
+                    ],
+                    "type": "string"
                 },
                 "gceClusterConfig": {
                     "$ref": "GceClusterConfig",
@@ -6286,6 +6536,33 @@
             },
             "type": "object"
         },
+        "CohortInfo": {
+            "description": "Information about the cohort that the workload belongs to.",
+            "id": "CohortInfo",
+            "properties": {
+                "cohort": {
+                    "description": "Output only. Final cohort that was used to tune the workload.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "cohortSource": {
+                    "description": "Output only. Source of the cohort.",
+                    "enum": [
+                        "COHORT_SOURCE_UNSPECIFIED",
+                        "USER_PROVIDED",
+                        "AIRFLOW"
+                    ],
+                    "enumDescriptions": [
+                        "Cohort source is unspecified.",
+                        "Indicates that the cohort was explicitly provided.",
+                        "Composed from the labels coming from Airflow/Composer."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ConfidentialInstanceConfig": {
             "description": "Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)",
             "id": "ConfidentialInstanceConfig",
@@ -6454,6 +6731,13 @@
             "description": "Specifies the config of boot disk and attached disk options for a group of VM instances.",
             "id": "DiskConfig",
             "properties": {
+                "attachedDiskConfigs": {
+                    "description": "Optional. A list of attached disk configs for a group of VM instances.",
+                    "items": {
+                        "$ref": "AttachedDiskConfig"
+                    },
+                    "type": "array"
+                },
                 "bootDiskProvisionedIops": {
                     "description": "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. This field is supported only if boot_disk_type is hyperdisk-balanced.",
                     "format": "int64",
@@ -7497,6 +7781,14 @@
             "description": "Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.",
             "id": "InstanceFlexibilityPolicy",
             "properties": {
+                "instanceMachineTypes": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Output only. A map of instance short name to machine type. The key is the short name of the Compute Engine instance, and the value is the full machine-type name (e.g., 'n1-standard-16'). See Machine types for more information on valid machine type strings.",
+                    "readOnly": true,
+                    "type": "object"
+                },
                 "instanceSelectionList": {
                     "description": "Optional. List of instance selection options that the group will use when creating new VMs.",
                     "items": {
@@ -9364,6 +9656,52 @@
             },
             "type": "object"
         },
+        "PySparkNotebookBatch": {
+            "description": "A configuration for running a PySpark Notebook batch workload.",
+            "id": "PySparkNotebookBatch",
+            "properties": {
+                "archiveUris": {
+                    "description": "Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "fileUris": {
+                    "description": "Optional. HCFS URIs of files to be placed in the working directory of each executor",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "jarFileUris": {
+                    "description": "Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "notebookFileUri": {
+                    "description": "Required. The HCFS URI of the notebook file to execute.",
+                    "type": "string"
+                },
+                "params": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. The parameters to pass to the notebook.",
+                    "type": "object"
+                },
+                "pythonFileUris": {
+                    "description": "Optional. HCFS URIs of Python files to pass to the PySpark framework.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Quantiles": {
             "description": "Quantile metrics data related to Tasks. Units can be seconds, bytes, milliseconds, etc depending on the message type.",
             "id": "Quantiles",
@@ -9864,6 +10202,11 @@
                 "approximateUsage": {
                     "$ref": "UsageMetrics",
                     "description": "Output only. Approximate workload resource usage, calculated when the workload completes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).Note: This metric calculation may change in the future, for example, to capture cumulative workload resource consumption during workload execution (see the Dataproc Serverless release notes (https://cloud.google.com/dataproc-serverless/docs/release-notes) for announcements, changes, fixes and other Dataproc developments).",
+                    "readOnly": true
+                },
+                "cohortInfo": {
+                    "$ref": "CohortInfo",
+                    "description": "Output only. Information about the cohort that the workload belongs to.",
                     "readOnly": true
                 },
                 "currentUsage": {
@@ -11093,6 +11436,13 @@
                 "desc": {
                     "type": "string"
                 },
+                "metadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Additional metadata for the spark plan graph cluster.",
+                    "type": "object"
+                },
                 "metrics": {
                     "items": {
                         "$ref": "SqlPlanMetric"
@@ -11136,6 +11486,13 @@
             "properties": {
                 "desc": {
                     "type": "string"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Additional metadata for the spark plan graph cluster.",
+                    "type": "object"
                 },
                 "metrics": {
                     "items": {

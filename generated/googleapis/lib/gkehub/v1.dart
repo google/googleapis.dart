@@ -216,11 +216,16 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -4194,6 +4199,10 @@ class CommonFleetDefaultMemberConfigSpec {
   }
 }
 
+/// Deprecated: Compliance Posture is no longer supported.
+///
+/// For more details, see
+/// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
 /// CompliancePostureConfig defines the settings needed to enable/disable
 /// features for the Compliance Posture.
 class CompliancePostureConfig {
@@ -5611,15 +5620,23 @@ class DefaultClusterConfig {
   /// Optional.
   BinaryAuthorizationConfig? binaryAuthorizationConfig;
 
-  /// Enable/Disable Compliance Posture features for the cluster.
+  /// Deprecated: Compliance Posture is no longer supported.
   ///
-  /// Note that on UpdateFleet, only full replacement of this field is allowed.
-  /// Users are not allowed for partial updates through field mask.
+  /// For more details, see
+  /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
+  /// Enable/Disable Compliance Posture features for the cluster. Note that on
+  /// UpdateFleet, only full replacement of this field is allowed. Users are not
+  /// allowed for partial updates through field mask.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   CompliancePostureConfig? compliancePostureConfig;
 
   /// Enable/Disable Security Posture features for the cluster.
+  ///
+  /// Optional.
   SecurityPostureConfig? securityPostureConfig;
 
   DefaultClusterConfig({
@@ -6861,8 +6878,9 @@ class KubernetesMetadata {
   /// Node providerID as reported by the first node in the list of nodes on the
   /// Kubernetes endpoint.
   ///
-  /// On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP),
-  /// the node_count will be zero and the node_provider_id will be empty.
+  /// On Kubernetes platforms that support zero-node clusters (like GKE on
+  /// Google Cloud), the node_count will be zero and the node_provider_id will
+  /// be empty.
   ///
   /// Output only.
   core.String? nodeProviderId;
@@ -7824,7 +7842,7 @@ class MembershipEndpoint {
   /// Optional.
   EdgeCluster? edgeCluster;
 
-  /// Specific information for a GKE-on-GCP cluster.
+  /// Specific information for a GKE on Google Cloud cluster.
   ///
   /// Optional.
   GkeCluster? gkeCluster;

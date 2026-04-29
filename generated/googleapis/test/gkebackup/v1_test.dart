@@ -121,6 +121,7 @@ api.Backup buildBackup() {
     o.labels = buildUnnamed2();
     o.manual = true;
     o.name = 'foo';
+    o.namespaceCount = 42;
     o.permissiveMode = true;
     o.podCount = 42;
     o.resourceCount = 42;
@@ -161,6 +162,7 @@ void checkBackup(api.Backup o) {
     checkUnnamed2(o.labels!);
     unittest.expect(o.manual!, unittest.isTrue);
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.namespaceCount!, unittest.equals(42));
     unittest.expect(o.permissiveMode!, unittest.isTrue);
     unittest.expect(o.podCount!, unittest.equals(42));
     unittest.expect(o.resourceCount!, unittest.equals(42));
@@ -311,6 +313,7 @@ api.BackupPlan buildBackupPlan() {
     o.labels = buildUnnamed4();
     o.lastSuccessfulBackupTime = 'foo';
     o.name = 'foo';
+    o.protectedNamespaceCount = 42;
     o.protectedPodCount = 42;
     o.retentionPolicy = buildRetentionPolicy();
     o.rpoRiskLevel = 42;
@@ -338,6 +341,7 @@ void checkBackupPlan(api.BackupPlan o) {
     checkUnnamed4(o.labels!);
     unittest.expect(o.lastSuccessfulBackupTime!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.protectedNamespaceCount!, unittest.equals(42));
     unittest.expect(o.protectedPodCount!, unittest.equals(42));
     checkRetentionPolicy(o.retentionPolicy!);
     unittest.expect(o.rpoRiskLevel!, unittest.equals(42));

@@ -846,8 +846,8 @@ class ProjectsLocationsProcessesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processes/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true and the process is not found, the request
-  /// succeeds but the server doesn't perform any actions.
+  /// [allowMissing] - Optional. If set to true and the process is not found,
+  /// the request succeeds but the server doesn't perform any actions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -929,15 +929,15 @@ class ProjectsLocationsProcessesResource {
   /// this collection of processes.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of processes to return. The service may
-  /// return fewer than this value. If unspecified, at most 50 processes are
-  /// returned. The maximum value is 100; values greater than 100 are cut to
-  /// 100.
+  /// [pageSize] - Optional. The maximum number of processes to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// processes are returned. The maximum value is 100; values greater than 100
+  /// are cut to 100.
   ///
-  /// [pageToken] - The page token received from a previous `ListProcesses`
-  /// call. Specify it to get the next page. When paginating, all other
-  /// parameters specified in this call must match the parameters of the call
-  /// that provided the page token.
+  /// [pageToken] - Optional. The page token received from a previous
+  /// `ListProcesses` call. Specify it to get the next page. When paginating,
+  /// all other parameters specified in this call must match the parameters of
+  /// the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -986,15 +986,15 @@ class ProjectsLocationsProcessesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processes/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true and the process is not found, the request
-  /// inserts it.
+  /// [allowMissing] - Optional. If set to true and the process is not found,
+  /// the request inserts it.
   ///
   /// [requestId] - Optional. A unique identifier for this request. Restricted
   /// to 36 ASCII characters. A random UUID is recommended. This request is
   /// idempotent only if a `request_id` is provided.
   ///
-  /// [updateMask] - The list of fields to update. Currently not used. The whole
-  /// message is updated.
+  /// [updateMask] - Optional. The list of fields to update. Currently not used.
+  /// The whole message is updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1102,8 +1102,8 @@ class ProjectsLocationsProcessesRunsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processes/\[^/\]+/runs/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true and the run is not found, the request
-  /// succeeds but the server doesn't perform any actions.
+  /// [allowMissing] - Optional. If set to true and the run is not found, the
+  /// request succeeds but the server doesn't perform any actions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1186,14 +1186,15 @@ class ProjectsLocationsProcessesRunsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processes/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of runs to return. The service may return
-  /// fewer than this value. If unspecified, at most 50 runs are returned. The
-  /// maximum value is 100; values greater than 100 are cut to 100.
+  /// [pageSize] - Optional. The maximum number of runs to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 runs are
+  /// returned. The maximum value is 100; values greater than 100 are cut to
+  /// 100.
   ///
-  /// [pageToken] - The page token received from a previous `ListRuns` call.
-  /// Specify it to get the next page. When paginating, all other parameters
-  /// specified in this call must match the parameters of the call that provided
-  /// the page token.
+  /// [pageToken] - Optional. The page token received from a previous `ListRuns`
+  /// call. Specify it to get the next page. When paginating, all other
+  /// parameters specified in this call must match the parameters of the call
+  /// that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1242,11 +1243,11 @@ class ProjectsLocationsProcessesRunsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processes/\[^/\]+/runs/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true and the run is not found, the request
-  /// creates it.
+  /// [allowMissing] - Optional. If set to true and the run is not found, the
+  /// request creates it.
   ///
-  /// [updateMask] - The list of fields to update. Currently not used. The whole
-  /// message is updated.
+  /// [updateMask] - Optional. The list of fields to update. Currently not used.
+  /// The whole message is updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1351,8 +1352,8 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processes/\[^/\]+/runs/\[^/\]+/lineageEvents/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true and the lineage event is not found, the
-  /// request succeeds but the server doesn't perform any actions.
+  /// [allowMissing] - Optional. If set to true and the lineage event is not
+  /// found, the request succeeds but the server doesn't perform any actions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1435,15 +1436,15 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processes/\[^/\]+/runs/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of lineage events to return. The service
-  /// may return fewer events than this value. If unspecified, at most 50 events
-  /// are returned. The maximum value is 100; values greater than 100 are cut to
-  /// 100.
+  /// [pageSize] - Optional. The maximum number of lineage events to return. The
+  /// service may return fewer events than this value. If unspecified, at most
+  /// 50 events are returned. The maximum value is 100; values greater than 100
+  /// are cut to 100.
   ///
-  /// [pageToken] - The page token received from a previous `ListLineageEvents`
-  /// call. Specify it to get the next page. When paginating, all other
-  /// parameters specified in this call must match the parameters of the call
-  /// that provided the page token.
+  /// [pageToken] - Optional. The page token received from a previous
+  /// `ListLineageEvents` call. Specify it to get the next page. When
+  /// paginating, all other parameters specified in this call must match the
+  /// parameters of the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1635,6 +1636,7 @@ class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRul
   /// Possible string values are:
   /// - "INTEGRATION_UNSPECIFIED" : Integration is Unspecified
   /// - "DATAPROC" : Dataproc
+  /// - "LOOKER_CORE" : Looker Core
   core.String? integration;
 
   GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector({
@@ -2090,6 +2092,8 @@ class GoogleCloudDatacatalogLineageV1Origin {
   /// - "LOOKER_STUDIO" : Looker Studio
   /// - "DATAPROC" : Dataproc
   /// - "VERTEX_AI" : Vertex AI
+  /// - "DATAFLOW" : Dataflow
+  /// - "LOOKER_CORE" : Looker Core
   core.String? sourceType;
 
   GoogleCloudDatacatalogLineageV1Origin({this.name, this.sourceType});

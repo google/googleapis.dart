@@ -581,6 +581,8 @@ class EventticketobjectResource {
     );
   }
 
+  /// Deprecated: Use Auto Linked Passes instead.
+  ///
   /// Modifies linked offer objects for the event ticket object with the given
   /// ID.
   ///
@@ -604,6 +606,9 @@ class EventticketobjectResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<EventTicketObject> modifylinkedofferobjects(
     ModifyLinkedOfferObjectsRequest request,
     core.String resourceId, {
@@ -3106,6 +3111,8 @@ class LoyaltyobjectResource {
     );
   }
 
+  /// Deprecated: Use Auto Linked Passes instead.
+  ///
   /// Modifies linked offer objects for the loyalty object with the given ID.
   ///
   /// [request] - The metadata request object.
@@ -3128,6 +3135,9 @@ class LoyaltyobjectResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<LoyaltyObject> modifylinkedofferobjects(
     ModifyLinkedOfferObjectsRequest request,
     core.String resourceId, {
@@ -6940,8 +6950,8 @@ class EventTicketClass {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the class. For a pass only ten will be displayed,
-  /// prioritizing those from the object.
+  /// Maximum of fifteen on the class. For a pass only fifteen will be
+  /// displayed, prioritizing those from the object.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Event venue details.
@@ -7608,7 +7618,8 @@ class EventTicketObject {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the object.
+  /// Maximum of fifteen on the object. For a pass only fifteen will be
+  /// displayed.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -8551,8 +8562,8 @@ class FlightClass {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the class. For a pass only ten will be displayed,
-  /// prioritizing those from the object.
+  /// Maximum of fifteen on the class. For a pass only fifteen will be
+  /// displayed, prioritizing those from the object.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -9234,7 +9245,8 @@ class FlightObject {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the object.
+  /// Maximum of fifteen on the object. For a pass only fifteen will be
+  /// displayed.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -9697,8 +9709,8 @@ class GenericClass {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the class. For a pass only ten will be displayed,
-  /// prioritizing those from the object.
+  /// Maximum of fifteen on the class. For a pass only fifteen will be
+  /// displayed, prioritizing those from the object.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// View Unlock Requirement options for the generic pass.
@@ -9937,22 +9949,28 @@ class GenericObject {
   /// Specify which `GenericType` the card belongs to.
   /// Possible string values are:
   /// - "GENERIC_TYPE_UNSPECIFIED" : Unspecified generic type.
-  /// - "GENERIC_SEASON_PASS" : Season pass
-  /// - "GENERIC_UTILITY_BILLS" : Utility bills
-  /// - "GENERIC_PARKING_PASS" : Parking pass
-  /// - "GENERIC_VOUCHER" : Voucher
-  /// - "GENERIC_GYM_MEMBERSHIP" : Gym membership cards
-  /// - "GENERIC_LIBRARY_MEMBERSHIP" : Library membership cards
-  /// - "GENERIC_RESERVATIONS" : Reservations
-  /// - "GENERIC_AUTO_INSURANCE" : Auto-insurance cards
-  /// - "GENERIC_HOME_INSURANCE" : Home-insurance cards
-  /// - "GENERIC_ENTRY_TICKET" : Entry tickets
-  /// - "GENERIC_RECEIPT" : Receipts
-  /// - "GENERIC_LOYALTY_CARD" : Loyalty cards. Please note that it is advisable
-  /// to use a dedicated Loyalty card pass type instead of this generic type. A
-  /// dedicated loyalty card pass type offers more features and functionality
-  /// than a generic pass type.
-  /// - "GENERIC_OTHER" : Other type
+  /// - "GENERIC_SEASON_PASS" : Represents a season pass.
+  /// - "GENERIC_UTILITY_BILLS" : Represents a utility bill.
+  /// - "GENERIC_PARKING_PASS" : Represents a parking pass.
+  /// - "GENERIC_VOUCHER" : Represents a voucher.
+  /// - "GENERIC_GYM_MEMBERSHIP" : Represents a gym membership card.
+  /// - "GENERIC_LIBRARY_MEMBERSHIP" : Represents a library card.
+  /// - "GENERIC_RESERVATIONS" : Represents a reservation.
+  /// - "GENERIC_AUTO_INSURANCE" : Represents an auto-insurance card.
+  /// - "GENERIC_HOME_INSURANCE" : Represents a home-insurance card.
+  /// - "GENERIC_ENTRY_TICKET" : Represents an entry ticket.
+  /// - "GENERIC_RECEIPT" : Represents a receipt.
+  /// - "GENERIC_LOYALTY_CARD" : Represents a loyalty card. Please note that it
+  /// is advisable to use a dedicated Loyalty card pass type instead of this
+  /// generic type. A dedicated loyalty card pass type offers more features and
+  /// functionality than a generic pass type.
+  /// - "GENERIC_BUSINESS_CARD" : Represents a business card.
+  /// - "GENERIC_BARCODE_PASS" : Represents a barcode pass.
+  /// - "GENERIC_MEMBERSHIP_CARD" : Represents a membership card.
+  /// - "GENERIC_STUDENT_CARD" : Represents a student card.
+  /// - "GENERIC_TRANSIT_PASS" : Represents a transit pass.
+  /// - "GENERIC_VEHICLE_REGISTRATION" : Represents a vehicle registration.
+  /// - "GENERIC_OTHER" : Represents another type of generic pass.
   core.String? genericType;
 
   /// Information that controls how passes are grouped together.
@@ -10108,7 +10126,8 @@ class GenericObject {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the object.
+  /// Maximum of fifteen on the object. For a pass only fifteen will be
+  /// displayed.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// The wide logo of the pass.
@@ -10657,8 +10676,8 @@ class GiftCardClass {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the class. For a pass only ten will be displayed,
-  /// prioritizing those from the object.
+  /// Maximum of fifteen on the class. For a pass only fifteen will be
+  /// displayed, prioritizing those from the object.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -11255,7 +11274,8 @@ class GiftCardObject {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the object.
+  /// Maximum of fifteen on the object. For a pass only fifteen will be
+  /// displayed.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -11969,9 +11989,12 @@ class JwtInsertResponse {
   }
 }
 
+/// A JWT representation of a pass.
 class JwtResource {
   /// A string representing a JWT of the format described at
   /// https://developers.google.com/wallet/reference/rest/v1/Jwt
+  ///
+  /// Required.
   core.String? jwt;
 
   JwtResource({this.jwt});
@@ -12544,8 +12567,8 @@ class LoyaltyClass {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the class. For a pass only ten will be displayed,
-  /// prioritizing those from the object.
+  /// Maximum of fifteen on the class. For a pass only fifteen will be
+  /// displayed, prioritizing those from the object.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -13198,7 +13221,8 @@ class LoyaltyObject {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the object.
+  /// Maximum of fifteen on the object. For a pass only fifteen will be
+  /// displayed.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -14771,8 +14795,8 @@ class OfferClass {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the class. For a pass only ten will be displayed,
-  /// prioritizing those from the object.
+  /// Maximum of fifteen on the class. For a pass only fifteen will be
+  /// displayed, prioritizing those from the object.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -15365,7 +15389,8 @@ class OfferObject {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the object.
+  /// Maximum of fifteen on the object. For a pass only fifteen will be
+  /// displayed.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -17494,8 +17519,8 @@ class TransitClass {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the class. For a pass only ten will be displayed,
-  /// prioritizing those from the object.
+  /// Maximum of fifteen on the class. For a pass only fifteen will be
+  /// displayed, prioritizing those from the object.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated
@@ -18345,7 +18370,8 @@ class TransitObject {
 
   /// Optional value added module data.
   ///
-  /// Maximum of ten on the object.
+  /// Maximum of fifteen on the object. For a pass only fifteen will be
+  /// displayed.
   core.List<ValueAddedModuleData>? valueAddedModuleData;
 
   /// Deprecated

@@ -15,7 +15,7 @@ package.
 
 #### Ad Exchange Buyer API II - `adexchangebuyer2/v2beta1`
 
-Accesses the latest features for managing Authorized Buyers accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.
+Access the latest features for managing Authorized Buyers accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.
 
 - [Original documentation](https://developers.google.com/authorized-buyers/apis/reference/rest/)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/adexchangebuyer2_v2beta1/adexchangebuyer2_v2beta1-library.html)

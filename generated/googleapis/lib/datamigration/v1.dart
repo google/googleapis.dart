@@ -181,11 +181,16 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -9045,6 +9050,12 @@ class PostgreSqlConnectionProfile {
   /// Optional.
   core.String? database;
 
+  /// If true, Database Migration Service will use IAM database authentication
+  /// to connect to the database.
+  ///
+  /// Optional.
+  core.bool? enableIamAuthentication;
+
   /// Forward SSH tunnel connectivity.
   ForwardSshTunnelConnectivity? forwardSshConnectivity;
 
@@ -9108,6 +9119,7 @@ class PostgreSqlConnectionProfile {
     this.alloydbClusterId,
     this.cloudSqlId,
     this.database,
+    this.enableIamAuthentication,
     this.forwardSshConnectivity,
     this.host,
     this.networkArchitecture,
@@ -9126,6 +9138,7 @@ class PostgreSqlConnectionProfile {
         alloydbClusterId: json_['alloydbClusterId'] as core.String?,
         cloudSqlId: json_['cloudSqlId'] as core.String?,
         database: json_['database'] as core.String?,
+        enableIamAuthentication: json_['enableIamAuthentication'] as core.bool?,
         forwardSshConnectivity: json_.containsKey('forwardSshConnectivity')
             ? ForwardSshTunnelConnectivity.fromJson(
                 json_['forwardSshConnectivity']
@@ -9168,6 +9181,7 @@ class PostgreSqlConnectionProfile {
     final alloydbClusterId = this.alloydbClusterId;
     final cloudSqlId = this.cloudSqlId;
     final database = this.database;
+    final enableIamAuthentication = this.enableIamAuthentication;
     final forwardSshConnectivity = this.forwardSshConnectivity;
     final host = this.host;
     final networkArchitecture = this.networkArchitecture;
@@ -9184,6 +9198,7 @@ class PostgreSqlConnectionProfile {
       'alloydbClusterId': ?alloydbClusterId,
       'cloudSqlId': ?cloudSqlId,
       'database': ?database,
+      'enableIamAuthentication': ?enableIamAuthentication,
       'forwardSshConnectivity': ?forwardSshConnectivity,
       'host': ?host,
       'networkArchitecture': ?networkArchitecture,
@@ -11175,7 +11190,7 @@ class SslConfig {
   /// - "SERVER_ONLY" : Only 'ca_certificate' specified.
   /// - "SERVER_CLIENT" : Both server ('ca_certificate'), and client
   /// ('client_key', 'client_certificate') specified.
-  /// - "REQUIRED" : Mandates SSL encryption for all connections. This doesn’t
+  /// - "REQUIRED" : Mandates SSL encryption for all connections. This does not
   /// require certificate verification.
   /// - "NONE" : Connection is not encrypted.
   core.String? type;

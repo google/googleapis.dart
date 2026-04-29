@@ -229,6 +229,12 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -443,6 +449,103 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetches Toolspec Override for a connection for the given list of tools.
+  ///
+  /// Returns results from the db if the tool is already present.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchConnectionToolspecOverrideResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchConnectionToolspecOverrideResponse> fetchToolspecOverride(
+    FetchConnectionToolspecOverrideRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':fetchToolspecOverride';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return FetchConnectionToolspecOverrideResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Generates Toolspec Override for a connection for the given list of
+  /// entityTypes and operations.
+  ///
+  /// Returns results from the db if the entityType and operation are already
+  /// present.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateConnectionToolspecOverrideResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateConnectionToolspecOverrideResponse>
+  generateToolspecOverride(
+    GenerateConnectionToolspecOverrideRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':generateToolspecOverride';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenerateConnectionToolspecOverrideResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single Connection.
@@ -698,6 +801,52 @@ class ProjectsLocationsConnectionsResource {
     );
   }
 
+  /// Updates Toolspec Override for a connection with the admin provided
+  /// descriptions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ModifyConnectionToolspecOverrideResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ModifyConnectionToolspecOverrideResponse> modifyToolspecOverride(
+    ModifyConnectionToolspecOverrideRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':modifyToolspecOverride';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ModifyConnectionToolspecOverrideResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Updates the parameters of a single Connection.
   ///
   /// [request] - The metadata request object.
@@ -751,6 +900,49 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes all Toolspec Override for a connection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> removeToolspecOverride(
+    RemoveConnectionToolspecOverrideRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':removeToolspecOverride';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// RepaiEventing tries to repair eventing related event subscriptions.
@@ -4533,12 +4725,18 @@ typedef CancelOperationRequest = $Empty;
 /// or AuthConfig.
 class ConfigVariable {
   /// Value is a bool.
+  ///
+  /// Optional.
   core.bool? boolValue;
 
   /// Value is a Encryption Key.
+  ///
+  /// Optional.
   EncryptionKey? encryptionKeyValue;
 
   /// Value is an integer
+  ///
+  /// Optional.
   core.String? intValue;
 
   /// Key of the config variable.
@@ -4547,9 +4745,13 @@ class ConfigVariable {
   core.String? key;
 
   /// Value is a secret.
+  ///
+  /// Optional.
   Secret? secretValue;
 
   /// Value is a string.
+  ///
+  /// Optional.
   core.String? stringValue;
 
   ConfigVariable({
@@ -6612,9 +6814,13 @@ typedef Destination = $Destination;
 /// Define the Connectors target endpoint.
 class DestinationConfig {
   /// The destinations for the key.
+  ///
+  /// Optional.
   core.List<Destination>? destinations;
 
   /// The key is the destination identifier that is supported by the Connector.
+  ///
+  /// Optional.
   core.String? key;
 
   DestinationConfig({this.destinations, this.key});
@@ -7966,6 +8172,13 @@ class EventSubscription {
   /// Optional.
   core.String? eventTypeId;
 
+  /// Filter for the event subscription.
+  ///
+  /// Incoming events are filtered based on the filter expression.
+  ///
+  /// Optional.
+  core.String? filter;
+
   /// JMS is the source for the event listener.
   ///
   /// Optional.
@@ -8008,6 +8221,7 @@ class EventSubscription {
     this.createTime,
     this.destinations,
     this.eventTypeId,
+    this.filter,
     this.jms,
     this.name,
     this.status,
@@ -8026,6 +8240,7 @@ class EventSubscription {
               )
             : null,
         eventTypeId: json_['eventTypeId'] as core.String?,
+        filter: json_['filter'] as core.String?,
         jms: json_.containsKey('jms')
             ? JMS.fromJson(json_['jms'] as core.Map<core.String, core.dynamic>)
             : null,
@@ -8051,6 +8266,7 @@ class EventSubscription {
     final createTime = this.createTime;
     final destinations = this.destinations;
     final eventTypeId = this.eventTypeId;
+    final filter = this.filter;
     final jms = this.jms;
     final name = this.name;
     final status = this.status;
@@ -8062,6 +8278,7 @@ class EventSubscription {
       'createTime': ?createTime,
       'destinations': ?destinations,
       'eventTypeId': ?eventTypeId,
+      'filter': ?filter,
       'jms': ?jms,
       'name': ?name,
       'status': ?status,
@@ -8268,12 +8485,17 @@ class EventType {
   }
 }
 
-/// Eventing Configuration of a connection next: 19
+/// Eventing Configuration of a connection next: 20
 class EventingConfig {
   /// Additional eventing related field values
   ///
   /// Optional.
   core.List<ConfigVariable>? additionalVariables;
+
+  /// List of allowed event types for the connection.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedEventTypes;
 
   /// Auth details for the webhook adapter.
   ///
@@ -8299,7 +8521,7 @@ class EventingConfig {
   ///
   /// This is used only when private connectivity is enabled.
   ///
-  /// Optional.
+  /// Output only.
   core.String? eventsListenerIngressEndpoint;
 
   /// Auth details for the event listener.
@@ -8335,6 +8557,7 @@ class EventingConfig {
 
   EventingConfig({
     this.additionalVariables,
+    this.allowedEventTypes,
     this.authConfig,
     this.deadLetterConfig,
     this.enrichmentConfig,
@@ -8356,6 +8579,9 @@ class EventingConfig {
                 value as core.Map<core.String, core.dynamic>,
               ),
             )
+            .toList(),
+        allowedEventTypes: (json_['allowedEventTypes'] as core.List?)
+            ?.map((value) => value as core.String)
             .toList(),
         authConfig: json_.containsKey('authConfig')
             ? AuthConfig.fromJson(
@@ -8411,6 +8637,7 @@ class EventingConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final additionalVariables = this.additionalVariables;
+    final allowedEventTypes = this.allowedEventTypes;
     final authConfig = this.authConfig;
     final deadLetterConfig = this.deadLetterConfig;
     final enrichmentConfig = this.enrichmentConfig;
@@ -8425,6 +8652,7 @@ class EventingConfig {
     final sslConfig = this.sslConfig;
     return {
       'additionalVariables': ?additionalVariables,
+      'allowedEventTypes': ?allowedEventTypes,
       'authConfig': ?authConfig,
       'deadLetterConfig': ?deadLetterConfig,
       'enrichmentConfig': ?enrichmentConfig,
@@ -8905,6 +9133,55 @@ class FetchAuthSchemaResponse {
   }
 }
 
+/// Request message for FetchConnectionToolspecOverride API.
+class FetchConnectionToolspecOverrideRequest {
+  /// List of tools for which the tool spec override is to be generated.
+  ///
+  /// Required.
+  core.List<ToolName>? toolNames;
+
+  FetchConnectionToolspecOverrideRequest({this.toolNames});
+
+  FetchConnectionToolspecOverrideRequest.fromJson(core.Map json_)
+    : this(
+        toolNames: (json_['toolNames'] as core.List?)
+            ?.map(
+              (value) => ToolName.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolNames = this.toolNames;
+    return {'toolNames': ?toolNames};
+  }
+}
+
+/// Response message for FetchConnectionToolspecOverride API.
+class FetchConnectionToolspecOverrideResponse {
+  /// Toolspec overrides for the connection.
+  ToolspecOverride? toolspecOverride;
+
+  FetchConnectionToolspecOverrideResponse({this.toolspecOverride});
+
+  FetchConnectionToolspecOverrideResponse.fromJson(core.Map json_)
+    : this(
+        toolspecOverride: json_.containsKey('toolspecOverride')
+            ? ToolspecOverride.fromJson(
+                json_['toolspecOverride']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolspecOverride = this.toolspecOverride;
+    return {'toolspecOverride': ?toolspecOverride};
+  }
+}
+
 /// Metadata of an entity field.
 class Field {
   /// The following map contains fields that are not explicitly mentioned
@@ -9102,6 +9379,55 @@ class FieldComparison {
       'key': ?key,
       'stringValue': ?stringValue,
     };
+  }
+}
+
+/// Request message for GenerateConnectionToolspecOverride API.
+class GenerateConnectionToolspecOverrideRequest {
+  /// List of tools for which the tool spec override is to be generated.
+  ///
+  /// Required.
+  core.List<ToolName>? toolNames;
+
+  GenerateConnectionToolspecOverrideRequest({this.toolNames});
+
+  GenerateConnectionToolspecOverrideRequest.fromJson(core.Map json_)
+    : this(
+        toolNames: (json_['toolNames'] as core.List?)
+            ?.map(
+              (value) => ToolName.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolNames = this.toolNames;
+    return {'toolNames': ?toolNames};
+  }
+}
+
+/// Response message for GenerateConnectionToolspecOverride API.
+class GenerateConnectionToolspecOverrideResponse {
+  /// Toolspec overrides for the connection.
+  ToolspecOverride? toolspecOverride;
+
+  GenerateConnectionToolspecOverrideResponse({this.toolspecOverride});
+
+  GenerateConnectionToolspecOverrideResponse.fromJson(core.Map json_)
+    : this(
+        toolspecOverride: json_.containsKey('toolspecOverride')
+            ? ToolspecOverride.fromJson(
+                json_['toolspecOverride']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolspecOverride = this.toolspecOverride;
+    return {'toolspecOverride': ?toolspecOverride};
   }
 }
 
@@ -9340,6 +9666,12 @@ class JsonSchema {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? enum_;
 
+  /// Whether the maximum number value is exclusive.
+  core.bool? exclusiveMaximum;
+
+  /// Whether the minimum number value is exclusive.
+  core.bool? exclusiveMinimum;
+
   /// Format of the value as per
   /// https://json-schema.org/understanding-json-schema/reference/string.html#format
   core.String? format;
@@ -9400,6 +9732,36 @@ class JsonSchema {
   /// instead.
   core.String? jdbcType;
 
+  /// Maximum number of items in the array field.
+  core.int? maxItems;
+
+  /// Maximum length of the string field.
+  core.int? maxLength;
+
+  /// Maximum value of the number field.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? maximum;
+
+  /// Minimum number of items in the array field.
+  core.int? minItems;
+
+  /// Minimum length of the string field.
+  core.int? minLength;
+
+  /// Minimum value of the number field.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? minimum;
+
+  /// Regex pattern of the string field.
+  ///
+  /// This is a string value that describes the regular expression that the
+  /// string value should match.
+  core.String? pattern;
+
   /// The child schemas, applicable only if this is of type `object`.
   ///
   /// The key is the name of the property and the value is the json schema that
@@ -9412,17 +9774,30 @@ class JsonSchema {
   /// JSON Schema Validation: A Vocabulary for Structural Validation of JSON
   core.List<core.String>? type;
 
+  /// Whether the items in the array field are unique.
+  core.bool? uniqueItems;
+
   JsonSchema({
     this.additionalDetails,
     this.default_,
     this.description,
     this.enum_,
+    this.exclusiveMaximum,
+    this.exclusiveMinimum,
     this.format,
     this.items,
     this.jdbcType,
+    this.maxItems,
+    this.maxLength,
+    this.maximum,
+    this.minItems,
+    this.minLength,
+    this.minimum,
+    this.pattern,
     this.properties,
     this.required,
     this.type,
+    this.uniqueItems,
   });
 
   JsonSchema.fromJson(core.Map json_)
@@ -9433,6 +9808,8 @@ class JsonSchema {
         default_: json_['default'],
         description: json_['description'] as core.String?,
         enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
+        exclusiveMaximum: json_['exclusiveMaximum'] as core.bool?,
+        exclusiveMinimum: json_['exclusiveMinimum'] as core.bool?,
         format: json_['format'] as core.String?,
         items: json_.containsKey('items')
             ? JsonSchema.fromJson(
@@ -9440,6 +9817,13 @@ class JsonSchema {
               )
             : null,
         jdbcType: json_['jdbcType'] as core.String?,
+        maxItems: json_['maxItems'] as core.int?,
+        maxLength: json_['maxLength'] as core.int?,
+        maximum: json_['maximum'],
+        minItems: json_['minItems'] as core.int?,
+        minLength: json_['minLength'] as core.int?,
+        minimum: json_['minimum'],
+        pattern: json_['pattern'] as core.String?,
         properties:
             (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(
@@ -9455,6 +9839,7 @@ class JsonSchema {
         type: (json_['type'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        uniqueItems: json_['uniqueItems'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -9462,23 +9847,43 @@ class JsonSchema {
     final default_ = this.default_;
     final description = this.description;
     final enum_ = this.enum_;
+    final exclusiveMaximum = this.exclusiveMaximum;
+    final exclusiveMinimum = this.exclusiveMinimum;
     final format = this.format;
     final items = this.items;
     final jdbcType = this.jdbcType;
+    final maxItems = this.maxItems;
+    final maxLength = this.maxLength;
+    final maximum = this.maximum;
+    final minItems = this.minItems;
+    final minLength = this.minLength;
+    final minimum = this.minimum;
+    final pattern = this.pattern;
     final properties = this.properties;
     final required = this.required;
     final type = this.type;
+    final uniqueItems = this.uniqueItems;
     return {
       'additionalDetails': ?additionalDetails,
       'default': ?default_,
       'description': ?description,
       'enum': ?enum_,
+      'exclusiveMaximum': ?exclusiveMaximum,
+      'exclusiveMinimum': ?exclusiveMinimum,
       'format': ?format,
       'items': ?items,
       'jdbcType': ?jdbcType,
+      'maxItems': ?maxItems,
+      'maxLength': ?maxLength,
+      'maximum': ?maximum,
+      'minItems': ?minItems,
+      'minLength': ?minLength,
+      'minimum': ?minimum,
+      'pattern': ?pattern,
       'properties': ?properties,
       'required': ?required,
       'type': ?type,
+      'uniqueItems': ?uniqueItems,
     };
   }
 }
@@ -10386,6 +10791,54 @@ class MarketplaceConnectorDetails {
       'marketplaceProductUri': ?marketplaceProductUri,
       'partner': ?partner,
     };
+  }
+}
+
+/// Request message for ModifyConnectionToolspecOverride API.
+class ModifyConnectionToolspecOverrideRequest {
+  /// Toolspec overrides to be modified.
+  ///
+  /// Required.
+  ToolspecOverride? toolspecOverride;
+
+  ModifyConnectionToolspecOverrideRequest({this.toolspecOverride});
+
+  ModifyConnectionToolspecOverrideRequest.fromJson(core.Map json_)
+    : this(
+        toolspecOverride: json_.containsKey('toolspecOverride')
+            ? ToolspecOverride.fromJson(
+                json_['toolspecOverride']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolspecOverride = this.toolspecOverride;
+    return {'toolspecOverride': ?toolspecOverride};
+  }
+}
+
+/// Response message for ModifyConnectionToolspecOverride API.
+class ModifyConnectionToolspecOverrideResponse {
+  /// Toolspec overrides for the connection.
+  ToolspecOverride? toolspecOverrides;
+
+  ModifyConnectionToolspecOverrideResponse({this.toolspecOverrides});
+
+  ModifyConnectionToolspecOverrideResponse.fromJson(core.Map json_)
+    : this(
+        toolspecOverrides: json_.containsKey('toolspecOverrides')
+            ? ToolspecOverride.fromJson(
+                json_['toolspecOverrides']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final toolspecOverrides = this.toolspecOverrides;
+    return {'toolspecOverrides': ?toolspecOverrides};
   }
 }
 
@@ -11521,6 +11974,9 @@ class RegionalSettings {
     };
   }
 }
+
+/// Request message for RemoveConnectionToolspecOverride API.
+typedef RemoveConnectionToolspecOverrideRequest = $Empty;
 
 /// Request message for ConnectorsService.RepairEventing
 typedef RepairEventingRequest = $Empty;
@@ -12671,6 +13127,94 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Tool name for which the tool spec override is to be generated.
+class ToolName {
+  /// Entity type name for which the tool was generated.
+  ///
+  /// Optional.
+  core.String? entityType;
+
+  /// Tool name that was generated in the list tools call.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Operation for which the tool was generated.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OPERATION_UNSPECIFIED" : Operation unspecified.
+  /// - "LIST" : LIST entities.
+  /// - "GET" : GET entity.
+  /// - "CREATE" : CREATE entity.
+  /// - "UPDATE" : UPDATE entity.
+  /// - "DELETE" : DELETE entity.
+  core.String? operation;
+
+  ToolName({this.entityType, this.name, this.operation});
+
+  ToolName.fromJson(core.Map json_)
+    : this(
+        entityType: json_['entityType'] as core.String?,
+        name: json_['name'] as core.String?,
+        operation: json_['operation'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entityType = this.entityType;
+    final name = this.name;
+    final operation = this.operation;
+    return {'entityType': ?entityType, 'name': ?name, 'operation': ?operation};
+  }
+}
+
+/// Toolspec overrides for a connection only holds the information that is to be
+/// displayed in the UI for admins.
+class ToolspecOverride {
+  /// Created time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// List of tools defined in the tool spec.
+  ///
+  /// Marking this field as required as this is the only field that is editable
+  /// by the user in modify API so we should have at least one tool in the list.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? tools;
+
+  /// Updated time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ToolspecOverride({this.createTime, this.tools, this.updateTime});
+
+  ToolspecOverride.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        tools: (json_['tools'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final tools = this.tools;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'tools': ?tools,
+      'updateTime': ?updateTime,
+    };
+  }
+}
 
 /// * TrafficShapingConfig defines the configuration for shaping API traffic by
 /// specifying a quota limit and the duration over which this limit is enforced.

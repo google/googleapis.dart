@@ -167,6 +167,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -3715,6 +3726,297 @@ class AdvanceRolloutRule {
   }
 }
 
+/// AlertPolicyCheck configures a set of Cloud Monitoring alerting policies that
+/// will be periodically polled for alerts.
+///
+/// If any of the listed policies have an active alert, the analysis check will
+/// fail.
+class AlertPolicyCheck {
+  /// The Cloud Monitoring Alert Policies to check for active alerts.
+  ///
+  /// Format is `projects/{project}/alertPolicies/{alert_policy}`.
+  ///
+  /// Required.
+  core.List<core.String>? alertPolicies;
+
+  /// The ID of the analysis check.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// A set of labels to filter active alerts.
+  ///
+  /// If set, only alerts having all of the specified labels will be considered.
+  /// Otherwise, all active alerts will be considered.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  AlertPolicyCheck({this.alertPolicies, this.id, this.labels});
+
+  AlertPolicyCheck.fromJson(core.Map json_)
+    : this(
+        alertPolicies: (json_['alertPolicies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        id: json_['id'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertPolicies = this.alertPolicies;
+    final id = this.id;
+    final labels = this.labels;
+    return {'alertPolicies': ?alertPolicies, 'id': ?id, 'labels': ?labels};
+  }
+}
+
+/// AlertPolicyCheckStatus contains information specific to a single run of an
+/// alert policy check.
+class AlertPolicyCheckStatus {
+  /// The alert policies that this analysis monitors.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/alertPolicies/{alertPolicy}`.
+  ///
+  /// Output only.
+  core.List<core.String>? alertPolicies;
+
+  /// The alert policies that were found to be firing during this check.
+  ///
+  /// This will be empty if no incidents were found.
+  ///
+  /// Output only.
+  core.List<FailedAlertPolicy>? failedAlertPolicies;
+
+  /// Additional information about the alert policy check failure, if available.
+  ///
+  /// This will be empty if the alert policy check succeeded.
+  ///
+  /// Output only.
+  core.String? failureMessage;
+
+  /// The ID of this analysis.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The resolved labels used to filter for specific incidents.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? labels;
+
+  AlertPolicyCheckStatus({
+    this.alertPolicies,
+    this.failedAlertPolicies,
+    this.failureMessage,
+    this.id,
+    this.labels,
+  });
+
+  AlertPolicyCheckStatus.fromJson(core.Map json_)
+    : this(
+        alertPolicies: (json_['alertPolicies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        failedAlertPolicies: (json_['failedAlertPolicies'] as core.List?)
+            ?.map(
+              (value) => FailedAlertPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        failureMessage: json_['failureMessage'] as core.String?,
+        id: json_['id'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertPolicies = this.alertPolicies;
+    final failedAlertPolicies = this.failedAlertPolicies;
+    final failureMessage = this.failureMessage;
+    final id = this.id;
+    final labels = this.labels;
+    return {
+      'alertPolicies': ?alertPolicies,
+      'failedAlertPolicies': ?failedAlertPolicies,
+      'failureMessage': ?failureMessage,
+      'id': ?id,
+      'labels': ?labels,
+    };
+  }
+}
+
+/// Analysis contains the configuration for the set of analyses to be performed
+/// on the target.
+class Analysis {
+  /// Custom analysis checks from 3P metric providers.
+  ///
+  /// Optional.
+  core.List<CustomCheck>? customChecks;
+
+  /// The amount of time in minutes the analysis on the target will last.
+  ///
+  /// If all analysis checks have successfully completed before the specified
+  /// duration, the analysis is successful. If a check is still running while
+  /// the specified duration passes, it will wait for that check to complete to
+  /// determine if the analysis is successful. The maximum duration is 48 hours.
+  ///
+  /// Required.
+  core.String? duration;
+
+  /// Google Cloud - based analysis checks.
+  ///
+  /// Optional.
+  GoogleCloudAnalysis? googleCloud;
+
+  Analysis({this.customChecks, this.duration, this.googleCloud});
+
+  Analysis.fromJson(core.Map json_)
+    : this(
+        customChecks: (json_['customChecks'] as core.List?)
+            ?.map(
+              (value) => CustomCheck.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        duration: json_['duration'] as core.String?,
+        googleCloud: json_.containsKey('googleCloud')
+            ? GoogleCloudAnalysis.fromJson(
+                json_['googleCloud'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final customChecks = this.customChecks;
+    final duration = this.duration;
+    final googleCloud = this.googleCloud;
+    return {
+      'customChecks': ?customChecks,
+      'duration': ?duration,
+      'googleCloud': ?googleCloud,
+    };
+  }
+}
+
+/// An analysis Job.
+class AnalysisJob {
+  /// Custom analysis checks from 3P metric providers that are run as part of
+  /// the analysis Job.
+  ///
+  /// Output only.
+  core.List<CustomCheck>? customChecks;
+
+  /// The amount of time in minutes the analysis Job will run, up to a maximum
+  /// of 48 hours.
+  ///
+  /// If any check in this Job is still running when the duration ends, the Job
+  /// keeps running until that check completes.
+  ///
+  /// Output only.
+  core.String? duration;
+
+  /// Google Cloud - based analysis checks that are run as part of the analysis
+  /// Job.
+  ///
+  /// Output only.
+  GoogleCloudAnalysis? googleCloud;
+
+  AnalysisJob({this.customChecks, this.duration, this.googleCloud});
+
+  AnalysisJob.fromJson(core.Map json_)
+    : this(
+        customChecks: (json_['customChecks'] as core.List?)
+            ?.map(
+              (value) => CustomCheck.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        duration: json_['duration'] as core.String?,
+        googleCloud: json_.containsKey('googleCloud')
+            ? GoogleCloudAnalysis.fromJson(
+                json_['googleCloud'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final customChecks = this.customChecks;
+    final duration = this.duration;
+    final googleCloud = this.googleCloud;
+    return {
+      'customChecks': ?customChecks,
+      'duration': ?duration,
+      'googleCloud': ?googleCloud,
+    };
+  }
+}
+
+/// AnalysisJobRun contains information specific to an analysis `JobRun`.
+class AnalysisJobRun {
+  /// The status of the running alert policy checks configured for this
+  /// analysis.
+  ///
+  /// Output only.
+  core.List<AlertPolicyCheckStatus>? alertPolicyAnalyses;
+
+  /// The status of the running custom checks configured for this analysis.
+  ///
+  /// Output only.
+  core.List<CustomCheckStatus>? customCheckAnalyses;
+
+  /// The ID of the configured check that failed.
+  ///
+  /// This will always be blank while the analysis is in progress or if it
+  /// succeeded.
+  ///
+  /// Output only.
+  core.String? failedCheckId;
+
+  AnalysisJobRun({
+    this.alertPolicyAnalyses,
+    this.customCheckAnalyses,
+    this.failedCheckId,
+  });
+
+  AnalysisJobRun.fromJson(core.Map json_)
+    : this(
+        alertPolicyAnalyses: (json_['alertPolicyAnalyses'] as core.List?)
+            ?.map(
+              (value) => AlertPolicyCheckStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        customCheckAnalyses: (json_['customCheckAnalyses'] as core.List?)
+            ?.map(
+              (value) => CustomCheckStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        failedCheckId: json_['failedCheckId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertPolicyAnalyses = this.alertPolicyAnalyses;
+    final customCheckAnalyses = this.customCheckAnalyses;
+    final failedCheckId = this.failedCheckId;
+    return {
+      'alertPolicyAnalyses': ?alertPolicyAnalyses,
+      'customCheckAnalyses': ?customCheckAnalyses,
+      'failedCheckId': ?failedCheckId,
+    };
+  }
+}
+
 /// Information specifying an Anthos Cluster.
 class AnthosCluster {
   /// Membership of the GKE Hub-registered cluster to which to apply the
@@ -4683,6 +4985,13 @@ class Canary {
 
 /// CanaryDeployment represents the canary deployment configuration
 class CanaryDeployment {
+  /// Configuration for the analysis job.
+  ///
+  /// If configured, the analysis will run after each percentage deployment.
+  ///
+  /// Optional.
+  Analysis? analysis;
+
   /// The percentage based deployments that will occur as a part of a `Rollout`.
   ///
   /// List is expected in ascending order and each integer n is 0 \<= n \< 100.
@@ -4712,15 +5021,29 @@ class CanaryDeployment {
   /// Optional.
   core.bool? verify;
 
+  /// Configuration for the verify job.
+  ///
+  /// Cannot be set if `verify` is set to true.
+  ///
+  /// Optional.
+  Verify? verifyConfig;
+
   CanaryDeployment({
+    this.analysis,
     this.percentages,
     this.postdeploy,
     this.predeploy,
     this.verify,
+    this.verifyConfig,
   });
 
   CanaryDeployment.fromJson(core.Map json_)
     : this(
+        analysis: json_.containsKey('analysis')
+            ? Analysis.fromJson(
+                json_['analysis'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         percentages: (json_['percentages'] as core.List?)
             ?.map((value) => value as core.int)
             .toList(),
@@ -4735,18 +5058,27 @@ class CanaryDeployment {
               )
             : null,
         verify: json_['verify'] as core.bool?,
+        verifyConfig: json_.containsKey('verifyConfig')
+            ? Verify.fromJson(
+                json_['verifyConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final analysis = this.analysis;
     final percentages = this.percentages;
     final postdeploy = this.postdeploy;
     final predeploy = this.predeploy;
     final verify = this.verify;
+    final verifyConfig = this.verifyConfig;
     return {
+      'analysis': ?analysis,
       'percentages': ?percentages,
       'postdeploy': ?postdeploy,
       'predeploy': ?predeploy,
       'verify': ?verify,
+      'verifyConfig': ?verifyConfig,
     };
   }
 }
@@ -4899,6 +5231,17 @@ class CloudRunMetadata {
   /// Output only.
   core.String? job;
 
+  /// The previous Cloud Run Revision name associated with a `Rollout`.
+  ///
+  /// Only set when a canary deployment strategy is configured. Format for
+  /// service is
+  /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}.
+  /// Format for worker pool is
+  /// projects/{project}/locations/{location}/workerPools/{workerpool}/revisions/{revision}.
+  ///
+  /// Output only.
+  core.String? previousRevision;
+
   /// The Cloud Run Revision id associated with a `Rollout`.
   ///
   /// Output only.
@@ -4916,28 +5259,49 @@ class CloudRunMetadata {
   /// Output only.
   core.List<core.String>? serviceUrls;
 
-  CloudRunMetadata({this.job, this.revision, this.service, this.serviceUrls});
+  /// The Cloud Run worker pool associated with a `Rollout`.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
+  ///
+  /// Output only.
+  core.String? workerPool;
+
+  CloudRunMetadata({
+    this.job,
+    this.previousRevision,
+    this.revision,
+    this.service,
+    this.serviceUrls,
+    this.workerPool,
+  });
 
   CloudRunMetadata.fromJson(core.Map json_)
     : this(
         job: json_['job'] as core.String?,
+        previousRevision: json_['previousRevision'] as core.String?,
         revision: json_['revision'] as core.String?,
         service: json_['service'] as core.String?,
         serviceUrls: (json_['serviceUrls'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        workerPool: json_['workerPool'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final job = this.job;
+    final previousRevision = this.previousRevision;
     final revision = this.revision;
     final service = this.service;
     final serviceUrls = this.serviceUrls;
+    final workerPool = this.workerPool;
     return {
       'job': ?job,
+      'previousRevision': ?previousRevision,
       'revision': ?revision,
       'service': ?service,
       'serviceUrls': ?serviceUrls,
+      'workerPool': ?workerPool,
     };
   }
 }
@@ -4945,6 +5309,21 @@ class CloudRunMetadata {
 /// CloudRunRenderMetadata contains Cloud Run information associated with a
 /// `Release` render.
 class CloudRunRenderMetadata {
+  /// The name of the Cloud Run Job in the rendered manifest.
+  ///
+  /// Format is `projects/{project}/locations/{location}/jobs/{job}`.
+  ///
+  /// Output only.
+  core.String? job;
+
+  /// The name of the Cloud Run Revision in the rendered manifest.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/services/{service}/revisions/{revision}`.
+  ///
+  /// Output only.
+  core.String? revision;
+
   /// The name of the Cloud Run Service in the rendered manifest.
   ///
   /// Format is `projects/{project}/locations/{location}/services/{service}`.
@@ -4952,14 +5331,40 @@ class CloudRunRenderMetadata {
   /// Output only.
   core.String? service;
 
-  CloudRunRenderMetadata({this.service});
+  /// The name of the Cloud Run Worker Pool in the rendered manifest.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
+  ///
+  /// Output only.
+  core.String? workerPool;
+
+  CloudRunRenderMetadata({
+    this.job,
+    this.revision,
+    this.service,
+    this.workerPool,
+  });
 
   CloudRunRenderMetadata.fromJson(core.Map json_)
-    : this(service: json_['service'] as core.String?);
+    : this(
+        job: json_['job'] as core.String?,
+        revision: json_['revision'] as core.String?,
+        service: json_['service'] as core.String?,
+        workerPool: json_['workerPool'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final job = this.job;
+    final revision = this.revision;
     final service = this.service;
-    return {'service': ?service};
+    final workerPool = this.workerPool;
+    return {
+      'job': ?job,
+      'revision': ?revision,
+      'service': ?service,
+      'workerPool': ?workerPool,
+    };
   }
 }
 
@@ -5023,6 +5428,58 @@ class Config {
   }
 }
 
+/// This task is represented by a container that is executed in the Cloud Build
+/// execution environment.
+class ContainerTask {
+  /// Args is the container arguments to use.
+  ///
+  /// This overrides the default arguments defined in the container image.
+  ///
+  /// Optional.
+  core.List<core.String>? args;
+
+  /// Command is the container entrypoint to use.
+  ///
+  /// This overrides the default entrypoint defined in the container image.
+  ///
+  /// Optional.
+  core.List<core.String>? command;
+
+  /// Environment variables that are set in the container.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? env;
+
+  /// Image is the container image to use.
+  ///
+  /// Required.
+  core.String? image;
+
+  ContainerTask({this.args, this.command, this.env, this.image});
+
+  ContainerTask.fromJson(core.Map json_)
+    : this(
+        args: (json_['args'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        command: (json_['command'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        env: (json_['env'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        image: json_['image'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final args = this.args;
+    final command = this.command;
+    final env = this.env;
+    final image = this.image;
+    return {'args': ?args, 'command': ?command, 'env': ?env, 'image': ?image};
+  }
+}
+
 /// A createChildRollout Job.
 typedef CreateChildRolloutJob = $Empty;
 
@@ -5082,6 +5539,153 @@ class CustomCanaryDeployment {
   core.Map<core.String, core.dynamic> toJson() {
     final phaseConfigs = this.phaseConfigs;
     return {'phaseConfigs': ?phaseConfigs};
+  }
+}
+
+/// CustomCheck configures a third-party metric provider to run the analysis,
+/// via a Task that runs at a specified frequency.
+class CustomCheck {
+  /// The frequency at which the custom check will be run, with a minimum and
+  /// default of 5 minutes.
+  ///
+  /// Optional.
+  core.String? frequency;
+
+  /// The ID of the custom Analysis check.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The Task to be run for this custom check.
+  ///
+  /// Required.
+  Task? task;
+
+  CustomCheck({this.frequency, this.id, this.task});
+
+  CustomCheck.fromJson(core.Map json_)
+    : this(
+        frequency: json_['frequency'] as core.String?,
+        id: json_['id'] as core.String?,
+        task: json_.containsKey('task')
+            ? Task.fromJson(
+                json_['task'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final frequency = this.frequency;
+    final id = this.id;
+    final task = this.task;
+    return {'frequency': ?frequency, 'id': ?id, 'task': ?task};
+  }
+}
+
+/// CustomCheckStatus contains information specific to a single iteration of a
+/// custom analysis job.
+class CustomCheckStatus {
+  /// The reason the analysis failed.
+  ///
+  /// This will always be unspecified while the analysis is in progress or if it
+  /// succeeded.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
+  /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
+  /// it is not enabled or because Cloud Deploy has insufficient permissions.
+  /// See
+  /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// - "EXECUTION_FAILED" : The analysis operation did not complete
+  /// successfully; check Cloud Build logs.
+  /// - "DEADLINE_EXCEEDED" : The analysis job run did not complete within the
+  /// alloted time defined in the target's execution environment configuration.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
+  /// Deploy's request. See failure_message for additional details.
+  core.String? failureCause;
+
+  /// Additional information about the analysis failure, if available.
+  ///
+  /// Output only.
+  core.String? failureMessage;
+
+  /// The frequency in minutes at which the custom check is run.
+  ///
+  /// Output only.
+  core.String? frequency;
+
+  /// The ID of the custom check.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The resource name of the Cloud Build `Build` object that was used to
+  /// execute the latest run of this custom action check.
+  ///
+  /// Format is `projects/{project}/locations/{location}/builds/{build}`.
+  ///
+  /// Output only.
+  core.String? latestBuild;
+
+  /// Custom metadata provided by the user-defined custom check operation.
+  ///
+  /// result.
+  ///
+  /// Output only.
+  CustomMetadata? metadata;
+
+  /// The task that ran for this custom check.
+  ///
+  /// Output only.
+  Task? task;
+
+  CustomCheckStatus({
+    this.failureCause,
+    this.failureMessage,
+    this.frequency,
+    this.id,
+    this.latestBuild,
+    this.metadata,
+    this.task,
+  });
+
+  CustomCheckStatus.fromJson(core.Map json_)
+    : this(
+        failureCause: json_['failureCause'] as core.String?,
+        failureMessage: json_['failureMessage'] as core.String?,
+        frequency: json_['frequency'] as core.String?,
+        id: json_['id'] as core.String?,
+        latestBuild: json_['latestBuild'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? CustomMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        task: json_.containsKey('task')
+            ? Task.fromJson(
+                json_['task'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final failureCause = this.failureCause;
+    final failureMessage = this.failureMessage;
+    final frequency = this.frequency;
+    final id = this.id;
+    final latestBuild = this.latestBuild;
+    final metadata = this.metadata;
+    final task = this.task;
+    return {
+      'failureCause': ?failureCause,
+      'failureMessage': ?failureMessage,
+      'frequency': ?frequency,
+      'id': ?id,
+      'latestBuild': ?latestBuild,
+      'metadata': ?metadata,
+      'task': ?task,
+    };
   }
 }
 
@@ -5200,6 +5804,45 @@ class CustomTargetSkaffoldActions {
   }
 }
 
+/// CustomTargetTasks represents the `CustomTargetType` configuration using
+/// tasks.
+class CustomTargetTasks {
+  /// The task responsible for deploy operations.
+  ///
+  /// Required.
+  Task? deploy;
+
+  /// The task responsible for render operations.
+  ///
+  /// If not provided then Cloud Deploy will perform its default rendering
+  /// operation.
+  ///
+  /// Optional.
+  Task? render;
+
+  CustomTargetTasks({this.deploy, this.render});
+
+  CustomTargetTasks.fromJson(core.Map json_)
+    : this(
+        deploy: json_.containsKey('deploy')
+            ? Task.fromJson(
+                json_['deploy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        render: json_.containsKey('render')
+            ? Task.fromJson(
+                json_['render'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deploy = this.deploy;
+    final render = this.render;
+    return {'deploy': ?deploy, 'render': ?render};
+  }
+}
+
 /// A `CustomTargetType` resource in the Cloud Deploy API.
 ///
 /// A `CustomTargetType` defines a type of custom target that can be referenced
@@ -5266,6 +5909,11 @@ class CustomTargetType {
   /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
   core.String? name;
 
+  /// Configures render and deploy for the `CustomTargetType` using tasks.
+  ///
+  /// Optional.
+  CustomTargetTasks? tasks;
+
   /// Unique identifier of the `CustomTargetType`.
   ///
   /// Output only.
@@ -5285,6 +5933,7 @@ class CustomTargetType {
     this.etag,
     this.labels,
     this.name,
+    this.tasks,
     this.uid,
     this.updateTime,
   });
@@ -5308,6 +5957,11 @@ class CustomTargetType {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        tasks: json_.containsKey('tasks')
+            ? CustomTargetTasks.fromJson(
+                json_['tasks'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
@@ -5321,6 +5975,7 @@ class CustomTargetType {
     final etag = this.etag;
     final labels = this.labels;
     final name = this.name;
+    final tasks = this.tasks;
     final uid = this.uid;
     final updateTime = this.updateTime;
     return {
@@ -5332,6 +5987,7 @@ class CustomTargetType {
       'etag': ?etag,
       'labels': ?labels,
       'name': ?name,
+      'tasks': ?tasks,
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
@@ -5986,6 +6642,13 @@ class DeployPolicyResourceSelector {
 
 /// Deployment job composition.
 class DeploymentJobs {
+  /// The analysis Job.
+  ///
+  /// Runs after a verify if there is a verify job and the verify job succeeds.
+  ///
+  /// Output only.
+  Job? analysisJob;
+
   /// The deploy Job.
   ///
   /// This is the deploy job in the phase.
@@ -6011,6 +6674,7 @@ class DeploymentJobs {
   Job? verifyJob;
 
   DeploymentJobs({
+    this.analysisJob,
     this.deployJob,
     this.postdeployJob,
     this.predeployJob,
@@ -6019,6 +6683,11 @@ class DeploymentJobs {
 
   DeploymentJobs.fromJson(core.Map json_)
     : this(
+        analysisJob: json_.containsKey('analysisJob')
+            ? Job.fromJson(
+                json_['analysisJob'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deployJob: json_.containsKey('deployJob')
             ? Job.fromJson(
                 json_['deployJob'] as core.Map<core.String, core.dynamic>,
@@ -6042,11 +6711,13 @@ class DeploymentJobs {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final analysisJob = this.analysisJob;
     final deployJob = this.deployJob;
     final postdeployJob = this.postdeployJob;
     final predeployJob = this.predeployJob;
     final verifyJob = this.verifyJob;
     return {
+      'analysisJob': ?analysisJob,
       'deployJob': ?deployJob,
       'postdeployJob': ?postdeployJob,
       'predeployJob': ?predeployJob,
@@ -6194,6 +6865,40 @@ class ExecutionConfig {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// FailedAlertPolicy contains information about an alert policy that was found
+/// to be firing during an alert policy check.
+class FailedAlertPolicy {
+  /// The name of the alert policy that was found to be firing.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/alertPolicies/{alertPolicy}`.
+  ///
+  /// Output only.
+  core.String? alertPolicy;
+
+  /// Open alerts for the alerting policies that matched the alert policy check
+  /// configuration.
+  ///
+  /// Output only.
+  core.List<core.String>? alerts;
+
+  FailedAlertPolicy({this.alertPolicy, this.alerts});
+
+  FailedAlertPolicy.fromJson(core.Map json_)
+    : this(
+        alertPolicy: json_['alertPolicy'] as core.String?,
+        alerts: (json_['alerts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertPolicy = this.alertPolicy;
+    final alerts = this.alerts;
+    return {'alertPolicy': ?alertPolicy, 'alerts': ?alerts};
+  }
+}
 
 /// Information about the Kubernetes Gateway API service mesh configuration.
 class GatewayServiceMesh {
@@ -6355,6 +7060,34 @@ class GkeCluster {
   }
 }
 
+/// GoogleCloudAnalysis is a set of Google Cloud-based checks to perform on the
+/// deployment.
+class GoogleCloudAnalysis {
+  /// A list of Cloud Monitoring Alert Policy checks to perform as part of the
+  /// analysis.
+  ///
+  /// Optional.
+  core.List<AlertPolicyCheck>? alertPolicyChecks;
+
+  GoogleCloudAnalysis({this.alertPolicyChecks});
+
+  GoogleCloudAnalysis.fromJson(core.Map json_)
+    : this(
+        alertPolicyChecks: (json_['alertPolicyChecks'] as core.List?)
+            ?.map(
+              (value) => AlertPolicyCheck.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertPolicyChecks = this.alertPolicyChecks;
+    return {'alertPolicyChecks': ?alertPolicyChecks};
+  }
+}
+
 /// The request object used by `IgnoreJob`.
 class IgnoreJobRequest {
   /// The job ID for the Job to ignore.
@@ -6407,6 +7140,11 @@ class Job {
   ///
   /// Output only.
   AdvanceChildRolloutJob? advanceChildRolloutJob;
+
+  /// An analysis Job.
+  ///
+  /// Output only.
+  AnalysisJob? analysisJob;
 
   /// A createChildRollout Job.
   ///
@@ -6467,6 +7205,7 @@ class Job {
 
   Job({
     this.advanceChildRolloutJob,
+    this.analysisJob,
     this.createChildRolloutJob,
     this.deployJob,
     this.id,
@@ -6484,6 +7223,11 @@ class Job {
             ? AdvanceChildRolloutJob.fromJson(
                 json_['advanceChildRolloutJob']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        analysisJob: json_.containsKey('analysisJob')
+            ? AnalysisJob.fromJson(
+                json_['analysisJob'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         createChildRolloutJob: json_.containsKey('createChildRolloutJob')
@@ -6520,6 +7264,7 @@ class Job {
 
   core.Map<core.String, core.dynamic> toJson() {
     final advanceChildRolloutJob = this.advanceChildRolloutJob;
+    final analysisJob = this.analysisJob;
     final createChildRolloutJob = this.createChildRolloutJob;
     final deployJob = this.deployJob;
     final id = this.id;
@@ -6531,6 +7276,7 @@ class Job {
     final verifyJob = this.verifyJob;
     return {
       'advanceChildRolloutJob': ?advanceChildRolloutJob,
+      'analysisJob': ?analysisJob,
       'createChildRolloutJob': ?createChildRolloutJob,
       'deployJob': ?deployJob,
       'id': ?id,
@@ -6552,6 +7298,11 @@ class JobRun {
   ///
   /// Output only.
   AdvanceChildRolloutJobRun? advanceChildRolloutJobRun;
+
+  /// Information specific to an analysis `JobRun`.
+  ///
+  /// Output only.
+  AnalysisJobRun? analysisJobRun;
 
   /// Information specific to a createChildRollout `JobRun`.
   ///
@@ -6637,6 +7388,7 @@ class JobRun {
 
   JobRun({
     this.advanceChildRolloutJobRun,
+    this.analysisJobRun,
     this.createChildRolloutJobRun,
     this.createTime,
     this.deployJobRun,
@@ -6660,6 +7412,11 @@ class JobRun {
             ? AdvanceChildRolloutJobRun.fromJson(
                 json_['advanceChildRolloutJobRun']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        analysisJobRun: json_.containsKey('analysisJobRun')
+            ? AnalysisJobRun.fromJson(
+                json_['analysisJobRun'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         createChildRolloutJobRun: json_.containsKey('createChildRolloutJobRun')
@@ -6702,6 +7459,7 @@ class JobRun {
 
   core.Map<core.String, core.dynamic> toJson() {
     final advanceChildRolloutJobRun = this.advanceChildRolloutJobRun;
+    final analysisJobRun = this.analysisJobRun;
     final createChildRolloutJobRun = this.createChildRolloutJobRun;
     final createTime = this.createTime;
     final deployJobRun = this.deployJobRun;
@@ -6718,6 +7476,7 @@ class JobRun {
     final verifyJobRun = this.verifyJobRun;
     return {
       'advanceChildRolloutJobRun': ?advanceChildRolloutJobRun,
+      'analysisJobRun': ?analysisJobRun,
       'createChildRolloutJobRun': ?createChildRolloutJobRun,
       'createTime': ?createTime,
       'deployJobRun': ?deployJobRun,
@@ -6772,6 +7531,56 @@ class KubernetesConfig {
     return {
       'gatewayServiceMesh': ?gatewayServiceMesh,
       'serviceNetworking': ?serviceNetworking,
+    };
+  }
+}
+
+/// KubernetesRenderMetadata contains Kubernetes information associated with a
+/// `Release` render.
+class KubernetesRenderMetadata {
+  /// Name of the canary version of the Kubernetes Deployment that will be
+  /// applied to the GKE cluster.
+  ///
+  /// Only set if a canary deployment strategy was configured.
+  ///
+  /// Output only.
+  core.String? canaryDeployment;
+
+  /// Name of the Kubernetes Deployment that will be applied to the GKE cluster.
+  ///
+  /// Only set if a single Deployment was provided in the rendered manifest.
+  ///
+  /// Output only.
+  core.String? deployment;
+
+  /// Namespace the Kubernetes resources will be applied to in the GKE cluster.
+  ///
+  /// Only set if applying resources to a single namespace.
+  ///
+  /// Output only.
+  core.String? kubernetesNamespace;
+
+  KubernetesRenderMetadata({
+    this.canaryDeployment,
+    this.deployment,
+    this.kubernetesNamespace,
+  });
+
+  KubernetesRenderMetadata.fromJson(core.Map json_)
+    : this(
+        canaryDeployment: json_['canaryDeployment'] as core.String?,
+        deployment: json_['deployment'] as core.String?,
+        kubernetesNamespace: json_['kubernetesNamespace'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final canaryDeployment = this.canaryDeployment;
+    final deployment = this.deployment;
+    final kubernetesNamespace = this.kubernetesNamespace;
+    return {
+      'canaryDeployment': ?canaryDeployment,
+      'deployment': ?deployment,
+      'kubernetesNamespace': ?kubernetesNamespace,
     };
   }
 }
@@ -7598,6 +8407,13 @@ class PhaseArtifact {
 /// PhaseConfig represents the configuration for a phase in the custom canary
 /// deployment.
 class PhaseConfig {
+  /// Configuration for the analysis job of this phase.
+  ///
+  /// If this is not configured, there will be no analysis job for this phase.
+  ///
+  /// Optional.
+  Analysis? analysis;
+
   /// Percentage deployment for the phase.
   ///
   /// Required.
@@ -7640,17 +8456,31 @@ class PhaseConfig {
   /// Optional.
   core.bool? verify;
 
+  /// Configuration for the verify job.
+  ///
+  /// Cannot be set if `verify` is set to true.
+  ///
+  /// Optional.
+  Verify? verifyConfig;
+
   PhaseConfig({
+    this.analysis,
     this.percentage,
     this.phaseId,
     this.postdeploy,
     this.predeploy,
     this.profiles,
     this.verify,
+    this.verifyConfig,
   });
 
   PhaseConfig.fromJson(core.Map json_)
     : this(
+        analysis: json_.containsKey('analysis')
+            ? Analysis.fromJson(
+                json_['analysis'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         percentage: json_['percentage'] as core.int?,
         phaseId: json_['phaseId'] as core.String?,
         postdeploy: json_.containsKey('postdeploy')
@@ -7667,22 +8497,31 @@ class PhaseConfig {
             ?.map((value) => value as core.String)
             .toList(),
         verify: json_['verify'] as core.bool?,
+        verifyConfig: json_.containsKey('verifyConfig')
+            ? Verify.fromJson(
+                json_['verifyConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final analysis = this.analysis;
     final percentage = this.percentage;
     final phaseId = this.phaseId;
     final postdeploy = this.postdeploy;
     final predeploy = this.predeploy;
     final profiles = this.profiles;
     final verify = this.verify;
+    final verifyConfig = this.verifyConfig;
     return {
+      'analysis': ?analysis,
       'percentage': ?percentage,
       'phaseId': ?phaseId,
       'postdeploy': ?postdeploy,
       'predeploy': ?predeploy,
       'profiles': ?profiles,
       'verify': ?verify,
+      'verifyConfig': ?verifyConfig,
     };
   }
 }
@@ -7988,18 +8827,33 @@ class Postdeploy {
   /// Optional.
   core.List<core.String>? actions;
 
-  Postdeploy({this.actions});
+  /// The tasks that will run as a part of the postdeploy job.
+  ///
+  /// The tasks are executed sequentially in the order specified. Only one of
+  /// `actions` or `tasks` can be specified.
+  ///
+  /// Optional.
+  core.List<Task>? tasks;
+
+  Postdeploy({this.actions, this.tasks});
 
   Postdeploy.fromJson(core.Map json_)
     : this(
         actions: (json_['actions'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        tasks: (json_['tasks'] as core.List?)
+            ?.map(
+              (value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final actions = this.actions;
-    return {'actions': ?actions};
+    final tasks = this.tasks;
+    return {'actions': ?actions, 'tasks': ?tasks};
   }
 }
 
@@ -8010,18 +8864,30 @@ class PostdeployJob {
   /// Output only.
   core.List<core.String>? actions;
 
-  PostdeployJob({this.actions});
+  /// The tasks that are executed as part of the postdeploy Job.
+  ///
+  /// Output only.
+  core.List<Task>? tasks;
+
+  PostdeployJob({this.actions, this.tasks});
 
   PostdeployJob.fromJson(core.Map json_)
     : this(
         actions: (json_['actions'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        tasks: (json_['tasks'] as core.List?)
+            ?.map(
+              (value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final actions = this.actions;
-    return {'actions': ?actions};
+    final tasks = this.tasks;
+    return {'actions': ?actions, 'tasks': ?tasks};
   }
 }
 
@@ -8060,24 +8926,65 @@ class PostdeployJobRun {
   /// Output only.
   core.String? failureMessage;
 
-  PostdeployJobRun({this.build, this.failureCause, this.failureMessage});
+  /// Metadata containing information about the postdeploy `JobRun`.
+  ///
+  /// Output only.
+  PostdeployJobRunMetadata? metadata;
+
+  PostdeployJobRun({
+    this.build,
+    this.failureCause,
+    this.failureMessage,
+    this.metadata,
+  });
 
   PostdeployJobRun.fromJson(core.Map json_)
     : this(
         build: json_['build'] as core.String?,
         failureCause: json_['failureCause'] as core.String?,
         failureMessage: json_['failureMessage'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? PostdeployJobRunMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final build = this.build;
     final failureCause = this.failureCause;
     final failureMessage = this.failureMessage;
+    final metadata = this.metadata;
     return {
       'build': ?build,
       'failureCause': ?failureCause,
       'failureMessage': ?failureMessage,
+      'metadata': ?metadata,
     };
+  }
+}
+
+/// PostdeployJobRunMetadata contains metadata about the postdeploy `JobRun`.
+class PostdeployJobRunMetadata {
+  /// Custom metadata provided by user-defined postdeploy operation.
+  ///
+  /// Output only.
+  CustomMetadata? custom;
+
+  PostdeployJobRunMetadata({this.custom});
+
+  PostdeployJobRunMetadata.fromJson(core.Map json_)
+    : this(
+        custom: json_.containsKey('custom')
+            ? CustomMetadata.fromJson(
+                json_['custom'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final custom = this.custom;
+    return {'custom': ?custom};
   }
 }
 
@@ -8089,18 +8996,33 @@ class Predeploy {
   /// Optional.
   core.List<core.String>? actions;
 
-  Predeploy({this.actions});
+  /// The tasks that will run as a part of the predeploy job.
+  ///
+  /// The tasks are executed sequentially in the order specified. Only one of
+  /// `actions` or `tasks` can be specified.
+  ///
+  /// Optional.
+  core.List<Task>? tasks;
+
+  Predeploy({this.actions, this.tasks});
 
   Predeploy.fromJson(core.Map json_)
     : this(
         actions: (json_['actions'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        tasks: (json_['tasks'] as core.List?)
+            ?.map(
+              (value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final actions = this.actions;
-    return {'actions': ?actions};
+    final tasks = this.tasks;
+    return {'actions': ?actions, 'tasks': ?tasks};
   }
 }
 
@@ -8111,18 +9033,30 @@ class PredeployJob {
   /// Output only.
   core.List<core.String>? actions;
 
-  PredeployJob({this.actions});
+  /// The tasks that are executed as part of the predeploy Job.
+  ///
+  /// Output only.
+  core.List<Task>? tasks;
+
+  PredeployJob({this.actions, this.tasks});
 
   PredeployJob.fromJson(core.Map json_)
     : this(
         actions: (json_['actions'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        tasks: (json_['tasks'] as core.List?)
+            ?.map(
+              (value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final actions = this.actions;
-    return {'actions': ?actions};
+    final tasks = this.tasks;
+    return {'actions': ?actions, 'tasks': ?tasks};
   }
 }
 
@@ -8161,24 +9095,65 @@ class PredeployJobRun {
   /// Output only.
   core.String? failureMessage;
 
-  PredeployJobRun({this.build, this.failureCause, this.failureMessage});
+  /// Metadata containing information about the predeploy `JobRun`.
+  ///
+  /// Output only.
+  PredeployJobRunMetadata? metadata;
+
+  PredeployJobRun({
+    this.build,
+    this.failureCause,
+    this.failureMessage,
+    this.metadata,
+  });
 
   PredeployJobRun.fromJson(core.Map json_)
     : this(
         build: json_['build'] as core.String?,
         failureCause: json_['failureCause'] as core.String?,
         failureMessage: json_['failureMessage'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? PredeployJobRunMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final build = this.build;
     final failureCause = this.failureCause;
     final failureMessage = this.failureMessage;
+    final metadata = this.metadata;
     return {
       'build': ?build,
       'failureCause': ?failureCause,
       'failureMessage': ?failureMessage,
+      'metadata': ?metadata,
     };
+  }
+}
+
+/// PredeployJobRunMetadata contains metadata about the predeploy `JobRun`.
+class PredeployJobRunMetadata {
+  /// Custom metadata provided by user-defined predeploy operation.
+  ///
+  /// Output only.
+  CustomMetadata? custom;
+
+  PredeployJobRunMetadata({this.custom});
+
+  PredeployJobRunMetadata.fromJson(core.Map json_)
+    : this(
+        custom: json_.containsKey('custom')
+            ? CustomMetadata.fromJson(
+                json_['custom'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final custom = this.custom;
+    return {'custom': ?custom};
   }
 }
 
@@ -8833,7 +9808,13 @@ class RenderMetadata {
   /// Output only.
   CustomMetadata? custom;
 
-  RenderMetadata({this.cloudRun, this.custom});
+  /// Metadata associated with rendering for a Kubernetes cluster (GKE or GKE
+  /// Enterprise target).
+  ///
+  /// Output only.
+  KubernetesRenderMetadata? kubernetes;
+
+  RenderMetadata({this.cloudRun, this.custom, this.kubernetes});
 
   RenderMetadata.fromJson(core.Map json_)
     : this(
@@ -8847,12 +9828,22 @@ class RenderMetadata {
                 json_['custom'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        kubernetes: json_.containsKey('kubernetes')
+            ? KubernetesRenderMetadata.fromJson(
+                json_['kubernetes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final cloudRun = this.cloudRun;
     final custom = this.custom;
-    return {'cloudRun': ?cloudRun, 'custom': ?custom};
+    final kubernetes = this.kubernetes;
+    return {
+      'cloudRun': ?cloudRun,
+      'custom': ?custom,
+      'kubernetes': ?kubernetes,
+    };
   }
 }
 
@@ -10438,6 +11429,13 @@ class Stage {
 
 /// Standard represents the standard deployment strategy.
 class Standard {
+  /// Configuration for the analysis job.
+  ///
+  /// If this is not configured, the analysis job will not be present.
+  ///
+  /// Optional.
+  Analysis? analysis;
+
   /// Configuration for the postdeploy job.
   ///
   /// If this is not configured, the postdeploy job will not be present.
@@ -10457,10 +11455,28 @@ class Standard {
   /// Optional.
   core.bool? verify;
 
-  Standard({this.postdeploy, this.predeploy, this.verify});
+  /// Configuration for the verify job.
+  ///
+  /// Cannot be set if `verify` is set to true.
+  ///
+  /// Optional.
+  Verify? verifyConfig;
+
+  Standard({
+    this.analysis,
+    this.postdeploy,
+    this.predeploy,
+    this.verify,
+    this.verifyConfig,
+  });
 
   Standard.fromJson(core.Map json_)
     : this(
+        analysis: json_.containsKey('analysis')
+            ? Analysis.fromJson(
+                json_['analysis'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         postdeploy: json_.containsKey('postdeploy')
             ? Postdeploy.fromJson(
                 json_['postdeploy'] as core.Map<core.String, core.dynamic>,
@@ -10472,16 +11488,25 @@ class Standard {
               )
             : null,
         verify: json_['verify'] as core.bool?,
+        verifyConfig: json_.containsKey('verifyConfig')
+            ? Verify.fromJson(
+                json_['verifyConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final analysis = this.analysis;
     final postdeploy = this.postdeploy;
     final predeploy = this.predeploy;
     final verify = this.verify;
+    final verifyConfig = this.verifyConfig;
     return {
+      'analysis': ?analysis,
       'postdeploy': ?postdeploy,
       'predeploy': ?predeploy,
       'verify': ?verify,
+      'verifyConfig': ?verifyConfig,
     };
   }
 }
@@ -11078,6 +12103,31 @@ class TargetsTypeCondition {
   }
 }
 
+/// A Task represents a unit of work that is executed as part of a Job.
+class Task {
+  /// This task is represented by a container that is executed in the Cloud
+  /// Build execution environment.
+  ///
+  /// Optional.
+  ContainerTask? container;
+
+  Task({this.container});
+
+  Task.fromJson(core.Map json_)
+    : this(
+        container: json_.containsKey('container')
+            ? ContainerTask.fromJson(
+                json_['container'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final container = this.container;
+    return {'container': ?container};
+  }
+}
+
 /// The request object used by `TerminateJobRun`.
 typedef TerminateJobRunRequest = $Request06;
 
@@ -11447,8 +12497,57 @@ class ToolVersions {
   }
 }
 
+/// Verify contains the verify job configuration information.
+class Verify {
+  /// The tasks that will run as a part of the verify job.
+  ///
+  /// The tasks are executed sequentially in the order specified.
+  ///
+  /// Optional.
+  core.List<Task>? tasks;
+
+  Verify({this.tasks});
+
+  Verify.fromJson(core.Map json_)
+    : this(
+        tasks: (json_['tasks'] as core.List?)
+            ?.map(
+              (value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final tasks = this.tasks;
+    return {'tasks': ?tasks};
+  }
+}
+
 /// A verify Job.
-typedef VerifyJob = $Empty;
+class VerifyJob {
+  /// The tasks that are executed as part of the verify Job.
+  ///
+  /// Output only.
+  core.List<Task>? tasks;
+
+  VerifyJob({this.tasks});
+
+  VerifyJob.fromJson(core.Map json_)
+    : this(
+        tasks: (json_['tasks'] as core.List?)
+            ?.map(
+              (value) =>
+                  Task.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final tasks = this.tasks;
+    return {'tasks': ?tasks};
+  }
+}
 
 /// VerifyJobRun contains information specific to a verify `JobRun`.
 class VerifyJobRun {
@@ -11499,12 +12598,18 @@ class VerifyJobRun {
   /// Output only.
   core.String? failureMessage;
 
+  /// Metadata containing information about the verify `JobRun`.
+  ///
+  /// Output only.
+  VerifyJobRunMetadata? metadata;
+
   VerifyJobRun({
     this.artifactUri,
     this.build,
     this.eventLogPath,
     this.failureCause,
     this.failureMessage,
+    this.metadata,
   });
 
   VerifyJobRun.fromJson(core.Map json_)
@@ -11514,6 +12619,11 @@ class VerifyJobRun {
         eventLogPath: json_['eventLogPath'] as core.String?,
         failureCause: json_['failureCause'] as core.String?,
         failureMessage: json_['failureMessage'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? VerifyJobRunMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -11522,13 +12632,39 @@ class VerifyJobRun {
     final eventLogPath = this.eventLogPath;
     final failureCause = this.failureCause;
     final failureMessage = this.failureMessage;
+    final metadata = this.metadata;
     return {
       'artifactUri': ?artifactUri,
       'build': ?build,
       'eventLogPath': ?eventLogPath,
       'failureCause': ?failureCause,
       'failureMessage': ?failureMessage,
+      'metadata': ?metadata,
     };
+  }
+}
+
+/// VerifyJobRunMetadata contains metadata about the verify `JobRun`.
+class VerifyJobRunMetadata {
+  /// Custom metadata provided by user-defined verify operation.
+  ///
+  /// Output only.
+  CustomMetadata? custom;
+
+  VerifyJobRunMetadata({this.custom});
+
+  VerifyJobRunMetadata.fromJson(core.Map json_)
+    : this(
+        custom: json_.containsKey('custom')
+            ? CustomMetadata.fromJson(
+                json_['custom'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final custom = this.custom;
+    return {'custom': ?custom};
   }
 }
 

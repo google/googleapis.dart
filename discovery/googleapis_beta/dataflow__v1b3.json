@@ -91,6 +91,16 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://dataflow.europe-north1.rep.googleapis.com/",
+            "location": "europe-north1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://dataflow.europe-north2.rep.googleapis.com/",
+            "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://dataflow.europe-southwest1.rep.googleapis.com/",
             "location": "europe-southwest1"
         },
@@ -111,8 +121,18 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://dataflow.europe-west2.rep.googleapis.com/",
+            "location": "europe-west2"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://dataflow.europe-west3.rep.googleapis.com/",
             "location": "europe-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://dataflow.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
         },
         {
             "description": "Regional Endpoint",
@@ -158,6 +178,11 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://dataflow.northamerica-south1.rep.googleapis.com/",
             "location": "northamerica-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://dataflow.southamerica-east1.rep.googleapis.com/",
+            "location": "southamerica-east1"
         },
         {
             "description": "Regional Endpoint",
@@ -235,7 +260,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260118",
+    "revision": "20260405",
     "rootUrl": "https://dataflow.googleapis.com/",
     "servicePath": "",
     "title": "Dataflow API",
@@ -3772,7 +3797,7 @@
                     "type": "string"
                 },
                 "launcherMachineType": {
-                    "description": "The machine type to use for launching the job. The default is n1-standard-1.",
+                    "description": "The machine type to use for launching the job. If not set, Dataflow will select a default machine type.",
                     "type": "string"
                 },
                 "machineType": {
@@ -3972,6 +3997,11 @@
             "description": "Request to get worker stacktraces from debug capture.",
             "id": "GetWorkerStacktracesRequest",
             "properties": {
+                "endTime": {
+                    "description": "The end time for the stacktrace query. The returned stacktraces will be a recent stack trace at or shortly before this time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "workerId": {
                     "description": "The worker for which to get stacktraces. The returned stacktraces will be for the SDK harness running on this worker.",
                     "type": "string"
@@ -4254,6 +4284,11 @@
                 "name": {
                     "description": "Optional. The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`",
                     "type": "string"
+                },
+                "pausable": {
+                    "description": "Output only. Indicates whether the job can be paused.",
+                    "readOnly": true,
+                    "type": "boolean"
                 },
                 "pipelineDescription": {
                     "$ref": "PipelineDescription",
@@ -5947,8 +5982,18 @@
             "id": "RuntimeUpdatableParams",
             "properties": {
                 "acceptableBacklogDuration": {
-                    "description": "Optional. The backlog threshold duration in seconds for autoscaling. Value must be non-negative.",
+                    "deprecated": true,
+                    "description": "Optional. Deprecated: Use `latency_tier` instead. The backlog threshold duration in seconds for autoscaling. Value must be non-negative.",
                     "format": "google-duration",
+                    "type": "string"
+                },
+                "autoscalingTier": {
+                    "deprecated": true,
+                    "description": "Optional. Deprecated: Use `latency_tier` instead. The backlog threshold tier for autoscaling. Value must be one of \"low-latency\", \"medium-latency\", or \"high-latency\".",
+                    "type": "string"
+                },
+                "latencyTier": {
+                    "description": "Optional. The backlog threshold tier for autoscaling. Value must be one of \"low-latency\", \"medium-latency\", or \"high-latency\".",
                     "type": "string"
                 },
                 "maxNumWorkers": {
@@ -8153,6 +8198,16 @@
                         "Stage packages typically useful to workers written in Java.",
                         "Stage packages typically useful to workers written in Python."
                     ],
+                    "type": "string"
+                },
+                "diskProvisionedIops": {
+                    "description": "Optional. IOPS provisioned for the root disk for VMs.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "diskProvisionedThroughputMibps": {
+                    "description": "Optional. Throughput provisioned for the root disk for VMs.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "diskSizeGb": {

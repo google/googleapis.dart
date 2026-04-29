@@ -221,14 +221,32 @@ class AccountsPromotionsResource {
 
 /// Attributes.
 class Attributes {
+  /// This field defines the audience a promotion will be visible to.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUDIENCE_UNSPECIFIED" : The promotion is not restricted to any audience
+  /// and will be shown to all users. Default value.
+  /// - "NEW_CUSTOMERS" : The Promotion will be shown to new customers only. If
+  /// this value is set, the `promotion_destinations` field in `Attributes` must
+  /// include `SHOPPING_ADS`. Requests that do not satisfy this condition will
+  /// be rejected. For more details, see
+  /// [First order promotions](https://support.google.com/merchants/answer/16310477)
+  /// - "LOCATION" : The Promotion will be shown to customer within a certain
+  /// location. Applicable locations must be specified in the
+  /// `region_id_inclusion` field and the `promotion_destinations` field must
+  /// contain `FREE_LISTINGS`. For more details, see
+  /// [Regional Promotions](https://support.google.com/merchants/answer/16700435).
+  core.String? audience;
+
   /// Product filter by
-  /// [brand exclusion](https://support.google.com/merchants/answer/13861679?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [brand exclusion](https://support.google.com/merchants/answer/13861679?ref_topic=13773355)
   /// for the promotion.
   ///
   /// The product filter attributes only applies when the products eligible for
   /// promotion product applicability `product_applicability` attribute is set
   /// to
-  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
   ///
   /// Optional.
   core.List<core.String>? brandExclusion;
@@ -238,13 +256,13 @@ class Attributes {
   /// The product filter attributes only applies when the products eligible for
   /// promotion product applicability `product_applicability` attribute is set
   /// to
-  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
   ///
   /// Optional.
   core.List<core.String>? brandInclusion;
 
   /// The
-  /// [coupon value type](https://support.google.com/merchants/answer/13861986?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [coupon value type](https://support.google.com/merchants/answer/13861986?ref_topic=13773355)
   /// attribute to signal the type of promotion that you are running.
   ///
   /// Depending on type of the selected coupon value
@@ -275,21 +293,51 @@ class Attributes {
   /// Only available for online promotions.
   /// - "FREE_SHIPPING_TWO_DAY" : Two day free shipping coupon value type. Only
   /// available for online promotions.
+  /// - "MONEY_OFF_RANGE" : Money off range coupon value type. This coupon value
+  /// type is used exclusively for US-based sales events. At least one of
+  /// `min_money_off_amount` or `max_money_off_amount` must be present.
+  /// - "PERCENT_OFF_RANGE" : Percent off range coupon value type. This coupon
+  /// value type is exclusively used for US-based sale events. At least one of
+  /// `min_percent_off` or `max_percent_off` must be present.
   core.String? couponValueType;
 
-  /// [Free gift description](https://support.google.com/merchants/answer/13847245?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// The custom redemption restriction for the promotion.
+  ///
+  /// If the `redemption_restriction` field is set to `CUSTOM`, this field must
+  /// be set.
+  ///
+  /// Optional.
+  core.String? customRedemptionRestriction;
+
+  /// Event applicability for this promotion.
+  ///
+  /// When present, this field indicates you are creating a
+  /// [sales event](https://support.google.com/merchants/answer/15523289) and
+  /// not a product promotion. Exactly one of `product_applicability` or
+  /// `event_applicability` must be set.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EVENT_APPLICABILITY_UNSPECIFIED" : Indicates that the event
+  /// applicability is unspecified.
+  /// - "SITEWIDE" : Indicates that the promotion applies to the entire site.
+  /// - "SPECIFIC_CATEGORIES" : Indicates that the promotion applies to specific
+  /// categories. When this is set, the GoogleProductCategory field is required.
+  core.String? eventApplicability;
+
+  /// [Free gift description](https://support.google.com/merchants/answer/13847245?ref_topic=13773355)
   /// for the promotion.
   ///
   /// Optional.
   core.String? freeGiftDescription;
 
-  /// [Free gift item ID](https://support.google.com/merchants/answer/13857152?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [Free gift item ID](https://support.google.com/merchants/answer/13857152?ref_topic=13773355)
   /// for the promotion.
   ///
   /// Optional.
   core.String? freeGiftItemId;
 
-  /// [Free gift value](https://support.google.com/merchants/answer/13844477?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [Free gift value](https://support.google.com/merchants/answer/13844477?ref_topic=13773355)
   /// for the promotion.
   ///
   /// Optional.
@@ -298,7 +346,7 @@ class Attributes {
   /// Generic redemption code for the promotion.
   ///
   /// To be used with the `offerType` field and must meet the
-  /// [minimum requirements](https://support.google.com/merchants/answer/13837405?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [minimum requirements](https://support.google.com/merchants/answer/13837405?ref_topic=13773355).
   ///
   /// Optional.
   core.String? genericRedemptionCode;
@@ -311,13 +359,24 @@ class Attributes {
   /// Optional.
   core.String? getThisQuantityDiscounted;
 
+  /// A list of Google product categories for this promotion.
+  ///
+  /// Set if `EventApplicability` is `SPECIFIC_CATEGORIES`. Up to 5 product
+  /// categories can be specified. For more details on eligible values for
+  /// product categories, checkout the `google_product_category` attribute in
+  /// the
+  /// [Promotion data specification](https://support.google.com/merchants/answer/2906014).
+  ///
+  /// Optional.
+  core.List<core.String>? googleProductCategories;
+
   /// Product filter by
-  /// [item group ID](https://support.google.com/merchants/answer/13837298?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [item group ID](https://support.google.com/merchants/answer/13837298?ref_topic=13773355).
   ///
   /// The product filter attributes only applies when the products eligible for
   /// promotion product applicability `product_applicability` attribute is set
   /// to
-  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
   /// exclusion for the promotion.
   ///
   /// Optional.
@@ -328,36 +387,36 @@ class Attributes {
   /// The product filter attributes only applies when the products eligible for
   /// promotion product applicability \[product_applicability\] attribute is set
   /// to
-  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
   ///
   /// Optional.
   core.List<core.String>? itemGroupIdInclusion;
 
   /// Product filter by
-  /// [item ID exclusion](https://support.google.com/merchants/answer/13863524?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [item ID exclusion](https://support.google.com/merchants/answer/13863524?ref_topic=13773355)
   /// for the promotion.
   ///
   /// The product filter attributes only applies when the products eligible for
   /// promotion product applicability `product_applicability` attribute is set
   /// to
-  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
   ///
   /// Optional.
   core.List<core.String>? itemIdExclusion;
 
   /// Product filter by
-  /// [item ID](https://support.google.com/merchants/answer/13861565?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [item ID](https://support.google.com/merchants/answer/13861565?ref_topic=13773355)
   /// for the promotion.
   ///
   /// The product filter attributes only applies when the products eligible for
   /// promotion product applicability `product_applicability` attribute is set
   /// to
-  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
   ///
   /// Optional.
   core.List<core.String>? itemIdInclusion;
 
-  /// [Maximum purchase quantity](https://support.google.com/merchants/answer/13861564?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [Maximum purchase quantity](https://support.google.com/merchants/answer/13861564?ref_topic=13773355)
   /// for the promotion.
   ///
   /// Optional.
@@ -369,13 +428,62 @@ class Attributes {
   /// Optional.
   Price? limitValue;
 
-  /// [Long title](https://support.google.com/merchants/answer/13838102?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [Long title](https://support.google.com/merchants/answer/13838102?ref_topic=13773355)
   /// for the promotion.
   ///
   /// Required.
   core.String? longTitle;
 
-  /// [Minimum purchase amount](https://support.google.com/merchants/answer/13837705?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// The maximum monetary discount a customer can receive for the promotion.
+  ///
+  /// This field is only supported with the `Percent off` coupon value type.
+  ///
+  /// Optional.
+  Price? maxDiscountAmount;
+
+  /// Maximum money off amount for a promotion with `MONEY_OFF_RANGE` coupon
+  /// value type.
+  ///
+  /// At least one of `min_money_off_amount` or `max_money_off_amount` must be
+  /// present when the coupon value type is `MONEY_OFF_RANGE`. If neither is
+  /// provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is
+  /// returned.
+  ///
+  /// Optional.
+  Price? maxMoneyOffAmount;
+
+  /// Maximum percent off for a promotion with `PERCENT_OFF_RANGE` coupon value
+  /// type.
+  ///
+  /// At least one of `min_percent_off` or `max_percent_off` must be present
+  /// when the coupon value type is `PERCENT_OFF_RANGE`. If neither is provided
+  /// an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned.
+  ///
+  /// Optional.
+  core.String? maxPercentOff;
+
+  /// Minimum money off amount for a promotion with `MONEY_OFF_RANGE` coupon
+  /// value type.
+  ///
+  /// At least one of `min_money_off_amount` or `max_money_off_amount` must be
+  /// present when the coupon value type is `MONEY_OFF_RANGE`. If neither is
+  /// provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is
+  /// returned.
+  ///
+  /// Optional.
+  Price? minMoneyOffAmount;
+
+  /// Minimum percent off for a promotion with `PERCENT_OFF_RANGE` coupon value
+  /// type.
+  ///
+  /// At least one of `min_percent_off` or `max_percent_off` must be present
+  /// when the coupon value type is `PERCENT_OFF_RANGE`. If neither is provided
+  /// an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned.
+  ///
+  /// Optional.
+  core.String? minPercentOff;
+
+  /// [Minimum purchase amount](https://support.google.com/merchants/answer/13837705?ref_topic=13773355)
   /// for the promotion.
   ///
   /// Optional.
@@ -383,13 +491,13 @@ class Attributes {
   core.String? minimumPurchaseQuantity;
 
   /// The
-  /// [money off amount](https://support.google.com/merchants/answer/13838101?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [money off amount](https://support.google.com/merchants/answer/13838101?ref_topic=13773355)
   /// offered in the promotion.
   ///
   /// Optional.
   Price? moneyOffAmount;
 
-  /// [Type](https://support.google.com/merchants/answer/13837405?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [Type](https://support.google.com/merchants/answer/13837405?ref_topic=13773355)
   /// of the promotion.
   ///
   /// Use this attribute to indicate whether or not customers need a coupon code
@@ -411,9 +519,12 @@ class Attributes {
   core.String? percentOff;
 
   /// Applicability of the promotion to either all products or
-  /// [only specific products](https://support.google.com/merchants/answer/6396257?ref_topic=6396150&sjid=17642868584668136159-NC).
+  /// [only specific products](https://support.google.com/merchants/answer/6396257).
   ///
-  /// Required.
+  /// Exactly one of `product_applicability` or `event_applicability` must be
+  /// set.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PRODUCT_APPLICABILITY_UNSPECIFIED" : Which products the promotion
   /// applies to is unknown.
@@ -423,13 +534,13 @@ class Attributes {
   core.String? productApplicability;
 
   /// Product filter by
-  /// [product type exclusion](https://support.google.com/merchants/answer/13863746?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [product type exclusion](https://support.google.com/merchants/answer/13863746?ref_topic=13773355)
   /// for the promotion.
   ///
   /// The product filter attributes only applies when the products eligible for
   /// promotion product applicability `product_applicability` attribute is set
   /// to
-  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
   ///
   /// Optional.
   core.List<core.String>? productTypeExclusion;
@@ -439,7 +550,7 @@ class Attributes {
   /// The product filter attributes only applies when the products eligible for
   /// promotion product applicability `product_applicability` attribute is set
   /// to
-  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
   ///
   /// Optional.
   core.List<core.String>? productTypeInclusion;
@@ -455,7 +566,7 @@ class Attributes {
   /// Local surfaces across Google. To represent these values use
   /// `FREE_LISTINGS`, `FREE_LOCAL_LISTINGS`, `LOCAL_INVENTORY_ADS`. For more
   /// details see
-  /// [Promotion destination](https://support.google.com/merchants/answer/13837465?sjid=5155774230887277618-NC)
+  /// [Promotion destination](https://support.google.com/merchants/answer/13837465)
   ///
   /// Required.
   core.List<core.String>? promotionDestinations;
@@ -489,6 +600,33 @@ class Attributes {
   /// Optional.
   core.String? promotionUrl;
 
+  /// A restriction customers must meet before they can redeem the promotion.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "REDEMPTION_RESTRICTION_UNSPECIFIED" : Indicates that the redemption
+  /// restriction is unspecified.
+  /// - "SUBSCRIBE" : The promotion can only be redeemed by signing up for a
+  /// subscription.
+  /// - "FIRST_ORDER" : The promotion can only be redeemed on the first order.
+  /// - "SIGNUP_FOR_EMAIL" : The promotion can only be redeemed by signing up
+  /// for email.
+  /// - "SIGNUP_FOR_TEXT" : The promotion can only be redeemed by signing up for
+  /// text message alerts.
+  /// - "CUSTOM" : The promotion can only be redeemed with a custom redemption
+  /// restriction. In this case, the `custom_redemption_restriction` field must
+  /// be set.
+  core.String? redemptionRestriction;
+
+  /// A list of
+  /// [regions](https://support.google.com/merchants/answer/15406457?#howregionswork)
+  /// where the promotion is applicable.
+  ///
+  /// Must be set if `audience` is set to `LOCATION`.
+  ///
+  /// Optional.
+  core.List<core.String>? regionIdInclusion;
+
   /// Whether the promotion applies to
   /// [all stores, or only specified stores](https://support.google.com/merchants/answer/13857563?sjid=17642868584668136159-NC).
   ///
@@ -505,22 +643,22 @@ class Attributes {
   /// - "SPECIFIC_STORES" : Promotion applies to only the specified stores.
   core.String? storeApplicability;
 
-  /// [Store codes to exclude](https://support.google.com/merchants/answer/13859586?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [Store codes to exclude](https://support.google.com/merchants/answer/13859586?ref_topic=13773355)
   /// for the promotion.
   ///
   /// The store filter attributes only applies when the `store_applicability`
   /// attribute is set to
-  /// [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355).
   ///
   /// Optional.
   core.List<core.String>? storeCodesExclusion;
 
-  /// [Store codes to include](https://support.google.com/merchants/answer/13857470?ref_topic=13773355&sjid=17642868584668136159-NC)
+  /// [Store codes to include](https://support.google.com/merchants/answer/13857470?ref_topic=13773355)
   /// for the promotion.
   ///
   /// The store filter attributes only applies when the `store_applicability`
   /// attribute is set to
-  /// [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355&sjid=17642868584668136159-NC).
+  /// [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355).
   /// Store code (the store ID from your Business Profile) of the physical store
   /// the product is sold in. See the
   /// [Local product inventory data specification](https://support.google.com/merchants/answer/3061342)
@@ -530,14 +668,18 @@ class Attributes {
   core.List<core.String>? storeCodesInclusion;
 
   Attributes({
+    this.audience,
     this.brandExclusion,
     this.brandInclusion,
     this.couponValueType,
+    this.customRedemptionRestriction,
+    this.eventApplicability,
     this.freeGiftDescription,
     this.freeGiftItemId,
     this.freeGiftValue,
     this.genericRedemptionCode,
     this.getThisQuantityDiscounted,
+    this.googleProductCategories,
     this.itemGroupIdExclusion,
     this.itemGroupIdInclusion,
     this.itemIdExclusion,
@@ -545,6 +687,11 @@ class Attributes {
     this.limitQuantity,
     this.limitValue,
     this.longTitle,
+    this.maxDiscountAmount,
+    this.maxMoneyOffAmount,
+    this.maxPercentOff,
+    this.minMoneyOffAmount,
+    this.minPercentOff,
     this.minimumPurchaseAmount,
     this.minimumPurchaseQuantity,
     this.moneyOffAmount,
@@ -557,6 +704,8 @@ class Attributes {
     this.promotionDisplayTimePeriod,
     this.promotionEffectiveTimePeriod,
     this.promotionUrl,
+    this.redemptionRestriction,
+    this.regionIdInclusion,
     this.storeApplicability,
     this.storeCodesExclusion,
     this.storeCodesInclusion,
@@ -564,6 +713,7 @@ class Attributes {
 
   Attributes.fromJson(core.Map json_)
     : this(
+        audience: json_['audience'] as core.String?,
         brandExclusion: (json_['brandExclusion'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -571,6 +721,9 @@ class Attributes {
             ?.map((value) => value as core.String)
             .toList(),
         couponValueType: json_['couponValueType'] as core.String?,
+        customRedemptionRestriction:
+            json_['customRedemptionRestriction'] as core.String?,
+        eventApplicability: json_['eventApplicability'] as core.String?,
         freeGiftDescription: json_['freeGiftDescription'] as core.String?,
         freeGiftItemId: json_['freeGiftItemId'] as core.String?,
         freeGiftValue: json_.containsKey('freeGiftValue')
@@ -581,6 +734,10 @@ class Attributes {
         genericRedemptionCode: json_['genericRedemptionCode'] as core.String?,
         getThisQuantityDiscounted:
             json_['getThisQuantityDiscounted'] as core.String?,
+        googleProductCategories:
+            (json_['googleProductCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         itemGroupIdExclusion: (json_['itemGroupIdExclusion'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -600,6 +757,26 @@ class Attributes {
               )
             : null,
         longTitle: json_['longTitle'] as core.String?,
+        maxDiscountAmount: json_.containsKey('maxDiscountAmount')
+            ? Price.fromJson(
+                json_['maxDiscountAmount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        maxMoneyOffAmount: json_.containsKey('maxMoneyOffAmount')
+            ? Price.fromJson(
+                json_['maxMoneyOffAmount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        maxPercentOff: json_['maxPercentOff'] as core.String?,
+        minMoneyOffAmount: json_.containsKey('minMoneyOffAmount')
+            ? Price.fromJson(
+                json_['minMoneyOffAmount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        minPercentOff: json_['minPercentOff'] as core.String?,
         minimumPurchaseAmount: json_.containsKey('minimumPurchaseAmount')
             ? Price.fromJson(
                 json_['minimumPurchaseAmount']
@@ -640,6 +817,10 @@ class Attributes {
               )
             : null,
         promotionUrl: json_['promotionUrl'] as core.String?,
+        redemptionRestriction: json_['redemptionRestriction'] as core.String?,
+        regionIdInclusion: (json_['regionIdInclusion'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         storeApplicability: json_['storeApplicability'] as core.String?,
         storeCodesExclusion: (json_['storeCodesExclusion'] as core.List?)
             ?.map((value) => value as core.String)
@@ -650,14 +831,18 @@ class Attributes {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final audience = this.audience;
     final brandExclusion = this.brandExclusion;
     final brandInclusion = this.brandInclusion;
     final couponValueType = this.couponValueType;
+    final customRedemptionRestriction = this.customRedemptionRestriction;
+    final eventApplicability = this.eventApplicability;
     final freeGiftDescription = this.freeGiftDescription;
     final freeGiftItemId = this.freeGiftItemId;
     final freeGiftValue = this.freeGiftValue;
     final genericRedemptionCode = this.genericRedemptionCode;
     final getThisQuantityDiscounted = this.getThisQuantityDiscounted;
+    final googleProductCategories = this.googleProductCategories;
     final itemGroupIdExclusion = this.itemGroupIdExclusion;
     final itemGroupIdInclusion = this.itemGroupIdInclusion;
     final itemIdExclusion = this.itemIdExclusion;
@@ -665,6 +850,11 @@ class Attributes {
     final limitQuantity = this.limitQuantity;
     final limitValue = this.limitValue;
     final longTitle = this.longTitle;
+    final maxDiscountAmount = this.maxDiscountAmount;
+    final maxMoneyOffAmount = this.maxMoneyOffAmount;
+    final maxPercentOff = this.maxPercentOff;
+    final minMoneyOffAmount = this.minMoneyOffAmount;
+    final minPercentOff = this.minPercentOff;
     final minimumPurchaseAmount = this.minimumPurchaseAmount;
     final minimumPurchaseQuantity = this.minimumPurchaseQuantity;
     final moneyOffAmount = this.moneyOffAmount;
@@ -677,18 +867,24 @@ class Attributes {
     final promotionDisplayTimePeriod = this.promotionDisplayTimePeriod;
     final promotionEffectiveTimePeriod = this.promotionEffectiveTimePeriod;
     final promotionUrl = this.promotionUrl;
+    final redemptionRestriction = this.redemptionRestriction;
+    final regionIdInclusion = this.regionIdInclusion;
     final storeApplicability = this.storeApplicability;
     final storeCodesExclusion = this.storeCodesExclusion;
     final storeCodesInclusion = this.storeCodesInclusion;
     return {
+      'audience': ?audience,
       'brandExclusion': ?brandExclusion,
       'brandInclusion': ?brandInclusion,
       'couponValueType': ?couponValueType,
+      'customRedemptionRestriction': ?customRedemptionRestriction,
+      'eventApplicability': ?eventApplicability,
       'freeGiftDescription': ?freeGiftDescription,
       'freeGiftItemId': ?freeGiftItemId,
       'freeGiftValue': ?freeGiftValue,
       'genericRedemptionCode': ?genericRedemptionCode,
       'getThisQuantityDiscounted': ?getThisQuantityDiscounted,
+      'googleProductCategories': ?googleProductCategories,
       'itemGroupIdExclusion': ?itemGroupIdExclusion,
       'itemGroupIdInclusion': ?itemGroupIdInclusion,
       'itemIdExclusion': ?itemIdExclusion,
@@ -696,6 +892,11 @@ class Attributes {
       'limitQuantity': ?limitQuantity,
       'limitValue': ?limitValue,
       'longTitle': ?longTitle,
+      'maxDiscountAmount': ?maxDiscountAmount,
+      'maxMoneyOffAmount': ?maxMoneyOffAmount,
+      'maxPercentOff': ?maxPercentOff,
+      'minMoneyOffAmount': ?minMoneyOffAmount,
+      'minPercentOff': ?minPercentOff,
       'minimumPurchaseAmount': ?minimumPurchaseAmount,
       'minimumPurchaseQuantity': ?minimumPurchaseQuantity,
       'moneyOffAmount': ?moneyOffAmount,
@@ -708,6 +909,8 @@ class Attributes {
       'promotionDisplayTimePeriod': ?promotionDisplayTimePeriod,
       'promotionEffectiveTimePeriod': ?promotionEffectiveTimePeriod,
       'promotionUrl': ?promotionUrl,
+      'redemptionRestriction': ?redemptionRestriction,
+      'regionIdInclusion': ?regionIdInclusion,
       'storeApplicability': ?storeApplicability,
       'storeCodesExclusion': ?storeCodesExclusion,
       'storeCodesInclusion': ?storeCodesInclusion,
@@ -780,6 +983,8 @@ class DestinationStatus {
   /// [Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).
   /// - "FREE_LISTINGS" :
   /// [Free product listings](https://support.google.com/merchants/answer/9199328).
+  /// - "FREE_LISTINGS_UCP_CHECKOUT" :
+  /// [Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).
   /// - "FREE_LOCAL_LISTINGS" :
   /// [Free local product listings](https://support.google.com/merchants/answer/9825611).
   /// - "FREE_LOCAL_VEHICLE_LISTINGS" :
@@ -925,6 +1130,8 @@ class ItemLevelIssue {
   /// [Vehicle inventory ads](https://support.google.com/merchants/answer/11544533).
   /// - "FREE_LISTINGS" :
   /// [Free product listings](https://support.google.com/merchants/answer/9199328).
+  /// - "FREE_LISTINGS_UCP_CHECKOUT" :
+  /// [Free product listings on UCP checkout](https://developers.google.com/merchant/ucp).
   /// - "FREE_LOCAL_LISTINGS" :
   /// [Free local product listings](https://support.google.com/merchants/answer/9825611).
   /// - "FREE_LOCAL_VEHICLE_LISTINGS" :

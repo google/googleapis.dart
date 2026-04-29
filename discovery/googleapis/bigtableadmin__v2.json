@@ -49,7 +49,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20251209",
+    "revision": "20260331",
     "rootUrl": "https://bigtableadmin.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Bigtable Admin API",
@@ -837,6 +837,37 @@
                                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
                                 },
+                                "getMemoryLayer": {
+                                    "description": "Gets information about the memory layer of a cluster.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/memoryLayer",
+                                    "httpMethod": "GET",
+                                    "id": "bigtableadmin.projects.instances.clusters.getMemoryLayer",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The unique name of the requested cluster's memory layer. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/memoryLayer$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "MemoryLayer"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/bigtable.admin",
+                                        "https://www.googleapis.com/auth/bigtable.admin.cluster",
+                                        "https://www.googleapis.com/auth/bigtable.admin.instance",
+                                        "https://www.googleapis.com/auth/cloud-bigtable.admin",
+                                        "https://www.googleapis.com/auth/cloud-bigtable.admin.cluster",
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                                    ]
+                                },
                                 "list": {
                                     "description": "Lists information about clusters in an instance.",
                                     "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters",
@@ -933,6 +964,45 @@
                                     "path": "v2/{+name}",
                                     "request": {
                                         "$ref": "Cluster"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/bigtable.admin",
+                                        "https://www.googleapis.com/auth/bigtable.admin.cluster",
+                                        "https://www.googleapis.com/auth/bigtable.admin.instance",
+                                        "https://www.googleapis.com/auth/cloud-bigtable.admin",
+                                        "https://www.googleapis.com/auth/cloud-bigtable.admin.cluster",
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "updateMemoryLayer": {
+                                    "description": "Updates the memory layer of a cluster. To enable the memory layer, set the memory_config. To disable the memory layer, unset the memory_config.",
+                                    "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/memoryLayer",
+                                    "httpMethod": "PATCH",
+                                    "id": "bigtableadmin.projects.instances.clusters.updateMemoryLayer",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Identifier. Name of the memory layer. This is always: \"projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer\".",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/memoryLayer$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Optional. The list of fields to update.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "MemoryLayer"
                                     },
                                     "response": {
                                         "$ref": "Operation"
@@ -1308,6 +1378,51 @@
                                             "path": "v2/{+parent}/hotTablets",
                                             "response": {
                                                 "$ref": "ListHotTabletsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/bigtable.admin",
+                                                "https://www.googleapis.com/auth/bigtable.admin.cluster",
+                                                "https://www.googleapis.com/auth/bigtable.admin.instance",
+                                                "https://www.googleapis.com/auth/cloud-bigtable.admin",
+                                                "https://www.googleapis.com/auth/cloud-bigtable.admin.cluster",
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "memoryLayers": {
+                                    "methods": {
+                                        "list": {
+                                            "description": "Lists information about memory layers.",
+                                            "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/memoryLayers",
+                                            "httpMethod": "GET",
+                                            "id": "bigtableadmin.projects.instances.clusters.memoryLayers.list",
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "pageSize": {
+                                                    "description": "Optional. The maximum number of memory layers to return. The service may return fewer than this value.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "Optional. A page token, received from a previous `ListMemoryLayers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMemoryLayers` must match the call that provided the page token.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "parent": {
+                                                    "description": "Required. The unique name of the cluster for which a list of memory layers is requested. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list MemoryLayers for all Clusters in an instance, e.g., `projects/myproject/instances/myinstance/clusters/-`.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/{+parent}/memoryLayers",
+                                            "response": {
+                                                "$ref": "ListMemoryLayersResponse"
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/bigtable.admin",
@@ -3065,7 +3180,7 @@
                 "locations": {
                     "methods": {
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v2/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "bigtableadmin.projects.locations.list",
@@ -3136,7 +3251,7 @@
                     "type": "string"
                 },
                 "etag": {
-                    "description": "Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.",
+                    "description": "Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the meantime. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.",
                     "type": "string"
                 },
                 "multiClusterRoutingUseAny": {
@@ -3254,6 +3369,13 @@
                     "description": "How frequently automated backups should occur. The only supported value at this time is 24 hours. An undefined frequency is treated as 24 hours.",
                     "format": "google-duration",
                     "type": "string"
+                },
+                "locations": {
+                    "description": "Optional. A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format `projects/{project}/locations/{zone}`. This field can only set for tables in Enterprise Plus instances.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "retentionPeriod": {
                     "description": "Required. How long the automated backups should be retained. Values must be at least 3 days and at most 90 days.",
@@ -4258,6 +4380,19 @@
             },
             "type": "object"
         },
+        "GoogleBigtableAdminV2MemoryLayerMemoryConfig": {
+            "description": "Configuration of a memory layer.",
+            "id": "GoogleBigtableAdminV2MemoryLayerMemoryConfig",
+            "properties": {
+                "storageSizeGib": {
+                    "description": "Output only. Reporting the current size of the memory layer in GiB.",
+                    "format": "int32",
+                    "readOnly": true,
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "GoogleBigtableAdminV2TypeAggregate": {
             "description": "A value that combines incremental updates into a summarized value. Data is never directly written or read using type `Aggregate`. Writes provide either the `input_type` or `state_type`, and reads always return the `state_type` .",
             "id": "GoogleBigtableAdminV2TypeAggregate",
@@ -4328,6 +4463,17 @@
         "GoogleBigtableAdminV2TypeBool": {
             "description": "bool Values of type `Bool` are stored in `Value.bool_value`.",
             "id": "GoogleBigtableAdminV2TypeBool",
+            "properties": {
+                "encoding": {
+                    "$ref": "GoogleBigtableAdminV2TypeBoolEncoding",
+                    "description": "Specifies the encoding to use when converting to or from lower level types."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleBigtableAdminV2TypeBoolEncoding": {
+            "description": "Defines rules used to convert to or from lower level types.",
+            "id": "GoogleBigtableAdminV2TypeBoolEncoding",
             "properties": {},
             "type": "object"
         },
@@ -4394,6 +4540,50 @@
         "GoogleBigtableAdminV2TypeFloat64": {
             "description": "Float64 Values of type `Float64` are stored in `Value.float_value`.",
             "id": "GoogleBigtableAdminV2TypeFloat64",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleBigtableAdminV2TypeGeography": {
+            "description": "A geography type, representing a point or region on Earth. The value is stored in `Value.bytes_value` as Well-Known Binary (WKB) bytes.",
+            "id": "GoogleBigtableAdminV2TypeGeography",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleBigtableAdminV2TypeInt32": {
+            "description": "Int32 Values of type `Int32` are stored in `Value.int_value`.",
+            "id": "GoogleBigtableAdminV2TypeInt32",
+            "properties": {
+                "encoding": {
+                    "$ref": "GoogleBigtableAdminV2TypeInt32Encoding",
+                    "description": "The encoding to use when converting to or from lower level types."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleBigtableAdminV2TypeInt32Encoding": {
+            "description": "Rules used to convert to or from lower level types.",
+            "id": "GoogleBigtableAdminV2TypeInt32Encoding",
+            "properties": {
+                "bigEndianBytes": {
+                    "$ref": "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes",
+                    "description": "Use `BigEndianBytes` encoding."
+                },
+                "orderedCodeBytes": {
+                    "$ref": "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes",
+                    "description": "Use `OrderedCodeBytes` encoding."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes": {
+            "description": "Encodes the value as a 4-byte big-endian two's complement value. Sorted mode: non-negative values are supported. Distinct mode: all values are supported. Compatible with: - BigQuery `BINARY` encoding - HBase `Bytes.toBytes` - Java `ByteBuffer.putInt()` with `ByteOrder.BIG_ENDIAN`",
+            "id": "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes": {
+            "description": "Encodes the value in a variable length binary format of up to 5 bytes. Values that are closer to zero use fewer bytes. Sorted mode: all values are supported. Distinct mode: all values are supported.",
+            "id": "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes",
             "properties": {},
             "type": "object"
         },
@@ -4669,6 +4859,20 @@
                     "description": "Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.",
                     "type": "string"
                 },
+                "edition": {
+                    "description": "Optional. The edition of the instance. See Edition for details.",
+                    "enum": [
+                        "EDITION_UNSPECIFIED",
+                        "ENTERPRISE",
+                        "ENTERPRISE_PLUS"
+                    ],
+                    "enumDescriptions": [
+                        "The edition is unspecified. This is treated as `ENTERPRISE`.",
+                        "The Enterprise edition. This is the default offering that is designed to meet the needs of most enterprise workloads.",
+                        "The Enterprise Plus edition. This is a premium tier that is designed for demanding, multi-tenant workloads requiring the highest levels of performance, scale, and global availability. The nodes in the Enterprise Plus tier come at a higher cost than the Enterprise tier. Any Enterprise Plus features must be disabled before downgrading to Enterprise."
+                    ],
+                    "type": "string"
+                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
@@ -4928,6 +5132,31 @@
             },
             "type": "object"
         },
+        "ListMemoryLayersResponse": {
+            "description": "Response message for BigtableInstanceAdmin.ListMemoryLayers.",
+            "id": "ListMemoryLayersResponse",
+            "properties": {
+                "failedLocations": {
+                    "description": "Locations from which MemoryLayer information could not be retrieved, due to an outage or some other transient condition. MemoryLayers from these locations may be missing from `memory_layers`, or may only have partial information returned. Values are of the form `projects//locations/`",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "memoryLayers": {
+                    "description": "The list of requested memory layers.",
+                    "items": {
+                        "$ref": "MemoryLayer"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListOperationsResponse": {
             "description": "The response message for Operations.ListOperations.",
             "id": "ListOperationsResponse",
@@ -5072,6 +5301,50 @@
                 },
                 "query": {
                     "description": "Required. Immutable. The materialized view's select query. Views: `SCHEMA_VIEW`, `FULL`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MemoryConfig": {
+            "description": "If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. MemoryConfig can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.",
+            "id": "MemoryConfig",
+            "properties": {},
+            "type": "object"
+        },
+        "MemoryLayer": {
+            "description": "The memory layer of a cluster. A memory layer serves reads from memory without hitting the backing persistent data store.",
+            "id": "MemoryLayer",
+            "properties": {
+                "etag": {
+                    "description": "Optional. The etag for this memory layer. This may be sent on update requests to ensure that the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag.",
+                    "type": "string"
+                },
+                "memoryConfig": {
+                    "$ref": "GoogleBigtableAdminV2MemoryLayerMemoryConfig",
+                    "description": "The configuration of this memory layer. Set an empty `memory_config` to enable the memory layer. Unset this to disable the memory layer."
+                },
+                "name": {
+                    "description": "Identifier. Name of the memory layer. This is always: \"projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer\".",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The current state of the memory layer.",
+                    "enum": [
+                        "STATE_NOT_KNOWN",
+                        "READY",
+                        "ENABLING",
+                        "RESIZING",
+                        "DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "The state of the memory layer could not be determined.",
+                        "The memory layer has been successfully enabled and is ready to serve requests.",
+                        "The memory layer is currently being enabled, and may be disabled if the enablement process encounters an error. A cluster may not be able to serve requests from the memory layer while being enabled.",
+                        "The memory layer is currently being resized, and may revert to its previous storage size if the process encounters an error. The memory layer is still capable of serving requests while being resized, but may exhibit performance as if its number of allocated nodes is between the starting and requested states.",
+                        "The memory layer is disabled. The default state for a cluster without a memory layer."
+                    ],
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -5453,6 +5726,10 @@
             "description": "Standard options for isolating this app profile's traffic from other use cases.",
             "id": "StandardIsolation",
             "properties": {
+                "memoryConfig": {
+                    "$ref": "MemoryConfig",
+                    "description": "Optional. The memory config to use for requests sent using this app profile."
+                },
                 "priority": {
                     "description": "The priority of requests sent using this app profile.",
                     "enum": [
@@ -5537,13 +5814,13 @@
                     "type": "boolean"
                 },
                 "granularity": {
-                    "description": "Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.",
+                    "description": "Immutable. The granularity at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.",
                     "enum": [
                         "TIMESTAMP_GRANULARITY_UNSPECIFIED",
                         "MILLIS"
                     ],
                     "enumDescriptions": [
-                        "The user did not specify a granularity. Should not be returned. When specified during table creation, MILLIS will be used.",
+                        "The user did not specify a granularity. Should not be returned.",
                         "The table keeps data versioned at a granularity of 1ms."
                     ],
                     "type": "string"
@@ -5720,6 +5997,14 @@
                 "float64Type": {
                     "$ref": "GoogleBigtableAdminV2TypeFloat64",
                     "description": "Float64"
+                },
+                "geographyType": {
+                    "$ref": "GoogleBigtableAdminV2TypeGeography",
+                    "description": "Geography"
+                },
+                "int32Type": {
+                    "$ref": "GoogleBigtableAdminV2TypeInt32",
+                    "description": "Int32"
                 },
                 "int64Type": {
                     "$ref": "GoogleBigtableAdminV2TypeInt64",
@@ -5930,6 +6215,43 @@
                 "logicalView": {
                     "$ref": "LogicalView",
                     "description": "Required. The logical view to update. The logical view's `name` field is used to identify the view to update. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}`."
+                },
+                "updateMask": {
+                    "description": "Optional. The list of fields to update.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateMemoryLayerMetadata": {
+            "description": "The metadata for the Operation returned by UpdateMemoryLayer.",
+            "id": "UpdateMemoryLayerMetadata",
+            "properties": {
+                "finishTime": {
+                    "description": "The time at which the operation failed or was completed successfully.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "originalRequest": {
+                    "$ref": "UpdateMemoryLayerRequest",
+                    "description": "The request that prompted the initiation of this UpdateMemoryLayer operation."
+                },
+                "requestTime": {
+                    "description": "The time at which the original request was received.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateMemoryLayerRequest": {
+            "description": "Request message for BigtableInstanceAdmin.UpdateMemoryLayer.",
+            "id": "UpdateMemoryLayerRequest",
+            "properties": {
+                "memoryLayer": {
+                    "$ref": "MemoryLayer",
+                    "description": "Required. The memory layer to update. The memory layer's `name` format is as follows: `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`."
                 },
                 "updateMask": {
                     "description": "Optional. The list of fields to update.",

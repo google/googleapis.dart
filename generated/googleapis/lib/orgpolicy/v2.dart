@@ -213,9 +213,10 @@ class FoldersPoliciesResource {
   /// naming rules.
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
   ///
-  /// [etag] - Optional. The current etag of policy. If an etag is provided and
-  /// does not match the current etag of the policy, deletion will be blocked
-  /// and an ABORTED error will be returned.
+  /// [etag] - Optional. The current entity tag (ETag) of the organization
+  /// policy. If an ETag is provided and doesn't match the current ETag of the
+  /// policy, deletion of the policy will be blocked and an `ABORTED` error will
+  /// be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -251,8 +252,8 @@ class FoldersPoliciesResource {
 
   /// Gets a policy on a resource.
   ///
-  /// If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
-  /// value can be used with `UpdatePolicy()` to update a policy during
+  /// If no policy is set on the resource, `NOT_FOUND` is returned. The entity
+  /// tag (ETag) can be used with `UpdatePolicy()` to update a policy during
   /// read-modify-write.
   ///
   /// Request parameters:
@@ -294,7 +295,7 @@ class FoldersPoliciesResource {
   /// Gets the effective policy on a resource.
   ///
   /// This is the result of merging policies in the resource hierarchy and
-  /// evaluating conditions. The returned policy will not have an `etag` or
+  /// evaluating conditions. The returned policy will not have an ETag or
   /// `condition` set because it is an evaluated policy across multiple
   /// resources. Subtrees of Resource Manager resource hierarchy with 'under:'
   /// prefix will not be expanded.
@@ -391,9 +392,9 @@ class FoldersPoliciesResource {
   /// Updates a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-  /// constraint or the policy do not exist. Returns a `google.rpc.Status` with
-  /// `google.rpc.Code.ABORTED` if the etag supplied in the request does not
-  /// match the persisted etag of the policy Note: the supplied policy will
+  /// constraint or the policy doesn't exist. Returns a `google.rpc.Status` with
+  /// `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't
+  /// match the persisted ETag of the policy. Note: the supplied policy will
   /// perform a full overwrite of all fields.
   ///
   /// [request] - The metadata request object.
@@ -402,7 +403,7 @@ class FoldersPoliciesResource {
   ///
   /// [name] - Immutable. The resource name of the policy. Must be one of the
   /// following forms, where `constraint_name` is the name of the constraint
-  /// which this policy configures: *
+  /// that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -413,8 +414,8 @@ class FoldersPoliciesResource {
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [updateMask] - Field mask used to specify the fields to be overwritten in
-  /// the policy by the set. The fields specified in the update_mask are
-  /// relative to the policy, not the full request.
+  /// the policy. The fields specified in the update_mask are relative to the
+  /// policy, not the full request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -728,8 +729,8 @@ class OrganizationsCustomConstraintsResource {
   /// organization. Format of the name should be *
   /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
   /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
-  /// The max length is 70 characters and the minimum length is 1. Note that the
-  /// prefix `organizations/{organization_id}/customConstraints/` is not
+  /// The max length is 71 characters and the minimum length is 1. Note that the
+  /// prefix `organizations/{organization_id}/customConstraints/custom.` is not
   /// counted.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
@@ -835,9 +836,10 @@ class OrganizationsPoliciesResource {
   /// naming rules.
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
   ///
-  /// [etag] - Optional. The current etag of policy. If an etag is provided and
-  /// does not match the current etag of the policy, deletion will be blocked
-  /// and an ABORTED error will be returned.
+  /// [etag] - Optional. The current entity tag (ETag) of the organization
+  /// policy. If an ETag is provided and doesn't match the current ETag of the
+  /// policy, deletion of the policy will be blocked and an `ABORTED` error will
+  /// be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -873,8 +875,8 @@ class OrganizationsPoliciesResource {
 
   /// Gets a policy on a resource.
   ///
-  /// If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
-  /// value can be used with `UpdatePolicy()` to update a policy during
+  /// If no policy is set on the resource, `NOT_FOUND` is returned. The entity
+  /// tag (ETag) can be used with `UpdatePolicy()` to update a policy during
   /// read-modify-write.
   ///
   /// Request parameters:
@@ -916,7 +918,7 @@ class OrganizationsPoliciesResource {
   /// Gets the effective policy on a resource.
   ///
   /// This is the result of merging policies in the resource hierarchy and
-  /// evaluating conditions. The returned policy will not have an `etag` or
+  /// evaluating conditions. The returned policy will not have an ETag or
   /// `condition` set because it is an evaluated policy across multiple
   /// resources. Subtrees of Resource Manager resource hierarchy with 'under:'
   /// prefix will not be expanded.
@@ -1013,9 +1015,9 @@ class OrganizationsPoliciesResource {
   /// Updates a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-  /// constraint or the policy do not exist. Returns a `google.rpc.Status` with
-  /// `google.rpc.Code.ABORTED` if the etag supplied in the request does not
-  /// match the persisted etag of the policy Note: the supplied policy will
+  /// constraint or the policy doesn't exist. Returns a `google.rpc.Status` with
+  /// `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't
+  /// match the persisted ETag of the policy. Note: the supplied policy will
   /// perform a full overwrite of all fields.
   ///
   /// [request] - The metadata request object.
@@ -1024,7 +1026,7 @@ class OrganizationsPoliciesResource {
   ///
   /// [name] - Immutable. The resource name of the policy. Must be one of the
   /// following forms, where `constraint_name` is the name of the constraint
-  /// which this policy configures: *
+  /// that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -1035,8 +1037,8 @@ class OrganizationsPoliciesResource {
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [updateMask] - Field mask used to specify the fields to be overwritten in
-  /// the policy by the set. The fields specified in the update_mask are
-  /// relative to the policy, not the full request.
+  /// the policy. The fields specified in the update_mask are relative to the
+  /// policy, not the full request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1209,9 +1211,10 @@ class ProjectsPoliciesResource {
   /// naming rules.
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
   ///
-  /// [etag] - Optional. The current etag of policy. If an etag is provided and
-  /// does not match the current etag of the policy, deletion will be blocked
-  /// and an ABORTED error will be returned.
+  /// [etag] - Optional. The current entity tag (ETag) of the organization
+  /// policy. If an ETag is provided and doesn't match the current ETag of the
+  /// policy, deletion of the policy will be blocked and an `ABORTED` error will
+  /// be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1247,8 +1250,8 @@ class ProjectsPoliciesResource {
 
   /// Gets a policy on a resource.
   ///
-  /// If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
-  /// value can be used with `UpdatePolicy()` to update a policy during
+  /// If no policy is set on the resource, `NOT_FOUND` is returned. The entity
+  /// tag (ETag) can be used with `UpdatePolicy()` to update a policy during
   /// read-modify-write.
   ///
   /// Request parameters:
@@ -1290,7 +1293,7 @@ class ProjectsPoliciesResource {
   /// Gets the effective policy on a resource.
   ///
   /// This is the result of merging policies in the resource hierarchy and
-  /// evaluating conditions. The returned policy will not have an `etag` or
+  /// evaluating conditions. The returned policy will not have an ETag or
   /// `condition` set because it is an evaluated policy across multiple
   /// resources. Subtrees of Resource Manager resource hierarchy with 'under:'
   /// prefix will not be expanded.
@@ -1387,9 +1390,9 @@ class ProjectsPoliciesResource {
   /// Updates a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-  /// constraint or the policy do not exist. Returns a `google.rpc.Status` with
-  /// `google.rpc.Code.ABORTED` if the etag supplied in the request does not
-  /// match the persisted etag of the policy Note: the supplied policy will
+  /// constraint or the policy doesn't exist. Returns a `google.rpc.Status` with
+  /// `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't
+  /// match the persisted ETag of the policy. Note: the supplied policy will
   /// perform a full overwrite of all fields.
   ///
   /// [request] - The metadata request object.
@@ -1398,7 +1401,7 @@ class ProjectsPoliciesResource {
   ///
   /// [name] - Immutable. The resource name of the policy. Must be one of the
   /// following forms, where `constraint_name` is the name of the constraint
-  /// which this policy configures: *
+  /// that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -1409,8 +1412,8 @@ class ProjectsPoliciesResource {
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [updateMask] - Field mask used to specify the fields to be overwritten in
-  /// the policy by the set. The fields specified in the update_mask are
-  /// relative to the policy, not the full request.
+  /// the policy. The fields specified in the update_mask are relative to the
+  /// policy, not the full request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1480,7 +1483,7 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
   }
 }
 
-/// A constraint describes a way to restrict resource's configuration.
+/// A constraint describes a way to restrict a resource's configuration.
 ///
 /// For example, you could enforce a constraint that controls which Google Cloud
 /// services can be activated across an organization, or whether a Compute
@@ -1518,9 +1521,12 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Mutable.
   core.String? displayName;
 
-  /// Managed constraint and canned constraint sometimes can have equivalents.
+  /// Defines the equivalent constraint name, if it exists.
   ///
-  /// This field is used to store the equivalent constraint name.
+  /// Managed constraints can have an equivalent legacy managed constraint, and
+  /// legacy managed constraints can have an equivalent managed constraint. For
+  /// example, "constraints/iam.disableServiceAccountKeyUpload" is equivalent to
+  /// "constraints/iam.managed.disableServiceAccountKeyUpload".
   core.String? equivalentConstraint;
 
   /// Defines this constraint as being a list constraint.
@@ -1666,10 +1672,9 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
   >?
   parameters;
 
-  /// The resource instance type on which this policy applies.
+  /// The resource instance type that this policy applies to, in the format `/`.
   ///
-  /// Format will be of the form : `/` Example: *
-  /// `compute.googleapis.com/Instance`.
+  /// Example: * `compute.googleapis.com/Instance`.
   core.List<core.String>? resourceTypes;
 
   GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition({
@@ -1755,7 +1760,7 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
   /// Provides a CEL expression to specify the acceptable parameter values
   /// during assignment.
   ///
-  /// For example, parameterName in ("parameterValue1", "parameterValue2")
+  /// For example, parameterName in ("parameterValue1", "parameterValue2").
   core.String? validValuesExpr;
 
   GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter({
@@ -1798,7 +1803,7 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
 
 /// Defines Metadata structure.
 class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata {
-  /// Detailed description of what this `parameter` is and use of it.
+  /// Detailed description of what this `parameter` is and its use.
   ///
   /// Mutable.
   core.String? description;
@@ -1857,8 +1862,113 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
 /// By creating a custom constraint, customers can apply policies of this custom
 /// constraint. *Creating a custom constraint itself does NOT apply any policy
 /// enforcement*.
-typedef GoogleCloudOrgpolicyV2CustomConstraint =
-    $GoogleCloudOrgpolicyV2CustomConstraint;
+class GoogleCloudOrgpolicyV2CustomConstraint {
+  /// Allow or deny type.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : This is only used for distinguishing unset
+  /// values and should never be used. Results in an error.
+  /// - "ALLOW" : Allowed action type.
+  /// - "DENY" : Deny action type.
+  core.String? actionType;
+
+  /// A Common Expression Language (CEL) condition which is used in the
+  /// evaluation of the constraint.
+  ///
+  /// For example:
+  /// `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")` or,
+  /// `resource.management.auto_upgrade == true` The max length of the condition
+  /// is 1000 characters.
+  core.String? condition;
+
+  /// Detailed information about this custom policy constraint.
+  ///
+  /// The max length of the description is 2000 characters.
+  core.String? description;
+
+  /// One line display name for the UI.
+  ///
+  /// The max length of the display_name is 200 characters.
+  core.String? displayName;
+
+  /// All the operations being applied for this constraint.
+  core.List<core.String>? methodTypes;
+
+  /// Name of the constraint.
+  ///
+  /// This is unique within the organization. Format of the name should be *
+  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
+  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+  /// The max length is 71 characters and the minimum length is 1. Note that the
+  /// prefix `organizations/{organization_id}/customConstraints/custom.` is not
+  /// counted.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The resource instance type on which this policy applies.
+  ///
+  /// Format will be of the form : `/` Example: *
+  /// `compute.googleapis.com/Instance`.
+  ///
+  /// Immutable.
+  core.List<core.String>? resourceTypes;
+
+  /// The last time this custom constraint was updated.
+  ///
+  /// This represents the last time that the `CreateCustomConstraint` or
+  /// `UpdateCustomConstraint` methods were called.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudOrgpolicyV2CustomConstraint({
+    this.actionType,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.methodTypes,
+    this.name,
+    this.resourceTypes,
+    this.updateTime,
+  });
+
+  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
+    : this(
+        actionType: json_['actionType'] as core.String?,
+        condition: json_['condition'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        methodTypes: (json_['methodTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        name: json_['name'] as core.String?,
+        resourceTypes: (json_['resourceTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionType = this.actionType;
+    final condition = this.condition;
+    final description = this.description;
+    final displayName = this.displayName;
+    final methodTypes = this.methodTypes;
+    final name = this.name;
+    final resourceTypes = this.resourceTypes;
+    final updateTime = this.updateTime;
+    return {
+      'actionType': ?actionType,
+      'condition': ?condition,
+      'description': ?description,
+      'displayName': ?displayName,
+      'methodTypes': ?methodTypes,
+      'name': ?name,
+      'resourceTypes': ?resourceTypes,
+      'updateTime': ?updateTime,
+    };
+  }
+}
 
 /// The response returned from the ListConstraints method.
 class GoogleCloudOrgpolicyV2ListConstraintsResponse {
@@ -1977,7 +2087,7 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
   }
 }
 
-/// Defines an organization policy which is used to specify constraints for
+/// Defines an organization policy that is used to specify constraints for
 /// configurations of Google Cloud resources.
 class GoogleCloudOrgpolicyV2Policy {
   /// Deprecated.
@@ -1995,9 +2105,9 @@ class GoogleCloudOrgpolicyV2Policy {
   /// An opaque tag indicating the current state of the policy, used for
   /// concurrency control.
   ///
-  /// This 'etag' is computed by the server based on the value of other fields,
-  /// and may be sent on update and delete requests to ensure the client has an
-  /// up-to-date value before proceeding.
+  /// This entity tag (ETag) is computed by the server based on the value of
+  /// other fields, and may be sent on update and delete requests to ensure the
+  /// client has an up-to-date value before proceeding.
   ///
   /// Optional.
   core.String? etag;
@@ -2005,7 +2115,7 @@ class GoogleCloudOrgpolicyV2Policy {
   /// The resource name of the policy.
   ///
   /// Must be one of the following forms, where `constraint_name` is the name of
-  /// the constraint which this policy configures: *
+  /// the constraint that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
@@ -2065,7 +2175,7 @@ class GoogleCloudOrgpolicyV2Policy {
   }
 }
 
-/// Defines a Google Cloud policy specification which is used to specify
+/// Defines a Google Cloud policy specification that is used to specify
 /// constraints for configurations of Google Cloud resources.
 class GoogleCloudOrgpolicyV2PolicySpec {
   /// An opaque tag indicating the current version of the policySpec, used for
@@ -2073,9 +2183,9 @@ class GoogleCloudOrgpolicyV2PolicySpec {
   ///
   /// This field is ignored if used in a `CreatePolicy` request. When the policy
   /// is returned from either a `GetPolicy` or a `ListPolicies` request, this
-  /// `etag` indicates the version of the current policySpec to use when
-  /// executing a read-modify-write loop. When the policy is returned from a
-  /// `GetEffectivePolicy` request, the `etag` will be unset.
+  /// entity tag (ETag) indicates the version of the current policySpec to use
+  /// when executing a read-modify-write loop. When the policy is returned from
+  /// a `GetEffectivePolicy` request, the ETag will be unset.
   core.String? etag;
 
   /// Determines the inheritance behavior for this policy.
@@ -2084,7 +2194,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
   /// hierarchy (up to the closest root) are inherited and present in the
   /// effective policy. If it is false, then no rules are inherited, and this
   /// policy becomes the new root for evaluation. This field can be set only for
-  /// policies which configure list constraints.
+  /// policies that configure list constraints.
   core.bool? inheritFromParent;
 
   /// Ignores policies set above this resource and restores the
@@ -2097,7 +2207,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
   core.bool? reset;
 
   /// In policies for boolean constraints, the following requirements apply: -
-  /// There must be one and only one policy rule where condition is unset.
+  /// There must be exactly one policy rule where a condition is unset.
   ///
   /// - Boolean policy rules with conditions must set `enforced` to the opposite
   /// of the policy rule without a condition. - During policy evaluation, policy

@@ -39,6 +39,7 @@
 ///         - [ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource]
 ///       - [ProjectsLocationsKeyRingsImportJobsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRetiredResourcesResource]
 ///     - [ProjectsLocationsSingleTenantHsmInstancesResource]
 ///       - [ProjectsLocationsSingleTenantHsmInstancesProposalsResource]
 library;
@@ -135,8 +136,8 @@ class FoldersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the KeyAccessJustificationsPolicyConfig to
-  /// get.
+  /// [name] - Required. Specifies the name of the
+  /// KeyAccessJustificationsPolicyConfig to get.
   /// Value must have pattern `^folders/\[^/\]+/kajPolicyConfig$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -182,7 +183,8 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig`
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig` or
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
   /// Value must have pattern `^folders/\[^/\]+/autokeyConfig$`.
   ///
   /// [updateMask] - Required. Masks which fields of the AutokeyConfig to
@@ -230,12 +232,12 @@ class FoldersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. The resource name for this
+  /// [name] - Identifier. Represents the resource name for this
   /// KeyAccessJustificationsPolicyConfig in the format of
   /// "{organizations|folders|projects} / * /kajPolicyConfig".
   /// Value must have pattern `^folders/\[^/\]+/kajPolicyConfig$`.
   ///
-  /// [updateMask] - Optional. The list of fields to update.
+  /// [updateMask] - Optional. Specifies the list of fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -283,8 +285,8 @@ class OrganizationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the KeyAccessJustificationsPolicyConfig to
-  /// get.
+  /// [name] - Required. Specifies the name of the
+  /// KeyAccessJustificationsPolicyConfig to get.
   /// Value must have pattern `^organizations/\[^/\]+/kajPolicyConfig$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -324,12 +326,12 @@ class OrganizationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. The resource name for this
+  /// [name] - Identifier. Represents the resource name for this
   /// KeyAccessJustificationsPolicyConfig in the format of
   /// "{organizations|folders|projects} / * /kajPolicyConfig".
   /// Value must have pattern `^organizations/\[^/\]+/kajPolicyConfig$`.
   ///
-  /// [updateMask] - Optional. The list of fields to update.
+  /// [updateMask] - Optional. Specifies the list of fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -419,8 +421,8 @@ class ProjectsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the KeyAccessJustificationsPolicyConfig to
-  /// get.
+  /// [name] - Required. Specifies the name of the
+  /// KeyAccessJustificationsPolicyConfig to get.
   /// Value must have pattern `^projects/\[^/\]+/kajPolicyConfig$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -498,8 +500,8 @@ class ProjectsResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Required. The number or id of the project to get the effective
-  /// KeyAccessJustificationsEnrollmentConfig for.
+  /// [project] - Required. Specifies the number or id of the project to get the
+  /// effective KeyAccessJustificationsEnrollmentConfig for.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -542,8 +544,9 @@ class ProjectsResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Required. The number or id of the project to get the effective
-  /// KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}"
+  /// [project] - Required. Specifies the number or id of the project to get the
+  /// effective KeyAccessJustificationsPolicyConfig. In the format of
+  /// "projects/{|}"
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -594,7 +597,8 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig`
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig` or
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
   /// Value must have pattern `^projects/\[^/\]+/autokeyConfig$`.
   ///
   /// [updateMask] - Required. Masks which fields of the AutokeyConfig to
@@ -642,12 +646,12 @@ class ProjectsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. The resource name for this
+  /// [name] - Identifier. Represents the resource name for this
   /// KeyAccessJustificationsPolicyConfig in the format of
   /// "{organizations|folders|projects} / * /kajPolicyConfig".
   /// Value must have pattern `^projects/\[^/\]+/kajPolicyConfig$`.
   ///
-  /// [updateMask] - Optional. The list of fields to update.
+  /// [updateMask] - Optional. Specifies the list of fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -698,6 +702,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsKeyRingsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRetiredResourcesResource get retiredResources =>
+      ProjectsLocationsRetiredResourcesResource(_requester);
   ProjectsLocationsSingleTenantHsmInstancesResource
   get singleTenantHsmInstances =>
       ProjectsLocationsSingleTenantHsmInstancesResource(_requester);
@@ -817,6 +823,17 @@ class ProjectsLocationsResource {
   }
 
   /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -2061,6 +2078,47 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     );
   }
 
+  /// Permanently deletes the given CryptoKey.
+  ///
+  /// All child CryptoKeyVersions must have been previously deleted using
+  /// KeyManagementService.DeleteCryptoKeyVersion. The specified crypto key will
+  /// be immediately and permanently deleted upon calling this method. This
+  /// action cannot be undone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CryptoKey to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Encrypts data, so that it can only be recovered by a call to Decrypt.
   ///
   /// The CryptoKey.purpose must be ENCRYPT_DECRYPT.
@@ -2653,6 +2711,48 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     return DecapsulateResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Permanently deletes the given CryptoKeyVersion.
+  ///
+  /// Only possible if the version has not been previously imported and if its
+  /// state is one of DESTROYED, IMPORT_FAILED, or GENERATION_FAILED.
+  /// Successfully imported CryptoKeyVersions cannot be deleted at this time.
+  /// The specified version will be immediately and permanently deleted upon
+  /// calling this method. This action cannot be undone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CryptoKeyVersion to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Schedule a CryptoKeyVersion for destruction.
@@ -3569,6 +3669,105 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRetiredResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRetiredResourcesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Retrieves a specific RetiredResource resource, which represents the record
+  /// of a deleted CryptoKey.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the RetiredResource to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/retiredResources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetiredResource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetiredResource> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetiredResource.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists the RetiredResources which are the records of deleted CryptoKeys.
+  ///
+  /// RetiredResources prevent the reuse of these resource names after deletion.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project-specific location holding the
+  /// RetiredResources, in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Optional limit on the number of RetiredResources to
+  /// be included in the response. Further RetiredResources can subsequently be
+  /// obtained by including the ListRetiredResourcesResponse.next_page_token in
+  /// a subsequent request. If unspecified, the server will pick an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
+  /// ListRetiredResourcesResponse.next_page_token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRetiredResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRetiredResourcesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/retiredResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRetiredResourcesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4534,8 +4733,8 @@ class AutokeyConfig {
   /// - "DEDICATED_KEY_PROJECT" : Keys are created in a dedicated project
   /// specified by `key_project`.
   /// - "RESOURCE_PROJECT" : Keys are created in the same project as the
-  /// resource requesting the key. `key_project` must not be set when this mode
-  /// is used.
+  /// resource requesting the key. The `key_project` must not be set when this
+  /// mode is used.
   /// - "DISABLED" : Disables the AutokeyConfig. When this mode is set, any
   /// AutokeyConfig from higher levels in the resource hierarchy are ignored for
   /// this resource and its descendants. This setting can be overridden by a
@@ -4548,7 +4747,8 @@ class AutokeyConfig {
   /// Identifier.
   ///
   /// Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig`
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig` or
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
   core.String? name;
 
   /// The state for the AutokeyConfig.
@@ -4990,6 +5190,9 @@ class CryptoKey {
   /// allowed justification codes.
   /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
   /// By default, this field is absent, and all justification codes are allowed.
+  /// If the `key_access_justifications_policy.allowed_access_reasons` is empty
+  /// (zero allowed justification code), all encrypt, decrypt, and sign
+  /// operations will fail.
   ///
   /// Optional.
   KeyAccessJustificationsPolicy? keyAccessJustificationsPolicy;
@@ -5797,6 +6000,22 @@ typedef DestroyCryptoKeyVersionRequest = $Empty;
 
 /// A Digest holds a cryptographic message digest.
 class Digest {
+  /// A message digest produced with SHAKE-256, to be used with ML-DSA
+  /// external-μ algorithms only.
+  ///
+  /// See "message representative" note in section 6.2, algorithm 7 of the
+  /// FIPS-204 standard: https://doi.org/10.6028/nist.fips.204
+  core.String? externalMu;
+  core.List<core.int> get externalMuAsBytes =>
+      convert.base64.decode(externalMu!);
+
+  set externalMuAsBytes(core.List<core.int> bytes_) {
+    externalMu = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   /// A message digest produced with the SHA-256 algorithm.
   core.String? sha256;
   core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
@@ -5830,20 +6049,27 @@ class Digest {
         .replaceAll('+', '-');
   }
 
-  Digest({this.sha256, this.sha384, this.sha512});
+  Digest({this.externalMu, this.sha256, this.sha384, this.sha512});
 
   Digest.fromJson(core.Map json_)
     : this(
+        externalMu: json_['externalMu'] as core.String?,
         sha256: json_['sha256'] as core.String?,
         sha384: json_['sha384'] as core.String?,
         sha512: json_['sha512'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final externalMu = this.externalMu;
     final sha256 = this.sha256;
     final sha384 = this.sha384;
     final sha512 = this.sha512;
-    return {'sha256': ?sha256, 'sha384': ?sha384, 'sha512': ?sha512};
+    return {
+      'externalMu': ?externalMu,
+      'sha256': ?sha256,
+      'sha384': ?sha384,
+      'sha512': ?sha512,
+    };
   }
 }
 
@@ -6739,13 +6965,13 @@ class ImportJob {
   }
 }
 
-/// The configuration of a protection level for a project's Key Access
-/// Justifications enrollment.
+/// Represents the configuration of a protection level for a project's Key
+/// Access Justifications enrollment.
 class KeyAccessJustificationsEnrollmentConfig {
-  /// Whether the project has KAJ logging enabled.
+  /// Indicates whether the project has KAJ logging enabled.
   core.bool? auditLogging;
 
-  /// Whether the project is enrolled in KAJ policy enforcement.
+  /// Indicates whether the project is enrolled in KAJ policy enforcement.
   core.bool? policyEnforcement;
 
   KeyAccessJustificationsEnrollmentConfig({
@@ -6770,29 +6996,45 @@ class KeyAccessJustificationsEnrollmentConfig {
 }
 
 /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-/// values for encrypt, decrypt, and sign operations on a CryptoKey.
+/// values for encrypt, decrypt, and sign operations on a CryptoKey or
+/// KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+/// policy).
 typedef KeyAccessJustificationsPolicy = $KeyAccessJustificationsPolicy;
 
-/// A singleton configuration for Key Access Justifications policies.
+/// Represents a singleton configuration for Key Access Justifications policies.
 class KeyAccessJustificationsPolicyConfig {
-  /// The default key access justification policy used when a CryptoKey is
-  /// created in this folder.
+  /// Specifies the default key access justifications (KAJ) policy used when a
+  /// CryptoKey is created in this folder.
   ///
   /// This is only used when a Key Access Justifications policy is not provided
   /// in the CreateCryptoKeyRequest. This overrides any default policies in its
-  /// ancestry.
+  /// ancestry. If this field is unset, or is set but contains an empty
+  /// allowed_access_reasons list, no default Key Access Justifications (KAJ)
+  /// policy configuration is active. In this scenario, all newly created keys
+  /// will default to an "allow-all" policy.
   ///
   /// Optional.
   KeyAccessJustificationsPolicy? defaultKeyAccessJustificationPolicy;
 
+  /// Indicates whether this parent resource is available to default policy
+  /// feature.
+  ///
+  /// Please consult
+  /// [the prerequisite of default policy feature](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy#before)
+  /// for more details.
+  ///
+  /// Output only.
+  core.bool? defaultPolicyAvailable;
+
   /// Identifier.
   ///
-  /// The resource name for this KeyAccessJustificationsPolicyConfig in the
-  /// format of "{organizations|folders|projects} / * /kajPolicyConfig".
+  /// Represents the resource name for this KeyAccessJustificationsPolicyConfig
+  /// in the format of "{organizations|folders|projects} / * /kajPolicyConfig".
   core.String? name;
 
   KeyAccessJustificationsPolicyConfig({
     this.defaultKeyAccessJustificationPolicy,
+    this.defaultPolicyAvailable,
     this.name,
   });
 
@@ -6805,16 +7047,19 @@ class KeyAccessJustificationsPolicyConfig {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        defaultPolicyAvailable: json_['defaultPolicyAvailable'] as core.bool?,
         name: json_['name'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final defaultKeyAccessJustificationPolicy =
         this.defaultKeyAccessJustificationPolicy;
+    final defaultPolicyAvailable = this.defaultPolicyAvailable;
     final name = this.name;
     return {
       'defaultKeyAccessJustificationPolicy':
           ?defaultKeyAccessJustificationPolicy,
+      'defaultPolicyAvailable': ?defaultPolicyAvailable,
       'name': ?name,
     };
   }
@@ -7239,6 +7484,51 @@ class ListLocationsResponse {
     final locations = this.locations;
     final nextPageToken = this.nextPageToken;
     return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Response message for KeyManagementService.ListRetiredResources.
+class ListRetiredResourcesResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in ListRetiredResourcesRequest.page_token to retrieve the
+  /// next page of results.
+  core.String? nextPageToken;
+
+  /// The list of RetiredResources.
+  core.List<RetiredResource>? retiredResources;
+
+  /// The total number of RetiredResources that matched the query.
+  core.String? totalSize;
+
+  ListRetiredResourcesResponse({
+    this.nextPageToken,
+    this.retiredResources,
+    this.totalSize,
+  });
+
+  ListRetiredResourcesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        retiredResources: (json_['retiredResources'] as core.List?)
+            ?.map(
+              (value) => RetiredResource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        totalSize: json_['totalSize'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final retiredResources = this.retiredResources;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'retiredResources': ?retiredResources,
+      'totalSize': ?totalSize,
+    };
   }
 }
 
@@ -9011,6 +9301,65 @@ class RequiredActionQuorumReply {
 /// Request message for KeyManagementService.RestoreCryptoKeyVersion.
 typedef RestoreCryptoKeyVersionRequest = $Empty;
 
+/// A RetiredResource resource represents the record of a deleted CryptoKey.
+///
+/// Its purpose is to provide visibility into retained user data and to prevent
+/// reuse of these names for new CryptoKeys.
+class RetiredResource {
+  /// The time at which the original resource was deleted and this
+  /// RetiredResource record was created.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Identifier.
+  ///
+  /// The resource name for this RetiredResource in the format `projects / *
+  /// /locations / * /retiredResources / * `.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The full resource name of the original CryptoKey that was deleted in the
+  /// format `projects / * /locations / * /keyRings / * /cryptoKeys / * `.
+  ///
+  /// Output only.
+  core.String? originalResource;
+
+  /// The resource type of the original deleted resource.
+  ///
+  /// Output only.
+  core.String? resourceType;
+
+  RetiredResource({
+    this.deleteTime,
+    this.name,
+    this.originalResource,
+    this.resourceType,
+  });
+
+  RetiredResource.fromJson(core.Map json_)
+    : this(
+        deleteTime: json_['deleteTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        originalResource: json_['originalResource'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deleteTime = this.deleteTime;
+    final name = this.name;
+    final originalResource = this.originalResource;
+    final resourceType = this.resourceType;
+    return {
+      'deleteTime': ?deleteTime,
+      'name': ?name,
+      'originalResource': ?originalResource,
+      'resourceType': ?resourceType,
+    };
+  }
+}
+
 /// A ServiceResolver represents an EKM replica that can be reached within an
 /// EkmConnection.
 class ServiceResolver {
@@ -9131,16 +9480,19 @@ class ShowEffectiveAutokeyConfigResponse {
   }
 }
 
-/// Response message for
+/// Represents a response message for
 /// KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsEnrollmentConfig
 class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
-  /// The effective KeyAccessJustificationsEnrollmentConfig for external keys.
+  /// Contains the effective KeyAccessJustificationsEnrollmentConfig for
+  /// external keys.
   KeyAccessJustificationsEnrollmentConfig? externalConfig;
 
-  /// The effective KeyAccessJustificationsEnrollmentConfig for hardware keys.
+  /// Contains the effective KeyAccessJustificationsEnrollmentConfig for
+  /// hardware keys.
   KeyAccessJustificationsEnrollmentConfig? hardwareConfig;
 
-  /// The effective KeyAccessJustificationsEnrollmentConfig for software keys.
+  /// Contains the effective KeyAccessJustificationsEnrollmentConfig for
+  /// software keys.
   KeyAccessJustificationsEnrollmentConfig? softwareConfig;
 
   ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse({
@@ -9181,10 +9533,10 @@ class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
   }
 }
 
-/// Response message for
+/// Represents a response message for
 /// KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsPolicyConfig.
 class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse {
-  /// The effective KeyAccessJustificationsPolicyConfig.
+  /// Contains the effective KeyAccessJustificationsPolicyConfig.
   KeyAccessJustificationsPolicyConfig? effectiveKajPolicy;
 
   ShowEffectiveKeyAccessJustificationsPolicyConfigResponse({
@@ -9235,6 +9587,15 @@ class SingleTenantHsmInstance {
   /// Output only.
   core.String? disableTime;
 
+  /// Indicates whether key portability is enabled for the
+  /// SingleTenantHsmInstance.
+  ///
+  /// This can only be set at creation time. Key portability features are
+  /// disabled by default and not yet available in GA.
+  ///
+  /// Optional. Immutable.
+  core.bool? keyPortabilityEnabled;
+
   /// Identifier.
   ///
   /// The resource name for this SingleTenantHsmInstance in the format `projects
@@ -9280,6 +9641,7 @@ class SingleTenantHsmInstance {
     this.createTime,
     this.deleteTime,
     this.disableTime,
+    this.keyPortabilityEnabled,
     this.name,
     this.quorumAuth,
     this.state,
@@ -9291,6 +9653,7 @@ class SingleTenantHsmInstance {
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         disableTime: json_['disableTime'] as core.String?,
+        keyPortabilityEnabled: json_['keyPortabilityEnabled'] as core.bool?,
         name: json_['name'] as core.String?,
         quorumAuth: json_.containsKey('quorumAuth')
             ? QuorumAuth.fromJson(
@@ -9306,6 +9669,7 @@ class SingleTenantHsmInstance {
     final createTime = this.createTime;
     final deleteTime = this.deleteTime;
     final disableTime = this.disableTime;
+    final keyPortabilityEnabled = this.keyPortabilityEnabled;
     final name = this.name;
     final quorumAuth = this.quorumAuth;
     final state = this.state;
@@ -9315,6 +9679,7 @@ class SingleTenantHsmInstance {
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
       'disableTime': ?disableTime,
+      'keyPortabilityEnabled': ?keyPortabilityEnabled,
       'name': ?name,
       'quorumAuth': ?quorumAuth,
       'state': ?state,

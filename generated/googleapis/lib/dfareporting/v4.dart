@@ -5590,6 +5590,9 @@ class DynamicFeedsResource {
 
   /// Retransforms a dynamic feed.
   ///
+  /// Only draft feeds can be retransformed (i.e. the feed has not been
+  /// published).
+  ///
   /// Request parameters:
   ///
   /// [dynamicFeedId] - Required. Dynamic feed ID.
@@ -5629,6 +5632,9 @@ class DynamicFeedsResource {
   }
 
   /// Updates a new dynamic feed.
+  ///
+  /// For draft feeds, only Element can be updated. For published feeds, only
+  /// FeedSchedule can be updated. Other fields will be ignored.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5672,7 +5678,7 @@ class DynamicProfilesResource {
 
   DynamicProfilesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Generates code for a dynamic profile.
+  /// Generates code for a dynamic profile, which will need unescaping.
   ///
   /// Request parameters:
   ///
@@ -14937,11 +14943,10 @@ class CampaignsListResponse {
   }
 }
 
-///  *Beta:* This feature is currently in beta.
+/// Contains additional information about cart data.
 ///
-/// Contains additional information about cart data. This field may only be used
-/// when calling batchinsert; it is not supported by batchupdate. Cart data
-/// reporting is only supported in SA360.
+/// This field may only be used when calling batchinsert; it is not supported by
+/// batchupdate. Cart data reporting is only supported in SA360.
 /// [Learn more](https://support.google.com/sa360/topic/13425788)
 class CartData {
   /// Data of the items purchased.
@@ -16069,7 +16074,58 @@ class CountriesListResponse {
 }
 
 /// Contains information about a country that can be targeted by ads.
-typedef Country = $Country;
+class Country {
+  /// Country code.
+  core.String? countryCode;
+
+  /// DART ID of this country.
+  ///
+  /// This is the ID used for targeting and generating reports.
+  core.String? dartId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#country".
+  core.String? kind;
+
+  /// Name of this country.
+  core.String? name;
+
+  /// Whether ad serving supports secure servers in this country.
+  core.bool? sslEnabled;
+
+  Country({
+    this.countryCode,
+    this.dartId,
+    this.kind,
+    this.name,
+    this.sslEnabled,
+  });
+
+  Country.fromJson(core.Map json_)
+    : this(
+        countryCode: json_['countryCode'] as core.String?,
+        dartId: json_['dartId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        sslEnabled: json_['sslEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final countryCode = this.countryCode;
+    final dartId = this.dartId;
+    final kind = this.kind;
+    final name = this.name;
+    final sslEnabled = this.sslEnabled;
+    return {
+      'countryCode': ?countryCode,
+      'dartId': ?dartId,
+      'kind': ?kind,
+      'name': ?name,
+      'sslEnabled': ?sslEnabled,
+    };
+  }
+}
 
 /// Contains properties of a Creative.
 class Creative {
@@ -19400,7 +19456,11 @@ class DirectorySitesListResponse {
   }
 }
 
-/// Contains dynamic feed information.
+/// *Beta:* This API resource is available only to a very limited number of
+/// customers.
+///
+/// If you'd like to use this resource, please reach out to your Google sales
+/// representative. Contains dynamic feed information.
 class DynamicFeed {
   /// The content source of the dynamic feed.
   ///
@@ -19571,9 +19631,7 @@ class DynamicFeed {
 
 /// Dynamic profile ID is required for dynamic feed insert as the current GPA
 /// API only can create a dynamic feed under profile context,even though the
-/// dynnamic feed itself don't need the dynamic profile id.
-///
-/// See
+/// dynamic feed itself don't need the dynamic profile id.
 class DynamicFeedsInsertRequest {
   /// Dynamic feed to insert.
   ///
@@ -19604,7 +19662,11 @@ class DynamicFeedsInsertRequest {
   }
 }
 
-/// Contains dynamic profile information.
+/// *Beta:* This API resource is available only to a very limited number of
+/// customers.
+///
+/// If you'd like to use this resource, please reach out to your Google sales
+/// representative. Contains dynamic profile information.
 class DynamicProfile {
   /// Active version of the dynamic profile.
   ///
@@ -27560,7 +27622,11 @@ class SkippableSetting {
 /// Represents a sorted dimension.
 typedef SortedDimension = $SortedDimension;
 
-/// Contains studio creative information.
+/// *Beta:* This API resource is available only to a very limited number of
+/// customers.
+///
+/// If you'd like to use this resource, please reach out to your Google sales
+/// representative. Contains studio creative information.
 class StudioCreative {
   /// List of assets associated with this studio creative.
   ///
@@ -27568,6 +27634,8 @@ class StudioCreative {
   core.List<core.String>? assetIds;
 
   /// Backup image asset ID of this studio creative.
+  ///
+  /// It is a required field on insertion.
   core.String? backupImageAssetId;
 
   /// The timestamp when the studio creative was created.
@@ -27723,7 +27791,11 @@ class StudioCreative {
   }
 }
 
-/// Contains studio creative asset information.
+/// *Beta:* This API resource is available only to a very limited number of
+/// customers.
+///
+/// If you'd like to use this resource, please reach out to your Google sales
+/// representative. Contains studio creative asset information.
 class StudioCreativeAsset {
   /// The creation timestamp of the studio creative asset.
   ///

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20251121",
+    "revision": "20260401",
     "rootUrl": "https://notebooks.googleapis.com/",
     "servicePath": "",
     "title": "Notebooks API",
@@ -139,7 +139,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v2/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "notebooks.projects.locations.list",
@@ -478,7 +478,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. Format: `parent=projects/{project_id}/locations/{location}`",
+                                            "description": "Required. The parent of the instance. Formats: - `projects/{project_id}/locations/{location}` to list instances in a specific zone. - `projects/{project_id}/locations/-` to list instances in all locations.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1090,7 +1090,11 @@
                         "PD_SSD",
                         "PD_BALANCED",
                         "PD_EXTREME",
-                        "HYPERDISK_BALANCED"
+                        "HYPERDISK_BALANCED",
+                        "HYPERDISK_EXTREME",
+                        "HYPERDISK_THROUGHPUT",
+                        "HYPERDISK_BALANCED_HIGH_AVAILABILITY",
+                        "HYPERDISK_ML"
                     ],
                     "enumDescriptions": [
                         "Disk type not set.",
@@ -1098,7 +1102,11 @@
                         "SSD persistent disk type.",
                         "Balanced persistent disk type.",
                         "Extreme persistent disk type.",
-                        "Hyperdisk Balanced persistent disk type."
+                        "Represents the Hyperdisk Balanced persistent disk type. Can be used as a boot disk or data disk.",
+                        "Represents the Hyperdisk Extreme persistent disk type. Can only be used as a data disk.",
+                        "Represents the Hyperdisk Throughput persistent disk type. Can only be used as a data disk.",
+                        "Represents the Hyperdisk Balanced High Availability persistent disk type. Can be used as a boot disk or data disk.",
+                        "Represents the Hyperdisk ML persistent disk type. Can be used as a boot disk or data disk."
                     ],
                     "type": "string"
                 },
@@ -1268,7 +1276,11 @@
                         "PD_SSD",
                         "PD_BALANCED",
                         "PD_EXTREME",
-                        "HYPERDISK_BALANCED"
+                        "HYPERDISK_BALANCED",
+                        "HYPERDISK_EXTREME",
+                        "HYPERDISK_THROUGHPUT",
+                        "HYPERDISK_BALANCED_HIGH_AVAILABILITY",
+                        "HYPERDISK_ML"
                     ],
                     "enumDescriptions": [
                         "Disk type not set.",
@@ -1276,7 +1288,11 @@
                         "SSD persistent disk type.",
                         "Balanced persistent disk type.",
                         "Extreme persistent disk type.",
-                        "Hyperdisk Balanced persistent disk type."
+                        "Represents the Hyperdisk Balanced persistent disk type. Can be used as a boot disk or data disk.",
+                        "Represents the Hyperdisk Extreme persistent disk type. Can only be used as a data disk.",
+                        "Represents the Hyperdisk Throughput persistent disk type. Can only be used as a data disk.",
+                        "Represents the Hyperdisk Balanced High Availability persistent disk type. Can be used as a boot disk or data disk.",
+                        "Represents the Hyperdisk ML persistent disk type. Can be used as a boot disk or data disk."
                     ],
                     "type": "string"
                 },
@@ -1752,7 +1768,7 @@
                     "type": "string"
                 },
                 "unreachable": {
-                    "description": "Locations that could not be reached. For example, ['us-west1-a', 'us-central1-b']. A ListInstancesResponse will only contain either instances or unreachables,",
+                    "description": "Unordered list. Locations that could not be reached. For example, ['projects/{project_id}/locations/us-west1-a', 'projects/{project_id}/locations/us-central1-b']. A ListInstancesResponse will only contain either instances or unreachables,",
                     "items": {
                         "type": "string"
                     },

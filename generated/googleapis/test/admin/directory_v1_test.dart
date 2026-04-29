@@ -1686,6 +1686,25 @@ void checkChromeOsMoveDevicesToOu(api.ChromeOsMoveDevicesToOu o) {
   buildCounterChromeOsMoveDevicesToOu--;
 }
 
+core.int buildCounterCountChromeOsDevicesResponse = 0;
+api.CountChromeOsDevicesResponse buildCountChromeOsDevicesResponse() {
+  final o = api.CountChromeOsDevicesResponse();
+  buildCounterCountChromeOsDevicesResponse++;
+  if (buildCounterCountChromeOsDevicesResponse < 3) {
+    o.count = 'foo';
+  }
+  buildCounterCountChromeOsDevicesResponse--;
+  return o;
+}
+
+void checkCountChromeOsDevicesResponse(api.CountChromeOsDevicesResponse o) {
+  buildCounterCountChromeOsDevicesResponse++;
+  if (buildCounterCountChromeOsDevicesResponse < 3) {
+    unittest.expect(o.count!, unittest.equals('foo'));
+  }
+  buildCounterCountChromeOsDevicesResponse--;
+}
+
 core.int buildCounterCreatePrintServerRequest = 0;
 api.CreatePrintServerRequest buildCreatePrintServerRequest() {
   final o = api.CreatePrintServerRequest();
@@ -4430,6 +4449,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CountChromeOsDevicesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCountChromeOsDevicesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CountChromeOsDevicesResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCountChromeOsDevicesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-CreatePrintServerRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCreatePrintServerRequest();
@@ -5980,6 +6010,96 @@ void main() {
       );
       checkBatchChangeChromeOsDeviceStatusResponse(
         response as api.BatchChangeChromeOsDeviceStatusResponse,
+      );
+    });
+
+    unittest.test('method--countChromeOsDevices', () async {
+      final mock = HttpServerMock();
+      final res = api.DirectoryApi(mock).customer.devices.chromeos;
+      final arg_customerId = 'foo';
+      final arg_filter = 'foo';
+      final arg_includeChildOrgunits = true;
+      final arg_orgUnitPath = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 28),
+            unittest.equals('admin/directory/v1/customer/'),
+          );
+          pathOffset += 28;
+          index = path.indexOf(
+            '/devices/chromeos:countChromeOsDevices',
+            pathOffset,
+          );
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_customerId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 38),
+            unittest.equals('/devices/chromeos:countChromeOsDevices'),
+          );
+          pathOffset += 38;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['includeChildOrgunits']!.first,
+            unittest.equals('$arg_includeChildOrgunits'),
+          );
+          unittest.expect(
+            queryMap['orgUnitPath']!.first,
+            unittest.equals(arg_orgUnitPath),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildCountChromeOsDevicesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.countChromeOsDevices(
+        arg_customerId,
+        filter: arg_filter,
+        includeChildOrgunits: arg_includeChildOrgunits,
+        orgUnitPath: arg_orgUnitPath,
+        $fields: arg_$fields,
+      );
+      checkCountChromeOsDevicesResponse(
+        response as api.CountChromeOsDevicesResponse,
       );
     });
 

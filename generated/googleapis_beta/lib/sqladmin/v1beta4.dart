@@ -1405,8 +1405,7 @@ class InstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Project ID of the source as well as the clone Cloud SQL
-  /// instance.
+  /// [project] - Project ID of the source Cloud SQL instance.
   ///
   /// [instance] - The ID of the Cloud SQL instance to be cloned (source). This
   /// does not include the project ID.
@@ -3730,8 +3729,10 @@ class UsersResource {
   ///
   /// [name] - Name of the user in the instance.
   ///
-  /// [revokeExistingRoles] - Optional. revoke the existing roles granted to the
-  /// user.
+  /// [revokeExistingRoles] - Optional. Specifies whether to revoke existing
+  /// roles that are not present in the `database_roles` field. If `false` or
+  /// unset, the database roles specified in `database_roles` are added to the
+  /// user's existing roles.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4070,6 +4071,12 @@ class Backup {
   /// - "SQLSERVER_2022_EXPRESS" : The database version is SQL Server 2022
   /// Express.
   /// - "SQLSERVER_2022_WEB" : The database version is SQL Server 2022 Web.
+  /// - "SQLSERVER_2025_STANDARD" : The database version is SQL Server 2025
+  /// Standard.
+  /// - "SQLSERVER_2025_ENTERPRISE" : The database version is SQL Server 2025
+  /// Enterprise.
+  /// - "SQLSERVER_2025_EXPRESS" : The database version is SQL Server 2025
+  /// Express.
   core.String? databaseVersion;
 
   /// The description of this backup.
@@ -4628,6 +4635,12 @@ class BackupRun {
   /// - "SQLSERVER_2022_EXPRESS" : The database version is SQL Server 2022
   /// Express.
   /// - "SQLSERVER_2022_WEB" : The database version is SQL Server 2022 Web.
+  /// - "SQLSERVER_2025_STANDARD" : The database version is SQL Server 2025
+  /// Standard.
+  /// - "SQLSERVER_2025_ENTERPRISE" : The database version is SQL Server 2025
+  /// Enterprise.
+  /// - "SQLSERVER_2025_EXPRESS" : The database version is SQL Server 2025
+  /// Express.
   core.String? databaseVersion;
 
   /// The description of this run, only applicable to on-demand backups.
@@ -4919,6 +4932,25 @@ class CloneContext {
   /// Name of the Cloud SQL instance to be created as a clone.
   core.String? destinationInstanceName;
 
+  /// The fully qualified URI of the VPC network to which the cloned instance
+  /// will be connected via Private Services Access for private IP.
+  ///
+  /// For example:`projects/my-network-project/global/networks/my-network`. This
+  /// field is only required for cross-project cloning.
+  ///
+  /// Optional.
+  core.String? destinationNetwork;
+
+  /// The project ID of the destination project where the cloned instance will
+  /// be created.
+  ///
+  /// To perform a cross-project clone, this field is required. If not
+  /// specified, the clone is created in the same project as the source
+  /// instance.
+  ///
+  /// Optional.
+  core.String? destinationProject;
+
   /// This is always `sql#cloneContext`.
   core.String? kind;
 
@@ -4958,6 +4990,8 @@ class CloneContext {
     this.binLogCoordinates,
     this.databaseNames,
     this.destinationInstanceName,
+    this.destinationNetwork,
+    this.destinationProject,
     this.kind,
     this.pitrTimestampMs,
     this.pointInTime,
@@ -4980,6 +5014,8 @@ class CloneContext {
             .toList(),
         destinationInstanceName:
             json_['destinationInstanceName'] as core.String?,
+        destinationNetwork: json_['destinationNetwork'] as core.String?,
+        destinationProject: json_['destinationProject'] as core.String?,
         kind: json_['kind'] as core.String?,
         pitrTimestampMs: json_['pitrTimestampMs'] as core.String?,
         pointInTime: json_['pointInTime'] as core.String?,
@@ -4994,6 +5030,8 @@ class CloneContext {
     final binLogCoordinates = this.binLogCoordinates;
     final databaseNames = this.databaseNames;
     final destinationInstanceName = this.destinationInstanceName;
+    final destinationNetwork = this.destinationNetwork;
+    final destinationProject = this.destinationProject;
     final kind = this.kind;
     final pitrTimestampMs = this.pitrTimestampMs;
     final pointInTime = this.pointInTime;
@@ -5005,6 +5043,8 @@ class CloneContext {
       'binLogCoordinates': ?binLogCoordinates,
       'databaseNames': ?databaseNames,
       'destinationInstanceName': ?destinationInstanceName,
+      'destinationNetwork': ?destinationNetwork,
+      'destinationProject': ?destinationProject,
       'kind': ?kind,
       'pitrTimestampMs': ?pitrTimestampMs,
       'pointInTime': ?pointInTime,
@@ -5216,6 +5256,12 @@ class ConnectSettings {
   /// - "SQLSERVER_2022_EXPRESS" : The database version is SQL Server 2022
   /// Express.
   /// - "SQLSERVER_2022_WEB" : The database version is SQL Server 2022 Web.
+  /// - "SQLSERVER_2025_STANDARD" : The database version is SQL Server 2025
+  /// Standard.
+  /// - "SQLSERVER_2025_ENTERPRISE" : The database version is SQL Server 2025
+  /// Enterprise.
+  /// - "SQLSERVER_2025_EXPRESS" : The database version is SQL Server 2025
+  /// Express.
   core.String? databaseVersion;
 
   /// The dns name of the instance.
@@ -5748,6 +5794,12 @@ class DatabaseInstance {
   /// - "SQLSERVER_2022_EXPRESS" : The database version is SQL Server 2022
   /// Express.
   /// - "SQLSERVER_2022_WEB" : The database version is SQL Server 2022 Web.
+  /// - "SQLSERVER_2025_STANDARD" : The database version is SQL Server 2025
+  /// Standard.
+  /// - "SQLSERVER_2025_ENTERPRISE" : The database version is SQL Server 2025
+  /// Enterprise.
+  /// - "SQLSERVER_2025_EXPRESS" : The database version is SQL Server 2025
+  /// Express.
   core.String? databaseVersion;
 
   /// Disk encryption configuration specific to an instance.
@@ -9722,6 +9774,8 @@ class Operation {
   /// - "REPAIR_READ_POOL" : Repairs entire read pool or specified read pool
   /// nodes in the read pool.
   /// - "CREATE_READ_POOL" : Creates a Cloud SQL read pool instance.
+  /// - "PRE_CHECK_MAJOR_VERSION_UPGRADE" : Pre-checks for major version
+  /// upgrade.
   core.String? operationType;
 
   /// The context for pre-check major version upgrade operation, if applicable.
@@ -10240,8 +10294,31 @@ class PointInTimeRestoreContext {
   /// Optional.
   core.String? privateNetwork;
 
+  /// The region of the target instance where the datasource will be restored.
+  ///
+  /// For example: "us-central1".
+  ///
+  /// Optional.
+  core.String? region;
+
   /// Target instance name.
   core.String? targetInstance;
+
+  /// Specifies the instance settings that will be cleared from the source
+  /// instance.
+  ///
+  /// This field is only applicable for cross project PITRs.
+  ///
+  /// Optional.
+  core.List<core.String>? targetInstanceClearSettingsFieldNames;
+
+  /// Specifies the instance settings that will be overridden from the source
+  /// instance.
+  ///
+  /// This field is only applicable for cross project PITRs.
+  ///
+  /// Optional.
+  DatabaseInstance? targetInstanceSettings;
 
   PointInTimeRestoreContext({
     this.allocatedIpRange,
@@ -10250,7 +10327,10 @@ class PointInTimeRestoreContext {
     this.preferredSecondaryZone,
     this.preferredZone,
     this.privateNetwork,
+    this.region,
     this.targetInstance,
+    this.targetInstanceClearSettingsFieldNames,
+    this.targetInstanceSettings,
   });
 
   PointInTimeRestoreContext.fromJson(core.Map json_)
@@ -10261,7 +10341,18 @@ class PointInTimeRestoreContext {
         preferredSecondaryZone: json_['preferredSecondaryZone'] as core.String?,
         preferredZone: json_['preferredZone'] as core.String?,
         privateNetwork: json_['privateNetwork'] as core.String?,
+        region: json_['region'] as core.String?,
         targetInstance: json_['targetInstance'] as core.String?,
+        targetInstanceClearSettingsFieldNames:
+            (json_['targetInstanceClearSettingsFieldNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        targetInstanceSettings: json_.containsKey('targetInstanceSettings')
+            ? DatabaseInstance.fromJson(
+                json_['targetInstanceSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -10271,7 +10362,11 @@ class PointInTimeRestoreContext {
     final preferredSecondaryZone = this.preferredSecondaryZone;
     final preferredZone = this.preferredZone;
     final privateNetwork = this.privateNetwork;
+    final region = this.region;
     final targetInstance = this.targetInstance;
+    final targetInstanceClearSettingsFieldNames =
+        this.targetInstanceClearSettingsFieldNames;
+    final targetInstanceSettings = this.targetInstanceSettings;
     return {
       'allocatedIpRange': ?allocatedIpRange,
       'datasource': ?datasource,
@@ -10279,7 +10374,11 @@ class PointInTimeRestoreContext {
       'preferredSecondaryZone': ?preferredSecondaryZone,
       'preferredZone': ?preferredZone,
       'privateNetwork': ?privateNetwork,
+      'region': ?region,
       'targetInstance': ?targetInstance,
+      'targetInstanceClearSettingsFieldNames':
+          ?targetInstanceClearSettingsFieldNames,
+      'targetInstanceSettings': ?targetInstanceSettings,
     };
   }
 }
@@ -10506,6 +10605,12 @@ class PreCheckMajorVersionUpgradeContext {
   /// - "SQLSERVER_2022_EXPRESS" : The database version is SQL Server 2022
   /// Express.
   /// - "SQLSERVER_2022_WEB" : The database version is SQL Server 2022 Web.
+  /// - "SQLSERVER_2025_STANDARD" : The database version is SQL Server 2025
+  /// Standard.
+  /// - "SQLSERVER_2025_ENTERPRISE" : The database version is SQL Server 2025
+  /// Enterprise.
+  /// - "SQLSERVER_2025_EXPRESS" : The database version is SQL Server 2025
+  /// Express.
   core.String? targetDatabaseVersion;
 
   PreCheckMajorVersionUpgradeContext({
@@ -10673,14 +10778,39 @@ class PscConfig {
   /// Optional.
   core.List<PscAutoConnectionConfig>? pscAutoConnections;
 
+  /// Indicates whether PSC DNS automation is enabled for this instance.
+  ///
+  /// When enabled, Cloud SQL provisions a universal DNS record across all
+  /// networks configured with Private Service Connect (PSC) auto-connections.
+  /// This will default to true for new instances when Private Service Connect
+  /// is enabled.
+  ///
+  /// Optional.
+  core.bool? pscAutoDnsEnabled;
+
   /// Whether PSC connectivity is enabled for this instance.
   core.bool? pscEnabled;
+
+  /// Indicates whether PSC write endpoint DNS automation is enabled for this
+  /// instance.
+  ///
+  /// When enabled, Cloud SQL provisions a universal global DNS record across
+  /// all networks configured with Private Service Connect (PSC)
+  /// auto-connections that always points to the cluster primary instance. This
+  /// feature is only supported for Enterprise Plus edition. This will default
+  /// to true for new enterprise plus instances when `psc_auto_dns_enabled` is
+  /// enabled.
+  ///
+  /// Optional.
+  core.bool? pscWriteEndpointDnsEnabled;
 
   PscConfig({
     this.allowedConsumerProjects,
     this.networkAttachmentUri,
     this.pscAutoConnections,
+    this.pscAutoDnsEnabled,
     this.pscEnabled,
+    this.pscWriteEndpointDnsEnabled,
   });
 
   PscConfig.fromJson(core.Map json_)
@@ -10697,19 +10827,26 @@ class PscConfig {
               ),
             )
             .toList(),
+        pscAutoDnsEnabled: json_['pscAutoDnsEnabled'] as core.bool?,
         pscEnabled: json_['pscEnabled'] as core.bool?,
+        pscWriteEndpointDnsEnabled:
+            json_['pscWriteEndpointDnsEnabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final allowedConsumerProjects = this.allowedConsumerProjects;
     final networkAttachmentUri = this.networkAttachmentUri;
     final pscAutoConnections = this.pscAutoConnections;
+    final pscAutoDnsEnabled = this.pscAutoDnsEnabled;
     final pscEnabled = this.pscEnabled;
+    final pscWriteEndpointDnsEnabled = this.pscWriteEndpointDnsEnabled;
     return {
       'allowedConsumerProjects': ?allowedConsumerProjects,
       'networkAttachmentUri': ?networkAttachmentUri,
       'pscAutoConnections': ?pscAutoConnections,
+      'pscAutoDnsEnabled': ?pscAutoDnsEnabled,
       'pscEnabled': ?pscEnabled,
+      'pscWriteEndpointDnsEnabled': ?pscWriteEndpointDnsEnabled,
     };
   }
 }
@@ -11194,6 +11331,14 @@ class SelectedObjects {
 
 /// Database instance settings.
 class Settings {
+  /// Configures whether the replica is in accelerated mode.
+  ///
+  /// This feature is in private preview and requires allowlisting to take
+  /// effect.
+  ///
+  /// Optional.
+  core.bool? acceleratedReplicaMode;
+
   /// The activation policy specifies when the instance is activated; it is
   /// applicable only when the instance state is RUNNABLE.
   ///
@@ -11503,6 +11648,7 @@ class Settings {
   core.Map<core.String, core.String>? userLabels;
 
   Settings({
+    this.acceleratedReplicaMode,
     this.activationPolicy,
     this.activeDirectoryConfig,
     this.advancedMachineFeatures,
@@ -11552,6 +11698,7 @@ class Settings {
 
   Settings.fromJson(core.Map json_)
     : this(
+        acceleratedReplicaMode: json_['acceleratedReplicaMode'] as core.bool?,
         activationPolicy: json_['activationPolicy'] as core.String?,
         activeDirectoryConfig: json_.containsKey('activeDirectoryConfig')
             ? SqlActiveDirectoryConfig.fromJson(
@@ -11697,6 +11844,7 @@ class Settings {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final acceleratedReplicaMode = this.acceleratedReplicaMode;
     final activationPolicy = this.activationPolicy;
     final activeDirectoryConfig = this.activeDirectoryConfig;
     final advancedMachineFeatures = this.advancedMachineFeatures;
@@ -11743,6 +11891,7 @@ class Settings {
     final timeZone = this.timeZone;
     final userLabels = this.userLabels;
     return {
+      'acceleratedReplicaMode': ?acceleratedReplicaMode,
       'activationPolicy': ?activationPolicy,
       'activeDirectoryConfig': ?activeDirectoryConfig,
       'advancedMachineFeatures': ?advancedMachineFeatures,

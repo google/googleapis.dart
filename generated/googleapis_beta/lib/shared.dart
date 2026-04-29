@@ -219,11 +219,10 @@ class $Account {
   /// Output only.
   core.String? gmpOrganization;
 
-  /// Resource name of this account.
+  /// Identifier.
   ///
-  /// Format: accounts/{account} Example: "accounts/100"
-  ///
-  /// Output only.
+  /// Resource name of this account. Format: accounts/{account} Example:
+  /// "accounts/100"
   core.String? name;
 
   /// Country of business.
@@ -399,11 +398,10 @@ class $CustomDimension {
   /// Required.
   core.String? displayName;
 
-  /// Resource name for this CustomDimension resource.
+  /// Identifier.
   ///
-  /// Format: properties/{property}/customDimensions/{customDimension}
-  ///
-  /// Output only.
+  /// Resource name for this CustomDimension resource. Format:
+  /// properties/{property}/customDimensions/{customDimension}
   core.String? name;
 
   /// Tagging parameter name for this custom dimension.
@@ -505,11 +503,10 @@ class $CustomMetric {
   /// - "HOURS" : This metric measures hours.
   core.String? measurementUnit;
 
-  /// Resource name for this CustomMetric resource.
+  /// Identifier.
   ///
-  /// Format: properties/{property}/customMetrics/{customMetric}
-  ///
-  /// Output only.
+  /// Resource name for this CustomMetric resource. Format:
+  /// properties/{property}/customMetrics/{customMetric}
   core.String? name;
 
   /// Tagging name for this custom metric.
@@ -601,11 +598,10 @@ class $DataRetentionSettings {
   /// Available to 360 properties only. Available for event data only.
   core.String? eventDataRetention;
 
-  /// Resource name for this DataRetentionSetting resource.
+  /// Identifier.
   ///
-  /// Format: properties/{property}/dataRetentionSettings
-  ///
-  /// Output only.
+  /// Resource name for this DataRetentionSetting resource. Format:
+  /// properties/{property}/dataRetentionSettings
   core.String? name;
 
   /// If true, reset the retention period for the user identifier with every
@@ -663,12 +659,10 @@ class $DataRetentionSettings {
 /// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaDataSharingSettings
 /// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaDataSharingSettings
 class $DataSharingSettings {
-  /// Resource name.
+  /// Identifier.
   ///
-  /// Format: accounts/{account}/dataSharingSettings Example:
+  /// Resource name. Format: accounts/{account}/dataSharingSettings Example:
   /// "accounts/1000/dataSharingSettings"
-  ///
-  /// Output only.
   core.String? name;
 
   /// This field is no longer used and always returns false.
@@ -1086,9 +1080,9 @@ class $FirebaseLink {
   /// Output only.
   core.String? createTime;
 
-  /// Example format: properties/1234/firebaseLinks/5678
+  /// Identifier.
   ///
-  /// Output only.
+  /// Example format: properties/1234/firebaseLinks/5678
   core.String? name;
 
   /// Firebase project resource name.
@@ -1153,10 +1147,10 @@ class $GoogleAdsLink {
   /// Immutable.
   core.String? customerId;
 
+  /// Identifier.
+  ///
   /// Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note:
   /// googleAdsLinkId is not the Google Ads customer ID.
-  ///
-  /// Output only.
   core.String? name;
 
   /// Time when this link was last updated.
@@ -1352,12 +1346,11 @@ class $MeasurementProtocolSecret {
   /// Required.
   core.String? displayName;
 
-  /// Resource name of this secret.
+  /// Identifier.
   ///
-  /// This secret may be a child of any type of stream. Format:
+  /// Resource name of this secret. This secret may be a child of any type of
+  /// stream. Format:
   /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  ///
-  /// Output only.
   core.String? name;
 
   /// The measurement protocol secret value.
@@ -1512,11 +1505,10 @@ class $Property {
   /// - "SHOPPING" : Shopping
   core.String? industryCategory;
 
-  /// Resource name of this property.
+  /// Identifier.
   ///
-  /// Format: properties/{property_id} Example: "properties/1000"
-  ///
-  /// Output only.
+  /// Resource name of this property. Format: properties/{property_id} Example:
+  /// "properties/1000"
   core.String? name;
 
   /// Resource name of this property's logical parent.

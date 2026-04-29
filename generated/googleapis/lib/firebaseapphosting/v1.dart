@@ -138,20 +138,24 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1547,9 +1551,14 @@ class ProjectsLocationsOperationsResource {
 
 /// The URI of an storage archive or a signed URL to use as the build source.
 class ArchiveSource {
+  /// Deprecated: Not used.
+  ///
   /// The author contained in the metadata of a version control change.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SourceUserMetadata? author;
 
   /// An optional message that describes the uploaded version of the source
@@ -1561,7 +1570,13 @@ class ArchiveSource {
   /// Signed URL to an archive in a storage bucket.
   core.String? externalSignedUri;
 
-  /// Relative path in the archive.
+  /// The directory relative to the root of the archive to use as the root for
+  /// the deployed web app.
+  ///
+  /// Defaults to use the root of the repository if not provided. If deploying a
+  /// [monorepo](https://firebase.google.com/docs/app-hosting/monorepos), this
+  /// should be the directory that contains the `package.json` or
+  /// `apphosting.yaml` file.
   ///
   /// Optional.
   core.String? rootDirectory;
@@ -1956,6 +1971,7 @@ class Build {
   /// or `Backend.traffic_statuses` for the desired state.
   /// - "FAILED" : The build has failed.
   /// - "SKIPPED" : The build was skipped.
+  /// - "EXPIRED" : The build has expired and may not be reused.
   core.String? state;
 
   /// System-assigned, unique identifier.
@@ -2130,6 +2146,11 @@ class Codebase {
   /// If `repository` is provided, the directory relative to the root of the
   /// repository to use as the root for the deployed web app.
   ///
+  /// Defaults to use the root of the repository if not provided. If deploying a
+  /// [monorepo](https://firebase.google.com/docs/app-hosting/monorepos), this
+  /// should be the directory that contains the `package.json` or
+  /// `apphosting.yaml` file.
+  ///
   /// Optional.
   core.String? rootDirectory;
 
@@ -2184,6 +2205,14 @@ class CodebaseSource {
   /// Output only.
   core.String? hash;
 
+  /// The resource name for the Developer Connect
+  /// \[`gitRepositoryLink`\](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+  /// used for this build, in the format:
+  /// `projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}`
+  ///
+  /// Output only.
+  core.String? repository;
+
   /// A URI linking to the codebase on an hosting provider's website.
   ///
   /// May not be valid if the commit has been rebased or force-pushed out of
@@ -2200,6 +2229,7 @@ class CodebaseSource {
     this.commitTime,
     this.displayName,
     this.hash,
+    this.repository,
     this.uri,
   });
 
@@ -2216,6 +2246,7 @@ class CodebaseSource {
         commitTime: json_['commitTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         hash: json_['hash'] as core.String?,
+        repository: json_['repository'] as core.String?,
         uri: json_['uri'] as core.String?,
       );
 
@@ -2227,6 +2258,7 @@ class CodebaseSource {
     final commitTime = this.commitTime;
     final displayName = this.displayName;
     final hash = this.hash;
+    final repository = this.repository;
     final uri = this.uri;
     return {
       'author': ?author,
@@ -2236,6 +2268,7 @@ class CodebaseSource {
       'commitTime': ?commitTime,
       'displayName': ?displayName,
       'hash': ?hash,
+      'repository': ?repository,
       'uri': ?uri,
     };
   }
@@ -2257,7 +2290,7 @@ class Config {
   ///
   /// Provided at Build creation time and immutable afterwards. This field is
   /// only applicable for Builds using a build image - (e.g., ContainerSource or
-  /// ArchiveSource with locally_build_source) Attempts to set this for other
+  /// ArchiveSource with locally_built_source) Attempts to set this for other
   /// build types will result in an error
   ///
   /// Optional.
@@ -2926,9 +2959,10 @@ class EnvironmentVariable {
 
   /// The name of the environment variable.
   ///
-  /// - Must be a valid environment variable name (e.g. A-Z or underscores). -
-  /// May not start with "FIREBASE" or "GOOGLE". - May not be a reserved
-  /// environment variable for KNative/Cloud Run
+  /// The environment variables reserved by
+  /// [Cloud Run](https://docs.cloud.google.com/run/docs/configuring/services/environment-variables#reserved)
+  /// should not be set. Additionally, variable names cannot start with
+  /// "X_FIREBASE_".
   ///
   /// Required.
   core.String? variable;
@@ -3688,7 +3722,7 @@ class RolloutPolicy {
   }
 }
 
-/// Additional configuration to apply to the Cloud Run
+/// Configuration applied to the Cloud Run
 /// \[`service`\](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
 class RunConfig {
   /// Maximum number of requests that each Cloud Run instance can receive.
@@ -3824,25 +3858,39 @@ class ServingBehavior {
   }
 }
 
+/// Deprecated: Not used.
+///
 /// Metadata for the user who started the build.
 class SourceUserMetadata {
-  /// The user-chosen displayname.
+  /// Deprecated: Not used.
   ///
-  /// May be empty.
+  /// The user-chosen displayname. May be empty.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? displayName;
 
-  /// The account email linked to the EUC that created the build.
+  /// Deprecated: Not used.
   ///
-  /// May be a service account or other robot account.
+  /// The account email linked to the EUC that created the build. May be a
+  /// service account or other robot account.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? email;
 
+  /// Deprecated: Not used.
+  ///
   /// The URI of a profile photo associated with the user who created the build.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? imageUri;
 
   SourceUserMetadata({this.displayName, this.email, this.imageUri});

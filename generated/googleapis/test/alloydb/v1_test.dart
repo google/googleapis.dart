@@ -1620,6 +1620,7 @@ api.Node buildNode() {
   if (buildCounterNode < 3) {
     o.id = 'foo';
     o.ip = 'foo';
+    o.isHotStandby = true;
     o.state = 'foo';
     o.zoneId = 'foo';
   }
@@ -1632,6 +1633,7 @@ void checkNode(api.Node o) {
   if (buildCounterNode < 3) {
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.ip!, unittest.equals('foo'));
+    unittest.expect(o.isHotStandby!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.zoneId!, unittest.equals('foo'));
   }

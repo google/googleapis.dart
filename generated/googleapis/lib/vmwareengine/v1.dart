@@ -205,6 +205,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -395,8 +406,6 @@ class ProjectsLocationsDatastoresResource {
     : _requester = client;
 
   /// Creates a new `Datastore` resource in a given project and location.
-  ///
-  /// Datastores are regional resources
   ///
   /// [request] - The metadata request object.
   ///
@@ -635,8 +644,7 @@ class ProjectsLocationsDatastoresResource {
 
   /// Modifies a Datastore resource.
   ///
-  /// Only the following fields can be updated: `description`. Only fields
-  /// specified in `updateMask` are applied.
+  /// Only fields specified in `updateMask` are applied.
   ///
   /// [request] - The metadata request object.
   ///
@@ -657,8 +665,7 @@ class ProjectsLocationsDatastoresResource {
   /// overwritten in the Datastore resource by the update. The fields specified
   /// in the `update_mask` are relative to the resource, not the full request. A
   /// field will be overwritten if it is in the mask. If the user does not
-  /// provide a mask then all fields will be overwritten. Only the following
-  /// fields can be updated: `description`.
+  /// provide a mask then all fields will be overwritten.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -850,6 +857,10 @@ class ProjectsLocationsNetworkPeeringsResource {
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -865,12 +876,14 @@ class ProjectsLocationsNetworkPeeringsResource {
     core.String parent, {
     core.String? networkPeeringId,
     core.String? requestId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'networkPeeringId': ?networkPeeringId == null ? null : [networkPeeringId],
       'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1104,6 +1117,10 @@ class ProjectsLocationsNetworkPeeringsResource {
   /// request. A field will be overwritten if it is in the mask. If the user
   /// does not provide a mask then all fields will be overwritten.
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1119,12 +1136,14 @@ class ProjectsLocationsNetworkPeeringsResource {
     core.String name, {
     core.String? requestId,
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1261,6 +1280,10 @@ class ProjectsLocationsNetworkPoliciesResource {
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1276,12 +1299,14 @@ class ProjectsLocationsNetworkPoliciesResource {
     core.String parent, {
     core.String? networkPolicyId,
     core.String? requestId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'networkPolicyId': ?networkPolicyId == null ? null : [networkPolicyId],
       'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1574,6 +1599,10 @@ class ProjectsLocationsNetworkPoliciesResource {
   /// request. A field will be overwritten if it is in the mask. If the user
   /// does not provide a mask then all fields will be overwritten.
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1589,12 +1618,14 @@ class ProjectsLocationsNetworkPoliciesResource {
     core.String name, {
     core.String? requestId,
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1652,6 +1683,10 @@ class ProjectsLocationsNetworkPoliciesExternalAccessRulesResource {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1667,6 +1702,7 @@ class ProjectsLocationsNetworkPoliciesExternalAccessRulesResource {
     core.String parent, {
     core.String? externalAccessRuleId,
     core.String? requestId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -1675,6 +1711,7 @@ class ProjectsLocationsNetworkPoliciesExternalAccessRulesResource {
           ? null
           : [externalAccessRuleId],
       'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1900,6 +1937,10 @@ class ProjectsLocationsNetworkPoliciesExternalAccessRulesResource {
   /// request. A field will be overwritten if it is in the mask. If the user
   /// does not provide a mask then all fields will be overwritten.
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the// request. If set to `false`, validates and
+  /// executes the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1915,12 +1956,14 @@ class ProjectsLocationsNetworkPoliciesExternalAccessRulesResource {
     core.String name, {
     core.String? requestId,
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2247,8 +2290,9 @@ class ProjectsLocationsPrivateCloudsResource {
   /// exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [validateOnly] - Optional. True if you want the request to be validated
-  /// and not executed; false otherwise.
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2612,6 +2656,10 @@ class ProjectsLocationsPrivateCloudsResource {
   /// request. A field will be overwritten if it is in the mask. If the user
   /// does not provide a mask then all fields will be overwritten.
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2627,12 +2675,14 @@ class ProjectsLocationsPrivateCloudsResource {
     core.String name, {
     core.String? requestId,
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3144,8 +3194,9 @@ class ProjectsLocationsPrivateCloudsClustersResource {
   /// exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [validateOnly] - Optional. True if you want the request to be validated
-  /// and not executed; false otherwise.
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3397,7 +3448,7 @@ class ProjectsLocationsPrivateCloudsClustersResource {
     );
   }
 
-  /// Mounts a `Datastore` on a cluster resource Datastores are zonal resources
+  /// Mounts a `Datastore` on a cluster resource
   ///
   /// [request] - The metadata request object.
   ///
@@ -3470,8 +3521,9 @@ class ProjectsLocationsPrivateCloudsClustersResource {
   /// field will be overwritten if it is in the mask. If the user does not
   /// provide a mask then all fields will be overwritten.
   ///
-  /// [validateOnly] - Optional. True if you want the request to be validated
-  /// and not executed; false otherwise.
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3609,7 +3661,7 @@ class ProjectsLocationsPrivateCloudsClustersResource {
     );
   }
 
-  /// Mounts a `Datastore` on a cluster resource Datastores are zonal resources
+  /// Unmounts a `Datastore` on a cluster resource
   ///
   /// [request] - The metadata request object.
   ///
@@ -3796,6 +3848,10 @@ class ProjectsLocationsPrivateCloudsExternalAddressesResource {
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3811,6 +3867,7 @@ class ProjectsLocationsPrivateCloudsExternalAddressesResource {
     core.String parent, {
     core.String? externalAddressId,
     core.String? requestId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -3819,6 +3876,7 @@ class ProjectsLocationsPrivateCloudsExternalAddressesResource {
           ? null
           : [externalAddressId],
       'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -4047,6 +4105,10 @@ class ProjectsLocationsPrivateCloudsExternalAddressesResource {
   /// request. A field will be overwritten if it is in the mask. If the user
   /// does not provide a mask then all fields will be overwritten.
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4062,12 +4124,14 @@ class ProjectsLocationsPrivateCloudsExternalAddressesResource {
     core.String name, {
     core.String? requestId,
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -5511,6 +5575,10 @@ class ProjectsLocationsPrivateConnectionsResource {
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5526,6 +5594,7 @@ class ProjectsLocationsPrivateConnectionsResource {
     core.String parent, {
     core.String? privateConnectionId,
     core.String? requestId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -5534,6 +5603,7 @@ class ProjectsLocationsPrivateConnectionsResource {
           ? null
           : [privateConnectionId],
       'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -5761,6 +5831,10 @@ class ProjectsLocationsPrivateConnectionsResource {
   /// request. A field will be overwritten if it is in the mask. If the user
   /// does not provide a mask then all fields will be overwritten.
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5776,12 +5850,14 @@ class ProjectsLocationsPrivateConnectionsResource {
     core.String name, {
     core.String? requestId,
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -5894,6 +5970,10 @@ class ProjectsLocationsVmwareEngineNetworksResource {
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [vmwareEngineNetworkId] - Required. The user-provided identifier of the
   /// new VMware Engine network. This identifier must be unique among VMware
   /// Engine network resources within the parent and becomes the final token in
@@ -5920,12 +6000,14 @@ class ProjectsLocationsVmwareEngineNetworksResource {
     VmwareEngineNetwork request,
     core.String parent, {
     core.String? requestId,
+    core.bool? validateOnly,
     core.String? vmwareEngineNetworkId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'vmwareEngineNetworkId': ?vmwareEngineNetworkId == null
           ? null
           : [vmwareEngineNetworkId],
@@ -6168,6 +6250,10 @@ class ProjectsLocationsVmwareEngineNetworksResource {
   /// user does not provide a mask then all fields will be overwritten. Only the
   /// following fields can be updated: `description`.
   ///
+  /// [validateOnly] - Optional. If set to `true`, only validates the request
+  /// but doesn’t execute the request. If set to `false`, validates and executes
+  /// the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -6183,12 +6269,14 @@ class ProjectsLocationsVmwareEngineNetworksResource {
     core.String name, {
     core.String? requestId,
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -7071,9 +7159,9 @@ class Datastore {
 
 /// The Datastore Mount configuration
 class DatastoreMountConfig {
-  /// NFS is accessed by hosts in read mode Optional.
+  /// The access mode of the NFS volume.
   ///
-  /// Default value used will be READ_WRITE
+  /// Optional. Default value used will be READ_WRITE
   ///
   /// Optional.
   /// Possible string values are:
@@ -7083,10 +7171,9 @@ class DatastoreMountConfig {
   /// - "READ_WRITE" : NFS is accessed by hosts in read and write mode
   core.String? accessMode;
 
-  /// The resource name of the datastore to unmount.
+  /// The resource name of the datastore to mount.
   ///
-  /// The datastore requested to be mounted should be in same region/zone as the
-  /// cluster. Resource names are schemeless URIs that follow the conventions in
+  /// Resource names are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/us-central1/datastores/my-datastore`
   ///
@@ -7114,14 +7201,6 @@ class DatastoreMountConfig {
   /// - "NFS_V3" : NFS 3
   core.String? nfsVersion;
 
-  /// ONLY required when NFS 4.1 version is used
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "SECURITY_TYPE_UNSPECIFIED" : The default value. This value should never
-  /// be used.
-  core.String? securityType;
-
   /// Server IP addresses of the NFS volume.
   ///
   /// For NFS 3, you can only provide a single server IP address or DNS names.
@@ -7135,7 +7214,6 @@ class DatastoreMountConfig {
     this.datastoreNetwork,
     this.fileShare,
     this.nfsVersion,
-    this.securityType,
     this.servers,
   });
 
@@ -7151,7 +7229,6 @@ class DatastoreMountConfig {
             : null,
         fileShare: json_['fileShare'] as core.String?,
         nfsVersion: json_['nfsVersion'] as core.String?,
-        securityType: json_['securityType'] as core.String?,
         servers: (json_['servers'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -7163,7 +7240,6 @@ class DatastoreMountConfig {
     final datastoreNetwork = this.datastoreNetwork;
     final fileShare = this.fileShare;
     final nfsVersion = this.nfsVersion;
-    final securityType = this.securityType;
     final servers = this.servers;
     return {
       'accessMode': ?accessMode,
@@ -7171,7 +7247,6 @@ class DatastoreMountConfig {
       'datastoreNetwork': ?datastoreNetwork,
       'fileShare': ?fileShare,
       'nfsVersion': ?nfsVersion,
-      'securityType': ?securityType,
       'servers': ?servers,
     };
   }
@@ -7179,18 +7254,25 @@ class DatastoreMountConfig {
 
 /// The network configuration for the datastore.
 class DatastoreNetwork {
-  /// The number of connections of the NFS volume.
+  /// connection_count is used to set multiple connections from NFS client on
+  /// ESXi host to NFS server.
   ///
-  /// Spported from vsphere 8.0u1
+  /// A higher number of connections results in better performance on
+  /// datastores. In MountDatastore API by default max 4 connections are
+  /// configured. User can set value of connection_count between 1 to 4.
+  /// Connection_count is supported from vsphere 8.0u1 for earlier version 1
+  /// connection count is set on the ESXi hosts.
   ///
   /// Optional.
   core.int? connectionCount;
 
-  /// The Maximal Transmission Unit (MTU) of the datastore.
+  /// MTU value is set on the VMKernel adapter for the NFS traffic.
   ///
-  /// System sets default MTU size. It prefers the VPC peering MTU, falling back
-  /// to the VEN MTU if no peering MTU is found. when detected, and falling back
-  /// to the VEN MTU otherwise.
+  /// By default standard 1500 MTU size is set in MountDatastore API which is
+  /// good for typical setups. However google VPC networks supports jumbo MTU
+  /// 8896. We recommend to tune this value based on the NFS traffic
+  /// performance. Performance can be determined using benchmarking I/O tools
+  /// like fio (Flexible I/O Tester) utility.
   ///
   /// Optional.
   core.int? mtu;
@@ -9180,10 +9262,19 @@ class MountDatastoreRequest {
   /// Optional.
   core.String? requestId;
 
+  /// If set to `true`, only validates the request but doesn’t execute the
+  /// request.
+  ///
+  /// If set to `false`, validates and executes the request.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
   MountDatastoreRequest({
     this.datastoreMountConfig,
     this.ignoreColocation,
     this.requestId,
+    this.validateOnly,
   });
 
   MountDatastoreRequest.fromJson(core.Map json_)
@@ -9196,16 +9287,19 @@ class MountDatastoreRequest {
             : null,
         ignoreColocation: json_['ignoreColocation'] as core.bool?,
         requestId: json_['requestId'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final datastoreMountConfig = this.datastoreMountConfig;
     final ignoreColocation = this.ignoreColocation;
     final requestId = this.requestId;
+    final validateOnly = this.validateOnly;
     return {
       'datastoreMountConfig': ?datastoreMountConfig,
       'ignoreColocation': ?ignoreColocation,
       'requestId': ?requestId,
+      'validateOnly': ?validateOnly,
     };
   }
 }
@@ -9701,7 +9795,7 @@ class NetworkService {
 
 /// The NFS datastore configuration.
 class NfsDatastore {
-  /// Google service file service configuration
+  /// Google file service configuration
   GoogleFileService? googleFileService;
 
   /// GCVE file service configuration
@@ -10011,7 +10105,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared22;
+typedef Nsx = $Shared24;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -11293,18 +11387,32 @@ class UnmountDatastoreRequest {
   /// Optional.
   core.String? requestId;
 
-  UnmountDatastoreRequest({this.datastore, this.requestId});
+  /// If set to `true`, only validates the request but doesn’t execute the
+  /// request.
+  ///
+  /// If set to `false`, validates and executes the request.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  UnmountDatastoreRequest({this.datastore, this.requestId, this.validateOnly});
 
   UnmountDatastoreRequest.fromJson(core.Map json_)
     : this(
         datastore: json_['datastore'] as core.String?,
         requestId: json_['requestId'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final datastore = this.datastore;
     final requestId = this.requestId;
-    return {'datastore': ?datastore, 'requestId': ?requestId};
+    final validateOnly = this.validateOnly;
+    return {
+      'datastore': ?datastore,
+      'requestId': ?requestId,
+      'validateOnly': ?validateOnly,
+    };
   }
 }
 
@@ -11507,7 +11615,7 @@ class Upgrade {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared22;
+typedef Vcenter = $Shared24;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.
@@ -11653,6 +11761,7 @@ class VmwareUpgradeComponent {
   /// - "WITNESS_VM" : witness VM in case of stretch PC
   /// - "NSXT" : nsxt
   /// - "CLUSTER" : Cluster is used in case of BM
+  /// - "VM_TOOLS" : VMware Tools.
   core.String? componentType;
 
   /// Component's upgrade state.

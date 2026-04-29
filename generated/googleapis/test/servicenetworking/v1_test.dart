@@ -308,6 +308,7 @@ api.ConsumerConfig buildConsumerConfig() {
     o.consumerExportSubnetRoutesWithPublicIp = true;
     o.consumerImportCustomRoutes = true;
     o.consumerImportSubnetRoutesWithPublicIp = true;
+    o.consumerPeeringActive = true;
     o.producerExportCustomRoutes = true;
     o.producerExportSubnetRoutesWithPublicIp = true;
     o.producerImportCustomRoutes = true;
@@ -329,6 +330,7 @@ void checkConsumerConfig(api.ConsumerConfig o) {
     unittest.expect(o.consumerExportSubnetRoutesWithPublicIp!, unittest.isTrue);
     unittest.expect(o.consumerImportCustomRoutes!, unittest.isTrue);
     unittest.expect(o.consumerImportSubnetRoutesWithPublicIp!, unittest.isTrue);
+    unittest.expect(o.consumerPeeringActive!, unittest.isTrue);
     unittest.expect(o.producerExportCustomRoutes!, unittest.isTrue);
     unittest.expect(o.producerExportSubnetRoutesWithPublicIp!, unittest.isTrue);
     unittest.expect(o.producerImportCustomRoutes!, unittest.isTrue);

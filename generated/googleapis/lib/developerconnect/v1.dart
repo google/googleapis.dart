@@ -131,11 +131,16 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -339,6 +344,64 @@ class ProjectsLocationsAccountConnectorsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// FetchUserRepositories returns a list of UserRepos that are available for
+  /// an account connector resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountConnector] - Required. The name of the Account Connector resource
+  /// in the format: `projects / * /locations / * /accountConnectors / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Number of results to return in the list. Defaults
+  /// to 20.
+  ///
+  /// [pageToken] - Optional. Page start.
+  ///
+  /// [repository] - Optional. The name of the repository. When specified, only
+  /// the UserRepository with this name will be returned if the repository is
+  /// accessible under this Account Connector for the calling user.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchUserRepositoriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchUserRepositoriesResponse> fetchUserRepositories(
+    core.String accountConnector, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? repository,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'repository': ?repository == null ? null : [repository],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$accountConnector') +
+        ':fetchUserRepositories';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchUserRepositoriesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single AccountConnector.
@@ -2484,6 +2547,9 @@ class AccountConnector {
   /// Output only.
   core.String? createTime;
 
+  /// Custom OAuth config.
+  CustomOAuthConfig? customOauthConfig;
+
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the client
   /// has an up-to-date value before proceeding.
@@ -2512,6 +2578,16 @@ class AccountConnector {
   /// Optional.
   ProviderOAuthConfig? providerOauthConfig;
 
+  /// Configuration for the http and git proxy features.
+  ///
+  /// Optional.
+  ProxyConfig? proxyConfig;
+
+  /// A system-assigned unique identifier for the Account Connector.
+  ///
+  /// Output only.
+  core.String? uid;
+
   /// The timestamp when the accountConnector was updated.
   ///
   /// Output only.
@@ -2520,11 +2596,14 @@ class AccountConnector {
   AccountConnector({
     this.annotations,
     this.createTime,
+    this.customOauthConfig,
     this.etag,
     this.labels,
     this.name,
     this.oauthStartUri,
     this.providerOauthConfig,
+    this.proxyConfig,
+    this.uid,
     this.updateTime,
   });
 
@@ -2535,6 +2614,12 @@ class AccountConnector {
               (key, value) => core.MapEntry(key, value as core.String),
             ),
         createTime: json_['createTime'] as core.String?,
+        customOauthConfig: json_.containsKey('customOauthConfig')
+            ? CustomOAuthConfig.fromJson(
+                json_['customOauthConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -2547,26 +2632,38 @@ class AccountConnector {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        proxyConfig: json_.containsKey('proxyConfig')
+            ? ProxyConfig.fromJson(
+                json_['proxyConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final annotations = this.annotations;
     final createTime = this.createTime;
+    final customOauthConfig = this.customOauthConfig;
     final etag = this.etag;
     final labels = this.labels;
     final name = this.name;
     final oauthStartUri = this.oauthStartUri;
     final providerOauthConfig = this.providerOauthConfig;
+    final proxyConfig = this.proxyConfig;
+    final uid = this.uid;
     final updateTime = this.updateTime;
     return {
       'annotations': ?annotations,
       'createTime': ?createTime,
+      'customOauthConfig': ?customOauthConfig,
       'etag': ?etag,
       'labels': ?labels,
       'name': ?name,
       'oauthStartUri': ?oauthStartUri,
       'providerOauthConfig': ?providerOauthConfig,
+      'proxyConfig': ?proxyConfig,
+      'uid': ?uid,
       'updateTime': ?updateTime,
     };
   }
@@ -3081,6 +3178,7 @@ class Connection {
   ///
   /// Enabling the git proxy allows clients to perform git operations on the
   /// repositories linked in the connection.
+  /// [Learn more](https://docs.cloud.google.com/developer-connect/docs/configure-git-proxy).
   ///
   /// Optional.
   GitProxyConfig? gitProxyConfig;
@@ -3312,6 +3410,142 @@ class CryptoKeyConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final keyReference = this.keyReference;
     return {'keyReference': ?keyReference};
+  }
+}
+
+/// Message for a customized OAuth config.
+class CustomOAuthConfig {
+  /// The OAuth2 authorization server URL.
+  ///
+  /// Required. Immutable.
+  core.String? authUri;
+
+  /// The client ID of the OAuth application.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// The client secret of the OAuth application. It will be provided as plain
+  /// text, but encrypted and stored in developer connect. As INPUT_ONLY field,
+  /// it will not be included in the output.
+  ///
+  /// Required.
+  core.String? clientSecret;
+
+  /// The host URI of the OAuth application.
+  ///
+  /// Required.
+  core.String? hostUri;
+
+  /// Disable PKCE for this OAuth config.
+  ///
+  /// PKCE is enabled by default.
+  ///
+  /// Optional.
+  core.bool? pkceDisabled;
+
+  /// The type of the SCM provider.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SCM_PROVIDER_UNKNOWN" : The SCM is not specified or BYO Account
+  /// Connector is not an SCM.
+  /// - "GITHUB_ENTERPRISE" : BYO Account Connector is an instance of GitHub
+  /// Enterprise.
+  /// - "GITLAB_ENTERPRISE" : BYO Account Connector is an instance of GitLab
+  /// Enterprise.
+  /// - "BITBUCKET_DATA_CENTER" : BYO Account Connector is an instance of
+  /// Bitbucket Data Center.
+  core.String? scmProvider;
+
+  /// The scopes to be requested during OAuth.
+  ///
+  /// Required.
+  core.List<core.String>? scopes;
+
+  /// SCM server version installed at the host URI.
+  ///
+  /// Output only.
+  core.String? serverVersion;
+
+  /// Configuration for using Service Directory to connect to a private service.
+  ///
+  /// Optional.
+  ServiceDirectoryConfig? serviceDirectoryConfig;
+
+  /// SSL certificate to use for requests to a private service.
+  ///
+  /// Optional.
+  core.String? sslCaCertificate;
+
+  /// The OAuth2 token request URL.
+  ///
+  /// Required. Immutable.
+  core.String? tokenUri;
+
+  CustomOAuthConfig({
+    this.authUri,
+    this.clientId,
+    this.clientSecret,
+    this.hostUri,
+    this.pkceDisabled,
+    this.scmProvider,
+    this.scopes,
+    this.serverVersion,
+    this.serviceDirectoryConfig,
+    this.sslCaCertificate,
+    this.tokenUri,
+  });
+
+  CustomOAuthConfig.fromJson(core.Map json_)
+    : this(
+        authUri: json_['authUri'] as core.String?,
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        hostUri: json_['hostUri'] as core.String?,
+        pkceDisabled: json_['pkceDisabled'] as core.bool?,
+        scmProvider: json_['scmProvider'] as core.String?,
+        scopes: (json_['scopes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        serverVersion: json_['serverVersion'] as core.String?,
+        serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+            ? ServiceDirectoryConfig.fromJson(
+                json_['serviceDirectoryConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sslCaCertificate: json_['sslCaCertificate'] as core.String?,
+        tokenUri: json_['tokenUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authUri = this.authUri;
+    final clientId = this.clientId;
+    final clientSecret = this.clientSecret;
+    final hostUri = this.hostUri;
+    final pkceDisabled = this.pkceDisabled;
+    final scmProvider = this.scmProvider;
+    final scopes = this.scopes;
+    final serverVersion = this.serverVersion;
+    final serviceDirectoryConfig = this.serviceDirectoryConfig;
+    final sslCaCertificate = this.sslCaCertificate;
+    final tokenUri = this.tokenUri;
+    return {
+      'authUri': ?authUri,
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+      'hostUri': ?hostUri,
+      'pkceDisabled': ?pkceDisabled,
+      'scmProvider': ?scmProvider,
+      'scopes': ?scopes,
+      'serverVersion': ?serverVersion,
+      'serviceDirectoryConfig': ?serviceDirectoryConfig,
+      'sslCaCertificate': ?sslCaCertificate,
+      'tokenUri': ?tokenUri,
+    };
   }
 }
 
@@ -3605,6 +3839,35 @@ typedef FetchReadWriteTokenRequest = $Empty;
 /// Message for responding to get read/write token.
 typedef FetchReadWriteTokenResponse = $TokenResponse01;
 
+/// Response message for FetchUserRepositories.
+class FetchUserRepositoriesResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The repositories that the user can access with this account connector.
+  core.List<UserRepository>? userRepos;
+
+  FetchUserRepositoriesResponse({this.nextPageToken, this.userRepos});
+
+  FetchUserRepositoriesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        userRepos: (json_['userRepos'] as core.List?)
+            ?.map(
+              (value) => UserRepository.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final userRepos = this.userRepos;
+    return {'nextPageToken': ?nextPageToken, 'userRepos': ?userRepos};
+  }
+}
+
 /// Message for responding to finishing an OAuth flow.
 class FinishOAuthResponse {
   /// The error resulted from exchanging OAuth tokens from the service provider.
@@ -3764,6 +4027,7 @@ class GitHubConfig {
   /// - "DEVELOPER_CONNECT" : The Developer Connect GitHub Application.
   /// - "FIREBASE" : The Firebase GitHub Application.
   /// - "GEMINI_CODE_ASSIST" : The Gemini Code Assist Application.
+  /// - "DATAFORM" : The Dataform GitHub Application.
   core.String? githubApp;
 
   /// The URI to navigate to in order to manage the installation associated with
@@ -5213,20 +5477,15 @@ class ProviderOAuthConfig {
   /// https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
   /// - "GITLAB" : GitLab provider. Scopes can be found at
   /// https://docs.gitlab.com/user/profile/personal_access_tokens/#personal-access-token-scopes
-  /// - "GOOGLE" : Deprecated: This provider is no longer supported. Google
-  /// provider. Recommended scopes:
+  /// - "GOOGLE" : Google provider. Recommended scopes:
   /// "https://www.googleapis.com/auth/drive.readonly",
   /// "https://www.googleapis.com/auth/documents.readonly"
-  /// - "SENTRY" : Deprecated: This provider is no longer supported. Sentry
-  /// provider. Scopes can be found at https://docs.sentry.io/api/permissions/
-  /// - "ROVO" : Deprecated: This provider is no longer supported. Rovo
-  /// provider. Must select the "rovo" scope.
-  /// - "NEW_RELIC" : Deprecated: This provider is no longer supported. New
-  /// Relic provider. No scopes are allowed.
-  /// - "DATASTAX" : Deprecated: This provider is no longer supported. Datastax
-  /// provider. No scopes are allowed.
-  /// - "DYNATRACE" : Deprecated: This provider is no longer supported.
-  /// Dynatrace provider.
+  /// - "SENTRY" : Sentry provider. Scopes can be found at
+  /// https://docs.sentry.io/api/permissions/
+  /// - "ROVO" : Rovo provider. Must select the "rovo" scope.
+  /// - "NEW_RELIC" : New Relic provider. No scopes are allowed.
+  /// - "DATASTAX" : Datastax provider. No scopes are allowed.
+  /// - "DYNATRACE" : Dynatrace provider.
   core.String? systemProviderId;
 
   ProviderOAuthConfig({this.scopes, this.systemProviderId});
@@ -5243,6 +5502,39 @@ class ProviderOAuthConfig {
     final scopes = this.scopes;
     final systemProviderId = this.systemProviderId;
     return {'scopes': ?scopes, 'systemProviderId': ?systemProviderId};
+  }
+}
+
+/// The proxy configuration.
+class ProxyConfig {
+  /// Setting this to true allows the git and http proxies to perform actions on
+  /// behalf of the user configured under the account connector.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// The base URI for the HTTP proxy endpoint.
+  ///
+  /// Has the format
+  /// `https://{generatedID}-a-h-{shortRegion}.developerconnect.dev` Populated
+  /// only when `enabled` is set to `true`. This endpoint is used by other
+  /// Google services that integrate with Developer Connect.
+  ///
+  /// Output only.
+  core.String? httpProxyBaseUri;
+
+  ProxyConfig({this.enabled, this.httpProxyBaseUri});
+
+  ProxyConfig.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        httpProxyBaseUri: json_['httpProxyBaseUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final httpProxyBaseUri = this.httpProxyBaseUri;
+    return {'enabled': ?enabled, 'httpProxyBaseUri': ?httpProxyBaseUri};
   }
 }
 
@@ -5340,10 +5632,10 @@ class RuntimeConfig {
   }
 }
 
-/// Configuration for connections to SSM instance
+/// Configuration for connections to Secure Source Manager instance
 class SecureSourceManagerInstanceConfig {
-  /// SSM instance resource, formatted as `projects / * /locations / *
-  /// /instances / * `
+  /// Secure Source Manager instance resource, formatted as `projects / *
+  /// /locations / * /instances / * `
   ///
   /// Required. Immutable.
   core.String? instance;
@@ -5387,20 +5679,15 @@ class StartOAuthResponse {
   /// https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
   /// - "GITLAB" : GitLab provider. Scopes can be found at
   /// https://docs.gitlab.com/user/profile/personal_access_tokens/#personal-access-token-scopes
-  /// - "GOOGLE" : Deprecated: This provider is no longer supported. Google
-  /// provider. Recommended scopes:
+  /// - "GOOGLE" : Google provider. Recommended scopes:
   /// "https://www.googleapis.com/auth/drive.readonly",
   /// "https://www.googleapis.com/auth/documents.readonly"
-  /// - "SENTRY" : Deprecated: This provider is no longer supported. Sentry
-  /// provider. Scopes can be found at https://docs.sentry.io/api/permissions/
-  /// - "ROVO" : Deprecated: This provider is no longer supported. Rovo
-  /// provider. Must select the "rovo" scope.
-  /// - "NEW_RELIC" : Deprecated: This provider is no longer supported. New
-  /// Relic provider. No scopes are allowed.
-  /// - "DATASTAX" : Deprecated: This provider is no longer supported. Datastax
-  /// provider. No scopes are allowed.
-  /// - "DYNATRACE" : Deprecated: This provider is no longer supported.
-  /// Dynatrace provider.
+  /// - "SENTRY" : Sentry provider. Scopes can be found at
+  /// https://docs.sentry.io/api/permissions/
+  /// - "ROVO" : Rovo provider. Must select the "rovo" scope.
+  /// - "NEW_RELIC" : New Relic provider. No scopes are allowed.
+  /// - "DATASTAX" : Datastax provider. No scopes are allowed.
+  /// - "DYNATRACE" : Dynatrace provider.
   core.String? systemProviderId;
 
   /// The ticket to be used for post processing the callback from the service
@@ -5545,6 +5832,55 @@ class UserCredential {
     return {
       'userTokenSecretVersion': ?userTokenSecretVersion,
       'username': ?username,
+    };
+  }
+}
+
+/// A user repository that can be linked to the account connector.
+///
+/// Consists of the repo name and the git proxy URL to forward requests to this
+/// repo.
+class UserRepository {
+  /// The git clone URL of the repo.
+  ///
+  /// For example: https://github.com/myuser/myrepo.git
+  ///
+  /// Output only.
+  core.String? cloneUri;
+
+  /// The user friendly repo name (e.g., myuser/myrepo)
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The Git proxy URL for this repo.
+  ///
+  /// For example:
+  /// https://us-west1-git.developerconnect.dev/a/my-proj/my-ac/myuser/myrepo.git.
+  /// Populated only when `proxy_config.enabled` is set to `true` in the Account
+  /// Connector. This URL is used by other Google services that integrate with
+  /// Developer Connect.
+  ///
+  /// Output only.
+  core.String? gitProxyUri;
+
+  UserRepository({this.cloneUri, this.displayName, this.gitProxyUri});
+
+  UserRepository.fromJson(core.Map json_)
+    : this(
+        cloneUri: json_['cloneUri'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        gitProxyUri: json_['gitProxyUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloneUri = this.cloneUri;
+    final displayName = this.displayName;
+    final gitProxyUri = this.gitProxyUri;
+    return {
+      'cloneUri': ?cloneUri,
+      'displayName': ?displayName,
+      'gitProxyUri': ?gitProxyUri,
     };
   }
 }

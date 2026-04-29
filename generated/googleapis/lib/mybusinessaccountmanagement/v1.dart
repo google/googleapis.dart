@@ -1318,6 +1318,8 @@ typedef PostalAddress = $PostalAddress;
 /// Represents a target location for a pending invitation.
 class TargetLocation {
   /// The address of the location to which the user is invited.
+  ///
+  /// Not always populated.
   core.String? address;
 
   /// The name of the location to which the user is invited.

@@ -15,6 +15,53 @@
     "description": "",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/apigee/docs/api-hub/what-is-api-hub",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://apihub.asia-east1.rep.googleapis.com/",
+            "location": "asia-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://apihub.asia-south1.rep.googleapis.com/",
+            "location": "asia-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://apihub.asia-southeast1.rep.googleapis.com/",
+            "location": "asia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://apihub.europe-north1.rep.googleapis.com/",
+            "location": "europe-north1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://apihub.europe-west1.rep.googleapis.com/",
+            "location": "europe-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://apihub.europe-west9.rep.googleapis.com/",
+            "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://apihub.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://apihub.us-east1.rep.googleapis.com/",
+            "location": "us-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://apihub.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +72,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260119",
+    "revision": "20260425",
     "rootUrl": "https://apihub.googleapis.com/",
     "servicePath": "",
     "title": "API hub API",
@@ -167,7 +214,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "apihub.projects.locations.list",
@@ -176,7 +223,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -527,6 +574,40 @@
                                     "path": "v1/{+parent}/apiHubInstances:lookup",
                                     "response": {
                                         "$ref": "GoogleCloudApihubV1LookupApiHubInstanceResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Update an Api Hub instance. The following fields in the ApiHubInstance can be updated: * disable_search * vertex_location * agent_registry_sync_config The update_mask should be used to specify the fields being updated.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apiHubInstances/{apiHubInstancesId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "apihub.projects.locations.apiHubInstances.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Identifier. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/apiHubInstances/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Optional. The list of fields to update.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "GoogleCloudApihubV1ApiHubInstance"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleLongrunningOperation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -3354,6 +3435,17 @@
             },
             "type": "object"
         },
+        "GoogleCloudApihubV1AgentRegistrySyncConfig": {
+            "description": "The configuration for Agent Registry sync.",
+            "id": "GoogleCloudApihubV1AgentRegistrySyncConfig",
+            "properties": {
+                "disabled": {
+                    "description": "Optional. If true, the MCP data sync to the Agent Registry will be disabled. The default value is false.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApihubV1AllDataAddonConfig": {
             "description": "Configuration for addons which act on all data in the API hub. This is used to specify if the addon is enabled for all data in the API hub.",
             "id": "GoogleCloudApihubV1AllDataAddonConfig",
@@ -3700,13 +3792,11 @@
             "properties": {
                 "mcpServerView": {
                     "$ref": "GoogleCloudApihubV1FlattenedApiVersionDeploymentView",
-                    "description": "Output only. MCP server view.",
-                    "readOnly": true
+                    "description": "MCP server view."
                 },
                 "mcpToolView": {
                     "$ref": "GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView",
-                    "description": "Output only. MCP tools view.",
-                    "readOnly": true
+                    "description": "MCP tools view."
                 }
             },
             "type": "object"
@@ -4010,6 +4100,10 @@
             "description": "Available configurations to provision an ApiHub Instance.",
             "id": "GoogleCloudApihubV1Config",
             "properties": {
+                "agentRegistrySyncConfig": {
+                    "$ref": "GoogleCloudApihubV1AgentRegistrySyncConfig",
+                    "description": "Optional. The configuration for syncing MCP data in the API Hub instance to the Agent Registry."
+                },
                 "cmekKeyName": {
                     "description": "Optional. The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the location must match the instance location. If the CMEK is not provided, a GMEK will be created for the instance.",
                     "type": "string"
@@ -4968,15 +5062,15 @@
             "properties": {
                 "api": {
                     "$ref": "GoogleCloudApihubV1Api",
-                    "description": "The API."
+                    "description": "Optional. The API."
                 },
                 "deployment": {
                     "$ref": "GoogleCloudApihubV1Deployment",
-                    "description": "The deployment."
+                    "description": "Optional. The deployment."
                 },
                 "version": {
                     "$ref": "GoogleCloudApihubV1Version",
-                    "description": "The version."
+                    "description": "Optional. The version."
                 }
             },
             "type": "object"
@@ -4987,19 +5081,19 @@
             "properties": {
                 "api": {
                     "$ref": "GoogleCloudApihubV1Api",
-                    "description": "The API."
+                    "description": "Optional. The API."
                 },
                 "apiOperation": {
                     "$ref": "GoogleCloudApihubV1ApiOperation",
-                    "description": "The API operation."
+                    "description": "Optional. The API operation."
                 },
                 "deployment": {
                     "$ref": "GoogleCloudApihubV1Deployment",
-                    "description": "The deployment."
+                    "description": "Optional. The deployment."
                 },
                 "version": {
                     "$ref": "GoogleCloudApihubV1Version",
-                    "description": "The version."
+                    "description": "Optional. The version."
                 }
             },
             "type": "object"
@@ -6468,10 +6562,11 @@
             "id": "GoogleCloudApihubV1RetrieveApiViewsResponse",
             "properties": {
                 "apiViews": {
-                    "description": "The list of API views.",
+                    "description": "Output only. The list of API views.",
                     "items": {
                         "$ref": "GoogleCloudApihubV1ApiView"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "nextPageToken": {

@@ -120,11 +120,16 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -3998,7 +4003,7 @@ class MembershipFeature {
   /// Output only.
   core.String? deleteTime;
 
-  /// GCP labels for this MembershipFeature.
+  /// Google Cloud labels for this MembershipFeature.
   core.Map<core.String, core.String>? labels;
 
   /// Lifecycle information of the resource itself.
@@ -5108,6 +5113,8 @@ class ServiceMeshCondition {
   /// - "QUOTA_EXCEEDED_TCP_FILTERS" : TCPFilter quota exceeded error code.
   /// - "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS" : NetworkEndpointGroup quota
   /// exceeded error code.
+  /// - "CONFIG_APPLY_BLOCKED" : Configuration failed to apply due to fleet
+  /// being blocked.
   /// - "LEGACY_MC_SECRETS" : Legacy istio secrets found for multicluster error
   /// code
   /// - "WORKLOAD_IDENTITY_REQUIRED" : Workload identity required error code

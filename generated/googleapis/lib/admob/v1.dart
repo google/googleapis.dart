@@ -1821,21 +1821,4 @@ class ReportWarning {
 }
 
 /// List of string values.
-class StringList {
-  /// The string values.
-  core.List<core.String>? values;
-
-  StringList({this.values});
-
-  StringList.fromJson(core.Map json_)
-    : this(
-        values: (json_['values'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final values = this.values;
-    return {'values': ?values};
-  }
-}
+typedef StringList = $StringList;

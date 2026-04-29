@@ -1038,6 +1038,18 @@ class Attributes {
   /// The material of which the item is made.
   core.String? material;
 
+  /// Maximum rating score of the product.
+  ///
+  /// Required if `rating` is provided. This field is for an upcoming feature
+  /// and is not yet used.
+  core.String? maxRating;
+
+  /// Minimum rating score of the product.
+  ///
+  /// Required if `rating` is provided. This field is for an upcoming feature
+  /// and is not yet used.
+  core.String? minRating;
+
   /// Manufacturer Part Number
   /// ([MPN](https://support.google.com/merchants/answer/188494#mpn)) of the
   /// item.
@@ -1085,6 +1097,21 @@ class Attributes {
   /// The value must be between 0 (exclusive) and 3000 (inclusive).
   ProductDimension? productWidth;
 
+  /// Average rating score of the product.
+  ///
+  /// The value must be within the range of \[`min_rating`, `max_rating`\],
+  /// inclusive. When displayed on the product page, this rating is normalized
+  /// to a scale of \[1, 5\] with one decimal place. If provided,
+  /// `review_count`, `min_rating`, and `max_rating` are also required. This
+  /// field is for an upcoming feature and is not yet used.
+  core.double? rating;
+
+  /// Number of reviews of the product.
+  ///
+  /// Required if `rating` is provided. This field is for an upcoming feature
+  /// and is not yet used.
+  core.String? reviewCount;
+
   /// Size of the item.
   ///
   /// Only one value is allowed. For variants with different sizes, insert a
@@ -1101,7 +1128,7 @@ class Attributes {
   ///
   /// It can be used to represent combined size types for apparel items. Maximum
   /// two of size types can be provided (see
-  /// \[https://support.google.com/merchants/answer/6324497\](size type)).
+  /// [size type](https://support.google.com/merchants/answer/6324497).
   core.List<core.String>? sizeTypes;
 
   /// Title of the item.
@@ -1142,6 +1169,8 @@ class Attributes {
     this.itemGroupId,
     this.lowPrice,
     this.material,
+    this.maxRating,
+    this.minRating,
     this.mpn,
     this.multipack,
     this.numberOfOffers,
@@ -1154,6 +1183,8 @@ class Attributes {
     this.productTypes,
     this.productWeight,
     this.productWidth,
+    this.rating,
+    this.reviewCount,
     this.size,
     this.sizeSystem,
     this.sizeTypes,
@@ -1239,6 +1270,8 @@ class Attributes {
               )
             : null,
         material: json_['material'] as core.String?,
+        maxRating: json_['maxRating'] as core.String?,
+        minRating: json_['minRating'] as core.String?,
         mpn: json_['mpn'] as core.String?,
         multipack: json_['multipack'] as core.String?,
         numberOfOffers: json_['numberOfOffers'] as core.String?,
@@ -1277,6 +1310,8 @@ class Attributes {
                 json_['productWidth'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        rating: (json_['rating'] as core.num?)?.toDouble(),
+        reviewCount: json_['reviewCount'] as core.String?,
         size: json_['size'] as core.String?,
         sizeSystem: json_['sizeSystem'] as core.String?,
         sizeTypes: (json_['sizeTypes'] as core.List?)
@@ -1320,6 +1355,8 @@ class Attributes {
     final itemGroupId = this.itemGroupId;
     final lowPrice = this.lowPrice;
     final material = this.material;
+    final maxRating = this.maxRating;
+    final minRating = this.minRating;
     final mpn = this.mpn;
     final multipack = this.multipack;
     final numberOfOffers = this.numberOfOffers;
@@ -1332,6 +1369,8 @@ class Attributes {
     final productTypes = this.productTypes;
     final productWeight = this.productWeight;
     final productWidth = this.productWidth;
+    final rating = this.rating;
+    final reviewCount = this.reviewCount;
     final size = this.size;
     final sizeSystem = this.sizeSystem;
     final sizeTypes = this.sizeTypes;
@@ -1371,6 +1410,8 @@ class Attributes {
       'itemGroupId': ?itemGroupId,
       'lowPrice': ?lowPrice,
       'material': ?material,
+      'maxRating': ?maxRating,
+      'minRating': ?minRating,
       'mpn': ?mpn,
       'multipack': ?multipack,
       'numberOfOffers': ?numberOfOffers,
@@ -1383,6 +1424,8 @@ class Attributes {
       'productTypes': ?productTypes,
       'productWeight': ?productWeight,
       'productWidth': ?productWidth,
+      'rating': ?rating,
+      'reviewCount': ?reviewCount,
       'size': ?size,
       'sizeSystem': ?sizeSystem,
       'sizeTypes': ?sizeTypes,

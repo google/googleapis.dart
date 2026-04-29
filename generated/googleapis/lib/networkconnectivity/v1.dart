@@ -42,11 +42,13 @@
 ///     - [ProjectsLocationsMulticloudDataTransferSupportedServicesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRegionalEndpointsResource]
+///     - [ProjectsLocationsRemoteTransportProfilesResource]
 ///     - [ProjectsLocationsServiceClassesResource]
 ///     - [ProjectsLocationsServiceConnectionMapsResource]
 ///     - [ProjectsLocationsServiceConnectionPoliciesResource]
 ///     - [ProjectsLocationsServiceConnectionTokensResource]
 ///     - [ProjectsLocationsSpokesResource]
+///     - [ProjectsLocationsTransportsResource]
 library;
 
 import 'dart:async' as async;
@@ -115,6 +117,9 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsRegionalEndpointsResource get regionalEndpoints =>
       ProjectsLocationsRegionalEndpointsResource(_requester);
+  ProjectsLocationsRemoteTransportProfilesResource
+  get remoteTransportProfiles =>
+      ProjectsLocationsRemoteTransportProfilesResource(_requester);
   ProjectsLocationsServiceClassesResource get serviceClasses =>
       ProjectsLocationsServiceClassesResource(_requester);
   ProjectsLocationsServiceConnectionMapsResource get serviceConnectionMaps =>
@@ -127,6 +132,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsServiceConnectionTokensResource(_requester);
   ProjectsLocationsSpokesResource get spokes =>
       ProjectsLocationsSpokesResource(_requester);
+  ProjectsLocationsTransportsResource get transports =>
+      ProjectsLocationsTransportsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -216,6 +223,17 @@ class ProjectsLocationsResource {
   }
 
   /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
@@ -3753,6 +3771,107 @@ class ProjectsLocationsRegionalEndpointsResource {
   }
 }
 
+class ProjectsLocationsRemoteTransportProfilesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRemoteTransportProfilesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets details of a single RemoteTransportProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/remoteTransportProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RemoteTransportProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RemoteTransportProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RemoteTransportProfile.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists RemoteTransportProfiles in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListRemoteTransportProfilesRequest.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRemoteTransportProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRemoteTransportProfilesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/remoteTransportProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRemoteTransportProfilesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsServiceClassesResource {
   final commons.ApiRequester _requester;
 
@@ -3853,64 +3972,6 @@ class ProjectsLocationsServiceClassesResource {
     return ServiceClass.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
-  }
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
-          ? null
-          : ['${options_requestedPolicyVersion}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ServiceClasses in a given project and location.
@@ -4032,105 +4093,6 @@ class ProjectsLocationsServiceClassesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceClasses/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4305,64 +4267,6 @@ class ProjectsLocationsServiceConnectionMapsResource {
     );
   }
 
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
-          ? null
-          : ['${options_requestedPolicyVersion}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Lists ServiceConnectionMaps in a given project and location.
   ///
   /// Request parameters:
@@ -4483,105 +4387,6 @@ class ProjectsLocationsServiceConnectionMapsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionMaps/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4799,64 +4604,6 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
     );
   }
 
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
-          ? null
-          : ['${options_requestedPolicyVersion}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Lists ServiceConnectionPolicies in a given project and location.
   ///
   /// Request parameters:
@@ -4977,105 +4724,6 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConnectionPolicies/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -5736,6 +5384,278 @@ class ProjectsLocationsSpokesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsTransportsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTransportsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new Transport in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [transportId] - Required. Id of the requesting object
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    Transport request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? transportId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'transportId': ?transportId == null ? null : [transportId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transports';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a single Transport.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transports/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single Transport.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Transport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Transport> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Transport.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Transports in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListTransportsRequest.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTransportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTransportsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transports';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTransportsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single Transport.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transports/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Transport resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields present in the request will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    Transport request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -8102,6 +8022,24 @@ class InternalRange {
 /// prefixes to Google Cloud. Alternatively, in active/passive configurations,
 /// all attachments should be capable of advertising the same prefixes.
 class LinkedInterconnectAttachments {
+  /// Dynamic routes overlapped/encompassed by exclude export ranges are
+  /// excluded during export to hub.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeExportRanges;
+
+  /// Hub routes overlapped/encompassed by exclude import ranges are excluded
+  /// during import from hub.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeImportRanges;
+
+  /// Dynamic routes fully encompassed by include export ranges are included
+  /// during export to hub.
+  ///
+  /// Optional.
+  core.List<core.String>? includeExportRanges;
+
   /// Hub routes fully encompassed by include import ranges are included during
   /// import from hub.
   ///
@@ -8124,6 +8062,9 @@ class LinkedInterconnectAttachments {
   core.String? vpcNetwork;
 
   LinkedInterconnectAttachments({
+    this.excludeExportRanges,
+    this.excludeImportRanges,
+    this.includeExportRanges,
     this.includeImportRanges,
     this.siteToSiteDataTransfer,
     this.uris,
@@ -8132,6 +8073,15 @@ class LinkedInterconnectAttachments {
 
   LinkedInterconnectAttachments.fromJson(core.Map json_)
     : this(
+        excludeExportRanges: (json_['excludeExportRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        excludeImportRanges: (json_['excludeImportRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includeExportRanges: (json_['includeExportRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         includeImportRanges: (json_['includeImportRanges'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -8143,11 +8093,17 @@ class LinkedInterconnectAttachments {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final excludeExportRanges = this.excludeExportRanges;
+    final excludeImportRanges = this.excludeImportRanges;
+    final includeExportRanges = this.includeExportRanges;
     final includeImportRanges = this.includeImportRanges;
     final siteToSiteDataTransfer = this.siteToSiteDataTransfer;
     final uris = this.uris;
     final vpcNetwork = this.vpcNetwork;
     return {
+      'excludeExportRanges': ?excludeExportRanges,
+      'excludeImportRanges': ?excludeImportRanges,
+      'includeExportRanges': ?includeExportRanges,
       'includeImportRanges': ?includeImportRanges,
       'siteToSiteDataTransfer': ?siteToSiteDataTransfer,
       'uris': ?uris,
@@ -8265,6 +8221,24 @@ class LinkedProducerVpcNetwork {
 /// the same set of sites outside of Google Cloud, we recommend that you
 /// associate those instances with the same spoke.
 class LinkedRouterApplianceInstances {
+  /// Dynamic routes overlapped/encompassed by exclude export ranges are
+  /// excluded during export to hub.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeExportRanges;
+
+  /// Hub routes overlapped/encompassed by exclude import ranges are excluded
+  /// during import from hub.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeImportRanges;
+
+  /// Dynamic routes fully encompassed by include export ranges are included
+  /// during export to hub.
+  ///
+  /// Optional.
+  core.List<core.String>? includeExportRanges;
+
   /// Hub routes fully encompassed by include import ranges are included during
   /// import from hub.
   ///
@@ -8287,6 +8261,9 @@ class LinkedRouterApplianceInstances {
   core.String? vpcNetwork;
 
   LinkedRouterApplianceInstances({
+    this.excludeExportRanges,
+    this.excludeImportRanges,
+    this.includeExportRanges,
     this.includeImportRanges,
     this.instances,
     this.siteToSiteDataTransfer,
@@ -8295,6 +8272,15 @@ class LinkedRouterApplianceInstances {
 
   LinkedRouterApplianceInstances.fromJson(core.Map json_)
     : this(
+        excludeExportRanges: (json_['excludeExportRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        excludeImportRanges: (json_['excludeImportRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includeExportRanges: (json_['includeExportRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         includeImportRanges: (json_['includeImportRanges'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -8310,11 +8296,17 @@ class LinkedRouterApplianceInstances {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final excludeExportRanges = this.excludeExportRanges;
+    final excludeImportRanges = this.excludeImportRanges;
+    final includeExportRanges = this.includeExportRanges;
     final includeImportRanges = this.includeImportRanges;
     final instances = this.instances;
     final siteToSiteDataTransfer = this.siteToSiteDataTransfer;
     final vpcNetwork = this.vpcNetwork;
     return {
+      'excludeExportRanges': ?excludeExportRanges,
+      'excludeImportRanges': ?excludeImportRanges,
+      'includeExportRanges': ?includeExportRanges,
       'includeImportRanges': ?includeImportRanges,
       'instances': ?instances,
       'siteToSiteDataTransfer': ?siteToSiteDataTransfer,
@@ -8420,6 +8412,24 @@ class LinkedVpcNetwork {
 /// configuration, all tunnels should be capable of advertising the same
 /// prefixes.
 class LinkedVpnTunnels {
+  /// Dynamic routes overlapped/encompassed by exclude export ranges are
+  /// excluded during export to hub.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeExportRanges;
+
+  /// Hub routes overlapped/encompassed by exclude import ranges are excluded
+  /// during import from hub.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeImportRanges;
+
+  /// Dynamic routes fully encompassed by include export ranges are included
+  /// during export to hub.
+  ///
+  /// Optional.
+  core.List<core.String>? includeExportRanges;
+
   /// Hub routes fully encompassed by include import ranges are included during
   /// import from hub.
   ///
@@ -8442,6 +8452,9 @@ class LinkedVpnTunnels {
   core.String? vpcNetwork;
 
   LinkedVpnTunnels({
+    this.excludeExportRanges,
+    this.excludeImportRanges,
+    this.includeExportRanges,
     this.includeImportRanges,
     this.siteToSiteDataTransfer,
     this.uris,
@@ -8450,6 +8463,15 @@ class LinkedVpnTunnels {
 
   LinkedVpnTunnels.fromJson(core.Map json_)
     : this(
+        excludeExportRanges: (json_['excludeExportRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        excludeImportRanges: (json_['excludeImportRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includeExportRanges: (json_['includeExportRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         includeImportRanges: (json_['includeImportRanges'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -8461,11 +8483,17 @@ class LinkedVpnTunnels {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final excludeExportRanges = this.excludeExportRanges;
+    final excludeImportRanges = this.excludeImportRanges;
+    final includeExportRanges = this.includeExportRanges;
     final includeImportRanges = this.includeImportRanges;
     final siteToSiteDataTransfer = this.siteToSiteDataTransfer;
     final uris = this.uris;
     final vpcNetwork = this.vpcNetwork;
     return {
+      'excludeExportRanges': ?excludeExportRanges,
+      'excludeImportRanges': ?excludeImportRanges,
+      'includeExportRanges': ?includeExportRanges,
       'includeImportRanges': ?includeImportRanges,
       'siteToSiteDataTransfer': ?siteToSiteDataTransfer,
       'uris': ?uris,
@@ -8949,6 +8977,53 @@ class ListRegionalEndpointsResponse {
   }
 }
 
+/// Message for response to listing RemoteTransportProfiles
+class ListRemoteTransportProfilesResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of RemoteTransportProfiles.
+  core.List<RemoteTransportProfile>? remoteTransportProfiles;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRemoteTransportProfilesResponse({
+    this.nextPageToken,
+    this.remoteTransportProfiles,
+    this.unreachable,
+  });
+
+  ListRemoteTransportProfilesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        remoteTransportProfiles:
+            (json_['remoteTransportProfiles'] as core.List?)
+                ?.map(
+                  (value) => RemoteTransportProfile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final remoteTransportProfiles = this.remoteTransportProfiles;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'remoteTransportProfiles': ?remoteTransportProfiles,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// Response for HubService.ListRouteTables method.
 class ListRouteTablesResponse {
   /// The token for the next page of the response.
@@ -9265,6 +9340,52 @@ class ListSpokesResponse {
     return {
       'nextPageToken': ?nextPageToken,
       'spokes': ?spokes,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing Transports.
+class ListTransportsResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of Transport.
+  core.List<Transport>? transports;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListTransportsResponse({
+    this.nextPageToken,
+    this.transports,
+    this.unreachable,
+  });
+
+  ListTransportsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        transports: (json_['transports'] as core.List?)
+            ?.map(
+              (value) => Transport.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final transports = this.transports;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'transports': ?transports,
       'unreachable': ?unreachable,
     };
   }
@@ -10649,6 +10770,143 @@ class RejectSpokeUpdateRequest {
       'requestId': ?requestId,
       'spokeEtag': ?spokeEtag,
       'spokeUri': ?spokeUri,
+    };
+  }
+}
+
+/// Message describing RemoteTransportProfile object.
+class RemoteTransportProfile {
+  /// Description of the profile.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Human readable name of this profile, used to identify this profile in the
+  /// UI.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Type of provisioning flows supported by this profile.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "KEY_PROVISIONING_FLOW_UNSPECIFIED" : Unspecified key provisioning flow.
+  /// - "INPUT_ONLY" : The activationKey field on the Transport must be included
+  /// in a create or patch request to establish connectivity.
+  /// - "OUTPUT_ONLY" : The generatedActivationKey field is populated and must
+  /// be read from the resource and passed into the other provider.
+  /// - "INPUT_OR_OUTPUT" : Both activation key fields are allowed for
+  /// establishing connectivity. If a key is input, the generated key is still
+  /// present after provisioning is finished.
+  core.String? flow;
+
+  /// Labels as key value pairs.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Name of the resource in the format of $provider-$site.
+  core.String? name;
+
+  /// Order state for this profile.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "CLOSED" : Not enough capacity for customers to order.
+  /// - "OPEN" : Enough capacity to fulfill an order.
+  core.String? orderState;
+
+  /// Name of the provider on the other end of this profile.
+  ///
+  /// E.g. “Amazon Web Services” or “Microsoft Azure”.
+  ///
+  /// Output only.
+  core.String? provider;
+
+  /// If the profile is a Cloud Service Provider with compute resources, this is
+  /// populated with the region where connectivity is being established.
+  ///
+  /// If the profile provides facility-level selection, this is an identity of
+  /// the facility any connections on this profile are going through.
+  ///
+  /// Output only.
+  core.String? providerSite;
+
+  /// Availability class that will be configured for this particular
+  /// RemoteTransportProfile.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SERVICE_LEVEL_AVAILABILITY_UNSPECIFIED" : Unspecified service level
+  /// availability.
+  /// - "HIGH" : This represents a 99.9% service level on the availability of
+  /// the configured connectivity.
+  /// - "MAXIMUM" : This represents a 99.99% service level on the availability
+  /// of the configured connectivity.
+  core.String? sla;
+
+  /// List of bandwidth enum values that are supported by this profile.
+  ///
+  /// Output only.
+  core.List<core.String>? supportedBandwidths;
+
+  RemoteTransportProfile({
+    this.description,
+    this.displayName,
+    this.flow,
+    this.labels,
+    this.name,
+    this.orderState,
+    this.provider,
+    this.providerSite,
+    this.sla,
+    this.supportedBandwidths,
+  });
+
+  RemoteTransportProfile.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        flow: json_['flow'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        orderState: json_['orderState'] as core.String?,
+        provider: json_['provider'] as core.String?,
+        providerSite: json_['providerSite'] as core.String?,
+        sla: json_['sla'] as core.String?,
+        supportedBandwidths: (json_['supportedBandwidths'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final flow = this.flow;
+    final labels = this.labels;
+    final name = this.name;
+    final orderState = this.orderState;
+    final provider = this.provider;
+    final providerSite = this.providerSite;
+    final sla = this.sla;
+    final supportedBandwidths = this.supportedBandwidths;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'flow': ?flow,
+      'labels': ?labels,
+      'name': ?name,
+      'orderState': ?orderState,
+      'provider': ?provider,
+      'providerSite': ?providerSite,
+      'sla': ?sla,
+      'supportedBandwidths': ?supportedBandwidths,
     };
   }
 }
@@ -12172,6 +12430,229 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Message describing Transport object.
+class Transport {
+  /// List of IP Prefixes that will be advertised to the remote provider.
+  ///
+  /// Both IPv4 and IPv6 addresses are supported.
+  ///
+  /// Optional.
+  core.List<core.String>? advertisedRoutes;
+
+  /// Bandwidth of the Transport.
+  ///
+  /// This must be one of the supported bandwidths for the remote profile, and
+  /// must be set when no activation key is being provided.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BANDWIDTH_UNSPECIFIED" : Unspecified bandwidth.
+  /// - "BPS_50M" : 50 Megabits per second.
+  /// - "BPS_100M" : 100 Megabits per second.
+  /// - "BPS_200M" : 200 Megabits per second.
+  /// - "BPS_300M" : 300 Megabits per second.
+  /// - "BPS_400M" : 400 Megabits per second.
+  /// - "BPS_500M" : 500 Megabits per second.
+  /// - "BPS_1G" : 1 Gigabit per second.
+  /// - "BPS_2G" : 2 Gigabits per second.
+  /// - "BPS_5G" : 5 Gigabits per second.
+  /// - "BPS_10G" : 10 Gigabits per second.
+  /// - "BPS_20G" : 20 Gigabits per second.
+  /// - "BPS_50G" : 50 Gigabits per second.
+  /// - "BPS_100G" : 100 Gigabits per second.
+  core.String? bandwidth;
+
+  /// Create time stamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the Transport.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Google-generated activation key.
+  ///
+  /// This is only output if the selected profile supports an OUTPUT key flow.
+  /// Inputting this to the provider is only valid while the resource is in a
+  /// PENDING_KEY state. Once the provider has accepted the key, the resource
+  /// will move to the CONFIGURING state.
+  ///
+  /// Output only.
+  core.String? generatedActivationKey;
+
+  /// Labels as key value pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The maximum transmission unit (MTU) of a packet that can be sent over this
+  /// transport.
+  ///
+  /// Output only.
+  core.int? mtuLimit;
+
+  /// Identifier.
+  ///
+  /// Name of the resource.
+  core.String? name;
+
+  /// Resource URI of the Network that will be peered with this Transport.
+  ///
+  /// This field must be provided during resource creation and cannot be
+  /// changed.
+  ///
+  /// Optional. Immutable.
+  core.String? network;
+
+  /// VPC Network URI that was created for the VPC Peering connection to the
+  /// provided `network`.
+  ///
+  /// If VPC Peering is disconnected, this can be used to re-establish.
+  ///
+  /// Output only.
+  core.String? peeringNetwork;
+
+  /// Key used for establishing a connection with the remote transport.
+  ///
+  /// This key can only be provided if the profile supports an INPUT key flow
+  /// and the resource is in the PENDING_KEY state.
+  ///
+  /// Optional. Immutable.
+  core.String? providedActivationKey;
+
+  /// The user supplied account id for the CSP associated with the remote
+  /// profile.
+  ///
+  /// Optional. Immutable.
+  core.String? remoteAccountId;
+
+  /// Name of the remoteTransportProfile that this Transport is connecting to.
+  ///
+  /// Optional. Immutable.
+  core.String? remoteProfile;
+
+  /// IP version stack for the established connectivity.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STACK_TYPE_UNSPECIFIED" : Unspecified stack type.
+  /// - "IPV4_ONLY" : Only IPv4 is supported. (default)
+  /// - "IPV4_IPV6" : Both IPv4 and IPv6 are supported.
+  core.String? stackType;
+
+  /// State of the underlying connectivity.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "CREATING" : The resource exists locally and is being created /
+  /// associated with the resource on the remote provider’s end of the
+  /// underlying connectivity.
+  /// - "PENDING_CONFIG" : The Transport exists on both sides of the connection,
+  /// and is waiting for configuration to finalize and be verified as
+  /// operational.
+  /// - "PENDING_KEY" : The Transport was created in GCP. Depending on the
+  /// profile’s key provisioning flow, this is either waiting for an activation
+  /// key to be input (the key will be validated that it uses remote resources
+  /// that match the Transport), or for the generated key to be input to the
+  /// provider for finalizing. The configured bandwidth is not yet guaranteed.
+  /// - "ACTIVE" : The Transport is configured and the underlying connectivity
+  /// is considered operational.
+  /// - "DELETING" : The Transport is being deleted from GCP. The underlying
+  /// connectivity is no longer operational.
+  /// - "DEPROVISIONED" : The Transport was deleted on the remote provider's end
+  /// and is no longer operational. GCP has insufficient information to move the
+  /// resource back to PENDING_KEY state.
+  core.String? state;
+
+  /// Update time stamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Transport({
+    this.advertisedRoutes,
+    this.bandwidth,
+    this.createTime,
+    this.description,
+    this.generatedActivationKey,
+    this.labels,
+    this.mtuLimit,
+    this.name,
+    this.network,
+    this.peeringNetwork,
+    this.providedActivationKey,
+    this.remoteAccountId,
+    this.remoteProfile,
+    this.stackType,
+    this.state,
+    this.updateTime,
+  });
+
+  Transport.fromJson(core.Map json_)
+    : this(
+        advertisedRoutes: (json_['advertisedRoutes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        bandwidth: json_['bandwidth'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        generatedActivationKey: json_['generatedActivationKey'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mtuLimit: json_['mtuLimit'] as core.int?,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        peeringNetwork: json_['peeringNetwork'] as core.String?,
+        providedActivationKey: json_['providedActivationKey'] as core.String?,
+        remoteAccountId: json_['remoteAccountId'] as core.String?,
+        remoteProfile: json_['remoteProfile'] as core.String?,
+        stackType: json_['stackType'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final advertisedRoutes = this.advertisedRoutes;
+    final bandwidth = this.bandwidth;
+    final createTime = this.createTime;
+    final description = this.description;
+    final generatedActivationKey = this.generatedActivationKey;
+    final labels = this.labels;
+    final mtuLimit = this.mtuLimit;
+    final name = this.name;
+    final network = this.network;
+    final peeringNetwork = this.peeringNetwork;
+    final providedActivationKey = this.providedActivationKey;
+    final remoteAccountId = this.remoteAccountId;
+    final remoteProfile = this.remoteProfile;
+    final stackType = this.stackType;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'advertisedRoutes': ?advertisedRoutes,
+      'bandwidth': ?bandwidth,
+      'createTime': ?createTime,
+      'description': ?description,
+      'generatedActivationKey': ?generatedActivationKey,
+      'labels': ?labels,
+      'mtuLimit': ?mtuLimit,
+      'name': ?name,
+      'network': ?network,
+      'peeringNetwork': ?peeringNetwork,
+      'providedActivationKey': ?providedActivationKey,
+      'remoteAccountId': ?remoteAccountId,
+      'remoteProfile': ?remoteProfile,
+      'stackType': ?stackType,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
+}
 
 /// VM instances that this policy-based route applies to.
 class VirtualMachine {

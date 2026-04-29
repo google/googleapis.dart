@@ -170,6 +170,21 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterCancelOperationRequest = 0;
+api.CancelOperationRequest buildCancelOperationRequest() {
+  final o = api.CancelOperationRequest();
+  buildCounterCancelOperationRequest++;
+  if (buildCounterCancelOperationRequest < 3) {}
+  buildCounterCancelOperationRequest--;
+  return o;
+}
+
+void checkCancelOperationRequest(api.CancelOperationRequest o) {
+  buildCounterCancelOperationRequest++;
+  if (buildCounterCancelOperationRequest < 3) {}
+  buildCounterCancelOperationRequest--;
+}
+
 core.int buildCounterCleanupPolicy = 0;
 api.CleanupPolicy buildCleanupPolicy() {
   final o = api.CleanupPolicy();
@@ -1684,6 +1699,27 @@ void checkPackage(api.Package o) {
   buildCounterPackage--;
 }
 
+core.int buildCounterPlatformLogsConfig = 0;
+api.PlatformLogsConfig buildPlatformLogsConfig() {
+  final o = api.PlatformLogsConfig();
+  buildCounterPlatformLogsConfig++;
+  if (buildCounterPlatformLogsConfig < 3) {
+    o.loggingState = 'foo';
+    o.severityLevel = 'foo';
+  }
+  buildCounterPlatformLogsConfig--;
+  return o;
+}
+
+void checkPlatformLogsConfig(api.PlatformLogsConfig o) {
+  buildCounterPlatformLogsConfig++;
+  if (buildCounterPlatformLogsConfig < 3) {
+    unittest.expect(o.loggingState!, unittest.equals('foo'));
+    unittest.expect(o.severityLevel!, unittest.equals('foo'));
+  }
+  buildCounterPlatformLogsConfig--;
+}
+
 core.List<api.Binding> buildUnnamed34() => [buildBinding(), buildBinding()];
 
 void checkUnnamed34(core.List<api.Binding> o) {
@@ -1713,6 +1749,27 @@ void checkPolicy(api.Policy o) {
     unittest.expect(o.version!, unittest.equals(42));
   }
   buildCounterPolicy--;
+}
+
+core.int buildCounterProjectConfig = 0;
+api.ProjectConfig buildProjectConfig() {
+  final o = api.ProjectConfig();
+  buildCounterProjectConfig++;
+  if (buildCounterProjectConfig < 3) {
+    o.name = 'foo';
+    o.platformLogsConfig = buildPlatformLogsConfig();
+  }
+  buildCounterProjectConfig--;
+  return o;
+}
+
+void checkProjectConfig(api.ProjectConfig o) {
+  buildCounterProjectConfig++;
+  if (buildCounterProjectConfig < 3) {
+    unittest.expect(o.name!, unittest.equals('foo'));
+    checkPlatformLogsConfig(o.platformLogsConfig!);
+  }
+  buildCounterProjectConfig--;
 }
 
 core.int buildCounterProjectSettings = 0;
@@ -1864,6 +1921,7 @@ api.Repository buildRepository() {
     o.mavenConfig = buildMavenRepositoryConfig();
     o.mode = 'foo';
     o.name = 'foo';
+    o.platformLogsConfig = buildPlatformLogsConfig();
     o.registryUri = 'foo';
     o.remoteRepositoryConfig = buildRemoteRepositoryConfig();
     o.satisfiesPzi = true;
@@ -1892,6 +1950,7 @@ void checkRepository(api.Repository o) {
     checkMavenRepositoryConfig(o.mavenConfig!);
     unittest.expect(o.mode!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkPlatformLogsConfig(o.platformLogsConfig!);
     unittest.expect(o.registryUri!, unittest.equals('foo'));
     checkRemoteRepositoryConfig(o.remoteRepositoryConfig!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
@@ -2631,6 +2690,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CancelOperationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCancelOperationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelOperationRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCancelOperationRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-CleanupPolicy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCleanupPolicy();
@@ -3226,6 +3296,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PlatformLogsConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPlatformLogsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PlatformLogsConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPlatformLogsConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPolicy();
@@ -3234,6 +3315,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-ProjectConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProjectConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProjectConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkProjectConfig(od);
     });
   });
 
@@ -3768,6 +3860,62 @@ void main() {
       checkLocation(response as api.Location);
     });
 
+    unittest.test('method--getProjectConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildProjectConfig());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getProjectConfig(
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkProjectConfig(response as api.ProjectConfig);
+    });
+
     unittest.test('method--getVpcscConfig', () async {
       final mock = HttpServerMock();
       final res = api.ArtifactRegistryApi(mock).projects.locations;
@@ -3901,6 +4049,75 @@ void main() {
       checkListLocationsResponse(response as api.ListLocationsResponse);
     });
 
+    unittest.test('method--updateProjectConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock).projects.locations;
+      final arg_request = buildProjectConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ProjectConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkProjectConfig(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildProjectConfig());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.updateProjectConfig(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkProjectConfig(response as api.ProjectConfig);
+    });
+
     unittest.test('method--updateVpcscConfig', () async {
       final mock = HttpServerMock();
       final res = api.ArtifactRegistryApi(mock).projects.locations;
@@ -3972,6 +4189,69 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock).projects.locations.operations;
+      final arg_request = buildCancelOperationRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCancelOperationRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.cancel(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkEmpty(response as api.Empty);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.ArtifactRegistryApi(mock).projects.locations.operations;

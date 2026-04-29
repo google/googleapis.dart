@@ -8325,7 +8325,7 @@ class GoogleCloudDatacatalogV1TagFieldEnumValue {
 ///
 /// The template is used to create tags that are attached to Google Cloud
 /// resources.
-/// [Tag template roles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-roles)
+/// [Tag template roles](https://cloud.google.com/iam/docs/roles-permissions/datacatalog)
 /// provide permissions to create, edit, and use the template. For example, see
 /// the
 /// [TagTemplate User](https://cloud.google.com/data-catalog/docs/how-to/template-user)

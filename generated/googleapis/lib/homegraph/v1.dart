@@ -339,6 +339,39 @@ class AgentOtherDeviceId {
   }
 }
 
+/// Contains the set of updates for a component.
+class ComponentTraitUpdates {
+  /// ID of the component from the device provider.
+  ///
+  /// Required.
+  core.String? componentId;
+
+  /// The updated trait data for the component.
+  ///
+  /// Required.
+  core.List<TraitData>? traitData;
+
+  ComponentTraitUpdates({this.componentId, this.traitData});
+
+  ComponentTraitUpdates.fromJson(core.Map json_)
+    : this(
+        componentId: json_['componentId'] as core.String?,
+        traitData: (json_['traitData'] as core.List?)
+            ?.map(
+              (value) => TraitData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final componentId = this.componentId;
+    final traitData = this.traitData;
+    return {'componentId': ?componentId, 'traitData': ?traitData};
+  }
+}
+
 /// Third-party device definition.
 class Device {
   /// Attributes for the traits supported by the device.
@@ -578,6 +611,146 @@ class DeviceNames {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Contains the details for a single event.
+class EventData {
+  /// The actual event payload.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? event;
+
+  /// The unique event ID from the device provider.
+  ///
+  /// Required.
+  core.String? eventId;
+
+  /// The timestamp of the event.
+  ///
+  /// Required.
+  core.String? eventTime;
+
+  EventData({this.event, this.eventId, this.eventTime});
+
+  EventData.fromJson(core.Map json_)
+    : this(
+        event: json_.containsKey('event')
+            ? json_['event'] as core.Map<core.String, core.dynamic>
+            : null,
+        eventId: json_['eventId'] as core.String?,
+        eventTime: json_['eventTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final event = this.event;
+    final eventId = this.eventId;
+    final eventTime = this.eventTime;
+    return {'event': ?event, 'eventId': ?eventId, 'eventTime': ?eventTime};
+  }
+}
+
+/// Contains a set of events for a specific component.
+class Events {
+  /// The ID of the provider component if the events are associated with a
+  /// specific component.
+  ///
+  /// Optional for WHDM events, required for UDDM events.
+  ///
+  /// Optional.
+  core.String? componentId;
+
+  /// List of events associated with the component.
+  ///
+  /// Required.
+  core.List<EventData>? events;
+
+  Events({this.componentId, this.events});
+
+  Events.fromJson(core.Map json_)
+    : this(
+        componentId: json_['componentId'] as core.String?,
+        events: (json_['events'] as core.List?)
+            ?.map(
+              (value) => EventData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final componentId = this.componentId;
+    final events = this.events;
+    return {'componentId': ?componentId, 'events': ?events};
+  }
+}
+
+/// Contains the set of events for an item.
+class HomeEvents {
+  /// / Unique identifier for the device.
+  ///
+  /// Required.
+  core.String? deviceId;
+
+  /// List of events for the item.
+  ///
+  /// Required.
+  core.List<Events>? events;
+
+  HomeEvents({this.deviceId, this.events});
+
+  HomeEvents.fromJson(core.Map json_)
+    : this(
+        deviceId: json_['deviceId'] as core.String?,
+        events: (json_['events'] as core.List?)
+            ?.map(
+              (value) =>
+                  Events.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceId = this.deviceId;
+    final events = this.events;
+    return {'deviceId': ?deviceId, 'events': ?events};
+  }
+}
+
+/// Contains the set of updates for a device.
+class HomeTraitUpdates {
+  /// Trait updates for each component.
+  ///
+  /// Required.
+  core.List<ComponentTraitUpdates>? components;
+
+  /// Unique identifier for the device.
+  ///
+  /// Required.
+  core.String? deviceId;
+
+  HomeTraitUpdates({this.components, this.deviceId});
+
+  HomeTraitUpdates.fromJson(core.Map json_)
+    : this(
+        components: (json_['components'] as core.List?)
+            ?.map(
+              (value) => ComponentTraitUpdates.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        deviceId: json_['deviceId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final components = this.components;
+    final deviceId = this.deviceId;
+    return {'components': ?components, 'deviceId': ?deviceId};
+  }
+}
+
 /// Request type for the
 /// \[`Query`\](#google.home.graph.v1.HomeGraphApiService.Query) call.
 class QueryRequest {
@@ -737,6 +910,16 @@ class QueryResponsePayload {
 
 /// The states and notifications specific to a device.
 class ReportStateAndNotificationDevice {
+  /// UDDM/WHDM trait events
+  ///
+  /// Optional.
+  core.List<HomeEvents>? homeEvents;
+
+  /// UDDM/WHDM trait updates.
+  ///
+  /// Optional.
+  core.List<HomeTraitUpdates>? homeTraits;
+
   /// Notifications metadata for devices.
   ///
   /// See the **Device NOTIFICATIONS** section of the individual trait
@@ -755,10 +938,29 @@ class ReportStateAndNotificationDevice {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? states;
 
-  ReportStateAndNotificationDevice({this.notifications, this.states});
+  ReportStateAndNotificationDevice({
+    this.homeEvents,
+    this.homeTraits,
+    this.notifications,
+    this.states,
+  });
 
   ReportStateAndNotificationDevice.fromJson(core.Map json_)
     : this(
+        homeEvents: (json_['homeEvents'] as core.List?)
+            ?.map(
+              (value) => HomeEvents.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        homeTraits: (json_['homeTraits'] as core.List?)
+            ?.map(
+              (value) => HomeTraitUpdates.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         notifications: json_.containsKey('notifications')
             ? json_['notifications'] as core.Map<core.String, core.dynamic>
             : null,
@@ -768,9 +970,16 @@ class ReportStateAndNotificationDevice {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final homeEvents = this.homeEvents;
+    final homeTraits = this.homeTraits;
     final notifications = this.notifications;
     final states = this.states;
-    return {'notifications': ?notifications, 'states': ?states};
+    return {
+      'homeEvents': ?homeEvents,
+      'homeTraits': ?homeTraits,
+      'notifications': ?notifications,
+      'states': ?states,
+    };
   }
 }
 
@@ -1018,5 +1227,30 @@ class SyncResponsePayload {
     final agentUserId = this.agentUserId;
     final devices = this.devices;
     return {'agentUserId': ?agentUserId, 'devices': ?devices};
+  }
+}
+
+/// Contains the trait payload for a single trait.
+class TraitData {
+  /// The Home API trait payload.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? trait;
+
+  TraitData({this.trait});
+
+  TraitData.fromJson(core.Map json_)
+    : this(
+        trait: json_.containsKey('trait')
+            ? json_['trait'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final trait = this.trait;
+    return {'trait': ?trait};
   }
 }

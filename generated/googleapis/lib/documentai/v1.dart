@@ -232,6 +232,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -1685,8 +1696,8 @@ class ProjectsLocationsSchemasResource {
   /// unspecified, at most `10` Schema will be returned. The maximum value is
   /// `20`. Values above `20` will be coerced to `20`.
   ///
-  /// [pageToken] - Optional. We will return the schema groups sorted by
-  /// creation time. The page token will point to the next Schema.
+  /// [pageToken] - Optional. Returns the schema groups sorted by creation time.
+  /// The page token will point to the next Schema.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1736,8 +1747,8 @@ class ProjectsLocationsSchemasResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The update mask to apply to the resource.
-  /// **Note:** Only the following fields can be updated: - display_name. -
-  /// labels.
+  /// **Note:** Only the following fields can be updated: - `display_name` -
+  /// `labels`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1963,8 +1974,8 @@ class ProjectsLocationsSchemasSchemaVersionsResource {
   /// unspecified, at most `10` SchemaVersion will be returned. The maximum
   /// value is `20`. Values above `20` will be coerced to `20`.
   ///
-  /// [pageToken] - Optional. We will return the SchemaVersion sorted by
-  /// creation time. The page token will point to the next SchemaVersion.
+  /// [pageToken] - Optional. Returns the SchemaVersion sorted by creation time.
+  /// The page token will point to the next SchemaVersion.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2014,8 +2025,8 @@ class ProjectsLocationsSchemasSchemaVersionsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/schemas/\[^/\]+/schemaVersions/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The update mask to apply to the resource.
-  /// **Note:** Only the following fields can be updated: - display_name. -
-  /// labels.
+  /// **Note:** Only the following fields can be updated: - `display_name` -
+  /// `labels`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2294,7 +2305,7 @@ class GoogleCloudDocumentaiV1Document {
   /// For document shards, entities in this list may cross shard boundaries.
   core.List<GoogleCloudDocumentaiV1DocumentEntity>? entities;
 
-  /// The entity revision id that `document.entities` field is based on.
+  /// The entity revision ID that `document.entities` field is based on.
   ///
   /// If this field is set and `entities_revisions` is not empty, the entities
   /// in `document.entities` field are the entities in the entity revision with
@@ -3132,7 +3143,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
   /// Optional. Deprecated.
   core.String? mentionId;
 
-  /// Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
+  /// Text value of the entity, for example, `1600 Amphitheatre Pkwy`.
   ///
   /// Optional.
   core.String? mentionText;
@@ -3151,9 +3162,9 @@ class GoogleCloudDocumentaiV1DocumentEntity {
 
   /// Normalized entity value.
   ///
-  /// Absent if the extracted value could not be converted or the type (e.g.
-  /// address) is not supported for certain parsers. This field is also only
-  /// populated for certain supported document types.
+  /// Absent if the extracted value could not be converted or the type (for
+  /// example, address) is not supported for certain parsers. This field is also
+  /// only populated for certain supported document types.
   ///
   /// Optional.
   GoogleCloudDocumentaiV1DocumentEntityNormalizedValue? normalizedValue;
@@ -3188,7 +3199,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
   /// Optional.
   GoogleCloudDocumentaiV1DocumentTextAnchor? textAnchor;
 
-  /// Entity type from a schema e.g. `Address`.
+  /// Entity type from a schema, for example, `Address`.
   ///
   /// Required.
   core.String? type;
@@ -3667,7 +3678,8 @@ class GoogleCloudDocumentaiV1DocumentPage {
   /// to produce Page.image.
   core.List<GoogleCloudDocumentaiV1DocumentPageMatrix>? transforms;
 
-  /// A list of detected non-text visual elements e.g. checkbox, signature etc.
+  /// A list of detected non-text visual elements, for example, checkbox,
+  /// signature etc.
   ///
   /// on the page.
   core.List<GoogleCloudDocumentaiV1DocumentPageVisualElement>? visualElements;
@@ -4070,7 +4082,7 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 
   /// Layout for the FormField name.
   ///
-  /// e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
+  /// For example, `Address`, `Email`, `Grand total`, `Phone number`, etc.
   GoogleCloudDocumentaiV1DocumentPageLayout? fieldName;
 
   /// Layout for the FormField value.
@@ -4218,8 +4230,8 @@ class GoogleCloudDocumentaiV1DocumentPageLayout {
   /// Confidence of the current Layout within context of the object this layout
   /// is for.
   ///
-  /// e.g. confidence can be for a single token, a table, a visual element, etc.
-  /// depending on context. Range `[0, 1]`.
+  /// For example, confidence can be for a single token, a table, a visual
+  /// element, etc. depending on context. Range `[0, 1]`.
   core.double? confidence;
 
   /// Detected orientation for the Layout.
@@ -4812,7 +4824,7 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   }
 }
 
-/// Detected non-text visual elements e.g. checkbox, signature etc.
+/// Detected non-text visual elements, for example, checkbox, signature etc.
 ///
 /// on the page.
 class GoogleCloudDocumentaiV1DocumentPageVisualElement {
@@ -5030,15 +5042,41 @@ class GoogleCloudDocumentaiV1DocumentRevision {
 }
 
 /// Human Review information of the document.
-typedef GoogleCloudDocumentaiV1DocumentRevisionHumanReview =
-    $GoogleCloudDocumentaiV1DocumentRevisionHumanReview;
+class GoogleCloudDocumentaiV1DocumentRevisionHumanReview {
+  /// Human review state.
+  ///
+  /// For example, `requested`, `succeeded`, `rejected`.
+  core.String? state;
+
+  /// A message providing more details about the current state of processing.
+  ///
+  /// For example, the rejection reason when the state is `rejected`.
+  core.String? stateMessage;
+
+  GoogleCloudDocumentaiV1DocumentRevisionHumanReview({
+    this.state,
+    this.stateMessage,
+  });
+
+  GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromJson(core.Map json_)
+    : this(
+        state: json_['state'] as core.String?,
+        stateMessage: json_['stateMessage'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    final stateMessage = this.stateMessage;
+    return {'state': ?state, 'stateMessage': ?stateMessage};
+  }
+}
 
 /// The schema defines the output of the processed document by a processor.
 class GoogleCloudDocumentaiV1DocumentSchema {
   /// Description of the schema.
   core.String? description;
 
-  /// Display name to show to users.
+  /// Display name to show users.
   core.String? displayName;
 
   /// Document level prompt provided by the user.
@@ -5115,7 +5153,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   /// If specified, lists all the possible values for this entity.
   ///
   /// This should not be more than a handful of values. If the number of values
-  /// is \>10 or could change frequently use the `EntityType.value_ontology`
+  /// is \>10 or could change frequently, use the `EntityType.value_ontology`
   /// field and specify a list of all possible values in a value ontology file.
   GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues? enumValues;
 
@@ -5125,7 +5163,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   /// The following naming conventions are used: - Use `snake_casing`. - Name
   /// matching is case-sensitive. - Maximum 64 characters. - Must start with a
   /// letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-  /// compatibility internal infrastructure and tooling can handle any ascii
+  /// compatibility, internal infrastructure and tooling can handle any ASCII
   /// character.) - The `/` is sometimes used to denote a property of a type.
   /// For example `line_item/amount`. This convention is deprecated, but will
   /// still be honored for backward compatibility.
@@ -5214,6 +5252,11 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   /// document text.
   /// - "DERIVE" : The entity's value is derived through inference and is not
   /// necessarily an exact text extraction from the document.
+  /// - "RELAXED_EXTRACT" : Attempts to extract the position and value as-is
+  /// from the document text. If the value cannot be grounded in the text, it
+  /// falls back to derivation through inference, for both position and value.
+  /// Note: The inference fallback is currently only supported for boolean
+  /// entities.
   core.String? method;
 
   /// The name of the property.
@@ -5289,7 +5332,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaMetadata {
   /// If set, all the nested entities must be prefixed with the parents.
   core.bool? prefixedNamingOnProperties;
 
-  /// If set, we will skip the naming format validation in the schema.
+  /// If set, this will skip the naming format validation in the schema.
   ///
   /// So the string values in `DocumentSchema.EntityType.name` and
   /// `DocumentSchema.EntityType.Property.name` will not be checked.
@@ -5330,8 +5373,51 @@ class GoogleCloudDocumentaiV1DocumentSchemaMetadata {
 /// shards.
 ///
 /// Each document shard contains this field to detail which shard it is.
-typedef GoogleCloudDocumentaiV1DocumentShardInfo =
-    $GoogleCloudDocumentaiV1DocumentShardInfo;
+class GoogleCloudDocumentaiV1DocumentShardInfo {
+  /// The index of the first page in Document.pages in the overall document
+  /// global pages.
+  ///
+  /// Available for document shards created by the document splitter.
+  core.int? pageOffset;
+
+  /// Total number of shards.
+  core.String? shardCount;
+
+  /// The 0-based index of this shard.
+  core.String? shardIndex;
+
+  /// The index of the first character in Document.text in the overall document
+  /// global text.
+  core.String? textOffset;
+
+  GoogleCloudDocumentaiV1DocumentShardInfo({
+    this.pageOffset,
+    this.shardCount,
+    this.shardIndex,
+    this.textOffset,
+  });
+
+  GoogleCloudDocumentaiV1DocumentShardInfo.fromJson(core.Map json_)
+    : this(
+        pageOffset: json_['pageOffset'] as core.int?,
+        shardCount: json_['shardCount'] as core.String?,
+        shardIndex: json_['shardIndex'] as core.String?,
+        textOffset: json_['textOffset'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pageOffset = this.pageOffset;
+    final shardCount = this.shardCount;
+    final shardIndex = this.shardIndex;
+    final textOffset = this.textOffset;
+    return {
+      'pageOffset': ?pageOffset,
+      'shardCount': ?shardCount,
+      'shardIndex': ?shardIndex,
+      'textOffset': ?textOffset,
+    };
+  }
+}
 
 /// Annotation for common text style attributes.
 ///
@@ -5617,6 +5703,9 @@ class GoogleCloudDocumentaiV1Evaluation {
   /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}/evaluations/{evaluation}`
   core.String? name;
 
+  /// Contains all revisions of the evaluation, excluding the latest one.
+  core.List<GoogleCloudDocumentaiV1EvaluationEvaluationRevision>? revisions;
+
   GoogleCloudDocumentaiV1Evaluation({
     this.allEntitiesMetrics,
     this.createTime,
@@ -5625,6 +5714,7 @@ class GoogleCloudDocumentaiV1Evaluation {
     this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,
+    this.revisions,
   });
 
   GoogleCloudDocumentaiV1Evaluation.fromJson(core.Map json_)
@@ -5654,6 +5744,14 @@ class GoogleCloudDocumentaiV1Evaluation {
         kmsKeyName: json_['kmsKeyName'] as core.String?,
         kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
         name: json_['name'] as core.String?,
+        revisions: (json_['revisions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1EvaluationEvaluationRevision.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -5664,6 +5762,7 @@ class GoogleCloudDocumentaiV1Evaluation {
     final kmsKeyName = this.kmsKeyName;
     final kmsKeyVersionName = this.kmsKeyVersionName;
     final name = this.name;
+    final revisions = this.revisions;
     return {
       'allEntitiesMetrics': ?allEntitiesMetrics,
       'createTime': ?createTime,
@@ -5672,6 +5771,7 @@ class GoogleCloudDocumentaiV1Evaluation {
       'kmsKeyName': ?kmsKeyName,
       'kmsKeyVersionName': ?kmsKeyVersionName,
       'name': ?name,
+      'revisions': ?revisions,
     };
   }
 }
@@ -5752,9 +5852,82 @@ class GoogleCloudDocumentaiV1EvaluationCounters {
   }
 }
 
+/// A revision of the evaluation.
+class GoogleCloudDocumentaiV1EvaluationEvaluationRevision {
+  /// Metrics for all the entities in aggregate.
+  ///
+  /// Output only.
+  GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics? allEntitiesMetrics;
+
+  /// Counters for the documents used in the evaluation.
+  ///
+  /// Output only.
+  GoogleCloudDocumentaiV1EvaluationCounters? documentCounters;
+
+  /// Metrics across confidence levels, for different entities.
+  ///
+  /// Output only.
+  core.Map<
+    core.String,
+    GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics
+  >?
+  entityMetrics;
+
+  /// The revision ID of the evaluation.
+  ///
+  /// Output only.
+  core.String? revisionId;
+
+  GoogleCloudDocumentaiV1EvaluationEvaluationRevision({
+    this.allEntitiesMetrics,
+    this.documentCounters,
+    this.entityMetrics,
+    this.revisionId,
+  });
+
+  GoogleCloudDocumentaiV1EvaluationEvaluationRevision.fromJson(core.Map json_)
+    : this(
+        allEntitiesMetrics: json_.containsKey('allEntitiesMetrics')
+            ? GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics.fromJson(
+                json_['allEntitiesMetrics']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        documentCounters: json_.containsKey('documentCounters')
+            ? GoogleCloudDocumentaiV1EvaluationCounters.fromJson(
+                json_['documentCounters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        entityMetrics:
+            (json_['entityMetrics'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        revisionId: json_['revisionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allEntitiesMetrics = this.allEntitiesMetrics;
+    final documentCounters = this.documentCounters;
+    final entityMetrics = this.entityMetrics;
+    final revisionId = this.revisionId;
+    return {
+      'allEntitiesMetrics': ?allEntitiesMetrics,
+      'documentCounters': ?documentCounters,
+      'entityMetrics': ?entityMetrics,
+      'revisionId': ?revisionId,
+    };
+  }
+}
+
 /// Evaluation metrics, either in aggregate or about a specific entity.
 class GoogleCloudDocumentaiV1EvaluationMetrics {
-  /// The calculated f1 score.
+  /// The calculated F1 score.
   core.double? f1Score;
 
   /// The amount of false negatives.
@@ -6489,7 +6662,7 @@ class GoogleCloudDocumentaiV1NextSchema {
   /// Required.
   core.String? displayName;
 
-  /// The GCP labels for the Schema.
+  /// The {{gcp_name_short}} labels for the Schema.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -7672,11 +7845,11 @@ class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo 
 
 /// Information for a pretrained Google-managed foundation model.
 class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo {
-  /// Whether finetuning is allowed for this base processor version.
+  /// Whether fine tuning is allowed for this base processor version.
   core.bool? finetuningAllowed;
 
   /// The minimum number of labeled documents in the training dataset required
-  /// for finetuning.
+  /// for fine tuning.
   core.int? minTrainLabeledDocuments;
 
   GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo({
@@ -7920,7 +8093,7 @@ class GoogleCloudDocumentaiV1SchemaVersion {
   /// Required.
   core.String? displayName;
 
-  /// The GCP labels for the SchemaVersion.
+  /// The {{gcp_name_short}} labels for the SchemaVersion.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -8134,6 +8307,16 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOp
   /// Optional.
   core.double? learningRateMultiplier;
 
+  /// Resource name of a previously fine tuned version id to copy the
+  /// overwritten configs from.
+  ///
+  /// The base_processor_version should be newer than the base processor version
+  /// used to fine tune this provided processor version. Format:
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`.
+  ///
+  /// Optional.
+  core.String? previousFineTunedProcessorVersionName;
+
   /// The number of steps to run for model tuning.
   ///
   /// Valid values are between 1 and 400. If not provided, recommended steps
@@ -8144,6 +8327,7 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOp
 
   GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions({
     this.learningRateMultiplier,
+    this.previousFineTunedProcessorVersionName,
     this.trainSteps,
   });
 
@@ -8152,14 +8336,20 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOp
   ) : this(
         learningRateMultiplier: (json_['learningRateMultiplier'] as core.num?)
             ?.toDouble(),
+        previousFineTunedProcessorVersionName:
+            json_['previousFineTunedProcessorVersionName'] as core.String?,
         trainSteps: json_['trainSteps'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final learningRateMultiplier = this.learningRateMultiplier;
+    final previousFineTunedProcessorVersionName =
+        this.previousFineTunedProcessorVersionName;
     final trainSteps = this.trainSteps;
     return {
       'learningRateMultiplier': ?learningRateMultiplier,
+      'previousFineTunedProcessorVersionName':
+          ?previousFineTunedProcessorVersionName,
       'trainSteps': ?trainSteps,
     };
   }

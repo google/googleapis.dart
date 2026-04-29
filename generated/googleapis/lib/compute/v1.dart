@@ -57,6 +57,7 @@
 /// - [InstanceSettingsResource]
 /// - [InstanceTemplatesResource]
 /// - [InstancesResource]
+/// - [InstantSnapshotGroupsResource]
 /// - [InstantSnapshotsResource]
 /// - [InterconnectAttachmentGroupsResource]
 /// - [InterconnectAttachmentsResource]
@@ -84,22 +85,30 @@
 /// - [PublicAdvertisedPrefixesResource]
 /// - [PublicDelegatedPrefixesResource]
 /// - [RegionAutoscalersResource]
+/// - [RegionBackendBucketsResource]
 /// - [RegionBackendServicesResource]
 /// - [RegionCommitmentsResource]
+/// - [RegionCompositeHealthChecksResource]
 /// - [RegionDiskTypesResource]
 /// - [RegionDisksResource]
+/// - [RegionHealthAggregationPoliciesResource]
 /// - [RegionHealthCheckServicesResource]
 /// - [RegionHealthChecksResource]
+/// - [RegionHealthSourcesResource]
+/// - [RegionInstanceGroupManagerResizeRequestsResource]
 /// - [RegionInstanceGroupManagersResource]
 /// - [RegionInstanceGroupsResource]
 /// - [RegionInstanceTemplatesResource]
 /// - [RegionInstancesResource]
+/// - [RegionInstantSnapshotGroupsResource]
 /// - [RegionInstantSnapshotsResource]
 /// - [RegionNetworkEndpointGroupsResource]
 /// - [RegionNetworkFirewallPoliciesResource]
 /// - [RegionNotificationEndpointsResource]
 /// - [RegionOperationsResource]
 /// - [RegionSecurityPoliciesResource]
+/// - [RegionSnapshotSettingsResource]
+/// - [RegionSnapshotsResource]
 /// - [RegionSslCertificatesResource]
 /// - [RegionSslPoliciesResource]
 /// - [RegionTargetHttpProxiesResource]
@@ -137,6 +146,7 @@
 /// - [VpnTunnelsResource]
 /// - [WireGroupsResource]
 /// - [ZoneOperationsResource]
+/// - [ZoneVmExtensionPoliciesResource]
 /// - [ZonesResource]
 library;
 
@@ -237,6 +247,8 @@ class ComputeApi {
   InstanceTemplatesResource get instanceTemplates =>
       InstanceTemplatesResource(_requester);
   InstancesResource get instances => InstancesResource(_requester);
+  InstantSnapshotGroupsResource get instantSnapshotGroups =>
+      InstantSnapshotGroupsResource(_requester);
   InstantSnapshotsResource get instantSnapshots =>
       InstantSnapshotsResource(_requester);
   InterconnectAttachmentGroupsResource get interconnectAttachmentGroups =>
@@ -281,17 +293,28 @@ class ComputeApi {
       PublicDelegatedPrefixesResource(_requester);
   RegionAutoscalersResource get regionAutoscalers =>
       RegionAutoscalersResource(_requester);
+  RegionBackendBucketsResource get regionBackendBuckets =>
+      RegionBackendBucketsResource(_requester);
   RegionBackendServicesResource get regionBackendServices =>
       RegionBackendServicesResource(_requester);
   RegionCommitmentsResource get regionCommitments =>
       RegionCommitmentsResource(_requester);
+  RegionCompositeHealthChecksResource get regionCompositeHealthChecks =>
+      RegionCompositeHealthChecksResource(_requester);
   RegionDiskTypesResource get regionDiskTypes =>
       RegionDiskTypesResource(_requester);
   RegionDisksResource get regionDisks => RegionDisksResource(_requester);
+  RegionHealthAggregationPoliciesResource get regionHealthAggregationPolicies =>
+      RegionHealthAggregationPoliciesResource(_requester);
   RegionHealthCheckServicesResource get regionHealthCheckServices =>
       RegionHealthCheckServicesResource(_requester);
   RegionHealthChecksResource get regionHealthChecks =>
       RegionHealthChecksResource(_requester);
+  RegionHealthSourcesResource get regionHealthSources =>
+      RegionHealthSourcesResource(_requester);
+  RegionInstanceGroupManagerResizeRequestsResource
+  get regionInstanceGroupManagerResizeRequests =>
+      RegionInstanceGroupManagerResizeRequestsResource(_requester);
   RegionInstanceGroupManagersResource get regionInstanceGroupManagers =>
       RegionInstanceGroupManagersResource(_requester);
   RegionInstanceGroupsResource get regionInstanceGroups =>
@@ -300,6 +323,8 @@ class ComputeApi {
       RegionInstanceTemplatesResource(_requester);
   RegionInstancesResource get regionInstances =>
       RegionInstancesResource(_requester);
+  RegionInstantSnapshotGroupsResource get regionInstantSnapshotGroups =>
+      RegionInstantSnapshotGroupsResource(_requester);
   RegionInstantSnapshotsResource get regionInstantSnapshots =>
       RegionInstantSnapshotsResource(_requester);
   RegionNetworkEndpointGroupsResource get regionNetworkEndpointGroups =>
@@ -312,6 +337,10 @@ class ComputeApi {
       RegionOperationsResource(_requester);
   RegionSecurityPoliciesResource get regionSecurityPolicies =>
       RegionSecurityPoliciesResource(_requester);
+  RegionSnapshotSettingsResource get regionSnapshotSettings =>
+      RegionSnapshotSettingsResource(_requester);
+  RegionSnapshotsResource get regionSnapshots =>
+      RegionSnapshotsResource(_requester);
   RegionSslCertificatesResource get regionSslCertificates =>
       RegionSslCertificatesResource(_requester);
   RegionSslPoliciesResource get regionSslPolicies =>
@@ -371,6 +400,8 @@ class ComputeApi {
   WireGroupsResource get wireGroups => WireGroupsResource(_requester);
   ZoneOperationsResource get zoneOperations =>
       ZoneOperationsResource(_requester);
+  ZoneVmExtensionPoliciesResource get zoneVmExtensionPolicies =>
+      ZoneVmExtensionPoliciesResource(_requester);
   ZonesResource get zones => ZonesResource(_requester);
 
   ComputeApi(
@@ -2376,6 +2407,180 @@ class BackendBucketsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves the list of all BackendBucket resources, regional and global,
+  /// available to the specified project.
+  ///
+  /// To prevent failure, it is recommended that you set the
+  /// `returnPartialSuccess` parameter to `true`.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [includeAllScopes] - Indicates whether every visible scope for each scope
+  /// type (zone, region,
+  /// global) should be included in the response. For new resource types added
+  /// after this field, the flag has no effect as new resource types will always
+  /// include every visible scope for each scope type in response. For resource
+  /// types which predate this field, if this flag is omitted or false, only
+  /// scopes of the scope types where the resource type is expected to be found
+  /// will be included.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [serviceProjectNumber] - The Shared VPC service project id or service
+  /// project number for which
+  /// aggregated list request is invoked for subnetworks list-usable api.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackendBucketAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackendBucketAggregatedList> aggregatedList(
+    core.String project, {
+    core.String? filter,
+    core.bool? includeAllScopes,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? serviceProjectNumber,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'includeAllScopes': ?includeAllScopes == null
+          ? null
+          : ['${includeAllScopes}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'serviceProjectNumber': ?serviceProjectNumber == null
+          ? null
+          : [serviceProjectNumber],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/aggregated/backendBuckets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackendBucketAggregatedList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Deletes the specified BackendBucket resource.
   ///
   /// Request parameters:
@@ -2816,6 +3021,155 @@ class BackendBucketsResource {
       queryParams: queryParams_,
     );
     return BackendBucketList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves a list of all usable backend buckets in the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackendBucketListUsable].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackendBucketListUsable> listUsable(
+    core.String project, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/backendBuckets/listUsable';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackendBucketListUsable.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -6738,8 +7092,6 @@ class DisksResource {
   /// The update is performed only on selected fields included as part
   /// of update-mask.
   ///
-  /// Only the following fields can be modified: user_license.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -6814,6 +7166,79 @@ class DisksResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Rotates the customer-managed
+  /// encryption key to the latest version for the specified persistent disk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [disk] - Name of the Disk resource, should conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateKmsKey(
+    DiskUpdateKmsKeyRequest request,
+    core.String project,
+    core.String zone,
+    core.String disk, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/disks/' +
+        commons.escapeVariable('$disk') +
+        '/updateKmsKey';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -7897,6 +8322,11 @@ class FirewallPoliciesResource {
   ///
   /// Request parameters:
   ///
+  /// [includeInheritedPolicies] - If set to "true", the response will contain a
+  /// list of all associations for
+  /// the containing folders and the containing organization of the target. The
+  /// parameter has no effect if the target is an organization.
+  ///
   /// [targetResource] - The target resource to list associations. It is an
   /// organization, or a
   /// folder.
@@ -7912,10 +8342,14 @@ class FirewallPoliciesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FirewallPoliciesListAssociationsResponse> listAssociations({
+    core.bool? includeInheritedPolicies,
     core.String? targetResource,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'includeInheritedPolicies': ?includeInheritedPolicies == null
+          ? null
+          : ['${includeInheritedPolicies}'],
       'targetResource': ?targetResource == null ? null : [targetResource],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -11549,6 +11983,20 @@ class GlobalNetworkEndpointGroupsResource {
 
   /// Creates a network endpoint group in the specified project using the
   /// parameters that are included in the request.
+  ///
+  /// Note: Use the following APIs to manage network endpoint groups:
+  ///
+  ///    -
+  /// To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+  ///    NEGs): zonal
+  ///    API
+  ///    -
+  ///    To manage NEGs with regional scope (such as regional internet NEGs,
+  ///    serverless NEGs, Private Service Connect NEGs): regional
+  ///    API
+  ///    -
+  ///    To manage NEGs with global scope (such as global internet NEGs):global
+  ///    API
   ///
   /// [request] - The metadata request object.
   ///
@@ -23894,6 +24342,10 @@ class InstancesResource {
   /// Value must have pattern
   /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
+  /// [discardLocalSsd] - Whether to discard local SSDs from the instance during
+  /// restart
+  /// default value is false.
+  ///
   /// [minimalAction] - Specifies the action to take when updating an instance
   /// even if the
   /// updated properties do not require it. If not specified, then
@@ -23947,6 +24399,7 @@ class InstancesResource {
     core.String project,
     core.String zone,
     core.String instance, {
+    core.bool? discardLocalSsd,
     core.String? minimalAction,
     core.String? mostDisruptiveAllowedAction,
     core.String? requestId,
@@ -23954,6 +24407,9 @@ class InstancesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'discardLocalSsd': ?discardLocalSsd == null
+          ? null
+          : ['${discardLocalSsd}'],
       'minimalAction': ?minimalAction == null ? null : [minimalAction],
       'mostDisruptiveAllowedAction': ?mostDisruptiveAllowedAction == null
           ? null
@@ -24303,6 +24759,542 @@ class InstancesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class InstantSnapshotGroupsResource {
+  final commons.ApiRequester _requester;
+
+  InstantSnapshotGroupsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// deletes a Zonal InstantSnapshotGroup resource
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [instantSnapshotGroup] - Name of the InstantSnapshot resource to delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String zone,
+    core.String instantSnapshotGroup, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$instantSnapshotGroup');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// returns the specified InstantSnapshotGroup resource in the specified zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [instantSnapshotGroup] - Name of the InstantSnapshotGroup resource to
+  /// return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstantSnapshotGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstantSnapshotGroup> get(
+    core.String project,
+    core.String zone,
+    core.String instantSnapshotGroup, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$instantSnapshotGroup');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InstantSnapshotGroup.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String project,
+    core.String zone,
+    core.String resource, {
+    core.int? optionsRequestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion == null
+          ? null
+          : ['${optionsRequestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$resource') +
+        '/getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// inserts a Zonal InstantSnapshotGroup resource
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [sourceConsistencyGroup] - begin_interface: MixerMutationRequestBuilder
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    InstantSnapshotGroup request,
+    core.String project,
+    core.String zone, {
+    core.String? requestId,
+    core.String? sourceConsistencyGroup,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'sourceConsistencyGroup': ?sourceConsistencyGroup == null
+          ? null
+          : [sourceConsistencyGroup],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instantSnapshotGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// retrieves the list of InstantSnapshotGroup resources contained within
+  /// the specified zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInstantSnapshotGroups].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInstantSnapshotGroups> list(
+    core.String project,
+    core.String zone, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instantSnapshotGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInstantSnapshotGroups.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    ZoneSetPolicyRequest request,
+    core.String project,
+    core.String zone,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$resource') +
+        '/setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String zone,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -31386,6 +32378,20 @@ class NetworkEndpointGroupsResource {
 
   /// Creates a network endpoint group in the specified project using the
   /// parameters that are included in the request.
+  ///
+  /// Note: Use the following APIs to manage network endpoint groups:
+  ///
+  ///    -
+  /// To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+  ///    NEGs): zonal
+  ///    API
+  ///    -
+  ///    To manage NEGs with regional scope (such as regional internet NEGs,
+  ///    serverless NEGs, Private Service Connect NEGs): regional
+  ///    API
+  ///    -
+  ///    To manage NEGs with global scope (such as global internet NEGs):global
+  ///    API
   ///
   /// [request] - The metadata request object.
   ///
@@ -41901,6 +42907,773 @@ class RegionAutoscalersResource {
   }
 }
 
+class RegionBackendBucketsResource {
+  final commons.ApiRequester _requester;
+
+  RegionBackendBucketsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Deletes the specified regional BackendBucket resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [backendBucket] - Name of the BackendBucket resource to delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  /// end_interface: MixerMutationRequestBuilder
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String region,
+    core.String backendBucket, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/backendBuckets/' +
+        commons.escapeVariable('$backendBucket');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified regional BackendBucket resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [backendBucket] - Name of the BackendBucket resource to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackendBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackendBucket> get(
+    core.String project,
+    core.String region,
+    core.String backendBucket, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/backendBuckets/' +
+        commons.escapeVariable('$backendBucket');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackendBucket.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.int? optionsRequestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion == null
+          ? null
+          : ['${optionsRequestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/backendBuckets/' +
+        commons.escapeVariable('$resource') +
+        '/getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a RegionBackendBucket in the specified project in the given scope
+  /// using the parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region of this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    BackendBucket request,
+    core.String project,
+    core.String region, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/backendBuckets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the list of BackendBucket resources available to the specified
+  /// project in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region of this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackendBucketList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackendBucketList> list(
+    core.String project,
+    core.String region, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/backendBuckets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackendBucketList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves a list of all usable backend buckets in the specified project in
+  /// the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// It must be a string that meets the requirements in RFC1035.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackendBucketListUsable].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackendBucketListUsable> listUsable(
+    core.String project,
+    core.String region, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/backendBuckets/listUsable';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackendBucketListUsable.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the specified BackendBucket resource with the data included in the
+  /// request.
+  ///
+  /// This method supportsPATCH
+  /// semantics and uses theJSON merge
+  /// patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [backendBucket] - Name of the BackendBucket resource to patch.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  /// end_interface: MixerMutationRequestBuilder
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    BackendBucket request,
+    core.String project,
+    core.String region,
+    core.String backendBucket, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/backendBuckets/' +
+        commons.escapeVariable('$backendBucket');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    RegionSetPolicyRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/backendBuckets/' +
+        commons.escapeVariable('$resource') +
+        '/setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/backendBuckets/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class RegionBackendServicesResource {
   final commons.ApiRequester _requester;
 
@@ -43429,6 +45202,726 @@ class RegionCommitmentsResource {
   }
 }
 
+class RegionCompositeHealthChecksResource {
+  final commons.ApiRequester _requester;
+
+  RegionCompositeHealthChecksResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Retrieves the list of all CompositeHealthCheck resources (all
+  /// regional) available to the specified project.
+  ///
+  /// To prevent failure, it is recommended that you set the
+  /// `returnPartialSuccess` parameter to `true`.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [includeAllScopes] - Indicates whether every visible scope for each scope
+  /// type (zone, region,
+  /// global) should be included in the response. For new resource types added
+  /// after this field, the flag has no effect as new resource types will always
+  /// include every visible scope for each scope type in response. For resource
+  /// types which predate this field, if this flag is omitted or false, only
+  /// scopes of the scope types where the resource type is expected to be found
+  /// will be included.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [serviceProjectNumber] - The Shared VPC service project id or service
+  /// project number for which
+  /// aggregated list request is invoked for subnetworks list-usable api.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CompositeHealthCheckAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CompositeHealthCheckAggregatedList> aggregatedList(
+    core.String project, {
+    core.String? filter,
+    core.bool? includeAllScopes,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? serviceProjectNumber,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'includeAllScopes': ?includeAllScopes == null
+          ? null
+          : ['${includeAllScopes}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'serviceProjectNumber': ?serviceProjectNumber == null
+          ? null
+          : [serviceProjectNumber],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/aggregated/compositeHealthChecks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CompositeHealthCheckAggregatedList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes the specified CompositeHealthCheck in the given region
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [compositeHealthCheck] - Name of the CompositeHealthCheck resource to
+  /// delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String region,
+    core.String compositeHealthCheck, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/compositeHealthChecks/' +
+        commons.escapeVariable('$compositeHealthCheck');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified CompositeHealthCheck resource in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [compositeHealthCheck] - Name of the CompositeHealthCheck resource to
+  /// return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CompositeHealthCheck].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CompositeHealthCheck> get(
+    core.String project,
+    core.String region,
+    core.String compositeHealthCheck, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/compositeHealthChecks/' +
+        commons.escapeVariable('$compositeHealthCheck');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CompositeHealthCheck.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the most recent health check results for this
+  /// regional CompositeHealthCheck.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [compositeHealthCheck] - Name of the CompositeHealthCheck resource to get
+  /// health for.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CompositeHealthCheckHealth].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CompositeHealthCheckHealth> getHealth(
+    core.String project,
+    core.String region,
+    core.String compositeHealthCheck, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/compositeHealthChecks/' +
+        commons.escapeVariable('$compositeHealthCheck') +
+        '/getHealth';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CompositeHealthCheckHealth.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Create a CompositeHealthCheck in the specified project in the given region
+  /// using the parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    CompositeHealthCheck request,
+    core.String project,
+    core.String region, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/compositeHealthChecks';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the CompositeHealthChecks for a project in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CompositeHealthCheckList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CompositeHealthCheckList> list(
+    core.String project,
+    core.String region, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/compositeHealthChecks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CompositeHealthCheckList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the specified regional CompositeHealthCheck resource
+  /// with the data included in the request.
+  ///
+  ///  This method supportsPATCH
+  /// semantics and uses theJSON merge
+  /// patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [compositeHealthCheck] - Name of the CompositeHealthCheck to update. The
+  /// name
+  /// must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CompositeHealthCheck request,
+    core.String project,
+    core.String region,
+    core.String compositeHealthCheck, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/compositeHealthChecks/' +
+        commons.escapeVariable('$compositeHealthCheck');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/compositeHealthChecks/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class RegionDiskTypesResource {
   final commons.ApiRequester _requester;
 
@@ -44840,9 +47333,7 @@ class RegionDisksResource {
   /// Update the specified disk with the data included in the request.
   ///
   /// Update is
-  /// performed only on selected fields included as part of update-mask. Only
-  /// the
-  /// following fields can be modified: user_license.
+  /// performed only on selected fields included as part of update-mask.
   ///
   /// [request] - The metadata request object.
   ///
@@ -44923,6 +47414,744 @@ class RegionDisksResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Rotates the customer-managed
+  /// encryption key to the latest version for the specified persistent disk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [disk] - Name of the Disk resource, should conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateKmsKey(
+    RegionDiskUpdateKmsKeyRequest request,
+    core.String project,
+    core.String region,
+    core.String disk, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/disks/' +
+        commons.escapeVariable('$disk') +
+        '/updateKmsKey';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class RegionHealthAggregationPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  RegionHealthAggregationPoliciesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Retrieves the list of all HealthAggregationPolicy resources,
+  /// regional and global, available to the specified project.
+  ///
+  /// To prevent failure, it is recommended that you set the
+  /// `returnPartialSuccess` parameter to `true`.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [includeAllScopes] - Indicates whether every visible scope for each scope
+  /// type (zone, region,
+  /// global) should be included in the response. For new resource types added
+  /// after this field, the flag has no effect as new resource types will always
+  /// include every visible scope for each scope type in response. For resource
+  /// types which predate this field, if this flag is omitted or false, only
+  /// scopes of the scope types where the resource type is expected to be found
+  /// will be included.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [serviceProjectNumber] - The Shared VPC service project id or service
+  /// project number for which
+  /// aggregated list request is invoked for subnetworks list-usable api.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthAggregationPolicyAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthAggregationPolicyAggregatedList> aggregatedList(
+    core.String project, {
+    core.String? filter,
+    core.bool? includeAllScopes,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? serviceProjectNumber,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'includeAllScopes': ?includeAllScopes == null
+          ? null
+          : ['${includeAllScopes}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'serviceProjectNumber': ?serviceProjectNumber == null
+          ? null
+          : [serviceProjectNumber],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/aggregated/healthAggregationPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HealthAggregationPolicyAggregatedList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes the specified HealthAggregationPolicy in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [healthAggregationPolicy] - Name of the HealthAggregationPolicy resource
+  /// to delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String region,
+    core.String healthAggregationPolicy, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthAggregationPolicies/' +
+        commons.escapeVariable('$healthAggregationPolicy');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified HealthAggregationPolicy resource in the given
+  /// region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [healthAggregationPolicy] - Name of the HealthAggregationPolicy resource
+  /// to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthAggregationPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthAggregationPolicy> get(
+    core.String project,
+    core.String region,
+    core.String healthAggregationPolicy, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthAggregationPolicies/' +
+        commons.escapeVariable('$healthAggregationPolicy');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HealthAggregationPolicy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Create a HealthAggregationPolicy in the specified project in the given
+  /// region using the parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    HealthAggregationPolicy request,
+    core.String project,
+    core.String region, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthAggregationPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the HealthAggregationPolicies for a project in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthAggregationPolicyList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthAggregationPolicyList> list(
+    core.String project,
+    core.String region, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthAggregationPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HealthAggregationPolicyList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the specified regional HealthAggregationPolicy
+  /// resource with the data included in the request.
+  ///
+  /// This method supportsPATCH
+  /// semantics and uses theJSON merge
+  /// patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [healthAggregationPolicy] - Name of the HealthAggregationPolicy to update.
+  /// The name
+  /// must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    HealthAggregationPolicy request,
+    core.String project,
+    core.String region,
+    core.String healthAggregationPolicy, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthAggregationPolicies/' +
+        commons.escapeVariable('$healthAggregationPolicy');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthAggregationPolicies/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class RegionHealthCheckServicesResource {
@@ -44930,6 +48159,180 @@ class RegionHealthCheckServicesResource {
 
   RegionHealthCheckServicesResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Retrieves the list of all HealthCheckService resources,
+  /// regional and global, available to the specified project.
+  ///
+  /// To prevent failure, it is recommended that you set the
+  /// `returnPartialSuccess` parameter to `true`.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [includeAllScopes] - Indicates whether every visible scope for each scope
+  /// type (zone, region,
+  /// global) should be included in the response. For new resource types added
+  /// after this field, the flag has no effect as new resource types will always
+  /// include every visible scope for each scope type in response. For resource
+  /// types which predate this field, if this flag is omitted or false, only
+  /// scopes of the scope types where the resource type is expected to be found
+  /// will be included.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [serviceProjectNumber] - The Shared VPC service project id or service
+  /// project number for which
+  /// aggregated list request is invoked for subnetworks list-usable api.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthCheckServiceAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthCheckServiceAggregatedList> aggregatedList(
+    core.String project, {
+    core.String? filter,
+    core.bool? includeAllScopes,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? serviceProjectNumber,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'includeAllScopes': ?includeAllScopes == null
+          ? null
+          : ['${includeAllScopes}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'serviceProjectNumber': ?serviceProjectNumber == null
+          ? null
+          : [serviceProjectNumber],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/aggregated/healthCheckServices';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HealthCheckServiceAggregatedList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Deletes the specified regional HealthCheckService.
   ///
@@ -45970,6 +49373,1180 @@ class RegionHealthChecksResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class RegionHealthSourcesResource {
+  final commons.ApiRequester _requester;
+
+  RegionHealthSourcesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Retrieves the list of all HealthSource resources (all
+  /// regional) available to the specified project.
+  ///
+  /// To prevent failure, Google recommends that you set the
+  /// `returnPartialSuccess` parameter to `true`.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [includeAllScopes] - Indicates whether every visible scope for each scope
+  /// type (zone, region,
+  /// global) should be included in the response. For new resource types added
+  /// after this field, the flag has no effect as new resource types will always
+  /// include every visible scope for each scope type in response. For resource
+  /// types which predate this field, if this flag is omitted or false, only
+  /// scopes of the scope types where the resource type is expected to be found
+  /// will be included.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [serviceProjectNumber] - The Shared VPC service project id or service
+  /// project number for which
+  /// aggregated list request is invoked for subnetworks list-usable api.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthSourceAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthSourceAggregatedList> aggregatedList(
+    core.String project, {
+    core.String? filter,
+    core.bool? includeAllScopes,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? serviceProjectNumber,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'includeAllScopes': ?includeAllScopes == null
+          ? null
+          : ['${includeAllScopes}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'serviceProjectNumber': ?serviceProjectNumber == null
+          ? null
+          : [serviceProjectNumber],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/aggregated/healthSources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HealthSourceAggregatedList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes the specified HealthSource in the given region
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [healthSource] - Name of the HealthSource resource to delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String region,
+    core.String healthSource, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthSources/' +
+        commons.escapeVariable('$healthSource');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified HealthSource resource in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [healthSource] - Name of the HealthSource resource to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthSource> get(
+    core.String project,
+    core.String region,
+    core.String healthSource, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthSources/' +
+        commons.escapeVariable('$healthSource');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HealthSource.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the most recent health check results for this
+  /// regional HealthSource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [healthSource] - Name of the HealthSource resource to get health for.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthSourceHealth].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthSourceHealth> getHealth(
+    core.String project,
+    core.String region,
+    core.String healthSource, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthSources/' +
+        commons.escapeVariable('$healthSource') +
+        '/getHealth';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HealthSourceHealth.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Create a HealthSource in the specified project in the given region
+  /// using the parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    HealthSource request,
+    core.String project,
+    core.String region, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthSources';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the HealthSources for a project in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthSourceList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthSourceList> list(
+    core.String project,
+    core.String region, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthSources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HealthSourceList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the specified regional HealthSource resource
+  /// with the data included in the request.
+  ///
+  ///  This method supportsPATCH
+  /// semantics and uses theJSON merge
+  /// patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [healthSource] - Name of the HealthSource to update. The name
+  /// must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    HealthSource request,
+    core.String project,
+    core.String region,
+    core.String healthSource, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthSources/' +
+        commons.escapeVariable('$healthSource');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/healthSources/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class RegionInstanceGroupManagerResizeRequestsResource {
+  final commons.ApiRequester _requester;
+
+  RegionInstanceGroupManagerResizeRequestsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Cancels the specified resize request.
+  /// Cancelled resize request no longer waits for the resources to be
+  /// provisioned.
+  ///
+  /// Cancel is only possible for requests that are in accepted
+  /// state.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region
+  /// scoping this request. Name should conform to RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [resizeRequest] - The name of the resize request to cancel.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cancel(
+    core.String project,
+    core.String region,
+    core.String instanceGroupManager,
+    core.String resizeRequest, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.escapeVariable('$instanceGroupManager') +
+        '/resizeRequests/' +
+        commons.escapeVariable('$resizeRequest') +
+        '/cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified, inactive resize request.
+  ///
+  /// Requests that are still
+  /// active cannot be deleted. Deleting request does not delete instances that
+  /// were provisioned previously.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region
+  /// scoping this request. Name should conform to RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [resizeRequest] - The name of the resize request to delete.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String region,
+    core.String instanceGroupManager,
+    core.String resizeRequest, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.escapeVariable('$instanceGroupManager') +
+        '/resizeRequests/' +
+        commons.escapeVariable('$resizeRequest');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns all of the details about the specified resize request.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region
+  /// scoping this request. Name should conform to RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [resizeRequest] - The name of the resize request.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstanceGroupManagerResizeRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstanceGroupManagerResizeRequest> get(
+    core.String project,
+    core.String region,
+    core.String instanceGroupManager,
+    core.String resizeRequest, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.escapeVariable('$instanceGroupManager') +
+        '/resizeRequests/' +
+        commons.escapeVariable('$resizeRequest');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InstanceGroupManagerResizeRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a new Resize Request that starts provisioning VMs immediately
+  /// or queues VM creation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region
+  /// scoping this request. Name should conform to RFC1035.
+  ///
+  /// [instanceGroupManager] - Name of the managed instance group to which the
+  /// resize request is scoped.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    InstanceGroupManagerResizeRequest request,
+    core.String project,
+    core.String region,
+    core.String instanceGroupManager, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.escapeVariable('$instanceGroupManager') +
+        '/resizeRequests';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of Resize Requests that are contained in the
+  /// managed instance group.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region
+  /// scoping this request. Name should conform to RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group. The name
+  /// should conform to RFC1035.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RegionInstanceGroupManagerResizeRequestsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RegionInstanceGroupManagerResizeRequestsListResponse> list(
+    core.String project,
+    core.String region,
+    core.String instanceGroupManager, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.escapeVariable('$instanceGroupManager') +
+        '/resizeRequests';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RegionInstanceGroupManagerResizeRequestsListResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -49092,6 +53669,544 @@ class RegionInstancesResource {
   }
 }
 
+class RegionInstantSnapshotGroupsResource {
+  final commons.ApiRequester _requester;
+
+  RegionInstantSnapshotGroupsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// deletes a Regional InstantSnapshotGroup resource
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [instantSnapshotGroup] - Name of the InstantSnapshotGroup resource to
+  /// delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String region,
+    core.String instantSnapshotGroup, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$instantSnapshotGroup');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// returns the specified InstantSnapshotGroup resource in the specified
+  /// region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [instantSnapshotGroup] - Name of the InstantSnapshotGroup resource to
+  /// return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstantSnapshotGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstantSnapshotGroup> get(
+    core.String project,
+    core.String region,
+    core.String instantSnapshotGroup, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$instantSnapshotGroup');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InstantSnapshotGroup.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.int? optionsRequestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion == null
+          ? null
+          : ['${optionsRequestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$resource') +
+        '/getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// creates a Regional InstantSnapshotGroup resource
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [sourceConsistencyGroup] - begin_interface: MixerMutationRequestBuilder
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    InstantSnapshotGroup request,
+    core.String project,
+    core.String region, {
+    core.String? requestId,
+    core.String? sourceConsistencyGroup,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'sourceConsistencyGroup': ?sourceConsistencyGroup == null
+          ? null
+          : [sourceConsistencyGroup],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instantSnapshotGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// retrieves the list of InstantSnapshotGroup resources contained within
+  /// the specified region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInstantSnapshotGroups].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInstantSnapshotGroups> list(
+    core.String project,
+    core.String region, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instantSnapshotGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInstantSnapshotGroups.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    RegionSetPolicyRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$resource') +
+        '/setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/instantSnapshotGroups/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class RegionInstantSnapshotsResource {
   final commons.ApiRequester _requester;
 
@@ -49991,6 +55106,20 @@ class RegionNetworkEndpointGroupsResource {
 
   /// Creates a network endpoint group in the specified project using the
   /// parameters that are included in the request.
+  ///
+  /// Note: Use the following APIs to manage network endpoint groups:
+  ///
+  ///    -
+  /// To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+  ///    NEGs): zonal
+  ///    API
+  ///    -
+  ///    To manage NEGs with regional scope (such as regional internet NEGs,
+  ///    serverless NEGs, Private Service Connect NEGs): regional
+  ///    API
+  ///    -
+  ///    To manage NEGs with global scope (such as global internet NEGs):global
+  ///    API
   ///
   /// [request] - The metadata request object.
   ///
@@ -51626,6 +56755,177 @@ class RegionNotificationEndpointsResource {
   RegionNotificationEndpointsResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Retrieves the list of all NotificationEndpoint resources,
+  /// regional and global, available to the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [includeAllScopes] - Indicates whether every visible scope for each scope
+  /// type (zone, region,
+  /// global) should be included in the response. For new resource types added
+  /// after this field, the flag has no effect as new resource types will always
+  /// include every visible scope for each scope type in response. For resource
+  /// types which predate this field, if this flag is omitted or false, only
+  /// scopes of the scope types where the resource type is expected to be found
+  /// will be included.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [serviceProjectNumber] - The Shared VPC service project id or service
+  /// project number for which
+  /// aggregated list request is invoked for subnetworks list-usable api.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationEndpointAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationEndpointAggregatedList> aggregatedList(
+    core.String project, {
+    core.String? filter,
+    core.bool? includeAllScopes,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? serviceProjectNumber,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'includeAllScopes': ?includeAllScopes == null
+          ? null
+          : ['${includeAllScopes}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'serviceProjectNumber': ?serviceProjectNumber == null
+          ? null
+          : [serviceProjectNumber],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/aggregated/notificationEndpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return NotificationEndpointAggregatedList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Deletes the specified NotificationEndpoint in the given region
   ///
   /// Request parameters:
@@ -53123,6 +58423,822 @@ class RegionSecurityPoliciesResource {
         '/securityPolicies/' +
         commons.escapeVariable('$resource') +
         '/setLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class RegionSnapshotSettingsResource {
+  final commons.ApiRequester _requester;
+
+  RegionSnapshotSettingsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get region snapshot settings.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SnapshotSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SnapshotSettings> get(
+    core.String project,
+    core.String region, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshotSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SnapshotSettings.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Patch region snapshot settings.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - update_mask indicates fields to be updated as part of this
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    SnapshotSettings request,
+    core.String project,
+    core.String region, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshotSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class RegionSnapshotsResource {
+  final commons.ApiRequester _requester;
+
+  RegionSnapshotsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes the specified Snapshot resource.
+  ///
+  /// Keep in mind that deleting
+  /// a single snapshot might not necessarily delete all the data on that
+  /// snapshot. If any data on the snapshot that is marked for deletion is
+  /// needed for subsequent snapshots, the data will be moved to the next
+  /// corresponding snapshot.
+  ///
+  /// For more information, seeDeleting
+  /// snapshots.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [snapshot] - Name of the snapshot resource to delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String region,
+    core.String snapshot, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshots/' +
+        commons.escapeVariable('$snapshot');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified Snapshot resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [snapshot] - Name of the Snapshot resource to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snapshot> get(
+    core.String project,
+    core.String region,
+    core.String snapshot, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshots/' +
+        commons.escapeVariable('$snapshot');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Snapshot.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.int? optionsRequestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion == null
+          ? null
+          : ['${optionsRequestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshots/' +
+        commons.escapeVariable('$resource') +
+        '/getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a snapshot in the specified region using the data included
+  /// in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    Snapshot request,
+    core.String project,
+    core.String region, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshots';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the list of Snapshot resources contained within
+  /// the specified region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SnapshotList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SnapshotList> list(
+    core.String project,
+    core.String region, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshots';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SnapshotList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    RegionSetPolicyRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshots/' +
+        commons.escapeVariable('$resource') +
+        '/setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the labels on a regional snapshot.
+  ///
+  /// To learn more about labels, read
+  /// the Labeling Resources
+  /// documentation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setLabels(
+    RegionSetLabelsRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshots/' +
+        commons.escapeVariable('$resource') +
+        '/setLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshots/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Rotates the customer-managed
+  /// encryption key to the latest version for the specified snapshot.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [snapshot] - Name of the snapshot resource to update. Should conform to
+  /// RFC1035.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateKmsKey(
+    RegionSnapshotUpdateKmsKeyRequest request,
+    core.String project,
+    core.String region,
+    core.String snapshot, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/snapshots/' +
+        commons.escapeVariable('$snapshot') +
+        '/updateKmsKey';
 
     final response_ = await _requester.request(
       url_,
@@ -56915,6 +63031,86 @@ class ReservationSlotsResource {
     );
   }
 
+  /// Allows customers to get SBOM versions of a reservation slot.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  ///
+  /// [zone] - Name of the zone for this request. Zone name should conform to
+  /// RFC1035.
+  ///
+  /// [parentName] - The name of the parent reservation and parent block. In the
+  /// format of
+  /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}/reservationSubBlocks/{reservation_sub_block_name}
+  /// Value must have pattern
+  /// `reservations/(\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19})/reservationBlocks/(\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19})/reservationSubBlocks/(\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19})`.
+  ///
+  /// [reservationSlot] - The name of the reservation slot.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> getVersion(
+    ReservationSlotsGetVersionRequest request,
+    core.String project,
+    core.String zone,
+    core.String parentName,
+    core.String reservationSlot, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/' +
+        core.Uri.encodeFull('$parentName') +
+        '/reservationSlots/' +
+        commons.escapeVariable('$reservationSlot') +
+        '/getVersion';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves a list of reservation slots under a single reservation.
   ///
   /// Request parameters:
@@ -57157,6 +63353,8 @@ class ReservationSubBlocksResource {
   /// [parentName] - The name of the parent reservation and parent block. In the
   /// format of
   /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}
+  /// Value must have pattern
+  /// `^reservations/\[^/\]+/reservationBlocks/\[^/\]+$`.
   ///
   /// [reservationSubBlock] - The name of the reservation subBlock.
   /// Name should conform to RFC1035 or be a resource ID.
@@ -57198,7 +63396,7 @@ class ReservationSubBlocksResource {
         '/zones/' +
         commons.escapeVariable('$zone') +
         '/' +
-        commons.escapeVariable('$parentName') +
+        core.Uri.encodeFull('$parentName') +
         '/reservationSubBlocks/' +
         commons.escapeVariable('$reservationSubBlock');
 
@@ -57267,7 +63465,7 @@ class ReservationSubBlocksResource {
         '/zones/' +
         commons.escapeVariable('$zone') +
         '/' +
-        commons.escapeVariable('$parentResource') +
+        core.Uri.encodeFull('$parentResource') +
         '/reservationSubBlocks/' +
         commons.escapeVariable('$resource') +
         '/getIamPolicy';
@@ -57278,6 +63476,86 @@ class ReservationSubBlocksResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Allows customers to get SBOM versions of a reservation subBlock.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  ///
+  /// [zone] - Name of the zone for this request. Zone name should conform to
+  /// RFC1035.
+  ///
+  /// [parentName] - The name of the parent reservation and parent block. In the
+  /// format of
+  /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}
+  /// Value must have pattern
+  /// `^reservations/\[^/\]+/reservationBlocks/\[^/\]+$`.
+  ///
+  /// [reservationSubBlock] - The name of the reservation subBlock.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> getVersion(
+    ReservationSubBlocksGetVersionRequest request,
+    core.String project,
+    core.String zone,
+    core.String parentName,
+    core.String reservationSubBlock, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/' +
+        core.Uri.encodeFull('$parentName') +
+        '/reservationSubBlocks/' +
+        commons.escapeVariable('$reservationSubBlock') +
+        '/getVersion';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of reservation subBlocks under a single reservation.
@@ -57292,6 +63570,8 @@ class ReservationSubBlocksResource {
   /// [parentName] - The name of the parent reservation and parent block. In the
   /// format of
   /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}
+  /// Value must have pattern
+  /// `^reservations/\[^/\]+/reservationBlocks/\[^/\]+$`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. Most
@@ -57427,7 +63707,7 @@ class ReservationSubBlocksResource {
         '/zones/' +
         commons.escapeVariable('$zone') +
         '/' +
-        commons.escapeVariable('$parentName') +
+        core.Uri.encodeFull('$parentName') +
         '/reservationSubBlocks';
 
     final response_ = await _requester.request(
@@ -57452,6 +63732,8 @@ class ReservationSubBlocksResource {
   /// [parentName] - The name of the parent reservation and parent block. In the
   /// format of
   /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}
+  /// Value must have pattern
+  /// `^reservations/\[^/\]+/reservationBlocks/\[^/\]+$`.
   ///
   /// [reservationSubBlock] - The name of the reservation subBlock.
   /// Name should conform to RFC1035 or be a resource ID.
@@ -57500,7 +63782,7 @@ class ReservationSubBlocksResource {
         '/zones/' +
         commons.escapeVariable('$zone') +
         '/' +
-        commons.escapeVariable('$parentName') +
+        core.Uri.encodeFull('$parentName') +
         '/reservationSubBlocks/' +
         commons.escapeVariable('$reservationSubBlock') +
         '/performMaintenance';
@@ -57527,6 +63809,8 @@ class ReservationSubBlocksResource {
   /// [parentName] - The name of the parent reservation and parent block. In the
   /// format of
   /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}
+  /// Value must have pattern
+  /// `^reservations/\[^/\]+/reservationBlocks/\[^/\]+$`.
   ///
   /// [reservationSubBlock] - The name of the reservation subBlock.
   /// Name should conform to RFC1035 or be a resource ID.
@@ -57577,7 +63861,7 @@ class ReservationSubBlocksResource {
         '/zones/' +
         commons.escapeVariable('$zone') +
         '/' +
-        commons.escapeVariable('$parentName') +
+        core.Uri.encodeFull('$parentName') +
         '/reservationSubBlocks/' +
         commons.escapeVariable('$reservationSubBlock') +
         '/reportFaulty';
@@ -57642,7 +63926,7 @@ class ReservationSubBlocksResource {
         '/zones/' +
         commons.escapeVariable('$zone') +
         '/' +
-        commons.escapeVariable('$parentResource') +
+        core.Uri.encodeFull('$parentResource') +
         '/reservationSubBlocks/' +
         commons.escapeVariable('$resource') +
         '/setIamPolicy';
@@ -57706,7 +63990,7 @@ class ReservationSubBlocksResource {
         '/zones/' +
         commons.escapeVariable('$zone') +
         '/' +
-        commons.escapeVariable('$parentResource') +
+        core.Uri.encodeFull('$parentResource') +
         '/reservationSubBlocks/' +
         commons.escapeVariable('$resource') +
         '/testIamPermissions';
@@ -63928,6 +70212,76 @@ class SnapshotsResource {
     return TestPermissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Rotates the customer-managed
+  /// encryption key to the latest version for the specified snapshot.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [snapshot] - Name of the snapshot resource to update. Should conform to
+  /// RFC1035.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateKmsKey(
+    SnapshotUpdateKmsKeyRequest request,
+    core.String project,
+    core.String snapshot, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/snapshots/' +
+        commons.escapeVariable('$snapshot') +
+        '/updateKmsKey';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -76260,6 +82614,425 @@ class ZoneOperationsResource {
   }
 }
 
+class ZoneVmExtensionPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ZoneVmExtensionPoliciesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Deletes a specified zone VM extension policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [vmExtensionPolicy] - Name of the zone VM extension policy to delete.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String zone,
+    core.String vmExtensionPolicy, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/vmExtensionPolicies/' +
+        commons.escapeVariable('$vmExtensionPolicy');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves details of a specific zone VM extension policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [vmExtensionPolicy] - Name of the VM extension policy resource to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VmExtensionPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VmExtensionPolicy> get(
+    core.String project,
+    core.String zone,
+    core.String vmExtensionPolicy, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/vmExtensionPolicies/' +
+        commons.escapeVariable('$vmExtensionPolicy');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VmExtensionPolicy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a new zone-level VM extension policy within a project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    VmExtensionPolicy request,
+    core.String project,
+    core.String zone, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/vmExtensionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all VM extension policies within a specific zone for a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VmExtensionPolicyList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VmExtensionPolicyList> list(
+    core.String project,
+    core.String zone, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/vmExtensionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VmExtensionPolicyList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Modifies an existing zone VM extension policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [vmExtensionPolicy] - Name of the zone VM extension policy to update.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> update(
+    VmExtensionPolicy request,
+    core.String project,
+    core.String zone,
+    core.String vmExtensionPolicy, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/vmExtensionPolicies/' +
+        commons.escapeVariable('$vmExtensionPolicy');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ZonesResource {
   final commons.ApiRequester _requester;
 
@@ -79140,7 +85913,7 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk {
 }
 
 /// Properties of the SKU instances being reserved.
-/// Next ID: 9
+/// Next ID: 10
 class AllocationSpecificSKUAllocationReservedInstanceProperties {
   /// Specifies accelerator type and count.
   core.List<AcceleratorConfig>? guestAccelerators;
@@ -79706,9 +86479,9 @@ class AttachedDiskInitializeParams {
   /// as the instance zone.
   core.List<core.String>? replicaZones;
 
-  /// Resource manager tags to be bound to the disk.
+  /// Input only.
   ///
-  /// Tag keys and values
+  /// Resource manager tags to be bound to the disk. Tag keys and values
   /// have the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
   /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
@@ -81654,6 +88427,7 @@ class Backend {
   /// Possible string values are:
   /// - "CONNECTION" : Balance based on the number of simultaneous connections.
   /// - "CUSTOM_METRICS" : Based on custom defined and reported metrics.
+  /// - "IN_FLIGHT" : Balance based on the number of in-flight requests.
   /// - "RATE" : Balance based on requests per second (RPS).
   /// - "UTILIZATION" : Balance based on the backend utilization.
   core.String? balancingMode;
@@ -81734,6 +88508,22 @@ class Backend {
   /// Not available if the backend's balancingMode isRATE.
   core.int? maxConnectionsPerInstance;
 
+  /// Defines a maximum number of in-flight requests for the whole NEG or
+  /// instance group.
+  ///
+  /// Not available if backend's balancingMode isRATE or CONNECTION.
+  core.int? maxInFlightRequests;
+
+  /// Defines a maximum number of in-flight requests for a single endpoint.
+  /// Not available if backend's balancingMode is RATE
+  /// or CONNECTION.
+  core.int? maxInFlightRequestsPerEndpoint;
+
+  /// Defines a maximum number of in-flight requests for a single VM.
+  /// Not available if backend's balancingMode is RATE
+  /// or CONNECTION.
+  core.int? maxInFlightRequestsPerInstance;
+
   /// Defines a maximum number of HTTP requests per second (RPS).
   ///
   /// For
@@ -81773,6 +88563,9 @@ class Backend {
   /// balancing mode.
   core.double? maxUtilization;
 
+  /// Information about the resource or system that manages the backend.
+  BackendBackendOrchestrationInfo? orchestrationInfo;
+
   /// This field indicates whether this backend should be fully utilized before
   /// sending traffic to backends with default preference.
   ///
@@ -81792,6 +88585,16 @@ class Backend {
   /// - "PREFERRED" : Traffic will be sent to this backend first.
   core.String? preference;
 
+  ///
+  /// Possible string values are:
+  /// - "LONG" : Most of the requests are expected to take more than multiple
+  /// seconds to
+  /// finish.
+  /// - "SHORT" : Most requests are expected to finish with a sub-second
+  /// latency.
+  /// - "TRAFFIC_DURATION_UNSPECIFIED" : Traffic duration is unspecified.
+  core.String? trafficDuration;
+
   Backend({
     this.balancingMode,
     this.capacityScaler,
@@ -81802,11 +88605,16 @@ class Backend {
     this.maxConnections,
     this.maxConnectionsPerEndpoint,
     this.maxConnectionsPerInstance,
+    this.maxInFlightRequests,
+    this.maxInFlightRequestsPerEndpoint,
+    this.maxInFlightRequestsPerInstance,
     this.maxRate,
     this.maxRatePerEndpoint,
     this.maxRatePerInstance,
     this.maxUtilization,
+    this.orchestrationInfo,
     this.preference,
+    this.trafficDuration,
   });
 
   Backend.fromJson(core.Map json_)
@@ -81828,13 +88636,25 @@ class Backend {
             json_['maxConnectionsPerEndpoint'] as core.int?,
         maxConnectionsPerInstance:
             json_['maxConnectionsPerInstance'] as core.int?,
+        maxInFlightRequests: json_['maxInFlightRequests'] as core.int?,
+        maxInFlightRequestsPerEndpoint:
+            json_['maxInFlightRequestsPerEndpoint'] as core.int?,
+        maxInFlightRequestsPerInstance:
+            json_['maxInFlightRequestsPerInstance'] as core.int?,
         maxRate: json_['maxRate'] as core.int?,
         maxRatePerEndpoint: (json_['maxRatePerEndpoint'] as core.num?)
             ?.toDouble(),
         maxRatePerInstance: (json_['maxRatePerInstance'] as core.num?)
             ?.toDouble(),
         maxUtilization: (json_['maxUtilization'] as core.num?)?.toDouble(),
+        orchestrationInfo: json_.containsKey('orchestrationInfo')
+            ? BackendBackendOrchestrationInfo.fromJson(
+                json_['orchestrationInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         preference: json_['preference'] as core.String?,
+        trafficDuration: json_['trafficDuration'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -81847,11 +88667,16 @@ class Backend {
     final maxConnections = this.maxConnections;
     final maxConnectionsPerEndpoint = this.maxConnectionsPerEndpoint;
     final maxConnectionsPerInstance = this.maxConnectionsPerInstance;
+    final maxInFlightRequests = this.maxInFlightRequests;
+    final maxInFlightRequestsPerEndpoint = this.maxInFlightRequestsPerEndpoint;
+    final maxInFlightRequestsPerInstance = this.maxInFlightRequestsPerInstance;
     final maxRate = this.maxRate;
     final maxRatePerEndpoint = this.maxRatePerEndpoint;
     final maxRatePerInstance = this.maxRatePerInstance;
     final maxUtilization = this.maxUtilization;
+    final orchestrationInfo = this.orchestrationInfo;
     final preference = this.preference;
+    final trafficDuration = this.trafficDuration;
     return {
       'balancingMode': ?balancingMode,
       'capacityScaler': ?capacityScaler,
@@ -81862,12 +88687,34 @@ class Backend {
       'maxConnections': ?maxConnections,
       'maxConnectionsPerEndpoint': ?maxConnectionsPerEndpoint,
       'maxConnectionsPerInstance': ?maxConnectionsPerInstance,
+      'maxInFlightRequests': ?maxInFlightRequests,
+      'maxInFlightRequestsPerEndpoint': ?maxInFlightRequestsPerEndpoint,
+      'maxInFlightRequestsPerInstance': ?maxInFlightRequestsPerInstance,
       'maxRate': ?maxRate,
       'maxRatePerEndpoint': ?maxRatePerEndpoint,
       'maxRatePerInstance': ?maxRatePerInstance,
       'maxUtilization': ?maxUtilization,
+      'orchestrationInfo': ?orchestrationInfo,
       'preference': ?preference,
+      'trafficDuration': ?trafficDuration,
     };
+  }
+}
+
+/// A message containing information about the resource or system that manages
+/// the backend.
+class BackendBackendOrchestrationInfo {
+  /// The URI of the resource or system that manages the backend.
+  core.String? resourceUri;
+
+  BackendBackendOrchestrationInfo({this.resourceUri});
+
+  BackendBackendOrchestrationInfo.fromJson(core.Map json_)
+    : this(resourceUri: json_['resourceUri'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceUri = this.resourceUri;
+    return {'resourceUri': ?resourceUri};
   }
 }
 
@@ -81936,6 +88783,9 @@ class BackendBucket {
   /// load
   /// balancers, or both.
   /// Possible string values are:
+  /// - "EXTERNAL_MANAGED" : Signifies that this will be used for regional
+  /// external Application Load
+  /// Balancers.
   /// - "INTERNAL_MANAGED" : Signifies that this will be used for internal
   /// Application Load Balancers.
   core.String? loadBalancingScheme;
@@ -81957,6 +88807,16 @@ class BackendBucket {
   /// persisted
   /// as part of resource payload.
   BackendBucketParams? params;
+
+  /// URL of the region where the regional backend bucket
+  /// resides.
+  ///
+  /// This field is not applicable to global backend buckets.
+  /// You must specify this field as part of the HTTP request URL. It is
+  /// not settable as a field in the request body.
+  ///
+  /// Output only.
+  core.String? region;
 
   /// Server-defined URL for the resource.
   ///
@@ -81982,6 +88842,7 @@ class BackendBucket {
     this.loadBalancingScheme,
     this.name,
     this.params,
+    this.region,
     this.selfLink,
     this.usedBy,
   });
@@ -82011,6 +88872,7 @@ class BackendBucket {
                 json_['params'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        region: json_['region'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
         usedBy: (json_['usedBy'] as core.List?)
             ?.map(
@@ -82035,6 +88897,7 @@ class BackendBucket {
     final loadBalancingScheme = this.loadBalancingScheme;
     final name = this.name;
     final params = this.params;
+    final region = this.region;
     final selfLink = this.selfLink;
     final usedBy = this.usedBy;
     return {
@@ -82051,8 +88914,253 @@ class BackendBucket {
       'loadBalancingScheme': ?loadBalancingScheme,
       'name': ?name,
       'params': ?params,
+      'region': ?region,
       'selfLink': ?selfLink,
       'usedBy': ?usedBy,
+    };
+  }
+}
+
+class BackendBucketAggregatedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  BackendBucketAggregatedListWarningData({this.key, this.value});
+
+  BackendBucketAggregatedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class BackendBucketAggregatedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<BackendBucketAggregatedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  BackendBucketAggregatedListWarning({this.code, this.data, this.message});
+
+  BackendBucketAggregatedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => BackendBucketAggregatedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class BackendBucketAggregatedList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of BackendBucketsScopedList resources.
+  core.Map<core.String, BackendBucketsScopedList>? items;
+
+  /// Type of resource.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  BackendBucketAggregatedListWarning? warning;
+
+  BackendBucketAggregatedList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.warning,
+  });
+
+  BackendBucketAggregatedList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            BackendBucketsScopedList.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          ),
+        ),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        warning: json_.containsKey('warning')
+            ? BackendBucketAggregatedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'warning': ?warning,
     };
   }
 }
@@ -82594,6 +89702,252 @@ class BackendBucketList {
   }
 }
 
+class BackendBucketListUsableWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  BackendBucketListUsableWarningData({this.key, this.value});
+
+  BackendBucketListUsableWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class BackendBucketListUsableWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<BackendBucketListUsableWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  BackendBucketListUsableWarning({this.code, this.data, this.message});
+
+  BackendBucketListUsableWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => BackendBucketListUsableWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class BackendBucketListUsable {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of BackendBucket resources.
+  core.List<BackendBucket>? items;
+
+  /// Type of resource.
+  ///
+  /// Alwayscompute#usableBackendBucketList for lists of usable backend
+  /// buckets.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  BackendBucketListUsableWarning? warning;
+
+  BackendBucketListUsable({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.warning,
+  });
+
+  BackendBucketListUsable.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => BackendBucket.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        warning: json_.containsKey('warning')
+            ? BackendBucketListUsableWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'warning': ?warning,
+    };
+  }
+}
+
 /// Additional Backend Bucket parameters.
 typedef BackendBucketParams = $Params00;
 
@@ -82612,6 +89966,198 @@ class BackendBucketUsedBy {
   core.Map<core.String, core.dynamic> toJson() {
     final reference = this.reference;
     return {'reference': ?reference};
+  }
+}
+
+class BackendBucketsScopedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  BackendBucketsScopedListWarningData({this.key, this.value});
+
+  BackendBucketsScopedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning which replaces the list of
+/// backend services when the list is empty.
+class BackendBucketsScopedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<BackendBucketsScopedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  BackendBucketsScopedListWarning({this.code, this.data, this.message});
+
+  BackendBucketsScopedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => BackendBucketsScopedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class BackendBucketsScopedList {
+  /// A list of BackendBuckets contained in this scope.
+  core.List<BackendBucket>? backendBuckets;
+
+  /// Informational warning which replaces the list of
+  /// backend services when the list is empty.
+  BackendBucketsScopedListWarning? warning;
+
+  BackendBucketsScopedList({this.backendBuckets, this.warning});
+
+  BackendBucketsScopedList.fromJson(core.Map json_)
+    : this(
+        backendBuckets: (json_['backendBuckets'] as core.List?)
+            ?.map(
+              (value) => BackendBucket.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? BackendBucketsScopedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backendBuckets = this.backendBuckets;
+    final warning = this.warning;
+    return {'backendBuckets': ?backendBuckets, 'warning': ?warning};
   }
 }
 
@@ -82748,7 +90294,7 @@ class BackendService {
   ///
   /// This field is applicable to either:
   ///
-  ///    - A regional backend service with the service_protocol set to HTTP,
+  ///    - A regional backend service with the service protocol set to HTTP,
   ///    HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
   ///    INTERNAL_MANAGED.
   ///    - A global backend service with the
@@ -83068,7 +90614,7 @@ class BackendService {
   /// thecustomMetrics field.
   ///
   ///    This field is applicable to either:
-  ///       - A regional backend service with the service_protocol set to HTTP,
+  ///       - A regional backend service with the service protocol set to HTTP,
   ///       HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
   ///       INTERNAL_MANAGED.
   ///       - A global backend service with the
@@ -83197,6 +90743,9 @@ class BackendService {
   BackendServiceNetworkPassThroughLbTrafficPolicy?
   networkPassThroughLbTrafficPolicy;
 
+  /// Information about the resource or system that manages the backend service.
+  BackendServiceOrchestrationInfo? orchestrationInfo;
+
   /// Settings controlling the ejection of unhealthy backend endpoints from the
   /// load balancing pool of each individual proxy instance that processes the
   /// traffic for the given backend service.
@@ -83231,7 +90780,7 @@ class BackendService {
   ///    - A global backend service with the loadBalancingScheme set to
   ///    INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
   ///    - A regional backend
-  ///    service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C, and
+  /// service with the service protocol set to HTTP, HTTPS, HTTP2 or H2C, and
   ///    loadBalancingScheme set to INTERNAL_MANAGED or EXTERNAL_MANAGED. Not
   ///    supported for Serverless NEGs.
   ///
@@ -83459,6 +91008,7 @@ class BackendService {
     this.name,
     this.network,
     this.networkPassThroughLbTrafficPolicy,
+    this.orchestrationInfo,
     this.outlierDetection,
     this.params,
     this.port,
@@ -83593,6 +91143,12 @@ class BackendService {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        orchestrationInfo: json_.containsKey('orchestrationInfo')
+            ? BackendServiceOrchestrationInfo.fromJson(
+                json_['orchestrationInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         outlierDetection: json_.containsKey('outlierDetection')
             ? OutlierDetection.fromJson(
                 json_['outlierDetection']
@@ -83685,6 +91241,7 @@ class BackendService {
     final network = this.network;
     final networkPassThroughLbTrafficPolicy =
         this.networkPassThroughLbTrafficPolicy;
+    final orchestrationInfo = this.orchestrationInfo;
     final outlierDetection = this.outlierDetection;
     final params = this.params;
     final port = this.port;
@@ -83738,6 +91295,7 @@ class BackendService {
       'name': ?name,
       'network': ?network,
       'networkPassThroughLbTrafficPolicy': ?networkPassThroughLbTrafficPolicy,
+      'orchestrationInfo': ?orchestrationInfo,
       'outlierDetection': ?outlierDetection,
       'params': ?params,
       'port': ?port,
@@ -84437,7 +91995,7 @@ class BackendServiceCustomMetric {
 /// connections to persist, even on VMs no longer in the active pool, for up
 /// to the duration of the connection draining timeout (10 minutes).
 class BackendServiceFailoverPolicy {
-  /// This can be set to true only if the protocol isTCP.
+  /// This can be set to true if the protocol isTCP, UDP, or UNSPECIFIED.
   ///
   /// The default is false.
   core.bool? disableConnectionDrainOnFailover;
@@ -85596,6 +93154,24 @@ class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
   }
 }
 
+/// A message containing information about the resource or system that manages
+/// the backend service.
+class BackendServiceOrchestrationInfo {
+  /// The resource URI of the resource or system that manages the backend
+  /// service.
+  core.String? resourceUri;
+
+  BackendServiceOrchestrationInfo({this.resourceUri});
+
+  BackendServiceOrchestrationInfo.fromJson(core.Map json_)
+    : this(resourceUri: json_['resourceUri'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceUri = this.resourceUri;
+    return {'resourceUri': ?resourceUri};
+  }
+}
+
 /// Additional Backend Service parameters.
 typedef BackendServiceParams = $Params00;
 
@@ -86607,6 +94183,15 @@ class Binding {
 /// It is only used to process
 /// requests and is not persisted.
 class BulkInsertDiskResource {
+  /// The parameters for the instant snapshot group.
+  InstantSnapshotGroupParameters? instantSnapshotGroupParameters;
+
+  /// The parameters for the snapshot group.
+  ///
+  /// The usage of snapshot group feature
+  /// is restricted.
+  SnapshotGroupParameters? snapshotGroupParameters;
+
   /// The URL of the DiskConsistencyGroupPolicy for the group of disks to clone.
   /// This may be a full or partial URL, such as:
   ///
@@ -86621,17 +94206,40 @@ class BulkInsertDiskResource {
   ///        regions/region/resourcePolicies/resourcePolicy
   core.String? sourceConsistencyGroupPolicy;
 
-  BulkInsertDiskResource({this.sourceConsistencyGroupPolicy});
+  BulkInsertDiskResource({
+    this.instantSnapshotGroupParameters,
+    this.snapshotGroupParameters,
+    this.sourceConsistencyGroupPolicy,
+  });
 
   BulkInsertDiskResource.fromJson(core.Map json_)
     : this(
+        instantSnapshotGroupParameters:
+            json_.containsKey('instantSnapshotGroupParameters')
+            ? InstantSnapshotGroupParameters.fromJson(
+                json_['instantSnapshotGroupParameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        snapshotGroupParameters: json_.containsKey('snapshotGroupParameters')
+            ? SnapshotGroupParameters.fromJson(
+                json_['snapshotGroupParameters']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sourceConsistencyGroupPolicy:
             json_['sourceConsistencyGroupPolicy'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final instantSnapshotGroupParameters = this.instantSnapshotGroupParameters;
+    final snapshotGroupParameters = this.snapshotGroupParameters;
     final sourceConsistencyGroupPolicy = this.sourceConsistencyGroupPolicy;
-    return {'sourceConsistencyGroupPolicy': ?sourceConsistencyGroupPolicy};
+    return {
+      'instantSnapshotGroupParameters': ?instantSnapshotGroupParameters,
+      'snapshotGroupParameters': ?snapshotGroupParameters,
+      'sourceConsistencyGroupPolicy': ?sourceConsistencyGroupPolicy,
+    };
   }
 }
 
@@ -87095,6 +94703,395 @@ class CacheKeyPolicy {
   }
 }
 
+/// Message containing CachePolicy configuration for URL Map's Route Action.
+class CachePolicy {
+  /// Bypass the cache when the specified request headers are matched by name,
+  /// e.g. Pragma or Authorization headers.
+  ///
+  /// Values are case-insensitive. Up to 5
+  /// header names can be specified. The cache is bypassed for all `cacheMode`
+  /// values.
+  core.List<core.String>? cacheBypassRequestHeaderNames;
+
+  /// The cache key configuration.
+  ///
+  /// If not specified, the default behavior depends
+  /// on the backend type: for Backend Services, the complete request URI is
+  /// used; for Backend Buckets, the request URI is used without the protocol or
+  /// host, and only query parameters known to Cloud Storage are included.
+  CachePolicyCacheKeyPolicy? cacheKeyPolicy;
+
+  /// Specifies the cache setting for all responses from this route.
+  ///
+  /// If not
+  /// specified, Cloud CDN uses `CACHE_ALL_STATIC` mode.
+  /// Possible string values are:
+  /// - "CACHE_ALL_STATIC" : Automatically cache static content, including
+  /// common image formats,
+  /// media (video and audio), and web assets (JavaScript and CSS).
+  /// Requests and responses that are marked as uncacheable, as well as
+  /// dynamic content (including HTML), will not be cached.
+  /// - "FORCE_CACHE_ALL" : Cache all content, ignoring any "private",
+  /// "no-store" or "no-cache"
+  /// directives in Cache-Control response headers.
+  /// Warning: this may result in Cloud CDN caching private,
+  /// per-user (user identifiable) content.
+  /// - "USE_ORIGIN_HEADERS" : Requires the origin to set valid caching headers
+  /// to cache content.
+  /// Responses without these headers will not be cached at the edge, and will
+  /// require a full trip to the origin on every request, potentially impacting
+  /// performance and increasing load on the origin server.
+  core.String? cacheMode;
+
+  /// Specifies a separate client (e.g. browser client) maximum TTL for cached
+  /// content.
+  ///
+  /// This is used to clamp the max-age (or Expires) value sent to the
+  /// client. With `FORCE_CACHE_ALL`, the lesser of `clientTtl` and `defaultTtl`
+  /// is used for the response max-age directive, along with a "public"
+  /// directive. For cacheable content in `CACHE_ALL_STATIC` mode, `clientTtl`
+  /// clamps the max-age from the origin (if specified), or else sets the
+  /// response max-age directive to the lesser of the `clientTtl` and
+  /// `defaultTtl`, and also ensures a "public" cache-control directive is
+  /// present. The maximum allowed value is 31,622,400s (1 year). If not
+  /// specified, Cloud CDN uses 3600s (1 hour) for `CACHE_ALL_STATIC` mode.
+  /// Cannot exceed `maxTtl`. Cannot be specified when `cacheMode` is
+  /// `USE_ORIGIN_HEADERS`.
+  Duration? clientTtl;
+
+  /// Specifies the default TTL for cached content for responses that do not
+  /// have
+  /// an existing valid TTL (max-age or s-maxage).
+  ///
+  /// Setting a TTL of "0" means
+  /// "always revalidate". The value of `defaultTtl` cannot be set to a value
+  /// greater than that of `maxTtl`. When the `cacheMode` is set to
+  /// `FORCE_CACHE_ALL`, the `defaultTtl` will overwrite the TTL set in all
+  /// responses. The maximum allowed value is 31,622,400s (1 year). Infrequently
+  /// accessed objects may be evicted from the cache before the defined TTL. If
+  /// not specified, Cloud CDN uses 3600s (1 hour) for `CACHE_ALL_STATIC` and
+  /// `FORCE_CACHE_ALL` modes. Cannot be specified when `cacheMode` is
+  /// `USE_ORIGIN_HEADERS`.
+  Duration? defaultTtl;
+
+  /// Specifies the maximum allowed TTL for cached content.
+  ///
+  /// Cache directives that
+  /// attempt to set a max-age or s-maxage higher than this, or an Expires
+  /// header
+  /// more than `maxTtl` seconds in the future will be capped at the value of
+  /// `maxTtl`, as if it were the value of an s-maxage Cache-Control directive.
+  /// Headers sent to the client will not be modified. Setting a TTL of "0"
+  /// means
+  /// "always revalidate". The maximum allowed value is 31,622,400s (1 year).
+  /// Infrequently accessed objects may be evicted from the cache before the
+  /// defined TTL. If not specified, Cloud CDN uses 86400s (1 day) for
+  /// `CACHE_ALL_STATIC` mode. Can be specified only for `CACHE_ALL_STATIC`
+  /// cache
+  /// mode.
+  Duration? maxTtl;
+
+  /// Negative caching allows per-status code TTLs to be set, in order
+  /// to apply fine-grained caching for common errors or redirects.
+  /// This can reduce the load on your origin and improve end-user
+  /// experience by reducing response latency.
+  /// When the `cacheMode` is set to `CACHE_ALL_STATIC` or
+  /// `USE_ORIGIN_HEADERS`, negative caching applies to responses with
+  /// the specified response code that lack any Cache-Control, Expires, or
+  /// Pragma: no-cache directives.
+  ///
+  /// When the `cacheMode` is set to
+  /// `FORCE_CACHE_ALL`, negative caching applies to all responses
+  /// with the specified response code, and overrides any caching headers. By
+  /// default, Cloud CDN applies the following TTLs to these HTTP status codes:
+  ///
+  /// * 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+  /// * 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
+  /// * 405 (Method Not Found), 501 (Not Implemented): 60s
+  ///
+  /// These defaults can be overridden in `negativeCachingPolicy`.
+  /// If not specified, Cloud CDN applies negative caching by default.
+  core.bool? negativeCaching;
+
+  /// Sets a cache TTL for the specified HTTP status code.
+  /// `negativeCaching` must be enabled to configure `negativeCachingPolicy`.
+  /// Omitting the policy and leaving `negativeCaching` enabled will use Cloud
+  /// CDN's default cache TTLs.
+  ///
+  /// Note that when specifying an explicit
+  /// `negativeCachingPolicy`, you should take care to specify a cache TTL for
+  /// all response codes that you wish to cache. Cloud CDN will not apply any
+  /// default negative caching when a policy exists.
+  core.List<CachePolicyNegativeCachingPolicy>? negativeCachingPolicy;
+
+  /// If true then Cloud CDN will combine multiple concurrent cache fill
+  /// requests into a small number of requests to the origin.
+  ///
+  /// If not specified,
+  /// Cloud CDN applies request coalescing by default.
+  core.bool? requestCoalescing;
+
+  /// Serve existing content from the cache (if available) when revalidating
+  /// content with the origin, or when an error is encountered when refreshing
+  /// the cache.
+  /// This setting defines the default "max-stale" duration for any cached
+  /// responses that do not specify a max-stale directive.
+  ///
+  /// Stale responses that
+  /// exceed the TTL configured here will not be served. The default limit
+  /// (max-stale) is 86400s (1 day), which will allow stale content to be
+  /// served up to this limit beyond the max-age (or s-maxage) of a cached
+  /// response.
+  /// The maximum allowed value is 604800 (1 week).
+  /// Set this to zero (0) to disable serve-while-stale.
+  Duration? serveWhileStale;
+
+  CachePolicy({
+    this.cacheBypassRequestHeaderNames,
+    this.cacheKeyPolicy,
+    this.cacheMode,
+    this.clientTtl,
+    this.defaultTtl,
+    this.maxTtl,
+    this.negativeCaching,
+    this.negativeCachingPolicy,
+    this.requestCoalescing,
+    this.serveWhileStale,
+  });
+
+  CachePolicy.fromJson(core.Map json_)
+    : this(
+        cacheBypassRequestHeaderNames:
+            (json_['cacheBypassRequestHeaderNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        cacheKeyPolicy: json_.containsKey('cacheKeyPolicy')
+            ? CachePolicyCacheKeyPolicy.fromJson(
+                json_['cacheKeyPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cacheMode: json_['cacheMode'] as core.String?,
+        clientTtl: json_.containsKey('clientTtl')
+            ? Duration.fromJson(
+                json_['clientTtl'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        defaultTtl: json_.containsKey('defaultTtl')
+            ? Duration.fromJson(
+                json_['defaultTtl'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        maxTtl: json_.containsKey('maxTtl')
+            ? Duration.fromJson(
+                json_['maxTtl'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        negativeCaching: json_['negativeCaching'] as core.bool?,
+        negativeCachingPolicy: (json_['negativeCachingPolicy'] as core.List?)
+            ?.map(
+              (value) => CachePolicyNegativeCachingPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        requestCoalescing: json_['requestCoalescing'] as core.bool?,
+        serveWhileStale: json_.containsKey('serveWhileStale')
+            ? Duration.fromJson(
+                json_['serveWhileStale'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cacheBypassRequestHeaderNames = this.cacheBypassRequestHeaderNames;
+    final cacheKeyPolicy = this.cacheKeyPolicy;
+    final cacheMode = this.cacheMode;
+    final clientTtl = this.clientTtl;
+    final defaultTtl = this.defaultTtl;
+    final maxTtl = this.maxTtl;
+    final negativeCaching = this.negativeCaching;
+    final negativeCachingPolicy = this.negativeCachingPolicy;
+    final requestCoalescing = this.requestCoalescing;
+    final serveWhileStale = this.serveWhileStale;
+    return {
+      'cacheBypassRequestHeaderNames': ?cacheBypassRequestHeaderNames,
+      'cacheKeyPolicy': ?cacheKeyPolicy,
+      'cacheMode': ?cacheMode,
+      'clientTtl': ?clientTtl,
+      'defaultTtl': ?defaultTtl,
+      'maxTtl': ?maxTtl,
+      'negativeCaching': ?negativeCaching,
+      'negativeCachingPolicy': ?negativeCachingPolicy,
+      'requestCoalescing': ?requestCoalescing,
+      'serveWhileStale': ?serveWhileStale,
+    };
+  }
+}
+
+/// Message containing what to include in the cache key for a request for Cache
+/// Policy defined on Route Action.
+class CachePolicyCacheKeyPolicy {
+  /// Names of query string parameters to exclude in cache keys.
+  ///
+  /// All other
+  /// parameters will be included. Either specify `excludedQueryParameters`
+  /// or `includedQueryParameters`, not both. '&' and '=' will be percent
+  /// encoded and not treated as delimiters.
+  ///
+  /// Note: This field applies to routes that use backend services. Attempting
+  /// to set it on a route that points exclusively to Backend Buckets will
+  /// result in a configuration error. For routes that point to a Backend
+  /// Bucket, use `includedQueryParameters` to define which parameters should
+  /// be part of the cache key.
+  core.List<core.String>? excludedQueryParameters;
+
+  /// If true, requests to different hosts will be cached separately.
+  ///
+  /// Note: This setting is only applicable to routes that use a Backend
+  /// Service.
+  ///
+  /// It does not affect requests served by a Backend Bucket, as the
+  /// host is never included in a Backend Bucket's cache key. Attempting to set
+  /// it on a route that points exclusively to Backend Buckets will result in a
+  /// configuration error.
+  core.bool? includeHost;
+
+  /// If true, http and https requests will be cached separately.
+  ///
+  /// Note: This setting is only applicable to routes that use a Backend
+  /// Service.
+  ///
+  /// It does not affect requests served by a Backend Bucket, as the
+  /// protocol is never included in a Backend Bucket's cache key. Attempting to
+  /// set on a route that points exclusively to Backend Buckets will result in
+  /// a configuration error.
+  core.bool? includeProtocol;
+
+  /// If true, include query string parameters in the cache key according to
+  /// `includedQueryParameters` and `excludedQueryParameters`.
+  ///
+  /// If neither
+  /// is set, the entire query string will be included. If false, the query
+  /// string will be excluded from the cache key entirely.
+  ///
+  /// Note: This field applies to routes that use backend services. Attempting
+  /// to set it on a route that points exclusively to Backend Buckets will
+  /// result in a configuration error. For routes that point to a Backend
+  /// Bucket, use `includedQueryParameters` to define which parameters should
+  /// be part of the cache key.
+  core.bool? includeQueryString;
+
+  /// Allows HTTP cookies (by name) to be used in the cache key.
+  /// The name=value pair will be used in the cache key Cloud CDN generates.
+  ///
+  /// Note: This setting is only applicable to routes that use a Backend
+  /// Service.
+  ///
+  /// It does not affect requests served by a Backend Bucket.
+  /// Attempting to set it on a route that points exclusively to Backend
+  /// Buckets will result in a configuration error. Up to 5 cookie names can be
+  /// specified.
+  core.List<core.String>? includedCookieNames;
+
+  /// Allows HTTP request headers (by name) to be used in the cache key.
+  core.List<core.String>? includedHeaderNames;
+
+  /// Names of query string parameters to include in cache keys.
+  ///
+  /// All other
+  /// parameters will be excluded. Either specify `includedQueryParameters`
+  /// or `excludedQueryParameters`, not both. '&' and '=' will be percent
+  /// encoded and not treated as delimiters.
+  core.List<core.String>? includedQueryParameters;
+
+  CachePolicyCacheKeyPolicy({
+    this.excludedQueryParameters,
+    this.includeHost,
+    this.includeProtocol,
+    this.includeQueryString,
+    this.includedCookieNames,
+    this.includedHeaderNames,
+    this.includedQueryParameters,
+  });
+
+  CachePolicyCacheKeyPolicy.fromJson(core.Map json_)
+    : this(
+        excludedQueryParameters:
+            (json_['excludedQueryParameters'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includeHost: json_['includeHost'] as core.bool?,
+        includeProtocol: json_['includeProtocol'] as core.bool?,
+        includeQueryString: json_['includeQueryString'] as core.bool?,
+        includedCookieNames: (json_['includedCookieNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includedHeaderNames: (json_['includedHeaderNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includedQueryParameters:
+            (json_['includedQueryParameters'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final excludedQueryParameters = this.excludedQueryParameters;
+    final includeHost = this.includeHost;
+    final includeProtocol = this.includeProtocol;
+    final includeQueryString = this.includeQueryString;
+    final includedCookieNames = this.includedCookieNames;
+    final includedHeaderNames = this.includedHeaderNames;
+    final includedQueryParameters = this.includedQueryParameters;
+    return {
+      'excludedQueryParameters': ?excludedQueryParameters,
+      'includeHost': ?includeHost,
+      'includeProtocol': ?includeProtocol,
+      'includeQueryString': ?includeQueryString,
+      'includedCookieNames': ?includedCookieNames,
+      'includedHeaderNames': ?includedHeaderNames,
+      'includedQueryParameters': ?includedQueryParameters,
+    };
+  }
+}
+
+/// Specify CDN TTLs for response error codes.
+class CachePolicyNegativeCachingPolicy {
+  /// The HTTP status code to define a TTL against.
+  ///
+  /// Only HTTP status codes
+  /// 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 can be
+  /// specified as values, and you cannot specify a status code more than
+  /// once.
+  core.int? code;
+
+  /// The TTL (in seconds) for which to cache responses with the
+  /// corresponding status code.
+  /// The maximum allowed value is 1800s (30 minutes).
+  ///
+  /// Infrequently accessed
+  /// objects may be evicted from the cache before the defined TTL.
+  Duration? ttl;
+
+  CachePolicyNegativeCachingPolicy({this.code, this.ttl});
+
+  CachePolicyNegativeCachingPolicy.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.int?,
+        ttl: json_.containsKey('ttl')
+            ? Duration.fromJson(
+                json_['ttl'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final ttl = this.ttl;
+    return {'code': ?code, 'ttl': ?ttl};
+  }
+}
+
 /// A request to recommend the best way to consume the specified resources in
 /// the
 /// future.
@@ -87382,6 +95379,12 @@ class Commitment {
   /// cannot be a dash.
   core.String? name;
 
+  /// Input only.
+  ///
+  /// Additional params passed with the request, but not persisted
+  /// as part of resource payload.
+  CommitmentParams? params;
+
   /// The minimum time duration that you commit to purchasing resources.
   /// The plan that you choose determines the preset term length of the
   /// commitment (which is 1 year or 3 years) and affects the discount rate that
@@ -87552,6 +95555,7 @@ class Commitment {
     this.licenseResource,
     this.mergeSourceCommitments,
     this.name,
+    this.params,
     this.plan,
     this.region,
     this.reservations,
@@ -87587,6 +95591,11 @@ class Commitment {
             ?.map((value) => value as core.String)
             .toList(),
         name: json_['name'] as core.String?,
+        params: json_.containsKey('params')
+            ? CommitmentParams.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         plan: json_['plan'] as core.String?,
         region: json_['region'] as core.String?,
         reservations: (json_['reservations'] as core.List?)
@@ -87629,6 +95638,7 @@ class Commitment {
     final licenseResource = this.licenseResource;
     final mergeSourceCommitments = this.mergeSourceCommitments;
     final name = this.name;
+    final params = this.params;
     final plan = this.plan;
     final region = this.region;
     final reservations = this.reservations;
@@ -87653,6 +95663,7 @@ class Commitment {
       'licenseResource': ?licenseResource,
       'mergeSourceCommitments': ?mergeSourceCommitments,
       'name': ?name,
+      'params': ?params,
       'plan': ?plan,
       'region': ?region,
       'reservations': ?reservations,
@@ -88173,6 +96184,35 @@ class CommitmentList {
   }
 }
 
+/// Additional commitment params.
+class CommitmentParams {
+  /// Input only.
+  ///
+  /// Resource manager tags to be bound to the commitment. Tag keys and
+  /// values have the same definition as resource
+  /// manager tags. Keys and values can be either in numeric format,
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// `{tag_value_short_name}`. The field is ignored (both PUT &
+  /// PATCH) when empty.
+  core.Map<core.String, core.String>? resourceManagerTags;
+
+  CommitmentParams({this.resourceManagerTags});
+
+  CommitmentParams.fromJson(core.Map json_)
+    : this(
+        resourceManagerTags:
+            (json_['resourceManagerTags']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceManagerTags = this.resourceManagerTags;
+    return {'resourceManagerTags': ?resourceManagerTags};
+  }
+}
+
 /// Contains output only fields.
 ///
 /// Output only.
@@ -88398,6 +96438,946 @@ class CommitmentsScopedList {
     final commitments = this.commitments;
     final warning = this.warning;
     return {'commitments': ?commitments, 'warning': ?warning};
+  }
+}
+
+/// Represents a composite health check.
+///
+/// A composite health check resource specifies the health source resources and
+/// the health destination resource to which the aggregated health result from
+/// the health source resources is delivered.
+class CompositeHealthCheck {
+  /// Creation timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you
+  /// create the resource.
+  core.String? description;
+
+  /// Fingerprint of this resource.
+  ///
+  /// A hash of the contents stored in this object.
+  /// This field is used in optimistic locking. This field will be ignored when
+  /// inserting a CompositeHealthCheck. An up-to-date fingerprint
+  /// must be provided in order to patch the CompositeHealthCheck; Otherwise,
+  /// the request will fail with error 412 conditionNotMet. To see
+  /// the latest fingerprint, make a get() request to retrieve the
+  /// CompositeHealthCheck.
+  core.String? fingerprint;
+  core.List<core.int> get fingerprintAsBytes =>
+      convert.base64.decode(fingerprint!);
+
+  set fingerprintAsBytes(core.List<core.int> bytes_) {
+    fingerprint = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// URL to the destination resource.
+  ///
+  /// Must be set. Must be aForwardingRule. The ForwardingRule must have
+  /// load balancing scheme INTERNAL orINTERNAL_MANAGED and must be regional and
+  /// in the same region
+  /// as the CompositeHealthCheck (cross-region deployment forINTERNAL_MANAGED
+  /// is not supported). Can be mutated.
+  core.String? healthDestination;
+
+  /// URLs to the HealthSource resources whose results are AND'ed.
+  /// I.e. he aggregated result is is HEALTHY only if all sources
+  /// are HEALTHY.
+  ///
+  /// Must have at least 1. Must not have more than 10.
+  /// Must be regional and in the same region as theCompositeHealthCheck. Can be
+  /// mutated.
+  core.List<core.String>? healthSources;
+
+  /// A unique identifier for this resource type.
+  ///
+  /// The server
+  /// generates this identifier.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#compositeHealthCheck for composite health checks.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Name of the resource.
+  ///
+  /// Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply withRFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+  /// character must be a lowercase letter, and all following characters must
+  /// be a dash, lowercase letter, or digit, except the last character, which
+  /// cannot be a dash.
+  core.String? name;
+
+  /// URL of the region where the composite health check resides.
+  /// This field applies only to the regional resource.
+  ///
+  /// You must specify this
+  /// field as part of the HTTP request URL. It is not settable as a field in
+  /// the request body.
+  ///
+  /// Output only.
+  core.String? region;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Server-defined URL with id for the resource.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
+  CompositeHealthCheck({
+    this.creationTimestamp,
+    this.description,
+    this.fingerprint,
+    this.healthDestination,
+    this.healthSources,
+    this.id,
+    this.kind,
+    this.name,
+    this.region,
+    this.selfLink,
+    this.selfLinkWithId,
+  });
+
+  CompositeHealthCheck.fromJson(core.Map json_)
+    : this(
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        fingerprint: json_['fingerprint'] as core.String?,
+        healthDestination: json_['healthDestination'] as core.String?,
+        healthSources: (json_['healthSources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        region: json_['region'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final fingerprint = this.fingerprint;
+    final healthDestination = this.healthDestination;
+    final healthSources = this.healthSources;
+    final id = this.id;
+    final kind = this.kind;
+    final name = this.name;
+    final region = this.region;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    return {
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'fingerprint': ?fingerprint,
+      'healthDestination': ?healthDestination,
+      'healthSources': ?healthSources,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'region': ?region,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+    };
+  }
+}
+
+class CompositeHealthCheckAggregatedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  CompositeHealthCheckAggregatedListWarningData({this.key, this.value});
+
+  CompositeHealthCheckAggregatedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class CompositeHealthCheckAggregatedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<CompositeHealthCheckAggregatedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  CompositeHealthCheckAggregatedListWarning({
+    this.code,
+    this.data,
+    this.message,
+  });
+
+  CompositeHealthCheckAggregatedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => CompositeHealthCheckAggregatedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Contains a list of CompositeHealthChecksScopedList.
+class CompositeHealthCheckAggregatedList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of CompositeHealthChecksScopedList resources.
+  core.Map<core.String, CompositeHealthChecksScopedList>? items;
+
+  /// Type of resource.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  CompositeHealthCheckAggregatedListWarning? warning;
+
+  CompositeHealthCheckAggregatedList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  CompositeHealthCheckAggregatedList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            CompositeHealthChecksScopedList.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          ),
+        ),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? CompositeHealthCheckAggregatedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
+/// Response message for RegionCompositeHealthChecks.GetHealth
+class CompositeHealthCheckHealth {
+  /// Health sources and their corresponding health states.
+  core.List<CompositeHealthChecksGetHealthResponseHealthSourceHealth>?
+  healthSources;
+
+  /// Health state of the CompositeHealthCheck.
+  /// Possible string values are:
+  /// - "HEALTHY"
+  /// - "UNHEALTHY"
+  /// - "UNKNOWN"
+  core.String? healthState;
+
+  /// Type of resource.
+  ///
+  /// Alwayscompute#compositeHealthCheckHealth for the health of
+  /// composite health checks.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  CompositeHealthCheckHealth({this.healthSources, this.healthState, this.kind});
+
+  CompositeHealthCheckHealth.fromJson(core.Map json_)
+    : this(
+        healthSources: (json_['healthSources'] as core.List?)
+            ?.map(
+              (value) =>
+                  CompositeHealthChecksGetHealthResponseHealthSourceHealth.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        healthState: json_['healthState'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final healthSources = this.healthSources;
+    final healthState = this.healthState;
+    final kind = this.kind;
+    return {
+      'healthSources': ?healthSources,
+      'healthState': ?healthState,
+      'kind': ?kind,
+    };
+  }
+}
+
+class CompositeHealthCheckListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  CompositeHealthCheckListWarningData({this.key, this.value});
+
+  CompositeHealthCheckListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class CompositeHealthCheckListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<CompositeHealthCheckListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  CompositeHealthCheckListWarning({this.code, this.data, this.message});
+
+  CompositeHealthCheckListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => CompositeHealthCheckListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class CompositeHealthCheckList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of CompositeHealthCheck resources.
+  core.List<CompositeHealthCheck>? items;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#compositeHealthCheck for composite health checks.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  CompositeHealthCheckListWarning? warning;
+
+  CompositeHealthCheckList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.warning,
+  });
+
+  CompositeHealthCheckList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => CompositeHealthCheck.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        warning: json_.containsKey('warning')
+            ? CompositeHealthCheckListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'warning': ?warning,
+    };
+  }
+}
+
+class CompositeHealthChecksGetHealthResponseHealthSourceHealth {
+  /// Health state of the associated HealthSource resource.
+  /// Possible string values are:
+  /// - "HEALTHY"
+  /// - "UNHEALTHY"
+  /// - "UNKNOWN"
+  core.String? healthState;
+
+  /// Fully qualified URL of the associated HealthSource resource.
+  core.String? source;
+
+  CompositeHealthChecksGetHealthResponseHealthSourceHealth({
+    this.healthState,
+    this.source,
+  });
+
+  CompositeHealthChecksGetHealthResponseHealthSourceHealth.fromJson(
+    core.Map json_,
+  ) : this(
+        healthState: json_['healthState'] as core.String?,
+        source: json_['source'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final healthState = this.healthState;
+    final source = this.source;
+    return {'healthState': ?healthState, 'source': ?source};
+  }
+}
+
+class CompositeHealthChecksScopedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  CompositeHealthChecksScopedListWarningData({this.key, this.value});
+
+  CompositeHealthChecksScopedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning which replaces the list of composite health checks
+/// when the list is empty.
+class CompositeHealthChecksScopedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<CompositeHealthChecksScopedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  CompositeHealthChecksScopedListWarning({this.code, this.data, this.message});
+
+  CompositeHealthChecksScopedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => CompositeHealthChecksScopedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class CompositeHealthChecksScopedList {
+  /// A list of CompositeHealthChecks contained in this scope.
+  core.List<CompositeHealthCheck>? compositeHealthChecks;
+
+  /// Informational warning which replaces the list of composite health checks
+  /// when the list is empty.
+  CompositeHealthChecksScopedListWarning? warning;
+
+  CompositeHealthChecksScopedList({this.compositeHealthChecks, this.warning});
+
+  CompositeHealthChecksScopedList.fromJson(core.Map json_)
+    : this(
+        compositeHealthChecks: (json_['compositeHealthChecks'] as core.List?)
+            ?.map(
+              (value) => CompositeHealthCheck.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? CompositeHealthChecksScopedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final compositeHealthChecks = this.compositeHealthChecks;
+    final warning = this.warning;
+    return {
+      'compositeHealthChecks': ?compositeHealthChecks,
+      'warning': ?warning,
+    };
   }
 }
 
@@ -90938,9 +99918,9 @@ class DiskMoveRequest {
 
 /// Additional disk params.
 class DiskParams {
-  /// Resource manager tags to be bound to the disk.
+  /// Input only.
   ///
-  /// Tag keys and values
+  /// Resource manager tags to be bound to the disk. Tag keys and values
   /// have the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
   /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
@@ -91882,6 +100862,8 @@ class DiskTypesScopedList {
   }
 }
 
+typedef DiskUpdateKmsKeyRequest = $DiskUpdateKmsKeyRequest;
+
 class DisksAddResourcePoliciesRequest {
   /// Full or relative path to the resource policy to be added to this disk.
   ///
@@ -92198,6 +101180,14 @@ class DistributionPolicy {
 
   /// Zones where the regional managed instance group will create and manage
   /// its instances.
+  /// By default, a regional MIG doesn't automatically select an AI zone to
+  /// create
+  /// instances, even if an AI zone is available in the specified region.
+  ///
+  /// To
+  /// create instances in an AI zone in the selected region, you must explicitly
+  /// specify it in the distribution policy together with the other preferred
+  /// zones.
   core.List<DistributionPolicyZoneConfiguration>? zones;
 
   DistributionPolicy({this.targetShape, this.zones});
@@ -92832,6 +101822,13 @@ class ExternalVpnGateway {
   /// be a dash.
   core.String? name;
 
+  /// Input only.
+  ///
+  /// \[Input Only\] Additional params passed with the request, but not
+  /// persisted
+  /// as part of resource payload.
+  ExternalVpnGatewayParams? params;
+
   /// Indicates the user-supplied redundancy type of this external VPN gateway.
   /// Possible string values are:
   /// - "FOUR_IPS_REDUNDANCY" : The external VPN gateway has four public IP
@@ -92876,6 +101873,7 @@ class ExternalVpnGateway {
     this.labelFingerprint,
     this.labels,
     this.name,
+    this.params,
     this.redundancyType,
     this.selfLink,
   });
@@ -92898,6 +101896,11 @@ class ExternalVpnGateway {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        params: json_.containsKey('params')
+            ? ExternalVpnGatewayParams.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         redundancyType: json_['redundancyType'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
       );
@@ -92911,6 +101914,7 @@ class ExternalVpnGateway {
     final labelFingerprint = this.labelFingerprint;
     final labels = this.labels;
     final name = this.name;
+    final params = this.params;
     final redundancyType = this.redundancyType;
     final selfLink = this.selfLink;
     return {
@@ -92922,6 +101926,7 @@ class ExternalVpnGateway {
       'labelFingerprint': ?labelFingerprint,
       'labels': ?labels,
       'name': ?name,
+      'params': ?params,
       'redundancyType': ?redundancyType,
       'selfLink': ?selfLink,
     };
@@ -93225,6 +102230,8 @@ class ExternalVpnGatewayList {
     };
   }
 }
+
+typedef ExternalVpnGatewayParams = $Params01;
 
 class FileContentBuffer {
   /// The raw content in the secure keys file.
@@ -96849,6 +105856,12 @@ class FutureReservation {
   /// existing commitment.
   FutureReservationCommitmentInfo? commitmentInfo;
 
+  ///
+  /// Possible string values are:
+  /// - "CONFIDENTIAL_COMPUTE_TYPE_TDX" : Intel Trust Domain Extensions.
+  /// - "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
+  core.String? confidentialComputeType;
+
   /// The creation timestamp for this future reservation inRFC3339
   /// text format.
   ///
@@ -96906,6 +105919,12 @@ class FutureReservation {
   /// Maximum allowed length for name prefix is 20. Automatically created
   /// reservations name format will be -date-####.
   core.String? namePrefix;
+
+  /// Input only.
+  ///
+  /// Additional params passed with the request, but not persisted
+  /// as part of resource payload.
+  FutureReservationParams? params;
 
   /// Planning state before being submitted for evaluation
   /// Possible string values are:
@@ -96991,6 +106010,7 @@ class FutureReservation {
     this.autoCreatedReservationsDuration,
     this.autoDeleteAutoCreatedReservations,
     this.commitmentInfo,
+    this.confidentialComputeType,
     this.creationTimestamp,
     this.deploymentType,
     this.description,
@@ -96999,6 +106019,7 @@ class FutureReservation {
     this.kind,
     this.name,
     this.namePrefix,
+    this.params,
     this.planningStatus,
     this.reservationMode,
     this.reservationName,
@@ -97037,6 +106058,8 @@ class FutureReservation {
                 json_['commitmentInfo'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        confidentialComputeType:
+            json_['confidentialComputeType'] as core.String?,
         creationTimestamp: json_['creationTimestamp'] as core.String?,
         deploymentType: json_['deploymentType'] as core.String?,
         description: json_['description'] as core.String?,
@@ -97046,6 +106069,11 @@ class FutureReservation {
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
         namePrefix: json_['namePrefix'] as core.String?,
+        params: json_.containsKey('params')
+            ? FutureReservationParams.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         planningStatus: json_['planningStatus'] as core.String?,
         reservationMode: json_['reservationMode'] as core.String?,
         reservationName: json_['reservationName'] as core.String?,
@@ -97087,6 +106115,7 @@ class FutureReservation {
     final autoDeleteAutoCreatedReservations =
         this.autoDeleteAutoCreatedReservations;
     final commitmentInfo = this.commitmentInfo;
+    final confidentialComputeType = this.confidentialComputeType;
     final creationTimestamp = this.creationTimestamp;
     final deploymentType = this.deploymentType;
     final description = this.description;
@@ -97095,6 +106124,7 @@ class FutureReservation {
     final kind = this.kind;
     final name = this.name;
     final namePrefix = this.namePrefix;
+    final params = this.params;
     final planningStatus = this.planningStatus;
     final reservationMode = this.reservationMode;
     final reservationName = this.reservationName;
@@ -97113,6 +106143,7 @@ class FutureReservation {
       'autoCreatedReservationsDuration': ?autoCreatedReservationsDuration,
       'autoDeleteAutoCreatedReservations': ?autoDeleteAutoCreatedReservations,
       'commitmentInfo': ?commitmentInfo,
+      'confidentialComputeType': ?confidentialComputeType,
       'creationTimestamp': ?creationTimestamp,
       'deploymentType': ?deploymentType,
       'description': ?description,
@@ -97121,6 +106152,7 @@ class FutureReservation {
       'kind': ?kind,
       'name': ?name,
       'namePrefix': ?namePrefix,
+      'params': ?params,
       'planningStatus': ?planningStatus,
       'reservationMode': ?reservationMode,
       'reservationName': ?reservationName,
@@ -97189,6 +106221,35 @@ class FutureReservationCommitmentInfo {
       'commitmentPlan': ?commitmentPlan,
       'previousCommitmentTerms': ?previousCommitmentTerms,
     };
+  }
+}
+
+/// Additional future reservation params.
+class FutureReservationParams {
+  /// Input only.
+  ///
+  /// Resource manager tags to be bound to the future reservation. Tag keys and
+  /// values have the same definition as resource
+  /// manager tags. Keys and values can be either in numeric format,
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// `{tag_value_short_name}`. The field is ignored (both PUT &
+  /// PATCH) when empty.
+  core.Map<core.String, core.String>? resourceManagerTags;
+
+  FutureReservationParams({this.resourceManagerTags});
+
+  FutureReservationParams.fromJson(core.Map json_)
+    : this(
+        resourceManagerTags:
+            (json_['resourceManagerTags']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceManagerTags = this.resourceManagerTags;
+    return {'resourceManagerTags': ?resourceManagerTags};
   }
 }
 
@@ -98955,6 +108016,66 @@ class GRPCTLSHealthCheck {
   }
 }
 
+class GetVersionOperationMetadata {
+  GetVersionOperationMetadataSbomInfo? inlineSbomInfo;
+
+  GetVersionOperationMetadata({this.inlineSbomInfo});
+
+  GetVersionOperationMetadata.fromJson(core.Map json_)
+    : this(
+        inlineSbomInfo: json_.containsKey('inlineSbomInfo')
+            ? GetVersionOperationMetadataSbomInfo.fromJson(
+                json_['inlineSbomInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final inlineSbomInfo = this.inlineSbomInfo;
+    return {'inlineSbomInfo': ?inlineSbomInfo};
+  }
+}
+
+class GetVersionOperationMetadataSbomInfo {
+  /// SBOM versions currently applied to the resource.
+  ///
+  /// The key is the component
+  /// name and the value is the version.
+  core.Map<core.String, core.String>? currentComponentVersions;
+
+  /// SBOM versions scheduled for the next maintenance.
+  ///
+  /// The key is the
+  /// component name and the value is the version.
+  core.Map<core.String, core.String>? targetComponentVersions;
+
+  GetVersionOperationMetadataSbomInfo({
+    this.currentComponentVersions,
+    this.targetComponentVersions,
+  });
+
+  GetVersionOperationMetadataSbomInfo.fromJson(core.Map json_)
+    : this(
+        currentComponentVersions:
+            (json_['currentComponentVersions']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        targetComponentVersions:
+            (json_['targetComponentVersions']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentComponentVersions = this.currentComponentVersions;
+    final targetComponentVersions = this.targetComponentVersions;
+    return {
+      'currentComponentVersions': ?currentComponentVersions,
+      'targetComponentVersions': ?targetComponentVersions,
+    };
+  }
+}
+
 class GlobalAddressesMoveRequest {
   /// An optional destination address description if intended to be different
   /// from the source.
@@ -99421,6 +108542,7 @@ class GuestOsFeature {
   ///    - TDX_CAPABLE
   ///    - IDPF
   ///    - SNP_SVSM_CAPABLE
+  ///    - CCA_CAPABLE
   ///
   ///
   /// For more information, see
@@ -99822,6 +108944,904 @@ class HTTPSHealthCheck {
       'proxyHeader': ?proxyHeader,
       'requestPath': ?requestPath,
       'response': ?response,
+    };
+  }
+}
+
+class HealthAggregationPoliciesScopedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  HealthAggregationPoliciesScopedListWarningData({this.key, this.value});
+
+  HealthAggregationPoliciesScopedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning which replaces the list of health aggregation
+/// policies when the list is empty.
+class HealthAggregationPoliciesScopedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<HealthAggregationPoliciesScopedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  HealthAggregationPoliciesScopedListWarning({
+    this.code,
+    this.data,
+    this.message,
+  });
+
+  HealthAggregationPoliciesScopedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) =>
+                  HealthAggregationPoliciesScopedListWarningData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class HealthAggregationPoliciesScopedList {
+  /// A list of HealthAggregationPolicys contained in this scope.
+  core.List<HealthAggregationPolicy>? healthAggregationPolicies;
+
+  /// Informational warning which replaces the list of health aggregation
+  /// policies when the list is empty.
+  HealthAggregationPoliciesScopedListWarning? warning;
+
+  HealthAggregationPoliciesScopedList({
+    this.healthAggregationPolicies,
+    this.warning,
+  });
+
+  HealthAggregationPoliciesScopedList.fromJson(core.Map json_)
+    : this(
+        healthAggregationPolicies:
+            (json_['healthAggregationPolicies'] as core.List?)
+                ?.map(
+                  (value) => HealthAggregationPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        warning: json_.containsKey('warning')
+            ? HealthAggregationPoliciesScopedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final healthAggregationPolicies = this.healthAggregationPolicies;
+    final warning = this.warning;
+    return {
+      'healthAggregationPolicies': ?healthAggregationPolicies,
+      'warning': ?warning,
+    };
+  }
+}
+
+/// Represents a health aggregation policy.
+///
+/// A health aggregation policy resource defines a policy to aggregate health.
+///
+/// For more information, see
+/// Health checks overview.
+class HealthAggregationPolicy {
+  /// Creation timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you
+  /// create the resource.
+  core.String? description;
+
+  /// Fingerprint of this resource.
+  ///
+  /// A hash of the contents stored in this object.
+  /// This field is used in optimistic locking. This field will be ignored when
+  /// inserting a HealthAggregationPolicy. An up-to-date fingerprint
+  /// must be provided in order to patch the HealthAggregationPolicy; Otherwise,
+  /// the request will fail with error 412 conditionNotMet. To see
+  /// the latest fingerprint, make a get() request to retrieve the
+  /// HealthAggregationPolicy.
+  core.String? fingerprint;
+  core.List<core.int> get fingerprintAsBytes =>
+      convert.base64.decode(fingerprint!);
+
+  set fingerprintAsBytes(core.List<core.int> bytes_) {
+    fingerprint = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Can only be set if the policyType field isBACKEND_SERVICE_POLICY.
+  ///
+  /// Specifies the threshold (as a
+  /// percentage) of healthy endpoints required in order to consider the
+  /// aggregated health result HEALTHY. Defaults to 60. Must be in
+  /// range \[0, 100\]. Not applicable if the policyType field
+  /// isDNB_PUBLIC_IP_POLICY. Can be mutated. This field is optional,
+  /// and will be set to the default if unspecified. Note that both this
+  /// threshold and minHealthyThreshold must be satisfied in order
+  /// for HEALTHY to be the aggregated result. "Endpoints" refers to network
+  /// endpoints within a Network Endpoint Group or instances within an Instance
+  /// Group.
+  core.int? healthyPercentThreshold;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#healthAggregationPolicy for health aggregation
+  /// policies.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Can only be set if the policyType field isBACKEND_SERVICE_POLICY.
+  ///
+  /// Specifies the minimum number of
+  /// healthy endpoints required in order to consider the aggregated health
+  /// result HEALTHY. Defaults to 1. Must be positive. Not
+  /// applicable if the policyType field isDNB_PUBLIC_IP_POLICY. Can be mutated.
+  /// This field is optional,
+  /// and will be set to the default if unspecified. Note that both this
+  /// threshold and healthyPercentThreshold must be satisfied in
+  /// order for HEALTHY to be the aggregated result. "Endpoints" refers to
+  /// network endpoints within a Network Endpoint Group or instances within an
+  /// Instance Group.
+  core.int? minHealthyThreshold;
+
+  /// Name of the resource.
+  ///
+  /// Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply withRFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+  /// character must be a lowercase letter, and all following characters must
+  /// be a dash, lowercase letter, or digit, except the last character, which
+  /// cannot be a dash.
+  core.String? name;
+
+  /// Specifies the type of the healthAggregationPolicy.
+  ///
+  /// The only allowed value
+  /// for global resources is DNS_PUBLIC_IP_POLICY. The only allowed
+  /// value for regional resources is BACKEND_SERVICE_POLICY. Must
+  /// be specified when the healthAggregationPolicy is created, and cannot be
+  /// mutated.
+  /// Possible string values are:
+  /// - "BACKEND_SERVICE_POLICY"
+  /// - "DNS_PUBLIC_IP_POLICY"
+  core.String? policyType;
+
+  /// URL of the region where the health aggregation policy
+  /// resides.
+  ///
+  /// This field applies only to the regional resource. You must specify
+  /// this field as part of the HTTP request URL. It is not settable as a field
+  /// in the request body.
+  ///
+  /// Output only.
+  core.String? region;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Server-defined URL with id for the resource.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
+  HealthAggregationPolicy({
+    this.creationTimestamp,
+    this.description,
+    this.fingerprint,
+    this.healthyPercentThreshold,
+    this.id,
+    this.kind,
+    this.minHealthyThreshold,
+    this.name,
+    this.policyType,
+    this.region,
+    this.selfLink,
+    this.selfLinkWithId,
+  });
+
+  HealthAggregationPolicy.fromJson(core.Map json_)
+    : this(
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        fingerprint: json_['fingerprint'] as core.String?,
+        healthyPercentThreshold: json_['healthyPercentThreshold'] as core.int?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        minHealthyThreshold: json_['minHealthyThreshold'] as core.int?,
+        name: json_['name'] as core.String?,
+        policyType: json_['policyType'] as core.String?,
+        region: json_['region'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final fingerprint = this.fingerprint;
+    final healthyPercentThreshold = this.healthyPercentThreshold;
+    final id = this.id;
+    final kind = this.kind;
+    final minHealthyThreshold = this.minHealthyThreshold;
+    final name = this.name;
+    final policyType = this.policyType;
+    final region = this.region;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    return {
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'fingerprint': ?fingerprint,
+      'healthyPercentThreshold': ?healthyPercentThreshold,
+      'id': ?id,
+      'kind': ?kind,
+      'minHealthyThreshold': ?minHealthyThreshold,
+      'name': ?name,
+      'policyType': ?policyType,
+      'region': ?region,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+    };
+  }
+}
+
+class HealthAggregationPolicyAggregatedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  HealthAggregationPolicyAggregatedListWarningData({this.key, this.value});
+
+  HealthAggregationPolicyAggregatedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class HealthAggregationPolicyAggregatedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<HealthAggregationPolicyAggregatedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  HealthAggregationPolicyAggregatedListWarning({
+    this.code,
+    this.data,
+    this.message,
+  });
+
+  HealthAggregationPolicyAggregatedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) =>
+                  HealthAggregationPolicyAggregatedListWarningData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Contains a list of HealthAggregationPoliciesScopedList.
+class HealthAggregationPolicyAggregatedList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of HealthAggregationPoliciesScopedList resources.
+  core.Map<core.String, HealthAggregationPoliciesScopedList>? items;
+
+  /// Type of resource.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  HealthAggregationPolicyAggregatedListWarning? warning;
+
+  HealthAggregationPolicyAggregatedList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  HealthAggregationPolicyAggregatedList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            HealthAggregationPoliciesScopedList.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          ),
+        ),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? HealthAggregationPolicyAggregatedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
+class HealthAggregationPolicyListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  HealthAggregationPolicyListWarningData({this.key, this.value});
+
+  HealthAggregationPolicyListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class HealthAggregationPolicyListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<HealthAggregationPolicyListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  HealthAggregationPolicyListWarning({this.code, this.data, this.message});
+
+  HealthAggregationPolicyListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => HealthAggregationPolicyListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class HealthAggregationPolicyList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of HealthAggregationPolicy resources.
+  core.List<HealthAggregationPolicy>? items;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#healthAggregationPolicy for health aggregation
+  /// policies.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  HealthAggregationPolicyListWarning? warning;
+
+  HealthAggregationPolicyList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.warning,
+  });
+
+  HealthAggregationPolicyList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => HealthAggregationPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        warning: json_.containsKey('warning')
+            ? HealthAggregationPolicyListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'warning': ?warning,
     };
   }
 }
@@ -100610,6 +110630,262 @@ class HealthCheckService {
   }
 }
 
+class HealthCheckServiceAggregatedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  HealthCheckServiceAggregatedListWarningData({this.key, this.value});
+
+  HealthCheckServiceAggregatedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class HealthCheckServiceAggregatedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<HealthCheckServiceAggregatedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  HealthCheckServiceAggregatedListWarning({this.code, this.data, this.message});
+
+  HealthCheckServiceAggregatedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => HealthCheckServiceAggregatedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Contains a list of HealthCheckServicesScopedList.
+class HealthCheckServiceAggregatedList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of HealthCheckServicesScopedList resources.
+  core.Map<core.String, HealthCheckServicesScopedList>? items;
+
+  /// Type of resource.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  HealthCheckServiceAggregatedListWarning? warning;
+
+  HealthCheckServiceAggregatedList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  HealthCheckServiceAggregatedList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            HealthCheckServicesScopedList.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          ),
+        ),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? HealthCheckServiceAggregatedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
 /// A full or valid partial URL to a health check service.
 ///
 /// For example, the
@@ -100879,6 +111155,198 @@ class HealthCheckServicesList {
       'selfLink': ?selfLink,
       'warning': ?warning,
     };
+  }
+}
+
+class HealthCheckServicesScopedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  HealthCheckServicesScopedListWarningData({this.key, this.value});
+
+  HealthCheckServicesScopedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning which replaces the list of
+/// backend services when the list is empty.
+class HealthCheckServicesScopedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<HealthCheckServicesScopedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  HealthCheckServicesScopedListWarning({this.code, this.data, this.message});
+
+  HealthCheckServicesScopedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => HealthCheckServicesScopedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class HealthCheckServicesScopedList {
+  /// A list of HealthCheckServices contained in this scope.
+  core.List<HealthCheckService>? resources;
+
+  /// Informational warning which replaces the list of
+  /// backend services when the list is empty.
+  HealthCheckServicesScopedListWarning? warning;
+
+  HealthCheckServicesScopedList({this.resources, this.warning});
+
+  HealthCheckServicesScopedList.fromJson(core.Map json_)
+    : this(
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => HealthCheckService.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? HealthCheckServicesScopedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resources = this.resources;
+    final warning = this.warning;
+    return {'resources': ?resources, 'warning': ?warning};
   }
 }
 
@@ -101326,6 +111794,1006 @@ class HealthChecksScopedList {
     final healthChecks = this.healthChecks;
     final warning = this.warning;
     return {'healthChecks': ?healthChecks, 'warning': ?warning};
+  }
+}
+
+/// Represents a health source.
+///
+/// A health source resource specifies the source resources and the health
+/// aggregation policy applied to the source resources to determine the
+/// aggregated health status.
+class HealthSource {
+  /// Creation timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you
+  /// create the resource.
+  core.String? description;
+
+  /// Fingerprint of this resource.
+  ///
+  /// A hash of the contents stored in this object.
+  /// This field is used in optimistic locking. This field will be ignored when
+  /// inserting a HealthSource. An up-to-date fingerprint
+  /// must be provided in order to patch the HealthSource; Otherwise, the
+  /// request
+  /// will fail with error 412 conditionNotMet. To see the latest
+  /// fingerprint, make a get() request to retrieve the
+  /// HealthSource.
+  core.String? fingerprint;
+  core.List<core.int> get fingerprintAsBytes =>
+      convert.base64.decode(fingerprint!);
+
+  set fingerprintAsBytes(core.List<core.int> bytes_) {
+    fingerprint = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// URL to the HealthAggregationPolicy resource.
+  ///
+  /// Must be set. Must
+  /// be regional and in the same region as the HealthSource. Can be
+  /// mutated.
+  core.String? healthAggregationPolicy;
+
+  /// A unique identifier for this resource type.
+  ///
+  /// The server
+  /// generates this identifier.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#healthSource for health sources.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Name of the resource.
+  ///
+  /// Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply withRFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+  /// character must be a lowercase letter, and all following characters must
+  /// be a dash, lowercase letter, or digit, except the last character, which
+  /// cannot be a dash.
+  core.String? name;
+
+  /// URL of the region where the health source resides.
+  /// This field applies only to the regional resource.
+  ///
+  /// You must specify this
+  /// field as part of the HTTP request URL. It is not settable as a field in
+  /// the request body.
+  ///
+  /// Output only.
+  core.String? region;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Server-defined URL with id for the resource.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
+  /// Specifies the type of the HealthSource.
+  ///
+  /// The only allowed value
+  /// is BACKEND_SERVICE. Must be specified when theHealthSource is created, and
+  /// cannot be mutated.
+  /// Possible string values are:
+  /// - "BACKEND_SERVICE"
+  core.String? sourceType;
+
+  /// URLs to the source resources.
+  ///
+  /// Must be size 1. Must be aBackendService if
+  /// the sourceType is BACKEND_SERVICE. TheBackendService must have load
+  /// balancing schemeINTERNAL or INTERNAL_MANAGED and must be regional
+  /// and in the same region as the HealthSource (cross-region
+  /// deployment for INTERNAL_MANAGED is not supported). TheBackendService may
+  /// use only IGs, MIGs, or NEGs of typeGCE_VM_IP or GCE_VM_IP_PORT.
+  /// TheBackendService may not use haPolicy. Can be
+  /// mutated.
+  core.List<core.String>? sources;
+
+  HealthSource({
+    this.creationTimestamp,
+    this.description,
+    this.fingerprint,
+    this.healthAggregationPolicy,
+    this.id,
+    this.kind,
+    this.name,
+    this.region,
+    this.selfLink,
+    this.selfLinkWithId,
+    this.sourceType,
+    this.sources,
+  });
+
+  HealthSource.fromJson(core.Map json_)
+    : this(
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        fingerprint: json_['fingerprint'] as core.String?,
+        healthAggregationPolicy:
+            json_['healthAggregationPolicy'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        region: json_['region'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+        sourceType: json_['sourceType'] as core.String?,
+        sources: (json_['sources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final fingerprint = this.fingerprint;
+    final healthAggregationPolicy = this.healthAggregationPolicy;
+    final id = this.id;
+    final kind = this.kind;
+    final name = this.name;
+    final region = this.region;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    final sourceType = this.sourceType;
+    final sources = this.sources;
+    return {
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'fingerprint': ?fingerprint,
+      'healthAggregationPolicy': ?healthAggregationPolicy,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'region': ?region,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+      'sourceType': ?sourceType,
+      'sources': ?sources,
+    };
+  }
+}
+
+class HealthSourceAggregatedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  HealthSourceAggregatedListWarningData({this.key, this.value});
+
+  HealthSourceAggregatedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class HealthSourceAggregatedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<HealthSourceAggregatedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  HealthSourceAggregatedListWarning({this.code, this.data, this.message});
+
+  HealthSourceAggregatedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => HealthSourceAggregatedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Contains a list of HealthSourcesScopedList.
+class HealthSourceAggregatedList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of HealthSourcesScopedList resources.
+  core.Map<core.String, HealthSourcesScopedList>? items;
+
+  /// Type of resource.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  HealthSourceAggregatedListWarning? warning;
+
+  HealthSourceAggregatedList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  HealthSourceAggregatedList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            HealthSourcesScopedList.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          ),
+        ),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? HealthSourceAggregatedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
+/// Response message for RegionHealthSources.GetHealth
+class HealthSourceHealth {
+  /// Health state of the HealthSource.
+  /// Possible string values are:
+  /// - "HEALTHY"
+  /// - "UNHEALTHY"
+  /// - "UNKNOWN"
+  core.String? healthState;
+
+  /// Type of resource.
+  ///
+  /// Alwayscompute#healthSourceHealth for the health of health sources.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Health state details of the sources.
+  core.List<HealthSourcesGetHealthResponseSourceInfo>? sources;
+
+  HealthSourceHealth({this.healthState, this.kind, this.sources});
+
+  HealthSourceHealth.fromJson(core.Map json_)
+    : this(
+        healthState: json_['healthState'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        sources: (json_['sources'] as core.List?)
+            ?.map(
+              (value) => HealthSourcesGetHealthResponseSourceInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final healthState = this.healthState;
+    final kind = this.kind;
+    final sources = this.sources;
+    return {'healthState': ?healthState, 'kind': ?kind, 'sources': ?sources};
+  }
+}
+
+class HealthSourceListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  HealthSourceListWarningData({this.key, this.value});
+
+  HealthSourceListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class HealthSourceListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<HealthSourceListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  HealthSourceListWarning({this.code, this.data, this.message});
+
+  HealthSourceListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => HealthSourceListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class HealthSourceList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of HealthSource resources.
+  core.List<HealthSource>? items;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#healthSource for health sources.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  HealthSourceListWarning? warning;
+
+  HealthSourceList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.warning,
+  });
+
+  HealthSourceList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => HealthSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        warning: json_.containsKey('warning')
+            ? HealthSourceListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'warning': ?warning,
+    };
+  }
+}
+
+class HealthSourcesGetHealthResponseSourceInfo {
+  /// Represents an instance group or network endpoint group behind the source
+  /// backend service.
+  ///
+  /// Only used if the sourceType of the regionHealthSource
+  /// is BACKEND_SERVICE.
+  core.List<HealthSourcesGetHealthResponseSourceInfoBackendInfo>? backends;
+
+  /// Fully qualified URL of the forwarding rule associated with the source
+  /// resource if it is a L4ILB backend service.
+  core.String? forwardingRule;
+
+  /// Fully qualified URL of the associated source resource.
+  ///
+  /// This is always a
+  /// backend service URL.
+  core.String? source;
+
+  HealthSourcesGetHealthResponseSourceInfo({
+    this.backends,
+    this.forwardingRule,
+    this.source,
+  });
+
+  HealthSourcesGetHealthResponseSourceInfo.fromJson(core.Map json_)
+    : this(
+        backends: (json_['backends'] as core.List?)
+            ?.map(
+              (value) =>
+                  HealthSourcesGetHealthResponseSourceInfoBackendInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        forwardingRule: json_['forwardingRule'] as core.String?,
+        source: json_['source'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backends = this.backends;
+    final forwardingRule = this.forwardingRule;
+    final source = this.source;
+    return {
+      'backends': ?backends,
+      'forwardingRule': ?forwardingRule,
+      'source': ?source,
+    };
+  }
+}
+
+class HealthSourcesGetHealthResponseSourceInfoBackendInfo {
+  /// Total number of endpoints when determining the health of the
+  /// regionHealthSource.
+  core.int? endpointCount;
+
+  /// Fully qualified URL of an instance group or network endpoint group
+  /// behind the source backend service.
+  core.String? group;
+
+  /// Number of endpoints considered healthy when determining health of the
+  /// regionHealthSource.
+  core.int? healthyEndpointCount;
+
+  HealthSourcesGetHealthResponseSourceInfoBackendInfo({
+    this.endpointCount,
+    this.group,
+    this.healthyEndpointCount,
+  });
+
+  HealthSourcesGetHealthResponseSourceInfoBackendInfo.fromJson(core.Map json_)
+    : this(
+        endpointCount: json_['endpointCount'] as core.int?,
+        group: json_['group'] as core.String?,
+        healthyEndpointCount: json_['healthyEndpointCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endpointCount = this.endpointCount;
+    final group = this.group;
+    final healthyEndpointCount = this.healthyEndpointCount;
+    return {
+      'endpointCount': ?endpointCount,
+      'group': ?group,
+      'healthyEndpointCount': ?healthyEndpointCount,
+    };
+  }
+}
+
+class HealthSourcesScopedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  HealthSourcesScopedListWarningData({this.key, this.value});
+
+  HealthSourcesScopedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning which replaces the list of
+/// health sources when the list is empty.
+class HealthSourcesScopedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<HealthSourcesScopedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  HealthSourcesScopedListWarning({this.code, this.data, this.message});
+
+  HealthSourcesScopedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => HealthSourcesScopedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class HealthSourcesScopedList {
+  /// A list of HealthSources contained in this scope.
+  core.List<HealthSource>? healthSources;
+
+  /// Informational warning which replaces the list of
+  /// health sources when the list is empty.
+  HealthSourcesScopedListWarning? warning;
+
+  HealthSourcesScopedList({this.healthSources, this.warning});
+
+  HealthSourcesScopedList.fromJson(core.Map json_)
+    : this(
+        healthSources: (json_['healthSources'] as core.List?)
+            ?.map(
+              (value) => HealthSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? HealthSourcesScopedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final healthSources = this.healthSources;
+    final warning = this.warning;
+    return {'healthSources': ?healthSources, 'warning': ?warning};
   }
 }
 
@@ -102655,6 +114123,14 @@ class HttpRetryPolicy {
 }
 
 class HttpRouteAction {
+  /// Specifies the cache policy configuration for matched traffic.
+  ///
+  /// Available
+  /// only for Global `EXTERNAL_MANAGED` load balancer schemes. At least one
+  /// property must be specified. This policy cannot be specified if any target
+  /// backend has Identity-Aware Proxy enabled.
+  CachePolicy? cachePolicy;
+
   /// The specification for allowing client-side cross-origin requests.
   ///
   /// For more
@@ -102758,6 +114234,7 @@ class HttpRouteAction {
   core.List<WeightedBackendService>? weightedBackendServices;
 
   HttpRouteAction({
+    this.cachePolicy,
     this.corsPolicy,
     this.faultInjectionPolicy,
     this.maxStreamDuration,
@@ -102770,6 +114247,11 @@ class HttpRouteAction {
 
   HttpRouteAction.fromJson(core.Map json_)
     : this(
+        cachePolicy: json_.containsKey('cachePolicy')
+            ? CachePolicy.fromJson(
+                json_['cachePolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         corsPolicy: json_.containsKey('corsPolicy')
             ? CorsPolicy.fromJson(
                 json_['corsPolicy'] as core.Map<core.String, core.dynamic>,
@@ -102819,6 +114301,7 @@ class HttpRouteAction {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final cachePolicy = this.cachePolicy;
     final corsPolicy = this.corsPolicy;
     final faultInjectionPolicy = this.faultInjectionPolicy;
     final maxStreamDuration = this.maxStreamDuration;
@@ -102828,6 +114311,7 @@ class HttpRouteAction {
     final urlRewrite = this.urlRewrite;
     final weightedBackendServices = this.weightedBackendServices;
     return {
+      'cachePolicy': ?cachePolicy,
       'corsPolicy': ?corsPolicy,
       'faultInjectionPolicy': ?faultInjectionPolicy,
       'maxStreamDuration': ?maxStreamDuration,
@@ -103659,13 +115143,17 @@ class ImageRawDisk {
   )
   core.String? sha1Checksum;
 
-  /// The full Google Cloud Storage URL where the raw disk image archive is
-  /// stored.
-  /// The following are valid formats for the URL:
+  /// The full Google Cloud Storage URL or Artifact Registry path where the raw
+  /// disk image archive is stored.
+  /// The following are valid formats:
   ///
   ///    - https://storage.googleapis.com/bucket_name/image_archive_name
   /// -
   /// https://storage.googleapis.com/bucket_name/folder_name/image_archive_name
+  /// -
+  /// projects/project/locations/location/repositories/repo/packages/package/versions/version_id
+  /// -
+  /// projects/project/locations/location/repositories/repo/packages/package/versions/version_id@dirsum_sha256:hex_value
   ///
   ///
   ///
@@ -104475,9 +115963,9 @@ class ImageList {
 
 /// Additional image params.
 class ImageParams {
-  /// Resource manager tags to be bound to the image.
+  /// Input only.
   ///
-  /// Tag keys and values have
+  /// Resource manager tags to be bound to the image. Tag keys and values have
   /// the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
   /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
@@ -104910,6 +116398,7 @@ class Instance {
   /// method. Each tag within the list must comply withRFC1035.
   /// Multiple tags can be specified via the 'tags.items' field.
   Tags? tags;
+  WorkloadIdentityConfig? workloadIdentityConfig;
 
   /// URL of the zone where the instance resides.
   /// You must specify this field as part of the HTTP request URL.
@@ -104966,6 +116455,7 @@ class Instance {
     this.status,
     this.statusMessage,
     this.tags,
+    this.workloadIdentityConfig,
     this.zone,
   });
 
@@ -105113,6 +116603,12 @@ class Instance {
                 json_['tags'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        workloadIdentityConfig: json_.containsKey('workloadIdentityConfig')
+            ? WorkloadIdentityConfig.fromJson(
+                json_['workloadIdentityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         zone: json_['zone'] as core.String?,
       );
 
@@ -105164,6 +116660,7 @@ class Instance {
     final status = this.status;
     final statusMessage = this.statusMessage;
     final tags = this.tags;
+    final workloadIdentityConfig = this.workloadIdentityConfig;
     final zone = this.zone;
     return {
       'advancedMachineFeatures': ?advancedMachineFeatures,
@@ -105211,6 +116708,7 @@ class Instance {
       'status': ?status,
       'statusMessage': ?statusMessage,
       'tags': ?tags,
+      'workloadIdentityConfig': ?workloadIdentityConfig,
       'zone': ?zone,
     };
   }
@@ -106546,6 +118044,11 @@ class InstanceGroupManager {
   /// changes this number.
   core.int? targetSize;
 
+  /// The policy that specifies how the MIG creates its VMs to achieve the
+  /// target
+  /// size.
+  InstanceGroupManagerTargetSizePolicy? targetSizePolicy;
+
   /// The target number of stopped instances for this managed instance group.
   /// This number changes when you:
   ///
@@ -106617,6 +118120,7 @@ class InstanceGroupManager {
     this.status,
     this.targetPools,
     this.targetSize,
+    this.targetSizePolicy,
     this.targetStoppedSize,
     this.targetSuspendedSize,
     this.updatePolicy,
@@ -106710,6 +118214,12 @@ class InstanceGroupManager {
             ?.map((value) => value as core.String)
             .toList(),
         targetSize: json_['targetSize'] as core.int?,
+        targetSizePolicy: json_.containsKey('targetSizePolicy')
+            ? InstanceGroupManagerTargetSizePolicy.fromJson(
+                json_['targetSizePolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         targetStoppedSize: json_['targetStoppedSize'] as core.int?,
         targetSuspendedSize: json_['targetSuspendedSize'] as core.int?,
         updatePolicy: json_.containsKey('updatePolicy')
@@ -106755,6 +118265,7 @@ class InstanceGroupManager {
     final status = this.status;
     final targetPools = this.targetPools;
     final targetSize = this.targetSize;
+    final targetSizePolicy = this.targetSizePolicy;
     final targetStoppedSize = this.targetStoppedSize;
     final targetSuspendedSize = this.targetSuspendedSize;
     final updatePolicy = this.updatePolicy;
@@ -106788,6 +118299,7 @@ class InstanceGroupManager {
       'status': ?status,
       'targetPools': ?targetPools,
       'targetSize': ?targetSize,
+      'targetSizePolicy': ?targetSizePolicy,
       'targetStoppedSize': ?targetStoppedSize,
       'targetSuspendedSize': ?targetSuspendedSize,
       'updatePolicy': ?updatePolicy,
@@ -107393,23 +118905,47 @@ class InstanceGroupManagerInstanceLifecyclePolicy {
   /// - "YES"
   core.String? forceUpdateOnRepair;
 
+  /// The action that a MIG performs on an unhealthy VM.
+  ///
+  /// A VM is marked as
+  /// unhealthy when the application running on that VM fails a health check.
+  /// Valid values are:
+  ///
+  ///    - DEFAULT_ACTION (default): MIG uses the same action
+  ///    configured for instanceLifecyclePolicy.defaultActionOnFailure field.
+  ///    - REPAIR: MIG automatically repairs an unhealthy VM by
+  ///    recreating it.
+  ///    - DO_NOTHING: MIG doesn't repair an unhealthy VM.
+  ///    For more information, see
+  ///    About repairing VMs in a MIG.
+  /// Possible string values are:
+  /// - "DEFAULT_ACTION" : (Default) MIG uses the same action configured for
+  /// instanceLifecyclePolicy.defaultActionOnFailure field.
+  /// - "DO_NOTHING" : MIG doesn't repair an unhealthy VM.
+  /// - "REPAIR" : MIG automatically repairs an unhealthy VM by recreating it.
+  core.String? onFailedHealthCheck;
+
   InstanceGroupManagerInstanceLifecyclePolicy({
     this.defaultActionOnFailure,
     this.forceUpdateOnRepair,
+    this.onFailedHealthCheck,
   });
 
   InstanceGroupManagerInstanceLifecyclePolicy.fromJson(core.Map json_)
     : this(
         defaultActionOnFailure: json_['defaultActionOnFailure'] as core.String?,
         forceUpdateOnRepair: json_['forceUpdateOnRepair'] as core.String?,
+        onFailedHealthCheck: json_['onFailedHealthCheck'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final defaultActionOnFailure = this.defaultActionOnFailure;
     final forceUpdateOnRepair = this.forceUpdateOnRepair;
+    final onFailedHealthCheck = this.onFailedHealthCheck;
     return {
       'defaultActionOnFailure': ?defaultActionOnFailure,
       'forceUpdateOnRepair': ?forceUpdateOnRepair,
+      'onFailedHealthCheck': ?onFailedHealthCheck,
     };
   }
 }
@@ -107680,15 +119216,14 @@ class InstanceGroupManagerResizeRequest {
 
   /// A unique identifier for this resource type.
   ///
-  /// The server
-  /// generates this identifier.
+  /// The server generates this
+  /// identifier.
   ///
   /// Output only.
   core.String? id;
 
   /// The resource type, which is
-  /// alwayscompute#instanceGroupManagerResizeRequest for
-  /// resize requests.
+  /// alwayscompute#instanceGroupManagerResizeRequest for resize requests.
   ///
   /// Output only.
   core.String? kind;
@@ -107698,6 +119233,15 @@ class InstanceGroupManagerResizeRequest {
   /// The name must be 1-63 characters
   /// long, and comply withRFC1035.
   core.String? name;
+
+  /// The URL of a region
+  /// where the resize request is located.
+  ///
+  /// Populated only for regional resize
+  /// requests.
+  ///
+  /// Output only.
+  core.String? region;
 
   /// Requested run duration for instances that will be created by this request.
   /// At the end of the run duration instance will be deleted.
@@ -107712,8 +119256,7 @@ class InstanceGroupManagerResizeRequest {
 
   /// The URL for this resize request.
   ///
-  /// The server defines
-  /// this URL.
+  /// The server defines this URL.
   ///
   /// Output only.
   core.String? selfLink;
@@ -107747,7 +119290,7 @@ class InstanceGroupManagerResizeRequest {
   /// Output only.
   InstanceGroupManagerResizeRequestStatus? status;
 
-  /// The URL of azone
+  /// The URL of a zone
   /// where the resize request is located.
   ///
   /// Populated only for zonal resize
@@ -107762,6 +119305,7 @@ class InstanceGroupManagerResizeRequest {
     this.id,
     this.kind,
     this.name,
+    this.region,
     this.requestedRunDuration,
     this.resizeBy,
     this.selfLink,
@@ -107778,6 +119322,7 @@ class InstanceGroupManagerResizeRequest {
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
+        region: json_['region'] as core.String?,
         requestedRunDuration: json_.containsKey('requestedRunDuration')
             ? Duration.fromJson(
                 json_['requestedRunDuration']
@@ -107802,6 +119347,7 @@ class InstanceGroupManagerResizeRequest {
     final id = this.id;
     final kind = this.kind;
     final name = this.name;
+    final region = this.region;
     final requestedRunDuration = this.requestedRunDuration;
     final resizeBy = this.resizeBy;
     final selfLink = this.selfLink;
@@ -107815,6 +119361,7 @@ class InstanceGroupManagerResizeRequest {
       'id': ?id,
       'kind': ?kind,
       'name': ?name,
+      'region': ?region,
       'requestedRunDuration': ?requestedRunDuration,
       'resizeBy': ?resizeBy,
       'selfLink': ?selfLink,
@@ -107944,13 +119491,10 @@ class InstanceGroupManagerResizeRequestStatusErrorErrors {
   }
 }
 
-/// Fatal errors encountered during the queueing or
-/// provisioning phases of the ResizeRequest that caused the transition to
-/// the FAILED state.
-///
-/// Contrary to the last_attempt errors, this field is
-/// final and errors are never removed from here, as the ResizeRequest is not
-/// going to retry.
+/// Fatal errors encountered during the queueing or provisioning phases of
+/// the ResizeRequest that caused the transition to the FAILED state.
+/// Contrary to the last_attempt errors, this field is final and errors are
+/// never removed from here, as the ResizeRequest is not going to retry.
 ///
 /// Output only.
 class InstanceGroupManagerResizeRequestStatusError {
@@ -107981,27 +119525,24 @@ class InstanceGroupManagerResizeRequestStatusError {
 }
 
 class InstanceGroupManagerResizeRequestStatus {
-  /// Fatal errors encountered during the queueing or
-  /// provisioning phases of the ResizeRequest that caused the transition to
-  /// the FAILED state.
-  ///
-  /// Contrary to the last_attempt errors, this field is
-  /// final and errors are never removed from here, as the ResizeRequest is not
-  /// going to retry.
+  /// Fatal errors encountered during the queueing or provisioning phases of
+  /// the ResizeRequest that caused the transition to the FAILED state.
+  /// Contrary to the last_attempt errors, this field is final and errors are
+  /// never removed from here, as the ResizeRequest is not going to retry.
   ///
   /// Output only.
   InstanceGroupManagerResizeRequestStatusError? error;
 
   /// Information about the last attempt to fulfill the request.
-  /// The value is temporary since the ResizeRequest can retry, as long as it's
-  /// still active and the last attempt value can either be cleared or replaced
-  /// with a different error.
   ///
-  /// Since ResizeRequest retries infrequently, the
-  /// value may be stale and no longer show an active problem. The value is
-  /// cleared when ResizeRequest transitions to the final state (becomes
-  /// inactive). If the final state is FAILED the error describing it will be
-  /// storred in the "error" field only.
+  /// The value is
+  /// temporary since the ResizeRequest can retry, as long as it's still active
+  /// and the last attempt value can either be cleared or replaced with a
+  /// different error. Since ResizeRequest retries infrequently, the value may
+  /// be stale and no longer show an active problem. The value is cleared when
+  /// ResizeRequest transitions to the final state (becomes inactive). If the
+  /// final state is FAILED the error describing it will be stored in the
+  /// "error" field only.
   ///
   /// Output only.
   InstanceGroupManagerResizeRequestStatusLastAttempt? lastAttempt;
@@ -108533,11 +120074,32 @@ class InstanceGroupManagerStatus {
   /// Output only.
   InstanceGroupManagerStatusAllInstancesConfig? allInstancesConfig;
 
+  /// The accelerator topology applied to this MIG.
+  /// Currently only one accelerator topology is supported.
+  ///
+  /// Output only.
+  core.List<InstanceGroupManagerStatusAcceleratorTopology>?
+  appliedAcceleratorTopologies;
+
   /// The URL of theAutoscaler
   /// that targets this instance group manager.
   ///
   /// Output only.
   core.String? autoscaler;
+
+  /// The status of bulk instance operation.
+  ///
+  /// Output only.
+  InstanceGroupManagerStatusBulkInstanceOperation? bulkInstanceOperation;
+
+  /// The list of instance statuses and the number of instances
+  /// in this managed instance group that have the status.
+  ///
+  /// Currently only shown
+  /// for TPU MIGs
+  ///
+  /// Output only.
+  InstanceGroupManagerStatusInstanceStatusSummary? currentInstanceStatuses;
 
   /// A bit indicating whether the managed instance group is in a
   /// stable state.
@@ -108565,7 +120127,10 @@ class InstanceGroupManagerStatus {
 
   InstanceGroupManagerStatus({
     this.allInstancesConfig,
+    this.appliedAcceleratorTopologies,
     this.autoscaler,
+    this.bulkInstanceOperation,
+    this.currentInstanceStatuses,
     this.isStable,
     this.stateful,
     this.versionTarget,
@@ -108579,7 +120144,28 @@ class InstanceGroupManagerStatus {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        appliedAcceleratorTopologies:
+            (json_['appliedAcceleratorTopologies'] as core.List?)
+                ?.map(
+                  (value) =>
+                      InstanceGroupManagerStatusAcceleratorTopology.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
         autoscaler: json_['autoscaler'] as core.String?,
+        bulkInstanceOperation: json_.containsKey('bulkInstanceOperation')
+            ? InstanceGroupManagerStatusBulkInstanceOperation.fromJson(
+                json_['bulkInstanceOperation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        currentInstanceStatuses: json_.containsKey('currentInstanceStatuses')
+            ? InstanceGroupManagerStatusInstanceStatusSummary.fromJson(
+                json_['currentInstanceStatuses']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         isStable: json_['isStable'] as core.bool?,
         stateful: json_.containsKey('stateful')
             ? InstanceGroupManagerStatusStateful.fromJson(
@@ -108595,17 +120181,276 @@ class InstanceGroupManagerStatus {
 
   core.Map<core.String, core.dynamic> toJson() {
     final allInstancesConfig = this.allInstancesConfig;
+    final appliedAcceleratorTopologies = this.appliedAcceleratorTopologies;
     final autoscaler = this.autoscaler;
+    final bulkInstanceOperation = this.bulkInstanceOperation;
+    final currentInstanceStatuses = this.currentInstanceStatuses;
     final isStable = this.isStable;
     final stateful = this.stateful;
     final versionTarget = this.versionTarget;
     return {
       'allInstancesConfig': ?allInstancesConfig,
+      'appliedAcceleratorTopologies': ?appliedAcceleratorTopologies,
       'autoscaler': ?autoscaler,
+      'bulkInstanceOperation': ?bulkInstanceOperation,
+      'currentInstanceStatuses': ?currentInstanceStatuses,
       'isStable': ?isStable,
       'stateful': ?stateful,
       'versionTarget': ?versionTarget,
     };
+  }
+}
+
+class InstanceGroupManagerStatusAcceleratorTopology {
+  /// Topology in the format of: "16x16", "4x4x4", etc.
+  /// The value is the same as configured in the WorkloadPolicy.
+  ///
+  /// Output only.
+  core.String? acceleratorTopology;
+
+  /// The state of the accelerator topology.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACTIVATING" : The accelerator topology is being activated.
+  /// - "ACTIVE" : The accelerator topology is active.
+  /// - "DEACTIVATING" : The accelerator topology is being deactivated.
+  /// - "FAILED" : The accelerator topology failed.
+  /// - "INCOMPLETE" : The configuration is incomplete and the accelerator
+  /// topology cannot
+  /// be activated due to insufficient number of running VMs.
+  /// - "REACTIVATING" : The accelerator topology is being reactivated.
+  core.String? state;
+
+  /// The result of the latest accelerator topology state
+  /// check.
+  ///
+  /// Output only.
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails?
+  stateDetails;
+
+  InstanceGroupManagerStatusAcceleratorTopology({
+    this.acceleratorTopology,
+    this.state,
+    this.stateDetails,
+  });
+
+  InstanceGroupManagerStatusAcceleratorTopology.fromJson(core.Map json_)
+    : this(
+        acceleratorTopology: json_['acceleratorTopology'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetails: json_.containsKey('stateDetails')
+            ? InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails.fromJson(
+                json_['stateDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceleratorTopology = this.acceleratorTopology;
+    final state = this.state;
+    final stateDetails = this.stateDetails;
+    return {
+      'acceleratorTopology': ?acceleratorTopology,
+      'state': ?state,
+      'stateDetails': ?stateDetails,
+    };
+  }
+}
+
+class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsErrorDetails {
+  ErrorInfo? errorInfo;
+  Help? help;
+  LocalizedMessage? localizedMessage;
+  QuotaExceededInfo? quotaInfo;
+
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsErrorDetails({
+    this.errorInfo,
+    this.help,
+    this.localizedMessage,
+    this.quotaInfo,
+  });
+
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsErrorDetails.fromJson(
+    core.Map json_,
+  ) : this(
+        errorInfo: json_.containsKey('errorInfo')
+            ? ErrorInfo.fromJson(
+                json_['errorInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        help: json_.containsKey('help')
+            ? Help.fromJson(
+                json_['help'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedMessage: json_.containsKey('localizedMessage')
+            ? LocalizedMessage.fromJson(
+                json_['localizedMessage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        quotaInfo: json_.containsKey('quotaInfo')
+            ? QuotaExceededInfo.fromJson(
+                json_['quotaInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorInfo = this.errorInfo;
+    final help = this.help;
+    final localizedMessage = this.localizedMessage;
+    final quotaInfo = this.quotaInfo;
+    return {
+      'errorInfo': ?errorInfo,
+      'help': ?help,
+      'localizedMessage': ?localizedMessage,
+      'quotaInfo': ?quotaInfo,
+    };
+  }
+}
+
+class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrors {
+  /// The error type identifier for this error.
+  ///
+  /// Output only.
+  core.String? code;
+
+  /// An optional list of messages that contain the error
+  /// details.
+  ///
+  /// There is a set of defined message types to use for providing
+  /// details.The syntax depends on the error code. For example,
+  /// QuotaExceededInfo will have details when the error code is
+  /// QUOTA_EXCEEDED.
+  ///
+  /// Output only.
+  core.List<
+    InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsErrorDetails
+  >?
+  errorDetails;
+
+  /// Indicates the field in the request that caused the error.
+  /// This property is optional.
+  ///
+  /// Output only.
+  core.String? location;
+
+  /// An optional, human-readable error message.
+  ///
+  /// Output only.
+  core.String? message;
+
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrors({
+    this.code,
+    this.errorDetails,
+    this.location,
+    this.message,
+  });
+
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrors.fromJson(
+    core.Map json_,
+  ) : this(
+        code: json_['code'] as core.String?,
+        errorDetails: (json_['errorDetails'] as core.List?)
+            ?.map(
+              (value) =>
+                  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsErrorDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        location: json_['location'] as core.String?,
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final errorDetails = this.errorDetails;
+    final location = this.location;
+    final message = this.message;
+    return {
+      'code': ?code,
+      'errorDetails': ?errorDetails,
+      'location': ?location,
+      'message': ?message,
+    };
+  }
+}
+
+/// Encountered errors.
+///
+/// Output only.
+class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsError {
+  /// The array of errors encountered while processing this
+  /// operation.
+  ///
+  /// Output only.
+  core.List<
+    InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrors
+  >?
+  errors;
+
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsError({
+    this.errors,
+  });
+
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsError.fromJson(
+    core.Map json_,
+  ) : this(
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) =>
+                  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrors.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    return {'errors': ?errors};
+  }
+}
+
+class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails {
+  /// Encountered errors.
+  ///
+  /// Output only.
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsError?
+  error;
+
+  /// Timestamp is shown only if there is an error.
+  ///
+  /// The field
+  /// has // RFC3339 //
+  /// text format.
+  ///
+  /// Output only.
+  core.String? timestamp;
+
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails({
+    this.error,
+    this.timestamp,
+  });
+
+  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails.fromJson(
+    core.Map json_,
+  ) : this(
+        error: json_.containsKey('error')
+            ? InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsError.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timestamp: json_['timestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final timestamp = this.timestamp;
+    return {'error': ?error, 'timestamp': ?timestamp};
   }
 }
 
@@ -108637,6 +120482,398 @@ class InstanceGroupManagerStatusAllInstancesConfig {
     final currentRevision = this.currentRevision;
     final effective = this.effective;
     return {'currentRevision': ?currentRevision, 'effective': ?effective};
+  }
+}
+
+/// Bulk instance operation is the creation of VMs in a MIG when the
+/// targetSizePolicy.mode is set to BULK.
+class InstanceGroupManagerStatusBulkInstanceOperation {
+  /// Informs whether bulk instance operation is in progress.
+  ///
+  /// Output only.
+  core.bool? inProgress;
+
+  /// Information from the last progress check of bulk instance
+  /// operation.
+  ///
+  /// Output only.
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck?
+  lastProgressCheck;
+
+  InstanceGroupManagerStatusBulkInstanceOperation({
+    this.inProgress,
+    this.lastProgressCheck,
+  });
+
+  InstanceGroupManagerStatusBulkInstanceOperation.fromJson(core.Map json_)
+    : this(
+        inProgress: json_['inProgress'] as core.bool?,
+        lastProgressCheck: json_.containsKey('lastProgressCheck')
+            ? InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck.fromJson(
+                json_['lastProgressCheck']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final inProgress = this.inProgress;
+    final lastProgressCheck = this.lastProgressCheck;
+    return {'inProgress': ?inProgress, 'lastProgressCheck': ?lastProgressCheck};
+  }
+}
+
+class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsErrorDetails {
+  ErrorInfo? errorInfo;
+  Help? help;
+  LocalizedMessage? localizedMessage;
+  QuotaExceededInfo? quotaInfo;
+
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsErrorDetails({
+    this.errorInfo,
+    this.help,
+    this.localizedMessage,
+    this.quotaInfo,
+  });
+
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsErrorDetails.fromJson(
+    core.Map json_,
+  ) : this(
+        errorInfo: json_.containsKey('errorInfo')
+            ? ErrorInfo.fromJson(
+                json_['errorInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        help: json_.containsKey('help')
+            ? Help.fromJson(
+                json_['help'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localizedMessage: json_.containsKey('localizedMessage')
+            ? LocalizedMessage.fromJson(
+                json_['localizedMessage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        quotaInfo: json_.containsKey('quotaInfo')
+            ? QuotaExceededInfo.fromJson(
+                json_['quotaInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorInfo = this.errorInfo;
+    final help = this.help;
+    final localizedMessage = this.localizedMessage;
+    final quotaInfo = this.quotaInfo;
+    return {
+      'errorInfo': ?errorInfo,
+      'help': ?help,
+      'localizedMessage': ?localizedMessage,
+      'quotaInfo': ?quotaInfo,
+    };
+  }
+}
+
+class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrors {
+  /// The error type identifier for this error.
+  ///
+  /// Output only.
+  core.String? code;
+
+  /// An optional list of messages that contain the error
+  /// details.
+  ///
+  /// There is a set of defined message types to use for providing
+  /// details.The syntax depends on the error code. For example,
+  /// QuotaExceededInfo will have details when the error code is
+  /// QUOTA_EXCEEDED.
+  ///
+  /// Output only.
+  core.List<
+    InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsErrorDetails
+  >?
+  errorDetails;
+
+  /// Indicates the field in the request that caused the error.
+  /// This property is optional.
+  ///
+  /// Output only.
+  core.String? location;
+
+  /// An optional, human-readable error message.
+  ///
+  /// Output only.
+  core.String? message;
+
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrors({
+    this.code,
+    this.errorDetails,
+    this.location,
+    this.message,
+  });
+
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrors.fromJson(
+    core.Map json_,
+  ) : this(
+        code: json_['code'] as core.String?,
+        errorDetails: (json_['errorDetails'] as core.List?)
+            ?.map(
+              (value) =>
+                  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsErrorDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        location: json_['location'] as core.String?,
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final errorDetails = this.errorDetails;
+    final location = this.location;
+    final message = this.message;
+    return {
+      'code': ?code,
+      'errorDetails': ?errorDetails,
+      'location': ?location,
+      'message': ?message,
+    };
+  }
+}
+
+/// Errors encountered during bulk instance operation.
+///
+/// Output only.
+class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckError {
+  /// The array of errors encountered while processing this
+  /// operation.
+  ///
+  /// Output only.
+  core.List<
+    InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrors
+  >?
+  errors;
+
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckError({
+    this.errors,
+  });
+
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckError.fromJson(
+    core.Map json_,
+  ) : this(
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) =>
+                  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrors.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errors = this.errors;
+    return {'errors': ?errors};
+  }
+}
+
+class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck {
+  /// Errors encountered during bulk instance operation.
+  ///
+  /// Output only.
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckError? error;
+
+  /// Timestamp of the last progress check of bulk instance
+  /// operation.
+  ///
+  /// Timestamp is in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String? timestamp;
+
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck({
+    this.error,
+    this.timestamp,
+  });
+
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck.fromJson(
+    core.Map json_,
+  ) : this(
+        error: json_.containsKey('error')
+            ? InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckError.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timestamp: json_['timestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final timestamp = this.timestamp;
+    return {'error': ?error, 'timestamp': ?timestamp};
+  }
+}
+
+/// The list of instance statuses and the number of instances in this managed
+/// instance group that have the status.
+///
+/// For more information about how to
+/// interpret each status check the instance lifecycle documentation.
+/// Currently only shown for TPU MIGs.
+class InstanceGroupManagerStatusInstanceStatusSummary {
+  /// The number of instances in the managed instance group
+  /// that have DEPROVISIONING status.
+  ///
+  /// Output only.
+  core.int? deprovisioning;
+
+  /// The number of instances that have not been created yet or
+  /// have been deleted.
+  ///
+  /// Includes only instances that would be shown in the
+  /// listManagedInstances method and not all instances that have been
+  /// deleted in the lifetime of the MIG.
+  /// Does not include FlexStart instances that are waiting for the resources
+  /// availability, they are considered as 'pending'.
+  ///
+  /// Output only.
+  core.int? nonExistent;
+
+  /// The number of instances in the managed instance group
+  /// that have PENDING status, that is FlexStart instances that are waiting
+  /// for resources.
+  ///
+  /// Instances that do not exist because of the other reasons
+  /// are counted as 'non_existent'.
+  ///
+  /// Output only.
+  core.int? pending;
+
+  /// The number of instances in the managed instance group
+  /// that have PENDING_STOP status.
+  ///
+  /// Output only.
+  core.int? pendingStop;
+
+  /// The number of instances in the managed instance group
+  /// that have PROVISIONING status.
+  ///
+  /// Output only.
+  core.int? provisioning;
+
+  /// The number of instances in the managed instance group
+  /// that have REPAIRING status.
+  ///
+  /// Output only.
+  core.int? repairing;
+
+  /// The number of instances in the managed instance group
+  /// that have RUNNING status.
+  ///
+  /// Output only.
+  core.int? running;
+
+  /// The number of instances in the managed instance group
+  /// that have STAGING status.
+  ///
+  /// Output only.
+  core.int? staging;
+
+  /// The number of instances in the managed instance group
+  /// that have STOPPED status.
+  ///
+  /// Output only.
+  core.int? stopped;
+
+  /// The number of instances in the managed instance group
+  /// that have STOPPING status.
+  ///
+  /// Output only.
+  core.int? stopping;
+
+  /// The number of instances in the managed instance group
+  /// that have SUSPENDED status.
+  ///
+  /// Output only.
+  core.int? suspended;
+
+  /// The number of instances in the managed instance group
+  /// that have SUSPENDING status.
+  ///
+  /// Output only.
+  core.int? suspending;
+
+  /// The number of instances in the managed instance group
+  /// that have TERMINATED status.
+  ///
+  /// Output only.
+  core.int? terminated;
+
+  InstanceGroupManagerStatusInstanceStatusSummary({
+    this.deprovisioning,
+    this.nonExistent,
+    this.pending,
+    this.pendingStop,
+    this.provisioning,
+    this.repairing,
+    this.running,
+    this.staging,
+    this.stopped,
+    this.stopping,
+    this.suspended,
+    this.suspending,
+    this.terminated,
+  });
+
+  InstanceGroupManagerStatusInstanceStatusSummary.fromJson(core.Map json_)
+    : this(
+        deprovisioning: json_['deprovisioning'] as core.int?,
+        nonExistent: json_['nonExistent'] as core.int?,
+        pending: json_['pending'] as core.int?,
+        pendingStop: json_['pendingStop'] as core.int?,
+        provisioning: json_['provisioning'] as core.int?,
+        repairing: json_['repairing'] as core.int?,
+        running: json_['running'] as core.int?,
+        staging: json_['staging'] as core.int?,
+        stopped: json_['stopped'] as core.int?,
+        stopping: json_['stopping'] as core.int?,
+        suspended: json_['suspended'] as core.int?,
+        suspending: json_['suspending'] as core.int?,
+        terminated: json_['terminated'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deprovisioning = this.deprovisioning;
+    final nonExistent = this.nonExistent;
+    final pending = this.pending;
+    final pendingStop = this.pendingStop;
+    final provisioning = this.provisioning;
+    final repairing = this.repairing;
+    final running = this.running;
+    final staging = this.staging;
+    final stopped = this.stopped;
+    final stopping = this.stopping;
+    final suspended = this.suspended;
+    final suspending = this.suspending;
+    final terminated = this.terminated;
+    return {
+      'deprovisioning': ?deprovisioning,
+      'nonExistent': ?nonExistent,
+      'pending': ?pending,
+      'pendingStop': ?pendingStop,
+      'provisioning': ?provisioning,
+      'repairing': ?repairing,
+      'running': ?running,
+      'staging': ?staging,
+      'stopped': ?stopped,
+      'stopping': ?stopping,
+      'suspended': ?suspended,
+      'suspending': ?suspending,
+      'terminated': ?terminated,
+    };
   }
 }
 
@@ -108720,6 +120957,34 @@ class InstanceGroupManagerStatusVersionTarget {
   core.Map<core.String, core.dynamic> toJson() {
     final isReached = this.isReached;
     return {'isReached': ?isReached};
+  }
+}
+
+class InstanceGroupManagerTargetSizePolicy {
+  /// The mode of target size policy based on which the MIG creates its VMs
+  /// individually or all at once.
+  /// Possible string values are:
+  /// - "BULK" : The mode in which the MIG creates VMs all at once. In this
+  /// mode, if the
+  /// MIG is unable to create even one VM, the MIG waits until all VMs can be
+  /// created at the same time.
+  /// - "INDIVIDUAL" : The mode in which the MIG creates VMs individually. In
+  /// this mode, if
+  /// the MIG is unable to create a VM, the MIG will continue to create the
+  /// other VMs in the group. This is the default mode.
+  /// - "UNSPECIFIED_MODE" : If mode is unspecified, MIG will behave as in the
+  /// default `INDIVIDUAL`
+  /// mode.
+  core.String? mode;
+
+  InstanceGroupManagerTargetSizePolicy({this.mode});
+
+  InstanceGroupManagerTargetSizePolicy.fromJson(core.Map json_)
+    : this(mode: json_['mode'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mode = this.mode;
+    return {'mode': ?mode};
   }
 }
 
@@ -110962,9 +123227,9 @@ class InstanceParams {
   /// Instances.Insert API.
   Duration? requestValidForDuration;
 
-  /// Resource manager tags to be bound to the instance.
+  /// Input only.
   ///
-  /// Tag keys and values
+  /// Resource manager tags to be bound to the instance. Tag keys and values
   /// have the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
   /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
@@ -111103,9 +123368,9 @@ class InstanceProperties {
   /// Note that for MachineImage, this is not supported yet.
   ReservationAffinity? reservationAffinity;
 
-  /// Resource manager tags to be bound to the instance.
+  /// Input only.
   ///
-  /// Tag keys and values
+  /// Resource manager tags to be bound to the instance. Tag keys and values
   /// have the same definition as resource
   /// manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and
   /// values are in the format `tagValues/456`. The field is ignored (both PUT &
@@ -111140,6 +123405,7 @@ class InstanceProperties {
   /// within
   /// the list must comply with RFC1035.
   Tags? tags;
+  WorkloadIdentityConfig? workloadIdentityConfig;
 
   InstanceProperties({
     this.advancedMachineFeatures,
@@ -111163,6 +123429,7 @@ class InstanceProperties {
     this.serviceAccounts,
     this.shieldedInstanceConfig,
     this.tags,
+    this.workloadIdentityConfig,
   });
 
   InstanceProperties.fromJson(core.Map json_)
@@ -111259,6 +123526,12 @@ class InstanceProperties {
                 json_['tags'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        workloadIdentityConfig: json_.containsKey('workloadIdentityConfig')
+            ? WorkloadIdentityConfig.fromJson(
+                json_['workloadIdentityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -111283,6 +123556,7 @@ class InstanceProperties {
     final serviceAccounts = this.serviceAccounts;
     final shieldedInstanceConfig = this.shieldedInstanceConfig;
     final tags = this.tags;
+    final workloadIdentityConfig = this.workloadIdentityConfig;
     return {
       'advancedMachineFeatures': ?advancedMachineFeatures,
       'canIpForward': ?canIpForward,
@@ -111305,6 +123579,7 @@ class InstanceProperties {
       'serviceAccounts': ?serviceAccounts,
       'shieldedInstanceConfig': ?shieldedInstanceConfig,
       'tags': ?tags,
+      'workloadIdentityConfig': ?workloadIdentityConfig,
     };
   }
 }
@@ -113129,6 +125404,12 @@ class InstantSnapshot {
   /// be a dash.
   core.String? name;
 
+  /// Input only.
+  ///
+  /// Additional params passed with the request, but not persisted
+  /// as part of resource payload.
+  InstantSnapshotParams? params;
+
   /// URL of the region where the instant snapshot resides.
   /// You must specify this field as part of the HTTP request URL.
   ///
@@ -113197,6 +125478,25 @@ class InstantSnapshot {
   /// Output only.
   core.String? sourceDiskId;
 
+  /// URL of the source instant snapshot this instant snapshot is
+  /// part of.
+  ///
+  /// Note that the source instant snapshot group must be in the same
+  /// zone/region as the instant snapshot to be created. This can be a full or
+  /// valid partial URL.
+  ///
+  /// Output only.
+  core.String? sourceInstantSnapshotGroup;
+
+  /// The ID value of the source instant snapshot group this
+  /// InstantSnapshot is part of.
+  ///
+  /// This value may be used to determine whether the
+  /// InstantSnapshot was created as part of an InstantSnapshotGroup creation.
+  ///
+  /// Output only.
+  core.String? sourceInstantSnapshotGroupId;
+
   /// The status of the instantSnapshot.
   ///
   /// This can beCREATING, DELETING, FAILED, orREADY.
@@ -113231,6 +125531,7 @@ class InstantSnapshot {
     this.labelFingerprint,
     this.labels,
     this.name,
+    this.params,
     this.region,
     this.resourceStatus,
     this.satisfiesPzi,
@@ -113239,6 +125540,8 @@ class InstantSnapshot {
     this.selfLinkWithId,
     this.sourceDisk,
     this.sourceDiskId,
+    this.sourceInstantSnapshotGroup,
+    this.sourceInstantSnapshotGroupId,
     this.status,
     this.zone,
   });
@@ -113256,6 +125559,11 @@ class InstantSnapshot {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        params: json_.containsKey('params')
+            ? InstantSnapshotParams.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         region: json_['region'] as core.String?,
         resourceStatus: json_.containsKey('resourceStatus')
             ? InstantSnapshotResourceStatus.fromJson(
@@ -113268,6 +125576,10 @@ class InstantSnapshot {
         selfLinkWithId: json_['selfLinkWithId'] as core.String?,
         sourceDisk: json_['sourceDisk'] as core.String?,
         sourceDiskId: json_['sourceDiskId'] as core.String?,
+        sourceInstantSnapshotGroup:
+            json_['sourceInstantSnapshotGroup'] as core.String?,
+        sourceInstantSnapshotGroupId:
+            json_['sourceInstantSnapshotGroupId'] as core.String?,
         status: json_['status'] as core.String?,
         zone: json_['zone'] as core.String?,
       );
@@ -113282,6 +125594,7 @@ class InstantSnapshot {
     final labelFingerprint = this.labelFingerprint;
     final labels = this.labels;
     final name = this.name;
+    final params = this.params;
     final region = this.region;
     final resourceStatus = this.resourceStatus;
     final satisfiesPzi = this.satisfiesPzi;
@@ -113290,6 +125603,8 @@ class InstantSnapshot {
     final selfLinkWithId = this.selfLinkWithId;
     final sourceDisk = this.sourceDisk;
     final sourceDiskId = this.sourceDiskId;
+    final sourceInstantSnapshotGroup = this.sourceInstantSnapshotGroup;
+    final sourceInstantSnapshotGroupId = this.sourceInstantSnapshotGroupId;
     final status = this.status;
     final zone = this.zone;
     return {
@@ -113302,6 +125617,7 @@ class InstantSnapshot {
       'labelFingerprint': ?labelFingerprint,
       'labels': ?labels,
       'name': ?name,
+      'params': ?params,
       'region': ?region,
       'resourceStatus': ?resourceStatus,
       'satisfiesPzi': ?satisfiesPzi,
@@ -113310,6 +125626,8 @@ class InstantSnapshot {
       'selfLinkWithId': ?selfLinkWithId,
       'sourceDisk': ?sourceDisk,
       'sourceDiskId': ?sourceDiskId,
+      'sourceInstantSnapshotGroup': ?sourceInstantSnapshotGroup,
+      'sourceInstantSnapshotGroupId': ?sourceInstantSnapshotGroupId,
       'status': ?status,
       'zone': ?zone,
     };
@@ -113574,6 +125892,252 @@ class InstantSnapshotAggregatedList {
   }
 }
 
+/// Represents an InstantSnapshotGroup resource.
+///
+/// An instant snapshot group is a set of instant snapshots that represents a
+/// point in time state of a consistency group.
+class InstantSnapshotGroup {
+  /// Creation timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you
+  /// create the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#instantSnapshotGroup for InstantSnapshotGroup
+  /// resources.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Identifier.
+  ///
+  /// Name of the resource; provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply withRFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+  /// character must be a lowercase letter, and all following characters must be
+  /// a dash, lowercase letter, or digit, except the last character, which
+  /// cannot
+  /// be a dash.
+  core.String? name;
+
+  /// URL of the region where the instant snapshot group resides.
+  /// You must specify this field as part of the HTTP request URL.
+  ///
+  /// It is
+  /// not settable as a field in the request body.
+  ///
+  /// Output only.
+  core.String? region;
+  InstantSnapshotGroupResourceStatus? resourceStatus;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Server-defined URL for this resource's resource id.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+  core.String? sourceConsistencyGroup;
+
+  /// \[Output Only\]
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CREATING"
+  /// - "DELETING"
+  /// - "FAILED"
+  /// - "INVALID"
+  /// - "READY"
+  /// - "UNKNOWN"
+  core.String? status;
+
+  /// URL of the zone where the instant snapshot group resides.
+  /// You must specify this field as part of the HTTP request URL.
+  ///
+  /// It is
+  /// not settable as a field in the request body.
+  ///
+  /// Output only.
+  core.String? zone;
+
+  InstantSnapshotGroup({
+    this.creationTimestamp,
+    this.description,
+    this.id,
+    this.kind,
+    this.name,
+    this.region,
+    this.resourceStatus,
+    this.selfLink,
+    this.selfLinkWithId,
+    this.sourceConsistencyGroup,
+    this.status,
+    this.zone,
+  });
+
+  InstantSnapshotGroup.fromJson(core.Map json_)
+    : this(
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        region: json_['region'] as core.String?,
+        resourceStatus: json_.containsKey('resourceStatus')
+            ? InstantSnapshotGroupResourceStatus.fromJson(
+                json_['resourceStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+        sourceConsistencyGroup: json_['sourceConsistencyGroup'] as core.String?,
+        status: json_['status'] as core.String?,
+        zone: json_['zone'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final id = this.id;
+    final kind = this.kind;
+    final name = this.name;
+    final region = this.region;
+    final resourceStatus = this.resourceStatus;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    final sourceConsistencyGroup = this.sourceConsistencyGroup;
+    final status = this.status;
+    final zone = this.zone;
+    return {
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'region': ?region,
+      'resourceStatus': ?resourceStatus,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+      'sourceConsistencyGroup': ?sourceConsistencyGroup,
+      'status': ?status,
+      'zone': ?zone,
+    };
+  }
+}
+
+class InstantSnapshotGroupParameters {
+  /// The source instant snapshot group used to create disks.
+  ///
+  /// You can provide
+  /// this as a partial or full URL to the resource. For example, the following
+  /// are valid values:
+  ///
+  ///
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshotGroups/instantSnapshotGroup
+  /// - projects/project/zones/zone/instantSnapshotGroups/instantSnapshotGroup
+  ///      - zones/zone/instantSnapshotGroups/instantSnapshotGroup
+  core.String? sourceInstantSnapshotGroup;
+
+  InstantSnapshotGroupParameters({this.sourceInstantSnapshotGroup});
+
+  InstantSnapshotGroupParameters.fromJson(core.Map json_)
+    : this(
+        sourceInstantSnapshotGroup:
+            json_['sourceInstantSnapshotGroup'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sourceInstantSnapshotGroup = this.sourceInstantSnapshotGroup;
+    return {'sourceInstantSnapshotGroup': ?sourceInstantSnapshotGroup};
+  }
+}
+
+class InstantSnapshotGroupResourceStatus {
+  /// \[Output Only\]
+  ///
+  /// Output only.
+  core.String? consistencyMembershipResolutionTime;
+
+  /// \[Output Only\]
+  ///
+  /// Output only.
+  InstantSnapshotGroupSourceInfo? sourceInfo;
+
+  InstantSnapshotGroupResourceStatus({
+    this.consistencyMembershipResolutionTime,
+    this.sourceInfo,
+  });
+
+  InstantSnapshotGroupResourceStatus.fromJson(core.Map json_)
+    : this(
+        consistencyMembershipResolutionTime:
+            json_['consistencyMembershipResolutionTime'] as core.String?,
+        sourceInfo: json_.containsKey('sourceInfo')
+            ? InstantSnapshotGroupSourceInfo.fromJson(
+                json_['sourceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final consistencyMembershipResolutionTime =
+        this.consistencyMembershipResolutionTime;
+    final sourceInfo = this.sourceInfo;
+    return {
+      'consistencyMembershipResolutionTime':
+          ?consistencyMembershipResolutionTime,
+      'sourceInfo': ?sourceInfo,
+    };
+  }
+}
+
+class InstantSnapshotGroupSourceInfo {
+  core.String? consistencyGroup;
+  core.String? consistencyGroupId;
+
+  InstantSnapshotGroupSourceInfo({
+    this.consistencyGroup,
+    this.consistencyGroupId,
+  });
+
+  InstantSnapshotGroupSourceInfo.fromJson(core.Map json_)
+    : this(
+        consistencyGroup: json_['consistencyGroup'] as core.String?,
+        consistencyGroupId: json_['consistencyGroupId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final consistencyGroup = this.consistencyGroup;
+    final consistencyGroupId = this.consistencyGroupId;
+    return {
+      'consistencyGroup': ?consistencyGroup,
+      'consistencyGroupId': ?consistencyGroupId,
+    };
+  }
+}
+
 class InstantSnapshotListWarningData {
   /// A key that provides more detail on the warning being
   /// returned.
@@ -113815,6 +126379,35 @@ class InstantSnapshotList {
       'selfLink': ?selfLink,
       'warning': ?warning,
     };
+  }
+}
+
+/// Additional instant snapshot params.
+class InstantSnapshotParams {
+  /// Input only.
+  ///
+  /// Resource manager tags to be bound to the instant snapshot. Tag keys and
+  /// values have the same definition as resource
+  /// manager tags. Keys and values can be either in numeric format,
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// `{tag_value_short_name}`. The field is ignored (both PUT &
+  /// PATCH) when empty.
+  core.Map<core.String, core.String>? resourceManagerTags;
+
+  InstantSnapshotParams({this.resourceManagerTags});
+
+  InstantSnapshotParams.fromJson(core.Map json_)
+    : this(
+        resourceManagerTags:
+            (json_['resourceManagerTags']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceManagerTags = this.resourceManagerTags;
+    return {'resourceManagerTags': ?resourceManagerTags};
   }
 }
 
@@ -114373,8 +126966,7 @@ class Interconnect {
   /// provisioned on this interconnect.
   core.String? state;
 
-  /// Specific subzone in the InterconnectLocation that represents where
-  /// this connection is to be provisioned.
+  /// To be deprecated.
   /// Possible string values are:
   /// - "SUBZONE_A" : Subzone A.
   /// - "SUBZONE_B" : Subzone B.
@@ -121791,6 +134383,268 @@ class LicensesListResponse {
   }
 }
 
+class ListInstantSnapshotGroupsWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  ListInstantSnapshotGroupsWarningData({this.key, this.value});
+
+  ListInstantSnapshotGroupsWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class ListInstantSnapshotGroupsWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<ListInstantSnapshotGroupsWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  ListInstantSnapshotGroupsWarning({this.code, this.data, this.message});
+
+  ListInstantSnapshotGroupsWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => ListInstantSnapshotGroupsWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Contains a list of InstantSnapshotGroup resources.
+class ListInstantSnapshotGroups {
+  core.String? etag;
+
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of InstantSnapshotGroup resources.
+  core.List<InstantSnapshotGroup>? items;
+
+  /// Type of resource.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  /// end_interface: MixerListResponseWithEtagBuilder
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  ListInstantSnapshotGroupsWarning? warning;
+
+  ListInstantSnapshotGroups({
+    this.etag,
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  ListInstantSnapshotGroups.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => InstantSnapshotGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? ListInstantSnapshotGroupsWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
 class LocalDisk {
   /// Specifies the number of such disks.
   core.int? diskCount;
@@ -121859,6 +134713,15 @@ class LocationPolicy {
   /// Location configurations mapped by location name.
   /// Currently only zone names are supported and must be represented as valid
   /// internal URLs, such as zones/us-central1-a.
+  /// The bulkInsert operation doesn't create instances in an AI zone, even if
+  /// an AI zone is available in the specified region.
+  ///
+  /// For example, if you set a
+  /// DENY preference for us-central1-a, Compute Engine will consider
+  /// us-central1-b and us-central1-c for instance creation, but not
+  /// us-central1-ai1a. Also, you can't use the locations\[\] configuration to
+  /// allow instance creation in an AI zone. To include an AI zone in bulkInsert
+  /// operations, use the locationPolicy.zones\[\] field.
   core.Map<core.String, LocationPolicyLocation>? locations;
 
   /// Strategy for distributing VMs across zones in a region.
@@ -121880,7 +134743,12 @@ class LocationPolicy {
   /// Recommended for highly available serving workloads.
   core.String? targetShape;
 
-  LocationPolicy({this.locations, this.targetShape});
+  /// The bulkInsert operation applies any preferences set in the locations
+  /// field to the specific zones listed in the zones field if the same zones
+  /// are specified in both fields.
+  core.List<LocationPolicyZoneConfiguration>? zones;
+
+  LocationPolicy({this.locations, this.targetShape, this.zones});
 
   LocationPolicy.fromJson(core.Map json_)
     : this(
@@ -121894,12 +134762,24 @@ class LocationPolicy {
               ),
             ),
         targetShape: json_['targetShape'] as core.String?,
+        zones: (json_['zones'] as core.List?)
+            ?.map(
+              (value) => LocationPolicyZoneConfiguration.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final locations = this.locations;
     final targetShape = this.targetShape;
-    return {'locations': ?locations, 'targetShape': ?targetShape};
+    final zones = this.zones;
+    return {
+      'locations': ?locations,
+      'targetShape': ?targetShape,
+      'zones': ?zones,
+    };
   }
 }
 
@@ -121950,6 +134830,24 @@ class LocationPolicyLocationConstraints {
   core.Map<core.String, core.dynamic> toJson() {
     final maxCount = this.maxCount;
     return {'maxCount': ?maxCount};
+  }
+}
+
+class LocationPolicyZoneConfiguration {
+  /// The URL of the zone.
+  /// The zone must exist in the region where the request is called.
+  /// Zones must be represented as valid partial URLs,
+  /// such as zones/us-central1-a.
+  core.String? zone;
+
+  LocationPolicyZoneConfiguration({this.zone});
+
+  LocationPolicyZoneConfiguration.fromJson(core.Map json_)
+    : this(zone: json_['zone'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final zone = this.zone;
+    return {'zone': ?zone};
   }
 }
 
@@ -125055,6 +137953,10 @@ class NetworkAttachmentConnectedEndpoint {
   /// Alias IP ranges from the same subnetwork.
   core.List<core.String>? secondaryIpCidrRanges;
 
+  /// The service class id of the producer service to which the IP was
+  /// assigned.
+  core.String? serviceClassId;
+
   /// The status of a connected endpoint to this network attachment.
   /// Possible string values are:
   /// - "ACCEPTED" : The consumer allows traffic from the producer to reach its
@@ -125084,6 +137986,7 @@ class NetworkAttachmentConnectedEndpoint {
     this.ipv6Address,
     this.projectIdOrNum,
     this.secondaryIpCidrRanges,
+    this.serviceClassId,
     this.status,
     this.subnetwork,
     this.subnetworkCidrRange,
@@ -125097,6 +138000,7 @@ class NetworkAttachmentConnectedEndpoint {
         secondaryIpCidrRanges: (json_['secondaryIpCidrRanges'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        serviceClassId: json_['serviceClassId'] as core.String?,
         status: json_['status'] as core.String?,
         subnetwork: json_['subnetwork'] as core.String?,
         subnetworkCidrRange: json_['subnetworkCidrRange'] as core.String?,
@@ -125107,6 +138011,7 @@ class NetworkAttachmentConnectedEndpoint {
     final ipv6Address = this.ipv6Address;
     final projectIdOrNum = this.projectIdOrNum;
     final secondaryIpCidrRanges = this.secondaryIpCidrRanges;
+    final serviceClassId = this.serviceClassId;
     final status = this.status;
     final subnetwork = this.subnetwork;
     final subnetworkCidrRange = this.subnetworkCidrRange;
@@ -125115,6 +138020,7 @@ class NetworkAttachmentConnectedEndpoint {
       'ipv6Address': ?ipv6Address,
       'projectIdOrNum': ?projectIdOrNum,
       'secondaryIpCidrRanges': ?secondaryIpCidrRanges,
+      'serviceClassId': ?serviceClassId,
       'status': ?status,
       'subnetwork': ?subnetwork,
       'subnetworkCidrRange': ?subnetworkCidrRange,
@@ -126281,6 +139187,20 @@ class NetworkEndpoint {
 /// reached, whether they are reachable, and where they are located.
 /// For more information about using NEGs for different use cases, seeNetwork
 /// endpoint groups overview.
+///
+/// Note: Use the following APIs to manage network endpoint groups:
+///
+///    -
+///    To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+///    NEGs): zonal
+///    API
+///    -
+///    To manage NEGs with regional scope (such as regional internet NEGs,
+///    serverless NEGs, Private Service Connect NEGs): regional
+///    API
+///    -
+///    To manage NEGs with global scope (such as global internet NEGs):global
+///    API
 class NetworkEndpointGroup {
   /// Metadata defined as annotations on the network endpoint group.
   ///
@@ -128107,6 +141027,14 @@ class NetworkInterface {
   /// You can only specify this field for network interfaces in VPC networks.
   core.List<AliasIpRange>? aliasIpRanges;
 
+  /// If true, DNS resolution will be enabled over this interface.
+  ///
+  /// Only valid
+  /// with network_attachment.
+  ///
+  /// Optional.
+  core.bool? enableVpcScopedDns;
+
   /// Fingerprint hash of contents stored in this network interface.
   /// This field will be ignored when inserting an Instance or
   /// adding a NetworkInterface.
@@ -128239,6 +141167,16 @@ class NetworkInterface {
   /// if not specified by the users.
   core.int? queueCount;
 
+  /// Producer Service's Service class Id for the region of this network
+  /// interface.
+  ///
+  /// Can only be used with network_attachment. It is not possible to
+  /// use on its own however, network_attachment can be used without
+  /// service_class_id.
+  ///
+  /// Optional.
+  core.String? serviceClassId;
+
   /// The stack type for this network interface.
   ///
   /// To assign only IPv4 addresses,
@@ -128279,6 +141217,7 @@ class NetworkInterface {
   NetworkInterface({
     this.accessConfigs,
     this.aliasIpRanges,
+    this.enableVpcScopedDns,
     this.fingerprint,
     this.igmpQuery,
     this.internalIpv6PrefixLength,
@@ -128293,6 +141232,7 @@ class NetworkInterface {
     this.nicType,
     this.parentNicName,
     this.queueCount,
+    this.serviceClassId,
     this.stackType,
     this.subnetwork,
     this.vlan,
@@ -128314,6 +141254,7 @@ class NetworkInterface {
               ),
             )
             .toList(),
+        enableVpcScopedDns: json_['enableVpcScopedDns'] as core.bool?,
         fingerprint: json_['fingerprint'] as core.String?,
         igmpQuery: json_['igmpQuery'] as core.String?,
         internalIpv6PrefixLength:
@@ -128335,6 +141276,7 @@ class NetworkInterface {
         nicType: json_['nicType'] as core.String?,
         parentNicName: json_['parentNicName'] as core.String?,
         queueCount: json_['queueCount'] as core.int?,
+        serviceClassId: json_['serviceClassId'] as core.String?,
         stackType: json_['stackType'] as core.String?,
         subnetwork: json_['subnetwork'] as core.String?,
         vlan: json_['vlan'] as core.int?,
@@ -128343,6 +141285,7 @@ class NetworkInterface {
   core.Map<core.String, core.dynamic> toJson() {
     final accessConfigs = this.accessConfigs;
     final aliasIpRanges = this.aliasIpRanges;
+    final enableVpcScopedDns = this.enableVpcScopedDns;
     final fingerprint = this.fingerprint;
     final igmpQuery = this.igmpQuery;
     final internalIpv6PrefixLength = this.internalIpv6PrefixLength;
@@ -128357,12 +141300,14 @@ class NetworkInterface {
     final nicType = this.nicType;
     final parentNicName = this.parentNicName;
     final queueCount = this.queueCount;
+    final serviceClassId = this.serviceClassId;
     final stackType = this.stackType;
     final subnetwork = this.subnetwork;
     final vlan = this.vlan;
     return {
       'accessConfigs': ?accessConfigs,
       'aliasIpRanges': ?aliasIpRanges,
+      'enableVpcScopedDns': ?enableVpcScopedDns,
       'fingerprint': ?fingerprint,
       'igmpQuery': ?igmpQuery,
       'internalIpv6PrefixLength': ?internalIpv6PrefixLength,
@@ -128377,6 +141322,7 @@ class NetworkInterface {
       'nicType': ?nicType,
       'parentNicName': ?parentNicName,
       'queueCount': ?queueCount,
+      'serviceClassId': ?serviceClassId,
       'stackType': ?stackType,
       'subnetwork': ?subnetwork,
       'vlan': ?vlan,
@@ -133724,6 +146670,266 @@ class NotificationEndpoint {
   }
 }
 
+class NotificationEndpointAggregatedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  NotificationEndpointAggregatedListWarningData({this.key, this.value});
+
+  NotificationEndpointAggregatedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class NotificationEndpointAggregatedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<NotificationEndpointAggregatedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  NotificationEndpointAggregatedListWarning({
+    this.code,
+    this.data,
+    this.message,
+  });
+
+  NotificationEndpointAggregatedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => NotificationEndpointAggregatedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Contains a list of NotificationEndpointsScopedList.
+class NotificationEndpointAggregatedList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of NotificationEndpointsScopedList resources.
+  core.Map<core.String, NotificationEndpointsScopedList>? items;
+
+  /// Type of resource.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  NotificationEndpointAggregatedListWarning? warning;
+
+  NotificationEndpointAggregatedList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  NotificationEndpointAggregatedList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            NotificationEndpointsScopedList.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          ),
+        ),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? NotificationEndpointAggregatedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
 /// Represents a gRPC setting that describes one gRPC notification endpoint and
 /// the retry duration attempting to send notification to this endpoint.
 class NotificationEndpointGrpcSettings {
@@ -134045,6 +147251,198 @@ class NotificationEndpointList {
       'selfLink': ?selfLink,
       'warning': ?warning,
     };
+  }
+}
+
+class NotificationEndpointsScopedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  NotificationEndpointsScopedListWarningData({this.key, this.value});
+
+  NotificationEndpointsScopedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning which replaces the list of
+/// notification endpoints when the list is empty.
+class NotificationEndpointsScopedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<NotificationEndpointsScopedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  NotificationEndpointsScopedListWarning({this.code, this.data, this.message});
+
+  NotificationEndpointsScopedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => NotificationEndpointsScopedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class NotificationEndpointsScopedList {
+  /// A list of NotificationEndpoints contained in this scope.
+  core.List<NotificationEndpoint>? resources;
+
+  /// Informational warning which replaces the list of
+  /// notification endpoints when the list is empty.
+  NotificationEndpointsScopedListWarning? warning;
+
+  NotificationEndpointsScopedList({this.resources, this.warning});
+
+  NotificationEndpointsScopedList.fromJson(core.Map json_)
+    : this(
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => NotificationEndpoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? NotificationEndpointsScopedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resources = this.resources;
+    final warning = this.warning;
+    return {'resources': ?resources, 'warning': ?warning};
   }
 }
 
@@ -134411,6 +147809,7 @@ class Operation {
   ///
   /// Output only.
   OperationError? error;
+  GetVersionOperationMetadata? getVersionOperationMetadata;
 
   /// If the operation fails, this field contains the HTTP error
   /// message that was returned, such as `NOT FOUND`.
@@ -134566,6 +147965,7 @@ class Operation {
     this.description,
     this.endTime,
     this.error,
+    this.getVersionOperationMetadata,
     this.httpErrorMessage,
     this.httpErrorStatusCode,
     this.id,
@@ -134598,6 +147998,13 @@ class Operation {
         error: json_.containsKey('error')
             ? OperationError.fromJson(
                 json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        getVersionOperationMetadata:
+            json_.containsKey('getVersionOperationMetadata')
+            ? GetVersionOperationMetadata.fromJson(
+                json_['getVersionOperationMetadata']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         httpErrorMessage: json_['httpErrorMessage'] as core.String?,
@@ -134647,6 +148054,7 @@ class Operation {
     final description = this.description;
     final endTime = this.endTime;
     final error = this.error;
+    final getVersionOperationMetadata = this.getVersionOperationMetadata;
     final httpErrorMessage = this.httpErrorMessage;
     final httpErrorStatusCode = this.httpErrorStatusCode;
     final id = this.id;
@@ -134676,6 +148084,7 @@ class Operation {
       'description': ?description,
       'endTime': ?endTime,
       'error': ?error,
+      'getVersionOperationMetadata': ?getVersionOperationMetadata,
       'httpErrorMessage': ?httpErrorMessage,
       'httpErrorStatusCode': ?httpErrorStatusCode,
       'id': ?id,
@@ -141407,6 +154816,8 @@ class RegionDiskTypeList {
   }
 }
 
+typedef RegionDiskUpdateKmsKeyRequest = $DiskUpdateKmsKeyRequest;
+
 class RegionDisksAddResourcePoliciesRequest {
   /// Resource policies to be added to this disk.
   core.List<core.String>? resourcePolicies;
@@ -141963,6 +155374,281 @@ class RegionInstanceGroupManagerPatchInstanceConfigReq {
   core.Map<core.String, core.dynamic> toJson() {
     final perInstanceConfigs = this.perInstanceConfigs;
     return {'perInstanceConfigs': ?perInstanceConfigs};
+  }
+}
+
+class RegionInstanceGroupManagerResizeRequestsListResponseWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  RegionInstanceGroupManagerResizeRequestsListResponseWarningData({
+    this.key,
+    this.value,
+  });
+
+  RegionInstanceGroupManagerResizeRequestsListResponseWarningData.fromJson(
+    core.Map json_,
+  ) : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class RegionInstanceGroupManagerResizeRequestsListResponseWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<RegionInstanceGroupManagerResizeRequestsListResponseWarningData>?
+  data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  RegionInstanceGroupManagerResizeRequestsListResponseWarning({
+    this.code,
+    this.data,
+    this.message,
+  });
+
+  RegionInstanceGroupManagerResizeRequestsListResponseWarning.fromJson(
+    core.Map json_,
+  ) : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) =>
+                  RegionInstanceGroupManagerResizeRequestsListResponseWarningData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class RegionInstanceGroupManagerResizeRequestsListResponse {
+  core.String? etag;
+
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of Resize Request resources.
+  core.List<InstanceGroupManagerResizeRequest>? items;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#regionInstanceGroupManagerResizeRequestList for
+  /// a list of Resize Requests.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  /// end_interface: MixerListResponseWithEtagBuilder
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  RegionInstanceGroupManagerResizeRequestsListResponseWarning? warning;
+
+  RegionInstanceGroupManagerResizeRequestsListResponse({
+    this.etag,
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  RegionInstanceGroupManagerResizeRequestsListResponse.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => InstanceGroupManagerResizeRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? RegionInstanceGroupManagerResizeRequestsListResponseWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
   }
 }
 
@@ -143268,6 +156954,32 @@ class RegionSetPolicyRequest {
   }
 }
 
+class RegionSnapshotUpdateKmsKeyRequest {
+  /// The new KMS key to replace the current one on the snapshot.
+  ///
+  /// If empty, the
+  /// snapshot will be re-encrypted using the primary version of the snapshot's
+  /// current KMS key.
+  ///
+  /// The KMS key can be provided in the following formats:
+  ///
+  ///
+  /// - projects/project_id/locations/region/keyRings/region/cryptoKeys/key
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  RegionSnapshotUpdateKmsKeyRequest({this.kmsKeyName});
+
+  RegionSnapshotUpdateKmsKeyRequest.fromJson(core.Map json_)
+    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKeyName = this.kmsKeyName;
+    return {'kmsKeyName': ?kmsKeyName};
+  }
+}
+
 class RegionTargetHttpsProxiesSetSslCertificatesRequest {
   /// New set of SslCertificate resources to associate
   /// with this TargetHttpsProxy resource.
@@ -143367,6 +157079,12 @@ class Reservation {
   /// Output only.
   core.String? commitment;
 
+  ///
+  /// Possible string values are:
+  /// - "CONFIDENTIAL_COMPUTE_TYPE_TDX" : Intel Trust Domain Extensions.
+  /// - "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
+  core.String? confidentialComputeType;
+
   /// Creation timestamp inRFC3339
   /// text format.
   ///
@@ -143395,6 +157113,15 @@ class Reservation {
   /// Provide this property when you
   /// create the resource.
   core.String? description;
+
+  /// Indicates the early access maintenance for the reservation.
+  /// If this field is absent or set to NO_EARLY_ACCESS, the reservation is not
+  /// enrolled in early access maintenance and the standard notice applies.
+  /// Possible string values are:
+  /// - "NO_EARLY_ACCESS" : No early access.
+  /// - "WAVE1" : Wave 1: Fastest notification period
+  /// - "WAVE2" : Wave 2: Medium notification period
+  core.String? earlyAccessMaintenance;
 
   /// Indicates whether Compute Engine allows unplanned maintenance for your
   /// VMs;
@@ -143436,6 +157163,12 @@ class Reservation {
   /// cannot
   /// be a dash.
   core.String? name;
+
+  /// Input only.
+  ///
+  /// Additional params passed with the request, but not persisted
+  /// as part of resource payload.
+  ReservationParams? params;
 
   /// Protection tier for the workload which specifies the workload expectations
   /// in the event of infrastructure failures at data center (e.g. power
@@ -143543,16 +157276,19 @@ class Reservation {
     this.advancedDeploymentControl,
     this.aggregateReservation,
     this.commitment,
+    this.confidentialComputeType,
     this.creationTimestamp,
     this.deleteAfterDuration,
     this.deleteAtTime,
     this.deploymentType,
     this.description,
+    this.earlyAccessMaintenance,
     this.enableEmergentMaintenance,
     this.id,
     this.kind,
     this.linkedCommitments,
     this.name,
+    this.params,
     this.protectionTier,
     this.reservationSharingPolicy,
     this.resourcePolicies,
@@ -143583,6 +157319,8 @@ class Reservation {
               )
             : null,
         commitment: json_['commitment'] as core.String?,
+        confidentialComputeType:
+            json_['confidentialComputeType'] as core.String?,
         creationTimestamp: json_['creationTimestamp'] as core.String?,
         deleteAfterDuration: json_.containsKey('deleteAfterDuration')
             ? Duration.fromJson(
@@ -143593,6 +157331,7 @@ class Reservation {
         deleteAtTime: json_['deleteAtTime'] as core.String?,
         deploymentType: json_['deploymentType'] as core.String?,
         description: json_['description'] as core.String?,
+        earlyAccessMaintenance: json_['earlyAccessMaintenance'] as core.String?,
         enableEmergentMaintenance:
             json_['enableEmergentMaintenance'] as core.bool?,
         id: json_['id'] as core.String?,
@@ -143601,6 +157340,11 @@ class Reservation {
             ?.map((value) => value as core.String)
             .toList(),
         name: json_['name'] as core.String?,
+        params: json_.containsKey('params')
+            ? ReservationParams.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         protectionTier: json_['protectionTier'] as core.String?,
         reservationSharingPolicy: json_.containsKey('reservationSharingPolicy')
             ? AllocationReservationSharingPolicy.fromJson(
@@ -143640,16 +157384,19 @@ class Reservation {
     final advancedDeploymentControl = this.advancedDeploymentControl;
     final aggregateReservation = this.aggregateReservation;
     final commitment = this.commitment;
+    final confidentialComputeType = this.confidentialComputeType;
     final creationTimestamp = this.creationTimestamp;
     final deleteAfterDuration = this.deleteAfterDuration;
     final deleteAtTime = this.deleteAtTime;
     final deploymentType = this.deploymentType;
     final description = this.description;
+    final earlyAccessMaintenance = this.earlyAccessMaintenance;
     final enableEmergentMaintenance = this.enableEmergentMaintenance;
     final id = this.id;
     final kind = this.kind;
     final linkedCommitments = this.linkedCommitments;
     final name = this.name;
+    final params = this.params;
     final protectionTier = this.protectionTier;
     final reservationSharingPolicy = this.reservationSharingPolicy;
     final resourcePolicies = this.resourcePolicies;
@@ -143666,16 +157413,19 @@ class Reservation {
       'advancedDeploymentControl': ?advancedDeploymentControl,
       'aggregateReservation': ?aggregateReservation,
       'commitment': ?commitment,
+      'confidentialComputeType': ?confidentialComputeType,
       'creationTimestamp': ?creationTimestamp,
       'deleteAfterDuration': ?deleteAfterDuration,
       'deleteAtTime': ?deleteAtTime,
       'deploymentType': ?deploymentType,
       'description': ?description,
+      'earlyAccessMaintenance': ?earlyAccessMaintenance,
       'enableEmergentMaintenance': ?enableEmergentMaintenance,
       'id': ?id,
       'kind': ?kind,
       'linkedCommitments': ?linkedCommitments,
       'name': ?name,
+      'params': ?params,
       'protectionTier': ?protectionTier,
       'reservationSharingPolicy': ?reservationSharingPolicy,
       'resourcePolicies': ?resourcePolicies,
@@ -144881,6 +158631,35 @@ class ReservationList {
   }
 }
 
+/// Additional reservation params.
+class ReservationParams {
+  /// Input only.
+  ///
+  /// Resource manager tags to be bound to the reservation. Tag keys and
+  /// values have the same definition as resource
+  /// manager tags. Keys and values can be either in numeric format,
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// `{tag_value_short_name}`. The field is ignored (both PUT &
+  /// PATCH) when empty.
+  core.Map<core.String, core.String>? resourceManagerTags;
+
+  ReservationParams({this.resourceManagerTags});
+
+  ReservationParams.fromJson(core.Map json_)
+    : this(
+        resourceManagerTags:
+            (json_['resourceManagerTags']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceManagerTags = this.resourceManagerTags;
+    return {'resourceManagerTags': ?resourceManagerTags};
+  }
+}
+
 /// Represents a reservation slot resource.
 class ReservationSlot {
   /// The creation timestamp, formatted asRFC3339 text.
@@ -144940,6 +158719,7 @@ class ReservationSlot {
   /// - "CREATING" : The resources are being allocated for the reservation slot.
   /// - "DELETING" : The reservation slot is currently being deleted.
   /// - "STATE_UNSPECIFIED"
+  /// - "UNAVAILABLE" : The reservation slot is currently unavailable.
   core.String? state;
 
   /// The status of the reservation slot.
@@ -145132,6 +158912,27 @@ class ReservationSlotsGetResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final resource = this.resource;
     return {'resource': ?resource};
+  }
+}
+
+class ReservationSlotsGetVersionRequest {
+  /// The SBOM selection to return.
+  ///
+  /// Duplicate values in the list will be ignored.
+  core.List<core.String>? sbomSelections;
+
+  ReservationSlotsGetVersionRequest({this.sbomSelections});
+
+  ReservationSlotsGetVersionRequest.fromJson(core.Map json_)
+    : this(
+        sbomSelections: (json_['sbomSelections'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sbomSelections = this.sbomSelections;
+    return {'sbomSelections': ?sbomSelections};
   }
 }
 
@@ -145665,6 +159466,25 @@ class ReservationSubBlocksGetResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final resource = this.resource;
     return {'resource': ?resource};
+  }
+}
+
+class ReservationSubBlocksGetVersionRequest {
+  /// The SBOM selection to return.
+  core.List<core.String>? sbomSelections;
+
+  ReservationSubBlocksGetVersionRequest({this.sbomSelections});
+
+  ReservationSubBlocksGetVersionRequest.fromJson(core.Map json_)
+    : this(
+        sbomSelections: (json_['sbomSelections'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sbomSelections = this.sbomSelections;
+    return {'sbomSelections': ?sbomSelections};
   }
 }
 
@@ -147731,6 +161551,18 @@ class ResourcePolicyWorkloadPolicy {
   /// interconnected GPUs.
   core.String? acceleratorTopology;
 
+  /// Specifies the connection mode for the accelerator topology.
+  ///
+  /// If not
+  /// specified, the default is AUTO_CONNECT.
+  /// Possible string values are:
+  /// - "AUTO_CONNECT" : The interconnected chips are pre-configured at the time
+  /// of VM creation.
+  /// - "PROVISION_ONLY" : The interconnected chips are connected on demand. At
+  /// the time of VM
+  /// creation, the chips are not connected.
+  core.String? acceleratorTopologyMode;
+
   /// Specifies the maximum distance between instances.
   /// Possible string values are:
   /// - "BLOCK" : VMs must be provisioned in the same block.
@@ -147749,6 +161581,7 @@ class ResourcePolicyWorkloadPolicy {
 
   ResourcePolicyWorkloadPolicy({
     this.acceleratorTopology,
+    this.acceleratorTopologyMode,
     this.maxTopologyDistance,
     this.type,
   });
@@ -147756,16 +161589,20 @@ class ResourcePolicyWorkloadPolicy {
   ResourcePolicyWorkloadPolicy.fromJson(core.Map json_)
     : this(
         acceleratorTopology: json_['acceleratorTopology'] as core.String?,
+        acceleratorTopologyMode:
+            json_['acceleratorTopologyMode'] as core.String?,
         maxTopologyDistance: json_['maxTopologyDistance'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final acceleratorTopology = this.acceleratorTopology;
+    final acceleratorTopologyMode = this.acceleratorTopologyMode;
     final maxTopologyDistance = this.maxTopologyDistance;
     final type = this.type;
     return {
       'acceleratorTopology': ?acceleratorTopology,
+      'acceleratorTopologyMode': ?acceleratorTopologyMode,
       'maxTopologyDistance': ?maxTopologyDistance,
       'type': ?type,
     };
@@ -147888,6 +161725,9 @@ class ResourceStatusEffectiveInstanceMetadata {
   /// Effective enable-oslogin value at Instance level.
   core.bool? enableOsloginMetadataValue;
 
+  /// Effective gce-container-declaration value at Instance level.
+  core.bool? gceContainerDeclarationMetadataValue;
+
   /// Effective serial-port-enable value at Instance level.
   core.bool? serialPortEnableMetadataValue;
 
@@ -147903,6 +161743,7 @@ class ResourceStatusEffectiveInstanceMetadata {
     this.enableOsInventoryMetadataValue,
     this.enableOsconfigMetadataValue,
     this.enableOsloginMetadataValue,
+    this.gceContainerDeclarationMetadataValue,
     this.serialPortEnableMetadataValue,
     this.serialPortLoggingEnableMetadataValue,
     this.vmDnsSettingMetadataValue,
@@ -147920,6 +161761,8 @@ class ResourceStatusEffectiveInstanceMetadata {
             json_['enableOsconfigMetadataValue'] as core.bool?,
         enableOsloginMetadataValue:
             json_['enableOsloginMetadataValue'] as core.bool?,
+        gceContainerDeclarationMetadataValue:
+            json_['gceContainerDeclarationMetadataValue'] as core.bool?,
         serialPortEnableMetadataValue:
             json_['serialPortEnableMetadataValue'] as core.bool?,
         serialPortLoggingEnableMetadataValue:
@@ -147936,6 +161779,8 @@ class ResourceStatusEffectiveInstanceMetadata {
     final enableOsInventoryMetadataValue = this.enableOsInventoryMetadataValue;
     final enableOsconfigMetadataValue = this.enableOsconfigMetadataValue;
     final enableOsloginMetadataValue = this.enableOsloginMetadataValue;
+    final gceContainerDeclarationMetadataValue =
+        this.gceContainerDeclarationMetadataValue;
     final serialPortEnableMetadataValue = this.serialPortEnableMetadataValue;
     final serialPortLoggingEnableMetadataValue =
         this.serialPortLoggingEnableMetadataValue;
@@ -147946,6 +161791,8 @@ class ResourceStatusEffectiveInstanceMetadata {
       'enableOsInventoryMetadataValue': ?enableOsInventoryMetadataValue,
       'enableOsconfigMetadataValue': ?enableOsconfigMetadataValue,
       'enableOsloginMetadataValue': ?enableOsloginMetadataValue,
+      'gceContainerDeclarationMetadataValue':
+          ?gceContainerDeclarationMetadataValue,
       'serialPortEnableMetadataValue': ?serialPortEnableMetadataValue,
       'serialPortLoggingEnableMetadataValue':
           ?serialPortLoggingEnableMetadataValue,
@@ -156495,6 +170342,9 @@ class ServiceAttachmentConnectedEndpoint {
   /// The url of a connected endpoint.
   core.String? endpoint;
 
+  /// The url of a connected endpoint with resource id.
+  core.String? endpointWithId;
+
   /// NAT IPs of the connected PSC endpoint and those of other endpoints
   /// propagated from it.
   core.List<core.String>? natIps;
@@ -156523,6 +170373,7 @@ class ServiceAttachmentConnectedEndpoint {
   ServiceAttachmentConnectedEndpoint({
     this.consumerNetwork,
     this.endpoint,
+    this.endpointWithId,
     this.natIps,
     this.propagatedConnectionCount,
     this.pscConnectionId,
@@ -156533,6 +170384,7 @@ class ServiceAttachmentConnectedEndpoint {
     : this(
         consumerNetwork: json_['consumerNetwork'] as core.String?,
         endpoint: json_['endpoint'] as core.String?,
+        endpointWithId: json_['endpointWithId'] as core.String?,
         natIps: (json_['natIps'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -156545,6 +170397,7 @@ class ServiceAttachmentConnectedEndpoint {
   core.Map<core.String, core.dynamic> toJson() {
     final consumerNetwork = this.consumerNetwork;
     final endpoint = this.endpoint;
+    final endpointWithId = this.endpointWithId;
     final natIps = this.natIps;
     final propagatedConnectionCount = this.propagatedConnectionCount;
     final pscConnectionId = this.pscConnectionId;
@@ -156552,6 +170405,7 @@ class ServiceAttachmentConnectedEndpoint {
     return {
       'consumerNetwork': ?consumerNetwork,
       'endpoint': ?endpoint,
+      'endpointWithId': ?endpointWithId,
       'natIps': ?natIps,
       'propagatedConnectionCount': ?propagatedConnectionCount,
       'pscConnectionId': ?pscConnectionId,
@@ -156567,6 +170421,9 @@ class ServiceAttachmentConsumerProjectLimit {
   /// more than 1.
   core.int? connectionLimit;
 
+  /// The URL for the PSC endpoint to accept
+  core.String? endpointUrl;
+
   /// The network URL for the network to set the limit for.
   core.String? networkUrl;
 
@@ -156575,6 +170432,7 @@ class ServiceAttachmentConsumerProjectLimit {
 
   ServiceAttachmentConsumerProjectLimit({
     this.connectionLimit,
+    this.endpointUrl,
     this.networkUrl,
     this.projectIdOrNum,
   });
@@ -156582,16 +170440,19 @@ class ServiceAttachmentConsumerProjectLimit {
   ServiceAttachmentConsumerProjectLimit.fromJson(core.Map json_)
     : this(
         connectionLimit: json_['connectionLimit'] as core.int?,
+        endpointUrl: json_['endpointUrl'] as core.String?,
         networkUrl: json_['networkUrl'] as core.String?,
         projectIdOrNum: json_['projectIdOrNum'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final connectionLimit = this.connectionLimit;
+    final endpointUrl = this.endpointUrl;
     final networkUrl = this.networkUrl;
     final projectIdOrNum = this.projectIdOrNum;
     return {
       'connectionLimit': ?connectionLimit,
+      'endpointUrl': ?endpointUrl,
       'networkUrl': ?networkUrl,
       'projectIdOrNum': ?projectIdOrNum,
     };
@@ -157542,6 +171403,14 @@ class Snapshot {
   /// as part of resource payload.
   SnapshotParams? params;
 
+  /// URL of the region where the snapshot resides.
+  ///
+  /// Only applicable
+  /// for regional snapshots.
+  ///
+  /// Output only.
+  core.String? region;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -157575,6 +171444,22 @@ class Snapshot {
   /// you
   /// do not need to provide a key to use the snapshot later.
   CustomerEncryptionKey? snapshotEncryptionKey;
+
+  /// The unique ID of the snapshot group that this snapshot
+  /// belongs to.
+  ///
+  /// The usage of snapshot group feature is restricted.
+  ///
+  /// Output only.
+  core.String? snapshotGroupId;
+
+  /// The snapshot group that this snapshot belongs to.
+  ///
+  /// The usage
+  /// of snapshot group feature is restricted.
+  ///
+  /// Output only.
+  core.String? snapshotGroupName;
 
   /// Indicates the type of the snapshot.
   /// Possible string values are:
@@ -157707,10 +171592,13 @@ class Snapshot {
     this.locationHint,
     this.name,
     this.params,
+    this.region,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.selfLink,
     this.snapshotEncryptionKey,
+    this.snapshotGroupId,
+    this.snapshotGroupName,
     this.snapshotType,
     this.sourceDisk,
     this.sourceDiskEncryptionKey,
@@ -157766,6 +171654,7 @@ class Snapshot {
                 json_['params'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        region: json_['region'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         selfLink: json_['selfLink'] as core.String?,
@@ -157775,6 +171664,8 @@ class Snapshot {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        snapshotGroupId: json_['snapshotGroupId'] as core.String?,
+        snapshotGroupName: json_['snapshotGroupName'] as core.String?,
         snapshotType: json_['snapshotType'] as core.String?,
         sourceDisk: json_['sourceDisk'] as core.String?,
         sourceDiskEncryptionKey: json_.containsKey('sourceDiskEncryptionKey')
@@ -157829,10 +171720,13 @@ class Snapshot {
     final locationHint = this.locationHint;
     final name = this.name;
     final params = this.params;
+    final region = this.region;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
     final selfLink = this.selfLink;
     final snapshotEncryptionKey = this.snapshotEncryptionKey;
+    final snapshotGroupId = this.snapshotGroupId;
+    final snapshotGroupName = this.snapshotGroupName;
     final snapshotType = this.snapshotType;
     final sourceDisk = this.sourceDisk;
     final sourceDiskEncryptionKey = this.sourceDiskEncryptionKey;
@@ -157870,10 +171764,13 @@ class Snapshot {
       'locationHint': ?locationHint,
       'name': ?name,
       'params': ?params,
+      'region': ?region,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
       'selfLink': ?selfLink,
       'snapshotEncryptionKey': ?snapshotEncryptionKey,
+      'snapshotGroupId': ?snapshotGroupId,
+      'snapshotGroupName': ?snapshotGroupName,
       'snapshotType': ?snapshotType,
       'sourceDisk': ?sourceDisk,
       'sourceDiskEncryptionKey': ?sourceDiskEncryptionKey,
@@ -157888,6 +171785,61 @@ class Snapshot {
       'storageBytes': ?storageBytes,
       'storageBytesStatus': ?storageBytesStatus,
       'storageLocations': ?storageLocations,
+    };
+  }
+}
+
+class SnapshotGroupParameters {
+  /// URLs of the zones where disks should be replicated to.
+  ///
+  /// Only applicable
+  /// for regional resources.
+  core.List<core.String>? replicaZones;
+
+  /// The source snapshot group used to create disks.
+  ///
+  /// You can provide this as a
+  /// partial or full URL to the resource. For example, the following are valid
+  /// values:
+  ///
+  ///
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/global/snapshotGroups/snapshotGroup
+  ///    - projects/project/global/snapshotGroups/snapshotGroup
+  ///      - global/snapshotGroups/snapshotGroup
+  core.String? sourceSnapshotGroup;
+
+  /// URL of the disk type resource describing which disk type to use to create
+  /// disks.
+  ///
+  /// Provide this when creating the disk. For
+  /// example:projects/project/zones/zone/diskTypes/pd-ssd. See Persistent disk
+  /// types.
+  core.String? type;
+
+  SnapshotGroupParameters({
+    this.replicaZones,
+    this.sourceSnapshotGroup,
+    this.type,
+  });
+
+  SnapshotGroupParameters.fromJson(core.Map json_)
+    : this(
+        replicaZones: (json_['replicaZones'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        sourceSnapshotGroup: json_['sourceSnapshotGroup'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final replicaZones = this.replicaZones;
+    final sourceSnapshotGroup = this.sourceSnapshotGroup;
+    final type = this.type;
+    return {
+      'replicaZones': ?replicaZones,
+      'sourceSnapshotGroup': ?sourceSnapshotGroup,
+      'type': ?type,
     };
   }
 }
@@ -158138,9 +172090,10 @@ class SnapshotList {
 
 /// Additional snapshot params.
 class SnapshotParams {
-  /// Resource manager tags to be bound to the snapshot.
+  /// Input only.
   ///
-  /// Tag keys and values have
+  /// Resource manager tags to be bound to the snapshot. Tag keys and values
+  /// have
   /// the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
   /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
@@ -158166,14 +172119,23 @@ class SnapshotParams {
 }
 
 class SnapshotSettings {
+  /// (Regional snapshots use only)Policy of which location is allowed to access
+  /// snapshot.
+  SnapshotSettingsAccessLocation? accessLocation;
+
   /// Policy of which storage location is going to be resolved, and additional
   /// data that particularizes how the policy is going to be carried out.
   SnapshotSettingsStorageLocationSettings? storageLocation;
 
-  SnapshotSettings({this.storageLocation});
+  SnapshotSettings({this.accessLocation, this.storageLocation});
 
   SnapshotSettings.fromJson(core.Map json_)
     : this(
+        accessLocation: json_.containsKey('accessLocation')
+            ? SnapshotSettingsAccessLocation.fromJson(
+                json_['accessLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         storageLocation: json_.containsKey('storageLocation')
             ? SnapshotSettingsStorageLocationSettings.fromJson(
                 json_['storageLocation'] as core.Map<core.String, core.dynamic>,
@@ -158182,8 +172144,67 @@ class SnapshotSettings {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final accessLocation = this.accessLocation;
     final storageLocation = this.storageLocation;
-    return {'storageLocation': ?storageLocation};
+    return {
+      'accessLocation': ?accessLocation,
+      'storageLocation': ?storageLocation,
+    };
+  }
+}
+
+class SnapshotSettingsAccessLocation {
+  /// List of regions that can restore a regional
+  ///  snapshot from the current region
+  core.Map<core.String, SnapshotSettingsAccessLocationAccessLocationPreference>?
+  locations;
+
+  /// Policy of which location is allowed to access snapshot.
+  /// Possible string values are:
+  /// - "ALL_REGIONS" : Any regions will be able to access the source location.
+  /// - "POLICY_UNSPECIFIED"
+  /// - "SPECIFIC_REGIONS" : Only allowlisted regions will be able to restore
+  /// region scoped
+  /// snapshots
+  core.String? policy;
+
+  SnapshotSettingsAccessLocation({this.locations, this.policy});
+
+  SnapshotSettingsAccessLocation.fromJson(core.Map json_)
+    : this(
+        locations: (json_['locations'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SnapshotSettingsAccessLocationAccessLocationPreference.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        policy: json_['policy'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final policy = this.policy;
+    return {'locations': ?locations, 'policy': ?policy};
+  }
+}
+
+/// A structure for specifying an allowed target region.
+class SnapshotSettingsAccessLocationAccessLocationPreference {
+  /// Accessible region name
+  core.String? region;
+
+  SnapshotSettingsAccessLocationAccessLocationPreference({this.region});
+
+  SnapshotSettingsAccessLocationAccessLocationPreference.fromJson(
+    core.Map json_,
+  ) : this(region: json_['region'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final region = this.region;
+    return {'region': ?region};
   }
 }
 
@@ -158254,6 +172275,32 @@ class SnapshotSettingsStorageLocationSettingsStorageLocationPreference {
   core.Map<core.String, core.dynamic> toJson() {
     final name = this.name;
     return {'name': ?name};
+  }
+}
+
+class SnapshotUpdateKmsKeyRequest {
+  /// The new KMS key to replace the current one on the snapshot.
+  ///
+  /// If empty, the
+  /// snapshot will be re-encrypted using the primary version of the snapshot's
+  /// current KMS key.
+  ///
+  /// The KMS key can be provided in the following formats:
+  ///
+  ///
+  /// - projects/project_id/locations/region/keyRings/key_ring/cryptoKeys/key
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  SnapshotUpdateKmsKeyRequest({this.kmsKeyName});
+
+  SnapshotUpdateKmsKeyRequest.fromJson(core.Map json_)
+    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKeyName = this.kmsKeyName;
+    return {'kmsKeyName': ?kmsKeyName};
   }
 }
 
@@ -160522,9 +174569,10 @@ class SslPolicy {
   /// Profile specifies the set of SSL features that can be used by the load
   /// balancer when negotiating SSL with clients.
   ///
-  /// This can be one ofCOMPATIBLE, MODERN, RESTRICTED, orCUSTOM. If using
-  /// CUSTOM, the set of SSL features
-  /// to enable must be specified in the customFeatures field.
+  /// This can be one ofCOMPATIBLE, MODERN, RESTRICTED,FIPS_202205, or CUSTOM.
+  /// If usingCUSTOM, the set of SSL features to enable must be specified in
+  /// the customFeatures field. If using FIPS_202205,
+  /// the min_tls_version field must be set to TLS_1_2.
   /// Possible string values are:
   /// - "COMPATIBLE" : Compatible profile. Allows the broadset set of clients,
   /// even those which
@@ -170843,6 +184891,13 @@ class TargetVpnGateway {
   /// client when the VPN gateway is created.
   core.String? network;
 
+  /// Input only.
+  ///
+  /// \[Input Only\] Additional params passed with the request, but not
+  /// persisted
+  /// as part of resource payload.
+  TargetVpnGatewayParams? params;
+
   /// URL of the region where the target VPN gateway resides.
   /// You must specify this field as part of the HTTP request URL.
   ///
@@ -170887,6 +184942,7 @@ class TargetVpnGateway {
     this.labels,
     this.name,
     this.network,
+    this.params,
     this.region,
     this.selfLink,
     this.status,
@@ -170908,6 +184964,11 @@ class TargetVpnGateway {
         ),
         name: json_['name'] as core.String?,
         network: json_['network'] as core.String?,
+        params: json_.containsKey('params')
+            ? TargetVpnGatewayParams.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         region: json_['region'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
         status: json_['status'] as core.String?,
@@ -170926,6 +184987,7 @@ class TargetVpnGateway {
     final labels = this.labels;
     final name = this.name;
     final network = this.network;
+    final params = this.params;
     final region = this.region;
     final selfLink = this.selfLink;
     final status = this.status;
@@ -170940,6 +185002,7 @@ class TargetVpnGateway {
       'labels': ?labels,
       'name': ?name,
       'network': ?network,
+      'params': ?params,
       'region': ?region,
       'selfLink': ?selfLink,
       'status': ?status,
@@ -171450,6 +185513,8 @@ class TargetVpnGatewayList {
     };
   }
 }
+
+typedef TargetVpnGatewayParams = $Params01;
 
 class TargetVpnGatewaysScopedListWarningData {
   /// A key that provides more detail on the warning being
@@ -174218,6 +188283,556 @@ class VmEndpointNatMappingsList {
   }
 }
 
+/// Represents a VM extension policy.
+class VmExtensionPolicy {
+  /// Creation timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  core.String? description;
+
+  /// A map of extension names (for example, "ops-agent") to their corresponding
+  /// policy configurations.
+  ///
+  /// Required.
+  core.Map<core.String, VmExtensionPolicyExtensionPolicy>? extensionPolicies;
+
+  /// Link to the global policy that manages this zone policy, if
+  /// applicable.
+  ///
+  /// Optional. Output only.
+  core.String? globalResourceLink;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Selectors to target VMs for this policy.
+  ///
+  /// VMs are selected if they match
+  /// *any* of the provided selectors (logical OR). If this list is empty, the
+  /// policy applies to all VMs.
+  ///
+  /// Optional.
+  core.List<VmExtensionPolicyInstanceSelector>? instanceSelectors;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#vmExtensionPolicy.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Indicates if this policy is managed by a global policy.
+  ///
+  /// Optional. Output only.
+  core.bool? managedByGlobal;
+
+  /// Name of the resource.
+  ///
+  /// Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply withRFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?`
+  /// which means the first character must be a lowercase letter, and all
+  /// following characters must be a dash, lowercase letter, or digit, except
+  /// the last character, which cannot be a dash.
+  core.String? name;
+
+  /// Priority of this policy.
+  ///
+  /// Used to resolve conflicts when multiple policies
+  /// apply to the same extension.
+  /// The policy priority is an integer from 0 to 65535, inclusive. Lower
+  /// integers indicate higher priorities. If you do not specify a priority when
+  /// creating a rule, it is assigned a priority of 1000. If priorities are
+  /// equal, the policy with the most recent creation timestamp takes
+  /// precedence.
+  ///
+  /// Optional.
+  core.int? priority;
+
+  /// Server-defined fully-qualified URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Server-defined URL for this resource's resource id.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
+  /// Current state of the policy: ACTIVE or DELETING.
+  ///
+  /// Optional. Output only.
+  /// Possible string values are:
+  /// - "ACTIVE" : The policy is active and applied to matching VMs.
+  /// Newly created VMs that match the policy will also receive the
+  /// extension policy.
+  /// - "DELETING" : The policy is in the process of being deleted. After the
+  /// extension is
+  /// removed from all matching VMs, the policy will be deleted.
+  /// - "STATE_UNSPECIFIED" : Default value. Do not use.
+  core.String? state;
+
+  /// Update timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? updateTimestamp;
+
+  VmExtensionPolicy({
+    this.creationTimestamp,
+    this.description,
+    this.extensionPolicies,
+    this.globalResourceLink,
+    this.id,
+    this.instanceSelectors,
+    this.kind,
+    this.managedByGlobal,
+    this.name,
+    this.priority,
+    this.selfLink,
+    this.selfLinkWithId,
+    this.state,
+    this.updateTimestamp,
+  });
+
+  VmExtensionPolicy.fromJson(core.Map json_)
+    : this(
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        extensionPolicies:
+            (json_['extensionPolicies'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    VmExtensionPolicyExtensionPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        globalResourceLink: json_['globalResourceLink'] as core.String?,
+        id: json_['id'] as core.String?,
+        instanceSelectors: (json_['instanceSelectors'] as core.List?)
+            ?.map(
+              (value) => VmExtensionPolicyInstanceSelector.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        managedByGlobal: json_['managedByGlobal'] as core.bool?,
+        name: json_['name'] as core.String?,
+        priority: json_['priority'] as core.int?,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTimestamp: json_['updateTimestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final extensionPolicies = this.extensionPolicies;
+    final globalResourceLink = this.globalResourceLink;
+    final id = this.id;
+    final instanceSelectors = this.instanceSelectors;
+    final kind = this.kind;
+    final managedByGlobal = this.managedByGlobal;
+    final name = this.name;
+    final priority = this.priority;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    final state = this.state;
+    final updateTimestamp = this.updateTimestamp;
+    return {
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'extensionPolicies': ?extensionPolicies,
+      'globalResourceLink': ?globalResourceLink,
+      'id': ?id,
+      'instanceSelectors': ?instanceSelectors,
+      'kind': ?kind,
+      'managedByGlobal': ?managedByGlobal,
+      'name': ?name,
+      'priority': ?priority,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+      'state': ?state,
+      'updateTimestamp': ?updateTimestamp,
+    };
+  }
+}
+
+/// Configuration for a specific VM extension.
+class VmExtensionPolicyExtensionPolicy {
+  /// The specific version of the extension to install.
+  ///
+  /// If not set, the latest
+  /// version is used.
+  ///
+  /// Optional.
+  core.String? pinnedVersion;
+
+  /// String-based configuration data for the extension.
+  ///
+  /// Optional.
+  core.String? stringConfig;
+
+  VmExtensionPolicyExtensionPolicy({this.pinnedVersion, this.stringConfig});
+
+  VmExtensionPolicyExtensionPolicy.fromJson(core.Map json_)
+    : this(
+        pinnedVersion: json_['pinnedVersion'] as core.String?,
+        stringConfig: json_['stringConfig'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pinnedVersion = this.pinnedVersion;
+    final stringConfig = this.stringConfig;
+    return {'pinnedVersion': ?pinnedVersion, 'stringConfig': ?stringConfig};
+  }
+}
+
+/// Defines how to select VMs to apply a zone VM extension policy.
+class VmExtensionPolicyInstanceSelector {
+  /// LabelSelector selects VMs based on their labels.
+  ///
+  /// Optional.
+  VmExtensionPolicyLabelSelector? labelSelector;
+
+  VmExtensionPolicyInstanceSelector({this.labelSelector});
+
+  VmExtensionPolicyInstanceSelector.fromJson(core.Map json_)
+    : this(
+        labelSelector: json_.containsKey('labelSelector')
+            ? VmExtensionPolicyLabelSelector.fromJson(
+                json_['labelSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final labelSelector = this.labelSelector;
+    return {'labelSelector': ?labelSelector};
+  }
+}
+
+/// A LabelSelector is applied to a VM only if it matches all the specified
+/// labels.
+class VmExtensionPolicyLabelSelector {
+  /// A map of key-value pairs representing VM labels.
+  /// VMs must have all of the labels specified in this map to be selected
+  /// (logical AND).
+  ///
+  /// e.g. If the `inclusion_labels` are {("key1", "value1"), ("key2",
+  /// "value2")}, the VM labels must contain both ("key1", "value1") and
+  /// ("key2", "value2") to be selected.
+  ///
+  /// If the VM labels are ("key1",
+  /// "value1") and ("something", "else"), it will not be selected.
+  ///
+  /// If the map is empty, it's considered a match.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? inclusionLabels;
+
+  VmExtensionPolicyLabelSelector({this.inclusionLabels});
+
+  VmExtensionPolicyLabelSelector.fromJson(core.Map json_)
+    : this(
+        inclusionLabels:
+            (json_['inclusionLabels'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final inclusionLabels = this.inclusionLabels;
+    return {'inclusionLabels': ?inclusionLabels};
+  }
+}
+
+class VmExtensionPolicyListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  VmExtensionPolicyListWarningData({this.key, this.value});
+
+  VmExtensionPolicyListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class VmExtensionPolicyListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }
+  ///
+  /// Output only.
+  core.List<VmExtensionPolicyListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  VmExtensionPolicyListWarning({this.code, this.data, this.message});
+
+  VmExtensionPolicyListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => VmExtensionPolicyListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class VmExtensionPolicyList {
+  /// Fingerprint of this resource.
+  ///
+  /// A hash of the contents stored
+  /// in this object. This field is used in optimistic locking. This field will
+  /// be ignored when inserting a VmExtensionPolicy. An up-to-date
+  /// fingerprint must be provided in order to update the VmExtensionPolicy.
+  ///
+  /// To see the latest value of the fingerprint, make a get() request to
+  /// retrieve a VmExtensionPolicy.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of VM extension policy resources.
+  ///
+  /// Output only.
+  core.List<VmExtensionPolicy>? items;
+
+  /// Type of resource.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  VmExtensionPolicyListWarning? warning;
+
+  VmExtensionPolicyList({
+    this.etag,
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  VmExtensionPolicyList.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => VmExtensionPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? VmExtensionPolicyListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
 /// Represents a HA VPN gateway.
 ///
 /// HA VPN is a high-availability (HA) Cloud VPN solution that lets you securely
@@ -174311,6 +188926,13 @@ class VpnGateway {
   /// client when the VPN gateway is created.
   core.String? network;
 
+  /// Input only.
+  ///
+  /// \[Input Only\] Additional params passed with the request, but not
+  /// persisted
+  /// as part of resource payload.
+  VpnGatewayParams? params;
+
   /// URL of the region where the VPN gateway resides.
   ///
   /// Output only.
@@ -174346,6 +188968,7 @@ class VpnGateway {
     this.labels,
     this.name,
     this.network,
+    this.params,
     this.region,
     this.selfLink,
     this.stackType,
@@ -174365,6 +188988,11 @@ class VpnGateway {
         ),
         name: json_['name'] as core.String?,
         network: json_['network'] as core.String?,
+        params: json_.containsKey('params')
+            ? VpnGatewayParams.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         region: json_['region'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
         stackType: json_['stackType'] as core.String?,
@@ -174387,6 +189015,7 @@ class VpnGateway {
     final labels = this.labels;
     final name = this.name;
     final network = this.network;
+    final params = this.params;
     final region = this.region;
     final selfLink = this.selfLink;
     final stackType = this.stackType;
@@ -174401,6 +189030,7 @@ class VpnGateway {
       'labels': ?labels,
       'name': ?name,
       'network': ?network,
+      'params': ?params,
       'region': ?region,
       'selfLink': ?selfLink,
       'stackType': ?stackType,
@@ -174913,6 +189543,8 @@ class VpnGatewayList {
     };
   }
 }
+
+typedef VpnGatewayParams = $Params01;
 
 class VpnGatewayStatus {
   /// List of VPN connection for this VpnGateway.
@@ -175480,6 +190112,13 @@ class VpnTunnel {
   /// cannot be a dash.
   core.String? name;
 
+  /// Input only.
+  ///
+  /// \[Input Only\] Additional params passed with the request, but not
+  /// persisted
+  /// as part of resource payload.
+  VpnTunnelParams? params;
+
   /// URL of the peer side external VPN gateway to which this VPN tunnel is
   /// connected.
   /// Provided by the client when the VPN tunnel is created.
@@ -175633,6 +190272,7 @@ class VpnTunnel {
     this.labels,
     this.localTrafficSelector,
     this.name,
+    this.params,
     this.peerExternalGateway,
     this.peerExternalGatewayInterface,
     this.peerGcpGateway,
@@ -175670,6 +190310,11 @@ class VpnTunnel {
             ?.map((value) => value as core.String)
             .toList(),
         name: json_['name'] as core.String?,
+        params: json_.containsKey('params')
+            ? VpnTunnelParams.fromJson(
+                json_['params'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         peerExternalGateway: json_['peerExternalGateway'] as core.String?,
         peerExternalGatewayInterface:
             json_['peerExternalGatewayInterface'] as core.int?,
@@ -175701,6 +190346,7 @@ class VpnTunnel {
     final labels = this.labels;
     final localTrafficSelector = this.localTrafficSelector;
     final name = this.name;
+    final params = this.params;
     final peerExternalGateway = this.peerExternalGateway;
     final peerExternalGatewayInterface = this.peerExternalGatewayInterface;
     final peerGcpGateway = this.peerGcpGateway;
@@ -175727,6 +190373,7 @@ class VpnTunnel {
       'labels': ?labels,
       'localTrafficSelector': ?localTrafficSelector,
       'name': ?name,
+      'params': ?params,
       'peerExternalGateway': ?peerExternalGateway,
       'peerExternalGatewayInterface': ?peerExternalGatewayInterface,
       'peerGcpGateway': ?peerGcpGateway,
@@ -176276,6 +190923,8 @@ class VpnTunnelList {
     };
   }
 }
+
+typedef VpnTunnelParams = $Params01;
 
 class VpnTunnelPhase1Algorithms {
   core.List<core.String>? dh;
@@ -177426,6 +192075,29 @@ class WireProperties {
       'bandwidthAllocation': ?bandwidthAllocation,
       'bandwidthUnmetered': ?bandwidthUnmetered,
       'faultResponse': ?faultResponse,
+    };
+  }
+}
+
+class WorkloadIdentityConfig {
+  core.String? identity;
+  core.bool? identityCertificateEnabled;
+
+  WorkloadIdentityConfig({this.identity, this.identityCertificateEnabled});
+
+  WorkloadIdentityConfig.fromJson(core.Map json_)
+    : this(
+        identity: json_['identity'] as core.String?,
+        identityCertificateEnabled:
+            json_['identityCertificateEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final identity = this.identity;
+    final identityCertificateEnabled = this.identityCertificateEnabled;
+    return {
+      'identity': ?identity,
+      'identityCertificateEnabled': ?identityCertificateEnabled,
     };
   }
 }

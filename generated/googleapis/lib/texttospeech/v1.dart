@@ -442,17 +442,29 @@ class AdvancedVoiceOptions {
 
   /// Input only.
   ///
-  /// If true, relaxes safety filters for Gemini TTS. Only supported for
-  /// accounts linked to Invoiced (Offline) Cloud billing accounts. Otherwise,
-  /// will return result google.rpc.Code.INVALID_ARGUMENT.
+  /// Deprecated, use safety_settings instead. If true, relaxes safety filters
+  /// for Gemini TTS.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? relaxSafetyFilters;
+
+  /// Input only.
+  ///
+  /// This applies to Gemini TTS only. If set, the category specified in the
+  /// safety setting will be blocked if the harm probability is above the
+  /// threshold. Otherwise, the safety filter will be disabled by default.
+  ///
+  /// Optional.
+  SafetySettings? safetySettings;
 
   AdvancedVoiceOptions({
     this.enableTextnorm,
     this.lowLatencyJourneySynthesis,
     this.relaxSafetyFilters,
+    this.safetySettings,
   });
 
   AdvancedVoiceOptions.fromJson(core.Map json_)
@@ -461,16 +473,23 @@ class AdvancedVoiceOptions {
         lowLatencyJourneySynthesis:
             json_['lowLatencyJourneySynthesis'] as core.bool?,
         relaxSafetyFilters: json_['relaxSafetyFilters'] as core.bool?,
+        safetySettings: json_.containsKey('safetySettings')
+            ? SafetySettings.fromJson(
+                json_['safetySettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final enableTextnorm = this.enableTextnorm;
     final lowLatencyJourneySynthesis = this.lowLatencyJourneySynthesis;
     final relaxSafetyFilters = this.relaxSafetyFilters;
+    final safetySettings = this.safetySettings;
     return {
       'enableTextnorm': ?enableTextnorm,
       'lowLatencyJourneySynthesis': ?lowLatencyJourneySynthesis,
       'relaxSafetyFilters': ?relaxSafetyFilters,
+      'safetySettings': ?safetySettings,
     };
   }
 }
@@ -967,6 +986,74 @@ class Operation {
       'name': ?name,
       'response': ?response,
     };
+  }
+}
+
+/// Safety setting for a single harm category.
+class SafetySetting {
+  /// The harm category to apply the safety setting to.
+  /// Possible string values are:
+  /// - "HARM_CATEGORY_UNSPECIFIED" : Default value. This value is unused.
+  /// - "HARM_CATEGORY_HATE_SPEECH" : Content that promotes violence or incites
+  /// hatred against individuals or groups based on certain attributes.
+  /// - "HARM_CATEGORY_DANGEROUS_CONTENT" : Content that promotes, facilitates,
+  /// or enables dangerous activities.
+  /// - "HARM_CATEGORY_HARASSMENT" : Abusive, threatening, or content intended
+  /// to bully, torment, or ridicule.
+  /// - "HARM_CATEGORY_SEXUALLY_EXPLICIT" : Content that contains sexually
+  /// explicit material.
+  core.String? category;
+
+  /// The harm block threshold for the safety setting.
+  /// Possible string values are:
+  /// - "HARM_BLOCK_THRESHOLD_UNSPECIFIED" : The harm block threshold is
+  /// unspecified.
+  /// - "BLOCK_LOW_AND_ABOVE" : Block content with a low harm probability or
+  /// higher.
+  /// - "BLOCK_MEDIUM_AND_ABOVE" : Block content with a medium harm probability
+  /// or higher.
+  /// - "BLOCK_ONLY_HIGH" : Block content with a high harm probability.
+  /// - "BLOCK_NONE" : Do not block any content, regardless of its harm
+  /// probability.
+  /// - "OFF" : Turn off the safety filter entirely.
+  core.String? threshold;
+
+  SafetySetting({this.category, this.threshold});
+
+  SafetySetting.fromJson(core.Map json_)
+    : this(
+        category: json_['category'] as core.String?,
+        threshold: json_['threshold'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final threshold = this.threshold;
+    return {'category': ?category, 'threshold': ?threshold};
+  }
+}
+
+/// Safety settings for the request.
+class SafetySettings {
+  /// The safety settings for the request.
+  core.List<SafetySetting>? settings;
+
+  SafetySettings({this.settings});
+
+  SafetySettings.fromJson(core.Map json_)
+    : this(
+        settings: (json_['settings'] as core.List?)
+            ?.map(
+              (value) => SafetySetting.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final settings = this.settings;
+    return {'settings': ?settings};
   }
 }
 

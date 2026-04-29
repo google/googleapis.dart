@@ -86,9 +86,11 @@ class AccountsResource {
   /// account is registered with the email.
   ///
   /// If there is a registered account, fetches all providers associated with
-  /// the account's email. If the provider ID of an Identity Provider (IdP) is
-  /// specified, creates an authorization URI for the IdP. The user can be
-  /// directed to this URI to sign in with the IdP. An
+  /// the account's email. If
+  /// [email enumeration protection](https://cloud.google.com/identity-platform/docs/admin/email-enumeration-protection)
+  /// is enabled, this method returns an empty list. If the provider ID of an
+  /// Identity Provider (IdP) is specified, creates an authorization URI for the
+  /// IdP. The user can be directed to this URI to sign in with the IdP. An
   /// [API key](https://cloud.google.com/docs/authentication/api-keys) is
   /// required in the request in order to identify the Google Cloud project.
   ///
@@ -4520,7 +4522,7 @@ class GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
 
   /// Android only.
   ///
-  /// Safety Net has been deprecated. Please use play_integrity_token instead.
+  /// Safety Net has been deprecated. Use play_integrity_token instead.
   core.String? safetyNetToken;
 
   /// Tenant ID of the Identity Platform tenant the user is signing in to.

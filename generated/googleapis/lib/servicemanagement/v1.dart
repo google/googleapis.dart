@@ -1347,6 +1347,11 @@ class Aspect {
   /// The type of this aspect configuration.
   core.String? kind;
 
+  /// Rules of the Configuration.
+  ///
+  /// Optional.
+  core.List<AspectRule>? rules;
+
   /// Content of the configuration.
   ///
   /// The underlying schema should be defined by Aspect owners as protobuf
@@ -1356,11 +1361,18 @@ class Aspect {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? spec;
 
-  Aspect({this.kind, this.spec});
+  Aspect({this.kind, this.rules, this.spec});
 
   Aspect.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => AspectRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         spec: json_.containsKey('spec')
             ? json_['spec'] as core.Map<core.String, core.dynamic>
             : null,
@@ -1368,8 +1380,46 @@ class Aspect {
 
   core.Map<core.String, core.dynamic> toJson() {
     final kind = this.kind;
+    final rules = this.rules;
     final spec = this.spec;
-    return {'kind': ?kind, 'spec': ?spec};
+    return {'kind': ?kind, 'rules': ?rules, 'spec': ?spec};
+  }
+}
+
+/// Rule-based configuration for an aspect.
+class AspectRule {
+  /// Rules of the configuration.
+  ///
+  /// The underlying schema should be defined by Aspect owners as protobuf
+  /// message under `google/api/configaspects/proto`.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? config;
+
+  /// Selects the RPC methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
+  ///
+  /// Required.
+  core.String? selector;
+
+  AspectRule({this.config, this.selector});
+
+  AspectRule.fromJson(core.Map json_)
+    : this(
+        config: json_.containsKey('config')
+            ? json_['config'] as core.Map<core.String, core.dynamic>
+            : null,
+        selector: json_['selector'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final config = this.config;
+    final selector = this.selector;
+    return {'config': ?config, 'selector': ?selector};
   }
 }
 
@@ -1727,7 +1777,11 @@ class BackendRule {
   /// The map between request protocol and the backend address.
   core.Map<core.String, BackendRule>? overridesByRequestProtocol;
 
-  /// no-lint
+  /// Path translation specifies how to combine the backend address with the
+  /// request path in order to produce the appropriate forwarding URL for the
+  /// request.
+  ///
+  /// See PathTranslation for more details.
   /// Possible string values are:
   /// - "PATH_TRANSLATION_UNSPECIFIED"
   /// - "CONSTANT_ADDRESS" : Use the backend address as-is, with no modification
@@ -2392,6 +2446,8 @@ class CommonLanguageSettings {
   core.String? referenceDocsUri;
 
   /// Configuration for which RPCs should be generated in the GAPIC client.
+  ///
+  /// Note: This field should not be used in most cases.
   SelectiveGapicGeneration? selectiveGapicGeneration;
 
   CommonLanguageSettings({
@@ -5904,6 +5960,8 @@ class RubySettings {
 
 /// This message is used to configure the generation of a subset of the RPCs in
 /// a service for client libraries.
+///
+/// Note: This feature should not be used in most cases.
 class SelectiveGapicGeneration {
   /// Setting this to true indicates to the client generators that methods that
   /// would be excluded from the generation should instead be generated in a way
@@ -6035,7 +6093,7 @@ class Service {
 
   /// Defines the monitored resources used by this service.
   ///
-  /// This is required by the Service.monitoring and Service.logging
+  /// This is required by the `Service.monitoring` and `Service.logging`
   /// configurations.
   core.List<MonitoredResourceDescriptor>? monitoredResources;
 

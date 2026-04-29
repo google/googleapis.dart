@@ -177,6 +177,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -3243,7 +3254,8 @@ class ProjectsLocationsServiceConfigResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the serviceConfig used to
-  /// initialize the service. Format:
+  /// initialize the service. The location must be the location of the
+  /// BackupVault. Format:
   /// `projects/{project_id}/locations/{location}/serviceConfig`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceConfig$`.
@@ -4235,6 +4247,11 @@ class Backup {
   /// Optional.
   core.String? expireTime;
 
+  /// Filestore specific backup properties.
+  ///
+  /// Output only.
+  FilestoreInstanceBackupProperties? filestoreInstanceBackupProperties;
+
   /// Configuration for a Google Cloud resource.
   ///
   /// Output only.
@@ -4320,6 +4337,7 @@ class Backup {
     this.enforcedRetentionEndTime,
     this.etag,
     this.expireTime,
+    this.filestoreInstanceBackupProperties,
     this.gcpBackupPlanInfo,
     this.gcpResource,
     this.kmsKeyVersions,
@@ -4385,6 +4403,13 @@ class Backup {
             json_['enforcedRetentionEndTime'] as core.String?,
         etag: json_['etag'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
+        filestoreInstanceBackupProperties:
+            json_.containsKey('filestoreInstanceBackupProperties')
+            ? FilestoreInstanceBackupProperties.fromJson(
+                json_['filestoreInstanceBackupProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gcpBackupPlanInfo: json_.containsKey('gcpBackupPlanInfo')
             ? GCPBackupPlanInfo.fromJson(
                 json_['gcpBackupPlanInfo']
@@ -4435,6 +4460,8 @@ class Backup {
     final enforcedRetentionEndTime = this.enforcedRetentionEndTime;
     final etag = this.etag;
     final expireTime = this.expireTime;
+    final filestoreInstanceBackupProperties =
+        this.filestoreInstanceBackupProperties;
     final gcpBackupPlanInfo = this.gcpBackupPlanInfo;
     final gcpResource = this.gcpResource;
     final kmsKeyVersions = this.kmsKeyVersions;
@@ -4461,6 +4488,7 @@ class Backup {
       'enforcedRetentionEndTime': ?enforcedRetentionEndTime,
       'etag': ?etag,
       'expireTime': ?expireTime,
+      'filestoreInstanceBackupProperties': ?filestoreInstanceBackupProperties,
       'gcpBackupPlanInfo': ?gcpBackupPlanInfo,
       'gcpResource': ?gcpResource,
       'kmsKeyVersions': ?kmsKeyVersions,
@@ -5151,6 +5179,14 @@ class BackupPlan {
   /// Output only.
   core.String? backupVaultServiceAccount;
 
+  /// Defines optional properties specific to backups of disk-based resources,
+  /// such as Compute Engine.
+  ///
+  /// This includes settings like whether to perform a guest flush.
+  ///
+  /// Optional.
+  ComputeInstanceBackupPlanProperties? computeInstanceBackupPlanProperties;
+
   /// When the `BackupPlan` was created.
   ///
   /// Output only.
@@ -5165,6 +5201,14 @@ class BackupPlan {
   ///
   /// Optional.
   core.String? description;
+
+  /// Defines optional properties specific to backups of disk-based resources,
+  /// such as Compute Engine Persistent Disks.
+  ///
+  /// This includes settings like whether to perform a guest flush.
+  ///
+  /// Optional.
+  DiskBackupPlanProperties? diskBackupPlanProperties;
 
   /// `etag` is returned from the service in the response.
   ///
@@ -5258,8 +5302,10 @@ class BackupPlan {
     this.backupRules,
     this.backupVault,
     this.backupVaultServiceAccount,
+    this.computeInstanceBackupPlanProperties,
     this.createTime,
     this.description,
+    this.diskBackupPlanProperties,
     this.etag,
     this.labels,
     this.logRetentionDays,
@@ -5285,8 +5331,21 @@ class BackupPlan {
         backupVault: json_['backupVault'] as core.String?,
         backupVaultServiceAccount:
             json_['backupVaultServiceAccount'] as core.String?,
+        computeInstanceBackupPlanProperties:
+            json_.containsKey('computeInstanceBackupPlanProperties')
+            ? ComputeInstanceBackupPlanProperties.fromJson(
+                json_['computeInstanceBackupPlanProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
+        diskBackupPlanProperties: json_.containsKey('diskBackupPlanProperties')
+            ? DiskBackupPlanProperties.fromJson(
+                json_['diskBackupPlanProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -5309,8 +5368,11 @@ class BackupPlan {
     final backupRules = this.backupRules;
     final backupVault = this.backupVault;
     final backupVaultServiceAccount = this.backupVaultServiceAccount;
+    final computeInstanceBackupPlanProperties =
+        this.computeInstanceBackupPlanProperties;
     final createTime = this.createTime;
     final description = this.description;
+    final diskBackupPlanProperties = this.diskBackupPlanProperties;
     final etag = this.etag;
     final labels = this.labels;
     final logRetentionDays = this.logRetentionDays;
@@ -5326,8 +5388,11 @@ class BackupPlan {
       'backupRules': ?backupRules,
       'backupVault': ?backupVault,
       'backupVaultServiceAccount': ?backupVaultServiceAccount,
+      'computeInstanceBackupPlanProperties':
+          ?computeInstanceBackupPlanProperties,
       'createTime': ?createTime,
       'description': ?description,
+      'diskBackupPlanProperties': ?diskBackupPlanProperties,
       'etag': ?etag,
       'labels': ?labels,
       'logRetentionDays': ?logRetentionDays,
@@ -6176,6 +6241,28 @@ class CloudSqlInstanceInitializationConfig {
   }
 }
 
+/// --- ComputeInstanceBackupPlanProperties Message ---
+class ComputeInstanceBackupPlanProperties {
+  /// Indicates whether to perform a guest flush operation before taking a
+  /// compute backup.
+  ///
+  /// When set to false, the system will create crash-consistent backups.
+  /// Default value is false.
+  ///
+  /// Optional.
+  core.bool? guestFlush;
+
+  ComputeInstanceBackupPlanProperties({this.guestFlush});
+
+  ComputeInstanceBackupPlanProperties.fromJson(core.Map json_)
+    : this(guestFlush: json_['guestFlush'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final guestFlush = this.guestFlush;
+    return {'guestFlush': ?guestFlush};
+  }
+}
+
 /// ComputeInstanceBackupProperties represents Compute Engine instance backup
 /// properties.
 class ComputeInstanceBackupProperties {
@@ -6201,6 +6288,15 @@ class ComputeInstanceBackupProperties {
   /// A list of guest accelerator cards' type and count to use for instances
   /// created from these properties.
   core.List<AcceleratorConfig>? guestAccelerator;
+
+  /// Indicates whether to perform a guest flush operation before taking a
+  /// compute backup.
+  ///
+  /// When set to false, the system will create crash-consistent backups.
+  /// Default value is false.
+  ///
+  /// Optional.
+  core.bool? guestFlush;
 
   /// KeyRevocationActionType of the instance.
   ///
@@ -6272,6 +6368,7 @@ class ComputeInstanceBackupProperties {
     this.description,
     this.disk,
     this.guestAccelerator,
+    this.guestFlush,
     this.keyRevocationActionType,
     this.labels,
     this.machineType,
@@ -6302,6 +6399,7 @@ class ComputeInstanceBackupProperties {
               ),
             )
             .toList(),
+        guestFlush: json_['guestFlush'] as core.bool?,
         keyRevocationActionType:
             json_['keyRevocationActionType'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -6346,6 +6444,7 @@ class ComputeInstanceBackupProperties {
     final description = this.description;
     final disk = this.disk;
     final guestAccelerator = this.guestAccelerator;
+    final guestFlush = this.guestFlush;
     final keyRevocationActionType = this.keyRevocationActionType;
     final labels = this.labels;
     final machineType = this.machineType;
@@ -6361,6 +6460,7 @@ class ComputeInstanceBackupProperties {
       'description': ?description,
       'disk': ?disk,
       'guestAccelerator': ?guestAccelerator,
+      'guestFlush': ?guestFlush,
       'keyRevocationActionType': ?keyRevocationActionType,
       'labels': ?labels,
       'machineType': ?machineType,
@@ -7191,6 +7291,12 @@ class DataSourceGcpResource {
   /// at the Datasource level.
   DiskDataSourceProperties? diskDatasourceProperties;
 
+  /// FilestoreInstanceDataSourceProperties has a subset of FileStore instance
+  /// properties that are useful at the Datasource level.
+  ///
+  /// Output only.
+  FilestoreInstanceDataSourceProperties? filestoreInstanceDatasourceProperties;
+
   /// Full resource pathname URL of the source Google Cloud resource.
   ///
   /// Output only.
@@ -7209,6 +7315,7 @@ class DataSourceGcpResource {
     this.cloudSqlInstanceDatasourceProperties,
     this.computeInstanceDatasourceProperties,
     this.diskDatasourceProperties,
+    this.filestoreInstanceDatasourceProperties,
     this.gcpResourcename,
     this.location,
     this.type,
@@ -7243,6 +7350,13 @@ class DataSourceGcpResource {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        filestoreInstanceDatasourceProperties:
+            json_.containsKey('filestoreInstanceDatasourceProperties')
+            ? FilestoreInstanceDataSourceProperties.fromJson(
+                json_['filestoreInstanceDatasourceProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gcpResourcename: json_['gcpResourcename'] as core.String?,
         location: json_['location'] as core.String?,
         type: json_['type'] as core.String?,
@@ -7256,6 +7370,8 @@ class DataSourceGcpResource {
     final computeInstanceDatasourceProperties =
         this.computeInstanceDatasourceProperties;
     final diskDatasourceProperties = this.diskDatasourceProperties;
+    final filestoreInstanceDatasourceProperties =
+        this.filestoreInstanceDatasourceProperties;
     final gcpResourcename = this.gcpResourcename;
     final location = this.location;
     final type = this.type;
@@ -7266,6 +7382,8 @@ class DataSourceGcpResource {
       'computeInstanceDatasourceProperties':
           ?computeInstanceDatasourceProperties,
       'diskDatasourceProperties': ?diskDatasourceProperties,
+      'filestoreInstanceDatasourceProperties':
+          ?filestoreInstanceDatasourceProperties,
       'gcpResourcename': ?gcpResourcename,
       'location': ?location,
       'type': ?type,
@@ -7284,6 +7402,11 @@ class DataSourceGcpResourceInfo {
   ///
   /// Output only.
   CloudSqlInstanceDataSourceReferenceProperties? cloudSqlInstanceProperties;
+
+  /// The properties of the Filestore instance.
+  ///
+  /// Output only.
+  FilestoreInstanceDataSourceReferenceProperties? filestoreInstanceProperties;
 
   /// The resource name of the Google Cloud resource.
   ///
@@ -7309,6 +7432,7 @@ class DataSourceGcpResourceInfo {
   DataSourceGcpResourceInfo({
     this.alloyDbClusterProperties,
     this.cloudSqlInstanceProperties,
+    this.filestoreInstanceProperties,
     this.gcpResourcename,
     this.location,
     this.type,
@@ -7329,6 +7453,13 @@ class DataSourceGcpResourceInfo {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        filestoreInstanceProperties:
+            json_.containsKey('filestoreInstanceProperties')
+            ? FilestoreInstanceDataSourceReferenceProperties.fromJson(
+                json_['filestoreInstanceProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gcpResourcename: json_['gcpResourcename'] as core.String?,
         location: json_['location'] as core.String?,
         type: json_['type'] as core.String?,
@@ -7337,12 +7468,14 @@ class DataSourceGcpResourceInfo {
   core.Map<core.String, core.dynamic> toJson() {
     final alloyDbClusterProperties = this.alloyDbClusterProperties;
     final cloudSqlInstanceProperties = this.cloudSqlInstanceProperties;
+    final filestoreInstanceProperties = this.filestoreInstanceProperties;
     final gcpResourcename = this.gcpResourcename;
     final location = this.location;
     final type = this.type;
     return {
       'alloyDbClusterProperties': ?alloyDbClusterProperties,
       'cloudSqlInstanceProperties': ?cloudSqlInstanceProperties,
+      'filestoreInstanceProperties': ?filestoreInstanceProperties,
       'gcpResourcename': ?gcpResourcename,
       'location': ?location,
       'type': ?type,
@@ -7462,6 +7595,28 @@ class DataSourceReference {
   }
 }
 
+/// --- DiskBackupPlanProperties Message ---
+class DiskBackupPlanProperties {
+  /// Indicates whether to perform a guest flush operation before taking a disk
+  /// backup.
+  ///
+  /// When set to false, the system will create crash-consistent backups.
+  /// Default value is false.
+  ///
+  /// Optional.
+  core.bool? guestFlush;
+
+  DiskBackupPlanProperties({this.guestFlush});
+
+  DiskBackupPlanProperties.fromJson(core.Map json_)
+    : this(guestFlush: json_['guestFlush'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final guestFlush = this.guestFlush;
+    return {'guestFlush': ?guestFlush};
+  }
+}
+
 /// DiskBackupProperties represents the properties of a Disk backup.
 class DiskBackupProperties {
   /// The access mode of the source disk.
@@ -7481,6 +7636,13 @@ class DiskBackupProperties {
 
   /// Indicates whether the source disk is using confidential compute mode.
   core.bool? enableConfidentialCompute;
+
+  /// Defines if the guest flush is enabled for the source disk.
+  ///
+  /// Default value is false.
+  ///
+  /// Optional.
+  core.bool? guestFlush;
 
   /// A list of guest OS features that are applicable to this backup.
   core.List<GuestOsFeature>? guestOsFeature;
@@ -7531,6 +7693,7 @@ class DiskBackupProperties {
     this.architecture,
     this.description,
     this.enableConfidentialCompute,
+    this.guestFlush,
     this.guestOsFeature,
     this.labels,
     this.licenses,
@@ -7553,6 +7716,7 @@ class DiskBackupProperties {
         description: json_['description'] as core.String?,
         enableConfidentialCompute:
             json_['enableConfidentialCompute'] as core.bool?,
+        guestFlush: json_['guestFlush'] as core.bool?,
         guestOsFeature: (json_['guestOsFeature'] as core.List?)
             ?.map(
               (value) => GuestOsFeature.fromJson(
@@ -7585,6 +7749,7 @@ class DiskBackupProperties {
     final architecture = this.architecture;
     final description = this.description;
     final enableConfidentialCompute = this.enableConfidentialCompute;
+    final guestFlush = this.guestFlush;
     final guestOsFeature = this.guestOsFeature;
     final labels = this.labels;
     final licenses = this.licenses;
@@ -7603,6 +7768,7 @@ class DiskBackupProperties {
       'architecture': ?architecture,
       'description': ?description,
       'enableConfidentialCompute': ?enableConfidentialCompute,
+      'guestFlush': ?guestFlush,
       'guestOsFeature': ?guestOsFeature,
       'labels': ?labels,
       'licenses': ?licenses,
@@ -8302,6 +8468,92 @@ class FetchUsableBackupVaultsResponse {
 typedef FilestoreInstanceBackupPlanAssociationProperties =
     $InstanceBackupPlanAssociationProperties;
 
+/// FilestoreInstanceBackupProperties represents the properties of a Filestore
+/// instance that are backed up by the datasource.
+///
+/// .
+class FilestoreInstanceBackupProperties {
+  /// The source instance of the backup.
+  ///
+  /// Output only.
+  core.String? sourceInstance;
+
+  FilestoreInstanceBackupProperties({this.sourceInstance});
+
+  FilestoreInstanceBackupProperties.fromJson(core.Map json_)
+    : this(sourceInstance: json_['sourceInstance'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sourceInstance = this.sourceInstance;
+    return {'sourceInstance': ?sourceInstance};
+  }
+}
+
+/// FilestoreInstanceDataSourceProperties represents the properties of a
+/// Filestore resource that are stored in the DataSource.
+///
+/// .
+class FilestoreInstanceDataSourceProperties {
+  /// The instance creation timestamp.
+  ///
+  /// Output only.
+  core.String? instanceCreateTime;
+
+  /// Name of the Filestore instance backed up by the datasource.
+  ///
+  /// Output only.
+  core.String? name;
+
+  FilestoreInstanceDataSourceProperties({this.instanceCreateTime, this.name});
+
+  FilestoreInstanceDataSourceProperties.fromJson(core.Map json_)
+    : this(
+        instanceCreateTime: json_['instanceCreateTime'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final instanceCreateTime = this.instanceCreateTime;
+    final name = this.name;
+    return {'instanceCreateTime': ?instanceCreateTime, 'name': ?name};
+  }
+}
+
+/// FilestoreInstanceDataSourceReferenceProperties represents the properties of
+/// a Filestore resource that are stored in the DataSourceReference.
+///
+/// .
+class FilestoreInstanceDataSourceReferenceProperties {
+  /// The instance creation timestamp.
+  ///
+  /// Output only.
+  core.String? instanceCreateTime;
+
+  /// Name of the Filestore instance backed up by the datasource.
+  ///
+  /// Format: projects/{project}/instances/{instance}
+  ///
+  /// Output only.
+  core.String? name;
+
+  FilestoreInstanceDataSourceReferenceProperties({
+    this.instanceCreateTime,
+    this.name,
+  });
+
+  FilestoreInstanceDataSourceReferenceProperties.fromJson(core.Map json_)
+    : this(
+        instanceCreateTime: json_['instanceCreateTime'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final instanceCreateTime = this.instanceCreateTime;
+    final name = this.name;
+    return {'instanceCreateTime': ?instanceCreateTime, 'name': ?name};
+  }
+}
+
 /// Message for finalizing a Backup.
 class FinalizeBackupRequest {
   /// Resource ID of the Backup resource to be finalized.
@@ -8582,6 +8834,17 @@ class InitializeParams {
 
 /// Request message for initializing the service.
 class InitializeServiceRequest {
+  /// The location where the BackupPlan will be created.
+  ///
+  /// This field is required for multi-region BackupVaults and is optional for
+  /// regional BackupVaults. It is useful when creating a Backup Vault in a
+  /// multi-region, allowing the BackupPlan to reside in a specific region
+  /// within that multi-region. If this field is not provided, the BackupPlan
+  /// will be created in the same location as specified in the `name` field.
+  ///
+  /// Optional.
+  core.String? backupPlanLocation;
+
   /// The configuration for initializing a Cloud SQL instance.
   ///
   /// Optional.
@@ -8611,14 +8874,23 @@ class InitializeServiceRequest {
   /// Required.
   core.String? resourceType;
 
+  /// If set, validates the request and returns the result, but does not
+  /// actually run it.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
   InitializeServiceRequest({
+    this.backupPlanLocation,
     this.cloudSqlInstanceInitializationConfig,
     this.requestId,
     this.resourceType,
+    this.validateOnly,
   });
 
   InitializeServiceRequest.fromJson(core.Map json_)
     : this(
+        backupPlanLocation: json_['backupPlanLocation'] as core.String?,
         cloudSqlInstanceInitializationConfig:
             json_.containsKey('cloudSqlInstanceInitializationConfig')
             ? CloudSqlInstanceInitializationConfig.fromJson(
@@ -8628,18 +8900,23 @@ class InitializeServiceRequest {
             : null,
         requestId: json_['requestId'] as core.String?,
         resourceType: json_['resourceType'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final backupPlanLocation = this.backupPlanLocation;
     final cloudSqlInstanceInitializationConfig =
         this.cloudSqlInstanceInitializationConfig;
     final requestId = this.requestId;
     final resourceType = this.resourceType;
+    final validateOnly = this.validateOnly;
     return {
+      'backupPlanLocation': ?backupPlanLocation,
       'cloudSqlInstanceInitializationConfig':
           ?cloudSqlInstanceInitializationConfig,
       'requestId': ?requestId,
       'resourceType': ?resourceType,
+      'validateOnly': ?validateOnly,
     };
   }
 }
@@ -10159,6 +10436,7 @@ class ResourceBackupConfig {
   /// - "COMPUTE_ENGINE_VM" : Compute Engine VM.
   /// - "COMPUTE_ENGINE_DISK" : Compute Engine Disk.
   /// - "COMPUTE_ENGINE_REGIONAL_DISK" : Compute Engine Regional Disk.
+  /// - "FILESTORE_INSTANCE" : Filestore Instance.
   core.String? targetResourceType;
 
   /// The unique identifier of the resource backup config.
@@ -10170,7 +10448,7 @@ class ResourceBackupConfig {
   ///
   /// This is true if the backup_configs_details is not empty and any of the
   /// ResourceBackupConfig.backup_configs_details has a backup configuration
-  /// with BackupConfigDetails.backup_vault set. set.
+  /// with BackupConfigDetails.backup_vault set.
   ///
   /// Output only.
   core.bool? vaulted;

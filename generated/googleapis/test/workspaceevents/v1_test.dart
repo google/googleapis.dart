@@ -785,12 +785,14 @@ api.Subscription buildSubscription() {
     o.notificationEndpoint = buildNotificationEndpoint();
     o.payloadOptions = buildPayloadOptions();
     o.reconciling = true;
+    o.serviceAccountAuthority = 'foo';
     o.state = 'foo';
     o.suspensionReason = 'foo';
     o.targetResource = 'foo';
     o.ttl = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
+    o.userAuthority = 'foo';
   }
   buildCounterSubscription--;
   return o;
@@ -808,12 +810,14 @@ void checkSubscription(api.Subscription o) {
     checkNotificationEndpoint(o.notificationEndpoint!);
     checkPayloadOptions(o.payloadOptions!);
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(o.serviceAccountAuthority!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.suspensionReason!, unittest.equals('foo'));
     unittest.expect(o.targetResource!, unittest.equals('foo'));
     unittest.expect(o.ttl!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
+    unittest.expect(o.userAuthority!, unittest.equals('foo'));
   }
   buildCounterSubscription--;
 }

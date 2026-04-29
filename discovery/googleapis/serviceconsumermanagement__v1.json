@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260120",
+    "revision": "20260403",
     "rootUrl": "https://serviceconsumermanagement.googleapis.com/",
     "servicePath": "",
     "title": "Service Consumer Management API",
@@ -249,7 +249,7 @@
                     ],
                     "parameters": {
                         "pageSize": {
-                            "description": "Optional. The maximum number of results returned by this request. Currently, the default maximum is set to 1000. If `page_size` isn't provided or the size provided is a number larger than 1000, it's automatically set to 1000.",
+                            "description": "Optional. The maximum number of results returned by this request. Currently, the default maximum is set to 256. If `page_size` <= 256, the request proceeds. Else, the request fails with an `TU_INVALID_PAGE_SIZE` error.",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
@@ -648,6 +648,13 @@
                     "description": "The type of this aspect configuration.",
                     "type": "string"
                 },
+                "rules": {
+                    "description": "Optional. Rules of the Configuration.",
+                    "items": {
+                        "$ref": "AspectRule"
+                    },
+                    "type": "array"
+                },
                 "spec": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -655,6 +662,25 @@
                     },
                     "description": "Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`.",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AspectRule": {
+            "description": "Rule-based configuration for an aspect.",
+            "id": "AspectRule",
+            "properties": {
+                "config": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Required. Rules of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`.",
+                    "type": "object"
+                },
+                "selector": {
+                    "description": "Required. Selects the RPC methods to which this rule applies. Refer to selector for syntax details.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -832,7 +858,7 @@
                     "type": "object"
                 },
                 "pathTranslation": {
-                    "description": "no-lint",
+                    "description": "Path translation specifies how to combine the backend address with the request path in order to produce the appropriate forwarding URL for the request. See PathTranslation for more details.",
                     "enum": [
                         "PATH_TRANSLATION_UNSPECIFIED",
                         "CONSTANT_ADDRESS",
@@ -1099,7 +1125,7 @@
                 },
                 "selectiveGapicGeneration": {
                     "$ref": "SelectiveGapicGeneration",
-                    "description": "Configuration for which RPCs should be generated in the GAPIC client."
+                    "description": "Configuration for which RPCs should be generated in the GAPIC client. Note: This field should not be used in most cases."
                 }
             },
             "type": "object"
@@ -2652,7 +2678,7 @@
             "type": "object"
         },
         "SelectiveGapicGeneration": {
-            "description": "This message is used to configure the generation of a subset of the RPCs in a service for client libraries.",
+            "description": "This message is used to configure the generation of a subset of the RPCs in a service for client libraries. Note: This feature should not be used in most cases.",
             "id": "SelectiveGapicGeneration",
             "properties": {
                 "generateOmittedAsInternal": {
@@ -2721,7 +2747,7 @@
                     "description": "Additional API documentation."
                 },
                 "endpoints": {
-                    "description": "Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs. WARNING: Defining any entries in the `endpoints` list disables the automatic generation of default endpoint variations (e.g., `{service}.clients6.google.com`, `content-{service}.googleapis.com`, and mTLS variants like `{service}.mtls.googleapis.com`). To retain these default variations, you are required to explicitly include your main service endpoint (e.g., `myservice.googleapis.com`) in this list alongside any other custom endpoints (like REP, GFE, etc.).",
+                    "description": "Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.",
                     "items": {
                         "$ref": "Endpoint"
                     },
@@ -3166,7 +3192,7 @@
             "id": "UsageRule",
             "properties": {
                 "allowUnregisteredCalls": {
-                    "description": " Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.",
+                    "description": "Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.",
                     "type": "boolean"
                 },
                 "selector": {

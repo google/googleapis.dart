@@ -173,6 +173,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -226,6 +237,75 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns the contents of a caller's root folder in a given location.
+  ///
+  /// The root folder contains all resources that are created by the user and
+  /// not contained in any other folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. Location of the user root folder to list contents
+  /// for. Format: projects / * /locations / *
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Optional filtering for the returned list. Filtering
+  /// is currently only supported on the `display_name` field. Example: *
+  /// `filter="display_name="MyFolder""`
+  ///
+  /// [orderBy] - Optional. Field to additionally sort results by. Will order
+  /// Folders before Repositories, and then by `order_by` in ascending order.
+  /// Supported keywords: display_name (default), created_at, last_modified_at.
+  /// Examples: * `orderBy="display_name"` * `orderBy="display_name desc"`
+  ///
+  /// [pageSize] - Optional. Maximum number of paths to return. The server may
+  /// return fewer items than requested. If unspecified, the server will pick an
+  /// appropriate default.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// `QueryUserRootContents` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `QueryUserRootFolderContents`, with the exception of `page_size`, must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryUserRootContentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryUserRootContentsResponse> queryUserRootContents(
+    core.String location, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$location') + ':queryUserRootContents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return QueryUserRootContentsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -286,6 +366,156 @@ class ProjectsLocationsFoldersResource {
   ProjectsLocationsFoldersResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Creates a new Folder in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location in which to create the Folder. Must be
+  /// in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Folder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Folder> create(
+    Folder request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/folders';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Folder's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/folders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Folder with its contents (Folders, Repositories, Workspaces,
+  /// ReleaseConfigs, and WorkflowConfigs).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Folder's name. Format:
+  /// projects/{project}/locations/{location}/folders/{folder}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/folders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deleteTree(
+    DeleteFolderTreeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deleteTree';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetches a single Folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Folder's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/folders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Folder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Folder> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -342,6 +572,163 @@ class ProjectsLocationsFoldersResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Moves a Folder to a new Folder, TeamFolder, or the root location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the Folder to move.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/folders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> move(
+    MoveFolderRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a single Folder.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The Folder's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/folders/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Specifies the fields to be updated in the Folder.
+  /// If left unset, all fields that can be updated, will be updated. A few
+  /// fields cannot be updated and will be ignored if specified in the
+  /// update_mask (e.g. parent_name, team_folder_name).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Folder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Folder> patch(
+    Folder request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the contents of a given Folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [folder] - Required. Resource name of the Folder to list contents for.
+  /// Format: projects / * /locations / * /folders / *
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/folders/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Optional filtering for the returned list. Filtering
+  /// is currently only supported on the `display_name` field. Example: *
+  /// `filter="display_name="MyFolder""`
+  ///
+  /// [orderBy] - Optional. Field to additionally sort results by. Will order
+  /// Folders before Repositories, and then by `order_by` in ascending order.
+  /// Supported keywords: display_name (default), create_time,
+  /// last_modified_time. Examples: * `orderBy="display_name"` *
+  /// `orderBy="display_name desc"`
+  ///
+  /// [pageSize] - Optional. Maximum number of paths to return. The server may
+  /// return fewer items than requested. If unspecified, the server will pick an
+  /// appropriate default.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// `QueryFolderContents` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `QueryFolderContents`,
+  /// with the exception of `page_size`, must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryFolderContentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryFolderContentsResponse> queryFolderContents(
+    core.String folder, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$folder') + ':queryFolderContents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return QueryFolderContentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1079,6 +1466,47 @@ class ProjectsLocationsRepositoriesResource {
     return ListRepositoriesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Moves a Repository to a new location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the repository to move.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> move(
+    MoveRepositoryRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a single Repository.
@@ -3003,6 +3431,18 @@ class ProjectsLocationsRepositoriesWorkspacesResource {
   /// [path] - Optional. The directory's full path including directory name,
   /// relative to the workspace root. If left unset, the workspace root is used.
   ///
+  /// [view] - Optional. Specifies the metadata to return for each directory
+  /// entry. If unspecified, the default is `DIRECTORY_CONTENTS_VIEW_BASIC`.
+  /// Currently the `DIRECTORY_CONTENTS_VIEW_METADATA` view is not supported by
+  /// CMEK-protected workspaces.
+  /// Possible string values are:
+  /// - "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED" : The default unset value.
+  /// Defaults to DIRECTORY_CONTENTS_VIEW_BASIC.
+  /// - "DIRECTORY_CONTENTS_VIEW_BASIC" : Includes only the file or directory
+  /// name. This is the default behavior.
+  /// - "DIRECTORY_CONTENTS_VIEW_METADATA" : Includes all metadata for each file
+  /// or directory. Currently not supported by CMEK-protected workspaces.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3018,12 +3458,14 @@ class ProjectsLocationsRepositoriesWorkspacesResource {
     core.int? pageSize,
     core.String? pageToken,
     core.String? path,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'path': ?path == null ? null : [path],
+      'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3424,6 +3866,160 @@ class ProjectsLocationsTeamFoldersResource {
   ProjectsLocationsTeamFoldersResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Creates a new TeamFolder in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location in which to create the TeamFolder. Must
+  /// be in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TeamFolder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TeamFolder> create(
+    TeamFolder request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/teamFolders';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TeamFolder.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a single TeamFolder.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The TeamFolder's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/teamFolders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a TeamFolder with its contents (Folders, Repositories, Workspaces,
+  /// ReleaseConfigs, and WorkflowConfigs).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The TeamFolder's name. Format:
+  /// projects/{project}/locations/{location}/teamFolders/{team_folder}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/teamFolders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deleteTree(
+    DeleteTeamFolderTreeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deleteTree';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetches a single TeamFolder.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The TeamFolder's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/teamFolders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TeamFolder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TeamFolder> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TeamFolder.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -3480,6 +4076,187 @@ class ProjectsLocationsTeamFoldersResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a single TeamFolder.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The TeamFolder's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/teamFolders/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Specifies the fields to be updated in the Folder.
+  /// If left unset, all fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TeamFolder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TeamFolder> patch(
+    TeamFolder request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TeamFolder.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns the contents of a given TeamFolder.
+  ///
+  /// Request parameters:
+  ///
+  /// [teamFolder] - Required. Resource name of the TeamFolder to list contents
+  /// for. Format: `projects / * /locations / * /teamFolders / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/teamFolders/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Optional filtering for the returned list. Filtering
+  /// is currently only supported on the `display_name` field. Example: *
+  /// `filter="display_name="MyFolder""`
+  ///
+  /// [orderBy] - Optional. Field to additionally sort results by. Will order
+  /// Folders before Repositories, and then by `order_by` in ascending order.
+  /// Supported keywords: `display_name` (default), `create_time`,
+  /// last_modified_time. Examples: * `orderBy="display_name"` *
+  /// `orderBy="display_name desc"`
+  ///
+  /// [pageSize] - Optional. Maximum number of paths to return. The server may
+  /// return fewer items than requested. If unspecified, the server will pick an
+  /// appropriate default.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// `QueryTeamFolderContents` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `QueryTeamFolderContents`, with the exception of `page_size`, must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryTeamFolderContentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryTeamFolderContentsResponse> queryContents(
+    core.String teamFolder, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$teamFolder') + ':queryContents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return QueryTeamFolderContentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns all TeamFolders in a given location that the caller has access to
+  /// and match the provided filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. Location in which to query TeamFolders. Format:
+  /// `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Optional filtering for the returned list. Filtering
+  /// is currently only supported on the `display_name` field. Example: *
+  /// `filter="display_name="MyFolder""`
+  ///
+  /// [orderBy] - Optional. Field to additionally sort results by. Supported
+  /// keywords: `display_name` (default), `create_time`, `last_modified_time`.
+  /// Examples: * `orderBy="display_name"` * `orderBy="display_name desc"`
+  ///
+  /// [pageSize] - Optional. Maximum number of TeamFolders to return. The server
+  /// may return fewer items than requested. If unspecified, the server will
+  /// pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// `SearchTeamFolders` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `SearchTeamFolders`,
+  /// with the exception of `page_size`, must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchTeamFoldersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchTeamFoldersResponse> search(
+    core.String location, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$location') + '/teamFolders:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchTeamFoldersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -4675,6 +5452,8 @@ class ComputeRepositoryAccessTokenStatusResponse {
   /// remote.
   /// - "VALID" : The token was used successfully to authenticate against the
   /// Git remote.
+  /// - "PERMISSION_DENIED" : The token is not accessible due to permission
+  /// issues.
   core.String? tokenStatus;
 
   ComputeRepositoryAccessTokenStatusResponse({this.tokenStatus});
@@ -4903,6 +5682,12 @@ class Declaration {
 /// Represents the delete file operation.
 typedef DeleteFile = $Empty;
 
+/// `DeleteFolderTree` request message.
+typedef DeleteFolderTreeRequest = $FolderTreeRequest;
+
+/// `DeleteTeamFolderTree` request message.
+typedef DeleteTeamFolderTreeRequest = $FolderTreeRequest;
+
 /// Represents a single entry in a directory.
 class DirectoryEntry {
   /// A child directory in the directory.
@@ -4911,18 +5696,27 @@ class DirectoryEntry {
   /// A file in the directory.
   core.String? file;
 
-  DirectoryEntry({this.directory, this.file});
+  /// Entry with metadata.
+  FilesystemEntryMetadata? metadata;
+
+  DirectoryEntry({this.directory, this.file, this.metadata});
 
   DirectoryEntry.fromJson(core.Map json_)
     : this(
         directory: json_['directory'] as core.String?,
         file: json_['file'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? FilesystemEntryMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final directory = this.directory;
     final file = this.file;
-    return {'directory': ?directory, 'file': ?file};
+    final metadata = this.metadata;
+    return {'directory': ?directory, 'file': ?file, 'metadata': ?metadata};
   }
 }
 
@@ -5136,6 +5930,171 @@ class FileOperation {
 /// Client-facing representation of a file entry in search results.
 typedef FileSearchResult = $SearchResult;
 
+/// Represents metadata for a single entry in a filesystem.
+class FilesystemEntryMetadata {
+  /// Provides the size of the entry in bytes.
+  ///
+  /// For directories, this will be 0.
+  ///
+  /// Output only.
+  core.String? sizeBytes;
+
+  /// Represents the time of the last modification of the entry.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  FilesystemEntryMetadata({this.sizeBytes, this.updateTime});
+
+  FilesystemEntryMetadata.fromJson(core.Map json_)
+    : this(
+        sizeBytes: json_['sizeBytes'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sizeBytes = this.sizeBytes;
+    final updateTime = this.updateTime;
+    return {'sizeBytes': ?sizeBytes, 'updateTime': ?updateTime};
+  }
+}
+
+/// Represents a Dataform Folder.
+///
+/// This is a resource that is used to organize Files and other Folders and
+/// provide hierarchical access controls.
+class Folder {
+  /// The containing Folder resource name.
+  ///
+  /// This should take the format:
+  /// projects/{project}/locations/{location}/folders/{folder},
+  /// projects/{project}/locations/{location}/teamFolders/{teamFolder}, or just
+  /// "" if this is a root Folder. This field can only be updated through
+  /// MoveFolder.
+  ///
+  /// Optional.
+  core.String? containingFolder;
+
+  /// The timestamp of when the Folder was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The IAM principal identifier of the creator of the Folder.
+  ///
+  /// Output only.
+  core.String? creatorIamPrincipal;
+
+  /// The Folder's user-friendly name.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// All the metadata information that is used internally to serve the
+  /// resource.
+  ///
+  /// For example: timestamps, flags, status fields, etc. The format of this
+  /// field is a JSON string.
+  ///
+  /// Output only.
+  core.String? internalMetadata;
+
+  /// Identifier.
+  ///
+  /// The Folder's name.
+  core.String? name;
+
+  /// The resource name of the TeamFolder that this Folder is associated with.
+  ///
+  /// This should take the format:
+  /// projects/{project}/locations/{location}/teamFolders/{teamFolder}. If this
+  /// is not set, the Folder is not associated with a TeamFolder and is a
+  /// UserFolder.
+  ///
+  /// Output only.
+  core.String? teamFolderName;
+
+  /// The timestamp of when the Folder was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Folder({
+    this.containingFolder,
+    this.createTime,
+    this.creatorIamPrincipal,
+    this.displayName,
+    this.internalMetadata,
+    this.name,
+    this.teamFolderName,
+    this.updateTime,
+  });
+
+  Folder.fromJson(core.Map json_)
+    : this(
+        containingFolder: json_['containingFolder'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        creatorIamPrincipal: json_['creatorIamPrincipal'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        internalMetadata: json_['internalMetadata'] as core.String?,
+        name: json_['name'] as core.String?,
+        teamFolderName: json_['teamFolderName'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final containingFolder = this.containingFolder;
+    final createTime = this.createTime;
+    final creatorIamPrincipal = this.creatorIamPrincipal;
+    final displayName = this.displayName;
+    final internalMetadata = this.internalMetadata;
+    final name = this.name;
+    final teamFolderName = this.teamFolderName;
+    final updateTime = this.updateTime;
+    return {
+      'containingFolder': ?containingFolder,
+      'createTime': ?createTime,
+      'creatorIamPrincipal': ?creatorIamPrincipal,
+      'displayName': ?displayName,
+      'internalMetadata': ?internalMetadata,
+      'name': ?name,
+      'teamFolderName': ?teamFolderName,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Represents a single content entry.
+class FolderContentsEntry {
+  /// A subfolder.
+  Folder? folder;
+
+  /// A repository.
+  Repository? repository;
+
+  FolderContentsEntry({this.folder, this.repository});
+
+  FolderContentsEntry.fromJson(core.Map json_)
+    : this(
+        folder: json_.containsKey('folder')
+            ? Folder.fromJson(
+                json_['folder'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        repository: json_.containsKey('repository')
+            ? Repository.fromJson(
+                json_['repository'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final folder = this.folder;
+    final repository = this.repository;
+    return {'folder': ?folder, 'repository': ?repository};
+  }
+}
+
 /// Controls Git remote configuration for a repository.
 class GitRemoteSettings {
   /// The name of the Secret Manager secret version to use as an authentication
@@ -5147,6 +6106,8 @@ class GitRemoteSettings {
   core.String? authenticationTokenSecretVersion;
 
   /// The Git remote's default branch name.
+  ///
+  /// If not set, `main` will be used and stored for the repository.
   ///
   /// Required.
   core.String? defaultBranch;
@@ -5893,6 +6854,58 @@ class MoveFileRequest {
 /// `MoveFile` response message.
 typedef MoveFileResponse = $Empty;
 
+/// `MoveFolder` request message.
+class MoveFolderRequest {
+  /// The name of the Folder, TeamFolder, or root location to move the Folder
+  /// to.
+  ///
+  /// Can be in the format of: "" to move into the root User folder, `projects /
+  /// * /locations / * /folders / * `, `projects / * /locations / * /teamFolders
+  /// / * `
+  ///
+  /// Optional.
+  core.String? destinationContainingFolder;
+
+  MoveFolderRequest({this.destinationContainingFolder});
+
+  MoveFolderRequest.fromJson(core.Map json_)
+    : this(
+        destinationContainingFolder:
+            json_['destinationContainingFolder'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationContainingFolder = this.destinationContainingFolder;
+    return {'destinationContainingFolder': ?destinationContainingFolder};
+  }
+}
+
+/// `MoveRepository` request message.
+class MoveRepositoryRequest {
+  /// The name of the Folder, TeamFolder, or root location to move the
+  /// repository to.
+  ///
+  /// Can be in the format of: "" to move into the root User folder, `projects /
+  /// * /locations / * /folders / * `, `projects / * /locations / * /teamFolders
+  /// / * `
+  ///
+  /// Optional.
+  core.String? destinationContainingFolder;
+
+  MoveRepositoryRequest({this.destinationContainingFolder});
+
+  MoveRepositoryRequest.fromJson(core.Map json_)
+    : this(
+        destinationContainingFolder:
+            json_['destinationContainingFolder'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationContainingFolder = this.destinationContainingFolder;
+    return {'destinationContainingFolder': ?destinationContainingFolder};
+  }
+}
+
 /// Represents a notebook.
 class Notebook {
   /// The contents of the notebook.
@@ -6422,6 +7435,37 @@ class QueryDirectoryContentsResponse {
   }
 }
 
+/// `QueryFolderContents` response message.
+class QueryFolderContentsResponse {
+  /// List of entries in the folder.
+  core.List<FolderContentsEntry>? entries;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  QueryFolderContentsResponse({this.entries, this.nextPageToken});
+
+  QueryFolderContentsResponse.fromJson(core.Map json_)
+    : this(
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => FolderContentsEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    final nextPageToken = this.nextPageToken;
+    return {'entries': ?entries, 'nextPageToken': ?nextPageToken};
+  }
+}
+
 /// `QueryRepositoryDirectoryContents` response message.
 class QueryRepositoryDirectoryContentsResponse {
   /// List of entries in the directory.
@@ -6456,6 +7500,68 @@ class QueryRepositoryDirectoryContentsResponse {
       'directoryEntries': ?directoryEntries,
       'nextPageToken': ?nextPageToken,
     };
+  }
+}
+
+/// `QueryTeamFolderContents` response message.
+class QueryTeamFolderContentsResponse {
+  /// List of entries in the TeamFolder.
+  core.List<TeamFolderContentsEntry>? entries;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  QueryTeamFolderContentsResponse({this.entries, this.nextPageToken});
+
+  QueryTeamFolderContentsResponse.fromJson(core.Map json_)
+    : this(
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => TeamFolderContentsEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    final nextPageToken = this.nextPageToken;
+    return {'entries': ?entries, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// `QueryUserRootContents` response message.
+class QueryUserRootContentsResponse {
+  /// List of entries in the folder.
+  core.List<RootContentsEntry>? entries;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  QueryUserRootContentsResponse({this.entries, this.nextPageToken});
+
+  QueryUserRootContentsResponse.fromJson(core.Map json_)
+    : this(
+        entries: (json_['entries'] as core.List?)
+            ?.map(
+              (value) => RootContentsEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entries = this.entries;
+    final nextPageToken = this.nextPageToken;
+    return {'entries': ?entries, 'nextPageToken': ?nextPageToken};
   }
 }
 
@@ -6541,9 +7647,9 @@ class Relation {
   /// The connection specifying the credentials to be used to read and write to
   /// external storage, such as Cloud Storage.
   ///
-  /// The connection can have the form \`{project}.{location}.{connection_id}\`
-  /// or \`projects/{project}/locations/{location}/connections/{connection_id}",
-  /// or be set to DEFAULT.
+  /// The connection can have the form `{project}.{location}.{connection_id}` or
+  /// `projects/{project}/locations/{location}/connections/{connection_id}`, or
+  /// be set to DEFAULT.
   ///
   /// Optional.
   core.String? connection;
@@ -6930,6 +8036,15 @@ typedef RemoveFileResponse = $Empty;
 
 /// Represents a Dataform Git repository.
 class Repository {
+  /// The name of the containing folder of the repository.
+  ///
+  /// The field is immutable and it can be modified via a MoveRepository
+  /// operation. Format: `projects / * /locations / * /folders / * `. or
+  /// `projects / * /locations / * /teamFolders / * `.
+  ///
+  /// Optional.
+  core.String? containingFolder;
+
   /// The timestamp of when the repository was created.
   ///
   /// Output only.
@@ -7002,6 +8117,16 @@ class Repository {
   /// Optional.
   core.bool? setAuthenticatedUserAdmin;
 
+  /// The resource name of the TeamFolder that this Repository is associated
+  /// with.
+  ///
+  /// This should take the format:
+  /// projects/{project}/locations/{location}/teamFolders/{teamFolder}. If this
+  /// is not set, the Repository is not associated with a TeamFolder.
+  ///
+  /// Output only.
+  core.String? teamFolderName;
+
   /// If set, fields of `workspace_compilation_overrides` override the default
   /// compilation settings that are specified in dataform.json when creating
   /// workspace-scoped compilation results.
@@ -7013,6 +8138,7 @@ class Repository {
   WorkspaceCompilationOverrides? workspaceCompilationOverrides;
 
   Repository({
+    this.containingFolder,
     this.createTime,
     this.dataEncryptionState,
     this.displayName,
@@ -7024,11 +8150,13 @@ class Repository {
     this.npmrcEnvironmentVariablesSecretVersion,
     this.serviceAccount,
     this.setAuthenticatedUserAdmin,
+    this.teamFolderName,
     this.workspaceCompilationOverrides,
   });
 
   Repository.fromJson(core.Map json_)
     : this(
+        containingFolder: json_['containingFolder'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         dataEncryptionState: json_.containsKey('dataEncryptionState')
             ? DataEncryptionState.fromJson(
@@ -7054,6 +8182,7 @@ class Repository {
         serviceAccount: json_['serviceAccount'] as core.String?,
         setAuthenticatedUserAdmin:
             json_['setAuthenticatedUserAdmin'] as core.bool?,
+        teamFolderName: json_['teamFolderName'] as core.String?,
         workspaceCompilationOverrides:
             json_.containsKey('workspaceCompilationOverrides')
             ? WorkspaceCompilationOverrides.fromJson(
@@ -7064,6 +8193,7 @@ class Repository {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final containingFolder = this.containingFolder;
     final createTime = this.createTime;
     final dataEncryptionState = this.dataEncryptionState;
     final displayName = this.displayName;
@@ -7076,8 +8206,10 @@ class Repository {
         this.npmrcEnvironmentVariablesSecretVersion;
     final serviceAccount = this.serviceAccount;
     final setAuthenticatedUserAdmin = this.setAuthenticatedUserAdmin;
+    final teamFolderName = this.teamFolderName;
     final workspaceCompilationOverrides = this.workspaceCompilationOverrides;
     return {
+      'containingFolder': ?containingFolder,
       'createTime': ?createTime,
       'dataEncryptionState': ?dataEncryptionState,
       'displayName': ?displayName,
@@ -7090,6 +8222,7 @@ class Repository {
           ?npmrcEnvironmentVariablesSecretVersion,
       'serviceAccount': ?serviceAccount,
       'setAuthenticatedUserAdmin': ?setAuthenticatedUserAdmin,
+      'teamFolderName': ?teamFolderName,
       'workspaceCompilationOverrides': ?workspaceCompilationOverrides,
     };
   }
@@ -7129,6 +8262,37 @@ class ResetWorkspaceChangesRequest {
 
 /// `ResetWorkspaceChanges` response message.
 typedef ResetWorkspaceChangesResponse = $Empty;
+
+/// Represents a single content entry.
+class RootContentsEntry {
+  /// A subfolder.
+  Folder? folder;
+
+  /// A repository.
+  Repository? repository;
+
+  RootContentsEntry({this.folder, this.repository});
+
+  RootContentsEntry.fromJson(core.Map json_)
+    : this(
+        folder: json_.containsKey('folder')
+            ? Folder.fromJson(
+                json_['folder'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        repository: json_.containsKey('repository')
+            ? Repository.fromJson(
+                json_['repository'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final folder = this.folder;
+    final repository = this.repository;
+    return {'folder': ?folder, 'repository': ?repository};
+  }
+}
 
 /// A record of an attempt to create a workflow invocation for this workflow
 /// config.
@@ -7290,6 +8454,37 @@ class SearchResult {
   }
 }
 
+/// `SearchTeamFolders` response message.
+class SearchTeamFoldersResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of TeamFolders that match the search query.
+  core.List<TeamFolderSearchResult>? results;
+
+  SearchTeamFoldersResponse({this.nextPageToken, this.results});
+
+  SearchTeamFoldersResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => TeamFolderSearchResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final results = this.results;
+    return {'nextPageToken': ?nextPageToken, 'results': ?results};
+  }
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -7437,6 +8632,136 @@ class Target {
     final name = this.name;
     final schema = this.schema;
     return {'database': ?database, 'name': ?name, 'schema': ?schema};
+  }
+}
+
+/// Represents a Dataform TeamFolder.
+///
+/// This is a resource that sits at the project level and is used to organize
+/// Repositories and Folders with hierarchical access controls. They provide a
+/// team context and stricter access controls.
+class TeamFolder {
+  /// The timestamp of when the TeamFolder was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The IAM principal identifier of the creator of the TeamFolder.
+  ///
+  /// Output only.
+  core.String? creatorIamPrincipal;
+
+  /// The TeamFolder's user-friendly name.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// All the metadata information that is used internally to serve the
+  /// resource.
+  ///
+  /// For example: timestamps, flags, status fields, etc. The format of this
+  /// field is a JSON string.
+  ///
+  /// Output only.
+  core.String? internalMetadata;
+
+  /// Identifier.
+  ///
+  /// The TeamFolder's name.
+  core.String? name;
+
+  /// The timestamp of when the TeamFolder was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  TeamFolder({
+    this.createTime,
+    this.creatorIamPrincipal,
+    this.displayName,
+    this.internalMetadata,
+    this.name,
+    this.updateTime,
+  });
+
+  TeamFolder.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        creatorIamPrincipal: json_['creatorIamPrincipal'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        internalMetadata: json_['internalMetadata'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final creatorIamPrincipal = this.creatorIamPrincipal;
+    final displayName = this.displayName;
+    final internalMetadata = this.internalMetadata;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'creatorIamPrincipal': ?creatorIamPrincipal,
+      'displayName': ?displayName,
+      'internalMetadata': ?internalMetadata,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Represents a single content entry.
+class TeamFolderContentsEntry {
+  /// A subfolder.
+  Folder? folder;
+
+  /// A repository.
+  Repository? repository;
+
+  TeamFolderContentsEntry({this.folder, this.repository});
+
+  TeamFolderContentsEntry.fromJson(core.Map json_)
+    : this(
+        folder: json_.containsKey('folder')
+            ? Folder.fromJson(
+                json_['folder'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        repository: json_.containsKey('repository')
+            ? Repository.fromJson(
+                json_['repository'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final folder = this.folder;
+    final repository = this.repository;
+    return {'folder': ?folder, 'repository': ?repository};
+  }
+}
+
+/// Represents a single content entry.
+class TeamFolderSearchResult {
+  /// A TeamFolder resource that is in the project / location.
+  TeamFolder? teamFolder;
+
+  TeamFolderSearchResult({this.teamFolder});
+
+  TeamFolderSearchResult.fromJson(core.Map json_)
+    : this(
+        teamFolder: json_.containsKey('teamFolder')
+            ? TeamFolder.fromJson(
+                json_['teamFolder'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final teamFolder = this.teamFolder;
+    return {'teamFolder': ?teamFolder};
   }
 }
 
@@ -7921,6 +9246,14 @@ class Workspace {
   /// Output only.
   DataEncryptionState? dataEncryptionState;
 
+  /// If set to true, workspaces will not be moved if its linked Repository is
+  /// moved.
+  ///
+  /// Instead, it will be deleted.
+  ///
+  /// Optional.
+  core.bool? disableMoves;
+
   /// All the metadata information that is used internally to serve the
   /// resource.
   ///
@@ -7945,6 +9278,7 @@ class Workspace {
   Workspace({
     this.createTime,
     this.dataEncryptionState,
+    this.disableMoves,
     this.internalMetadata,
     this.name,
     this.privateResourceMetadata,
@@ -7959,6 +9293,7 @@ class Workspace {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        disableMoves: json_['disableMoves'] as core.bool?,
         internalMetadata: json_['internalMetadata'] as core.String?,
         name: json_['name'] as core.String?,
         privateResourceMetadata: json_.containsKey('privateResourceMetadata')
@@ -7972,12 +9307,14 @@ class Workspace {
   core.Map<core.String, core.dynamic> toJson() {
     final createTime = this.createTime;
     final dataEncryptionState = this.dataEncryptionState;
+    final disableMoves = this.disableMoves;
     final internalMetadata = this.internalMetadata;
     final name = this.name;
     final privateResourceMetadata = this.privateResourceMetadata;
     return {
       'createTime': ?createTime,
       'dataEncryptionState': ?dataEncryptionState,
+      'disableMoves': ?disableMoves,
       'internalMetadata': ?internalMetadata,
       'name': ?name,
       'privateResourceMetadata': ?privateResourceMetadata,

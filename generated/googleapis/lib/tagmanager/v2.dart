@@ -8827,6 +8827,18 @@ class VariableFormatValue {
   /// The value to convert if a variable value is null.
   Parameter? convertNullToValue;
 
+  /// The option to convert a variable value to a boolean.
+  core.bool? convertToBoolean;
+
+  /// The option to convert a variable value to a number.
+  /// Possible string values are:
+  /// - "decimalSeparatorTypeUnspecified"
+  /// - "period" : The option to convert a variable value to a number with a
+  /// period as the decimal separator.
+  /// - "comma" : The option to convert a variable value to a number with a
+  /// comma as the decimal separator.
+  core.String? convertToNumber;
+
   /// The value to convert if a variable value is true.
   Parameter? convertTrueToValue;
 
@@ -8837,6 +8849,8 @@ class VariableFormatValue {
     this.caseConversionType,
     this.convertFalseToValue,
     this.convertNullToValue,
+    this.convertToBoolean,
+    this.convertToNumber,
     this.convertTrueToValue,
     this.convertUndefinedToValue,
   });
@@ -8856,6 +8870,8 @@ class VariableFormatValue {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        convertToBoolean: json_['convertToBoolean'] as core.bool?,
+        convertToNumber: json_['convertToNumber'] as core.String?,
         convertTrueToValue: json_.containsKey('convertTrueToValue')
             ? Parameter.fromJson(
                 json_['convertTrueToValue']
@@ -8874,12 +8890,16 @@ class VariableFormatValue {
     final caseConversionType = this.caseConversionType;
     final convertFalseToValue = this.convertFalseToValue;
     final convertNullToValue = this.convertNullToValue;
+    final convertToBoolean = this.convertToBoolean;
+    final convertToNumber = this.convertToNumber;
     final convertTrueToValue = this.convertTrueToValue;
     final convertUndefinedToValue = this.convertUndefinedToValue;
     return {
       'caseConversionType': ?caseConversionType,
       'convertFalseToValue': ?convertFalseToValue,
       'convertNullToValue': ?convertNullToValue,
+      'convertToBoolean': ?convertToBoolean,
+      'convertToNumber': ?convertToNumber,
       'convertTrueToValue': ?convertTrueToValue,
       'convertUndefinedToValue': ?convertUndefinedToValue,
     };

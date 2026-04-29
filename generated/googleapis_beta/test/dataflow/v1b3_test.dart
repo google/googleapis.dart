@@ -1650,6 +1650,7 @@ api.GetWorkerStacktracesRequest buildGetWorkerStacktracesRequest() {
   final o = api.GetWorkerStacktracesRequest();
   buildCounterGetWorkerStacktracesRequest++;
   if (buildCounterGetWorkerStacktracesRequest < 3) {
+    o.endTime = 'foo';
     o.workerId = 'foo';
   }
   buildCounterGetWorkerStacktracesRequest--;
@@ -1659,6 +1660,7 @@ api.GetWorkerStacktracesRequest buildGetWorkerStacktracesRequest() {
 void checkGetWorkerStacktracesRequest(api.GetWorkerStacktracesRequest o) {
   buildCounterGetWorkerStacktracesRequest++;
   if (buildCounterGetWorkerStacktracesRequest < 3) {
+    unittest.expect(o.endTime!, unittest.equals('foo'));
     unittest.expect(o.workerId!, unittest.equals('foo'));
   }
   buildCounterGetWorkerStacktracesRequest--;
@@ -2005,6 +2007,7 @@ api.Job buildJob() {
     o.labels = buildUnnamed32();
     o.location = 'foo';
     o.name = 'foo';
+    o.pausable = true;
     o.pipelineDescription = buildPipelineDescription();
     o.projectId = 'foo';
     o.replaceJobId = 'foo';
@@ -2041,6 +2044,7 @@ void checkJob(api.Job o) {
     checkUnnamed32(o.labels!);
     unittest.expect(o.location!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.pausable!, unittest.isTrue);
     checkPipelineDescription(o.pipelineDescription!);
     unittest.expect(o.projectId!, unittest.equals('foo'));
     unittest.expect(o.replaceJobId!, unittest.equals('foo'));
@@ -4149,6 +4153,8 @@ api.RuntimeUpdatableParams buildRuntimeUpdatableParams() {
   buildCounterRuntimeUpdatableParams++;
   if (buildCounterRuntimeUpdatableParams < 3) {
     o.acceptableBacklogDuration = 'foo';
+    o.autoscalingTier = 'foo';
+    o.latencyTier = 'foo';
     o.maxNumWorkers = 42;
     o.minNumWorkers = 42;
     o.workerUtilizationHint = 42.0;
@@ -4161,6 +4167,8 @@ void checkRuntimeUpdatableParams(api.RuntimeUpdatableParams o) {
   buildCounterRuntimeUpdatableParams++;
   if (buildCounterRuntimeUpdatableParams < 3) {
     unittest.expect(o.acceptableBacklogDuration!, unittest.equals('foo'));
+    unittest.expect(o.autoscalingTier!, unittest.equals('foo'));
+    unittest.expect(o.latencyTier!, unittest.equals('foo'));
     unittest.expect(o.maxNumWorkers!, unittest.equals(42));
     unittest.expect(o.minNumWorkers!, unittest.equals(42));
     unittest.expect(o.workerUtilizationHint!, unittest.equals(42.0));
@@ -6853,6 +6861,8 @@ api.WorkerPool buildWorkerPool() {
     o.autoscalingSettings = buildAutoscalingSettings();
     o.dataDisks = buildUnnamed153();
     o.defaultPackageSet = 'foo';
+    o.diskProvisionedIops = 'foo';
+    o.diskProvisionedThroughputMibps = 'foo';
     o.diskSizeGb = 42;
     o.diskSourceImage = 'foo';
     o.diskType = 'foo';
@@ -6883,6 +6893,8 @@ void checkWorkerPool(api.WorkerPool o) {
     checkAutoscalingSettings(o.autoscalingSettings!);
     checkUnnamed153(o.dataDisks!);
     unittest.expect(o.defaultPackageSet!, unittest.equals('foo'));
+    unittest.expect(o.diskProvisionedIops!, unittest.equals('foo'));
+    unittest.expect(o.diskProvisionedThroughputMibps!, unittest.equals('foo'));
     unittest.expect(o.diskSizeGb!, unittest.equals(42));
     unittest.expect(o.diskSourceImage!, unittest.equals('foo'));
     unittest.expect(o.diskType!, unittest.equals('foo'));

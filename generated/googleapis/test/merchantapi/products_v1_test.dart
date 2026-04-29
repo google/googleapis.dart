@@ -486,6 +486,7 @@ api.Product buildProduct() {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
     o.automatedDiscounts = buildAutomatedDiscounts();
+    o.base64EncodedName = 'foo';
     o.contentLanguage = 'foo';
     o.customAttributes = buildUnnamed9();
     o.dataSource = 'foo';
@@ -505,6 +506,7 @@ void checkProduct(api.Product o) {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
     checkAutomatedDiscounts(o.automatedDiscounts!);
+    unittest.expect(o.base64EncodedName!, unittest.equals('foo'));
     unittest.expect(o.contentLanguage!, unittest.equals('foo'));
     checkUnnamed9(o.customAttributes!);
     unittest.expect(o.dataSource!, unittest.equals('foo'));
@@ -641,23 +643,26 @@ void checkUnnamed22(core.List<api.LoyaltyProgram> o) {
   checkLoyaltyProgram(o[1]);
 }
 
-core.List<api.ProductDetail> buildUnnamed23() => [
+core.List<api.ProductMinimumOrderValue> buildUnnamed23() => [
+  buildProductMinimumOrderValue(),
+  buildProductMinimumOrderValue(),
+];
+
+void checkUnnamed23(core.List<api.ProductMinimumOrderValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkProductMinimumOrderValue(o[0]);
+  checkProductMinimumOrderValue(o[1]);
+}
+
+core.List<api.ProductDetail> buildUnnamed24() => [
   buildProductDetail(),
   buildProductDetail(),
 ];
 
-void checkUnnamed23(core.List<api.ProductDetail> o) {
+void checkUnnamed24(core.List<api.ProductDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductDetail(o[0]);
   checkProductDetail(o[1]);
-}
-
-core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
-
-void checkUnnamed24(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
@@ -676,23 +681,20 @@ void checkUnnamed26(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.Shipping> buildUnnamed27() => [buildShipping(), buildShipping()];
+core.List<core.String> buildUnnamed27() => ['foo', 'foo'];
 
-void checkUnnamed27(core.List<api.Shipping> o) {
+void checkUnnamed27(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<api.Shipping> buildUnnamed28() => [buildShipping(), buildShipping()];
+
+void checkUnnamed28(core.List<api.Shipping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkShipping(o[0]);
   checkShipping(o[1]);
-}
-
-core.List<api.ShippingBusinessDaysConfig> buildUnnamed28() => [
-  buildShippingBusinessDaysConfig(),
-  buildShippingBusinessDaysConfig(),
-];
-
-void checkUnnamed28(core.List<api.ShippingBusinessDaysConfig> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkShippingBusinessDaysConfig(o[0]);
-  checkShippingBusinessDaysConfig(o[1]);
 }
 
 core.List<api.ShippingBusinessDaysConfig> buildUnnamed29() => [
@@ -706,12 +708,15 @@ void checkUnnamed29(core.List<api.ShippingBusinessDaysConfig> o) {
   checkShippingBusinessDaysConfig(o[1]);
 }
 
-core.List<core.String> buildUnnamed30() => ['foo', 'foo'];
+core.List<api.ShippingBusinessDaysConfig> buildUnnamed30() => [
+  buildShippingBusinessDaysConfig(),
+  buildShippingBusinessDaysConfig(),
+];
 
-void checkUnnamed30(core.List<core.String> o) {
+void checkUnnamed30(core.List<api.ShippingBusinessDaysConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  checkShippingBusinessDaysConfig(o[0]);
+  checkShippingBusinessDaysConfig(o[1]);
 }
 
 core.List<core.String> buildUnnamed31() => ['foo', 'foo'];
@@ -722,15 +727,31 @@ void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.ProductSustainabilityIncentive> buildUnnamed32() => [
+core.List<core.String> buildUnnamed32() => ['foo', 'foo'];
+
+void checkUnnamed32(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<api.ProductSustainabilityIncentive> buildUnnamed33() => [
   buildProductSustainabilityIncentive(),
   buildProductSustainabilityIncentive(),
 ];
 
-void checkUnnamed32(core.List<api.ProductSustainabilityIncentive> o) {
+void checkUnnamed33(core.List<api.ProductSustainabilityIncentive> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductSustainabilityIncentive(o[0]);
   checkProductSustainabilityIncentive(o[1]);
+}
+
+core.List<core.String> buildUnnamed34() => ['foo', 'foo'];
+
+void checkUnnamed34(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterProductAttributes = 0;
@@ -793,6 +814,7 @@ api.ProductAttributes buildProductAttributes() {
     o.maximumRetailPrice = buildPrice();
     o.minEnergyEfficiencyClass = 'foo';
     o.minHandlingTime = 'foo';
+    o.minimumOrderValues = buildUnnamed23();
     o.mobileLink = 'foo';
     o.mobileLinkTemplate = 'foo';
     o.mpn = 'foo';
@@ -802,37 +824,39 @@ api.ProductAttributes buildProductAttributes() {
     o.pickupMethod = 'foo';
     o.pickupSla = 'foo';
     o.price = buildPrice();
-    o.productDetails = buildUnnamed23();
+    o.productDetails = buildUnnamed24();
     o.productHeight = buildProductDimension();
-    o.productHighlights = buildUnnamed24();
+    o.productHighlights = buildUnnamed25();
     o.productLength = buildProductDimension();
-    o.productTypes = buildUnnamed25();
+    o.productTypes = buildUnnamed26();
     o.productWeight = buildProductWeight();
     o.productWidth = buildProductDimension();
-    o.promotionIds = buildUnnamed26();
+    o.promotionIds = buildUnnamed27();
+    o.returnPolicyLabel = 'foo';
     o.salePrice = buildPrice();
     o.salePriceEffectiveDate = buildInterval();
     o.sellOnGoogleQuantity = 'foo';
-    o.shipping = buildUnnamed27();
-    o.shippingHandlingBusinessDays = buildUnnamed28();
+    o.shipping = buildUnnamed28();
+    o.shippingHandlingBusinessDays = buildUnnamed29();
     o.shippingHeight = buildShippingDimension();
     o.shippingLabel = 'foo';
     o.shippingLength = buildShippingDimension();
-    o.shippingTransitBusinessDays = buildUnnamed29();
+    o.shippingTransitBusinessDays = buildUnnamed30();
     o.shippingWeight = buildShippingWeight();
     o.shippingWidth = buildShippingDimension();
-    o.shoppingAdsExcludedCountries = buildUnnamed30();
+    o.shoppingAdsExcludedCountries = buildUnnamed31();
     o.size = 'foo';
     o.sizeSystem = 'foo';
-    o.sizeTypes = buildUnnamed31();
+    o.sizeTypes = buildUnnamed32();
     o.structuredDescription = buildStructuredDescription();
     o.structuredTitle = buildStructuredTitle();
     o.subscriptionCost = buildSubscriptionCost();
-    o.sustainabilityIncentives = buildUnnamed32();
+    o.sustainabilityIncentives = buildUnnamed33();
     o.title = 'foo';
     o.transitTimeLabel = 'foo';
     o.unitPricingBaseMeasure = buildUnitPricingBaseMeasure();
     o.unitPricingMeasure = buildUnitPricingMeasure();
+    o.videoLinks = buildUnnamed34();
     o.virtualModelLink = 'foo';
   }
   buildCounterProductAttributes--;
@@ -897,6 +921,7 @@ void checkProductAttributes(api.ProductAttributes o) {
     checkPrice(o.maximumRetailPrice!);
     unittest.expect(o.minEnergyEfficiencyClass!, unittest.equals('foo'));
     unittest.expect(o.minHandlingTime!, unittest.equals('foo'));
+    checkUnnamed23(o.minimumOrderValues!);
     unittest.expect(o.mobileLink!, unittest.equals('foo'));
     unittest.expect(o.mobileLinkTemplate!, unittest.equals('foo'));
     unittest.expect(o.mpn!, unittest.equals('foo'));
@@ -906,37 +931,39 @@ void checkProductAttributes(api.ProductAttributes o) {
     unittest.expect(o.pickupMethod!, unittest.equals('foo'));
     unittest.expect(o.pickupSla!, unittest.equals('foo'));
     checkPrice(o.price!);
-    checkUnnamed23(o.productDetails!);
+    checkUnnamed24(o.productDetails!);
     checkProductDimension(o.productHeight!);
-    checkUnnamed24(o.productHighlights!);
+    checkUnnamed25(o.productHighlights!);
     checkProductDimension(o.productLength!);
-    checkUnnamed25(o.productTypes!);
+    checkUnnamed26(o.productTypes!);
     checkProductWeight(o.productWeight!);
     checkProductDimension(o.productWidth!);
-    checkUnnamed26(o.promotionIds!);
+    checkUnnamed27(o.promotionIds!);
+    unittest.expect(o.returnPolicyLabel!, unittest.equals('foo'));
     checkPrice(o.salePrice!);
     checkInterval(o.salePriceEffectiveDate!);
     unittest.expect(o.sellOnGoogleQuantity!, unittest.equals('foo'));
-    checkUnnamed27(o.shipping!);
-    checkUnnamed28(o.shippingHandlingBusinessDays!);
+    checkUnnamed28(o.shipping!);
+    checkUnnamed29(o.shippingHandlingBusinessDays!);
     checkShippingDimension(o.shippingHeight!);
     unittest.expect(o.shippingLabel!, unittest.equals('foo'));
     checkShippingDimension(o.shippingLength!);
-    checkUnnamed29(o.shippingTransitBusinessDays!);
+    checkUnnamed30(o.shippingTransitBusinessDays!);
     checkShippingWeight(o.shippingWeight!);
     checkShippingDimension(o.shippingWidth!);
-    checkUnnamed30(o.shoppingAdsExcludedCountries!);
+    checkUnnamed31(o.shoppingAdsExcludedCountries!);
     unittest.expect(o.size!, unittest.equals('foo'));
     unittest.expect(o.sizeSystem!, unittest.equals('foo'));
-    checkUnnamed31(o.sizeTypes!);
+    checkUnnamed32(o.sizeTypes!);
     checkStructuredDescription(o.structuredDescription!);
     checkStructuredTitle(o.structuredTitle!);
     checkSubscriptionCost(o.subscriptionCost!);
-    checkUnnamed32(o.sustainabilityIncentives!);
+    checkUnnamed33(o.sustainabilityIncentives!);
     unittest.expect(o.title!, unittest.equals('foo'));
     unittest.expect(o.transitTimeLabel!, unittest.equals('foo'));
     checkUnitPricingBaseMeasure(o.unitPricingBaseMeasure!);
     checkUnitPricingMeasure(o.unitPricingMeasure!);
+    checkUnnamed34(o.videoLinks!);
     unittest.expect(o.virtualModelLink!, unittest.equals('foo'));
   }
   buildCounterProductAttributes--;
@@ -1011,12 +1038,12 @@ void checkProductDimension(api.ProductDimension o) {
   buildCounterProductDimension--;
 }
 
-core.List<api.CustomAttribute> buildUnnamed33() => [
+core.List<api.CustomAttribute> buildUnnamed35() => [
   buildCustomAttribute(),
   buildCustomAttribute(),
 ];
 
-void checkUnnamed33(core.List<api.CustomAttribute> o) {
+void checkUnnamed35(core.List<api.CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomAttribute(o[0]);
   checkCustomAttribute(o[1]);
@@ -1027,8 +1054,10 @@ api.ProductInput buildProductInput() {
   final o = api.ProductInput();
   buildCounterProductInput++;
   if (buildCounterProductInput < 3) {
+    o.base64EncodedName = 'foo';
+    o.base64EncodedProduct = 'foo';
     o.contentLanguage = 'foo';
-    o.customAttributes = buildUnnamed33();
+    o.customAttributes = buildUnnamed35();
     o.feedLabel = 'foo';
     o.legacyLocal = true;
     o.name = 'foo';
@@ -1044,8 +1073,10 @@ api.ProductInput buildProductInput() {
 void checkProductInput(api.ProductInput o) {
   buildCounterProductInput++;
   if (buildCounterProductInput < 3) {
+    unittest.expect(o.base64EncodedName!, unittest.equals('foo'));
+    unittest.expect(o.base64EncodedProduct!, unittest.equals('foo'));
     unittest.expect(o.contentLanguage!, unittest.equals('foo'));
-    checkUnnamed33(o.customAttributes!);
+    checkUnnamed35(o.customAttributes!);
     unittest.expect(o.feedLabel!, unittest.equals('foo'));
     unittest.expect(o.legacyLocal!, unittest.isTrue);
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -1063,6 +1094,7 @@ api.ProductInstallment buildProductInstallment() {
   buildCounterProductInstallment++;
   if (buildCounterProductInstallment < 3) {
     o.amount = buildPrice();
+    o.annualPercentageRate = 42.0;
     o.creditType = 'foo';
     o.downpayment = buildPrice();
     o.months = 'foo';
@@ -1075,6 +1107,7 @@ void checkProductInstallment(api.ProductInstallment o) {
   buildCounterProductInstallment++;
   if (buildCounterProductInstallment < 3) {
     checkPrice(o.amount!);
+    unittest.expect(o.annualPercentageRate!, unittest.equals(42.0));
     unittest.expect(o.creditType!, unittest.equals('foo'));
     checkPrice(o.downpayment!);
     unittest.expect(o.months!, unittest.equals('foo'));
@@ -1082,23 +1115,48 @@ void checkProductInstallment(api.ProductInstallment o) {
   buildCounterProductInstallment--;
 }
 
-core.List<api.DestinationStatus> buildUnnamed34() => [
+core.int buildCounterProductMinimumOrderValue = 0;
+api.ProductMinimumOrderValue buildProductMinimumOrderValue() {
+  final o = api.ProductMinimumOrderValue();
+  buildCounterProductMinimumOrderValue++;
+  if (buildCounterProductMinimumOrderValue < 3) {
+    o.country = 'foo';
+    o.price = buildPrice();
+    o.service = 'foo';
+    o.surface = 'foo';
+  }
+  buildCounterProductMinimumOrderValue--;
+  return o;
+}
+
+void checkProductMinimumOrderValue(api.ProductMinimumOrderValue o) {
+  buildCounterProductMinimumOrderValue++;
+  if (buildCounterProductMinimumOrderValue < 3) {
+    unittest.expect(o.country!, unittest.equals('foo'));
+    checkPrice(o.price!);
+    unittest.expect(o.service!, unittest.equals('foo'));
+    unittest.expect(o.surface!, unittest.equals('foo'));
+  }
+  buildCounterProductMinimumOrderValue--;
+}
+
+core.List<api.DestinationStatus> buildUnnamed36() => [
   buildDestinationStatus(),
   buildDestinationStatus(),
 ];
 
-void checkUnnamed34(core.List<api.DestinationStatus> o) {
+void checkUnnamed36(core.List<api.DestinationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDestinationStatus(o[0]);
   checkDestinationStatus(o[1]);
 }
 
-core.List<api.ItemLevelIssue> buildUnnamed35() => [
+core.List<api.ItemLevelIssue> buildUnnamed37() => [
   buildItemLevelIssue(),
   buildItemLevelIssue(),
 ];
 
-void checkUnnamed35(core.List<api.ItemLevelIssue> o) {
+void checkUnnamed37(core.List<api.ItemLevelIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkItemLevelIssue(o[0]);
   checkItemLevelIssue(o[1]);
@@ -1110,9 +1168,9 @@ api.ProductStatus buildProductStatus() {
   buildCounterProductStatus++;
   if (buildCounterProductStatus < 3) {
     o.creationDate = 'foo';
-    o.destinationStatuses = buildUnnamed34();
+    o.destinationStatuses = buildUnnamed36();
     o.googleExpirationDate = 'foo';
-    o.itemLevelIssues = buildUnnamed35();
+    o.itemLevelIssues = buildUnnamed37();
     o.lastUpdateDate = 'foo';
   }
   buildCounterProductStatus--;
@@ -1123,9 +1181,9 @@ void checkProductStatus(api.ProductStatus o) {
   buildCounterProductStatus++;
   if (buildCounterProductStatus < 3) {
     unittest.expect(o.creationDate!, unittest.equals('foo'));
-    checkUnnamed34(o.destinationStatuses!);
+    checkUnnamed36(o.destinationStatuses!);
     unittest.expect(o.googleExpirationDate!, unittest.equals('foo'));
-    checkUnnamed35(o.itemLevelIssues!);
+    checkUnnamed37(o.itemLevelIssues!);
     unittest.expect(o.lastUpdateDate!, unittest.equals('foo'));
   }
   buildCounterProductStatus--;
@@ -1185,6 +1243,8 @@ api.Shipping buildShipping() {
     o.handlingCutoffTimezone = 'foo';
     o.locationGroupName = 'foo';
     o.locationId = 'foo';
+    o.loyaltyProgramLabel = 'foo';
+    o.loyaltyTierLabel = 'foo';
     o.maxHandlingTime = 'foo';
     o.maxTransitTime = 'foo';
     o.minHandlingTime = 'foo';
@@ -1206,6 +1266,8 @@ void checkShipping(api.Shipping o) {
     unittest.expect(o.handlingCutoffTimezone!, unittest.equals('foo'));
     unittest.expect(o.locationGroupName!, unittest.equals('foo'));
     unittest.expect(o.locationId!, unittest.equals('foo'));
+    unittest.expect(o.loyaltyProgramLabel!, unittest.equals('foo'));
+    unittest.expect(o.loyaltyTierLabel!, unittest.equals('foo'));
     unittest.expect(o.maxHandlingTime!, unittest.equals('foo'));
     unittest.expect(o.maxTransitTime!, unittest.equals('foo'));
     unittest.expect(o.minHandlingTime!, unittest.equals('foo'));
@@ -1617,6 +1679,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkProductInstallment(od);
+    });
+  });
+
+  unittest.group('obj-schema-ProductMinimumOrderValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProductMinimumOrderValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductMinimumOrderValue.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkProductMinimumOrderValue(od);
     });
   });
 

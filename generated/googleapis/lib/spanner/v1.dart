@@ -6583,7 +6583,10 @@ class BatchWriteRequest {
 class BatchWriteResponse {
   /// The commit timestamp of the transaction that applied this batch.
   ///
-  /// Present if `status` is `OK`, absent otherwise.
+  /// Present if status is OK and the mutation groups were applied, absent
+  /// otherwise. For mutation groups with conditions, a status=OK and missing
+  /// commit_timestamp means that the mutation groups were not applied due to
+  /// the condition not being satisfied after evaluation.
   core.String? commitTimestamp;
 
   /// The mutation groups applied in this batch.
@@ -12409,25 +12412,27 @@ class ReadWrite {
         .replaceAll('+', '-');
   }
 
-  /// Read lock mode for the transaction.
+  /// The read lock mode for the transaction.
   /// Possible string values are:
   /// - "READ_LOCK_MODE_UNSPECIFIED" : Default value. * If isolation level is
-  /// REPEATABLE_READ, then it is an error to specify `read_lock_mode`. Locking
-  /// semantics default to `OPTIMISTIC`. No validation checks are done for
-  /// reads, except to validate that the data that was served at the snapshot
-  /// time is unchanged at commit time in the following cases: 1. reads done as
-  /// part of queries that use `SELECT FOR UPDATE` 2. reads done as part of
-  /// statements with a `LOCK_SCANNED_RANGES` hint 3. reads done as part of DML
-  /// statements * At all other isolation levels, if `read_lock_mode` is the
-  /// default value, then pessimistic read locks are used.
-  /// - "PESSIMISTIC" : Pessimistic lock mode. Read locks are acquired
-  /// immediately on read. Semantics described only applies to SERIALIZABLE
-  /// isolation.
-  /// - "OPTIMISTIC" : Optimistic lock mode. Locks for reads within the
-  /// transaction are not acquired on read. Instead the locks are acquired on a
-  /// commit to validate that read/queried data has not changed since the
-  /// transaction started. Semantics described only applies to SERIALIZABLE
-  /// isolation.
+  /// SERIALIZABLE, locking semantics default to `PESSIMISTIC`. * If isolation
+  /// level is REPEATABLE_READ, locking semantics default to `OPTIMISTIC`. * See
+  /// [Concurrency control](https://cloud.google.com/spanner/docs/concurrency-control)
+  /// for more details.
+  /// - "PESSIMISTIC" : Pessimistic lock mode. Lock acquisition behavior depends
+  /// on the isolation level in use. In SERIALIZABLE isolation, reads and writes
+  /// acquire necessary locks during transaction statement execution. In
+  /// REPEATABLE_READ isolation, reads that explicitly request to be locked and
+  /// writes acquire locks. See
+  /// [Concurrency control](https://cloud.google.com/spanner/docs/concurrency-control)
+  /// for details on the types of locks acquired at each transaction step.
+  /// - "OPTIMISTIC" : Optimistic lock mode. Lock acquisition behavior depends
+  /// on the isolation level in use. In both SERIALIZABLE and REPEATABLE_READ
+  /// isolation, reads and writes do not acquire locks during transaction
+  /// statement execution. See
+  /// [Concurrency control](https://cloud.google.com/spanner/docs/concurrency-control)
+  /// for details on how the guarantees of each isolation level are provided at
+  /// commit time.
   core.String? readLockMode;
 
   ReadWrite({this.multiplexedSessionPreviousTransactionId, this.readLockMode});

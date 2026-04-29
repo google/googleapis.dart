@@ -35,6 +35,7 @@
 ///     - [ProjectsInstancesClustersResource]
 ///       - [ProjectsInstancesClustersBackupsResource]
 ///       - [ProjectsInstancesClustersHotTabletsResource]
+///       - [ProjectsInstancesClustersMemoryLayersResource]
 ///     - [ProjectsInstancesLogicalViewsResource]
 ///     - [ProjectsInstancesMaterializedViewsResource]
 ///     - [ProjectsInstancesTablesResource]
@@ -908,6 +909,8 @@ class ProjectsInstancesClustersResource {
       ProjectsInstancesClustersBackupsResource(_requester);
   ProjectsInstancesClustersHotTabletsResource get hotTablets =>
       ProjectsInstancesClustersHotTabletsResource(_requester);
+  ProjectsInstancesClustersMemoryLayersResource get memoryLayers =>
+      ProjectsInstancesClustersMemoryLayersResource(_requester);
 
   ProjectsInstancesClustersResource(commons.ApiRequester client)
     : _requester = client;
@@ -1033,6 +1036,46 @@ class ProjectsInstancesClustersResource {
       queryParams: queryParams_,
     );
     return Cluster.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about the memory layer of a cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the requested cluster's memory
+  /// layer. Values are of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/memoryLayer$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MemoryLayer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MemoryLayer> getMemoryLayer(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MemoryLayer.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists information about clusters in an instance.
@@ -1177,6 +1220,55 @@ class ProjectsInstancesClustersResource {
     final response_ = await _requester.request(
       url_,
       'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the memory layer of a cluster.
+  ///
+  /// To enable the memory layer, set the memory_config. To disable the memory
+  /// layer, unset the memory_config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the memory layer. This is always:
+  /// "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/memoryLayer$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateMemoryLayer(
+    MemoryLayer request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
       body: body_,
       queryParams: queryParams_,
     );
@@ -1720,6 +1812,67 @@ class ProjectsInstancesClustersHotTabletsResource {
       queryParams: queryParams_,
     );
     return ListHotTabletsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsInstancesClustersMemoryLayersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesClustersMemoryLayersResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Lists information about memory layers.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The unique name of the cluster for which a list of
+  /// memory layers is requested. Values are of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}`. Use
+  /// `{cluster} = '-'` to list MemoryLayers for all Clusters in an instance,
+  /// e.g., `projects/myproject/instances/myinstance/clusters/-`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of memory layers to return. The
+  /// service may return fewer than this value.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListMemoryLayers` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListMemoryLayers` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMemoryLayersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMemoryLayersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/memoryLayers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMemoryLayersResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4033,6 +4186,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -4105,8 +4269,8 @@ class AppProfile {
   ///
   /// Preserve the value returned from `GetAppProfile` when calling
   /// `UpdateAppProfile` to fail the request if there has been a modification in
-  /// the mean time. The `update_mask` of the request need not include `etag`
-  /// for this protection to apply. See
+  /// the meantime. The `update_mask` of the request need not include `etag` for
+  /// this protection to apply. See
   /// [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and
   /// [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more
   /// details.
@@ -4330,6 +4494,16 @@ class AutomatedBackupPolicy {
   /// is treated as 24 hours.
   core.String? frequency;
 
+  /// A list of Cloud Bigtable zones where automated backups are allowed to be
+  /// created.
+  ///
+  /// If empty, automated backups will be created in all zones of the instance.
+  /// Locations are in the format `projects/{project}/locations/{zone}`. This
+  /// field can only set for tables in Enterprise Plus instances.
+  ///
+  /// Optional.
+  core.List<core.String>? locations;
+
   /// How long the automated backups should be retained.
   ///
   /// Values must be at least 3 days and at most 90 days.
@@ -4337,18 +4511,26 @@ class AutomatedBackupPolicy {
   /// Required.
   core.String? retentionPeriod;
 
-  AutomatedBackupPolicy({this.frequency, this.retentionPeriod});
+  AutomatedBackupPolicy({this.frequency, this.locations, this.retentionPeriod});
 
   AutomatedBackupPolicy.fromJson(core.Map json_)
     : this(
         frequency: json_['frequency'] as core.String?,
+        locations: (json_['locations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         retentionPeriod: json_['retentionPeriod'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final frequency = this.frequency;
+    final locations = this.locations;
     final retentionPeriod = this.retentionPeriod;
-    return {'frequency': ?frequency, 'retentionPeriod': ?retentionPeriod};
+    return {
+      'frequency': ?frequency,
+      'locations': ?locations,
+      'retentionPeriod': ?retentionPeriod,
+    };
   }
 }
 
@@ -5773,6 +5955,24 @@ class GoogleBigtableAdminV2MaterializedViewClusterState {
   }
 }
 
+/// Configuration of a memory layer.
+class GoogleBigtableAdminV2MemoryLayerMemoryConfig {
+  /// Reporting the current size of the memory layer in GiB.
+  ///
+  /// Output only.
+  core.int? storageSizeGib;
+
+  GoogleBigtableAdminV2MemoryLayerMemoryConfig({this.storageSizeGib});
+
+  GoogleBigtableAdminV2MemoryLayerMemoryConfig.fromJson(core.Map json_)
+    : this(storageSizeGib: json_['storageSizeGib'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final storageSizeGib = this.storageSizeGib;
+    return {'storageSizeGib': ?storageSizeGib};
+  }
+}
+
 /// A value that combines incremental updates into a summarized value.
 ///
 /// Data is never directly written or read using type `Aggregate`. Writes
@@ -5917,7 +6117,30 @@ class GoogleBigtableAdminV2TypeArray {
 }
 
 /// bool Values of type `Bool` are stored in `Value.bool_value`.
-typedef GoogleBigtableAdminV2TypeBool = $Empty;
+class GoogleBigtableAdminV2TypeBool {
+  /// Specifies the encoding to use when converting to or from lower level
+  /// types.
+  GoogleBigtableAdminV2TypeBoolEncoding? encoding;
+
+  GoogleBigtableAdminV2TypeBool({this.encoding});
+
+  GoogleBigtableAdminV2TypeBool.fromJson(core.Map json_)
+    : this(
+        encoding: json_.containsKey('encoding')
+            ? GoogleBigtableAdminV2TypeBoolEncoding.fromJson(
+                json_['encoding'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final encoding = this.encoding;
+    return {'encoding': ?encoding};
+  }
+}
+
+/// Defines rules used to convert to or from lower level types.
+typedef GoogleBigtableAdminV2TypeBoolEncoding = $Empty;
 
 /// Bytes Values of type `Bytes` are stored in `Value.bytes_value`.
 class GoogleBigtableAdminV2TypeBytes {
@@ -6020,6 +6243,84 @@ typedef GoogleBigtableAdminV2TypeFloat32 = $Empty;
 
 /// Float64 Values of type `Float64` are stored in `Value.float_value`.
 typedef GoogleBigtableAdminV2TypeFloat64 = $Empty;
+
+/// A geography type, representing a point or region on Earth.
+///
+/// The value is stored in `Value.bytes_value` as Well-Known Binary (WKB) bytes.
+typedef GoogleBigtableAdminV2TypeGeography = $Empty;
+
+/// Int32 Values of type `Int32` are stored in `Value.int_value`.
+class GoogleBigtableAdminV2TypeInt32 {
+  /// The encoding to use when converting to or from lower level types.
+  GoogleBigtableAdminV2TypeInt32Encoding? encoding;
+
+  GoogleBigtableAdminV2TypeInt32({this.encoding});
+
+  GoogleBigtableAdminV2TypeInt32.fromJson(core.Map json_)
+    : this(
+        encoding: json_.containsKey('encoding')
+            ? GoogleBigtableAdminV2TypeInt32Encoding.fromJson(
+                json_['encoding'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final encoding = this.encoding;
+    return {'encoding': ?encoding};
+  }
+}
+
+/// Rules used to convert to or from lower level types.
+class GoogleBigtableAdminV2TypeInt32Encoding {
+  /// Use `BigEndianBytes` encoding.
+  GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes? bigEndianBytes;
+
+  /// Use `OrderedCodeBytes` encoding.
+  GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes? orderedCodeBytes;
+
+  GoogleBigtableAdminV2TypeInt32Encoding({
+    this.bigEndianBytes,
+    this.orderedCodeBytes,
+  });
+
+  GoogleBigtableAdminV2TypeInt32Encoding.fromJson(core.Map json_)
+    : this(
+        bigEndianBytes: json_.containsKey('bigEndianBytes')
+            ? GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes.fromJson(
+                json_['bigEndianBytes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        orderedCodeBytes: json_.containsKey('orderedCodeBytes')
+            ? GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes.fromJson(
+                json_['orderedCodeBytes']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bigEndianBytes = this.bigEndianBytes;
+    final orderedCodeBytes = this.orderedCodeBytes;
+    return {
+      'bigEndianBytes': ?bigEndianBytes,
+      'orderedCodeBytes': ?orderedCodeBytes,
+    };
+  }
+}
+
+/// Encodes the value as a 4-byte big-endian two's complement value.
+///
+/// Sorted mode: non-negative values are supported. Distinct mode: all values
+/// are supported. Compatible with: - BigQuery `BINARY` encoding - HBase
+/// `Bytes.toBytes` - Java `ByteBuffer.putInt()` with `ByteOrder.BIG_ENDIAN`
+typedef GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes = $Empty;
+
+/// Encodes the value in a variable length binary format of up to 5 bytes.
+///
+/// Values that are closer to zero use fewer bytes. Sorted mode: all values are
+/// supported. Distinct mode: all values are supported.
+typedef GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes = $Empty;
 
 /// Int64 Values of type `Int64` are stored in `Value.int_value`.
 class GoogleBigtableAdminV2TypeInt64 {
@@ -6610,6 +6911,24 @@ class Instance {
   /// Required.
   core.String? displayName;
 
+  /// The edition of the instance.
+  ///
+  /// See Edition for details.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : The edition is unspecified. This is treated as
+  /// `ENTERPRISE`.
+  /// - "ENTERPRISE" : The Enterprise edition. This is the default offering that
+  /// is designed to meet the needs of most enterprise workloads.
+  /// - "ENTERPRISE_PLUS" : The Enterprise Plus edition. This is a premium tier
+  /// that is designed for demanding, multi-tenant workloads requiring the
+  /// highest levels of performance, scale, and global availability. The nodes
+  /// in the Enterprise Plus tier come at a higher cost than the Enterprise
+  /// tier. Any Enterprise Plus features must be disabled before downgrading to
+  /// Enterprise.
+  core.String? edition;
+
   /// Labels are a flexible and lightweight mechanism for organizing cloud
   /// resources into groups that reflect a customer's organizational needs and
   /// deployment strategies.
@@ -6676,6 +6995,7 @@ class Instance {
   Instance({
     this.createTime,
     this.displayName,
+    this.edition,
     this.labels,
     this.name,
     this.satisfiesPzi,
@@ -6689,6 +7009,7 @@ class Instance {
     : this(
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
+        edition: json_['edition'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -6705,6 +7026,7 @@ class Instance {
   core.Map<core.String, core.dynamic> toJson() {
     final createTime = this.createTime;
     final displayName = this.displayName;
+    final edition = this.edition;
     final labels = this.labels;
     final name = this.name;
     final satisfiesPzi = this.satisfiesPzi;
@@ -6715,6 +7037,7 @@ class Instance {
     return {
       'createTime': ?createTime,
       'displayName': ?displayName,
+      'edition': ?edition,
       'labels': ?labels,
       'name': ?name,
       'satisfiesPzi': ?satisfiesPzi,
@@ -7102,6 +7425,57 @@ class ListMaterializedViewsResponse {
   }
 }
 
+/// Response message for BigtableInstanceAdmin.ListMemoryLayers.
+class ListMemoryLayersResponse {
+  /// Locations from which MemoryLayer information could not be retrieved, due
+  /// to an outage or some other transient condition.
+  ///
+  /// MemoryLayers from these locations may be missing from `memory_layers`, or
+  /// may only have partial information returned. Values are of the form
+  /// `projects//locations/`
+  core.List<core.String>? failedLocations;
+
+  /// The list of requested memory layers.
+  core.List<MemoryLayer>? memoryLayers;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListMemoryLayersResponse({
+    this.failedLocations,
+    this.memoryLayers,
+    this.nextPageToken,
+  });
+
+  ListMemoryLayersResponse.fromJson(core.Map json_)
+    : this(
+        failedLocations: (json_['failedLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        memoryLayers: (json_['memoryLayers'] as core.List?)
+            ?.map(
+              (value) => MemoryLayer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final failedLocations = this.failedLocations;
+    final memoryLayers = this.memoryLayers;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'failedLocations': ?failedLocations,
+      'memoryLayers': ?memoryLayers,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -7346,6 +7720,88 @@ class MaterializedView {
       'etag': ?etag,
       'name': ?name,
       'query': ?query,
+    };
+  }
+}
+
+/// If set, eligible single-row requests (currently limited to ReadRows) using
+/// this app profile will be routed to the memory layer.
+///
+/// All eligible writes populate the memory layer. MemoryConfig can only be set
+/// if the AppProfile uses single cluster routing and the configured cluster has
+/// a memory layer enabled.
+typedef MemoryConfig = $Empty;
+
+/// The memory layer of a cluster.
+///
+/// A memory layer serves reads from memory without hitting the backing
+/// persistent data store.
+class MemoryLayer {
+  /// The etag for this memory layer.
+  ///
+  /// This may be sent on update requests to ensure that the client has an
+  /// up-to-date value before proceeding. The server returns an ABORTED error on
+  /// a mismatched etag.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The configuration of this memory layer.
+  ///
+  /// Set an empty `memory_config` to enable the memory layer. Unset this to
+  /// disable the memory layer.
+  GoogleBigtableAdminV2MemoryLayerMemoryConfig? memoryConfig;
+
+  /// Identifier.
+  ///
+  /// Name of the memory layer. This is always:
+  /// "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer".
+  core.String? name;
+
+  /// The current state of the memory layer.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_NOT_KNOWN" : The state of the memory layer could not be
+  /// determined.
+  /// - "READY" : The memory layer has been successfully enabled and is ready to
+  /// serve requests.
+  /// - "ENABLING" : The memory layer is currently being enabled, and may be
+  /// disabled if the enablement process encounters an error. A cluster may not
+  /// be able to serve requests from the memory layer while being enabled.
+  /// - "RESIZING" : The memory layer is currently being resized, and may revert
+  /// to its previous storage size if the process encounters an error. The
+  /// memory layer is still capable of serving requests while being resized, but
+  /// may exhibit performance as if its number of allocated nodes is between the
+  /// starting and requested states.
+  /// - "DISABLED" : The memory layer is disabled. The default state for a
+  /// cluster without a memory layer.
+  core.String? state;
+
+  MemoryLayer({this.etag, this.memoryConfig, this.name, this.state});
+
+  MemoryLayer.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        memoryConfig: json_.containsKey('memoryConfig')
+            ? GoogleBigtableAdminV2MemoryLayerMemoryConfig.fromJson(
+                json_['memoryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final memoryConfig = this.memoryConfig;
+    final name = this.name;
+    final state = this.state;
+    return {
+      'etag': ?etag,
+      'memoryConfig': ?memoryConfig,
+      'name': ?name,
+      'state': ?state,
     };
   }
 }
@@ -7936,6 +8392,11 @@ class Split {
 /// Standard options for isolating this app profile's traffic from other use
 /// cases.
 class StandardIsolation {
+  /// The memory config to use for requests sent using this app profile.
+  ///
+  /// Optional.
+  MemoryConfig? memoryConfig;
+
   /// The priority of requests sent using this app profile.
   /// Possible string values are:
   /// - "PRIORITY_UNSPECIFIED" : Default value. Mapped to PRIORITY_HIGH (the
@@ -7945,14 +8406,22 @@ class StandardIsolation {
   /// - "PRIORITY_HIGH"
   core.String? priority;
 
-  StandardIsolation({this.priority});
+  StandardIsolation({this.memoryConfig, this.priority});
 
   StandardIsolation.fromJson(core.Map json_)
-    : this(priority: json_['priority'] as core.String?);
+    : this(
+        memoryConfig: json_.containsKey('memoryConfig')
+            ? MemoryConfig.fromJson(
+                json_['memoryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        priority: json_['priority'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final memoryConfig = this.memoryConfig;
     final priority = this.priority;
-    return {'priority': ?priority};
+    return {'memoryConfig': ?memoryConfig, 'priority': ?priority};
   }
 }
 
@@ -8007,8 +8476,7 @@ class Table {
   /// Data APIs.
   core.bool? deletionProtection;
 
-  /// The granularity (i.e. `MILLIS`) at which timestamps are stored in this
-  /// table.
+  /// The granularity at which timestamps are stored in this table.
   ///
   /// Timestamps not matching the granularity will be rejected. If unspecified
   /// at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`,
@@ -8017,8 +8485,7 @@ class Table {
   /// Immutable.
   /// Possible string values are:
   /// - "TIMESTAMP_GRANULARITY_UNSPECIFIED" : The user did not specify a
-  /// granularity. Should not be returned. When specified during table creation,
-  /// MILLIS will be used.
+  /// granularity. Should not be returned.
   /// - "MILLIS" : The table keeps data versioned at a granularity of 1ms.
   core.String? granularity;
 
@@ -8352,6 +8819,12 @@ class Type {
   /// Float64
   GoogleBigtableAdminV2TypeFloat64? float64Type;
 
+  /// Geography
+  GoogleBigtableAdminV2TypeGeography? geographyType;
+
+  /// Int32
+  GoogleBigtableAdminV2TypeInt32? int32Type;
+
   /// Int64
   GoogleBigtableAdminV2TypeInt64? int64Type;
 
@@ -8379,6 +8852,8 @@ class Type {
     this.enumType,
     this.float32Type,
     this.float64Type,
+    this.geographyType,
+    this.int32Type,
     this.int64Type,
     this.mapType,
     this.protoType,
@@ -8429,6 +8904,16 @@ class Type {
                 json_['float64Type'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        geographyType: json_.containsKey('geographyType')
+            ? GoogleBigtableAdminV2TypeGeography.fromJson(
+                json_['geographyType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        int32Type: json_.containsKey('int32Type')
+            ? GoogleBigtableAdminV2TypeInt32.fromJson(
+                json_['int32Type'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         int64Type: json_.containsKey('int64Type')
             ? GoogleBigtableAdminV2TypeInt64.fromJson(
                 json_['int64Type'] as core.Map<core.String, core.dynamic>,
@@ -8470,6 +8955,8 @@ class Type {
     final enumType = this.enumType;
     final float32Type = this.float32Type;
     final float64Type = this.float64Type;
+    final geographyType = this.geographyType;
+    final int32Type = this.int32Type;
     final int64Type = this.int64Type;
     final mapType = this.mapType;
     final protoType = this.protoType;
@@ -8485,6 +8972,8 @@ class Type {
       'enumType': ?enumType,
       'float32Type': ?float32Type,
       'float64Type': ?float64Type,
+      'geographyType': ?geographyType,
+      'int32Type': ?int32Type,
       'int64Type': ?int64Type,
       'mapType': ?mapType,
       'protoType': ?protoType,

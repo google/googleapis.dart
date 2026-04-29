@@ -929,9 +929,9 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [returnPartialSuccess] - When set to `true`, operations that are reachable
   /// are returned as normal, and those that are unreachable are returned in the
-  /// \[ListOperationsResponse.unreachable\] field. This can only be `true` when
-  /// reading across collections e.g. when `parent` is set to
-  /// `"projects/example/locations/-"`. This field is not by default supported
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
   /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
   /// documented otherwise in service or product specific documentation.
   ///
@@ -2046,7 +2046,7 @@ class ListOperationsResponse {
   ///
   /// Unreachable resources. Populated when the request sets
   /// `ListOperationsRequest.return_partial_success` and reads across
-  /// collections e.g. when attempting to list all resources across all
+  /// collections. For example, when attempting to list all resources across all
   /// supported locations.
   core.List<core.String>? unreachable;
 
@@ -2088,6 +2088,14 @@ typedef Location = $Location00;
 
 /// Logging configuration for a Data Fusion instance.
 class LoggingConfig {
+  /// Option to enable the InstanceV2 logging for this instance.
+  ///
+  /// This field is supported only in CDF patch revision versions 6.11.1.1 and
+  /// above.
+  ///
+  /// Optional.
+  core.bool? enableInstanceV2Logs;
+
   /// Option to determine whether instance logs should be written to Cloud
   /// Logging.
   ///
@@ -2096,17 +2104,22 @@ class LoggingConfig {
   /// Optional.
   core.bool? instanceCloudLoggingDisabled;
 
-  LoggingConfig({this.instanceCloudLoggingDisabled});
+  LoggingConfig({this.enableInstanceV2Logs, this.instanceCloudLoggingDisabled});
 
   LoggingConfig.fromJson(core.Map json_)
     : this(
+        enableInstanceV2Logs: json_['enableInstanceV2Logs'] as core.bool?,
         instanceCloudLoggingDisabled:
             json_['instanceCloudLoggingDisabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final enableInstanceV2Logs = this.enableInstanceV2Logs;
     final instanceCloudLoggingDisabled = this.instanceCloudLoggingDisabled;
-    return {'instanceCloudLoggingDisabled': ?instanceCloudLoggingDisabled};
+    return {
+      'enableInstanceV2Logs': ?enableInstanceV2Logs,
+      'instanceCloudLoggingDisabled': ?instanceCloudLoggingDisabled,
+    };
   }
 }
 

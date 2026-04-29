@@ -52,6 +52,7 @@
 ///       - [ProjectsLocationsDatasetsConversationsResource]
 ///         - [ProjectsLocationsDatasetsConversationsFeedbackLabelsResource]
 ///       - [ProjectsLocationsDatasetsInsightsdataResource]
+///     - [ProjectsLocationsDiagnosticsResource]
 ///     - [ProjectsLocationsEncryptionSpecResource]
 ///     - [ProjectsLocationsInsightsdataResource]
 ///     - [ProjectsLocationsIssueModelsResource]
@@ -126,6 +127,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsDashboardsResource(_requester);
   ProjectsLocationsDatasetsResource get datasets =>
       ProjectsLocationsDatasetsResource(_requester);
+  ProjectsLocationsDiagnosticsResource get diagnostics =>
+      ProjectsLocationsDiagnosticsResource(_requester);
   ProjectsLocationsEncryptionSpecResource get encryptionSpec =>
       ProjectsLocationsEncryptionSpecResource(_requester);
   ProjectsLocationsInsightsdataResource get insightsdata =>
@@ -267,6 +270,51 @@ class ProjectsLocationsResource {
 
     final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + ':bulkUploadFeedbackLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Analyzes conversation data using specialized agentic workflows, such as
+  /// ReAct, to diagnose issues and provide insights.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where the analysis will be
+  /// performed.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> diagnoseConversations(
+    GoogleCloudContactcenterinsightsV1DiagnoseConversationsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':diagnoseConversations';
 
     final response_ = await _requester.request(
       url_,
@@ -5404,7 +5452,8 @@ class ProjectsLocationsDashboardsResource {
   ///
   /// [updateMask] - Optional. List of fields to be updated. All possible fields
   /// can be updated by passing `*`, or a subset of the following updateable
-  /// fields can be provided: * `display_name` * `root_container`
+  /// fields can be provided: * `display_name` * `root_container` *
+  /// `description`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6802,6 +6851,144 @@ class ProjectsLocationsDatasetsInsightsdataResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDiagnosticsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDiagnosticsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Deletes a diagnostic.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the diagnostic to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/diagnostics/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets a diagnostic.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the diagnostic to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/diagnostics/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1Diagnostic].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1Diagnostic> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1Diagnostic.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists diagnostics.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the diagnostics.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter to apply to the list (e.g. `create_time >
+  /// "2023-01-01T00:00:00Z"`).
+  ///
+  /// [pageSize] - Optional. The maximum number of diagnostics to return. The
+  /// service may return fewer than this value. If unspecified, at most 100
+  /// diagnostics will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDiagnostics` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudContactcenterinsightsV1ListDiagnosticsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListDiagnosticsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/diagnostics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListDiagnosticsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -9244,6 +9431,437 @@ class ProjectsLocationsViewsResource {
   }
 }
 
+/// Represents an event indicating the transfer of a conversation to a different
+/// agent.
+typedef GoogleCloudCesV1mainAgentTransfer = $AgentTransfer;
+
+/// Represents a blob input or output in the conversation.
+typedef GoogleCloudCesV1mainBlob = $Blob;
+
+/// A chunk of content within a message.
+class GoogleCloudCesV1mainChunk {
+  /// Agent transfer event.
+  ///
+  /// Optional.
+  GoogleCloudCesV1mainAgentTransfer? agentTransfer;
+
+  /// Blob data.
+  ///
+  /// Optional.
+  GoogleCloudCesV1mainBlob? blob;
+
+  /// A struct represents default variables at the start of the conversation,
+  /// keyed by variable names.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? defaultVariables;
+
+  /// Image data.
+  ///
+  /// Optional.
+  GoogleCloudCesV1mainImage? image;
+
+  /// Custom payload data.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? payload;
+
+  /// Text data.
+  ///
+  /// Optional.
+  core.String? text;
+
+  /// Tool execution request.
+  ///
+  /// Optional.
+  GoogleCloudCesV1mainToolCall? toolCall;
+
+  /// Tool execution response.
+  ///
+  /// Optional.
+  GoogleCloudCesV1mainToolResponse? toolResponse;
+
+  /// Transcript associated with the audio.
+  ///
+  /// Optional.
+  core.String? transcript;
+
+  /// A struct represents variables that were updated in the conversation, keyed
+  /// by variable names.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? updatedVariables;
+
+  GoogleCloudCesV1mainChunk({
+    this.agentTransfer,
+    this.blob,
+    this.defaultVariables,
+    this.image,
+    this.payload,
+    this.text,
+    this.toolCall,
+    this.toolResponse,
+    this.transcript,
+    this.updatedVariables,
+  });
+
+  GoogleCloudCesV1mainChunk.fromJson(core.Map json_)
+    : this(
+        agentTransfer: json_.containsKey('agentTransfer')
+            ? GoogleCloudCesV1mainAgentTransfer.fromJson(
+                json_['agentTransfer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        blob: json_.containsKey('blob')
+            ? GoogleCloudCesV1mainBlob.fromJson(
+                json_['blob'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        defaultVariables: json_.containsKey('defaultVariables')
+            ? json_['defaultVariables'] as core.Map<core.String, core.dynamic>
+            : null,
+        image: json_.containsKey('image')
+            ? GoogleCloudCesV1mainImage.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        payload: json_.containsKey('payload')
+            ? json_['payload'] as core.Map<core.String, core.dynamic>
+            : null,
+        text: json_['text'] as core.String?,
+        toolCall: json_.containsKey('toolCall')
+            ? GoogleCloudCesV1mainToolCall.fromJson(
+                json_['toolCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolResponse: json_.containsKey('toolResponse')
+            ? GoogleCloudCesV1mainToolResponse.fromJson(
+                json_['toolResponse'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        transcript: json_['transcript'] as core.String?,
+        updatedVariables: json_.containsKey('updatedVariables')
+            ? json_['updatedVariables'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentTransfer = this.agentTransfer;
+    final blob = this.blob;
+    final defaultVariables = this.defaultVariables;
+    final image = this.image;
+    final payload = this.payload;
+    final text = this.text;
+    final toolCall = this.toolCall;
+    final toolResponse = this.toolResponse;
+    final transcript = this.transcript;
+    final updatedVariables = this.updatedVariables;
+    return {
+      'agentTransfer': ?agentTransfer,
+      'blob': ?blob,
+      'defaultVariables': ?defaultVariables,
+      'image': ?image,
+      'payload': ?payload,
+      'text': ?text,
+      'toolCall': ?toolCall,
+      'toolResponse': ?toolResponse,
+      'transcript': ?transcript,
+      'updatedVariables': ?updatedVariables,
+    };
+  }
+}
+
+/// Indicates the session has terminated, due to either successful completion
+/// (e.g. user says "Good bye!" ) or an agent escalation.
+///
+/// The agent will not process any further inputs after session is terminated
+/// and the client should half-close and disconnect after receiving all
+/// remaining responses from the agent.
+typedef GoogleCloudCesV1mainEndSession = $EndSession;
+
+/// Represents an image input or output in the conversation.
+typedef GoogleCloudCesV1mainImage = $Image;
+
+/// A message within a conversation.
+class GoogleCloudCesV1mainMessage {
+  /// Content of the message as a series of chunks.
+  ///
+  /// Optional.
+  core.List<GoogleCloudCesV1mainChunk>? chunks;
+
+  /// Timestamp when the message was sent or received.
+  ///
+  /// Should not be used if the message is part of an example.
+  ///
+  /// Optional.
+  core.String? eventTime;
+
+  /// The role within the conversation, e.g., user, agent.
+  ///
+  /// Optional.
+  core.String? role;
+
+  GoogleCloudCesV1mainMessage({this.chunks, this.eventTime, this.role});
+
+  GoogleCloudCesV1mainMessage.fromJson(core.Map json_)
+    : this(
+        chunks: (json_['chunks'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudCesV1mainChunk.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        eventTime: json_['eventTime'] as core.String?,
+        role: json_['role'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final chunks = this.chunks;
+    final eventTime = this.eventTime;
+    final role = this.role;
+    return {'chunks': ?chunks, 'eventTime': ?eventTime, 'role': ?role};
+  }
+}
+
+/// A span is a unit of work or a single operation during the request
+/// processing.
+class GoogleCloudCesV1mainSpan {
+  /// Key-value attributes associated with the span.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? attributes;
+
+  /// The child spans that are nested under this span.
+  ///
+  /// Output only.
+  core.List<GoogleCloudCesV1mainSpan>? childSpans;
+
+  /// The duration of the span.
+  ///
+  /// Output only.
+  core.String? duration;
+
+  /// The end time of the span.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The name of the span.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The start time of the span.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  GoogleCloudCesV1mainSpan({
+    this.attributes,
+    this.childSpans,
+    this.duration,
+    this.endTime,
+    this.name,
+    this.startTime,
+  });
+
+  GoogleCloudCesV1mainSpan.fromJson(core.Map json_)
+    : this(
+        attributes: json_.containsKey('attributes')
+            ? json_['attributes'] as core.Map<core.String, core.dynamic>
+            : null,
+        childSpans: (json_['childSpans'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudCesV1mainSpan.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        duration: json_['duration'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
+    final childSpans = this.childSpans;
+    final duration = this.duration;
+    final endTime = this.endTime;
+    final name = this.name;
+    final startTime = this.startTime;
+    return {
+      'attributes': ?attributes,
+      'childSpans': ?childSpans,
+      'duration': ?duration,
+      'endTime': ?endTime,
+      'name': ?name,
+      'startTime': ?startTime,
+    };
+  }
+}
+
+/// Request for the client or the agent to execute the specified tool.
+class GoogleCloudCesV1mainToolCall {
+  /// The input parameters and values for the tool in JSON object format.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? args;
+
+  /// Display name of the tool.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The unique identifier of the tool call.
+  ///
+  /// If populated, the client should return the execution result with the
+  /// matching ID in ToolResponse.
+  ///
+  /// Optional.
+  core.String? id;
+
+  /// The name of the tool to execute.
+  ///
+  /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+  ///
+  /// Optional.
+  core.String? tool;
+
+  /// The toolset tool to execute.
+  ///
+  /// Optional.
+  GoogleCloudCesV1mainToolsetTool? toolsetTool;
+
+  GoogleCloudCesV1mainToolCall({
+    this.args,
+    this.displayName,
+    this.id,
+    this.tool,
+    this.toolsetTool,
+  });
+
+  GoogleCloudCesV1mainToolCall.fromJson(core.Map json_)
+    : this(
+        args: json_.containsKey('args')
+            ? json_['args'] as core.Map<core.String, core.dynamic>
+            : null,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        tool: json_['tool'] as core.String?,
+        toolsetTool: json_.containsKey('toolsetTool')
+            ? GoogleCloudCesV1mainToolsetTool.fromJson(
+                json_['toolsetTool'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final args = this.args;
+    final displayName = this.displayName;
+    final id = this.id;
+    final tool = this.tool;
+    final toolsetTool = this.toolsetTool;
+    return {
+      'args': ?args,
+      'displayName': ?displayName,
+      'id': ?id,
+      'tool': ?tool,
+      'toolsetTool': ?toolsetTool,
+    };
+  }
+}
+
+/// The execution result of a specific tool from the client or the agent.
+class GoogleCloudCesV1mainToolResponse {
+  /// Display name of the tool.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The matching ID of the tool call the response is for.
+  ///
+  /// Optional.
+  core.String? id;
+
+  /// The tool execution result in JSON object format.
+  ///
+  /// Use "output" key to specify tool response and "error" key to specify error
+  /// details (if any). If "output" and "error" keys are not specified, then
+  /// whole "response" is treated as tool execution result.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  /// The name of the tool to execute.
+  ///
+  /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+  ///
+  /// Optional.
+  core.String? tool;
+
+  /// The toolset tool that got executed.
+  ///
+  /// Optional.
+  GoogleCloudCesV1mainToolsetTool? toolsetTool;
+
+  GoogleCloudCesV1mainToolResponse({
+    this.displayName,
+    this.id,
+    this.response,
+    this.tool,
+    this.toolsetTool,
+  });
+
+  GoogleCloudCesV1mainToolResponse.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
+        tool: json_['tool'] as core.String?,
+        toolsetTool: json_.containsKey('toolsetTool')
+            ? GoogleCloudCesV1mainToolsetTool.fromJson(
+                json_['toolsetTool'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final id = this.id;
+    final response = this.response;
+    final tool = this.tool;
+    final toolsetTool = this.toolsetTool;
+    return {
+      'displayName': ?displayName,
+      'id': ?id,
+      'response': ?response,
+      'tool': ?tool,
+      'toolsetTool': ?toolsetTool,
+    };
+  }
+}
+
+/// A tool that is created from a toolset.
+typedef GoogleCloudCesV1mainToolsetTool = $ToolsetTool;
+
 /// The analysis resource.
 class GoogleCloudContactcenterinsightsV1Analysis {
   /// The result of the analysis, which is populated when the analysis finishes.
@@ -9637,6 +10255,14 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /// Configuration for the QA annotator.
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig? qaConfig;
 
+  /// Whether to run the auto-labeling annotator.
+  ///
+  /// If true, the auto-labeling annotator will be run. This is a non-billable
+  /// operation designed for fixing or backfilling custom labels.
+  ///
+  /// Optional.
+  core.bool? runAutoLabelingAnnotator;
+
   /// Whether to run the entity annotator.
   core.bool? runEntityAnnotator;
 
@@ -9674,6 +10300,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
     this.issueModels,
     this.phraseMatchers,
     this.qaConfig,
+    this.runAutoLabelingAnnotator,
     this.runEntityAnnotator,
     this.runIntentAnnotator,
     this.runInterruptionAnnotator,
@@ -9699,6 +10326,8 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
                 json_['qaConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        runAutoLabelingAnnotator:
+            json_['runAutoLabelingAnnotator'] as core.bool?,
         runEntityAnnotator: json_['runEntityAnnotator'] as core.bool?,
         runIntentAnnotator: json_['runIntentAnnotator'] as core.bool?,
         runInterruptionAnnotator:
@@ -9723,6 +10352,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
     final issueModels = this.issueModels;
     final phraseMatchers = this.phraseMatchers;
     final qaConfig = this.qaConfig;
+    final runAutoLabelingAnnotator = this.runAutoLabelingAnnotator;
     final runEntityAnnotator = this.runEntityAnnotator;
     final runIntentAnnotator = this.runIntentAnnotator;
     final runInterruptionAnnotator = this.runInterruptionAnnotator;
@@ -9737,6 +10367,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
       'issueModels': ?issueModels,
       'phraseMatchers': ?phraseMatchers,
       'qaConfig': ?qaConfig,
+      'runAutoLabelingAnnotator': ?runAutoLabelingAnnotator,
       'runEntityAnnotator': ?runEntityAnnotator,
       'runIntentAnnotator': ?runIntentAnnotator,
       'runInterruptionAnnotator': ?runInterruptionAnnotator,
@@ -10398,11 +11029,17 @@ class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
   /// Required.
   core.String? parent;
 
+  /// If true, the labeling rules will be re-evaluated for the conversations.
+  ///
+  /// Optional.
+  core.bool? relabel;
+
   GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest({
     this.analysisPercentage,
     this.annotatorSelector,
     this.filter,
     this.parent,
+    this.relabel,
   });
 
   GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.fromJson(
@@ -10418,6 +11055,7 @@ class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
             : null,
         filter: json_['filter'] as core.String?,
         parent: json_['parent'] as core.String?,
+        relabel: json_['relabel'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -10425,11 +11063,13 @@ class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
     final annotatorSelector = this.annotatorSelector;
     final filter = this.filter;
     final parent = this.parent;
+    final relabel = this.relabel;
     return {
       'analysisPercentage': ?analysisPercentage,
       'annotatorSelector': ?annotatorSelector,
       'filter': ?filter,
       'parent': ?parent,
+      'relabel': ?relabel,
     };
   }
 }
@@ -11236,8 +11876,70 @@ class GoogleCloudContactcenterinsightsV1CallAnnotation {
   }
 }
 
+/// The CES end session annotation.
+class GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation {
+  /// End session signal from CES.
+  GoogleCloudCesV1mainEndSession? endSession;
+
+  GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation({this.endSession});
+
+  GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation.fromJson(
+    core.Map json_,
+  ) : this(
+        endSession: json_.containsKey('endSession')
+            ? GoogleCloudCesV1mainEndSession.fromJson(
+                json_['endSession'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endSession = this.endSession;
+    return {'endSession': ?endSession};
+  }
+}
+
+/// The CES diagnostic information.
+class GoogleCloudContactcenterinsightsV1CesTurnAnnotation {
+  /// The messages in the turn.
+  core.List<GoogleCloudCesV1mainMessage>? messages;
+
+  /// The root span of the action processing.
+  GoogleCloudCesV1mainSpan? rootSpan;
+
+  GoogleCloudContactcenterinsightsV1CesTurnAnnotation({
+    this.messages,
+    this.rootSpan,
+  });
+
+  GoogleCloudContactcenterinsightsV1CesTurnAnnotation.fromJson(core.Map json_)
+    : this(
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudCesV1mainMessage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        rootSpan: json_.containsKey('rootSpan')
+            ? GoogleCloudCesV1mainSpan.fromJson(
+                json_['rootSpan'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final messages = this.messages;
+    final rootSpan = this.rootSpan;
+    return {'messages': ?messages, 'rootSpan': ?rootSpan};
+  }
+}
+
 /// Configurable dashboard's widget that displays data as a chart.
 class GoogleCloudContactcenterinsightsV1Chart {
+  /// Optional action to be taken when the chart is clicked.
+  GoogleCloudContactcenterinsightsV1ChartAction? action;
+
   /// Chart type.
   ///
   /// Output only.
@@ -11301,6 +12003,7 @@ class GoogleCloudContactcenterinsightsV1Chart {
   core.int? width;
 
   GoogleCloudContactcenterinsightsV1Chart({
+    this.action,
     this.chartType,
     this.chartVisualizationType,
     this.createTime,
@@ -11317,6 +12020,11 @@ class GoogleCloudContactcenterinsightsV1Chart {
 
   GoogleCloudContactcenterinsightsV1Chart.fromJson(core.Map json_)
     : this(
+        action: json_.containsKey('action')
+            ? GoogleCloudContactcenterinsightsV1ChartAction.fromJson(
+                json_['action'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         chartType: json_['chartType'] as core.String?,
         chartVisualizationType: json_['chartVisualizationType'] as core.String?,
         createTime: json_['createTime'] as core.String?,
@@ -11340,6 +12048,7 @@ class GoogleCloudContactcenterinsightsV1Chart {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
     final chartType = this.chartType;
     final chartVisualizationType = this.chartVisualizationType;
     final createTime = this.createTime;
@@ -11353,6 +12062,7 @@ class GoogleCloudContactcenterinsightsV1Chart {
     final updateTime = this.updateTime;
     final width = this.width;
     return {
+      'action': ?action,
       'chartType': ?chartType,
       'chartVisualizationType': ?chartVisualizationType,
       'createTime': ?createTime,
@@ -11366,6 +12076,28 @@ class GoogleCloudContactcenterinsightsV1Chart {
       'updateTime': ?updateTime,
       'width': ?width,
     };
+  }
+}
+
+/// The action to be taken when the chart is clicked.
+class GoogleCloudContactcenterinsightsV1ChartAction {
+  /// Redirect action.
+  GoogleCloudContactcenterinsightsV1RedirectAction? redirectAction;
+
+  GoogleCloudContactcenterinsightsV1ChartAction({this.redirectAction});
+
+  GoogleCloudContactcenterinsightsV1ChartAction.fromJson(core.Map json_)
+    : this(
+        redirectAction: json_.containsKey('redirectAction')
+            ? GoogleCloudContactcenterinsightsV1RedirectAction.fromJson(
+                json_['redirectAction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final redirectAction = this.redirectAction;
+    return {'redirectAction': ?redirectAction};
   }
 }
 
@@ -11891,10 +12623,21 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSource {
   /// metadata.
   core.String? metadataUri;
 
+  /// Cloud Storage URIs that points to files that contain the conversation
+  /// audio for each turn.
+  ///
+  /// Assume the order of the URIs is the same as the order of the transcript
+  /// turns.
+  core.List<
+    GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio
+  >?
+  turnLevelAudios;
+
   GoogleCloudContactcenterinsightsV1ConversationDataSource({
     this.dialogflowSource,
     this.gcsSource,
     this.metadataUri,
+    this.turnLevelAudios,
   });
 
   GoogleCloudContactcenterinsightsV1ConversationDataSource.fromJson(
@@ -11912,16 +12655,26 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSource {
               )
             : null,
         metadataUri: json_['metadataUri'] as core.String?,
+        turnLevelAudios: (json_['turnLevelAudios'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final dialogflowSource = this.dialogflowSource;
     final gcsSource = this.gcsSource;
     final metadataUri = this.metadataUri;
+    final turnLevelAudios = this.turnLevelAudios;
     return {
       'dialogflowSource': ?dialogflowSource,
       'gcsSource': ?gcsSource,
       'metadataUri': ?metadataUri,
+      'turnLevelAudios': ?turnLevelAudios,
     };
   }
 }
@@ -12189,6 +12942,9 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
   /// the call.
   core.String? dispositionCode;
 
+  /// The entry subagent's display name.
+  core.String? entrySubagentDisplayName;
+
   /// The agent's location.
   core.String? location;
 
@@ -12220,6 +12976,7 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
     this.deploymentId,
     this.displayName,
     this.dispositionCode,
+    this.entrySubagentDisplayName,
     this.location,
     this.team,
     this.teams,
@@ -12236,6 +12993,8 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
         deploymentId: json_['deploymentId'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         dispositionCode: json_['dispositionCode'] as core.String?,
+        entrySubagentDisplayName:
+            json_['entrySubagentDisplayName'] as core.String?,
         location: json_['location'] as core.String?,
         team: json_['team'] as core.String?,
         teams: (json_['teams'] as core.List?)
@@ -12252,6 +13011,7 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
     final deploymentId = this.deploymentId;
     final displayName = this.displayName;
     final dispositionCode = this.dispositionCode;
+    final entrySubagentDisplayName = this.entrySubagentDisplayName;
     final location = this.location;
     final team = this.team;
     final teams = this.teams;
@@ -12264,6 +13024,7 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
       'deploymentId': ?deploymentId,
       'displayName': ?displayName,
       'dispositionCode': ?dispositionCode,
+      'entrySubagentDisplayName': ?entrySubagentDisplayName,
       'location': ?location,
       'team': ?team,
       'teams': ?teams,
@@ -12418,6 +13179,10 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
   /// The text of this segment.
   core.String? text;
 
+  /// Turn level audio for this transcript segment.
+  GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio?
+  turnLevelAudio;
+
   /// A list of the word-specific information for each word in the segment.
   core.List<
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo
@@ -12433,6 +13198,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
     this.segmentParticipant,
     this.sentiment,
     this.text,
+    this.turnLevelAudio,
     this.words,
   });
 
@@ -12462,6 +13228,11 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
               )
             : null,
         text: json_['text'] as core.String?,
+        turnLevelAudio: json_.containsKey('turnLevelAudio')
+            ? GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio.fromJson(
+                json_['turnLevelAudio'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         words: (json_['words'] as core.List?)
             ?.map(
               (value) =>
@@ -12481,6 +13252,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
     final segmentParticipant = this.segmentParticipant;
     final sentiment = this.sentiment;
     final text = this.text;
+    final turnLevelAudio = this.turnLevelAudio;
     final words = this.words;
     return {
       'channelTag': ?channelTag,
@@ -12491,6 +13263,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
       'segmentParticipant': ?segmentParticipant,
       'sentiment': ?sentiment,
       'text': ?text,
+      'turnLevelAudio': ?turnLevelAudio,
       'words': ?words,
     };
   }
@@ -13006,6 +13779,360 @@ class GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
 typedef GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest =
     $Empty;
 
+/// The request to analyze conversation data using agentic workflows.
+///
+/// This RPC triggers a complex analysis process that may involve several steps
+/// of reasoning and tool execution.
+class GoogleCloudContactcenterinsightsV1DiagnoseConversationsRequest {
+  /// If true, the request will be validated and a simulation of the analysis
+  /// will be performed without actually executing the task.
+  ///
+  /// Optional.
+  core.bool? dryRun;
+
+  /// AIP-160 compliant filter for selecting target conversations.
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// If true, the agent will generate a full diagnostic report for all
+  /// sub-agents.
+  ///
+  /// Optional.
+  core.bool? fullReport;
+
+  /// Specific instructions for the agent.
+  ///
+  /// Optional.
+  core.String? instructions;
+
+  /// The maximum number of steps the agent can take during the execution of the
+  /// task.
+  ///
+  /// Defaults to 10.
+  ///
+  /// Optional.
+  core.int? maxSteps;
+
+  /// The type of metric being diagnosed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DIAGNOSTIC_METRIC_TYPE_UNSPECIFIED" : Metric type is unspecified.
+  /// - "ESCALATION" : Escalation rate.
+  /// - "CONTAINMENT" : Containment rate.
+  core.String? metricType;
+
+  /// The configuration for the output of the task.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1OutputConfig? outputConfig;
+
+  /// The parent resource where the analysis will be performed.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// A unique ID that identifies the request.
+  ///
+  /// If the service receives two `DiagnoseConversationsRequest`s with the same
+  /// `request_id`, then the second request will be ignored; instead, the
+  /// response of the first request will be returned. The ID must contain only
+  /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+  /// maximum length is 40 characters.
+  ///
+  /// Optional. Required.
+  core.String? requestId;
+
+  /// A natural language description of the analysis goal or question.
+  ///
+  /// Optional.
+  core.String? taskQuery;
+
+  /// If true, the request will only be validated (permissions, filter syntax,
+  /// etc.) without actually triggering the analysis.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  GoogleCloudContactcenterinsightsV1DiagnoseConversationsRequest({
+    this.dryRun,
+    this.filter,
+    this.fullReport,
+    this.instructions,
+    this.maxSteps,
+    this.metricType,
+    this.outputConfig,
+    this.parent,
+    this.requestId,
+    this.taskQuery,
+    this.validateOnly,
+  });
+
+  GoogleCloudContactcenterinsightsV1DiagnoseConversationsRequest.fromJson(
+    core.Map json_,
+  ) : this(
+        dryRun: json_['dryRun'] as core.bool?,
+        filter: json_['filter'] as core.String?,
+        fullReport: json_['fullReport'] as core.bool?,
+        instructions: json_['instructions'] as core.String?,
+        maxSteps: json_['maxSteps'] as core.int?,
+        metricType: json_['metricType'] as core.String?,
+        outputConfig: json_.containsKey('outputConfig')
+            ? GoogleCloudContactcenterinsightsV1OutputConfig.fromJson(
+                json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        parent: json_['parent'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+        taskQuery: json_['taskQuery'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dryRun = this.dryRun;
+    final filter = this.filter;
+    final fullReport = this.fullReport;
+    final instructions = this.instructions;
+    final maxSteps = this.maxSteps;
+    final metricType = this.metricType;
+    final outputConfig = this.outputConfig;
+    final parent = this.parent;
+    final requestId = this.requestId;
+    final taskQuery = this.taskQuery;
+    final validateOnly = this.validateOnly;
+    return {
+      'dryRun': ?dryRun,
+      'filter': ?filter,
+      'fullReport': ?fullReport,
+      'instructions': ?instructions,
+      'maxSteps': ?maxSteps,
+      'metricType': ?metricType,
+      'outputConfig': ?outputConfig,
+      'parent': ?parent,
+      'requestId': ?requestId,
+      'taskQuery': ?taskQuery,
+      'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+/// The diagnostic resource.
+class GoogleCloudContactcenterinsightsV1Diagnostic {
+  /// The complete sequence of thoughts and actions taken by the agent.
+  ///
+  /// Output only.
+  core.String? analysisSummary;
+
+  /// The filter used to select the conversations that were included in the
+  /// diagnostic.
+  ///
+  /// Output only.
+  core.String? conversationFilter;
+
+  /// The time at which the diagnostic was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The resource name of the diagnostic.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The report containing the findings of the diagnostic.
+  ///
+  /// Output only.
+  GoogleCloudContactcenterinsightsV1DiagnosticReport? report;
+
+  GoogleCloudContactcenterinsightsV1Diagnostic({
+    this.analysisSummary,
+    this.conversationFilter,
+    this.createTime,
+    this.name,
+    this.report,
+  });
+
+  GoogleCloudContactcenterinsightsV1Diagnostic.fromJson(core.Map json_)
+    : this(
+        analysisSummary: json_['analysisSummary'] as core.String?,
+        conversationFilter: json_['conversationFilter'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        report: json_.containsKey('report')
+            ? GoogleCloudContactcenterinsightsV1DiagnosticReport.fromJson(
+                json_['report'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final analysisSummary = this.analysisSummary;
+    final conversationFilter = this.conversationFilter;
+    final createTime = this.createTime;
+    final name = this.name;
+    final report = this.report;
+    return {
+      'analysisSummary': ?analysisSummary,
+      'conversationFilter': ?conversationFilter,
+      'createTime': ?createTime,
+      'name': ?name,
+      'report': ?report,
+    };
+  }
+}
+
+/// A diagnostic report containing aggregate metrics and intent breakdowns.
+class GoogleCloudContactcenterinsightsV1DiagnosticReport {
+  /// A breakdown of metrics grouped by intent.
+  ///
+  /// Output only.
+  core.List<GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats>?
+  intentStats;
+
+  /// A list of loss patterns identified for the entire project/dataset.
+  ///
+  /// Output only.
+  core.List<GoogleCloudContactcenterinsightsV1LossPattern>? lossPatterns;
+
+  /// Deprecated: The type of the metric.
+  ///
+  /// Metrics for Outcome Based Insights derived from QueryMetrics.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.Map<core.String, GoogleCloudContactcenterinsightsV1MetricValue>? metrics;
+
+  GoogleCloudContactcenterinsightsV1DiagnosticReport({
+    this.intentStats,
+    this.lossPatterns,
+    this.metrics,
+  });
+
+  GoogleCloudContactcenterinsightsV1DiagnosticReport.fromJson(core.Map json_)
+    : this(
+        intentStats: (json_['intentStats'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        lossPatterns: (json_['lossPatterns'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContactcenterinsightsV1LossPattern.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metrics: (json_['metrics'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudContactcenterinsightsV1MetricValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final intentStats = this.intentStats;
+    final lossPatterns = this.lossPatterns;
+    final metrics = this.metrics;
+    return {
+      'intentStats': ?intentStats,
+      'lossPatterns': ?lossPatterns,
+      'metrics': ?metrics,
+    };
+  }
+}
+
+/// A breakdown of metrics grouped by intent.
+class GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats {
+  /// The number of conversations associated with this intent.
+  ///
+  /// Output only.
+  core.int? conversationCount;
+
+  /// The display name of the intent.
+  ///
+  /// Output only.
+  core.String? intentDisplayName;
+
+  /// The unique identifier for the intent (from Discovery Engine).
+  ///
+  /// Output only.
+  core.String? intentId;
+
+  /// A list of loss patterns identified for this intent.
+  ///
+  /// Output only.
+  core.List<GoogleCloudContactcenterinsightsV1LossPattern>? lossPatterns;
+
+  /// Deprecated: The type of the metric.
+  ///
+  /// Metrics for Outcome Based Insights derived from QueryMetrics.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.Map<core.String, GoogleCloudContactcenterinsightsV1MetricValue>? metrics;
+
+  GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats({
+    this.conversationCount,
+    this.intentDisplayName,
+    this.intentId,
+    this.lossPatterns,
+    this.metrics,
+  });
+
+  GoogleCloudContactcenterinsightsV1DiagnosticReportIntentStats.fromJson(
+    core.Map json_,
+  ) : this(
+        conversationCount: json_['conversationCount'] as core.int?,
+        intentDisplayName: json_['intentDisplayName'] as core.String?,
+        intentId: json_['intentId'] as core.String?,
+        lossPatterns: (json_['lossPatterns'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContactcenterinsightsV1LossPattern.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metrics: (json_['metrics'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudContactcenterinsightsV1MetricValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationCount = this.conversationCount;
+    final intentDisplayName = this.intentDisplayName;
+    final intentId = this.intentId;
+    final lossPatterns = this.lossPatterns;
+    final metrics = this.metrics;
+    return {
+      'conversationCount': ?conversationCount,
+      'intentDisplayName': ?intentDisplayName,
+      'intentId': ?intentId,
+      'lossPatterns': ?lossPatterns,
+      'metrics': ?metrics,
+    };
+  }
+}
+
 /// The data for a Dialogflow intent.
 ///
 /// Represents a detected intent in the conversation, e.g. MAKES_PROMISE.
@@ -13170,6 +14297,8 @@ class GoogleCloudContactcenterinsightsV1Dimension {
   /// - "LABEL_KEY" : The dimension is keyed by label keys.
   /// - "LABEL_VALUE" : The dimension is keyed by label values.
   /// - "LABEL_KEY_AND_VALUE" : The dimension is keyed by label key-value pairs.
+  /// - "LAST_TRANSFER_SUB_AGENT_NAME" : The dimension is keyed by the last
+  /// transfer sub agent name.
   core.String? dimensionKey;
 
   /// Metadata about the issue dimension.
@@ -16119,6 +17248,45 @@ class GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
   }
 }
 
+/// The response from a ListDiagnostics request.
+class GoogleCloudContactcenterinsightsV1ListDiagnosticsResponse {
+  /// The diagnostics that match the request.
+  ///
+  /// Optional.
+  core.List<GoogleCloudContactcenterinsightsV1Diagnostic>? diagnostics;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  GoogleCloudContactcenterinsightsV1ListDiagnosticsResponse({
+    this.diagnostics,
+    this.nextPageToken,
+  });
+
+  GoogleCloudContactcenterinsightsV1ListDiagnosticsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        diagnostics: (json_['diagnostics'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudContactcenterinsightsV1Diagnostic.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final diagnostics = this.diagnostics;
+    final nextPageToken = this.nextPageToken;
+    return {'diagnostics': ?diagnostics, 'nextPageToken': ?nextPageToken};
+  }
+}
+
 /// The response for listing feedback labels.
 class GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   /// The feedback labels that match the request.
@@ -16452,6 +17620,207 @@ class GoogleCloudContactcenterinsightsV1ListViewsResponse {
   }
 }
 
+/// A loss pattern of a virtual agent and suggested fixes.
+class GoogleCloudContactcenterinsightsV1LossPattern {
+  /// A list of conversation IDs that match this loss pattern.
+  ///
+  /// Output only.
+  core.List<core.String>? conversationIds;
+
+  /// A markdown description of the loss pattern.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The display name of the loss pattern.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// A markdown of loss pattern examples.
+  ///
+  /// Output only.
+  core.String? examples;
+
+  /// The unique identifier for the loss pattern.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The percentage of conversations that match this loss pattern.
+  ///
+  /// Output only.
+  core.double? percentage;
+
+  /// A markdown description of the suggested fixes.
+  ///
+  /// Output only.
+  core.String? suggestedFixes;
+
+  GoogleCloudContactcenterinsightsV1LossPattern({
+    this.conversationIds,
+    this.description,
+    this.displayName,
+    this.examples,
+    this.id,
+    this.percentage,
+    this.suggestedFixes,
+  });
+
+  GoogleCloudContactcenterinsightsV1LossPattern.fromJson(core.Map json_)
+    : this(
+        conversationIds: (json_['conversationIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        examples: json_['examples'] as core.String?,
+        id: json_['id'] as core.String?,
+        percentage: (json_['percentage'] as core.num?)?.toDouble(),
+        suggestedFixes: json_['suggestedFixes'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversationIds = this.conversationIds;
+    final description = this.description;
+    final displayName = this.displayName;
+    final examples = this.examples;
+    final id = this.id;
+    final percentage = this.percentage;
+    final suggestedFixes = this.suggestedFixes;
+    return {
+      'conversationIds': ?conversationIds,
+      'description': ?description,
+      'displayName': ?displayName,
+      'examples': ?examples,
+      'id': ?id,
+      'percentage': ?percentage,
+      'suggestedFixes': ?suggestedFixes,
+    };
+  }
+}
+
+/// A definition for a metric to be calculated during analysis.
+class GoogleCloudContactcenterinsightsV1MetricDefinition {
+  /// The user-visible name of the metric (e.g., "Containment Rate").
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The resource name of the underlying Insights primitive (e.g., Tag or
+  /// QaQuestion) used to calculate this metric.
+  ///
+  /// Output only.
+  core.String? sourceId;
+
+  GoogleCloudContactcenterinsightsV1MetricDefinition({
+    this.displayName,
+    this.sourceId,
+  });
+
+  GoogleCloudContactcenterinsightsV1MetricDefinition.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        sourceId: json_['sourceId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final sourceId = this.sourceId;
+    return {'displayName': ?displayName, 'sourceId': ?sourceId};
+  }
+}
+
+/// Deprecated: MetricValue is no longer used for diagnostics.
+class GoogleCloudContactcenterinsightsV1MetricValue {
+  /// The list of conversation names that contributed to this metric (hits).
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/conversations/{conversation}`
+  ///
+  /// Output only.
+  core.List<core.String>? conversations;
+
+  /// The user-visible name of the metric (e.g., "Containment Rate").
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The number of positive matches (hits) for this metric.
+  ///
+  /// Output only.
+  core.int? hitCount;
+
+  /// Deprecated: The type of the metric.
+  ///
+  /// Metrics for Outcome Based Insights derived from QueryMetrics.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "METRIC_TYPE_UNSPECIFIED" : Metric type is unspecified.
+  /// - "ESCALATION" : Escalation rate.
+  /// - "CONTAINMENT" : Containment rate.
+  core.String? metricType;
+
+  /// The resource name of the underlying Insights primitive (e.g., Tag or
+  /// QaQuestion) used to calculate this metric.
+  ///
+  /// Output only.
+  core.String? sourceId;
+
+  /// The total number of items evaluated for this metric.
+  ///
+  /// Output only.
+  core.int? totalCount;
+
+  /// The calculated value of the metric (usually a ratio or rate 0.0 - 1.0).
+  ///
+  /// Output only.
+  core.double? value;
+
+  GoogleCloudContactcenterinsightsV1MetricValue({
+    this.conversations,
+    this.displayName,
+    this.hitCount,
+    this.metricType,
+    this.sourceId,
+    this.totalCount,
+    this.value,
+  });
+
+  GoogleCloudContactcenterinsightsV1MetricValue.fromJson(core.Map json_)
+    : this(
+        conversations: (json_['conversations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        displayName: json_['displayName'] as core.String?,
+        hitCount: json_['hitCount'] as core.int?,
+        metricType: json_['metricType'] as core.String?,
+        sourceId: json_['sourceId'] as core.String?,
+        totalCount: json_['totalCount'] as core.int?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final conversations = this.conversations;
+    final displayName = this.displayName;
+    final hitCount = this.hitCount;
+    final metricType = this.metricType;
+    final sourceId = this.sourceId;
+    final totalCount = this.totalCount;
+    final value = this.value;
+    return {
+      'conversations': ?conversations,
+      'displayName': ?displayName,
+      'hitCount': ?hitCount,
+      'metricType': ?metricType,
+      'sourceId': ?sourceId,
+      'totalCount': ?totalCount,
+      'value': ?value,
+    };
+  }
+}
+
 /// The conversation assessment note resource.
 class GoogleCloudContactcenterinsightsV1Note {
   /// The note is associated to the entire parent assessment.
@@ -16584,6 +17953,153 @@ class GoogleCloudContactcenterinsightsV1NoteQaQuestionNote {
   core.Map<core.String, core.dynamic> toJson() {
     final qaQuestion = this.qaQuestion;
     return {'qaQuestion': ?qaQuestion};
+  }
+}
+
+/// Configuration for where to export or return the analysis findings.
+class GoogleCloudContactcenterinsightsV1OutputConfig {
+  /// Export to BigQuery.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1OutputConfigBigQueryDestination?
+  bigqueryDestination;
+
+  /// Export to a Cloud Storage bucket.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1OutputConfigGcsDestination? gcsDestination;
+
+  /// Export directly to a Google Sheet.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1OutputConfigGoogleSheetsDestination?
+  googleSheetsDestination;
+
+  GoogleCloudContactcenterinsightsV1OutputConfig({
+    this.bigqueryDestination,
+    this.gcsDestination,
+    this.googleSheetsDestination,
+  });
+
+  GoogleCloudContactcenterinsightsV1OutputConfig.fromJson(core.Map json_)
+    : this(
+        bigqueryDestination: json_.containsKey('bigqueryDestination')
+            ? GoogleCloudContactcenterinsightsV1OutputConfigBigQueryDestination.fromJson(
+                json_['bigqueryDestination']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gcsDestination: json_.containsKey('gcsDestination')
+            ? GoogleCloudContactcenterinsightsV1OutputConfigGcsDestination.fromJson(
+                json_['gcsDestination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleSheetsDestination: json_.containsKey('googleSheetsDestination')
+            ? GoogleCloudContactcenterinsightsV1OutputConfigGoogleSheetsDestination.fromJson(
+                json_['googleSheetsDestination']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bigqueryDestination = this.bigqueryDestination;
+    final gcsDestination = this.gcsDestination;
+    final googleSheetsDestination = this.googleSheetsDestination;
+    return {
+      'bigqueryDestination': ?bigqueryDestination,
+      'gcsDestination': ?gcsDestination,
+      'googleSheetsDestination': ?googleSheetsDestination,
+    };
+  }
+}
+
+/// BigQuery destination configuration.
+class GoogleCloudContactcenterinsightsV1OutputConfigBigQueryDestination {
+  /// The name of the BigQuery dataset.
+  ///
+  /// Required.
+  core.String? dataset;
+
+  /// A project ID or number.
+  ///
+  /// Optional.
+  core.String? projectId;
+
+  /// The BigQuery table name.
+  ///
+  /// Required.
+  core.String? table;
+
+  GoogleCloudContactcenterinsightsV1OutputConfigBigQueryDestination({
+    this.dataset,
+    this.projectId,
+    this.table,
+  });
+
+  GoogleCloudContactcenterinsightsV1OutputConfigBigQueryDestination.fromJson(
+    core.Map json_,
+  ) : this(
+        dataset: json_['dataset'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        table: json_['table'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataset = this.dataset;
+    final projectId = this.projectId;
+    final table = this.table;
+    return {'dataset': ?dataset, 'projectId': ?projectId, 'table': ?table};
+  }
+}
+
+/// Cloud Storage destination configuration.
+class GoogleCloudContactcenterinsightsV1OutputConfigGcsDestination {
+  /// The Cloud Storage URI to export the results to.
+  ///
+  /// Required.
+  core.String? uri;
+
+  GoogleCloudContactcenterinsightsV1OutputConfigGcsDestination({this.uri});
+
+  GoogleCloudContactcenterinsightsV1OutputConfigGcsDestination.fromJson(
+    core.Map json_,
+  ) : this(uri: json_['uri'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final uri = this.uri;
+    return {'uri': ?uri};
+  }
+}
+
+/// Google Sheets destination configuration.
+class GoogleCloudContactcenterinsightsV1OutputConfigGoogleSheetsDestination {
+  /// The sheet name.
+  ///
+  /// Optional.
+  core.String? sheet;
+
+  /// An existing Google Sheets ID.
+  ///
+  /// Optional.
+  core.String? spreadsheetId;
+
+  GoogleCloudContactcenterinsightsV1OutputConfigGoogleSheetsDestination({
+    this.sheet,
+    this.spreadsheetId,
+  });
+
+  GoogleCloudContactcenterinsightsV1OutputConfigGoogleSheetsDestination.fromJson(
+    core.Map json_,
+  ) : this(
+        sheet: json_['sheet'] as core.String?,
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sheet = this.sheet;
+    final spreadsheetId = this.spreadsheetId;
+    return {'sheet': ?sheet, 'spreadsheetId': ?spreadsheetId};
   }
 }
 
@@ -18216,6 +19732,22 @@ class GoogleCloudContactcenterinsightsV1RedactionConfig {
   }
 }
 
+/// The redirect action to be taken when the chart is clicked.
+class GoogleCloudContactcenterinsightsV1RedirectAction {
+  /// The relative path to redirect to.
+  core.String? relativePath;
+
+  GoogleCloudContactcenterinsightsV1RedirectAction({this.relativePath});
+
+  GoogleCloudContactcenterinsightsV1RedirectAction.fromJson(core.Map json_)
+    : this(relativePath: json_['relativePath'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final relativePath = this.relativePath;
+    return {'relativePath': ?relativePath};
+  }
+}
+
 /// Regex match configuration.
 typedef GoogleCloudContactcenterinsightsV1RegexMatchConfig = $Empty;
 
@@ -18232,6 +19764,13 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
 
   /// Agent Assist Article Suggestion data.
   GoogleCloudContactcenterinsightsV1ArticleSuggestionData? articleSuggestion;
+
+  /// The CES end session annotation.
+  GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation?
+  cesEndSessionAnnotation;
+
+  /// The CES turn annotation.
+  GoogleCloudContactcenterinsightsV1CesTurnAnnotation? cesTurnAnnotation;
 
   /// Conversation summarization suggestion data.
   GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData?
@@ -18267,6 +19806,8 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
     this.annotationId,
     this.answerFeedback,
     this.articleSuggestion,
+    this.cesEndSessionAnnotation,
+    this.cesTurnAnnotation,
     this.conversationSummarizationSuggestion,
     this.createTime,
     this.dialogflowInteraction,
@@ -18289,6 +19830,18 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
         articleSuggestion: json_.containsKey('articleSuggestion')
             ? GoogleCloudContactcenterinsightsV1ArticleSuggestionData.fromJson(
                 json_['articleSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cesEndSessionAnnotation: json_.containsKey('cesEndSessionAnnotation')
+            ? GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation.fromJson(
+                json_['cesEndSessionAnnotation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cesTurnAnnotation: json_.containsKey('cesTurnAnnotation')
+            ? GoogleCloudContactcenterinsightsV1CesTurnAnnotation.fromJson(
+                json_['cesTurnAnnotation']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -18343,6 +19896,8 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
     final annotationId = this.annotationId;
     final answerFeedback = this.answerFeedback;
     final articleSuggestion = this.articleSuggestion;
+    final cesEndSessionAnnotation = this.cesEndSessionAnnotation;
+    final cesTurnAnnotation = this.cesTurnAnnotation;
     final conversationSummarizationSuggestion =
         this.conversationSummarizationSuggestion;
     final createTime = this.createTime;
@@ -18357,6 +19912,8 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
       'annotationId': ?annotationId,
       'answerFeedback': ?answerFeedback,
       'articleSuggestion': ?articleSuggestion,
+      'cesEndSessionAnnotation': ?cesEndSessionAnnotation,
+      'cesTurnAnnotation': ?cesTurnAnnotation,
       'conversationSummarizationSuggestion':
           ?conversationSummarizationSuggestion,
       'createTime': ?createTime,
@@ -18664,6 +20221,12 @@ class GoogleCloudContactcenterinsightsV1Settings {
   /// Output only.
   core.String? createTime;
 
+  /// Configuration for diagnostic metrics.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig?
+  diagnosticMetricConfig;
+
   /// A language code to be applied to each transcript segment unless the
   /// segment already specifies a language code.
   ///
@@ -18725,6 +20288,16 @@ class GoogleCloudContactcenterinsightsV1Settings {
   /// Optional.
   GoogleCloudContactcenterinsightsV1SpeechConfig? speechConfig;
 
+  /// The time zone applied to the project.
+  ///
+  /// This is a string representation of the time zone, for example,
+  /// "America/New_York". This field follows the IANA TZ database format. See
+  /// https://www.iana.org/time-zones for a list of valid values. If no value is
+  /// set the user time zone will be used.
+  ///
+  /// Optional.
+  core.String? timeZone;
+
   /// The time at which the settings were last updated.
   ///
   /// Output only.
@@ -18734,12 +20307,14 @@ class GoogleCloudContactcenterinsightsV1Settings {
     this.analysisConfig,
     this.conversationTtl,
     this.createTime,
+    this.diagnosticMetricConfig,
     this.languageCode,
     this.name,
     this.pubsubNotificationSettings,
     this.redactionConfig,
     this.screenRecordingBucketUri,
     this.speechConfig,
+    this.timeZone,
     this.updateTime,
   });
 
@@ -18752,6 +20327,12 @@ class GoogleCloudContactcenterinsightsV1Settings {
             : null,
         conversationTtl: json_['conversationTtl'] as core.String?,
         createTime: json_['createTime'] as core.String?,
+        diagnosticMetricConfig: json_.containsKey('diagnosticMetricConfig')
+            ? GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig.fromJson(
+                json_['diagnosticMetricConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         languageCode: json_['languageCode'] as core.String?,
         name: json_['name'] as core.String?,
         pubsubNotificationSettings:
@@ -18770,6 +20351,7 @@ class GoogleCloudContactcenterinsightsV1Settings {
                 json_['speechConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        timeZone: json_['timeZone'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -18777,23 +20359,27 @@ class GoogleCloudContactcenterinsightsV1Settings {
     final analysisConfig = this.analysisConfig;
     final conversationTtl = this.conversationTtl;
     final createTime = this.createTime;
+    final diagnosticMetricConfig = this.diagnosticMetricConfig;
     final languageCode = this.languageCode;
     final name = this.name;
     final pubsubNotificationSettings = this.pubsubNotificationSettings;
     final redactionConfig = this.redactionConfig;
     final screenRecordingBucketUri = this.screenRecordingBucketUri;
     final speechConfig = this.speechConfig;
+    final timeZone = this.timeZone;
     final updateTime = this.updateTime;
     return {
       'analysisConfig': ?analysisConfig,
       'conversationTtl': ?conversationTtl,
       'createTime': ?createTime,
+      'diagnosticMetricConfig': ?diagnosticMetricConfig,
       'languageCode': ?languageCode,
       'name': ?name,
       'pubsubNotificationSettings': ?pubsubNotificationSettings,
       'redactionConfig': ?redactionConfig,
       'screenRecordingBucketUri': ?screenRecordingBucketUri,
       'speechConfig': ?speechConfig,
+      'timeZone': ?timeZone,
       'updateTime': ?updateTime,
     };
   }
@@ -18850,6 +20436,40 @@ class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
       'uploadConversationAnalysisPercentage':
           ?uploadConversationAnalysisPercentage,
     };
+  }
+}
+
+/// Configuration for diagnostic metrics.
+class GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig {
+  /// A map of diagnostic metrics.
+  ///
+  /// The key is a unique identifier for the metric (e.g., "containment").
+  ///
+  /// Optional.
+  core.Map<core.String, GoogleCloudContactcenterinsightsV1MetricDefinition>?
+  metrics;
+
+  GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig({
+    this.metrics,
+  });
+
+  GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        metrics: (json_['metrics'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleCloudContactcenterinsightsV1MetricDefinition.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final metrics = this.metrics;
+    return {'metrics': ?metrics};
   }
 }
 

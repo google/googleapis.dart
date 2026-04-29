@@ -20,7 +20,7 @@
 
 /// Ad Exchange Buyer API II - v2beta1
 ///
-/// Accesses the latest features for managing Authorized Buyers accounts,
+/// Access the latest features for managing Authorized Buyers accounts,
 /// Real-Time Bidding configurations and auction metrics, and Marketplace
 /// programmatic deals.
 ///
@@ -90,7 +90,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Accesses the latest features for managing Authorized Buyers accounts,
+/// Access the latest features for managing Authorized Buyers accounts,
 /// Real-Time Bidding configurations and auction metrics, and Marketplace
 /// programmatic deals.
 class AdExchangeBuyerIIApi {

@@ -127,6 +127,12 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -1597,8 +1603,6 @@ class FileShareConfig {
 
   /// The resource name of the BackupDR backup, in the format
   /// `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
-  /// TODO (b/443690479) - Remove visibility restrictions once the feature is
-  /// ready
   core.String? sourceBackupdrBackup;
 
   FileShareConfig({

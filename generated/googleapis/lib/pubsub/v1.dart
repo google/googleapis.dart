@@ -2352,8 +2352,8 @@ class AIInference {
   ///
   /// The resource creator or updater that specifies this field must have
   /// `iam.serviceAccounts.actAs` permission on the service account. If not
-  /// specified, the Pub/Sub \[service
-  /// agent\]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
   /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
   ///
   /// Optional.
@@ -2512,6 +2512,12 @@ class AwsKinesis {
   /// [appropriate publish permissions](https://cloud.google.com/pubsub/docs/access-control#pubsub.publisher)
   /// - "STREAM_NOT_FOUND" : The Kinesis stream does not exist.
   /// - "CONSUMER_NOT_FOUND" : The Kinesis consumer does not exist.
+  /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
+  /// ingestion source cannot be processed. This occurs because there is no
+  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
+  /// and the regions permitted by the Regional Access Boundary (RAB)
+  /// restrictions on the project's Pub/Sub service account. A common, allowed
+  /// region is required to determine a valid ingestion region.
   core.String? state;
 
   /// The Kinesis stream ARN to ingest data from.
@@ -2591,6 +2597,12 @@ class AwsMsk {
   /// publishing to the topic.
   /// - "CLUSTER_NOT_FOUND" : The provided MSK cluster wasn't found.
   /// - "TOPIC_NOT_FOUND" : The provided topic wasn't found.
+  /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
+  /// ingestion source cannot be processed. This occurs because there is no
+  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
+  /// and the regions permitted by the Regional Access Boundary (RAB)
+  /// restrictions on the project's Pub/Sub service account. A common, allowed
+  /// region is required to determine a valid ingestion region.
   core.String? state;
 
   /// The name of the topic in the Amazon MSK cluster that Pub/Sub will import
@@ -2679,6 +2691,12 @@ class AzureEventHubs {
   /// be found.
   /// - "RESOURCE_GROUP_NOT_FOUND" : The provided Event Hubs resource group
   /// couldn't be found.
+  /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
+  /// ingestion source cannot be processed. This occurs because there is no
+  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
+  /// and the regions permitted by the Regional Access Boundary (RAB)
+  /// restrictions on the project's Pub/Sub service account. A common, allowed
+  /// region is required to determine a valid ingestion region.
   core.String? state;
 
   /// The Azure subscription id.
@@ -2860,6 +2878,111 @@ class BigQueryConfig {
   }
 }
 
+/// Configuration for a Bigtable subscription.
+///
+/// The Pub/Sub message will be written to a Bigtable row as follows: - row key:
+/// subscription name and message ID delimited by #. - columns: message bytes
+/// written to a single column family "data" with an empty-string column
+/// qualifier. - cell timestamp: the message publish timestamp.
+class BigtableConfig {
+  /// The app profile to use for the Bigtable writes.
+  ///
+  /// If not specified, the "default" application profile will be used. The app
+  /// profile must use single-cluster routing.
+  ///
+  /// Optional.
+  core.String? appProfileId;
+
+  /// The service account to use to write to Bigtable.
+  ///
+  /// The subscription creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
+  /// An output-only field that indicates whether or not the subscription can
+  /// receive messages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The subscription can actively send messages to Bigtable.
+  /// - "NOT_FOUND" : Cannot write to Bigtable because the instance, table, or
+  /// app profile does not exist.
+  /// - "APP_PROFILE_MISCONFIGURED" : Cannot write to Bigtable because the app
+  /// profile is not configured for single-cluster routing.
+  /// - "PERMISSION_DENIED" : Cannot write to Bigtable because of permission
+  /// denied errors. This can happen if: - The Pub/Sub service agent has not
+  /// been granted the \[appropriate Bigtable IAM permission
+  /// bigtable.tables.mutateRows\]({$universe.dns_names.final_documentation_domain}/bigtable/docs/access-control#permissions)
+  /// - The bigtable.googleapis.com API is not enabled for the project
+  /// (\[instructions\]({$universe.dns_names.final_documentation_domain}/service-usage/docs/enable-disable))
+  /// - "SCHEMA_MISMATCH" : Cannot write to Bigtable because of a missing column
+  /// family ("data") or if there is no structured row key for the subscription
+  /// name + message ID.
+  /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
+  /// because enforce_in_transit is set to true and the destination locations
+  /// are not in the allowed regions.
+  /// - "VERTEX_AI_LOCATION_RESTRICTION" : Cannot write to Bigtable because the
+  /// table is not in the same location as where Vertex AI models used in
+  /// `message_transform`s are deployed.
+  core.String? state;
+
+  /// The unique name of the table to write messages to.
+  ///
+  /// Values are of the form `projects//instances//tables/`.
+  ///
+  /// Optional.
+  core.String? table;
+
+  /// When true, write the subscription name, message_id, publish_time,
+  /// attributes, and ordering_key to additional columns in the table under the
+  /// pubsub_metadata column family.
+  ///
+  /// The subscription name, message_id, and publish_time fields are put in
+  /// their own columns while all other message properties (other than data) are
+  /// written to a JSON object in the attributes column.
+  ///
+  /// Optional.
+  core.bool? writeMetadata;
+
+  BigtableConfig({
+    this.appProfileId,
+    this.serviceAccountEmail,
+    this.state,
+    this.table,
+    this.writeMetadata,
+  });
+
+  BigtableConfig.fromJson(core.Map json_)
+    : this(
+        appProfileId: json_['appProfileId'] as core.String?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        state: json_['state'] as core.String?,
+        table: json_['table'] as core.String?,
+        writeMetadata: json_['writeMetadata'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final appProfileId = this.appProfileId;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    final state = this.state;
+    final table = this.table;
+    final writeMetadata = this.writeMetadata;
+    return {
+      'appProfileId': ?appProfileId,
+      'serviceAccountEmail': ?serviceAccountEmail,
+      'state': ?state,
+      'table': ?table,
+      'writeMetadata': ?writeMetadata,
+    };
+  }
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -3018,6 +3141,12 @@ class CloudStorage {
   /// - "BUCKET_NOT_FOUND" : The provided Cloud Storage bucket doesn't exist.
   /// - "TOO_MANY_OBJECTS" : The Cloud Storage bucket has too many objects,
   /// ingestion will be paused.
+  /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
+  /// ingestion source cannot be processed. This occurs because there is no
+  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
+  /// and the regions permitted by the Regional Access Boundary (RAB)
+  /// restrictions on the project's Pub/Sub service account. A common, allowed
+  /// region is required to determine a valid ingestion region.
   core.String? state;
 
   /// Data from Cloud Storage will be interpreted as text.
@@ -3318,6 +3447,12 @@ class ConfluentCloud {
   /// is unreachable.
   /// - "CLUSTER_NOT_FOUND" : The provided cluster wasn't found.
   /// - "TOPIC_NOT_FOUND" : The provided topic wasn't found.
+  /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
+  /// ingestion source cannot be processed. This occurs because there is no
+  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
+  /// and the regions permitted by the Regional Access Boundary (RAB)
+  /// restrictions on the project's Pub/Sub service account. A common, allowed
+  /// region is required to determine a valid ingestion region.
   core.String? state;
 
   /// The name of the topic in the Confluent Cloud cluster that Pub/Sub will
@@ -4812,6 +4947,12 @@ class Subscription {
   /// Optional.
   BigQueryConfig? bigqueryConfig;
 
+  /// If delivery to Bigtable is used with this subscription, this field is used
+  /// to configure it.
+  ///
+  /// Optional.
+  BigtableConfig? bigtableConfig;
+
   /// If delivery to Google Cloud Storage is used with this subscription, this
   /// field is used to configure it.
   ///
@@ -4994,6 +5135,7 @@ class Subscription {
     this.ackDeadlineSeconds,
     this.analyticsHubSubscriptionInfo,
     this.bigqueryConfig,
+    this.bigtableConfig,
     this.cloudStorageConfig,
     this.deadLetterPolicy,
     this.detached,
@@ -5027,6 +5169,11 @@ class Subscription {
         bigqueryConfig: json_.containsKey('bigqueryConfig')
             ? BigQueryConfig.fromJson(
                 json_['bigqueryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bigtableConfig: json_.containsKey('bigtableConfig')
+            ? BigtableConfig.fromJson(
+                json_['bigtableConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         cloudStorageConfig: json_.containsKey('cloudStorageConfig')
@@ -5089,6 +5236,7 @@ class Subscription {
     final ackDeadlineSeconds = this.ackDeadlineSeconds;
     final analyticsHubSubscriptionInfo = this.analyticsHubSubscriptionInfo;
     final bigqueryConfig = this.bigqueryConfig;
+    final bigtableConfig = this.bigtableConfig;
     final cloudStorageConfig = this.cloudStorageConfig;
     final deadLetterPolicy = this.deadLetterPolicy;
     final detached = this.detached;
@@ -5111,6 +5259,7 @@ class Subscription {
       'ackDeadlineSeconds': ?ackDeadlineSeconds,
       'analyticsHubSubscriptionInfo': ?analyticsHubSubscriptionInfo,
       'bigqueryConfig': ?bigqueryConfig,
+      'bigtableConfig': ?bigtableConfig,
       'cloudStorageConfig': ?cloudStorageConfig,
       'deadLetterPolicy': ?deadLetterPolicy,
       'detached': ?detached,

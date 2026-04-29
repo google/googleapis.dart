@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260113",
+    "revision": "20260408",
     "rootUrl": "https://walletobjects.googleapis.com/",
     "servicePath": "",
     "title": "Google Wallet API",
@@ -372,7 +372,8 @@
                     ]
                 },
                 "modifylinkedofferobjects": {
-                    "description": "Modifies linked offer objects for the event ticket object with the given ID.",
+                    "deprecated": true,
+                    "description": "Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the event ticket object with the given ID.",
                     "flatPath": "walletobjects/v1/eventTicketObject/{resourceId}/modifyLinkedOfferObjects",
                     "httpMethod": "POST",
                     "id": "walletobjects.eventticketobject.modifylinkedofferobjects",
@@ -1815,7 +1816,8 @@
                     ]
                 },
                 "modifylinkedofferobjects": {
-                    "description": "Modifies linked offer objects for the loyalty object with the given ID.",
+                    "deprecated": true,
+                    "description": "Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the loyalty object with the given ID.",
                     "flatPath": "walletobjects/v1/loyaltyObject/{resourceId}/modifyLinkedOfferObjects",
                     "httpMethod": "POST",
                     "id": "walletobjects.loyaltyobject.modifylinkedofferobjects",
@@ -3414,12 +3416,21 @@
                     "description": "The content type of the file derived from the file extension of the original file name used by the client.",
                     "type": "string"
                 },
+                "fromFusionId": {
+                    "description": "The content type of the file detected by Fusion ID. go/fusionid",
+                    "type": "string"
+                },
                 "fromHeader": {
                     "description": "The content type of the file as specified in the request headers, multipart headers, or RUPIO start request.",
                     "type": "string"
                 },
                 "fromUrlPath": {
                     "description": "The content type of the file derived from the file extension of the URL path. The URL path is assumed to represent a file name (which is typically only true for agents that are providing a REST API).",
+                    "type": "string"
+                },
+                "fusionIdDetectionMetadata": {
+                    "description": "Metadata information from Fusion ID detection. Serialized FusionIdDetectionMetadata proto. Only set if from_fusion_id is set.",
+                    "format": "byte",
                     "type": "string"
                 }
             },
@@ -4143,7 +4154,7 @@
                     "type": "array"
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed, prioritizing those from the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -4416,7 +4427,7 @@
                     "description": "The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed."
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -4929,7 +4940,7 @@
                     "type": "array"
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed, prioritizing those from the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -5210,7 +5221,7 @@
                     "description": "The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed."
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -5371,7 +5382,7 @@
                     "type": "array"
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed, prioritizing those from the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -5459,23 +5470,35 @@
                         "GENERIC_ENTRY_TICKET",
                         "GENERIC_RECEIPT",
                         "GENERIC_LOYALTY_CARD",
+                        "GENERIC_BUSINESS_CARD",
+                        "GENERIC_BARCODE_PASS",
+                        "GENERIC_MEMBERSHIP_CARD",
+                        "GENERIC_STUDENT_CARD",
+                        "GENERIC_TRANSIT_PASS",
+                        "GENERIC_VEHICLE_REGISTRATION",
                         "GENERIC_OTHER"
                     ],
                     "enumDescriptions": [
                         "Unspecified generic type.",
-                        "Season pass",
-                        "Utility bills",
-                        "Parking pass",
-                        "Voucher",
-                        "Gym membership cards",
-                        "Library membership cards",
-                        "Reservations",
-                        "Auto-insurance cards",
-                        "Home-insurance cards",
-                        "Entry tickets",
-                        "Receipts",
-                        "Loyalty cards. Please note that it is advisable to use a dedicated Loyalty card pass type instead of this generic type. A dedicated loyalty card pass type offers more features and functionality than a generic pass type.",
-                        "Other type"
+                        "Represents a season pass.",
+                        "Represents a utility bill.",
+                        "Represents a parking pass.",
+                        "Represents a voucher.",
+                        "Represents a gym membership card.",
+                        "Represents a library card.",
+                        "Represents a reservation.",
+                        "Represents an auto-insurance card.",
+                        "Represents a home-insurance card.",
+                        "Represents an entry ticket.",
+                        "Represents a receipt.",
+                        "Represents a loyalty card. Please note that it is advisable to use a dedicated Loyalty card pass type instead of this generic type. A dedicated loyalty card pass type offers more features and functionality than a generic pass type.",
+                        "Represents a business card.",
+                        "Represents a barcode pass.",
+                        "Represents a membership card.",
+                        "Represents a student card.",
+                        "Represents a transit pass.",
+                        "Represents a vehicle registration.",
+                        "Represents another type of generic pass."
                     ],
                     "type": "string"
                 },
@@ -5612,7 +5635,7 @@
                     "description": "The time period this object will be considered valid or usable. When the time period is passed, the object will be considered expired, which will affect the rendering on user's devices."
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -5893,7 +5916,7 @@
                     "type": "array"
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed, prioritizing those from the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -6147,7 +6170,7 @@
                     "description": "The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed."
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -6404,10 +6427,11 @@
             "type": "object"
         },
         "JwtResource": {
+            "description": "A JWT representation of a pass.",
             "id": "JwtResource",
             "properties": {
                 "jwt": {
-                    "description": "A string representing a JWT of the format described at https://developers.google.com/wallet/reference/rest/v1/Jwt",
+                    "description": "Required. A string representing a JWT of the format described at https://developers.google.com/wallet/reference/rest/v1/Jwt",
                     "type": "string"
                 }
             },
@@ -6787,7 +6811,7 @@
                     "type": "array"
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed, prioritizing those from the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -7044,7 +7068,7 @@
                     "description": "The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed."
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -7830,7 +7854,7 @@
                     "description": "The title image of the offer. This image is displayed in both the details and list views of the app."
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed, prioritizing those from the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -8063,7 +8087,7 @@
                     "description": "The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed."
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -9278,7 +9302,7 @@
                     "type": "string"
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed, prioritizing those from the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },
@@ -9674,7 +9698,7 @@
                     "description": "The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed."
                 },
                 "valueAddedModuleData": {
-                    "description": "Optional value added module data. Maximum of ten on the object.",
+                    "description": "Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed.",
                     "items": {
                         "$ref": "ValueAddedModuleData"
                     },

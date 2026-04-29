@@ -1379,6 +1379,24 @@ void checkGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse(
   buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse--;
 }
 
+core.int buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig = 0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig
+buildGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig() {
+  final o = api.GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig < 3) {}
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig--;
+  return o;
+}
+
+void checkGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig(
+  api.GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig o,
+) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig < 3) {}
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig--;
+}
+
 core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
 
 void checkUnnamed25(core.List<core.String> o) {
@@ -1464,6 +1482,7 @@ buildGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway() {
     o.displayName = 'foo';
     o.externalIps = buildUnnamed27();
     o.hubs = buildUnnamed28();
+    o.logging = buildGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig();
     o.name = 'foo';
     o.proxyProtocolConfig =
         buildGoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig();
@@ -1486,6 +1505,7 @@ void checkGoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway(
     unittest.expect(o.displayName!, unittest.equals('foo'));
     checkUnnamed27(o.externalIps!);
     checkUnnamed28(o.hubs!);
+    checkGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig(o.logging!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig(
       o.proxyProtocolConfig!,
@@ -2734,6 +2754,21 @@ void main() {
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse(
           od,
         );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig(od);
       });
     },
   );

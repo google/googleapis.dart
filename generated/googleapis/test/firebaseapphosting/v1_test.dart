@@ -287,6 +287,7 @@ api.CodebaseSource buildCodebaseSource() {
     o.commitTime = 'foo';
     o.displayName = 'foo';
     o.hash = 'foo';
+    o.repository = 'foo';
     o.uri = 'foo';
   }
   buildCounterCodebaseSource--;
@@ -303,6 +304,7 @@ void checkCodebaseSource(api.CodebaseSource o) {
     unittest.expect(o.commitTime!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.hash!, unittest.equals('foo'));
+    unittest.expect(o.repository!, unittest.equals('foo'));
     unittest.expect(o.uri!, unittest.equals('foo'));
   }
   buildCounterCodebaseSource--;

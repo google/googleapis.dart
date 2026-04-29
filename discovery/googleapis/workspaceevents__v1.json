@@ -5,11 +5,17 @@
                 "https://www.googleapis.com/auth/chat.app.memberships": {
                     "description": "On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and spaces"
                 },
+                "https://www.googleapis.com/auth/chat.app.memberships.readonly": {
+                    "description": "On their own behalf, apps in Google Chat can see members of conversations and spaces"
+                },
                 "https://www.googleapis.com/auth/chat.app.messages.readonly": {
                     "description": "On their own behalf, apps in Google Chat can see all messages and their associated reactions and message content"
                 },
                 "https://www.googleapis.com/auth/chat.app.spaces": {
                     "description": "On their own behalf, apps in Google Chat can create conversations and spaces and see or update their metadata (including history settings and access settings)"
+                },
+                "https://www.googleapis.com/auth/chat.app.spaces.readonly": {
+                    "description": "On their own behalf, apps in Google Chat can see conversations and spaces and their metadata (including history settings and access settings)"
                 },
                 "https://www.googleapis.com/auth/chat.bot": {
                     "description": "Private Service: https://www.googleapis.com/auth/chat.bot"
@@ -37,6 +43,12 @@
                 },
                 "https://www.googleapis.com/auth/chat.spaces.readonly": {
                     "description": "View chat and spaces in Google Chat"
+                },
+                "https://www.googleapis.com/auth/chat.users.readstate": {
+                    "description": "View and modify last read time for Google Chat conversations"
+                },
+                "https://www.googleapis.com/auth/chat.users.readstate.readonly": {
+                    "description": "View last read time for Google Chat conversations"
                 },
                 "https://www.googleapis.com/auth/drive": {
                     "description": "See, edit, create, and delete all of your Google Drive files"
@@ -79,7 +91,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20251216",
+    "revision": "20260422",
     "rootUrl": "https://workspaceevents.googleapis.com/",
     "servicePath": "",
     "title": "Google Workspace Events API",
@@ -215,6 +227,8 @@
                         "https://www.googleapis.com/auth/chat.messages.readonly",
                         "https://www.googleapis.com/auth/chat.spaces",
                         "https://www.googleapis.com/auth/chat.spaces.readonly",
+                        "https://www.googleapis.com/auth/chat.users.readstate",
+                        "https://www.googleapis.com/auth/chat.users.readstate.readonly",
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
@@ -229,7 +243,7 @@
         "subscriptions": {
             "methods": {
                 "create": {
-                    "description": "Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace subscription](https://developers.google.com/workspace/events/guides/create-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can create a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval ([Developer Preview](https://developers.google.com/workspace/preview)). To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                    "description": "Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace subscription](https://developers.google.com/workspace/events/guides/create-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can create a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
                     "flatPath": "v1/subscriptions",
                     "httpMethod": "POST",
                     "id": "workspaceevents.subscriptions.create",
@@ -250,8 +264,10 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/chat.app.memberships",
+                        "https://www.googleapis.com/auth/chat.app.memberships.readonly",
                         "https://www.googleapis.com/auth/chat.app.messages.readonly",
                         "https://www.googleapis.com/auth/chat.app.spaces",
+                        "https://www.googleapis.com/auth/chat.app.spaces.readonly",
                         "https://www.googleapis.com/auth/chat.memberships",
                         "https://www.googleapis.com/auth/chat.memberships.readonly",
                         "https://www.googleapis.com/auth/chat.messages",
@@ -260,6 +276,8 @@
                         "https://www.googleapis.com/auth/chat.messages.readonly",
                         "https://www.googleapis.com/auth/chat.spaces",
                         "https://www.googleapis.com/auth/chat.spaces.readonly",
+                        "https://www.googleapis.com/auth/chat.users.readstate",
+                        "https://www.googleapis.com/auth/chat.users.readstate.readonly",
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
@@ -315,6 +333,8 @@
                         "https://www.googleapis.com/auth/chat.messages.readonly",
                         "https://www.googleapis.com/auth/chat.spaces",
                         "https://www.googleapis.com/auth/chat.spaces.readonly",
+                        "https://www.googleapis.com/auth/chat.users.readstate",
+                        "https://www.googleapis.com/auth/chat.users.readstate.readonly",
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
@@ -355,6 +375,8 @@
                         "https://www.googleapis.com/auth/chat.messages.readonly",
                         "https://www.googleapis.com/auth/chat.spaces",
                         "https://www.googleapis.com/auth/chat.spaces.readonly",
+                        "https://www.googleapis.com/auth/chat.users.readstate",
+                        "https://www.googleapis.com/auth/chat.users.readstate.readonly",
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
@@ -402,6 +424,8 @@
                         "https://www.googleapis.com/auth/chat.messages.readonly",
                         "https://www.googleapis.com/auth/chat.spaces",
                         "https://www.googleapis.com/auth/chat.spaces.readonly",
+                        "https://www.googleapis.com/auth/chat.users.readstate",
+                        "https://www.googleapis.com/auth/chat.users.readstate.readonly",
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
@@ -412,7 +436,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates or renews a Google Workspace subscription. To learn how to use this method, see [Update or renew a Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can update a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` andgetting one-time administrator approval ([Developer Preview](https://developers.google.com/workspace/preview)). To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                    "description": "Updates or renews a Google Workspace subscription. To learn how to use this method, see [Update or renew a Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can update a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
                     "flatPath": "v1/subscriptions/{subscriptionsId}",
                     "httpMethod": "PATCH",
                     "id": "workspaceevents.subscriptions.patch",
@@ -448,8 +472,10 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/chat.app.memberships",
+                        "https://www.googleapis.com/auth/chat.app.memberships.readonly",
                         "https://www.googleapis.com/auth/chat.app.messages.readonly",
                         "https://www.googleapis.com/auth/chat.app.spaces",
+                        "https://www.googleapis.com/auth/chat.app.spaces.readonly",
                         "https://www.googleapis.com/auth/chat.memberships",
                         "https://www.googleapis.com/auth/chat.memberships.readonly",
                         "https://www.googleapis.com/auth/chat.messages",
@@ -458,6 +484,8 @@
                         "https://www.googleapis.com/auth/chat.messages.readonly",
                         "https://www.googleapis.com/auth/chat.spaces",
                         "https://www.googleapis.com/auth/chat.spaces.readonly",
+                        "https://www.googleapis.com/auth/chat.users.readstate",
+                        "https://www.googleapis.com/auth/chat.users.readstate.readonly",
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
@@ -468,7 +496,7 @@
                     ]
                 },
                 "reactivate": {
-                    "description": "Reactivates a suspended Google Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use this method, you must fix the error that suspended the subscription. This method will ignore or reject any subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a Google Workspace subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can reactivate a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` andgetting one-time administrator approval ([Developer Preview](https://developers.google.com/workspace/preview)). To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
+                    "description": "Reactivates a suspended Google Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use this method, you must fix the error that suspended the subscription. This method will ignore or reject any subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a Google Workspace subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can reactivate a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).",
                     "flatPath": "v1/subscriptions/{subscriptionsId}:reactivate",
                     "httpMethod": "POST",
                     "id": "workspaceevents.subscriptions.reactivate",
@@ -493,8 +521,10 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/chat.app.memberships",
+                        "https://www.googleapis.com/auth/chat.app.memberships.readonly",
                         "https://www.googleapis.com/auth/chat.app.messages.readonly",
                         "https://www.googleapis.com/auth/chat.app.spaces",
+                        "https://www.googleapis.com/auth/chat.app.spaces.readonly",
                         "https://www.googleapis.com/auth/chat.memberships",
                         "https://www.googleapis.com/auth/chat.memberships.readonly",
                         "https://www.googleapis.com/auth/chat.messages",
@@ -503,6 +533,8 @@
                         "https://www.googleapis.com/auth/chat.messages.readonly",
                         "https://www.googleapis.com/auth/chat.spaces",
                         "https://www.googleapis.com/auth/chat.spaces.readonly",
+                        "https://www.googleapis.com/auth/chat.users.readstate",
+                        "https://www.googleapis.com/auth/chat.users.readstate.readonly",
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
@@ -1200,6 +1232,11 @@
                     "readOnly": true,
                     "type": "boolean"
                 },
+                "serviceAccountAuthority": {
+                    "description": "Output only. The service account that was used to authorize the creation of the subscription. This service account must be owned by the same Google Cloud project where you created this subscription. Format: `projects/{project_id}/serviceAccounts/{service_account_id}`",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "state": {
                     "description": "Output only. The state of the subscription. Determines whether the subscription can receive events and deliver them to the notification endpoint.",
                     "enum": [
@@ -1222,8 +1259,10 @@
                     "enum": [
                         "ERROR_TYPE_UNSPECIFIED",
                         "USER_SCOPE_REVOKED",
+                        "APP_SCOPE_REVOKED",
                         "RESOURCE_DELETED",
                         "USER_AUTHORIZATION_FAILURE",
+                        "APP_AUTHORIZATION_FAILURE",
                         "ENDPOINT_PERMISSION_DENIED",
                         "ENDPOINT_NOT_FOUND",
                         "ENDPOINT_RESOURCE_EXHAUSTED",
@@ -1232,8 +1271,10 @@
                     "enumDescriptions": [
                         "Default value. This value is unused.",
                         "The authorizing user has revoked the grant of one or more OAuth scopes. To learn more about authorization for Google Workspace, see [Configure the OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent#choose-scopes).",
+                        "The domain administrator has revoked the grant of one or more OAuth scopes for the app.",
                         "The target resource for the subscription no longer exists.",
                         "The user that authorized the creation of the subscription no longer has access to the subscription's target resource.",
+                        "The app that authorized the creation of the subscription no longer has access to the subscription's target resource.",
                         "The Google Workspace application doesn't have access to deliver events to your subscription's notification endpoint.",
                         "The subscription's notification endpoint doesn't exist, or the endpoint can't be found in the Google Cloud project where you created the subscription.",
                         "The subscription's notification endpoint failed to receive events due to insufficient quota or reaching rate limiting.",
@@ -1259,6 +1300,11 @@
                 "updateTime": {
                     "description": "Output only. The last time that the subscription is updated.",
                     "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "userAuthority": {
+                    "description": "Output only. The user who authorized the creation of the subscription. The user must be able to view the `target_resource`. For Google Workspace users, the `{user}` value is the [`user.id`](https://developers.google.com/workspace/admin/directory/reference/rest/v1/users#User.FIELDS.id) field from the Directory API. Format: `users/{user}`",
                     "readOnly": true,
                     "type": "string"
                 }

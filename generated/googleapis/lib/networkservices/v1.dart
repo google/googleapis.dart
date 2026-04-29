@@ -169,6 +169,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -4808,7 +4819,10 @@ class AuthzExtension {
   /// The `:authority` header in the gRPC request sent from Envoy to the
   /// extension service.
   ///
-  /// Required.
+  /// It is required when the `service` field points to a backend service or a
+  /// wasm plugin.
+  ///
+  /// Optional.
   core.String? authority;
 
   /// The timestamp when the resource was created.
@@ -4836,6 +4850,19 @@ class AuthzExtension {
   /// Optional.
   core.bool? failOpen;
 
+  /// List of the Envoy attributes to forward to the extension server.
+  ///
+  /// The attributes provided here are included as part of the
+  /// `ProcessingRequest.attributes` field (of type `map`), where the keys are
+  /// the attribute names. Refer to the
+  /// [documentation](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference#attributes)
+  /// for the names of attributes that can be forwarded. If omitted, no
+  /// attributes are sent. Each element is a string indicating the attribute
+  /// name.
+  ///
+  /// Optional.
+  core.List<core.String>? forwardAttributes;
+
   /// List of the HTTP headers to forward to the extension (from the client).
   ///
   /// If omitted, all headers are sent. Each element is a string indicating the
@@ -4856,11 +4883,12 @@ class AuthzExtension {
   /// All backend services and forwarding rules referenced by this extension
   /// must share the same load balancing scheme.
   ///
-  /// Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more
+  /// Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. Can be omitted
+  /// for AuthzExtensions that do not reference a backend service. For more
   /// information, refer to
   /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
   ///
-  /// Required.
+  /// Optional.
   /// Possible string values are:
   /// - "LOAD_BALANCING_SCHEME_UNSPECIFIED" : Default value. Do not use.
   /// - "INTERNAL_MANAGED" : Signifies that this is used for Internal HTTP(S)
@@ -4942,6 +4970,7 @@ class AuthzExtension {
     this.createTime,
     this.description,
     this.failOpen,
+    this.forwardAttributes,
     this.forwardHeaders,
     this.labels,
     this.loadBalancingScheme,
@@ -4959,6 +4988,9 @@ class AuthzExtension {
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         failOpen: json_['failOpen'] as core.bool?,
+        forwardAttributes: (json_['forwardAttributes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         forwardHeaders: (json_['forwardHeaders'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -4981,6 +5013,7 @@ class AuthzExtension {
     final createTime = this.createTime;
     final description = this.description;
     final failOpen = this.failOpen;
+    final forwardAttributes = this.forwardAttributes;
     final forwardHeaders = this.forwardHeaders;
     final labels = this.labels;
     final loadBalancingScheme = this.loadBalancingScheme;
@@ -4995,6 +5028,7 @@ class AuthzExtension {
       'createTime': ?createTime,
       'description': ?description,
       'failOpen': ?failOpen,
+      'forwardAttributes': ?forwardAttributes,
       'forwardHeaders': ?forwardHeaders,
       'labels': ?labels,
       'loadBalancingScheme': ?loadBalancingScheme,
@@ -5501,6 +5535,19 @@ class ExtensionChainExtension {
   /// Optional.
   core.bool? failOpen;
 
+  /// List of the Envoy attributes to forward to the extension server.
+  ///
+  /// The attributes provided here are included as part of the
+  /// `ProcessingRequest.attributes` field (of type `map`), where the keys are
+  /// the attribute names. Refer to the
+  /// [documentation](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference#attributes)
+  /// for the names of attributes that can be forwarded. If omitted, no
+  /// attributes are sent. Each element is a string indicating the attribute
+  /// name.
+  ///
+  /// Optional.
+  core.List<core.String>? forwardAttributes;
+
   /// List of the HTTP headers to forward to the extension (from the client or
   /// backend).
   ///
@@ -5548,16 +5595,12 @@ class ExtensionChainExtension {
   /// Optional.
   core.String? name;
 
-  /// When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+  /// When set to `true`, the calls to the extension backend are performed
+  /// asynchronously, without pausing the processing of the ongoing request.
   ///
-  /// This makes `ext_proc` calls asynchronous. Envoy doesn't check for the
-  /// response from `ext_proc` calls. For more information about the filter,
-  /// see:
-  /// https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto#extensions-filters-http-ext-proc-v3-externalprocessor
-  /// This field is helpful when you want to try out the extension in async
-  /// log-only mode. Supported by regional `LbTrafficExtension` and
-  /// `LbRouteExtension` resources. Only `STREAMED` (default) body processing
-  /// mode is supported.
+  /// In this mode, only `STREAMED` (default) body processing is supported.
+  /// Responses, if any, are ignored. Supported by regional `LbTrafficExtension`
+  /// and `LbRouteExtension` resources.
   ///
   /// Optional.
   core.bool? observabilityMode;
@@ -5664,6 +5707,7 @@ class ExtensionChainExtension {
   ExtensionChainExtension({
     this.authority,
     this.failOpen,
+    this.forwardAttributes,
     this.forwardHeaders,
     this.metadata,
     this.name,
@@ -5679,6 +5723,9 @@ class ExtensionChainExtension {
     : this(
         authority: json_['authority'] as core.String?,
         failOpen: json_['failOpen'] as core.bool?,
+        forwardAttributes: (json_['forwardAttributes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         forwardHeaders: (json_['forwardHeaders'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -5699,6 +5746,7 @@ class ExtensionChainExtension {
   core.Map<core.String, core.dynamic> toJson() {
     final authority = this.authority;
     final failOpen = this.failOpen;
+    final forwardAttributes = this.forwardAttributes;
     final forwardHeaders = this.forwardHeaders;
     final metadata = this.metadata;
     final name = this.name;
@@ -5711,6 +5759,7 @@ class ExtensionChainExtension {
     return {
       'authority': ?authority,
       'failOpen': ?failOpen,
+      'forwardAttributes': ?forwardAttributes,
       'forwardHeaders': ?forwardHeaders,
       'metadata': ?metadata,
       'name': ?name,
@@ -5761,6 +5810,22 @@ class Gateway {
   ///
   /// Optional.
   core.List<core.String>? addresses;
+
+  /// If true, the Gateway will listen on all ports.
+  ///
+  /// This is mutually exclusive with the `ports` field. This field only applies
+  /// to gateways of type 'SECURE_WEB_GATEWAY'.
+  ///
+  /// Optional.
+  core.bool? allPorts;
+
+  /// If true, the gateway will allow traffic from clients outside of the region
+  /// where the gateway is located.
+  ///
+  /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+  ///
+  /// Optional.
+  core.bool? allowGlobalAccess;
 
   /// A fully-qualified Certificates URL reference.
   ///
@@ -5922,6 +5987,8 @@ class Gateway {
 
   Gateway({
     this.addresses,
+    this.allPorts,
+    this.allowGlobalAccess,
     this.certificateUrls,
     this.createTime,
     this.description,
@@ -5946,6 +6013,8 @@ class Gateway {
         addresses: (json_['addresses'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        allPorts: json_['allPorts'] as core.bool?,
+        allowGlobalAccess: json_['allowGlobalAccess'] as core.bool?,
         certificateUrls: (json_['certificateUrls'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -5973,6 +6042,8 @@ class Gateway {
 
   core.Map<core.String, core.dynamic> toJson() {
     final addresses = this.addresses;
+    final allPorts = this.allPorts;
+    final allowGlobalAccess = this.allowGlobalAccess;
     final certificateUrls = this.certificateUrls;
     final createTime = this.createTime;
     final description = this.description;
@@ -5992,6 +6063,8 @@ class Gateway {
     final updateTime = this.updateTime;
     return {
       'addresses': ?addresses,
+      'allPorts': ?allPorts,
+      'allowGlobalAccess': ?allowGlobalAccess,
       'certificateUrls': ?certificateUrls,
       'createTime': ?createTime,
       'description': ?description,
@@ -10285,6 +10358,16 @@ class TlsRoute {
   /// Output only.
   core.String? selfLink;
 
+  /// TargetProxies defines a list of TargetTcpProxies this TlsRoute is attached
+  /// to, as one of the routing rules to route the requests served by the
+  /// TargetTcpProxy.
+  ///
+  /// Each TargetTcpProxy reference should match the pattern: `projects / *
+  /// /locations / * /targetTcpProxies/`
+  ///
+  /// Optional.
+  core.List<core.String>? targetProxies;
+
   /// The timestamp when the resource was updated.
   ///
   /// Output only.
@@ -10299,6 +10382,7 @@ class TlsRoute {
     this.name,
     this.rules,
     this.selfLink,
+    this.targetProxies,
     this.updateTime,
   });
 
@@ -10324,6 +10408,9 @@ class TlsRoute {
             )
             .toList(),
         selfLink: json_['selfLink'] as core.String?,
+        targetProxies: (json_['targetProxies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -10336,6 +10423,7 @@ class TlsRoute {
     final name = this.name;
     final rules = this.rules;
     final selfLink = this.selfLink;
+    final targetProxies = this.targetProxies;
     final updateTime = this.updateTime;
     return {
       'createTime': ?createTime,
@@ -10346,6 +10434,7 @@ class TlsRoute {
       'name': ?name,
       'rules': ?rules,
       'selfLink': ?selfLink,
+      'targetProxies': ?targetProxies,
       'updateTime': ?updateTime,
     };
   }

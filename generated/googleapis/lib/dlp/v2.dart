@@ -8738,7 +8738,7 @@ class GooglePrivacyDlpV2AdjustByMatchingInfoTypes {
 
   /// How the adjustment rule is applied.
   ///
-  /// Only MATCHING_TYPE_PARTIAL_MATCH is supported: - Partial match: adjusts
+  /// Only `MATCHING_TYPE_PARTIAL_MATCH` is supported: - Partial match: adjusts
   /// the findings of infoTypes specified in the inspection rule when they have
   /// a nonempty intersection with a finding of an infoType specified in this
   /// adjustment rule.
@@ -11105,6 +11105,9 @@ class GooglePrivacyDlpV2ContentItem {
   /// Replaces `type` and `data`.
   GooglePrivacyDlpV2ByteContentItem? byteItem;
 
+  /// User provided metadata for the content.
+  GooglePrivacyDlpV2ContentMetadata? contentMetadata;
+
   /// Structured content for inspection.
   ///
   /// See
@@ -11115,13 +11118,23 @@ class GooglePrivacyDlpV2ContentItem {
   /// String data to inspect or redact.
   core.String? value;
 
-  GooglePrivacyDlpV2ContentItem({this.byteItem, this.table, this.value});
+  GooglePrivacyDlpV2ContentItem({
+    this.byteItem,
+    this.contentMetadata,
+    this.table,
+    this.value,
+  });
 
   GooglePrivacyDlpV2ContentItem.fromJson(core.Map json_)
     : this(
         byteItem: json_.containsKey('byteItem')
             ? GooglePrivacyDlpV2ByteContentItem.fromJson(
                 json_['byteItem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contentMetadata: json_.containsKey('contentMetadata')
+            ? GooglePrivacyDlpV2ContentMetadata.fromJson(
+                json_['contentMetadata'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         table: json_.containsKey('table')
@@ -11134,9 +11147,15 @@ class GooglePrivacyDlpV2ContentItem {
 
   core.Map<core.String, core.dynamic> toJson() {
     final byteItem = this.byteItem;
+    final contentMetadata = this.contentMetadata;
     final table = this.table;
     final value = this.value;
-    return {'byteItem': ?byteItem, 'table': ?table, 'value': ?value};
+    return {
+      'byteItem': ?byteItem,
+      'contentMetadata': ?contentMetadata,
+      'table': ?table,
+      'value': ?value,
+    };
   }
 }
 
@@ -11231,6 +11250,30 @@ class GooglePrivacyDlpV2ContentLocation {
       'metadataLocation': ?metadataLocation,
       'recordLocation': ?recordLocation,
     };
+  }
+}
+
+/// Metadata on content to be scanned.
+class GooglePrivacyDlpV2ContentMetadata {
+  /// User provided key-value pairs of content metadata.
+  core.List<GooglePrivacyDlpV2KeyValueMetadataProperty>? properties;
+
+  GooglePrivacyDlpV2ContentMetadata({this.properties});
+
+  GooglePrivacyDlpV2ContentMetadata.fromJson(core.Map json_)
+    : this(
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2KeyValueMetadataProperty.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final properties = this.properties;
+    return {'properties': ?properties};
   }
 }
 
@@ -11860,8 +11903,8 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
 class GooglePrivacyDlpV2CustomInfoType {
   /// Set of detection rules to apply to all findings of this CustomInfoType.
   ///
-  /// Rules are applied in order that they are specified. Not supported for the
-  /// `surrogate_type` CustomInfoType.
+  /// Rules are applied in the order that they are specified. Only supported for
+  /// the `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
   core.List<GooglePrivacyDlpV2DetectionRule>? detectionRules;
 
   /// A list of phrases to detect as a CustomInfoType.
@@ -11870,7 +11913,8 @@ class GooglePrivacyDlpV2CustomInfoType {
   /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to
   /// be returned.
   ///
-  /// It still can be used for rules matching.
+  /// It still can be used for rules matching. Only supported for the
+  /// `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
   /// Possible string values are:
   /// - "EXCLUSION_TYPE_UNSPECIFIED" : A finding of this custom info type will
   /// not be excluded from results.
@@ -11902,6 +11946,9 @@ class GooglePrivacyDlpV2CustomInfoType {
   /// positive.
   core.String? likelihood;
 
+  /// Key-value pair to detect in the metadata.
+  GooglePrivacyDlpV2MetadataKeyValueExpression? metadataKeyValueExpression;
+
   /// Regular expression based CustomInfoType.
   GooglePrivacyDlpV2Regex? regex;
 
@@ -11926,6 +11973,7 @@ class GooglePrivacyDlpV2CustomInfoType {
     this.exclusionType,
     this.infoType,
     this.likelihood,
+    this.metadataKeyValueExpression,
     this.regex,
     this.sensitivityScore,
     this.storedType,
@@ -11953,6 +12001,13 @@ class GooglePrivacyDlpV2CustomInfoType {
               )
             : null,
         likelihood: json_['likelihood'] as core.String?,
+        metadataKeyValueExpression:
+            json_.containsKey('metadataKeyValueExpression')
+            ? GooglePrivacyDlpV2MetadataKeyValueExpression.fromJson(
+                json_['metadataKeyValueExpression']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         regex: json_.containsKey('regex')
             ? GooglePrivacyDlpV2Regex.fromJson(
                 json_['regex'] as core.Map<core.String, core.dynamic>,
@@ -11982,6 +12037,7 @@ class GooglePrivacyDlpV2CustomInfoType {
     final exclusionType = this.exclusionType;
     final infoType = this.infoType;
     final likelihood = this.likelihood;
+    final metadataKeyValueExpression = this.metadataKeyValueExpression;
     final regex = this.regex;
     final sensitivityScore = this.sensitivityScore;
     final storedType = this.storedType;
@@ -11992,6 +12048,7 @@ class GooglePrivacyDlpV2CustomInfoType {
       'exclusionType': ?exclusionType,
       'infoType': ?infoType,
       'likelihood': ?likelihood,
+      'metadataKeyValueExpression': ?metadataKeyValueExpression,
       'regex': ?regex,
       'sensitivityScore': ?sensitivityScore,
       'storedType': ?storedType,
@@ -17649,7 +17706,8 @@ class GooglePrivacyDlpV2InspectConfig {
   /// Set of rules to apply to the findings for this InspectConfig.
   ///
   /// Exclusion rules, contained in the set are executed in the end, other rules
-  /// are executed in the order they are specified for each info type.
+  /// are executed in the order they are specified for each info type. Not
+  /// supported for the `metadata_key_value_expression` CustomInfoType.
   core.List<GooglePrivacyDlpV2InspectionRuleSet>? ruleSet;
 
   GooglePrivacyDlpV2InspectConfig({
@@ -18673,6 +18731,49 @@ class GooglePrivacyDlpV2Key {
   }
 }
 
+/// The metadata key that contains a finding.
+class GooglePrivacyDlpV2KeyValueMetadataLabel {
+  /// The metadata key.
+  ///
+  /// The format depends on the source of the metadata. Example: -
+  /// `MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Enabled` (a Microsoft
+  /// Purview Information Protection key example)
+  core.String? key;
+
+  GooglePrivacyDlpV2KeyValueMetadataLabel({this.key});
+
+  GooglePrivacyDlpV2KeyValueMetadataLabel.fromJson(core.Map json_)
+    : this(key: json_['key'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    return {'key': ?key};
+  }
+}
+
+/// A key-value pair in the Metadata.
+class GooglePrivacyDlpV2KeyValueMetadataProperty {
+  /// The key of the property.
+  core.String? key;
+
+  /// The value of the property.
+  core.String? value;
+
+  GooglePrivacyDlpV2KeyValueMetadataProperty({this.key, this.value});
+
+  GooglePrivacyDlpV2KeyValueMetadataProperty.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
 /// A representation of a Datastore kind.
 typedef GooglePrivacyDlpV2KindExpression = $KindExpression;
 
@@ -19561,8 +19662,42 @@ class GooglePrivacyDlpV2LocationSupport {
 /// Jobs must be manually created and finished.
 typedef GooglePrivacyDlpV2Manual = $Empty;
 
+/// Configuration for a custom infoType that detects key-value pairs in the
+/// metadata matching the specified regular expressions.
+class GooglePrivacyDlpV2MetadataKeyValueExpression {
+  /// The regular expression for the key.
+  ///
+  /// Key should be non-empty.
+  core.String? keyRegex;
+
+  /// The regular expression for the value.
+  ///
+  /// Value should be non-empty.
+  core.String? valueRegex;
+
+  GooglePrivacyDlpV2MetadataKeyValueExpression({
+    this.keyRegex,
+    this.valueRegex,
+  });
+
+  GooglePrivacyDlpV2MetadataKeyValueExpression.fromJson(core.Map json_)
+    : this(
+        keyRegex: json_['keyRegex'] as core.String?,
+        valueRegex: json_['valueRegex'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyRegex = this.keyRegex;
+    final valueRegex = this.valueRegex;
+    return {'keyRegex': ?keyRegex, 'valueRegex': ?valueRegex};
+  }
+}
+
 /// Metadata Location
 class GooglePrivacyDlpV2MetadataLocation {
+  /// Metadata key that contains the finding.
+  GooglePrivacyDlpV2KeyValueMetadataLabel? keyValueMetadataLabel;
+
   /// Storage metadata.
   GooglePrivacyDlpV2StorageMetadataLabel? storageLabel;
 
@@ -19570,12 +19705,24 @@ class GooglePrivacyDlpV2MetadataLocation {
   /// Possible string values are:
   /// - "METADATATYPE_UNSPECIFIED" : Unused
   /// - "STORAGE_METADATA" : General file metadata provided by Cloud Storage.
+  /// - "CONTENT_METADATA" : Metadata extracted from the files.
+  /// - "CLIENT_PROVIDED_METADATA" : Metadata provided by the client.
   core.String? type;
 
-  GooglePrivacyDlpV2MetadataLocation({this.storageLabel, this.type});
+  GooglePrivacyDlpV2MetadataLocation({
+    this.keyValueMetadataLabel,
+    this.storageLabel,
+    this.type,
+  });
 
   GooglePrivacyDlpV2MetadataLocation.fromJson(core.Map json_)
     : this(
+        keyValueMetadataLabel: json_.containsKey('keyValueMetadataLabel')
+            ? GooglePrivacyDlpV2KeyValueMetadataLabel.fromJson(
+                json_['keyValueMetadataLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         storageLabel: json_.containsKey('storageLabel')
             ? GooglePrivacyDlpV2StorageMetadataLabel.fromJson(
                 json_['storageLabel'] as core.Map<core.String, core.dynamic>,
@@ -19585,9 +19732,14 @@ class GooglePrivacyDlpV2MetadataLocation {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final keyValueMetadataLabel = this.keyValueMetadataLabel;
     final storageLabel = this.storageLabel;
     final type = this.type;
-    return {'storageLabel': ?storageLabel, 'type': ?type};
+    return {
+      'keyValueMetadataLabel': ?keyValueMetadataLabel,
+      'storageLabel': ?storageLabel,
+      'type': ?type,
+    };
   }
 }
 

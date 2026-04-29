@@ -277,7 +277,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260130",
+    "revision": "20260410",
     "rootUrl": "https://datalineage.googleapis.com/",
     "servicePath": "",
     "title": "Data Lineage API",
@@ -814,7 +814,7 @@
                                     ],
                                     "parameters": {
                                         "allowMissing": {
-                                            "description": "If set to true and the process is not found, the request succeeds but the server doesn't perform any actions.",
+                                            "description": "Optional. If set to true and the process is not found, the request succeeds but the server doesn't perform any actions.",
                                             "location": "query",
                                             "type": "boolean"
                                         },
@@ -869,13 +869,13 @@
                                     ],
                                     "parameters": {
                                         "pageSize": {
-                                            "description": "The maximum number of processes to return. The service may return fewer than this value. If unspecified, at most 50 processes are returned. The maximum value is 100; values greater than 100 are cut to 100.",
+                                            "description": "Optional. The maximum number of processes to return. The service may return fewer than this value. If unspecified, at most 50 processes are returned. The maximum value is 100; values greater than 100 are cut to 100.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "The page token received from a previous `ListProcesses` call. Specify it to get the next page. When paginating, all other parameters specified in this call must match the parameters of the call that provided the page token.",
+                                            "description": "Optional. The page token received from a previous `ListProcesses` call. Specify it to get the next page. When paginating, all other parameters specified in this call must match the parameters of the call that provided the page token.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -905,7 +905,7 @@
                                     ],
                                     "parameters": {
                                         "allowMissing": {
-                                            "description": "If set to true and the process is not found, the request inserts it.",
+                                            "description": "Optional. If set to true and the process is not found, the request inserts it.",
                                             "location": "query",
                                             "type": "boolean"
                                         },
@@ -922,7 +922,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "The list of fields to update. Currently not used. The whole message is updated.",
+                                            "description": "Optional. The list of fields to update. Currently not used. The whole message is updated.",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"
@@ -986,7 +986,7 @@
                                             ],
                                             "parameters": {
                                                 "allowMissing": {
-                                                    "description": "If set to true and the run is not found, the request succeeds but the server doesn't perform any actions.",
+                                                    "description": "Optional. If set to true and the run is not found, the request succeeds but the server doesn't perform any actions.",
                                                     "location": "query",
                                                     "type": "boolean"
                                                 },
@@ -1041,13 +1041,13 @@
                                             ],
                                             "parameters": {
                                                 "pageSize": {
-                                                    "description": "The maximum number of runs to return. The service may return fewer than this value. If unspecified, at most 50 runs are returned. The maximum value is 100; values greater than 100 are cut to 100.",
+                                                    "description": "Optional. The maximum number of runs to return. The service may return fewer than this value. If unspecified, at most 50 runs are returned. The maximum value is 100; values greater than 100 are cut to 100.",
                                                     "format": "int32",
                                                     "location": "query",
                                                     "type": "integer"
                                                 },
                                                 "pageToken": {
-                                                    "description": "The page token received from a previous `ListRuns` call. Specify it to get the next page. When paginating, all other parameters specified in this call must match the parameters of the call that provided the page token.",
+                                                    "description": "Optional. The page token received from a previous `ListRuns` call. Specify it to get the next page. When paginating, all other parameters specified in this call must match the parameters of the call that provided the page token.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -1077,7 +1077,7 @@
                                             ],
                                             "parameters": {
                                                 "allowMissing": {
-                                                    "description": "If set to true and the run is not found, the request creates it.",
+                                                    "description": "Optional. If set to true and the run is not found, the request creates it.",
                                                     "location": "query",
                                                     "type": "boolean"
                                                 },
@@ -1089,7 +1089,7 @@
                                                     "type": "string"
                                                 },
                                                 "updateMask": {
-                                                    "description": "The list of fields to update. Currently not used. The whole message is updated.",
+                                                    "description": "Optional. The list of fields to update. Currently not used. The whole message is updated.",
                                                     "format": "google-fieldmask",
                                                     "location": "query",
                                                     "type": "string"
@@ -1153,7 +1153,7 @@
                                                     ],
                                                     "parameters": {
                                                         "allowMissing": {
-                                                            "description": "If set to true and the lineage event is not found, the request succeeds but the server doesn't perform any actions.",
+                                                            "description": "Optional. If set to true and the lineage event is not found, the request succeeds but the server doesn't perform any actions.",
                                                             "location": "query",
                                                             "type": "boolean"
                                                         },
@@ -1208,13 +1208,13 @@
                                                     ],
                                                     "parameters": {
                                                         "pageSize": {
-                                                            "description": "The maximum number of lineage events to return. The service may return fewer events than this value. If unspecified, at most 50 events are returned. The maximum value is 100; values greater than 100 are cut to 100.",
+                                                            "description": "Optional. The maximum number of lineage events to return. The service may return fewer events than this value. If unspecified, at most 50 events are returned. The maximum value is 100; values greater than 100 are cut to 100.",
                                                             "format": "int32",
                                                             "location": "query",
                                                             "type": "integer"
                                                         },
                                                         "pageToken": {
-                                                            "description": "The page token received from a previous `ListLineageEvents` call. Specify it to get the next page. When paginating, all other parameters specified in this call must match the parameters of the call that provided the page token.",
+                                                            "description": "Optional. The page token received from a previous `ListLineageEvents` call. Specify it to get the next page. When paginating, all other parameters specified in this call must match the parameters of the call that provided the page token.",
                                                             "location": "query",
                                                             "type": "string"
                                                         },
@@ -1246,81 +1246,6 @@
         }
     },
     "schemas": {
-        "ApiservingMcpMcpToolDataHandlingProfile": {
-            "description": "Profile describing the data handling characteristics of an MCP tool. When used within the McpTool.meta field, this message should be packed into a google.protobuf.Any and associated with the key: \"google.com/tool.profiles/data_handling\"",
-            "id": "ApiservingMcpMcpToolDataHandlingProfile",
-            "properties": {
-                "inputDataAccessLevel": {
-                    "description": "// The data access level of the tool's inputs.",
-                    "enum": [
-                        "DATA_ACCESS_LEVEL_UNSPECIFIED",
-                        "DATA_ACCESS_LEVEL_PUBLIC",
-                        "DATA_ACCESS_LEVEL_CONFIDENTIAL",
-                        "DATA_ACCESS_LEVEL_NEED_TO_KNOW",
-                        "DATA_ACCESS_LEVEL_PII",
-                        "DATA_ACCESS_LEVEL_USER",
-                        "DATA_ACCESS_LEVEL_NO_DATA_ACCESS"
-                    ],
-                    "enumDescriptions": [
-                        "The default value. This value is unused.",
-                        "Public data.",
-                        "Confidential data.",
-                        "Need-to-know data.",
-                        "Personally Identifiable Information (PII) data.",
-                        "User data.",
-                        "The tool does not access any data."
-                    ],
-                    "type": "string"
-                },
-                "outputDataAccessLevel": {
-                    "description": "The data access level of the tool's outputs.",
-                    "enum": [
-                        "DATA_ACCESS_LEVEL_UNSPECIFIED",
-                        "DATA_ACCESS_LEVEL_PUBLIC",
-                        "DATA_ACCESS_LEVEL_CONFIDENTIAL",
-                        "DATA_ACCESS_LEVEL_NEED_TO_KNOW",
-                        "DATA_ACCESS_LEVEL_PII",
-                        "DATA_ACCESS_LEVEL_USER",
-                        "DATA_ACCESS_LEVEL_NO_DATA_ACCESS"
-                    ],
-                    "enumDescriptions": [
-                        "The default value. This value is unused.",
-                        "Public data.",
-                        "Confidential data.",
-                        "Need-to-know data.",
-                        "Personally Identifiable Information (PII) data.",
-                        "User data.",
-                        "The tool does not access any data."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ApiservingMcpMcpToolLifecycleProfile": {
-            "description": "Profile describing the lifecycle stage of an MCP tool. When used within the McpTool.meta field, this message should be packed into a google.protobuf.Any and associated with the key: \"google.com/tool.profiles/lifecycle\"",
-            "id": "ApiservingMcpMcpToolLifecycleProfile",
-            "properties": {
-                "launchState": {
-                    "description": "Output only. The current launch state of the MCP tool.",
-                    "enum": [
-                        "LAUNCH_STATE_UNSPECIFIED",
-                        "LAUNCH_STATE_DEVELOPMENT",
-                        "LAUNCH_STATE_PRODUCTION_PREVIEW",
-                        "LAUNCH_STATE_GENERAL_AVAILABILITY"
-                    ],
-                    "enumDescriptions": [
-                        "The default value. This value is unused.",
-                        "The tool is currently in development.",
-                        "The tool is in production preview.",
-                        "The tool is generally available."
-                    ],
-                    "readOnly": true,
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "GoogleCloudDatacatalogLineageConfigmanagementV1Config": {
             "description": "Configuration for Data Lineage. Defines different configuration options for Lineage customers to control behaviour of lineage systems.",
             "id": "GoogleCloudDatacatalogLineageConfigmanagementV1Config",
@@ -1377,11 +1302,13 @@
                     "description": "Required. Integration to which the rule applies. This field can be used to specify the integration against which the ingestion rule should be applied.",
                     "enum": [
                         "INTEGRATION_UNSPECIFIED",
-                        "DATAPROC"
+                        "DATAPROC",
+                        "LOOKER_CORE"
                     ],
                     "enumDescriptions": [
                         "Integration is Unspecified",
-                        "Dataproc"
+                        "Dataproc",
+                        "Looker Core"
                     ],
                     "type": "string"
                 }
@@ -1659,7 +1586,9 @@
                         "COMPOSER",
                         "LOOKER_STUDIO",
                         "DATAPROC",
-                        "VERTEX_AI"
+                        "VERTEX_AI",
+                        "DATAFLOW",
+                        "LOOKER_CORE"
                     ],
                     "enumDescriptions": [
                         "Source is Unspecified",
@@ -1669,7 +1598,9 @@
                         "Composer",
                         "Looker Studio",
                         "Dataproc",
-                        "Vertex AI"
+                        "Vertex AI",
+                        "Dataflow",
+                        "Looker Core"
                     ],
                     "type": "string"
                 }

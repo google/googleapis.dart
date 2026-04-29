@@ -282,6 +282,7 @@ buildGoogleCloudVideointelligenceV1SpeechTranscriptionConfig() {
   final o = api.GoogleCloudVideointelligenceV1SpeechTranscriptionConfig();
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig++;
   if (buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig < 3) {
+    o.audioOutputUriPrefix = 'foo';
     o.audioTracks = buildUnnamed2();
     o.diarizationSpeakerCount = 42;
     o.enableAutomaticPunctuation = true;
@@ -301,6 +302,7 @@ void checkGoogleCloudVideointelligenceV1SpeechTranscriptionConfig(
 ) {
   buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig++;
   if (buildCounterGoogleCloudVideointelligenceV1SpeechTranscriptionConfig < 3) {
+    unittest.expect(o.audioOutputUriPrefix!, unittest.equals('foo'));
     checkUnnamed2(o.audioTracks!);
     unittest.expect(o.diarizationSpeakerCount!, unittest.equals(42));
     unittest.expect(o.enableAutomaticPunctuation!, unittest.isTrue);
@@ -474,6 +476,14 @@ void checkUnnamed6(core.List<api.GoogleLongrunningOperation> o) {
   checkGoogleLongrunningOperation(o[1]);
 }
 
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+
+void checkUnnamed7(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterGoogleLongrunningListOperationsResponse = 0;
 api.GoogleLongrunningListOperationsResponse
 buildGoogleLongrunningListOperationsResponse() {
@@ -482,6 +492,7 @@ buildGoogleLongrunningListOperationsResponse() {
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
     o.operations = buildUnnamed6();
+    o.unreachable = buildUnnamed7();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -494,35 +505,9 @@ void checkGoogleLongrunningListOperationsResponse(
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed6(o.operations!);
+    checkUnnamed7(o.unreachable!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed7() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed7(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']!) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']!) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object?> buildUnnamed8() => {
@@ -539,6 +524,33 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
 };
 
 void checkUnnamed8(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object?> buildUnnamed9() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -559,9 +571,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed7();
+    o.metadata = buildUnnamed8();
     o.name = 'foo';
-    o.response = buildUnnamed8();
+    o.response = buildUnnamed9();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -572,9 +584,9 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed7(o.metadata!);
+    checkUnnamed8(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed8(o.response!);
+    checkUnnamed9(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -594,7 +606,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed9() => {
+core.Map<core.String, core.Object?> buildUnnamed10() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -607,7 +619,7 @@ core.Map<core.String, core.Object?> buildUnnamed9() => {
   },
 };
 
-void checkUnnamed9(core.Map<core.String, core.Object?> o) {
+void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -621,15 +633,15 @@ void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed10() => [
-  buildUnnamed9(),
-  buildUnnamed9(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed11() => [
+  buildUnnamed10(),
+  buildUnnamed10(),
 ];
 
-void checkUnnamed10(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed11(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed9(o[0]);
-  checkUnnamed9(o[1]);
+  checkUnnamed10(o[0]);
+  checkUnnamed10(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -638,7 +650,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed10();
+    o.details = buildUnnamed11();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -649,7 +661,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed10(o.details!);
+    checkUnnamed11(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -1238,6 +1250,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_returnPartialSuccess = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1285,6 +1298,10 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
+            queryMap['returnPartialSuccess']!.first,
+            unittest.equals('$arg_returnPartialSuccess'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -1302,6 +1319,7 @@ void main() {
         filter: arg_filter,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
+        returnPartialSuccess: arg_returnPartialSuccess,
         $fields: arg_$fields,
       );
       checkGoogleLongrunningListOperationsResponse(

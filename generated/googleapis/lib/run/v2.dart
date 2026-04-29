@@ -68,6 +68,15 @@ class CloudRunApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Run data and see the
+  /// email address for your Google Account
+  static const runScope = 'https://www.googleapis.com/auth/run';
+
+  /// See your Google Cloud Run data and the email address of your Google
+  /// Account
+  static const runReadonlyScope =
+      'https://www.googleapis.com/auth/run.readonly';
+
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -352,10 +361,11 @@ class ProjectsLocationsInstancesResource {
   /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [instanceId] - Required. The unique identifier for the Instance. It must
+  /// [instanceId] - Optional. The unique identifier for the Instance. It must
   /// begin with letter, and cannot end with hyphen; must contain fewer than 50
   /// characters. The name of the instance becomes
-  /// {parent}/instances/{instance_id}.
+  /// {parent}/instances/{instance_id}. If not provided, the server will
+  /// generate a unique `instance_id`.
   ///
   /// [validateOnly] - Optional. Indicates that the request should be validated
   /// and default values populated, without persisting the request or creating
@@ -539,6 +549,69 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
+  /// Updates an Instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The fully qualified name of this Instance. In
+  /// CreateInstanceRequest, this field is ignored, and instead composed from
+  /// CreateInstanceRequest.parent and CreateInstanceRequest.instance_id.
+  /// Format: projects/{project}/locations/{location}/instances/{instance_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and if the Instance does not
+  /// exist, it will create a new one. The caller must have
+  /// 'run.instances.create' permissions if this is set to true and the Instance
+  /// does not exist.
+  ///
+  /// [updateMask] - Optional. The list of fields to be updated.
+  ///
+  /// [validateOnly] - Optional. Indicates that the request should be validated
+  /// and default values populated, without persisting the request or updating
+  /// any resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudRunV2Instance request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Starts an Instance.
   ///
   /// [request] - The metadata request object.
@@ -650,8 +723,9 @@ class ProjectsLocationsJobsResource {
   /// can be project id or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [jobId] - Required. The unique identifier for the Job. The name of the job
-  /// becomes {parent}/jobs/{job_id}.
+  /// [jobId] - Optional. The unique identifier for the Job. The name of the job
+  /// becomes {parent}/jobs/{job_id}. If not provided, the server will generate
+  /// a unique `job_id`.
   ///
   /// [validateOnly] - Indicates that the request should be validated and
   /// default values populated, without persisting the request or creating any
@@ -1685,10 +1759,11 @@ class ProjectsLocationsServicesResource {
   /// and hyphens.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [serviceId] - Required. The unique identifier for the Service. It must
+  /// [serviceId] - Optional. The unique identifier for the Service. It must
   /// begin with letter, and cannot end with hyphen; must contain fewer than 50
   /// characters. The name of the service becomes
-  /// {parent}/services/{service_id}.
+  /// {parent}/services/{service_id}. If not provided, the server will generate
+  /// a unique `service_id`.
   ///
   /// [validateOnly] - Indicates that the request should be validated and
   /// default values populated, without persisting the request or creating any
@@ -1958,6 +2033,14 @@ class ProjectsLocationsServicesResource {
   /// 'run.services.create' permissions if this is set to true and the Service
   /// does not exist.
   ///
+  /// [forceNewRevision] - Optional. If set to true, a new revision will be
+  /// created from the template even if the system doesn't detect any changes
+  /// from the previously deployed revision. This may be useful for cases where
+  /// the underlying resources need to be recreated or reinitialized. For
+  /// example if the image is specified by label, but the underlying image
+  /// digest has changed) or if the container performs deployment initialization
+  /// work that needs to be performed again.
+  ///
   /// [updateMask] - Optional. The list of fields to be updated.
   ///
   /// [validateOnly] - Indicates that the request should be validated and
@@ -1978,6 +2061,7 @@ class ProjectsLocationsServicesResource {
     GoogleCloudRunV2Service request,
     core.String name, {
     core.bool? allowMissing,
+    core.bool? forceNewRevision,
     core.String? updateMask,
     core.bool? validateOnly,
     core.String? $fields,
@@ -1985,6 +2069,9 @@ class ProjectsLocationsServicesResource {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'forceNewRevision': ?forceNewRevision == null
+          ? null
+          : ['${forceNewRevision}'],
       'updateMask': ?updateMask == null ? null : [updateMask],
       'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
@@ -2329,10 +2416,11 @@ class ProjectsLocationsWorkerPoolsResource {
   /// and default values populated, without persisting the request or creating
   /// any resources.
   ///
-  /// [workerPoolId] - Required. The unique identifier for the WorkerPool. It
+  /// [workerPoolId] - Optional. The unique identifier for the WorkerPool. It
   /// must begin with letter, and cannot end with hyphen; must contain fewer
   /// than 50 characters. The name of the worker pool becomes
-  /// `{parent}/workerPools/{worker_pool_id}`.
+  /// `{parent}/workerPools/{worker_pool_id}`. If not provided, the server will
+  /// generate a unique `worker_pool_id`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3226,12 +3314,18 @@ class GoogleCloudRunV2CancelExecutionRequest {
 /// https://cloud.google.com/sql/docs/mysql/connect-run for more information on
 /// how to connect Cloud SQL and Cloud Run.
 class GoogleCloudRunV2CloudSqlInstance {
-  /// The Cloud SQL instance connection names, as can be found in
-  /// https://console.cloud.google.com/sql/instances.
+  /// A list of Cloud SQL instance connection names.
   ///
-  /// Visit https://cloud.google.com/sql/docs/mysql/connect-run for more
-  /// information on how to connect Cloud SQL and Cloud Run. Format:
-  /// {project}:{location}:{instance}
+  /// Cloud Run uses these to establish connections to the specified Cloud SQL
+  /// instances. While the SQL instance name itself is unique within a project,
+  /// the full connection name requires the location for proper routing. Format:
+  /// `{project}:{location}:{instance}` Example:
+  /// `my-project:us-central1:my-instance` You can find this value on the
+  /// instance's **Overview** page in the Google Cloud console or by using the
+  /// following `gcloud` command: ```sh gcloud sql instances describe
+  /// INSTANCE_NAME \ --format='value(connectionName)' ``` Visit
+  /// https://cloud.google.com/sql/docs/mysql/connect-run for more information
+  /// on how to connect Cloud SQL and Cloud Run.
   core.List<core.String>? instances;
 
   GoogleCloudRunV2CloudSqlInstance({this.instances});
@@ -3780,6 +3874,7 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
   /// - "MEDIUM_UNSPECIFIED" : When not specified, falls back to the default
   /// implementation which is currently in memory (this may change over time).
   /// - "MEMORY" : Explicitly set the EmptyDir to be in memory. Uses tmpfs.
+  /// - "DISK" : Explicitly sets the EmptyDir to be a disk.
   core.String? medium;
 
   /// Limit on the storage usable by this EmptyDir volume.
@@ -4719,6 +4814,34 @@ class GoogleCloudRunV2ImageExportStatus {
   }
 }
 
+/// Inlined source.
+class GoogleCloudRunV2InlinedSource {
+  /// Input only.
+  ///
+  /// The source code.
+  ///
+  /// Required.
+  core.List<GoogleCloudRunV2SourceFile>? sources;
+
+  GoogleCloudRunV2InlinedSource({this.sources});
+
+  GoogleCloudRunV2InlinedSource.fromJson(core.Map json_)
+    : this(
+        sources: (json_['sources'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2SourceFile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sources = this.sources;
+    return {'sources': ?sources};
+  }
+}
+
 /// A Cloud Run Instance represents a single group of containers running in a
 /// region.
 class GoogleCloudRunV2Instance {
@@ -4959,6 +5082,11 @@ class GoogleCloudRunV2Instance {
   /// Output only.
   GoogleCloudRunV2Condition? terminalCondition;
 
+  /// Duration the instance may be active before the system will shut it down.
+  ///
+  /// Optional.
+  core.String? timeout;
+
   /// Server assigned unique identifier for the trigger.
   ///
   /// The value is a UUID4 string and guaranteed to remain unchanged until the
@@ -5021,6 +5149,7 @@ class GoogleCloudRunV2Instance {
     this.satisfiesPzs,
     this.serviceAccount,
     this.terminalCondition,
+    this.timeout,
     this.uid,
     this.updateTime,
     this.urls,
@@ -5102,6 +5231,7 @@ class GoogleCloudRunV2Instance {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        timeout: json_['timeout'] as core.String?,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         urls: (json_['urls'] as core.List?)
@@ -5154,6 +5284,7 @@ class GoogleCloudRunV2Instance {
     final satisfiesPzs = this.satisfiesPzs;
     final serviceAccount = this.serviceAccount;
     final terminalCondition = this.terminalCondition;
+    final timeout = this.timeout;
     final uid = this.uid;
     final updateTime = this.updateTime;
     final urls = this.urls;
@@ -5192,6 +5323,7 @@ class GoogleCloudRunV2Instance {
       'satisfiesPzs': ?satisfiesPzs,
       'serviceAccount': ?serviceAccount,
       'terminalCondition': ?terminalCondition,
+      'timeout': ?timeout,
       'uid': ?uid,
       'updateTime': ?updateTime,
       'urls': ?urls,
@@ -6258,8 +6390,7 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.List<GoogleCloudRunV2Condition>? conditions;
 
-  /// Holds the single container that defines the unit of execution for this
-  /// Revision.
+  /// Holds the list which define the units of execution for this Revision.
   core.List<GoogleCloudRunV2Container>? containers;
 
   /// The creation time.
@@ -6682,6 +6813,24 @@ class GoogleCloudRunV2Revision {
 
 /// Settings for revision-level scaling settings.
 class GoogleCloudRunV2RevisionScaling {
+  /// Determines a threshold for concurrency utilization before scaling begins.
+  ///
+  /// Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to
+  /// disable concurrency utilization as threshold for scaling. CPU and
+  /// concurrency scaling cannot both be disabled.
+  ///
+  /// Optional.
+  core.double? concurrencyUtilization;
+
+  /// Determines a threshold for CPU utilization before scaling begins.
+  ///
+  /// Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to
+  /// disable CPU utilization as threshold for scaling. CPU and concurrency
+  /// scaling cannot both be disabled.
+  ///
+  /// Optional.
+  core.double? cpuUtilization;
+
   /// Maximum number of serving instances that this resource should have.
   ///
   /// When unspecified, the field is set to the server default value of 100. For
@@ -6697,20 +6846,29 @@ class GoogleCloudRunV2RevisionScaling {
   core.int? minInstanceCount;
 
   GoogleCloudRunV2RevisionScaling({
+    this.concurrencyUtilization,
+    this.cpuUtilization,
     this.maxInstanceCount,
     this.minInstanceCount,
   });
 
   GoogleCloudRunV2RevisionScaling.fromJson(core.Map json_)
     : this(
+        concurrencyUtilization: (json_['concurrencyUtilization'] as core.num?)
+            ?.toDouble(),
+        cpuUtilization: (json_['cpuUtilization'] as core.num?)?.toDouble(),
         maxInstanceCount: json_['maxInstanceCount'] as core.int?,
         minInstanceCount: json_['minInstanceCount'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final concurrencyUtilization = this.concurrencyUtilization;
+    final cpuUtilization = this.cpuUtilization;
     final maxInstanceCount = this.maxInstanceCount;
     final minInstanceCount = this.minInstanceCount;
     return {
+      'concurrencyUtilization': ?concurrencyUtilization,
+      'cpuUtilization': ?cpuUtilization,
       'maxInstanceCount': ?maxInstanceCount,
       'minInstanceCount': ?minInstanceCount,
     };
@@ -6762,8 +6920,7 @@ class GoogleCloudRunV2RevisionTemplate {
   /// Optional.
   core.String? clientVersion;
 
-  /// Holds the single container that defines the unit of execution for this
-  /// Revision.
+  /// Holds the list which define the units of execution for this Revision.
   core.List<GoogleCloudRunV2Container>? containers;
 
   /// A reference to a customer managed encryption key (CMEK) to use to encrypt
@@ -7804,7 +7961,16 @@ class GoogleCloudRunV2SourceCode {
   /// The source is a Cloud Storage bucket.
   GoogleCloudRunV2CloudStorageSource? cloudStorageSource;
 
-  GoogleCloudRunV2SourceCode({this.cloudStorageSource});
+  /// Input only.
+  ///
+  /// Source code inlined in the request. Cloud Run will store the
+  /// inlined_source to Cloud Storage and replace the field with
+  /// cloud_storage_source.
+  ///
+  /// Optional.
+  GoogleCloudRunV2InlinedSource? inlinedSource;
+
+  GoogleCloudRunV2SourceCode({this.cloudStorageSource, this.inlinedSource});
 
   GoogleCloudRunV2SourceCode.fromJson(core.Map json_)
     : this(
@@ -7814,11 +7980,59 @@ class GoogleCloudRunV2SourceCode {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        inlinedSource: json_.containsKey('inlinedSource')
+            ? GoogleCloudRunV2InlinedSource.fromJson(
+                json_['inlinedSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final cloudStorageSource = this.cloudStorageSource;
-    return {'cloudStorageSource': ?cloudStorageSource};
+    final inlinedSource = this.inlinedSource;
+    return {
+      'cloudStorageSource': ?cloudStorageSource,
+      'inlinedSource': ?inlinedSource,
+    };
+  }
+}
+
+/// Source file.
+class GoogleCloudRunV2SourceFile {
+  /// Input only.
+  ///
+  /// Represents the exact, literal, and complete source code of the file.
+  /// Placeholders like `...` or comments such as `# [rest of code]` should
+  /// NEVER be used as omission. Every character in this field will be built
+  /// into the final container. Any omission will result in a broken
+  /// application.
+  ///
+  /// Required.
+  core.String? content;
+
+  /// Input only.
+  ///
+  /// The file name for the source code. e.g., `"index.js"` or
+  /// `"node_modules/dependency.js"`. The filename must be less than 255
+  /// characters and cannot contain `..`, `./`, `//`, or end with a `/`. Cloud
+  /// Run will place the files in the container subdirectories, please use
+  /// relative path to access the file.
+  ///
+  /// Required.
+  core.String? filename;
+
+  GoogleCloudRunV2SourceFile({this.content, this.filename});
+
+  GoogleCloudRunV2SourceFile.fromJson(core.Map json_)
+    : this(
+        content: json_['content'] as core.String?,
+        filename: json_['filename'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final filename = this.filename;
+    return {'content': ?content, 'filename': ?filename};
   }
 }
 
@@ -8957,7 +9171,8 @@ class GoogleCloudRunV2VolumeMount {
   /// Path within the volume from which the container's volume should be
   /// mounted.
   ///
-  /// Defaults to "" (volume's root).
+  /// Defaults to "" (volume's root). This field is currently rejected in Secret
+  /// volume mounts.
   ///
   /// Optional.
   core.String? subPath;
@@ -9094,7 +9309,10 @@ class GoogleCloudRunV2WorkerPool {
   /// Output only.
   core.String? creator;
 
-  /// Not supported, and ignored by Cloud Run.
+  /// Deprecated: Not supported, and ignored by Cloud Run.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? customAudiences;
 
   /// The deletion time.

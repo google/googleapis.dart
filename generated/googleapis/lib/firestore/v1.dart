@@ -2683,6 +2683,17 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method lists locations based on the resource scope provided in the
+  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -4294,7 +4305,11 @@ class GoogleFirestoreAdminV1Backup {
 
   /// The unique resource name of the Backup.
   ///
-  /// Format is `projects/{project}/locations/{location}/backups/{backup}`.
+  /// Format is `projects/{project}/locations/{location}/backups/{backup}`. The
+  /// location in the name will be the Standard Managed Multi-Region (SMMR)
+  /// location (e.g. `us`) if the backup was created with an SMMR location, or
+  /// the Google Managed Multi-Region (GMMR) location (e.g. `nam5`) if the
+  /// backup was created with a GMMR location.
   ///
   /// Output only.
   core.String? name;
@@ -4809,6 +4824,8 @@ class GoogleFirestoreAdminV1Database {
   ///
   /// Available locations are listed at
   /// https://cloud.google.com/firestore/docs/locations.
+  ///
+  /// Required.
   core.String? locationId;
 
   /// The MongoDB compatible API data access mode to use for this database.
@@ -4880,6 +4897,8 @@ class GoogleFirestoreAdminV1Database {
   ///
   /// See https://cloud.google.com/datastore/docs/firestore-or-datastore for
   /// information about how to choose.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "DATABASE_TYPE_UNSPECIFIED" : Not used.
   /// - "FIRESTORE_NATIVE" : Firestore Native Mode
@@ -5395,6 +5414,14 @@ class GoogleFirestoreAdminV1Index {
   /// index. Only available for Datastore Mode databases.
   core.String? queryScope;
 
+  /// Options for search indexes that are at the index definition level.
+  ///
+  /// This field is only currently supported for indexes with
+  /// MONGODB_COMPATIBLE_API ApiScope.
+  ///
+  /// Optional.
+  GoogleFirestoreAdminV1SearchIndexOptions? searchIndexOptions;
+
   /// The number of shards for the index.
   ///
   /// Optional.
@@ -5434,6 +5461,7 @@ class GoogleFirestoreAdminV1Index {
     this.multikey,
     this.name,
     this.queryScope,
+    this.searchIndexOptions,
     this.shardCount,
     this.state,
     this.unique,
@@ -5453,6 +5481,12 @@ class GoogleFirestoreAdminV1Index {
         multikey: json_['multikey'] as core.bool?,
         name: json_['name'] as core.String?,
         queryScope: json_['queryScope'] as core.String?,
+        searchIndexOptions: json_.containsKey('searchIndexOptions')
+            ? GoogleFirestoreAdminV1SearchIndexOptions.fromJson(
+                json_['searchIndexOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         shardCount: json_['shardCount'] as core.int?,
         state: json_['state'] as core.String?,
         unique: json_['unique'] as core.bool?,
@@ -5465,6 +5499,7 @@ class GoogleFirestoreAdminV1Index {
     final multikey = this.multikey;
     final name = this.name;
     final queryScope = this.queryScope;
+    final searchIndexOptions = this.searchIndexOptions;
     final shardCount = this.shardCount;
     final state = this.state;
     final unique = this.unique;
@@ -5475,6 +5510,7 @@ class GoogleFirestoreAdminV1Index {
       'multikey': ?multikey,
       'name': ?name,
       'queryScope': ?queryScope,
+      'searchIndexOptions': ?searchIndexOptions,
       'shardCount': ?shardCount,
       'state': ?state,
       'unique': ?unique,
@@ -5572,6 +5608,12 @@ class GoogleFirestoreAdminV1IndexField {
   /// - "DESCENDING" : The field is ordered by descending field value.
   core.String? order;
 
+  /// Indicates that this field supports search operations.
+  ///
+  /// This field is only currently supported for indexes with
+  /// MONGODB_COMPATIBLE_API ApiScope.
+  GoogleFirestoreAdminV1SearchConfig? searchConfig;
+
   /// Indicates that this field supports nearest neighbor and distance
   /// operations on vector.
   GoogleFirestoreAdminV1VectorConfig? vectorConfig;
@@ -5580,6 +5622,7 @@ class GoogleFirestoreAdminV1IndexField {
     this.arrayConfig,
     this.fieldPath,
     this.order,
+    this.searchConfig,
     this.vectorConfig,
   });
 
@@ -5588,6 +5631,11 @@ class GoogleFirestoreAdminV1IndexField {
         arrayConfig: json_['arrayConfig'] as core.String?,
         fieldPath: json_['fieldPath'] as core.String?,
         order: json_['order'] as core.String?,
+        searchConfig: json_.containsKey('searchConfig')
+            ? GoogleFirestoreAdminV1SearchConfig.fromJson(
+                json_['searchConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         vectorConfig: json_.containsKey('vectorConfig')
             ? GoogleFirestoreAdminV1VectorConfig.fromJson(
                 json_['vectorConfig'] as core.Map<core.String, core.dynamic>,
@@ -5599,11 +5647,13 @@ class GoogleFirestoreAdminV1IndexField {
     final arrayConfig = this.arrayConfig;
     final fieldPath = this.fieldPath;
     final order = this.order;
+    final searchConfig = this.searchConfig;
     final vectorConfig = this.vectorConfig;
     return {
       'arrayConfig': ?arrayConfig,
       'fieldPath': ?fieldPath,
       'order': ?order,
+      'searchConfig': ?searchConfig,
       'vectorConfig': ?vectorConfig,
     };
   }
@@ -5953,6 +6003,174 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
   }
 }
 
+/// The configuration for how to index a field for search.
+class GoogleFirestoreAdminV1SearchConfig {
+  /// The specification for building a geo search index for a field.
+  ///
+  /// Optional.
+  GoogleFirestoreAdminV1SearchGeoSpec? geoSpec;
+
+  /// The specification for building a text search index for a field.
+  ///
+  /// Optional.
+  GoogleFirestoreAdminV1SearchTextSpec? textSpec;
+
+  GoogleFirestoreAdminV1SearchConfig({this.geoSpec, this.textSpec});
+
+  GoogleFirestoreAdminV1SearchConfig.fromJson(core.Map json_)
+    : this(
+        geoSpec: json_.containsKey('geoSpec')
+            ? GoogleFirestoreAdminV1SearchGeoSpec.fromJson(
+                json_['geoSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textSpec: json_.containsKey('textSpec')
+            ? GoogleFirestoreAdminV1SearchTextSpec.fromJson(
+                json_['textSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final geoSpec = this.geoSpec;
+    final textSpec = this.textSpec;
+    return {'geoSpec': ?geoSpec, 'textSpec': ?textSpec};
+  }
+}
+
+/// The specification for how to build a geo search index for a field.
+class GoogleFirestoreAdminV1SearchGeoSpec {
+  /// Disables geoJSON indexing for the field.
+  ///
+  /// By default, geoJSON points are indexed.
+  ///
+  /// Optional.
+  core.bool? geoJsonIndexingDisabled;
+
+  GoogleFirestoreAdminV1SearchGeoSpec({this.geoJsonIndexingDisabled});
+
+  GoogleFirestoreAdminV1SearchGeoSpec.fromJson(core.Map json_)
+    : this(
+        geoJsonIndexingDisabled: json_['geoJsonIndexingDisabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final geoJsonIndexingDisabled = this.geoJsonIndexingDisabled;
+    return {'geoJsonIndexingDisabled': ?geoJsonIndexingDisabled};
+  }
+}
+
+/// Options for search indexes at the definition level.
+class GoogleFirestoreAdminV1SearchIndexOptions {
+  /// The language to use for text search indexes.
+  ///
+  /// Used as the default language if not overridden at the document level by
+  /// specifying the `text_language_override_field`. The language is specified
+  /// as a BCP 47 language code. For indexes with MONGODB_COMPATIBLE_API
+  /// ApiScope: If unspecified, the default language is English. For indexes
+  /// with `ANY_API` ApiScope: If unspecified, the default behavior is
+  /// autodetect.
+  ///
+  /// Optional.
+  core.String? textLanguage;
+
+  /// The field in the document that specifies which language to use for that
+  /// specific document.
+  ///
+  /// For indexes with MONGODB_COMPATIBLE_API ApiScope: if unspecified, the
+  /// language is taken from the "language" field if it exists or from
+  /// `text_language` if it does not.
+  ///
+  /// Optional.
+  core.String? textLanguageOverrideFieldPath;
+
+  GoogleFirestoreAdminV1SearchIndexOptions({
+    this.textLanguage,
+    this.textLanguageOverrideFieldPath,
+  });
+
+  GoogleFirestoreAdminV1SearchIndexOptions.fromJson(core.Map json_)
+    : this(
+        textLanguage: json_['textLanguage'] as core.String?,
+        textLanguageOverrideFieldPath:
+            json_['textLanguageOverrideFieldPath'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final textLanguage = this.textLanguage;
+    final textLanguageOverrideFieldPath = this.textLanguageOverrideFieldPath;
+    return {
+      'textLanguage': ?textLanguage,
+      'textLanguageOverrideFieldPath': ?textLanguageOverrideFieldPath,
+    };
+  }
+}
+
+/// Specification of how the field should be indexed for search text indexes.
+class GoogleFirestoreAdminV1SearchTextIndexSpec {
+  /// How to index the text field value.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TEXT_INDEX_TYPE_UNSPECIFIED" : The index type is unspecified. Not a
+  /// valid option.
+  /// - "TOKENIZED" : Field values are tokenized. This is the only way currently
+  /// supported for MONGODB_COMPATIBLE_API.
+  core.String? indexType;
+
+  /// How to match the text field value.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TEXT_MATCH_TYPE_UNSPECIFIED" : The match type is unspecified. Not a
+  /// valid option.
+  /// - "MATCH_GLOBALLY" : Match on any indexed field. This is the only way
+  /// currently supported for MONGODB_COMPATIBLE_API.
+  core.String? matchType;
+
+  GoogleFirestoreAdminV1SearchTextIndexSpec({this.indexType, this.matchType});
+
+  GoogleFirestoreAdminV1SearchTextIndexSpec.fromJson(core.Map json_)
+    : this(
+        indexType: json_['indexType'] as core.String?,
+        matchType: json_['matchType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final indexType = this.indexType;
+    final matchType = this.matchType;
+    return {'indexType': ?indexType, 'matchType': ?matchType};
+  }
+}
+
+/// The specification for how to build a text search index for a field.
+class GoogleFirestoreAdminV1SearchTextSpec {
+  /// Specifications for how the field should be indexed.
+  ///
+  /// Repeated so that the field can be indexed in multiple ways.
+  ///
+  /// Required.
+  core.List<GoogleFirestoreAdminV1SearchTextIndexSpec>? indexSpecs;
+
+  GoogleFirestoreAdminV1SearchTextSpec({this.indexSpecs});
+
+  GoogleFirestoreAdminV1SearchTextSpec.fromJson(core.Map json_)
+    : this(
+        indexSpecs: (json_['indexSpecs'] as core.List?)
+            ?.map(
+              (value) => GoogleFirestoreAdminV1SearchTextIndexSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final indexSpecs = this.indexSpecs;
+    return {'indexSpecs': ?indexSpecs};
+  }
+}
+
 /// The configuration options for using the same encryption method as the
 /// source.
 typedef GoogleFirestoreAdminV1SourceEncryptionOptions = $Empty;
@@ -6034,12 +6252,26 @@ class GoogleFirestoreAdminV1Stats {
 /// The TTL (time-to-live) configuration for documents that have this `Field`
 /// set.
 ///
-/// Storing a timestamp value into a TTL-enabled field will be treated as the
-/// document's absolute expiration time. Timestamp values in the past indicate
-/// that the document is eligible for immediate expiration. Using any other data
-/// type or leaving the field absent will disable expiration for the individual
+/// A timestamp stored in a TTL-enabled field will be used to determine the
+/// expiration time of the document. The expiration time is the sum of the
+/// timestamp value and the `expiration_offset`. For Enterprise edition
+/// databases, the timestamp value may alternatively be stored in an array value
+/// in the TTL-enabled field. An expiration time in the past indicates that the
+/// document is eligible for immediate expiration. Using any other data type or
+/// leaving the field absent will disable expiration for the individual
 /// document.
 class GoogleFirestoreAdminV1TtlConfig {
+  /// The offset, relative to the timestamp value from the TTL-enabled field,
+  /// used to determine the document's expiration time.
+  ///
+  /// `expiration_offset.seconds` must be between 0 and 2,147,483,647 inclusive.
+  /// Values more precise than seconds are rejected. If unset, defaults to 0, in
+  /// which case the expiration time is the same as the timestamp value from the
+  /// TTL-enabled field.
+  ///
+  /// Optional.
+  core.String? expirationOffset;
+
   /// The state of the TTL configuration.
   ///
   /// Output only.
@@ -6057,14 +6289,18 @@ class GoogleFirestoreAdminV1TtlConfig {
   /// `Field` has failed, and may have more details.
   core.String? state;
 
-  GoogleFirestoreAdminV1TtlConfig({this.state});
+  GoogleFirestoreAdminV1TtlConfig({this.expirationOffset, this.state});
 
   GoogleFirestoreAdminV1TtlConfig.fromJson(core.Map json_)
-    : this(state: json_['state'] as core.String?);
+    : this(
+        expirationOffset: json_['expirationOffset'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final expirationOffset = this.expirationOffset;
     final state = this.state;
-    return {'state': ?state};
+    return {'expirationOffset': ?expirationOffset, 'state': ?state};
   }
 }
 
@@ -7348,19 +7584,26 @@ class StructuredQuery {
 
   /// The order to apply to the query results.
   ///
-  /// Firestore allows callers to provide a full ordering, a partial ordering,
-  /// or no ordering at all. In all cases, Firestore guarantees a stable
-  /// ordering through the following rules: * The `order_by` is required to
-  /// reference all fields used with an inequality filter. * All fields that are
-  /// required to be in the `order_by` but are not already present are appended
-  /// in lexicographical ordering of the field name. * If an order on `__name__`
-  /// is not specified, it is appended by default. Fields are appended with the
-  /// same sort direction as the last order specified, or 'ASCENDING' if no
-  /// order was specified. For example: * `ORDER BY a` becomes `ORDER BY a ASC,
-  /// __name__ ASC` * `ORDER BY a DESC` becomes `ORDER BY a DESC, __name__ DESC`
-  /// * `WHERE a > 1` becomes `WHERE a > 1 ORDER BY a ASC, __name__ ASC` *
-  /// `WHERE __name__ > ... AND a > 1` becomes `WHERE __name__ > ... AND a > 1
-  /// ORDER BY a ASC, __name__ ASC`
+  /// Callers can provide a full ordering, a partial ordering, or no ordering at
+  /// all. While Firestore will always respect the provided order, the behavior
+  /// for queries without a full ordering is different per database edition: In
+  /// Standard edition, Firestore guarantees a stable ordering through the
+  /// following rules: * The `order_by` is required to reference all fields used
+  /// with an inequality filter. * All fields that are required to be in the
+  /// `order_by` but are not already present are appended in lexicographical
+  /// ordering of the field name. * If an order on `__name__` is not specified,
+  /// it is appended by default. Fields are appended with the same sort
+  /// direction as the last order specified, or 'ASCENDING' if no order was
+  /// specified. For example: * `ORDER BY a` becomes `ORDER BY a ASC, __name__
+  /// ASC` * `ORDER BY a DESC` becomes `ORDER BY a DESC, __name__ DESC` * `WHERE
+  /// a > 1` becomes `WHERE a > 1 ORDER BY a ASC, __name__ ASC` * `WHERE
+  /// __name__ > ... AND a > 1` becomes `WHERE __name__ > ... AND a > 1 ORDER BY
+  /// a ASC, __name__ ASC` In Enterprise edition, Firestore does not guarantee a
+  /// stable ordering. Instead it will pick the most efficient ordering based on
+  /// the indexes available at the time of query execution. This will result in
+  /// a different ordering for queries that are otherwise identical. To ensure a
+  /// stable ordering, always include a unique field in the `order_by` clause,
+  /// such as `__name__`.
   core.List<Order>? orderBy;
 
   /// Optional sub-set of the fields to return.
@@ -7655,6 +7898,13 @@ class Value {
   /// rounded down.
   core.String? timestampValue;
 
+  /// Pointer to a variable defined elsewhere in a pipeline.
+  ///
+  /// Unlike `field_reference_value` which references a field within a document,
+  /// this refers to a variable, defined in a separate namespace than the fields
+  /// of a document.
+  core.String? variableReferenceValue;
+
   Value({
     this.arrayValue,
     this.booleanValue,
@@ -7670,6 +7920,7 @@ class Value {
     this.referenceValue,
     this.stringValue,
     this.timestampValue,
+    this.variableReferenceValue,
   });
 
   Value.fromJson(core.Map json_)
@@ -7708,6 +7959,7 @@ class Value {
         referenceValue: json_['referenceValue'] as core.String?,
         stringValue: json_['stringValue'] as core.String?,
         timestampValue: json_['timestampValue'] as core.String?,
+        variableReferenceValue: json_['variableReferenceValue'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -7725,6 +7977,7 @@ class Value {
     final referenceValue = this.referenceValue;
     final stringValue = this.stringValue;
     final timestampValue = this.timestampValue;
+    final variableReferenceValue = this.variableReferenceValue;
     return {
       'arrayValue': ?arrayValue,
       'booleanValue': ?booleanValue,
@@ -7740,6 +7993,7 @@ class Value {
       'referenceValue': ?referenceValue,
       'stringValue': ?stringValue,
       'timestampValue': ?timestampValue,
+      'variableReferenceValue': ?variableReferenceValue,
     };
   }
 }

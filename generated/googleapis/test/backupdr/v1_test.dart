@@ -500,6 +500,8 @@ api.Backup buildBackup() {
     o.enforcedRetentionEndTime = 'foo';
     o.etag = 'foo';
     o.expireTime = 'foo';
+    o.filestoreInstanceBackupProperties =
+        buildFilestoreInstanceBackupProperties();
     o.gcpBackupPlanInfo = buildGCPBackupPlanInfo();
     o.gcpResource = buildBackupGcpResource();
     o.kmsKeyVersions = buildUnnamed7();
@@ -533,6 +535,9 @@ void checkBackup(api.Backup o) {
     unittest.expect(o.enforcedRetentionEndTime!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.expireTime!, unittest.equals('foo'));
+    checkFilestoreInstanceBackupProperties(
+      o.filestoreInstanceBackupProperties!,
+    );
     checkGCPBackupPlanInfo(o.gcpBackupPlanInfo!);
     checkBackupGcpResource(o.gcpResource!);
     checkUnnamed7(o.kmsKeyVersions!);
@@ -889,8 +894,11 @@ api.BackupPlan buildBackupPlan() {
     o.backupRules = buildUnnamed12();
     o.backupVault = 'foo';
     o.backupVaultServiceAccount = 'foo';
+    o.computeInstanceBackupPlanProperties =
+        buildComputeInstanceBackupPlanProperties();
     o.createTime = 'foo';
     o.description = 'foo';
+    o.diskBackupPlanProperties = buildDiskBackupPlanProperties();
     o.etag = 'foo';
     o.labels = buildUnnamed13();
     o.logRetentionDays = 'foo';
@@ -913,8 +921,12 @@ void checkBackupPlan(api.BackupPlan o) {
     checkUnnamed12(o.backupRules!);
     unittest.expect(o.backupVault!, unittest.equals('foo'));
     unittest.expect(o.backupVaultServiceAccount!, unittest.equals('foo'));
+    checkComputeInstanceBackupPlanProperties(
+      o.computeInstanceBackupPlanProperties!,
+    );
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
+    checkDiskBackupPlanProperties(o.diskBackupPlanProperties!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     checkUnnamed13(o.labels!);
     unittest.expect(o.logRetentionDays!, unittest.equals('foo'));
@@ -1315,6 +1327,28 @@ void checkCloudSqlInstanceInitializationConfig(
   buildCounterCloudSqlInstanceInitializationConfig--;
 }
 
+core.int buildCounterComputeInstanceBackupPlanProperties = 0;
+api.ComputeInstanceBackupPlanProperties
+buildComputeInstanceBackupPlanProperties() {
+  final o = api.ComputeInstanceBackupPlanProperties();
+  buildCounterComputeInstanceBackupPlanProperties++;
+  if (buildCounterComputeInstanceBackupPlanProperties < 3) {
+    o.guestFlush = true;
+  }
+  buildCounterComputeInstanceBackupPlanProperties--;
+  return o;
+}
+
+void checkComputeInstanceBackupPlanProperties(
+  api.ComputeInstanceBackupPlanProperties o,
+) {
+  buildCounterComputeInstanceBackupPlanProperties++;
+  if (buildCounterComputeInstanceBackupPlanProperties < 3) {
+    unittest.expect(o.guestFlush!, unittest.isTrue);
+  }
+  buildCounterComputeInstanceBackupPlanProperties--;
+}
+
 core.List<api.AttachedDisk> buildUnnamed19() => [
   buildAttachedDisk(),
   buildAttachedDisk(),
@@ -1376,6 +1410,7 @@ api.ComputeInstanceBackupProperties buildComputeInstanceBackupProperties() {
     o.description = 'foo';
     o.disk = buildUnnamed19();
     o.guestAccelerator = buildUnnamed20();
+    o.guestFlush = true;
     o.keyRevocationActionType = 'foo';
     o.labels = buildUnnamed21();
     o.machineType = 'foo';
@@ -1400,6 +1435,7 @@ void checkComputeInstanceBackupProperties(
     unittest.expect(o.description!, unittest.equals('foo'));
     checkUnnamed19(o.disk!);
     checkUnnamed20(o.guestAccelerator!);
+    unittest.expect(o.guestFlush!, unittest.isTrue);
     unittest.expect(o.keyRevocationActionType!, unittest.equals('foo'));
     checkUnnamed21(o.labels!);
     unittest.expect(o.machineType!, unittest.equals('foo'));
@@ -1764,6 +1800,8 @@ api.DataSourceGcpResource buildDataSourceGcpResource() {
     o.computeInstanceDatasourceProperties =
         buildComputeInstanceDataSourceProperties();
     o.diskDatasourceProperties = buildDiskDataSourceProperties();
+    o.filestoreInstanceDatasourceProperties =
+        buildFilestoreInstanceDataSourceProperties();
     o.gcpResourcename = 'foo';
     o.location = 'foo';
     o.type = 'foo';
@@ -1785,6 +1823,9 @@ void checkDataSourceGcpResource(api.DataSourceGcpResource o) {
       o.computeInstanceDatasourceProperties!,
     );
     checkDiskDataSourceProperties(o.diskDatasourceProperties!);
+    checkFilestoreInstanceDataSourceProperties(
+      o.filestoreInstanceDatasourceProperties!,
+    );
     unittest.expect(o.gcpResourcename!, unittest.equals('foo'));
     unittest.expect(o.location!, unittest.equals('foo'));
     unittest.expect(o.type!, unittest.equals('foo'));
@@ -1801,6 +1842,8 @@ api.DataSourceGcpResourceInfo buildDataSourceGcpResourceInfo() {
         buildAlloyDBClusterDataSourceReferenceProperties();
     o.cloudSqlInstanceProperties =
         buildCloudSqlInstanceDataSourceReferenceProperties();
+    o.filestoreInstanceProperties =
+        buildFilestoreInstanceDataSourceReferenceProperties();
     o.gcpResourcename = 'foo';
     o.location = 'foo';
     o.type = 'foo';
@@ -1817,6 +1860,9 @@ void checkDataSourceGcpResourceInfo(api.DataSourceGcpResourceInfo o) {
     );
     checkCloudSqlInstanceDataSourceReferenceProperties(
       o.cloudSqlInstanceProperties!,
+    );
+    checkFilestoreInstanceDataSourceReferenceProperties(
+      o.filestoreInstanceProperties!,
     );
     unittest.expect(o.gcpResourcename!, unittest.equals('foo'));
     unittest.expect(o.location!, unittest.equals('foo'));
@@ -1856,6 +1902,25 @@ void checkDataSourceReference(api.DataSourceReference o) {
     unittest.expect(o.totalStoredBytes!, unittest.equals('foo'));
   }
   buildCounterDataSourceReference--;
+}
+
+core.int buildCounterDiskBackupPlanProperties = 0;
+api.DiskBackupPlanProperties buildDiskBackupPlanProperties() {
+  final o = api.DiskBackupPlanProperties();
+  buildCounterDiskBackupPlanProperties++;
+  if (buildCounterDiskBackupPlanProperties < 3) {
+    o.guestFlush = true;
+  }
+  buildCounterDiskBackupPlanProperties--;
+  return o;
+}
+
+void checkDiskBackupPlanProperties(api.DiskBackupPlanProperties o) {
+  buildCounterDiskBackupPlanProperties++;
+  if (buildCounterDiskBackupPlanProperties < 3) {
+    unittest.expect(o.guestFlush!, unittest.isTrue);
+  }
+  buildCounterDiskBackupPlanProperties--;
 }
 
 core.List<api.GuestOsFeature> buildUnnamed31() => [
@@ -1902,6 +1967,7 @@ api.DiskBackupProperties buildDiskBackupProperties() {
     o.architecture = 'foo';
     o.description = 'foo';
     o.enableConfidentialCompute = true;
+    o.guestFlush = true;
     o.guestOsFeature = buildUnnamed31();
     o.labels = buildUnnamed32();
     o.licenses = buildUnnamed33();
@@ -1927,6 +1993,7 @@ void checkDiskBackupProperties(api.DiskBackupProperties o) {
     unittest.expect(o.architecture!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.enableConfidentialCompute!, unittest.isTrue);
+    unittest.expect(o.guestFlush!, unittest.isTrue);
     checkUnnamed31(o.guestOsFeature!);
     checkUnnamed32(o.labels!);
     checkUnnamed33(o.licenses!);
@@ -2456,6 +2523,75 @@ void checkFilestoreInstanceBackupPlanAssociationProperties(
   buildCounterFilestoreInstanceBackupPlanAssociationProperties--;
 }
 
+core.int buildCounterFilestoreInstanceBackupProperties = 0;
+api.FilestoreInstanceBackupProperties buildFilestoreInstanceBackupProperties() {
+  final o = api.FilestoreInstanceBackupProperties();
+  buildCounterFilestoreInstanceBackupProperties++;
+  if (buildCounterFilestoreInstanceBackupProperties < 3) {
+    o.sourceInstance = 'foo';
+  }
+  buildCounterFilestoreInstanceBackupProperties--;
+  return o;
+}
+
+void checkFilestoreInstanceBackupProperties(
+  api.FilestoreInstanceBackupProperties o,
+) {
+  buildCounterFilestoreInstanceBackupProperties++;
+  if (buildCounterFilestoreInstanceBackupProperties < 3) {
+    unittest.expect(o.sourceInstance!, unittest.equals('foo'));
+  }
+  buildCounterFilestoreInstanceBackupProperties--;
+}
+
+core.int buildCounterFilestoreInstanceDataSourceProperties = 0;
+api.FilestoreInstanceDataSourceProperties
+buildFilestoreInstanceDataSourceProperties() {
+  final o = api.FilestoreInstanceDataSourceProperties();
+  buildCounterFilestoreInstanceDataSourceProperties++;
+  if (buildCounterFilestoreInstanceDataSourceProperties < 3) {
+    o.instanceCreateTime = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterFilestoreInstanceDataSourceProperties--;
+  return o;
+}
+
+void checkFilestoreInstanceDataSourceProperties(
+  api.FilestoreInstanceDataSourceProperties o,
+) {
+  buildCounterFilestoreInstanceDataSourceProperties++;
+  if (buildCounterFilestoreInstanceDataSourceProperties < 3) {
+    unittest.expect(o.instanceCreateTime!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+  }
+  buildCounterFilestoreInstanceDataSourceProperties--;
+}
+
+core.int buildCounterFilestoreInstanceDataSourceReferenceProperties = 0;
+api.FilestoreInstanceDataSourceReferenceProperties
+buildFilestoreInstanceDataSourceReferenceProperties() {
+  final o = api.FilestoreInstanceDataSourceReferenceProperties();
+  buildCounterFilestoreInstanceDataSourceReferenceProperties++;
+  if (buildCounterFilestoreInstanceDataSourceReferenceProperties < 3) {
+    o.instanceCreateTime = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterFilestoreInstanceDataSourceReferenceProperties--;
+  return o;
+}
+
+void checkFilestoreInstanceDataSourceReferenceProperties(
+  api.FilestoreInstanceDataSourceReferenceProperties o,
+) {
+  buildCounterFilestoreInstanceDataSourceReferenceProperties++;
+  if (buildCounterFilestoreInstanceDataSourceReferenceProperties < 3) {
+    unittest.expect(o.instanceCreateTime!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+  }
+  buildCounterFilestoreInstanceDataSourceReferenceProperties--;
+}
+
 core.int buildCounterFinalizeBackupRequest = 0;
 api.FinalizeBackupRequest buildFinalizeBackupRequest() {
   final o = api.FinalizeBackupRequest();
@@ -2602,10 +2738,12 @@ api.InitializeServiceRequest buildInitializeServiceRequest() {
   final o = api.InitializeServiceRequest();
   buildCounterInitializeServiceRequest++;
   if (buildCounterInitializeServiceRequest < 3) {
+    o.backupPlanLocation = 'foo';
     o.cloudSqlInstanceInitializationConfig =
         buildCloudSqlInstanceInitializationConfig();
     o.requestId = 'foo';
     o.resourceType = 'foo';
+    o.validateOnly = true;
   }
   buildCounterInitializeServiceRequest--;
   return o;
@@ -2614,11 +2752,13 @@ api.InitializeServiceRequest buildInitializeServiceRequest() {
 void checkInitializeServiceRequest(api.InitializeServiceRequest o) {
   buildCounterInitializeServiceRequest++;
   if (buildCounterInitializeServiceRequest < 3) {
+    unittest.expect(o.backupPlanLocation!, unittest.equals('foo'));
     checkCloudSqlInstanceInitializationConfig(
       o.cloudSqlInstanceInitializationConfig!,
     );
     unittest.expect(o.requestId!, unittest.equals('foo'));
     unittest.expect(o.resourceType!, unittest.equals('foo'));
+    unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterInitializeServiceRequest--;
 }
@@ -4736,6 +4876,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ComputeInstanceBackupPlanProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildComputeInstanceBackupPlanProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ComputeInstanceBackupPlanProperties.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkComputeInstanceBackupPlanProperties(od);
+    });
+  });
+
   unittest.group('obj-schema-ComputeInstanceBackupProperties', () {
     unittest.test('to-json--from-json', () async {
       final o = buildComputeInstanceBackupProperties();
@@ -4865,6 +5016,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDataSourceReference(od);
+    });
+  });
+
+  unittest.group('obj-schema-DiskBackupPlanProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDiskBackupPlanProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DiskBackupPlanProperties.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDiskBackupPlanProperties(od);
     });
   });
 
@@ -5085,6 +5247,42 @@ void main() {
               oJson as core.Map<core.String, core.dynamic>,
             );
         checkFilestoreInstanceBackupPlanAssociationProperties(od);
+      });
+    },
+  );
+
+  unittest.group('obj-schema-FilestoreInstanceBackupProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFilestoreInstanceBackupProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FilestoreInstanceBackupProperties.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFilestoreInstanceBackupProperties(od);
+    });
+  });
+
+  unittest.group('obj-schema-FilestoreInstanceDataSourceProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFilestoreInstanceDataSourceProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FilestoreInstanceDataSourceProperties.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFilestoreInstanceDataSourceProperties(od);
+    });
+  });
+
+  unittest.group(
+    'obj-schema-FilestoreInstanceDataSourceReferenceProperties',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildFilestoreInstanceDataSourceReferenceProperties();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.FilestoreInstanceDataSourceReferenceProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkFilestoreInstanceDataSourceReferenceProperties(od);
       });
     },
   );

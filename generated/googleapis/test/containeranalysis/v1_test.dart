@@ -244,6 +244,7 @@ api.BaseImage buildBaseImage() {
   if (buildCounterBaseImage < 3) {
     o.layerCount = 42;
     o.name = 'foo';
+    o.registry = 'foo';
     o.repository = 'foo';
   }
   buildCounterBaseImage--;
@@ -255,6 +256,7 @@ void checkBaseImage(api.BaseImage o) {
   if (buildCounterBaseImage < 3) {
     unittest.expect(o.layerCount!, unittest.equals(42));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.registry!, unittest.equals('foo'));
     unittest.expect(o.repository!, unittest.equals('foo'));
   }
   buildCounterBaseImage--;
@@ -1662,6 +1664,7 @@ api.GrafeasV1FileLocation buildGrafeasV1FileLocation() {
   if (buildCounterGrafeasV1FileLocation < 3) {
     o.filePath = 'foo';
     o.layerDetails = buildLayerDetails();
+    o.lineNumber = 42;
   }
   buildCounterGrafeasV1FileLocation--;
   return o;
@@ -1672,6 +1675,7 @@ void checkGrafeasV1FileLocation(api.GrafeasV1FileLocation o) {
   if (buildCounterGrafeasV1FileLocation < 3) {
     unittest.expect(o.filePath!, unittest.equals('foo'));
     checkLayerDetails(o.layerDetails!);
+    unittest.expect(o.lineNumber!, unittest.equals(42));
   }
   buildCounterGrafeasV1FileLocation--;
 }
@@ -2498,7 +2502,6 @@ api.Note buildNote() {
   final o = api.Note();
   buildCounterNote++;
   if (buildCounterNote < 3) {
-    o.advisoryPublishTime = 'foo';
     o.attestation = buildAttestationNote();
     o.build = buildBuildNote();
     o.compliance = buildComplianceNote();
@@ -2529,7 +2532,6 @@ api.Note buildNote() {
 void checkNote(api.Note o) {
   buildCounterNote++;
   if (buildCounterNote < 3) {
-    unittest.expect(o.advisoryPublishTime!, unittest.equals('foo'));
     checkAttestationNote(o.attestation!);
     checkBuildNote(o.build!);
     checkComplianceNote(o.compliance!);
@@ -2561,6 +2563,7 @@ api.Occurrence buildOccurrence() {
   final o = api.Occurrence();
   buildCounterOccurrence++;
   if (buildCounterOccurrence < 3) {
+    o.advisoryPublishTime = 'foo';
     o.attestation = buildAttestationOccurrence();
     o.build = buildBuildOccurrence();
     o.compliance = buildComplianceOccurrence();
@@ -2589,6 +2592,7 @@ api.Occurrence buildOccurrence() {
 void checkOccurrence(api.Occurrence o) {
   buildCounterOccurrence++;
   if (buildCounterOccurrence < 3) {
+    unittest.expect(o.advisoryPublishTime!, unittest.equals('foo'));
     checkAttestationOccurrence(o.attestation!);
     checkBuildOccurrence(o.build!);
     checkComplianceOccurrence(o.compliance!);
@@ -4209,6 +4213,7 @@ api.VulnerabilityNote buildVulnerabilityNote() {
   final o = api.VulnerabilityNote();
   buildCounterVulnerabilityNote++;
   if (buildCounterVulnerabilityNote < 3) {
+    o.advisoryPublishTime = 'foo';
     o.cvssScore = 42.0;
     o.cvssV2 = buildCVSS();
     o.cvssV3 = buildCVSSv3();
@@ -4225,6 +4230,7 @@ api.VulnerabilityNote buildVulnerabilityNote() {
 void checkVulnerabilityNote(api.VulnerabilityNote o) {
   buildCounterVulnerabilityNote++;
   if (buildCounterVulnerabilityNote < 3) {
+    unittest.expect(o.advisoryPublishTime!, unittest.equals('foo'));
     unittest.expect(o.cvssScore!, unittest.equals(42.0));
     checkCVSS(o.cvssV2!);
     checkCVSSv3(o.cvssV3!);

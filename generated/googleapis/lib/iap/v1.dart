@@ -1890,6 +1890,26 @@ class OAuth2 {
 /// Configuration for OAuth login&consent flow behavior as well as for OAuth
 /// Credentials.
 class OAuthSettings {
+  /// OAuth 2.0 client ID used in the OAuth flow.
+  ///
+  /// This allows for client sharing. The risks of client sharing are outlined
+  /// here: https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.
+  ///
+  /// Optional.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// OAuth secret paired with client ID.
+  ///
+  /// Optional.
+  core.String? clientSecret;
+
+  /// OAuth secret SHA256 paired with client ID.
+  ///
+  /// Output only.
+  core.String? clientSecretSha256;
+
   /// Domain hint to send as hd=? parameter in OAuth request flow.
   ///
   /// Enables redirect to primary IDP by skipping Google's login screen.
@@ -1903,10 +1923,19 @@ class OAuthSettings {
   /// Optional.
   core.List<core.String>? programmaticClients;
 
-  OAuthSettings({this.loginHint, this.programmaticClients});
+  OAuthSettings({
+    this.clientId,
+    this.clientSecret,
+    this.clientSecretSha256,
+    this.loginHint,
+    this.programmaticClients,
+  });
 
   OAuthSettings.fromJson(core.Map json_)
     : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        clientSecretSha256: json_['clientSecretSha256'] as core.String?,
         loginHint: json_['loginHint'] as core.String?,
         programmaticClients: (json_['programmaticClients'] as core.List?)
             ?.map((value) => value as core.String)
@@ -1914,9 +1943,15 @@ class OAuthSettings {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final clientId = this.clientId;
+    final clientSecret = this.clientSecret;
+    final clientSecretSha256 = this.clientSecretSha256;
     final loginHint = this.loginHint;
     final programmaticClients = this.programmaticClients;
     return {
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+      'clientSecretSha256': ?clientSecretSha256,
       'loginHint': ?loginHint,
       'programmaticClients': ?programmaticClients,
     };

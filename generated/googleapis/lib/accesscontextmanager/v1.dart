@@ -43,6 +43,7 @@
 /// - [OperationsResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsGcpUserAccessBindingsResource]
+/// - [PermissionsResource]
 /// - [ServicesResource]
 library;
 
@@ -83,6 +84,7 @@ class AccessContextManagerApi {
       AccessPoliciesResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   OrganizationsResource get organizations => OrganizationsResource(_requester);
+  PermissionsResource get permissions => PermissionsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
   AccessContextManagerApi(
@@ -1914,6 +1916,55 @@ class OrganizationsGcpUserAccessBindingsResource {
   }
 }
 
+class PermissionsResource {
+  final commons.ApiRequester _requester;
+
+  PermissionsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists all supported permissions in VPCSC Granular Controls.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - Optional. This flag specifies the maximum number of services
+  /// to return per page. Default is 100.
+  ///
+  /// [pageToken] - Optional. Token to start on a later page. Default is the
+  /// first page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSupportedPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSupportedPermissionsResponse> list({
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/permissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSupportedPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ServicesResource {
   final commons.ApiRequester _requester;
 
@@ -2791,11 +2842,10 @@ class DevicePolicy {
 class EgressFrom {
   /// A list of identities that are allowed access through \[EgressPolicy\].
   ///
-  /// Identities can be an individual user, service account, Google group, or
-  /// third-party identity. For third-party identity, only single identities are
-  /// supported and other identity types are not supported. The `v1` identities
-  /// that have the prefix `user`, `group`, `serviceAccount`, and `principal` in
-  /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
+  /// Identities can be an individual user, service account, Google group,
+  /// third-party identity, or agent identity. For the list of supported
+  /// identity types, see
+  /// https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access to outside the
@@ -3199,11 +3249,10 @@ typedef GetPolicyOptions = $GetPolicyOptions00;
 class IngressFrom {
   /// A list of identities that are allowed access through \[IngressPolicy\].
   ///
-  /// Identities can be an individual user, service account, Google group, or
-  /// third-party identity. For third-party identity, only single identities are
-  /// supported and other identity types are not supported. The `v1` identities
-  /// that have the prefix `user`, `group`, `serviceAccount`, and `principal` in
-  /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
+  /// Identities can be an individual user, service account, Google group,
+  /// third-party identity, or agent identity. For the list of supported
+  /// identity types, see
+  /// https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access from outside the
@@ -3584,6 +3633,39 @@ class ListServicePerimetersResponse {
     return {
       'nextPageToken': ?nextPageToken,
       'servicePerimeters': ?servicePerimeters,
+    };
+  }
+}
+
+/// A response to `ListSupportedPermissionsRequest`.
+class ListSupportedPermissionsResponse {
+  /// The pagination token to retrieve the next page of results.
+  ///
+  /// If the value is empty, no further results remain.
+  core.String? nextPageToken;
+
+  /// List of VPC-SC supported permissions.
+  core.List<core.String>? supportedPermissions;
+
+  ListSupportedPermissionsResponse({
+    this.nextPageToken,
+    this.supportedPermissions,
+  });
+
+  ListSupportedPermissionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        supportedPermissions: (json_['supportedPermissions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final supportedPermissions = this.supportedPermissions;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'supportedPermissions': ?supportedPermissions,
     };
   }
 }

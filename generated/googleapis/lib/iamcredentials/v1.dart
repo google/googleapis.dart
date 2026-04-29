@@ -96,7 +96,8 @@ class LocationsWorkforcePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of workforce pool.
+  /// [name] - Required. Resource name of workforce pool. Format:
+  /// `locations/global/workforcePools/{pool_id}`
   /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -160,7 +161,8 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of workload identity pool.
+  /// [name] - Required. Resource name of workload identity pool. Format:
+  /// `projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
   ///
@@ -295,7 +297,8 @@ class ProjectsServiceAccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of service account.
+  /// [name] - Required. Resource name of service account. Format:
+  /// `projects/-/serviceAccounts/{service_account_email}`
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial

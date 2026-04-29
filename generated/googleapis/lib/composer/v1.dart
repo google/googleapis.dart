@@ -56,6 +56,16 @@ class CloudComposerApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Composer data and see
+  /// the email address for your Google Account
+  static const cloudcomposerScope =
+      'https://www.googleapis.com/auth/cloudcomposer';
+
+  /// See your Google Cloud Composer data and the email address of your Google
+  /// Account
+  static const cloudcomposerReadonlyScope =
+      'https://www.googleapis.com/auth/cloudcomposer.readonly';
+
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -3631,6 +3641,16 @@ class PrivateEnvironmentConfig {
   /// Optional.
   NetworkingConfig? networkingConfig;
 
+  /// Networking type for the environment, either private or public.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NETWORKING_TYPE_UNSPECIFIED" : Default networking type.
+  /// - "PRIVATE" : Private IP Cloud Composer environment with no access to the
+  /// internet.
+  /// - "PUBLIC" : Cloud Composer environment with access to the internet.
+  core.String? networkingType;
+
   /// Configuration for the private GKE cluster for a Private IP Cloud Composer
   /// environment.
   ///
@@ -3663,6 +3683,7 @@ class PrivateEnvironmentConfig {
     this.enablePrivateEnvironment,
     this.enablePrivatelyUsedPublicIps,
     this.networkingConfig,
+    this.networkingType,
     this.privateClusterConfig,
     this.webServerIpv4CidrBlock,
     this.webServerIpv4ReservedRange,
@@ -3688,6 +3709,7 @@ class PrivateEnvironmentConfig {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        networkingType: json_['networkingType'] as core.String?,
         privateClusterConfig: json_.containsKey('privateClusterConfig')
             ? PrivateClusterConfig.fromJson(
                 json_['privateClusterConfig']
@@ -3711,6 +3733,7 @@ class PrivateEnvironmentConfig {
     final enablePrivateEnvironment = this.enablePrivateEnvironment;
     final enablePrivatelyUsedPublicIps = this.enablePrivatelyUsedPublicIps;
     final networkingConfig = this.networkingConfig;
+    final networkingType = this.networkingType;
     final privateClusterConfig = this.privateClusterConfig;
     final webServerIpv4CidrBlock = this.webServerIpv4CidrBlock;
     final webServerIpv4ReservedRange = this.webServerIpv4ReservedRange;
@@ -3724,6 +3747,7 @@ class PrivateEnvironmentConfig {
       'enablePrivateEnvironment': ?enablePrivateEnvironment,
       'enablePrivatelyUsedPublicIps': ?enablePrivatelyUsedPublicIps,
       'networkingConfig': ?networkingConfig,
+      'networkingType': ?networkingType,
       'privateClusterConfig': ?privateClusterConfig,
       'webServerIpv4CidrBlock': ?webServerIpv4CidrBlock,
       'webServerIpv4ReservedRange': ?webServerIpv4ReservedRange,

@@ -563,6 +563,7 @@ api.GceRegionalPersistentDisk buildGceRegionalPersistentDisk() {
   final o = api.GceRegionalPersistentDisk();
   buildCounterGceRegionalPersistentDisk++;
   if (buildCounterGceRegionalPersistentDisk < 3) {
+    o.archiveTimeout = 'foo';
     o.diskType = 'foo';
     o.fsType = 'foo';
     o.reclaimPolicy = 'foo';
@@ -576,6 +577,7 @@ api.GceRegionalPersistentDisk buildGceRegionalPersistentDisk() {
 void checkGceRegionalPersistentDisk(api.GceRegionalPersistentDisk o) {
   buildCounterGceRegionalPersistentDisk++;
   if (buildCounterGceRegionalPersistentDisk < 3) {
+    unittest.expect(o.archiveTimeout!, unittest.equals('foo'));
     unittest.expect(o.diskType!, unittest.equals('foo'));
     unittest.expect(o.fsType!, unittest.equals('foo'));
     unittest.expect(o.reclaimPolicy!, unittest.equals('foo'));
@@ -1587,6 +1589,8 @@ api.WorkstationCluster buildWorkstationCluster() {
     o.tags = buildUnnamed43();
     o.uid = 'foo';
     o.updateTime = 'foo';
+    o.workstationAuthorizationUrl = 'foo';
+    o.workstationLaunchUrl = 'foo';
   }
   buildCounterWorkstationCluster--;
   return o;
@@ -1614,6 +1618,8 @@ void checkWorkstationCluster(api.WorkstationCluster o) {
     checkUnnamed43(o.tags!);
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
+    unittest.expect(o.workstationAuthorizationUrl!, unittest.equals('foo'));
+    unittest.expect(o.workstationLaunchUrl!, unittest.equals('foo'));
   }
   buildCounterWorkstationCluster--;
 }

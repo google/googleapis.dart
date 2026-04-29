@@ -149,7 +149,7 @@ class BlogsResource {
   ///
   /// [maxPosts] - null
   ///
-  /// [view] - null
+  /// [view] - Unspecified is interpreted as READER.
   /// Possible string values are:
   /// - "VIEW_TYPE_UNSPECIFIED"
   /// - "READER"
@@ -194,7 +194,7 @@ class BlogsResource {
   ///
   /// [url] - null
   ///
-  /// [view] - null
+  /// [view] - Unspecified is interpreted as READER.
   /// Possible string values are:
   /// - "VIEW_TYPE_UNSPECIFIED"
   /// - "READER"
@@ -244,7 +244,7 @@ class BlogsResource {
   ///
   /// [status] - Default value of status is LIVE.
   ///
-  /// [view] - null
+  /// [view] - Unspecified is interpreted as the user's role on the blog.
   /// Possible string values are:
   /// - "VIEW_TYPE_UNSPECIFIED"
   /// - "READER"
