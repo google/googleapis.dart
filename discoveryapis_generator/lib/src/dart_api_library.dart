@@ -87,8 +87,8 @@ class DartApiLibrary extends BaseApiLibrary {
   DartApiLibrary.build(
     RestDescription description, {
     required this.isPackage,
-    bool useCorePrefixes = true,
-  }) : super(description, 'Api', useCorePrefixes: useCorePrefixes) {
+    super.useCorePrefixes,
+  }) : super(description, 'Api') {
     libraryName = ApiLibraryNamer.libraryName(
       description.name,
       description.version,
