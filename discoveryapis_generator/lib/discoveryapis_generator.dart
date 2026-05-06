@@ -24,6 +24,7 @@ List<GenerateResult> generateApiPackage(
   Pubspec pubspec, {
   bool deleteExisting = true,
   required Set<String> skipTests,
+  Map<String, String> deprecationMap = const {},
 }) {
   final apisPackageGenerator = ApisPackageGenerator(
     descriptions,
@@ -31,6 +32,7 @@ List<GenerateResult> generateApiPackage(
     outputDirectory,
     deleteExisting: deleteExisting,
     skipTests: skipTests,
+    deprecationMap: deprecationMap,
   );
 
   return apisPackageGenerator.generateApiPackage();
@@ -42,6 +44,7 @@ List<GenerateResult> generateAllLibraries(
   Pubspec pubspec, {
   bool deleteExisting = true,
   required Set<String> skipTests,
+  Map<String, String> deprecationMap = const {},
 }) {
   final apiDescriptions = Directory(inputDirectory)
       .listSync()
@@ -59,6 +62,7 @@ List<GenerateResult> generateAllLibraries(
     pubspec,
     deleteExisting: deleteExisting,
     skipTests: skipTests,
+    deprecationMap: deprecationMap,
   );
 }
 

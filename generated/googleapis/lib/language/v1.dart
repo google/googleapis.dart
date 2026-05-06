@@ -18,6 +18,11 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
+/// > [!WARNING]
+/// > This API is deprecated. Use
+/// > [`package:google_cloud_language_v2`](https://pub.dev/packages/google_cloud_language_v2)
+/// > instead.
+///
 /// Cloud Natural Language API - v1
 ///
 /// Provides natural language understanding technologies, such as sentiment
@@ -29,6 +34,7 @@
 /// Create an instance of [CloudNaturalLanguageApi] to access these resources:
 ///
 /// - [DocumentsResource]
+@core.Deprecated('Use package:google_cloud_language_v2')
 library;
 
 import 'dart:async' as async;

@@ -18,6 +18,11 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
+/// > [!WARNING]
+/// > This API is deprecated. Use
+/// > [`package:google_cloud_storage`](https://pub.dev/packages/google_cloud_storage)
+/// > instead.
+///
 /// Cloud Storage JSON API - v1
 ///
 /// Stores and retrieves potentially large, immutable data objects.
@@ -41,6 +46,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsHmacKeysResource]
 ///   - [ProjectsServiceAccountResource]
+@core.Deprecated('Use package:google_cloud_storage')
 library;
 
 import 'dart:async' as async;

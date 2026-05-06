@@ -22,7 +22,7 @@ Access the latest features for managing Authorized Buyers accounts, Real-Time Bi
 
 #### Google Workspace Alert Center API - `alertcenter/v1beta1`
 
-Manages alerts on issues affecting your domain. Note: The current version of this API (v1beta1) is available to all Google Workspace customers. 
+Manages alerts on issues affecting your domain. Note: The current version of this API (v1beta1) is available to all Google Workspace customers.
 
 - [Original documentation](https://developers.google.com/workspace/admin/alertcenter/)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/alertcenter_v1beta1/alertcenter_v1beta1-library.html)
@@ -43,7 +43,7 @@ Manage properties in Google Analytics. Warning: Creating multiple Customer Appli
 
 #### Google Analytics Data API - `analyticsdata/v1beta`
 
-Accesses report data in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning. 
+Accesses report data in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.
 
 - [Original documentation](https://developers.google.com/analytics/devguides/reporting/data/v1/)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/analyticsdata_v1beta/analyticsdata_v1beta-library.html)
@@ -57,14 +57,14 @@ Allows users to manage BigQuery connections to external data sources.
 
 #### Error Reporting API - `clouderrorreporting/v1beta1`
 
-Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors. 
+Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.
 
 - [Original documentation](https://cloud.google.com/error-reporting/)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/clouderrorreporting_v1beta1/clouderrorreporting_v1beta1-library.html)
 
 #### Google Cloud Support API - `cloudsupport/v2beta`
 
-Manages Google Cloud technical support cases for Customer Care support offerings. 
+Manages Google Cloud technical support cases for Customer Care support offerings.
 
 - [Original documentation](https://cloud.google.com/support/docs/apis)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/cloudsupport_v2beta/cloudsupport_v2beta-library.html)

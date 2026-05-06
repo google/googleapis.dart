@@ -7,6 +7,7 @@
 import 'dart:async';
 import 'dart:math';
 
+// ignore: deprecated_member_use
 import 'package:googleapis/storage/v1.dart';
 import 'package:test/test.dart';
 import 'package:test_integration/test_integration.dart';

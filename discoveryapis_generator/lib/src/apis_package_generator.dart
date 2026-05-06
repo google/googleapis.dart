@@ -34,6 +34,7 @@ class ApisPackageGenerator with DedupeMixin {
   final Pubspec pubspec;
   final bool deleteExisting;
   final Set<String> skipTests;
+  final Map<String, String> deprecationMap;
 
   /// [descriptions] is a list of API descriptions we want to generate code for.
   ///
@@ -48,6 +49,7 @@ class ApisPackageGenerator with DedupeMixin {
     this.packageFolderPath, {
     this.deleteExisting = true,
     required this.skipTests,
+    this.deprecationMap = const {},
   });
 
   /// Starts generating the API package with all the APIs given in the
@@ -113,7 +115,11 @@ ${requestHeadersField(pubspec.version)}
         try {
           // Create API itself.
           Directory(apiFolderPath).createSync();
-          final apiLibrary = _generateApiLibrary(apiVersionFile, description);
+          final apiLibrary = _generateApiLibrary(
+            apiVersionFile,
+            description,
+            deprecationTargetPackage: deprecationMap[description.id],
+          );
 
           // Create Test for API.
           Directory(apiTestFolderPath).createSync();
@@ -167,9 +173,14 @@ ${duplicateItems.map((e) => e.definition).join('\n\n')}
 
   DartApiLibrary _generateApiLibrary(
     String outputFile,
-    RestDescription description,
-  ) => libraryDeduplicateLogic(() {
-    final lib = DartApiLibrary.build(description, isPackage: true);
+    RestDescription description, {
+    String? deprecationTargetPackage,
+  }) => libraryDeduplicateLogic(() {
+    final lib = DartApiLibrary.build(
+      description,
+      isPackage: true,
+      deprecationTargetPackage: deprecationTargetPackage,
+    );
     writeDartSource(outputFile, lib.librarySource);
     return lib;
   });
