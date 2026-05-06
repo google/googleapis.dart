@@ -9,6 +9,7 @@
 // For details of how to use this package in Flutter, see
 // https://flutter.dev/docs/development/data-and-backend/google-apis
 
+// ignore: deprecated_member_use
 import 'package:googleapis/storage/v1.dart';
 import 'package:googleapis_auth/auth_io.dart';
 

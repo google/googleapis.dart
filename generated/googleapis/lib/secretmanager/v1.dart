@@ -18,6 +18,11 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
+/// > [!WARNING]
+/// > This API is deprecated. Use
+/// > [`package:google_cloud_secretmanager_v1`](https://pub.dev/packages/google_cloud_secretmanager_v1)
+/// > instead.
+///
 /// Secret Manager API - v1
 ///
 /// Stores sensitive data such as API keys, passwords, and certificates.
@@ -33,6 +38,7 @@
 ///       - [ProjectsLocationsSecretsVersionsResource]
 ///   - [ProjectsSecretsResource]
 ///     - [ProjectsSecretsVersionsResource]
+@core.Deprecated('Use package:google_cloud_secretmanager_v1')
 library;
 
 import 'dart:async' as async;

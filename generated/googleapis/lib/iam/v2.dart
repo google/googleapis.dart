@@ -18,6 +18,11 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
+/// > [!WARNING]
+/// > This API is deprecated. Use
+/// > [`package:google_cloud_iam_v1`](https://pub.dev/packages/google_cloud_iam_v1)
+/// > instead.
+///
 /// Identity and Access Management (IAM) API - v2
 ///
 /// Manages identity and access control for Google Cloud resources, including
@@ -32,6 +37,7 @@
 ///
 /// - [PoliciesResource]
 ///   - [PoliciesOperationsResource]
+@core.Deprecated('Use package:google_cloud_iam_v1')
 library;
 
 import 'dart:async' as async;
