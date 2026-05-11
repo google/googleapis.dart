@@ -23,11 +23,6 @@ dev_dependencies:
 
 # TODO: Remove this when `google_cloud_shelf` is published.
 dependency_overrides:
-  google_cloud:
-    git:
-      url: https://github.com/googleapis/google-cloud-dart.git
-      path: pkgs/google_cloud
-      ref: main
   google_cloud_shelf:
     git:
       url: https://github.com/googleapis/google-cloud-dart.git
