@@ -26,3 +26,15 @@ dev_dependencies:
 
 false_secrets:
   - test/test_utils.dart
+
+dependency_overrides:
+  google_cloud:
+    git:
+      url: https://github.com/googleapis/google-cloud-dart.git
+      path: pkgs/google_cloud
+      ref: main
+  google_cloud_logging:
+    git:
+      url: https://github.com/googleapis/google-cloud-dart.git
+      path: pkgs/google_cloud_logging
+      ref: main
