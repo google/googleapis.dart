@@ -33,4 +33,8 @@ dependency_overrides:
       url: https://github.com/googleapis/google-cloud-dart.git
       path: pkgs/google_cloud
       ref: main
-
+  google_cloud_logging:
+    git:
+      url: https://github.com/googleapis/google-cloud-dart.git
+      path: pkgs/google_cloud_logging
+      ref: main
