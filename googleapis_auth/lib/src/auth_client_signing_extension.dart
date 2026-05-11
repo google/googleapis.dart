@@ -9,8 +9,7 @@ library;
 
 import 'dart:convert';
 
-// ignore: deprecated_member_use
-import 'package:google_cloud/general.dart';
+import 'package:google_cloud/google_cloud.dart';
 import 'iam_signer.dart';
 import 'impersonated_auth_client.dart';
 import 'service_account_credentials.dart';

@@ -7,8 +7,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-// ignore: deprecated_member_use
-import 'package:google_cloud/general.dart';
+import 'package:google_cloud/google_cloud.dart';
 import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
