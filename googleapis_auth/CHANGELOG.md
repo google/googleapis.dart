@@ -1,3 +1,7 @@
+## 2.3.1
+
+- Require `google_cloud: '>=0.3.0 <0.6.0'`
+
 ## 2.3.0
 
 - Added `clientViaRefreshToken()` function for creating an
