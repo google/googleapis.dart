@@ -1,4 +1,5 @@
 #!/usr/bin/env dart
+
 // Copyright 2021 Google LLC
 //
 // Use of this source code is governed by a BSD-style
