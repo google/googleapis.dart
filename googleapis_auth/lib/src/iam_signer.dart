@@ -5,7 +5,8 @@
 // https://developers.google.com/open-source/licenses/bsd
 
 import 'dart:convert';
-import 'package:google_cloud/general.dart';
+
+import 'package:google_cloud/google_cloud.dart';
 import 'package:http/http.dart' as http;
 
 import 'utils.dart';
