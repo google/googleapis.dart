@@ -6,7 +6,7 @@
 
 import 'package:http/http.dart';
 
-import '../auth_io.dart';
+import 'access_credentials.dart';
 
 /// A authenticated HTTP client.
 abstract class AuthClient implements Client {
