@@ -9,9 +9,10 @@ library;
 
 import 'dart:convert';
 
-import 'package:google_cloud/google_cloud.dart';
 import 'iam_signer.dart';
 import 'impersonated_auth_client.dart';
+import 'metadata_server_stub.dart'
+    if (dart.library.io) 'metadata_server_io.dart';
 import 'service_account_credentials.dart';
 
 /// Extension providing smart signing capabilities for [AuthClient].
@@ -49,6 +50,8 @@ extension AuthClientSigningExtension on AuthClient {
   /// The result is cached for the lifetime of the Dart process.
   ///
   /// If [refresh] is `true`, the cache is cleared and the value is re-computed.
+  ///
+  /// Throws [UnsupportedError] on web platforms.
   Future<String> getServiceAccountEmail({bool refresh = false}) async =>
       await serviceAccountEmailFromMetadataServer(
         client: this,
@@ -74,7 +77,10 @@ extension AuthClientSigningExtension on AuthClient {
   ///     `signBlob` endpoint.
   ///     - The [serviceAccountEmail] can be provided to specify which service
   ///       account to use. If not provided, it will be inferred from the
-  ///       environment (e.g., GCE metadata server).
+  ///       environment (e.g., GCE metadata server). Note: On web platforms,
+  ///       [serviceAccountEmail] must be explicitly provided; otherwise,
+  ///       attempting to infer it from the GCE metadata server will throw
+  ///       an [UnsupportedError].
   ///     - The [endpoint] is an optional custom IAM Credentials API endpoint.
   ///       This is useful when working with different universe domains. If not
   ///       provided, the endpoint is automatically determined from the

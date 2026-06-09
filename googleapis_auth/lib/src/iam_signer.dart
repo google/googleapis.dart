@@ -6,9 +6,10 @@
 
 import 'dart:convert';
 
-import 'package:google_cloud/google_cloud.dart';
 import 'package:http/http.dart' as http;
 
+import 'metadata_server_stub.dart'
+    if (dart.library.io) 'metadata_server_io.dart';
 import 'utils.dart';
 
 /// Signs the given [data] using the IAM Credentials API.
@@ -22,6 +23,9 @@ import 'utils.dart';
 ///
 /// [serviceAccountEmail] is the email of the service account to sign with.
 /// If not provided, it will be fetched from the GCE metadata server.
+/// Note: On web platforms, [serviceAccountEmail] must be explicitly provided;
+/// otherwise, attempting to fetch it from the GCE metadata server will throw
+/// an [UnsupportedError].
 ///
 /// [delegates] specifies the sequence of service accounts in a delegation
 /// chain.

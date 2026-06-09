@@ -1,3 +1,8 @@
+## 2.3.2
+
+- Fix web compatibility by removing transitive `dart:io` and
+  `package:google_cloud` imports from the core `googleapis_auth.dart` library.
+
 ## 2.3.1
 
 - Require `google_cloud: '>=0.3.0 <0.6.0'`
@@ -27,7 +32,7 @@
 - Application Default Credentials (ADC) now propagate `quota_project_id` for
   Service Account credentials.
 - Added `CredentialsFileException` and `AuthorizationCallbackException` classes.
-- Replaced generic exception and error throws (such as `Exception`, `ArgumentError`, 
+- Replaced generic exception and error throws (such as `Exception`, `ArgumentError`,
   and `UnsupportedError`) with more specific exception types throughout the package to
   improve error handling and debuggability.
 - `AuthClientSigningExtension.sign()` now accepts an optional `serviceAccountEmail`
@@ -72,7 +77,7 @@
 
 ## 1.5.1
 
-- `auth_browser.dart`: handle pop-up closed errors correctly. 
+- `auth_browser.dart`: handle pop-up closed errors correctly.
 
 ## 1.5.0
 
@@ -81,7 +86,7 @@
 ## 1.4.2
 
 - Require Dart 3.2 or later.
-- Require 
+- Require
   - `google_identity_services_web: ^0.3.0`
   - `http: ^1.0.0`
 
@@ -112,7 +117,7 @@
 #### `auth_io.dart` library
 
 - Added an optional `listenPort` parameter to `clientViaUserConsent`
-  and `obtainAccessCredentialsViaUserConsent`. 
+  and `obtainAccessCredentialsViaUserConsent`.
 
 ## 1.3.1
 
