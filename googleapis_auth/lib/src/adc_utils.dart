@@ -59,7 +59,9 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
   Client baseClient, {
   String? fileSource,
 }) async {
-  final quotaProject = credentials['quota_project_id'] as String?;
+  final quotaProject =
+      Platform.environment['GOOGLE_CLOUD_QUOTA_PROJECT'] ??
+      credentials['quota_project_id'] as String?;
   if (credentials case {
     'type': 'authorized_user',
     'client_id': final String clientIdString,
