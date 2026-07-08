@@ -9,6 +9,7 @@ library;
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:googleapis_auth/src/adc_utils.dart'
     show fromApplicationsCredentialsFile;
@@ -16,6 +17,7 @@ import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 import 'package:test_descriptor/test_descriptor.dart' as d;
+import 'package:test_process/test_process.dart';
 
 import 'test_utils.dart';
 
@@ -76,6 +78,60 @@ void main() {
     expect(r.body, 'hello world');
 
     c.close();
+  });
+
+  group('GOOGLE_CLOUD_QUOTA_PROJECT environment variable', () {
+    late String quotaProjectPrint;
+
+    setUpAll(() async {
+      final packageUri = await Isolate.resolvePackageUri(
+        Uri.parse('package:googleapis_auth/'),
+      );
+      quotaProjectPrint = packageUri!
+          .resolve('../test/src/quota_project_print.dart')
+          .toFilePath();
+    });
+
+    Future<void> writeCreds({String? quotaProjectId}) => d
+        .file(
+          'quota_project_env_creds.json',
+          json.encode({
+            'client_id': 'id',
+            'client_secret': 'secret',
+            'refresh_token': 'refresh',
+            'type': 'authorized_user',
+            'quota_project_id': ?quotaProjectId,
+          }),
+        )
+        .create();
+
+    test('is used when credentials have no quota_project_id', () async {
+      await writeCreds();
+
+      final proc = await TestProcess.start(
+        Platform.resolvedExecutable,
+        [quotaProjectPrint, d.path('quota_project_env_creds.json')],
+        environment: {'GOOGLE_CLOUD_QUOTA_PROJECT': 'env-project'},
+        includeParentEnvironment: false,
+      );
+
+      await expectLater(proc.stdout, emits('env-project'));
+      await proc.shouldExit(0);
+    });
+
+    test('takes precedence over quota_project_id in credentials', () async {
+      await writeCreds(quotaProjectId: 'file-project');
+
+      final proc = await TestProcess.start(
+        Platform.resolvedExecutable,
+        [quotaProjectPrint, d.path('quota_project_env_creds.json')],
+        environment: {'GOOGLE_CLOUD_QUOTA_PROJECT': 'env-project'},
+        includeParentEnvironment: false,
+      );
+
+      await expectLater(proc.stdout, emits('env-project'));
+      await proc.shouldExit(0);
+    });
   });
 
   test('authorized_user credentials with quota_project_id', () async {
