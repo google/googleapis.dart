@@ -39,6 +39,12 @@ export 'src/typedefs.dart';
 ///  3. On Google Compute Engine and App Engine Flex we fetch credentials from
 ///     [GCE metadata service][meta-data].
 ///
+/// **Note on Quota Project:**
+/// When using credentials from a file, the quota project is determined by
+/// checking the `GOOGLE_CLOUD_QUOTA_PROJECT` environment variable first. If
+/// it is not set, it falls back to the `quota_project_id` defined within the
+/// credential file itself.
+///
 /// [meta-data]: https://cloud.google.com/compute/docs/storing-retrieving-metadata
 /// [svc-keys]: https://cloud.google.com/docs/authentication/getting-started
 /// [gcloud-login]: https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login

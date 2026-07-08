@@ -1,4 +1,4 @@
-## 2.3.3-wip
+## 2.3.3
 
 - `GOOGLE_CLOUD_QUOTA_PROJECT` now takes precedence over a credential's
   `quota_project_id` when set.
