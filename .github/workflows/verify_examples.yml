@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Cache Pub hosted dependencies
-      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
       with:
         path: "~/.pub-cache/hosted"
         key: "os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:${{ matrix.example_directory }}"
@@ -29,7 +29,7 @@ jobs:
     - uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260
       with:
         sdk: dev
-    - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
     - run: |
         pushd discoveryapis_generator
         dart pub upgrade
