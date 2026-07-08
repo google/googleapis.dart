@@ -1,3 +1,8 @@
+## 2.3.3-wip
+
+- `GOOGLE_CLOUD_QUOTA_PROJECT` now takes precedence over a credential's
+  `quota_project_id` when set.
+
 ## 2.3.2
 
 - Fix web compatibility by removing transitive `dart:io` and
