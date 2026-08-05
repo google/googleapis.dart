@@ -26,6 +26,7 @@ class Package {
   final String changelog;
   final String? example;
   final String? monoPkg;
+  final Map<String, String> deprecationMap;
 
   Package(
     this.name,
@@ -36,6 +37,7 @@ class Package {
     this.changelog,
     this.example,
     this.monoPkg,
+    this.deprecationMap,
   );
 }
 
@@ -247,6 +249,7 @@ class DiscoveryPackagesConfiguration {
         package.pubspec,
         deleteExisting: deleteExisting,
         skipTests: skipTests,
+        deprecationMap: package.deprecationMap,
       );
       for (final result in results) {
         if (!result.success) {
@@ -322,15 +325,16 @@ class DiscoveryPackagesConfiguration {
     String packageName,
     List<RestDescription?> items, {
     String? packageVersion,
+    Map<String, String> deprecationMap = const {},
   }) {
     final sb = StringBuffer();
     if (readmeFile != null) {
       sb.write(File(readmeFile).readAsStringSync());
     }
     sb.writeln('''
-
+ 
 ## Available Google APIs
-
+ 
 The following is a list of APIs that are currently available inside this
 package.
 ''');
@@ -346,6 +350,16 @@ package.
       sb
         ..writeln('${item.title} - `$libraryName`')
         ..writeln();
+
+      final deprecationTarget = deprecationMap[item.id];
+      if (deprecationTarget != null) {
+        sb.writeln('''
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:$deprecationTarget`](https://pub.dev/packages/$deprecationTarget)
+> instead.
+''');
+      }
 
       if (item.description != null && item.description!.isNotEmpty) {
         sb
@@ -367,7 +381,7 @@ package.
       }
       sb.writeln();
     }
-    return sb.toString();
+    return sb.toString().split('\n').map((line) => line.trimRight()).join('\n');
   }
 
   static Map<String, Package> _packagesFromYaml(
@@ -404,6 +418,14 @@ package.
     if (values.containsKey('extraDevDependencies')) {
       extraDevDependencies = (values['extraDevDependencies'] as YamlMap)
           .cast<String, String>();
+    }
+
+    final deprecationMap = <String, String>{};
+    if (values.containsKey('deprecation_map')) {
+      final map = values['deprecation_map'] as YamlMap;
+      map.forEach((key, value) {
+        deprecationMap[key as String] = value as String;
+      });
     }
 
     final configUri = Uri.file(configFile);
@@ -455,6 +477,7 @@ package.
       name,
       apiDescriptions,
       packageVersion: version,
+      deprecationMap: deprecationMap,
     );
 
     // Read the LICENSE
@@ -482,6 +505,7 @@ package.
       changelog,
       example,
       monoPkg,
+      deprecationMap,
     );
   }
 
