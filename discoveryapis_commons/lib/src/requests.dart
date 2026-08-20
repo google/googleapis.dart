@@ -183,8 +183,19 @@ class DetailedApiRequestError extends ApiRequestError {
   }) : super(message);
 
   @override
-  String toString() =>
-      'DetailedApiRequestError(status: $status, message: $message)';
+  String toString() {
+    final buffer = StringBuffer(
+      'DetailedApiRequestError(status: $status, message: $message',
+    );
+    if (errors.isNotEmpty) {
+      buffer.write(', errors: [${errors.join(', ')}]');
+    }
+    if (jsonResponse != null) {
+      buffer.write(', jsonResponse: $jsonResponse');
+    }
+    buffer.write(')');
+    return buffer.toString();
+  }
 }
 
 /// Instances of this class can be added to a [DetailedApiRequestError] to
@@ -244,4 +255,18 @@ class ApiRequestErrorDetail {
       locationType = originalJson['locationType'] as String?,
       extendedHelp = originalJson['extendedHelp'] as String?,
       sendReport = originalJson['sendReport'] as String?;
+
+  @override
+  String toString() {
+    final values = <String>[
+      if (domain != null) 'domain: $domain',
+      if (reason != null) 'reason: $reason',
+      if (message != null) 'message: $message',
+      if (location != null) 'location: $location',
+      if (locationType != null) 'locationType: $locationType',
+      if (extendedHelp != null) 'extendedHelp: $extendedHelp',
+      if (sendReport != null) 'sendReport: $sendReport',
+    ];
+    return 'ApiRequestErrorDetail(${values.join(', ')})';
+  }
 }

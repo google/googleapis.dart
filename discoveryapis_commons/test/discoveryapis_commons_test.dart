@@ -965,6 +965,41 @@ void main() {
             );
       });
 
+      test('detailed-error-toString-includes-json-response', () {
+        makeDetailed400Error();
+        requester
+            .request('abc', 'GET')
+            .onError(
+              expectAsync2((error, stack) {
+                final e = error as DetailedApiRequestError;
+                final string = e.toString();
+                expect(string, startsWith('DetailedApiRequestError('));
+                expect(string, contains('status: 42'));
+                expect(string, contains('message: foo'));
+                expect(
+                  string,
+                  contains('jsonResponse: {error: {code: 42, message: foo}}'),
+                );
+              }),
+            );
+      });
+
+      test('error-with-multiple-errors-toString-includes-details', () {
+        makeErrorsError();
+        requester
+            .request('abc', 'GET')
+            .onError(
+              expectAsync2((error, stack) {
+                final e = error as DetailedApiRequestError;
+                final string = e.toString();
+                expect(string, contains('errors: [ApiRequestErrorDetail('));
+                expect(string, contains('reason: InvalidEmailError'));
+                expect(string, contains('domain: account'));
+                expect(string, contains('message: error'));
+              }),
+            );
+      });
+
       test('normal-199', () {
         makeNormal199Error();
         expect(requester.request('abc', 'GET'), throwsA(isApiRequestError));

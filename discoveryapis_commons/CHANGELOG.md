@@ -1,5 +1,7 @@
 ## 1.0.8-wip
 
+- Include error details and the JSON error response in
+  `DetailedApiRequestError.toString()`.
 - Fix detection of web usage.
 - Require `sdk: ^3.9.0`
 
